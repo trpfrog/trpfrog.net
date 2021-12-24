@@ -6,7 +6,9 @@ import Layout from "../components/Layout";
 const Home: NextPage = () => {
     return (
         <Layout>
-            うおうお
+            <div>
+                うおうお
+            </div>
         </Layout>
     )
 }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Header = () => {
     return (
         <header>
-            <div id="header_wrapper">
+            <div id="header-wrapper">
                 <h1>
                     <Link href="/">
                         <a>{process.env.title}</a>

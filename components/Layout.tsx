@@ -4,7 +4,8 @@ import Head from 'next/head'
 
 import Header from './Header'
 import Footer from "./Footer";
-import TwitterCard from "./TwitterCard";
+import TwitterCard from "./head/TwitterCard";
+import Navigation from "./Navigation";
 
 type Props = {
     title?: string
@@ -27,8 +28,11 @@ const Layout: React.FunctionComponent<Props> = ({
             </Head>
             <body>
                 <Header/>
+                <Navigation/>
                 <main>
-                    {children}
+                    <div id="main_wrapper">
+                        {children}
+                    </div>
                 </main>
                 <Footer/>
             </body>

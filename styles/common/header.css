@@ -30,7 +30,7 @@ header a:hover {
     color: #90e200 !important;
 }
 
-#header_wrapper {
+#header-wrapper {
     display: flex;
     align-items: center;
     max-width: 980px;
@@ -39,11 +39,11 @@ header a:hover {
     justify-content: space-between;
 }
 
-#header_wrapper #hamburger_menu {
+#header-wrapper #hamburger_menu {
     display: none;
 }
 
-#header_wrapper h1 {
+#header-wrapper h1 {
     text-align: left;
     display: inline-block;
     color: #ffffff;
@@ -52,19 +52,19 @@ header a:hover {
 }
 
 @media screen and (min-width: 1000px) {
-    #header_wrapper #tweet_search {
+    #header-wrapper #tweet_search {
         display: flex;
         text-align: right;
         color: #ffffff;
     }
 
-    #header_wrapper input {
+    #header-wrapper input {
         border-color: rgba(220, 255, 148, 0.67);
         font-size: 0.8em;
         background-color: rgba(220, 255, 148, 0.67);
     }
 
-    #header_wrapper .twibutton {
+    #header-wrapper .twibutton {
         display: inline-block;
         border-radius: 5%;
         text-align: center;
@@ -75,7 +75,7 @@ header a:hover {
         border: rgba(220, 255, 148, 0.67);
     }
 
-    #header_wrapper .twibutton:active {
+    #header-wrapper .twibutton:active {
         display: inline-block;
         border-radius: 5%;
         text-align: center;
@@ -87,12 +87,12 @@ header a:hover {
 }
 
 @media screen and (max-width: 1000px) {
-    #header_wrapper #tweet_search {
+    #header-wrapper #tweet_search {
         display: none;
     }
 }
 
-#header_wrapper h1:before {
+#header-wrapper h1:before {
     content: '';
     display: inline-block;
     width: 1.7em;
@@ -104,7 +104,7 @@ header a:hover {
     margin-right: 0.3em;
 }
 
-#header_wrapper nav {
+#header-wrapper nav {
     text-align: right;
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
@@ -130,7 +130,7 @@ header a:hover {
     color: #90e200
 }
 
-#header_wrapper nav li {
+#header-wrapper nav li {
     display: inline-block;
     text-align: center;
     list-style-type: none;
@@ -154,11 +154,11 @@ nav li + li {
 }
 
 @media screen and (max-width: 800px) {
-    #header_wrapper nav ul {
+    #header-wrapper nav ul {
         display: none;
     }
 
-    #header_wrapper {
+    #header-wrapper {
         width: 100%;
         display: inline-grid;
         grid-template-areas: "page_title hamburger_menu";
@@ -167,15 +167,15 @@ nav li + li {
         padding: 0;
     }
 
-    #header_wrapper h1:after {
+    #header-wrapper h1:after {
         display: none;
     }
 
-    #header_wrapper {
+    #header-wrapper {
         text-align: center;
     }
 
-    #header_wrapper h1 {
+    #header-wrapper h1 {
         text-align: center;
         grid-area: page_title;
         font-size: 1.5em;
@@ -183,22 +183,13 @@ nav li + li {
         /* display: block; */
     }
 
-    #header_wrapper #hamburger_menu {
+    #header-wrapper #hamburger_menu {
         display: block;
         grid-area: hamburger_menu;
         padding-top: 5px;
         width: 2em;
     }
 
-    /* #header_wrapper #humberger_menu figure div:nth-of-type(1) {
-        top: 0;
-    }
-    #header_wrapper #humberge_menu figure div:nth-of-type(2) {
-        top: 10px;
-    }
-    #header_wrapper #humberger_menu figure div:nth-of-type(3) {
-        bottom: 0;
-    } */
     .menu-trigger, .menu-trigger span {
         display: inline-block;
         transition: all .4s;

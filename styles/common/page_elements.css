@@ -1,8 +1,3 @@
-@import "header.css";
-@import "footer.css";
-@import "wide_navigation.css";
-@import "backtotop.css";
-
 :root {
     --window-padding: 40px;
     --window-margin-top: 2em;
@@ -13,13 +8,6 @@
         --window-padding: 20px;
         --window-margin-top: 5px;
     }
-}
-
-body {
-    margin: 0;
-    height: 100vh;
-    background: #f9fff6;
-    text-align: center;
 }
 
 main {

@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Favicon from '../components/Favicon'
-import WebFont from "../components/WebFont";
+import Favicon from '../components/head/Favicon'
+import WebFont from "../components/head/WebFont";
 
 const MyDocument = () => {
     return (

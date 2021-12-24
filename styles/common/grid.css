@@ -20,16 +20,14 @@ html {
 }
 
 body {
-    background: #fafff8;
     margin: 0;
-    min-height: 100%;
     display: grid;
+    height: 100vh;
+    background: #f9fff6;
+    text-align: center;
+    min-height: 100%;
     grid-template-areas: "h" "n" "m" "f";
-    grid-template-rows:
-        var(--header-height),
-        var(--navigation-height),
-        auto,
-        var(--footer-height);
+    grid-template-rows: 6em 3em auto 6em;
     grid-template-columns: 1fr;
     transition: .5s;
 }
@@ -54,7 +52,7 @@ main {
     margin: var(--main-margin);
 }
 
-#wide_nav {
+#wide-nav {
     grid-area: n;
 }
 
@@ -71,7 +69,7 @@ main {
         text-align: center;
     }
 
-    #wide_nav {
+    #wide-nav {
         display: none;
     }
 }

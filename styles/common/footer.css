@@ -1,4 +1,4 @@
-#footer_wrapper {
+#footer-wrapper {
     display: flex;
     align-items: center;
     max-width: 950px;
@@ -15,7 +15,7 @@ footer {
 }
 
 
-footer #footer_wrapper #copyright {
+footer #footer-wrapper #copyright {
     /*grid-area: t;*/
     text-align: left;
     color: #ffffff;
@@ -26,13 +26,13 @@ footer #footer_wrapper #copyright {
     align-items: center;
 }
 
-footer #footer_wrapper #share {
+footer #footer-wrapper #share {
     text-align: right;
 
     align-items: center;
 }
 
-footer #footer_wrapper #share {
+footer #footer-wrapper #share {
     display: flex;
 }
 
@@ -41,24 +41,24 @@ footer #footer_wrapper #share {
         text-align: center;
     }
 
-    footer #footer_wrapper {
+    footer #footer-wrapper {
         text-align: center;
     }
 
-    footer #footer_wrapper #share {
+    footer #footer-wrapper #share {
         display: none;
     }
 
-    footer #footer_wrapper #copyright {
+    footer #footer-wrapper #copyright {
         margin: 12px auto;
         font-size: 1em;
     }
 }
 
-footer #footer_wrapper #share .shareButton {
+footer #footer-wrapper #share .shareButton {
     margin-left: 0.8em;
 }
 
-footer #footer_wrapper #share {
+footer #footer-wrapper #share {
     margin-right: 25px;
 }

@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer>
-            <div id="footer_wrapper">
+            <div id="footer-wrapper">
                 <p id="copyright">
                     &copy; 2019-2021 つまみ
                 </p>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="300" height="200" viewBox="0, 0, 300, 200">
+  <g id="レイヤー_1">
+    <text transform="matrix(1, 0, 0, 1, 134.037, 100)">
+      <tspan x="-102.327" y="25.25" font-family="ChalkboardSE-Regular" font-size="76" fill="#FFFFFF">share!</tspan>
+    </text>
+    <path d="M273.5,138.75 L177.5,175.5" fill-opacity="0" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M273.5,62.5 L177.5,25.75" fill-opacity="0" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>

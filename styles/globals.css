@@ -1,10 +1,11 @@
+@import 'common/grid.css';
 @import 'common/header.css';
 @import 'common/footer.css';
-@import 'common/grid.css';
+@import "common/h2icon.css";
+@import "common/page_elements.css";
 @import "common/wide_navigation.css";
 @import "common/backtotop.css";
 @import "common/media.css";
-@import "common/h2icon.css";
 @import "common/linkbutton.css";
 
 html,
