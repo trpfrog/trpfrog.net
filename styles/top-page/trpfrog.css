@@ -1,0 +1,26 @@
+#bkg_dark {
+    transition: 3s;
+    opacity: 0;
+}
+
+@media (prefers-color-scheme: dark){
+    #bkg_dark {
+        transition: 3s;
+        opacity: 1;
+    }
+}
+
+#about_me_grid .profile_image svg {
+    touch-action: manipulation;
+}
+
+#normal_body {
+    transition: .5s;
+}
+
+#thinking_face_body, #thinking_face_hand, #hamburger_body, #noa_body, 
+#ice_body, #crying_body, #angry_body, #ghost_body, #pien_body, #robot_body,
+#crying_hand, #devil_body, #bad_body, #real_body, #invisible_body {
+    transition: .5s;
+    opacity: 0;
+}

@@ -1,0 +1,81 @@
+:root {
+    --header-height: 6em;
+    --navigation-height: 1em;
+    --footer-height: 6em;
+    --main-margin: 2em;
+    --window-bkg-color: rgba(159, 212, 51, 0.2);
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --header-height: 4em;
+        --navigation-height: 0;
+        --footer-height: 3em;
+        --main-margin: 0;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fafff8;
+    margin: 0;
+    min-height: 100%;
+    display: grid;
+    grid-template-areas: "h" "n" "m" "f";
+    grid-template-rows:
+        var(--header-height),
+        var(--navigation-height),
+        auto,
+        var(--footer-height);
+    grid-template-columns: 1fr;
+    transition: .5s;
+}
+
+@media (prefers-color-scheme: dark) {
+    .grid {
+        background: #0c2400;
+    }
+}
+
+header {
+    grid-area: h;
+}
+
+main {
+    grid-area: m;
+    font-family: "Noto Sans JP", sans-serif;
+    text-align: left;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    padding: 0;
+    margin: var(--main-margin);
+}
+
+#wide_nav {
+    grid-area: n;
+}
+
+#main_wrapper {
+    max-width: 1000px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        grid-template-rows: 4em 0 auto 3em; /* タテ方向のセルの長さを単位[Fr](Fraction)で定める */
+    }
+
+    main {
+        text-align: center;
+    }
+
+    #wide_nav {
+        display: none;
+    }
+}
+
+footer {
+    grid-area: f;
+}

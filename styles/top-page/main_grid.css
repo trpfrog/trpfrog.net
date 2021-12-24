@@ -1,0 +1,137 @@
+@import "about_me.css";
+@import "main_grid_sp.css";
+
+.main_window {
+    background-color: var(--window-bkg-color);
+    transition: .5s;
+}
+
+#store_links{
+    display: block;
+}
+
+#store_links .linkButton {
+    width: 100%;
+}
+
+@media screen and (min-width:800px){
+
+    main {
+        max-height: 100%;
+        text-align: center;
+    }
+
+    @media screen and (min-width:980px){
+        main #main_wrapper {
+            max-width: 1000px;
+            display: inline-grid;
+            grid-template-areas: "about_me about_me about_me"
+            "sticker icons icons"
+            "sticker music music"
+            "bird music music"
+            "balloon balloon balloon"
+            "links links music_game"
+            "links links stats";
+            grid-template-columns: 3fr 2fr 3fr; /* ヨコ方向のセルの長さを単位[Fr](Fraction)で定める */
+            /*grid-template-rows: auto 350px 110px 280px 540px; !* タテ方向のセルの長さを単位[Fr](Fraction)で定める *!*/
+            text-align: left;
+        }
+    }
+
+    @media screen and (max-width:980px){
+        main #main_wrapper {
+            max-width: 1000px;
+            display: inline-grid;
+            grid-template-areas:
+                    "about_me about_me"
+                    "sticker links"
+                    "bird links"
+                    "icons icons"
+                    "music music"
+                    "balloon balloon"
+                    "music_game stats";
+
+            grid-template-columns: 1fr 1fr;
+            text-align: left; 
+        }
+        
+        #sticker table,td,th,tbody{
+            display: block;
+        }
+    }
+    
+    .main_window {
+        margin: 1em;
+        border-radius: 33px;
+        text-align: left;
+    }
+
+    .main_window h2 {
+        margin: 0;
+    }
+
+    #music_game {
+        grid-area: music_game;
+        padding: 40px 40px 40px 40px;
+    }
+
+    #links {
+        grid-area: links;
+        padding: 40px 40px 40px 40px;
+    }
+
+    #links table {
+        border-spacing: 1em;
+    }
+
+    #links .linkButton {
+        width: 180px;
+    }
+    
+    #music {
+        grid-area: music;
+        padding: 40px 40px 40px 40px;
+    }
+
+    #icons {
+        grid-area: icons;
+        padding: 30px 40px 40px 40px;
+    }
+
+    #icons .top_icons {
+        width: 24%;
+    }
+
+    #balloon {
+        grid-area: balloon;
+        padding: 40px 40px 40px 40px;
+    }
+
+    #sticker {
+        grid-area: sticker;
+        padding: 30px 30px 30px 30px;
+    }
+
+    #bird {
+        grid-area: bird;
+        text-align: center;
+        padding: 40px 40px 40px 20px;
+    }
+
+    #bird h2 {
+        margin: 0;
+    }
+
+    #bird .aa {
+        white-space: pre;
+        font-size: 45%;
+        line-height: 12px;
+        display: inline-block;
+    }
+
+    #stats {
+        grid-area: stats;
+        display: none;
+        padding: 40px 40px 40px 40px;
+    }
+}

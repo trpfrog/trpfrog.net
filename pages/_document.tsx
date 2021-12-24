@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Favicon from '../components/favicon'
+import Favicon from '../components/Favicon'
+import WebFont from "../components/WebFont";
 
 const MyDocument = () => {
     return (
@@ -7,6 +8,7 @@ const MyDocument = () => {
             <Head>
                 <meta charSet="utf-8" />
                 <Favicon />
+                <WebFont />
             </Head>
             <body>
                 <Main />

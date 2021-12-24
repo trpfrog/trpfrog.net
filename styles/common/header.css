@@ -1,0 +1,234 @@
+@import "mobilemenu.css";
+
+header {
+    position: fixed;
+    background: #66a928d3;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--header-height);
+    -webkit-filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
+    z-index: 99;
+    -webkit-backdrop-filter: saturate(200%) blur(20px);
+    backdrop-filter: saturate(200%) blur(20px);
+    transition: 1s;
+}
+
+@media (prefers-color-scheme: dark) {
+    header {
+        background: #4f831fd3;
+        filter: drop-shadow(0em 0.1em 1em rgba(251, 255, 4, 0.4));
+    }
+}
+
+header a {
+    text-decoration: none;
+    color: white !important;
+}
+
+header a:hover {
+    color: #90e200 !important;
+}
+
+#header_wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 4em;
+    justify-content: space-between;
+}
+
+#header_wrapper #hamburger_menu {
+    display: none;
+}
+
+#header_wrapper h1 {
+    text-align: left;
+    display: inline-block;
+    color: #ffffff;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 1000px) {
+    #header_wrapper #tweet_search {
+        display: flex;
+        text-align: right;
+        color: #ffffff;
+    }
+
+    #header_wrapper input {
+        border-color: rgba(220, 255, 148, 0.67);
+        font-size: 0.8em;
+        background-color: rgba(220, 255, 148, 0.67);
+    }
+
+    #header_wrapper .twibutton {
+        display: inline-block;
+        border-radius: 5%;
+        text-align: center;
+        cursor: pointer;
+        background: rgba(220, 255, 148, 0.67);
+        color: #000;
+        box-shadow: 1px 1px 2px #666666;
+        border: rgba(220, 255, 148, 0.67);
+    }
+
+    #header_wrapper .twibutton:active {
+        display: inline-block;
+        border-radius: 5%;
+        text-align: center;
+        cursor: pointer;
+        background: rgba(0, 171, 6, 0.67);
+        box-shadow: 1px 1px 2px #666666;
+        border: rgba(220, 255, 148, 0.67);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #header_wrapper #tweet_search {
+        display: none;
+    }
+}
+
+#header_wrapper h1:before {
+    content: '';
+    display: inline-block;
+    width: 1.7em;
+    height: 1.7em;
+    background-image: url('../../../../trpfrog-net/public/images/icons/trpfrog.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 0.3em;
+}
+
+#header_wrapper nav {
+    text-align: right;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+}
+
+.headerButton {
+    font-family: 'Comfortaa', cursive;
+    text-align: left;
+    color: #ffffff;
+    /*font-weight: bold;*/
+    /*margin-bottom: 8px;*/
+    /*margin-right: 4px;*/
+    text-decoration: none; /*リンクの下線を消す*/
+    font-size: 1.5em;
+
+    /*ボタン上のテキストの選択をさせない*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.headerButton:hover {
+    color: #90e200
+}
+
+#header_wrapper nav li {
+    display: inline-block;
+    text-align: center;
+    list-style-type: none;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    text-decoration: none; /*リンクの下線を消す*/
+    margin-right: 0.8em;
+    padding-left: 1.2em;
+    /*ボタン上のテキストの選択をさせない*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+nav li + li {
+    border-left: 2px solid #ffffff;
+}
+
+#sp_menu {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    #header_wrapper nav ul {
+        display: none;
+    }
+
+    #header_wrapper {
+        width: 100%;
+        display: inline-grid;
+        grid-template-areas: "page_title hamburger_menu";
+        grid-template-columns: auto 3em;
+        grid-template-rows: 4em;
+        padding: 0;
+    }
+
+    #header_wrapper h1:after {
+        display: none;
+    }
+
+    #header_wrapper {
+        text-align: center;
+    }
+
+    #header_wrapper h1 {
+        text-align: center;
+        grid-area: page_title;
+        font-size: 1.5em;
+        margin-left: 1em;
+        /* display: block; */
+    }
+
+    #header_wrapper #hamburger_menu {
+        display: block;
+        grid-area: hamburger_menu;
+        padding-top: 5px;
+        width: 2em;
+    }
+
+    /* #header_wrapper #humberger_menu figure div:nth-of-type(1) {
+        top: 0;
+    }
+    #header_wrapper #humberge_menu figure div:nth-of-type(2) {
+        top: 10px;
+    }
+    #header_wrapper #humberger_menu figure div:nth-of-type(3) {
+        bottom: 0;
+    } */
+    .menu-trigger, .menu-trigger span {
+        display: inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+    }
+
+    .menu-trigger {
+        position: relative;
+        width: 28px;
+        height: 24px;
+    }
+
+    .menu-trigger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        border-radius: 4px;
+    }
+
+    .menu-trigger span:nth-of-type(1) {
+        top: 0;
+    }
+
+    .menu-trigger span:nth-of-type(2) {
+        top: 10px;
+    }
+
+    .menu-trigger span:nth-of-type(3) {
+        bottom: 0;
+    }
+}

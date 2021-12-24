@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#title h1 {
+    padding-top: 20px;
+    text-align: center !important;
+}
+
+.blacklink {
+   color: black;
+   text-decoration:  none;
+   border-bottom: dotted 1px black;
+ }
+
+p {
+    font-size: 1.2em;
+}
+
+.fake {
+    font-size: 1.4em;
+}
