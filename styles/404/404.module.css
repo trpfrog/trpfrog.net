@@ -2,8 +2,9 @@
 
 #title h1 {
     padding-top: 20px;
+    text-align: center;
 }
 
 #title {
-    text-align: center !important;
+    text-align: center;
 }
