@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#title h1 {
+    padding-top: 20px;
+}
+
+#title {
+    text-align: center !important;
+}
