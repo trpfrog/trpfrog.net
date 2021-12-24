@@ -1,6 +1,7 @@
 #wide-nav {
     background: #66a928d3;
     text-align: center;
+    z-index: 50;
 }
 
 @media (prefers-color-scheme: dark) {

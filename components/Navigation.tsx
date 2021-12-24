@@ -4,31 +4,31 @@ const Navigation = () => {
     return (
         <nav id="wide-nav">
             <div id="wide-nav-wrapper">
-                <Link href="/index.html">
+                <Link href="/">
                     <a className="sidemenu_link">Home</a>
                 </Link>
-                <Link href="/notes/index.html">
+                <Link href="/notes">
                     <a className="sidemenu_link">Notes</a>
                 </Link>
-                <Link href="/icon_gallery/index.html">
+                <Link href="/icon_gallery">
                     <a className="sidemenu_link">Icon</a>
                 </Link>
-                <Link href="/sticker_gallery/index.html">
+                <Link href="/sticker_gallery">
                     <a className="sidemenu_link">Sticker</a>
                 </Link>
-                <Link href="/balloon/index.html">
+                <Link href="/balloon">
                     <a className="sidemenu_link">Balloon</a>
                 </Link>
-                <Link href="/download/index.html">
+                <Link href="/download">
                     <a className="sidemenu_link">Download</a>
                 </Link>
-                <Link href="/iconmaker/index.html">
+                <Link href="/iconmaker">
                     <a className="sidemenu_link">Icon Maker</a>
                 </Link>
-                <Link href="/environment/index.html">
+                <Link href="/environment">
                     <a className="sidemenu_link">Environment</a>
                 </Link>
-                <Link href="/walking/index.html">
+                <Link href="/walking">
                     <a className="sidemenu_link">Walking</a>
                 </Link>
             </div>
