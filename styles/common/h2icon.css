@@ -21,59 +21,59 @@ main h2:before {
 }
 
 h2.trpfrog:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/trpfrog.webp');
+    background-image: url('../../public/images/icons/trpfrog.webp');
 }
 
 h2.ice:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/ice.webp');
+    background-image: url('../../public/images/icons/ice.webp');
 }
 
 h2.think:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/thinking.webp');
+    background-image: url('../../public/images/icons/thinking.webp');
 }
 
 h2.noa:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/noa.webp');
+    background-image: url('../../public/images/icons/noa.webp');
 }
 
 h2.think:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/thinking.webp');
+    background-image: url('../../public/images/icons/thinking.webp');
 }
 
 h2.pumpkin:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/pumpkin.webp');
+    background-image: url('../../public/images/icons/pumpkin.webp');
 }
 
 h2.car:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/car.webp');
+    background-image: url('../../public/images/icons/car.webp');
 }
 
 h2.evil:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/evil.webp');
+    background-image: url('../../public/images/icons/evil.webp');
 }
 
 h2.heart:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/heart.webp');
+    background-image: url('../../public/images/icons/heart.webp');
 }
 
 h2.robot:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/robot.webp');
+    background-image: url('../../public/images/icons/robot.webp');
 }
 
 h2.otaku:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/otaku.webp');
+    background-image: url('../../public/images/icons/otaku.webp');
 }
 
 h2.shark:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/shark.webp');
+    background-image: url('../../public/images/icons/shark.webp');
 }
 
 h2.locked:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/locked.webp');
+    background-image: url('../../public/images/icons/locked.webp');
 }
 
 h2.hina:before {
-    background-image: url('../../../../trpfrog-net/public/images/icons/hina.webp');
+    background-image: url('../../public/images/icons/hina.webp');
 }
 
 h2.none::before {
