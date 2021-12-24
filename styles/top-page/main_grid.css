@@ -1,7 +1,7 @@
 @import "about_me.css";
 @import "main_grid_sp.css";
 
-.main_window {
+.main-window {
     background-color: var(--window-bkg-color);
     transition: .5s;
 }
@@ -60,13 +60,13 @@
         }
     }
     
-    .main_window {
+    .main-window {
         margin: 1em;
         border-radius: 33px;
         text-align: left;
     }
 
-    .main_window h2 {
+    .main-window h2 {
         margin: 0;
     }
 

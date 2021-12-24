@@ -39,7 +39,7 @@ main #main_wrapper {
     margin-bottom: 0;
 }
 
-.main_window {
+.main-window {
     transition: .5s;
     background-color: var(--window-bkg-color);
     padding: var(--window-padding);
@@ -47,11 +47,11 @@ main #main_wrapper {
     text-align: left;
 }
 
-.main_window + .main_window {
+.main-window + .main-window {
     margin-top: var(--window-margin-top);
 }
 
-.main_window h2 {
+.main-window h2 {
     margin: 0;
 }
 
@@ -70,7 +70,7 @@ main #main_wrapper {
         font-size: 2em;
     }
 
-    .main_window {
+    .main-window {
         background-color: var(--window-bkg-color);
         border-radius: 0;
         text-align: left;

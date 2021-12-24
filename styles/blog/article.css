@@ -24,7 +24,7 @@ main {
     word-break: break-word;
 }
 
-.main_window img {
+.main-window img {
     max-height: 600px;
     border-radius: 15px;
     max-width: 80%;
@@ -39,7 +39,7 @@ blockquote {
 }
 
 @media screen and (max-width:800px) {
-    .main_window img {
+    .main-window img {
         border-radius: 10px;
         max-width: 100%;
         margin: 0.5em auto;
