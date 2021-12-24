@@ -2,7 +2,7 @@ import {NextPage} from "next";
 import Layout from "../components/Layout";
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/404/404.module.css';
+import styles from '../styles/404.module.css';
 
 const TrpFrog404: NextPage = () => {
     return (

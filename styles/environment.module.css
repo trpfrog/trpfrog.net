@@ -1,0 +1,19 @@
+.name {
+    font-weight: bold;
+}
+
+.gadget_image_wrapper {
+    max-width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image {
+    object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+    .gadget_image_wrapper {
+        max-width: 100%;
+    }
+}
