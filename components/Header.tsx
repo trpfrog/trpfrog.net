@@ -6,7 +6,7 @@ const Header = () => {
             <div id="header-wrapper">
                 <h1>
                     <Link href="/">
-                        <a>{process.env.title}</a>
+                        <a><span id="subtitle">next.</span>{process.env.title}</a>
                     </Link>
                 </h1>
                 <div id="tweet_search">
