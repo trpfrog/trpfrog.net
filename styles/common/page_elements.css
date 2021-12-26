@@ -32,7 +32,7 @@ main #main_wrapper {
 }
 
 #title {
-    margin: calc(3em - var(--main-margin)) 40px 3em;
+    margin: calc(3em - var(--main-margin)) 3em;
 }
 
 #title p {

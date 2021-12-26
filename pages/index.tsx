@@ -9,6 +9,7 @@ import {getMutualLinkRecords} from '../lib/MutualLinks';
 
 import type {MyLinkRecord} from "../lib/MyLinks";
 import {getMyLinkRecords} from '../lib/MyLinks';
+import Title from "../components/Title";
 
 
 type PageProps = {
@@ -30,8 +31,20 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
     return (
         <Layout>
+            <Title title="ようこそ！">
+                <p>
+                    このサイトは現在の<Link href={'https://trpfrog.net'}><a>つまみネット</a></Link>を{' '}
+                    Next.js で書き直すための仮設サイトです。詳しくは「next.つまみネットについて」をご覧ください。
+                </p>
+                <p>
+                    <Link href={'/about-next'}>
+                        <a className="linkButton">next.つまみネットについて</a>
+                    </Link>
+                </p>
+            </Title>
             <div id={styles.top_page_grid}>
                 <Block id={styles.about_me_grid}>
+                    <h2 className="trpfrog">自己紹介</h2>
                     <p>
                         電気通信大学の大学生。東京都(23区ではない方)出身。
                     </p>
@@ -43,45 +56,34 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
                         最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
                     </p>
                 </Block>
-                <Block title={'移植状況'} h2icon={'robot'} id={styles.sticker}>
-                    <ul>
-                        <li>サイトの共通部分をだいたい移植した</li>
-                        <li>作業環境ページをほぼ100%移植した</li>
-                        <ul>
-                            <li>おそらく遷移が爆速になっているはずです</li>
-                            <li>スマホの人は<Link href="/environment"><a>ここ</a></Link>からアクセスしてください</li>
-                        </ul>
-                    </ul>
+
+                <Block title={'ストア'} h2icon={'otaku'} id={styles.sticker}>
+                    <p>
+                        工事中
+                    </p>
                 </Block>
-                <Block title={'Todo'} h2icon={'think'} id={styles.icons}>
-                    <ul>
-                        <li>たくさん</li>
-                        <li>まずはトップページの移植？</li>
-                        <li>それからハンバーガーメニューの移植</li>
-                    </ul>
+                <Block title={'作ったアイコン'} h2icon={'evil'} id={styles.icons}>
+                    <p>
+                        工事中
+                    </p>
                 </Block>
 
-                <Block title={'Todo'} h2icon={'think'} id={styles.music}>
-                    <ul>
-                        <li>たくさん</li>
-                        <li>まずはトップページの移植？</li>
-                        <li>それからハンバーガーメニューの移植</li>
-                    </ul>
+                <Block title={'つまみのうた'} h2icon={'noa'} id={styles.music}>
+                    <p>
+                        工事中
+                    </p>
                 </Block>
 
-                <Block title={'Todo'} h2icon={'think'} id={styles.balloon}>
-                    <ul>
-                        <li>たくさん</li>
-                        <li>まずはトップページの移植？</li>
-                        <li>それからハンバーガーメニューの移植</li>
-                    </ul>
+                <Block title={'風船コーナー'} h2icon={'ice'} id={styles.balloon}>
+                    <p>
+                        工事中
+                    </p>
                 </Block>
-                <Block title={'風船コーナー'} h2icon={'ice'} id={styles.stats}>
-                    <ul>
-                        <li>たくさん</li>
-                        <li>まずはトップページの移植？</li>
-                        <li>それからハンバーガーメニューの移植</li>
-                    </ul>
+
+                <Block title={'Stats'} h2icon={'robot'} id={styles.stats}>
+                    <p>
+                        工事中
+                    </p>
                 </Block>
 
                 <Block title={'音楽ゲーム'} h2icon={'pumpkin'} id={styles.music_game}>
