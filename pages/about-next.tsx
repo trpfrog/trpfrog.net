@@ -25,12 +25,14 @@ const About: NextPage = () => {
             </Block>
             <Block title={'移植状況'} h2icon={'robot'}>
                 <ul>
-                    <li>サイトの共通部分をだいたい移植した</li>
-                    <li>作業環境ページをほぼ100%移植した</li>
+                    <li>サイトの共通部分をだいたい移植した (2021/12/24)</li>
+                    <li>作業環境ページをほぼ100%移植した (2021/12/24)</li>
                     <ul>
                         <li>おそらく遷移が爆速になっているはずです</li>
                         <li>スマホの人は<Link href="/environment"><a>ここ</a></Link>からアクセスしてください</li>
                     </ul>
+                    <li>リンク集を移植した (2021/12/27)</li>
+                    <li>トップページの体裁を整えた (2021/12/27)</li>
                 </ul>
             </Block>
             <Block title={'Todo'} h2icon={'think'}>
