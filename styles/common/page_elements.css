@@ -19,7 +19,7 @@ main #main_wrapper {
     width: 100%;
     max-width: 1000px;
     display: inline-grid;
-    grid-template-columns: 1fr;
+    grid-gap: var(--main-margin);
     text-align: left;
 }
 
@@ -47,9 +47,9 @@ main #main_wrapper {
     text-align: left;
 }
 
-.main-window + .main-window {
-    margin-top: var(--window-margin-top);
-}
+/*.main-window + .main-window {*/
+/*    margin-top: var(--window-margin-top);*/
+/*}*/
 
 .main-window h2 {
     margin: 0;

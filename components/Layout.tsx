@@ -8,28 +8,18 @@ import TwitterCard from "./head/TwitterCard";
 import Navigation from "./Navigation";
 
 type Props = {
-    title?: string
-    description?: string
+    hasMargin?: boolean
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-    children, title, description = 'さかなになりたいね'
+    children, hasMargin = true
 }) => {
-    let pageTitle = process.env.title as string;
-    if (title !== undefined) {
-        pageTitle += ' - ' + title;
-    }
-
     return (
         <>
-            <Head>
-                <title>{pageTitle}</title>
-                <TwitterCard title={pageTitle} description={description} url={'https://trpfrog.net'} />
-            </Head>
             <body>
                 <Header/>
                 <Navigation/>
-                <main>
+                <main style={{margin: (hasMargin ? '2em' : '0')}}>
                     <div id="main_wrapper">
                         {children}
                     </div>
