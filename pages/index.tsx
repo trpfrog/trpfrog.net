@@ -1,11 +1,33 @@
-import type {NextPage} from 'next'
+import type {GetStaticProps, NextPage} from 'next'
 import Link from "next/link";
 import Layout from "../components/Layout";
-import Title from "../components/Title";
 import Block from "../components/Block";
 import styles from '../styles/main.module.scss';
 
-const Home: NextPage = () => {
+import type {MutualLinkRecord} from '../lib/MutualLinks';
+import {getMutualLinkRecords} from '../lib/MutualLinks';
+
+import type {MyLinkRecord} from "../lib/MyLinks";
+import {getMyLinkRecords} from '../lib/MyLinks';
+
+
+type PageProps = {
+    myLinks: MyLinkRecord[],
+    mutualLinks: MutualLinkRecord[]
+}
+
+export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
+    const myLinks: MyLinkRecord[] = await  getMyLinkRecords();
+    const mutualLinks: MutualLinkRecord[] = await getMutualLinkRecords();
+    return {
+        props: {
+            myLinks,
+            mutualLinks
+        }
+    }
+}
+
+const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
     return (
         <Layout>
             <div id={styles.top_page_grid}>
@@ -38,6 +60,38 @@ const Home: NextPage = () => {
                         <li>それからハンバーガーメニューの移植</li>
                     </ul>
                 </Block>
+
+                <Block title={'Todo'} h2icon={'think'} id={styles.bird}>
+                    <ul>
+                        <li>たくさん</li>
+                        <li>まずはトップページの移植？</li>
+                        <li>それからハンバーガーメニューの移植</li>
+                    </ul>
+                </Block>
+
+                <Block title={'Todo'} h2icon={'think'} id={styles.music}>
+                    <ul>
+                        <li>たくさん</li>
+                        <li>まずはトップページの移植？</li>
+                        <li>それからハンバーガーメニューの移植</li>
+                    </ul>
+                </Block>
+
+                <Block title={'Todo'} h2icon={'think'} id={styles.balloon}>
+                    <ul>
+                        <li>たくさん</li>
+                        <li>まずはトップページの移植？</li>
+                        <li>それからハンバーガーメニューの移植</li>
+                    </ul>
+                </Block>
+                <Block title={'風船コーナー'} h2icon={'ice'} id={styles.stats}>
+                    <ul>
+                        <li>たくさん</li>
+                        <li>まずはトップページの移植？</li>
+                        <li>それからハンバーガーメニューの移植</li>
+                    </ul>
+                </Block>
+
                 <Block title={'音楽ゲーム'} h2icon={'pumpkin'} id={styles.music_game}>
                     <ul className={styles.rating_list}>
                         <li><b>チュウニズム</b><br/>
@@ -63,6 +117,50 @@ const Home: NextPage = () => {
                             <span className={styles.blue} style={{fontSize: '2.8em'}}>1687</span>
                         </li>
                     </ul>
+                </Block>
+
+                <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
+                    <table>
+                        <tbody>
+                        {myLinks.map(({ url, siteName, description }) => (
+                            <tr key={siteName}>
+                                <td>
+                                    <Link href={url}>
+                                        <a className="linkButton">{siteName}</a>
+                                    </Link>
+                                </td>
+                                <td>
+                                    {description}
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+
+                    <h2 className="hina">相互リンク</h2>
+                    <p>
+                        オタク各位のWebサイトです。ハンドルネームをUTF-8でソートした順。
+                        <s>片想いリンクになったやつもある</s>
+                    </p>
+                    <table>
+                        <tbody>
+                            {mutualLinks.map(({ url, siteName, ownerName, twitterId, description }) => (
+                                <tr key={siteName}>
+                                    <td>
+                                        <Link href={url}>
+                                            <a className="linkButton">{siteName}</a>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link href={`https://twitter.com/${twitterId}/`}>
+                                            <a>{ownerName}</a>
+                                        </Link>さんのHP。<br/>
+                                        {description}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </Block>
             </div>
         </Layout>

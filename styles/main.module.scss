@@ -14,18 +14,16 @@
 
 #music_game {
     grid-area: music_game;
-    padding: 40px 40px 40px 40px;
 }
 
 #links {
     grid-area: links;
-    padding: 40px 40px 40px 40px;
 
     table {
         border-spacing: 1em;
     }
 
-    .linkButton {
+    a {
         width: 180px;
     }
 }
@@ -33,7 +31,7 @@
 #store_links{
     display: block;
 
-    .linkButton {
+    a {
         width: 100%;
     }
 }

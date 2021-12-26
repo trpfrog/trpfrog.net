@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://twitter.com/TrpFrog",
+    "siteName": "Twitter",
+    "description": "割とうるさいので注意"
+  },
+  {
+    "url": "https://marshmallow-qa.com/trpfrog",
+    "siteName": "マシュマロ",
+    "description": "見てなすぎて無視することがあり、すみません"
+  },
+  {
+    "url": "https://www.amazon.jp/hz/wishlist/ls/2MHXSEDPHJ79J?ref_=wl_share",
+    "siteName": "欲しいものリスト",
+    "description": "なんか送ってくれると喜びます"
+  },
+  {
+    "url": "https://line.me/S/sticker/4674940",
+    "siteName": "LINEスタンプ",
+    "description": "好評発売中！(120円くらい)"
+  },
+  {
+    "url": "https://trpfrog.hateblo.jp",
+    "siteName": "はてなブログ",
+    "description": "技術、徒歩会の話とか"
+  },
+  {
+    "url": "https://github.com/TrpFrog",
+    "siteName": "GitHub",
+    "description": "様々な制作物のソースコード"
+  }
+]
