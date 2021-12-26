@@ -18,8 +18,7 @@ const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}
             <div className={styles.gadget_image_wrapper}>
                 <Image
                     src={imageFullPath}
-                    alt={name}
-                    // className={styles.image}
+                    alt={name + 'の画像'}
                     width={400}
                     height={300}
                     layout={'responsive'}
