@@ -13,9 +13,9 @@ const Navigation = () => {
                 {/*<Link href="/icon_gallery">*/}
                 {/*    <a className="sidemenu_link">Icon</a>*/}
                 {/*</Link>*/}
-                {/*<Link href="/sticker_gallery">*/}
-                {/*    <a className="sidemenu_link">Sticker</a>*/}
-                {/*</Link>*/}
+                <Link href="/stickers">
+                    <a className="sidemenu_link">Stickers</a>
+                </Link>
                 {/*<Link href="/balloon">*/}
                 {/*    <a className="sidemenu_link">Balloon</a>*/}
                 {/*</Link>*/}
