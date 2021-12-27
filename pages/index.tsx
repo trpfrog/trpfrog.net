@@ -5,11 +5,10 @@ import Block from "../components/Block";
 import Image from "next/image";
 import styles from '../styles/top-page/main.module.scss';
 
-import type {MutualLinkRecord} from '../lib/MutualLinks';
-import {getMutualLinkRecords} from '../lib/MutualLinks';
+import {MutualLinkRecord, getMutualLinkRecords} from '../lib/MutualLinks';
+import {MyLinkRecord, getMyLinkRecords} from '../lib/MyLinks';
+import {NavLinkRecord, getNavLinkRecords} from '../lib/NavLinks';
 
-import type {MyLinkRecord} from "../lib/MyLinks";
-import {getMyLinkRecords} from '../lib/MyLinks';
 import Title from "../components/Title";
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
@@ -17,22 +16,25 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 
 type PageProps = {
+    navLinks: NavLinkRecord[],
     myLinks: MyLinkRecord[],
     mutualLinks: MutualLinkRecord[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-    const myLinks: MyLinkRecord[] = await  getMyLinkRecords();
+    const navLinks: NavLinkRecord[] = await getNavLinkRecords();
+    const myLinks: MyLinkRecord[] = await getMyLinkRecords();
     const mutualLinks: MutualLinkRecord[] = await getMutualLinkRecords();
     return {
         props: {
+            navLinks,
             myLinks,
             mutualLinks
         }
     }
 }
 
-const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
+const Home: NextPage<PageProps> = ({navLinks, myLinks, mutualLinks}: PageProps) => {
     return (
         <Layout>
             <Title title="ようこそ！">
@@ -44,6 +46,19 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
                     <Link href={'/about-next'}>
                         <a className="linkButton">next.つまみネットについて</a>
                     </Link>
+                </p>
+                <h3>サイト内リンク (仮)</h3>
+                <p>
+                    スマートフォンの方は右上にハンバーガーメニューらしきものが見えるかと思いますが、
+                    なんと<b>ハンバーガーメニューは未実装です</b>。押しても何も起こりません。
+                    下の仮設リンク集をお使いください。(すみません)
+                </p>
+                <p>
+                    {navLinks.map(({ link, name }) => (
+                        <Link href={link} key={link}>
+                            <a className="linkButton">{name}</a>
+                        </Link>
+                    ))}
                 </p>
             </Title>
             <div id={styles.top_page_grid}>

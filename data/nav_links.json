@@ -1,0 +1,18 @@
+[
+  {
+    "link": "/",
+    "name": "Home"
+  },
+  {
+    "link": "/environment",
+    "name": "Environment"
+  },
+  {
+    "link": "/music",
+    "name": "Music"
+  },
+  {
+    "link": "/stickers",
+    "name": "Stickers"
+  }
+]
