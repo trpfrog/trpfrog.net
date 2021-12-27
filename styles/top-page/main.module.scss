@@ -18,8 +18,22 @@
     }
 
     a {
-        width: 180px;
+        width: 85%;
     }
+}
+
+.link_grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin: 30px 0;
+}
+
+.link_block {
+    display: inline-block;
+    background: var(--window-bkg-color);
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 #store_links{

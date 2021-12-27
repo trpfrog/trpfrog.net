@@ -132,47 +132,45 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
                 </Block>
 
                 <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
-                    <table>
-                        <tbody>
+                    <div className={styles.link_grid}>
                         {myLinks.map(({ url, siteName, description }) => (
-                            <tr key={siteName}>
-                                <td>
+                            <div key={siteName} className={styles.link_block}>
+                                <p style={{textAlign: "center"}}>
                                     <Link href={url}>
                                         <a className="linkButton">{siteName}</a>
                                     </Link>
-                                </td>
-                                <td>
+                                </p>
+                                <p>
                                     {description}
-                                </td>
-                            </tr>
+                                </p>
+                            </div>
                         ))}
-                        </tbody>
-                    </table>
+                    </div>
 
                     <h2 className="hina">相互リンク</h2>
                     <p>
                         オタク各位のWebサイトです。ハンドルネームをUTF-8でソートした順。
                         <s>片想いリンクになったやつもある</s>
                     </p>
-                    <table>
-                        <tbody>
-                            {mutualLinks.map(({ url, siteName, ownerName, twitterId, description }) => (
-                                <tr key={siteName}>
-                                    <td>
-                                        <Link href={url}>
-                                            <a className="linkButton">{siteName}</a>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <Link href={`https://twitter.com/${twitterId}/`}>
-                                            <a>{ownerName}</a>
-                                        </Link>さんのHP。<br/>
-                                        {description}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <div className={styles.link_grid}>
+                        {mutualLinks.map(({ url, siteName, ownerName, twitterId, description }) => (
+                            <div key={siteName} className={styles.link_block}>
+                                <p style={{textAlign: "center"}}>
+                                    <Link href={url}>
+                                        <a className="linkButton">{siteName}</a>
+                                    </Link>
+                                </p>
+                                <p>
+                                    <b><Link href={`https://twitter.com/${twitterId}/`}>
+                                        <a>{ownerName}</a>
+                                    </Link></b>さんのHP
+                                </p>
+                                <p>
+                                    {description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </Block>
 
                 <Block title={'特に意味のない鳥'} h2icon={'think'} id={styles.bird}>
