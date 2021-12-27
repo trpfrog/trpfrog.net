@@ -1,0 +1,57 @@
+@use 'rating_text';
+@use 'grid';
+
+.main-window {
+    margin: 1em;
+    border-radius: 33px;
+    text-align: left;
+
+    h2 {
+        margin: 0;
+    }
+}
+
+#links {
+    table {
+        border-spacing: 1em;
+    }
+
+    a {
+        width: 180px;
+    }
+}
+
+#store_links{
+    display: block;
+
+    a {
+        width: 100%;
+    }
+}
+
+#icons {
+    .top_icons {
+        width: 24%;
+    }
+}
+
+#bird {
+    text-align: center;
+
+    .aa {
+        white-space: pre;
+        font-size: 45%;
+        line-height: 12px;
+        display: inline-block;
+    }
+}
+
+#stats {
+    display: none;
+}
+
+@media screen and (max-width:980px){
+    #sticker table, #sticker td, #sticker th, #sticker tbody{
+        display: block;
+    }
+}

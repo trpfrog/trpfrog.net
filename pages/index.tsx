@@ -2,7 +2,7 @@ import type {GetStaticProps, NextPage} from 'next'
 import Link from "next/link";
 import Layout from "../components/Layout";
 import Block from "../components/Block";
-import styles from '../styles/main.module.scss';
+import styles from '../styles/top-page/main.module.scss';
 
 import type {MutualLinkRecord} from '../lib/MutualLinks';
 import {getMutualLinkRecords} from '../lib/MutualLinks';
