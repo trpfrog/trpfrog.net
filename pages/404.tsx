@@ -12,7 +12,7 @@ const TrpFrog404: NextPage = () => {
                     <h1>404 Not Found</h1>
                     <p>
                         <Image
-                            src="/images/404.png"
+                            src="404"
                             width="332"
                             height="332"
                             alt="404の画像"
