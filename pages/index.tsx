@@ -2,6 +2,7 @@ import type {GetStaticProps, NextPage} from 'next'
 import Link from "next/link";
 import Layout from "../components/Layout";
 import Block from "../components/Block";
+import Image from "next/image";
 import styles from '../styles/top-page/main.module.scss';
 
 import type {MutualLinkRecord} from '../lib/MutualLinks';
@@ -44,17 +45,34 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
             </Title>
             <div id={styles.top_page_grid}>
                 <Block id={styles.about_me_grid}>
-                    <h2 className="trpfrog">自己紹介</h2>
-                    <p>
-                        電気通信大学の大学生。東京都(23区ではない方)出身。
-                    </p>
-                    <p>
-                        コンピュータ(レイヤー高め)で遊ぶのが好き。競技プログラミング(C++)をしたり、
-                        なんか<a href="https://github.com/TrpFrog">いろいろ</a>作ったりしている。
-                    </p>
-                    <p>
-                        最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
-                    </p>
+                    <div id={styles.my_name}>
+                        <p>つまみ</p>
+                    </div>
+                    <div id={styles.about_me_text}>
+                        <p>
+                            電気通信大学の大学生。東京都(23区ではない方)出身。
+                        </p>
+                        <p>
+                            コンピュータ(レイヤー高め)で遊ぶのが好き。競技プログラミング(C++)をしたり、
+                            なんか<a href="https://github.com/TrpFrog">いろいろ</a>作ったりしている。
+                        </p>
+                        <p>
+                            最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
+                        </p>
+                    </div>
+                    <div id={styles.about_me_image}>
+                        <div id={styles.profile_image_wrapper}>
+                            <Image
+                                id={styles.profile_image}
+                                src={'/images/trpfrogvector.svg'}
+                                width={'400'}
+                                height={'400'}
+                                layout={'responsive'}
+                                // objectFit={'cover'}
+                                alt={'つまみさんのアイコン'}
+                            />
+                        </div>
+                    </div>
                 </Block>
 
                 <Block title={'ストア'} h2icon={'otaku'} id={styles.sticker}>
