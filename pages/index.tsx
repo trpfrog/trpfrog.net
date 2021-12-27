@@ -104,8 +104,18 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
                         Apple Music, Spotify, YouTube Music, LINE Music 他 各種サイトで配信中！(なんで？)
                     </p>
                     <p>
+                        <Image
+                            src={'musicbanner'}
+                            className={'richimage'}
+                            width={'500'}
+                            height={'100'}
+                            layout={'responsive'}
+                            alt={'つまみのうたのバナー'}
+                        />
+                    </p>
+                    <p>
                         <a href="https://linkco.re/N4Z8hdvX" className="linkButton">購入/ストリーミング</a>
-                        <a href="music/index.html" className="linkButton">歌詞</a>
+                        <Link href={'music'}><a className="linkButton">歌詞</a></Link>
                     </p>
                 </Block>
 
