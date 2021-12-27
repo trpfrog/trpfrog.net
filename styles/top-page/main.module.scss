@@ -16,10 +16,6 @@
     table {
         border-spacing: 1em;
     }
-
-    a {
-        width: 85%;
-    }
 }
 
 .link_grid {
@@ -34,6 +30,10 @@
     background: var(--window-bkg-color);
     padding: 10px 20px;
     border-radius: 20px;
+
+    a {
+        width: 85%;
+    }
 }
 
 #store_links{
