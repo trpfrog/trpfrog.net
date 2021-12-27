@@ -12,7 +12,7 @@
             "links    links    music_game"
             "links    links    stats";
     grid-template-columns: 3fr 2fr 3fr;
-    grid-gap: 2em;
+    grid-gap: var(--main-margin);
     text-align: left;
 }
 

@@ -8,18 +8,17 @@ import TwitterCard from "./head/TwitterCard";
 import Navigation from "./Navigation";
 
 type Props = {
-    hasMargin?: boolean
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-    children, hasMargin = true
+    children
 }) => {
     return (
         <>
             <body>
                 <Header/>
                 <Navigation/>
-                <main style={{margin: (hasMargin ? '2em' : '0')}}>
+                <main>
                     <div id="main_wrapper">
                         {children}
                     </div>

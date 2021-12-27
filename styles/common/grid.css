@@ -67,6 +67,9 @@ main {
 
     main {
         text-align: center;
+        --main-margin: 8px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     #wide-nav {

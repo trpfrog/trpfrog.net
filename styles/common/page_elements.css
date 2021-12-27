@@ -1,12 +1,10 @@
 :root {
     --window-padding: 40px;
-    --window-margin-top: 2em;
 }
 
 @media screen and (max-width: 800px) {
     :root {
         --window-padding: 20px;
-        --window-margin-top: 5px;
     }
 }
 
@@ -46,10 +44,6 @@ main #main_wrapper {
     border-radius: 33px;
     text-align: left;
 }
-
-/*.main-window + .main-window {*/
-/*    margin-top: var(--window-margin-top);*/
-/*}*/
 
 .main-window h2 {
     margin: 0;
