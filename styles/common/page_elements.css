@@ -77,6 +77,14 @@ main #main_wrapper {
     }
 }
 
+a:link:not(.linkButton) {
+    color: green;
+}
+
+a:visited:not(.linkButton) {
+    color: #003500;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background: #061300;
