@@ -4,15 +4,6 @@
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-}
-
-.youtube-outer lite-youtube {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(5px 11px -6px rgba(2, 2, 2, 1));
     border-radius: 10px;
 }
 

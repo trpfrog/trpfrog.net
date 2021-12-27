@@ -12,6 +12,9 @@ import type {MyLinkRecord} from "../lib/MyLinks";
 import {getMyLinkRecords} from '../lib/MyLinks';
 import Title from "../components/Title";
 
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
 
 type PageProps = {
     myLinks: MyLinkRecord[],
@@ -88,7 +91,21 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
 
                 <Block title={'つまみのうた'} h2icon={'noa'} id={styles.music}>
                     <p>
-                        工事中
+                        ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
+                        ありがとうございます！！！
+                    </p>
+                    <div className="youtube-outer">
+                        <LiteYouTubeEmbed
+                            id="h5C_yiBEAMg"
+                            title="つまみのうた"
+                        />
+                    </div>
+                    <p>
+                        Apple Music, Spotify, YouTube Music, LINE Music 他 各種サイトで配信中！(なんで？)
+                    </p>
+                    <p>
+                        <a href="https://linkco.re/N4Z8hdvX" className="linkButton">購入/ストリーミング</a>
+                        <a href="music/index.html" className="linkButton">歌詞</a>
                     </p>
                 </Block>
 
