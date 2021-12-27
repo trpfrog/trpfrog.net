@@ -191,7 +191,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>タブレット</h3>
-                <GadgetIntro name="Apple iPad Pro (2020)" imagePath="mobile/ipadpro">
+                <GadgetIntro name="Apple iPad Pro (2020)" imagePath="mobile/ipad">
                     <ul>
                         <li>128GB</li>
                         <li>with Apple Pencil</li>
