@@ -3,8 +3,6 @@ import styles from "../styles/environment.module.css";
 import Image from 'next/image';
 import path from 'path'
 
-const imageDirectory = path.join(process.cwd(), 'images', 'environment');
-
 type Props = {
     name: string
     imagePath?: string
@@ -13,11 +11,10 @@ type Props = {
 const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}) => {
     let imageHtml: JSX.Element = <></>;
     if (imagePath !== undefined) {
-        const imageFullPath = path.join(imageDirectory, imagePath)
         imageHtml = (
             <div className={styles.gadget_image_wrapper}>
                 <Image
-                    src={imageFullPath}
+                    src={'environment/' + imagePath}
                     alt={name + 'の画像'}
                     width={400}
                     height={300}

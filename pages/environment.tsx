@@ -16,12 +16,12 @@ const Environment: NextPage = () => {
                 <p>
                     Last updated: 2021/12/11
                 </p>
-                <GadgetIntro name="" imagePath="desk.webp"/>
+                <GadgetIntro name="" imagePath="desk"/>
             </Title>
             <Block title="コンピュータ関係" h2icon="think">
 
                 <h3>コンピュータ</h3>
-                <GadgetIntro name="Apple MacBook Pro (2021)" imagePath="computer/macbookpro.webp">
+                <GadgetIntro name="Apple MacBook Pro (2021)" imagePath="computer/macbookpro">
                     <ul>
                         <li>スペースグレイ</li>
                         <li>14 inch Liquid Retina XDR Display</li>
@@ -38,14 +38,14 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>モニター</h3>
-                <GadgetIntro name="LG UHD Monitor 4K" imagePath="computer/lg4k.webp">
+                <GadgetIntro name="LG UHD Monitor 4K" imagePath="computer/lg4k">
                     <ul>
                         <li>31.5 inch</li>
                         <li>白っぽかったけど頑張って調整した</li>
                         <li>HDMI x2 + DP</li>
                     </ul>
                 </GadgetIntro>
-                <GadgetIntro name="Philips 246E" imagePath="computer/philips.webp">
+                <GadgetIntro name="Philips 246E" imagePath="computer/philips">
                     <ul>
                         <li>23 inch</li>
                         <li>Full HD</li>
@@ -54,7 +54,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>Webカメラ</h3>
-                <GadgetIntro name="Logicool C270n" imagePath="computer/webcam.webp">
+                <GadgetIntro name="Logicool C270n" imagePath="computer/webcam">
                     <ul>
                         <li>720p</li>
                         <li>30fps</li>
@@ -63,10 +63,10 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>マイク</h3>
-                <GadgetIntro name="Sony ECM-PCV80U" imagePath="computer/mic.webp" />
+                <GadgetIntro name="Sony ECM-PCV80U" imagePath="computer/mic" />
 
                 <h3>キーボード</h3>
-                <GadgetIntro name="東プレ REALFORCE TKL for Mac" imagePath="computer/realforce.webp">
+                <GadgetIntro name="東プレ REALFORCE TKL for Mac" imagePath="computer/realforce">
                     <ul>
                         <li>R2TL-USVM-BK</li>
                         <li>ブラック + シルバー</li>
@@ -77,14 +77,14 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>パームレスト</h3>
-                <GadgetIntro name="FILCO Genuine Wood Wrist Rest M size" imagePath="computer/wristrest.webp">
+                <GadgetIntro name="FILCO Genuine Wood Wrist Rest M size" imagePath="computer/wristrest">
                     <ul>
                         <li>必須</li>
                     </ul>
                 </GadgetIntro>
 
                 <h3>マウス</h3>
-                <GadgetIntro name="Logicool MX Master 3 for Mac" imagePath="computer/mxmaster.webp">
+                <GadgetIntro name="Logicool MX Master 3 for Mac" imagePath="computer/mxmaster">
                     <ul>
                         <li>MagSpeed電磁気スクロール</li>
                         <ul>
@@ -100,7 +100,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>トラックパッド</h3>
-                <GadgetIntro name="Apple Magic Trackpad" imagePath="computer/trackpad.webp">
+                <GadgetIntro name="Apple Magic Trackpad" imagePath="computer/trackpad">
                     <ul>
                         <li>ホワイト</li>
                         <li>充電はLightning</li>
@@ -113,7 +113,7 @@ const Environment: NextPage = () => {
             <Block title="その他デスク周り" h2icon="think">
 
                 <h3>デスク</h3>
-                <GadgetIntro name="Flexispot E8 Bamboo" imagePath="desk/flexispot.webp">
+                <GadgetIntro name="Flexispot E8 Bamboo" imagePath="desk/flexispot">
                     <ul>
                         <li>電動昇降机</li>
                         <li>天板 140×70×2cm (竹製)</li>
@@ -125,7 +125,7 @@ const Environment: NextPage = () => {
                 <GadgetIntro name="なんかのゲーミングチェア"/>
 
                 <h3>時計</h3>
-                <GadgetIntro name="RHYTHM 掛け時計" imagePath="desk/amazonclock.webp">
+                <GadgetIntro name="RHYTHM 掛け時計" imagePath="desk/amazonclock">
                     <ul>
                         <li>デザイン</li>
                         <ul>
@@ -138,12 +138,12 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>タペストリー</h3>
-                <GadgetIntro name="恋する小惑星" imagePath="desk/koias.webp"/>
-                <GadgetIntro name="私に天使が舞い降りた！(姫坂乃愛)" imagePath="desk/watatennoa.webp"/>
+                <GadgetIntro name="恋する小惑星" imagePath="desk/koias"/>
+                <GadgetIntro name="私に天使が舞い降りた！(姫坂乃愛)" imagePath="desk/watatennoa"/>
 
                 <h3>ライトスタンド</h3>
-                <GadgetIntro name="黒いライトスタンド" imagePath="desk/blacklightstand.webp"/>
-                <GadgetIntro name="中学校の技術の授業で作った謎のスタンド" imagePath="desk/lightstand.webp"/>
+                <GadgetIntro name="黒いライトスタンド" imagePath="desk/blacklightstand"/>
+                <GadgetIntro name="中学校の技術の授業で作った謎のスタンド" imagePath="desk/lightstand"/>
 
                 <h3>電球</h3>
                 <GadgetIntro name="Philips Hue">
@@ -154,7 +154,7 @@ const Environment: NextPage = () => {
 
 
                 <h3>ゲーム機</h3>
-                <GadgetIntro name="Nintendo Switch" imagePath="desk/switch.webp">
+                <GadgetIntro name="Nintendo Switch" imagePath="desk/switch">
                     <ul>
                         <li>初代</li>
                         <ul>
@@ -183,7 +183,7 @@ const Environment: NextPage = () => {
 
             <Block title="持ち歩き端末・小物" h2icon="think">
                 <h3>スマートフォン</h3>
-                <GadgetIntro name="Apple iPhone 11" imagePath="mobile/iphone.webp">
+                <GadgetIntro name="Apple iPhone 11" imagePath="mobile/iphone">
                     <ul>
                         <li>128GB</li>
                         <li>MoftXをつけている</li>
@@ -191,7 +191,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>タブレット</h3>
-                <GadgetIntro name="Apple iPad Pro (2020)" imagePath="mobile/ipadpro.webp">
+                <GadgetIntro name="Apple iPad Pro (2020)" imagePath="mobile/ipadpro">
                     <ul>
                         <li>128GB</li>
                         <li>with Apple Pencil</li>
@@ -199,7 +199,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>イヤホン</h3>
-                <GadgetIntro name="Apple AirPods Pro" imagePath="mobile/airpodspro.webp">
+                <GadgetIntro name="Apple AirPods Pro" imagePath="mobile/airpodspro">
                     <ul>
                         <li>外部音取り込み</li>
                         <li>ノイズキャンセリング</li>
@@ -211,7 +211,7 @@ const Environment: NextPage = () => {
                         </ul>
                     </ul>
                 </GadgetIntro>
-                <GadgetIntro name="Aftershokz OpenMove" imagePath="mobile/aftershokz.webp">
+                <GadgetIntro name="Aftershokz OpenMove" imagePath="mobile/aftershokz">
                     <ul>
                         <li>骨伝導型</li>
                         <li>あまり持ち出さない、家でずっとつけている</li>
@@ -219,7 +219,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>スマートウォッチ</h3>
-                <GadgetIntro name="Apple Watch Series 7" imagePath="mobile/watch.webp">
+                <GadgetIntro name="Apple Watch Series 7" imagePath="mobile/watch">
                     <ul>
                         <li>42mm アルミニウムケース</li>
                         <li>スターライト</li>
@@ -232,7 +232,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>モバイルバッテリー</h3>
-                <GadgetIntro name="Anker PowerCore Essential 20000 PD" imagePath="mobile/powercore20k.webp">
+                <GadgetIntro name="Anker PowerCore Essential 20000 PD" imagePath="mobile/powercore20k">
                     <ul>
                         <li>USB Power Delivery 対応</li>
                         <li>USB-C x1 + USB-A x1</li>
@@ -241,7 +241,7 @@ const Environment: NextPage = () => {
                         <li>とりあえずこれ持ってけばOKという感じ</li>
                     </ul>
                 </GadgetIntro>
-                <GadgetIntro name="Anker PowerCore Magnetic 5000" imagePath="mobile/powercoremag.webp">
+                <GadgetIntro name="Anker PowerCore Magnetic 5000" imagePath="mobile/powercoremag">
                     <ul>
                         <li>USB-C x1 + MagSafe/Qi</li>
                         <li>有線 10W, ワイヤレス 5W</li>
@@ -252,7 +252,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>落とし物トラッカー</h3>
-                <GadgetIntro name="Apple AirTag" imagePath="mobile/airtag.webp">
+                <GadgetIntro name="Apple AirTag" imagePath="mobile/airtag">
                     <ul>
                         <li>3つ持ってる</li>
                         <ul>
@@ -264,7 +264,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>財布</h3>
-                <GadgetIntro name="100円ショップに売ってた布のやつ" imagePath="mobile/wallet.webp">
+                <GadgetIntro name="100円ショップに売ってた布のやつ" imagePath="mobile/wallet">
                     <ul>
                         <li>小銭が取り出しにくい</li>
                         <li>中にAirTagを入れている</li>
@@ -272,7 +272,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>リュックサック</h3>
-                <GadgetIntro name="offtoco" imagePath="mobile/offtoco.webp">
+                <GadgetIntro name="offtoco" imagePath="mobile/offtoco">
                     <ul>
                         <li>ノパソが直挿しできる</li>
                         <li>紐の調整が簡単</li>
@@ -284,7 +284,7 @@ const Environment: NextPage = () => {
                     </ul>
                 </GadgetIntro>
 
-                <GadgetIntro name="無印良品 肩が疲れないリュック" imagePath="mobile/muji.webp">
+                <GadgetIntro name="無印良品 肩が疲れないリュック" imagePath="mobile/muji">
                     <ul>
                         <li>歩くオタクがおすすめしてたので買った</li>
                         <li>肩が疲れなくて大容量</li>
@@ -292,7 +292,7 @@ const Environment: NextPage = () => {
                 </GadgetIntro>
 
                 <h3>お面</h3>
-                <GadgetIntro name="生協の節分の豆についてた鬼のお面" imagePath="mobile/oni.webp">
+                <GadgetIntro name="生協の節分の豆についてた鬼のお面" imagePath="mobile/oni">
                     <ul>
                         <li>オタクからもらった(？)</li>
                     </ul>

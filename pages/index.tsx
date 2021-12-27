@@ -64,7 +64,7 @@ const Home: NextPage<PageProps> = ({myLinks, mutualLinks}: PageProps) => {
                         <div id={styles.profile_image_wrapper}>
                             <Image
                                 id={styles.profile_image}
-                                src={'/images/trpfrogvector.svg'}
+                                src={'trpfrogvector'}
                                 width={'400'}
                                 height={'400'}
                                 layout={'responsive'}
