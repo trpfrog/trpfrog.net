@@ -29,9 +29,8 @@ const Stickers: NextPage = () => {
                             src={'stickers/' + i}
                             width={100}
                             height={100}
-                            layout={'responsive'}
                             objectFit={'contain'}
-                            quality={10}
+                            quality={15}
                             alt={i + '番目のスタンプ画像'}
                         />
                     ))}
