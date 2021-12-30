@@ -10,9 +10,9 @@ const Navigation = () => {
                 {/*<Link href="/notes">*/}
                 {/*    <a className="sidemenu_link">Notes</a>*/}
                 {/*</Link>*/}
-                {/*<Link href="/icon_gallery">*/}
-                {/*    <a className="sidemenu_link">Icon</a>*/}
-                {/*</Link>*/}
+                <Link href="/icons">
+                    <a className="sidemenu_link">Icons</a>
+                </Link>
                 <Link href="/stickers">
                     <a className="sidemenu_link">Stickers</a>
                 </Link>

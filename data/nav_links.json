@@ -14,5 +14,9 @@
   {
     "link": "/stickers",
     "name": "Stickers"
+  },
+  {
+    "link": "/icons",
+    "name": "Icons"
   }
 ]
