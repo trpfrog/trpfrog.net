@@ -26,7 +26,7 @@ const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}
     }
     return (
         <>
-            <h3 className={styles.name}>{name}</h3>
+            <h4 className={styles.name}>{name}</h4>
             {imageHtml}
             {children}
         </>
