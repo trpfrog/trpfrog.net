@@ -1,0 +1,17 @@
+@use 'common/grid';
+@use 'common/header';
+@use 'common/footer';
+@use "common/h2icon";
+@use "common/page_elements";
+@use "common/wide_navigation";
+@use "common/backtotop";
+@use "common/media";
+@use 'common/linkbutton';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, Noto Sans JP, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}

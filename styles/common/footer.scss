@@ -1,0 +1,55 @@
+footer {
+    background: #163600;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--footer-height);
+}
+
+#footer-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 4em;
+    justify-content: space-between;
+
+    #copyright {
+        display: flex;
+        align-items: center;
+
+        text-align: left;
+        color: #ffffff;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        font-size: 1.5em;
+    }
+
+    #share {
+        display: flex;
+        text-align: right;
+        align-items: center;
+        margin-right: 25px;
+
+        .shareButton {
+            margin-left: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    footer {
+        text-align: center;
+
+        #footer-wrapper {
+            text-align: center;
+        }
+
+        #footer-wrapper #share {
+            display: none;
+        }
+
+        #footer-wrapper #copyright {
+            margin: 12px auto;
+            font-size: 1em;
+        }
+    }
+}

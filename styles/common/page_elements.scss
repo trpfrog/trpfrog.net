@@ -76,7 +76,11 @@ h3 {
     --marker-begin: 60%;
     --marker-end: 90%;
     --marker-color: #90e200;
-    background: linear-gradient( transparent var(--marker-begin), var(--marker-color) var(--marker-begin), var(--marker-color) var(--marker-end), transparent var(--marker-end));
+    background: linear-gradient(
+                    transparent var(--marker-begin),
+                    var(--marker-color) var(--marker-begin),
+                    var(--marker-color) var(--marker-end),
+                    transparent var(--marker-end));
     margin-bottom: 0;
 }
 

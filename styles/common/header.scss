@@ -1,33 +1,40 @@
-@import "mobilemenu.css";
+@use "mobilemenu";
+
+:root {
+    --header-color: #66a928d3;
+    --header-filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-color: #4f831fd3;
+        --header-filter: drop-shadow(0em 0.1em 1em rgba(251, 255, 4, 0.4));
+    }
+}
 
 header {
     position: fixed;
     background: #66a928d3;
     justify-content: space-between;
     width: 100%;
+
     height: var(--header-height);
-    -webkit-filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
-    filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
+    -webkit-filter: var(--header-filter);
+    filter: var(--header-filter);
     z-index: 99;
+
     -webkit-backdrop-filter: saturate(200%) blur(20px);
     backdrop-filter: saturate(200%) blur(20px);
     transition: 1s;
-}
 
-@media (prefers-color-scheme: dark) {
-    header {
-        background: #4f831fd3;
-        filter: drop-shadow(0em 0.1em 1em rgba(251, 255, 4, 0.4));
+    a {
+        text-decoration: none;
+        color: white !important;
     }
-}
 
-header a {
-    text-decoration: none;
-    color: white !important;
-}
-
-header a:hover {
-    color: #90e200 !important;
+    a:hover {
+        color: #90e200 !important;
+    }
 }
 
 #header-wrapper {
@@ -37,18 +44,18 @@ header a:hover {
     margin: 0 auto;
     padding: 0 4em;
     justify-content: space-between;
-}
 
-#header-wrapper #hamburger_menu {
-    display: none;
-}
+    #hamburger_menu {
+        display: none;
+    }
 
-#header-wrapper h1 {
-    text-align: left;
-    display: inline-block;
-    color: #ffffff;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-weight: bold;
+    h1 {
+        text-align: left;
+        display: inline-block;
+        color: #ffffff;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        font-weight: bold;
+    }
 }
 
 #tweet_search {
@@ -59,12 +66,6 @@ header a:hover {
     font-size: 0.8em;
     margin-right: -5px;
 }
-/*@media screen and (max-width: 370px) {*/
-/*    #subtitle {*/
-/*        display: none;*/
-/*    }*/
-/*}*/
-
 
 @media screen and (min-width: 1000px) {
     #header-wrapper #tweet_search {
@@ -129,13 +130,10 @@ header a:hover {
     font-family: 'Comfortaa', cursive;
     text-align: left;
     color: #ffffff;
-    /*font-weight: bold;*/
-    /*margin-bottom: 8px;*/
-    /*margin-right: 4px;*/
-    text-decoration: none; /*リンクの下線を消す*/
+
+    text-decoration: none;
     font-size: 1.5em;
 
-    /*ボタン上のテキストの選択をさせない*/
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -151,10 +149,10 @@ header a:hover {
     list-style-type: none;
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
-    text-decoration: none; /*リンクの下線を消す*/
+    text-decoration: none;
     margin-right: 0.8em;
     padding-left: 1.2em;
-    /*ボタン上のテキストの選択をさせない*/
+
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -180,29 +178,25 @@ nav li + li {
         grid-template-columns: auto 3em;
         grid-template-rows: 4em;
         padding: 0;
-    }
-
-    #header-wrapper h1:after {
-        display: none;
-    }
-
-    #header-wrapper {
         text-align: center;
-    }
 
-    #header-wrapper h1 {
-        text-align: center;
-        grid-area: page_title;
-        font-size: 1.5em;
-        margin-left: 1em;
-        /* display: block; */
-    }
+        h1 {
+            text-align: center;
+            grid-area: page_title;
+            font-size: 1.5em;
+            margin-left: 1em;
+        }
 
-    #header-wrapper #hamburger_menu {
-        display: block;
-        grid-area: hamburger_menu;
-        padding-top: 5px;
-        width: 2em;
+        h1:after {
+            display: none;
+        }
+
+        #hamburger_menu {
+            display: block;
+            grid-area: hamburger_menu;
+            padding-top: 5px;
+            width: 2em;
+        }
     }
 
     .menu-trigger, .menu-trigger span {
@@ -215,26 +209,26 @@ nav li + li {
         position: relative;
         width: 28px;
         height: 24px;
-    }
 
-    .menu-trigger span {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background-color: #fff;
-        border-radius: 4px;
-    }
+        span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
 
-    .menu-trigger span:nth-of-type(1) {
-        top: 0;
-    }
+        span:nth-of-type(1) {
+            top: 0;
+        }
 
-    .menu-trigger span:nth-of-type(2) {
-        top: 10px;
-    }
+        span:nth-of-type(2) {
+            top: 10px;
+        }
 
-    .menu-trigger span:nth-of-type(3) {
-        bottom: 0;
+        span:nth-of-type(3) {
+            bottom: 0;
+        }
     }
 }

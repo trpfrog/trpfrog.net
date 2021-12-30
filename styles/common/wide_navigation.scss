@@ -1,0 +1,23 @@
+#wide-nav {
+    background: #66a928d3;
+    text-align: center;
+    z-index: 50;
+
+    a {
+        display: inline-block;
+        font-family: 'Comfortaa', cursive;
+        text-decoration: none;
+        color: white;
+        padding: 1em;
+    }
+
+    a:hover {
+        color: #90e200;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #wide-nav {
+        background: #2d4b11d3;
+    }
+}
