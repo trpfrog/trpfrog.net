@@ -34,13 +34,6 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                <div id="hamburger_menu">
-                    <a className="menu-trigger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </div>
             </div>
         </header>
     );

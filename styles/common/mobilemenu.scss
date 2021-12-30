@@ -4,7 +4,6 @@
 }
 
 #menu_background {
-    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,7 +19,6 @@
     overflow-x: hidden;
     position: fixed;
     top: 0;
-    right: -260px;
     max-width: 250px;
     width: 100%;
     height: 100%;
@@ -33,6 +31,10 @@
     backdrop-filter: blur(20px);
 
     transition: 0.5s;
+}
+
+.menu-closed, .menu-opened, .menu-bkg-closed, .menu-bkg-opened {
+    display: none;
 }
 
 #side_header {
@@ -62,7 +64,7 @@
     cursor: pointer;
     color: white;
     font-size: 1.5em;
-    margin: 1em 1em;
+    padding: 1em 1em;
 }
 
 #side_links a {
@@ -72,4 +74,101 @@
     width: 100%;
     border-bottom: 1px solid;
     border-bottom-color: rgba(255, 255, 255, 0.151);
+}
+
+#hamburger_menu {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    #hamburger_menu {
+        display: block;
+        position: fixed;
+        top: 1.25em;
+        right: 1em;
+        width: 2em;
+        z-index: 199;
+    }
+
+    .menu-closed {
+        display: block;
+        right: -260px;
+    }
+
+    .menu-opened {
+        display: block;
+        right: 0;
+    }
+
+    .menu-bkg-closed {
+        visibility: hidden;
+        display: none;
+    }
+
+    .menu-bkg-opened {
+        visibility: visible;
+        display: block;
+    }
+
+    .menu-trigger, .menu-trigger span {
+        display: inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+    }
+
+    .menu-trigger {
+        position: relative;
+        width: 28px;
+        height: 24px;
+
+        span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+    }
+
+    .menu-trigger-closed {
+        @extend .menu-trigger;
+
+        span:nth-of-type(1) {
+            top: 0;
+        }
+
+        span:nth-of-type(2) {
+            top: 10px;
+        }
+
+        span:nth-of-type(3) {
+            bottom: 0;
+        }
+    }
+
+    .menu-trigger-opened {
+        @extend .menu-trigger;
+
+        span:nth-of-type(1) {
+            top: 0;
+            width: 43%;
+            -webkit-transform: translate3d(1.5px, 3.6px, 0) rotate(45deg);
+            transform: translate3d(1.5px, 3.6px, 0) rotate(45deg);
+        }
+
+        span:nth-of-type(2) {
+            top: 10px;
+            width: 105%;
+            -webkit-transform: translate3d(-1px, 0, 0) rotate(-45deg);
+            transform: translate3d(-1px, 0, 0) rotate(-45deg);
+        }
+
+        span:nth-of-type(3) {
+            bottom: 0;
+            width: 43%;
+            -webkit-transform: translate3d(14px, -3.5px, 0) rotate(45deg);
+            transform: translate3d(14px, -3.5px, 0) rotate(45deg);
+        }
+    }
 }

@@ -1,41 +1,75 @@
 import Link from 'next/link'
+import {useState} from "react";
+
+const NAVIGATION_LINKS = [
+    {
+        link: '/',
+        name: 'Home'
+    },
+    {
+        link: '/environment',
+        name: 'Environment'
+    },
+    {
+        link: '/music',
+        name: 'Music'
+    },
+    {
+        link: '/stickers',
+        name: 'Stickers'
+    },
+    {
+        link: '/icons',
+        name: 'Icons'
+    },
+    {
+        link: '/links',
+        name: 'Links'
+    }
+]
+
+const NAVIGATION_LINKS_ELEMENT = NAVIGATION_LINKS.map(({link, name}) => {
+    return (
+        <Link href={link} key={link}>
+            <a className="sidemenu_link">{name}</a>
+        </Link>
+    )
+});
 
 const Navigation = () => {
+    const [isOpened, setHamburgerState] = useState(false);
+    const toggleMenu = () => {
+        setHamburgerState(!isOpened);
+    }
     return (
-        <nav id="wide-nav">
-            <div id="wide-nav-wrapper">
-                <Link href="/">
-                    <a className="sidemenu_link">Home</a>
-                </Link>
-                {/*<Link href="/notes">*/}
-                {/*    <a className="sidemenu_link">Notes</a>*/}
-                {/*</Link>*/}
-                <Link href="/icons">
-                    <a className="sidemenu_link">Icons</a>
-                </Link>
-                <Link href="/stickers">
-                    <a className="sidemenu_link">Stickers</a>
-                </Link>
-                {/*<Link href="/balloon">*/}
-                {/*    <a className="sidemenu_link">Balloon</a>*/}
-                {/*</Link>*/}
-                {/*<Link href="/download">*/}
-                {/*    <a className="sidemenu_link">Download</a>*/}
-                {/*</Link>*/}
-                {/*<Link href="/iconmaker">*/}
-                {/*    <a className="sidemenu_link">Icon Maker</a>*/}
-                {/*</Link>*/}
-                <Link href="/environment">
-                    <a className="sidemenu_link">Environment</a>
-                </Link>
-                <Link href="/links">
-                    <a className="sidemenu_link">Links</a>
-                </Link>
-                {/*<Link href="/walking">*/}
-                {/*    <a className="sidemenu_link">Walking</a>*/}
-                {/*</Link>*/}
+        <>
+            <nav id="wide-nav">
+                <div id="wide-nav-wrapper">
+                    {NAVIGATION_LINKS_ELEMENT}
+                </div>
+            </nav>
+            <div id="hamburger_menu">
+                <a
+                    onClick={toggleMenu}
+                    className={isOpened ? "menu-trigger-opened" : "menu-trigger-closed"}
+                >
+                    <span/><span/><span/> {/* Hamburger Icon in CSS */}
+                </a>
             </div>
-        </nav>
+            <section id="mobile_menu">
+                <aside
+                    id="menu_background"
+                    onClick={toggleMenu}
+                    className={isOpened ? "menu-bkg-opened" : "menu-bkg-closed"}
+                />
+                <aside id="side_menu" className={isOpened ? "menu-opened" : "menu-closed"}>
+                    <div id="side_header"/>
+                    <div id="side_links">
+                        {NAVIGATION_LINKS_ELEMENT}
+                    </div>
+                </aside>
+            </section>
+        </>
     );
 }
 

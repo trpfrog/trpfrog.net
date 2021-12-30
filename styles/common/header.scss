@@ -45,10 +45,6 @@ header {
     padding: 0 4em;
     justify-content: space-between;
 
-    #hamburger_menu {
-        display: none;
-    }
-
     h1 {
         text-align: left;
         display: inline-block;
@@ -189,46 +185,6 @@ nav li + li {
 
         h1:after {
             display: none;
-        }
-
-        #hamburger_menu {
-            display: block;
-            grid-area: hamburger_menu;
-            padding-top: 5px;
-            width: 2em;
-        }
-    }
-
-    .menu-trigger, .menu-trigger span {
-        display: inline-block;
-        transition: all .4s;
-        box-sizing: border-box;
-    }
-
-    .menu-trigger {
-        position: relative;
-        width: 28px;
-        height: 24px;
-
-        span {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: #fff;
-            border-radius: 4px;
-        }
-
-        span:nth-of-type(1) {
-            top: 0;
-        }
-
-        span:nth-of-type(2) {
-            top: 10px;
-        }
-
-        span:nth-of-type(3) {
-            bottom: 0;
         }
     }
 }
