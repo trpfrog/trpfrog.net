@@ -18,5 +18,9 @@
   {
     "link": "/icons",
     "name": "Icons"
+  },
+  {
+    "link": "/links",
+    "name": "Links"
   }
 ]

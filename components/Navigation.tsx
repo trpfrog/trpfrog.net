@@ -28,6 +28,9 @@ const Navigation = () => {
                 <Link href="/environment">
                     <a className="sidemenu_link">Environment</a>
                 </Link>
+                <Link href="/links">
+                    <a className="sidemenu_link">Links</a>
+                </Link>
                 {/*<Link href="/walking">*/}
                 {/*    <a className="sidemenu_link">Walking</a>*/}
                 {/*</Link>*/}

@@ -17,8 +17,7 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 type PageProps = {
     navLinks: NavLinkRecord[],
-    myLinks: MyLinkRecord[],
-    mutualLinks: MutualLinkRecord[]
+    myLinks: MyLinkRecord[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
@@ -28,13 +27,12 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     return {
         props: {
             navLinks,
-            myLinks,
-            mutualLinks
+            myLinks
         }
     }
 }
 
-const Home: NextPage<PageProps> = ({navLinks, myLinks, mutualLinks}: PageProps) => {
+const Home: NextPage<PageProps> = ({navLinks, myLinks}: PageProps) => {
     return (
         <Layout>
             <Title title="ようこそ！">
@@ -196,7 +194,8 @@ const Home: NextPage<PageProps> = ({navLinks, myLinks, mutualLinks}: PageProps) 
 
                 <Block title={'Stats'} h2icon={'robot'} id={styles.stats}>
                     <p>
-                        工事中
+                        現つまみネットでは風船をクリックすると割った数が記録され、ここに表示されていました。
+                        しかしブラウザ内でのデータの保存期間も短く、そもそもあまり面白くなかったので廃止する予定です。😢
                     </p>
                 </Block>
 
@@ -245,28 +244,13 @@ const Home: NextPage<PageProps> = ({navLinks, myLinks, mutualLinks}: PageProps) 
 
                     <h2 className="hina">相互リンク</h2>
                     <p>
-                        オタク各位のWebサイトです。ハンドルネームをUTF-8でソートした順。
-                        <s>片想いリンクになったやつもある</s>
+                        移動しました！
                     </p>
-                    <div className={styles.link_grid}>
-                        {mutualLinks.map(({ url, siteName, ownerName, twitterId, description }) => (
-                            <div key={siteName} className={styles.link_block}>
-                                <p style={{textAlign: "center"}}>
-                                    <Link href={url}>
-                                        <a className="linkButton">{siteName}</a>
-                                    </Link>
-                                </p>
-                                <p>
-                                    <b><Link href={`https://twitter.com/${twitterId}/`}>
-                                        <a>{ownerName}</a>
-                                    </Link></b>さんのHP
-                                </p>
-                                <p>
-                                    {description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+                    <p>
+                        <Link href={'/links'}>
+                            <a className={'linkButton'}>相互リンク</a>
+                        </Link>
+                    </p>
                 </Block>
 
                 <Block title={'特に意味のない鳥'} h2icon={'think'} id={styles.bird}>
