@@ -29,7 +29,6 @@ body {
     grid-template-areas: "h" "n" "m" "f";
     grid-template-rows: 6em 3em auto 6em;
     grid-template-columns: 1fr;
-    transition: .5s;
 }
 
 @media (prefers-color-scheme: dark) {
