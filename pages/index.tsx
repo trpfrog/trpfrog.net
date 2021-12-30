@@ -136,14 +136,26 @@ const Home: NextPage<PageProps> = ({navLinks, myLinks, mutualLinks}: PageProps) 
                             >つまみグッズ on SUZURI</a>
                         </div>
                     </div>
-                    {/*<p style="margin-top: 20px; text-align: center">*/}
-                    {/*    <img src="images/goods.webp" style="width: 100%;" alt="つまみグッズ">*/}
-                    {/*</p>*/}
                 </Block>
+
                 <Block title={'作ったアイコン'} h2icon={'evil'} id={styles.icons}>
-                    <p>
-                        工事中
-                    </p>
+                    <div className={styles.top_icons}>
+                        {[0, 7, 5, 6].map(i => i.toString()).map(i => (
+                            <Image
+                                key={i}
+                                src={'icons_gallery/' + i}
+                                width={100}
+                                height={100}
+                                layout={'responsive'}
+                                objectFit={'contain'}
+                                quality={15}
+                                alt={i + '番目のスタンプ画像'}
+                            />
+                        ))}
+                    </div>
+                    <Link href={'/icons'}>
+                        <a className="linkButton">もっと見る</a>
+                    </Link>
                 </Block>
 
                 <Block title={'つまみのうた'} h2icon={'noa'} id={styles.music}>
