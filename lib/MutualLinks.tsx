@@ -16,9 +16,9 @@ export const getMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () 
 
     return links.sort(({ownerName: a}, {ownerName: b}) => {
         if(a < b) {
-            return 1
-        } else if (a > b) {
             return -1
+        } else if (a > b) {
+            return 1
         } else {
             return 0
         }
