@@ -169,8 +169,8 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                 </Block>
 
                 <Block title={'風船コーナー'} h2icon={'ice'} id={styles.balloon}>
-                    <div id={styles.balloon_grid}>
-                        {Array.from(Array(7), (v, k) => <BalloonBox width={'100%'} height={'100%'}/>)}
+                    <div id={styles.top_balloon_grid}>
+                        {Array.from(Array(7), (v, k) => <BalloonBox key={k} width={'100%'} height={'100%'}/>)}
                     </div>
                     <p>
                         <Link href={'/balloon'}>
