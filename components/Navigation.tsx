@@ -41,6 +41,8 @@ const Navigation = () => {
     const toggleMenu = () => {
         setHamburgerState(!isOpened);
     }
+    const doNothing = () => {};
+
     return (
         <>
             <nav id="wide-nav">
@@ -59,7 +61,7 @@ const Navigation = () => {
             <section id="mobile_menu">
                 <aside
                     id="menu_background"
-                    onClick={toggleMenu}
+                    onClick={isOpened ? toggleMenu : doNothing}
                     className={isOpened ? "menu-bkg-opened" : "menu-bkg-closed"}
                 />
                 <aside id="side_menu" className={isOpened ? "menu-opened" : "menu-closed"}>
