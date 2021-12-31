@@ -25,12 +25,14 @@
     text-align: left;
     z-index: 51;
 
-    background: #79d8215d;
-    -moz-backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: #406b19;
+    box-shadow: -3px 0 #538c1d;
+    //-moz-backdrop-filter: blur(20px);
+    //-webkit-backdrop-filter: blur(20px);
+    //backdrop-filter: blur(20px);
 
-    transition: 0.3s;
+    transition: 0.5s;
+    animation-timing-function: ease-in-out;
 }
 
 .menu-closed, .menu-opened, .menu-bkg-closed, .menu-bkg-opened {
