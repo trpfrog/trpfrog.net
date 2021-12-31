@@ -8,7 +8,7 @@ const Index: NextPage = () => {
     return (
         <Layout>
             <Title title={'Legal Information'} />
-            <Block title={'プライバシーポリシー'}>
+            <Block title={'プライバシーポリシー'} h2icon={'none'}>
                 <p>
                     以下のページでは当サイトでお預かりした個人情報の管理の方法について説明しています。
                 </p>
@@ -18,7 +18,7 @@ const Index: NextPage = () => {
                     </Link>
                 </p>
             </Block>
-            <Block title={'免責事項'}>
+            <Block title={'免責事項'} h2icon={'none'}>
                 <p>
                     以下のページでは免責事項について説明しています。
                 </p>
@@ -28,7 +28,7 @@ const Index: NextPage = () => {
                     </Link>
                 </p>
             </Block>
-            <Block title={'著作権について'}>
+            <Block title={'著作権について'} h2icon={'none'}>
                 <p>
                     以下のページでは当サイト上に掲載されたコンテンツの権利について説明しています。
                 </p>
