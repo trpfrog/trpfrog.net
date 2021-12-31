@@ -1,11 +1,11 @@
 main h2 {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    text-shadow: 0.08em 0.08em 0.08em rgb(144, 226, 0);
+    color: #172c00;
 }
 
 @media (prefers-color-scheme: dark) {
     main h2 {
-        text-shadow: 0.08em 0.08em 0.08em rgb(116, 184, 0);
+        color: #f1ffd0;
     }
 }
 

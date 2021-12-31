@@ -1,22 +1,23 @@
 @use "mobilemenu";
 
 :root {
-    --header-color: #66a928d3;
-    --header-filter: drop-shadow(0em 0.1em 0.3em rgba(0, 0, 0, 0.4));
+    --header-color: #66a928;
+    --header-filter: drop-shadow(0 0.2em 0 #5a9623);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --header-color: #4f831fd3;
-        --header-filter: drop-shadow(0em 0.1em 1em rgba(251, 255, 4, 0.4));
+        --header-color: #4f831f;
+        --header-filter: drop-shadow(0 0.2em 0 rgb(49, 80, 15));
     }
 }
 
 header {
     position: fixed;
-    background: #66a928d3;
+    background: var(--header-color);
     justify-content: space-between;
     width: 100%;
+    overflow: hidden;
 
     height: var(--header-height);
     -webkit-filter: var(--header-filter);
@@ -38,6 +39,7 @@ header {
 
 #header-wrapper {
     display: flex;
+
     align-items: center;
     max-width: 980px;
     margin: 0 auto;
@@ -50,6 +52,23 @@ header {
         color: #ffffff;
         font-family: 'M PLUS Rounded 1c', sans-serif;
         font-weight: bold;
+        margin: 4px 0;
+    }
+
+    h1:before {
+        content: '';
+        display: inline-block;
+        background-image: url('../../public/images/flat-trpfrog.gif');
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        margin-right: 0.3em;
+
+        position: relative;
+        width: 80px;
+        height: 80px;
+        left: 0px;
+        bottom: -5px;
     }
 }
 
@@ -103,17 +122,6 @@ header {
     }
 }
 
-#header-wrapper h1:before {
-    content: '';
-    display: inline-block;
-    width: 1.7em;
-    height: 1.7em;
-    background-image: url('../../public/images/icons/trpfrog.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    vertical-align: middle;
-    margin-right: 0.3em;
-}
 
 #header-wrapper nav {
     text-align: right;
@@ -153,6 +161,10 @@ header {
     -ms-user-select: none;
 }
 
+header li:before {
+    content: none;
+}
+
 nav li + li {
     border-left: 2px solid #ffffff;
 }
@@ -171,7 +183,7 @@ nav li + li {
         display: inline-grid;
         grid-template-areas: "page_title hamburger_menu";
         grid-template-columns: auto 3em;
-        grid-template-rows: 4em;
+        grid-template-rows: var(--header-height);
         padding: 0;
         text-align: center;
 
@@ -179,11 +191,20 @@ nav li + li {
             text-align: center;
             grid-area: page_title;
             font-size: 1.5em;
-            margin-left: 1em;
+            margin-left: 3.1em;
+            margin-top: 0.3em;
         }
 
         h1:after {
             display: none;
+        }
+
+        h1:before {
+            position: absolute;
+            width: 57px;
+            height: 57px;
+            left: 10px;
+            bottom: -7px;
         }
     }
 }

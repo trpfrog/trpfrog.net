@@ -1,0 +1,37 @@
+:root {
+    --window-padding: 40px;
+    --window-bottom-color: #9cc535;
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --window-padding: 20px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --window-bottom-color: #35420e;
+    }
+}
+
+.main-window {
+    background-color: var(--window-bkg-color);
+    padding: var(--window-padding);
+    border-radius: 33px;
+    text-align: left;
+    box-shadow: 0 6px 0 var(--window-bottom-color);
+}
+
+.main-window h2 {
+    margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+    .main-window {
+        background-color: var(--window-bkg-color);
+        border-radius: 10px;
+        text-align: left;
+        margin: 0 5px;
+    }
+}

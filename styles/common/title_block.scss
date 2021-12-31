@@ -1,0 +1,39 @@
+:root {
+    --title-color: #172c00;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --title-color: white;
+    }
+}
+
+#title h1 {
+    text-align: left;
+    font-size: 3em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    line-height: 1;
+    margin: 0;
+
+    --shadow-weight: 2px;
+}
+
+#title {
+    margin: calc(3em - var(--main-margin)) 3em;
+    color: var(--title-color);
+}
+
+#title p {
+    margin-bottom: 0;
+    color: var(--title-color);
+}
+
+@media screen and (max-width: 800px) {
+    #title {
+        margin: 0 var(--window-padding) var(--window-padding);
+    }
+
+    #title h1 {
+        font-size: 2em;
+    }
+}
