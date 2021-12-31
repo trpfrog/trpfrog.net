@@ -76,7 +76,7 @@ main #main_wrapper {
     main {
         --main-margin: 12px;
         padding: 0;
-        margin: calc(var(--window-padding) * 1.3) 0 calc(var(--window-padding) * 0.7);
+        margin: calc(var(--window-padding) * 0.7) 0 calc(var(--window-padding) * 0.7);
     }
 
     #wide-nav {
