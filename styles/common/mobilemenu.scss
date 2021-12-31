@@ -4,7 +4,7 @@
 }
 
 #menu_background {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -100,6 +100,10 @@
     .menu-opened {
         display: block;
         right: 0;
+    }
+
+    #menu_background {
+        display: block;
     }
 
     .menu-bkg-closed {
