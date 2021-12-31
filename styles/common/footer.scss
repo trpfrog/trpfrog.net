@@ -35,6 +35,22 @@ footer {
     }
 }
 
+.footer-button {
+    background: white;
+    cursor: pointer;
+    color: var(--footer-color) !important;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    width: 70px;
+    border-radius: 100px;
+}
+
+.footer-button:hover {
+    background: #d7e3bb;
+}
+
 @media screen and (max-width: 800px) {
     footer {
         text-align: center;
@@ -51,5 +67,11 @@ footer {
             margin: 12px auto;
             font-size: 1em;
         }
+
+        .footer-button {
+            padding: 1px;
+            font-size: 0.6em;
+        }
     }
 }
+
