@@ -8,6 +8,7 @@ import styles from '../styles/top-page/main.module.scss';
 import {MyLinkRecord, getMyLinkRecords} from '../lib/MyLinks';
 
 import Title from "../components/Title";
+import {BalloonBox} from './balloon';
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -168,8 +169,13 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                 </Block>
 
                 <Block title={'風船コーナー'} h2icon={'ice'} id={styles.balloon}>
+                    <div id={styles.balloon_grid}>
+                        {Array.from(Array(7), (v, k) => <BalloonBox width={'100%'} height={'100%'}/>)}
+                    </div>
                     <p>
-                        工事中
+                        <Link href={'/balloon'}>
+                            <a className={'linkButton'}>もっと割る</a>
+                        </Link>
                     </p>
                 </Block>
 

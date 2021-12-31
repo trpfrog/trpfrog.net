@@ -1,0 +1,46 @@
+#balloon_grid {
+    display: block;
+    margin: 10px 0;
+}
+
+#balloon_grid {
+    .balloon {
+        display: inline-block;
+        width: 57px;
+        height: 95px;
+    }
+}
+.balloon {
+    cursor: crosshair;
+}
+
+.blue {
+    content: '';
+    background-image: url('../public/images/balloon/blue/normal.png');
+}
+
+.blue:hover {
+    background-image: url('../public/images/balloon/blue/tremble.gif');
+}
+
+.orange {
+    content: '';
+    background-image: url('../public/images/balloon/orange/normal.png');
+}
+
+.orange:hover {
+    background-image: url('../public/images/balloon/orange/tremble.gif');
+}
+
+.green {
+    content: '';
+    background-image: url('../public/images/balloon/green/normal.png');
+}
+
+.green:hover {
+    background-image: url('../public/images/balloon/green/tremble.gif');
+}
+
+.broken {
+    background-image: url('../public/images/balloon/broken.png');
+}

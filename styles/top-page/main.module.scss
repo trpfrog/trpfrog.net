@@ -67,3 +67,10 @@
         display: block;
     }
 }
+
+#balloon_grid {
+    display: grid;
+    margin: 10px 0;
+    grid-template-columns: repeat(7, 12vw);
+    grid-template-rows: 20vw;
+}
