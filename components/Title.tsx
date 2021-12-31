@@ -1,4 +1,5 @@
 import React from "react";
+import Block from "./Block";
 
 type Props = {
     title?: string
@@ -12,10 +13,12 @@ const Title: React.FunctionComponent<Props> = ({children, title}) => {
         );
     }
     return (
-        <div id={"title"}>
-            {titleHtml}
-            {children}
-        </div>
+        <Block id={"title"}>
+            <div>
+                {titleHtml}
+                {children}
+            </div>
+        </Block>
     );
 }
 

@@ -18,14 +18,8 @@
     --shadow-weight: 2px;
 }
 
-#title {
-    margin: calc(3em - var(--main-margin)) 3em;
-    color: var(--title-color);
-}
-
 #title p {
     margin-bottom: 0;
-    color: var(--title-color);
 }
 
 @media screen and (max-width: 800px) {
