@@ -1,5 +1,5 @@
 {
-  "name": "trpfrog-nexta",
+  "name": "trpfrog-net",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,8 @@
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-lite-youtube-embed": "^2.1.3"
+    "react-lite-youtube-embed": "^2.1.3",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.4",

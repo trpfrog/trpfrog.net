@@ -7,8 +7,9 @@ import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
 import React, {useState} from "react";
-import {types} from "sass";
-import Number = types.Number;
+
+import useSound from 'use-sound';
+import {PlayFunction} from "use-sound/dist/types";
 
 type BalloonProps = {
     width: string
@@ -19,6 +20,8 @@ type BalloonDivProps = {
     n: number
     width: number
 }
+
+let playSound = () => {};
 
 export const BalloonBox: React.FunctionComponent<BalloonProps> = ({children, width='100%', height='100%'}) => {
     const balloonStyle = {
@@ -37,6 +40,9 @@ export const BalloonBox: React.FunctionComponent<BalloonProps> = ({children, wid
 
     const breakBalloon = () => {
         setState(true);
+        if (!isBroken) {
+            playSound();
+        }
     }
 
     return <span
@@ -58,6 +64,10 @@ export const BalloonDiv: React.FunctionComponent<BalloonDivProps> = ({children, 
 const Balloon: NextPage = () => {
     const router = useRouter();
     const isSoundEnabled = router.query.enableSound == 'true';
+
+    const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1640970224/balloon/break.mp3';
+    const [playFunction] = useSound(soundURL, {interrupt: false});
+    playSound = isSoundEnabled ? playFunction : () => {};
 
     const toggleSound = () => {
         router.push({
@@ -95,10 +105,10 @@ const Balloon: NextPage = () => {
                     風船を割ることができます。(？)
                 </p>
                 <p>
-                    <span onClick={toggleSound} className={'linkButton'} style={{display: 'none'}}>
+                    <span onClick={toggleSound} className={'linkButton'} style={{marginRight: '10px'}}>
                         {isSoundEnabled ? '音を消す' : '音を鳴らす'}
                     </span>
-                    <label>
+                    <label style={{marginRight: '10px'}}>
                         <input
                             type="number"
                             value={numberOfBalloons}
