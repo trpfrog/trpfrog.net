@@ -7,6 +7,10 @@ const NAVIGATION_LINKS = [
         name: 'Home'
     },
     {
+        link: '/balloon',
+        name: 'Balloons'
+    },
+    {
         link: '/environment',
         name: 'Environment'
     },
