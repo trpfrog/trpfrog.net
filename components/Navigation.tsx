@@ -39,8 +39,12 @@ const NAVIGATION_LINKS = [
         name: 'DLC'
     },
     {
+        link: '/icon-maker',
+        name: 'Maker'
+    },
+    {
         link: '/walking',
-        name: 'Walking'
+        name: 'Walk'
     }
 ]
 
