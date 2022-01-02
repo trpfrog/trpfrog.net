@@ -3,9 +3,10 @@ import Block from "./Block";
 
 type Props = {
     title?: string
+    newRibbon?: boolean
 }
 
-const Title: React.FunctionComponent<Props> = ({children, title}) => {
+const Title: React.FunctionComponent<Props> = ({children, title, newRibbon=false}) => {
     let titleHtml: JSX.Element = <></>;
     if (title !== undefined) {
         titleHtml = (
@@ -13,7 +14,7 @@ const Title: React.FunctionComponent<Props> = ({children, title}) => {
         );
     }
     return (
-        <Block id={"title"}>
+        <Block id={"title"} newRibbon={newRibbon}>
             <div>
                 {titleHtml}
                 {children}
