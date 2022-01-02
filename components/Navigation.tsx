@@ -16,7 +16,7 @@ const NAVIGATION_LINKS = [
     },
     {
         link: '/environment',
-        name: 'Environment'
+        name: 'Env'
     },
     {
         link: '/music',
@@ -33,6 +33,10 @@ const NAVIGATION_LINKS = [
     {
         link: '/links',
         name: 'Links'
+    },
+    {
+        link: '/download',
+        name: 'DLC'
     },
     {
         link: '/walking',
