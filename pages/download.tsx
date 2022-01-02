@@ -14,7 +14,7 @@ const About: NextPage = () => {
                     壁紙などダウンロードできるコンテンツの提供ページです。
                 </p>
             </Title>
-            <Block title={'鬼のウォッチフェイス'}>
+            <Block title={'鬼のウォッチフェイス'} newRibbon={true}>
                 <p>
                     Apple Watch の文字盤です。誰得？
                 </p>

@@ -16,11 +16,13 @@
 }
 
 .main-window {
+    position: relative;
     background-color: var(--window-bkg-color);
     padding: var(--window-padding);
     border-radius: 33px;
     text-align: left;
     box-shadow: 0 6px 0 var(--window-bottom-color);
+    overflow: hidden;
 }
 
 .main-window h2 {
@@ -34,4 +36,33 @@
         text-align: left;
         margin: 0 8px;
     }
+}
+
+.new-ribbon {
+    display: inline-block;
+
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: bold;
+
+    position: absolute;
+    padding: 5px 0;
+    right: -42px;
+    top: 25px;
+
+    width: 160px;
+
+    text-align: center;
+    font-size: 18px;
+    line-height: 16px;
+
+    background: var(--link-button-color);
+    color: #fff;
+    letter-spacing: 0.05em;
+
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+
+    box-shadow: 0 0 0 2px var(--link-button-color);
+    border-top: dashed 1px rgba(255, 255, 255, 0.65);
+    border-bottom: dashed 1px rgba(255, 255, 255, 0.65);
 }

@@ -4,9 +4,10 @@ type Props = {
     title?: string
     h2icon?: string
     id?: string
+    newRibbon?: boolean
 }
 
-const Block: React.FunctionComponent<Props> = ({children, title, h2icon='trpfrog', id=''}) => {
+const Block: React.FunctionComponent<Props> = ({children, title, h2icon='trpfrog', id='', newRibbon=false}) => {
     let h2: JSX.Element = <></>;
     if (title !== undefined) {
         h2 = (
@@ -15,6 +16,7 @@ const Block: React.FunctionComponent<Props> = ({children, title, h2icon='trpfrog
     }
     return (
         <div className={"main-window"} id={id}>
+            {newRibbon ? <span className="new-ribbon">NEW!</span> : <></>}
             {h2}
             {children}
         </div>
