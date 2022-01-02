@@ -23,6 +23,14 @@ const About: NextPage = () => {
                     <li>あと単純にNext.jsが面白そうだった</li>
                 </ul>
             </Block>
+            <Block title={'やってみてどう？'} h2icon={'ice'}>
+                <ul style={{padding: '10px'}}>
+                    <li>共通部分を作るのが楽</li>
+                    <li>ただフレームワークなしの方が融通が効くところもあり、ちょっと書くのがつらい</li>
+                    <li>でも慣れと知識量の問題っぽくはある</li>
+                    <li>完全移植はまだ先が長そうでｸﾞｴ-という感じ</li>
+                </ul>
+            </Block>
             <Block title={'移植状況'} h2icon={'robot'}>
                 <ul style={{padding: '10px'}}>
                     <li>2021/12/24</li>
@@ -86,6 +94,15 @@ const About: NextPage = () => {
                         <li>あけましておめでとうございます。本年もよろしくお願いします。</li>
                         <li>風船ページを追加 🎉</li>
                     </ul>
+                    <li>2022/1/3</li>
+                    <ul>
+                        <li>Worksページを追加しました 🎉</li>
+                        <li>徒歩記事まとめページを追加しました 🎉</li>
+                        <li>フッターの著作権の年を 2019 - 2022 に変えました 🎉</li>
+                        <li>ダウンロードコンテンツページを追加しました 🎉</li>
+                        <li>アイコンメーカーをTypeScriptで書き直しました 🎉</li>
+                        <li>今月中にはお引越しができそうな感じになってきました</li>
+                    </ul>
                 </ul>
             </Block>
             <Block title={'Todo'} h2icon={'think'}>
@@ -97,23 +114,8 @@ const About: NextPage = () => {
                     </ul>
                     <li><b>簡単そうだから気が向いたらやるかも</b></li>
                     <ul>
-                        <li>ダウンロードページの移植</li>
                         <li>上に戻るボタンの移植</li>
                     </ul>
-                    <li><b>大変そうだからやりたくないよ〜</b></li>
-                    <ul>
-                        <li>風船コーナーの移植</li>
-                        <li>アイコンメーカーの移植</li>
-                        <li>徒歩紹介ページの移植</li>
-                    </ul>
-                </ul>
-            </Block>
-            <Block title={'やってみてどう？'} h2icon={'ice'}>
-                <ul style={{padding: '10px'}}>
-                    <li>共通部分を作るのが楽</li>
-                    <li>ただフレームワークなしの方が融通が効くところもあり、ちょっと書くのがつらい</li>
-                    <li>でも慣れと知識量の問題っぽくはある</li>
-                    <li>完全移植はまだ先が長そうでｸﾞｴ-という感じ</li>
                 </ul>
             </Block>
         </Layout>
