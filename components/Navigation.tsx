@@ -12,7 +12,7 @@ const NAVIGATION_LINKS = [
     },
     {
         link: '/works',
-        name: 'Environment'
+        name: 'Works'
     },
     {
         link: '/environment',
