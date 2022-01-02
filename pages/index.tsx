@@ -162,9 +162,9 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                             alt={'つまみのうたのバナー'}
                         />
                     </p>
-                    <p>
-                        <a href="https://linkco.re/N4Z8hdvX" className="linkButton">購入/ストリーミング</a>
-                        <Link href={'music'}><a className="linkButton">歌詞</a></Link>
+                    <p className={'link-area'}>
+                        <a href="https://linkco.re/N4Z8hdvX">購入/ストリーミング</a>
+                        <Link href={'music'}><a>歌詞</a></Link>
                     </p>
                 </Block>
 

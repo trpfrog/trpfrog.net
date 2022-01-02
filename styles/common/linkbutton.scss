@@ -32,7 +32,7 @@ $link-button-font-color: var(--link-button-font-color);
     font-weight: bold;
     color: $link-button-font-color !important;
     line-height: 1.5;
-    //text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+
     text-decoration: none;
     vertical-align: middle;
 
@@ -41,8 +41,7 @@ $link-button-font-color: var(--link-button-font-color);
     -webkit-user-select: none;
     -ms-user-select: none;
 
-    margin-bottom: 6px;
-    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 .linkButton:hover {
@@ -59,5 +58,6 @@ $link-button-font-color: var(--link-button-font-color);
     a {
         @extend .linkButton;
         margin-right: 6px;
+        margin-bottom: 8px;
     }
 }

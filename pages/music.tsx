@@ -40,9 +40,9 @@ const Music: NextPage = () => {
                     「うたスキ」「うたスキ動画」の両方に対応した店舗で歌えるらしいので、カラオケ行く人はよろしくお願いします。
                     僕は歌いません。(？)
                 </p>
-                <p>
-                    <a href="https://musicpost.joysound.com/music/musicId:107765" className="linkButton">楽曲詳細</a>
-                    <a href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1" className="linkButton">店舗検索</a>
+                <p className={'link-area'}>
+                    <a href="https://musicpost.joysound.com/music/musicId:107765">楽曲詳細</a>
+                    <a href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1">店舗検索</a>
                 </p>
             </Block>
             <Block title={'歌詞'}>
