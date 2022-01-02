@@ -33,6 +33,10 @@ const NAVIGATION_LINKS = [
     {
         link: '/links',
         name: 'Links'
+    },
+    {
+        link: '/walking',
+        name: 'Walking'
     }
 ]
 
