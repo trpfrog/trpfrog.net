@@ -90,7 +90,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                                 src={'sticker_pr'}
                                 width={18}
                                 height={15}
-                                className={'richimage'}
+                                className={'rich_image'}
                                 layout={'responsive'}
                                 objectFit={'contain'}
                                 alt={'つまみグッズの画像'}
@@ -155,7 +155,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                     <p>
                         <Image
                             src={'musicbanner'}
-                            className={'richimage'}
+                            className={'rich_image'}
                             width={'500'}
                             height={'100'}
                             layout={'responsive'}

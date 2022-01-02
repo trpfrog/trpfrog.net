@@ -22,7 +22,7 @@ const About: NextPage = () => {
                     src={'/download/watchfaces/oni/thumbnail'}
                     width={512}
                     height={384}
-                    className={'richimage'}
+                    className={'rich_image'}
                     layout={'intrinsic'}
                     alt={'鬼のウォッチフェイスの画像'}
                 />
@@ -44,7 +44,7 @@ const About: NextPage = () => {
                     src={'/download/wallpapers/icons/thumbnail'}
                     width={1000}
                     height={625}
-                    className={'richimage'}
+                    className={'rich_image'}
                     layout={'intrinsic'}
                     alt={'アイコン集合の壁紙'}
                 />
@@ -67,7 +67,7 @@ const About: NextPage = () => {
                     src={'/download/wallpapers/rainy/thumbnail'}
                     width={1000}
                     height={625}
-                    className={'richimage'}
+                    className={'rich_image'}
                     layout={'intrinsic'}
                     alt={'雨の壁紙'}
                 />

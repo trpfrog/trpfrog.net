@@ -24,7 +24,7 @@ const Music: NextPage = () => {
                 <p>
                     <Image
                         src={'musicbanner'}
-                        className={'richimage'}
+                        className={'rich_image'}
                         width={'500'}
                         height={'100'}
                         layout={'responsive'}
