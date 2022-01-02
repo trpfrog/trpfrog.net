@@ -5,7 +5,7 @@ const Footer = () => {
         <footer>
             <div id="footer-wrapper">
                 <p id="copyright">
-                    &copy; 2019-2021 つまみ
+                    &copy; 2019-2022 つまみ
                 </p>
                 <p>
                     <Link href={'/legal'}>
