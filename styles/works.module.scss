@@ -1,0 +1,22 @@
+.keyword_title {
+    display: inline-block;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.keyword {
+    display: inline-block;
+    border: solid 2px #90e200;
+    border-radius: 1000px;
+    padding: 0 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hero_image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}

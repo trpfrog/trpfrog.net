@@ -45,10 +45,6 @@ $link-button-font-color: var(--link-button-font-color);
     margin-top: 2px;
 }
 
-.linkButton + .linkButton {
-    margin-left: 4px;
-}
-
 .linkButton:hover {
     background: $link-button-color-highlighted;
 }
@@ -57,4 +53,11 @@ $link-button-font-color: var(--link-button-font-color);
     transform: translateY(2px);
     box-shadow: 0 0 0 $link-button-color-bottom;
     border-bottom: none;
+}
+
+.link-area {
+    a {
+        @extend .linkButton;
+        margin-right: 6px;
+    }
 }
