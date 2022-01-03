@@ -5,37 +5,22 @@
     display: grid;
     grid-template-areas:
             "about_me about_me about_me"
+            "whats_new whats_new whats_new"
             "sticker  icons    icons"
             "sticker  music    music"
             "bird     music    music"
             "balloon  balloon  balloon"
-            "links    links    music_game"
-            "links    links    stats";
+            "links    links    music_game";
     grid-template-columns: 3fr 2fr 3fr;
     grid-gap: var(--main-margin);
     text-align: left;
-}
-
-@media screen and (max-width: 980px) {
-    #top_page_grid {
-        display: grid;
-        grid-template-areas:
-            "about_me   about_me"
-            "sticker    links"
-            "bird       links"
-            "icons      icons"
-            "music      music"
-            "balloon    balloon"
-            "music_game stats";
-
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 @media screen and (max-width: 800px) {
     #top_page_grid {
         grid-template-areas:
             "about_me"
+            "whats_new"
             "icons"
             "music"
             "sticker"
@@ -82,6 +67,6 @@
     grid-area: bird;
 }
 
-#stats {
-    grid-area: stats;
+#whats_new {
+    grid-area: whats_new;
 }

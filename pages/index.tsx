@@ -30,17 +30,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
     return (
         <Layout>
-            <Title title="ようこそ！">
-                <p>
-                    このサイトは現在の<Link href={'https://trpfrog.net'}><a>つまみネット</a></Link>を{' '}
-                    Next.js で書き直すための仮設サイトです。詳しくは「next.つまみネットについて」をご覧ください。
-                </p>
-                <p>
-                    <Link href={'/about-next'}>
-                        <a className="linkButton">next.つまみネットについて</a>
-                    </Link>
-                </p>
-            </Title>
             <div id={styles.top_page_grid}>
                 <Block id={styles.about_me_grid}>
                     <div id={styles.my_name}>
@@ -179,10 +168,14 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                     </p>
                 </Block>
 
-                <Block title={'Stats'} h2icon={'robot'} id={styles.stats}>
+                <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
                     <p>
-                        現つまみネットでは風船をクリックすると割った数が記録され、ここに表示されていました。
-                        しかしブラウザ内でのデータの保存期間も短く、そもそもあまり面白くなかったので廃止する予定です。😢
+                        つまみネットを Next.js で書き直しました！詳細は以下のリンクをご覧ください。
+                    </p>
+                    <p>
+                        <Link href={'/about-next'}>
+                            <a className="linkButton">next.つまみネットについて</a>
+                        </Link>
                     </p>
                 </Block>
 
