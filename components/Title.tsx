@@ -27,12 +27,15 @@ const Title: React.FunctionComponent<Props> = ({
     return (
         <>
             <NextSeo
-                title={title}
+                title={title + ' - ' + process.env.title}
                 description={description}
-                openGraph={{
-                    url: 'https://trpfrog.net',
-                    site_name: 'つまみネット',
-                }}
+                openGraph={cardImageUrl ? {
+                    images: [
+                        {
+                            url: cardImageUrl,
+                        }
+                    ]
+                } : {}}
             />
             <Block id={"title"} newRibbon={newRibbon} ribbonText={ribbonText}>
                 <div>

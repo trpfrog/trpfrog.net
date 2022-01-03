@@ -25,9 +25,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 const Links: NextPage<PageProps> = ({mutualLinks}: PageProps) => {
     return (
         <Layout>
-            <Title title={'相互リンク'}>
+            <Title title={'相互リンク'} description={'オタク各位のWebサイトです。'}>
                 <p>
-                    オタク各位のWebサイトです。ハンドルネームをUTF-8でソートした順。
+                    順番はハンドルネームをUTF-8でソートしたもの。
                     <s>片想いリンクになったやつもある</s>
                 </p>
             </Title>

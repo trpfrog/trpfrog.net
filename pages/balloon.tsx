@@ -100,10 +100,7 @@ const Balloon: NextPage = () => {
 
     return (
         <Layout>
-            <Title title={'風船コーナー'}>
-                <p>
-                    風船を割ることができます。(？)
-                </p>
+            <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
                 <p>
                     <span onClick={toggleSound} className={'linkButton'} style={{marginRight: '10px'}}>
                         {isSoundEnabled ? '音を消す' : '音を鳴らす'}

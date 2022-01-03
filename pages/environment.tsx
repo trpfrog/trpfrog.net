@@ -9,10 +9,10 @@ import GadgetIntro from "../components/GadgetIntro";
 const Environment: NextPage = () => {
     return (
         <Layout>
-            <Title title="作業環境">
-                <p>
-                    つまみさんのデスク周りとか所持デバイスとか
-                </p>
+            <Title
+                title="作業環境"
+                description="つまみさんのデスク周りとか所持デバイスとか"
+            >
                 <p>
                     Last updated: 2021/12/11
                 </p>

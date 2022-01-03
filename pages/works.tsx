@@ -25,10 +25,10 @@ const Keywords: FunctionComponent<KeywordsType> = ({children, keywords}) => {
 const Works: NextPage = () => {
     return (
         <Layout>
-            <Title title={'Works'}>
-                <p>
-                    つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。
-                </p>
+            <Title
+                title={'Works'}
+                description={'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'}
+            >
                 <p>
                     最終更新: 2022/1/2
                 </p>

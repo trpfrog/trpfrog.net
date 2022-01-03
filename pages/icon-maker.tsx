@@ -17,10 +17,12 @@ const About: NextPage = () => {
 
     return (
         <Layout>
-            <Title title={'アイコンメーカー.ts'} ribbonText={'BETA'}>
-                <p>
-                    TypeScriptで書き直したアイコンメーカーです。
-                </p>
+            <Title
+                title={'アイコンメーカー.ts'}
+                ribbonText={'BETA'}
+                description={'TypeScriptで書き直したアイコンメーカーです。'}
+                cardImageUrl={'/images/icon_maker/TwitterCardIconmaker.png'}
+            >
                 <p>
                     画像をアップロードしてつまみアイコンを作ろう！<br/>
                     作成したアイコンはSNS等のアイコンに使うことができます。

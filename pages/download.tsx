@@ -9,11 +9,10 @@ import Block from "../components/Block";
 const About: NextPage = () => {
     return (
         <Layout>
-            <Title title={'DLコンテンツ'}>
-                <p>
-                    壁紙などダウンロードできるコンテンツの提供ページです。
-                </p>
-            </Title>
+            <Title
+                title={'DLコンテンツ'}
+                description={'壁紙などダウンロードできるコンテンツの提供ページです。'}
+            />
             <Block title={'鬼のウォッチフェイス'} newRibbon={true}>
                 <p>
                     Apple Watch の文字盤です。誰得？

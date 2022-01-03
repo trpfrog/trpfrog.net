@@ -5,10 +5,12 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
+import {NextSeo} from "next-seo";
 
 const Index: NextPage = () => {
     return (
         <Layout>
+            <NextSeo description={'つまみスタンプ素材集'}/>
             <Title title={'スタンプ素材集'}>
                 <p>
                     つまみスタンプの元画像の5倍に拡大したやつです。<br/>

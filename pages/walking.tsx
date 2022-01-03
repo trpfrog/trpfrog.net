@@ -24,11 +24,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 const About: NextPage<PageProps> = ({articles}) => {
     return (
         <Layout>
-            <Title title={'徒歩情報'}>
-                <p>
-                    長距離を歩いて移動することは面白いと言われています。
-                </p>
-            </Title>
+            <Title
+                title={'徒歩情報'}
+                description={'長距離を歩いて移動することは面白いと言われています。'}
+            />
             <Block title={'徒歩記事まとめ'}>
                 <div id={styles.articles}>
                     {articles.map(e => (

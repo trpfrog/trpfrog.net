@@ -9,10 +9,12 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 import styles from '../styles/music.module.scss';
+import {NextSeo} from "next-seo";
 
 const Music: NextPage = () => {
     return (
         <Layout>
+            <NextSeo description={'ねぎ一世さん作曲「つまみのうた」の歌詞'}/>
             <Title title={'つまみのうた'}>
                 <p>
                     ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)

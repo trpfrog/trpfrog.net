@@ -5,10 +5,12 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
+import {NextSeo} from "next-seo";
 
 const Index: NextPage = () => {
     return (
         <Layout>
+            <NextSeo description={'つまみアイコン集'}/>
             <Title title={'アイコン集'}>
                 <p>
                     つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
