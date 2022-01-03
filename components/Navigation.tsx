@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import {useState} from "react";
+import { useRouter } from "next/router";
 
 const NAVIGATION_LINKS = [
     {
@@ -48,14 +49,6 @@ const NAVIGATION_LINKS = [
     }
 ]
 
-const NAVIGATION_LINKS_ELEMENT = NAVIGATION_LINKS.map(({link, name}) => {
-    return (
-        <Link href={link} key={link}>
-            <a className="sidemenu_link">{name}</a>
-        </Link>
-    )
-});
-
 const Navigation = () => {
     const [isOpened, setHamburgerState] = useState(false);
     const toggleMenu = () => {
@@ -63,11 +56,24 @@ const Navigation = () => {
     }
     const doNothing = () => {};
 
+    const router = useRouter();
+    const highlightedLink = router.pathname.split('/').slice(0, 2).join('/');
+    const links = NAVIGATION_LINKS.map(({link, name}) => {
+        const isHighlighted = highlightedLink == link;
+        return (
+            <Link href={link} key={link}>
+                <a
+                    className={`sidemenu_link ${isHighlighted ? 'sidemenu_highlighted' : ''}`}
+                >{name}</a>
+            </Link>
+        );
+    });
+
     return (
         <>
             <nav id="wide-nav">
                 <div id="wide-nav-wrapper">
-                    {NAVIGATION_LINKS_ELEMENT}
+                    {links}
                 </div>
             </nav>
             <div id="hamburger_menu">
@@ -87,7 +93,7 @@ const Navigation = () => {
                 <aside id="side_menu" className={isOpened ? "menu-opened" : "menu-closed"}>
                     <div id="side_header"/>
                     <div id="side_links">
-                        {NAVIGATION_LINKS_ELEMENT}
+                        {links}
                     </div>
                 </aside>
             </section>

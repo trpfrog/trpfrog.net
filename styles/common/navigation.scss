@@ -14,15 +14,11 @@
         color: white;
         padding: 1em;
     }
-
-    a:hover {
-        color: #90e200;
-    }
 }
 
 #wide-nav-wrapper {
     position: absolute;
-    bottom: -4px;
+    bottom: 9px;
     width: 100%;
     vertical-align: bottom;
 }
@@ -30,5 +26,28 @@
 @media (prefers-color-scheme: dark) {
     #wide-nav {
         background: #2d4b11d3;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .sidemenu_link {
+        border-radius: 1000px;
+        height: 1.3em;
+        margin: 0 2px;
+        padding: 6px 12px 0 !important;
+        transition: .1s;
+    }
+
+    .sidemenu_link:hover:not(.sidemenu_highlighted) {
+        background: rgba(255, 255, 255, 0.2);
+        a:hover {
+            color: #90e200;
+        }
+    }
+
+    .sidemenu_highlighted {
+        background: white;
+        color: #66a928d3 !important;
+        cursor: default;
     }
 }
