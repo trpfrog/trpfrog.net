@@ -20,10 +20,6 @@ export const NAVIGATION_LINKS = [
         name: 'Env'
     },
     {
-        link: '/music',
-        name: 'Music'
-    },
-    {
         link: '/stickers',
         name: 'Stickers'
     },
