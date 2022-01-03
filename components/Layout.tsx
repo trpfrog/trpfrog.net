@@ -1,10 +1,7 @@
-import Link from 'next/link'
 import React from "react";
-import Head from 'next/head'
 
 import Header from './Header'
 import Footer from "./Footer";
-import TwitterCard from "./head/TwitterCard";
 import Navigation from "./Navigation";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
