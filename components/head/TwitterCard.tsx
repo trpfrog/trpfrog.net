@@ -1,13 +1,21 @@
 type Props = {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     url: string;
     image?: string;
 }
 
+const SITE_NAME = process.env.title;
+
 const TwitterCard = ({
-    title, description, url, image = 'https://trpfrog.net/images/TwitterCard.png'
+    title = SITE_NAME,
+    description = 'さかなになりたいね',
+    url,
+    image = 'https://res.cloudinary.com/trpfrog/TwitterCard'
 }: Props) => {
+    if (title != SITE_NAME) {
+        title = title + ' - ' + SITE_NAME;
+    }
     return (
         <>
             <meta name="twitter:card" content="summary_large_image"/>

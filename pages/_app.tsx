@@ -8,10 +8,13 @@ config.autoAddCss = false
 
 // Framer Motion
 import { AnimatePresence } from "framer-motion";
+import {DefaultSeo} from "next-seo";
+import SEO from '../next-seo.config';
 
 const TrpFrogNet = ({Component, pageProps, router }: AppProps) => {
     return (
         <>
+            <DefaultSeo {...SEO}/>
             <AnimatePresence exitBeforeEnter>
                 <Component {...pageProps} key={router.route} />
             </AnimatePresence>
