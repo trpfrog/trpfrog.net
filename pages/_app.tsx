@@ -6,8 +6,17 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
-const TrpFrogNet = ({Component, pageProps}: AppProps) => {
-    return <Component {...pageProps} />
+// Framer Motion
+import { AnimatePresence } from "framer-motion";
+
+const TrpFrogNet = ({Component, pageProps, router }: AppProps) => {
+    return (
+        <>
+            <AnimatePresence exitBeforeEnter>
+                <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+        </>
+    )
 }
 
 export default TrpFrogNet
