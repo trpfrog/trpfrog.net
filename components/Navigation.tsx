@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {useState} from "react";
 import { useRouter } from "next/router";
 
-const NAVIGATION_LINKS = [
+export const NAVIGATION_LINKS = [
     {
         link: '/',
         name: 'Home'
@@ -92,7 +92,7 @@ const Navigation = () => {
                 />
                 <aside id="side_menu" className={isOpened ? "menu-opened" : "menu-closed"}>
                     <div id="side_header"/>
-                    <div id="side_links">
+                    <div id="side_links" onClick={toggleMenu}>
                         {links}
                     </div>
                 </aside>
