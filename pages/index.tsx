@@ -12,6 +12,7 @@ import {BalloonBox} from './balloon';
 
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import {NextSeo} from "next-seo";
 
 
 type PageProps = {
@@ -30,6 +31,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
     return (
         <Layout>
+            <NextSeo
+                title={'つまみネット'}
+                description={'さかなになりたいね'}
+            />
             <div id={styles.top_page_grid}>
                 <Block id={styles.about_me_grid}>
                     <div id={styles.my_name}>
