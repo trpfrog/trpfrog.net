@@ -39,6 +39,8 @@
     );
 
     transform-origin: var(--center-x) var(--center-y);
+
+    filter: blur(5px);
 }
 
 #top-page-trpfrog {
