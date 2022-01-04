@@ -1,21 +1,14 @@
 :root {
     --trpfrog-animation-start-degree: 0rad;
     --anim-height: min(100vw, 400px);
-}
-
-// *ローカルな* CSS変数
-@mixin properties {
-    --icon-size: min(400px, 90vw);
-    --delta: 1000px;
+    --trpfrog-icon-size: min(400px, 90vw);
 }
 
 #top-page-animation {
     position: relative;
     display: block;
 
-    @include properties;
     height: var(--anim-height);
-
     background: linear-gradient(#0eaaff, #fff16c);
     border-top: 5px solid #54a60c;
     border-bottom: 2px solid #b8d381;
@@ -32,21 +25,14 @@
 }
 
 #top-page-animation-lines {
-    @include properties;
+    width: 100%;
+    height: 100%;
 
-    // 回転時に初期位置の外が切れてしまうため
-    // position: relative で外に十分大きな値だけずらしている
-    position: relative;
-    top: calc(-1 * var(--delta));
-    left: calc(-1 * var(--delta));
-
-    width: 5000px;
-    height: 5000px;
-
-    --center-x: calc(50vw + var(--delta));
-    --center-y: calc(var(--anim-height) - var(--icon-size) * 0.35 + var(--delta));
+    --center-x: calc(50vw);
+    --center-y: calc(var(--anim-height) - var(--trpfrog-icon-size) * 0.35);
 
     background: repeating-conic-gradient(
+        from var(--trpfrog-animation-start-degree)
         at var(--center-x) var(--center-y),
         transparent,
         transparent 12.5deg,
@@ -54,22 +40,17 @@
     );
 
     transform-origin: var(--center-x) var(--center-y);
-    animation-name: spin-wheel;
-    animation-duration: calc(60s);
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
 }
 
 #top-page-trpfrog {
     display: inline-block;
     background-image: url("/images/flat-trpfrog.gif");
 
-    @include properties;
-    background-size: var(--icon-size) var(--icon-size);
-    width: var(--icon-size);
-    height: var(--icon-size);
+    background-size: var(--trpfrog-icon-size) var(--trpfrog-icon-size);
+    width: var(--trpfrog-icon-size);
+    height: var(--trpfrog-icon-size);
 
     position: absolute;
-    left: calc(50% - (var(--icon-size) / 2));
+    left: calc(50% - (var(--trpfrog-icon-size) / 2));
     bottom: -50px;
 }
