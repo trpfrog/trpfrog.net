@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 
 const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
     return (
-        <Layout>
+        <Layout showTopPageAnimation={true}>
             <NextSeo
                 title={'つまみネット'}
                 description={'さかなになりたいね'}
@@ -65,6 +65,17 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                             />
                         </div>
                     </div>
+                </Block>
+
+                <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
+                    <p>
+                        つまみネットを Next.js で書き直しました！詳細は以下のリンクをご覧ください。
+                    </p>
+                    <p>
+                        <Link href={'/about-next'}>
+                            <a className="linkButton">next.つまみネットについて</a>
+                        </Link>
+                    </p>
                 </Block>
 
                 <Block title={'ストア'} h2icon={'otaku'} id={styles.sticker}>
@@ -173,13 +184,29 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                     </p>
                 </Block>
 
-                <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
+                <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
+                    <div className={styles.link_grid}>
+                        {myLinks.map(({ url, siteName, description }) => (
+                            <div key={siteName} className={styles.link_block}>
+                                <p style={{textAlign: "center"}}>
+                                    <Link href={url}>
+                                        <a className="linkButton">{siteName}</a>
+                                    </Link>
+                                </p>
+                                <p>
+                                    {description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <h2 className="hina">相互リンク</h2>
                     <p>
-                        つまみネットを Next.js で書き直しました！詳細は以下のリンクをご覧ください。
+                        移動しました！
                     </p>
                     <p>
-                        <Link href={'/about-next'}>
-                            <a className="linkButton">next.つまみネットについて</a>
+                        <Link href={'/links'}>
+                            <a className={'linkButton'}>相互リンク</a>
                         </Link>
                     </p>
                 </Block>
@@ -209,33 +236,6 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                             <span className={styles.blue} style={{fontSize: '2.8em'}}>1687</span>
                         </li>
                     </ul>
-                </Block>
-
-                <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
-                    <div className={styles.link_grid}>
-                        {myLinks.map(({ url, siteName, description }) => (
-                            <div key={siteName} className={styles.link_block}>
-                                <p style={{textAlign: "center"}}>
-                                    <Link href={url}>
-                                        <a className="linkButton">{siteName}</a>
-                                    </Link>
-                                </p>
-                                <p>
-                                    {description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <h2 className="hina">相互リンク</h2>
-                    <p>
-                        移動しました！
-                    </p>
-                    <p>
-                        <Link href={'/links'}>
-                            <a className={'linkButton'}>相互リンク</a>
-                        </Link>
-                    </p>
                 </Block>
 
                 <Block title={'特に意味のない鳥'} h2icon={'think'} id={styles.bird}>

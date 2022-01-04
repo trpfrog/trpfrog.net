@@ -31,10 +31,11 @@ body {
     background: #f9fff6;
     text-align: center;
     min-height: 100%;
-    grid-template-areas: "h" "n" "m" "f";
+    grid-template-areas: "h" "n" "a" "m" "f";
     grid-template-rows:
             var(--header-height)
             var(--navigation-height)
+            auto
             auto
             var(--footer-height);
     grid-template-columns: 1fr;
@@ -48,6 +49,10 @@ body {
 
 header {
     grid-area: h;
+}
+
+#top-page-animation {
+    grid-area: a;
 }
 
 main {

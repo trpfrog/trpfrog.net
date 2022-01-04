@@ -9,6 +9,7 @@ import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 
 import {motion} from "framer-motion";
+import TrpFrogAnimation from "./TrpFrogAnimation";
 
 const backToTop = () => {
     window.scrollTo({
@@ -18,10 +19,11 @@ const backToTop = () => {
 }
 
 type Props = {
+    showTopPageAnimation?: boolean
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-    children
+    children, showTopPageAnimation=false
 }) => {
 
     const router = useRouter();
@@ -61,6 +63,7 @@ const Layout: React.FunctionComponent<Props> = ({
             <body>
                 <Header/>
                 <Navigation/>
+                {showTopPageAnimation ? <TrpFrogAnimation/> : <></>}
                 <main>
                     <motion.div
                         initial={
