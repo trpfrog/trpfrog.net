@@ -19,11 +19,11 @@ const backToTop = () => {
 }
 
 type Props = {
-    showTopPageAnimation?: boolean
+    style: any;
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-    children, showTopPageAnimation=false
+    children, style
 }) => {
 
     const router = useRouter();
@@ -63,7 +63,6 @@ const Layout: React.FunctionComponent<Props> = ({
             <body>
                 <Header/>
                 <Navigation/>
-                {showTopPageAnimation ? <TrpFrogAnimation/> : <></>}
                 <main>
                     <motion.div
                         initial={
@@ -87,7 +86,7 @@ const Layout: React.FunctionComponent<Props> = ({
                             mass: 0.5
                         }}
                     >
-                        <div id="main_wrapper">
+                        <div id="main_wrapper" style={style}>
                             {children}
                         </div>
                     </motion.div>

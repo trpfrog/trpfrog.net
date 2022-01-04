@@ -2,7 +2,7 @@
 
 #top_page_grid {
     max-width: 1000px;
-    display: grid;
+    display: inline-grid;
     grid-template-areas:
             "about_me about_me about_me"
             "whats_new whats_new whats_new"

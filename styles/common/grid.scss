@@ -31,11 +31,10 @@ body {
     background: #f9fff6;
     text-align: center;
     min-height: 100%;
-    grid-template-areas: "h" "n" "a" "m" "f";
+    grid-template-areas: "h" "n" "m" "f";
     grid-template-rows:
             var(--header-height)
             var(--navigation-height)
-            auto
             auto
             var(--footer-height);
     grid-template-columns: 1fr;
@@ -51,22 +50,18 @@ header {
     grid-area: h;
 }
 
-#top-page-animation {
-    grid-area: a;
-}
-
 main {
     grid-area: m;
     line-height: 1.8;
     letter-spacing: 0.5px;
     padding: 0;
-    margin: var(--main-margin);
     max-height: 100%;
     text-align: center;
 }
 
-main #main_wrapper {
-    width: 100%;
+#main_wrapper {
+    width: calc(100% - 2 * var(--main-margin));
+    margin: var(--main-margin);
     max-width: 1000px;
     display: inline-grid;
     grid-gap: var(--main-margin);
@@ -81,6 +76,9 @@ main #main_wrapper {
     main {
         --main-margin: 12px;
         padding: 0;
+    }
+
+    #main_wrapper {
         margin: calc(var(--window-padding) * 0.7) 0 calc(var(--window-padding) * 0.7);
     }
 
