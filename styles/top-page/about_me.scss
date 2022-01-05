@@ -1,5 +1,5 @@
 #about_me_grid {
-    display: grid;
+    display: block;
     grid-template-areas:
         "about_me_name about_me_image"
         "about_me_text about_me_image";

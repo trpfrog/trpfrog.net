@@ -8,19 +8,13 @@
     position: relative;
     display: block;
 
+    --grad-begin: calc(var(--header-height) + var(--navigation-height));
+    --grad-end: calc(var(--grad-begin) + var(--anim-height));
+
     height: var(--anim-height);
     background: linear-gradient(#0eaaff, #fff16c);
-    border-bottom: 2px solid #b8d381;
-    overflow: hidden;
-}
 
-@keyframes spin-wheel {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    overflow: hidden;
 }
 
 #top-page-animation-lines {
@@ -31,27 +25,39 @@
     --center-y: calc(var(--anim-height) - var(--trpfrog-icon-size) * 0.35);
 
     background: repeating-conic-gradient(
-        from var(--trpfrog-animation-start-degree)
-        at var(--center-x) var(--center-y),
-        transparent,
-        transparent 12.5deg,
-        rgba(255, 255, 255, 0.75) 12.5deg 30deg
+                    from var(--trpfrog-animation-start-degree)
+                    at var(--center-x) var(--center-y),
+                    transparent,
+                    transparent 12.5deg,
+                    rgba(255, 255, 255, 0.75) 12.5deg 30deg
     );
 
     transform-origin: var(--center-x) var(--center-y);
-
-    filter: blur(5px);
+    filter: blur(4px);
 }
 
 #top-page-trpfrog {
     display: inline-block;
-    background-image: url("/images/flat-trpfrog.gif");
-
-    background-size: var(--trpfrog-icon-size) var(--trpfrog-icon-size);
     width: var(--trpfrog-icon-size);
     height: var(--trpfrog-icon-size);
+    background: no-repeat url("/images/flat-trpfrog.svg");
 
+    background-size: var(--trpfrog-icon-size) var(--trpfrog-icon-size);
     position: absolute;
     left: calc(50% - (var(--trpfrog-icon-size) / 2));
     bottom: -50px;
+}
+
+#top-page-animation-name {
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: calc(100vw / 7 * 1.4);
+    font-weight: bold;
+    color: white;
 }

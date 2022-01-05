@@ -9,7 +9,6 @@ import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 
 import {motion} from "framer-motion";
-import TrpFrogAnimation from "./TrpFrogAnimation";
 
 const backToTop = () => {
     window.scrollTo({

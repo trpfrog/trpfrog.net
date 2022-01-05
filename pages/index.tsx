@@ -14,6 +14,7 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import {NextSeo} from "next-seo";
 import {motion} from "framer-motion";
+import TrpFrogAnimation from "../components/TrpFrogAnimation";
 
 
 type PageProps = {
@@ -37,15 +38,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                 description={'さかなになりたいね'}
             />
 
-            <div id={'top-page-animation'}>
-                <motion.div
-                    id={'top-page-animation-lines'}
-                    initial={{ '--trpfrog-animation-start-degree': '0deg' } as any}
-                    animate={{ '--trpfrog-animation-start-degree': '360deg' } as any}
-                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                />
-                <div id={'top-page-trpfrog'}/>
-            </div>
+            <TrpFrogAnimation />
 
             <div> {/* wrapper */}
                 <div id={styles.top_page_grid}>
@@ -53,31 +46,16 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                         <div id={styles.my_name}>
                             <p>つまみ</p>
                         </div>
-                        <div id={styles.about_me_text}>
-                            <p>
-                                電気通信大学の大学生。東京都(23区ではない方)出身。
-                            </p>
-                            <p>
-                                コンピュータ(レイヤー高め)で遊ぶのが好き。競技プログラミング(C++)をしたり、
-                                なんか<a href="https://github.com/TrpFrog">いろいろ</a>作ったりしている。
-                            </p>
-                            <p>
-                                最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
-                            </p>
-                        </div>
-                        <div id={styles.about_me_image}>
-                            <div id={styles.profile_image_wrapper}>
-                                <Image
-                                    id={styles.profile_image}
-                                    src={'trpfrogvector'}
-                                    width={'400'}
-                                    height={'400'}
-                                    layout={'responsive'}
-                                    // objectFit={'cover'}
-                                    alt={'つまみさんのアイコン'}
-                                />
-                            </div>
-                        </div>
+                        <p>
+                            電気通信大学の大学生。東京都(23区ではない方)出身。
+                        </p>
+                        <p>
+                            コンピュータ(レイヤー高め)で遊ぶのが好き。競技プログラミング(C++)をしたり、
+                            なんか<a href="https://github.com/TrpFrog">いろいろ</a>作ったりしている。
+                        </p>
+                        <p>
+                            最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
+                        </p>
                     </Block>
 
                     <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
