@@ -18,7 +18,7 @@ const backToTop = () => {
 }
 
 type Props = {
-    style: any;
+    style?: any;
 }
 
 const Layout: React.FunctionComponent<Props> = ({
