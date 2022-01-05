@@ -41,35 +41,41 @@ header {
     display: flex;
 
     align-items: center;
+    justify-content: space-between;
+
     max-width: 980px;
     margin: 0 auto;
     padding: 0 4em;
-    justify-content: space-between;
+    height: var(--header-height);
+    overflow: hidden;
 
     h1 {
+        position: relative;
+        top: 2px;
+        left: 4px;
+
         text-align: left;
         display: inline-block;
         color: #ffffff;
         font-family: 'M PLUS Rounded 1c', sans-serif;
         font-weight: bold;
-        margin: 4px 0;
+        margin: 1em 0;
     }
+}
 
-    h1:before {
-        content: '';
-        display: inline-block;
-        background-image: url('../../public/images/flat-trpfrog.gif');
-        background-size: contain;
-        background-repeat: no-repeat;
-        vertical-align: middle;
-        margin-right: 0.3em;
+#header-title-image {
+    content: '';
+    display: inline-block;
+    background-image: url('../../public/images/flat-trpfrog.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 0.3em;
 
-        position: relative;
-        width: 80px;
-        height: 80px;
-        left: 0px;
-        bottom: -5px;
-    }
+    position: relative;
+    width: 80px;
+    height: 80px;
+    bottom: -1px;
 }
 
 #tweet_search {
@@ -119,6 +125,8 @@ header {
 
 
 #header-wrapper nav {
+    position: relative;
+    top: 3px;
     text-align: right;
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
@@ -186,20 +194,20 @@ nav li + li {
             text-align: center;
             grid-area: page_title;
             font-size: 1.5em;
-            margin-left: 3.1em;
-            margin-top: 0.3em;
+            margin-left: 2.9em;
         }
 
         h1:after {
             display: none;
         }
 
-        h1:before {
-            position: absolute;
-            width: 57px;
-            height: 57px;
-            left: 10px;
-            bottom: -7px;
-        }
+    }
+
+    #header-title-image {
+        position: absolute;
+        width: 57px;
+        height: 57px;
+        left: 12px;
+        margin-bottom: -5px
     }
 }
