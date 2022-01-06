@@ -35,7 +35,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
     const mainWrapperStyle = {
         display: 'block',
         maxWidth: '100000px',
-        margin: '0 0 2em 0',
+        margin: '0',
         width: '100%',
         textAlign: 'center'
     }

@@ -5,11 +5,13 @@
     position: relative;
     top: calc(-1 * var(--anim-height));
     padding-top: 2em;
+    margin: auto 2em;
 }
 
 @media screen and (max-width: 800px) {
     #top_page_grid_wrapper {
         padding-top: 8px;
+        margin: 0;
     }
 }
 
