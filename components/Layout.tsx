@@ -59,7 +59,7 @@ const Layout: React.FunctionComponent<Props> = ({
 
     return (
         <>
-            <body>
+            <div id={'inner-body'}>
                 <Header/>
                 <Navigation/>
                 <main>
@@ -96,7 +96,7 @@ const Layout: React.FunctionComponent<Props> = ({
                     </span>
                 </div>
                 <Footer/>
-            </body>
+            </div>
         </>
     );
 }
