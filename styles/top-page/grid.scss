@@ -1,5 +1,18 @@
 // Grid definition
 
+#top_page_grid_wrapper {
+    background: var(--body-background);
+    position: relative;
+    top: calc(-1 * var(--anim-height));
+    padding-top: 2em;
+}
+
+@media screen and (max-width: 800px) {
+    #top_page_grid_wrapper {
+        padding-top: 8px;
+    }
+}
+
 #top_page_grid {
     max-width: 1000px;
     display: inline-grid;

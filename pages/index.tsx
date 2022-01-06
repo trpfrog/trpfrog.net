@@ -31,8 +31,17 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 }
 
 const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
+
+    const mainWrapperStyle = {
+        display: 'block',
+        maxWidth: '100000px',
+        margin: '0 0 2em 0',
+        width: '100%',
+        textAlign: 'center'
+    }
+
     return (
-        <Layout style={{maxWidth: '100000px', margin: '0 0 2em 0', width: '100%', textAlign: 'center'}}>
+        <Layout style={mainWrapperStyle}>
             <NextSeo
                 title={'つまみネット'}
                 description={'さかなになりたいね'}
@@ -40,7 +49,16 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
 
             <TrpFrogAnimation />
 
-            <div> {/* wrapper */}
+            <motion.div
+                id={styles.top_page_grid_wrapper}
+                animate={{
+                    top: 0,
+                }}
+                transition={{
+                    delay: 0.4,
+                    duration: 1
+                }}
+            >
                 <div id={styles.top_page_grid}>
                     <Block id={styles.about_me_grid}>
                         <div id={styles.my_name}>
@@ -257,7 +275,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                         </div>
                     </Block>
                 </div>
-            </div>
+            </motion.div>
         </Layout>
     )
 }

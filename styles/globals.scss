@@ -12,11 +12,13 @@
 
 :root {
     --h3-marker-color: #90e200;
+    --body-background: rgb(192, 225, 121);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --h3-marker-color: #4e8018;
+        --body-background: rgb(40, 47, 16);
     }
 }
 
@@ -29,12 +31,11 @@ body {
 }
 
 body {
-    background: rgb(192, 225, 121);
+    background: var(--body-background);
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        background: rgb(40, 47, 16);
         color: white;
     }
 }

@@ -9,6 +9,7 @@ const TrpFrogAnimation = () => {
                     id={'top-page-animation-name'}
                     initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 0, opacity: 0.7 }}
+                    transition={{ delay: 1.2, duration: 1 }}
                 >Welcome!</motion.div>
                 <motion.div
                     id={'top-page-animation-lines'}
