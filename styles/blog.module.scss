@@ -113,3 +113,14 @@
         }
     }
 }
+
+.inline_code_block {
+    background-color: #313131 !important;
+    font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace;
+    color: white;
+    padding: 0 4px;
+    font-size: 0.8em;
+    display: inline-block;
+    border-radius: 5px;
+    vertical-align: 5%;
+}

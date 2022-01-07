@@ -1,6 +1,5 @@
 import React from 'react'
 import {NextPage} from "next";
-import {Entry} from 'contentful'
 import Link from 'next/link'
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";

@@ -23,6 +23,7 @@
     "react-markdown": "^7.1.1",
     "react-syntax-highlighter": "^15.4.5",
     "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "remark-unwrap-images": "^3.0.1",
     "use-sound": "^4.0.1"
