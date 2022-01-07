@@ -1,11 +1,13 @@
 :root {
-    --window-padding: 40px;
+    --window-padding-top-bottom: 40px;
+    --window-padding-left-right: 40px;
     --window-bottom-color: #9cc535;
 }
 
 @media screen and (max-width: 800px) {
     :root {
-        --window-padding: 20px;
+        --window-padding-top-bottom: 18px;
+        --window-padding-left-right: 12px;
     }
 }
 
@@ -18,7 +20,7 @@
 .main-window {
     position: relative;
     background-color: var(--window-bkg-color);
-    padding: var(--window-padding);
+    padding: var(--window-padding-top-bottom) var(--window-padding-left-right);
     border-radius: 33px;
     text-align: left;
     box-shadow: 0 6px 0 var(--window-bottom-color);

@@ -80,7 +80,10 @@ main {
 
     #main_wrapper {
         width: 100%;
-        margin: calc(var(--window-padding) * 0.7) 0 calc(var(--window-padding) * 0.7);
+        margin:
+                calc(var(--window-padding-top-bottom) * 0.7)
+                0
+                calc(var(--window-padding-top-bottom) * 0.7);
     }
 
     #wide-nav {

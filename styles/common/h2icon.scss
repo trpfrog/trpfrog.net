@@ -20,6 +20,10 @@ main h2:before {
     margin-right: 5px;
 }
 
+h2:before {
+    background-image: url('../../public/images/icons/trpfrog.webp');
+}
+
 h2.trpfrog:before {
     background-image: url('../../public/images/icons/trpfrog.webp');
 }
