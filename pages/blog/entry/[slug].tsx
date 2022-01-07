@@ -41,6 +41,14 @@ export const getStaticPaths = async () => {
     }
 }
 
+const share = () => {
+    if(!process.browser) return;
+    const url =  'https://twitter.com/intent/tweet?'
+                + "text=" + encodeURIComponent(document.title) + "&"
+                + "url=" + location.href;
+    window.open(url);
+}
+
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
     return (
@@ -65,9 +73,9 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     <Link href={'/blog'}>
                         <a>記事一覧</a>
                     </Link>
-                    <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+                    <span onClick={share}>
                         <a>ツイート</a>
-                    </Link>
+                    </span>
                     <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                         <a>訂正リクエスト</a>
                     </Link>
