@@ -4,6 +4,11 @@
     grid-gap: var(--main-margin);
 }
 
+.article_block {
+    box-sizing: border-box;
+    height: 100%;
+}
+
 .post {
 
     h2 {

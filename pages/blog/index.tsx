@@ -61,17 +61,17 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 <div id={styles.past_article_grid}>
                     {pastArticles.map(entry => (
                         <div key={entry.slug}>
-                            <Block title={entry.title} h2icon={'none'}>
+                            <Block className={styles.article_block}>
+                                <h2 className={'none'}>
+                                    <Link href={'/blog/entry/' + entry.slug}>
+                                        <a>{entry.title}</a>
+                                    </Link>
+                                </h2>
                                 <p>
                                     {entry.description}
                                 </p>
                                 <p>
                                     {entry.date}
-                                </p>
-                                <p>
-                                    <Link href={'/blog/entry/' + entry.slug}>
-                                        <a className={'linkButton'}>記事を読む</a>
-                                    </Link>
                                 </p>
                             </Block>
                         </div>
