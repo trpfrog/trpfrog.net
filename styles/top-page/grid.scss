@@ -4,14 +4,13 @@
     background: var(--body-background);
     position: relative;
     top: calc(-1 * var(--anim-height));
-    padding-top: 2em;
-    margin: auto 2em;
+    padding: 2em;
+    margin: 0;
 }
 
 @media screen and (max-width: 800px) {
     #top_page_grid_wrapper {
-        padding-top: 8px;
-        margin: 0;
+        padding: 8px 0 0;
     }
 }
 
