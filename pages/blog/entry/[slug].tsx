@@ -11,6 +11,7 @@ import {BlogPost, getAllPostSlugs, getPostData, getAllImageSize, BlogImageSize} 
 import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import styles from '../../../styles/blog.module.scss'
+import {format, parseISO} from "date-fns";
 
 type PageProps = {
     entry: BlogPost
@@ -46,7 +47,9 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         <Layout>
             <Title title={entry.title} description={entry.description}>
                 <p>
-                    {entry.date}
+                    <time dateTime={entry.date}>
+                        {format(parseISO(entry.date), 'LLLL d, yyyy')}
+                    </time>
                 </p>
                 <p>
                     <Link href={'/blog'}>

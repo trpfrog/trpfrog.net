@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "better-react-mathjax": "^1.0.3",
     "contentful": "^9.1.5",
+    "date-fns": "^2.28.0",
     "framer-motion": "^5.5.5",
     "gray-matter": "^4.0.3",
     "next": "12.0.7",

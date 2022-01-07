@@ -9,6 +9,8 @@ import {getSortedPostsData, BlogPost, getAllPostSlugs} from "../../lib/blog";
 import styles from '../../styles/blog.module.scss';
 import {NextSeo} from "next-seo";
 
+import {parseISO, format} from 'date-fns'
+
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
     return {
@@ -43,17 +45,19 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 </Title>
                 <NextSeo title={'つまみログ'} description={'つまみさんのブログです。'}/>
 
-                <Block title={latestArticle.title} h2icon={'none'} ribbonText={'NEW!'}>
+                <Block>
+                    <h2 className={'none'}>
+                        <Link href={'/blog/entry/' + latestArticle.slug}>
+                            <a>{latestArticle.title}</a>
+                        </Link>
+                    </h2>
                     <p>
                         {latestArticle.description}
                     </p>
                     <p>
-                        {latestArticle.date}
-                    </p>
-                    <p>
-                        <Link href={'/blog/entry/' + latestArticle.slug}>
-                            <a className={'linkButton'}>記事を読む</a>
-                        </Link>
+                        <time dateTime={latestArticle.date}>
+                            {format(parseISO(latestArticle.date), 'LLLL d, yyyy')}
+                        </time>
                     </p>
                 </Block>
 
@@ -70,7 +74,9 @@ const Blog: NextPage<Props> = ({ articles }) => {
                                     {entry.description}
                                 </p>
                                 <p>
-                                    {entry.date}
+                                    <time dateTime={entry.date}>
+                                        {format(parseISO(entry.date), 'LLLL d, yyyy')}
+                                    </time>
                                 </p>
                             </Block>
                         </div>
