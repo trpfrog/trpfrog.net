@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from "gray-matter";
+import React from "react";
+import {getPureCloudinaryPath} from "../components/BlogMarkdown";
 
 export type BlogPost = {
     title: string
@@ -12,6 +14,39 @@ export type BlogPost = {
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
+
+export type BlogImageSize = {width: number, height: number};
+
+const getImageSize = async (src: string) => {
+    const path = getPureCloudinaryPath(src);
+    const api = 'https://res.cloudinary.com/trpfrog/fl_getinfo' + path;
+    return fetch(api)
+        .then(response => response.json())
+        .then(data => {
+            return {
+                width: parseInt(data.input.width) ?? 800,
+                height: parseInt(data.input.height) ?? 600
+            }
+        });
+}
+
+export const getAllImageSize = async (markdown: string) => {
+    const dict = {} as { [path: string]: BlogImageSize }
+    const regex = new RegExp('^!\\[.*\]\\(')
+
+    const imagePaths = markdown
+        .split('\n')
+        .filter(line => regex.test(line))
+        .map(line => line.replace(regex, '').replace(')', '').split(' ')[0])
+        .map(src => getPureCloudinaryPath(src))
+        .concat()
+
+    for await (const path of imagePaths) {
+        dict[path] = await getImageSize(path);
+    }
+
+    return dict;
+}
 
 export const getPostData = async (slug: string) => {
     const fullPath = path.join(postsDirectory, `${slug}.md`)

@@ -7,13 +7,14 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 
-import {BlogPost, getAllPostSlugs, getPostData} from "../../../lib/blog";
+import {BlogPost, getAllPostSlugs, getPostData, getAllImageSize, BlogImageSize} from "../../../lib/blog";
 import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import styles from '../../../styles/blog.module.scss'
 
 type PageProps = {
     entry: BlogPost
+    imageSize: { [path: string]: BlogImageSize }
 }
 
 type Params = {
@@ -22,9 +23,13 @@ type Params = {
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
     const entry = await getPostData(params!.slug)
+    console.log('start')
+    const imageSize = await getAllImageSize(entry.content);
+    console.log('end')
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
+            imageSize
         }
     }
 }
@@ -37,7 +42,7 @@ export const getStaticPaths = async () => {
     }
 }
 
-const Article: NextPage<PageProps> = ({ entry }) => {
+const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
     return (
         <Layout>
@@ -52,7 +57,7 @@ const Article: NextPage<PageProps> = ({ entry }) => {
                 </p>
             </Title>
             <Block>
-                <BlogMarkdown markdown={entry.content}/>
+                <BlogMarkdown markdown={entry.content} imageSize={imageSize}/>
             </Block>
             <Block style={{background: 'none', boxShadow: 'none', padding: 0}}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>

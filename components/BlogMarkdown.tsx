@@ -7,6 +7,7 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import {BlogImageSize} from "../lib/blog";
 
 type codeProps = {
     className: string
@@ -62,50 +63,39 @@ type ImageProps = {
     children: any
 }
 
-const getPureCloudinaryPath = (path: string) => {
+export const getPureCloudinaryPath = (path: string) => {
     const cloudinaryUrl = 'https:\/\/res.cloudinary.com\/trpfrog'
     const regex1 = new RegExp(cloudinaryUrl + '/image/upload/v[0-9]+')
     const regex2 = new RegExp(cloudinaryUrl + '/image/upload')
-    return path
+    return (path ?? '')
         .replace(regex1, '')
         .replace(regex2, '')
         .replace(`/^${cloudinaryUrl}/`, '')
 }
 
-const formatImgComponent = ({src, alt}: any) => {
-    let srcPath = getPureCloudinaryPath(src);
-
+const formatImgComponent = ({src, alt}: any, imageSize: { [path: string]: BlogImageSize }) => {
+    const srcPath = getPureCloudinaryPath(src);
     return (
-        <div
-            style={{
-                display: 'flex',
-                position: 'relative',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '16em',
-                marginBottom: '1.75em',
-            }}
-        >
-            <Image
-                src={srcPath}
-                alt={alt || src}
-                className={'rich_image'}
-                layout="fill"
-                objectFit="contain"
-            />
-        </div>
+        <Image
+            src={srcPath}
+            alt={alt || src}
+            className={'rich_image'}
+            width={imageSize[srcPath]?.width ?? 800}
+            height={imageSize[srcPath]?.height ?? 600}
+            objectFit="contain"
+        />
     )
 }
 
 type Props = {
     markdown: string
+    imageSize: { [path: string]: BlogImageSize }
 }
 
-const BlogMarkdown: React.FunctionComponent<Props> = ({markdown, children}) => {
+const BlogMarkdown: React.FunctionComponent<Props> = ({markdown, imageSize, children}) => {
     const markdownComponents = {
         code: formatCodeComponent,
-        img: formatImgComponent
+        img: (props: any) => formatImgComponent(props, imageSize)
     };
 
     const mathjaxConfig = {
