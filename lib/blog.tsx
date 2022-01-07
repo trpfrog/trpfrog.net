@@ -18,15 +18,12 @@ export const getPostData = async (slug: string) => {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
     const content = matterResult.content
-
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim())
-    const date = matterResult.data.date.toString()
 
     return {
         slug,
         content,
         tags,
-        date,
         ...matterResult.data
     } as BlogPost
 }
