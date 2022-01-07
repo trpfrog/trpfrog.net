@@ -1,4 +1,4 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 
 type Props = {
     title?: string
@@ -6,10 +6,12 @@ type Props = {
     id?: string
     newRibbon?: boolean
     ribbonText?: string
+    className?: string
+    style?: CSSProperties | undefined
 }
 
 const Block: React.FunctionComponent<Props> = ({
-    children, title, h2icon='trpfrog', id='', newRibbon=false, ribbonText=''
+    children, title, h2icon='trpfrog', id='', newRibbon=false, ribbonText='', style, className=''
 }) => {
     let h2 = <></>;
     if (title !== undefined) {
@@ -24,7 +26,7 @@ const Block: React.FunctionComponent<Props> = ({
     }
 
     return (
-        <div className={"main-window"} id={id}>
+        <div className={`main-window ${className}`} id={id} style={style}>
             {ribbon}
             {h2}
             {children}
