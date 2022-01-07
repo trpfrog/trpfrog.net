@@ -8,12 +8,16 @@ export const NAVIGATION_LINKS = [
         name: 'Home'
     },
     {
-        link: '/balloon',
-        name: 'Balloons'
-    },
-    {
         link: '/works',
         name: 'Works'
+    },
+    {
+        link: '/blog',
+        name: 'Blog'
+    },
+    {
+        link: '/balloon',
+        name: 'Balloons'
     },
     {
         link: '/environment',
