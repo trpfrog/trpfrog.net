@@ -1,0 +1,110 @@
+#past_article_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    grid-gap: var(--main-margin);
+}
+
+.post {
+
+    h2 {
+        display: block;
+        margin-top: 2em !important;
+    }
+
+    #main_wrapper {
+        max-width: 1000px;
+        font-size: 1.1em;
+    }
+
+    h2.trpfrog::before {
+        background-image: none;
+        width: 0;
+        margin-right: 0;
+    }
+
+    main {
+        word-break: break-word;
+    }
+
+    img {
+        max-height: 600px;
+        border-radius: 15px;
+        max-width: 80%;
+        margin: 1em auto;
+    }
+
+    blockquote {
+        background: #90e20033;
+        padding: 10px 2em;
+        border-radius: 15px;
+        font-style: italic;
+    }
+
+    @media screen and (max-width:800px) {
+        .main_window img {
+            border-radius: 10px;
+            max-width: 100%;
+            margin: 0.5em auto;
+        }
+
+        blockquote {
+            padding: 5px 1em;
+            margin: 0.5em auto;
+        }
+    }
+
+
+    h2::before {
+        background-image: none !important;
+        width: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    code {
+        font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace !important;
+    }
+
+    .code_block {
+        color: white;
+        padding: 1em 1.5em !important;
+        vertical-align: 5%;
+        overflow: scroll;
+        border-radius: 10px;
+    }
+
+    .code_block_with_lang {
+        margin-top: -1px;
+        border-radius: 0 0 10px 10px;
+        padding: 0.5em 1.5em 1em 1.5em !important;
+    }
+
+    .code_lang_wrapper {
+        border-radius: 10px 10px 0 0 ;
+        background: #23241f;
+        margin-bottom: -1px;
+    }
+
+    .code_lang {
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        margin-left: 1.5em;
+        padding: 3px 8px;
+
+        position: relative;
+
+        background: var(--header-color);
+        border-radius: 0 0 10px 10px;
+        width: auto;
+    }
+
+    @media screen and (max-width: 800px) {
+        .code_block {
+            padding: 10px !important;
+        }
+        .code_lang {
+            border-radius: 10px 0 10px 0;
+            margin-left: 0;
+        }
+    }
+}
