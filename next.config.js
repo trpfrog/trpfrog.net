@@ -18,9 +18,14 @@ module.exports = {
                 permanent: true
             },
             {
+                source: '/notes',
+                destination: '/blog',
+                permanent: true
+            },
+            {
                 source: '/notes/:path*',
-                destination: 'https://old.trpfrog.net/notes/:path*',
-                permanent: false
+                destination: '/blog/entry/:path*',
+                permanent: true
             }
         ]
     }
