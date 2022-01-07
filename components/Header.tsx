@@ -107,12 +107,12 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/notes">
-                                <a className="headerButton">notes</a>
+                            <Link href="/works">
+                                <a className="headerButton">works</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://trpfrog.hateblo.jp">
+                            <Link href="/blog">
                                 <a className="headerButton">blog</a>
                             </Link>
                         </li>
