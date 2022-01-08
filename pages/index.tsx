@@ -51,9 +51,8 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
 
             <motion.div
                 id={styles.top_page_grid_wrapper}
-                animate={{
-                    top: 0,
-                }}
+                initial={{ y: 'calc(-1 * var(--anim-height))' }}
+                animate={{ y: 0 }}
                 transition={{
                     delay: 0.4,
                     duration: 1
