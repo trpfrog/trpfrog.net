@@ -12,7 +12,7 @@ import {NextSeo} from "next-seo";
 import {parseISO, format} from 'date-fns'
 import {TagsBlock} from "../../lib/blogTag";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarDay, faStar, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -48,9 +48,9 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 </Title>
                 <NextSeo title={'つまみログ'} description={'つまみさんのブログです。'}/>
 
-                <p style={{textAlign: 'center'}}>
-                    LATEST TOPIC
-                </p>
+                <div className={styles.hrule_block}>
+                    <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
+                </div>
 
                 <Block>
                     <h2 className={'none'}>
@@ -59,19 +59,30 @@ const Blog: NextPage<Props> = ({ articles }) => {
                         </Link>
                     </h2>
                     <p>
-                        {latestArticle.description}
-                    </p>
-                    <TagsBlock tags={latestArticle.tags}/>
-                    <p>
+                        <FontAwesomeIcon icon={faCalendarDay}/>{' '}
                         <time dateTime={latestArticle.date}>
                             {format(parseISO(latestArticle.date), 'LLLL d, yyyy')}
                         </time>
+                        {
+                            (latestArticle.updated && latestArticle.date != latestArticle.updated) &&
+                            <>
+                                <br/>
+                                <FontAwesomeIcon icon={faSyncAlt}/>{' '}
+                                <time dateTime={latestArticle.updated}>
+                                    {format(parseISO(latestArticle.updated), 'LLLL d, yyyy')}
+                                </time>
+                            </>
+                        }
                     </p>
+                    <p>
+                        {latestArticle.description}
+                    </p>
+                    <TagsBlock tags={latestArticle.tags}/>
                 </Block>
 
-                <p style={{textAlign: 'center'}}>
-                    BACK NUMBER
-                </p>
+                <div className={styles.hrule_block}>
+                    <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
+                </div>
 
                 <div id={styles.past_article_grid}>
                     {pastArticles.map(entry => (
