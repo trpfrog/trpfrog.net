@@ -49,12 +49,15 @@ export const getAllImageSize = async (markdown: string) => {
     return dict;
 }
 
-export const getPostData = async (slug: string) => {
+const getFileContents = (slug: string) => {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents =
-        fs.existsSync(fullPath)
+    return fs.existsSync(fullPath)
             ? fs.readFileSync(fullPath, 'utf8')
             : fs.readFileSync(fullPath + 'x', 'utf8')
+}
+
+export const getPostData = async (slug: string) => {
+    const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
     const content = matterResult.content
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
@@ -74,12 +77,7 @@ export const getSortedPostsData = async () => {
             .replace(/\.mdx$/, '')
             .replace(/\.md$/, '')
 
-        const fullPath = path.join(postsDirectory, `${slug}.md`);
-        const fileContents =
-            fs.existsSync(fullPath)
-                ? fs.readFileSync(fullPath, 'utf8')
-                : fs.readFileSync(fullPath + 'x', 'utf8')
-
+        const fileContents = getFileContents(slug)
         const matterResult = matter(fileContents)
 
         return {
