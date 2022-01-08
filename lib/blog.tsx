@@ -70,21 +70,24 @@ export const getPostData = async (slug: string) => {
     } as BlogPost
 }
 
-export const getSortedPostsData = async () => {
+export const getSortedPostsData = async (tag:string = '') => {
     const fileNames = fs.readdirSync(postsDirectory)
-    const allPostsData = fileNames.map(fileName => {
-        const slug = fileName
-            .replace(/\.mdx$/, '')
-            .replace(/\.md$/, '')
-
-        const fileContents = getFileContents(slug)
-        const matterResult = matter(fileContents)
-
-        return {
-            slug,
-            ...matterResult.data
-        } as BlogPost
-    })
+    const allPostsData = fileNames
+        .map(fileName => {
+            const slug = fileName
+                .replace(/\.mdx$/, '')
+                .replace(/\.md$/, '')
+            const fileContents = getFileContents(slug)
+            return {matterResult: matter(fileContents), slug}
+        })
+        .filter(({matterResult}) => (tag == '') || matterResult.data.tags.search(tag) != -1)
+        .map(({matterResult, slug}) => {
+            return {
+                slug,
+                ...matterResult.data
+            } as BlogPost
+        }
+    )
 
     return allPostsData.sort(({ date: a }, { date: b }) => {
         if (a < b) {
@@ -106,6 +109,27 @@ export const getAllPostSlugs = async () => {
                 slug: fileName
                     .replace(/\.mdx$/, '')
                     .replace(/\.md$/, '')
+            }
+        }
+    })
+}
+
+export const getAllTags = async() => {
+    const fileNames = fs.readdirSync(postsDirectory)
+    const nested = fileNames
+        .map(fileName => fileName
+            .replace(/\.mdx$/, '')
+            .replace(/\.md$/, ''))
+        .map(slug => getFileContents(slug))
+        .map(contents => matter(contents).data.tags as string)
+        .map(tags => tags.split(',').map(tag => tag.trim()))
+        .flat()
+    const tags = [... new Set(nested)]
+
+    return tags.map(tag => {
+        return {
+            params: {
+                tag
             }
         }
     })

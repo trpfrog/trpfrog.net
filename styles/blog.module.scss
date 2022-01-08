@@ -166,6 +166,9 @@
     border: solid 2px #90e200;
     background: white;
 
+    color: black !important;
+    text-decoration: none;
+
     padding: 2px;
     border-radius: 1000px;
 
@@ -177,7 +180,12 @@
 
     @media screen and (prefers-color-scheme: dark) {
         background: #172c00;
+        color: black !important;
     }
+}
+
+.tag_block:hover {
+    background: #90e20033;
 }
 
 .tag_name {
