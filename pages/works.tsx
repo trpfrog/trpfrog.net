@@ -1,5 +1,4 @@
 import type {NextPage} from 'next'
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
@@ -40,7 +39,6 @@ const Works: NextPage = () => {
                         src={'works/otaku-discord'}
                         width={3110}
                         height={1721}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Otaku Discord の画像'}
                     />
@@ -90,7 +88,6 @@ const Works: NextPage = () => {
                         src={'works/clover-bridge'}
                         width={800}
                         height={628}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Clover Bridge の画像'}
                     />
@@ -126,7 +123,6 @@ const Works: NextPage = () => {
                         src={'works/timetable-page'}
                         width={1396}
                         height={1094}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Timetable Page の画像'}
                     />
@@ -171,7 +167,6 @@ const Works: NextPage = () => {
                         src={'works/elements-learning'}
                         width={1241}
                         height={1020}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Timetable Page の画像'}
                     />
@@ -212,7 +207,6 @@ const Works: NextPage = () => {
                         src={'works/space-wandering'}
                         width={2776}
                         height={1958}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Space Wandering の画像'}
                     />
@@ -260,7 +254,6 @@ const Works: NextPage = () => {
                         src={'works/twitter-screen'}
                         width={1200}
                         height={670}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Twitter Screen の画像'}
                     />
@@ -296,7 +289,6 @@ const Works: NextPage = () => {
                         src={'works/trpfrog-net-3rd'}
                         width={2324}
                         height={1794}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'つまみネット3代目の画像'}
                     />
@@ -329,12 +321,11 @@ const Works: NextPage = () => {
             </Block>
 
             <Block title={'Cookie Animation'}>
-                <div className={styles.hero_image} style={{maxHeight: '300px', maxWidth: '200px'}}>
+                <div className={styles.hero_image}>
                     <Image
                         src={'works/cookie-animation'}
                         width={200}
                         height={300}
-                        layout={'responsive'}
                         objectFit={'cover'}
                         alt={'Cookie Animationの画像'}
                     />
@@ -375,9 +366,8 @@ const Works: NextPage = () => {
                 <div className={styles.hero_image}>
                     <Image
                         src={'works/trpfrog-net-2nd'}
-                        width={2342}
-                        height={2766}
-                        layout={'responsive'}
+                        width={702}
+                        height={830}
                         objectFit={'cover'}
                         alt={'つまみネット2代目の画像'}
                     />
@@ -410,9 +400,8 @@ const Works: NextPage = () => {
                 <div className={styles.hero_image}>
                     <Image
                         src={'works/trpfrog-net-1st'}
-                        width={1736}
-                        height={2022}
-                        layout={'responsive'}
+                        width={587}
+                        height={674}
                         objectFit={'cover'}
                         alt={'つまみさんのHPの画像'}
                     />

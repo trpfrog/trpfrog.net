@@ -16,7 +16,12 @@
 
 .hero_image {
     position: relative;
-    border-radius: 10px;
     overflow: hidden;
     margin-top: 20px;
+    text-align: center;
+    width: 100%;
+
+    img {
+        border-radius: 10px;
+    }
 }
