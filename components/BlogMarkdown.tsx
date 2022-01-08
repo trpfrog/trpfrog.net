@@ -82,14 +82,16 @@ export const getPureCloudinaryPath = (path: string) => {
 const formatImgComponent = ({src, alt}: any, imageSize: { [path: string]: BlogImageSize }) => {
     const srcPath = getPureCloudinaryPath(src);
     return (
-        <Image
-            src={srcPath}
-            alt={alt || src}
-            className={'rich_image'}
-            width={imageSize[srcPath]?.width ?? 800}
-            height={imageSize[srcPath]?.height ?? 600}
-            objectFit="contain"
-        />
+        <div style={{textAlign: 'center'}}>
+            <Image
+                src={srcPath}
+                alt={alt || src}
+                className={'rich_image'}
+                width={imageSize[srcPath]?.width ?? 800}
+                height={imageSize[srcPath]?.height ?? 600}
+                objectFit="contain"
+            />
+        </div>
     )
 }
 
