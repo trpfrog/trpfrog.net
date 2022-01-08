@@ -11,6 +11,8 @@ import {NextSeo} from "next-seo";
 
 import {parseISO, format} from 'date-fns'
 import {TagsBlock} from "../../lib/blogTag";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendarDay, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -81,14 +83,25 @@ const Blog: NextPage<Props> = ({ articles }) => {
                                     </Link>
                                 </h2>
                                 <p>
-                                    {entry.description}
-                                </p>
-                                <TagsBlock tags={entry.tags}/>
-                                <p>
+                                    <FontAwesomeIcon icon={faCalendarDay}/>{' '}
                                     <time dateTime={entry.date}>
                                         {format(parseISO(entry.date), 'LLLL d, yyyy')}
                                     </time>
+                                    {
+                                        (entry.updated && entry.date != entry.updated) &&
+                                        <>
+                                            <br/>
+                                            <FontAwesomeIcon icon={faSyncAlt}/>{' '}
+                                            <time dateTime={entry.updated}>
+                                                {format(parseISO(entry.updated), 'LLLL d, yyyy')}
+                                            </time>
+                                        </>
+                                    }
                                 </p>
+                                <p>
+                                    {entry.description}
+                                </p>
+                                <TagsBlock tags={entry.tags}/>
                             </Block>
                         </div>
                     ))}

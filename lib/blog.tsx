@@ -8,6 +8,7 @@ export type BlogPost = {
     title: string
     slug: string
     date: string
+    updated: string
     tags: string
     description?: string
     content: string
