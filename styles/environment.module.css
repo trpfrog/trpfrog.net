@@ -3,12 +3,13 @@
 }
 
 .gadget_image_wrapper {
-    max-width: 90%;
-    border-radius: 10px;
     overflow: hidden;
+    text-align: center;
 }
 
 .image {
+    display: inline;
+    border-radius: 10px;
     object-fit: cover;
 }
 
