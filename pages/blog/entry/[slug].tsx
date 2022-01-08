@@ -6,12 +6,15 @@ import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
-
 import {BlogPost, getAllPostSlugs, getPostData, getAllImageSize, BlogImageSize} from "../../../lib/blog";
 import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import styles from '../../../styles/blog.module.scss'
 import {format, parseISO} from "date-fns";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCalendarDay, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {TagsBlock} from "../../../lib/blogTag";
 
 type PageProps = {
     entry: BlogPost
@@ -55,14 +58,37 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         <Layout>
             <Title title={entry.title} description={entry.description}>
                 <p>
+                    <FontAwesomeIcon icon={faCalendarDay}/>{' '}
                     <time dateTime={entry.date}>
                         {format(parseISO(entry.date), 'LLLL d, yyyy')}
                     </time>
+                    {
+                        (entry.updated && entry.date != entry.updated) &&
+                        <>
+                            <br/>
+                            <FontAwesomeIcon icon={faSyncAlt}/>{' '}
+                            <time dateTime={entry.updated}>
+                                {format(parseISO(entry.updated), 'LLLL d, yyyy')}
+                            </time>{' '}
+                            更新
+                        </>
+                    }
                 </p>
                 <p>
-                    <Link href={'/blog'}>
-                        <a className={'linkButton'}>記事一覧に戻る</a>
-                    </Link>
+                    <TagsBlock tags={entry.tags}/>
+                </p>
+                <p>
+                    <p className={'link-area'}>
+                        <Link href={'/blog'}>
+                            <a>記事一覧に戻る</a>
+                        </Link>
+                        <span onClick={share}>
+                        <a>ツイート</a>
+                    </span>
+                        <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+                            <a>訂正リクエスト</a>
+                        </Link>
+                    </p>
                 </p>
             </Title>
             <Block>
