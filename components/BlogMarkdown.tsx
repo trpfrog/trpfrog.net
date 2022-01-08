@@ -17,10 +17,16 @@ type codeProps = {
 
 const getLangName = (s: string) => {
     switch (s) {
-        case 'html': return 'HTML'
-        case 'javascript': return 'JavaScript'
-        case 'yaml': return 'YAML'
-        default: return s.charAt(0).toUpperCase() + s.slice(1)
+        case 'javascript':
+            return 'JavaScript'
+        case 'html':
+        case 'yaml':
+        case 'css':
+        case 'scss':
+        case 'tsx':
+            return s.toUpperCase()
+        default:
+            return s.charAt(0).toUpperCase() + s.slice(1)
     }
 }
 
