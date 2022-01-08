@@ -10,7 +10,7 @@ import styles from '../../styles/blog.module.scss';
 import {NextSeo} from "next-seo";
 
 import {parseISO, format} from 'date-fns'
-import {getTagBlocks} from "../../lib/blogTag";
+import {TagsBlock} from "../../lib/blogTag";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -59,7 +59,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                     <p>
                         {latestArticle.description}
                     </p>
-                    {getTagBlocks(latestArticle.tags ?? '')}
+                    <TagsBlock tags={latestArticle.tags}/>
                     <p>
                         <time dateTime={latestArticle.date}>
                             {format(parseISO(latestArticle.date), 'LLLL d, yyyy')}
@@ -83,7 +83,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                                 <p>
                                     {entry.description}
                                 </p>
-                                {getTagBlocks(entry.tags ?? '')}
+                                <TagsBlock tags={entry.tags}/>
                                 <p>
                                     <time dateTime={entry.date}>
                                         {format(parseISO(entry.date), 'LLLL d, yyyy')}

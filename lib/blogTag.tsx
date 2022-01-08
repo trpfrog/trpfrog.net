@@ -1,4 +1,5 @@
 import styles from '../styles/blog.module.scss';
+import {FunctionComponent} from "react";
 
 const getTagEmoji = (tag: string) => {
     switch (tag) {
@@ -19,7 +20,7 @@ const getEmojiImageSrc = (tag: string) => {
     return `https://twemoji.maxcdn.com/v/latest/svg/${codePoint}.svg`
 }
 
-export const getTagBlocks = (tags: string) => {
+export const TagsBlock: FunctionComponent<{tags: string}> = ({tags, children}) => {
     return (
         <>
             {tags.split(',').map((t: string) => t.trim()).concat().map(tag => (
