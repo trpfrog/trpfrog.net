@@ -40,11 +40,10 @@ const topTitle = (iconBottom: MotionValue<number>, titleLeft: MotionValue<number
         <div id={'header-title'}>
             <motion.div
                 id={'header-title-image'}
-                style={{bottom: iconBottom}}
+                style={{y: iconBottom}}
             />
             <motion.h1
-                initial={{left: titleLeft.get()}}
-                style={{left: titleLeft}}
+                style={{x: titleLeft}}
             >
                 <Link href="/">
                     <a>{process.env.title}</a>
@@ -57,16 +56,18 @@ const topTitle = (iconBottom: MotionValue<number>, titleLeft: MotionValue<number
 const Header = () => {
 
     const { scrollY } = useViewportScroll();
+
+    const scrollSpeedFunction = (y: number) => Math.min(1, Math.max(0, y - 200) / 175);
     const icon = useTransform(scrollY, y => {
-        return -80 + Math.min(1, Math.max(0, y - 200) / 175) * 79;
+        return 80 - scrollSpeedFunction(y) * 79;
     });
     const title = useTransform(scrollY, y => {
         if (!process.browser) return 4;
 
-        if (window.innerWidth < 800) {
-            return -50 + Math.min(1, Math.max(0, y - 200) / 175) * 54;
-        } else {
-            return -82 + Math.min(1, Math.max(0, y - 200) / 175) * 86;
+        if (window.innerWidth < 800) { // smartphone
+            return -50 + scrollSpeedFunction(y) * 54;
+        } else { // PC
+            return -82 + scrollSpeedFunction(y) * 86;
         }
     });
 
