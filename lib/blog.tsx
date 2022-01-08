@@ -8,7 +8,7 @@ export type BlogPost = {
     title: string
     slug: string
     date: string
-    tags?: string[]
+    tags: string
     description?: string
     content: string
 }
@@ -49,11 +49,14 @@ export const getAllImageSize = async (markdown: string) => {
 }
 
 export const getPostData = async (slug: string) => {
-    const fullPath = path.join(postsDirectory, `${slug}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fullPath = path.join(postsDirectory, `${slug}.md`);
+    const fileContents =
+        fs.existsSync(fullPath)
+            ? fs.readFileSync(fullPath, 'utf8')
+            : fs.readFileSync(fullPath + 'x', 'utf8')
     const matterResult = matter(fileContents)
     const content = matterResult.content
-    const tags = matterResult.data.tags.split(',').map((t: string) => t.trim())
+    const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
     return {
         slug,
@@ -66,17 +69,20 @@ export const getPostData = async (slug: string) => {
 export const getSortedPostsData = async () => {
     const fileNames = fs.readdirSync(postsDirectory)
     const allPostsData = fileNames.map(fileName => {
-        const slug = fileName.replace(/\.md$/, '')
+        const slug = fileName
+            .replace(/\.mdx$/, '')
+            .replace(/\.md$/, '')
 
         const fullPath = path.join(postsDirectory, `${slug}.md`);
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const fileContents =
+            fs.existsSync(fullPath)
+                ? fs.readFileSync(fullPath, 'utf8')
+                : fs.readFileSync(fullPath + 'x', 'utf8')
 
         const matterResult = matter(fileContents)
-        const tags = matterResult.data.tags.split(',').map((t: string) => t.trim())
 
         return {
             slug,
-            tags,
             ...matterResult.data
         } as BlogPost
     })
@@ -98,7 +104,9 @@ export const getAllPostSlugs = async () => {
     return fileNames.map(fileName => {
         return {
             params: {
-                slug: fileName.replace(/\.md$/, '')
+                slug: fileName
+                    .replace(/\.mdx$/, '')
+                    .replace(/\.md$/, '')
             }
         }
     })

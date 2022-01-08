@@ -1,12 +1,26 @@
 #past_article_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    grid-gap: var(--main-margin);
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-gap: 17px;
+    margin: 8px;
+
+    @media screen and (max-width: 800px) {
+        column-gap: 8px;
+        row-gap: 12px;
+    }
 }
 
+
+
 .article_block {
+    padding: 17px;
     box-sizing: border-box;
     height: 100%;
+    margin: 0;
+
+    h2 {
+        font-size: 1.2em;
+    }
 }
 
 .post {
@@ -123,4 +137,37 @@
     display: inline-block;
     border-radius: 5px;
     vertical-align: 5%;
+}
+
+.tag_block {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px #90e200;
+
+    padding: 2px;
+    border-radius: 1000px;
+
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 0.8em;
+
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.tag_name {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px 3px 0 0;
+}
+
+.tag_emoji {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2px;
+    width: 2em;
+    height: 2em;
 }
