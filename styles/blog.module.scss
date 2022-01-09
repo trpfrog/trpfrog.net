@@ -42,6 +42,26 @@
     }
 }
 
+.tag_block:hover {
+    background: #90e20033;
+}
+
+.tag_name {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px 3px 0 0;
+}
+
+.tag_emoji {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2px;
+    width: 2em;
+    height: 2em;
+}
+
 .post {
 
     h2 {
@@ -182,24 +202,4 @@
         background: #172c00;
         color: black !important;
     }
-}
-
-.tag_block:hover {
-    background: #90e20033;
-}
-
-.tag_name {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px 3px 0 0;
-}
-
-.tag_emoji {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 2px;
-    width: 2em;
-    height: 2em;
 }

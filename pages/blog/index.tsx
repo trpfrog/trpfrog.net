@@ -1,24 +1,22 @@
 import React from 'react'
 import {NextPage} from "next";
-import Link from 'next/link'
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import {getSortedPostsData, BlogPost, getAllPostSlugs} from "../../lib/blog";
+import {getSortedPostsData, BlogPost} from "../../lib/blog";
 
 import styles from '../../styles/blog.module.scss';
 import {NextSeo} from "next-seo";
 
-import {parseISO, format} from 'date-fns'
-import {TagsBlock} from "../../lib/blogTag";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faStar, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
+import ArticleBlock from "../../components/blog/ArticleBlock";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
     return {
         props: {
-            // avoiding error
+            // to avoid error, convert article struct into string
             articles: articles.map(r => JSON.parse(JSON.stringify(r)))
         }
     }
@@ -53,31 +51,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 </div>
 
                 <Block>
-                    <h2 className={'none'}>
-                        <Link href={'/blog/entry/' + latestArticle.slug}>
-                            <a>{latestArticle.title}</a>
-                        </Link>
-                    </h2>
-                    <p>
-                        <FontAwesomeIcon icon={faCalendarDay}/>{' '}
-                        <time dateTime={latestArticle.date}>
-                            {format(parseISO(latestArticle.date), 'LLLL d, yyyy')}
-                        </time>
-                        {
-                            (latestArticle.updated && latestArticle.date != latestArticle.updated) &&
-                            <>
-                                <br/>
-                                <FontAwesomeIcon icon={faSyncAlt}/>{' '}
-                                <time dateTime={latestArticle.updated}>
-                                    {format(parseISO(latestArticle.updated), 'LLLL d, yyyy')}
-                                </time>
-                            </>
-                        }
-                    </p>
-                    <p>
-                        {latestArticle.description}
-                    </p>
-                    <TagsBlock tags={latestArticle.tags}/>
+                    <ArticleBlock entry={latestArticle}/>
                 </Block>
 
                 <div className={styles.hrule_block}>
@@ -88,31 +62,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                     {pastArticles.map(entry => (
                         <div key={entry.slug}>
                             <Block className={styles.article_block}>
-                                <h2 className={'none'}>
-                                    <Link href={'/blog/entry/' + entry.slug}>
-                                        <a>{entry.title}</a>
-                                    </Link>
-                                </h2>
-                                <p>
-                                    <FontAwesomeIcon icon={faCalendarDay}/>{' '}
-                                    <time dateTime={entry.date}>
-                                        {format(parseISO(entry.date), 'LLLL d, yyyy')}
-                                    </time>
-                                    {
-                                        (entry.updated && entry.date != entry.updated) &&
-                                        <>
-                                            <br/>
-                                            <FontAwesomeIcon icon={faSyncAlt}/>{' '}
-                                            <time dateTime={entry.updated}>
-                                                {format(parseISO(entry.updated), 'LLLL d, yyyy')}
-                                            </time>
-                                        </>
-                                    }
-                                </p>
-                                <p>
-                                    {entry.description}
-                                </p>
-                                <TagsBlock tags={entry.tags}/>
+                                <ArticleBlock entry={entry}/>
                             </Block>
                         </div>
                     ))}

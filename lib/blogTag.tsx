@@ -1,7 +1,3 @@
-import styles from '../styles/blog.module.scss';
-import {FunctionComponent} from "react";
-import Link from 'next/link'
-
 const getTagEmoji = (tag: string) => {
     switch (tag) {
         case 'うどん': return '🌾'
@@ -16,29 +12,7 @@ const getTagEmoji = (tag: string) => {
     }
 }
 
-const getEmojiImageSrc = (tag: string) => {
+export const getEmojiImageSrc = (tag: string) => {
     const codePoint = getTagEmoji(tag).codePointAt(0)?.toString(16)
     return `https://twemoji.maxcdn.com/v/latest/svg/${codePoint}.svg`
-}
-
-export const TagsBlock: FunctionComponent<{tags: string}> = ({tags, children}) => {
-    return (
-        <>
-            {tags
-                .split(',')
-                .map((t: string) => t.trim())
-                .map(tag => (
-                    <Link href={'/blog/tags/' + tag} key={tag}>
-                        <a className={styles.tag_block}>
-                            <span className={styles.tag_emoji}>
-                                <img src={getEmojiImageSrc(tag)} width={20} height={20} alt={'tag emoji'}/>
-                            </span>
-                            <span className={styles.tag_name}>
-                                {tag}
-                            </span>
-                        </a>
-                    </Link>
-            ))}
-        </>
-    )
 }
