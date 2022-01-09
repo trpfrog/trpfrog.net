@@ -1,73 +1,76 @@
-#about_me_grid {
-    display: block;
-    grid-template-areas:
-        "about_me_name about_me_image"
-        "about_me_text about_me_image";
-    grid-template-rows: 100px 4fr;
-    grid-template-columns: 1fr 30%;
-}
-
-@media screen and (max-width: 800px) {
-    #about_me_grid{
-        grid-template-areas:
-                "about_me_image"
-                "about_me_name"
-                "about_me_text";
-        grid-template-rows: auto auto auto;
-        grid-template-columns: 1fr;
-    }
-}
-
-#about_me_image {
-    display: flex;
-    grid-area: about_me_image;
-    text-align: center;
-
-    margin-top: auto;
-    margin-left: 10px;
-
-    #profile_image_wrapper {
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-    }
-
-    #profile_image {
-        filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.3));
-    }
+#intro_text {
+    margin: 0.7em 0.3em 0;
 }
 
 #my_name {
-    grid-area: about_me_name;
+    display: inline-block;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bold;
     font-size: 4em;
+    margin: -0.2em 0;
     p {
         margin: 0;
     }
 }
 
-#about_me_text {
-    grid-area: about_me_text;
+#my_name_jp {
+    font-weight: 700;
+}
+
+#my_name_en {
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.5em;
+    opacity: 0.8;
+}
+
+#intro_attribute {
+    padding: 0;
+    li {
+        padding: 0;
+    }
+    li:before {
+        background: none;
+        content: none;
+    }
+}
+
+#social {
+    div {
+        display: inline-block;
+        background: var(--header-color);
+        border-radius: 100px;
+        color: white;
+        padding: 0 8px;
+        margin: 0 5px 5px 0;
+        svg {
+            font-size: 1.1em;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {
+    #intro_text {
+        margin: 0.3em 0 0;
+    }
 
-    #about_me_image {
-        display: block;
-        margin-left: 0;
-        #profile_image_wrapper {
-            max-width: 400px;
-        }
+    #about_me_grid {
+        text-align: center;
+    }
+
+    #intro_attribute {
+        display: inline-block;
+        text-align: left;
     }
 
     #my_name {
         text-align: center;
-        font-size: 3em;
-
-        p {
-            margin: 10px;
-        }
+        font-size: 2.5em;
+        margin: -0.1em 0;
     }
 
     #about_me_text {

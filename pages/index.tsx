@@ -16,6 +16,17 @@ import {NextSeo} from "next-seo";
 import {motion} from "framer-motion";
 import TrpFrogAnimation from "../components/TrpFrogAnimation";
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {
+    faAt,
+    faBirthdayCake, faCode,
+    faEnvelope,
+    faHeart,
+    faLaptop, faMapMarkerAlt,
+    faUniversity, faWalking
+} from "@fortawesome/free-solid-svg-icons";
+
 
 type PageProps = {
     myLinks: MyLinkRecord[]
@@ -61,18 +72,31 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                 <div id={styles.top_page_grid}>
                     <Block id={styles.about_me_grid}>
                         <div id={styles.my_name}>
-                            <p>つまみ</p>
+                            <p>
+                                <span id={styles.my_name_jp}>つまみ</span>
+                                <span id={styles.my_name_en}>TrpFrog</span>
+                            </p>
                         </div>
-                        <p>
-                            電気通信大学の大学生。東京都(23区ではない方)出身。
+
+                        <p id={styles.intro_text}>
+                            ふにゃ〜
                         </p>
-                        <p>
-                            コンピュータ(レイヤー高め)で遊ぶのが好き。競技プログラミング(C++)をしたり、
-                            なんか<a href="https://github.com/TrpFrog">いろいろ</a>作ったりしている。
-                        </p>
-                        <p>
-                            最近では大学のオタクと<a href="https://trpfrog.hateblo.jp">鬼の仮面を被ってお散歩</a>をよくしている。
-                        </p>
+
+                        <ul id={styles.intro_attribute}>
+                            <li><FontAwesomeIcon icon={faMapMarkerAlt} style={{width: '1.5em'}}/> 東京都 (23区外)</li>
+                            <li><FontAwesomeIcon icon={faUniversity} style={{width: '1.5em'}}/> 電気通信大学 3年</li>
+                            <li><FontAwesomeIcon icon={faBirthdayCake} style={{width: '1.5em'}}/> 2000年10月17日 (21歳)</li>
+                            <li><FontAwesomeIcon icon={faHeart} style={{width: '1.5em'}}/> コンピュータ / 開発 / 競プロ / 散歩</li>
+                            <li><FontAwesomeIcon icon={faLaptop} style={{width: '1.5em'}}/> Macユーザー</li>
+                            <li><FontAwesomeIcon icon={faCode} style={{width: '1.5em'}}/> AtCoder水色 (highest 1596)</li>
+                            <li><FontAwesomeIcon icon={faWalking} style={{width: '1.5em'}}/> 徒歩会 (longest 70.5km)</li>
+                        </ul>
+
+                        <div id={styles.social}>
+                            <div><FontAwesomeIcon icon={faTwitter}/> <a href={'https://twitter.com/TrpFrog'}>TrpFrog</a></div>
+                            <div><FontAwesomeIcon icon={faGithub}/> <a href={'https://github.com/TrpFrog'}>TrpFrog</a></div>
+                            <div><FontAwesomeIcon icon={faEnvelope}/> dev<FontAwesomeIcon icon={faAt} style={{fontSize: '0.9em'}}/>trpfrog.net</div>
+                        </div>
                     </Block>
 
                     <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
