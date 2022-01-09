@@ -89,7 +89,7 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                             <li><FontAwesomeIcon icon={faHeart} style={{width: '1.5em'}}/> コンピュータ / 開発 / 競プロ / 散歩</li>
                             <li><FontAwesomeIcon icon={faLaptop} style={{width: '1.5em'}}/> Macユーザー</li>
                             <li><FontAwesomeIcon icon={faCode} style={{width: '1.5em'}}/> AtCoder水色 (highest 1596)</li>
-                            <li><FontAwesomeIcon icon={faWalking} style={{width: '1.5em'}}/> 徒歩会 (longest 70.5km)</li>
+                            <li><FontAwesomeIcon icon={faWalking} style={{width: '1.5em'}}/> 徒歩会 (farthest 70.5km)</li>
                         </ul>
 
                         <div id={styles.social}>
