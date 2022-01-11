@@ -66,14 +66,14 @@ const Header = () => {
 
     const [showPageTitle, setShowPageTitle] = useState(false);
 
-    const handleScroll = (y: number) => {
+    const handleScroll = (y: number, withAnimation: boolean = true) => {
         const heightToChangeTitle =
             process.browser && window.innerWidth <= 800 ? 120 : 250;
 
         const animationHeight = 280;
         const isMobile = window.innerWidth < 800;
         const config: AnimationOptions<number> = {
-            duration: 0.2,
+            duration: withAnimation ? 0.2 : 0,
             ease: 'linear'
         };
 
@@ -89,7 +89,7 @@ const Header = () => {
 
     const {scrollY} = useViewportScroll()
     scrollY.onChange(y => handleScroll(y))
-    useEffect(() => handleScroll(window.scrollY))
+    useEffect(() => handleScroll(window.scrollY, false))
 
     const router = useRouter();
     let pageTitle = process.browser
