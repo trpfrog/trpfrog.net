@@ -26,6 +26,8 @@ import {
     faLaptop, faMapMarkerAlt,
     faUniversity, faWalking
 } from "@fortawesome/free-solid-svg-icons";
+import {FunctionComponent} from "react";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
 
 type PageProps = {
@@ -39,6 +41,14 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
             myLinks
         }
     }
+}
+
+const ProfileContent: FunctionComponent<{ icon: IconDefinition }> = ({children, icon}) => {
+    return (
+        <li>
+            <FontAwesomeIcon icon={icon} style={{width: '1.5em'}}/> {children}
+        </li>
+    )
 }
 
 const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
@@ -83,13 +93,13 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                         </p>
 
                         <ul id={styles.intro_attribute}>
-                            <li><FontAwesomeIcon icon={faMapMarkerAlt} style={{width: '1.5em'}}/> 東京都 (23区外)</li>
-                            <li><FontAwesomeIcon icon={faUniversity} style={{width: '1.5em'}}/> 電気通信大学 3年</li>
-                            <li><FontAwesomeIcon icon={faBirthdayCake} style={{width: '1.5em'}}/> 2000年10月17日 (21歳)</li>
-                            <li><FontAwesomeIcon icon={faHeart} style={{width: '1.5em'}}/> コンピュータ / 開発 / 競プロ / 散歩</li>
-                            <li><FontAwesomeIcon icon={faLaptop} style={{width: '1.5em'}}/> Macユーザー</li>
-                            <li><FontAwesomeIcon icon={faCode} style={{width: '1.5em'}}/> AtCoder水色 (highest 1596)</li>
-                            <li><FontAwesomeIcon icon={faWalking} style={{width: '1.5em'}}/> 徒歩会 (farthest 70.5km)</li>
+                            <ProfileContent icon={faMapMarkerAlt}>東京都 (23区外)</ProfileContent>
+                            <ProfileContent icon={faUniversity  }>電気通信大学 3年</ProfileContent>
+                            <ProfileContent icon={faBirthdayCake}>2000年10月17日 (21歳)</ProfileContent>
+                            <ProfileContent icon={faHeart       }>コンピュータ / 開発 / 競プロ / 散歩</ProfileContent>
+                            <ProfileContent icon={faLaptop      }>Macユーザー</ProfileContent>
+                            <ProfileContent icon={faCode        }>AtCoder水色 (highest 1596)</ProfileContent>
+                            <ProfileContent icon={faWalking     }>徒歩会 (farthest 70.5km)</ProfileContent>
                         </ul>
 
                         <div id={styles.social}>
