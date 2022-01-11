@@ -1,6 +1,13 @@
 import Link from 'next/link'
 import {useRouter} from "next/router";
-import {motion, MotionValue, useTransform, useViewportScroll} from "framer-motion";
+import {
+    animate,
+    AnimationOptions,
+    motion,
+    MotionValue,
+    useMotionValue,
+    useViewportScroll
+} from "framer-motion";
 import {useEffect, useState} from "react";
 
 const normalTitle = (showPageTitle: boolean, title: string) => {
@@ -35,15 +42,15 @@ const normalTitle = (showPageTitle: boolean, title: string) => {
     );
 };
 
-const topTitle = (iconBottom: MotionValue<number>, titleLeft: MotionValue<number>) => {
+const topTitle = (iconY: MotionValue<number>, titleX: MotionValue<number>) => {
     return (
         <div id={'header-title'}>
             <motion.div
                 id={'header-title-image'}
-                style={{y: iconBottom}}
+                style={{y: iconY}}
             />
             <motion.h1
-                style={{x: titleLeft}}
+                style={{x: titleX}}
             >
                 <Link href="/">
                     <a>{process.env.title}</a>
@@ -54,37 +61,35 @@ const topTitle = (iconBottom: MotionValue<number>, titleLeft: MotionValue<number
 };
 
 const Header = () => {
-
-    const { scrollY } = useViewportScroll();
-
-    const scrollSpeedFunction = (y: number) => Math.min(1, Math.max(0, y - 200) / 175);
-    const icon = useTransform(scrollY, y => {
-        return 80 - scrollSpeedFunction(y) * 79;
-    });
-    const title = useTransform(scrollY, y => {
-        if (!process.browser) return 4;
-
-        if (window.innerWidth < 800) { // smartphone
-            return -50 + scrollSpeedFunction(y) * 54;
-        } else { // PC
-            return -82 + scrollSpeedFunction(y) * 86;
-        }
-    });
+    const titleX = useMotionValue(-82);
+    const iconY = useMotionValue(80);
 
     const [showPageTitle, setShowPageTitle] = useState(false);
-    useEffect(() => {
+
+    const handleScroll = (y: number) => {
         const heightToChangeTitle =
             process.browser && window.innerWidth <= 800 ? 120 : 250;
-        const handleScroll = () => {
-            setShowPageTitle(window.scrollY > heightToChangeTitle);
+
+        const animationHeight = 280;
+        const isMobile = window.innerWidth < 800;
+        const config: AnimationOptions<number> = {
+            duration: 0.2,
+            ease: 'linear'
         };
-        // set initial state
-        handleScroll();
-        // register listener
-        window.addEventListener("scroll", handleScroll);
-        // clean up
-        return () => { window.removeEventListener("scroll", handleScroll); };
-    }, []);
+
+        setShowPageTitle(y > heightToChangeTitle);
+        if (y >= animationHeight) {
+            animate(iconY, 0, config);
+            animate(titleX, 4, config);
+        } else {
+            animate(iconY, isMobile ? 48 : 80, config);
+            animate(titleX, isMobile ? -50 : -82, config);
+        }
+    }
+
+    const {scrollY} = useViewportScroll()
+    scrollY.onChange(y => handleScroll(y))
+    useEffect(() => handleScroll(window.scrollY))
 
     const router = useRouter();
     let pageTitle = process.browser
@@ -98,7 +103,7 @@ const Header = () => {
         <header>
             <div id="header-wrapper">
                 {router.pathname == '/'
-                    ? topTitle(icon, title)
+                    ? topTitle(iconY, titleX)
                     : normalTitle(showPageTitle, pageTitle)}
                 <nav>
                     <ul>
