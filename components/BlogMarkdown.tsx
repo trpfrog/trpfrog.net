@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {BlogImageSize} from "../lib/blog";
+import {Tweet} from 'react-twitter-widgets'
 
 type codeProps = {
     className: string
@@ -30,6 +31,15 @@ const getLangName = (s: string) => {
     }
 }
 
+
+const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element } = {
+    Twitter: (content) => {
+        const id = content.split('\n')[0]
+        const original = content.split('\n').slice(1)
+        return <Tweet tweetId={id} />
+    }
+}
+
 const formatCodeComponent = ({className, children, inline}: codeProps) => {
 
     if (inline) {
@@ -45,6 +55,11 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     const language = className
         ? getLangName(className.replace('language-', ''))
         : '';
+
+    if (language in myMarkdownClasses) {
+        return myMarkdownClasses[language](children[0])
+    }
+
     return (
         <>
             {language != '' && (
