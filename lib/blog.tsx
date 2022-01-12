@@ -33,7 +33,7 @@ const fetchImageSize = async (src: string) => {
 
 export const fetchAllImageSize = async (markdown: string) => {
     const dict = {} as { [path: string]: BlogImageSize }
-    const regex = new RegExp('^!\\[.*\]\\(')
+    const regex = new RegExp('^!\\[.*?\]\\(')
 
     const imagePaths = markdown
         .split('\n')
