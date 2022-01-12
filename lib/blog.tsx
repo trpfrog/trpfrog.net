@@ -18,7 +18,7 @@ const postsDirectory = path.join(process.cwd(), 'posts');
 
 export type BlogImageSize = {width: number, height: number};
 
-const getImageSize = async (src: string) => {
+const fetchImageSize = async (src: string) => {
     const path = getPureCloudinaryPath(src);
     const api = 'https://res.cloudinary.com/trpfrog/fl_getinfo' + path;
     return fetch(api)
@@ -31,7 +31,7 @@ const getImageSize = async (src: string) => {
         });
 }
 
-export const getAllImageSize = async (markdown: string) => {
+export const fetchAllImageSize = async (markdown: string) => {
     const dict = {} as { [path: string]: BlogImageSize }
     const regex = new RegExp('^!\\[.*\]\\(')
 
@@ -43,7 +43,7 @@ export const getAllImageSize = async (markdown: string) => {
         .concat()
 
     for await (const path of imagePaths) {
-        dict[path] = await getImageSize(path);
+        dict[path] = await fetchImageSize(path);
     }
 
     return dict;
