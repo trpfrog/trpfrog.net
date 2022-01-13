@@ -7,7 +7,7 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogImageSize} from "../lib/blog";
+import {BlogImageData} from "../lib/blog";
 import {Tweet} from 'react-twitter-widgets'
 
 type codeProps = {
@@ -94,25 +94,32 @@ export const getPureCloudinaryPath = (path: string) => {
         .replace(`/^${cloudinaryUrl}/`, '')
 }
 
-const formatImgComponent = ({src, alt}: any, imageSize: { [path: string]: BlogImageSize }) => {
-    const srcPath = getPureCloudinaryPath(src);
+const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: BlogImageData}) => {
+    const srcPath = getPureCloudinaryPath(src)
+    const caption = imageData[srcPath]?.caption ?? ''
+
     return (
         <div style={{textAlign: 'center'}}>
             <Image
                 src={srcPath}
                 alt={alt || src}
                 className={'rich_image'}
-                width={imageSize[srcPath]?.width ?? 800}
-                height={imageSize[srcPath]?.height ?? 600}
+                width={imageData[srcPath]?.size.width ?? 800}
+                height={imageData[srcPath]?.size.height ?? 600}
                 objectFit="contain"
             />
+            {caption != '' &&
+                <p className={styles.blog_img_caption}>
+                    {caption}
+                </p>
+            }
         </div>
     )
 }
 
 type Props = {
     markdown: string
-    imageSize: { [path: string]: BlogImageSize }
+    imageSize: { [path: string]: BlogImageData }
 }
 
 const BlogMarkdown: React.FunctionComponent<Props> = ({markdown, imageSize, children}) => {

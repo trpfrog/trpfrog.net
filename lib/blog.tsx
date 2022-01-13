@@ -16,7 +16,7 @@ export type BlogPost = {
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export type BlogImageSize = {width: number, height: number};
+export type BlogImageData = { size: {width: number, height: number}, caption: string }
 
 const fetchImageSize = async (src: string) => {
     const path = getPureCloudinaryPath(src);
@@ -32,18 +32,31 @@ const fetchImageSize = async (src: string) => {
 }
 
 export const fetchAllImageSize = async (markdown: string) => {
-    const dict = {} as { [path: string]: BlogImageSize }
-    const regex = new RegExp('^!\\[.*?\]\\(')
+    const dict = {} as { [path: string]: BlogImageData }
 
-    const imagePaths = markdown
+    const srcRegex = new RegExp('^!\\[.*?\]\\(')
+
+    // TODO: キャプションのパース正しくする
+
+    const removeLastBracket = (s: string) => {
+        const i = s.lastIndexOf(')')
+        return s.slice(0, i) + s.slice(i + 1)
+    }
+
+    const imageData = markdown
         .split('\n')
-        .filter(line => regex.test(line))
-        .map(line => line.replace(regex, '').replace(')', '').split(' ')[0])
-        .map(src => getPureCloudinaryPath(src))
-        .concat()
+        .filter(line => srcRegex.test(line))
+        .map(line => removeLastBracket(line.replace(srcRegex, '')).split(' '))
+        .map(arr => ({
+            path: getPureCloudinaryPath(arr[0]),
+            caption: (arr[1] && arr.slice(1).join(' ').slice(1, arr[1].length - 1)) ?? ''
+        }))
 
-    for await (const path of imagePaths) {
-        dict[path] = await fetchImageSize(path);
+    for await (const {path, caption} of imageData) {
+        dict[path] = {
+            size: await fetchImageSize(path),
+            caption
+        };
     }
 
     return dict;

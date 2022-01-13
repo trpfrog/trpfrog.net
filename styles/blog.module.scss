@@ -84,11 +84,11 @@
         word-break: break-word;
     }
 
-    img {
-        max-height: 600px;
-        border-radius: 15px;
-        max-width: 80%;
-        margin: 1em auto;
+    .blog_img_caption {
+        color: gray;
+        @media screen and (prefers-color-scheme: dark) {
+            color: lightgray;
+        }
     }
 
     blockquote {
