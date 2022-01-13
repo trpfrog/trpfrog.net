@@ -86,6 +86,7 @@
 
     .blog_img_caption {
         color: gray;
+        margin: 0;
         @media screen and (prefers-color-scheme: dark) {
             color: lightgray;
         }
