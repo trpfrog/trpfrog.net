@@ -8,6 +8,7 @@ const getTagEmoji = (tag: string) => {
         case '技術': return '💻'
         case '日記': return '📔'
         case '月報': return '🗓'
+        case 'お出かけ': return '🚃'
         default: return '🏷'
     }
 }
