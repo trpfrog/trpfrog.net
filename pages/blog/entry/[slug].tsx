@@ -6,14 +6,14 @@ import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
-import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageSize} from "../../../lib/blog";
+import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData} from "../../../lib/blog";
 import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import ArticleBlock from "../../../components/blog/ArticleBlock";
 
 type PageProps = {
     entry: BlogPost
-    imageSize: { [path: string]: BlogImageSize }
+    imageSize: { [path: string]: BlogImageData }
 }
 
 type Params = {
