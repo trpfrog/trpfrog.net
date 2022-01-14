@@ -94,19 +94,10 @@ const Header = () => {
         const shouldShowHeader = v < -1000 || y < 500;
         const shouldHideHeader = !shouldShowHeader && v > 1000;
 
-        // if (process.browser && window.innerWidth <= 800) {
-        //     if (shouldShowHeader) {
-        //         headerY.set(0)
-        //     } else if (shouldHideHeader) {
-        //         headerY.set(-100)
-        //     }
-        // } else
-        {
-            if (shouldShowHeader) {
-                animate(headerY, 0, {duration: 0.05, ease: 'linear'})
-            } else if (shouldHideHeader) {
-                animate(headerY, -100, {duration: 0.1, ease: 'linear'})
-            }
+        if (shouldShowHeader) {
+            animate(headerY, 0, {duration: 0.05, ease: 'linear'})
+        } else if (shouldHideHeader) {
+            animate(headerY, -100, {duration: 0.1, ease: 'linear'})
         }
     }
 
