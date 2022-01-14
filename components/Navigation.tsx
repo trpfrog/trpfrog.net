@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {useState} from "react";
+import React, {FunctionComponent, useState} from "react";
 import { useRouter } from "next/router";
 
 export const NAVIGATION_LINKS = [
@@ -49,8 +49,13 @@ export const NAVIGATION_LINKS = [
     }
 ]
 
-const Navigation = () => {
-    const [isOpened, setHamburgerState] = useState(false);
+const Navigation: FunctionComponent<{
+    isOpened: boolean,
+    setHamburgerState: React.Dispatch<React.SetStateAction<boolean>>
+}> = props => {
+    const isOpened = props.isOpened
+    const setHamburgerState = props.setHamburgerState
+
     const toggleMenu = () => {
         setHamburgerState(!isOpened);
     }
@@ -76,14 +81,6 @@ const Navigation = () => {
                     {links}
                 </div>
             </nav>
-            <div id="hamburger_menu">
-                <a
-                    onClick={toggleMenu}
-                    className={isOpened ? "menu-trigger-opened" : "menu-trigger-closed"}
-                >
-                    <span/><span/><span/> {/* Hamburger Icon in CSS */}
-                </a>
-            </div>
             <section id="mobile_menu">
                 <aside
                     id="menu_background"

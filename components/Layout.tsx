@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
-import Header from './Header'
+import Header from './header/Header'
 import Footer from "./Footer";
 import Navigation, {NAVIGATION_LINKS} from "./Navigation";
 
@@ -57,11 +57,13 @@ const Layout: React.FunctionComponent<Props> = ({
 
     const isMobile = process.browser && window.innerWidth < 800;
 
+    const [isMobileMenuOpened, setMobileMenuOpened] = useState(false);
+
     return (
         <>
             <div id={'inner-body'}>
-                <Header/>
-                <Navigation/>
+                <Header isOpened={isMobileMenuOpened} setHamburgerState={setMobileMenuOpened}/>
+                <Navigation isOpened={isMobileMenuOpened} setHamburgerState={setMobileMenuOpened}/>
                 <main>
                     <motion.div
                         initial={
