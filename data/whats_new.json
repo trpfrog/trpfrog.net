@@ -1,0 +1,32 @@
+[
+  {
+    "type": "blog",
+    "date": "2022-01-13",
+    "text": "記事「[自転車で津久井湖と宮ヶ瀬湖に行ってきた](/blog/entry/miyagase-cycling) (焼き直し版)」を公開しました！"
+  },
+  {
+    "type": "blog",
+    "date": "2022-01-12",
+    "text": "記事「[ツイートを拾ってニコニコ風に流すツールをJavaで作った](/blog/entry/twitter-screen) (焼き直し版)」を公開しました！"
+  },
+  {
+    "type": "content",
+    "date": "2022-01-07",
+    "text": "Random Notesを本サイトに移行しました！"
+  },
+  {
+    "type": "content",
+    "date": "2022-01-05",
+    "text": "トップページにつまみさんのアニメーションを追加しました！"
+  },
+  {
+    "type": "content",
+    "date": "2022-01-03",
+    "text": "つまみネットをNext.js製のものに移行しました！詳細は[こちら](/about-next)"
+  },
+  {
+    "type": "content",
+    "date": "2021-12-24",
+    "text": "Next.jsでのつまみネットの移行作業を開始しました"
+  }
+]

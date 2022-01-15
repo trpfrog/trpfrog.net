@@ -28,17 +28,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {FunctionComponent} from "react";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-
+import {getWhatsNewRecords, WhatsNewRecord} from "../lib/whats_new";
+import ReactMarkdown from "react-markdown";
 
 type PageProps = {
     myLinks: MyLinkRecord[]
+    whatsNew: WhatsNewRecord[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     const myLinks: MyLinkRecord[] = await getMyLinkRecords();
+    const whatsNew: WhatsNewRecord[] = await getWhatsNewRecords();
+
     return {
         props: {
-            myLinks
+            myLinks,
+            whatsNew
         }
     }
 }
@@ -51,7 +56,7 @@ const ProfileContent: FunctionComponent<{ icon: IconDefinition }> = ({children, 
     )
 }
 
-const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
+const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
 
     const mainWrapperStyle = {
         display: 'block',
@@ -109,15 +114,15 @@ const Home: NextPage<PageProps> = ({myLinks}: PageProps) => {
                         </div>
                     </Block>
 
-                    <Block title={'お知らせ'} h2icon={'robot'} id={styles.whats_new}>
-                        <p>
-                            つまみネットを Next.js で書き直しました！詳細は以下のリンクをご覧ください。
-                        </p>
-                        <p>
-                            <Link href={'/about-next'}>
-                                <a className="linkButton">next.つまみネットについて</a>
-                            </Link>
-                        </p>
+                    <Block title={'最新情報'} h2icon={'robot'} id={styles.whats_new}>
+                        <div id={styles.whats_new_table}>
+                            {whatsNew.map(({text, date}) => (
+                                <div key={text} className={styles.whats_new_row}>
+                                    <div className={styles.whats_new_date}>{date}</div>
+                                    <div><ReactMarkdown>{text}</ReactMarkdown></div>
+                                </div>
+                            ))}
+                        </div>
                     </Block>
 
                     <Block title={'ストア'} h2icon={'otaku'} id={styles.sticker}>
