@@ -56,11 +56,11 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 <p>
                     <p className={'link-area'}>
                         <Link href={'/blog'}>
-                            <a>記事一覧に戻る</a>
+                            <a>記事一覧</a>
                         </Link>
                         <span onClick={share}>
-                        <a>ツイート</a>
-                    </span>
+                            <a>ツイート</a>
+                        </span>
                         <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                             <a>訂正リクエスト</a>
                         </Link>
