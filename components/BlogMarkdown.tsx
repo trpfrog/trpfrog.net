@@ -98,14 +98,23 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
     const srcPath = getPureCloudinaryPath(src)
     const caption = imageData[srcPath]?.caption ?? ''
 
+    let width = imageData[srcPath]?.size.width ?? 800
+    let height = imageData[srcPath]?.size.height ?? 600
+
+    const maxHeight = 600;
+    if (height > maxHeight) {
+        width = width / height * maxHeight
+        height = maxHeight
+    }
+
     return (
         <div style={{textAlign: 'center'}}>
             <Image
                 src={srcPath}
                 alt={alt || src}
                 className={'rich_image'}
-                width={imageData[srcPath]?.size.width ?? 800}
-                height={imageData[srcPath]?.size.height ?? 600}
+                width={width}
+                height={height}
                 objectFit="contain"
             />
             {caption != '' &&
