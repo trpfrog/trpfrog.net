@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {CSSProperties} from 'react'
 import {NextPage} from "next";
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
@@ -11,6 +11,7 @@ import {NextSeo} from "next-seo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleBlock from "../../components/blog/ArticleBlock";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -50,7 +51,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                     <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
                 </div>
 
-                <Block>
+                <Block style={{padding: 0}}>
                     <ArticleBlock entry={latestArticle}/>
                 </Block>
 
@@ -61,8 +62,8 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 <div id={styles.past_article_grid}>
                     {pastArticles.map(entry => (
                         <div key={entry.slug}>
-                            <Block className={styles.article_block}>
-                                <ArticleBlock entry={entry}/>
+                            <Block className={styles.article_block} style={{padding: 0}}>
+                                <ArticleBlock entry={entry} thinPadding={true}/>
                             </Block>
                         </div>
                     ))}

@@ -67,10 +67,10 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
     return (
         <Layout>
             <Title style={{...thumbnailStyle, padding: 0}}>
-                <div id={styles.inner_title_block}>
+                <div className={styles.inner_title_block}>
                     <h1>{entry.title}</h1>
                     <p>{entry.description}</p>
-                    <ArticleBlock entry={entry} showTitle={false} showDescription={false}/>
+                    <ArticleBlock entry={entry} showTitle={false} showDescription={false} showBackground={false}/>
                     <p>
                         <p className={'link-area'}>
                             <Link href={'/blog'}>

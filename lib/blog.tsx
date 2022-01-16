@@ -22,6 +22,8 @@ const parseFootnote = (markdown: string) => {
     const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
     const footnotes = markdown.match(regex) ?? []
 
+    if (footnotes.length < 1) return markdown;
+
     const tmp = markdown.split(regex)
     markdown = ''
     for (const i in tmp) {
