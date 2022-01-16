@@ -49,10 +49,11 @@ export const fetchAllImageSize = async (markdown: string) => {
         .map(line => removeLastBracket(line.replace(srcRegex, '')).split(' '))
         .map(arr => ({
             path: getPureCloudinaryPath(arr[0]),
-            caption: (arr[1] && arr.slice(1).join(' ').slice(1, arr[1].length - 1)) ?? ''
+            caption: arr[1] ? arr.slice(1).join(' ') : '""'
         }))
 
-    for await (const {path, caption} of imageData) {
+    for await (let {path, caption} of imageData) {
+        caption = caption.slice(1, caption.length - 1) // Remove double quote
         dict[path] = {
             size: await fetchImageSize(path),
             caption
