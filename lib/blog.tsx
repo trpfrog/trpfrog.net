@@ -16,6 +16,26 @@ export type BlogPost = {
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
+// convert ((footnote)) to [^i]: footnote
+const parseFootnote = (markdown: string) => {
+    const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
+    const footnotes = markdown.match(regex) ?? []
+
+    const tmp = markdown.split(regex)
+    markdown = ''
+    for (const i in tmp) {
+        markdown += tmp[i] + `[^${i + 1}]`
+    }
+    markdown += tmp[tmp.length - 1]
+
+
+    for (const i in footnotes) {
+        markdown += `\n[^${i + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
+    }
+
+    return markdown
+}
+
 export type BlogImageData = { size: {width: number, height: number}, caption: string }
 
 const fetchImageSize = async (src: string) => {
@@ -73,7 +93,8 @@ const getFileContents = (slug: string) => {
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
-    const content = matterResult.content
+    const content = parseFootnote(matterResult.content)
+
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
     return {
