@@ -165,7 +165,7 @@ header {
 }
 
 header li:before {
-    content: none;
+    content: none !important;
 }
 
 nav li + li {

@@ -57,21 +57,23 @@ a:visited {
     }
 }
 
-li {
-    list-style-type: none;
-    position: relative;
-    padding-left: 0.4em;
-}
+ul {
+    li {
+        list-style-type: none;
+        position: relative;
+        padding-left: 0.4em;
+    }
 
-li:before {
-    border-radius: 50%;
-    width: 6px;
-    height: 6px;
-    position: absolute;
-    left: -0.5em;
-    top: 0.78em;
-    content: "";
-    background: #3c7709;
+    li:before {
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        left: -0.5em;
+        top: 0.78em;
+        content: "";
+        background: #3c7709;
+    }
 }
 
 ul ul li:before {
