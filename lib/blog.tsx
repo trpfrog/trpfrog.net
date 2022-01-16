@@ -11,6 +11,7 @@ export type BlogPost = {
     updated: string
     tags: string
     description?: string
+    thumbnail?: string
     content: string
 }
 

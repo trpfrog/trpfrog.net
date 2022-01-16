@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {CSSProperties} from 'react'
 import {GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 
@@ -10,6 +10,9 @@ import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData
 import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import ArticleBlock from "../../../components/blog/ArticleBlock";
+
+import styles from '../../../styles/blog.module.scss';
+import {NextSeo} from "next-seo";
 
 type PageProps = {
     entry: BlogPost
@@ -49,24 +52,41 @@ const share = () => {
 
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
+    const thumbnailStyle: CSSProperties = entry.thumbnail ? {
+        backgroundImage: `url(${entry.thumbnail})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    } : {}
+
+    const openGraphImage = entry.thumbnail ? {
+        images: [
+            {url: entry.thumbnail}
+        ]
+    } : {}
+
     return (
         <Layout>
-            <Title title={entry.title} description={entry.description}>
-                <ArticleBlock entry={entry} showTitle={false} showDescription={false}/>
-                <p>
-                    <p className={'link-area'}>
-                        <Link href={'/blog'}>
-                            <a>記事一覧</a>
-                        </Link>
-                        <span onClick={share}>
-                            <a>ツイート</a>
-                        </span>
-                        <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                            <a>訂正リクエスト</a>
-                        </Link>
+            <Title style={{...thumbnailStyle, padding: 0}}>
+                <div id={styles.inner_title_block}>
+                    <h1>{entry.title}</h1>
+                    <p>{entry.description}</p>
+                    <ArticleBlock entry={entry} showTitle={false} showDescription={false}/>
+                    <p>
+                        <p className={'link-area'}>
+                            <Link href={'/blog'}>
+                                <a>記事一覧</a>
+                            </Link>
+                            <span onClick={share}>
+                                    <a>ツイート</a>
+                                </span>
+                            <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+                                <a>訂正リクエスト</a>
+                            </Link>
+                        </p>
                     </p>
-                </p>
+                </div>
             </Title>
+            <NextSeo title={entry.title} description={entry.description} openGraph={openGraphImage}/>
             <Block>
                 <BlogMarkdown markdown={entry.content} imageSize={imageSize}/>
             </Block>

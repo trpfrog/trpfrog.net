@@ -1,4 +1,4 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 import Block from "./Block";
 import {NextSeo} from "next-seo";
 
@@ -8,10 +8,11 @@ type Props = {
     description?: string
     ribbonText?: string
     cardImageUrl?: string
+    style?: CSSProperties
 }
 
 const Title: React.FunctionComponent<Props> = ({
-    children, title, description, cardImageUrl, newRibbon=false, ribbonText=''
+    children, title, description, cardImageUrl, newRibbon=false, ribbonText='', style
 }) => {
     let titleHtml: JSX.Element = <></>;
     if (title !== undefined) {
@@ -37,7 +38,7 @@ const Title: React.FunctionComponent<Props> = ({
                     ]
                 } : {}}
             />
-            <Block id={"title"} newRibbon={newRibbon} ribbonText={ribbonText}>
+            <Block id={"title"} newRibbon={newRibbon} ribbonText={ribbonText} style={style}>
                 <div>
                     {titleHtml}
                     {descriptionHtml}
