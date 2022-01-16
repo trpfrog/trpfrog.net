@@ -129,6 +129,8 @@
         vertical-align: 5%;
         overflow: scroll;
         border-radius: 10px;
+        font-size: 0.95em;
+        line-height: 1.8em;
     }
 
     .code_block_with_lang {
@@ -160,6 +162,7 @@
     @media screen and (max-width: 800px) {
         .code_block {
             padding: 10px !important;
+            font-size: 0.85em;
         }
         .code_lang {
             border-radius: 10px 0 10px 0;
