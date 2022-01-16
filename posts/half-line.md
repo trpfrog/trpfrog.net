@@ -38,10 +38,17 @@ description: 証明とProcessingによるビジュアライズ
         このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
     </p>
     <p style="text-align:center">
-        [f:id:TrpFrog:20210510042300p:plain]
+        <img 
+            class="rich_image" 
+            src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png"
+        >
     </p>
 </div>
 
+<div style="display: none">
+<!-- register image size to my parser --->
+![](https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png)
+</div>
 
 ## 直線で考える
 
@@ -88,7 +95,7 @@ $$
 \vec r = \vec a + s \vec v \tag{3}
 $$
 
-これで問題(2) の**答えがわかりました！**めでたしめでたし……ではなく $s, t$ を求める必要があります。
+これで問題(2) の**答えがわかりました！** めでたしめでたし……ではなく $s, t$ を求める必要があります。
 
 ### Pの座標からパラメータを求める
 
@@ -176,14 +183,16 @@ $$
 さて、ここまでで元の問題の9割は解き終わりました。ここで元の問題についてもう一度考えてみましょう。
 
 <div style="padding: 10px 20px; border: 2px solid #90e200; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;">
-<p>
-<b>問題 (再掲)</b>
-</p><p>
-$xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
-</p>
-<p style="text-align:center">
-[f:id:TrpFrog:20210510042300p:plain]
-</p>
+    <p>
+        <b>問題 (再掲)</b>
+    </p>
+    <p>
+        $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
+        このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
+    </p>
+    <p style="text-align:center">
+        <img class="rich_image" src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png">
+    </p>
 </div>
 
 結論から述べると、点 $Q$ の位置ベクトルを $\vec q$ としてこの問題の答えは次の通りです。
