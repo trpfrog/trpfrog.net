@@ -4,6 +4,7 @@ date: 2021-10-15
 updated: 2021-10-15
 tags: 徒歩
 description: よみうりランドのありえんヘアピンカーブが消滅した代わりにトンネルができたと聞いて歩いてきました。
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/yomiuri-tunnel/thumbnail.webp
 ---
 
 よみうりランドの**ありえんヘアピンカーブ**が消滅した代わりに**トンネル**ができたと聞いて歩いてきました。大学終わってから歩きに行くやつは半年以上ぶりですね！
@@ -23,8 +24,9 @@ description: よみうりランドのありえんヘアピンカーブが消滅�
 
 まず**電車で**京王よみうりランド駅へ向かいます。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">徒歩会開始❗️ <a href="https://t.co/zueusaKfD1">pic.twitter.com/zueusaKfD1</a></p>&mdash; つまみ (@TrpFrog) <a href="https://twitter.com/TrpFrog/status/1448540719778385922?ref_src=twsrc%5Etfw">October 14, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+```twitter
+1448540719778385922
+```
 ![IMG_4353](https://res.cloudinary.com/trpfrog/image/upload/blog/yomiuri-tunnel/IMG_4353.webp)
 
 普通は駅をすぐ出て左へ進むとゴンドラがあるのでそれに乗るのですが、今日のお目当ては**トンネル**ですので真っ直ぐ進みます。
@@ -33,7 +35,7 @@ description: よみうりランドのありえんヘアピンカーブが消滅�
 
 ![IMG_4360](https://res.cloudinary.com/trpfrog/image/upload/blog/yomiuri-tunnel/IMG_4360.webp)
 
-**本当にクソデカ遊園地が近くにあるのか？**みたいな場所に出ました (失礼)
+**本当にクソデカ遊園地が近くにあるのか？** みたいな場所に出ました (失礼)
 
 本当にほとんど何もないので先に進みます。
 

@@ -4,6 +4,7 @@ date: 2020-04-15
 updated: 2020-04-15
 tags: お出かけ
 description: しんどい
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/miyagase-cycling/20200415122850
 ---
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/blog/miyagase-cycling/20200415122850)

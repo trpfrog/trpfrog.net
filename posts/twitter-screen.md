@@ -4,6 +4,7 @@ date: 2020-11-23
 updated: 2020-11-23
 tags: 技術, 大学
 description: Javaで作るコメント流しツール
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/thumbnail.png
 ---
 
 この記事は本家つまみログの [ツイートを拾ってニコニコ風に流すツールをJavaで作った](https://trpfrog.hateblo.jp/entry/twitter-screen) を焼き直したものです。

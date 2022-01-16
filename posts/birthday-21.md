@@ -4,6 +4,7 @@ date: 2021-10-17
 updated: 2021-10-17
 tags: 日記
 description: 誕プレ紹介記事
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.webp
 ---
 
 <span style="font-size: 2em">**つまみさん誕生日おめでとう！！！！！！**</span>

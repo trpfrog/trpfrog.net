@@ -4,6 +4,7 @@ date: 2021-12-16
 updated: 2021-12-20
 tags: 大学, 技術
 description: 変なオタク鯖のチャンネルを晒すサイトを作った
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/thumbnail.webp
 ---
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/thumbnail.webp)

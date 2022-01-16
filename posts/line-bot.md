@@ -4,6 +4,7 @@ date: 2021-10-12
 update: 2021-10-12
 tags: 技術
 description: オウム返しするまでのメモ
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641538924/blog/line-bot/thumbnail.webp
 ---
 
 導入までの覚え書き。オウム返しbotを作ることをゴールとします。(雑なので気が向いたら書き直すかもしれない)
@@ -138,4 +139,4 @@ https://ouchi.trpfrog.net/callback
 
 なんか喋ってオウム返しされたら成功！お疲れ様でした。
 
-![thumbnail](https://res.cloudinary.com/trpfrog/image/upload/v1641538924/blog/line-bot/thumbnail.webp)
+![](https://res.cloudinary.com/trpfrog/image/upload/v1641538924/blog/line-bot/thumbnail.webp)

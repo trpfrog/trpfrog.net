@@ -4,6 +4,7 @@ date: 2021-09-29
 updated: 2021-09-29
 tags: 大学, 技術
 description: ホームページに設定すると便利！
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/timetable-page/thumbnail.webp
 ---
 
 時間割がブラウザのホームページにあると便利！

@@ -3,6 +3,7 @@ title: ある点Pから最も近い半直線上の点Qを計算する
 date: 2021-05-10
 tags: 技術, 数学
 description: 証明とProcessingによるビジュアライズ
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png
 ---
 
 こんにちは、つまみ (<a href="https://twitter.com/trpfrog">@TrpFrog</a>) です。生まれてから一度も歩いたことがありません。

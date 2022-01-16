@@ -4,6 +4,7 @@ date: 2021-09-27
 updated: 2021-09-27
 tags: 徒歩, オタク, うどん
 description: 新百合ヶ丘まで歩こうとしたけど無理だった
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/nagayama-haruhino/IMG_4097.webp
 ---
 
 先日マトーサンとちくわぶさんときんモザ映画3回目を観てきました。
