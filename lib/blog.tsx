@@ -26,14 +26,14 @@ const parseFootnote = (markdown: string) => {
 
     const tmp = markdown.split(regex)
     markdown = ''
-    for (const i in tmp) {
-        markdown += tmp[i] + `[^${i + 1}]`
+    for (const i in footnotes) {
+        markdown += tmp[i] + `[^${parseInt(i, 10) + 1}]`
     }
     markdown += tmp[tmp.length - 1]
 
 
     for (const i in footnotes) {
-        markdown += `\n[^${i + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
+        markdown += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
     }
 
     return markdown
