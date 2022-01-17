@@ -9,6 +9,8 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {BlogImageData} from "../lib/blog";
 import {Tweet} from 'react-twitter-widgets'
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
 
 type codeProps = {
     className: string
@@ -159,10 +161,12 @@ const BlogMarkdown: React.FunctionComponent<Props> = ({markdown, imageSize, chil
                     <ReactMarkdown
                         components={markdownComponents as any}
                         remarkPlugins={[
-                            remarkGfm
+                            remarkGfm,
+                            () => remarkToc({heading: '目次'})
                         ]}
                         rehypePlugins={[
-                            rehypeRaw
+                            rehypeRaw,
+                            rehypeSlug,
                         ]}
                     >
                         {markdown.toString()}

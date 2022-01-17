@@ -26,8 +26,10 @@
     "react-syntax-highlighter": "^15.4.5",
     "react-twitter-widgets": "^1.10.0",
     "rehype-raw": "^6.1.1",
+    "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
+    "remark-toc": "^8.0.1",
     "remark-unwrap-images": "^3.0.1",
     "use-sound": "^4.0.1"
   },
