@@ -36,7 +36,13 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
     Twitter: (content) => {
         const id = content.split('\n')[0]
         const original = content.split('\n').slice(1)
-        return <Tweet tweetId={id} />
+        return (
+            <div style={{textAlign: 'center'}}>
+                <div style={{width: 'min(550px, 100%)', display: 'inline-block'}}>
+                    <Tweet tweetId={id}/>
+                </div>
+            </div>
+        )
     }
 }
 
