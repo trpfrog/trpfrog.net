@@ -1,7 +1,7 @@
 import React, {CSSProperties, FunctionComponent} from "react";
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import {format, parseISO} from "date-fns";
 import {BlogPost} from "../../lib/blog";
 import styles from "../../styles/blog.module.scss";
@@ -38,6 +38,12 @@ const ArticleBlock: FunctionComponent<Props> = ({
         height: '100%'
     } : {}
 
+    let readMin = Math.floor(entry.readTime / 60)
+    let readSec = Math.round((entry.readTime % 60) / 10) * 10
+    if (readSec == 60) {
+        readSec = 0; readMin++;
+    }
+
     return (
         <div style={showBackground ? thumbnailStyle : {}}>
             <div className={showBackground ? styles.inner_title_block : ''} style={thinPadding ? {padding: 20} : {}}>
@@ -64,6 +70,13 @@ const ArticleBlock: FunctionComponent<Props> = ({
                             <time dateTime={entry.updated}>
                                 {format(parseISO(entry.updated), 'LLLL d, yyyy')}
                             </time>
+                        </>
+                    }
+                    {entry.readTime > 0 &&
+                        <>
+                            <br/>
+                            <FontAwesomeIcon icon={faClock}/>{' '}
+                            予想読了時間 {readMin} 分 {readSec > 0 ? readSec : '00'} 秒
                         </>
                     }
                 </p>

@@ -12,6 +12,7 @@ export type BlogPost = {
     tags: string
     description?: string
     thumbnail?: string
+    readTime: number
     content: string
 }
 
@@ -37,6 +38,14 @@ const parseFootnote = (markdown: string) => {
     }
 
     return markdown
+}
+
+const getReadTimeSecond = (markdown: string) => {
+    const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')
+    const linkRegex = new RegExp('\\[(.*?)\]\\(.*?\\)', 'g')
+    const linkRemoved = markdown.replace(imageRegex, '').replace(linkRegex, '$1')
+    const codeRemoved = linkRemoved.split('```').filter((e, index) => index % 2 == 0).join()
+    return Math.floor(codeRemoved.length * 60 / 500);
 }
 
 export type BlogImageData = { size: {width: number, height: number}, caption: string }
@@ -104,6 +113,7 @@ export const getPostData = async (slug: string) => {
         slug,
         content,
         tags,
+        readTime: getReadTimeSecond(content),
         ...matterResult.data
     } as BlogPost
 }
@@ -122,6 +132,7 @@ export const getSortedPostsData = async (tag:string = '') => {
         .map(({matterResult, slug}) => {
             return {
                 slug,
+                readTime: -1,
                 ...matterResult.data
             } as BlogPost
         }
