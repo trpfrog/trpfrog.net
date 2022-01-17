@@ -39,6 +39,7 @@ const ImageViewer = ({ id }: PageProps) => {
     const idInt = parseInt(id);
     return (
         <Layout>
+            <Title title={'スタンプビューア'} style={{display: 'none'}} />
             <Block>
                 <div className={styles.img_wrapper_outside}>
                     <div className={styles.img_wrapper_inside}>
@@ -77,13 +78,13 @@ const ImageViewer = ({ id }: PageProps) => {
                     </Link>
                 </div>
             </Block>
-            <Title>
+            <Block>
                 <div style={{textAlign: 'center'}}>
                     <Link href={'/stickers'}>
                         <a className={'linkButton'}>一覧に戻る</a>
                     </Link>
                 </div>
-            </Title>
+            </Block>
             <Block title={'既知のバグ'}>
                 <p>
                     画像のロードが遅すぎてページ遷移をしていないように見える
