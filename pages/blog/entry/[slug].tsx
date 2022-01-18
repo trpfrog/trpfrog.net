@@ -52,6 +52,42 @@ const share = () => {
     window.open(url);
 }
 
+const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number}> = ({ entry, pagePosition }) =>
+    entry.content.length < 2 ? (
+        <></>
+    ) : (
+        <div style={{textAlign: 'center'}}>
+            <div className={'link-area'}>
+                {pagePosition > 0 &&
+                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition - 1}`}>
+                        <a>&larr; Prev</a>
+                    </Link>
+                }
+                {Array.from(Array(entry.content.length), (v, k) =>
+                    pagePosition == k ? (
+                        <a style={{
+                            background: 'darkgray',
+                            transform: 'translateY(2px)',
+                            boxShadow: 'none',
+                            cursor: 'default'
+                        }}>
+                            {k + 1}
+                        </a>
+                    ) : (
+                        <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
+                            <a>{k + 1}</a>
+                        </Link>
+                    )
+                )}
+                {pagePosition < entry.content.length - 1 &&
+                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition + 1}`}>
+                        <a>Next &rarr;</a>
+                    </Link>
+                }
+            </div>
+        </div>
+    )
+
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
     const thumbnailStyle: CSSProperties = entry.thumbnail ? {
@@ -67,7 +103,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
     } : {}
 
     const { query } = useRouter()
-
     const validatePagePosition = (x: number) => Math.floor(Math.max(0, Math.min(entry.content.length, x) - 1))
     const pagePosition = validatePagePosition(parseInt(query.page as string ?? '1'))
 
@@ -95,37 +130,9 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             </Title>
             <NextSeo title={entry.title} description={entry.description} openGraph={openGraphImage}/>
             <Block>
+                <PageNavigation entry={entry} pagePosition={pagePosition}/>
                 <BlogMarkdown markdown={entry.content[pagePosition].trim()} imageSize={imageSize}/>
-                <div style={{textAlign: 'center'}}>
-                    <div className={'link-area'}>
-                        {entry.content.length > 1 && pagePosition > 0 &&
-                            <Link href={`/blog/entry/${entry.slug}?page=${pagePosition - 1}`}>
-                                <a>&larr; Prev</a>
-                            </Link>
-                        }
-                        {entry.content.length > 1 && Array.from(Array(entry.content.length), (v, k) =>
-                            pagePosition == k ? (
-                                <a style={{
-                                    background: 'darkgray',
-                                    transform: 'translateY(2px)',
-                                    boxShadow: 'none',
-                                    cursor: 'default'
-                                }}>
-                                    {k + 1}
-                                </a>
-                            ) : (
-                                <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
-                                    <a>{k + 1}</a>
-                                </Link>
-                            )
-                        )}
-                        {pagePosition < entry.content.length - 1 &&
-                            <Link href={`/blog/entry/${entry.slug}?page=${pagePosition + 1}`}>
-                                <a>Next &rarr;</a>
-                            </Link>
-                        }
-                    </div>
-                </div>
+                <PageNavigation entry={entry} pagePosition={pagePosition}/>
             </Block>
             <Block style={{background: 'none', boxShadow: 'none', padding: 0}}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
