@@ -56,8 +56,8 @@ const Blog: NextPage<Props> = ({ articles, tag }) => {
                 <div id={styles.past_article_grid}>
                     {articles.map(entry => (
                         <div key={entry.slug}>
-                            <Block className={styles.article_block}>
-                                <ArticleBlock entry={entry}/>
+                            <Block className={styles.article_block} style={{padding: 0}}>
+                                <ArticleBlock entry={entry} thinPadding={true}/>
                             </Block>
                         </div>
                     ))}
