@@ -10,6 +10,7 @@ const getTagEmoji = (tag: string) => {
         case '月報': return '🗓'
         case '数学': return '📐'
         case 'お出かけ': return '🚃'
+        case '長編記事': return '📜'
         default: return '🏷'
     }
 }
