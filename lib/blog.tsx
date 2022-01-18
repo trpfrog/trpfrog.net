@@ -13,7 +13,7 @@ export type BlogPost = {
     description?: string
     thumbnail?: string
     readTime: number
-    content: string
+    content: string[]
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -53,6 +53,7 @@ export type BlogImageData = { size: {width: number, height: number}, caption: st
 const fetchImageSize = async (src: string) => {
     const path = getPureCloudinaryPath(src);
     const api = 'https://res.cloudinary.com/trpfrog/fl_getinfo' + path;
+
     return fetch(api)
         .then(response => response.json())
         .then(data => {
@@ -105,7 +106,7 @@ const getFileContents = (slug: string) => {
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
-    const content = parseFootnote(matterResult.content)
+    const content = parseFootnote(matterResult.content).split('<!-- page break --->')
 
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
@@ -113,7 +114,7 @@ export const getPostData = async (slug: string) => {
         slug,
         content,
         tags,
-        readTime: getReadTimeSecond(content),
+        readTime: getReadTimeSecond(content.join()),
         ...matterResult.data
     } as BlogPost
 }

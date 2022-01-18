@@ -13,6 +13,8 @@ import ArticleBlock from "../../../components/blog/ArticleBlock";
 
 import styles from '../../../styles/blog.module.scss';
 import {NextSeo} from "next-seo";
+import {useRouter} from "next/router";
+import TrpFrog404 from "../../404";
 
 type PageProps = {
     entry: BlogPost
@@ -25,7 +27,7 @@ type Params = {
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
     const entry = await getPostData(params!.slug)
-    const imageSize = await fetchAllImageSize(entry.content);
+    const imageSize = await fetchAllImageSize(entry.content.join());
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
@@ -64,6 +66,11 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         ]
     } : {}
 
+    const { query } = useRouter()
+
+    const validatePagePosition = (x: number) => Math.floor(Math.max(0, Math.min(entry.content.length, x) - 1))
+    const pagePosition = validatePagePosition(parseInt(query.page as string ?? '1'))
+
     return (
         <Layout>
             <Title style={{...thumbnailStyle, padding: 0}}>
@@ -88,7 +95,37 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             </Title>
             <NextSeo title={entry.title} description={entry.description} openGraph={openGraphImage}/>
             <Block>
-                <BlogMarkdown markdown={entry.content} imageSize={imageSize}/>
+                <BlogMarkdown markdown={entry.content[pagePosition].trim()} imageSize={imageSize}/>
+                <div style={{textAlign: 'center'}}>
+                    <div className={'link-area'}>
+                        {entry.content.length > 1 && pagePosition > 0 &&
+                            <Link href={`/blog/entry/${entry.slug}?page=${pagePosition - 1}`}>
+                                <a>&larr; Prev</a>
+                            </Link>
+                        }
+                        {entry.content.length > 1 && Array.from(Array(entry.content.length), (v, k) =>
+                            pagePosition == k ? (
+                                <a style={{
+                                    background: 'darkgray',
+                                    transform: 'translateY(2px)',
+                                    boxShadow: 'none',
+                                    cursor: 'default'
+                                }}>
+                                    {k + 1}
+                                </a>
+                            ) : (
+                                <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
+                                    <a>{k + 1}</a>
+                                </Link>
+                            )
+                        )}
+                        {pagePosition < entry.content.length - 1 &&
+                            <Link href={`/blog/entry/${entry.slug}?page=${pagePosition + 1}`}>
+                                <a>Next &rarr;</a>
+                            </Link>
+                        }
+                    </div>
+                </div>
             </Block>
             <Block style={{background: 'none', boxShadow: 'none', padding: 0}}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
