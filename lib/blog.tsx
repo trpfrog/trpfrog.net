@@ -106,7 +106,9 @@ const getFileContents = (slug: string) => {
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
-    const content = parseFootnote(matterResult.content).split('<!-- page break --->')
+    const content = matterResult.content
+        .split('<!-- page break --->')
+        .map(parseFootnote)
 
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
