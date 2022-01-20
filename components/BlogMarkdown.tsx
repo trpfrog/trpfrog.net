@@ -76,6 +76,31 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
                 })}
             </div>
         )
+    },
+
+    Conversation: content => {
+        const markdownComponents = {
+            p: ({children}: any) => <>{children}</>
+        }
+        return (
+            <div className={styles.conversation_box_grid}>
+                {content.split('\n').map(line => {
+                    const tmp = line.split(':')
+                    const name = tmp[0]
+                    const value = tmp.slice(1).join(':').trim()
+                    return (
+                        <>
+                            <div className={styles.conversation_box_name}>
+                                <ReactMarkdown components={markdownComponents}>{name}</ReactMarkdown> :
+                            </div>
+                            <div className={styles.conversation_box_value}>
+                                <ReactMarkdown components={markdownComponents}>{value}</ReactMarkdown>
+                            </div>
+                        </>
+                    )
+                })}
+            </div>
+        )
     }
 }
 
