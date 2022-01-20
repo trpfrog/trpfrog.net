@@ -220,3 +220,40 @@
         color: white !important;
     }
 }
+
+.result_box_title {
+
+}
+
+.result_box_value {
+    font-weight: bold;
+    font-size: 2em;
+    @media screen and (max-width: 800px) {
+        font-size: 1.2em;
+    }
+}
+
+.result_box {
+    display: inline-block;
+    border-radius: 10px;
+    background: var(--header-color);
+    color: white;
+    padding: 10px 20px;
+
+    @media screen and (max-width: 800px) {
+        padding: 12px;
+    }
+}
+
+.result_box_grid {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 0.8em;
+    @media screen and (max-width: 800px) {
+        gap: 0.3em;
+    }
+}
