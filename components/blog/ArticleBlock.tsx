@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import {format, parseISO} from "date-fns";
 import {BlogPost} from "../../lib/blog";
-import styles from "../../styles/blog.module.scss";
+import styles from "../../styles/blog/blog.module.scss";
 import {getEmojiImageSrc} from "../../lib/blogTag";
 import Title from "../Title";
 

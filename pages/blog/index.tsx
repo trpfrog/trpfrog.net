@@ -5,7 +5,7 @@ import Title from "../../components/Title";
 import Block from "../../components/Block";
 import {getSortedPostsData, BlogPost} from "../../lib/blog";
 
-import styles from '../../styles/blog.module.scss';
+import styles from '../../styles/blog/blog.module.scss';
 import {NextSeo} from "next-seo";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

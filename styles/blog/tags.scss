@@ -1,0 +1,45 @@
+.tag_block {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px #90e200;
+    background: white;
+
+    color: black !important;
+    text-decoration: none;
+
+    padding: 2px;
+    border-radius: 1000px;
+
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 0.8em;
+
+    margin-right: 4px;
+    margin-bottom: 4px;
+
+    @media screen and (prefers-color-scheme: dark) {
+        background: #172c00;
+        color: white !important;
+    }
+}
+
+.tag_block:hover {
+    background: #90e20033;
+}
+
+.tag_name {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px 3px 0 0;
+}
+
+.tag_emoji {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2px;
+    width: 2em;
+    height: 2em;
+}

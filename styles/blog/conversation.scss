@@ -1,0 +1,20 @@
+.conversation_box_grid {
+    font-family: "Noto Sans JP", sans-serif;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 0.5em;
+    row-gap: 0.2em;
+    margin-left: 1em;
+    @media screen and (max-width: 800px) {
+        margin-left: 0.3em;
+    }
+}
+
+.conversation_box_name {
+    text-align: right;
+    font-weight: bold;
+}
+
+.conversation_box_value {
+    line-height: 1.6em;
+}

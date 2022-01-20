@@ -7,7 +7,7 @@ import {GetStaticProps, NextPage} from "next";
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 import {NextSeo} from "next-seo";
-import styles from "../../../styles/blog.module.scss";
+import styles from "../../../styles/blog/blog.module.scss";
 import Block from "../../../components/Block";
 import Link from "next/link";
 import React from "react";

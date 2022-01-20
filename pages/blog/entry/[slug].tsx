@@ -11,7 +11,7 @@ import BlogMarkdown from "../../../components/BlogMarkdown";
 
 import ArticleBlock from "../../../components/blog/ArticleBlock";
 
-import styles from '../../../styles/blog.module.scss';
+import styles from '../../../styles/blog/blog.module.scss';
 import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
 import TrpFrog404 from "../../404";

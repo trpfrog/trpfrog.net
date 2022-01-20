@@ -1,0 +1,27 @@
+.blog_img_caption {
+    color: gray;
+    margin: 0;
+    @media screen and (prefers-color-scheme: dark) {
+        color: lightgray;
+    }
+}
+
+.blog_img_wrapper {
+    text-align: center;
+    margin: 2em 0;
+    span {
+        overflow: visible !important;
+    }
+}
+
+.blog_img {
+    box-shadow: 0 0 1px 1px rgba(gray, 0.3);
+    transition: box-shadow ease-in-out 0.2s;
+    cursor: zoom-in;
+
+    @media screen and (min-width: 800px) {
+        &:hover {
+            box-shadow: 0 3px 10px 1px rgba(gray, 0.7);
+        }
+    }
+}
