@@ -34,6 +34,13 @@ const getLangName = (s: string) => {
     }
 }
 
+const parseInlineMarkdown = (markdown: string) => {
+    const comp = {
+        p: ({children}: any) => <>{children}</>
+    }
+    return <ReactMarkdown components={comp}>{markdown}</ReactMarkdown>
+}
+
 // Updated when page was loaded
 let goToNextPage = () => {}
 
@@ -78,30 +85,26 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         )
     },
 
-    Conversation: content => {
-        const markdownComponents = {
-            p: ({children}: any) => <>{children}</>
-        }
-        return (
-            <div className={styles.conversation_box_grid}>
-                {content.split('\n').map(line => {
-                    const tmp = line.split(':')
-                    const name = tmp[0]
-                    const value = tmp.slice(1).join(':').trim()
-                    return (
-                        <>
-                            <div className={styles.conversation_box_name}>
-                                <ReactMarkdown components={markdownComponents}>{name}</ReactMarkdown> :
-                            </div>
-                            <div className={styles.conversation_box_value}>
-                                <ReactMarkdown components={markdownComponents}>{value}</ReactMarkdown>
-                            </div>
-                        </>
-                    )
-                })}
-            </div>
-        )
-    }
+    Conversation: content => (
+        <div className={styles.conversation_box_grid}>
+            {content.split('\n').map(line => {
+                const tmp = line.split(':')
+                const name = tmp[0]
+                const value = tmp.slice(1).join(':').trim()
+                return (
+                    <>
+                        <div className={styles.conversation_box_name}>
+                            {parseInlineMarkdown(name)} :
+                        </div>
+                        <div className={styles.conversation_box_value}>
+                            {parseInlineMarkdown(value)}
+                        </div>
+                    </>
+                )
+            })}
+        </div>
+    )
+
 }
 
 const formatCodeComponent = ({className, children, inline}: codeProps) => {
