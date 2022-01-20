@@ -159,11 +159,13 @@
     }
 
     .code_lang {
+        font-size: 0.9em;
+        font-family: 'Noto Sans JP', sans-serif !important;
+
         display: inline-block;
         color: white;
-        font-weight: bold;
         margin-left: 1.5em;
-        padding: 3px 8px;
+        padding: 0 8px;
 
         position: relative;
 
