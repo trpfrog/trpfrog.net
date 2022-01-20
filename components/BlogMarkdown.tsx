@@ -186,6 +186,7 @@ const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, childre
     }
 
     const markdownComponents = {
+        pre: ({ children }: any) => <div>{children}</div>, // disable pre tag
         code: formatCodeComponent,
         img: (props: any) => formatImgComponent(props, imageSize)
     };
