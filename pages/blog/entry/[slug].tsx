@@ -52,14 +52,17 @@ const share = () => {
     window.open(url);
 }
 
-const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number}> = ({ entry, pagePosition }) =>
-    entry.content.length < 2 ? (
+const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number, doNotShowOnFirst?: boolean}> = ({
+    entry, pagePosition, doNotShowOnFirst = false
+}) => {
+    const pagePosition1Indexed = pagePosition + 1;
+    return entry.content.length < 2 || (doNotShowOnFirst && pagePosition < 1) ? (
         <></>
     ) : (
         <div style={{textAlign: 'center'}}>
             <div className={'link-area'}>
                 {pagePosition > 0 &&
-                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition - 1}`}>
+                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition1Indexed - 1}`}>
                         <a>&larr; Prev</a>
                     </Link>
                 }
@@ -80,13 +83,14 @@ const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number}> = ({ ent
                     )
                 )}
                 {pagePosition < entry.content.length - 1 &&
-                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition + 1}`}>
+                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition1Indexed + 1}`}>
                         <a>Next &rarr;</a>
                     </Link>
                 }
             </div>
         </div>
     )
+}
 
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
@@ -130,7 +134,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             </Title>
             <NextSeo title={entry.title} description={entry.description} openGraph={openGraphImage}/>
             <Block>
-                <PageNavigation entry={entry} pagePosition={pagePosition}/>
+                <PageNavigation entry={entry} pagePosition={pagePosition} doNotShowOnFirst={true}/>
                 <BlogMarkdown markdown={entry.content[pagePosition].trim()} imageSize={imageSize}/>
                 <PageNavigation entry={entry} pagePosition={pagePosition}/>
             </Block>
