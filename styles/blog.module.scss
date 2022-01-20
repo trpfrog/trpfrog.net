@@ -105,6 +105,24 @@
         }
     }
 
+    .blog_img_wrapper {
+        text-align: center;
+        margin: 2em 0;
+        span {
+            overflow: visible !important;
+        }
+    }
+
+    .blog_img {
+        box-shadow: 0 0 1px 1px rgba(gray, 0.3);
+        transition: box-shadow ease-in-out 0.2s;
+        cursor: zoom-in;
+        &:hover {
+            box-shadow: 0 3px 10px 1px rgba(gray, 0.7);
+        }
+    }
+
+
     blockquote {
         background: #90e20033;
         padding: 10px 2em;

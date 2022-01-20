@@ -174,19 +174,24 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
         height = maxHeight
     }
 
+    const jumpToImage = () => {
+        window.location.href = 'https://res.cloudinary.com/trpfrog/image/upload/' + srcPath
+    }
+
     return (
-        <div style={{textAlign: 'center'}}>
+        <div className={styles.blog_img_wrapper}>
             <Image
                 src={srcPath}
                 alt={alt || src}
-                className={'rich_image'}
+                className={`rich_image ${styles.blog_img}`}
                 width={width}
                 height={height}
                 objectFit="contain"
+                onClick={jumpToImage}
             />
             {caption != '' &&
                 <p className={styles.blog_img_caption}>
-                    {caption}
+                    {parseInlineMarkdown(caption)}
                 </p>
             }
         </div>
