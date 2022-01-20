@@ -135,7 +135,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             <NextSeo title={entry.title} description={entry.description} openGraph={openGraphImage}/>
             <Block>
                 <PageNavigation entry={entry} pagePosition={pagePosition} doNotShowOnFirst={true}/>
-                <BlogMarkdown markdown={entry.content[pagePosition].trim()} imageSize={imageSize}/>
+                <BlogMarkdown entry={entry} imageSize={imageSize}/>
                 <PageNavigation entry={entry} pagePosition={pagePosition}/>
             </Block>
             <Block style={{background: 'none', boxShadow: 'none', padding: 0}}>

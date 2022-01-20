@@ -7,10 +7,11 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogImageData} from "../lib/blog";
+import {BlogImageData, BlogPost} from "../lib/blog";
 import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
+import {useRouter} from "next/router";
 
 type codeProps = {
     className: string
@@ -33,6 +34,8 @@ const getLangName = (s: string) => {
     }
 }
 
+// Updated when page was loaded
+let goToNextPage = () => {}
 
 const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element } = {
     Twitter: (content) => {
@@ -45,6 +48,17 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
                 </div>
             </div>
         )
+    },
+
+    'Next-page': content => {
+        return (
+            <div style={{textAlign: 'center'}}>
+                <span onClick={goToNextPage} className={'linkButton'}>
+                    Next: {content} &rarr;
+                </span>
+            </div>
+        )
+    },
     }
 }
 
@@ -135,11 +149,25 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
 }
 
 type Props = {
-    markdown: string
+    entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
 }
 
-const BlogMarkdown: React.FunctionComponent<Props> = ({markdown, imageSize, children}) => {
+const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, children}) => {
+
+    const { query } = useRouter()
+    const clampInt = (x: number, l: number, r: number) => Math.floor(Math.max(l, Math.min(x, r)))
+    const pagePosition: number = clampInt(
+        parseInt(query.page as string ?? '1'), 1, entry.content.length
+    )
+    const markdown = entry.content[pagePosition - 1].trim()
+
+    goToNextPage = () => {
+        if (process.browser) {
+            window.location.href = `/blog/entry/${entry.slug}?page=${pagePosition + 1}`
+        }
+    }
+
     const markdownComponents = {
         code: formatCodeComponent,
         img: (props: any) => formatImgComponent(props, imageSize)
