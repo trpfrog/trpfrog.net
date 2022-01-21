@@ -159,6 +159,7 @@ export const getPureCloudinaryPath = (path: string) => {
         .replace(regex1, '')
         .replace(regex2, '')
         .replace(cloudinaryUrl, '')
+        .split('.')[0] // remove extension
 }
 
 const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: BlogImageData}) => {
