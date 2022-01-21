@@ -66,22 +66,24 @@ const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number, doNotShow
                         <a>&larr; Prev</a>
                     </Link>
                 }
-                {Array.from(Array(entry.content.length), (v, k) =>
-                    pagePosition == k ? (
-                        <a style={{
-                            background: 'darkgray',
-                            transform: 'translateY(2px)',
-                            boxShadow: 'none',
-                            cursor: 'default'
-                        }}>
-                            {k + 1}
-                        </a>
-                    ) : (
-                        <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
-                            <a>{k + 1}</a>
-                        </Link>
-                    )
-                )}
+                {Array.from(Array(entry.content.length), (v, k) => (
+                    <span key={k}>
+                        {pagePosition == k ? (
+                            <a style={{
+                                background: 'darkgray',
+                                transform: 'translateY(2px)',
+                                boxShadow: 'none',
+                                cursor: 'default'
+                            }}>
+                                {k + 1}
+                            </a>
+                        ) : (
+                            <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
+                                <a>{k + 1}</a>
+                            </Link>
+                        )}
+                    </span>
+                ))}
                 {pagePosition < entry.content.length - 1 &&
                     <Link href={`/blog/entry/${entry.slug}?page=${pagePosition1Indexed + 1}`}>
                         <a>Next &rarr;</a>
