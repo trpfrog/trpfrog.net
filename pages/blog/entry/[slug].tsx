@@ -27,7 +27,7 @@ type Params = {
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
     const entry = await getPostData(params!.slug)
-    const imageSize = await fetchAllImageSize(entry.content.join());
+    const imageSize = await fetchAllImageSize(entry);
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),

@@ -50,33 +50,38 @@ const getReadTimeSecond = (markdown: string) => {
 
 export type BlogImageData = { size: {width: number, height: number}, caption: string }
 
-const fetchImageSize = async (src: string) => {
-    const path = getPureCloudinaryPath(src);
-    const api = 'https://res.cloudinary.com/trpfrog/fl_getinfo' + path;
+export const fetchAllImageSize = async (entry: BlogPost) => {
 
-    return fetch(api)
-        .then(response => response.json())
-        .then(data => {
-            return {
-                width: parseInt(data.input.width) ?? 800,
-                height: parseInt(data.input.height) ?? 600
-            }
-        });
-}
+    const markdown = entry.content.join()
+    const slug = entry.slug.replace('_', '')
 
-export const fetchAllImageSize = async (markdown: string) => {
     const dict = {} as { [path: string]: BlogImageData }
+    const cloudinary = require('../lib/cloudinary')
+    await cloudinary.search
+        .expression(`resource_type:image AND folder=blog/${slug}`)
+        .max_results(300)
+        .execute()
+        .then((result: any) => {
+            result.resources.forEach((image: any) => {
+                const src = '/' + image.public_id
+                dict[src] = {
+                    size: {
+                        width: parseInt(image.width ?? '800', 10),
+                        height: parseInt(image.height ?? '600', 10),
+                    },
+                    caption: ''
+                }
+            })
+        });
 
     const srcRegex = new RegExp('^!\\[.*?\]\\(')
-
-    // TODO: キャプションのパース正しくする
 
     const removeLastBracket = (s: string) => {
         const i = s.lastIndexOf(')')
         return s.slice(0, i) + s.slice(i + 1)
     }
 
-    const imageData = markdown
+    markdown
         .split('\n')
         .filter(line => srcRegex.test(line))
         .map(line => removeLastBracket(line.replace(srcRegex, '')).split(' '))
@@ -84,14 +89,13 @@ export const fetchAllImageSize = async (markdown: string) => {
             path: getPureCloudinaryPath(arr[0]),
             caption: arr[1] ? arr.slice(1).join(' ') : '""'
         }))
-
-    for await (let {path, caption} of imageData) {
-        caption = caption.slice(1, caption.length - 1) // Remove double quote
-        dict[path] = {
-            size: await fetchImageSize(path),
-            caption
-        };
-    }
+        .forEach(({path, caption}) => {
+            if(dict[path] != undefined) {
+                // Remove double quote
+                caption = caption.slice(1, caption.length - 1)
+                dict[path].caption = caption
+            }
+        })
 
     return dict;
 }
