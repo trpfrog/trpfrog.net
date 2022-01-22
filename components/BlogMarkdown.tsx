@@ -2,7 +2,8 @@ import styles from "../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {monokaiSublime} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import Image from "next/image";
-import React from "react";
+import Modal from "react-modal";
+import React, {CSSProperties, useEffect, useState} from "react";
 import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -145,12 +146,6 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     )
 }
 
-type ImageProps = {
-    src: string
-    alt?: string
-    children: any
-}
-
 export const getPureCloudinaryPath = (path: string) => {
     const cloudinaryUrl = 'https:\/\/res.cloudinary.com\/trpfrog'
     const regex1 = new RegExp(cloudinaryUrl + '/image/upload/v[0-9]+')
@@ -175,28 +170,62 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
         height = maxHeight
     }
 
-    const jumpToImage = () => {
-        window.location.href = 'https://res.cloudinary.com/trpfrog/image/upload/' + srcPath
+    const modalStyle = {
+        overlay: {
+            position: 'fixed',
+            background: 'rgba(0,0,0,.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        } as CSSProperties,
+        content: {
+            position: 'static',
+            width: `min(calc(80vh * ${width / height}), 95vw)`,
+            height: `min(calc(95vw * ${height / width}), 80vh)`,
+            padding: 0,
+            background: 'transparent',
+            border: 'none',
+        } as CSSProperties
     }
 
-    return (
-        <div className={styles.blog_img_wrapper}>
-            <Image
-                src={srcPath}
-                alt={alt || src}
-                className={`rich_image ${styles.blog_img}`}
-                width={width}
-                height={height}
-                objectFit="contain"
-                onClick={jumpToImage}
-            />
-            {caption != '' &&
-                <p className={styles.blog_img_caption}>
-                    {parseInlineMarkdown(caption)}
-                </p>
-            }
-        </div>
-    )
+    const ReturnComponent: React.FC = () => {
+        const [modalState, setModalState] = useState(false)
+        return (
+            <>
+                <div className={styles.blog_img_wrapper}>
+                    <Image
+                        src={srcPath}
+                        alt={alt || src}
+                        className={`rich_image ${styles.blog_img}`}
+                        width={width}
+                        height={height}
+                        objectFit="contain"
+                        onClick={() => setModalState(true)}
+                    />
+                    {caption != '' &&
+                        <p className={styles.blog_img_caption}>
+                            {parseInlineMarkdown(caption)}
+                        </p>
+                    }
+                </div>
+                <Modal
+                    isOpen={modalState}
+                    style={modalStyle}
+                    onRequestClose={() => setModalState(false)}
+                >
+                    <Image
+                        src={srcPath}
+                        alt={alt || src}
+                        className={`rich_image`}
+                        width={width}
+                        height={height}
+                        layout='responsive'
+                    />
+                </Modal>
+            </>
+        )
+    }
+    return <ReturnComponent/>
 }
 
 type Props = {
