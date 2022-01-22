@@ -128,7 +128,7 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     }
 
     return (
-        <>
+        <pre>
             {language != '' && (
                 <div className={styles.code_lang_wrapper}>
                     <span className={styles.code_lang}>{language}</span>
@@ -141,7 +141,7 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
             >
                 {children}
             </SyntaxHighlighter>
-        </>
+        </pre>
     )
 }
 
