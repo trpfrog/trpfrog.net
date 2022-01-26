@@ -129,7 +129,7 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     }
 
     return (
-        <pre>
+        <pre style={{textAlign: 'left'}}>
             {language != '' && (
                 <div className={styles.code_lang_wrapper}>
                     <span className={styles.code_lang}>{language}</span>
@@ -248,6 +248,7 @@ const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, childre
         }
     }
 
+    /// bug : img wrapper class adds to code blocks (disabling pre tags affects it?)
     const markdownComponents = {
         pre: ({ children }: any) => <div>{children}</div>, // disable pre tag
         code: formatCodeComponent,
