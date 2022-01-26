@@ -53,7 +53,7 @@ const Header: FunctionComponent<{
                     <ul>
                         {['home', 'works', 'blog'].map(e => (
                             <li key={e}>
-                                <Link href={'/' + e == 'home' ? '' : e}>
+                                <Link href={e == 'home' ? '/' : '/' + e}>
                                     <a className="headerButton">{e}</a>
                                 </Link>
                             </li>
