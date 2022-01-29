@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .conversation_box_grid {
     font-family: "Noto Sans JP", sans-serif;
     display: grid;
@@ -5,7 +7,7 @@
     column-gap: 0.5em;
     row-gap: 0.2em;
     margin-left: 1em;
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         margin-left: 0.3em;
     }
 }

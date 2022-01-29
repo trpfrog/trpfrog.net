@@ -1,3 +1,5 @@
+@use '../mixins';
+
 #page_top {
     width: 50px;
     height: 50px;
@@ -29,7 +31,7 @@
     color: white;
 }
 
-@media screen and (max-width:800px) { 
+@include mixins.mq(sp) {
     #page_top {
         display: none;
     }

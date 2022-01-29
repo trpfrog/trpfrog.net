@@ -1,7 +1,9 @@
+@use '../mixins';
+
 .blog_img_caption {
     color: gray;
     margin: 0;
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         color: lightgray;
     }
 }
@@ -19,7 +21,7 @@
     transition: box-shadow ease-in-out 0.2s;
     cursor: zoom-in;
 
-    @media screen and (min-width: 800px) {
+    @include mixins.mq(pc) {
         &:hover {
             box-shadow: 0 3px 10px 1px rgba(gray, 0.7);
         }

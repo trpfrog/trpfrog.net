@@ -1,3 +1,5 @@
+@use '../mixins';
+
 #intro_text {
     margin: 0.7em 0.3em 0;
 }
@@ -53,7 +55,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #intro_text {
         margin: 0.3em 0 0;
     }

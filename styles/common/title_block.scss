@@ -1,8 +1,10 @@
+@use '../mixins';
+
 :root {
     --title-color: #172c00;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     :root {
         --title-color: white;
     }
@@ -23,7 +25,7 @@
     margin-bottom: 0;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #title h1 {
         font-size: 2em;
     }

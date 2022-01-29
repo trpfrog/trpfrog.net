@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .hrule_block {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-weight: bold;
@@ -10,11 +12,11 @@
     box-shadow: none;
     color: #3c7709;
 
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         margin-top: 0;
     }
 
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         color: #ffffffbb;
     }
 }
@@ -24,7 +26,7 @@
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     grid-gap: 17px;
 
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         margin: 0 8px;
         column-gap: 8px;
         row-gap: 12px;

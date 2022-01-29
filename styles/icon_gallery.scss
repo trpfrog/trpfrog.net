@@ -1,3 +1,5 @@
+@use 'mixins';
+
 .prevAndNextButton{
   background-color:rgba(255, 255, 255, 0.5);
   display: inline-block;
@@ -22,7 +24,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark){
+@include mixins.mq(dark){
     .prevAndNextButton{
         background-color:rgba(26, 221, 0, 0.5);
         color: white !important;
@@ -41,7 +43,7 @@
   vertical-align: middle;
   cursor: pointer;
 }
-@media screen and (max-width: 800px){
+@include mixins.mq(sp){
   .imgButton.wideimgbutton {
       display: none;
   }

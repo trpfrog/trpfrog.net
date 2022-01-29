@@ -1,3 +1,5 @@
+@use '../mixins';
+
 :root {
     --header-height: 5em;
     --navigation-height: 3em;
@@ -6,7 +8,7 @@
     --window-bkg-color: white;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     :root {
         --header-height: 3.5em;
         --navigation-height: 0;
@@ -14,7 +16,7 @@
         --main-margin: 0;
     }
 }
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     :root {
         --window-bkg-color: #202020;
     }
@@ -40,7 +42,7 @@ html {
     grid-template-columns: 1fr;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     .grid {
         background: #0c2400;
     }
@@ -72,7 +74,7 @@ main {
     grid-area: n;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     main {
         --main-margin: 12px;
         padding: 0;

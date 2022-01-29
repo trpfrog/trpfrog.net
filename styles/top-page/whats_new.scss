@@ -1,3 +1,5 @@
+@use '../mixins';
+
 #whats_new_table {
     overflow-y: scroll;
     font-size: 0.8em;
@@ -14,7 +16,7 @@
     border-bottom: dashed 1px black;
     padding: 5px;
 
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         border-color: white;
     }
 

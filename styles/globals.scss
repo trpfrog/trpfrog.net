@@ -9,13 +9,14 @@
 @use 'common/media';
 @use 'common/linkbutton';
 @use 'top-page/animation';
+@use 'mixins';
 
 :root {
     --h3-marker-color: #90e200;
     --body-background: rgb(192, 225, 121);
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     :root {
         --h3-marker-color: #4e8018;
         --body-background: #3d4d22;
@@ -33,7 +34,7 @@ body, #inner-body {
     background: var(--body-background);
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     #inner-body {
         color: white;
     }
@@ -47,7 +48,7 @@ a:visited {
     color: #003500;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     a:link:not(.linkButton) {
         color: aquamarine;
     }

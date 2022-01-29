@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .result_box_title {
 
 }
@@ -5,7 +7,7 @@
 .result_box_value {
     font-weight: bold;
     font-size: 2em;
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         font-size: 1.2em;
     }
 }
@@ -17,7 +19,7 @@
     color: white;
     padding: 10px 20px;
 
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         padding: 12px;
     }
 }
@@ -30,7 +32,7 @@
     flex-wrap: wrap;
 
     gap: 0.8em;
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         gap: 0.3em;
     }
 }

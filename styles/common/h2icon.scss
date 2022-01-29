@@ -1,10 +1,12 @@
+@use '../mixins';
+
 main h2 {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: 800;
     color: #172c00;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     main h2 {
         color: #f1ffd0;
     }

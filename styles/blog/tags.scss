@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .tag_block {
     display: inline-flex;
     justify-content: center;
@@ -18,7 +20,7 @@
     margin-right: 4px;
     margin-bottom: 4px;
 
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         background: #172c00;
         color: white !important;
     }

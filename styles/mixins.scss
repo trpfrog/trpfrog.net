@@ -1,0 +1,12 @@
+$mq-breakpoints: (
+    'sp': 'screen and (max-width: 800px)',
+    'pc': 'screen and (min-width: 800px)',
+    'dark': 'screen and (prefers-color-scheme: dark)',
+    'light': 'screen and (prefers-color-scheme: light)',
+);
+
+@mixin mq($mq-breakpoint: sp) {
+    @media #{map-get($mq-breakpoints, $mq-breakpoint)} {
+        @content;
+    }
+}

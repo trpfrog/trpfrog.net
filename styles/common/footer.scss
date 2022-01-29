@@ -1,3 +1,5 @@
+@use '../mixins';
+
 :root {
     --footer-color: #163600;
 }
@@ -56,7 +58,7 @@ footer {
     background: #d7e3bb;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     footer {
         text-align: center;
 

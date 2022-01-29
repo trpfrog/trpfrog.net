@@ -1,3 +1,5 @@
+@use '../mixins';
+
 $code-block-border: 1px;
 
 .post code {
@@ -13,7 +15,7 @@ $code-block-border: 1px;
     font-size: 0.95em;
     line-height: 1.8em;
 
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         padding: 10px !important;
         font-size: 0.85em;
     }
@@ -24,7 +26,7 @@ $code-block-border: 1px;
     border-radius: 0 0 10px 10px;
     padding: 0.5em 1.5em 1em 1.5em !important;
     
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         border: solid $code-block-border lightgray;
         border-top: none;
     }
@@ -35,7 +37,7 @@ $code-block-border: 1px;
     background: #23241f;
     margin-bottom: -1px;
     
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         border: solid $code-block-border lightgray;
         border-bottom: none;
     }
@@ -56,11 +58,11 @@ $code-block-border: 1px;
     border-radius: 0 0 10px 10px;
     width: auto;
 
-    @media screen and (max-width: 800px) {
+    @include mixins.mq(sp) {
         border-radius: 10px 0 10px 0;
         margin-left: 0;
         
-        @media screen and (prefers-color-scheme: dark) {
+        @include mixins.mq(dark) {
             border-radius: 
                 (10px - $code-block-border) 0
                 (10px - $code-block-border) 0;
@@ -78,7 +80,7 @@ $code-block-border: 1px;
     border-radius: 5px;
     vertical-align: 5%;
     
-    @media screen and (prefers-color-scheme: dark) {
+    @include mixins.mq(dark) {
         border: solid 1px gray;
     }
 }

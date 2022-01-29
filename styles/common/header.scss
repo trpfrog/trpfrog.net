@@ -1,11 +1,12 @@
 @use "mobilemenu";
+@use '../mixins';
 
 :root {
     --header-color: #66a928;
     --header-filter: drop-shadow(0 0.2em 0 #5a9623);
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     :root {
         --header-color: #4f831f;
         --header-filter: drop-shadow(0 0.2em 0 rgb(49, 80, 15));
@@ -176,7 +177,7 @@ nav li + li {
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #header-wrapper nav ul {
         display: none;
     }

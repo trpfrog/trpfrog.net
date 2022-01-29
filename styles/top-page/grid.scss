@@ -1,3 +1,5 @@
+@use '../mixins';
+
 // Grid definition
 
 #top_page_grid_wrapper {
@@ -6,7 +8,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #top_page_grid_wrapper {
         padding: 8px 0 0;
     }
@@ -28,7 +30,7 @@
     text-align: left;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #top_page_grid {
         grid-template-areas:
             "about_me"

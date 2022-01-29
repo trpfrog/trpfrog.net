@@ -1,3 +1,5 @@
+@use '../mixins';
+
 #wide-nav {
     background: #66a928d3;
     text-align: center;
@@ -25,13 +27,13 @@
     vertical-align: bottom;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.mq(dark) {
     #wide-nav {
         background: #2d4b11d3;
     }
 }
 
-@media screen and (min-width: 800px) {
+@include mixins.mq(pc) {
     .sidemenu_link {
         border-radius: 1000px;
         height: 1.3em;

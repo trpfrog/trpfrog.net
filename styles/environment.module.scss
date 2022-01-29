@@ -1,3 +1,5 @@
+@use 'mixins';
+
 .name {
     font-weight: bold;
 }
@@ -13,7 +15,7 @@
     object-fit: cover;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     .gadget_image_wrapper {
         max-width: 100%;
     }

@@ -1,3 +1,5 @@
+@use '../mixins';
+
 #mobilemenu {
     display: none;
     text-align: left;
@@ -83,7 +85,7 @@
     display: none;
 }
 
-@media screen and (max-width: 800px) {
+@include mixins.mq(sp) {
     #hamburger_menu {
         display: block;
         position: absolute;

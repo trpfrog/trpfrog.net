@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .rating_list {
     font-weight: bold;
 }
@@ -68,7 +70,7 @@
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark){
+@include mixins.mq(dark){
     .platinum , .rainbow , .silver , .brown , .green , .water , .blue  {
         -webkit-text-stroke: 2px white;
         text-stroke: 2px white;
