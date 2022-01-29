@@ -119,7 +119,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     <h1>{entry.title}</h1>
                     <p>{entry.description}</p>
                     <ArticleBlock entry={entry} showTitle={false} showDescription={false} showBackground={false}/>
-                    <p>
+                    <p id={styles.entry_top_buttons}>
                         <p className={'link-area'}>
                             <Link href={'/blog'}>
                                 <a>記事一覧</a>
@@ -140,7 +140,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 <BlogMarkdown entry={entry} imageSize={imageSize}/>
                 <PageNavigation entry={entry} pagePosition={pagePosition}/>
             </Block>
-            <Block style={{background: 'none', boxShadow: 'none', padding: 0}}>
+            <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
                         <a>記事一覧</a>

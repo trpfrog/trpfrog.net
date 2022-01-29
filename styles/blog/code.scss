@@ -30,6 +30,13 @@ $code-block-border: 1px;
         border: solid $code-block-border lightgray;
         border-top: none;
     }
+
+    @media print {
+        border: solid $code-block-border black;
+        border-top: none;
+        background: none !important;
+        * { color: black !important; }
+    }
 }
 
 .code_lang_wrapper {
@@ -40,6 +47,13 @@ $code-block-border: 1px;
     @include mixins.mq(dark) {
         border: solid $code-block-border lightgray;
         border-bottom: none;
+    }
+
+    @media print {
+        border: solid $code-block-border black;
+        border-bottom: none;
+        background: none !important;
+        * { color: black !important; }
     }
 }
 
@@ -68,6 +82,14 @@ $code-block-border: 1px;
                 (10px - $code-block-border) 0;
         }
     }
+
+    @media print {
+        border: solid $code-block-border black;
+        border-top: none;
+        -webkit-print-color-adjust: exact;
+        background: lightgray;
+        color: black;
+    }
 }
 
 .inline_code_block {
@@ -82,5 +104,11 @@ $code-block-border: 1px;
     
     @include mixins.mq(dark) {
         border: solid 1px gray;
+    }
+
+    @media print {
+        border: solid 1px gray;
+        background: #eee !important;
+        color: black;
     }
 }

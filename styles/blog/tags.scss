@@ -24,6 +24,10 @@
         background: #172c00;
         color: white !important;
     }
+
+    @media print {
+        border: solid 2px black;
+    }
 }
 
 .tag_block:hover {

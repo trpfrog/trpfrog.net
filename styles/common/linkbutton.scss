@@ -26,13 +26,20 @@ $link-button-font-color: var(--link-button-font-color);
     padding: 8px 12px 0;
     cursor: pointer;
     border-radius: 1000px; // INF
-    background: $link-button-color;
-    box-shadow: 0 4px 0 $link-button-color-bottom;
+
+    @media screen {
+        background: $link-button-color;
+        box-shadow: 0 4px 0 $link-button-color-bottom;
+        color: $link-button-font-color !important;
+    }
+
+    @media print {
+        border: solid 0.6mm black;
+    }
 
     font-family: 'M PLUS Rounded 1c', sans-serif;
     text-align: center;
     font-weight: bold;
-    color: $link-button-font-color !important;
     line-height: 1.5;
 
     text-decoration: none;

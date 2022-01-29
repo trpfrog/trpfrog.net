@@ -10,6 +10,7 @@
 @use 'common/linkbutton';
 @use 'top-page/animation';
 @use 'mixins';
+@use 'common/print';
 
 :root {
     --h3-marker-color: #90e200;
@@ -58,43 +59,45 @@ a:visited {
     }
 }
 
-ul {
-    li {
-        list-style-type: none;
-        position: relative;
-        padding-left: 0.4em;
+@media screen {
+    ul {
+        li {
+            list-style-type: none;
+            position: relative;
+            padding-left: 0.4em;
+        }
+
+        li:before {
+            border-radius: 50%;
+            width: 6px;
+            height: 6px;
+            position: absolute;
+            left: -0.5em;
+            top: 0.78em;
+            content: "";
+            background: #3c7709;
+        }
     }
 
-    li:before {
-        border-radius: 50%;
-        width: 6px;
-        height: 6px;
-        position: absolute;
-        left: -0.5em;
-        top: 0.78em;
-        content: "";
-        background: #3c7709;
+    ul ul li:before {
+        background: #649d31;
     }
-}
 
-ul ul li:before {
-    background: #649d31;
-}
+    ul ul ul li:before {
+        background: #66d207;
+    }
 
-ul ul ul li:before {
-    background: #66d207;
-}
-
-h3 {
-    display: inline-block;
-    --marker-begin: 60%;
-    --marker-end: 90%;
-    background: linear-gradient(
-                    transparent var(--marker-begin),
-                    var(--h3-marker-color) var(--marker-begin),
-                    var(--h3-marker-color) var(--marker-end),
-                    transparent var(--marker-end));
-    margin-bottom: 0;
+    h3 {
+        display: inline-block;
+        --marker-begin: 60%;
+        --marker-end: 90%;
+        background: linear-gradient(
+                        transparent var(--marker-begin),
+                        var(--h3-marker-color) var(--marker-begin),
+                        var(--h3-marker-color) var(--marker-end),
+                        transparent var(--marker-end));
+        margin-bottom: 0;
+    }
 }
 
 hr {
