@@ -1,3 +1,5 @@
+$code-block-border: 1px;
+
 .post code {
     font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace !important;
 }
@@ -21,12 +23,22 @@
     margin-top: -1px;
     border-radius: 0 0 10px 10px;
     padding: 0.5em 1.5em 1em 1.5em !important;
+    
+    @media screen and (prefers-color-scheme: dark) {
+        border: solid $code-block-border lightgray;
+        border-top: none;
+    }
 }
 
 .code_lang_wrapper {
     border-radius: 10px 10px 0 0 ;
     background: #23241f;
     margin-bottom: -1px;
+    
+    @media screen and (prefers-color-scheme: dark) {
+        border: solid $code-block-border lightgray;
+        border-bottom: none;
+    }
 }
 
 .code_lang {
@@ -47,6 +59,12 @@
     @media screen and (max-width: 800px) {
         border-radius: 10px 0 10px 0;
         margin-left: 0;
+        
+        @media screen and (prefers-color-scheme: dark) {
+            border-radius: 
+                (10px - $code-block-border) 0
+                (10px - $code-block-border) 0;
+        }
     }
 }
 
@@ -59,4 +77,8 @@
     display: inline-block;
     border-radius: 5px;
     vertical-align: 5%;
+    
+    @media screen and (prefers-color-scheme: dark) {
+        border: solid 1px gray;
+    }
 }
