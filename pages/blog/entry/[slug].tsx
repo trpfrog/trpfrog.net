@@ -112,6 +112,10 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
     const validatePagePosition = (x: number) => Math.floor(Math.max(0, Math.min(entry.content.length, x) - 1))
     const pagePosition = validatePagePosition(parseInt(query.page as string ?? '1'))
 
+    if(query.page == 'all') {
+        entry.content = [entry.content.join('\n')]
+    }
+
     return (
         <Layout>
             <Title style={{...thumbnailStyle, padding: 0}}>

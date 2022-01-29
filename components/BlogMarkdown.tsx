@@ -242,7 +242,7 @@ type Props = {
 const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, children}) => {
 
     const { query } = useRouter()
-    const clampInt = (x: number, l: number, r: number) => Math.floor(Math.max(l, Math.min(x, r)))
+    const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))
     const pagePosition: number = clampInt(
         parseInt(query.page as string ?? '1'), 1, entry.content.length
     )
