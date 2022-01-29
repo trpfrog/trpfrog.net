@@ -159,6 +159,7 @@ export const getPureCloudinaryPath = (path: string) => {
 
 const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: BlogImageData}) => {
     const srcPath = getPureCloudinaryPath(src)
+    const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
     const caption = imageData[srcPath]?.caption ?? ''
 
     let width = imageData[srcPath]?.size.width ?? 800
@@ -199,6 +200,9 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
                         className={`rich_image ${styles.blog_img}`}
                         width={width}
                         height={height}
+                        quality={50}
+                        placeholder="blur"
+                        blurDataURL={blurPath}
                         objectFit="contain"
                         onClick={() => setModalState(true)}
                     />
@@ -219,6 +223,8 @@ const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: B
                         className={`rich_image`}
                         width={width}
                         height={height}
+                        placeholder="blur"
+                        blurDataURL={blurPath}
                         layout='responsive'
                     />
                 </Modal>
