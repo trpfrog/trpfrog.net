@@ -39,7 +39,7 @@ const parseInlineMarkdown = (markdown: string) => {
     const comp = {
         p: ({children}: any) => <>{children}</>
     }
-    return <ReactMarkdown components={comp}>{markdown}</ReactMarkdown>
+    return <ReactMarkdown components={comp} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
 }
 
 // Updated when page was loaded
