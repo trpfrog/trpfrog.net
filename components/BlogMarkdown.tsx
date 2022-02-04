@@ -94,10 +94,10 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
                 const value = tmp.slice(1).join(':').trim()
                 return (
                     <>
-                        <div className={styles.conversation_box_name}>
+                        <div className={styles.conversation_box_name} key={line + '-name'}>
                             {parseInlineMarkdown(name)} :
                         </div>
-                        <div className={styles.conversation_box_value}>
+                        <div className={styles.conversation_box_value} key={line + '-val'}>
                             {parseInlineMarkdown(value)}
                         </div>
                     </>
