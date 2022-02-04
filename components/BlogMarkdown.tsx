@@ -157,7 +157,7 @@ export const getPureCloudinaryPath = (path: string) => {
         .split('.')[0] // remove extension
 }
 
-const formatImgComponent = ({src, alt, title}: any, imageData: {[src: string]: BlogImageData}) => {
+const formatImgComponent = ({src, alt}: any, imageData: {[src: string]: BlogImageData}) => {
     const srcPath = getPureCloudinaryPath(src)
     const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
     const caption = imageData[srcPath]?.caption ?? ''
@@ -254,11 +254,16 @@ const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, childre
         }
     }
 
-    /// bug : img wrapper class adds to code blocks (disabling pre tags affects it?)
     const markdownComponents = {
-        pre: ({ children }: any) => <div>{children}</div>, // disable pre tag
+        pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
         code: formatCodeComponent,
-        img: (props: any) => formatImgComponent(props, imageSize)
+        p: (props: any) => {
+            if (props.node.children[0].tagName === 'img') {
+                const image = props.node.children[0]
+                return formatImgComponent(image.properties, imageSize)
+            }
+            return <p>{props.children}</p>
+        }
     };
 
     const mathjaxConfig = {
