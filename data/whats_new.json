@@ -1,6 +1,11 @@
 [
   {
     "type": "blog",
+    "date": "2022-02-05",
+    "text": "記事「[調布から羽田まで歩いた](/blog/entry/haneda-walking) (焼き直し版)」を公開しました！"
+  },
+  {
+    "type": "blog",
     "date": "2022-01-16",
     "text": "記事「[ある点Pから最も近い半直線上の点Qを計算する](/blog/entry/half-line) (焼き直し版)」を公開しました！"
   },
