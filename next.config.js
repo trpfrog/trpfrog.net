@@ -13,6 +13,11 @@ module.exports = {
     async redirects() {
         return [
             {
+                source: '/:path*/index.html',
+                destination: '/:path*',
+                permanent: true
+            },
+            {
                 source: '/medipro-game/:path*',
                 destination: 'https://trpfrog.github.io/medipro-game/:path*',
                 permanent: true
