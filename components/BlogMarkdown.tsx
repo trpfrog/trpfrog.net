@@ -13,6 +13,7 @@ import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import {useRouter} from "next/router";
+import ProfileCards from "./blog/ProfileCards";
 
 type codeProps = {
     className: string
@@ -85,6 +86,8 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
             </div>
         )
     },
+
+    'Profile-cards' : content => <ProfileCards content={content} />,
 
     Conversation: content => (
         <div className={styles.conversation_box_grid}>
