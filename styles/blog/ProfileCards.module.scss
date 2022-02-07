@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .profile_card_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
@@ -18,7 +20,10 @@
     display: inline-block;
     border-radius: 10px;
     overflow: hidden;
-    background: #fff4b3;
+    background: rgb(207, 241, 166);
+    @include mixins.mq(dark) {
+        background: var(--body-background);
+    }
     padding: 1em;
     white-space: normal;
 }
