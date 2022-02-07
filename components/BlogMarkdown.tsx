@@ -76,7 +76,7 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Next-page': content => {
         return (
-            <div style={{textAlign: 'center'}}>
+            <div style={{textAlign: 'center', marginBottom: '1em'}}>
                 <span onClick={goToNextPage} className={'linkButton'}>
                     Next: {content} &rarr;
                 </span>
