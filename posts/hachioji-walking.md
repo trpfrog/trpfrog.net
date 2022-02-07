@@ -1,0 +1,99 @@
+---
+title: 八王子高校から八王子駅まで歩く
+date: 2022-02-07
+tags: 徒歩
+description: 下書き供養
+thumbnail: https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022714
+---
+
+緊急事態宣言が長引きすぎたときに書いた「短距離徒歩まとめ」的な記事が完成されずに放置されてたので供養します。(これしか書かれてなかった)
+
+---
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709021555 "西八王子駅から")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709021612 "線路沿いに歩いて")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709021627 "歩道橋を見つけたのでわざわざ踏切を渡って")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709021709 "歩道橋を渡ると")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709021732 "八王子高校に着きます！")
+
+先日、**応用情報技術者試験**を受けてきました！結局前日の**過去問ガンガン回しまくる脳筋ムーブ**でゴリ押してしまい、すみません。(一応ちょっとは本質的な勉強したつもりだけど！)
+
+**それはさておき**、ここから帰るにあたって**八王子駅まで歩いて行こう！** となって八王子駅まで歩きました。
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022458 "デカい歩道橋")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022531 "デカすぎ")
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022557 "銀杏並木")
+
+デカい歩道橋、楽しいから渡りたくなっちゃいますよね！
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022714 "カエルグッズ専門店 (そんなことある？)")
+
+カエルグッズのお店がありました！！！！！<span style="font-size:1.8em; font-weight:bold;">え！！！！！！すご！！！！！！</span>
+
+実はですね、私の小学生の頃の夢がですね、カエルグッズ専門店でして……あの、はい、実在したんですね……！**なければ作れば良い**の精神で店開くぞ！って思ってたけど**実在しました**、良すぎ！！！！**ウワー！**
+
+ 
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709022933 "買っちゃった")
+
+めっちゃ良かったです。**カエル好きな方**、ぜひお立ち寄りください。良すぎ！(2回目)
+
+```link-embed
+https://goo.gl/maps/Wm63achiKUqMN7HN7
+```
+ 
+
+この徒歩の最大のおもしろポイントが終わってしまいましたが、先に進みます。
+
+<br><br><br>
+ 
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709023255 "派手なパン屋")
+
+あ！！！！！！噂の**派手派手パン屋**があります！派手すぎてハデスになった(そう？)
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709023237 "その向かいには 𝑩𝒊𝒈 𝑾𝒂𝒏𝒌𝒐")
+
+負けじと**デカい犬**がいました。**この交差点すげ〜〜〜**
+
+ 
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709023506 "地下通路")
+
+残念ながら地下通路は**歩道橋ではないので**通りません、残念ながら……
+
+ 
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709023622 "都まんじゅう")
+
+**都まんじゅう**を買いました。**うまい**
+
+たしか**1個10円**だった気がします。箱でしか売ってなさそうな気配なんですけど、レジの人に言うとバラで売ってくれるので通りがかった方は買ってみてはいかがでしょうか
+
+```link-embed
+https://goo.gl/maps/8mPdp7EnW1sSEPSr7
+```
+ 
+
+そんなこんなで八王子駅につきました。**(写真なし)**
+
+3km程度の軽い散歩で良い気分転換になりました♪ 今日はここまでです！
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+<span style="font-size:1.8em; font-weight: bold;">あ！！！！！！！！！！！！！！！バス行っちゃった！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</span>
+
+
+
+![](https://res.cloudinary.com/trpfrog/blog/hachioji-walking/20210709023932 "もちもち")
+
+えーん……ドーナツタイムをして時間を潰しましょう
