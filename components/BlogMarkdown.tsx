@@ -59,6 +59,21 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         )
     },
 
+    'Link-embed': content => (
+        <iframe
+            style={{
+                width: '100%',
+                height: 150,
+                maxWidth: 480
+            }}
+            src={`https://hatenablog-parts.com/embed?url=${
+                encodeURIComponent(content.trim())
+            }`}
+            frameBorder="0"
+            scrolling="no"
+        />
+    ),
+
     'Next-page': content => {
         return (
             <div style={{textAlign: 'center'}}>
