@@ -56,6 +56,17 @@ a:visited {
     }
 }
 
+h3 {
+    display: inline-block;
+    padding: 0 7px 0 6px;
+    border-left: solid 7px var(--header-color);
+    background: rgba(120, 189, 0, 0.09);
+    @include mixins.mq(dark) {
+        background: var(--body-background);
+    }
+    border-radius: 1px 5px 5px 1px;
+}
+
 @media screen {
     ul {
         li {
@@ -82,18 +93,6 @@ a:visited {
 
     ul ul ul li:before {
         background: #66d207;
-    }
-
-    h3 {
-        display: inline-block;
-        --marker-begin: 60%;
-        --marker-end: 90%;
-        background: linear-gradient(
-                        transparent var(--marker-begin),
-                        var(--h3-marker-color) var(--marker-begin),
-                        var(--h3-marker-color) var(--marker-end),
-                        transparent var(--marker-end));
-        margin-bottom: 0;
     }
 }
 
