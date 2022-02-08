@@ -7,7 +7,7 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData} from "../../../lib/blog";
-import BlogMarkdown from "../../../components/BlogMarkdown";
+import BlogMarkdown from "../../../components/blog/BlogMarkdown";
 
 import ArticleBlock from "../../../components/blog/ArticleBlock";
 

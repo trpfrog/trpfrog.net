@@ -1,4 +1,4 @@
-import styles from "../styles/blog/blog.module.scss";
+import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {monokaiSublime} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import Image from "next/image";
@@ -8,12 +8,12 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogImageData, BlogPost} from "../lib/blog";
+import {BlogImageData, BlogPost} from "../../lib/blog";
 import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import {useRouter} from "next/router";
-import ProfileCards from "./blog/ProfileCards";
+import ProfileCards from "./ProfileCards";
 
 type codeProps = {
     className: string

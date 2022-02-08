@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from "gray-matter";
 import React from "react";
-import {getPureCloudinaryPath} from "../components/BlogMarkdown";
+import {getPureCloudinaryPath} from "../components/blog/BlogMarkdown";
 
 export type BlogPost = {
     title: string
