@@ -14,6 +14,8 @@ import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import {useRouter} from "next/router";
 import ProfileCards from "./ProfileCards";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import BlogImage from "./BlogImage";
 
 type codeProps = {
     className: string
@@ -36,7 +38,7 @@ const getLangName = (s: string) => {
     }
 }
 
-const parseInlineMarkdown = (markdown: string) => {
+export const parseInlineMarkdown = (markdown: string) => {
     const comp = {
         p: ({children}: any) => <>{children}</>
     }
@@ -175,83 +177,6 @@ export const getPureCloudinaryPath = (path: string) => {
         .split('.')[0] // remove extension
 }
 
-const formatImgComponent = ({src, alt}: any, imageData: {[src: string]: BlogImageData}) => {
-    const srcPath = getPureCloudinaryPath(src)
-    const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
-    const caption = imageData[srcPath]?.caption ?? ''
-
-    let width = imageData[srcPath]?.size.width ?? 800
-    let height = imageData[srcPath]?.size.height ?? 600
-
-    const maxHeight = 600;
-    if (height > maxHeight) {
-        width = width / height * maxHeight
-        height = maxHeight
-    }
-
-    const modalStyle = {
-        overlay: {
-            position: 'fixed',
-            background: 'rgba(0,0,0,.8)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        } as CSSProperties,
-        content: {
-            position: 'static',
-            width: `min(calc(80vh * ${width / height}), 95vw)`,
-            height: `min(calc(95vw * ${height / width}), 80vh)`,
-            padding: 0,
-            background: 'transparent',
-            border: 'none',
-        } as CSSProperties
-    }
-
-    const ReturnComponent: React.FC = () => {
-        const [modalState, setModalState] = useState(false)
-        return (
-            <>
-                <div className={styles.blog_img_wrapper}>
-                    <Image
-                        src={srcPath}
-                        alt={alt || src}
-                        className={`rich_image ${styles.blog_img}`}
-                        width={width}
-                        height={height}
-                        quality={50}
-                        placeholder="blur"
-                        blurDataURL={blurPath}
-                        objectFit="contain"
-                        onClick={() => setModalState(true)}
-                    />
-                    {caption != '' &&
-                        <p className={styles.blog_img_caption}>
-                            {parseInlineMarkdown(caption)}
-                        </p>
-                    }
-                </div>
-                <Modal
-                    isOpen={modalState}
-                    style={modalStyle}
-                    onRequestClose={() => setModalState(false)}
-                >
-                    <Image
-                        src={srcPath}
-                        alt={alt || src}
-                        className={`rich_image`}
-                        width={width}
-                        height={height}
-                        placeholder="blur"
-                        blurDataURL={blurPath}
-                        layout='responsive'
-                    />
-                </Modal>
-            </>
-        )
-    }
-    return <ReturnComponent/>
-}
-
 type Props = {
     entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
@@ -278,7 +203,13 @@ const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, childre
         p: (props: any) => {
             if (props.node.children[0].tagName === 'img') {
                 const image = props.node.children[0]
-                return formatImgComponent(image.properties, imageSize)
+                return (
+                    <BlogImage
+                        src={image.properties.src}
+                        alt={image.properties.alt}
+                        imageData={imageSize[getPureCloudinaryPath(image.properties.src)]}
+                    />
+                )
             }
             return <p>{props.children}</p>
         }
