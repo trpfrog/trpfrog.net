@@ -3,7 +3,7 @@
 .conversation_box_grid {
     font-family: "Noto Sans JP", sans-serif;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     column-gap: 0.5em;
     row-gap: 0.2em;
     margin-left: 1em;
