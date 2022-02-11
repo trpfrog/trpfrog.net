@@ -61,6 +61,20 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         )
     },
 
+    Youtube: (content) => {
+        const lines = content.split('\n')
+        const id = lines[0].trim()
+        const title = lines[1]?.trim()
+        return (
+            <div className="youtube-outer" style={{maxWidth: 300}}>
+                <LiteYouTubeEmbed
+                    id={id}
+                    title={title}
+                />
+            </div>
+        )
+    },
+
     'Link-embed': content => (
         <iframe
             style={{
