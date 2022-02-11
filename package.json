@@ -33,6 +33,8 @@
     "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
     "remark-unwrap-images": "^3.0.1",
+    "textlint": "^12.1.0",
+    "textlint-rule-preset-japanese": "^7.0.0",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {

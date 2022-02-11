@@ -3,6 +3,7 @@ import path from 'path'
 import matter from "gray-matter";
 import React from "react";
 import {getPureCloudinaryPath} from "../components/blog/BlogMarkdown";
+import {TextLintEngine} from "textlint";
 
 export type BlogPost = {
     title: string
@@ -115,6 +116,17 @@ export const getPostData = async (slug: string) => {
         .map(parseFootnote)
 
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
+
+
+    const engine = new TextLintEngine({
+        configFile: '.textlintrc'
+    });
+    engine.executeOnText(fileContents, '.md').then((results) => {
+        if (engine.isErrorResults(results)) {
+            const output = engine.formatResults(results);
+            console.log(output);
+        }
+    });
 
     return {
         slug,
