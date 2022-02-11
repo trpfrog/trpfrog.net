@@ -44,12 +44,13 @@ export const getStaticPaths = async () => {
     }
 }
 
-const share = () => {
+const share = (slug: string) => {
     if(!process.browser) return;
-    const url =  'https://twitter.com/intent/tweet?'
+    const articleURL = 'https://trpfrog.net/blog/entry/' + slug
+    const tweetURL =  'https://twitter.com/intent/tweet?'
                 + "text=" + encodeURIComponent(document.title) + "&"
-                + "url=" + location.href;
-    window.open(url);
+                + "url=" + encodeURIComponent(articleURL);
+    window.open(tweetURL);
 }
 
 const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number, doNotShowOnFirst?: boolean}> = ({
@@ -128,7 +129,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                             <Link href={'/blog'}>
                                 <a>記事一覧</a>
                             </Link>
-                            <span onClick={share}>
+                            <span onClick={() => share(entry.slug)}>
                                     <a>ツイート</a>
                                 </span>
                             <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
@@ -153,7 +154,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     <Link href={'/blog'}>
                         <a>記事一覧</a>
                     </Link>
-                    <span onClick={share}>
+                    <span onClick={() => share(entry.slug)}>
                         <a>ツイート</a>
                     </span>
                     <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
