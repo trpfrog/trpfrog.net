@@ -12,7 +12,7 @@ import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import {useRouter} from "next/router";
 import ProfileCards from "./ProfileCards";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
 
@@ -65,11 +65,8 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         const id = lines[0].trim()
         const title = lines[1]?.trim()
         return (
-            <div className="youtube-outer" style={{maxWidth: 300}}>
-                <LiteYouTubeEmbed
-                    id={id}
-                    title={title}
-                />
+            <div style={{textAlign: 'center'}}>
+                <YouTube videoId={id}/>
             </div>
         )
     },
