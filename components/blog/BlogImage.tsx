@@ -9,9 +9,10 @@ type BlogImageProps = {
     src: string,
     alt: string,
     imageData?: BlogImageData
+    style?: CSSProperties
 }
 
-const BlogImage = ({src, alt, imageData}: BlogImageProps) => {
+const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
 
     if (!imageData) {
         imageData = {
@@ -57,7 +58,7 @@ const BlogImage = ({src, alt, imageData}: BlogImageProps) => {
     const [modalState, setModalState] = useState(false)
     return (
         <>
-            <div className={styles.blog_img_wrapper}>
+            <div className={styles.blog_img_wrapper} style={style}>
                 <Image
                     src={srcPath}
                     alt={alt || src}
