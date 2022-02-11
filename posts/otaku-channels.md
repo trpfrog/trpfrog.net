@@ -27,7 +27,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/t
 
 さて、皆さんはDiscordサーバーに入ったら**粗悪なチャンネルを大量生産するバカタレがいた**という経験はありますでしょうか？そうですよね、困りますよね。
 
-<img src="https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/channels.webp" style="zoom:70%;" />
+![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/channels.webp)
 
 僕のいるサーバはこんなのが**250個**近くあり最悪です。
 

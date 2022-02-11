@@ -1,9 +1,7 @@
 import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {monokaiSublime} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import Image from "next/image";
-import Modal from "react-modal";
-import React, {CSSProperties, useEffect, useState} from "react";
+import React from "react";
 import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -120,25 +118,31 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Profile-cards' : content => <ProfileCards content={content} />,
 
-    Conversation: content => (
-        <div className={styles.conversation_box_grid}>
-            {content.split('\n').map(line => {
-                const tmp = line.split(':')
-                const name = tmp[0]
-                const value = tmp.slice(1).join(':').trim()
-                return (
-                    <>
-                        <div className={styles.conversation_box_name} key={line + '-name'}>
-                            {parseInlineMarkdown(name)} :
-                        </div>
-                        <div className={styles.conversation_box_value} key={line + '-val'}>
-                            {parseInlineMarkdown(value)}
-                        </div>
-                    </>
-                )
-            })}
-        </div>
-    )
+    Conversation: content => {
+        const elements: React.ReactNode[] = []
+
+        content.split('\n').forEach(line => {
+            const lineSplit = line.split(':')
+            const speaker = lineSplit[0]
+            const comment = lineSplit.slice(1).join(':').trim()
+            elements.push(
+                <div className={styles.conversation_box_name} key={speaker + '-name'}>
+                    {parseInlineMarkdown(speaker)} :
+                </div>
+            )
+            elements.push(
+                <div className={styles.conversation_box_value} key={speaker + '-val'}>
+                    {parseInlineMarkdown(comment)}
+                </div>
+            )
+        })
+
+        return (
+            <div className={styles.conversation_box_grid}>
+                {elements}
+            </div>
+        )
+    }
 
 }
 
@@ -163,7 +167,7 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     }
 
     return (
-        <pre style={{textAlign: 'left'}}>
+        <pre>
             {language != '' && (
                 <div className={styles.code_lang_wrapper}>
                     <span className={styles.code_lang}>{language}</span>
@@ -196,7 +200,7 @@ type Props = {
     imageSize: { [path: string]: BlogImageData }
 }
 
-const BlogMarkdown: React.FunctionComponent<Props> = ({entry, imageSize, children}) => {
+const BlogMarkdown = ({entry, imageSize}: Props) => {
 
     const { query } = useRouter()
     const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))

@@ -3,7 +3,7 @@ import styles from "../../styles/blog/ProfileCards.module.scss";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-const ProfileCards: React.FC<{content: string}> = ({children, content}) => {
+const ProfileCards = ({content}: {content: string}) => {
 
     const cards = content.split('---')
 
