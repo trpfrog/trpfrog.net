@@ -14,6 +14,7 @@ import {useRouter} from "next/router";
 import ProfileCards from "./ProfileCards";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import BlogImage from "./BlogImage";
+import TwitterArchive from "./TwitterArchive";
 
 type codeProps = {
     className: string
@@ -115,6 +116,8 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
             </div>
         )
     },
+
+    'Twitter-archived': content => <TwitterArchive content={content}/>,
 
     'Profile-cards' : content => <ProfileCards content={content} />,
 

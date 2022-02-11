@@ -1,0 +1,82 @@
+.wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.box {
+    display: inline-block;
+    text-align: left;
+
+    max-width: 550px;
+    width: 100%;
+
+    color: black;
+    background: white;
+
+    border-radius: 10px;
+    border: solid 1px lightgray;
+    box-sizing: border-box;
+    padding: 1em;
+    margin: .5em 0;
+
+    transition: .2s;
+
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    margin-bottom: 12px;
+
+    .icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .name_box {
+        display: flex;
+        margin-left: .5em;
+        align-items: center;
+
+        * {
+            line-height: 1.3em;
+        }
+
+        .name {
+            color: black;
+            font-weight: bold;
+        }
+
+        .userid {
+            font-size: .9em;
+            color: gray;
+        }
+    }
+}
+
+.tweet {
+    font-size: 1.2em;
+    line-height: 1.3em;
+
+    blockquote {
+        background: none;
+        text-align: left;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.date {
+    a {
+        color: gray;
+    }
+}
