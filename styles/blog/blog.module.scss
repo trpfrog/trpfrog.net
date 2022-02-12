@@ -45,6 +45,13 @@
 }
 
 .post {
+    @include mixins.mq(pc) {
+        --max-w: 800px;
+        max-width: var(--max-w);
+        padding: calc((100% - var(--max-w)) / 2) 0;
+    }
+    margin: 0 auto;
+
     h2 {
         display: block;
         margin-top: 2em !important;
