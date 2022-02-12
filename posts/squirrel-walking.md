@@ -1,7 +1,7 @@
 ---
 title: 稲田堤から歩いて町田のリスに会いに行こう
 date: 2021-04-03
-tags: 徒歩
+tags: 徒歩, 長編記事
 description: 徒歩依存症の末路
 thumbnail: https://res.cloudinary.com/trpfrog/blog/squirrel-walking/20210403211219
 ---
