@@ -124,23 +124,35 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
             .split('\n')
             .filter(line => line.match(regex))
             .map(line => line.replace(regex, '').slice(0, -1))
-        console.log(imageSources)
+
+        const caption = content
+            .split('\n')
+            .filter(line => !line.match(regex))
+            .map(line => line.trim())
+            .join('')
 
         return (
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: `repeat(${imageSources.length}, 1fr)`,
-                gap: '10px',
-                margin: '2em 0'
-            }}>
-                {imageSources.map((src, index) => (
-                    <BlogImage
-                        src={src}
-                        alt={src}
-                        key={`${src}-${index}`}
-                        style={{margin: 0}}
-                    />
-                ))}
+            <div style={{textAlign: 'center'}}>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${imageSources.length}, 1fr)`,
+                    gap: '10px',
+                    margin: '2em 0 ' + (caption != '' ? '0' : '2em')
+                }}>
+                    {imageSources.map((src, index) => (
+                        <BlogImage
+                            src={src}
+                            alt={src}
+                            key={`${src}-${index}`}
+                            style={{margin: 0}}
+                        />
+                    ))}
+                </div>
+                {caption != '' &&
+                    <p className={styles.blog_img_caption}>
+                        {parseInlineMarkdown(caption)}
+                    </p>
+                }
             </div>
         )
     },
