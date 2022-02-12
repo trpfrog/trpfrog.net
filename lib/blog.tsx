@@ -118,15 +118,25 @@ export const getPostData = async (slug: string) => {
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
 
-    const engine = new TextLintEngine({
-        configFile: '.textlintrc'
-    });
-    engine.executeOnText(fileContents, '.md').then((results) => {
-        if (engine.isErrorResults(results)) {
-            const output = engine.formatResults(results);
-            console.log(output);
+    if (process.env.USE_TEXTLINT) {
+        const engine = new TextLintEngine({
+            configFile: '.textlintrc'
+        });
+        for (let i = 0; i < content.length; i++) {
+            const lines = content[i].split('\n')
+            engine.executeOnText(content[i], '.md').then((results) => {
+                if (engine.isErrorResults(results)) {
+                    const output = engine.formatResults(results);
+                    console.log(output);
+                    results[0].messages.forEach(({message, line}) => {
+                        lines[line - 1] = `<span style="background:linear-gradient(transparent 60%, pink 60%);">${lines[line - 1]}</span>`
+                        lines[line - 1] += ` <span style="color: red"><b>(textlint error: ${message})</b></span>`
+                    })
+                    content[i] = lines.join('\n')
+                }
+            });
         }
-    });
+    }
 
     return {
         slug,
