@@ -28,8 +28,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
     const caption = imageData.caption ?? ''
 
-    let width = imageData.size.width ?? 800
-    let height = imageData.size.height ?? 600
+    let width = imageData.size?.width ?? 400
+    let height = imageData.size?.height ?? 300
 
     const maxHeight = 600;
     if (height > maxHeight) {

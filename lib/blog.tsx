@@ -57,23 +57,26 @@ export const fetchAllImageSize = async (entry: BlogPost) => {
     const slug = entry.slug.replace('_', '')
 
     const dict = {} as { [path: string]: BlogImageData }
-    const cloudinary = require('../lib/cloudinary')
-    await cloudinary.search
-        .expression(`resource_type:image AND folder=blog/${slug}`)
-        .max_results(300)
-        .execute()
-        .then((result: any) => {
-            result.resources.forEach((image: any) => {
-                const src = '/' + image.public_id
-                dict[src] = {
-                    size: {
-                        width: parseInt(image.width ?? '800', 10),
-                        height: parseInt(image.height ?? '600', 10),
-                    },
-                    caption: ''
-                }
-            })
-        });
+
+    if (!process.env.USE_CLOUDINARY_SAME_SIZE) {
+        const cloudinary = require('../lib/cloudinary')
+        await cloudinary.search
+            .expression(`resource_type:image AND folder=blog/${slug}`)
+            .max_results(500)
+            .execute()
+            .then((result: any) => {
+                result.resources.forEach((image: any) => {
+                    const src = '/' + image.public_id
+                    dict[src] = {
+                        size: {
+                            width: parseInt(image.width ?? '800', 10),
+                            height: parseInt(image.height ?? '600', 10),
+                        },
+                        caption: ''
+                    }
+                })
+            });
+    }
 
     const srcRegex = new RegExp('^!\\[.*?\]\\(')
 
@@ -91,10 +94,9 @@ export const fetchAllImageSize = async (entry: BlogPost) => {
             caption: arr[1] ? arr.slice(1).join(' ') : '""'
         }))
         .forEach(({path, caption}) => {
-            if(dict[path] != undefined) {
-                // Remove double quote
-                caption = caption.slice(1, caption.length - 1)
-                dict[path].caption = caption
+            dict[path] = {
+                ...dict[path],
+                caption: caption.slice(1, caption.length - 1) // Remove double quote
             }
         })
 
