@@ -19,7 +19,7 @@ export type LectureData = {
     review?: string
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const data = await client.get({ endpoint: "uec-review" });
 
     const tables: LectureData[][] = Array(6)
