@@ -55,31 +55,33 @@ const Review: NextPage<PageProps> = ({tables}) => {
     ]
 
     return (
-        <Layout>
-            <Title
-                title={'#uec_review'}
-                description={'授業の感想とか (ツイッタに貼るのは若干恥ずかしいのでやめた)'}
-            >
-            </Title>
+        <>
+            <Layout>
+                <Title
+                    title={'#uec_review'}
+                    description={'授業の感想とか (ツイッタに貼るのは若干恥ずかしいのでやめた)'}
+                >
+                </Title>
 
-            <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
-                {timetableTitle.map((e, i) => (
-                    <div
-                        key={'button-' + i}
-                        onClick={() => setSemester(i)}
-                        className={'linkButton'}
-                    >
-                        {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
-                    </div>
-                ))}
-            </div>
-
-            <Block title={timetableTitle[semester]} h2icon={'trpfrog'}>
-                <div>
-                    <Timetable table={tables[semester]}/>
+                <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
+                    {timetableTitle.map((e, i) => (
+                        <div
+                            key={'button-' + i}
+                            onClick={() => setSemester(i)}
+                            className={'linkButton'}
+                        >
+                            {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
+                        </div>
+                    ))}
                 </div>
-            </Block>
-        </Layout>
+
+                <Block title={timetableTitle[semester]} h2icon={'none'}>
+                    <div>
+                        <Timetable table={tables[semester]}/>
+                    </div>
+                </Block>
+            </Layout>
+        </>
     )
 }
 

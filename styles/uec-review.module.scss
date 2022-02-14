@@ -90,11 +90,42 @@
 
 .lecture_detail {
     text-align: center;
+    height: 100%;
+    box-sizing: border-box;
+    color: var(--base-font-color);
+
     h2 {
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 900;
         @include mixins.mq(pc) {
             font-size: 2em;
         }
+        margin-bottom: .3em;
+    }
+    .teacher {
+        margin: 0;
+    }
+
+    .info {
+        margin: .3em;
+    }
+
+    .lecture_grid {
+        grid-template-areas:
+            "semester time teacher";
+    }
+
+    .type {
+        margin: .3em;
+    }
+
+    .review {
+        * {
+            margin-top: 2em;
+            text-align: left;
+            line-height: 2em;
+            text-indent: 1em;
+        }
+        overflow: scroll;
     }
 }
