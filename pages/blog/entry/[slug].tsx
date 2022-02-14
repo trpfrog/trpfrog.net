@@ -1,4 +1,4 @@
-import React, {CSSProperties} from 'react'
+import React, {CSSProperties, useEffect, useState} from 'react'
 import {GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 
@@ -7,15 +7,15 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData} from "../../../lib/blog";
-import BlogMarkdown from "../../../components/blog/BlogMarkdown";
 
+import BlogMarkdown from "../../../components/blog/BlogMarkdown";
 import ArticleBlock from "../../../components/blog/ArticleBlock";
 import PageNavigation from "../../../components/blog/PageNavigation";
 
 import styles from '../../../styles/blog/blog.module.scss';
+
 import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
-import TrpFrog404 from "../../404";
 
 type PageProps = {
     entry: BlogPost
@@ -56,39 +56,55 @@ const share = (slug: string) => {
 
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
-    const thumbnailStyle: CSSProperties = entry.thumbnail ? {
-        backgroundImage: `url(${entry.thumbnail})`,
+    const [post, setPost] = useState({...entry, imageSize})
+
+    // This code is used to reload page automatically on some changes appeared on md files
+    // if (process.env.NODE_ENV !== 'production') {
+    //     // For development, fetch article data from api
+    //     // eslint-disable-next-line react-hooks/rules-of-hooks
+    //     useEffect(() => {
+    //         const f = async () => {
+    //             return await fetch(`/api/posts/${post.slug}`).then((res) =>
+    //                 res.json()
+    //             )
+    //         }
+    //         f().then(r => setPost(r))
+    //     }, [])
+    // }
+
+    const thumbnailStyle: CSSProperties = post.thumbnail ? {
+        backgroundImage: `url(${post.thumbnail})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     } : {}
 
-    const openGraphImage = entry.thumbnail ? {
+    const openGraphImage = post.thumbnail ? {
         images: [
-            {url: entry.thumbnail}
+            {url: post.thumbnail}
         ]
     } : {}
 
     const { query } = useRouter()
-    const validatePagePosition = (x: number) => Math.floor(Math.max(0, Math.min(entry.content.length, x) - 1))
+    const validatePagePosition = (x: number) => Math.floor(Math.max(0, Math.min(post.content.length, x) - 1))
     const pagePosition = validatePagePosition(parseInt(query.page as string ?? '1'))
 
-    if(query.page == 'all') {
-        entry.content = [entry.content.join('\n')]
+    if(query.page === 'all') {
+        post.content = [post.content.join('\n')]
     }
 
     return (
         <Layout>
             <Title style={{...thumbnailStyle, padding: 0}}>
                 <div className={styles.inner_title_block}>
-                    <h1>{entry.title}</h1>
-                    <p>{entry.description}</p>
-                    <ArticleBlock entry={entry} showTitle={false} showDescription={false} showBackground={false}/>
+                    <h1>{post.title}</h1>
+                    <p>{post.description}</p>
+                    <ArticleBlock entry={post} showTitle={false} showDescription={false} showBackground={false}/>
                     <p id={styles.entry_top_buttons}>
                         <p className={'link-area'}>
                             <Link href={'/blog'}>
                                 <a>記事一覧</a>
                             </Link>
-                            <span onClick={() => share(entry.slug)}>
+                            <span onClick={() => share(post.slug)}>
                                     <a>ツイート</a>
                                 </span>
                             <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
@@ -99,21 +115,21 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 </div>
             </Title>
             <NextSeo
-                title={`${entry.title} - つまみログ`}
-                description={entry.description}
+                title={`${post.title} - つまみログ`}
+                description={post.description}
                 openGraph={openGraphImage}
             />
             <Block>
-                <PageNavigation entry={entry} pagePosition={pagePosition} doNotShowOnFirst={true}/>
-                <BlogMarkdown entry={entry} imageSize={imageSize}/>
-                <PageNavigation entry={entry} pagePosition={pagePosition}/>
+                <PageNavigation entry={post} pagePosition={pagePosition} doNotShowOnFirst={true}/>
+                <BlogMarkdown entry={post} imageSize={post.imageSize}/>
+                <PageNavigation entry={post} pagePosition={pagePosition}/>
             </Block>
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
                         <a>記事一覧</a>
                     </Link>
-                    <span onClick={() => share(entry.slug)}>
+                    <span onClick={() => share(post.slug)}>
                         <a>ツイート</a>
                     </span>
                     <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
