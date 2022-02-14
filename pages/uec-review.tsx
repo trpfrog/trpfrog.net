@@ -6,6 +6,7 @@ import {useState} from "react";
 import styles from "../styles/uec-review.module.scss"
 import client from "../lib/microCMS";
 import Timetable from "../components/uec-review/Timetable";
+import {NextSeo} from "next-seo";
 
 export type LectureData = {
     semester: number
@@ -62,7 +63,9 @@ const Review: NextPage<PageProps> = ({tables}) => {
                     description={'授業の感想とか (ツイッタに貼るのは若干恥ずかしいのでやめた)'}
                 >
                 </Title>
-
+                <NextSeo
+                    noindex={true}
+                />
                 <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
                     {timetableTitle.map((e, i) => (
                         <div
