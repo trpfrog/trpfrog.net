@@ -42,7 +42,7 @@ const Lecture = ({ lect }: { lect: LectureData }) => {
                 style={modalStyle}
                 onRequestClose={() => setModalOpened(!modalOpened)}
             >
-                <div className={styles.lecture_detail}>
+                <div className={styles.lecture_detail} onClick={(e) => e.stopPropagation()}>
                     <h2>{lect.lectureName}</h2>
                     <p className={styles.teacher}>
                         {lect.teacher.split(',').map(e => e.trim() + ' さん').join(', ')}
