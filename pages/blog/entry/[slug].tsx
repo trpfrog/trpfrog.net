@@ -10,6 +10,7 @@ import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData
 import BlogMarkdown from "../../../components/blog/BlogMarkdown";
 
 import ArticleBlock from "../../../components/blog/ArticleBlock";
+import PageNavigation from "../../../components/blog/PageNavigation";
 
 import styles from '../../../styles/blog/blog.module.scss';
 import {NextSeo} from "next-seo";
@@ -51,48 +52,6 @@ const share = (slug: string) => {
                 + "text=" + encodeURIComponent(document.title) + "&"
                 + "url=" + encodeURIComponent(articleURL);
     window.open(tweetURL);
-}
-
-const PageNavigation: React.FC<{entry: BlogPost, pagePosition: number, doNotShowOnFirst?: boolean}> = ({
-    entry, pagePosition, doNotShowOnFirst = false
-}) => {
-    const pagePosition1Indexed = pagePosition + 1;
-    return entry.content.length < 2 || (doNotShowOnFirst && pagePosition < 1) ? (
-        <></>
-    ) : (
-        <div style={{textAlign: 'center'}}>
-            <div className={'link-area'}>
-                {pagePosition > 0 &&
-                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition1Indexed - 1}`}>
-                        <a>&larr; Prev</a>
-                    </Link>
-                }
-                {Array.from(Array(entry.content.length), (v, k) => (
-                    <span key={k}>
-                        {pagePosition == k ? (
-                            <a style={{
-                                background: 'darkgray',
-                                transform: 'translateY(2px)',
-                                boxShadow: 'none',
-                                cursor: 'default'
-                            }}>
-                                {k + 1}
-                            </a>
-                        ) : (
-                            <Link href={`/blog/entry/${entry.slug}?page=${k + 1}`}>
-                                <a>{k + 1}</a>
-                            </Link>
-                        )}
-                    </span>
-                ))}
-                {pagePosition < entry.content.length - 1 &&
-                    <Link href={`/blog/entry/${entry.slug}?page=${pagePosition1Indexed + 1}`}>
-                        <a>Next &rarr;</a>
-                    </Link>
-                }
-            </div>
-        </div>
-    )
 }
 
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
