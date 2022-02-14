@@ -120,14 +120,19 @@
     }
 
     .review {
-        * {
-            margin-top: 2em;
-            text-align: left;
+        p {
             line-height: 2em;
             text-indent: 1em;
+            margin: .5em 0;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: bold;
         }
 
         max-height: 50vh;
         overflow: scroll;
+        text-align: left;
     }
 }

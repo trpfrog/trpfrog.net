@@ -20,7 +20,7 @@ const Lecture = ({ lect }: { lect: LectureData }) => {
             position: 'static',
             padding: 30,
             boxSizing: 'border-box',
-            width: 'min(95vw, 600px)',
+            width: 'min(95vw, 700px)',
             height: 'min(85vh, fit-content)',
             background: 'var(--window-bkg-color)',
             border: 'none',
