@@ -51,14 +51,14 @@ const getReadTimeSecond = (markdown: string) => {
 
 export type BlogImageData = { size: {width: number, height: number}, caption: string }
 
-export const fetchAllImageSize = async (entry: BlogPost) => {
+export const fetchAllImageSize = async (entry: BlogPost, useCloudinaryApi = true) => {
 
     const markdown = entry.content.join()
     const slug = entry.slug.replace('_', '')
 
     const dict = {} as { [path: string]: BlogImageData }
 
-    if (!process.env.USE_CLOUDINARY_SAME_SIZE) {
+    if (useCloudinaryApi) {
         const cloudinary = require('../lib/cloudinary')
         await cloudinary.search
             .expression(`resource_type:image AND folder=blog/${slug}`)
@@ -120,7 +120,7 @@ export const getPostData = async (slug: string) => {
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
 
-    if (process.env.USE_TEXTLINT) {
+    if (process.env.NODE_ENV !== 'production') {
         const engine = new TextLintEngine({
             configFile: '.textlintrc'
         });
