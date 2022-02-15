@@ -118,6 +118,15 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Profile-cards' : content => <ProfileCards content={content} />,
 
+    Centering: content => (
+        <div style={{textAlign: 'center'}}>
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+            >{content}</ReactMarkdown>
+        </div>
+    ),
+
     'Horizontal-images': content => {
         const regex = new RegExp('^!\\[.*?\]\\(')
         const imageSources = content
