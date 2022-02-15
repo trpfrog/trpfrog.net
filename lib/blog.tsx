@@ -125,14 +125,20 @@ export const getPostData = async (slug: string) => {
             configFile: '.textlintrc'
         });
         for (let i = 0; i < content.length; i++) {
-            const lines = content[i].split('\n')
-            engine.executeOnText(content[i], '.md').then((results) => {
+            engine.executeOnText(content[i]).then((results) => {
+
+                const lines = content[i].split('\n')
+                const ignoreText = '<!-- ignore textlint --->'
+                const ignoreLines = lines.map((e, i) => e.trim() === ignoreText ? i + 1 : -1).filter(e => e !== -1)
+
                 if (engine.isErrorResults(results)) {
                     const output = engine.formatResults(results);
                     console.log(output);
                     results[0].messages.forEach(({message, line}) => {
-                        lines[line - 1] = `<span style="background:linear-gradient(transparent 60%, pink 60%);">${lines[line - 1]}</span>`
-                        lines[line - 1] += ` <span style="color: red"><b>(textlint error: ${message})</b></span>`
+                        if (!ignoreLines.includes(line - 1))  {
+                            lines[line - 1] = `<span style="background:linear-gradient(transparent 60%, pink 60%);">${lines[line - 1]}</span>`
+                            lines[line - 1] += ` <span style="color: red"><b>(textlint error: ${message})</b></span>`
+                        }
                     })
                     content[i] = lines.join('\n')
                 }
