@@ -90,7 +90,7 @@ const Review: NextPage<PageProps> = ({tables}) => {
                 />
                 <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
                     {timetableTitle.map((e, i) => (
-                        <Link href={'/uec-review?semester=' + (i + 1)} key={'button-' + i}>
+                        <Link href={'/uec-review?semester=' + (i + 1)} key={'button-' + i} shallow={true}>
                             <a className={'linkButton'}>
                                 {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
                             </a>
