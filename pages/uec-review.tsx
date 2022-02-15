@@ -2,11 +2,12 @@ import type {NextPage} from 'next'
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
-import {useState} from "react";
 import styles from "../styles/uec-review.module.scss"
 import client from "../lib/microCMS";
 import Timetable from "../components/uec-review/Timetable";
 import {NextSeo} from "next-seo";
+import {NextRouter, useRouter} from "next/router";
+import Link from "next/link";
 
 export type LectureData = {
     semester: number
@@ -37,14 +38,22 @@ export const getServerSideProps = async () => {
     };
 };
 
-
-
 type PageProps = {
     tables: LectureData[][]
 }
 
+const getSemester = (router: NextRouter, nPages: number) => {
+    const semesterStr = router.query.semester as string
+    let semester = parseInt(semesterStr, 10) || 1
+
+    semester = Math.floor(semester)
+    if (semester < 1) semester = 1
+    if (semester > nPages) semester = Math.floor(nPages)
+
+    return semester - 1
+}
+
 const Review: NextPage<PageProps> = ({tables}) => {
-    const [semester, setSemester] = useState(0)
 
     const timetableTitle = [
         '1学期 (8クラス)',
@@ -54,6 +63,9 @@ const Review: NextPage<PageProps> = ({tables}) => {
         '5学期 (I類メディア)',
         '6学期 (I類メディア)',
     ]
+
+    const router = useRouter()
+    const semester = getSemester(router, timetableTitle.length)
 
     return (
         <>
@@ -78,13 +90,11 @@ const Review: NextPage<PageProps> = ({tables}) => {
                 />
                 <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
                     {timetableTitle.map((e, i) => (
-                        <div
-                            key={'button-' + i}
-                            onClick={() => setSemester(i)}
-                            className={'linkButton'}
-                        >
-                            {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
-                        </div>
+                        <Link href={'/uec-review?semester=' + (i + 1)} key={'button-' + i}>
+                            <a className={'linkButton'}>
+                                {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
+                            </a>
+                        </Link>
                     ))}
                 </div>
 
