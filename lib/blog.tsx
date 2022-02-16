@@ -135,7 +135,7 @@ export const getPostData = async (slug: string) => {
                     const output = engine.formatResults(results);
                     console.log(output);
                     results[0].messages.forEach(({message, line}) => {
-                        if (!ignoreLines.includes(line - 1))  {
+                        if (!ignoreLines.includes(line - 1) && !lines[line - 1].trim().startsWith("!["))  {
                             lines[line - 1] = `<span style="background:linear-gradient(transparent 60%, pink 60%);">${lines[line - 1]}</span>`
                             lines[line - 1] += ` <span style="color: red"><b>(textlint error: ${message})</b></span>`
                         }
