@@ -59,7 +59,7 @@ const ArticleBlock: FunctionComponent<Props> = ({
                         <>
                             <FontAwesomeIcon icon={faCalendarDay}/>{' '}
                             <time dateTime={entry.date}>
-                                {format(parseISO(entry.date), 'LLLL d, yyyy')}
+                                {format(parseISO(entry.date), 'yyyy年M月d日')}
                             </time>
                         </>
                     }
@@ -68,7 +68,7 @@ const ArticleBlock: FunctionComponent<Props> = ({
                             <br/>
                             <FontAwesomeIcon icon={faSyncAlt}/>{' '}
                             <time dateTime={entry.updated}>
-                                {format(parseISO(entry.updated), 'LLLL d, yyyy')}
+                                {format(parseISO(entry.updated), 'yyyy年M月d日')}
                             </time>
                         </>
                     }
