@@ -17,6 +17,7 @@ import styles from '../../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
+import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
 
 type PageProps = {
     entry: BlogPost
@@ -60,18 +61,19 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
     const [post, setPost] = useState({...entry, imageSize})
 
     // This code is used to reload page automatically on some changes appeared on md files
-    // if (process.env.NODE_ENV !== 'production') {
-    //     // For development, fetch article data from api
-    //     // eslint-disable-next-line react-hooks/rules-of-hooks
-    //     useEffect(() => {
-    //         const f = async () => {
-    //             return await fetch(`/api/posts/${post.slug}`).then((res) =>
-    //                 res.json()
-    //             )
-    //         }
-    //         f().then(r => setPost(r))
-    //     }, [])
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+        // For development, fetch article data from api
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useEffect(() => {
+            const f = async () => {
+                return await fetch(`/api/posts/${post.slug}`).then((res) =>
+                    res.json()
+                )
+            }
+            f().then(r => setPost(r))
+        }, [])
+        doMarkdownHMR()
+    }
 
     const thumbnailStyle: CSSProperties = post.thumbnail ? {
         backgroundImage: `url(${post.thumbnail})`,

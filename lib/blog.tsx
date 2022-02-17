@@ -59,7 +59,7 @@ export const getPostData = async (slug: string) => {
     const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
 
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' && false) {
         const engine = new TextLintEngine({
             configFile: '.textlintrc'
         });
