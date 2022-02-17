@@ -6,7 +6,8 @@ import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
-import {BlogPost, getAllPostSlugs, getPostData, fetchAllImageSize, BlogImageData} from "../../../lib/blog";
+import {BlogPost, getAllPostSlugs, getPostData} from "../../../lib/blog";
+import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown from "../../../components/blog/BlogMarkdown";
 import ArticleBlock from "../../../components/blog/ArticleBlock";
@@ -28,7 +29,7 @@ type Params = {
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
     const entry = await getPostData(params!.slug)
-    const imageSize = await fetchAllImageSize(entry);
+    const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
