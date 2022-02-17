@@ -1,9 +1,9 @@
-import {BlogImageData} from "../../lib/blog";
 import React, {CSSProperties, useState} from "react";
 import styles from "../../styles/blog/blog.module.scss";
 import Image from "next/image";
 import Modal from "react-modal";
 import {getPureCloudinaryPath, parseInlineMarkdown} from "./BlogMarkdown";
+import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 
 type BlogImageProps = {
     src: string,

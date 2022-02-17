@@ -6,7 +6,7 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogImageData, BlogPost} from "../../lib/blog";
+import {BlogPost} from "../../lib/blog";
 import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
@@ -15,6 +15,7 @@ import ProfileCards from "./ProfileCards";
 import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
+import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 
 type codeProps = {
     className: string
