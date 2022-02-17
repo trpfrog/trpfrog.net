@@ -11,7 +11,7 @@ export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = tru
     const dict = {} as { [path: string]: BlogImageData }
 
     if (useCloudinaryApi) {
-        const cloudinary = require('../lib/cloudinary')
+        const cloudinary = require('../cloudinary')
         await cloudinary.search
             .expression(`resource_type:image AND folder=blog/${slug}`)
             .max_results(500)
