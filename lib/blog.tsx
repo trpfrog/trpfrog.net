@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import React from "react";
 import {getPureCloudinaryPath} from "../components/blog/BlogMarkdown";
 import {TextLintEngine} from "textlint";
+import {getReadTimeSecond} from "./blog/readTime";
 
 export type BlogPost = {
     title: string
@@ -39,14 +40,6 @@ const parseFootnote = (markdown: string) => {
     }
 
     return markdown
-}
-
-const getReadTimeSecond = (markdown: string) => {
-    const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')
-    const linkRegex = new RegExp('\\[(.*?)\]\\(.*?\\)', 'g')
-    const linkRemoved = markdown.replace(imageRegex, '').replace(linkRegex, '$1')
-    const codeRemoved = linkRemoved.split('```').filter((e, index) => index % 2 == 0).join()
-    return Math.floor(codeRemoved.length * 60 / 700);
 }
 
 export type BlogImageData = { size: {width: number, height: number}, caption: string }

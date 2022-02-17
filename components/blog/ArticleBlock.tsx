@@ -7,6 +7,7 @@ import {BlogPost} from "../../lib/blog";
 import styles from "../../styles/blog/blog.module.scss";
 import {getEmojiImageSrc} from "../../lib/blogTag";
 import Title from "../Title";
+import {formatReadTime} from "../../lib/blog/readTime";
 
 type Props = {
     entry: BlogPost
@@ -38,11 +39,10 @@ const ArticleBlock: FunctionComponent<Props> = ({
         height: '100%'
     } : {}
 
-    let readMin = Math.floor(entry.readTime / 60)
-    let readSec = Math.round((entry.readTime % 60) / 10) * 10
-    if (readSec == 60) {
-        readSec = 0; readMin++;
-    }
+    const {
+        minutes: readMin,
+        seconds: readSec
+    } = formatReadTime(entry.readTime)
 
     return (
         <div style={showBackground ? thumbnailStyle : {}}>
@@ -76,7 +76,7 @@ const ArticleBlock: FunctionComponent<Props> = ({
                         <>
                             <br/>
                             <FontAwesomeIcon icon={faClock}/>{' '}
-                            予想読了時間 {readMin} 分 {readSec > 0 ? readSec : '00'} 秒
+                            予想読了時間 {readMin} 分 {readSec} 秒
                         </>
                     }
                 </p>
