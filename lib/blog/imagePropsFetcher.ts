@@ -12,7 +12,7 @@ export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = tru
 
     if (useCloudinaryApi) {
         const cloudinary = require('../cloudinary')
-        cloudinary.search
+        await cloudinary.search
             .expression(`resource_type:image AND folder=blog/${slug}`)
             .max_results(500)
             .execute()
