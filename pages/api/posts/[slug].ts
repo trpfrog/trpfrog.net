@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {getPostData} from "../../../lib/blog";
+import {getPostData} from "../../../lib/blog/load";
 import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

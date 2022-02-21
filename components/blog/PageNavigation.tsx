@@ -1,5 +1,5 @@
 import React from "react";
-import {BlogPost} from "../../lib/blog";
+import {BlogPost} from "../../lib/blog/load";
 import Link from "next/link";
 
 type Props = {

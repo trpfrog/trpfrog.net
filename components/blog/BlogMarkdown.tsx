@@ -6,7 +6,7 @@ import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogPost} from "../../lib/blog";
+import {BlogPost} from "../../lib/blog/load";
 import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";

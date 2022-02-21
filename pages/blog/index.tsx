@@ -3,7 +3,7 @@ import {NextPage} from "next";
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import {getSortedPostsData, BlogPost} from "../../lib/blog";
+import {getSortedPostsData, BlogPost} from "../../lib/blog/load";
 
 import styles from '../../styles/blog/blog.module.scss';
 import {NextSeo} from "next-seo";

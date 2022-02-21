@@ -2,9 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from "gray-matter";
 import React from "react";
-import {getPureCloudinaryPath} from "../components/blog/BlogMarkdown";
+import {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
 import {TextLintEngine} from "textlint";
-import {getReadTimeSecond} from "./blog/readTime";
+import {getReadTimeSecond} from "./readTime";
 
 export type BlogPost = {
     title: string

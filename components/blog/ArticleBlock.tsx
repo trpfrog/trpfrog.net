@@ -3,9 +3,9 @@ import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import {format, parseISO} from "date-fns";
-import {BlogPost} from "../../lib/blog";
+import {BlogPost} from "../../lib/blog/load";
 import styles from "../../styles/blog/blog.module.scss";
-import {getEmojiImageSrc} from "../../lib/blogTag";
+import {getEmojiImageSrc} from "../../lib/blog/tags";
 import Title from "../Title";
 import {formatReadTime} from "../../lib/blog/readTime";
 

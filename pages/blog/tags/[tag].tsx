@@ -2,7 +2,7 @@ import {
     BlogPost,
     getAllTags,
     getSortedPostsData
-} from "../../../lib/blog";
+} from "../../../lib/blog/load";
 import {GetStaticProps, NextPage} from "next";
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
