@@ -16,6 +16,8 @@ import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
+import PageNavigation from "./PageNavigation";
+import Block from "../Block";
 
 type codeProps = {
     className: string
@@ -256,7 +258,7 @@ const BlogMarkdown = ({entry, imageSize}: Props) => {
     const pagePosition: number = clampInt(
         parseInt(query.page as string ?? '1'), 1, entry.content.length
     )
-    const markdown = entry.content[pagePosition - 1].trim()
+    const markdown = entry.content[pagePosition - 1].map(e => e.trim())
 
     goToNextPage = () => {
         if (typeof window !== 'undefined') {
@@ -292,25 +294,40 @@ const BlogMarkdown = ({entry, imageSize}: Props) => {
     };
 
     return (
-        <div className={styles.post} style={{wordBreak: 'break-word'}}>
-            <MathJaxContext version={3} config={mathjaxConfig}>
-                <MathJax>
-                    <ReactMarkdown
-                        components={markdownComponents as any}
-                        remarkPlugins={[
-                            remarkGfm,
-                            () => remarkToc({heading: '目次'})
-                        ]}
-                        rehypePlugins={[
-                            rehypeRaw,
-                            rehypeSlug,
-                        ]}
+        <>
+            {markdown.map((content, idx) => (
+                <Block key={'window-' + idx}>
+                    {idx === 0 &&
+                        <PageNavigation entry={entry} pagePosition={pagePosition} doNotShowOnFirst={true}/>
+                    }
+                    <div
+                        className={styles.post}
+                        style={{wordBreak: 'break-word'}}
                     >
-                        {markdown.toString()}
-                    </ReactMarkdown>
-                </MathJax>
-            </MathJaxContext>
-        </div>
+                        <MathJaxContext version={3} config={mathjaxConfig}>
+                            <MathJax>
+                                <ReactMarkdown
+                                    components={markdownComponents as any}
+                                    remarkPlugins={[
+                                        remarkGfm,
+                                        () => remarkToc({heading: '目次'})
+                                    ]}
+                                    rehypePlugins={[
+                                        rehypeRaw,
+                                        rehypeSlug,
+                                    ]}
+                                >
+                                    {content}
+                                </ReactMarkdown>
+                            </MathJax>
+                        </MathJaxContext>
+                    </div>
+                    {idx === markdown.length - 1 &&
+                        <PageNavigation entry={entry} pagePosition={pagePosition}/>
+                    }
+                </Block>
+            ))}
+        </>
     )
 }
 

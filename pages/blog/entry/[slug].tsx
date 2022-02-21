@@ -92,7 +92,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
     const pagePosition = validatePagePosition(parseInt(query.page as string ?? '1'))
 
     if(query.page === 'all') {
-        post.content = [post.content.join('\n')]
+        post.content = [post.content.flat()]
     }
 
     return (
@@ -122,11 +122,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <Block>
-                <PageNavigation entry={post} pagePosition={pagePosition} doNotShowOnFirst={true}/>
-                <BlogMarkdown entry={post} imageSize={post.imageSize}/>
-                <PageNavigation entry={post} pagePosition={pagePosition}/>
-            </Block>
+            <BlogMarkdown entry={post} imageSize={post.imageSize}/>
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
