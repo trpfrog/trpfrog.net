@@ -1,10 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from "gray-matter";
-import React from "react";
-import {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
-import {TextLintEngine} from "textlint";
 import {getReadTimeSecond} from "./readTime";
+import parse from "./parse";
 
 export type BlogPost = {
     title: string
@@ -15,32 +13,10 @@ export type BlogPost = {
     description?: string
     thumbnail?: string
     readTime: number
-    content: string[]
+    content: string[][]
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
-
-// convert ((footnote)) to [^i]: footnote
-const parseFootnote = (markdown: string) => {
-    const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
-    const footnotes = markdown.match(regex) ?? []
-
-    if (footnotes.length < 1) return markdown;
-
-    const tmp = markdown.split(regex)
-    markdown = ''
-    for (const i in footnotes) {
-        markdown += tmp[i] + `[^${parseInt(i, 10) + 1}]`
-    }
-    markdown += tmp[tmp.length - 1]
-
-
-    for (const i in footnotes) {
-        markdown += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
-    }
-
-    return markdown
-}
 
 const getFileContents = (slug: string) => {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
@@ -52,38 +28,12 @@ const getFileContents = (slug: string) => {
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
-    const content = matterResult.content
-        .split('<!-- page break --->')
-        .map(parseFootnote)
+    const content = await parse(matterResult.content)
 
-    const tags = matterResult.data.tags.split(',').map((t: string) => t.trim()).concat()
-
-
-    if (process.env.NODE_ENV !== 'production' && false) {
-        const engine = new TextLintEngine({
-            configFile: '.textlintrc'
-        });
-        for (let i = 0; i < content.length; i++) {
-            engine.executeOnText(content[i]).then((results) => {
-
-                const lines = content[i].split('\n')
-                const ignoreText = '<!-- ignore textlint --->'
-                const ignoreLines = lines.map((e, i) => e.trim() === ignoreText ? i + 1 : -1).filter(e => e !== -1)
-
-                if (engine.isErrorResults(results)) {
-                    const output = engine.formatResults(results);
-                    console.log(output);
-                    results[0].messages.forEach(({message, line}) => {
-                        if (!ignoreLines.includes(line - 1) && !lines[line - 1].trim().startsWith("!["))  {
-                            lines[line - 1] = `<span style="background:linear-gradient(transparent 60%, pink 60%);">${lines[line - 1]}</span>`
-                            lines[line - 1] += ` <span style="color: red"><b>(textlint error: ${message})</b></span>`
-                        }
-                    })
-                    content[i] = lines.join('\n')
-                }
-            });
-        }
-    }
+    const tags = matterResult.data.tags
+        .split(',')
+        .map((t: string) => t.trim())
+        .concat()
 
     return {
         slug,
