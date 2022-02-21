@@ -321,6 +321,15 @@ const BlogMarkdown = ({entry, imageSize}: Props) => {
                 )
             }
             return <p>{props.children}</p>
+        },
+        h2: (props: any) => {
+            console.log(props)
+            return (
+                <h2 className={styles.anchor} id={props.id}>
+                    <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
+                    {props.children}
+                </h2>
+            )
         }
     };
 
