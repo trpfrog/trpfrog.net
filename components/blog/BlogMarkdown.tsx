@@ -18,6 +18,9 @@ import TwitterArchive from "./TwitterArchive";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import PageNavigation from "./PageNavigation";
 import Block from "../Block";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 type codeProps = {
     className: string
@@ -38,6 +41,19 @@ const getLangName = (s: string) => {
         default:
             return s.charAt(0).toUpperCase() + s.slice(1)
     }
+}
+
+export const parseRichMarkdown = (markdown: string) => {
+    const markdownComponents = {
+        pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
+        code: formatCodeComponent,
+    }
+    return (
+        <ReactMarkdown
+            components={markdownComponents as any}
+            rehypePlugins={[rehypeRaw]}
+        >{markdown}</ReactMarkdown>
+    )
 }
 
 export const parseInlineMarkdown = (markdown: string) => {
@@ -193,7 +209,31 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
                 {elements}
             </div>
         )
-    }
+    },
+
+    Caution: content => (
+        <div className={styles.caution}>
+            <div className={styles.text_box_icon}>
+                <FontAwesomeIcon icon={faTriangleExclamation}/>
+            </div>
+            <div className={styles.text_box_content}>
+                <h4>注意！</h4>
+                {parseRichMarkdown(content)}
+            </div>
+        </div>
+    ),
+
+    Infobox: content => (
+        <div className={styles.infobox}>
+            <div className={styles.text_box_icon}>
+                <FontAwesomeIcon icon={faFrog}/>
+            </div>
+            <div className={styles.text_box_content}>
+                <h4>{content.split('\n')[0]}</h4>
+                {parseRichMarkdown(content.split('\n').slice(1).join('\n').trim())}
+            </div>
+        </div>
+    )
 
 }
 
