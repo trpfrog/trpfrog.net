@@ -41,7 +41,7 @@ const Layout: React.FunctionComponent<Props> = ({
     useEffect(() => storePathValues, [router.asPath]);
 
     let motionDirection = 0;
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         const item = globalThis?.sessionStorage?.getItem('prevPath');
         if(item != null) {
             const prevPath  = item.split('/').slice(0, 2).join('/');
@@ -55,7 +55,7 @@ const Layout: React.FunctionComponent<Props> = ({
         }
     }
 
-    const isMobile = process.browser && window.innerWidth < 800;
+    const isMobile = (typeof window !== 'undefined') && window.innerWidth < 800;
 
     const [isMobileMenuOpened, setMobileMenuOpened] = useState(false);
 

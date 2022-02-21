@@ -259,7 +259,7 @@ const BlogMarkdown = ({entry, imageSize}: Props) => {
     const markdown = entry.content[pagePosition - 1].trim()
 
     goToNextPage = () => {
-        if (process.browser) {
+        if (typeof window !== 'undefined') {
             window.location.href = `/blog/entry/${entry.slug}?page=${pagePosition + 1}`
         }
     }

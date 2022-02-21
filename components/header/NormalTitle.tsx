@@ -8,7 +8,7 @@ export const NormalTitle = () => {
 
     const handleScroll = (y: number) => {
         const heightToChangeTitle =
-            process.browser && window.innerWidth <= 800 ? 120 : 250;
+            (typeof window !== 'undefined') && window.innerWidth <= 800 ? 120 : 250;
         setShowPageTitle(y > heightToChangeTitle);
     }
     const {scrollY} = useViewportScroll()
@@ -22,7 +22,7 @@ export const NormalTitle = () => {
     }
 
     const router = useRouter();
-    let pageTitle = process.browser
+    let pageTitle = (typeof window !== 'undefined')
         ? document.title.replace(' - ' + process.env.title, '')
         : process.env.title as string;
     if (router.pathname.startsWith('/blog')) {
@@ -35,7 +35,7 @@ export const NormalTitle = () => {
             <h1>
                 {showPageTitle ? (
                     <a onClick={backToTop} style={{cursor: 'pointer'}}>
-                        {process.browser ? pageTitle : process.env.title}
+                        {typeof window !== 'undefined' ? pageTitle : process.env.title}
                     </a>
                 ) : (
                     <Link href="/">

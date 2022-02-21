@@ -15,7 +15,7 @@ export default class IconCanvas {
 
     constructor(id: string) {
         this.id = id;
-        if (process.browser) {
+        if (typeof window !== 'undefined') {
             this.faceImage = new Image();
             this.mask = new Image();
         }
@@ -109,7 +109,7 @@ export default class IconCanvas {
     }
 
     writeImage() {
-        if(!process.browser) return;
+        if(typeof window === 'undefined') return;
         const canvas = document.getElementById(this.id) as HTMLCanvasElement;
         const resImg = canvas.toDataURL();
         const result = document.getElementById('result-image') as HTMLImageElement;
