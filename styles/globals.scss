@@ -99,3 +99,12 @@ h3 {
 hr {
     border: 0.1px dashed gray;
 }
+
+*:focus {
+    outline-color: #90e200;
+}
+
+main {
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+}
