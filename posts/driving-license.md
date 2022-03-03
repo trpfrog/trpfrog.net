@@ -1,8 +1,7 @@
 ---
 title: 1年かけて運転免許を取った
 description: 先延ばし怠惰オタク vs 予約の取れない自動車教習所
-date: 2022-02-28
-held: 2022-02-28
+date: 2022-03-04
 tags: 日記
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1646319824/blog/driving-license/22A22BDA-B5DE-4D0C-B763-228616120231_1_105_c.jpg
 ---
