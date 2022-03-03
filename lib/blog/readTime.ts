@@ -10,8 +10,8 @@ export const getReadTimeSecond = (markdown: string) => {
             || e.startsWith('centering')
         )
         .join('')
-        .replaceAll(/[ 　\n*#]/g, '')
-        .replaceAll('centering', '')
+        .replace(/[ 　\n*#]/g, '')
+        .replace(/centering/g, '')
 
     const twitterArchives = linkRemoved
         .split('```')
@@ -20,7 +20,7 @@ export const getReadTimeSecond = (markdown: string) => {
             .split('\n')
             .filter(l => l.startsWith('tweet:'))[0] // extract tweet line
             .slice('tweet:'.length).trim() // remove 'tweet:'
-            .replaceAll(/<.*?>/g, '') // remove tags
+            .replace(/<.*?>/g, '') // remove tags
         ).join('')
 
     const length = codeRemoved.length + twitterArchives.length * 0.6
