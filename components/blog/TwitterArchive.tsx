@@ -17,6 +17,13 @@ const TwitterArchive = ({content}: Props) => {
     const userLink  = 'https://twitter.com/' + tweetData.userid
     const tweetLink = userLink + '/status/' + tweetData.id
 
+    if (!tweetData.color)  tweetData.color = '#90e200'
+    if (!tweetData.name)   tweetData.name = 'つまみ'
+    if (!tweetData.userid) tweetData.userid = 'TrpFrog'
+
+    const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
+
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.box} onClick={() => window.open(tweetLink)}>
@@ -24,7 +31,13 @@ const TwitterArchive = ({content}: Props) => {
                     <div className={styles.header_left}>
                         <div
                             className={styles.icon}
-                            style={{background: tweetData.color ?? '#90e200'}}
+                            style={{
+                                background:
+                                    tweetData.userid === 'TrpFrog'
+                                        ? `url("${trpfrogUrl}")`
+                                        : tweetData.color,
+                                backgroundPosition: 'center'
+                            }}
                             onClick={() => window.open(userLink)}
                         />
                         <div className={styles.name_box}>
