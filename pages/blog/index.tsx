@@ -12,6 +12,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleBlock from "../../components/blog/ArticleBlock";
 import Link from "next/link";
+import ArticleCard from "../../components/blog/ArticleCard";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -60,13 +61,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
                 </div>
 
                 <div id={styles.past_article_grid}>
-                    {pastArticles.map(entry => (
-                        <div key={entry.slug}>
-                            <Block className={styles.article_block} style={{padding: 0}}>
-                                <ArticleBlock entry={entry} thinPadding={true}/>
-                            </Block>
-                        </div>
-                    ))}
+                    {pastArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
                 </div>
             </Layout>
         </>
