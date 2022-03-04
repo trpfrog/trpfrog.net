@@ -1,7 +1,35 @@
 import {useState} from "react";
 import {useViewportScroll} from "framer-motion";
-import {useRouter} from "next/router";
+import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
+import styles from "../../styles/common/Header.module.scss";
+
+const backToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+const extractTitle = (router: NextRouter) => {
+    const rawPageTitle =
+        typeof document !== 'undefined'
+        ? document.title
+        : process.env.title as string
+
+    let pageTitle = rawPageTitle.split(' - ')[0]
+    let subTitle = '';
+
+    // Get article title
+    if (router.pathname.startsWith('/blog/entry/')) {
+        subTitle = pageTitle
+        pageTitle = 'つまみログ';
+    }
+
+    return {
+        pageTitle, subTitle
+    }
+}
 
 export const NormalTitle = () => {
     const [showPageTitle, setShowPageTitle] = useState(false);
@@ -14,37 +42,37 @@ export const NormalTitle = () => {
     const {scrollY} = useViewportScroll()
     scrollY.onChange(handleScroll)
 
-    const backToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
     const router = useRouter();
-    let pageTitle = (typeof window !== 'undefined')
-        ? document.title.replace(' - ' + process.env.title, '')
-        : process.env.title as string;
-    if (router.pathname.startsWith('/blog')) {
-        pageTitle = 'つまみログ';
-    }
+    const {pageTitle, subTitle} = extractTitle(router)
 
     return (
-        <div id={'header-title'}>
-            <div id={'header-title-image'}/>
-            <h1>
-                {showPageTitle ? (
-                    <a onClick={backToTop} style={{cursor: 'pointer'}}>
-                        {typeof window !== 'undefined' ? pageTitle : process.env.title}
-                    </a>
-                ) : (
-                    <Link href="/">
-                        <a>
-                            {process.env.title}
+        <div id={styles.site_logo}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                id={styles.trpfrog_icon}
+                src={'/images/flat-trpfrog.gif'}
+                alt={"TrpFrog's icon"}
+            />
+            <div id={styles.site_name_wrapper}>
+                <h1 id={styles.site_name}>
+                    {showPageTitle ? (
+                        <a onClick={backToTop} style={{cursor: 'pointer'}}>
+                            {typeof window !== 'undefined' ?
+                                <div className={styles.on_subtitle_showed}>
+                                    {pageTitle}<br/>
+                                    <div id={styles.subtitle}>{subTitle}</div>
+                                </div> :
+                                <>{process.env.title}</>}
                         </a>
-                    </Link>
-                )}
-            </h1>
+                    ) : (
+                        <Link href="/">
+                            <a>
+                                {process.env.title}
+                            </a>
+                        </Link>
+                    )}
+                </h1>
+            </div>
         </div>
     );
 };

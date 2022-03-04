@@ -1,6 +1,7 @@
 import {animate, AnimationOptions, motion, useMotionValue, useViewportScroll} from "framer-motion";
 import {useEffect} from "react";
 import Link from "next/link";
+import styles from "../../styles/common/Header.module.scss";
 
 export const TopTitle = () => {
 
@@ -17,7 +18,7 @@ export const TopTitle = () => {
 
         if (y >= animationHeight) {
             animate(iconY, 0, config);
-            animate(titleX, 4, config);
+            animate(titleX, 0, config);
         } else {
             animate(iconY, isMobile ? 48 : 80, config);
             animate(titleX, isMobile ? -50 : -82, config);
@@ -29,18 +30,20 @@ export const TopTitle = () => {
     useEffect(() => handleScroll(window.scrollY, false))
 
     return (
-        <div id={'header-title'}>
-            <motion.div
-                id={'header-title-image'}
+        <div id={styles.site_logo}>
+            <motion.img
+                id={styles.trpfrog_icon}
+                src={'/images/flat-trpfrog.gif'}
+                alt={"TrpFrog's icon"}
                 style={{y: iconY}}
             />
-            <motion.h1
-                style={{x: titleX}}
-            >
-                <Link href="/">
-                    <a>{process.env.title}</a>
-                </Link>
-            </motion.h1>
+            <motion.div id={styles.site_name_wrapper} style={{x: titleX}}>
+                <h1 id={styles.site_name}>
+                    <Link href="/">
+                        <a>{process.env.title}</a>
+                    </Link>
+                </h1>
+            </motion.div>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 @use '../mixins';
 
 :root {
-    --header-height: 5em;
+    --header-height: 5rem;
     --navigation-height: 3em;
     --footer-height: 6em;
     --main-margin: 2em;
@@ -10,7 +10,7 @@
 
 @include mixins.mq(sp) {
     :root {
-        --header-height: 3.5em;
+        --header-height: 3.5rem;
         --navigation-height: 0;
         --footer-height: 3em;
         --main-margin: 0;

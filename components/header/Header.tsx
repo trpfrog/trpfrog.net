@@ -4,6 +4,7 @@ import {animate, motion, useMotionValue, useViewportScroll} from "framer-motion"
 import React, {FunctionComponent} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
+import styles from "../../styles/common/Header.module.scss";
 
 const Header: FunctionComponent<{
     isOpened: boolean,
@@ -45,11 +46,12 @@ const Header: FunctionComponent<{
 
     return (
         <motion.header
+            id={styles.header}
             style={{y: headerY}}
         >
-            <div id="header-wrapper">
+            <div id={styles.inside}>
                 {router.pathname == '/' ? <TopTitle />  : <NormalTitle />}
-                <nav>
+                <nav id={styles.navigation}>
                     <ul>
                         {['home', 'works', 'blog'].map(e => (
                             <li key={e}>

@@ -1,0 +1,152 @@
+@use '../mixins';
+
+#header {
+    position: fixed;
+    background: var(--header-color);
+    width: 100%;
+
+    overflow: hidden;
+    z-index: 999;
+
+    height: var(--header-height);
+    -webkit-filter: var(--header-filter);
+    filter: var(--header-filter);
+
+    a {
+        text-decoration: none;
+        color: white !important;
+
+        &:hover {
+            color: #90e200 !important;
+        }
+    }
+}
+
+#inside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 4em;
+    height: var(--header-height);
+
+    @include mixins.mq(sp) {
+        padding: 0 10px;
+    }
+}
+
+#site_name_wrapper {
+    position: relative;
+    top: 2px;
+    display: inline-flex;
+    align-items: center;
+    height: var(--header-height);
+}
+
+#site_name {
+    text-align: left;
+    margin: auto 0;
+    display: block;
+    color: #ffffff;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 800;
+
+
+
+    @include mixins.mq(sp) {
+        grid-area: page_title;
+        font-size: 1.5em;
+    }
+
+
+}
+
+#subtitle {
+    --nav-width: 370px;
+    --width: calc(min(100vw - 5em, 900px)
+                - var(--header-icon-size)
+                - var(--nav-width));
+
+    font-size: 18px;
+    @include mixins.mq(sp) {
+        --width: calc(100vw - var(--header-icon-size) - 70px);
+        font-size: 13px;
+    }
+
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    transform: translateY(-5px);
+    width: var(--width);
+}
+
+#trpfrog_icon {
+    width: var(--header-icon-size);
+    height: var(--header-icon-size);
+    margin-top: 8px;
+    //transform: translateY(8px);
+
+    @include mixins.mq(sp) {
+        //transform: translateY(5px);
+        margin-top: 5px;
+    }
+}
+
+#site_logo {
+    display: grid;
+    grid-template-rows: var(--header-height);
+    gap: 5px;
+    grid-template-columns: var(--header-icon-size) auto;
+}
+
+.on_subtitle_showed {
+    @include mixins.mq(pc) {
+        transform: translateY(2px);
+    }
+}
+
+#navigation {
+    position: relative;
+    top: 3px;
+    text-align: right;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+        font-family: 'Comfortaa', sans-serif;
+        color: #ffffff;
+        text-decoration: none;
+        margin-right: 0.5em;
+        padding-left: 0.5em;
+
+        font-size: 1.5em;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+
+        &:hover {
+            color: #90e200;
+        }
+
+        &:before {
+            content: none !important;
+        }
+    }
+
+    li + li {
+        border-left: 2px solid #ffffff;
+    }
+
+    @include mixins.mq(sp) {
+        ul {
+            display: none;
+        }
+    }
+}
