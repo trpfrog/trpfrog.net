@@ -52,9 +52,9 @@ const Blog: NextPage<Props> = ({ articles }) => {
                     <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
                 </div>
 
-                <Block style={{padding: 0}}>
-                    <ArticleBlock entry={latestArticle}/>
-                </Block>
+                <div id={styles.hero_article}>
+                    <ArticleCard entry={latestArticle} hero={true}/>
+                </div>
 
                 <div className={styles.hrule_block}>
                     <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>

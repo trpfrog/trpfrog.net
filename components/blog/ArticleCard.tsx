@@ -11,28 +11,36 @@ import {loadDefaultJapaneseParser} from "budoux";
 
 type Props = {
     entry: BlogPost
+    hero?: boolean
 }
 
 const budouXParser = loadDefaultJapaneseParser()
-const parseWithBudouX = (str: string) => {
+const parseWithBudouX = (str: string, slug: string) => {
     return budouXParser
         .parse(str)
         .map(e => e
             .split('+')
             .map((f, i) => i % 2 === 0 ? f : '+' + f))
         .flat()
-        .map(e => (
+        .map((e, i) => (
             <span
-                key={Date.now()}
+                key={`${slug}-${i}`}
                 style={{display: 'inline-block'}}
             >{e}</span>
         ))
 }
 
-const ArticleCard = ({entry}: Props) => {
+const ArticleCard = ({entry, hero}: Props) => {
+
+    // if (hero) return <></>
+    const articleURL = '/blog/entry/' + entry.slug
+
+    const splitTitle = parseWithBudouX(entry.title, entry.slug)
+
     return (
-        <Link href={'/blog/entry/' + entry.slug}>
-            <a className={styles.window}>
+        // eslint-disable-next-line @next/next/link-passhref
+        <Link href={articleURL}>
+            <div className={styles.window}>
                 <div className={styles.tags}>
                     {entry.tags
                         .split(',')
@@ -43,13 +51,15 @@ const ArticleCard = ({entry}: Props) => {
                 <Image
                     src={getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')}
                     alt={'thumbnail of ' + entry.slug}
-                    width={600}
-                    height={400}
+                    width={hero ? 1000 : 600}
+                    height={300}
                     objectFit={"cover"}
                     className={styles.thumbnail}
                 />
-                <div className={styles.h3_wrapper}>
-                    <h3>{parseWithBudouX(entry.title)}</h3>
+                <div className={`${styles.h3_wrapper} ${hero && styles.hero_h3_wrapper}`}>
+                    <Link href={articleURL}>
+                        <a><h3>{splitTitle}</h3></a>
+                    </Link>
                 </div>
                 <div className={styles.information}>
                     <FontAwesomeIcon icon={faCalendarDay} style={{margin: 'auto'}}/>{' '}
@@ -57,7 +67,7 @@ const ArticleCard = ({entry}: Props) => {
                     <FontAwesomeIcon icon={faClock} style={{margin: 'auto'}}/>{' '}
                     {Math.ceil(entry.readTime / 60)} min to read
                 </div>
-            </a>
+            </div>
         </Link>
     )
 }
