@@ -17,9 +17,6 @@
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 0.8em;
 
-    margin-right: 4px;
-    margin-bottom: 4px;
-
     @include mixins.mq(dark) {
         background: #172c00;
         color: white !important;
