@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useViewportScroll} from "framer-motion";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../../styles/common/Header.module.scss";
 
 const backToTop = () => {
@@ -47,12 +48,16 @@ export const NormalTitle = () => {
 
     return (
         <div id={styles.site_logo}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                id={styles.trpfrog_icon}
-                src={'/images/flat-trpfrog.gif'}
-                alt={"TrpFrog's icon"}
-            />
+            <div id={styles.trpfrog_icon}>
+                <Image
+                    src={'flat-trpfrog-gif'}
+                    alt={"TrpFrog's icon"}
+                    width={100}
+                    height={100}
+                    priority={true}
+                    layout={"responsive"}
+                />
+            </div>
             <div id={styles.site_name_wrapper}>
                 <h1 id={styles.site_name}>
                     {showPageTitle ? (

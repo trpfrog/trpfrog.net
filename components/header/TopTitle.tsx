@@ -2,6 +2,7 @@ import {animate, AnimationOptions, motion, useMotionValue, useViewportScroll} fr
 import {useEffect} from "react";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
+import Image from "next/image";
 
 export const TopTitle = () => {
 
@@ -31,12 +32,16 @@ export const TopTitle = () => {
 
     return (
         <div id={styles.site_logo}>
-            <motion.img
-                id={styles.trpfrog_icon}
-                src={'/images/flat-trpfrog.gif'}
-                alt={"TrpFrog's icon"}
-                style={{y: iconY}}
-            />
+            <motion.div style={{y: iconY}} id={styles.trpfrog_icon}>
+                <Image
+                    src={'flat-trpfrog-gif'}
+                    alt={"TrpFrog's icon"}
+                    width={100}
+                    height={100}
+                    priority={true}
+                    layout={"responsive"}
+                />
+            </motion.div>
             <motion.div id={styles.site_name_wrapper} style={{x: titleX}}>
                 <h1 id={styles.site_name}>
                     <Link href="/">
