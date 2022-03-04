@@ -48,16 +48,7 @@ export const NormalTitle = () => {
 
     return (
         <div id={styles.site_logo}>
-            <div id={styles.trpfrog_icon}>
-                <Image
-                    src={'flat-trpfrog-gif'}
-                    alt={"TrpFrog's icon"}
-                    width={100}
-                    height={100}
-                    priority={true}
-                    layout={"responsive"}
-                />
-            </div>
+            <div id={styles.trpfrog_icon}/>
             <div id={styles.site_name_wrapper}>
                 <h1 id={styles.site_name}>
                     {showPageTitle ? (
