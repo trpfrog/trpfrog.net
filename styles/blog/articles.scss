@@ -49,7 +49,7 @@
 
 #past_article_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-gap: 17px;
 
     @include mixins.mq(sp) {
