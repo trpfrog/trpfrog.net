@@ -32,9 +32,7 @@ const parseWithBudouX = (str: string, slug: string) => {
 
 const ArticleCard = ({entry, hero}: Props) => {
 
-    // if (hero) return <></>
     const articleURL = '/blog/entry/' + entry.slug
-
     const splitTitle = parseWithBudouX(entry.title, entry.slug)
 
     return (
