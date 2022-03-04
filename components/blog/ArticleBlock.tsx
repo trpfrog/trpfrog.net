@@ -5,9 +5,9 @@ import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-ico
 import {format, parseISO} from "date-fns";
 import {BlogPost} from "../../lib/blog/load";
 import styles from "../../styles/blog/blog.module.scss";
-import {getEmojiImageSrc} from "../../lib/blog/tags";
 import Title from "../Title";
 import {formatReadTime} from "../../lib/blog/readTime";
+import Tag from "./Tag";
 
 type Props = {
     entry: BlogPost
@@ -89,19 +89,8 @@ const ArticleBlock: FunctionComponent<Props> = ({
                     {showTags && entry.tags
                         .split(',')
                         .map((t: string) => t.trim())
-                        .map(tag => (
-                            <Link href={'/blog/tags/' + tag} key={tag}>
-                                <a className={styles.tag_block}>
-                                    <span className={styles.tag_emoji}>
-                                        <img src={getEmojiImageSrc(tag)} width={20} height={20} alt={'tag emoji'}/>
-                                    </span>
-                                    <span className={styles.tag_name}>
-                                        {tag}
-                                    </span>
-                                </a>
-                            </Link>
-                        )
-                    )}
+                        .map(tag => <Tag tag={tag} key={tag}/>)
+                    }
                 </div>
             </div>
         </div>

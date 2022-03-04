@@ -1,6 +1,6 @@
 @use '../mixins';
 
-.tag_block {
+.block {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -28,20 +28,20 @@
     @media print {
         border: solid 2px black;
     }
+
+    &:hover {
+        background: #90e20033;
+    }
 }
 
-.tag_block:hover {
-    background: #90e20033;
-}
-
-.tag_name {
+.name {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 1px 3px 0 0;
 }
 
-.tag_emoji {
+.emoji {
     display: inline-flex;
     justify-content: center;
     align-items: center;
