@@ -1,17 +1,13 @@
-import React, {CSSProperties} from 'react'
+import React from 'react'
 import {NextPage} from "next";
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
-import Block from "../../components/Block";
 import {getSortedPostsData, BlogPost} from "../../lib/blog/load";
 
 import styles from '../../styles/blog/blog.module.scss';
-import {NextSeo} from "next-seo";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
-import ArticleBlock from "../../components/blog/ArticleBlock";
-import Link from "next/link";
 import ArticleCard from "../../components/blog/ArticleCard";
 
 export const getStaticProps = async () => {
@@ -32,21 +28,14 @@ const Blog: NextPage<Props> = ({ articles }) => {
     const latestArticle = articles[0];
     const pastArticles = articles.slice(1);
 
+    const description =
+        'つまみさんのブログです。' +
+        '主にお散歩やソフトウェアの記事を書いています。'
+
     return (
         <>
             <Layout>
-                <Title ribbonText={'BETA'}>
-                    <h1>つまみログ<span style={{fontSize: '0.5em'}}> on つまみネット</span></h1>
-                    <p>つまみさんのブログです。</p>
-                    <p>
-                        今までのブログを一本化する予定です。今までのブログはこちら
-                        <ul>
-                            <li><b>ブログ</b>: <a href={'https://trpfrog.hateblo.jp'}>つまみログ</a></li>
-                            <li><b>雑ブログ</b>: <a href={'https://old.trpfrog.net/notes'}>Random Notes</a></li>
-                        </ul>
-                    </p>
-                </Title>
-                <NextSeo title={'つまみログ'} description={'つまみさんのブログです。'}/>
+                <Title title={'つまみログ'} description={description} />
 
                 <div className={styles.hrule_block}>
                     <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
