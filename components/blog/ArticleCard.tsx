@@ -7,13 +7,29 @@ import Image from "next/image";
 import {getPureCloudinaryPath} from "./BlogMarkdown";
 import dayjs from "dayjs";
 import Tag from "./Tag";
+import {loadDefaultJapaneseParser} from "budoux";
 
 type Props = {
     entry: BlogPost
 }
 
-const ArticleCard = ({entry}: Props) => {
+const budouXParser = loadDefaultJapaneseParser()
+const parseWithBudouX = (str: string) => {
+    return budouXParser
+        .parse(str)
+        .map(e => e
+            .split('+')
+            .map((f, i) => i % 2 === 0 ? f : '+' + f))
+        .flat()
+        .map(e => (
+            <span
+                key={Date.now()}
+                style={{display: 'inline-block'}}
+            >{e}</span>
+        ))
+}
 
+const ArticleCard = ({entry}: Props) => {
     return (
         <Link href={'/blog/entry/' + entry.slug}>
             <a className={styles.window}>
@@ -33,7 +49,7 @@ const ArticleCard = ({entry}: Props) => {
                     className={styles.thumbnail}
                 />
                 <div className={styles.h3_wrapper}>
-                    <h3>{entry.title}</h3>
+                    <h3>{parseWithBudouX(entry.title)}</h3>
                 </div>
                 <div className={styles.information}>
                     <FontAwesomeIcon icon={faCalendarDay} style={{margin: 'auto'}}/>{' '}
