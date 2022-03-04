@@ -58,7 +58,7 @@ export const getSortedPostsData = async (tag:string = '') => {
         .map(({matterResult, slug}) => {
             return {
                 slug,
-                readTime: -1,
+                readTime: getReadTimeSecond(matterResult.content),
                 ...matterResult.data
             } as BlogPost
         }
