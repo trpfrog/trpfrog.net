@@ -23,10 +23,13 @@ const TwitterArchive = ({content}: Props) => {
 
     const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
 
-
     return (
         <div className={styles.wrapper}>
-            <div className={styles.box} onClick={() => window.open(tweetLink)}>
+            <div
+                className={styles.box}
+                onClick={() => window.open(tweetLink)}
+                style={JSON.parse(tweetData.style ?? '{}')}
+            >
                 <div className={styles.header}>
                     <div className={styles.header_left}>
                         <div
