@@ -1,4 +1,4 @@
-import React, {CSSProperties, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
@@ -11,8 +11,6 @@ import {BlogPost, getAllPostSlugs, getPostData} from "../../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
-import ArticleBlock from "../../../components/blog/ArticleBlock";
-import PageNavigation from "../../../components/blog/PageNavigation";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
