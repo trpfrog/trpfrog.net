@@ -6,8 +6,6 @@ description: 徒歩依存症の末路
 thumbnail: https://res.cloudinary.com/trpfrog/blog/squirrel-walking/20210403211219
 ---
 
-![](https://res.cloudinary.com/trpfrog/blog/squirrel-walking/20210403211219)
-
 
 こんにちは、つまみ ([@TrpFrog](https://twitter.com/trpfrog)) です。[AP](https://www.jitec.ipa.go.jp/1_11seido/ap.html)の勉強をサボっています。
 **落ちろ！**

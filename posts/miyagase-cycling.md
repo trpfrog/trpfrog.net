@@ -7,8 +7,6 @@ description: しんどい
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/miyagase-cycling/20200415122850
 ---
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/miyagase-cycling/20200415122850)
-
 **注: 湖に訪れたのは外出自粛要請前の3月21日です。**
 
 今は3週間以上家に引きこもっています。つらいけど頑張りましょう。

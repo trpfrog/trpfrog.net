@@ -6,8 +6,6 @@ tags: 日記, 長編記事
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1646319824/blog/driving-license/22A22BDA-B5DE-4D0C-B763-228616120231_1_105_c.jpg
 ---
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646319824/blog/driving-license/22A22BDA-B5DE-4D0C-B763-228616120231_1_105_c.jpg)
-
 こんにちは、つまみです。皆さんは運転免許証を持っていますか？**僕は持っています**(えっへん) 
 
 とは言いますが**1年**もかかってしまいました。**激混み教習所 + 先延ばし癖怠惰男** の最悪のマッチでこんなにもかかってしまいました。しかも卒業までギリギリの**9ヶ月**かかってます。**最悪**

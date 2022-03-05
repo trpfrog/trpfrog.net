@@ -7,8 +7,6 @@ description: タイトルが長い
 thumbnail: https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210325195712
 ---
 
-![](https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210325195712)
-
 こんにちは、つまみ ([@TrpFrog](https://twitter.com/TrpFrog)) です。なろう小説ばりの激長タイトルでお送りしております。
 
 皆さんは東京タワーに**階段で**登ると<b>「昇り階段認定証」</b>が貰えることをご存知ですか？

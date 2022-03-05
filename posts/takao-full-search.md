@@ -6,10 +6,6 @@ description: 登って歩いて降りて登って降りて登って降りる
 thumbnail: https://res.cloudinary.com/trpfrog/blog/takao-full-search/20210413163253
 ---
 
-
-![](https://res.cloudinary.com/trpfrog/blog/takao-full-search/20210413163253)
-
-
 こんにちは、つまみ ([@TrpFrog](https://twitter.com/trpfrog)) です。
 先日、高尾登山電鉄公式サイトで紹介されている高尾山の**8**コース **(陣馬山コースも含む！)** を1日で**全部**歩いてきました。
 

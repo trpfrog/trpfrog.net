@@ -7,8 +7,6 @@ description: 変なオタク鯖のチャンネルを晒すサイトを作った
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/thumbnail.webp
 ---
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/thumbnail.webp)
-
 **何？これは**
 
 この記事は **[UEC 2 Advent Calendar 2021](https://adventar.org/calendars/6598)** 16日目の記事です。飛び入り参加です。

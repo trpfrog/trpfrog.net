@@ -11,10 +11,6 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229040920
 
 ---
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229040920)
-
- 
-
 メリークリスマス！つまみ ([@TrpFrog](https://twitter.com/trpfrog)) です。ちょっと眠いです。
 今こうして眠い目を擦りながら……というのは嘘((嘘つきはちくわぶの始まり))ですが、帰ってすぐ画面に向き合ってキーボードをコトコト叩いています。すご
 

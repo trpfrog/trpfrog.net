@@ -6,9 +6,6 @@ description: リハビリ徒歩
 thumbnail: https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029175219
 ---
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029175219)
-
-
 こんにちは、つまみ ([@TrpFrog](https://twitter.com/trpfrog)) です。
 
 今日は調布から聖蹟桜ヶ丘の**びっくりドンキー**まで行きました。

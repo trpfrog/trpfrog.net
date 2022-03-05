@@ -12,8 +12,6 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twit
 
 ---
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/thumbnail.png)
-
 こんにちは、つまみ([@TrpFrog](https://twitter.com/TrpFrog))です。足が痛いです。 
 
 先日[某電通大東方サークル](https://twitter.com/uec_Touhou_)の[方](https://twitter.com/Asunarowasabi_U)に「ハッシュタグ拾って画面に流すツール作れない？」と頼まれ、<s>面白そうだったので</s>そういうツールを作ってみることにしました。

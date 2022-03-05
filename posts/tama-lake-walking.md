@@ -7,8 +7,6 @@ description: 多摩湖行きたすぎ！
 thumbnail: https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503182116
 ---
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503182116)
-
 こんにちは、つまみ ([@TrpFrog](https://twitter.com/trpfrog)) です。忙しくて記事を書くことが不可能です。
 
 最近、電通大内でいろいろな徒歩勢力が増えてきて嬉しいです。**何この大学？** 

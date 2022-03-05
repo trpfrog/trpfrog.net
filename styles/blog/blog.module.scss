@@ -28,6 +28,24 @@
     @include mixins.mq(dark) {
         background-color: rgba(#202020, 0.9);
     }
+
+    text-align: center;
+
+    h1 {
+        text-align: center !important;
+        margin: .5em 0 !important;
+    }
+
+    @include mixins.mq(pc) {
+        p {
+            margin: 1.5em !important;
+        }
+
+        h1 {
+            text-align: center !important;
+            font-size: 2.5em !important;
+        }
+    }
 }
 
 #entry_bottom_buttons {
