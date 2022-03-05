@@ -7,27 +7,11 @@ import Image from "next/image";
 import {getPureCloudinaryPath} from "./BlogMarkdown";
 import dayjs from "dayjs";
 import Tag from "./Tag";
-import {loadDefaultJapaneseParser} from "budoux";
+import {parseWithBudouX} from "../../lib/wordSplit";
 
 type Props = {
     entry: BlogPost
     hero?: boolean
-}
-
-const budouXParser = loadDefaultJapaneseParser()
-const parseWithBudouX = (str: string, slug: string) => {
-    return budouXParser
-        .parse(str)
-        .map(e => e
-            .split('+')
-            .map((f, i) => i % 2 === 0 ? f : '+' + f))
-        .flat()
-        .map((e, i) => (
-            <span
-                key={`${slug}-${i}`}
-                style={{display: 'inline-block'}}
-            >{e}</span>
-        ))
 }
 
 const ArticleCard = ({entry, hero}: Props) => {
