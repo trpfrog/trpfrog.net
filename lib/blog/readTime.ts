@@ -23,9 +23,11 @@ export const getReadTimeSecond = (markdown: string) => {
             .replace(/<.*?>/g, '') // remove tags
         ).join('')
 
-    const length = codeRemoved.length + twitterArchives.length * 0.6
+    const images = (markdown.match(imageRegex) || []).length
 
-    return Math.floor(length * 60 / 750);
+    const length = images * 20 + codeRemoved.length + twitterArchives.length * 0.6
+
+    return Math.floor(length * 60 / 700);
 }
 
 export const formatReadTime = (readTimeSec: number) => {
