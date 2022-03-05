@@ -1,7 +1,7 @@
 ---
 title: 中央環状線+湾岸線を歩いて一周した
 date: 2021-12-06
-updated: 2022-03-05
+updated: 2022-03-06
 tags: 徒歩, 長編記事
 description: 距離も記事もクソデカい、もうオタク歩くな
 thumbnail: https://res.cloudinary.com/trpfrog/blog/c2walker/20211206005055
@@ -2324,7 +2324,7 @@ tweet: 延長戦吊り革掴みが始まってる、カス
 <hr style="margin: 4em 0">
  
 
-明日の記事はあずきバーさんの「**traefikを触った話**」です。なんもわからん
+明日の記事はあずきバーさんの「**traefikを触った話**」です。以前の記事 (http://localhost:3000/blog/entry/timetable-page) で紹介した「時間割作るやつ」で作った時間割をどうにか**認証付き**で公開する方法、に関する記事みたいです。僕もこれでどこでも時間割見られるようにするぞ〜！(ただし来年はB4なので恩恵が……😢)
 
 ```link-embed
 https://azukibar.dev/blog/2021/12/traefik/
