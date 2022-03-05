@@ -2,12 +2,11 @@ import React, {CSSProperties, FunctionComponent} from "react";
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
-import {format, parseISO} from "date-fns";
 import {BlogPost} from "../../lib/blog/load";
 import styles from "../../styles/blog/blog.module.scss";
-import Title from "../Title";
 import {formatReadTime} from "../../lib/blog/readTime";
 import Tag from "./Tag";
+import dayjs from "dayjs";
 
 type Props = {
     entry: BlogPost
@@ -59,7 +58,7 @@ const ArticleBlock: FunctionComponent<Props> = ({
                         <>
                             <FontAwesomeIcon icon={faCalendarDay}/>{' '}
                             <time dateTime={entry.date}>
-                                {format(parseISO(entry.date), 'yyyy年M月d日')}
+                                {dayjs(entry.date).format('YYYY年M月d日')}
                             </time>
                         </>
                     }
@@ -68,7 +67,7 @@ const ArticleBlock: FunctionComponent<Props> = ({
                             <br/>
                             <FontAwesomeIcon icon={faSyncAlt}/>{' '}
                             <time dateTime={entry.updated}>
-                                {format(parseISO(entry.updated), 'yyyy年M月d日')}
+                                {dayjs(entry.date).format('YYYY年M月d日')}
                             </time>
                         </>
                     }

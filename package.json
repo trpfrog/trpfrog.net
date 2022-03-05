@@ -17,7 +17,6 @@
     "budoux": "^0.0.3",
     "chokidar": "^3.5.3",
     "cloudinary": "^1.28.1",
-    "date-fns": "^2.28.0",
     "dayjs": "^1.10.8",
     "framer-motion": "^6.2.4",
     "gray-matter": "^4.0.3",
