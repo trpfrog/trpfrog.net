@@ -117,12 +117,12 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                         <time dateTime={post.date}>
                             {dayjs(post.date).format('YYYY年M月d日')}
                         </time>
-                        {(post.updated && post.date > post.updated) &&
+                        {(post.updated && post.date < post.updated) &&
                             <>
                                 <br/>
                                 <FontAwesomeIcon icon={faSyncAlt}/>{' '}
                                 <time dateTime={post.updated}>
-                                    {dayjs(post.date).format('YYYY年M月d日')}
+                                    {dayjs(post.updated).format('YYYY年M月d日')} 更新
                                 </time>
                             </>
                         }
