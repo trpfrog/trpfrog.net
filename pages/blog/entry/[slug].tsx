@@ -22,6 +22,7 @@ import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-ico
 import dayjs from "dayjs";
 import Tag from "../../../components/blog/Tag";
 import {formatReadTime} from "../../../lib/blog/readTime";
+import {parseWithBudouX} from "../../../lib/wordSplit";
 
 type PageProps = {
     entry: BlogPost
@@ -110,7 +111,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     />
                 }
                 <div className={styles.inner_title_block}>
-                    <h1>{post.title}</h1>
+                    <h1>{parseWithBudouX(post.title, post.slug)}</h1>
                     <p>{post.description}</p>
                     <p>
                         <FontAwesomeIcon icon={faCalendarDay}/>{' '}
