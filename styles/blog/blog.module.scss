@@ -71,7 +71,7 @@
 
     h2 {
         display: block;
-        margin-top: 1em;
+        margin-top: 0;
 
         &::before {
             background-image: none !important;
@@ -84,6 +84,10 @@
             width: 0;
             margin-right: 0;
         }
+    }
+
+    * + h2 {
+        margin-top: 2em;
     }
 
     main {
