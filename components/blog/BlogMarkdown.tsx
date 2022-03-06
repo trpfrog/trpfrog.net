@@ -85,7 +85,7 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         const title = lines[1]?.trim()
         return (
             <div style={{textAlign: 'center'}}>
-                <YouTube videoId={id}/>
+                <YouTube videoId={id} className={'youtube-iframe'} containerClassName={'youtube-outer'}/>
             </div>
         )
     },
