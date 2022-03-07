@@ -93,12 +93,17 @@ $code-block-border: 1px;
 }
 
 .inline_code_block {
-    background-color: #313131 !important;
+    display: inline;
+    word-break: break-all;
+    background-color: #0001 !important;
+
+    @include mixins.mq(dark) {
+        background-color: #313131 !important;
+        color: white;
+    }
     font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace;
-    color: white;
     padding: 0 4px;
-    font-size: 0.8em;
-    display: inline-block;
+    font-size: 0.9em;
     border-radius: 5px;
     vertical-align: 5%;
     
