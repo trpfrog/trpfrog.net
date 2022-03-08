@@ -105,8 +105,7 @@ $code-block-border: 1px;
     padding: 0 4px;
     font-size: 0.9em;
     border-radius: 5px;
-    vertical-align: 5%;
-    
+
     @include mixins.mq(dark) {
         border: solid 1px gray;
     }
