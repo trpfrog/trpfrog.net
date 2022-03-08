@@ -57,6 +57,8 @@ GitHub Pages は**なぜかデプロイされない**<sup>※1</sup>、**リポ�
 ```caution
 **レンタルサーバではない**のでデカい動画とかアップロードすると怒られます。気をつけてください。
 実際、GitHubに申し訳ないので**徒歩ブログのクソデカ画像たち**は[別のサーバ](https://cloudinary.com)に置いてます。
+
+[公式ドキュメント](https://docs.github.com/ja/repositories/working-with-files/managing-large-files/about-large-files-on-github)によるとリポジトリは 1GB か 5GB 未満にすることを強くお勧めする、そうです (GitHubは明確な容量制限を設けていないため)。1GB を超過するとメールが飛んでくるみたいな話もあるので **1GB が目安**かもしれません。つまみネットは4MB程度でした。(画像サーバは3.2GBあった)
 ```
 
 このリンクから登録できます。
