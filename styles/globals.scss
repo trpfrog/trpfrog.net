@@ -68,7 +68,43 @@ h3 {
 }
 
 @media screen {
+    ol {
+        counter-reset: num;
+        padding-left: 1em;
+
+        li {
+            list-style-type: none;
+            position: relative;
+            padding-left: 2em;
+        }
+
+        li:before {
+            content: counter(num);
+            counter-increment: num;
+
+            display: inline-block;
+            border-radius: 50%;
+            text-align: center;
+
+            background: #3c7709;
+            color: white;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-weight: bold;
+            font-size: 0.9em;
+            line-height: 1.66;
+
+            position: absolute;
+            left: 0;
+            width: 1.5em;
+            height: 1.5em;
+            top: 3px;
+        }
+    }
+
     ul {
+        counter-reset: num;
+        padding-left: 2em;
+
         li {
             list-style-type: none;
             position: relative;
