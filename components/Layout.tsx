@@ -32,26 +32,28 @@ const Layout: React.FunctionComponent<Props> = ({
         if (!storage) return;
         const prevPath = storage.getItem("currentPath");
         const curPath = globalThis.location.pathname;
-        // if (prevPath != curPath)
-        {
-            storage.setItem('prevPath', prevPath ? prevPath : '');
-            storage.setItem('currentPath', globalThis.location.pathname);
-        }
+
+        storage.setItem('prevPath', prevPath ? prevPath : '');
+        storage.setItem('currentPath', curPath);
     }
     useEffect(() => storePathValues, [router.asPath]);
 
     let motionDirection = 0;
     if (typeof window !== 'undefined') {
         const item = globalThis?.sessionStorage?.getItem('prevPath');
-        if(item != null) {
-            const prevPath  = item.split('/').slice(0, 2).join('/');
-            const curPath   = router.pathname.split('/').slice(0, 2).join('/');
-            const prevIndex = NAVIGATION_LINKS.findIndex((value => (value.link == prevPath)));
-            const curIndex  = NAVIGATION_LINKS.findIndex((value => (value.link == curPath)));
-            if(prevIndex != -1 && curIndex != -1 && prevIndex != curIndex) {
+
+        if(item) {
+            const getPageIndexOnNavbar = (url: string) => {
+                const subPagePath = url.split('/').slice(0, 2).join('/')
+                return NAVIGATION_LINKS.findIndex((value => (value.link === subPagePath)))
+            }
+            const prevIndex = getPageIndexOnNavbar(item)
+            const curIndex  = getPageIndexOnNavbar(router.pathname)
+
+            // Determine moving direction
+            if(prevIndex !== -1 && curIndex !== -1 && prevIndex !== curIndex) {
                 motionDirection = prevIndex - curIndex < 0 ? -1 : 1;
             }
-            console.log(prevPath + ' ' + curPath);
         }
     }
 
