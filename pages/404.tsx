@@ -2,31 +2,46 @@ import {NextPage} from "next";
 import Layout from "../components/Layout";
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../styles/404.module.css';
+import Title from "../components/Title";
 
 const TrpFrog404: NextPage = () => {
+    const IB = ({children}: any) => (
+        <span style={{display: 'inline-block'}}>{children}</span>
+    )
     return (
-        <>
-            <Layout>
-                <div id={styles.title}>
-                    <h1>404 Not Found</h1>
+        <Layout>
+            <Title
+                title={'404 Not Found'}
+                showDefaultText={false}
+                style={{textAlign: 'center', padding: '3rem 0'}}
+            >
+                <h1 style={{textAlign: 'center'}}>
+                    404 Not Found
+                </h1>
+                <div style={{marginTop: '1rem'}}>
+                    <Image
+                        src={'404'}
+                        width={300}
+                        height={300}
+                        alt={'404の画像'}
+                    />
+                </div>
+                <div style={{padding: '0 1em'}}>
                     <p>
-                        <Image
-                            src="404"
-                            width="332"
-                            height="332"
-                            alt="404の画像"
-                        />
+                        <IB>このページは</IB><IB>存在しません。</IB>
+                        <br/>
+                        <IB>サイトの工事中または</IB>
+                        <IB>リンクが誤っている可能性があります。</IB>
                     </p>
-                    <p>このページは存在しません。</p>
-                    <p>サイトの工事中、またはリンクの誤りの可能性があります。</p>
                     <p>
-                        トップページに戻る場合は<Link href="/"><a>ここ</a></Link>
-                        をクリックしてください。
+                        <Link href={'/'}>
+                            <a className={'linkButton'}>トップページに戻る</a>
+                        </Link>
                     </p>
                 </div>
-            </Layout>
-        </>
+
+            </Title>
+        </Layout>
     )
 }
 
