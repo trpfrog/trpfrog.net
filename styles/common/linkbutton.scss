@@ -21,11 +21,15 @@ $link-button-color-highlighted: var(--link-button-color-highlighted);
 $link-button-font-color: var(--link-button-font-color);
 
 .linkButton {
-    display: inline-block;
-    height: 30px;
-    padding: 8px 12px 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    line-height: 1;
+    padding: 0.7em 1em;
     cursor: pointer;
     border-radius: 1000px; // INF
+    box-sizing: border-box;
 
     @media screen {
         background: $link-button-color;
@@ -40,10 +44,8 @@ $link-button-font-color: var(--link-button-font-color);
     font-family: 'M PLUS Rounded 1c', sans-serif;
     text-align: center;
     font-weight: bold;
-    line-height: 1.5;
 
     text-decoration: none;
-    vertical-align: middle;
 
     user-select: none;
     -moz-user-select: none;
@@ -51,16 +53,17 @@ $link-button-font-color: var(--link-button-font-color);
     -ms-user-select: none;
 
     margin-bottom: 4px;
-}
+    transition: 100ms;
 
-.linkButton:hover {
-    background: $link-button-color-highlighted;
-}
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 $link-button-color-bottom;
+    }
 
-.linkButton:active {
-    transform: translateY(2px);
-    box-shadow: 0 0 0 $link-button-color-bottom;
-    border-bottom: none;
+    &:active {
+        transform: translateY(2px);
+        box-shadow: 0 0 0 $link-button-color-bottom;
+    }
 }
 
 .link-area {
