@@ -4,44 +4,29 @@ import {NextSeo} from "next-seo";
 
 type Props = {
     title?: string
-    newRibbon?: boolean
     description?: string
     ribbonText?: string
     cardImageUrl?: string
+    showDefaultText?: boolean
     style?: CSSProperties
 }
 
 const Title: React.FunctionComponent<Props> = ({
-    children, title, description, cardImageUrl, newRibbon=false, ribbonText='', style
+    children, title, description, cardImageUrl, ribbonText='', showDefaultText=true, style
 }) => {
-    let titleHtml: JSX.Element = <></>;
-    if (title !== undefined) {
-        titleHtml = (
-            <h1>{title}</h1>
-        );
-    }
-    let descriptionHtml = <></>;
-    if (description != undefined) {
-        descriptionHtml = <p>{description}</p>;
-    }
-
     return (
         <>
             <NextSeo
                 title={title + ' - ' + process.env.title}
                 description={description}
                 openGraph={cardImageUrl ? {
-                    images: [
-                        {
-                            url: cardImageUrl,
-                        }
-                    ]
+                    images: [{ url: cardImageUrl }]
                 } : {}}
             />
-            <Block id={"title"} newRibbon={newRibbon} ribbonText={ribbonText} style={style}>
+            <Block id={"title"} ribbonText={ribbonText} style={style}>
                 <div>
-                    {titleHtml}
-                    {descriptionHtml}
+                    {showDefaultText && title && <h1>{title}</h1>}
+                    {showDefaultText && description && <p>{description}</p>}
                     {children}
                 </div>
             </Block>
