@@ -10,12 +10,14 @@ config.autoAddCss = false
 import { AnimatePresence } from "framer-motion";
 import {DefaultSeo} from "next-seo";
 import SEO from '../next-seo.config';
+import {useTransitionFix} from "../lib/useTransitionFix";
 
 const TrpFrogNet = ({Component, pageProps, router }: AppProps) => {
+    const transitionCallback = useTransitionFix()
     return (
         <>
             <DefaultSeo {...SEO}/>
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence exitBeforeEnter onExitComplete={transitionCallback}>
                 <Component {...pageProps} key={router.route} />
             </AnimatePresence>
         </>
