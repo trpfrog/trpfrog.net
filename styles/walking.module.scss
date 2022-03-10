@@ -1,17 +1,1 @@
-#articles {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 1em;
-    margin-top: 1em;
-}
-
-.article_block {
-    background: rgba(120, 189, 0, 0.09);
-    text-align: center;
-    border-radius: 30px;
-    padding: 0 20px;
-
-    h3 {
-        background: none;
-    }
-}
+@use "blog/blog.module";
