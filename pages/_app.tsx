@@ -12,11 +12,22 @@ import {DefaultSeo} from "next-seo";
 import SEO from '../next-seo.config';
 import {useTransitionFix} from "../lib/useTransitionFix";
 
+// Progress Bar
+import NextNProgress from "nextjs-progressbar";
+
 const TrpFrogNet = ({Component, pageProps, router }: AppProps) => {
     const transitionCallback = useTransitionFix()
     return (
         <>
             <DefaultSeo {...SEO}/>
+            <NextNProgress
+                color="#90e200"
+                startPosition={0.35}
+                stopDelayMs={200}
+                height={5}
+                showOnShallow={true}
+                options={{ showSpinner: false }}
+            />
             <AnimatePresence exitBeforeEnter onExitComplete={transitionCallback}>
                 <Component {...pageProps} key={router.route} />
             </AnimatePresence>
