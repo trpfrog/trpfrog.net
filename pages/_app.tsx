@@ -14,12 +14,14 @@ import {useTransitionFix} from "../lib/useTransitionFix";
 
 // Progress Bar
 import NextNProgress from "nextjs-progressbar";
+import Analytics from "../components/Analytics";
 
 const TrpFrogNet = ({Component, pageProps, router }: AppProps) => {
     const transitionCallback = useTransitionFix()
     return (
         <>
             <DefaultSeo {...SEO}/>
+            <Analytics/>
             <NextNProgress
                 color="#90e200"
                 startPosition={0.35}
