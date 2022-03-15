@@ -10,7 +10,7 @@ import {NextSeo} from "next-seo";
 import styles from "../../../styles/blog/blog.module.scss";
 import Link from "next/link";
 import React from "react";
-import ArticleCard from "../../../components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "../../../components/blog/ArticleCard";
 
 type Props = {
     tag: string
@@ -52,9 +52,9 @@ const Blog: NextPage<Props> = ({ articles, tag }) => {
                 </Title>
                 <NextSeo title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
 
-                <div id={styles.past_article_grid}>
+                <ArticleGrid>
                     {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-                </div>
+                </ArticleGrid>
             </Layout>
         </>
     )

@@ -4,9 +4,8 @@ import Title from "../components/Title";
 import Block from "../components/Block";
 import {GetStaticProps} from "next";
 
-import styles from '../styles/walking.module.scss';
 import {BlogPost, getSortedPostsData} from "../lib/blog/load";
-import ArticleCard from "../components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "../components/blog/ArticleCard";
 
 type PageProps = {
     articles: BlogPost[]
@@ -35,9 +34,9 @@ const About: NextPage<PageProps> = ({articles}) => {
                     その他の徒歩記事は <a href={'https://walk.trpfrog.net'}>WALKICLES</a> をご覧ください。
                 </p>
             </Block>
-            <div id={styles.past_article_grid}>
+            <ArticleGrid>
                 {articles.slice(0, 6).map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-            </div>
+            </ArticleGrid>
 
             <Block title={'持ち物'}>
                 <p>

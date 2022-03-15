@@ -14,6 +14,12 @@ type Props = {
     hero?: boolean
 }
 
+export const ArticleGrid = ({children}: any) => (
+    <div className={styles.article_grid}>
+        {children}
+    </div>
+)
+
 const ArticleCard = ({entry, hero}: Props) => {
 
     const articleURL = '/blog/entry/' + entry.slug

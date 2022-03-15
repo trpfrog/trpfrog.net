@@ -8,7 +8,7 @@ import styles from '../../styles/blog/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
-import ArticleCard from "../../components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 
 export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
@@ -49,9 +49,9 @@ const Blog: NextPage<Props> = ({ articles }) => {
                     <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
                 </div>
 
-                <div id={styles.past_article_grid}>
+                <ArticleGrid>
                     {pastArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-                </div>
+                </ArticleGrid>
             </Layout>
         </>
     )
