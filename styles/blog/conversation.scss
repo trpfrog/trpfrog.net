@@ -4,9 +4,9 @@
     font-family: "Noto Sans JP", sans-serif;
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 0.5em;
-    row-gap: 0.2em;
-    margin-left: 1em;
+    column-gap: 1em;
+    row-gap: 0.5em;
+    margin-left: 1.5em;
     @include mixins.mq(sp) {
         margin-left: 0.3em;
     }
@@ -18,5 +18,42 @@
 }
 
 .conversation_box_value {
+    --bubble-color: var(--body-background);
+
+    position: relative;
+    display: inline-block;
+    border-radius: .3em;
+
     line-height: 1.6em;
+    width: fit-content;
+    margin-left: .1em;
+    padding: .1em .3em;
+    border: 2px solid var(--bubble-color);
+
+    @mixin triangle($color, $fix: 0) {
+        content: "";
+        position: absolute;
+        top: 1.25em;
+        left: -1em + $fix;
+        margin-top: -.7em;
+        border: .3em solid transparent;
+        border-right: .7em solid $color;
+    }
+
+    &:before {
+        @include triangle(var(--bubble-color));
+        z-index: 1;
+    }
+
+    &:after {
+        @include triangle(var(--window-bkg-color), .3em);
+        z-index: 2;
+    }
+}
+
+.conversation_box_value_wrapper {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: -.1em;
 }

@@ -196,12 +196,14 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
             const comment = lineSplit.slice(1).join(':').trim()
             elements.push(
                 <div className={styles.conversation_box_name} key={speaker + '-name-' + idx}>
-                    {parseInlineMarkdown(speaker)} :
+                    {parseInlineMarkdown(speaker)}
                 </div>
             )
             elements.push(
-                <div className={styles.conversation_box_value} key={speaker + '-val-' + idx}>
-                    {parseInlineMarkdown(comment)}
+                <div className={styles.conversation_box_value_wrapper} key={speaker + '-val-' + idx}>
+                    <div className={styles.conversation_box_value}>
+                        {parseInlineMarkdown(comment)}
+                    </div>
                 </div>
             )
         })
