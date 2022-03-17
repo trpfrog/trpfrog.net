@@ -4,7 +4,7 @@ description: もう新デザイン作るな (わがまま)
 date: 2022-03-18
 held: 2022-03-14
 tags: 徒歩, 長編記事
-thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-tokyo-tower/IMG_8369.jpg
+thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1647531653/blog/haneda-tokyo-tower/thumbnail.jpg
 ---
 
 こんにちは、つまみです。
@@ -490,7 +490,7 @@ gotti: <span style="font-size: 1.5em">✊</span>
 わし: <span style="font-size: 1.5em">✌️</span>
 アタリ: <span style="font-size: 1.5em">✌️</span>
 あずきバー: <span style="font-size: 1.5em">✌️</span>
-gotti: <span style="font-size: 1.5em">✋</span>
+gotti: <span style="font-size: 1.5em">✊</span>
 ```
 
 ```horizontal-images
