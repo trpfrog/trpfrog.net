@@ -18,8 +18,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         imageData = {
             caption: '',
             size: {
-                width: 800,
-                height: 600
+                width: 1200,
+                height: 900
             }
         }
     }
@@ -28,8 +28,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
     const caption = imageData.caption ?? ''
 
-    let width = imageData.size?.width ?? 400
-    let height = imageData.size?.height ?? 300
+    let width = imageData.size?.width ?? 1200
+    let height = imageData.size?.height ?? 900
 
     const maxHeight = 600;
     if (height > maxHeight) {
@@ -44,6 +44,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            zIndex: 10,
         } as CSSProperties,
         content: {
             position: 'static',
@@ -52,6 +53,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
             padding: 0,
             background: 'transparent',
             border: 'none',
+            zIndex: 10,
         } as CSSProperties
     }
 
