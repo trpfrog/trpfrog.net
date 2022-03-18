@@ -28,7 +28,7 @@ description: 昇り階段認定証10枚所持者
 ---
 name: 淵野アタリ
 club: UEC19
-twitter: kyu_099
+twitter: ebioishii_u
 description: 昇り階段認定証0枚所持者
 ---
 name: あずきバー
