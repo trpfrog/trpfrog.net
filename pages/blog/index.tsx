@@ -14,8 +14,7 @@ export const getStaticProps = async () => {
     const articles = await getSortedPostsData()
     return {
         props: {
-            // to avoid error, convert article struct into string
-            articles: articles.map(r => JSON.parse(JSON.stringify(r)))
+            articles
         }
     }
 }

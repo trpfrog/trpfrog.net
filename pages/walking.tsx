@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     const articles = await getSortedPostsData(tag)
     return {
         props: {
-            articles: articles.map(r => JSON.parse(JSON.stringify(r)))
+            articles
         }
     }
 }

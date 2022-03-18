@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({params}) =>
     return {
         props: {
             tag: params!.tag,
-            articles: articles.map(r => JSON.parse(JSON.stringify(r)))
+            articles
         }
     }
 }
