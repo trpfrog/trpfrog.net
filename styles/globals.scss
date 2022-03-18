@@ -8,7 +8,6 @@
 @use 'common/backtotop';
 @use 'common/media';
 @use 'common/linkbutton';
-@use 'top-page/animation';
 @use 'mixins';
 @use 'common/print';
 
@@ -16,6 +15,10 @@
     --h3-marker-color: #90e200;
     --body-background: rgb(192, 225, 121);
     --base-font-color: #151515;
+
+    --trpfrog-animation-start-degree: 0rad;
+    --anim-height: min(100vw, 400px);
+    --trpfrog-icon-size: min(400px, 90vw);
 }
 
 @include mixins.mq(dark) {

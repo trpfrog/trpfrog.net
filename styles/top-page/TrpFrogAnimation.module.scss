@@ -1,10 +1,4 @@
-:root {
-    --trpfrog-animation-start-degree: 0rad;
-    --anim-height: min(100vw, 400px);
-    --trpfrog-icon-size: min(400px, 90vw);
-}
-
-#top-page-animation {
+#animation {
     position: relative;
     display: block;
 
@@ -17,7 +11,7 @@
     overflow: hidden;
 }
 
-#top-page-animation-lines {
+#lines {
     width: 100%;
     height: 100%;
 
@@ -36,7 +30,7 @@
     filter: blur(4px);
 }
 
-#top-page-trpfrog {
+#trpfrog_image {
     display: inline-block;
     width: var(--trpfrog-icon-size);
     height: var(--trpfrog-icon-size);
@@ -48,7 +42,7 @@
     bottom: -50px;
 }
 
-#top-page-animation-name {
+#trpfrog_name {
     display: flex;
     justify-content: center;
 

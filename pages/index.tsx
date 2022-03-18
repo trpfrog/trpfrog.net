@@ -1,35 +1,25 @@
 import type {GetStaticProps, NextPage} from 'next'
-import Link from "next/link";
 import Layout from "../components/Layout";
-import Block from "../components/Block";
-import Image from "next/image";
 import styles from '../styles/top-page/main.module.scss';
 
 import {MyLinkRecord, getMyLinkRecords} from '../lib/MyLinks';
 
-import Title from "../components/Title";
-import {BalloonBox} from './balloon';
-
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import {NextSeo} from "next-seo";
 import {motion} from "framer-motion";
-import TrpFrogAnimation from "../components/TrpFrogAnimation";
+import TrpFrogAnimation from "../components/toppage/TrpFrogAnimation";
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {
-    faAt,
-    faBirthdayCake, faCode,
-    faEnvelope,
-    faHeart,
-    faLaptop, faMapMarkerAlt,
-    faUniversity, faWalking
-} from "@fortawesome/free-solid-svg-icons";
-import {FunctionComponent} from "react";
-import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import {getWhatsNewRecords, WhatsNewRecord} from "../lib/whats_new";
-import ReactMarkdown from "react-markdown";
+
+import AboutMe from "../components/toppage/AboutMe";
+import WhatsNew from "../components/toppage/WhatsNew";
+import Store from "../components/toppage/Store";
+import Bird from "../components/toppage/Bird";
+import Ratings from "../components/toppage/Ratings";
+import Links from "../components/toppage/Links";
+import TopPageBalloons from "../components/toppage/TopPageBalloons";
+import TopPageMusic from "../components/toppage/TopPageMusic";
+import TopPageIcons from "../components/toppage/TopPageIcons";
 
 type PageProps = {
     myLinks: MyLinkRecord[]
@@ -37,23 +27,15 @@ type PageProps = {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-    const myLinks: MyLinkRecord[] = await getMyLinkRecords();
-    const whatsNew: WhatsNewRecord[] = await getWhatsNewRecords();
+    const myLinks: MyLinkRecord[] = await getMyLinkRecords()
+    const whatsNew: WhatsNewRecord[] = await getWhatsNewRecords()
 
     return {
         props: {
             myLinks,
-            whatsNew
+            whatsNew,
         }
     }
-}
-
-const ProfileContent: FunctionComponent<{ icon: IconDefinition }> = ({children, icon}) => {
-    return (
-        <li>
-            <FontAwesomeIcon icon={icon} style={{width: '1.5em'}}/> {children}
-        </li>
-    )
 }
 
 const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
@@ -85,233 +67,15 @@ const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
                 }}
             >
                 <div id={styles.top_page_grid}>
-                    <Block id={styles.about_me_grid}>
-                        <div id={styles.my_name}>
-                            <p>
-                                <span id={styles.my_name_jp}>つまみ</span>
-                                <span id={styles.my_name_en}>TrpFrog</span>
-                            </p>
-                        </div>
-
-                        <p id={styles.intro_text}>
-                            ふにゃ〜
-                        </p>
-
-                        <ul id={styles.intro_attribute}>
-                            <ProfileContent icon={faMapMarkerAlt}>東京都 (23区外)</ProfileContent>
-                            <ProfileContent icon={faUniversity  }>電気通信大学 3年</ProfileContent>
-                            <ProfileContent icon={faBirthdayCake}>2000年10月17日 (21歳)</ProfileContent>
-                            <ProfileContent icon={faHeart       }>コンピュータ / 開発 / 競プロ / 散歩</ProfileContent>
-                            <ProfileContent icon={faLaptop      }>Macユーザー</ProfileContent>
-                            <ProfileContent icon={faCode        }>AtCoder水色 (highest 1596)</ProfileContent>
-                            <ProfileContent icon={faWalking     }>徒歩会 (farthest 70.5km)</ProfileContent>
-                        </ul>
-
-                        <div id={styles.social}>
-                            <div><FontAwesomeIcon icon={faTwitter}/> <a href={'https://twitter.com/TrpFrog'}>TrpFrog</a></div>
-                            <div><FontAwesomeIcon icon={faGithub}/> <a href={'https://github.com/TrpFrog'}>TrpFrog</a></div>
-                            <div><FontAwesomeIcon icon={faEnvelope}/> dev<FontAwesomeIcon icon={faAt} style={{fontSize: '0.9em'}}/>trpfrog.net</div>
-                        </div>
-                    </Block>
-
-                    <Block title={'最新情報'} h2icon={'robot'} id={styles.whats_new}>
-                        <div id={styles.whats_new_table}>
-                            {whatsNew.map(({text, date}) => (
-                                <div key={text} className={styles.whats_new_row}>
-                                    <div className={styles.whats_new_date}>{date}</div>
-                                    <div><ReactMarkdown>{text}</ReactMarkdown></div>
-                                </div>
-                            ))}
-                        </div>
-                    </Block>
-
-                    <Block title={'ストア'} h2icon={'otaku'} id={styles.sticker}>
-                        <p>
-                            つまみさんのスタンプ・グッズ<br/>
-                            好評発売中！
-                        </p>
-                        <div className={styles.link_grid}>
-                            <div className={styles.link_block}>
-                                <a
-                                    href="https://store.line.me/stickershop/product/4674940/ja"
-                                    className="linkButton"
-                                >LINEスタンプ vol.1</a>
-                            </div>
-                            <div className={styles.link_block}>
-                                <Image
-                                    src={'sticker_pr'}
-                                    width={18}
-                                    height={15}
-                                    className={'rich_image'}
-                                    layout={'responsive'}
-                                    objectFit={'contain'}
-                                    alt={'つまみグッズの画像'}
-                                />
-                                <a
-                                    href="https://store.line.me/stickershop/product/8879469/ja"
-                                    className="linkButton"
-                                    style={{marginTop: '10px'}}
-                                >LINEスタンプ vol.2</a>
-                            </div>
-                            <div className={styles.link_block}>
-                                <Image
-                                    src={'goods'}
-                                    width={100}
-                                    height={70}
-                                    layout={'responsive'}
-                                    objectFit={'contain'}
-                                    alt={'つまみグッズの画像'}
-                                />
-                                <a
-                                    href="https://suzuri.jp/TrpFrog"
-                                    className="linkButton"
-                                >つまみグッズ on SUZURI</a>
-                            </div>
-                        </div>
-                    </Block>
-
-                    <Block title={'作ったアイコン'} h2icon={'evil'} id={styles.icons}>
-                        <div className={styles.top_icons}>
-                            {[0, 7, 5, 6].map(i => i.toString()).map(i => (
-                                <Image
-                                    key={i}
-                                    src={'icons_gallery/' + i}
-                                    width={100}
-                                    height={100}
-                                    layout={'responsive'}
-                                    objectFit={'contain'}
-                                    quality={15}
-                                    alt={i + '番目のスタンプ画像'}
-                                />
-                            ))}
-                        </div>
-                        <Link href={'/icons'}>
-                            <a className="linkButton">もっと見る</a>
-                        </Link>
-                    </Block>
-
-                    <Block title={'つまみのうた'} h2icon={'noa'} id={styles.music}>
-                        <p>
-                            ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
-                            ありがとうございます！！！
-                        </p>
-                        <div className="youtube-outer">
-                            <LiteYouTubeEmbed
-                                id="h5C_yiBEAMg"
-                                title="つまみのうた"
-                            />
-                        </div>
-                        <p>
-                            Apple Music, Spotify, YouTube Music, LINE Music 他 各種サイトで配信中！(なんで？)
-                        </p>
-                        <p>
-                            <Image
-                                src={'musicbanner'}
-                                className={'rich_image'}
-                                width={'500'}
-                                height={'100'}
-                                layout={'responsive'}
-                                alt={'つまみのうたのバナー'}
-                            />
-                        </p>
-                        <p className={'link-area'}>
-                            <a href="https://linkco.re/N4Z8hdvX">購入/ストリーミング</a>
-                            <Link href={'music'}><a>歌詞</a></Link>
-                        </p>
-                    </Block>
-
-                    <Block title={'風船コーナー'} h2icon={'ice'} id={styles.balloon}>
-                        <div id={styles.top_balloon_grid}>
-                            {Array.from(Array(7), (v, k) => <BalloonBox key={k} width={'100%'} height={'100%'}/>)}
-                        </div>
-                        <p>
-                            <Link href={'/balloon'}>
-                                <a className={'linkButton'}>もっと割る</a>
-                            </Link>
-                        </p>
-                    </Block>
-
-                    <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
-                        <div className={styles.link_grid}>
-                            {myLinks.map(({ url, siteName, description }) => (
-                                <div key={siteName} className={styles.link_block}>
-                                    <p style={{textAlign: "center"}}>
-                                        <Link href={url}>
-                                            <a className="linkButton">{siteName}</a>
-                                        </Link>
-                                    </p>
-                                    <p>
-                                        {description}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <h2 className="hina">相互リンク</h2>
-                        <p>
-                            移動しました！
-                        </p>
-                        <p>
-                            <Link href={'/links'}>
-                                <a className={'linkButton'}>相互リンク</a>
-                            </Link>
-                        </p>
-                    </Block>
-
-                    <Block title={'音楽ゲーム'} h2icon={'pumpkin'} id={styles.music_game}>
-                        <ul className={styles.rating_list}>
-                            <li><b>チュウニズム</b><br/>
-                                <span className={styles.rainbow} style={{fontSize: '2em'}}>max</span>
-                                <span className={styles.rainbow} style={{fontSize: '2.8em'}}>15.03</span>
-                            </li>
-                            <li><b>オンゲキ</b><br/>
-                                <span className={styles.platinum} style={{fontSize: '2em'}}>max</span>
-                                <span className={styles.platinum} style={{fontSize: '2.8em'}}>14.84</span>
-                            </li>
-                            <li><b>SOUND VOLTEX</b><br/>
-                                <span className={styles.silver} style={{fontSize: '2.5em'}}>魔騎士</span>
-                            </li>
-                        </ul>
-                        <h2 className="robot">競プロ</h2>
-                        <ul className={styles.rating_list}>
-                            <li><b>AtCoder</b> (<a href="https://atcoder.jp/users/TrpFrog">TrpFrog</a>) <br/>
-                                <span className={styles.water} style={{fontSize: '1.5em'}}>highest</span>
-                                <span className={styles.water} style={{fontSize: '2.8em'}}>1572</span>
-                            </li>
-                            <li><b>Codeforces</b> (<a href="https://codeforces.com/profile/TrpFrog">TrpFrog</a>) <br/>
-                                <span className={styles.blue} style={{fontSize: '2em'}}>max</span>
-                                <span className={styles.blue} style={{fontSize: '2.8em'}}>1687</span>
-                            </li>
-                        </ul>
-                    </Block>
-
-                    <Block title={'特に意味のない鳥'} h2icon={'think'} id={styles.bird}>
-                        <div style={{textAlign: 'center'}}>
-                            <pre className={styles.aa}>
-                                {"\n　　 ／￣￣＼　ﾑｼｬﾑｼｬ\n"}
-                                {"  /　 (●)/￣￣＼\n"}
-                                {".　 / 　 　ト、 　 ＼\n"}
-                                {"　彳 　 　 ＼＼　　|\n"}
-                                {".／　　　/⌒ヽヽ　 |\n"}
-                                {"/　 　 　 |　　| .|　 /。\n"}
-                                {"　　　　|　　ヽ|／∴\n"}
-                                {"　　　　　　　。゜\n"}
-                            </pre>
-                            <pre className={styles.aa} style={{marginLeft: "20px"}}>
-                                {"オエーー !!!　＿＿_\n"}
-                                {"　　　 ＿＿_／　　 ヽ\n"}
-                                {"　　 ／ 　 ／　／⌒ヽ|\n"}
-                                {"/　(ﾟ)/　 ／ /\n"}
-                                {".　 /　 　 ﾄ､ /｡⌒ヽ。\n"}
-                                {"　彳　 　 ＼＼ﾟ｡∴｡ｏ\n"}
-                                {".／　　　　 ＼＼｡ﾟ｡ｏ\n"}
-                                {"/　　　　 ／⌒＼Ｕ∴)\n"}
-                                {"　　　 　 | 　　ﾞＵ |\n"}
-                                {"　　　 　 | 　　　| |\n"}
-                                {"　　　　　　　　Ｕ"}
-                            </pre>
-                        </div>
-                    </Block>
+                    <AboutMe id={styles.about_me_grid}/>
+                    <WhatsNew id={styles.whats_new} whatsNewRecords={whatsNew} />
+                    <Store id={styles.sticker} />
+                    <TopPageIcons id={styles.icons} />
+                    <TopPageMusic id={styles.music} />
+                    <TopPageBalloons id={styles.balloon} />
+                    <Links id={styles.link_grid} myLinks={myLinks}/>
+                    <Ratings id={styles.music_game} />
+                    <Bird id={styles.bird} />
                 </div>
             </motion.div>
         </Layout>
