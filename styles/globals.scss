@@ -42,11 +42,11 @@ body, #inner-body {
 }
 
 a:link {
-    color: green;
+    color: forestgreen;
 }
 
 a:visited {
-    color: #003500;
+    color: olive;
 }
 
 @include mixins.mq(dark) {
