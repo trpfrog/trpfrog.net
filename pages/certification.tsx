@@ -1,10 +1,8 @@
 import type {NextPage} from 'next'
-import {getMutualLinkRecords, MutualLinkRecord} from "../lib/MutualLinks";
 import {GetStaticProps} from "next";
 
-import styles from "../styles/top-page/main.module.scss";
+import styles from "../styles/certification.module.scss";
 
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
@@ -40,15 +38,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
 const Certification: NextPage<PageProps> = ({certs}: PageProps) => {
 
-    const style: CSSProperties = {
-        display: 'grid',
-        gridTemplateColumns: '2.5em repeat(3, .8em) auto',
-        textAlign: 'center',
-        gap: 5,
-        padding: '10px',
-        margin: '0 auto',
-        fontWeight: 'bold',
-    }
 
     return (
         <Layout>
@@ -57,24 +46,27 @@ const Certification: NextPage<PageProps> = ({certs}: PageProps) => {
                 description={'つまみさんの解除した実績を自慢するところです。'}
             />
             <Block>
-                <div style={style}>
+                <div id={styles.cert_grid}>
                     {certs.map(({ name, year, month }, index) => (
-                        <>
-                            <div key={'cert1-' + index}>{year}</div>
-                            <div key={'cert2-' + index}>年</div>
-                            <div key={'cert3-' + index}>{month}</div>
-                            <div key={'cert4-' + index}>月</div>
-                            <div key={'cert5-' + index}>
-
-                                <div style={{
-                                    textAlign: 'left',
-                                    marginLeft: 5,
-                                    fontWeight: 'normal'
-                                }}>
-                                    {name}
-                                </div>
+                        <div className={styles.cert} key={'cert-' + index}>
+                            <div className={styles.date_wrapper}>
+                                <time className={styles.date}>
+                                    <div className={styles.year_val}>{year}</div>
+                                    <div className={styles.year}>年</div>
+                                    <div className={styles.month_val}>{month}</div>
+                                    <div className={styles.month}>月</div>
+                                </time>
                             </div>
-                        </>
+                            <div
+                                className={styles.value}
+                                style={name === '東京タワー昇り階段認定証'
+                                    ? {color: 'gray'}
+                                    : {}
+                                }
+                            >
+                                {name}
+                            </div>
+                        </div>
                     ))}
                 </div>
             </Block>
