@@ -13,7 +13,7 @@
     min-height: 2.5em;
     display: grid;
     grid-template-columns: 3em auto;
-    border-bottom: dashed 1px black;
+    border-bottom: dashed 2px var(--window-bottom-color);
     padding: 5px;
 
     @include mixins.mq(dark) {
