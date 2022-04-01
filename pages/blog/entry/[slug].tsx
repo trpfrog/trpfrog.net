@@ -23,6 +23,7 @@ import dayjs from "dayjs";
 import Tag from "../../../components/blog/Tag";
 import {formatReadTime} from "../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../lib/wordSplit";
+import {destroyCookie, parseCookies, setCookie} from "nookies";
 
 type PageProps = {
     entry: BlogPost
@@ -97,6 +98,29 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         seconds: readSec
     } = formatReadTime(post.readTime)
 
+    const cookies = parseCookies()
+    const cookieNameUD = 'useUDFonts'
+    const [useUDFont, setUseUDFont] = useState(false)
+    useEffect(() => {
+        setUseUDFont(cookies[cookieNameUD] === 'true')
+    }, [])
+
+    const handleUDFontButton = () => {
+        console.log(useUDFont)
+        if (useUDFont) {
+            setCookie(null, cookieNameUD, 'false', {
+                maxAge: 1,
+                path: '/',
+            })
+        } else {
+            setCookie(null, cookieNameUD, 'true', {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            })
+        }
+        setUseUDFont(!useUDFont)
+    }
+
     return (
         <Layout>
             <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
@@ -157,11 +181,14 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                                 <a>記事一覧</a>
                             </Link>
                             <span onClick={() => share(post.slug)}>
-                                    <a>ツイート</a>
-                                </span>
+                                <a>ツイート</a>
+                            </span>
                             <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                                 <a>訂正リクエスト</a>
                             </Link>
+                            <span onClick={handleUDFontButton}>
+                                <a>Experimental: {useUDFont ? '通常フォントを使用' : 'UDフォントを使用'}</a>
+                            </span>
                         </p>
                     </p>
                 </div>
@@ -171,7 +198,9 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <BlogMarkdown entry={post} imageSize={post.imageSize}/>
+            <div style={useUDFont ? {fontFamily: 'BIZ UDPGothic, var(--main-font)'} : {}}>
+                <BlogMarkdown entry={post} imageSize={post.imageSize}/>
+            </div>
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
