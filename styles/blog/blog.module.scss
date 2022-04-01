@@ -34,6 +34,7 @@
     h1 {
         text-align: center !important;
         margin: .5em 0 !important;
+        line-height: 1.2 !important;
     }
 
     @include mixins.mq(pc) {
