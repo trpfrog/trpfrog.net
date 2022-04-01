@@ -1,7 +1,7 @@
 @use '../mixins';
 
 .conversation_box_grid {
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: var(--main-font);
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 1em;

@@ -59,7 +59,7 @@ $code-block-border: 1px;
 
 .code_lang {
     font-size: 0.9em;
-    font-family: 'Noto Sans JP', sans-serif !important;
+    font-family: var(--main-font) !important;
 
     display: inline-block;
     color: white;
