@@ -55,9 +55,11 @@ $link-button-font-color: var(--link-button-font-color);
     margin-bottom: 4px;
     transition: 100ms;
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 0 $link-button-color-bottom;
+    @include mixins.mq(pc) {
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 $link-button-color-bottom;
+        }
     }
 
     &:active {
