@@ -198,9 +198,11 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <div style={useUDFont ? {fontFamily: 'BIZ UDPGothic, var(--main-font)'} : {}}>
-                <BlogMarkdown entry={post} imageSize={post.imageSize}/>
-            </div>
+            <BlogMarkdown
+                entry={post}
+                imageSize={post.imageSize}
+                style={useUDFont ? {fontFamily: 'BIZ UDPGothic, var(--main-font)'} : {}}
+            />
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
