@@ -1,7 +1,7 @@
 import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {monokaiSublime} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import React from "react";
+import React, {CSSProperties} from "react";
 import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -293,9 +293,10 @@ export const getPureCloudinaryPath = (path: string) => {
 type Props = {
     entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
+    style?: CSSProperties
 }
 
-const BlogMarkdown = ({entry, imageSize}: Props) => {
+const BlogMarkdown = ({entry, imageSize, style}: Props) => {
 
     const { query } = useRouter()
     const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))
@@ -348,7 +349,7 @@ const BlogMarkdown = ({entry, imageSize}: Props) => {
     return (
         <>
             {markdown.map((content, idx) => (
-                <Block key={'window-' + idx}>
+                <Block key={'window-' + idx} style={style}>
                     {idx === 0 &&
                         <PageNavigation entry={entry} pagePosition={pagePosition - 1} doNotShowOnFirst={true}/>
                     }
