@@ -294,9 +294,10 @@ type Props = {
     entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
     style?: CSSProperties
+    className?: string
 }
 
-const BlogMarkdown = ({entry, imageSize, style}: Props) => {
+const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     const { query } = useRouter()
     const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))
@@ -349,7 +350,7 @@ const BlogMarkdown = ({entry, imageSize, style}: Props) => {
     return (
         <>
             {markdown.map((content, idx) => (
-                <Block key={'window-' + idx} style={style}>
+                <Block key={'window-' + idx} style={style} className={className}>
                     {idx === 0 &&
                         <PageNavigation entry={entry} pagePosition={pagePosition - 1} doNotShowOnFirst={true}/>
                     }
