@@ -18,7 +18,7 @@ import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
 import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarDay, faClock, faFlask, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import Tag from "../../../components/blog/Tag";
 import {formatReadTime} from "../../../lib/blog/readTime";
@@ -186,9 +186,15 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                             <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                                 <a>訂正リクエスト</a>
                             </Link>
-                            <span onClick={handleUDFontButton}>
-                                <a>Experimental: {useUDFont ? '通常フォントを使用' : 'UDフォントを使用'}</a>
-                            </span>
+                            <a onClick={handleUDFontButton}>
+                                {useUDFont ? '通常フォントに戻す' : (
+                                    <>
+                                        <FontAwesomeIcon icon={faFlask}/>
+                                        <span style={{width: 5}}/>
+                                        UDフォントで見てみる
+                                    </>
+                                )}
+                            </a>
                         </p>
                     </p>
                 </div>
