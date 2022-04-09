@@ -207,7 +207,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             <BlogMarkdown
                 entry={post}
                 imageSize={post.imageSize}
-                style={useUDFont ? {fontFamily: 'BIZ UDPGothic, var(--main-font)'} : {}}
+                className={useUDFont ? styles.with_ud_font : ''}
             />
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>

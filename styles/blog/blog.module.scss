@@ -111,3 +111,16 @@
         margin-top: 2em;
     }
 }
+
+.with_ud_font {
+    font-family: 'Roboto', 'BIZ UDPGothic', var(--main-font) !important;
+    letter-spacing: 1px;
+
+    * {
+        --main-font: 'Roboto', 'BIZ UDPGothic', var(--main-font);
+    }
+
+    strong, b {
+        -webkit-text-stroke: 0.5px var(--base-font-color);
+    }
+}
