@@ -3,7 +3,7 @@ type Font = {family: string, weight?: number[]}
 const fonts: Font[] = [
     {family: 'Comfortaa'},
     {family: 'M PLUS Rounded 1c', weight: [100, 400, 700, 800]},
-    {family: 'Questrial'},
+    {family: 'Roboto', weight: [400, 700]},
     {family: 'Noto Sans JP', weight: [400, 700]},
     {family: 'Noto Sans Mono'},
     {family: 'BIZ UDPGothic', weight: [400, 700]}
