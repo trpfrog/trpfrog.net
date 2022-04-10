@@ -1,6 +1,5 @@
 @use 'common/grid';
 @use 'common/header';
-@use 'common/footer';
 @use 'common/h2icon';
 @use 'common/block';
 @use 'common/title_block';
@@ -24,6 +23,8 @@
             -apple-system, BlinkMacSystemFont, Noto Sans JP,
             Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
             Droid Sans, Helvetica Neue, sans-serif;
+
+    --footer-color: #163600;
 }
 
 @include mixins.mq(dark) {
