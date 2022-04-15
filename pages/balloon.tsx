@@ -23,7 +23,7 @@ type BalloonDivProps = {
 
 let playSound = () => {};
 
-export const BalloonBox = ({width='100%', height='100%'}: BalloonProps) => {
+export const BalloonBox: React.FunctionComponent<BalloonProps> = ({children, width='100%', height='100%'}) => {
     const balloonStyle = {
         width: `${width}`,
         height: `${height}`,
@@ -52,7 +52,7 @@ export const BalloonBox = ({width='100%', height='100%'}: BalloonProps) => {
     />
 }
 
-export const BalloonDiv: React.FunctionComponent<BalloonDivProps> = ({n, width = 80}) => {
+export const BalloonDiv: React.FunctionComponent<BalloonDivProps> = ({children, n, width = 80}) => {
     const height = width / 0.6;
     return (
         <div id={styles.balloon_grid}>

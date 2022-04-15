@@ -10,7 +10,7 @@ type KeywordsType = {
     keywords: string[]
 }
 
-const Keywords: FunctionComponent<KeywordsType> = ({keywords}) => {
+const Keywords: FunctionComponent<KeywordsType> = ({children, keywords}) => {
     return (
         <p className={styles.keywords}>
             <span className={styles.keyword_title}>TECHNOLOGIES</span><br/>

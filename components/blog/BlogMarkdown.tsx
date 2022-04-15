@@ -358,7 +358,6 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                         className={styles.post}
                         style={{wordBreak: 'break-word'}}
                     >
-                        {/* @ts-ignore: MathJaxContext has implicit children */}
                         <MathJaxContext version={3} config={mathjaxConfig}>
                             <MathJax>
                                 <ReactMarkdown
