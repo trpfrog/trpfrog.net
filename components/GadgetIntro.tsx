@@ -8,7 +8,7 @@ type Props = {
     imagePath?: string
 }
 
-const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}) => {
+const GadgetIntro = ({children, name, imagePath}: React.PropsWithChildren<Props>) => {
     let imageHtml: JSX.Element = <></>;
     if (imagePath !== undefined) {
         imageHtml = (

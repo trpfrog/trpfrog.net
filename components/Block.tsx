@@ -1,4 +1,4 @@
-import React, {CSSProperties} from "react";
+import React, {CSSProperties, PropsWithChildren} from "react";
 
 type Props = {
     title?: string
@@ -10,7 +10,7 @@ type Props = {
     style?: CSSProperties | undefined
 }
 
-const Block: React.FunctionComponent<Props> = ({
+const Block: React.FunctionComponent<PropsWithChildren<Props>> = ({
     children, title, h2icon='trpfrog', id='', newRibbon=false, ribbonText='', style, className=''
 }) => {
     let h2 = <></>;

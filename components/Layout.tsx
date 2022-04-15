@@ -21,9 +21,7 @@ type Props = {
     style?: any;
 }
 
-const Layout: React.FunctionComponent<Props> = ({
-    children, style
-}) => {
+const Layout = ({children, style}: React.PropsWithChildren<Props>) => {
 
     const router = useRouter();
 

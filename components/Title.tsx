@@ -11,7 +11,7 @@ type Props = {
     style?: CSSProperties
 }
 
-const Title: React.FunctionComponent<Props> = ({
+const Title: React.FC<React.PropsWithChildren<Props>> = ({
     children, title, description, cardImageUrl, ribbonText='', showDefaultText=true, style
 }) => {
     return (
