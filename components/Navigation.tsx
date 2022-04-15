@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, {FunctionComponent, useState} from "react";
 import { useRouter } from "next/router";
+import styles from '../styles/common/Navigation.module.scss';
 
 export const NAVIGATION_LINKS = [
     {
@@ -68,7 +69,7 @@ const Navigation: FunctionComponent<{
         return (
             <Link href={link} key={link}>
                 <a
-                    className={`sidemenu_link ${isHighlighted ? 'sidemenu_highlighted' : ''}`}
+                    className={`${styles.side_menu_link} ${isHighlighted && styles.side_menu_highlighted}`}
                 >{name}</a>
             </Link>
         );
@@ -76,8 +77,8 @@ const Navigation: FunctionComponent<{
 
     return (
         <>
-            <nav id="wide-nav">
-                <div id="wide-nav-wrapper">
+            <nav id={styles.wide_nav}>
+                <div id={styles.wide_nav_wrapper}>
                     {links}
                 </div>
             </nav>

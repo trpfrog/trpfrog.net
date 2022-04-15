@@ -1,6 +1,6 @@
 @use '../mixins';
 
-#wide-nav {
+#wide_nav {
     background: #66a928d3;
     text-align: center;
     z-index: 50;
@@ -20,7 +20,7 @@
     box-shadow: 0 3px 0 #54a60c;
 }
 
-#wide-nav-wrapper {
+#wide_nav_wrapper {
     position: absolute;
     bottom: 9px;
     width: 100%;
@@ -28,13 +28,13 @@
 }
 
 @include mixins.mq(dark) {
-    #wide-nav {
+    #wide_nav {
         background: #2d4b11d3;
     }
 }
 
 @include mixins.mq(pc) {
-    .sidemenu_link {
+    .side_menu_link {
         border-radius: 1000px;
         height: 1.3em;
         margin: 0 2px;
@@ -42,14 +42,14 @@
         transition: .1s;
     }
 
-    .sidemenu_link:hover:not(.sidemenu_highlighted) {
+    .side_menu_link:hover:not(.side_menu_highlighted) {
         background: rgba(255, 255, 255, 0.2);
         a:hover {
             color: #90e200;
         }
     }
 
-    .sidemenu_highlighted {
+    .side_menu_highlighted {
         background: white;
         color: #66a928d3 !important;
         cursor: default;

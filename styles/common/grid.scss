@@ -68,7 +68,7 @@ main {
     text-align: left;
 }
 
-#wide-nav {
+#wide_nav {
     grid-area: n;
 }
 
@@ -86,7 +86,7 @@ main {
                 calc(var(--window-padding-top-bottom) * 0.7);
     }
 
-    #wide-nav {
+    #wide_nav {
         display: none;
     }
 }
