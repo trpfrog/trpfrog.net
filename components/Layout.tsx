@@ -9,6 +9,8 @@ import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 
 import {motion} from "framer-motion";
+import MobileMenu from "./mobile_menu/MobileMenu";
+import MobileMenuButton from "./mobile_menu/MobileMenuButton";
 
 const backToTop = () => {
     window.scrollTo({
@@ -59,13 +61,16 @@ const Layout: React.FunctionComponent<Props> = ({
 
     const isMobile = (typeof window !== 'undefined') && window.innerWidth < 800;
 
-    const [isMobileMenuOpened, setMobileMenuOpened] = useState(false);
+    const hamburgerState = useState(false);
 
     return (
         <>
             <div id={'inner-body'}>
-                <Header isOpened={isMobileMenuOpened} setHamburgerState={setMobileMenuOpened}/>
-                <Navigation isOpened={isMobileMenuOpened} setHamburgerState={setMobileMenuOpened}/>
+                <Header>
+                   <MobileMenuButton hamburgerState={hamburgerState}/>
+                </Header>
+                <Navigation/>
+                <MobileMenu hamburgerState={hamburgerState}/>
                 <main>
                     <motion.div
                         initial={

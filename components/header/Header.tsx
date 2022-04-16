@@ -1,29 +1,12 @@
 import Link from 'next/link'
 import {useRouter} from "next/router";
 import {animate, motion, useMotionValue, useViewportScroll} from "framer-motion";
-import React, {FunctionComponent} from "react";
+import React from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "../../styles/common/Header.module.scss";
 
-const Header: FunctionComponent<{
-    isOpened: boolean,
-    setHamburgerState: React.Dispatch<React.SetStateAction<boolean>>
-}> = props => {
-
-    // Hamburger Menu
-    const isOpened = props.isOpened
-    const setHamburgerState = props.setHamburgerState
-    const hamburger = (
-        <div id="hamburger_menu">
-            <a
-                onClick={() => { setHamburgerState(!isOpened) }}
-                className={isOpened ? "menu-trigger-opened" : "menu-trigger-closed"}
-            >
-                <span/><span/><span/> {/* Hamburger Icon in CSS */}
-            </a>
-        </div>
-    )
+const Header: React.FC = ({children}) => {
 
     const headerY = useMotionValue(0)
 
@@ -62,7 +45,7 @@ const Header: FunctionComponent<{
                         ))}
                     </ul>
                 </nav>
-                {hamburger}
+                {children}
             </div>
         </motion.header>
     );
