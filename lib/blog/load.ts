@@ -3,6 +3,8 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
+import crypto from "crypto";
+import {getErrorArticle} from "../../pages/blog/preview";
 
 export type BlogPost = {
     title: string
@@ -25,6 +27,15 @@ const getFileContents = (slug: string) => {
             : fs.readFileSync(fullPath + 'x', 'utf8')
 }
 
+const calcHash = (text: string) => {
+    const key = process.env.PREVIEW_SECRET_KEY
+    if (!key) return 'PREVIEW_SECRET_KEY is undefined!'
+    return crypto
+        .createHash('sha256')
+        .update(text + key, 'utf8')
+        .digest('hex')
+}
+
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
@@ -35,8 +46,45 @@ export const getPostData = async (slug: string) => {
         .map((t: string) => t.trim())
         .concat()
 
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`${slug}: ${calcHash(matterResult.content)}`)
+    }
+
     return {
         slug,
+        content,
+        tags,
+        readTime: getReadTimeSecond(content.join()),
+        ...matterResult.data
+    } as BlogPost
+}
+
+export const getPreviewPostData = async (url: string) => {
+    const res = await fetch(url)
+    if (!res.ok) {
+        return getErrorArticle('Invalid URL')
+    }
+    const matterResult = matter(await res.text())
+
+    let rawContent = matterResult.content
+    const hash = matterResult.data.hash?.trim()
+
+    if(hash) {
+        const expectedHash = calcHash(rawContent)
+        if (expectedHash !== hash) {
+            return getErrorArticle('Invalid Hash')
+        }
+    } else {
+        return getErrorArticle('Hash property is undefined')
+    }
+    const content = await parse(rawContent)
+
+    const tags = matterResult.data.tags
+        .split(',')
+        .map((t: string) => t.trim())
+        .concat()
+
+    return {
         content,
         tags,
         readTime: getReadTimeSecond(content.join()),
