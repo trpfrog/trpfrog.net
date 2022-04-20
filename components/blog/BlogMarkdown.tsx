@@ -254,18 +254,22 @@ const formatCodeComponent = ({className, children, inline}: codeProps) => {
     children[0] = children[0].trimEnd()
 
     const language = className
-        ? getLangName(className.replace('language-', ''))
-        : '';
+        ? getLangName(
+            className.replace('language-', '').split('.').slice(-1)[0]
+        ) : '';
 
     if (language in myMarkdownClasses) {
         return myMarkdownClasses[language](children[0])
     }
 
+    const fileName = className.includes('.') ?
+        className.replace('language-', '') : ''
+
     return (
         <pre>
             {language != '' && (
                 <div className={styles.code_lang_wrapper}>
-                    <span className={styles.code_lang}>{language}</span>
+                    <span className={styles.code_lang}>{fileName || language}</span>
                 </div>
             )}
             <SyntaxHighlighter
