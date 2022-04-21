@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
-import Block from "../../../components/Block";
 
 import {BlogPost, getPreviewPostData} from "../../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
