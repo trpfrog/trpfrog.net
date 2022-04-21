@@ -7,7 +7,7 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 import {BlogPost, getPreviewPostData} from "../../../lib/blog/load";
-import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
+import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
 
@@ -23,8 +23,12 @@ import {parseWithBudouX} from "../../../lib/wordSplit";
 
 
 type PageProps = {
-    entry: BlogPost
+    entry: ErrorablePost
     imageSize: { [path: string]: BlogImageData }
+}
+
+type ErrorablePost = BlogPost & {
+    isError: boolean
 }
 
 const errorArticle = {
@@ -36,9 +40,9 @@ const errorArticle = {
     tags: 'test',
     readTime: 100,
     content: [['Error has occurred']]
-} as BlogPost
+} as ErrorablePost
 
-export const createErrorArticle = (errTitle: string): BlogPost => {
+export const createErrorArticle = (errTitle: string): ErrorablePost => {
     let ret = {...errorArticle}
     ret.title = 'ERR: ' + errTitle
     return ret
@@ -46,17 +50,18 @@ export const createErrorArticle = (errTitle: string): BlogPost => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const entry = context.params?.id
-        ? await getPreviewPostData(context.params.id as string)
+        ? await getPreviewPostData(context.params.id as string) as ErrorablePost
         : createErrorArticle('ID is missing!')
+    const imageSize = entry.isError ? {} : await fetchAllImageProps(entry);
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
-            imageSize: {}
+            imageSize
         }
     }
 }
 
-const Article: NextPage<PageProps> = ({ entry: post }) => {
+const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
 
     const openGraphImage = post.thumbnail ? {
         images: [
@@ -91,7 +96,6 @@ const Article: NextPage<PageProps> = ({ entry: post }) => {
                 <div className={styles.inner_title_block}>
                     <h1>{parseWithBudouX(post.title, post.slug)}</h1>
                     <p>{post.description}</p>
-                    {/* @ts-ignore */}
                     {!post.isError &&
                         <p style={{fontSize: '1.5em', color: 'red', fontWeight: 'bold'}}>
                             これは記事プレビューです<br/>
@@ -125,7 +129,7 @@ const Article: NextPage<PageProps> = ({ entry: post }) => {
             />
             <BlogMarkdown
                 entry={post}
-                imageSize={{}}
+                imageSize={imageSize}
             />
         </Layout>
     )
