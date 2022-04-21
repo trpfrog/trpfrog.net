@@ -2,24 +2,24 @@ import React from 'react'
 import {GetServerSideProps, NextPage} from "next";
 import Image from "next/image";
 
-import Layout from "../../components/Layout";
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Layout from "../../../components/Layout";
+import Title from "../../../components/Title";
+import Block from "../../../components/Block";
 
-import {BlogPost, getPreviewPostData} from "../../lib/blog/load";
-import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
+import {BlogPost, getPreviewPostData} from "../../../lib/blog/load";
+import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
 
-import styles from '../../styles/blog/blog.module.scss';
+import styles from '../../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
-import {formatReadTime} from "../../lib/blog/readTime";
-import {parseWithBudouX} from "../../lib/wordSplit";
+import {formatReadTime} from "../../../lib/blog/readTime";
+import {parseWithBudouX} from "../../../lib/wordSplit";
 
 
 type PageProps = {
@@ -38,16 +38,16 @@ const errorArticle = {
     content: [['Error has occurred']]
 } as BlogPost
 
-export const getErrorArticle = (errTitle: string) => {
+export const createErrorArticle = (errTitle: string): BlogPost => {
     let ret = {...errorArticle}
     ret.title = 'ERR: ' + errTitle
     return ret
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const entry = context.query.src
-        ? await getPreviewPostData(context.query.src as string)
-        : getErrorArticle('src query is missing!')
+    const entry = context.params?.id
+        ? await getPreviewPostData(context.params.id as string)
+        : createErrorArticle('ID is missing!')
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),

@@ -3,8 +3,8 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-import crypto from "crypto";
-import {getErrorArticle} from "../../pages/blog/preview";
+import {createErrorArticle} from "../../pages/blog/preview/[id]";
+import microCMS from "../microCMS";
 
 export type BlogPost = {
     title: string
@@ -27,15 +27,6 @@ const getFileContents = (slug: string) => {
             : fs.readFileSync(fullPath + 'x', 'utf8')
 }
 
-const calcHash = (text: string) => {
-    const key = process.env.PREVIEW_SECRET_KEY
-    if (!key) return 'PREVIEW_SECRET_KEY is undefined!'
-    return crypto
-        .createHash('sha256')
-        .update(text + key, 'utf8')
-        .digest('hex')
-}
-
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
@@ -46,10 +37,6 @@ export const getPostData = async (slug: string) => {
         .map((t: string) => t.trim())
         .concat()
 
-    if (process.env.NODE_ENV !== 'production') {
-        console.log(`${slug}: ${calcHash(matterResult.content)}`)
-    }
-
     return {
         slug,
         content,
@@ -59,25 +46,18 @@ export const getPostData = async (slug: string) => {
     } as BlogPost
 }
 
-export const getPreviewPostData = async (url: string) => {
-    const res = await fetch(url)
-    if (!res.ok) {
-        return getErrorArticle('Invalid URL')
-    }
-    const matterResult = matter(await res.text())
+export const getPreviewPostData = async (contentId: string) => {
+    const data = await microCMS.get({
+        endpoint: "blog-preview",
+        contentId
+    }).catch(() => ({}))
 
-    let rawContent = matterResult.content
-    const hash = matterResult.data.hash?.trim()
-
-    if(hash) {
-        const expectedHash = calcHash(rawContent)
-        if (expectedHash !== hash) {
-            return getErrorArticle('Invalid Hash')
-        }
-    } else {
-        return getErrorArticle('Hash property is undefined')
+    if (!(data?.md && data?.slug)) {
+        return createErrorArticle('Invalid content ID')
     }
-    const content = await parse(rawContent)
+
+    const matterResult = matter(data.md)
+    const content = await parse(matterResult.content)
 
     const tags = matterResult.data.tags
         .split(',')
@@ -85,6 +65,7 @@ export const getPreviewPostData = async (url: string) => {
         .concat()
 
     return {
+        slug: data.slug,
         content,
         tags,
         readTime: getReadTimeSecond(content.join()),
