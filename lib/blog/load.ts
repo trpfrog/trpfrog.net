@@ -3,6 +3,8 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
+import {createErrorArticle} from "../../pages/blog/preview/[id]";
+import microCMS from "../microCMS";
 
 export type BlogPost = {
     title: string
@@ -37,6 +39,33 @@ export const getPostData = async (slug: string) => {
 
     return {
         slug,
+        content,
+        tags,
+        readTime: getReadTimeSecond(content.join()),
+        ...matterResult.data
+    } as BlogPost
+}
+
+export const getPreviewPostData = async (contentId: string) => {
+    const data = await microCMS.get({
+        endpoint: "blog-preview",
+        contentId
+    }).catch(() => ({}))
+
+    if (!(data?.md && data?.slug)) {
+        return createErrorArticle('Invalid content ID')
+    }
+
+    const matterResult = matter(data.md)
+    const content = await parse(matterResult.content)
+
+    const tags = matterResult.data.tags
+        .split(',')
+        .map((t: string) => t.trim())
+        .concat()
+
+    return {
+        slug: data.slug,
         content,
         tags,
         readTime: getReadTimeSecond(content.join()),
