@@ -81,6 +81,7 @@ const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
 
     return (
         <Layout>
+            <NextSeo noindex={true}/>
             <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
                 {post.thumbnail &&
                     <Image
