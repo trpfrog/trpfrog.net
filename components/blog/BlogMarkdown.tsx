@@ -297,6 +297,14 @@ type Props = {
     className?: string
 }
 
+const movePage = (pagePosition: number): void => {
+    if (typeof window !== 'undefined') {
+        const current = window.location.href
+        const root = current.split('?')[0]
+        window.location.href = `${root}?page=${pagePosition}`
+    }
+}
+
 const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     const { query } = useRouter()
@@ -307,9 +315,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
     const markdown = entry.content[pagePosition - 1].map(e => e.trim())
 
     goToNextPage = () => {
-        if (typeof window !== 'undefined') {
-            window.location.href = `/blog/entry/${entry.slug}?page=${pagePosition + 1}`
-        }
+        movePage(pagePosition + 1)
     }
 
     const markdownComponents = {
