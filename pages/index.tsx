@@ -20,6 +20,8 @@ import Links from "../components/toppage/Links";
 import TopPageBalloons from "../components/toppage/TopPageBalloons";
 import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
+import {parseCookies, setCookie} from "nookies";
+import {useEffect} from "react";
 
 type PageProps = {
     myLinks: MyLinkRecord[]
@@ -48,6 +50,17 @@ const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
         textAlign: 'center'
     }
 
+    const cookies = parseCookies()
+    const cookieName = 'doNotPlayTopPageAnimation'
+    const doAnimation = cookies[cookieName] !== 'true'
+
+    useEffect(() => {
+        setCookie(null, cookieName, 'true', {
+            maxAge: 60 * 60 * 24 * 14,
+            path: '/',
+        })
+    }, [])
+
     return (
         <Layout style={mainWrapperStyle}>
             <NextSeo
@@ -55,11 +68,11 @@ const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
                 description={'さかなになりたいね'}
             />
 
-            <TrpFrogAnimation />
+            <TrpFrogAnimation hasDelay={doAnimation}/>
 
             <motion.div
                 id={styles.top_page_grid_wrapper}
-                initial={{ y: 'calc(-1 * var(--anim-height))' }}
+                initial={doAnimation ? { y: 'calc(-1 * var(--anim-height))' } : {}}
                 animate={{ y: 0 }}
                 transition={{
                     delay: 0.4,
