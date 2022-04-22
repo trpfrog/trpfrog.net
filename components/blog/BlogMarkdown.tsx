@@ -148,6 +148,15 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         </div>
     ),
 
+    'Ignore-read-count': content => (
+        <>
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+            >{content}</ReactMarkdown>
+        </>
+    ),
+
     'Horizontal-images': content => {
         const regex = new RegExp('^!\\[.*?\]\\(')
         const imageSources = content
