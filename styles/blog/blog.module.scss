@@ -110,6 +110,67 @@
     h3 {
         margin-top: 2em;
     }
+
+    details {
+        border-radius: 10px;
+        border: 2px solid var(--body-background);
+        box-shadow: 0 3px 0 0 var(--window-bottom-color);
+
+        transition: 100ms;
+        overflow: hidden;
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 5px 15px;
+            background: var(--body-background);
+            list-style: none;
+            overflow: hidden;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &::after {
+                font-family: 'Noto Sans JP', sans-serif;
+                transition: 100ms;
+                font-weight: bold;
+                color: var(--base-font-color);
+                -webkit-text-stroke: 2px var(--base-font-color);
+                float: right;
+                content: '＋';
+                border-radius: 100px;
+            }
+        }
+
+        &:not([open]) {
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 0 0 var(--window-bottom-color);
+            }
+
+            &:active {
+                transform: translateY(3px);
+                box-shadow: none;
+            }
+        }
+
+        &[open] {
+            box-shadow: none;
+            summary {
+                &::after {
+                    transform: rotate(45deg)
+                }
+            }
+        }
+
+        *:not(summary) {
+            padding: 5px 10px;
+            * {
+                padding: initial;
+            }
+        }
+    }
 }
 
 .with_ud_font {
