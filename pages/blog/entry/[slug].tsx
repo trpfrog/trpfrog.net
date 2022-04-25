@@ -154,6 +154,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                         <br/>
                         <FontAwesomeIcon icon={faClock}/>{' '}
                         予想読了時間 {readMin} 分 {readSec} 秒
+                        {post.held &&
+                            <>
+                                <br/>
+                                <FontAwesomeIcon icon={faWalking}/>{' '}
+                                {dayjs(post.held).format('YYYY年M月D日')} 実施
+                            </>
+                        }
                         {(post.tags.includes('徒歩')) &&
                             <>
                                 <br/>

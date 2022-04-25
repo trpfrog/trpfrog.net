@@ -16,6 +16,7 @@ export type BlogPost = {
     thumbnail?: string
     readTime: number
     numberOfPhotos?: number
+    held?: string
     content: string[][]
 }
 
