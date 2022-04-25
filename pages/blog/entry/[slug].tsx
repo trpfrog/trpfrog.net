@@ -18,7 +18,7 @@ import {NextSeo} from "next-seo";
 import {useRouter} from "next/router";
 import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faClock, faFlask, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarDay, faClock, faFlask, faImages, faSyncAlt, faWalking} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import Tag from "../../../components/blog/Tag";
 import {formatReadTime} from "../../../lib/blog/readTime";
@@ -154,6 +154,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                         <br/>
                         <FontAwesomeIcon icon={faClock}/>{' '}
                         予想読了時間 {readMin} 分 {readSec} 秒
+                        {(post.tags.includes('徒歩')) &&
+                            <>
+                                <br/>
+                                <FontAwesomeIcon icon={faImages}/>{' '}
+                                {post.numberOfPhotos} 枚の画像
+                            </>
+                        }
                     </p>
 
                     {/* Tags */}

@@ -15,6 +15,7 @@ export type BlogPost = {
     description?: string
     thumbnail?: string
     readTime: number
+    numberOfPhotos?: number
     content: string[][]
 }
 
@@ -37,11 +38,17 @@ export const getPostData = async (slug: string) => {
         .map((t: string) => t.trim())
         .concat()
 
+    const numberOfPhotos = matterResult.content
+        .split('\n')
+        .filter(e => e.startsWith('!['))
+        .length
+
     return {
         slug,
         content,
         tags,
         readTime: getReadTimeSecond(content.join()),
+        numberOfPhotos,
         ...matterResult.data
     } as BlogPost
 }
