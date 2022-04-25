@@ -1,0 +1,36 @@
+#post_attributes {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    opacity: 0.9;
+    gap: 5px;
+
+}
+
+.post_attr {
+    display: block;
+    text-align: center;
+    width: 10em;
+    line-height: 1.2;
+
+    background: rgba(gray, 0.1);
+    padding: 15px 0 5px;
+    border-radius: 5px;
+}
+
+.attr_key {
+    margin-bottom: .5em;
+}
+
+.attr_val {
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: bold;
+}
+
+.attr_num {
+    font-size: 2.2em;
+}

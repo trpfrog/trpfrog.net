@@ -24,6 +24,7 @@ import Tag from "../../../components/blog/Tag";
 import {formatReadTime} from "../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../lib/wordSplit";
 import {destroyCookie, parseCookies, setCookie} from "nookies";
+import PostAttributes from "../../../components/blog/PostAttributes";
 
 type PageProps = {
     entry: BlogPost
@@ -93,11 +94,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         post.content = [post.content.flat()]
     }
 
-    const {
-        minutes: readMin,
-        seconds: readSec
-    } = formatReadTime(post.readTime)
-
     const cookies = parseCookies()
     const cookieNameUD = 'useUDFonts'
     const [useUDFont, setUseUDFont] = useState(false)
@@ -136,39 +132,8 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                 }
                 <div className={styles.inner_title_block}>
                     <h1>{parseWithBudouX(post.title, post.slug)}</h1>
-                    <p>{post.description}</p>
-                    <p>
-                        <FontAwesomeIcon icon={faCalendarDay}/>{' '}
-                        <time dateTime={post.date}>
-                            {dayjs(post.date).format('YYYY年M月D日')}
-                        </time>
-                        {(post.updated && post.date < post.updated) &&
-                            <>
-                                <br/>
-                                <FontAwesomeIcon icon={faSyncAlt}/>{' '}
-                                <time dateTime={post.updated}>
-                                    {dayjs(post.updated).format('YYYY年M月D日')} 更新
-                                </time>
-                            </>
-                        }
-                        <br/>
-                        <FontAwesomeIcon icon={faClock}/>{' '}
-                        予想読了時間 {readMin} 分 {readSec} 秒
-                        {post.held &&
-                            <>
-                                <br/>
-                                <FontAwesomeIcon icon={faWalking}/>{' '}
-                                {dayjs(post.held).format('YYYY年M月D日')} 実施
-                            </>
-                        }
-                        {(post.tags.includes('徒歩')) &&
-                            <>
-                                <br/>
-                                <FontAwesomeIcon icon={faImages}/>{' '}
-                                {post.numberOfPhotos} 枚の画像
-                            </>
-                        }
-                    </p>
+                    <p style={{margin: '1em'}}>{post.description}</p>
+                    <PostAttributes post={post}/>
 
                     {/* Tags */}
                     <p>
