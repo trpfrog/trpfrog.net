@@ -373,7 +373,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                     {idx === 0 &&
                         <PageNavigation entry={entry} pagePosition={pagePosition - 1} doNotShowOnFirst={true}/>
                     }
-                    <div
+                    <article
                         className={styles.post}
                         style={{wordBreak: 'break-word'}}
                     >
@@ -394,7 +394,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                                 </ReactMarkdown>
                             </MathJax>
                         </MathJaxContext>
-                    </div>
+                    </article>
                     {idx === markdown.length - 1 &&
                         <PageNavigation entry={entry} pagePosition={pagePosition - 1}/>
                     }
