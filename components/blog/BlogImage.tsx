@@ -60,7 +60,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     const [modalState, setModalState] = useState(false)
     return (
         <>
-            <div className={styles.blog_img_wrapper} style={style}>
+            <figure className={styles.blog_img_wrapper} style={style}>
                 <Image
                     src={srcPath}
                     alt={alt || src}
@@ -74,11 +74,11 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
                     onClick={() => setModalState(true)}
                 />
                 {caption != '' &&
-                    <p className={styles.blog_img_caption}>
+                    <figcaption className={styles.blog_img_caption}>
                         {parseInlineMarkdown(caption)}
-                    </p>
+                    </figcaption>
                 }
-            </div>
+            </figure>
             <Modal
                 isOpen={modalState}
                 style={modalStyle}
