@@ -29,6 +29,13 @@ const getFileContents = (slug: string) => {
             : fs.readFileSync(fullPath + 'x', 'utf8')
 }
 
+const fetchAllMarkdownFileNames = async () => (
+    (await fs.promises.readdir(postsDirectory)).filter(e => {
+        const ext = e.split('.').slice(-1)[0]
+        return ext === 'md' || ext === 'mdx'
+    })
+)
+
 export const getPostData = async (slug: string) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
@@ -82,7 +89,7 @@ export const getPreviewPostData = async (contentId: string) => {
 }
 
 export const getSortedPostsData = async (tag:string = '') => {
-    const fileNames = fs.readdirSync(postsDirectory)
+    const fileNames = await fetchAllMarkdownFileNames()
     const allPostsData = fileNames
         .map(fileName => {
             const slug = fileName
@@ -115,21 +122,21 @@ export const getSortedPostsData = async (tag:string = '') => {
 }
 
 export const getAllPostSlugs = async () => {
-    const fileNames = fs.readdirSync(postsDirectory)
+    const fileNames = await fetchAllMarkdownFileNames()
 
-    return fileNames.map(fileName => {
-        return {
-            params: {
-                slug: fileName
-                    .replace(/\.mdx$/, '')
-                    .replace(/\.md$/, '')
-            }
-        }
-    })
+    return fileNames
+        .map(e => {
+            const tmp = e.split('.')
+            tmp.pop()
+            return tmp.join('.')
+        })
+        .map(fileName => ({
+            params: { slug: fileName }
+        }))
 }
 
 export const getAllTags = async() => {
-    const fileNames = fs.readdirSync(postsDirectory)
+    const fileNames = await fetchAllMarkdownFileNames()
     const nested = fileNames
         .map(fileName => fileName
             .replace(/\.mdx$/, '')
