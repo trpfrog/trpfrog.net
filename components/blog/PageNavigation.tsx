@@ -8,16 +8,23 @@ type Props = {
     doNotShowOnFirst?: boolean
 }
 
-const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
-    const pagePosition1Indexed = entry.currentPage
+type PageTransferProps = {
+    slug: string
+    nextPage: number
+    buttonText: string
+}
 
-    const PageButton = ({nxt, txt}: {nxt: number, txt?: string}) => (
-        <Link href={{
-            pathname: `/blog/${entry.slug}/${nxt}`
-        }}>
-            <a>{txt ?? nxt + ""}</a>
+export const PageTransferButton = (props: PageTransferProps) => {
+    const {slug, nextPage, buttonText} = props
+    return (
+        <Link href={`/blog/${slug}/${nextPage}`}>
+            <a className={'linkButton'}>{buttonText}</a>
         </Link>
     )
+}
+
+const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
+    const pagePosition1Indexed = entry.currentPage
 
     const disabledButtonStyle: CSSProperties = {
         background: 'darkgray',
@@ -29,20 +36,31 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
     return entry.numberOfPages === 1 || (doNotShowOnFirst && entry.currentPage <= 1) ? (
         <></>
     ) : (
-        <div style={{textAlign: 'center'}}>
-            <div className={'link-area'}>
-                {entry.currentPage > 1 &&
-                    <PageButton nxt={pagePosition1Indexed - 1} txt={'← Prev'}/>
-                }
-                {Array.from(Array(entry.numberOfPages), (v, k) => (
-                    entry.currentPage !== k + 1
-                       ? <PageButton nxt={k + 1} key={k}/>
-                       : <a style={disabledButtonStyle} key={k}>{k + 1}</a>
-                ))}
-                {entry.currentPage < entry.numberOfPages &&
-                    <PageButton nxt={pagePosition1Indexed + 1} txt={'Next →'}/>
-                }
-            </div>
+        <div style={{textAlign: 'center'}} className={'link-area'}>
+            {entry.currentPage > 1 &&
+                <PageTransferButton
+                    slug={entry.slug}
+                    nextPage={pagePosition1Indexed - 1}
+                    buttonText={'← Prev'}
+                />
+            }
+            {Array.from(Array(entry.numberOfPages), (v, k) => (
+                entry.currentPage !== k + 1
+                    ? <PageTransferButton
+                        slug={entry.slug}
+                        nextPage={k + 1}
+                        buttonText={k + 1 + ''}
+                        key={k}
+                    />
+                    : <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+            ))}
+            {entry.currentPage < entry.numberOfPages &&
+                <PageTransferButton
+                    slug={entry.slug}
+                    nextPage={pagePosition1Indexed + 1}
+                    buttonText={'Next →'}
+                />
+            }
         </div>
     )
 }

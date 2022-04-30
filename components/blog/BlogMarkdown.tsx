@@ -16,7 +16,7 @@ import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
-import PageNavigation from "./PageNavigation";
+import PageNavigation, {PageTransferButton} from "./PageNavigation";
 import Block from "../Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
@@ -64,7 +64,7 @@ export const parseInlineMarkdown = (markdown: string) => {
 }
 
 // Updated when page was loaded
-let goToNextPage = () => {}
+let GoNextPage = ({txt}: {txt: string}) => <></>
 
 const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element } = {
     Twitter: (content) => {
@@ -109,10 +109,8 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Next-page': content => {
         return (
-            <div style={{textAlign: 'center', marginBottom: '1em'}}>
-                <span onClick={goToNextPage} className={'linkButton'}>
-                    Next: {content} &rarr;
-                </span>
+            <div style={{textAlign: 'center'}}>
+                <GoNextPage txt={content}/>
             </div>
         )
     },
@@ -327,9 +325,14 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
     )
     const markdown = entry.content[pagePosition - 1].map(e => e.trim())
 
-    goToNextPage = () => {
-        movePage(pagePosition + 1)
-    }
+    // eslint-disable-next-line react/display-name
+    GoNextPage = ({txt}: {txt: string}) => (
+        <PageTransferButton
+            slug={entry.slug}
+            nextPage={entry.currentPage + 1}
+            buttonText={`Next: ${txt} →`}
+        />
+    )
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
