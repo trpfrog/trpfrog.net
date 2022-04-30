@@ -17,7 +17,9 @@ export type BlogPost = {
     readTime: number
     numberOfPhotos?: number
     held?: string
-    content: string[][]
+    currentPage: number
+    numberOfPages: number
+    content: string[]
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -36,10 +38,11 @@ const fetchAllMarkdownFileNames = async () => (
     })
 )
 
-export const getPostData = async (slug: string) => {
+export const getPostData = async (slug: string, option?: {pagePos1Indexed?: number, all?: boolean}) => {
     const fileContents = getFileContents(slug)
     const matterResult = matter(fileContents)
-    const content = await parse(matterResult.content)
+
+    const pagePosition = option?.pagePos1Indexed ?? -1
 
     const tags = matterResult.data.tags
         .split(',')
@@ -51,11 +54,24 @@ export const getPostData = async (slug: string) => {
         .filter(e => e.startsWith('!['))
         .length
 
+    const parsedContent: string[][] = await parse(matterResult.content)
+    let content: string[] = []
+    if (option?.all) {
+        content = parsedContent.flat()
+    } else if (pagePosition)  {
+        if (pagePosition > parsedContent.length) {
+            throw 'Too large page position!'
+        }
+        content = parsedContent[pagePosition - 1]
+    }
+
     return {
         slug,
         content,
         tags,
-        readTime: getReadTimeSecond(content.join()),
+        numberOfPages: parsedContent.length,
+        currentPage: pagePosition,
+        readTime: getReadTimeSecond(matterResult.content),
         numberOfPhotos,
         ...matterResult.data
     } as BlogPost

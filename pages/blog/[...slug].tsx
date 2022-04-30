@@ -1,30 +1,27 @@
 import React, {useEffect, useState} from 'react'
-import {GetStaticProps, NextPage} from "next";
+import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
 
-import Layout from "../../../components/Layout";
-import Title from "../../../components/Title";
-import Block from "../../../components/Block";
+import Layout from "../../components/Layout";
+import Title from "../../components/Title";
+import Block from "../../components/Block";
 
-import {BlogPost, getAllPostSlugs, getPostData} from "../../../lib/blog/load";
-import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
+import {BlogPost, getAllPostSlugs, getPostData} from "../../lib/blog/load";
+import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
 
-import styles from '../../../styles/blog/blog.module.scss';
+import styles from '../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
-import {useRouter} from "next/router";
-import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
+import {doMarkdownHMR} from "../../lib/blog/fileWatch";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faClock, faFlask, faImages, faSyncAlt, faWalking} from "@fortawesome/free-solid-svg-icons";
-import dayjs from "dayjs";
-import Tag from "../../../components/blog/Tag";
-import {formatReadTime} from "../../../lib/blog/readTime";
-import {parseWithBudouX} from "../../../lib/wordSplit";
-import {destroyCookie, parseCookies, setCookie} from "nookies";
-import PostAttributes from "../../../components/blog/PostAttributes";
+import {faFlask} from "@fortawesome/free-solid-svg-icons";
+import Tag from "../../components/blog/Tag";
+import {parseWithBudouX} from "../../lib/wordSplit";
+import {parseCookies, setCookie} from "nookies";
+import PostAttributes from "../../components/blog/PostAttributes";
 
 type PageProps = {
     entry: BlogPost
@@ -32,11 +29,24 @@ type PageProps = {
 }
 
 type Params = {
-    slug: string
+    slug: string[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
-    const entry = await getPostData(params!.slug)
+    const [slug, page] = params!.slug
+
+    const postDataOption = {
+        pagePos1Indexed: page ? parseInt(page, 10) : 1,
+        all: page === 'all'
+    }
+
+    let entry: BlogPost
+    try {
+        entry = await getPostData(slug, postDataOption)
+    } catch (e) {
+        return { notFound: true }
+    }
+
     const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
@@ -46,8 +56,19 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
     }
 }
 
-export const getStaticPaths = async () => {
-    const paths = await getAllPostSlugs()
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+    let paths = []
+    const slugs = await getAllPostSlugs()
+
+    for (const slug of slugs) {
+        const MAX_PAGE_NUMBERS = 15
+        for (let i = 1; i <= MAX_PAGE_NUMBERS; i++) {
+            paths.push({ params: { slug: [slug, i + ""] } })
+        }
+        paths.push({ params: { slug: [slug] } })
+        paths.push({ params: { slug: [slug, 'all'] } })
+    }
+
     return {
         paths,
         fallback: false
@@ -87,12 +108,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             {url: post.thumbnail}
         ]
     } : {}
-
-    const { query } = useRouter()
-
-    if(query.page === 'all') {
-        post.content = [post.content.flat()]
-    }
 
     const cookies = parseCookies()
     const cookieNameUD = 'useUDFonts'
