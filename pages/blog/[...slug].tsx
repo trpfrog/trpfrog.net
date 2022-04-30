@@ -70,7 +70,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     const slugs = await getAllPostSlugs()
 
     for (const slug of slugs) {
-        const MAX_PAGE_NUMBERS = 15
+        const MAX_PAGE_NUMBERS = 10
         for (let i = 1; i <= MAX_PAGE_NUMBERS; i++) {
             paths.push({ params: { slug: [slug, i + ""] } })
         }
