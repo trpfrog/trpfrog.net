@@ -47,6 +47,15 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
         return { notFound: true }
     }
 
+    if (page === 'all' && entry.numberOfPages === 1) {
+        return {
+            redirect: {
+                permanent: true,
+                destination: `/blog/${entry.slug}`
+            }
+        }
+    }
+
     const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
