@@ -77,7 +77,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
 const share = (slug: string) => {
     if(typeof window === 'undefined') return;
-    const articleURL = 'https://trpfrog.net/blog/entry/' + slug
+    const articleURL = 'https://trpfrog.net/blog/' + slug
     const tweetURL =  'https://twitter.com/intent/tweet?'
                 + "text=" + encodeURIComponent(document.title) + "&"
                 + "url=" + encodeURIComponent(articleURL);
