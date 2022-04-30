@@ -22,7 +22,7 @@ const extractTitle = (router: NextRouter) => {
     let subTitle = '';
 
     // Get article title
-    if (router.pathname.startsWith('/blog/entry/')) {
+    if (router.pathname.startsWith('/blog/')) {
         subTitle = pageTitle
         pageTitle = 'つまみログ';
     }
