@@ -308,22 +308,9 @@ type Props = {
     className?: string
 }
 
-const movePage = (pagePosition: number): void => {
-    if (typeof window !== 'undefined') {
-        const current = window.location.href
-        const root = current.split('?')[0]
-        window.location.href = `${root}?page=${pagePosition}`
-    }
-}
-
 const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
-    const { query } = useRouter()
-    const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))
-    const pagePosition: number = clampInt(
-        parseInt(query.page as string ?? '1'), 1, entry.content.length
-    )
-    const markdown = entry.content[pagePosition - 1].map(e => e.trim())
+    const markdown = entry.content
 
     // eslint-disable-next-line react/display-name
     GoNextPage = ({txt}: {txt: string}) => (
