@@ -94,7 +94,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
             const f = async () => {
-                return await fetch(`/api/posts/${post.slug}`).then((res) =>
+                return await fetch(`/api/posts/${post.slug}/${post.currentPage}`).then((res) =>
                     res.json()
                 )
             }
