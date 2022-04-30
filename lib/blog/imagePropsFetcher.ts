@@ -5,7 +5,7 @@ export type BlogImageData = { size: {width: number, height: number}, caption: st
 
 export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = true) => {
 
-    const markdown = entry.content.join()
+    const markdown = entry.content.join('\n')
     const slug = entry.slug.replace('_', '')
 
     const dict = {} as { [path: string]: BlogImageData }
