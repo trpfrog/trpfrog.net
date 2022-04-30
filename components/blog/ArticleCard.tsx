@@ -22,7 +22,7 @@ export const ArticleGrid = ({children}: any) => (
 
 const ArticleCard = ({entry, hero}: Props) => {
 
-    const articleURL = '/blog/entry/' + entry.slug
+    const articleURL = '/blog/' + entry.slug
     const splitTitle = parseWithBudouX(entry.title, entry.slug)
 
     return (
