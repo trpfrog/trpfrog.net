@@ -17,9 +17,7 @@ type PageTransferProps = {
 export const PageTransferButton = (props: PageTransferProps) => {
     const {slug, nextPage, buttonText} = props
     return (
-        <Link href={`/blog/${slug}/${nextPage}`}>
-            <a className={'linkButton'}>{buttonText}</a>
-        </Link>
+        <a href={`/blog/${slug}/${nextPage}`} className={'linkButton'}>{buttonText}</a>
     )
 }
 
