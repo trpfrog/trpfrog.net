@@ -371,7 +371,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
             {markdown.map((content, idx) => (
                 <Block key={'window-' + idx} style={style} className={className}>
                     {idx === 0 &&
-                        <PageNavigation entry={entry} pagePosition={pagePosition - 1} doNotShowOnFirst={true}/>
+                        <PageNavigation entry={entry} doNotShowOnFirst={true}/>
                     }
                     <article
                         className={styles.post}
@@ -396,7 +396,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                         </MathJaxContext>
                     </article>
                     {idx === markdown.length - 1 &&
-                        <PageNavigation entry={entry} pagePosition={pagePosition - 1}/>
+                        <PageNavigation entry={entry}/>
                     }
                 </Block>
             ))}
