@@ -32,7 +32,12 @@ module.exports = {
                 source: '/notes/:path*',
                 destination: '/blog/:path*',
                 permanent: true
-            }
+            },
+            {
+                source: '/blog/entry/:slug',
+                destination: '/blog/:slug',
+                permanent: true
+            },
         ]
     }
 }
