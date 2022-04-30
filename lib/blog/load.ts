@@ -3,7 +3,7 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-import {createErrorArticle} from "../../pages/blog/preview/[id]";
+import {createErrorArticle} from "../../pages/blog/preview/[...id]";
 import microCMS from "../microCMS";
 
 export type BlogPost = {
