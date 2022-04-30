@@ -77,7 +77,7 @@ export const getPostData = async (slug: string, option?: {pagePos1Indexed?: numb
     } as BlogPost
 }
 
-export const getPreviewPostData = async (contentId: string) => {
+export const getPreviewPostData = async (contentId: string, option?: {pagePos1Indexed?: number, all?: boolean}) => {
     const data = await microCMS.get({
         endpoint: "blog-preview",
         contentId
@@ -88,7 +88,15 @@ export const getPreviewPostData = async (contentId: string) => {
     }
 
     const matterResult = matter(data.md)
-    const content = await parse(matterResult.content)
+    const pagePosition = option?.pagePos1Indexed
+
+    const parsedContent: string[][] = await parse(matterResult.content)
+    let content: string[] = []
+    if (option?.all) {
+        content = parsedContent.flat()
+    } else if (pagePosition)  {
+        content = parsedContent[pagePosition - 1]
+    }
 
     const tags = matterResult.data.tags
         .split(',')
