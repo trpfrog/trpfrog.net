@@ -38,7 +38,9 @@ const errorArticle = {
     updated: '2020-10-17',
     tags: 'test',
     readTime: 100,
-    content: [['Error has occurred']]
+    currentPage: 1,
+    numberOfPages: 1,
+    content: ['Error has occurred']
 } as ErrorablePost
 
 export const createErrorArticle = (errTitle: string): ErrorablePost => {
@@ -48,8 +50,16 @@ export const createErrorArticle = (errTitle: string): ErrorablePost => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const entry = context.params?.id
-        ? await getPreviewPostData(context.params.id as string) as ErrorablePost
+    let [id, page] = context.params?.id as string[]
+    page = page ?? '1'
+
+    const option = {
+        pagePos1Indexed: parseInt(page),
+        all: page === 'all'
+    }
+
+    const entry = id
+        ? await getPreviewPostData(id, option) as ErrorablePost
         : createErrorArticle('ID is missing!')
     const imageSize = entry.isError ? {} : await fetchAllImageProps(entry);
     return {
@@ -67,12 +77,6 @@ const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
             {url: post.thumbnail}
         ]
     } : {}
-
-    const { query } = useRouter()
-
-    if(query.page === 'all') {
-        post.content = [post.content.flat()]
-    }
 
     const {
         minutes: readMin,
