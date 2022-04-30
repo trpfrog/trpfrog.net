@@ -121,18 +121,9 @@ export const getSortedPostsData = async (tag:string = '') => {
     return JSON.parse(JSON.stringify(sorted))
 }
 
-export const getAllPostSlugs = async () => {
+export const getAllPostSlugs = async (): Promise<string[]> => {
     const fileNames = await fetchAllMarkdownFileNames()
-
-    return fileNames
-        .map(e => {
-            const tmp = e.split('.')
-            tmp.pop()
-            return tmp.join('.')
-        })
-        .map(fileName => ({
-            params: { slug: fileName }
-        }))
+    return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
 }
 
 export const getAllTags = async() => {
