@@ -17,6 +17,7 @@ export type BlogPost = {
     readTime: number
     numberOfPhotos?: number
     held?: string
+    previewContentId?: string
     isAll: boolean
     currentPage: number
     numberOfPages: number
@@ -39,10 +40,19 @@ const fetchAllMarkdownFileNames = async () => (
     })
 )
 
-export const getPostData = async (slug: string, option?: {pagePos1Indexed?: number, all?: boolean}) => {
-    const fileContents = getFileContents(slug)
-    const matterResult = matter(fileContents)
+type BlogPostOption = {
+    pagePos1Indexed?: number
+    all?: boolean
+}
 
+const buildBlogPost = async (
+    slug: string,
+    markdownString: string,
+    option?: BlogPostOption,
+    previewContentId?: string
+): Promise<BlogPost> => {
+
+    const matterResult = matter(markdownString)
     const pagePosition = option?.pagePos1Indexed ?? -1
 
     const tags = matterResult.data.tags
@@ -70,6 +80,7 @@ export const getPostData = async (slug: string, option?: {pagePos1Indexed?: numb
         slug,
         content,
         tags,
+        previewContentId,
         isAll: option?.all ?? false,
         numberOfPages: parsedContent.length,
         currentPage: pagePosition,
@@ -79,7 +90,12 @@ export const getPostData = async (slug: string, option?: {pagePos1Indexed?: numb
     } as BlogPost
 }
 
-export const getPreviewPostData = async (contentId: string, option?: {pagePos1Indexed?: number, all?: boolean}) => {
+export const getPostData = async (slug: string, option?: BlogPostOption) => {
+    const fileContents = getFileContents(slug)
+    return await buildBlogPost(slug, fileContents, option)
+}
+
+export const getPreviewPostData = async (contentId: string, option?: BlogPostOption) => {
     const data = await microCMS.get({
         endpoint: "blog-preview",
         contentId
@@ -89,30 +105,7 @@ export const getPreviewPostData = async (contentId: string, option?: {pagePos1In
         return createErrorArticle('Invalid content ID')
     }
 
-    const matterResult = matter(data.md)
-    const pagePosition = option?.pagePos1Indexed
-
-    const parsedContent: string[][] = await parse(matterResult.content)
-    let content: string[] = []
-    if (option?.all) {
-        content = parsedContent.flat()
-    } else if (pagePosition)  {
-        content = parsedContent[pagePosition - 1]
-    }
-
-    const tags = matterResult.data.tags
-        .split(',')
-        .map((t: string) => t.trim())
-        .concat()
-
-    return {
-        slug: data.slug,
-        content,
-        tags,
-        isAll: option?.all ?? false,
-        readTime: getReadTimeSecond(content.join()),
-        ...matterResult.data
-    } as BlogPost
+    return await buildBlogPost(data!.slug, data!.md, option, contentId)
 }
 
 export const getSortedPostsData = async (tag:string = '') => {
