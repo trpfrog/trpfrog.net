@@ -167,20 +167,22 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                             <a onClick={handleUDFontButton}>
                                 {useUDFont ? '通常フォントで読む' : 'UDフォントで読む'}
                             </a>
-                            <a href={`/blog/${post.slug}${
-                                post.isAll
-                                    // If URL has a prv query, go back to the previous page
-                                    ? (router.query?.prv ? `/${router.query!.prv}` : '')
-                                    // To make it easier to undo a wrong operation, it adds prv query
-                                    : `/all?prv=${post.currentPage}#original-page-${post.currentPage}`
-                            }`}>
-                                {post.isAll
-                                    ? (router.query?.prv
-                                        ? `${router.query!.prv}ページに戻る`
-                                        : '複数のページに分けて読む'
-                                    )
-                                    : '全文を1ページに表示'}
-                            </a>
+                            {post.numberOfPages >= 2 &&
+                                <a href={`/blog/${post.slug}${
+                                    post.isAll
+                                        // If URL has a prv query, go back to the previous page
+                                        ? (router.query?.prv ? `/${router.query!.prv}` : '')
+                                        // To make it easier to undo a wrong operation, it adds prv query
+                                        : `/all?prv=${post.currentPage}#original-page-${post.currentPage}`
+                                }`}>
+                                    {post.isAll
+                                        ? (router.query?.prv
+                                                ? `${router.query!.prv}ページに戻る`
+                                                : '複数のページに分けて読む'
+                                        )
+                                        : '全文を1ページに表示'}
+                                </a>
+                            }
                         </p>
                     </p>
                 </div>
