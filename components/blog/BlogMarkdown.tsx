@@ -360,6 +360,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     return (
         <>
+            <span id={'article'}/>
             {markdown.map((content, idx) => (
                 <Block key={'window-' + idx} style={style} className={className}>
                     {idx === 0 &&
