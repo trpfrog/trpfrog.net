@@ -9,15 +9,15 @@ type Props = {
 }
 
 type PageTransferProps = {
-    slug: string
+    entry: BlogPost
     nextPage: number
     buttonText: string
 }
 
 export const PageTransferButton = (props: PageTransferProps) => {
-    const {slug, nextPage, buttonText} = props
-    return (
-        <a href={`/blog/${slug}/${nextPage}`} className={'linkButton'}>{buttonText}</a>
+    const {entry, nextPage, buttonText} = props
+    return entry.isAll ? <></> : (
+        <a href={`/blog/${entry.slug}/${nextPage}`} className={'linkButton'}>{buttonText}</a>
     )
 }
 
@@ -37,7 +37,7 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
         <div style={{textAlign: 'center'}} className={'link-area'}>
             {entry.currentPage > 1 &&
                 <PageTransferButton
-                    slug={entry.slug}
+                    entry={entry}
                     nextPage={pagePosition1Indexed - 1}
                     buttonText={'← Prev'}
                 />
@@ -45,7 +45,7 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
             {Array.from(Array(entry.numberOfPages), (v, k) => (
                 entry.currentPage !== k + 1
                     ? <PageTransferButton
-                        slug={entry.slug}
+                        entry={entry}
                         nextPage={k + 1}
                         buttonText={k + 1 + ''}
                         key={k}
@@ -54,7 +54,7 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
             ))}
             {entry.currentPage < entry.numberOfPages &&
                 <PageTransferButton
-                    slug={entry.slug}
+                    entry={entry}
                     nextPage={pagePosition1Indexed + 1}
                     buttonText={'Next →'}
                 />

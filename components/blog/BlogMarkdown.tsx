@@ -315,7 +315,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
     // eslint-disable-next-line react/display-name
     GoNextPage = ({txt}: {txt: string}) => (
         <PageTransferButton
-            slug={entry.slug}
+            entry={entry}
             nextPage={entry.currentPage + 1}
             buttonText={`Next: ${txt} →`}
         />
