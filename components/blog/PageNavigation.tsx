@@ -16,8 +16,15 @@ type PageTransferProps = {
 
 export const PageTransferButton = (props: PageTransferProps) => {
     const {entry, nextPage, buttonText} = props
+
+    const href = entry.previewContentId ?
+        `/blog/preview/${entry.previewContentId}/${nextPage}` :
+        `/blog/${entry.slug}/${nextPage}`
+
     return entry.isAll ? <></> : (
-        <a href={`/blog/${entry.slug}/${nextPage}`} className={'linkButton'}>{buttonText}</a>
+        <a href={href} className={'linkButton'}>
+            {buttonText}
+        </a>
     )
 }
 
