@@ -68,7 +68,12 @@ const buildBlogPost = async (
     const parsedContent: string[][] = await parse(matterResult.content)
     let content: string[] = []
     if (option?.all) {
-        content = parsedContent.flat()
+        content = parsedContent
+            .map((windows, idx) => {
+                windows[0] = `<span id="original-page-${idx + 1}"></span>` + windows[0]
+                return windows
+            })
+            .flat()
     } else if (pagePosition)  {
         if (pagePosition > parsedContent.length) {
             throw 'Too large page position!'
