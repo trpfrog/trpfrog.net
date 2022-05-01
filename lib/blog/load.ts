@@ -150,6 +150,22 @@ export const getAllPostSlugs = async (): Promise<string[]> => {
     return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
 }
 
+export const getAllPostPaths = async () => {
+    const slugs = await getAllPostSlugs()
+    let paths = []
+
+    for (const slug of slugs) {
+        const entry = await getPostData(slug)
+        for (let i = 1; i <= entry.numberOfPages; i++) {
+            paths.push({ params: { slug: [slug, i + ""] } })
+        }
+        paths.push({ params: { slug: [slug] } })
+        paths.push({ params: { slug: [slug, 'all'] } })
+    }
+
+    return paths
+}
+
 export const getAllTags = async() => {
     const fileNames = await fetchAllMarkdownFileNames()
     const nested = fileNames

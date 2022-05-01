@@ -7,7 +7,7 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getAllPostSlugs, getPostData} from "../../lib/blog/load";
+import {BlogPost, getAllPostPaths, getPostData} from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
@@ -40,12 +40,7 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
         all: page === 'all'
     }
 
-    let entry: BlogPost
-    try {
-        entry = await getPostData(slug, postDataOption)
-    } catch (e) {
-        return { notFound: true }
-    }
+    const entry: BlogPost = await getPostData(slug, postDataOption)
 
     const imageSize = await fetchAllImageProps(entry);
     return {
@@ -57,20 +52,8 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-    let paths = []
-    const slugs = await getAllPostSlugs()
-
-    for (const slug of slugs) {
-        const MAX_PAGE_NUMBERS = 10
-        for (let i = 1; i <= MAX_PAGE_NUMBERS; i++) {
-            paths.push({ params: { slug: [slug, i + ""] } })
-        }
-        paths.push({ params: { slug: [slug] } })
-        paths.push({ params: { slug: [slug, 'all'] } })
-    }
-
     return {
-        paths,
+        paths: await getAllPostPaths(),
         fallback: false
     }
 }
