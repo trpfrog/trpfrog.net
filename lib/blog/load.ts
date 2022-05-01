@@ -17,6 +17,7 @@ export type BlogPost = {
     readTime: number
     numberOfPhotos?: number
     held?: string
+    isAll: boolean
     currentPage: number
     numberOfPages: number
     content: string[]
@@ -69,6 +70,7 @@ export const getPostData = async (slug: string, option?: {pagePos1Indexed?: numb
         slug,
         content,
         tags,
+        isAll: option?.all ?? false,
         numberOfPages: parsedContent.length,
         currentPage: pagePosition,
         readTime: getReadTimeSecond(matterResult.content),
@@ -107,6 +109,7 @@ export const getPreviewPostData = async (contentId: string, option?: {pagePos1In
         slug: data.slug,
         content,
         tags,
+        isAll: option?.all ?? false,
         readTime: getReadTimeSecond(content.join()),
         ...matterResult.data
     } as BlogPost
