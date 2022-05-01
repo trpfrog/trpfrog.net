@@ -19,7 +19,7 @@ export const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
     for (const post of blogData) {
         records.push({
             type: 'blog',
-            text: `記事「[${post.title}](https://trpfrog.net/blog/entry/${post.slug})」を公開しました！`,
+            text: `記事「[${post.title}](https://trpfrog.net/blog/${post.slug})」を公開しました！`,
             date: dayjs(post.date).format('YYYY-MM-DD')
         })
     }

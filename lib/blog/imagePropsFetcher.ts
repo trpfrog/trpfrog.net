@@ -3,31 +3,50 @@ import {BlogPost} from "./load";
 
 export type BlogImageData = { size: {width: number, height: number}, caption: string }
 
+const fetchFromCloudinary = async (slug: string) => {
+    let dict = {} as { [path: string]: BlogImageData }
+
+    const cloudinary = require('../cloudinary')
+    const searchResult = await cloudinary.search
+        .expression(`resource_type:image AND folder=blog/${slug}`)
+        .max_results(500)
+        .execute()
+
+    searchResult.resources.forEach((image: any) => {
+        const src = '/' + image.public_id
+        dict[src] = {
+            size: {
+                width: parseInt(image.width ?? '800', 10),
+                height: parseInt(image.height ?? '600', 10),
+            },
+            caption: ''
+        }
+    })
+
+    return dict
+}
+
 export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = true) => {
 
-    const markdown = entry.content.join()
+    const markdown = entry.content.join('\n')
     const slug = entry.slug.replace('_', '')
 
-    const dict = {} as { [path: string]: BlogImageData }
+    let dict = {} as { [path: string]: BlogImageData }
+
+    type CloudinaryCache = { [slug: string]: { [path: string]: BlogImageData } }
+    if (!process.env.CLOUDINARY_CACHE) {
+        const cache: CloudinaryCache = {}
+        process.env.CLOUDINARY_CACHE = JSON.stringify(cache)
+    }
 
     if (useCloudinaryApi) {
-        const cloudinary = require('../cloudinary')
-        await cloudinary.search
-            .expression(`resource_type:image AND folder=blog/${slug}`)
-            .max_results(500)
-            .execute()
-            .then((result: any) => {
-                result.resources.forEach((image: any) => {
-                    const src = '/' + image.public_id
-                    dict[src] = {
-                        size: {
-                            width: parseInt(image.width ?? '800', 10),
-                            height: parseInt(image.height ?? '600', 10),
-                        },
-                        caption: ''
-                    }
-                })
-            });
+        let cache = JSON.parse(process.env.CLOUDINARY_CACHE) as CloudinaryCache
+        dict = cache[slug]
+        if (!dict) {
+            dict = await fetchFromCloudinary(slug)
+            cache[slug] = dict
+        }
+        process.env.CLOUDINARY_CACHE = JSON.stringify(cache)
     }
 
     const srcRegex = new RegExp('^!\\[.*?\]\\(')

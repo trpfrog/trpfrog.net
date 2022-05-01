@@ -1,53 +1,75 @@
-import React from "react";
+import React, {CSSProperties} from "react";
 import {BlogPost} from "../../lib/blog/load";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
 type Props = {
     entry: BlogPost,
-    pagePosition: number,
     doNotShowOnFirst?: boolean
 }
 
-const PageNavigation = ({entry, pagePosition, doNotShowOnFirst = false}: Props) => {
-    const pagePosition1Indexed = pagePosition + 1;
-    const router = useRouter()
-    const urlWithoutPage = router.asPath.split('?')[0]
+type PageTransferProps = {
+    entry: BlogPost
+    nextPage: number
+    buttonText: string
+}
 
-    return entry.content.length < 2 || (doNotShowOnFirst && pagePosition < 1) ? (
+export const PageTransferButton = (props: PageTransferProps) => {
+    const {entry, nextPage, buttonText} = props
+
+    let href = entry.previewContentId ?
+        `/blog/preview/${entry.previewContentId}/${nextPage}` :
+        `/blog/${entry.slug}/${nextPage}`
+
+    if (process.env.NODE_ENV === 'production') {
+        href += '#article'
+    }
+
+    return entry.isAll ? <></> : (
+        <a href={href} className={'linkButton'}>
+            {buttonText}
+        </a>
+    )
+}
+
+const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
+    const pagePosition1Indexed = entry.currentPage
+
+    const disabledButtonStyle: CSSProperties = {
+        background: 'darkgray',
+        transform: 'translateY(2px)',
+        boxShadow: 'none',
+        cursor: 'default'
+    }
+
+    return entry.numberOfPages === 1 || (doNotShowOnFirst && entry.currentPage <= 1) ? (
         <></>
     ) : (
-        <div style={{textAlign: 'center'}}>
-            <div className={'link-area'}>
-                {pagePosition > 0 &&
-                    <Link href={`${urlWithoutPage}?page=${pagePosition1Indexed - 1}`}>
-                        <a>&larr; Prev</a>
-                    </Link>
-                }
-                {Array.from(Array(entry.content.length), (v, k) => (
-                    <span key={k}>
-                        {pagePosition == k ? (
-                            <a style={{
-                                background: 'darkgray',
-                                transform: 'translateY(2px)',
-                                boxShadow: 'none',
-                                cursor: 'default'
-                            }}>
-                                {k + 1}
-                            </a>
-                        ) : (
-                            <Link href={`${urlWithoutPage}?page=${k + 1}`}>
-                                <a>{k + 1}</a>
-                            </Link>
-                        )}
-                    </span>
-                ))}
-                {pagePosition < entry.content.length - 1 &&
-                    <Link href={`${urlWithoutPage}?page=${pagePosition1Indexed + 1}`}>
-                        <a>Next &rarr;</a>
-                    </Link>
-                }
-            </div>
+        <div style={{textAlign: 'center'}} className={'link-area'}>
+            {entry.currentPage > 1 &&
+                <PageTransferButton
+                    entry={entry}
+                    nextPage={pagePosition1Indexed - 1}
+                    buttonText={'← Prev'}
+                />
+            }
+            {Array.from(Array(entry.numberOfPages), (v, k) => (
+                entry.currentPage !== k + 1
+                    ? <PageTransferButton
+                        entry={entry}
+                        nextPage={k + 1}
+                        buttonText={k + 1 + ''}
+                        key={k}
+                    />
+                    : <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+            ))}
+            {entry.currentPage < entry.numberOfPages &&
+                <PageTransferButton
+                    entry={entry}
+                    nextPage={pagePosition1Indexed + 1}
+                    buttonText={'Next →'}
+                />
+            }
         </div>
     )
 }

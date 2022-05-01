@@ -3,7 +3,7 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-import {createErrorArticle} from "../../pages/blog/preview/[id]";
+import {createErrorArticle} from "../../pages/blog/preview/[...id]";
 import microCMS from "../microCMS";
 
 export type BlogPost = {
@@ -17,7 +17,11 @@ export type BlogPost = {
     readTime: number
     numberOfPhotos?: number
     held?: string
-    content: string[][]
+    previewContentId?: string
+    isAll: boolean
+    currentPage: number
+    numberOfPages: number
+    content: string[]
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -29,10 +33,27 @@ const getFileContents = (slug: string) => {
             : fs.readFileSync(fullPath + 'x', 'utf8')
 }
 
-export const getPostData = async (slug: string) => {
-    const fileContents = getFileContents(slug)
-    const matterResult = matter(fileContents)
-    const content = await parse(matterResult.content)
+const fetchAllMarkdownFileNames = async () => (
+    (await fs.promises.readdir(postsDirectory)).filter(e => {
+        const ext = e.split('.').slice(-1)[0]
+        return ext === 'md' || ext === 'mdx'
+    })
+)
+
+type BlogPostOption = {
+    pagePos1Indexed?: number
+    all?: boolean
+}
+
+const buildBlogPost = async (
+    slug: string,
+    markdownString: string,
+    option?: BlogPostOption,
+    previewContentId?: string
+): Promise<BlogPost> => {
+
+    const matterResult = matter(markdownString)
+    const pagePosition = option?.pagePos1Indexed ?? -1
 
     const tags = matterResult.data.tags
         .split(',')
@@ -44,17 +65,42 @@ export const getPostData = async (slug: string) => {
         .filter(e => e.startsWith('!['))
         .length
 
+    const parsedContent: string[][] = await parse(matterResult.content)
+    let content: string[] = []
+    if (option?.all) {
+        content = parsedContent
+            .map((windows, idx) => {
+                windows[0] = `<span id="original-page-${idx + 1}"></span>` + windows[0]
+                return windows
+            })
+            .flat()
+    } else if (pagePosition)  {
+        if (pagePosition > parsedContent.length) {
+            throw 'Too large page position!'
+        }
+        content = parsedContent[pagePosition - 1]
+    }
+
     return {
         slug,
         content,
         tags,
-        readTime: getReadTimeSecond(content.join()),
+        previewContentId,
+        isAll: option?.all ?? false,
+        numberOfPages: parsedContent.length,
+        currentPage: pagePosition,
+        readTime: getReadTimeSecond(matterResult.content),
         numberOfPhotos,
         ...matterResult.data
     } as BlogPost
 }
 
-export const getPreviewPostData = async (contentId: string) => {
+export const getPostData = async (slug: string, option?: BlogPostOption) => {
+    const fileContents = getFileContents(slug)
+    return await buildBlogPost(slug, fileContents, option)
+}
+
+export const getPreviewPostData = async (contentId: string, option?: BlogPostOption) => {
     const data = await microCMS.get({
         endpoint: "blog-preview",
         contentId
@@ -64,25 +110,11 @@ export const getPreviewPostData = async (contentId: string) => {
         return createErrorArticle('Invalid content ID')
     }
 
-    const matterResult = matter(data.md)
-    const content = await parse(matterResult.content)
-
-    const tags = matterResult.data.tags
-        .split(',')
-        .map((t: string) => t.trim())
-        .concat()
-
-    return {
-        slug: data.slug,
-        content,
-        tags,
-        readTime: getReadTimeSecond(content.join()),
-        ...matterResult.data
-    } as BlogPost
+    return await buildBlogPost(data!.slug, data!.md, option, contentId)
 }
 
 export const getSortedPostsData = async (tag:string = '') => {
-    const fileNames = fs.readdirSync(postsDirectory)
+    const fileNames = await fetchAllMarkdownFileNames()
     const allPostsData = fileNames
         .map(fileName => {
             const slug = fileName
@@ -114,22 +146,29 @@ export const getSortedPostsData = async (tag:string = '') => {
     return JSON.parse(JSON.stringify(sorted))
 }
 
-export const getAllPostSlugs = async () => {
-    const fileNames = fs.readdirSync(postsDirectory)
+export const getAllPostSlugs = async (): Promise<string[]> => {
+    const fileNames = await fetchAllMarkdownFileNames()
+    return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
+}
 
-    return fileNames.map(fileName => {
-        return {
-            params: {
-                slug: fileName
-                    .replace(/\.mdx$/, '')
-                    .replace(/\.md$/, '')
-            }
+export const getAllPostPaths = async () => {
+    const slugs = await getAllPostSlugs()
+    let paths = []
+
+    for (const slug of slugs) {
+        const entry = await getPostData(slug)
+        for (let i = 1; i <= entry.numberOfPages; i++) {
+            paths.push({ params: { slug: [slug, i + ""] } })
         }
-    })
+        paths.push({ params: { slug: [slug] } })
+        paths.push({ params: { slug: [slug, 'all'] } })
+    }
+
+    return paths
 }
 
 export const getAllTags = async() => {
-    const fileNames = fs.readdirSync(postsDirectory)
+    const fileNames = await fetchAllMarkdownFileNames()
     const nested = fileNames
         .map(fileName => fileName
             .replace(/\.mdx$/, '')

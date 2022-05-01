@@ -16,7 +16,7 @@ import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
-import PageNavigation from "./PageNavigation";
+import PageNavigation, {PageTransferButton} from "./PageNavigation";
 import Block from "../Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
@@ -64,7 +64,7 @@ export const parseInlineMarkdown = (markdown: string) => {
 }
 
 // Updated when page was loaded
-let goToNextPage = () => {}
+let GoNextPage = ({txt}: {txt: string}) => <></>
 
 const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element } = {
     Twitter: (content) => {
@@ -109,10 +109,8 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Next-page': content => {
         return (
-            <div style={{textAlign: 'center', marginBottom: '1em'}}>
-                <span onClick={goToNextPage} className={'linkButton'}>
-                    Next: {content} &rarr;
-                </span>
+            <div style={{textAlign: 'center'}}>
+                <GoNextPage txt={content}/>
             </div>
         )
     },
@@ -310,26 +308,20 @@ type Props = {
     className?: string
 }
 
-const movePage = (pagePosition: number): void => {
-    if (typeof window !== 'undefined') {
-        const current = window.location.href
-        const root = current.split('?')[0]
-        window.location.href = `${root}?page=${pagePosition}`
-    }
-}
-
 const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
-    const { query } = useRouter()
-    const clampInt = (x: number, l: number, r: number) => isNaN(x) ? l : Math.floor(Math.max(l, Math.min(x, r)))
-    const pagePosition: number = clampInt(
-        parseInt(query.page as string ?? '1'), 1, entry.content.length
-    )
-    const markdown = entry.content[pagePosition - 1].map(e => e.trim())
+    const markdown = entry.content
 
-    goToNextPage = () => {
-        movePage(pagePosition + 1)
-    }
+    // eslint-disable-next-line react/display-name
+    GoNextPage = ({txt}: {txt: string}) => (
+        <div style={{margin: '1em 0'}}>
+            <PageTransferButton
+                entry={entry}
+                nextPage={entry.currentPage + 1}
+                buttonText={`Next: ${txt} →`}
+            />
+        </div>
+    )
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
@@ -354,6 +346,13 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                     {props.children}
                 </h2>
             )
+        },
+        a: (props: any) => {
+            return (
+                <a href={props.href} target="_blank" rel="noreferrer">
+                    {props.children}
+                </a>
+            )
         }
     };
 
@@ -368,12 +367,13 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     return (
         <>
+            <span id={'article'}/>
             {markdown.map((content, idx) => (
                 <Block key={'window-' + idx} style={style} className={className}>
                     {idx === 0 &&
-                        <PageNavigation entry={entry} pagePosition={pagePosition - 1} doNotShowOnFirst={true}/>
+                        <PageNavigation entry={entry} doNotShowOnFirst={true}/>
                     }
-                    <div
+                    <article
                         className={styles.post}
                         style={{wordBreak: 'break-word'}}
                     >
@@ -394,9 +394,9 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                                 </ReactMarkdown>
                             </MathJax>
                         </MathJaxContext>
-                    </div>
+                    </article>
                     {idx === markdown.length - 1 &&
-                        <PageNavigation entry={entry} pagePosition={pagePosition - 1}/>
+                        <PageNavigation entry={entry}/>
                     }
                 </Block>
             ))}

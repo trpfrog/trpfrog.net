@@ -1,30 +1,26 @@
 import React, {useEffect, useState} from 'react'
-import {GetStaticProps, NextPage} from "next";
+import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
 
-import Layout from "../../../components/Layout";
-import Title from "../../../components/Title";
-import Block from "../../../components/Block";
+import Layout from "../../components/Layout";
+import Title from "../../components/Title";
+import Block from "../../components/Block";
 
-import {BlogPost, getAllPostSlugs, getPostData} from "../../../lib/blog/load";
-import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
+import {BlogPost, getAllPostPaths, getPostData} from "../../lib/blog/load";
+import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
 
-import styles from '../../../styles/blog/blog.module.scss';
+import styles from '../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
+import {doMarkdownHMR} from "../../lib/blog/fileWatch";
+import Tag from "../../components/blog/Tag";
+import {parseWithBudouX} from "../../lib/wordSplit";
+import {parseCookies, setCookie} from "nookies";
+import PostAttributes from "../../components/blog/PostAttributes";
 import {useRouter} from "next/router";
-import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faClock, faFlask, faImages, faSyncAlt, faWalking} from "@fortawesome/free-solid-svg-icons";
-import dayjs from "dayjs";
-import Tag from "../../../components/blog/Tag";
-import {formatReadTime} from "../../../lib/blog/readTime";
-import {parseWithBudouX} from "../../../lib/wordSplit";
-import {destroyCookie, parseCookies, setCookie} from "nookies";
-import PostAttributes from "../../../components/blog/PostAttributes";
 
 type PageProps = {
     entry: BlogPost
@@ -32,11 +28,19 @@ type PageProps = {
 }
 
 type Params = {
-    slug: string
+    slug: string[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
-    const entry = await getPostData(params!.slug)
+    const [slug, page] = params!.slug
+
+    const postDataOption = {
+        pagePos1Indexed: page ? parseInt(page, 10) : 1,
+        all: page === 'all'
+    }
+
+    const entry: BlogPost = await getPostData(slug, postDataOption)
+
     const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
@@ -46,17 +50,16 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
     }
 }
 
-export const getStaticPaths = async () => {
-    const paths = await getAllPostSlugs()
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
     return {
-        paths,
+        paths: await getAllPostPaths(),
         fallback: false
     }
 }
 
 const share = (slug: string) => {
     if(typeof window === 'undefined') return;
-    const articleURL = 'https://trpfrog.net/blog/entry/' + slug
+    const articleURL = 'https://trpfrog.net/blog/' + slug
     const tweetURL =  'https://twitter.com/intent/tweet?'
                 + "text=" + encodeURIComponent(document.title) + "&"
                 + "url=" + encodeURIComponent(articleURL);
@@ -73,7 +76,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
             const f = async () => {
-                return await fetch(`/api/posts/${post.slug}`).then((res) =>
+                return await fetch(`/api/posts/${post.slug}/${post.currentPage}`).then((res) =>
                     res.json()
                 )
             }
@@ -87,12 +90,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
             {url: post.thumbnail}
         ]
     } : {}
-
-    const { query } = useRouter()
-
-    if(query.page === 'all') {
-        post.content = [post.content.flat()]
-    }
 
     const cookies = parseCookies()
     const cookieNameUD = 'useUDFonts'
@@ -116,6 +113,8 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         }
         setUseUDFont(!useUDFont)
     }
+
+    const router = useRouter()
 
     return (
         <Layout>
@@ -166,13 +165,21 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                                 <a>訂正リクエスト</a>
                             </Link>
                             <a onClick={handleUDFontButton}>
-                                {useUDFont ? '通常フォントに戻す' : (
-                                    <>
-                                        <FontAwesomeIcon icon={faFlask}/>
-                                        <span style={{width: 5}}/>
-                                        UDフォントで見てみる
-                                    </>
-                                )}
+                                {useUDFont ? '通常フォントで読む' : 'UDフォントで読む'}
+                            </a>
+                            <a href={`/blog/${post.slug}${
+                                post.isAll
+                                    // If URL has a prv query, go back to the previous page
+                                    ? (router.query?.prv ? `/${router.query!.prv}` : '')
+                                    // To make it easier to undo a wrong operation, it adds prv query
+                                    : `/all?prv=${post.currentPage}#original-page-${post.currentPage}`
+                            }`}>
+                                {post.isAll
+                                    ? (router.query?.prv
+                                        ? `${router.query!.prv}ページに戻る`
+                                        : '複数のページに分けて読む'
+                                    )
+                                    : '全文を1ページに表示'}
                             </a>
                         </p>
                     </p>
