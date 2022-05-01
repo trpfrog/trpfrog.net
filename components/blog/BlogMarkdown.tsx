@@ -346,6 +346,13 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                     {props.children}
                 </h2>
             )
+        },
+        a: (props: any) => {
+            return (
+                <a href={props.href} target="_blank" rel="noreferrer">
+                    {props.children}
+                </a>
+            )
         }
     };
 
