@@ -57,6 +57,14 @@ const TwitterArchive = ({content}: Props) => {
                 <div className={styles.tweet}>
                     <blockquote dangerouslySetInnerHTML={{__html: tweetData.tweet}} />
                 </div>
+                {tweetData.image &&
+                    <div className={styles.image}>
+                        <blockquote>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={tweetData.image} alt={'ツイートの画像'}/>
+                        </blockquote>
+                    </div>
+                }
                 <div className={styles.date}>
                     {tweetData.date}
                 </div>

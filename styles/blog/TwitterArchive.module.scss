@@ -79,7 +79,15 @@
     line-height: 1.3em;
     margin: .8em 0 .3em;
     cursor: text;
+}
 
+.image img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.image, .tweet {
     blockquote {
         background: none;
         text-align: left;
