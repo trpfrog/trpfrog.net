@@ -2,7 +2,6 @@ import {animate, AnimationOptions, motion, useMotionValue, useViewportScroll} fr
 import {useEffect} from "react";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
-import Image from "next/image";
 
 export const TopTitle = () => {
 

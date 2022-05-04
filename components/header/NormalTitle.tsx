@@ -2,7 +2,6 @@ import {useState} from "react";
 import {useViewportScroll} from "framer-motion";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "../../styles/common/Header.module.scss";
 
 const backToTop = () => {

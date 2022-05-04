@@ -1,7 +1,6 @@
 import React from "react"
 import styles from "../styles/environment.module.scss";
 import Image from 'next/image';
-import path from 'path'
 
 type Props = {
     name: string

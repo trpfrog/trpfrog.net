@@ -9,7 +9,6 @@ import Block from "../components/Block";
 import React, {useState} from "react";
 
 import useSound from 'use-sound';
-import {PlayFunction} from "use-sound/dist/types";
 
 type BalloonProps = {
     width: string

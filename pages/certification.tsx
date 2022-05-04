@@ -8,7 +8,6 @@ import Title from "../components/Title";
 import Block from "../components/Block";
 import path from "path";
 import fs from "fs";
-import {CSSProperties} from "react";
 
 type Cert = {
     name: string,

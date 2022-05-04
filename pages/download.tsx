@@ -4,8 +4,6 @@ import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
 
-
-
 const About: NextPage = () => {
     return (
         <Layout>

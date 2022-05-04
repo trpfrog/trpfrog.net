@@ -2,8 +2,6 @@ import {NextPage} from "next";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
-import Image from "next/image";
-import styles from "../styles/environment.module.scss";
 import GadgetIntro from "../components/GadgetIntro";
 
 const Environment: NextPage = () => {

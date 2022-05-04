@@ -13,7 +13,6 @@ import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/Blog
 import styles from '../../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
-import {useRouter} from "next/router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";

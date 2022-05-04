@@ -10,7 +10,6 @@ import {BlogPost} from "../../lib/blog/load";
 import {Tweet} from 'react-twitter-widgets'
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
-import {useRouter} from "next/router";
 import ProfileCards from "./ProfileCards";
 import YouTube from "react-youtube";
 import BlogImage from "./BlogImage";
@@ -20,7 +19,6 @@ import PageNavigation, {PageTransferButton} from "./PageNavigation";
 import Block from "../Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 
 type codeProps = {
     className: string

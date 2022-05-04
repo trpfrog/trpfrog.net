@@ -1,13 +1,8 @@
-import {
-    BlogPost,
-    getAllTags,
-    getSortedPostsData
-} from "../../../lib/blog/load";
+import {BlogPost, getAllTags, getSortedPostsData} from "../../../lib/blog/load";
 import {GetStaticProps, NextPage} from "next";
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 import {NextSeo} from "next-seo";
-import styles from "../../../styles/blog/blog.module.scss";
 import Link from "next/link";
 import React from "react";
 import ArticleCard, {ArticleGrid} from "../../../components/blog/ArticleCard";
