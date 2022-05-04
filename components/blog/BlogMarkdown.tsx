@@ -196,9 +196,16 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         const elements: React.ReactNode[] = []
 
         content.split('\n').forEach((line, idx) => {
-            const lineSplit = line.split(':')
-            const speaker = lineSplit[0]
-            const comment = lineSplit.slice(1).join(':').trim()
+            const [speaker, ...splitComments] = line.split(':')
+            let comment = splitComments.join(':').trim()
+
+            let outOfComment = ''
+            const leftArrowIdentifier = '  ←'
+            if (comment.includes(leftArrowIdentifier)) {
+                [comment, outOfComment] =
+                    comment.split(leftArrowIdentifier).map(e => e.trim())
+            }
+
             elements.push(
                 <div className={styles.conversation_box_name} key={speaker + '-name-' + idx}>
                     {parseInlineMarkdown(speaker)}
@@ -209,6 +216,7 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
                     <div className={styles.conversation_box_value}>
                         {parseInlineMarkdown(comment)}
                     </div>
+                    {outOfComment && ` ←${outOfComment}`}
                 </div>
             )
         })
