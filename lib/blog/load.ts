@@ -81,6 +81,12 @@ const buildBlogPost = async (
         content = parsedContent[pagePosition - 1]
     }
 
+    if (previewContentId) {
+        const fullPath = path.join(process.cwd(), 'data', 'preview-checkpoint.md')
+        const checkpoint = fs.readFileSync(fullPath, 'utf8')
+        content = [checkpoint, ...content]
+    }
+
     return {
         slug,
         content,
