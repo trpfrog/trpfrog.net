@@ -13,11 +13,9 @@ import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/Blog
 import styles from '../../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarDay, faClock, faSyncAlt} from "@fortawesome/free-solid-svg-icons";
-import dayjs from "dayjs";
 import {formatReadTime} from "../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../lib/wordSplit";
+import PostAttributes from "../../../components/blog/PostAttributes";
 
 
 type PageProps = {
@@ -106,24 +104,7 @@ const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
                             SNSなど外部への共有を禁じます
                         </p>
                     }
-                    <p>
-                        <FontAwesomeIcon icon={faCalendarDay}/>{' '}
-                        <time dateTime={post.date}>
-                            {dayjs(post.date).format('YYYY年M月D日')}
-                        </time>
-                        {(post.updated && post.date < post.updated) &&
-                            <>
-                                <br/>
-                                <FontAwesomeIcon icon={faSyncAlt}/>{' '}
-                                <time dateTime={post.updated}>
-                                    {dayjs(post.updated).format('YYYY年M月D日')} 更新
-                                </time>
-                            </>
-                        }
-                        <br/>
-                        <FontAwesomeIcon icon={faClock}/>{' '}
-                        予想読了時間 {readMin} 分 {readSec} 秒
-                    </p>
+                    <PostAttributes post={post}/>
                 </div>
             </Title>
             <NextSeo
