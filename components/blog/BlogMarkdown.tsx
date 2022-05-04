@@ -327,7 +327,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
         code: formatCodeComponent,
         p: (props: any) => {
-            if (props.node.children[0].tagName === 'img') {
+            if (props.node.children[0]?.tagName === 'img') {
                 const image = props.node.children[0]
                 return (
                     <BlogImage
