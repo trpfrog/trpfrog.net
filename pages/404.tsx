@@ -16,7 +16,12 @@ const TrpFrog404: NextPage = () => {
                 style={{textAlign: 'center', padding: '3rem 0'}}
             >
                 <h1 style={{textAlign: 'center'}}>
-                    404 Not Found
+                    <div style={{fontSize: '3em', color: 'var(--header-color)'}}>
+                        404
+                    </div>
+                    <div style={{fontSize: '0.9em'}}>
+                        Not Found
+                    </div>
                 </h1>
                 <div style={{marginTop: '1rem'}}>
                     <Image
