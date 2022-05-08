@@ -7,6 +7,8 @@
     column-gap: 1em;
     row-gap: 0.5em;
     margin-left: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     @include mixins.mq(sp) {
         margin-left: 0.3em;
     }
