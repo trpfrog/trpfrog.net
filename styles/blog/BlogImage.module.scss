@@ -9,7 +9,10 @@
 }
 
 .taken_by {
-    @extend .caption
+    @extend .caption;
+    display: inline-block;
+    text-align: right;
+    max-width: 100%;
 }
 
 .img_wrapper {

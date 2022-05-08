@@ -37,13 +37,13 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         [caption, takenBy] = caption.split(takenByIdentifier).map(e => e.trim())
     }
 
-    let width = imageData.size?.width ?? 1200
-    let height = imageData.size?.height ?? 900
+    let imageWidth = imageData.size?.width ?? 1200
+    let imageHeight = imageData.size?.height ?? 900
 
     const maxHeight = 600;
-    if (height > maxHeight) {
-        width = width / height * maxHeight
-        height = maxHeight
+    if (imageHeight > maxHeight) {
+        imageWidth = imageWidth / imageHeight * maxHeight
+        imageHeight = maxHeight
     }
 
     const modalStyle = {
@@ -57,8 +57,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         } as CSSProperties,
         content: {
             position: 'static',
-            width: `min(calc(80vh * ${width / height}), 95vw)`,
-            height: `min(calc(95vw * ${height / width}), 80vh)`,
+            width: `min(calc(80vh * ${imageWidth / imageHeight}), 95vw)`,
+            height: `min(calc(95vw * ${imageHeight / imageWidth}), 80vh)`,
             padding: 0,
             background: 'transparent',
             border: 'none',
@@ -71,8 +71,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         <>
             <figure className={styles.img_wrapper} style={style}>
                 {takenBy &&
-                    <div style={{textAlign: 'right'}}>
-                        <small className={styles.taken_by}>
+                    <div className={styles.taken_by} style={{width: imageWidth}}>
+                        <small>
                             <FontAwesomeIcon icon={faCamera}/>{' '}
                             撮影: {parseInlineMarkdown(takenBy)}
                         </small>
@@ -82,8 +82,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
                     src={srcPath}
                     alt={alt || src}
                     className={`rich_image ${styles.image}`}
-                    width={width}
-                    height={height}
+                    width={imageWidth}
+                    height={imageHeight}
                     quality={50}
                     placeholder="blur"
                     blurDataURL={blurPath}
@@ -105,8 +105,8 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
                     src={srcPath}
                     alt={alt || src}
                     className={`rich_image`}
-                    width={width}
-                    height={height}
+                    width={imageWidth}
+                    height={imageHeight}
                     placeholder="blur"
                     blurDataURL={blurPath}
                     layout='responsive'
