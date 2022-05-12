@@ -9,28 +9,29 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 Hello, this is TrpFrog ([@TrpFrog](https://twitter.com/TrpFrog)). I'm leaving the task alone.
 
-The other day, on foot, a group of 3 stupid 2nd graders (19th graders) and 6 energetic stupid 1st graders (20th graders) went from the Dentsu Otama River ground in Chofu to **Haneda Airport on foot**. I've been. why? ?? ??
+The other day, a group of **3 stupid** 2nd graders (UEC19) and **6 energetic stupid** 1st graders (UEC20) went from the UEC Tama River Ground in Chofu to **Haneda Airport ON FOOT**. Why?????
 
 ## November 22, midnight Somewhere in Tokyo
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123233927 "Chofu Station, 4 hours to fight")
+![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123233927 "Chofu Station, 4 HOURS TO FIGHT")
 
-I arrived in Chofu. I don't want to arrive. **The meeting is at 4 o'clock**, but it came at **0 o'clock**. Yes, there is no train in time for **4 o'clock**. Are you stupid? ?? ??
+I arrived in Chofu. I don't want to arrive. **The meeting is at 4 o'clock**, but it came at **0 o'clock**. Yes, there is no train in time for **4 o'clock**. Are planners stupid?????
 
-So I came by the last train. **It looks sharp.**
+So I came by the last train. **I'm going to blow!**
 
 
 ```twitter-archived
 id: 1330176507512283137
 date: 2020-11-21
-tweet: We gathered at 4 o'clock to harass the parents, and then to revive Chofu (is it true?)
+tweet: I decided to meet at 4:00 <b>to harass the people at my parents' house, and also to make the Chofu people get up in arms</b> (really?).
 ```
 
 
 ```twitter-archived
 id: 1330176800031379464
 date: 2020-11-21
-tweet: Shit ~ I've been harassed ...
+tweet: Shit ~ <b>I got myself into harassment......</b>
+
 ```
 
 
@@ -38,29 +39,29 @@ tweet: Shit ~ I've been harassed ...
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235150 "Midnight wandering is fun!")
 
-I enjoyed reading books and wandering around the station. **Why are you wandering before the walking party?**
+I enjoyed reading books and wandering around the station. **Why am I WALKING AROUND before the WALKING party?**
 
 ```twitter-archived
 id: 1330171905903632391
 date: 2020-11-21
-tweet: I'll be free for a while and read Adachi and Shimamura
+tweet: I'll be free for a while, so I'll read Adachi and Shimamura
 ```
 
 ```twitter-archived
 id: 1330171277542379521
 date: 2020-11-21
-tweet: I want to be cold
+tweet: It's cold, I want to walk
 ```
 
 ## 3:00 am
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123234150 "The Last Supper")
 
-I met up with 19 nerds and ate rice at Matsuya. It was delicious. **I'm going home and going to bed today.**
+I met up with nerds of UEC19 and ate rice at Matsuya. It was delicious. **I'm going home and going to bed today.**
 
 <br> <br> <br> <br> <br> <br> <br>
 
-As if to break the mood, the previous person **finished the spicy food** and had the nerd take a **photo of the announcement of the mysterious event**.
+As if to break the mood, the person in front of me **finished the spicy food** and had the nerd take a **photo of the announcement of the foolish event**.
 
 
 ```twitter-archived
@@ -71,9 +72,15 @@ image: https://pbs.twimg.com/media/EnXoLA2XIAQHdvx?format=jpg&name=large
 ```
 
 
-It doesn't matter, but Kas's 19 trio said, "Why don't you tweet" Matsuya came! "At 4 o'clock and seriously offend 20 who is in time for 4 o'clock?" .. It's dregs.
+It doesn't matter, but dregs of uec19 said,  
 
-I don't care about this either, but one of the 20 most dangerous Twitterers, Rupisia, showed the meeting place on the map, but he got lost and arrived at a mysterious park and was 20 minutes late. I did. **(?)**
+```conversation
+: Why don't you tweet **"We came Matsuya!"** at 4 o'clock and **piss off the 20 people who are seriously on time for 4:00?**
+```
+
+... It's dregs.
+
+This is also unimportant, but one of the most badass tweeters at UEC20, Rupisia, even though I showed her the meeting place on the map, she was 20 minutes late because **she got really lost and ended up in a mysterious park**. **(?)**
 
  
 
@@ -81,10 +88,15 @@ I don't care about this either, but one of the 20 most dangerous Twitterers, Rup
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235314 "Be proficient")
 
-Nerds have gathered at the meeting place. I was really scared to have 20. **Why are you coming?**
+Nerds gathered at the meeting place. It was really scary because there were UEC20. **Why are you coming?**
 
-**Several people were late**, so I was planning to leave with the feeling of "Yatter! I'll leave the late nerds!" ... but I felt sorry for leaving them because I'm a human being. I decided to wait. I was really going to leave it, but we ... it's too good ... (?) 👹
+**A few of them were late,** so I said,
 
+```conversation
+:Yup! I'm leaving all the late nerds behind!
+```
+
+I was going to leave ......, but I felt a little sorry to leave them behind because they are human, so I decided to wait. I was seriously going to leave him behind, but we ...... are too good guys ......(?) 👹
  
 
 ## 5 am 2.3km point
@@ -99,27 +111,28 @@ I arrived at **Tama Suidobashi**. It looked quite far, but this is 2.3km. The de
 
 It seems to be the first train time.
 
-Speaking of which, **a pond along the river? It seemed interesting because there was a way to go around** (probably [Kawasaki Mizube no Rakugaku](https://goo.gl/maps/PXTy4fQzXm8Nrfew9)), but the tall grass was messed up. quitted. It's still dark and I don't want to go into the bush where I can't see my feet ... Rupitoka-san rushed in and said, "I'm going ❗️", and **my legs were slurping**. **That's why I said ...**
-
+By the way, there was a **path around the pond(?)** along the river that looked interesting (probably [Kawasaki Mizube no Gakkou](https://goo.gl/maps/PXTy4fQzXm8Nrfew9)), but I decided against it because **the tall grass was growing so thick.** It was still dark and I didn't want to go into the bushes where I couldn't see my feet. ...... Rupi...something said "LETS GOOOO❗️" and shoved her **legs zubbed**. I told you so....
 
 ## 5:30 am 5.5km point
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000341 "Nikaryō Waterway")
 
-A little off the Tama River and follow **Nikaryō Waterway**. Detour # 1. I feel that the water is clean.
+A little off the Tama River and follow **Nikaryō Waterway**. Detour \#1. I feel that the water is clean.
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000956 "Crossing the Stepping Stones 19")
+![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000956 "UEC19 Crossing the Stepping Stones")
 
-**When I was playing across the stepping stones** 20, 20 hit me with a cold look. **That's good!** It was stupid because it was too far away to be a stepping stone. It falls **I wonder if it's a stepping stone in the first place**
+Because **we were playing across the stepping stones**, UEC20 gave us a cold stare. **That's enough!** 
+
+It was too far away to be a stepping stone, and it was stupid. It would fall and **I doubt they were "stepping stones" in the first place.**
 
 ```twitter-archived
 id: 1330252032536612865
 date: 2020-11-21
-tweet: It was placed at 20 ...
+tweet: Left behind by UEC20......
 ```
  
 
-By the way, it seems that the word **"fall"** was a forbidden phrase because there was an otaku who was in danger of earning credits on that day. I was messing up.
+By the way, it seems that the word **"fall"** was *a forbidden phrase* because **there was an otaku who was in danger of earning credits** on that day. I was messing up.
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001337 "The road under a fairly low railroad track")
 
@@ -131,18 +144,18 @@ By the way, it seems that the word **"fall"** was a forbidden phrase because the
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001706 "eaten")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001729 "Welcome to humans! Like pigeons")
+![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001729 "Maybe this pigeon says Welcome to humans!")
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001800 "But I don't feed")
 
 
 ## 7:00 am 7.2km point
 
-that? You may have thought. Yes, I've been playing too much in the waterways **and I've only traveled about 2km in 90 minutes**. Hmmm, but it can't be helped because it was fun to stepping stones!
+Huh? You may have thought. **Yes, I played too much in the canal and only progressed about 2 km in 90 minutes.** Hmmm, but I had fun with the stepping stones, so what the heck!
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124002014 "People who can relax at all")
 
-As the sun rises, I get a little impatient. **The unhurried 19 trio got angry at 20 ...**
+As the sun rises, I get a little impatient. **UEC20 got angry at us, the unhurried 19 trio...**
 
  
 
@@ -231,13 +244,15 @@ I was distracted by the exclamation mark and forgot what I was doing. I came to 
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124011120 "Baby Room Information Board (from Google Maps)")
 
-"I can't find the toilet ~" <br>
-"There is a baby room information board!" <br>
-"**If you have a baby room, the toilet is also a set!**" <br>
-"Let's go! By the way, where is the baby room?" <br>
-"The information board has a **up arrow** written on it! Isn't it on the top?" <br>
-"Maybe it's in the back!" <br>
-"I'll go up for the time being!"
+```conversation
+: I can't find the toilet ~
+: There is a baby room information board!
+: **If you have a baby room, the toilet is also a set!**
+: Let's go! By the way, where is the baby room?
+: The information board has a **up arrow** written on it! Isn't it on the top?
+: Maybe it's in the back!
+: I'll go up for the time being!
+```
 
 When I went up, I found a map. What! The correct answer for the place where the baby room is located was <b> back </b>. Bad design award. **Write in Japanese!**
 
@@ -263,7 +278,7 @@ Clerk: Is it hot? Is it ice cream? Is it a blend?
 TrpFrog: Yeah! !! !! !! !! Kusso ~~~ I don't know ~~~~, which is Kyu-san? How about Atari-san? Hoho ... Rupishia-san ... **It's far, ice cream is fine (miscellaneous)**, please use 4 ice creams.
 ```
 
-I'm sorry that it took a lot of time to do something like that. What's more, **Naughty Otaku** was stuffed with cinnamon sugar, nut sugar, vanilla sugar, and other fashionable things. **help me. **
+I'm sorry that it took a lot of time to do something like that. What's more, **Naughty Otaku** was stuffed with cinnamon sugar, nut sugar, vanilla sugar, and other fashionable things. **help me.**
 
 On the other hand, the team on the other side of the division was at **Tamagawadai Park** 500m away. It's surprisingly close.
 
@@ -303,11 +318,7 @@ tweet: Rupishia-san ran with a baseball boy, but ...
 
 I came to **Tamagawadai Park**. Beyond this, it was Tamagawa station, so we talked about eating something.
 
-! [] (https://res.cloudinary.com/tr
-
-
-
-pfrog / blog / haneda-walking / 20201124014303)
+![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124014303)
 
 <span style = "display: block; text-align: center; font-size: 2em; font-weight: bold">
     Restaurant, few
@@ -498,7 +509,7 @@ I also went to the top. It was a time, so it was a rattle. It's an international
 I came to the airport! I'm glad I enjoyed the feeling. Let's go home! on the train!
 
 
-For no reason we have to go to Terminals 1 and 2. **On foot. **
+For no reason we have to go to Terminals 1 and 2. **On foot.**
 
 Anger is exploding, it's really painful, **You'll fall down like this?**
 
@@ -531,9 +542,7 @@ But usually I go by train, so I think it means don't walk. I don't know.
 
  
 
-![](https://res.cloudinary.c)
-
-om / trpfrog / blog / haneda-walking / 20201124033008 "Long tunnel, about 700m, I thought it would be the most painful in the last few years")
+![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124033008 "Long tunnel, about 700m, I thought it would be the most painful in the last few years")
 
 <Span style = "font-size: 1.5em; font-weight: bold"> 3km </span> I was frustrated and bent on such a really long, shit-long, deadly straight road. After walking <span style = "font-size: 1.5em; font-weight: bold"> 2.5km </span> on a long road and a long tunnel, I finally arrived at Terminal 1. **What's really going on at this airport?**
 
