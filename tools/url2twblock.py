@@ -4,8 +4,11 @@ import json
 from dateutil import parser
 import pyperclip
 
-url = input()
+url = input().split('?')[0]
 api = 'https://publish.twitter.com/oembed?dnt=true&omit_script=true&url='
+
+if url.isdecimal():
+    url = 'https://twitter.com/trpfrog/status/' + url 
 
 if url == '' or not url.startswith('https://twitter.com'):
     print('Invalid URL')
