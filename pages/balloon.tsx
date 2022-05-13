@@ -60,7 +60,7 @@ export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
 const Balloon: NextPage = () => {
     const [isSoundEnabled, setSoundEnabled] = useState(false)
 
-    const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1640970224/balloon/break.mp3';
+    const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1652447772/balloon/break-immeditary.mp3';
     const [playFunction] = useSound(soundURL, {interrupt: false});
     playSound = isSoundEnabled ? playFunction : () => {};
 
