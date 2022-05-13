@@ -1,5 +1,4 @@
 import type {NextPage} from 'next'
-import {useRouter} from 'next/router';
 
 import styles from "../styles/balloon.module.scss";
 
@@ -61,21 +60,11 @@ export const BalloonDiv: React.FunctionComponent<BalloonDivProps> = ({children, 
 }
 
 const Balloon: NextPage = () => {
-    const router = useRouter();
-    const isSoundEnabled = router.query.enableSound == 'true';
+    const [isSoundEnabled, setSoundEnabled] = useState(false)
 
     const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1640970224/balloon/break.mp3';
     const [playFunction] = useSound(soundURL, {interrupt: false});
     playSound = isSoundEnabled ? playFunction : () => {};
-
-    const toggleSound = () => {
-        router.push({
-            pathname: '/balloon',
-            query: {
-                enableSound: !isSoundEnabled
-            }
-        })
-    }
 
     const getValidInteger = (s: string) => {
         let n = parseInt(s, 10);
@@ -101,7 +90,7 @@ const Balloon: NextPage = () => {
         <Layout>
             <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
                 <p>
-                    <span onClick={toggleSound} className={'linkButton'} style={{marginRight: '10px'}}>
+                    <span onClick={() => setSoundEnabled(!isSoundEnabled)} className={'linkButton'} style={{marginRight: '10px'}}>
                         {isSoundEnabled ? '音を消す' : '音を鳴らす'}
                     </span>
                     <label style={{marginRight: '10px'}}>
