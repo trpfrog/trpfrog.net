@@ -24,7 +24,7 @@ let playSound = () => {};
 const balloonColors = ['blue', 'green', 'orange']
 
 export const BalloonBox = ({width='100%', height='100%'}: BalloonProps) => {
-    const balloonColor = balloonColors[Math.floor(Math.random() * 3)]
+    const [balloonColor] = useState(balloonColors[Math.floor(Math.random() * 3)])
     const [isBroken, setState] = useState(false);
 
     return (
