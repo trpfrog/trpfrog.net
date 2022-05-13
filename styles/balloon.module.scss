@@ -10,38 +10,26 @@
         height: 95px;
     }
 }
+
 .balloon {
     cursor: crosshair;
-}
+    $path: '../public/images/balloon';
 
-.blue {
-    content: '';
-    background-image: url('../public/images/balloon/blue/normal.png');
-}
+    &[data-broken-balloon="true"] {
+        background-image: url($path + '/broken.png');
+        cursor: default;
+    }
 
-.blue:hover {
-    background-image: url('../public/images/balloon/blue/tremble.gif');
-}
-
-.orange {
-    content: '';
-    background-image: url('../public/images/balloon/orange/normal.png');
-}
-
-.orange:hover {
-    background-image: url('../public/images/balloon/orange/tremble.gif');
-}
-
-.green {
-    content: '';
-    background-image: url('../public/images/balloon/green/normal.png');
-}
-
-.green:hover {
-    background-image: url('../public/images/balloon/green/tremble.gif');
-}
-
-.broken {
-    background-image: url('../public/images/balloon/broken.png');
-    cursor: default;
+    &[data-broken-balloon="false"] {
+        @mixin f($color) {
+            background-image: url($path + '/' + $color + '/normal.png');
+            &:hover {
+                background-image: url($path + '/' + $color + '/tremble.gif');
+            }
+        }
+        content: '';
+        &[data-balloon-color="blue"]   { @include f('blue') }
+        &[data-balloon-color="green"]  { @include f('green') }
+        &[data-balloon-color="orange"] { @include f('orange') }
+    }
 }

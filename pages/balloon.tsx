@@ -8,6 +8,7 @@ import Block from "../components/Block";
 import React, {useState} from "react";
 
 import useSound from 'use-sound';
+import Util from "../lib/utils";
 
 type BalloonProps = {
     width: string
@@ -20,41 +21,38 @@ type BalloonDivProps = {
 }
 
 let playSound = () => {};
+const balloonColors = ['blue', 'green', 'orange']
 
-export const BalloonBox: React.FunctionComponent<BalloonProps> = ({children, width='100%', height='100%'}) => {
-    const balloonStyle = {
-        width: `${width}`,
-        height: `${height}`,
-        backgroundSize: `${width} ${height}`
-    }
-    let sty: string;
-    switch (Math.floor(Math.random() * 3)) {
-        case 0: sty = 'blue'; break;
-        case 1: sty = 'green'; break;
-        default: sty = 'orange';
-    }
+export const BalloonBox = ({width='100%', height='100%'}: BalloonProps) => {
+    const balloonColor = balloonColors[Math.floor(Math.random() * 3)]
     const [isBroken, setState] = useState(false);
-    const [color, setColorState] = useState(sty);
 
-    const breakBalloon = () => {
-        setState(true);
-        if (!isBroken) {
-            playSound();
-        }
-    }
-
-    return <span
-        style={balloonStyle}
-        className={`${styles.balloon} ${isBroken ? styles.broken : styles[color]}`}
-        onClick={breakBalloon}
-    />
+    return (
+        <span
+            style={{
+                width, height,
+                backgroundSize: `${width} ${height}`
+            }}
+            className={styles.balloon}
+            data-broken-balloon={isBroken}
+            data-balloon-color={balloonColor}
+            onClick={() => {
+                setState(true);
+                if (!isBroken) {
+                    playSound();
+                }
+            }}
+        />
+    )
 }
 
-export const BalloonDiv: React.FunctionComponent<BalloonDivProps> = ({children, n, width = 80}) => {
+export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
     const height = width / 0.6;
     return (
         <div id={styles.balloon_grid}>
-            {Array.from(Array(n), (v, k) => <BalloonBox key={k} width={`${width}px`} height={`${height}px`}/>)}
+            {Array.from(Array(n), (v, k) => (
+                <BalloonBox key={k} width={`${width}px`} height={`${height}px`}/>
+            ))}
         </div>
     );
 }
@@ -68,10 +66,8 @@ const Balloon: NextPage = () => {
 
     const getValidInteger = (s: string) => {
         let n = parseInt(s, 10);
-        if(isNaN(n)) n = 0;
-        if(n <= 0) n = 1;
-        if(n > 10000) n = 10000;
-        return n;
+        if(isNaN(n)) return 1;
+        return Util.clamp(n, 1, 10000)
     }
 
     const [numberOfBalloons, setNumberOfBalloons] = useState(96);
@@ -98,8 +94,8 @@ const Balloon: NextPage = () => {
                             type="number"
                             value={numberOfBalloons}
                             onChange={(e) => changeNumber(e.target.value)}
-                            max="10000"
-                            min="0"
+                            max={10000}
+                            min={1}
                         /> balloons
                     </label>
                     {' '}
@@ -108,8 +104,8 @@ const Balloon: NextPage = () => {
                             type="number"
                             value={balloonSize}
                             onChange={(e) => changeSize(e.target.value)}
-                            max="10000"
-                            min="0"
+                            max={10000}
+                            min={1}
                         /> px
                     </label>
                 </p>
