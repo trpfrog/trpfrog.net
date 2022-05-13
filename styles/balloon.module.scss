@@ -21,15 +21,15 @@
     }
 
     &[data-broken-balloon="false"] {
-        @mixin f($color) {
-            background-image: url($path + '/' + $color + '/normal.png');
-            &:hover {
-                background-image: url($path + '/' + $color + '/tremble.gif');
+        content: '';
+        $colors: 'blue', 'green', 'orange';
+        @each $color in $colors {
+            &[data-balloon-color=#{$color}] {
+                background-image: url($path + '/' + $color + '/normal.png');
+                &:hover {
+                    background-image: url($path + '/' + $color + '/tremble.gif');
+                }
             }
         }
-        content: '';
-        &[data-balloon-color="blue"]   { @include f('blue') }
-        &[data-balloon-color="green"]  { @include f('green') }
-        &[data-balloon-color="orange"] { @include f('orange') }
     }
 }
