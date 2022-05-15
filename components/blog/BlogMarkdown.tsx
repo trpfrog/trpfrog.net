@@ -69,11 +69,18 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
         const id = content.split('\n')[0]
         const original = content.split('\n').slice(1)
         return (
-            <div style={{textAlign: 'center'}}>
-                <div style={{width: 'min(550px, 100%)', display: 'inline-block'}}>
-                    <Tweet tweetId={id}/>
+            <>
+                <div style={{textAlign: 'center'}}>
+                    <div style={{width: 'min(550px, 100%)', display: 'inline-block'}}>
+                        <div className={'only-on-light-mode'}>
+                            <Tweet tweetId={id} options={{theme: 'light'}}/>
+                        </div>
+                        <div className={'only-on-dark-mode'}>
+                            <Tweet tweetId={id} options={{theme: 'dark'}}/>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </>
         )
     },
 
