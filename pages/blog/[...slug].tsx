@@ -7,7 +7,7 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getAllPostPaths, getPostData} from "../../lib/blog/load";
+import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData} from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
@@ -21,20 +21,22 @@ import {parseWithBudouX} from "../../lib/wordSplit";
 import {parseCookies, setCookie} from "nookies";
 import PostAttributes from "../../components/blog/PostAttributes";
 import {useRouter} from "next/router";
-import {FontAwesomeIcon, FontAwesomeIconProps} from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowLeft, faFileLines,
     faFont,
-    faPencil,
+    faPencil, faStar,
     faToiletPaper,
     faUniversalAccess
 } from "@fortawesome/free-solid-svg-icons";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
+import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 
 type PageProps = {
     entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
+    relatedPosts: BlogPost[]
 }
 
 type Params = {
@@ -51,11 +53,15 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
 
     const entry: BlogPost = await getPostData(slug, postDataOption)
 
+    const tags = entry.tags.split(',')[0].trim()
+    const relatedPosts: BlogPost[] = tags[0] ? await getSortedPostsData(tags[0]) : []
+
     const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
-            imageSize
+            imageSize,
+            relatedPosts
         }
     }
 }
@@ -122,7 +128,7 @@ const EntryButton = (props: {children: React.ReactNode | string, icon: IconProp}
     )
 }
 
-const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
+const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
 
     const [post, setPost] = useState({...entry, imageSize})
 
@@ -265,6 +271,18 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     </Link>
                 </p>
             </Block>
+            {relatedPosts.length > 0 &&
+                <>
+                    <div className={styles.hrule_block}>
+                        <FontAwesomeIcon icon={faStar}/>{' '}
+                        タグ「{post.tags.split(',')[0].trim()}」の記事{' '}
+                        <FontAwesomeIcon icon={faStar}/>
+                    </div>
+                    <ArticleGrid>
+                        {relatedPosts.slice(0, 6).map(e => <ArticleCard entry={e} key={e.slug}/>)}
+                    </ArticleGrid>
+                </>
+            }
         </Layout>
     )
 }
