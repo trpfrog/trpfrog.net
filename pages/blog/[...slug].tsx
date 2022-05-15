@@ -66,6 +66,34 @@ const share = (slug: string) => {
     window.open(tweetURL);
 }
 
+const TogglePageViewLink = ({post}: {post: BlogPost}) => {
+    const router = useRouter()
+    const anchor = router.asPath.split('#').slice(-1)[0]
+
+    let previousArticlePage = NaN
+    const originalPageAnchor = 'original-page-'
+    if (anchor.startsWith(originalPageAnchor)) {
+        previousArticlePage = parseInt(anchor.replace(originalPageAnchor, ''), 10)
+    }
+
+    let url = `/blog/${post.slug}`
+    let text: string
+
+    if (post.isAll) {
+        url += '/' + (previousArticlePage || '');
+        text = previousArticlePage
+            ? previousArticlePage + 'ページに戻る'
+            : '複数のページに分けて読む'
+    } else {
+        url += post.currentPage === 1
+            ? '/all'
+            : '/all#original-page-' + post.currentPage
+        text = '全文を1ページに表示'
+    }
+
+    return <a href={url}>{text}</a>
+}
+
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
 
     const [post, setPost] = useState({...entry, imageSize})
@@ -113,8 +141,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
         }
         setUseUDFont(!useUDFont)
     }
-
-    const router = useRouter()
 
     return (
         <Layout>
@@ -167,22 +193,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                             <a onClick={handleUDFontButton}>
                                 {useUDFont ? '通常フォントで読む' : 'UDフォントで読む'}
                             </a>
-                            {post.numberOfPages >= 2 &&
-                                <a href={`/blog/${post.slug}${
-                                    post.isAll
-                                        // If URL has a prv query, go back to the previous page
-                                        ? (router.query?.prv ? `/${router.query!.prv}` : '')
-                                        // To make it easier to undo a wrong operation, it adds prv query
-                                        : `/all?prv=${post.currentPage}#original-page-${post.currentPage}`
-                                }`}>
-                                    {post.isAll
-                                        ? (router.query?.prv
-                                                ? `${router.query!.prv}ページに戻る`
-                                                : '複数のページに分けて読む'
-                                        )
-                                        : '全文を1ページに表示'}
-                                </a>
-                            }
+                            {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
                         </p>
                     </p>
                 </div>
