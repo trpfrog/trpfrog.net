@@ -1,0 +1,16 @@
+@use 'mixins';
+
+:root {
+    --link-button-color: #77bd36;
+    --link-button-color-bottom: #558d21;
+    --link-button-color-highlighted: #90e200;
+    --link-button-font-color: white;
+}
+
+@include mixins.mq(dark) {
+    :root {
+        --link-button-color: #558d21;
+        --link-button-color-bottom: #406919;
+        --link-button-color-highlighted: #7fc900;
+    }
+}

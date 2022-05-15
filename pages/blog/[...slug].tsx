@@ -21,6 +21,16 @@ import {parseWithBudouX} from "../../lib/wordSplit";
 import {parseCookies, setCookie} from "nookies";
 import PostAttributes from "../../components/blog/PostAttributes";
 import {useRouter} from "next/router";
+import {FontAwesomeIcon, FontAwesomeIconProps} from "@fortawesome/react-fontawesome";
+import {
+    faArrowLeft, faFileLines,
+    faFont,
+    faPencil,
+    faToiletPaper,
+    faUniversalAccess
+} from "@fortawesome/free-solid-svg-icons";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 type PageProps = {
     entry: BlogPost
@@ -78,20 +88,38 @@ const TogglePageViewLink = ({post}: {post: BlogPost}) => {
 
     let url = `/blog/${post.slug}`
     let text: string
+    let icon: IconProp | string
 
     if (post.isAll) {
         url += '/' + (previousArticlePage || '');
-        text = previousArticlePage
-            ? previousArticlePage + 'ページに戻る'
-            : '複数のページに分けて読む'
+        text = '分割表示'
+        icon = faFileLines
     } else {
         url += post.currentPage === 1
             ? '/all'
             : '/all#original-page-' + post.currentPage
-        text = '全文を1ページに表示'
+        icon = faToiletPaper
+        text = '全文表示'
     }
 
-    return <a href={url}>{text}</a>
+    return (
+        <a href={url}>
+            <EntryButton icon={icon}>
+                {text}
+            </EntryButton>
+        </a>
+    )
+}
+
+const EntryButton = (props: {children: React.ReactNode | string, icon: IconProp}) => {
+    return (
+        <div className={styles.entry_button}>
+            <div className={styles.entry_button_icon}>
+                <FontAwesomeIcon icon={props.icon}/>
+            </div>
+            {props.children}
+        </div>
+    )
 }
 
 const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
@@ -180,21 +208,37 @@ const Article: NextPage<PageProps> = ({ entry, imageSize }) => {
                     </p>
 
                     <p id={styles.entry_top_buttons}>
-                        <p className={'link-area'}>
-                            <Link href={'/blog'}>
-                                <a>記事一覧</a>
-                            </Link>
-                            <span onClick={() => share(post.slug)}>
-                                <a>ツイート</a>
-                            </span>
-                            <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                                <a>訂正リクエスト</a>
-                            </Link>
-                            <a onClick={handleUDFontButton}>
-                                {useUDFont ? '通常フォントで読む' : 'UDフォントで読む'}
+                        <Link href={'/blog'}>
+                            <a>
+                                <EntryButton icon={faArrowLeft}>
+                                    記事一覧
+                                </EntryButton>
                             </a>
-                            {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
-                        </p>
+                        </Link>
+                        <span onClick={() => share(post.slug)}>
+                            <EntryButton icon={faTwitter}>
+                                ツイート
+                            </EntryButton>
+                        </span>
+                        <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+                            <a>
+                                <EntryButton icon={faPencil}>
+                                    訂正依頼
+                                </EntryButton>
+                            </a>
+                        </Link>
+                        <a onClick={handleUDFontButton}>
+                            {useUDFont ? (
+                                <EntryButton icon={faFont}>
+                                    通常書体
+                                </EntryButton>
+                            ):(
+                                <EntryButton icon={faUniversalAccess}>
+                                    UD書体
+                                </EntryButton>
+                            )}
+                        </a>
+                        {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
                     </p>
                 </div>
             </Title>
