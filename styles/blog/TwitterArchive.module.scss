@@ -97,11 +97,11 @@
 
 .image, .tweet {
     blockquote {
-        background: none;
+        background: none !important;
         text-align: left;
-        font-style: normal;
+        font-style: normal !important;
         margin: 0;
-        padding: 0;
+        padding: 0 !important;
     }
 }
 
