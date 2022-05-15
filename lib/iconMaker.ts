@@ -21,7 +21,7 @@ export default class IconCanvas {
         }
     }
     
-    upload(files: FileList | null) {
+    upload (files: FileList | null) {
         if(files == null) return;
 
         const canvas = document.getElementById(this.id) as HTMLCanvasElement;
@@ -64,7 +64,7 @@ export default class IconCanvas {
         reader.readAsDataURL(files[0]);
     }
 
-    moveImage(dx: number, dy: number){
+    moveImage(dx: number, dy: number) {
         const c = Math.cos(this.angle * Math.PI / 180);
         const s = Math.sin(this.angle * Math.PI / 180);
         this.x += c * dx + s * dy;
