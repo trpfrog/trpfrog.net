@@ -20,15 +20,16 @@ export const ArticleGrid = ({children}: any) => (
     </div>
 )
 
-const ArticleCard = ({entry, hero}: Props) => {
+const ArticleCard = ({entry, hero = false}: Props) => {
 
     const articleURL = '/blog/' + entry.slug
     const splitTitle = parseWithBudouX(entry.title, entry.slug)
+    const thumbnail  = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
     return (
         // eslint-disable-next-line @next/next/link-passhref
         <Link href={articleURL}>
-            <div className={styles.window}>
+            <div className={styles.window} data-hero-article={hero}>
                 <div className={styles.tags}>
                     {entry.tags
                         .split(',')
@@ -36,15 +37,17 @@ const ArticleCard = ({entry, hero}: Props) => {
                         .map(tag => <Tag tag={tag} key={tag}/>)
                     }
                 </div>
-                <Image
-                    src={getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')}
-                    alt={'thumbnail of ' + entry.slug}
-                    width={hero ? 1000 : 600}
-                    height={300}
-                    objectFit={"cover"}
-                    className={styles.thumbnail}
-                />
-                <div className={`${styles.h3_wrapper} ${hero && styles.hero_h3_wrapper}`}>
+                <div className={styles.thumbnail_wrapper}>
+                    <Image
+                        src={thumbnail}
+                        alt={'thumbnail of ' + entry.slug}
+                        width={hero ? 1000 : 600}
+                        height={300}
+                        objectFit={'cover'}
+                        className={styles.thumbnail}
+                    />
+                </div>
+                <div className={styles.h3_wrapper}>
                     <Link href={articleURL}>
                         <a><h3>{splitTitle}</h3></a>
                     </Link>
