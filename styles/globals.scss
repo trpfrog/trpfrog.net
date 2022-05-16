@@ -87,6 +87,18 @@ h3 {
     }
 }
 
+@include mixins.mq(pc) {
+    .only-on-sp {
+        display: none;
+    }
+}
+
+@include mixins.mq(sp) {
+    .only-on-pc {
+        display: none;
+    }
+}
+
 @media screen {
     ol {
         counter-reset: num;
