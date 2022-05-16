@@ -89,6 +89,7 @@
     grid-gap: 17px;
 
     @include mixins.mq(sp) {
+        display: block;
         margin: 0 8px;
         column-gap: 8px;
         row-gap: 12px;
@@ -96,12 +97,9 @@
 }
 
 @include mixins.mq(sp) {
-    .article_grid {
-        display: block;
-    }
-
     .window[data-hero-article="false"] {
         display: grid;
+        height: initial;
         grid-template-areas:
             "thumbnail tags"
             "thumbnail title"
