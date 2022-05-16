@@ -54,7 +54,9 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
     const entry: BlogPost = await getPostData(slug, postDataOption)
 
     const tags = entry.tags.split(',')[0].trim()
-    const relatedPosts: BlogPost[] = tags[0] ? await getSortedPostsData(tags[0]) : []
+    const relatedPosts: BlogPost[] = !tags[0] ? []
+        : (await getSortedPostsData(tags[0]))
+            .filter((e: BlogPost) => e.slug !== entry.slug)
 
     const imageSize = await fetchAllImageProps(entry);
     return {
