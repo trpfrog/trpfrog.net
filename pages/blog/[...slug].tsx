@@ -277,12 +277,34 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 <>
                     <div className={styles.hrule_block}>
                         <FontAwesomeIcon icon={faStar}/>{' '}
-                        タグ「{post.tags.split(',')[0].trim()}」の記事{' '}
+                        タグ「{post.tags.split(',')[0].trim()}」の新着記事{' '}
                         <FontAwesomeIcon icon={faStar}/>
                     </div>
                     <ArticleGrid>
-                        {relatedPosts.slice(0, 6).map(e => <ArticleCard entry={e} key={e.slug}/>)}
+                        {relatedPosts.slice(0, 6).map((e, idx) => (
+                            <div key={e.slug} className={idx > 2 ? 'only-on-pc' : ''}>
+                                <ArticleCard entry={e}/>
+                            </div>
+                        ))}
                     </ArticleGrid>
+                    {relatedPosts.length > 6 &&
+                        <div style={{textAlign: 'center'}} className={'only-on-pc'}>
+                            <Link href={'/blog/tags/' + post.tags.split(',')[0].trim()}>
+                                <a className={'linkButton'}>
+                                    もっと見る (さらに {relatedPosts.length - 6} 件の記事)
+                                </a>
+                            </Link>
+                        </div>
+                    }
+                    {relatedPosts.length > 3 &&
+                        <div style={{textAlign: 'center'}} className={'only-on-sp'}>
+                            <Link href={'/blog/tags/' + post.tags.split(',')[0].trim()}>
+                                <a className={'linkButton'}>
+                                    もっと見る (さらに {relatedPosts.length - 3} 件の記事)
+                                </a>
+                            </Link>
+                        </div>
+                    }
                 </>
             }
         </Layout>
