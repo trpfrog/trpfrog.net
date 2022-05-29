@@ -44,7 +44,7 @@ const getLangName = (s: string) => {
 export const parseRichMarkdown = (markdown: string) => {
     const markdownComponents = {
         pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
-        code: formatCodeComponent,
+        code: getFormatCodeComponent(),
     }
     return (
         <ReactMarkdown
@@ -64,7 +64,7 @@ export const parseInlineMarkdown = (markdown: string) => {
 // Updated when page was loaded
 let GoNextPage = ({txt}: {txt: string}) => <></>
 
-const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element } = {
+const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost) => JSX.Element } = {
     Twitter: (content) => {
         const id = content.split('\n')[0]
         const original = content.split('\n').slice(1)
@@ -140,7 +140,7 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
     'Twitter-archived': content => <TwitterArchive content={content}/>,
 
-    'Profile-cards' : content => <ProfileCards content={content} />,
+    'Profile-cards' : (content, entry) => <ProfileCards content={content} held={entry?.held}/>,
 
     Centering: content => (
         <div style={{textAlign: 'center'}}>
@@ -261,46 +261,48 @@ const myMarkdownClasses: { [content: string]: (content: string) => JSX.Element }
 
 }
 
-const formatCodeComponent = ({className, children, inline}: codeProps) => {
+const getFormatCodeComponent = (entry?: BlogPost) => {
+    const formatCodeComponent = ({className, children, inline}: codeProps) => {
+        if (inline) {
+            return (
+                <code className={styles.inline_code_block}>
+                    {children}
+                </code>
+            )
+        }
 
-    if (inline) {
+        children[0] = children[0].trimEnd()
+
+        const language = className
+            ? getLangName(
+                className.replace('language-', '').split('.').slice(-1)[0]
+            ) : '';
+
+        if (language in myMarkdownClasses) {
+            return myMarkdownClasses[language](children[0], entry)
+        }
+
+        const fileName = className.includes('.') ?
+            className.replace('language-', '') : ''
+
         return (
-            <code className={styles.inline_code_block}>
-                {children}
-            </code>
+            <pre>
+                {language != '' && (
+                    <div className={styles.code_lang_wrapper}>
+                        <span className={styles.code_lang}>{fileName || language}</span>
+                    </div>
+                )}
+                    <SyntaxHighlighter
+                        language={language}
+                        style={monokaiSublime}
+                        className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
+                    >
+                    {children}
+                </SyntaxHighlighter>
+            </pre>
         )
     }
-
-    children[0] = children[0].trimEnd()
-
-    const language = className
-        ? getLangName(
-            className.replace('language-', '').split('.').slice(-1)[0]
-        ) : '';
-
-    if (language in myMarkdownClasses) {
-        return myMarkdownClasses[language](children[0])
-    }
-
-    const fileName = className.includes('.') ?
-        className.replace('language-', '') : ''
-
-    return (
-        <pre>
-            {language != '' && (
-                <div className={styles.code_lang_wrapper}>
-                    <span className={styles.code_lang}>{fileName || language}</span>
-                </div>
-            )}
-            <SyntaxHighlighter
-                language={language}
-                style={monokaiSublime}
-                className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
-            >
-                {children}
-            </SyntaxHighlighter>
-        </pre>
-    )
+    return formatCodeComponent
 }
 
 export const getPureCloudinaryPath = (path: string) => {
@@ -338,7 +340,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
-        code: formatCodeComponent,
+        code: getFormatCodeComponent(entry),
         p: (props: any) => {
             if (props.node.children[0]?.tagName === 'img') {
                 const image = props.node.children[0]
