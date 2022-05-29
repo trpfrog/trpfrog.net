@@ -2,6 +2,7 @@
 @use 'conversation';
 @use 'result-box';
 @use 'articles';
+@use 'badblog';
 
 @use '../mixins';
 @use '../common/linkbutton';
@@ -82,6 +83,13 @@
         @include mixins.mq(sp) {
             font-size: 1.5rem;
         }
+    }
+
+    .entry_button_text {
+        transform-origin: center;
+        display: inline-block;
+        width: 0;
+        white-space: nowrap;
     }
 }
 

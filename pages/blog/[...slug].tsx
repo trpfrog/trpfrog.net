@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {CSSProperties, useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
@@ -25,13 +25,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowLeft, faFileLines,
     faFont,
-    faPencil, faStar,
+    faPencil, faStar, faThumbsUp,
     faToiletPaper,
-    faUniversalAccess
+    faUniversalAccess, faXmarkCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
+import Util from "../../lib/utils";
 
 type PageProps = {
     entry: BlogPost
@@ -112,20 +113,30 @@ const TogglePageViewLink = ({post}: {post: BlogPost}) => {
 
     return (
         <a href={url}>
-            <EntryButton icon={icon}>
-                {text}
-            </EntryButton>
+            <EntryButton icon={icon} text={text} />
         </a>
     )
 }
 
-const EntryButton = (props: {children: React.ReactNode | string, icon: IconProp}) => {
+const EntryButton = (props: {text: string, icon: IconProp, onClick?: any}) => {
+    const fontName = 'M PLUS Rounded 1c'
+    const maxLenTextWidth = Util.getTextWidth('おさかな', fontName) * 1.48
+    const textWidth = Util.getTextWidth(props.text, fontName) * 1.48
+    const windowSize = Util.useWindowSize()
     return (
-        <div className={styles.entry_button}>
+        <div className={styles.entry_button} onClick={props.onClick}>
             <div className={styles.entry_button_icon}>
                 <FontAwesomeIcon icon={props.icon}/>
             </div>
-            {props.children}
+            <span className={styles.entry_button_text} style={
+                {
+                    transform: `scaleX(${Math.min(maxLenTextWidth / textWidth, 1)}) translateX(${
+                        -textWidth / 2 * (windowSize.width < 800 ? 0.78 : 1)
+                    }px)`,
+                }
+            }>
+                {props.text}
+            </span>
         </div>
     )
 }
@@ -178,6 +189,22 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
         setUseUDFont(!useUDFont)
     }
 
+    const badBlogs = [
+        'コントラストがカス',
+        'ebioishii_u',
+        '赤が色褪せている',
+        '画像が散らかっている',
+        'ぐるぐる'
+    ]
+    const [badBlog, setBadBlog] = useState(0)
+    const handleBadBlog = () => {
+        if (badBlog) {
+            setBadBlog(0)
+        } else {
+            setBadBlog(Math.ceil(Math.random() * badBlogs.length))
+        }
+    }
+
     return (
         <Layout>
             <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
@@ -218,36 +245,38 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                     <p id={styles.entry_top_buttons}>
                         <Link href={'/blog'}>
                             <a>
-                                <EntryButton icon={faArrowLeft}>
-                                    記事一覧
-                                </EntryButton>
+                                <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
                             </a>
                         </Link>
                         <span onClick={() => share(post.slug)}>
-                            <EntryButton icon={faTwitter}>
-                                ツイート
-                            </EntryButton>
+                            <EntryButton icon={faTwitter} text={'ツイート'}/>
                         </span>
                         <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                             <a>
-                                <EntryButton icon={faPencil}>
-                                    訂正依頼
-                                </EntryButton>
+                                <EntryButton icon={faPencil} text={'訂正依頼'}/>
                             </a>
                         </Link>
                         <a onClick={handleUDFontButton}>
                             {useUDFont ? (
-                                <EntryButton icon={faFont}>
-                                    通常書体
-                                </EntryButton>
+                                <EntryButton icon={faFont} text={'通常書体'}/>
                             ):(
-                                <EntryButton icon={faUniversalAccess}>
-                                    UD書体
-                                </EntryButton>
+                                <EntryButton icon={faUniversalAccess} text={'UD書体'}/>
                             )}
                         </a>
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
+                        {badBlog ? (
+                            <EntryButton icon={faThumbsUp} text={'元に戻す'} onClick={handleBadBlog}/>
+                        ) : (
+                            <EntryButton icon={faXmarkCircle} text={'よくないブログ'} onClick={handleBadBlog}/>
+                        )}
                     </p>
+
+                    {badBlog > 0 &&
+                        <p>
+                            よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
+                        </p>
+                    }
+
                 </div>
             </Title>
             <NextSeo
@@ -255,11 +284,16 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <BlogMarkdown
-                entry={post}
-                imageSize={post.imageSize}
-                className={useUDFont ? styles.with_ud_font : ''}
-            />
+            <div
+                className={badBlog ? styles.bad_blog_wrapper : ''}
+                data-bad-blog={badBlog}
+            >
+                <BlogMarkdown
+                    entry={post}
+                    imageSize={post.imageSize}
+                    className={useUDFont ? styles.with_ud_font : ''}
+                />
+            </div>
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
