@@ -15,6 +15,26 @@ const Util =  {
         const context = canvas.getContext('2d') as CanvasRenderingContext2D;
         context.font = font || getComputedStyle(document.body).font;
         return context.measureText(text).width;
+    },
+
+    useWindowSize: () => {
+        const [windowSize, setWindowSize] = useState({
+            width: 0,
+            height: 0
+        });
+        useEffect(() => {
+            if (typeof window === 'undefined') return;
+            const onResize = () => {
+                setWindowSize({
+                    width:  window.innerWidth,
+                    height: window.innerHeight
+                });
+            }
+            window.addEventListener('resize', onResize);
+            onResize();
+            return () => window.removeEventListener('resize', onResize);
+        }, []);
+        return windowSize;
     }
 }
 
