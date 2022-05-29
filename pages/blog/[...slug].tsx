@@ -264,11 +264,11 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                             )}
                         </a>
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
-                        {badBlog ? (
-                            <EntryButton icon={faThumbsUp} text={'元に戻す'} onClick={handleBadBlog}/>
-                        ) : (
-                            <EntryButton icon={faXmarkCircle} text={'よくないブログ'} onClick={handleBadBlog}/>
-                        )}
+                        {/*{badBlog ? (*/}
+                        {/*    <EntryButton icon={faThumbsUp} text={'元に戻す'} onClick={handleBadBlog}/>*/}
+                        {/*) : (*/}
+                        {/*    <EntryButton icon={faXmarkCircle} text={'よくないブログ'} onClick={handleBadBlog}/>*/}
+                        {/*)}*/}
                     </p>
 
                     {badBlog > 0 &&
@@ -284,16 +284,21 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <div
-                className={badBlog ? styles.bad_blog_wrapper : ''}
-                data-bad-blog={badBlog}
-            >
-                <BlogMarkdown
-                    entry={post}
-                    imageSize={post.imageSize}
-                    className={useUDFont ? styles.with_ud_font : ''}
-                />
-            </div>
+            <BlogMarkdown
+                entry={post}
+                imageSize={post.imageSize}
+                className={useUDFont ? styles.with_ud_font : ''}
+            />
+            {/*<div*/}
+            {/*    className={badBlog ? styles.bad_blog_wrapper : ''}*/}
+            {/*    data-bad-blog={badBlog}*/}
+            {/*>*/}
+            {/*    <BlogMarkdown*/}
+            {/*        entry={post}*/}
+            {/*        imageSize={post.imageSize}*/}
+            {/*        className={useUDFont ? styles.with_ud_font : ''}*/}
+            {/*    />*/}
+            {/*</div>*/}
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
