@@ -14,6 +14,12 @@ type BlogImageProps = {
     style?: CSSProperties
 }
 
+export const ImageCaption = ({children}: {children: React.ReactNode}) => (
+    <figcaption className={styles.caption}>
+        {children}
+    </figcaption>
+)
+
 const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
 
     if (!imageData) {
@@ -91,9 +97,9 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
                     onClick={() => setModalState(true)}
                 />
                 {caption &&
-                    <figcaption className={styles.caption}>
+                    <ImageCaption>
                         {parseInlineMarkdown(caption)}
-                    </figcaption>
+                    </ImageCaption>
                 }
             </figure>
             <Modal
