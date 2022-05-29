@@ -55,7 +55,10 @@ const TwitterArchive = ({content}: Props) => {
                     </div>
                 </div>
                 <div className={styles.tweet}>
-                    <blockquote dangerouslySetInnerHTML={{__html: tweetData.tweet}} />
+                    <blockquote>
+                        <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
+                        <span dangerouslySetInnerHTML={{__html: tweetData.tweet}}/>
+                    </blockquote>
                 </div>
                 {tweetData.image &&
                     <div className={styles.image}>
