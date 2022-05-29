@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styles from "../../styles/blog/ProfileCards.module.scss";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import dayjs from "dayjs";
 
 export type ProfileData = {
     name: string
@@ -71,7 +72,7 @@ const ListFormat = ({personalDataList}: any) => (
     </ul>
 )
 
-const ProfileCards = ({content}: {content: string}) => {
+const ProfileCards = ({content, held}: {content: string, held?: string}) => {
     const cards = content.split('---')
 
     const personalDataList = cards.map(card => {
@@ -86,6 +87,11 @@ const ProfileCards = ({content}: {content: string}) => {
         }
         return personalData as ProfileData
     })
+
+    const twitterSearchLink = held ? 'https://twitter.com/search?q='
+        + personalDataList.map(e => 'from%3A' + e.twitter).join('%20OR%20')
+        + `%20until%3A${dayjs(held).format('YYYY-MM-DD')}_23%3A59%3A59_JST`
+        + '&src=typed_query&f=live&pf=on' : ''
 
     const [showProfileCards, setShowProfileCards] = useState(true)
 
@@ -110,6 +116,11 @@ const ProfileCards = ({content}: {content: string}) => {
             ) : (
                 <ListFormat personalDataList={personalDataList} />
             )}
+            {twitterSearchLink !== '' &&
+                <a href={twitterSearchLink} className={'linkButton'}>
+                    開催日の参加者のツイートを見る
+                </a>
+            }
         </>
     )
 }
