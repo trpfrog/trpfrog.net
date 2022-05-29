@@ -12,7 +12,7 @@ import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import ProfileCards from "./ProfileCards";
 import YouTube from "react-youtube";
-import BlogImage from "./BlogImage";
+import BlogImage, {ImageCaption} from "./BlogImage";
 import TwitterArchive from "./TwitterArchive";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import PageNavigation, {PageTransferButton} from "./PageNavigation";
@@ -178,7 +178,7 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
             .join('')
 
         return (
-            <div style={{textAlign: 'center'}}>
+            <figure style={{textAlign: 'center'}}>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: `repeat(${imageSources.length}, 1fr)`,
@@ -195,11 +195,11 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
                     ))}
                 </div>
                 {caption != '' &&
-                    <p className={styles.blog_img_caption}>
+                    <ImageCaption>
                         {parseInlineMarkdown(caption)}
-                    </p>
+                    </ImageCaption>
                 }
-            </div>
+            </figure>
         )
     },
 
