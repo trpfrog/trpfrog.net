@@ -190,8 +190,8 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
     }
 
     const badBlogs = [
-        'コントラストがカス',
         'ebioishii_u',
+        'コントラストがカス',
         '赤が色褪せている',
         '画像が散らかっている',
         'ぐるぐる'

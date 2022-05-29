@@ -12,19 +12,8 @@
         }
     }
 
-    // bad contrast
-    &[data-bad-blog="1"] {
-        --base-font-color: linen;
-        @include mixins.mq(dark) {
-            --base-font-color: midnightblue;
-        }
-        &, h2, h3 {
-            color: var(--base-font-color) !important;
-        }
-    }
-
-    // ebioishii_u blog[data-bad-blog="2"]
-    &[data-bad-blog="2"] > * {
+    // ebioishii_u
+    &[data-bad-blog="1"] > * {
         color: white;
         animation-name: atari-rainbow;
         animation-duration: 1.2s;
@@ -58,6 +47,17 @@
             0% {transform: scale(1.2);}
             50% {transform: scale(1.0);}
             0% {transform: scale(1.2);}
+        }
+    }
+
+    // bad contrast
+    &[data-bad-blog="2"] {
+        --base-font-color: linen;
+        @include mixins.mq(dark) {
+            --base-font-color: midnightblue;
+        }
+        &, h2, h3 {
+            color: var(--base-font-color) !important;
         }
     }
 
