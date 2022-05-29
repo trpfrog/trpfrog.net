@@ -17,6 +17,14 @@ const Util =  {
         return context.measureText(text).width;
     },
 
+    calcMonospacedTextWidth: (text: string): number => {
+        // Consider ASCII figures and half-width kana as half-width figures
+        const doubledSizes = text
+            .replace(/[\x20-\x7e ｦ-ﾟ]/g, '')
+            .length
+        return text.length + doubledSizes
+    },
+
     useWindowSize: () => {
         const [windowSize, setWindowSize] = useState({
             width: 0,
