@@ -61,9 +61,6 @@ export const parseInlineMarkdown = (markdown: string) => {
     return <ReactMarkdown components={comp} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
 }
 
-// Updated when page was loaded
-let GoNextPage = ({txt}: {txt: string}) => <></>
-
 const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost) => JSX.Element } = {
     Twitter: (content) => {
         const id = content.split('\n')[0]
@@ -112,10 +109,17 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
         </div>
     ),
 
-    'Next-page': content => {
+    'Next-page': (content, entry) => {
+        if (!entry) return <></>
         return (
             <div style={{textAlign: 'center'}}>
-                <GoNextPage txt={content}/>
+                <div style={{margin: '1em 0'}}>
+                    <PageTransferButton
+                        entry={entry}
+                        nextPage={entry.currentPage + 1}
+                        buttonText={`Next: ${content} →`}
+                    />
+                </div>
             </div>
         )
     },
@@ -326,17 +330,6 @@ type Props = {
 const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     const markdown = entry.content
-
-    // eslint-disable-next-line react/display-name
-    GoNextPage = ({txt}: {txt: string}) => (
-        <div style={{margin: '1em 0'}}>
-            <PageTransferButton
-                entry={entry}
-                nextPage={entry.currentPage + 1}
-                buttonText={`Next: ${txt} →`}
-            />
-        </div>
-    )
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
