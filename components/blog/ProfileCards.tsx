@@ -117,7 +117,7 @@ const ProfileCards = ({content, held}: {content: string, held?: string}) => {
                 <ListFormat personalDataList={personalDataList} />
             )}
             {twitterSearchLink !== '' &&
-                <a href={twitterSearchLink} className={'linkButton'}>
+                <a href={twitterSearchLink} className={'linkButton'} target="_blank" rel="noreferrer">
                     開催日の参加者のツイートを見る
                 </a>
             }
