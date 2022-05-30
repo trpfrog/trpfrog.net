@@ -4,7 +4,10 @@ export const getReadTimeSecond = (markdown: string) => {
     const linkRemoved = markdown.replace(imageRegex, '').replace(linkRegex, '$1')
 
     let codeRemoved = linkRemoved
-        .split('```')
+        .replaceAll('```', '[READ_TIME_SEP]')
+        .replaceAll('<style>', '[READ_TIME_SEP]')
+        .replaceAll('</style>', '[READ_TIME_SEP]')
+        .split('[READ_TIME_SEP]')
         .filter((e, index) =>
             index % 2 === 0
             || e.startsWith('centering')
