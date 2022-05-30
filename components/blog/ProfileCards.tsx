@@ -90,7 +90,7 @@ const ProfileCards = ({content, held}: {content: string, held?: string}) => {
 
     const twitterSearchLink = held ? 'https://twitter.com/search?q='
         + personalDataList.map(e => 'from%3A' + e.twitter).join('%20OR%20')
-        + `%20until%3A${dayjs(held).format('YYYY-MM-DD')}_23%3A59%3A59_JST`
+        + `%20until%3A${dayjs(held).add(1, 'd').format('YYYY-MM-DD')}_04%3A00%3A00_JST`
         + '&src=typed_query&f=live&pf=on' : ''
 
     const [showProfileCards, setShowProfileCards] = useState(true)
