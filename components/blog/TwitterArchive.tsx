@@ -2,6 +2,7 @@ import styles from "../../styles/blog/TwitterArchive.module.scss";
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDove} from "@fortawesome/free-solid-svg-icons";
+import getOtakuColor from "../../lib/blog/otakuColors";
 
 type Props = {
     content: string
@@ -17,9 +18,9 @@ const TwitterArchive = ({content}: Props) => {
     const userLink  = 'https://twitter.com/' + tweetData.userid
     const tweetLink = userLink + '/status/' + tweetData.id
 
-    if (!tweetData.color)  tweetData.color = '#90e200'
     if (!tweetData.name)   tweetData.name = 'つまみ'
     if (!tweetData.userid) tweetData.userid = 'TrpFrog'
+    if (!tweetData.color)  tweetData.color = getOtakuColor(tweetData.userid)
 
     const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
 
