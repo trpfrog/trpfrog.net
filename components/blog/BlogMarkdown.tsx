@@ -155,6 +155,19 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
         </div>
     ),
 
+    'Centering-with-size': content => {
+        const [size, ...lines] = content.split('\n')
+        content = lines.join('\n')
+        return (
+            <div style={{textAlign: 'center', fontSize: size.trim()}}>
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                >{content}</ReactMarkdown>
+            </div>
+        )
+    },
+
     'Ignore-read-count': content => (
         <>
             <ReactMarkdown
