@@ -89,10 +89,17 @@
     cursor: text;
 }
 
-.image img {
-    width: 100%;
-    border-radius: 8px;
-    margin: 5px 0;
+.image {
+    text-align: center;
+    blockquote {
+        display: inline-block;
+    }
+    img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 5px 0;
+        max-height: 500px;
+    }
 }
 
 .image, .tweet {
