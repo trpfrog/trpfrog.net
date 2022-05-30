@@ -197,7 +197,11 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
         'ぐるぐる'
     ]
     const [badBlog, setBadBlog] = useState(0)
+    const [badButtonStyle, setBadButtonStyle] = useState(
+        {opacity: 0.05, height: 2, margin: 0} as React.CSSProperties
+    )
     const handleBadBlog = () => {
+        setBadButtonStyle({})
         if (badBlog) {
             setBadBlog(0)
         } else {
@@ -264,13 +268,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                             )}
                         </a>
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
-                        {/*{badBlog ? (*/}
-                        {/*    <EntryButton icon={faThumbsUp} text={'元に戻す'} onClick={handleBadBlog}/>*/}
-                        {/*) : (*/}
-                        {/*    <EntryButton icon={faXmarkCircle} text={'よくないブログ'} onClick={handleBadBlog}/>*/}
-                        {/*)}*/}
                     </p>
 
+                    <p style={badButtonStyle} >
+                        <a className={'linkButton'} onClick={handleBadBlog}>
+                            {badBlog ? '元に戻す' : 'よくないブログ'}
+                        </a>
+                    </p>
                     {badBlog > 0 &&
                         <p>
                             よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
@@ -284,21 +288,17 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
-            <BlogMarkdown
-                entry={post}
-                imageSize={post.imageSize}
-                className={useUDFont ? styles.with_ud_font : ''}
-            />
-            {/*<div*/}
-            {/*    className={badBlog ? styles.bad_blog_wrapper : ''}*/}
-            {/*    data-bad-blog={badBlog}*/}
-            {/*>*/}
-            {/*    <BlogMarkdown*/}
-            {/*        entry={post}*/}
-            {/*        imageSize={post.imageSize}*/}
-            {/*        className={useUDFont ? styles.with_ud_font : ''}*/}
-            {/*    />*/}
-            {/*</div>*/}
+            <div
+                className={badBlog ? styles.bad_blog_wrapper : ''}
+                data-bad-blog={badBlog}
+                style={{overflow: 'hidden'}}
+            >
+                <BlogMarkdown
+                    entry={post}
+                    imageSize={post.imageSize}
+                    className={useUDFont ? styles.with_ud_font : ''}
+                />
+            </div>
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
