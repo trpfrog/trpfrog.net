@@ -1,8 +1,10 @@
 @use '../mixins';
+@use "sass:math";
 
 .bad_blog_wrapper {
-
+    display: grid;
     overflow: hidden;
+    gap: var(--main-margin);
 
     @keyframes rainbow {
         @for $i from 0 through 10 {
@@ -25,7 +27,7 @@
             @for $i from 0 through 10 {
                 #{$i * 10}% {
                     background: hsl(36 * $i, 100%, 60%);
-                    font-size: #{($i + 1) / 5}em;
+                    font-size: #{0.5 + 2 * math.sin(($i + 1) / 10 * math.$pi)}em;
                 }
             }
         }
