@@ -2,7 +2,7 @@
 title: 東京タワーが激混みだったのでディズニーランドまで歩いた
 date: 2022-05-31
 held: 2022-05-03
-tags: 徒歩
+tags: 徒歩, 長編記事
 description: GWの東京タワー ヤバ
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1653935377/blog/tower-to-disney-walk/tower-to-disney.jpg
 ---
