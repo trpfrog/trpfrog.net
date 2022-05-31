@@ -289,7 +289,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 openGraph={openGraphImage}
             />
             <div
-                className={badBlog ? styles.bad_blog_wrapper : ''}
+                className={styles.bad_blog_wrapper}
                 data-bad-blog={badBlog}
                 style={{overflow: 'hidden'}}
             >
