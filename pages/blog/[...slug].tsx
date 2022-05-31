@@ -221,7 +221,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                             .split(',')
                             .map((t: string) => t.trim())
                             .map(tag => (
-                                <div
+                                <span
                                     style={{
                                         margin: '3px 3px 0 0',
                                         display: 'inline-block'
@@ -229,12 +229,12 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                                     key={tag}
                                 >
                                     <Tag tag={tag}/>
-                                </div>
+                                </span>
                             ))
                         }
                     </p>
 
-                    <p id={styles.entry_top_buttons}>
+                    <div id={styles.entry_top_buttons}>
                         <Link href={'/blog'}>
                             <a>
                                 <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
@@ -256,7 +256,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                             )}
                         </a>
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
-                    </p>
+                    </div>
 
                     <div>
                         <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}} >
