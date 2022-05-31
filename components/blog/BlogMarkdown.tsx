@@ -223,7 +223,7 @@ const myMarkdownClasses: MarkdownFunctionType = {
             .join('')
 
         return (
-            <figure style={{textAlign: 'center'}}>
+            <figure style={{textAlign: 'center', margin: 'auto 0'}}>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: `repeat(${imageSources.length}, 1fr)`,
