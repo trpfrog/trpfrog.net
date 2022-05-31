@@ -187,11 +187,9 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
         'ぐるぐる'
     ]
     const [badBlog, setBadBlog] = useState(0)
-    const [badButtonStyle, setBadButtonStyle] = useState(
-        {opacity: 0.05, height: 2, margin: 0} as React.CSSProperties
-    )
+    const [badButtonFlag, setBadButtonFlag] = useState(false)
     const handleBadBlog = () => {
-        setBadButtonStyle({})
+        setBadButtonFlag(true)
         if (badBlog) {
             setBadBlog(0)
         } else {
@@ -260,16 +258,18 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
                     </p>
 
-                    <p style={badButtonStyle} >
-                        <a className={'linkButton'} onClick={handleBadBlog}>
-                            {badBlog ? '元に戻す' : 'よくないブログ'}
-                        </a>
-                    </p>
-                    {badBlog > 0 &&
-                        <p>
-                            よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
+                    <div>
+                        <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}} >
+                            <a className={'linkButton'} onClick={handleBadBlog}>
+                                {badBlog ? '元に戻す' : 'よくないブログ'}
+                            </a>
                         </p>
-                    }
+                        {badBlog > 0 &&
+                            <p>
+                                よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
+                            </p>
+                        }
+                    </div>
 
                 </div>
             </Title>
