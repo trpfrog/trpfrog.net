@@ -61,7 +61,15 @@ export const parseInlineMarkdown = (markdown: string) => {
     return <ReactMarkdown components={comp} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
 }
 
-const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost) => JSX.Element } = {
+type MarkdownFunctionType = {
+    [content: string]: (
+        content: string,
+        entry?: BlogPost,
+        imageSize?: { [path: string]: BlogImageData }
+    ) => JSX.Element
+}
+
+const myMarkdownClasses: MarkdownFunctionType = {
     Twitter: (content) => {
         const id = content.split('\n')[0]
         const original = content.split('\n').slice(1)
@@ -177,12 +185,36 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
         </>
     ),
 
-    'Horizontal-images': content => {
+    'Horizontal-images': (content, entry, imageSize) => {
         const regex = new RegExp('^!\\[.*?\]\\(')
+        const defaultImageData: BlogImageData = {
+            caption: "", size: {height: 600, width: 800}
+        }
+
         const imageSources = content
             .split('\n')
             .filter(line => line.match(regex))
             .map(line => line.replace(regex, '').slice(0, -1))
+            .map(src => {
+                if (!imageSize || !imageSize.size) {
+                    return {src, imageData: defaultImageData}
+                } else {
+                    return {
+                        src,
+                        imageData: imageSize[getPureCloudinaryPath(src)] ?? defaultImageData
+                    }
+                }
+            })
+
+        const minImageHeight = imageSources
+            .map(e => e.imageData.size.height)
+            .reduce((prv, cur) => Math.min(prv, cur), 1000000)
+
+
+        imageSources.forEach(e => {
+            e.imageData.size.width *= minImageHeight / e.imageData.size.height
+            e.imageData.size.height = minImageHeight
+        })
 
         const caption = content
             .split('\n')
@@ -198,10 +230,11 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
                     gap: '10px',
                     margin: '2em 0 ' + (caption != '' ? '0' : '2em')
                 }}>
-                    {imageSources.map((src, index) => (
+                    {imageSources.map(({src, imageData}, index) => (
                         <BlogImage
                             src={src}
                             alt={src}
+                            imageData={imageData}
                             key={`${src}-${index}`}
                             style={{margin: 0}}
                         />
@@ -278,7 +311,7 @@ const myMarkdownClasses: { [content: string]: (content: string, entry?: BlogPost
 
 }
 
-const getFormatCodeComponent = (entry?: BlogPost) => {
+const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: BlogImageData }) => {
     const formatCodeComponent = ({className, children, inline}: codeProps) => {
         if (inline) {
             return (
@@ -296,7 +329,7 @@ const getFormatCodeComponent = (entry?: BlogPost) => {
             ) : '';
 
         if (language in myMarkdownClasses) {
-            return myMarkdownClasses[language](children[0], entry)
+            return myMarkdownClasses[language](children[0], entry, imageSize)
         }
 
         const fileName = className.includes('.') ?
@@ -346,7 +379,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
-        code: getFormatCodeComponent(entry),
+        code: getFormatCodeComponent(entry, imageSize),
         p: (props: any) => {
             if (props.node.children[0]?.tagName === 'img') {
                 const image = props.node.children[0]
