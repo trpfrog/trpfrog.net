@@ -119,22 +119,12 @@ const TogglePageViewLink = ({post}: {post: BlogPost}) => {
 }
 
 const EntryButton = (props: {text: string, icon: IconProp, onClick?: any}) => {
-    const fontName = 'M PLUS Rounded 1c'
-    const maxLenTextWidth = Util.getTextWidth('おさかな', fontName) * 1.48
-    const textWidth = Util.getTextWidth(props.text, fontName) * 1.48
-    const windowSize = Util.useWindowSize()
     return (
         <div className={styles.entry_button} onClick={props.onClick}>
             <div className={styles.entry_button_icon}>
                 <FontAwesomeIcon icon={props.icon}/>
             </div>
-            <span className={styles.entry_button_text} style={
-                {
-                    transform: `scaleX(${Math.min(maxLenTextWidth / textWidth, 1)}) translateX(${
-                        -textWidth / 2 * (windowSize.width < 800 ? 0.78 : 1)
-                    }px)`,
-                }
-            }>
+            <span className={styles.entry_button_text}>
                 {props.text}
             </span>
         </div>
