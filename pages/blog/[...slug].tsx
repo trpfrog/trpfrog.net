@@ -199,7 +199,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
 
     return (
         <Layout>
-            <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
+            <Title className={styles.article_title_block}>
                 {post.thumbnail &&
                     <Image
                         src={getPureCloudinaryPath(post.thumbnail)}

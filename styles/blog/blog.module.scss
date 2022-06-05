@@ -18,13 +18,20 @@
     }
 }
 
+.article_title_block {
+    padding: 0;
+    border: 5px solid var(--window-bkg-color);
+    overflow: hidden;
+}
+
 .inner_title_block {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
 
-    background-color: rgba(white, 0.9);
-    padding: var(--window-padding-top-bottom) var(--window-padding-left-right);
+    padding:
+        var(--window-padding-top-bottom)
+        var(--window-padding-left-right);
 
     @include mixins.mq(dark) {
         background-color: rgba(#202020, 0.9);
