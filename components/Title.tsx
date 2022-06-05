@@ -8,22 +8,32 @@ type Props = {
     ribbonText?: string
     cardImageUrl?: string
     showDefaultText?: boolean
+    children?: React.ReactNode
     style?: CSSProperties
 }
 
-const Title: React.FunctionComponent<Props> = ({
-    children, title, description, cardImageUrl, ribbonText='', showDefaultText=true, style
-}) => {
+const Title: React.FunctionComponent<Props> = (props) => {
+    const {
+        children,
+        title,
+        description,
+        showDefaultText=true
+    } = props
+
     return (
         <>
             <NextSeo
                 title={title + ' - ' + process.env.title}
-                description={description}
-                openGraph={cardImageUrl ? {
-                    images: [{ url: cardImageUrl }]
+                description={props.description}
+                openGraph={props.cardImageUrl ? {
+                    images: [{ url: props.cardImageUrl }]
                 } : {}}
             />
-            <Block id={"title"} ribbonText={ribbonText} style={style}>
+            <Block
+                id={"title"}
+                ribbonText={props.ribbonText ?? ''}
+                style={props.style}
+            >
                 <div>
                     {showDefaultText && title && <h1>{title}</h1>}
                     {showDefaultText && description && <p>{description}</p>}
