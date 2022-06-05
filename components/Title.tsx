@@ -10,6 +10,7 @@ type Props = {
     showDefaultText?: boolean
     children?: React.ReactNode
     style?: CSSProperties
+    className?: string
 }
 
 const Title: React.FunctionComponent<Props> = (props) => {
@@ -31,6 +32,7 @@ const Title: React.FunctionComponent<Props> = (props) => {
             />
             <Block
                 id={"title"}
+                className={props.className}
                 ribbonText={props.ribbonText ?? ''}
                 style={props.style}
             >
