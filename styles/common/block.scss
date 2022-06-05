@@ -27,6 +27,21 @@
     text-align: left;
     box-shadow: 0 6px 0 var(--window-bottom-color);
     overflow-x: hidden;
+
+    .no-padding {
+        position: relative;
+        --main-width: min(1000px, 100vw - 2 * var(--main-margin));
+
+        // TODO: use variable
+        @include mixins.mq(sp) {
+            --main-width: calc(100vw - 2 * 8px);
+        }
+
+        --left-margin: calc(0.5 * (100vw - var(--main-width)));
+        width: var(--main-width);
+        left: calc(-1 * ((100vw - 100%) / 2 - var(--left-margin)));
+        margin: 0;
+    }
 }
 
 .main-window h2 {
