@@ -3,7 +3,7 @@
 
 .bad_blog_wrapper {
     display: grid;
-    overflow: hidden;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--main-margin);
 
     @keyframes rainbow {

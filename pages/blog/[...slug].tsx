@@ -281,7 +281,6 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
             <div
                 className={styles.bad_blog_wrapper}
                 data-bad-blog={badBlog}
-                style={{overflow: 'hidden'}}
             >
                 <BlogMarkdown
                     entry={post}

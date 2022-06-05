@@ -39,7 +39,7 @@ html {
             var(--navigation-height)
             auto
             var(--footer-height);
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
 }
 
 @include mixins.mq(dark) {
@@ -64,6 +64,7 @@ main {
     margin: var(--main-margin);
     max-width: 1000px;
     display: inline-grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-gap: var(--main-margin);
     text-align: left;
 }
