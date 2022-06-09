@@ -7,7 +7,7 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData} from "../../lib/blog/load";
+import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData, openFileInCotEditor} from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
@@ -257,6 +257,17 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                         </a>
                         {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
                     </div>
+
+                    {process.env.NODE_ENV === 'development' &&
+                        <p>
+                            <a
+                                className={'linkButton'}
+                                onClick={() => fetch(`/api/posts/open/${post.slug}`)}
+                            >
+                                編集する
+                            </a>
+                        </p>
+                    }
 
                     <div>
                         <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}} >
