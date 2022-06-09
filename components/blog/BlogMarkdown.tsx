@@ -373,9 +373,37 @@ type Props = {
     className?: string
 }
 
-const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
+type RendererProps = {
+    toRender: string
+    entry?: BlogPost
+    imageSize?: { [path: string]: BlogImageData }
+    renderLaTeX?: boolean
+}
 
-    const markdown = entry.content
+const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX}: RendererProps) => {
+
+    if (renderLaTeX) {
+        const mathjaxConfig = {
+            loader: { load: ["[tex]/html"] },
+            tex: {
+                packages: { "[+]": ["html"] },
+                inlineMath: [["$", "$"]],
+                displayMath: [["$$", "$$"]]
+            }
+        };
+        return (
+            <MathJaxContext version={3} config={mathjaxConfig}>
+                <MathJax>
+                    <ArticleRenderer
+                        toRender={toRender}
+                        entry={entry}
+                        imageSize={imageSize}
+                        renderLaTeX={false}
+                    />
+                </MathJax>
+            </MathJaxContext>
+        )
+    }
 
     const markdownComponents = {
         pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
@@ -387,7 +415,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                     <BlogImage
                         src={image.properties.src}
                         alt={image.properties.alt}
-                        imageData={imageSize[getPureCloudinaryPath(image.properties.src)]}
+                        imageData={imageSize ? imageSize[getPureCloudinaryPath(image.properties.src)] : undefined}
                     />
                 )
             }
@@ -410,15 +438,27 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
         }
     };
 
-    const mathjaxConfig = {
-        loader: { load: ["[tex]/html"] },
-        tex: {
-            packages: { "[+]": ["html"] },
-            inlineMath: [["$", "$"]],
-            displayMath: [["$$", "$$"]]
-        }
-    };
 
+
+    return (
+        <ReactMarkdown
+            components={markdownComponents as any}
+            remarkPlugins={[
+                remarkGfm,
+                () => remarkToc({heading: '目次'})
+            ]}
+            rehypePlugins={[
+                rehypeRaw,
+                rehypeSlug,
+            ]}
+        >
+            {toRender}
+        </ReactMarkdown>
+    )
+}
+
+const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
+    const markdown = entry.content
     return (
         <>
             {markdown.map((content, idx) => (
@@ -433,23 +473,12 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
                         className={styles.post}
                         style={{wordBreak: 'break-word'}}
                     >
-                        <MathJaxContext version={3} config={mathjaxConfig}>
-                            <MathJax>
-                                <ReactMarkdown
-                                    components={markdownComponents as any}
-                                    remarkPlugins={[
-                                        remarkGfm,
-                                        () => remarkToc({heading: '目次'})
-                                    ]}
-                                    rehypePlugins={[
-                                        rehypeRaw,
-                                        rehypeSlug,
-                                    ]}
-                                >
-                                    {content}
-                                </ReactMarkdown>
-                            </MathJax>
-                        </MathJaxContext>
+                        <ArticleRenderer
+                            toRender={content}
+                            entry={entry}
+                            imageSize={imageSize}
+                            renderLaTeX={true}
+                        />
                     </article>
                     {idx === markdown.length - 1 &&
                         <PageNavigation entry={entry}/>
