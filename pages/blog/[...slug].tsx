@@ -1,4 +1,4 @@
-import React, {CSSProperties, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
@@ -7,7 +7,7 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData, openFileInCotEditor} from "../../lib/blog/load";
+import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData} from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
@@ -25,14 +25,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowLeft, faFileLines,
     faFont,
-    faPencil, faStar, faThumbsUp,
+    faPencil, faStar,
     faToiletPaper,
-    faUniversalAccess, faXmarkCircle
+    faUniversalAccess
 } from "@fortawesome/free-solid-svg-icons";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
-import Util from "../../lib/utils";
 
 type PageProps = {
     entry: BlogPost
