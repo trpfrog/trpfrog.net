@@ -16,10 +16,13 @@ export const getReadTimeSecond = (markdown: string) => {
         .replace(/[ 　\n*#]/g, '')
         .replace(/centering/g, '')
 
+    let images = (markdown.match(imageRegex) || []).length
+
     const twitterArchives = linkRemoved
         .split('```')
         .filter((e, index) => index % 2 === 1 && e.startsWith('twitter-archived'))
         .filter(e => {
+            if (e.includes('image:')) images++
             return e.includes('tweet:')
         })
         .map(e => e
@@ -29,7 +32,6 @@ export const getReadTimeSecond = (markdown: string) => {
             .replace(/<.*?>/g, '') // remove tags
         ).join('')
 
-    const images = (markdown.match(imageRegex) || []).length
 
     const length = images * 20 + codeRemoved.length + twitterArchives.length * 0.6
 
