@@ -1,7 +1,8 @@
 ---
 title: 楽しい江ノ島観光 + 鎌倉徒歩会
 date: 2020-12-30
-updated: 2020-12-31
+updated: 2022-06-09
+held: 2020-12-28
 tags: 徒歩, 長編記事
 description: 楽しいね
 thumbnail: https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229040920
@@ -91,10 +92,13 @@ description: 歩くときにぐるぐる回ったりとか、いきなりダッ�
 
 早く来ているのは僕たちだけではなく、ふみさんもその一人でした。
 
-```twitter
-1343319876996198401
+```twitter-archived
+id: 1343319876996198401
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654510573/blog/enoshima-walk/EqRuTjQVQAA0upm.jpg
 ```
-
 ということで**意味は分かりませんが**、合流……集合時間まで余裕があるのでお散歩をしました。
 
  
@@ -107,13 +111,13 @@ description: 歩くときにぐるぐる回ったりとか、いきなりダッ�
 
 変な人とも遭遇しました。(羽田の記事を参照)
 
-```twitter
-1343336271435862016
+```twitter-archived
+id: 1343336271435862016
+date: 2020-12-28
+tweet: 食われています
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654510917/blog/enoshima-walk/EqR9NolUYAI8I79.jpg
 ```
 
-
-
- 
 
 ## 楽しい江ノ島巡り
 
@@ -152,20 +156,22 @@ eno=passをご存知ですか？
 
 これはどうでもいいのですが、eno=passをオタクに配ってたら目の前にうんこが落ちてきました。**フン！**
 
-```twitter
-1343344978064408576
+```twitter-archived
+id: 1343344978064408576
+date: 2020-12-28
+tweet: 目の前にうんこ落とされてキレた
 ```
 
 あと変な人がいました。
 
-```twitter
-1343342968439115777
+```twitter-archived
+id: 1343342968439115777
+name: デビルクロース
+color: royalblue
+userid: _devikuro
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654510998/blog/enoshima-walk/EqSDTceVQAAkUvZ.jpg
 ```
-
-
-
- 
-
 
 
 ## 入島
@@ -178,17 +184,64 @@ eno=passをご存知ですか？
 
 公衆電話を見つけました。最近の**オタク・ウォーキング**のルールとして、公衆電話を見つけたら[あすなろママ](https://twitter.com/Asunarowasabi_U)に電話をしなくてはいけない……ではなくて連絡を取らないといけないのでTwitterで写真を送ります。微笑んでくれるといいですね。
 
+````horizontal-scroll
+
+```twitter-archived
+id: 1343300931283140608
+date: 2020-12-27
+reply: @Asunarowasabi_U
+tweet: 📞
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654774635/blog/enoshima-walk/EqRdEhLUYAAECHP.jpg
+style: {"width": "300px"}
+```
+
+```twitter-archived
+id: 1343302017368772608
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-27
+reply: @Asunarowasabi_U
+tweet: &phone;
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654774644/blog/enoshima-walk/EqReD90VEAAYtW7.jpg
+style: {"width": "300px"}
+```
+
+```twitter-archived
+id: 1343345228174913537
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-27
+reply: @Asunarowasabi_U
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654774648/blog/enoshima-walk/EqSFXMYUcAIOCmD.jpg
+style: {"width": "300px"}
+```
+
+```twitter-archived
+id: 1343345267483922432
+date: 2020-12-27
+reply: @Asunarowasabi_U
+tweet: 📞
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654774658/blog/enoshima-walk/EqSFZLbVoAACaXn.jpg
+style: {"width": "300px"}
+```
+
+````
+
 ## 江ノ島東部
 
 ### モース記念碑 (チェックポイント 1/18)
 
 江ノ島に入って、まずはお店がいっぱいある通りに向かい……**たくなるじゃないですか？**
 
-```twitter
-1343347540024938497
+```twitter-archived
+id: 1343347540024938497
+name: めがすこ
+userid: megane_sukore
+color: lightgray
+date: 2020-12-28
+tweet: 江ノ島に上陸しました❗❗
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654511079/blog/enoshima-walk/EqSHduZVoAAVx9e.jpg
 ```
-
-
 
 **これをあえて避けて**左に曲がり、横断歩道をわたり、しばらく進んで左に曲がると第一チェックポイント、**モース記念碑**が現れます。苔むしてたらモス記念碑だったな(爆笑)
 
@@ -196,11 +249,19 @@ eno=passをご存知ですか？
 
 海洋生物の研究をしたエドワード・S・モースの功績を讃える記念碑、らしいです。江ノ島に実験所があったとか。**「ここにあったんじゃない？」みたいな碑** があったらしいのですが調査不足により巡り忘れてしまいました……。
 
-```twitter
-1343348132122296320
+```twitter-archived
+id: 1343348132122296320
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+tweet: しょぼいチェックポイント
 ```
 
-
+```horizontal-images
+![](https://res.cloudinary.com/trpfrog/image/upload/v1654511320/blog/enoshima-walk/EqSH_ouVQAAEw9e.jpg)
+![](https://res.cloudinary.com/trpfrog/image/upload/v1654511313/blog/enoshima-walk/EqSH-fVVoAI5F-c.jpg)
+撮影: fmnpt
+```
 
  **しょぼいとか言うな！**
 
@@ -214,8 +275,13 @@ eno=passをご存知ですか？
 
 タコさんとナフサくんがここで戯れてた気がします。池ポチャしそう。もっとも、落ちたらポチャとかでは済まないのですが……
 
-```twitter
-1343348361546452992
+```twitter-archived
+id: 1343348361546452992
+name: 運命
+userid: Chu_ChuCo
+color: #515151
+date: 2020-12-28
+tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外みんな超越者じゃん<br/>ヤバすぎる
 ```
 
 まあ、**池のギリギリで遊んでる大学生**は何かを超越しすぎてると思う。僕は逃げていました、まともなので……
@@ -301,17 +367,36 @@ eno=passをご存知ですか？
 
 ナフサくんと**テトラポッド**を見に行きました。テトラテトラしている。テトラポッドを見に行ったつもりだったのに何故か**謎の儀式が始まってしまいました。**
 
-```twitter
-1343358499191808001
+```twitter-archived
+id: 1343358499191808001
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+tweet: これなんの儀式？
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654511538/blog/enoshima-walk/EqSRbbBUwAANQg6.jpg
 ```
-
 
 
 儀式をしていたので気がつかなかったのですが、kissyさんが合流していました。
 
-> あっ、電通大組発見！！！
-> 
-> ── kissy (@muse_daybreak)
+```twitter-archived
+id: 1343356935299481602
+name: kissy
+userid: muse_daybreak
+date: 2020-12-28
+tweet: あっ、電通大組発見！！！
+color: linear-gradient(120deg, rgba(115,189,48,1) 0%, rgba(153,254,60,1) 49%, rgba(221,48,255,1) 50%, rgba(182,41,210,1) 100%)
+```
+
+```twitter-archived
+id: 1343356935299481602
+name: kissy
+userid: muse_daybreak
+date: 2020-12-28
+tweet: これは釣りしてる人達と灯台と電通大生
+color: linear-gradient(120deg, rgba(115,189,48,1) 0%, rgba(153,254,60,1) 49%, rgba(221,48,255,1) 50%, rgba(182,41,210,1) 100%)
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654511937/blog/enoshima-walk/EqSQlawUYAAgpx7.jpg
+```
 
 オタクがTwitterで無限に実況してるせいで簡単に合流できるのウケる
 
@@ -325,11 +410,12 @@ eno=passをご存知ですか？
 ```
 
 
-
-```twitter
-1343360747024207873
+```twitter-archived
+id: 1343360747024207873
+date: 2020-12-28
+tweet: オタク足つぼ行列嫌すぎる
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512038/blog/enoshima-walk/EqSTegDU0AEsmV9.jpg
 ```
-
 ところで雨降りませんね！？予報だと結構ざーざーしそうだったのですが。良いことだ……
 
 ### なんか立入禁止のところ (チェックポイント 6/18)
@@ -354,10 +440,12 @@ eno=passをご存知ですか？
 
 水溜り(海水溜り？)は結構深かったもののあまり魚はいませんでした。**カニの抜け殻**みたいなのはありました。動かなかったからたぶん抜け殻
 
-```twitter
-1343363834359123969
+```twitter-archived
+id: 1343363834359123969
+date: 2020-12-28
+tweet: 🦀
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512075/blog/enoshima-walk/EqSWSO-UwAAIMFx.jpg
 ```
-
 
 
  
@@ -394,14 +482,21 @@ eno=passをご存知ですか？
 
 ヨットハーバーの奥に進むと行けるのですが、さっき行き忘れていたのでここで回収します。
 
-
-```twitter
-1343371699308228610
+```twitter-archived
+id: 1343371051191787523
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+tweet: フォトスポットあった
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513241/blog/enoshima-walk/EqScyxdUUAArbzw.jpg
 ```
 
 
-
- 
+```twitter-archived
+id: 1343371699308228610
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512117/blog/enoshima-walk/EqSdbyQUwAIyVRa.jpg
+```
 
 ![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229193715 "オリンピックの聖火台")
 
@@ -429,12 +524,13 @@ eno=passをご存知ですか？
 
 というわけでテラス席につきました。**こんなとこに来てまでツイッターすんな**
 
-```twitter
-1343375390170099713
+```twitter-archived
+id: 1343375390170099713
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: オタクテラス席占領❗️
 ```
-
-
-
  
 
 **さみ〜〜〜〜〜〜〜** かったのですが、お茶が熱くて良かったです。写真撮りまくってたら冷めたけどおかわりがあったので安心。
@@ -447,20 +543,41 @@ eno=passをご存知ですか？
 
 他にも海鮮系のメニューが色々ありました。
 
-```twitter
-1343379623338360833
+```twitter-archived
+id: 1343379623338360833
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: しらす丼です
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512344/blog/enoshima-walk/EqSkpQ2U8AAVW3k.jpg
 ```
 
-```twitter
-1343380011869298690
+```twitter-archived
+id: 1343380011869298690
+name: やと
+color: darkblue
+userid: ya_to_UEC_
+date: 2020-12-28
+tweet: 早めのおひる！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512389/blog/enoshima-walk/EqSk_kiU8AEkfzQ.jpg
 ```
 
-```twitter
-1343384990717906944
+```twitter-archived
+id: 1343384990717906944
+color: royalblue
+name: デビルクロース
+userid: _devikuro
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512358/blog/enoshima-walk/EqSphfIVEAAveZA.jpg
 ```
 
-```twitter
-1343382482096295937
+```twitter-archived
+id: 1343382482096295937
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+tweet: よくこれで飯食えるな
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512373/blog/enoshima-walk/EqSnPYHUcAAzkZP.jpg
 ```
 
 景色も良いし、味も良い。うふふ。
@@ -471,22 +588,33 @@ eno=passをご存知ですか？
 
 店を出たところで店長さん(多分)にいろいろ江ノ島情報を教えていただきました。 
 
-<span style="font-size:1.5em">
-<i>「もしこの中に<b>カップルがいたら</b>龍恋の鐘に行くといいよ！」</i>
-</span>
+```centering-with-size
+1.5em
+
+*「もしこの中に**カップルがいたら**龍恋の鐘に行くといいよ！」*
+
+```
 
 行くけど、行くけど**カップルはいない**んだなあ、電通大生に((電通大生にはいるだろ))
 
-いや、この中にいたらどうしよう。
+いや、この中にいたらどうしよう……
 
  
-> ｳﾝﾒ**派手にずっこけてた**けど僕もその前に店の階段で躓いて止まれなくて壁に激突したんだよな…
-> 
-> ── やと (@ya_to_UEC_) 
+```twitter-archived
+id: 1343973154893357064
+name: やと
+color: darkblue
+userid: ya_to_UEC_
+date: 2020-12-28
+tweet: ｳﾝﾒ<b>派手にずっこけてた</b>けど僕もその前に店の階段で躓いて止まれなくて壁に激突したんだよな…
+```
 
-<span style="font-size:2em; font-weight: bold">
-？？？？？？？？？？
-</span>
+```centering-with-size
+2em
+
+**？？？？？？？？？？**
+
+```
 
 お店の方が大変素敵な方で、なんか絆創膏もらったり色々お世話になったみたいです。
 
@@ -520,30 +648,50 @@ https://tabelog.com/kanagawa/A1404/A140403/14046287/
 
 ペースは最悪ですが、楽しければなんでもいいので店がある通りでソフトクリームを食べます。僕はなんか迷いすぎて結局何も食えなかった。**判断が遅い！**
 
-```twitter
-1343391696323633153
+```twitter-archived
+id: 1343391696323633153
+name: めがすこ
+userid: megane_sukore
+color: lightgray
+date: 2020-12-28
+tweet: え
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512655/blog/enoshima-walk/EqSvnS5U0AEw8mu.jpg
 ```
 
+```centering
 なんで？
-
-```twitter
-1343395674201542657
 ```
 
+```twitter-archived
+id: 1343395674201542657
+name: めがすこ
+userid: megane_sukore
+date: 2020-12-28
+color: lightgray
+tweet: ❗❗❗❗❗
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512744/blog/enoshima-walk/EqSzKLNUcAA8Mxy.jpg
+```
+
+```centering
 仮面人類、増えちゃった……
+```
 
 
 ### 江島神社行きエスカー
 
 江島神社行きエスカーに乗ります。**徒歩会とは？**
 
-```twitter
-1343395469490147328
+```twitter-archived
+id: 1343395469490147328
+date: 2020-12-28
+tweet: 徒歩会終了した
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512790/blog/enoshima-walk/EqSzDNVVgAElncu.jpg
 ```
 
-
-```twitter
-1343395811455975425
+```twitter-archived
+id: 1343395811455975425
+date: 2020-12-28
+tweet: エスカー勢全員ツイッターしてないか？おかしいよ
 ```
 
 エスカーは短いですが、eno=pass特典なのできっちり使っていきます。
@@ -556,15 +704,23 @@ https://tabelog.com/kanagawa/A1404/A140403/14046287/
 
 100分ぶりぐらいのチェックポイントです。神社の紋章が三角形三つだからか、後ろに並んでた小学生が「トライフォースだ！」と嬉しそうでした。**大学生も嬉しそうです。**
 
-```twitter
-1343396577960816640
+```twitter-archived
+id: 1343396577960816640
+name: ナフサ系男子ヨーロピアン
+userid: betyogohangaH
+color: gray
+date: 2020-12-28
+tweet: ゼルダの伝説です
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512906/blog/enoshima-walk/EqS0EC8U8AAcsqU.jpg
 ```
 
 
-```twitter
-1343396425757954048
+```twitter-archived
+id: 1343396425757954048
+date: 2020-12-28
+tweet: 感染症対策だ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512841/blog/enoshima-walk/EqSz6zoVgAIzVQ0.jpg
 ```
-
 
 手を清めるところが567対策されていました。にしても水がちょろちょろすぎる、端っこ何も流れてなかった。
 
@@ -601,6 +757,15 @@ https://tabelog.com/kanagawa/A1404/A140403/14046287/
 
 右側も撮れ！
 
+```twitter-archived
+id: 1343404635277545472
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+tweet: これはナフサを食べるゴジラ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513085/blog/enoshima-walk/EqS7Xx5UUAAb95m.jpg
+```
+
 
 ### 江ノ島展望台(名称不明) (チェックポイント 12/18)
 
@@ -617,10 +782,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 シーキャンドルはサムエル・コッキング苑の中にあります。どちらも入場料を取るので合わせて**700円**かかりますが、**eno=passパワー**で突破します。
 
-```twitter
-1343408424571297792
+```twitter-archived
+id: 1343408424571297792
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+tweet: #CHOFUMELTDOWN
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654512955/blog/enoshima-walk/EqS-1PYUYAAcgzo.jpg
 ```
-
 
 めちゃくちゃ寝ている男女がいました。(画像はイメージです)
 
@@ -644,11 +813,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 ![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229221933 "海が二色！")
 
-> みんな２つの海の色の写真あげてるかど最初に見つけたのは僕だということをここに主張しておきたい(厄介オタク)
->
-> — タコ人間 (@t12uec18)
-
-
+```twitter-archived
+id: 1343413393621807104
+name: タコ人間
+userid: t12uec18
+date: 2020-12-28
+color: red
+tweet: みんな２つの海の色の写真あげてるかど最初に見つけたのは僕だということをここに主張しておきたい(厄介オタク)
+```
 
  
 
@@ -658,23 +830,34 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 1343413149895065600
 ```
 
-
-
-```twitter
-1343413328996024320
+```twitter-archived
+id: 1343413328996024320
+date: 2020-12-28
+tweet: 一般通過仮面
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513441/blog/enoshima-walk/EqTDTHjVQAIYzZZ.jpg
 ```
 
-
-
+```centering
 仮面だらけの展望台、嫌すぎる
-
- 
-
-```twitter
-1343414046939172865
 ```
 
  
+```twitter-archived
+id: 1343414046939172865
+date: 2020-12-28
+tweet: &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;🚣
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513414/blog/enoshima-walk/EqTD8tnVEAAteoF.jpg
+```
+
+```twitter-archived
+id: 1343414401559191558
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+reply: @TrpFrog
+tweet: 美味しくいただきました
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513541/blog/enoshima-walk/EqTEPnkU8AEWjLw.jpg
+```
 
 帰りは当然階段を使います。
 
@@ -682,10 +865,12 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 下の売店ではお土産を売っています。
 
-```twitter
-1343420355973529600
+```twitter-archived
+id: 1343420355973529600
+date: 2020-12-28
+tweet: シャツ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513512/blog/enoshima-walk/EqTJr0TVoAEmj6R.jpg
 ```
-
 
 
 **変なTシャツ部**なのでTシャツを買います。きゅ〜さんとふみさんも買っていました。こんなに一気にTシャツ売れること、滅多にないだろ
@@ -734,6 +919,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 もしかして、疲れが溜まっていますか？僕は元気です。(謎マウント)
 
+```twitter-archived
+id: 1343429546364682240
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513710/blog/enoshima-walk/EqTSBYjUUAAxjA8.jpg
+```
+
  
 
 ### べんてん丸乗り場 (チェックポイント 16/18)
@@ -770,8 +963,15 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 稚児ヶ淵トイレ上に展望デッキがあります。そこで一旦QK！サーバルちゃんも言ってたし。僕は疲れていませんが(マウント2回目)
 
-```twitter
-1343437720505315331
+```twitter-archived
+id: 1343437720505315331
+name: ナフサ系男子ヨーロピアン
+userid: betyogohangaH
+color: gray
+date: 2020-12-28
+reply: @lupicure20
+tweet: 親をも喰らう子どもです
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513770/blog/enoshima-walk/EqTZe8BUYAECHv5.jpg
 ```
 
 
@@ -795,10 +995,19 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 **オタク、来い！** と構えていたのですが、来たのはkissyくんだけでした。**オタク疲れてる？** あと、ふみさんからの「早く戻ってこーい」という電話をガン無視(気づかなかった)したので怒られました。**ガハハ**
 
-```twitter
-1343446608340348935
+```twitter-archived
+id: 1343446608340348935
+name: ナフサ系男子ヨーロピアン
+userid: betyogohangaH
+color: gray
+date: 2020-12-28
+tweet: 最強の2人です
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654513867/blog/enoshima-walk/EqThkO7VgAM0Fct.jpg
 ```
+
+```centering
 撮らないでこっち来い❗️
+```
 
  
 
@@ -869,16 +1078,26 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 みんなわくわくしています！
 
 
-```twitter
-1343455219783401472
+```twitter-archived
+id: 1343455219783401472
+date: 2020-12-28
+tweet: 【第二部】鎌倉方面に歩く 開始！
 ```
 
-```twitter
-1343455193279602688
+```twitter-archived
+id: 1343455193279602688
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: 江ノ島で15km歩いてるけど今から5km歩くらしい
 ```
 
-```twitter
-1343455368165302273
+```twitter-archived
+id: 1343455368165302273
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+tweet: <b>死の行軍が始まってしまいました</b>
 ```
 
 ![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229044910 "一旦江ノ島を離れます")
@@ -899,10 +1118,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 ### 1km地点 鎌倉市
 
-```twitter
-1343460118361296901
+```twitter-archived
+id: 1343460118361296901
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: 鎌倉
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654514742/blog/enoshima-walk/EqTt2raU8AEHY5_.jpg
 ```
-
 
 
 鎌倉市に入りました。**たのーしー！** しか言ってない。楽しいけど足の裏に若干の違和感を覚えます。**ゴツゴツした磯場で暴れまくった**のが良くなかったかもしれません。いや！まだ歩けますよ！当然！まだ1kmですから！
@@ -926,12 +1149,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 火を噴く店がありました。ファイヤー！ファイヤーエンブレム。死ぬほどどうでもいいんだけど、なんか珍しくてみんな写真を撮っています。常識人チームは「撮るほどか？」みたいに言っています。**お前らにこの気持ちはわからないぜ……**(？)
 
-[//]: # (> ゴジラビーム‼️‼️‼️ [pic.twitter.com/NhXXPral1f]&#40;https://t.co/NhXXPral1f&#41;)
-
-[//]: # (>)
-
-[//]: # (> — るぴしあ &#40;@lupicure20&#41;)
-
+```twitter-archived
+id: 1343466535453507585
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+tweet: ゴジラビーム‼️‼️‼️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654514905/blog/enoshima-walk/EqTzrT5VEAATs6Q.jpg
+```
 
 ![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230041054 "結構離れた")
 
@@ -941,13 +1166,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 あと遅くなっても**坂道をエスカーで飛ばす**ことで最悪ギリギリ入場に間に合う可能性があります。**eno=pass最高！文明最高！なら歩くな！**
 
-```twitter
-1343968956139282432
+```twitter-archived
+id: 1343968956139282432
+name: デギ3bitto
+userid: degui_3bitto
+color: khaki
+date: 2020-12-29
+tweet: <b>皆さんは自転車やバイク、電車などと言った文明の利器がこの地球上に既に存在することをご存知でしょうか</b>
 ```
-
-
-
- 
 
 ### 4km地点 稲村ヶ崎
 
@@ -966,10 +1192,47 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 **あ！公衆電話！** 公衆電話を見つけました。欠かさずあすなろママに連絡します。 
 
-> ざけんな
->
-> — あすなろわさび (@Asunarowasabi_U)
+````horizontal-scroll
 
+```twitter-archived
+id: 1343473583062876160
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+reply: @Asunarowasabi_U
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775632/blog/enoshima-walk/EqT6GZ_UwAEmCRU.jpg
+style: {"width": "250px"}
+```
+
+```twitter-archived
+id: 1343473603367485440
+date: 2020-12-28
+reply: @Asunarowasabi_U
+tweet: 📞
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775316/blog/enoshima-walk/EqT6HQuVgAApCv9.jpg
+style: {"width": "250px"}
+```
+
+```twitter-archived
+id: 1343473613010169858
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+reply: @Asunarowasabi_U
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775322/blog/enoshima-walk/EqT6H_PUcAEewR7.jpg
+style: {"width": "250px"}
+```
+
+````
+
+```twitter-archived
+id: 1343480763556098048
+name: あすなろわさび
+userid: Asunarowasabi_U
+date: 2020-12-28
+color: blue
+tweet: <b>ざけんな</b>
+```
 
 稲村ヶ崎といえば、**かながわの景勝50選**の一つらしいです。見晴らし、良いですね！もっと探検したかったのですが、あまりにも暗いので断念。
 
@@ -993,10 +1256,14 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 海を見ても面白くない、疲労も限界、だからか特に面白いことも起きず書くことがなくなってきました。
 
-> 鎌倉徒歩組、疲れからか口数が非常に少ない
->
-> — kissy (@muse_daybreak)
-
+```twitter-archived
+id: 1343485106346815489
+name: kissy
+userid: muse_daybreak
+date: 2020-12-28
+tweet: 鎌倉徒歩組、疲れからか口数が非常に少ない
+color: linear-gradient(120deg, rgba(115,189,48,1) 0%, rgba(153,254,60,1) 49%, rgba(221,48,255,1) 50%, rgba(182,41,210,1) 100%)
+```
 
 うにゃー、**羽田の後半パートもこれだったので書くのが大変**でした。勘弁してくれ〜(？)
 
@@ -1006,8 +1273,13 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 過去の経験というのは大きくて、「[階段の下りに痛がらない](https://twitter.com/TrpFrog/status/1312758711371272195)あたりまだ新宿の出入口全部行くよりマシだな」とか「羽田徒歩会で[ガチギレビデオメッセージ](https://twitter.com/TrpFrog/status/1330667069440811008)飛ばしてるときよりマシな気持ちだな」とか思えて励みになります。例えがおかしい。
 
-```twitter
-1343481939265605636
+```twitter-archived
+id: 1343481939265605636
+name: デビルクロース
+userid: _devikuro
+color: royalblue
+date: 2020-12-28
+tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電話かかってきた👏
 ```
 
 謎タイミング
@@ -1072,6 +1344,17 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 階段を上りきり後ろを振り返ると、スローオタクが下にいました。意外と早い。**よく見てみるとレンズでこっちを撃ち抜こうと狙っています**。怖すぎる
 
+```twitter-archived
+id: 1343495247142084608
+name: kissy
+userid: muse_daybreak
+date: 2020-12-28
+tweet: 着いたわね………
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654778607/blog/enoshima-walk/EqUNzbPUcAEwVr0.jpg
+color: linear-gradient(120deg, rgba(115,189,48,1) 0%, rgba(153,254,60,1) 49%, rgba(221,48,255,1) 50%, rgba(182,41,210,1) 100%)
+```
+
+
 
 というわけでお参りをして撤退します。
 
@@ -1079,10 +1362,38 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
  
 
-```twitter
-1343500566836568065
+````horizontal-scroll
+
+```twitter-archived
+id: 1343500307720880128
+name: ふみ
+userid: fmnpt
+reply: @Asunarowasabi_U
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775353/blog/enoshima-walk/EqUSZ5XUcAI2vyh.jpg
+style: {"width": "250px", "height": "460px"}
 ```
 
+```twitter-archived
+id: 1343500347449298947
+name: きゅ〜
+userid: kyu_099
+reply: @Asunarowasabi_U
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775713/blog/enoshima-walk/EqUScPXU8AUa6RH.jpg
+style: {"width": "250px", "height": "460px"}
+```
+
+```twitter-archived
+id: 1343500566836568065
+date: 2020-12-28
+reply: @Asunarowasabi_U
+tweet: 📞
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775367/blog/enoshima-walk/EqUSo6lU8AA6-y9.jpg
+style: {"width": "250px", "height": "460px"}
+```
+
+````
 
 
 無視されてしまいました。
@@ -1106,35 +1417,44 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
 **運良く、電車は改札に入ったと同時にやってきました。** 運が良い！
 
- 
-
-```twitter
-1343502654056484865
+```twitter-archived
+id: 1343502654056484865
+name: ナフサ系男子ヨーロピアン
+color: gray
+userid: betyogohangaH
+date: 2020-12-28
+tweet: 江ノ島の旅、疲れちゃったのでガキらしくギャン泣きでブチギレて帰りました
 ```
-
-
 
 帰られてしまいました……。
 
- 
+```twitter-archived
+id: 1343508641693855744
+name: kissy
+userid: muse_daybreak
+date: 2020-12-28
+tweet: さすがに疲れたし流石に眠い
+color: linear-gradient(120deg, rgba(115,189,48,1) 0%, rgba(153,254,60,1) 49%, rgba(221,48,255,1) 50%, rgba(182,41,210,1) 100%)
+```
 
-> さすがに疲れたし流石に眠い
->
-> — kissy (@muse_daybreak)
 
 車内に入るとみんなぐったりしていました。それはそう。
 
-```twitter
-1343505749389938688
+```twitter-archived
+id: 1343505749389938688
+date: 2020-12-28
+tweet: 足は痛いけどエネルギーは切れてない
 ```
 
 強がっていますが、電車の揺れと暖かさに負けて**普通に寝ました**。バカ
 
 
-> あまりにも疲れすぎて写真すらマトモに撮れてなくて草
->
-> — タコ人間 (@t12uec18)
-
+```twitter-archived
+name: タコ人間
+userid: t12uec18
+tweet: あまりにも疲れすぎて写真すらマトモに撮れてなくて草
+color: red
+```
 
 徒歩会あるあるすぎて、泣いています。写真は増やしていきたいです。
 
@@ -1146,21 +1466,50 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 
  
 
-```twitter
-1343510798811840519
+````horizontal-scroll
+
+```twitter-archived
+id: 1343510764083052544
+name: ふみ
+userid: fmnpt
+reply: @Asunarowasabi_U
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654775426/blog/enoshima-walk/EqUb6hBUYAEg4Rc.jpg
+style: {"width": "250px"}
 ```
 
+```twitter-archived
+id: 1343510798811840519
+date: 2020-12-28
+reply: @Asunarowasabi_U
+tweet: 📞
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654515320/blog/enoshima-walk/EqUb8WyUwAIGRJr.jpg
+style: {"width": "250px"}
+```
 
+```twitter-archived
+id: 1343510799038304256
+name: きゅ〜
+userid: kyu_099
+reply: @Asunarowasabi_U
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654515316/blog/enoshima-walk/EqUb8mRUwAUQpBN.jpg
+style: {"width": "250px"}
+```
+
+````
 
 また無視されました。
 
  
-
-```twitter
-1343514189239750658
+```twitter-archived
+id: 1343514189239750658
+name: やと
+color: darkblue
+userid: ya_to_UEC_
+date: 2020-12-28
+tweet: 江ノ島上陸！！(2度目)
 ```
-
-
 
 時刻は20時10分。**<span style="font-size:1.5em">残り20分。</span>**
 
@@ -1233,10 +1582,13 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 1343523111379980292
 ```
 
-> イルミのところで写真撮ってください〜って言ってきたキラキラ女子3人組がワシの格好見てあっヤベ声かける人ミスったみたいな顔したのが忘れらない
-> 結局撮ったけど
->
-> — るぴしあ (@lupicure20)
+```twitter-archived
+id: 1343526297981472769
+name: るぴしあ
+userid: lupicure20
+date: 2020-12-28
+tweet: イルミのところで写真撮ってください〜って言ってきたキラキラ女子3人組がワシの格好見てあっヤベ声かける人ミスったみたいな顔したのが忘れらない<br/>結局撮ったけど
+```
 
 
 ```twitter
@@ -1275,12 +1627,17 @@ Googleマップには「**Enoshima Aussichtsplatform**」と書いてあった�
 まあ狂い出したというか、**羽田会は50km歩いてるし**そりゃそう。
 
  
-
-```twitter
-1343546587071479812
+```twitter-archived
+id: 1343546587071479812
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: 自分の年齢と生まれた年を足したら2020になった！<br/>やったー！
 ```
 
+```centering
 疲れて頭がおかしくなった人
+```
 
  
 

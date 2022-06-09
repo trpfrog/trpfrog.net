@@ -1,6 +1,7 @@
 ---
 title: 調布から羽田まで歩いた
 date: 2020-11-24
+updated: 2022-06-06
 tags: 徒歩, 長編記事
 description: 初の巨大徒歩の焼き直し記事
 thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
@@ -19,13 +20,17 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 ということで終電で来ました。**キレそう。**
 
 
-```twitter
-1330176507512283137
+```twitter-archived
+id: 1330176507512283137
+date: 2020-11-22
+tweet: 実家勢に嫌がらせするために4時集合にした、あと調布勢を絶起させるため (本当ですか？)
 ```
 
 
-```twitter
-1330176800031379464
+```twitter-archived
+id: 1330176800031379464
+date: 2020-11-22
+tweet: クソ〜嫌がらせに自分がかかってしまいました……
 ```
 
 
@@ -35,12 +40,16 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 駅前で本読んだり徘徊したりして楽しみました。**なんで歩く会の前に徘徊してるんですか？**
 
-```twitter
-1330171905903632391
+```twitter-archived
+id: 1330171905903632391
+date: 2020-11-22
+tweet: しばらく暇なのであだしま読むか
 ```
 
-```twitter
-1330171277542379521
+```twitter-archived
+id: 1330171277542379521
+date: 2020-11-22
+tweet: さむい、あるきたい
 ```
 
 ## 午前3時
@@ -54,8 +63,11 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 というムードをぶち壊すように、前の人が**辛い料理を完食**して~~店長~~オタクに**謎イベントの告知写真**を撮ってもらっていてキレそうでした。
 
 
-```twitter
-1330224550743846917
+```twitter-archived
+id: 1330224550743846917
+date: 2020-11-22
+tweet: キムチチゲ完食です、宣伝あり！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654510234/blog/haneda-walking/EnXoLA2XIAQHdvx.jpg
 ```
 
 
@@ -100,17 +112,11 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 **飛び石を渡って遊んでいたら**20が冷たい視線をぶつけてきました。**それぐらいいいだろ！** 飛び石というにはあまりに距離が離れていてバカでした。落ちるし**そもそも飛び石なのか怪しい**
 
- 
-
-
-
-```twitter
-1330252032536612865
+```twitter-archived
+id: 1330252032536612865
+date: 2020-11-22
+tweet: 20に置いてかれました……
 ```
-
-
-
- 
 
 ところでこの日は単位取得が危ういオタクが居たので **「落ちる」** というワードが禁句だったらしいです。僕はめちゃくちゃ言っていました。
 
@@ -283,10 +289,10 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 このあたり、多摩川沿いはめちゃくちゃ野球をやっています。どこをみても野球、向こうから走ってくる集団も野球少年でした。羽田から来たのかな？
 
-
-
-```twitter
-1330303218304372738
+```twitter-archived
+id: 1330303218304372738
+date: 2020-11-22
+tweet: るぴしあさん野球少年に混じって走ってったけど……
 ```
 
 ## 午前10時 14km地点
@@ -317,11 +323,11 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 **午前中には着くだろ！w**とは言っていたものの、流石に怪しくなってきました。**なぜなら折り返し地点なので。** 徒歩5時間とか言ってたバカ(Googleマップ)は反省してください。
 
-
-```twitter
-1330375613136429057
+```twitter-archived
+id: 1330375613136429057
+date: 2020-11-22
+tweet: クソ〜Googleマップ到着5時間とか嘘だろ、もう10時間近く歩いてるけど
 ```
-
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124015659 "多摩川に復帰。ビルとビルをつなぐやつ好き")
 
@@ -336,35 +342,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 **歩道橋**です。歩道橋を見ると必ず渡らないといけないオタクたちでしたが(なんで？)、この歩道橋は川に復帰するには必ず通らないといけない上、<b>構造が面白かった</b>ので安堵しました。
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+<div style="height: 50vh"></div>
 
 **という喜びも束の間、** ヤツは再び現れるのでした。
 
@@ -386,12 +364,16 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
     キレそう！！！！！誰がこの企画組んだんだ！死ね！死んでくれ！！！！お願いだから！！！！！バカが！！！！！！！
 </span>
 
-```twitter
-1330358687270047746
+```twitter-archived
+id: 1330358687270047746
+date: 2020-11-22
+tweet: どこだよここ
 ```
 
-```twitter
-1330358704927961088
+```twitter-archived
+id: 1330358704927961088
+date: 2020-11-22
+tweet: クソ〜
 ```
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124021313 "歩道は続くよどこまでも")
