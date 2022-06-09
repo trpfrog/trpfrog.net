@@ -22,6 +22,8 @@ const colors: { [id: string]: string } = {
         )`,
     kyu_099: 'darkred',
     _nil_a_: 'linen',
+    fmnpt: 'mediumvioletred',
+    lupicure20: 'rgb(195, 220, 249)'
 }
 
 const getOtakuColor = (twitterId: string): string => {
