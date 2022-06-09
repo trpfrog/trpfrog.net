@@ -19,6 +19,9 @@ export const getReadTimeSecond = (markdown: string) => {
     const twitterArchives = linkRemoved
         .split('```')
         .filter((e, index) => index % 2 === 1 && e.startsWith('twitter-archived'))
+        .filter(e => {
+            return e.includes('tweet:')
+        })
         .map(e => e
             .split('\n')
             .filter(l => l.startsWith('tweet:'))[0] // extract tweet line
