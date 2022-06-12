@@ -1,6 +1,5 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {fetchPastPost, getPostData} from "../../../../lib/blog/load";
-import {fetchAllImageProps} from "../../../../lib/blog/imagePropsFetcher";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const [slug, sha, page] = req.query.slug as string[]
@@ -12,8 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             pagePos1Indexed: parseInt(page, 10) || -1,
             all: page === 'all'
         })
-        const imageSize = entry ? await fetchAllImageProps(entry, false) : {};
-        res.end(JSON.stringify({...entry, imageSize}))
+        res.end(JSON.stringify(entry))
     } else {
         res.statusCode = 400
         res.end('{}')
