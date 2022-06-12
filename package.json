@@ -12,6 +12,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "^0.1.17",
+    "@octokit/rest": "^18.12.0",
     "@types/react-modal": "^3.13.1",
     "better-react-mathjax": "^1.0.3",
     "budoux": "^0.0.3",
