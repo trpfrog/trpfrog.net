@@ -6,7 +6,12 @@ import parse from "./parse";
 import {createErrorArticle} from "../../pages/blog/preview/[...id]";
 import microCMS from "../microCMS";
 import {Octokit} from "@octokit/rest";
-import {Buffer} from "buffer";
+
+
+export type TimeMachineSHA = {
+    sha: string
+    date: string
+}
 
 
 export type BlogPost = {
@@ -43,7 +48,16 @@ const fetchAllMarkdownFileNames = async () => (
     })
 )
 
-export const fetchHistorySHA = async (slug: string): Promise<{ sha: string, date: string }[]> => {
+export const fetchHistorySHA = async (slug: string): Promise<TimeMachineSHA[]> => {
+
+    const key = `${slug}-history-sha`
+    if (process.env[key]) {
+        process.env[key]!.split(';').map(e => {
+            const [sha, date] = e.split(',')
+            return {sha, date}
+        })
+    }
+
     const octokit = new Octokit({
         auth: `${process.env.GITHUB_TOKEN}`,
     });
@@ -55,13 +69,16 @@ export const fetchHistorySHA = async (slug: string): Promise<{ sha: string, date
     })
 
     if (response) {
-        return response.data.map((e: any) => ({
+        const data =  response.data.map((e: any) => ({
             sha: e.sha,
             date: e.commit.author.date
-        })).sort((a: any, b: any) => {
+        })).sort((a: TimeMachineSHA, b: TimeMachineSHA) => {
             return a.date < b.date
         })
+        process.env[key] = data.map((e: TimeMachineSHA) => `${e.sha},${e.date}`).join(';')
+        return data
     } else {
+        process.env[key] = ','
         return []
     }
 }
