@@ -31,7 +31,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
-import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 type PageProps = {
     entry: BlogPost
@@ -311,40 +311,10 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                     </Link>
                 </p>
             </Block>
-            {relatedPosts.length > 0 &&
-                <>
-                    <div className={styles.hrule_block}>
-                        <FontAwesomeIcon icon={faStar}/>{' '}
-                        タグ「{post.tags.split(',')[0].trim()}」の新着記事{' '}
-                        <FontAwesomeIcon icon={faStar}/>
-                    </div>
-                    <ArticleGrid>
-                        {relatedPosts.slice(0, 6).map((e, idx) => (
-                            <div key={e.slug} className={idx > 2 ? 'only-on-pc' : ''}>
-                                <ArticleCard entry={e}/>
-                            </div>
-                        ))}
-                    </ArticleGrid>
-                    {relatedPosts.length > 6 &&
-                        <div style={{textAlign: 'center'}} className={'only-on-pc'}>
-                            <Link href={'/blog/tags/' + post.tags.split(',')[0].trim()}>
-                                <a className={'linkButton'}>
-                                    もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-                                </a>
-                            </Link>
-                        </div>
-                    }
-                    {relatedPosts.length > 3 &&
-                        <div style={{textAlign: 'center'}} className={'only-on-sp'}>
-                            <Link href={'/blog/tags/' + post.tags.split(',')[0].trim()}>
-                                <a className={'linkButton'}>
-                                    もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-                                </a>
-                            </Link>
-                        </div>
-                    }
-                </>
-            }
+            <RelatedPosts
+                tag={post.tags.split(',')[0].trim()}
+                relatedPosts={relatedPosts}
+            />
         </Layout>
     )
 }
