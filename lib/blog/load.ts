@@ -58,7 +58,9 @@ export const fetchHistorySHA = async (slug: string): Promise<{ sha: string, date
         return response.data.map((e: any) => ({
             sha: e.sha,
             date: e.commit.author.date
-        }))
+        })).sort((a: any, b: any) => {
+            return a.date < b.date
+        })
     } else {
         return []
     }
