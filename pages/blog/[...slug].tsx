@@ -7,7 +7,13 @@ import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getAllPostPaths, getPostData, getSortedPostsData} from "../../lib/blog/load";
+import {
+    BlogPost,
+    fetchHistorySHA,
+    getAllPostPaths,
+    getPostData,
+    getSortedPostsData, TimeMachineSHA
+} from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
@@ -32,11 +38,13 @@ import {
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import RelatedPosts from "../../components/blog/RelatedPosts";
+import TimeMachine from "../../components/blog/TimeMachine";
 
 type PageProps = {
     entry: BlogPost
     imageSize: { [path: string]: BlogImageData }
     relatedPosts: BlogPost[]
+    pastArticleSHA: TimeMachineSHA[]
 }
 
 type Params = {
@@ -58,12 +66,12 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
         : (await getSortedPostsData(tags[0]))
             .filter((e: BlogPost) => e.slug !== entry.slug)
 
-    const imageSize = await fetchAllImageProps(entry);
     return {
         props: {
             entry: JSON.parse(JSON.stringify(entry)),
-            imageSize,
-            relatedPosts
+            imageSize: await fetchAllImageProps(entry),
+            relatedPosts,
+            pastArticleSHA: await fetchHistorySHA(slug)
         }
     }
 }
@@ -130,7 +138,7 @@ const EntryButton = (props: {text: string, icon: IconProp, onClick?: any}) => {
     )
 }
 
-const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
+const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArticleSHA }) => {
 
     const [post, setPost] = useState({...entry, imageSize})
 
@@ -268,6 +276,17 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                         </p>
                     }
 
+                    {pastArticleSHA.length > 1 &&
+                        <div style={{margin: '1em 0'}}>
+                            <TimeMachine
+                                setPost={setPost}
+                                originalEntry={entry}
+                                imageSize={imageSize}
+                                pastArticleSHA={pastArticleSHA}
+                            />
+                        </div>
+                    }
+
                     <div>
                         <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}} >
                             <a className={'linkButton'} onClick={handleBadBlog}>
@@ -288,6 +307,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                 description={post.description}
                 openGraph={openGraphImage}
             />
+
             <div
                 className={styles.bad_blog_wrapper}
                 data-bad-blog={badBlog}
@@ -298,6 +318,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts }) => {
                     className={useUDFont ? styles.with_ud_font : ''}
                 />
             </div>
+
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
