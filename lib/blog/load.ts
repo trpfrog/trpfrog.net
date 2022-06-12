@@ -5,6 +5,9 @@ import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
 import {createErrorArticle} from "../../pages/blog/preview/[...id]";
 import microCMS from "../microCMS";
+import {Octokit} from "@octokit/rest";
+import {Buffer} from "buffer";
+
 
 export type BlogPost = {
     title: string
@@ -39,6 +42,37 @@ const fetchAllMarkdownFileNames = async () => (
         return ext === 'md' || ext === 'mdx'
     })
 )
+
+export const fetchHistorySHA = async (slug: string): Promise<{ sha: string, date: string }[]> => {
+    const octokit = new Octokit({
+        auth: `${process.env.GITHUB_TOKEN}`,
+    });
+
+    const response = await octokit.request(`GET /repos/TrpFrog/trpfrog.net/commits`, {
+        owner: 'TrpFrog',
+        repo: 'trpfrog.net',
+        path: `/posts/${slug}.md`
+    })
+
+    if (response) {
+        return response.data.map((e: any) => ({
+            sha: e.sha,
+            date: e.commit.author.date
+        }))
+    } else {
+        return []
+    }
+}
+
+export const fetchPastPost = async (slug: string, file_sha: string, option: any) => {
+    const url = `https://raw.githubusercontent.com/TrpFrog/trpfrog.net/${file_sha}/posts/${slug}.md`
+    const res = await fetch(url)
+    if (res.ok) {
+        return await buildBlogPost(slug, await res.text(), option)
+    } else {
+        return null
+    }
+}
 
 type BlogPostOption = {
     pagePos1Indexed?: number
