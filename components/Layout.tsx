@@ -21,10 +21,11 @@ const backToTop = () => {
 
 type Props = {
     style?: any;
+    className?: string
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-    children, style
+    children, style, className
 }) => {
 
     const router = useRouter();
@@ -93,8 +94,12 @@ const Layout: React.FunctionComponent<Props> = ({
                             type: 'spring',
                             mass: 0.5
                         }}
+                        style={{
+                            display: 'flex',
+                            flexFlow: 'column'
+                        }}
                     >
-                        <div id="main_wrapper" style={style}>
+                        <div id="main_wrapper" style={style} className={className}>
                             {children}
                         </div>
                     </motion.div>
