@@ -8,10 +8,12 @@ import {getPureCloudinaryPath} from "./BlogMarkdown";
 import dayjs from "dayjs";
 import Tag from "./Tag";
 import {parseWithBudouX} from "../../lib/wordSplit";
+import React from "react";
 
 type Props = {
     entry: BlogPost
     hero?: boolean
+    style?: React.CSSProperties
 }
 
 export const ArticleGrid = ({children}: any) => (
@@ -20,7 +22,7 @@ export const ArticleGrid = ({children}: any) => (
     </div>
 )
 
-const ArticleCard = ({entry, hero = false}: Props) => {
+const ArticleCard = ({entry, hero = false, style}: Props) => {
 
     const articleURL = '/blog/' + entry.slug
     const splitTitle = parseWithBudouX(entry.title, entry.slug)
@@ -29,7 +31,7 @@ const ArticleCard = ({entry, hero = false}: Props) => {
     return (
         // eslint-disable-next-line @next/next/link-passhref
         <Link href={articleURL}>
-            <div className={styles.window} data-hero-article={hero}>
+            <div className={styles.window} data-hero-article={hero} style={style}>
                 <div className={styles.tags}>
                     {entry.tags
                         .split(',')
