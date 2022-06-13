@@ -230,3 +230,35 @@
         -webkit-text-stroke: 0.5px var(--base-font-color);
     }
 }
+
+.main_content > aside {
+    display: none;
+}
+
+@media screen and (min-width: 1300px) {
+    .layout {
+        max-width: 1200px !important;
+    }
+    .main_content {
+        display: grid;
+        grid-template-areas: "article aside";
+        grid-template-columns: 900px auto;
+        grid-template-rows: minmax(0, 1fr);
+        grid-gap: calc(var(--main-margin) / 2);
+
+        & > .article_wrapper {
+            grid-area: article;
+        }
+
+        & > aside {
+            grid-area: aside;
+            display: block;
+            position: relative;
+            .blog_side_bar {
+                height: fit-content;
+                position: sticky;
+                top: 1em;
+            }
+        }
+    }
+}

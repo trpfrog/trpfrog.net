@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/image";
@@ -39,6 +39,9 @@ import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import RelatedPosts from "../../components/blog/RelatedPosts";
 import TimeMachine from "../../components/blog/TimeMachine";
+import PageNavigation from "../../components/blog/PageNavigation";
+import {HeaderFollowSticky} from "../../components/header/Header";
+import ArticleCard from "../../components/blog/ArticleCard";
 
 type PageProps = {
     entry: BlogPost
@@ -205,7 +208,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
     }
 
     return (
-        <Layout>
+        <Layout className={styles.layout}>
             <Title className={styles.article_title_block}>
                 {post.thumbnail &&
                     <Image
@@ -308,17 +311,59 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
                 openGraph={openGraphImage}
             />
 
-            <div
-                className={styles.bad_blog_wrapper}
-                data-bad-blog={badBlog}
-            >
-                <BlogMarkdown
-                    entry={post}
-                    imageSize={post.imageSize}
-                    className={useUDFont ? styles.with_ud_font : ''}
-                />
+            <div className={styles.main_content}>
+                <div className={styles.article_wrapper}>
+                    <div
+                        className={styles.bad_blog_wrapper}
+                        data-bad-blog={badBlog}
+                    >
+                        <BlogMarkdown
+                            entry={post}
+                            imageSize={post.imageSize}
+                            className={useUDFont ? styles.with_ud_font : ''}
+                        />
+                    </div>
+                </div>
+                <aside>
+                    <HeaderFollowSticky top={'1em'}>
+                        <ArticleCard
+                            entry={entry}
+                            style={{
+                                pointerEvents: 'none',
+                                borderRadius: 30,
+                                marginBottom: '1em'
+                            }}
+                        />
+                        <Block className={styles.blog_side_bar} style={{padding: '1.5em 0.5em'}}>
+                            <div style={{transform: 'scale(0.9)', transformOrigin: 'top'}}>
+                                <Link href={'/blog'}>
+                                    <a>
+                                        <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
+                                    </a>
+                                </Link>
+                                <span onClick={() => share(post.slug)}>
+                                    <EntryButton icon={faTwitter} text={'ツイート'}/>
+                                </span>
+                                <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+                                    <a>
+                                        <EntryButton icon={faPencil} text={'訂正依頼'}/>
+                                    </a>
+                                </Link>
+                                <div style={{height: '1em'}}/>
+                                <PageNavigation entry={post}/>
+                            </div>
+                            <div style={{width: '90%', margin: 'auto'}}>
+                                <TimeMachine
+                                    setPost={setPost}
+                                    originalEntry={entry}
+                                    imageSize={imageSize}
+                                    pastArticleSHA={pastArticleSHA}
+                                />
+                            </div>
+                        </Block>
+                    </HeaderFollowSticky>
+                </aside>
             </div>
-
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
