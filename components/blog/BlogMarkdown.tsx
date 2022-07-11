@@ -360,11 +360,11 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
                         <span className={styles.code_lang}>{fileName || language}</span>
                     </div>
                 )}
-                    <SyntaxHighlighter
-                        language={language}
-                        style={monokaiSublime}
-                        className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
-                    >
+                <SyntaxHighlighter
+                    language={language}
+                    style={monokaiSublime}
+                    className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
+                >
                     {children}
                 </SyntaxHighlighter>
             </pre>
