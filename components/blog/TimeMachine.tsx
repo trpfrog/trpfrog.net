@@ -15,7 +15,7 @@ const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props)
     const CURRENT_POST_SHA = 'current'
     const [articleSourceSHA, setArticleSourceSHA] = useState(CURRENT_POST_SHA)
     useEffect(() => {
-        if (articleSourceSHA === CURRENT_POST_SHA) {
+        if (originalEntry.slug.startsWith('_') || articleSourceSHA === CURRENT_POST_SHA) {
             setPost({...originalEntry, imageSize})
             return
         }
@@ -39,6 +39,7 @@ const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props)
         }
     }, [articleSourceSHA, CURRENT_POST_SHA, originalEntry, imageSize, setPost])
 
+    if (originalEntry.slug.startsWith('_')) return <></>
     return (
         <details className={styles.pretty_details}>
             <summary>Time Machine (beta)</summary>
