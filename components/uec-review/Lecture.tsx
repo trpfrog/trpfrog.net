@@ -3,6 +3,7 @@ import {LectureData} from "../../pages/uec-review";
 import {CSSProperties, useState} from "react";
 import ReactModal from "react-modal";
 import ReactMarkdown from "react-markdown";
+import {parseWithBudouX} from "../../lib/wordSplit";
 
 const Lecture = ({ lect }: { lect: LectureData }) => {
     const [modalOpened, setModalOpened] = useState(false)
@@ -29,6 +30,11 @@ const Lecture = ({ lect }: { lect: LectureData }) => {
         } as CSSProperties
     }
 
+    const budouXedLectureName = parseWithBudouX(
+      lect.lectureName,
+      `lecture-${lect.semester}-${lect.dow}-${lect.period}`
+    )
+
     return (
         <div className={styles.lecture_wrapper}>
             <div className={styles.fixed_cell}>
@@ -39,7 +45,9 @@ const Lecture = ({ lect }: { lect: LectureData }) => {
               onClick={() => setModalOpened(!modalOpened)}
               data-has-review={(lect.review?.trim() ?? '') !== ''}
             >
-                <div className={styles.lecture_name}>{lect.lectureName}</div>
+                <div className={styles.lecture_name}>
+                    {budouXedLectureName}
+                </div>
             </div>
             <ReactModal
                 isOpen={modalOpened}
