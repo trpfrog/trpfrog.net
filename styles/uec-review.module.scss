@@ -19,6 +19,10 @@
     @include mixins.mq(sp) {
         display: block;
     }
+
+    &[data-has-saturday="true"] {
+        grid-template-columns: 1fr repeat(6, 3fr);
+    }
 }
 
 .lecture_wrapper {
@@ -73,6 +77,11 @@
 
     .lecture_name {
         font-weight: bold;
+    }
+
+    &[data-has-review="false"] {
+        border-style: dotted;
+        pointer-events: none;
     }
 }
 

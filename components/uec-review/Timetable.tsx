@@ -5,6 +5,8 @@ import React from "react";
 
 const Timetable = ({ table }: { table: LectureData[] }) => {
 
+    const hasSaturday = table.some(e => e.dow === '土曜日')
+
     type TableGridElement = {
         row: number
         column: number
@@ -16,8 +18,8 @@ const Timetable = ({ table }: { table: LectureData[] }) => {
     const tableElement: TableGridElement[] = []
 
     // Day of weeks
-    const dow = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    for (let i = 0; i < 5; i++) {
+    const dow = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    for (let i = 0; i < (hasSaturday ? 6 : 5); i++) {
         tableElement.push({
             row: 1,
             column: 2 + i,
@@ -45,6 +47,7 @@ const Timetable = ({ table }: { table: LectureData[] }) => {
             case '水曜日': return 4
             case '木曜日': return 5
             case '金曜日': return 6
+            case '土曜日': return 7
             default: return 1
         }
     }
@@ -69,7 +72,10 @@ const Timetable = ({ table }: { table: LectureData[] }) => {
 
 
     return (
-        <div id={styles.timetable_grid}>
+        <div
+            id={styles.timetable_grid}
+            data-has-saturday={hasSaturday}
+        >
             {tableElement.map((e) => (
                 <div
                     key={`table-cell-${e.row}-${e.column}`}

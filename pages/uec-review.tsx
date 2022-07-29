@@ -23,7 +23,7 @@ export type LectureData = {
 export const getStaticProps = async () => {
     const data = await client.get({ endpoint: "uec-review" });
 
-    const tables: LectureData[][] = Array(6)
+    const tables: LectureData[][] = Array(7)
     for (let i = 0; i < tables.length; i++) {
         tables[i] = []
     }
@@ -62,6 +62,7 @@ const Review: NextPage<PageProps> = ({tables}) => {
         '4学期 (I類3クラス, メディア)',
         '5学期 (I類メディア)',
         '6学期 (I類メディア)',
+        '7学期 (院連携科目)'
     ]
 
     const router = useRouter()

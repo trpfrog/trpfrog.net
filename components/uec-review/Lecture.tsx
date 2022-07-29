@@ -34,7 +34,11 @@ const Lecture = ({ lect }: { lect: LectureData }) => {
             <div className={styles.fixed_cell}>
                 <div>{lect.period}</div>
             </div>
-            <div className={styles.lecture_cell} onClick={() => setModalOpened(!modalOpened)}>
+            <div
+              className={styles.lecture_cell}
+              onClick={() => setModalOpened(!modalOpened)}
+              data-has-review={(lect.review?.trim() ?? '') !== ''}
+            >
                 <div className={styles.lecture_name}>{lect.lectureName}</div>
             </div>
             <ReactModal
