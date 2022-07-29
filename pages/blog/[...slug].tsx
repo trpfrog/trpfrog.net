@@ -221,7 +221,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
                     />
                 }
                 <div className={styles.inner_title_block}>
-                    <h1>{parseWithBudouX(post.title, post.slug)}</h1>
+                    <h1>{parseWithBudouX((() => {
+                        if (post.title.endsWith('！')) {
+                            return post.title.slice(0, post.title.length - 1) + ' !'
+                        } else {
+                            return post.title
+                        }
+                    })(), post.slug)}</h1>
                     <p style={{margin: '1em'}}>{post.description}</p>
                     <PostAttributes post={post}/>
 
