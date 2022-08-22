@@ -3,19 +3,25 @@ import React from "react";
 import Link from "next/link";
 
 const getTagEmoji = (tag: string) => {
-    switch (tag) {
-        case 'うどん': return '🌾'
-        case 'つまみネット': return '🟢'
-        case 'オタク': return '🤓'
-        case '大学': return '🎓'
-        case '徒歩': return '🚶‍'
-        case '技術': return '💻'
-        case '日記': return '📔'
-        case '月報': return '🗓'
-        case '数学': return '📐'
-        case 'お出かけ': return '🚃'
-        case '長編記事': return '📜'
-        default: return '🏷'
+    const tags = {
+        'うどん':       '🌾',
+        'つまみネット': '🟢',
+        'オタク':       '🤓',
+        '大学':         '🎓',
+        '徒歩':         '🚶‍',
+        '登山':         '⛰',
+        '技術':         '💻',
+        '日記':         '📔',
+        '月報':         '🗓',
+        '数学':         '📐',
+        'お出かけ':     '🚃',
+        '長編記事':     '📜',
+    } as { [tagName: string]: string }
+
+    if (tag in tags) {
+        return tags[tag];
+    } else {
+        return '🏷'
     }
 }
 

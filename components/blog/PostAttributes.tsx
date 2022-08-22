@@ -66,7 +66,7 @@ const PostAttributes = ({post}: Props) => {
                 <span className={styles.attr_num}>{Math.ceil(post.readTime / 60)}</span> 分
             </Content>
 
-            {(post.tags.includes('徒歩')) &&
+            {(['徒歩', '登山'].some(e => post.tags.includes(e))) &&
                 <Content icon={faImages} title={'写真の枚数'}>
                     <span className={styles.attr_num}>{post.numberOfPhotos}</span> 枚
                 </Content>

@@ -1,7 +1,7 @@
 ---
 title: 高尾山の主要8コース全部歩いた(陣馬山も！)
 date: 2021-04-13
-tags: 徒歩, 長編記事
+tags: 徒歩, 登山, 長編記事
 description: 登って歩いて降りて登って降りて登って降りる
 thumbnail: https://res.cloudinary.com/trpfrog/blog/takao-full-search/20210413163253
 ---
