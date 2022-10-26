@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useViewportScroll} from "framer-motion";
+import {useScroll} from "framer-motion";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
@@ -39,7 +39,7 @@ export const NormalTitle = () => {
       (typeof window !== 'undefined') && window.innerWidth <= 800 ? 120 : 250;
     setShowPageTitle(y > heightToChangeTitle);
   }
-  const {scrollY} = useViewportScroll()
+  const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
 
   const router = useRouter();

@@ -1,4 +1,4 @@
-import {animate, AnimationOptions, motion, useMotionValue, useViewportScroll} from "framer-motion";
+import {animate, AnimationOptions, motion, useMotionValue, useScroll} from "framer-motion";
 import {useEffect} from "react";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
@@ -25,7 +25,7 @@ export const TopTitle = () => {
     }
   }
 
-  const {scrollY} = useViewportScroll()
+  const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
   useEffect(() => handleScroll(window.scrollY, false))
 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {useRouter} from "next/router";
-import {animate, motion, useMotionValue, useViewportScroll} from "framer-motion";
+import {animate, motion, useMotionValue, useScroll} from "framer-motion";
 import React, {useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
@@ -8,7 +8,7 @@ import styles from "../../styles/common/Header.module.scss";
 
 export const HeaderFollowSticky = (props: { children: React.ReactNode, top: string | number }) => {
 
-  const {scrollY} = useViewportScroll()
+  const {scrollY} = useScroll()
   const [headerTop, setHeaderTop] = useState(`calc(var(--header-height) + ${props.top})`)
 
   const handleScroll = (y: number) => {
@@ -49,7 +49,7 @@ const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
 
   const router = useRouter();
 
-  const {scrollY} = useViewportScroll()
+  const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
 
   return (
