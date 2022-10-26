@@ -1,5 +1,5 @@
 import type {NextPage} from 'next'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";

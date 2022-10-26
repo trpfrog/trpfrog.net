@@ -1,5 +1,5 @@
 import type {NextPage} from 'next'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import Link from 'next/link'
 import Layout from "../components/Layout";
 import Title from "../components/Title";

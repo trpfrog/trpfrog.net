@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import Layout from "../components/Layout";
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Title from "../components/Title";
 
 const TrpFrog500: NextPage = () => {

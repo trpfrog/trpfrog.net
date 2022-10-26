@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import Block from "../components/Block";
 import styles from '../styles/works.module.scss';
 import {FunctionComponent} from "react";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 type KeywordsType = {
     keywords: string[]

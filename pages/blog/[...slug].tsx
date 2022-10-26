@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
