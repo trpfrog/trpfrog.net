@@ -30,7 +30,7 @@ const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
         showOnShallow={true}
         options={{showSpinner: false}}
       />
-      <AnimatePresence exitBeforeEnter onExitComplete={transitionCallback}>
+      <AnimatePresence mode={'wait'} onExitComplete={transitionCallback}>
         <Component {...pageProps} key={router.route}/>
       </AnimatePresence>
     </>
