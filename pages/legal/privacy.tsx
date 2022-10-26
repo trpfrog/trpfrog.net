@@ -49,11 +49,11 @@ const Privacy: NextPage = () => {
                 </p>
             </Block>
 
-            <Link href={'/legal'}>
-                <a className={'linkButton'}>戻る</a>
+            <Link href={'/legal'} className={'linkButton'}>
+                戻る
             </Link>
         </Layout>
-    )
+    );
 }
 
 export default Privacy

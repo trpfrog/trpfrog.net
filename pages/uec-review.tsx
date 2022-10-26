@@ -68,45 +68,47 @@ const Review: NextPage<PageProps> = ({tables}) => {
     const router = useRouter()
     const semester = getSemester(router, timetableTitle.length)
 
-    return (
-        <>
-            <Layout>
-                <Title
-                    title={'#uec_review'}
-                    description={'授業の感想とか (ツイッタに貼るのは若干恥ずかしいのでやめた)'}
-                >
-                    <p>
-                        <b>注意！</b><br/>
-                        このページで紹介している内容は全て私の主観です。
-                        私が「面白くなすぎ！」と言っていてもあなたにとっては面白いかもしれませんし、
-                        私が「面白すぎ！」と言っていてもあなたにとっては苦行かもしれません。
-                        あくまで参考程度に読んでください。
-                    </p>
-                    <p>
-                        また、(怒られが発生したなどで)予告なく内容の変更・削除をする場合があります。ご了承ください。
-                    </p>
-                </Title>
-                <NextSeo
-                    noindex={true}
-                />
-                <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
-                    {timetableTitle.map((e, i) => (
-                        <Link href={'/uec-review?semester=' + (i + 1)} key={'button-' + i} shallow={true}>
-                            <a className={'linkButton'}>
-                                {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
-                            </a>
-                        </Link>
-                    ))}
-                </div>
+    return <>
+        <Layout>
+            <Title
+                title={'#uec_review'}
+                description={'授業の感想とか (ツイッタに貼るのは若干恥ずかしいのでやめた)'}
+            >
+                <p>
+                    <b>注意！</b><br/>
+                    このページで紹介している内容は全て私の主観です。
+                    私が「面白くなすぎ！」と言っていてもあなたにとっては面白いかもしれませんし、
+                    私が「面白すぎ！」と言っていてもあなたにとっては苦行かもしれません。
+                    あくまで参考程度に読んでください。
+                </p>
+                <p>
+                    また、(怒られが発生したなどで)予告なく内容の変更・削除をする場合があります。ご了承ください。
+                </p>
+            </Title>
+            <NextSeo
+                noindex={true}
+            />
+            <div id={styles.buttons} style={{gridTemplateColumns: `repeat(${timetableTitle.length}, 1fr)`}}>
+                {timetableTitle.map((e, i) => (
+                    (<Link
+                        href={'/uec-review?semester=' + (i + 1)}
+                        key={'button-' + i}
+                        shallow={true}
+                        className={'linkButton'}>
 
-                <Block title={timetableTitle[semester]} h2icon={'none'}>
-                    <div>
-                        <Timetable table={tables[semester]}/>
-                    </div>
-                </Block>
-            </Layout>
-        </>
-    )
+                        {e[0]}<span className={styles.pc_only}>{e.split(' ')[0].slice(1)}</span>
+
+                    </Link>)
+                ))}
+            </div>
+
+            <Block title={timetableTitle[semester]} h2icon={'none'}>
+                <div>
+                    <Timetable table={tables[semester]}/>
+                </div>
+            </Block>
+        </Layout>
+    </>;
 }
 
 export default Review

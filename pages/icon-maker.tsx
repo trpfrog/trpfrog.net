@@ -118,11 +118,11 @@ const About: NextPage = () => {
                     また、当サービスを使用したことにより発生したいかなる損害に対しても、 当サイトは一切の責任を負いません。
                 </p>
                 <p>
-                    詳しくは<Link href={'/legal'}><a>こちら</a></Link>をご覧ください。
+                    詳しくは<Link href={'/legal'}>こちら</Link>をご覧ください。
                 </p>
             </Block>
         </Layout>
-    )
+    );
 }
 
 export default About

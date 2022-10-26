@@ -39,15 +39,15 @@ const TrpFrog404: NextPage = () => {
                         <IB>リンクが誤っている可能性があります。</IB>
                     </p>
                     <p>
-                        <Link href={'/'}>
-                            <a className={'linkButton'}>トップページに戻る</a>
+                        <Link href={'/'} className={'linkButton'}>
+                            トップページに戻る
                         </Link>
                     </p>
                 </div>
 
             </Title>
         </Layout>
-    )
+    );
 }
 
 export default TrpFrog404;

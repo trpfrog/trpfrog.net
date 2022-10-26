@@ -23,11 +23,11 @@ const Disclaimer: NextPage = () => {
                     当サイトに掲載された内容や提供しているサービスにより生じた損害等の一切の責任を負いかねますのでご了承ください。
                 </p>
             </Block>
-            <Link href={'/legal'}>
-                <a className={'linkButton'}>戻る</a>
+            <Link href={'/legal'} className={'linkButton'}>
+                戻る
             </Link>
         </Layout>
-    )
+    );
 }
 
 export default Disclaimer

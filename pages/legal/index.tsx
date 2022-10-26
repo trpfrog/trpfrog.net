@@ -13,8 +13,8 @@ const Index: NextPage = () => {
                     以下のページでは当サイトでお預かりした個人情報の管理の方法について説明しています。
                 </p>
                 <p>
-                    <Link href={'/legal/privacy'}>
-                        <a className={'linkButton'}>プライバシーポリシー</a>
+                    <Link href={'/legal/privacy'} className={'linkButton'}>
+                        プライバシーポリシー
                     </Link>
                 </p>
             </Block>
@@ -23,8 +23,8 @@ const Index: NextPage = () => {
                     以下のページでは免責事項について説明しています。
                 </p>
                 <p>
-                    <Link href={'/legal/disclaimer'}>
-                        <a className={'linkButton'}>免責事項</a>
+                    <Link href={'/legal/disclaimer'} className={'linkButton'}>
+                        免責事項
                     </Link>
                 </p>
             </Block>
@@ -33,13 +33,13 @@ const Index: NextPage = () => {
                     以下のページでは当サイト上に掲載されたコンテンツの権利について説明しています。
                 </p>
                 <p>
-                    <Link href={'/legal/copyright'}>
-                        <a className={'linkButton'}>著作権について</a>
+                    <Link href={'/legal/copyright'} className={'linkButton'}>
+                        著作権について
                     </Link>
                 </p>
             </Block>
         </Layout>
-    )
+    );
 }
 
 export default Index

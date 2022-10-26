@@ -252,17 +252,17 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
 
                     <div id={styles.entry_top_buttons}>
                         <Link href={'/blog'}>
-                            <a>
-                                <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
-                            </a>
+
+                            <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
+
                         </Link>
                         <span onClick={() => share(post.slug)}>
                             <EntryButton icon={faTwitter} text={'ツイート'}/>
                         </span>
                         <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                            <a>
-                                <EntryButton icon={faPencil} text={'訂正依頼'}/>
-                            </a>
+
+                            <EntryButton icon={faPencil} text={'訂正依頼'}/>
+
                         </Link>
                         <a onClick={handleUDFontButton}>
                             {useUDFont ? (
@@ -343,17 +343,17 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
                         <Block className={styles.blog_side_bar} style={{padding: '1.5em 0.5em'}}>
                             <div style={{transform: 'scale(0.9)', transformOrigin: 'top'}}>
                                 <Link href={'/blog'}>
-                                    <a>
-                                        <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
-                                    </a>
+
+                                    <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
+
                                 </Link>
                                 <span onClick={() => share(post.slug)}>
                                     <EntryButton icon={faTwitter} text={'ツイート'}/>
                                 </span>
                                 <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                                    <a>
-                                        <EntryButton icon={faPencil} text={'訂正依頼'}/>
-                                    </a>
+
+                                    <EntryButton icon={faPencil} text={'訂正依頼'}/>
+
                                 </Link>
                                 <div style={{height: '1em'}}/>
                                 <PageNavigation entry={post}/>
@@ -373,13 +373,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
             <Block id={styles.entry_bottom_buttons}>
                 <p className={'link-area'} style={{textAlign: 'center'}}>
                     <Link href={'/blog'}>
-                        <a>記事一覧</a>
+                        記事一覧
                     </Link>
                     <span onClick={() => share(post.slug)}>
                         <a>ツイート</a>
                     </span>
                     <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                        <a>訂正リクエスト</a>
+                        訂正リクエスト
                     </Link>
                 </p>
             </Block>
@@ -388,7 +388,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
                 relatedPosts={relatedPosts}
             />
         </Layout>
-    )
+    );
 }
 
 export default Article

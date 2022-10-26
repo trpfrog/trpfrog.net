@@ -57,8 +57,8 @@ const About: NextPage = () => {
                     相互リンクが増えてきてトップページが巨大になってきたので単独ページにお引越ししました。
                 </p>
                 <p>
-                    <Link href={'links'}>
-                        <a className={'linkButton'}>Links</a>
+                    <Link href={'links'} className={'linkButton'}>
+                        Links
                     </Link>
                 </p>
                 <h3>Works</h3>
@@ -66,8 +66,8 @@ const About: NextPage = () => {
                     作ったやつをまとめるページを作りました。
                 </p>
                 <p>
-                    <Link href={'works'}>
-                        <a className={'linkButton'}>Works</a>
+                    <Link href={'works'} className={'linkButton'}>
+                        Works
                     </Link>
                 </p>
                 <h3>ページ遷移トランジションの追加</h3>
@@ -237,7 +237,7 @@ const About: NextPage = () => {
             </details>
 
         </Layout>
-    )
+    );
 }
 
 export default About

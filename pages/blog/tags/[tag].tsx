@@ -34,25 +34,23 @@ export const getStaticPaths = async () => {
 }
 
 const Blog: NextPage<Props> = ({ articles, tag }) => {
-    return (
-        <>
-            <Layout>
-                <Title>
-                    <h1>タグ「{tag}」の記事一覧</h1>
-                    <p>
-                        <Link href={'/blog'}>
-                            <a className={'linkButton'}>記事一覧に戻る</a>
-                        </Link>
-                    </p>
-                </Title>
-                <NextSeo title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
+    return <>
+        <Layout>
+            <Title>
+                <h1>タグ「{tag}」の記事一覧</h1>
+                <p>
+                    <Link href={'/blog'} className={'linkButton'}>
+                        記事一覧に戻る
+                    </Link>
+                </p>
+            </Title>
+            <NextSeo title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
 
-                <ArticleGrid>
-                    {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-                </ArticleGrid>
-            </Layout>
-        </>
-    )
+            <ArticleGrid>
+                {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
+            </ArticleGrid>
+        </Layout>
+    </>;
 }
 
 export default Blog

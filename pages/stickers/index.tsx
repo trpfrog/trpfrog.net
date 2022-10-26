@@ -23,23 +23,23 @@ const Index: NextPage = () => {
             <Block>
                 <div className={styles.icon_grid}>
                     {Array.from(Array(80), (v, k) => k).map(i => (
-                        <Link href={'/stickers/' + i} key={i}>
-                            <a>
-                                <Image
-                                    src={'stickers/' + i}
-                                    width={100}
-                                    height={100}
-                                    objectFit={'contain'}
-                                    quality={15}
-                                    alt={i + '番目のスタンプ画像'}
-                                />
-                            </a>
-                        </Link>
+                        (<Link href={'/stickers/' + i} key={i}>
+
+                            <Image
+                                src={'stickers/' + i}
+                                width={100}
+                                height={100}
+                                objectFit={'contain'}
+                                quality={15}
+                                alt={i + '番目のスタンプ画像'}
+                            />
+
+                        </Link>)
                     ))}
                 </div>
             </Block>
         </Layout>
-    )
+    );
 }
 
 export default Index

@@ -50,18 +50,18 @@ const TrpFrog500: NextPage = () => {
                 </div>
                 <p className={'link-area'}>
                     <Link href={'https://github.com/trpfrog/trpfrog.net/issues'}>
-                        <a>GitHub Issues</a>
+                        GitHub Issues
                     </Link>
                     <Link href={'https://twitter.com/trpfrog'}>
-                        <a>Twitter</a>
+                        Twitter
                     </Link>
                     <Link href={'/'}>
-                        <a>トップページに戻る</a>
+                        トップページに戻る
                     </Link>
                 </p>
             </Title>
         </Layout>
-    )
+    );
 }
 
 export default TrpFrog500;

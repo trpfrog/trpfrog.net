@@ -28,27 +28,27 @@ const Copyright: NextPage = () => {
                 <ul>
                     <li>
                         <Link href={'/icons'}>
-                            <a>Icons</a>
+                            Icons
                         </Link>
                     </li>
                     <li>
                         <Link href={'/stickers'}>
-                            <a>Stickers</a>
+                            Stickers
                         </Link>
                     </li>
                     <li>
                         <Link href={'/balloon'}>
-                            <a>Balloons</a>
+                            Balloons
                         </Link>
                     </li>
                     <li>
                         <Link href={'/download'}>
-                            <a>Download</a>
+                            Download
                         </Link>
                     </li>
                     <li>
                         <Link href={'/iconmaker'}>
-                            <a>Icon Maker</a>
+                            Icon Maker
                         </Link>
                     </li>
                 </ul>
@@ -71,11 +71,11 @@ const Copyright: NextPage = () => {
             </Block>
 
 
-            <Link href={'/legal'}>
-                <a className={'linkButton'}>戻る</a>
+            <Link href={'/legal'} className={'linkButton'}>
+                戻る
             </Link>
         </Layout>
-    )
+    );
 }
 
 export default Copyright

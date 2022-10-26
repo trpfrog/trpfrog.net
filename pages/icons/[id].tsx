@@ -56,8 +56,10 @@ const ImageViewer = ({ id }: PageProps) => {
             </Block>
             <Block id={styles.img_navigation}>
                 <div id={styles.thumbnails}>
-                    <Link href={'/icons/' + ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()}>
-                        <a id={styles.prev_image}>&larr;</a>
+                    <Link
+                        href={'/icons/' + ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()}
+                        id={styles.prev_image}>
+                        &larr;
                     </Link>
                     {Array.from(Array(5), (v, k) => k)
                         .map(k => (idInt + k - 2 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES)
@@ -73,15 +75,17 @@ const ImageViewer = ({ id }: PageProps) => {
                             />
                         )
                     })}
-                    <Link href={'/icons/' + ((idInt + 1) % NUMBER_OF_IMAGES).toString()}>
-                        <a id={styles.next_image}>&rarr;</a>
+                    <Link
+                        href={'/icons/' + ((idInt + 1) % NUMBER_OF_IMAGES).toString()}
+                        id={styles.next_image}>
+                        &rarr;
                     </Link>
                 </div>
             </Block>
             <Block>
                 <div style={{textAlign: 'center'}}>
-                    <Link href={'/icons'}>
-                        <a className={'linkButton'}>一覧に戻る</a>
+                    <Link href={'/icons'} className={'linkButton'}>
+                        一覧に戻る
                     </Link>
                 </div>
             </Block>
@@ -91,7 +95,7 @@ const ImageViewer = ({ id }: PageProps) => {
                 </p>
             </Block>
         </Layout>
-    )
+    );
 };
 
 export default ImageViewer;
