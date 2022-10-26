@@ -19,6 +19,7 @@ import PageNavigation, {PageTransferButton} from "./PageNavigation";
 import Block from "../Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
+import ReactPlayer from "react-player";
 
 type codeProps = {
     className: string
@@ -97,6 +98,30 @@ const myMarkdownClasses: MarkdownFunctionType = {
             <div style={{textAlign: 'center'}}>
                 <YouTube videoId={id} className={'youtube-iframe'} containerClassName={'youtube-outer'}/>
             </div>
+        )
+    },
+
+    'Auto-youtube': (content) => {
+        const lines = content.split('\n')
+        const id = lines[0].trim()
+        const title = lines[1]?.trim()
+        return (
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <ReactPlayer
+                url={'https://www.youtube.com/watch?v=' + id}
+                playing={true}
+                volume={0}
+                config={{
+                    youtube: {
+                        playerVars: {
+                            modestbranding: 1,
+                            loop: 1,
+                            playlist: id  // it is needed to loop video
+                        }
+                    }
+                }}
+              />
+          </div>
         )
     },
 
