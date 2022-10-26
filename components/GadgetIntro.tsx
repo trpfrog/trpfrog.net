@@ -5,7 +5,7 @@ import Image from 'next/legacy/image';
 type Props = {
   name: string
   imagePath?: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}) => {
