@@ -55,7 +55,7 @@ export const NormalTitle = () => {
         <div id={styles.subtitle}>{subTitle}</div>
       </div>
     )
-  }, [])
+  }, [showPageTitle])
 
   return (
     <div id={styles.site_logo}>
