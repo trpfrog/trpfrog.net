@@ -31,7 +31,7 @@ export const HeaderFollowSticky = (props: { children: React.ReactNode, top: stri
   )
 }
 
-const Header: React.FC = ({children}) => {
+const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
 
   const headerY = useMotionValue(0)
 
