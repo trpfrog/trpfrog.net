@@ -8,34 +8,34 @@ import styles from "../../styles/stickers.module.scss";
 import {NextSeo} from "next-seo";
 
 const Index: NextPage = () => {
-    return (
-        <Layout>
-            <NextSeo description={'つまみアイコン集'}/>
-            <Title title={'アイコン集'}>
-                <p>
+  return (
+    <Layout>
+      <NextSeo description={'つまみアイコン集'}/>
+      <Title title={'アイコン集'}>
+        <p>
                     つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
-                </p>
-            </Title>
-            <Block>
-                <div className={styles.icon_grid}>
-                    {Array.from(Array(33), (v, k) => k).map(i => (
-                        (<Link href={'/icons/' + i} key={i}>
+        </p>
+      </Title>
+      <Block>
+        <div className={styles.icon_grid}>
+          {Array.from(Array(33), (v, k) => k).map(i => (
+            (<Link href={'/icons/' + i} key={i}>
 
-                            <Image
-                                src={'icons_gallery/' + i}
-                                width={100}
-                                height={100}
-                                objectFit={'contain'}
-                                quality={15}
-                                alt={i + '番目のスタンプ画像'}
-                            />
+              <Image
+                src={'icons_gallery/' + i}
+                width={100}
+                height={100}
+                objectFit={'contain'}
+                quality={15}
+                alt={i + '番目のスタンプ画像'}
+              />
 
-                        </Link>)
-                    ))}
-                </div>
-            </Block>
-        </Layout>
-    );
+            </Link>)
+          ))}
+        </div>
+      </Block>
+    </Layout>
+  );
 }
 
 export default Index

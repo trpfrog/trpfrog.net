@@ -11,12 +11,12 @@ import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 
 export const getStaticProps = async () => {
-    const articles = await getSortedPostsData()
-    return {
-        props: {
-            articles
-        }
+  const articles = await getSortedPostsData()
+  return {
+    props: {
+      articles
     }
+  }
 }
 
 type Props = {
@@ -24,36 +24,36 @@ type Props = {
 };
 
 const Blog: NextPage<Props> = ({ articles }) => {
-    const latestArticle = articles[0];
-    const pastArticles = articles.slice(1);
+  const latestArticle = articles[0];
+  const pastArticles = articles.slice(1);
 
-    const description =
+  const description =
         'つまみさんのブログです。' +
         '主にお散歩やソフトウェアの記事を書いています。'
 
-    return (
-        <>
-            <Layout>
-                <Title title={'つまみログ'} description={description} />
+  return (
+    <>
+      <Layout>
+        <Title title={'つまみログ'} description={description} />
 
-                <div className={styles.hrule_block}>
-                    <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
-                </div>
+        <div className={styles.hrule_block}>
+          <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
+        </div>
 
-                <div id={styles.hero_article}>
-                    <ArticleCard entry={latestArticle} hero={true}/>
-                </div>
+        <div id={styles.hero_article}>
+          <ArticleCard entry={latestArticle} hero={true}/>
+        </div>
 
-                <div className={styles.hrule_block}>
-                    <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
-                </div>
+        <div className={styles.hrule_block}>
+          <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
+        </div>
 
-                <ArticleGrid>
-                    {pastArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-                </ArticleGrid>
-            </Layout>
-        </>
-    )
+        <ArticleGrid>
+          {pastArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
+        </ArticleGrid>
+      </Layout>
+    </>
+  )
 }
 
 export default Blog

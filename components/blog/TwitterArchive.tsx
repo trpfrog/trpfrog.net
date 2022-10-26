@@ -9,72 +9,72 @@ type Props = {
 }
 
 const TwitterArchive = ({content}: Props) => {
-    const tweetData: { [key: string]: string } = {}
-    const lines = content.trim().split('\n')
-    for (const line of lines) {
-        const key = line.split(':')[0]
-        tweetData[key] = line.split(':').slice(1).join(':').trim()
-    }
-    const userLink  = 'https://twitter.com/' + tweetData.userid
-    const tweetLink = userLink + '/status/' + tweetData.id
+  const tweetData: { [key: string]: string } = {}
+  const lines = content.trim().split('\n')
+  for (const line of lines) {
+    const key = line.split(':')[0]
+    tweetData[key] = line.split(':').slice(1).join(':').trim()
+  }
+  const userLink  = 'https://twitter.com/' + tweetData.userid
+  const tweetLink = userLink + '/status/' + tweetData.id
 
-    if (!tweetData.name)   tweetData.name = 'つまみ'
-    if (!tweetData.userid) tweetData.userid = 'TrpFrog'
-    if (!tweetData.color)  tweetData.color = getOtakuColor(tweetData.userid)
+  if (!tweetData.name)   tweetData.name = 'つまみ'
+  if (!tweetData.userid) tweetData.userid = 'TrpFrog'
+  if (!tweetData.color)  tweetData.color = getOtakuColor(tweetData.userid)
 
-    const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
+  const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
 
-    return (
-        <div className={styles.wrapper}>
+  return (
+    <div className={styles.wrapper}>
+      <div
+        className={styles.box}
+        onClick={() => window.open(tweetLink)}
+        style={JSON.parse(tweetData.style ?? '{}')}
+      >
+        <div className={styles.header}>
+          <div className={styles.header_left}>
             <div
-                className={styles.box}
-                onClick={() => window.open(tweetLink)}
-                style={JSON.parse(tweetData.style ?? '{}')}
-            >
-                <div className={styles.header}>
-                    <div className={styles.header_left}>
-                        <div
-                            className={styles.icon}
-                            style={{
-                                background:
+              className={styles.icon}
+              style={{
+                background:
                                     tweetData.userid === 'TrpFrog'
-                                        ? `url("${trpfrogUrl}")`
-                                        : tweetData.color,
-                                backgroundPosition: 'center'
-                            }}
-                            onClick={() => window.open(userLink)}
-                        />
-                        <div className={styles.name_box}>
-                            <a href={userLink} target="_blank" rel="noreferrer">
-                                <div className={styles.name}>{tweetData.name}</div>
-                                <div className={styles.userid}>@{tweetData.userid}</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div className={styles.logo}>
-                        <FontAwesomeIcon icon={faDove} style={{fontSize: '1.5em'}}/>
-                    </div>
-                </div>
-                <div className={styles.tweet}>
-                    <blockquote>
-                        <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
-                        <span dangerouslySetInnerHTML={{__html: tweetData.tweet}}/>
-                    </blockquote>
-                </div>
-                {tweetData.image &&
-                    <div className={styles.image}>
-                        <blockquote>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={tweetData.image} alt={'ツイートの画像'}/>
-                        </blockquote>
-                    </div>
-                }
-                <div className={styles.date}>
-                    {tweetData.date}
-                </div>
+                                      ? `url("${trpfrogUrl}")`
+                                      : tweetData.color,
+                backgroundPosition: 'center'
+              }}
+              onClick={() => window.open(userLink)}
+            />
+            <div className={styles.name_box}>
+              <a href={userLink} target="_blank" rel="noreferrer">
+                <div className={styles.name}>{tweetData.name}</div>
+                <div className={styles.userid}>@{tweetData.userid}</div>
+              </a>
             </div>
+          </div>
+          <div className={styles.logo}>
+            <FontAwesomeIcon icon={faDove} style={{fontSize: '1.5em'}}/>
+          </div>
         </div>
-    )
+        <div className={styles.tweet}>
+          <blockquote>
+            <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
+            <span dangerouslySetInnerHTML={{__html: tweetData.tweet}}/>
+          </blockquote>
+        </div>
+        {tweetData.image &&
+                    <div className={styles.image}>
+                      <blockquote>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={tweetData.image} alt={'ツイートの画像'}/>
+                      </blockquote>
+                    </div>
+        }
+        <div className={styles.date}>
+          {tweetData.date}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default TwitterArchive

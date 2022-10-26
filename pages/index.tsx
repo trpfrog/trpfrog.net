@@ -29,70 +29,70 @@ type PageProps = {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-    const myLinks: MyLinkRecord[] = await getMyLinkRecords()
-    const whatsNew: WhatsNewRecord[] = await getWhatsNewRecords()
+  const myLinks: MyLinkRecord[] = await getMyLinkRecords()
+  const whatsNew: WhatsNewRecord[] = await getWhatsNewRecords()
 
-    return {
-        props: {
-            myLinks,
-            whatsNew,
-        }
+  return {
+    props: {
+      myLinks,
+      whatsNew,
     }
+  }
 }
 
 const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
 
-    const mainWrapperStyle = {
-        display: 'block',
-        maxWidth: '100000px',
-        margin: '0',
-        width: '100%',
-        textAlign: 'center'
-    }
+  const mainWrapperStyle = {
+    display: 'block',
+    maxWidth: '100000px',
+    margin: '0',
+    width: '100%',
+    textAlign: 'center'
+  }
 
-    const cookies = parseCookies()
-    const cookieName = 'doNotPlayTopPageAnimation'
-    const doAnimation = cookies[cookieName] !== 'true'
+  const cookies = parseCookies()
+  const cookieName = 'doNotPlayTopPageAnimation'
+  const doAnimation = cookies[cookieName] !== 'true'
 
-    useEffect(() => {
-        setCookie(null, cookieName, 'true', {
-            maxAge: 60 * 60 * 24 * 14,
-            path: '/',
-        })
-    }, [])
+  useEffect(() => {
+    setCookie(null, cookieName, 'true', {
+      maxAge: 60 * 60 * 24 * 14,
+      path: '/',
+    })
+  }, [])
 
-    return (
-        <Layout style={mainWrapperStyle}>
-            <NextSeo
-                title={'つまみネット'}
-                description={'さかなになりたいね'}
-            />
+  return (
+    <Layout style={mainWrapperStyle}>
+      <NextSeo
+        title={'つまみネット'}
+        description={'さかなになりたいね'}
+      />
 
-            <TrpFrogAnimation hasDelay={doAnimation}/>
+      <TrpFrogAnimation hasDelay={doAnimation}/>
 
-            <motion.div
-                id={styles.top_page_grid_wrapper}
-                initial={doAnimation ? { y: 'calc(-1 * var(--anim-height))' } : {}}
-                animate={{ y: 0 }}
-                transition={{
-                    delay: 0.4,
-                    duration: 1
-                }}
-            >
-                <div id={styles.top_page_grid}>
-                    <AboutMe id={styles.about_me_grid}/>
-                    <WhatsNew id={styles.whats_new} whatsNewRecords={whatsNew} />
-                    <Store id={styles.sticker} />
-                    <TopPageIcons id={styles.icons} />
-                    <TopPageMusic id={styles.music} />
-                    <TopPageBalloons id={styles.balloon} />
-                    <Links id={styles.link_grid} myLinks={myLinks}/>
-                    <Ratings id={styles.music_game} />
-                    <Bird id={styles.bird} />
-                </div>
-            </motion.div>
-        </Layout>
-    )
+      <motion.div
+        id={styles.top_page_grid_wrapper}
+        initial={doAnimation ? { y: 'calc(-1 * var(--anim-height))' } : {}}
+        animate={{ y: 0 }}
+        transition={{
+          delay: 0.4,
+          duration: 1
+        }}
+      >
+        <div id={styles.top_page_grid}>
+          <AboutMe id={styles.about_me_grid}/>
+          <WhatsNew id={styles.whats_new} whatsNewRecords={whatsNew} />
+          <Store id={styles.sticker} />
+          <TopPageIcons id={styles.icons} />
+          <TopPageMusic id={styles.music} />
+          <TopPageBalloons id={styles.balloon} />
+          <Links id={styles.link_grid} myLinks={myLinks}/>
+          <Ratings id={styles.music_game} />
+          <Bird id={styles.bird} />
+        </div>
+      </motion.div>
+    </Layout>
+  )
 }
 
 export default Home

@@ -16,41 +16,41 @@ type Params = {
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({params}) => {
-    const articles = await getSortedPostsData(params!.tag)
-    return {
-        props: {
-            tag: params!.tag,
-            articles
-        }
+  const articles = await getSortedPostsData(params!.tag)
+  return {
+    props: {
+      tag: params!.tag,
+      articles
     }
+  }
 }
 
 export const getStaticPaths = async () => {
-    const paths = await getAllTags()
-    return {
-        paths,
-        fallback: false
-    }
+  const paths = await getAllTags()
+  return {
+    paths,
+    fallback: false
+  }
 }
 
 const Blog: NextPage<Props> = ({ articles, tag }) => {
-    return <>
-        <Layout>
-            <Title>
-                <h1>タグ「{tag}」の記事一覧</h1>
-                <p>
-                    <Link href={'/blog'} className={'linkButton'}>
+  return <>
+    <Layout>
+      <Title>
+        <h1>タグ「{tag}」の記事一覧</h1>
+        <p>
+          <Link href={'/blog'} className={'linkButton'}>
                         記事一覧に戻る
-                    </Link>
-                </p>
-            </Title>
-            <NextSeo title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
+          </Link>
+        </p>
+      </Title>
+      <NextSeo title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
 
-            <ArticleGrid>
-                {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-            </ArticleGrid>
-        </Layout>
-    </>;
+      <ArticleGrid>
+        {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
+      </ArticleGrid>
+    </Layout>
+  </>;
 }
 
 export default Blog
