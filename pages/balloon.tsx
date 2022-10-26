@@ -11,19 +11,20 @@ import useSound from 'use-sound';
 import Util from "../lib/utils";
 
 type BalloonProps = {
-    width: string
-    height: string
+  width: string
+  height: string
 }
 
 type BalloonDivProps = {
-    n: number
-    width: number
+  n: number
+  width: number
 }
 
-let playSound = () => {};
+let playSound = () => {
+};
 const balloonColors = ['blue', 'green', 'orange']
 
-export const BalloonBox = ({width='100%', height='100%'}: BalloonProps) => {
+export const BalloonBox = ({width = '100%', height = '100%'}: BalloonProps) => {
   const [balloonColor] = useState(balloonColors[Math.floor(Math.random() * 3)])
   const [isBroken, setState] = useState(false);
 
@@ -62,11 +63,12 @@ const Balloon: NextPage = () => {
 
   const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1652447772/balloon/break-immeditary.mp3';
   const [playFunction] = useSound(soundURL, {interrupt: false});
-  playSound = isSoundEnabled ? playFunction : () => {};
+  playSound = isSoundEnabled ? playFunction : () => {
+  };
 
   const getValidInteger = (s: string) => {
     let n = parseInt(s, 10);
-    if(isNaN(n)) return 1;
+    if (isNaN(n)) return 1;
     return Util.clamp(n, 1, 10000)
   }
 

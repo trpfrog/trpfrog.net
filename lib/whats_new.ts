@@ -4,9 +4,9 @@ import dayjs from "dayjs";
 import {getSortedPostsData} from "./blog/load";
 
 export type WhatsNewRecord = {
-    type: 'page' | 'fix' | 'improve' | 'blog' | 'content',
-    text: string,
-    date: string
+  type: 'page' | 'fix' | 'improve' | 'blog' | 'content',
+  text: string,
+  date: string
 }
 
 export const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
@@ -25,7 +25,7 @@ export const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
   }
 
   return records.sort((a, b) => {
-    if(a.date === b.date) return 0
+    if (a.date === b.date) return 0
     return a.date < b.date ? 1 : -1
   })
 }

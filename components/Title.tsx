@@ -3,14 +3,14 @@ import Block from "./Block";
 import {NextSeo} from "next-seo";
 
 type Props = {
-    title?: string
-    description?: string
-    ribbonText?: string
-    cardImageUrl?: string
-    showDefaultText?: boolean
-    children?: React.ReactNode
-    style?: CSSProperties
-    className?: string
+  title?: string
+  description?: string
+  ribbonText?: string
+  cardImageUrl?: string
+  showDefaultText?: boolean
+  children?: React.ReactNode
+  style?: CSSProperties
+  className?: string
 }
 
 const Title: React.FunctionComponent<Props> = (props) => {
@@ -18,7 +18,7 @@ const Title: React.FunctionComponent<Props> = (props) => {
     children,
     title,
     description,
-    showDefaultText=true
+    showDefaultText = true
   } = props
 
   return (
@@ -27,7 +27,7 @@ const Title: React.FunctionComponent<Props> = (props) => {
         title={title + ' - ' + process.env.title}
         description={props.description}
         openGraph={props.cardImageUrl ? {
-          images: [{ url: props.cardImageUrl }]
+          images: [{url: props.cardImageUrl}]
         } : {}}
       />
       <Block

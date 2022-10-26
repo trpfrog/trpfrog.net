@@ -19,12 +19,12 @@ import PostAttributes from "../../../components/blog/PostAttributes";
 
 
 type PageProps = {
-    entry: ErrorablePost
-    imageSize: { [path: string]: BlogImageData }
+  entry: ErrorablePost
+  imageSize: { [path: string]: BlogImageData }
 }
 
 type ErrorablePost = BlogPost & {
-    isError: boolean
+  isError: boolean
 }
 
 const errorArticle = {
@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
+const Article: NextPage<PageProps> = ({entry: post, imageSize}) => {
 
   const openGraphImage = post.thumbnail ? {
     images: [
@@ -86,23 +86,23 @@ const Article: NextPage<PageProps> = ({ entry: post, imageSize }) => {
       <NextSeo noindex={true}/>
       <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
         {post.thumbnail &&
-                    <Image
-                      src={getPureCloudinaryPath(post.thumbnail)}
-                      alt={'Thumbnail of this article'}
-                      width={1000}
-                      height={400}
-                      layout={'responsive'}
-                      objectFit={'cover'}
-                    />
+          <Image
+            src={getPureCloudinaryPath(post.thumbnail)}
+            alt={'Thumbnail of this article'}
+            width={1000}
+            height={400}
+            layout={'responsive'}
+            objectFit={'cover'}
+          />
         }
         <div className={styles.inner_title_block}>
           <h1>{parseWithBudouX(post.title, post.slug)}</h1>
           <p>{post.description}</p>
           {!post.isError &&
-                        <p style={{fontSize: '1.5em', color: 'red', fontWeight: 'bold'}}>
-                            これは記事プレビューです<br/>
-                            SNSなど外部への共有を禁じます
-                        </p>
+            <p style={{fontSize: '1.5em', color: 'red', fontWeight: 'bold'}}>
+              これは記事プレビューです<br/>
+              SNSなど外部への共有を禁じます
+            </p>
           }
           <PostAttributes post={post}/>
         </div>

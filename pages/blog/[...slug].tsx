@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/legacy/image";
@@ -12,7 +12,8 @@ import {
   fetchHistorySHA,
   getAllPostPaths,
   getPostData,
-  getSortedPostsData, TimeMachineSHA
+  getSortedPostsData,
+  TimeMachineSHA
 } from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
 
@@ -29,9 +30,10 @@ import PostAttributes from "../../components/blog/PostAttributes";
 import {useRouter} from "next/router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-  faArrowLeft, faFileLines,
+  faArrowLeft,
+  faFileLines,
   faFont,
-  faPencil, faStar,
+  faPencil,
   faToiletPaper,
   faUniversalAccess
 } from "@fortawesome/free-solid-svg-icons";
@@ -44,14 +46,14 @@ import {HeaderFollowSticky} from "../../components/header/Header";
 import ArticleCard from "../../components/blog/ArticleCard";
 
 type PageProps = {
-    entry: BlogPost
-    imageSize: { [path: string]: BlogImageData }
-    relatedPosts: BlogPost[]
-    pastArticleSHA: TimeMachineSHA[]
+  entry: BlogPost
+  imageSize: { [path: string]: BlogImageData }
+  relatedPosts: BlogPost[]
+  pastArticleSHA: TimeMachineSHA[]
 }
 
 type Params = {
-    slug: string[]
+  slug: string[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}) => {
@@ -87,15 +89,15 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 }
 
 const share = (slug: string) => {
-  if(typeof window === 'undefined') return;
+  if (typeof window === 'undefined') return;
   const articleURL = 'https://trpfrog.net/blog/' + slug
-  const tweetURL =  'https://twitter.com/intent/tweet?'
-                + "text=" + encodeURIComponent(document.title) + "&"
-                + "url=" + encodeURIComponent(articleURL);
+  const tweetURL = 'https://twitter.com/intent/tweet?'
+    + "text=" + encodeURIComponent(document.title) + "&"
+    + "url=" + encodeURIComponent(articleURL);
   window.open(tweetURL);
 }
 
-const TogglePageViewLink = ({post}: {post: BlogPost}) => {
+const TogglePageViewLink = ({post}: { post: BlogPost }) => {
   const router = useRouter()
   const anchor = router.asPath.split('#').slice(-1)[0]
 
@@ -123,12 +125,12 @@ const TogglePageViewLink = ({post}: {post: BlogPost}) => {
 
   return (
     <a href={url}>
-      <EntryButton icon={icon} text={text} />
+      <EntryButton icon={icon} text={text}/>
     </a>
   )
 }
 
-const EntryButton = (props: {text: string, icon: IconProp, onClick?: any}) => {
+const EntryButton = (props: { text: string, icon: IconProp, onClick?: any }) => {
   return (
     <div className={styles.entry_button} onClick={props.onClick}>
       <div className={styles.entry_button_icon}>
@@ -141,7 +143,7 @@ const EntryButton = (props: {text: string, icon: IconProp, onClick?: any}) => {
   )
 }
 
-const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArticleSHA }) => {
+const Article: NextPage<PageProps> = ({entry, imageSize, relatedPosts, pastArticleSHA}) => {
 
   const [post, setPost] = useState({...entry, imageSize})
 
@@ -211,14 +213,14 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
     <Layout className={styles.layout}>
       <Title className={styles.article_title_block}>
         {post.thumbnail &&
-                    <Image
-                      src={getPureCloudinaryPath(post.thumbnail)}
-                      alt={'Thumbnail of this article'}
-                      width={1000}
-                      height={400}
-                      layout={'responsive'}
-                      objectFit={'cover'}
-                    />
+          <Image
+            src={getPureCloudinaryPath(post.thumbnail)}
+            alt={'Thumbnail of this article'}
+            width={1000}
+            height={400}
+            layout={'responsive'}
+            objectFit={'cover'}
+          />
         }
         <div className={styles.inner_title_block}>
           <h1>{parseWithBudouX((() => {
@@ -267,7 +269,7 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
             <a onClick={handleUDFontButton}>
               {useUDFont ? (
                 <EntryButton icon={faFont} text={'通常書体'}/>
-              ):(
+              ) : (
                 <EntryButton icon={faUniversalAccess} text={'UD書体'}/>
               )}
             </a>
@@ -275,37 +277,37 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
           </div>
 
           {process.env.NODE_ENV === 'development' &&
-                        <p>
-                          <a
-                            className={'linkButton'}
-                            onClick={() => fetch(`/api/posts/open/${post.slug}`)}
-                          >
-                                編集する
-                          </a>
-                        </p>
+            <p>
+              <a
+                className={'linkButton'}
+                onClick={() => fetch(`/api/posts/open/${post.slug}`)}
+              >
+                編集する
+              </a>
+            </p>
           }
 
           {pastArticleSHA.length > 1 &&
-                        <div style={{margin: '1em 0'}}>
-                          <TimeMachine
-                            setPost={setPost}
-                            originalEntry={entry}
-                            imageSize={imageSize}
-                            pastArticleSHA={pastArticleSHA}
-                          />
-                        </div>
+            <div style={{margin: '1em 0'}}>
+              <TimeMachine
+                setPost={setPost}
+                originalEntry={entry}
+                imageSize={imageSize}
+                pastArticleSHA={pastArticleSHA}
+              />
+            </div>
           }
 
           <div>
-            <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}} >
+            <p style={badButtonFlag ? {} : {opacity: 0.05, height: 2, margin: 0}}>
               <a className={'linkButton'} onClick={handleBadBlog}>
                 {badBlog ? '元に戻す' : 'よくないブログ'}
               </a>
             </p>
             {badBlog > 0 &&
-                            <p>
-                                よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
-                            </p>
+              <p>
+                よくないブログ No.{badBlog}: <b>{badBlogs[badBlog - 1]}</b>
+              </p>
             }
           </div>
 

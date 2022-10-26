@@ -2,11 +2,11 @@ import fs from 'fs';
 import path from 'path';
 
 export type MutualLinkRecord = {
-    url: string,
-    siteName: string,
-    ownerName: string,
-    twitterId: string,
-    description: string
+  url: string,
+  siteName: string,
+  ownerName: string,
+  twitterId: string,
+  description: string
 }
 
 export const getMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
@@ -15,7 +15,7 @@ export const getMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () 
   const links = JSON.parse(jsonText) as MutualLinkRecord[];
 
   return links.sort(({ownerName: a}, {ownerName: b}) => {
-    if(a < b) {
+    if (a < b) {
       return -1
     } else if (a > b) {
       return 1

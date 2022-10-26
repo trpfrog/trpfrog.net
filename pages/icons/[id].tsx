@@ -9,11 +9,11 @@ import Title from "../../components/Title";
 const NUMBER_OF_IMAGES = 33;
 
 type PageProps = {
-    id: string
+  id: string
 }
 
 type Params = {
-    id: string
+  id: string
 }
 
 export const getStaticPaths = () => {
@@ -35,11 +35,11 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
   }
 }
 
-const ImageViewer = ({ id }: PageProps) => {
+const ImageViewer = ({id}: PageProps) => {
   const idInt = parseInt(id);
   return (
     <Layout>
-      <Title title={'アイコンビューア'} style={{display: 'none'}} />
+      <Title title={'アイコンビューア'} style={{display: 'none'}}/>
       <Block>
         <div className={styles.img_wrapper_outside}>
           <div className={styles.img_wrapper_inside}>
@@ -59,39 +59,40 @@ const ImageViewer = ({ id }: PageProps) => {
           <Link
             href={'/icons/' + ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()}
             id={styles.prev_image}>
-                        &larr;
+            &larr;
           </Link>
           {Array.from(Array(5), (v, k) => k)
             .map(k => (idInt + k - 2 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES)
-            .map(k => { return (
-              <Image
-                key={k}
-                src={'icons_gallery/' + k}
-                width={100}
-                height={100}
-                objectFit={'contain'}
-                quality={50}
-                alt={k + '番目のアイコン'}
-              />
-            )
+            .map(k => {
+              return (
+                <Image
+                  key={k}
+                  src={'icons_gallery/' + k}
+                  width={100}
+                  height={100}
+                  objectFit={'contain'}
+                  quality={50}
+                  alt={k + '番目のアイコン'}
+                />
+              )
             })}
           <Link
             href={'/icons/' + ((idInt + 1) % NUMBER_OF_IMAGES).toString()}
             id={styles.next_image}>
-                        &rarr;
+            &rarr;
           </Link>
         </div>
       </Block>
       <Block>
         <div style={{textAlign: 'center'}}>
           <Link href={'/icons'} className={'linkButton'}>
-                        一覧に戻る
+            一覧に戻る
           </Link>
         </div>
       </Block>
       <Block title={'既知のバグ'}>
         <p>
-                    画像のロードが遅すぎてページ遷移をしていないように見える
+          画像のロードが遅すぎてページ遷移をしていないように見える
         </p>
       </Block>
     </Layout>

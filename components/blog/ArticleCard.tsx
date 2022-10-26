@@ -11,9 +11,9 @@ import {parseWithBudouX} from "../../lib/wordSplit";
 import React from "react";
 
 type Props = {
-    entry: BlogPost
-    hero?: boolean
-    style?: React.CSSProperties
+  entry: BlogPost
+  hero?: boolean
+  style?: React.CSSProperties
 }
 
 export const ArticleGrid = ({children}: any) => (
@@ -26,7 +26,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
 
   const articleURL = '/blog/' + entry.slug
   const splitTitle = parseWithBudouX(entry.title, entry.slug)
-  const thumbnail  = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
+  const thumbnail = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
   return (
     <Link href={articleURL}>

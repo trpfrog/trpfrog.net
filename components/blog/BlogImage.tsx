@@ -1,20 +1,22 @@
 import React, {CSSProperties, useState} from "react";
 import styles from "../../styles/blog/BlogImage.module.scss";
-import Image from "next/legacy/image";;
+import Image from "next/legacy/image";
 import Modal from "react-modal";
 import {getPureCloudinaryPath, parseInlineMarkdown} from "./BlogMarkdown";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 
+;
+
 type BlogImageProps = {
-    src: string,
-    alt: string,
-    imageData?: BlogImageData
-    style?: CSSProperties
+  src: string,
+  alt: string,
+  imageData?: BlogImageData
+  style?: CSSProperties
 }
 
-export const ImageCaption = ({children}: {children: React.ReactNode}) => (
+export const ImageCaption = ({children}: { children: React.ReactNode }) => (
   <figcaption className={styles.caption}>
     {children}
   </figcaption>
@@ -77,12 +79,12 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     <>
       <figure className={styles.img_wrapper} style={style}>
         {takenBy &&
-                    <div className={styles.taken_by} style={{width: imageWidth}}>
-                      <small>
-                        <FontAwesomeIcon icon={faCamera}/>{' '}
-                            撮影: {parseInlineMarkdown(takenBy)}
-                      </small>
-                    </div>
+          <div className={styles.taken_by} style={{width: imageWidth}}>
+            <small>
+              <FontAwesomeIcon icon={faCamera}/>{' '}
+              撮影: {parseInlineMarkdown(takenBy)}
+            </small>
+          </div>
         }
         <Image
           src={srcPath}
@@ -97,9 +99,9 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
           onClick={() => setModalState(true)}
         />
         {caption &&
-                    <ImageCaption>
-                      {parseInlineMarkdown(caption)}
-                    </ImageCaption>
+          <ImageCaption>
+            {parseInlineMarkdown(caption)}
+          </ImageCaption>
         }
       </figure>
       <Modal

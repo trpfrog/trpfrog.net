@@ -4,8 +4,8 @@ import Block from "../Block";
 import {WhatsNewRecord} from "../../lib/whats_new";
 
 type Props = {
-    id?: string
-    whatsNewRecords: WhatsNewRecord[]
+  id?: string
+  whatsNewRecords: WhatsNewRecord[]
 }
 
 const WhatsNew = ({id, whatsNewRecords}: Props) => {

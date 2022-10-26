@@ -4,7 +4,7 @@ import {BalloonBox} from "../../pages/balloon";
 import Link from "next/link";
 
 type Props = {
-    id?: string
+  id?: string
 }
 
 const TopPageBalloons = ({id}: Props) => {

@@ -1,8 +1,8 @@
 type Props = {
-    title?: string;
-    description?: string;
-    url: string;
-    image?: string;
+  title?: string;
+  description?: string;
+  url: string;
+  image?: string;
 }
 
 const SITE_NAME = process.env.title;

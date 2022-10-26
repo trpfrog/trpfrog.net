@@ -13,7 +13,7 @@ const About: NextPage = () => {
       />
       <Block title={'鬼のウォッチフェイス'} newRibbon={true}>
         <p>
-                    Apple Watch の文字盤です。誰得？
+          Apple Watch の文字盤です。誰得？
         </p>
         <Image
           src={'/download/watchfaces/oni/thumbnail'}
@@ -24,18 +24,18 @@ const About: NextPage = () => {
           alt={'鬼のウォッチフェイスの画像'}
         />
         <p>
-                    iPhoneからDLしてください
+          iPhoneからDLしてください
         </p>
         <p className={'link-area'}>
           <a href="https://res.cloudinary.com/trpfrog/raw/upload/v1641138633/download/watchfaces/oni/oni.watchface">
-                        ダウンロード
+            ダウンロード
           </a>
         </p>
       </Block>
 
       <Block title={'壁紙: アイコン集合'}>
         <p>
-                    Twitterのヘッダー用に作ったものを壁紙に作り直しました。
+          Twitterのヘッダー用に作ったものを壁紙に作り直しました。
         </p>
         <Image
           src={'/download/wallpapers/icons/thumbnail'}
@@ -46,7 +46,7 @@ const About: NextPage = () => {
           alt={'アイコン集合の壁紙'}
         />
         <p>
-                    PC用は2560×1600pxです。
+          PC用は2560×1600pxです。
         </p>
         <p className={'link-area'}>
           <a href="https://res.cloudinary.com/trpfrog/download/wallpapers/icons/desktop.png">PC</a>
@@ -58,7 +58,7 @@ const About: NextPage = () => {
 
       <Block title={'壁紙: 雨'}>
         <p>
-                    天気の子の陽菜ちゃんになりたくて作りました。天気の子は観た方が良いです。
+          天気の子の陽菜ちゃんになりたくて作りました。天気の子は観た方が良いです。
         </p>
         <Image
           src={'/download/wallpapers/rainy/thumbnail'}
@@ -69,8 +69,8 @@ const About: NextPage = () => {
           alt={'雨の壁紙'}
         />
         <p>
-                    PC用は右にかけて暗くなっていくグラデーションあり版があります。<br/>
-                    右側にアイコン並べるようなMacユーザーの方におすすめです。
+          PC用は右にかけて暗くなっていくグラデーションあり版があります。<br/>
+          右側にアイコン並べるようなMacユーザーの方におすすめです。
         </p>
         <p className={'link-area'}>
           <a href="https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/no_grad.png">PC</a>

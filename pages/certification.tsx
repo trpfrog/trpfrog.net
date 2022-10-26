@@ -10,13 +10,13 @@ import path from "path";
 import fs from "fs";
 
 type Cert = {
-    name: string,
-    year: number,
-    month: number
+  name: string,
+  year: number,
+  month: number
 }
 
 type PageProps = {
-    certs: Cert[]
+  certs: Cert[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
@@ -46,7 +46,7 @@ const Certification: NextPage<PageProps> = ({certs}: PageProps) => {
       />
       <Block>
         <div id={styles.cert_grid}>
-          {certs.map(({ name, year, month }, index) => (
+          {certs.map(({name, year, month}, index) => (
             <div className={styles.cert} key={'cert-' + index}>
               <div className={styles.date_wrapper}>
                 <time className={styles.date}>

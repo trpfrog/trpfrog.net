@@ -1,12 +1,13 @@
 // See https://github.com/vercel/next.js/issues/17464#issuecomment-751267740
 
 import Router from 'next/router'
-import { useCallback, useEffect, useRef } from 'react'
+import {useCallback, useEffect, useRef} from 'react'
 
 type Cleanup = () => void
 
 export const useTransitionFix = (): Cleanup => {
-  const cleanupRef = useRef<Cleanup>(() => {})
+  const cleanupRef = useRef<Cleanup>(() => {
+  })
 
   useEffect(() => {
     const changeListener = () => {

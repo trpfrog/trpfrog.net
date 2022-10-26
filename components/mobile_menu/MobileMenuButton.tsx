@@ -3,7 +3,7 @@ import styles from "../../styles/common/MobileMenuButton.module.scss";
 import {HamburgerState} from "./MobileMenu";
 
 type Props = {
-    hamburgerState: HamburgerState
+  hamburgerState: HamburgerState
 }
 
 const MobileMenuButton = ({hamburgerState}: Props) => {

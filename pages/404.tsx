@@ -17,10 +17,10 @@ const TrpFrog404: NextPage = () => {
       >
         <h1 style={{textAlign: 'center'}}>
           <div style={{fontSize: '3em', color: 'var(--header-color)'}}>
-                        404
+            404
           </div>
           <div style={{fontSize: '0.9em'}}>
-                        Not Found
+            Not Found
           </div>
         </h1>
         <div style={{marginTop: '1rem'}}>
@@ -40,7 +40,7 @@ const TrpFrog404: NextPage = () => {
           </p>
           <p>
             <Link href={'/'} className={'linkButton'}>
-                            トップページに戻る
+              トップページに戻る
             </Link>
           </p>
         </div>

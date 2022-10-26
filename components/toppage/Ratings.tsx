@@ -2,7 +2,7 @@ import Block from "../Block";
 import styles from "../../styles/top-page/Ratings.module.scss";
 
 type Props = {
-    id?: string
+  id?: string
 }
 
 const Ratings = ({id}: Props) => {

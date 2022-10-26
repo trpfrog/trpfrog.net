@@ -5,7 +5,7 @@ import {faDove} from "@fortawesome/free-solid-svg-icons";
 import getOtakuColor from "../../lib/blog/otakuColors";
 
 type Props = {
-    content: string
+  content: string
 }
 
 const TwitterArchive = ({content}: Props) => {
@@ -15,12 +15,12 @@ const TwitterArchive = ({content}: Props) => {
     const key = line.split(':')[0]
     tweetData[key] = line.split(':').slice(1).join(':').trim()
   }
-  const userLink  = 'https://twitter.com/' + tweetData.userid
+  const userLink = 'https://twitter.com/' + tweetData.userid
   const tweetLink = userLink + '/status/' + tweetData.id
 
-  if (!tweetData.name)   tweetData.name = 'つまみ'
+  if (!tweetData.name) tweetData.name = 'つまみ'
   if (!tweetData.userid) tweetData.userid = 'TrpFrog'
-  if (!tweetData.color)  tweetData.color = getOtakuColor(tweetData.userid)
+  if (!tweetData.color) tweetData.color = getOtakuColor(tweetData.userid)
 
   const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
 
@@ -37,9 +37,9 @@ const TwitterArchive = ({content}: Props) => {
               className={styles.icon}
               style={{
                 background:
-                                    tweetData.userid === 'TrpFrog'
-                                      ? `url("${trpfrogUrl}")`
-                                      : tweetData.color,
+                  tweetData.userid === 'TrpFrog'
+                    ? `url("${trpfrogUrl}")`
+                    : tweetData.color,
                 backgroundPosition: 'center'
               }}
               onClick={() => window.open(userLink)}
@@ -62,12 +62,12 @@ const TwitterArchive = ({content}: Props) => {
           </blockquote>
         </div>
         {tweetData.image &&
-                    <div className={styles.image}>
-                      <blockquote>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={tweetData.image} alt={'ツイートの画像'}/>
-                      </blockquote>
-                    </div>
+          <div className={styles.image}>
+            <blockquote>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={tweetData.image} alt={'ツイートの画像'}/>
+            </blockquote>
+          </div>
         }
         <div className={styles.date}>
           {tweetData.date}

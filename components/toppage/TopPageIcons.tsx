@@ -1,10 +1,12 @@
 import Block from "../Block";
 import styles from "../../styles/top-page/main.module.scss";
-import Image from "next/legacy/image";;
+import Image from "next/legacy/image";
 import Link from "next/link";
 
+;
+
 type Props = {
-    id?: string
+  id?: string
 }
 
 const TopPageIcons = ({id}: Props) => {

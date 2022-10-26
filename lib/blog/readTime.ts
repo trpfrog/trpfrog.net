@@ -10,7 +10,7 @@ export const getReadTimeSecond = (markdown: string) => {
     .split('[READ_TIME_SEP]')
     .filter((e, index) =>
       index % 2 === 0
-            || e.startsWith('centering')
+      || e.startsWith('centering')
     )
     .join('')
     .replace(/[ 　\n*#]/g, '')

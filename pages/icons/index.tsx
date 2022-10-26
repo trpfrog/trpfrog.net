@@ -13,7 +13,7 @@ const Index: NextPage = () => {
       <NextSeo description={'つまみアイコン集'}/>
       <Title title={'アイコン集'}>
         <p>
-                    つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
+          つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
         </p>
       </Title>
       <Block>

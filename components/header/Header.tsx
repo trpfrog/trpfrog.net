@@ -6,7 +6,7 @@ import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "../../styles/common/Header.module.scss";
 
-export const HeaderFollowSticky = (props: {children: React.ReactNode, top: string | number}) => {
+export const HeaderFollowSticky = (props: { children: React.ReactNode, top: string | number }) => {
 
   const {scrollY} = useViewportScroll()
   const [headerTop, setHeaderTop] = useState(`calc(var(--header-height) + ${props.top})`)
@@ -25,7 +25,7 @@ export const HeaderFollowSticky = (props: {children: React.ReactNode, top: strin
   scrollY.onChange(handleScroll)
 
   return (
-    <div style={{transition: '0.1s', position:'sticky', top: headerTop}}>
+    <div style={{transition: '0.1s', position: 'sticky', top: headerTop}}>
       {props.children}
     </div>
   )
@@ -58,7 +58,7 @@ const Header: React.FC = ({children}) => {
       style={{y: headerY}}
     >
       <div id={styles.inside}>
-        {router.pathname == '/' ? <TopTitle />  : <NormalTitle />}
+        {router.pathname == '/' ? <TopTitle/> : <NormalTitle/>}
         <nav id={styles.navigation}>
           <ul>
             {['home', 'works', 'blog'].map(e => (

@@ -4,15 +4,15 @@ import Link from "next/link";
 import {MyLinkRecord} from "../../lib/MyLinks";
 
 type Props = {
-    myLinks: MyLinkRecord[]
-    id?: string
+  myLinks: MyLinkRecord[]
+  id?: string
 }
 
 const Links = ({id, myLinks}: Props) => {
   return (
     <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
       <div className={styles.link_grid}>
-        {myLinks.map(({ url, siteName, description }) => (
+        {myLinks.map(({url, siteName, description}) => (
           <div key={siteName} className={styles.link_block}>
             <p style={{textAlign: "center"}}>
               <Link href={url}>
@@ -28,7 +28,7 @@ const Links = ({id, myLinks}: Props) => {
 
       <h2 className="hina">相互リンク</h2>
       <p>
-                移動しました！
+        移動しました！
       </p>
       <p>
         <Link href={'/links'}>

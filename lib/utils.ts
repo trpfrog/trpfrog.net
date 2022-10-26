@@ -1,7 +1,7 @@
 import assert from "assert";
 import {useEffect, useState} from "react";
 
-const Util =  {
+const Util = {
   clamp: (x: number, min: number, max: number): number => {
     assert(min <= max)
     if (x < min) return min
@@ -34,7 +34,7 @@ const Util =  {
       if (typeof window === 'undefined') return;
       const onResize = () => {
         setWindowSize({
-          width:  window.innerWidth,
+          width: window.innerWidth,
           height: window.innerHeight
         });
       }

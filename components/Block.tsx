@@ -1,18 +1,25 @@
 import React, {CSSProperties} from "react";
 
 type Props = {
-    title?: string
-    h2icon?: string
-    id?: string
-    newRibbon?: boolean
-    ribbonText?: string
-    className?: string
-    style?: CSSProperties | undefined
-    children?: React.ReactNode
+  title?: string
+  h2icon?: string
+  id?: string
+  newRibbon?: boolean
+  ribbonText?: string
+  className?: string
+  style?: CSSProperties | undefined
+  children?: React.ReactNode
 }
 
 const Block: React.FunctionComponent<Props> = ({
-  children, title, h2icon='trpfrog', id='', newRibbon=false, ribbonText='', style, className=''
+  children,
+  title,
+  h2icon = 'trpfrog',
+  id = '',
+  newRibbon = false,
+  ribbonText = '',
+  style,
+  className = ''
 }) => {
   let h2 = <></>;
   if (title !== undefined) {

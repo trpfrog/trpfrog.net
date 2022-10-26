@@ -5,7 +5,7 @@ import ReactModal from "react-modal";
 import ReactMarkdown from "react-markdown";
 import {parseWithBudouX} from "../../lib/wordSplit";
 
-const Lecture = ({ lect }: { lect: LectureData }) => {
+const Lecture = ({lect}: { lect: LectureData }) => {
   const [modalOpened, setModalOpened] = useState(false)
 
   const modalStyle = {

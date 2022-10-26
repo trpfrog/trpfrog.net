@@ -1,20 +1,20 @@
 import Link from 'next/link'
 import React from "react";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 import styles from '../styles/common/Navigation.module.scss';
 
 export const NAVIGATION_LINKS = [
-  { link: '/',            name: 'Home' },
-  { link: '/works',       name: 'Works' },
-  { link: '/blog',        name: 'Blog' },
-  { link: '/balloon',     name: 'Balloons' },
-  { link: '/environment', name: 'Env' },
-  { link: '/stickers',    name: 'Stickers' },
-  { link: '/icons',       name: 'Icons' },
-  { link: '/links',       name: 'Links' },
-  { link: '/download',    name: 'DLC' },
-  { link: '/icon-maker',  name: 'Maker' },
-  { link: '/walking',     name: 'Walk' }
+  {link: '/', name: 'Home'},
+  {link: '/works', name: 'Works'},
+  {link: '/blog', name: 'Blog'},
+  {link: '/balloon', name: 'Balloons'},
+  {link: '/environment', name: 'Env'},
+  {link: '/stickers', name: 'Stickers'},
+  {link: '/icons', name: 'Icons'},
+  {link: '/links', name: 'Links'},
+  {link: '/download', name: 'DLC'},
+  {link: '/icon-maker', name: 'Maker'},
+  {link: '/walking', name: 'Walk'}
 ]
 
 export const NavigationLinks = () => {
@@ -39,7 +39,7 @@ const Navigation = () => {
     <>
       <nav id={styles.wide_nav}>
         <div id={styles.wide_nav_wrapper}>
-          <NavigationLinks />
+          <NavigationLinks/>
         </div>
       </nav>
     </>

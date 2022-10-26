@@ -2,7 +2,7 @@ import React from 'react'
 import {NextPage} from "next";
 import Layout from "../../components/Layout";
 import Title from "../../components/Title";
-import {getSortedPostsData, BlogPost} from "../../lib/blog/load";
+import {BlogPost, getSortedPostsData} from "../../lib/blog/load";
 
 import styles from '../../styles/blog/blog.module.scss';
 
@@ -20,21 +20,21 @@ export const getStaticProps = async () => {
 }
 
 type Props = {
-    articles: BlogPost[]
+  articles: BlogPost[]
 };
 
-const Blog: NextPage<Props> = ({ articles }) => {
+const Blog: NextPage<Props> = ({articles}) => {
   const latestArticle = articles[0];
   const pastArticles = articles.slice(1);
 
   const description =
-        'つまみさんのブログです。' +
-        '主にお散歩やソフトウェアの記事を書いています。'
+    'つまみさんのブログです。' +
+    '主にお散歩やソフトウェアの記事を書いています。'
 
   return (
     <>
       <Layout>
-        <Title title={'つまみログ'} description={description} />
+        <Title title={'つまみログ'} description={description}/>
 
         <div className={styles.hrule_block}>
           <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
@@ -45,7 +45,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
         </div>
 
         <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar}/>  OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
+          <FontAwesomeIcon icon={faStar}/> OTHER ARTICLES <FontAwesomeIcon icon={faStar}/>
         </div>
 
         <ArticleGrid>

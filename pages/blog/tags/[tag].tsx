@@ -8,11 +8,11 @@ import React from "react";
 import ArticleCard, {ArticleGrid} from "../../../components/blog/ArticleCard";
 
 type Props = {
-    tag: string
-    articles: BlogPost[]
+  tag: string
+  articles: BlogPost[]
 };
 type Params = {
-    tag: string
+  tag: string
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async ({params}) => {
@@ -33,14 +33,14 @@ export const getStaticPaths = async () => {
   }
 }
 
-const Blog: NextPage<Props> = ({ articles, tag }) => {
+const Blog: NextPage<Props> = ({articles, tag}) => {
   return <>
     <Layout>
       <Title>
         <h1>タグ「{tag}」の記事一覧</h1>
         <p>
           <Link href={'/blog'} className={'linkButton'}>
-                        記事一覧に戻る
+            記事一覧に戻る
           </Link>
         </p>
       </Title>

@@ -5,10 +5,10 @@ import styles from "../../styles/blog/blog.module.scss";
 import dayjs from "dayjs";
 
 type Props = {
-    setPost:  React.Dispatch<React.SetStateAction<any>>
-    originalEntry: BlogPost
-    imageSize: { [path: string]: BlogImageData }
-    pastArticleSHA: TimeMachineSHA[]
+  setPost: React.Dispatch<React.SetStateAction<any>>
+  originalEntry: BlogPost
+  imageSize: { [path: string]: BlogImageData }
+  pastArticleSHA: TimeMachineSHA[]
 }
 
 const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props) => {
@@ -44,7 +44,7 @@ const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props)
     <details className={styles.pretty_details}>
       <summary>Time Machine (beta)</summary>
       <p>
-                過去の版の記事を読むことができます。
+        過去の版の記事を読むことができます。
       </p>
       <div style={{display: 'flex', flexFlow: 'column', gap: 10, margin: 10}}>
         {pastArticleSHA.map(({sha, date}, idx) => (
@@ -62,7 +62,7 @@ const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props)
           </div>
         ))}
         <div style={{margin: '0 !important'}}>
-                    現在表示している記事:{' '}
+          現在表示している記事:{' '}
           <b>
             {articleSourceSHA === CURRENT_POST_SHA
               ? dayjs(pastArticleSHA[0].date)
@@ -80,7 +80,7 @@ const TimeMachine = ({setPost, originalEntry, imageSize, pastArticleSHA}: Props)
           href={`https://github.com/TrpFrog/trpfrog.net/blame/HEAD/posts/${originalEntry.slug}.md`}
           target={'_blank'} rel="noreferrer"
         >
-                    GitHub で最新版との差分を確認
+          GitHub で最新版との差分を確認
         </a>
         <br/><br/>
       </div>

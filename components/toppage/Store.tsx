@@ -1,17 +1,19 @@
 import Block from "../Block";
 import styles from "../../styles/top-page/main.module.scss";
-import Image from "next/legacy/image";;
+import Image from "next/legacy/image";
+
+;
 
 type Props = {
-    id?: string
+  id?: string
 }
 
 const Store = ({id}: Props) => {
   return (
     <Block title={'ストア'} h2icon={'otaku'} id={id}>
       <p>
-                つまみさんのスタンプ・グッズ<br/>
-                好評発売中！
+        つまみさんのスタンプ・グッズ<br/>
+        好評発売中！
       </p>
       <div className={styles.link_grid}>
         <div className={styles.link_block}>

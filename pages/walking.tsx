@@ -1,14 +1,14 @@
 import type {NextPage} from 'next'
+import {GetStaticProps} from "next";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
-import {GetStaticProps} from "next";
 
 import {BlogPost, getSortedPostsData} from "../lib/blog/load";
 import ArticleCard, {ArticleGrid} from "../components/blog/ArticleCard";
 
 type PageProps = {
-    articles: BlogPost[]
+  articles: BlogPost[]
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
@@ -30,8 +30,8 @@ const About: NextPage<PageProps> = ({articles}) => {
       />
       <Block title={'新着徒歩記事'}>
         <p>
-                    つまみログに書いた「<b>徒歩</b>」タグの新着記事です。
-                    その他の徒歩記事は <a href={'https://walk.trpfrog.net'}>WALKICLES</a> をご覧ください。
+          つまみログに書いた「<b>徒歩</b>」タグの新着記事です。
+          その他の徒歩記事は <a href={'https://walk.trpfrog.net'}>WALKICLES</a> をご覧ください。
         </p>
       </Block>
       <ArticleGrid>
@@ -40,7 +40,7 @@ const About: NextPage<PageProps> = ({articles}) => {
 
       <Block title={'持ち物'}>
         <p>
-                    徒歩会に参加するときの持ち物を紹介します。
+          徒歩会に参加するときの持ち物を紹介します。
         </p>
         <h3>必要なもの</h3>
         <ul>

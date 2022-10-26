@@ -3,9 +3,9 @@ import styles from "../styles/environment.module.scss";
 import Image from 'next/legacy/image';
 
 type Props = {
-    name: string
-    imagePath?: string
-    children: React.ReactNode
+  name: string
+  imagePath?: string
+  children: React.ReactNode
 }
 
 const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}) => {

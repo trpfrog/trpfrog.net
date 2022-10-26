@@ -9,27 +9,27 @@ import {Octokit} from "@octokit/rest";
 
 
 export type TimeMachineSHA = {
-    sha: string
-    date: string
+  sha: string
+  date: string
 }
 
 
 export type BlogPost = {
-    title: string
-    slug: string
-    date: string
-    updated: string
-    tags: string
-    description?: string
-    thumbnail?: string
-    readTime: number
-    numberOfPhotos?: number
-    held?: string
-    previewContentId?: string
-    isAll: boolean
-    currentPage: number
-    numberOfPages: number
-    content: string[]
+  title: string
+  slug: string
+  date: string
+  updated: string
+  tags: string
+  description?: string
+  thumbnail?: string
+  readTime: number
+  numberOfPhotos?: number
+  held?: string
+  previewContentId?: string
+  isAll: boolean
+  currentPage: number
+  numberOfPages: number
+  content: string[]
 }
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -52,10 +52,10 @@ export const fetchHistorySHA = async (slug: string): Promise<TimeMachineSHA[]> =
 
   const key = `${slug}-history-sha`
   if (process.env[key]) {
-        process.env[key]!.split(';').map(e => {
-          const [sha, date] = e.split(',')
-          return {sha, date}
-        })
+    process.env[key]!.split(';').map(e => {
+      const [sha, date] = e.split(',')
+      return {sha, date}
+    })
   }
 
   const octokit = new Octokit({
@@ -69,7 +69,7 @@ export const fetchHistorySHA = async (slug: string): Promise<TimeMachineSHA[]> =
   })
 
   if (response) {
-    const data =  response.data.map((e: any) => ({
+    const data = response.data.map((e: any) => ({
       sha: e.sha,
       date: e.commit.author.date
     })).sort((a: TimeMachineSHA, b: TimeMachineSHA) => {
@@ -94,8 +94,8 @@ export const fetchPastPost = async (slug: string, file_sha: string, option: any)
 }
 
 type BlogPostOption = {
-    pagePos1Indexed?: number
-    all?: boolean
+  pagePos1Indexed?: number
+  all?: boolean
 }
 
 const buildBlogPost = async (
@@ -127,7 +127,7 @@ const buildBlogPost = async (
         return windows
       })
       .flat()
-  } else if (pagePosition)  {
+  } else if (pagePosition) {
     if (pagePosition > parsedContent.length) {
       throw 'Too large page position!'
     }
@@ -172,7 +172,7 @@ export const getPreviewPostData = async (contentId: string, option?: BlogPostOpt
   return await buildBlogPost(data!.slug, data!.md, option, contentId)
 }
 
-export const getSortedPostsData = async (tag:string = '') => {
+export const getSortedPostsData = async (tag: string = '') => {
   const fileNames = await fetchAllMarkdownFileNames()
   const allPostsData = fileNames
     .map(fileName => {
@@ -192,7 +192,7 @@ export const getSortedPostsData = async (tag:string = '') => {
     }
     )
 
-  const sorted = allPostsData.sort(({ date: a }, { date: b }) => {
+  const sorted = allPostsData.sort(({date: a}, {date: b}) => {
     if (a < b) {
       return 1
     } else if (a > b) {
@@ -217,16 +217,16 @@ export const getAllPostPaths = async () => {
   for (const slug of slugs) {
     const entry = await getPostData(slug)
     for (let i = 1; i <= entry.numberOfPages; i++) {
-      paths.push({ params: { slug: [slug, i + ""] } })
+      paths.push({params: {slug: [slug, i + ""]}})
     }
-    paths.push({ params: { slug: [slug] } })
-    paths.push({ params: { slug: [slug, 'all'] } })
+    paths.push({params: {slug: [slug]}})
+    paths.push({params: {slug: [slug, 'all']}})
   }
 
   return paths
 }
 
-export const getAllTags = async() => {
+export const getAllTags = async () => {
   const fileNames = await fetchAllMarkdownFileNames()
   const nested = fileNames
     .map(fileName => fileName
@@ -236,7 +236,7 @@ export const getAllTags = async() => {
     .map(contents => matter(contents).data.tags as string)
     .map(tags => tags.split(',').map(tag => tag.trim()))
     .flat()
-  const tags = [... new Set(nested)]
+  const tags = [...new Set(nested)]
 
   return tags.map(tag => {
     return {

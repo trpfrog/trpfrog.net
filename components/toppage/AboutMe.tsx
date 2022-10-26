@@ -5,29 +5,31 @@ import Block from "../Block";
 import {
   faAt,
   faBirthdayCake,
-  faCode, faEnvelope,
+  faCode,
+  faEnvelope,
   faHeart,
   faLaptop,
   faMapMarkerAlt,
-  faUniversity, faWalking
+  faUniversity,
+  faWalking
 } from "@fortawesome/free-solid-svg-icons";
 
 import {faGithub, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 type Props = {
-    id: string
+  id: string
 }
 
 const AboutMe = ({id}: Props) => {
 
   const attributes = [
-    { icon: faMapMarkerAlt, text: '東京都 (23区外)'                     },
-    { icon: faUniversity,   text: '電気通信大学 4年'                    },
-    { icon: faBirthdayCake, text: '2000年10月17日 (21歳)'               },
-    { icon: faHeart,        text: 'コンピュータ / 開発 / 競プロ / 散歩' },
-    { icon: faLaptop,       text: 'Macユーザー'                         },
-    { icon: faCode,         text: 'AtCoder水色 (highest 1596)'          },
-    { icon: faWalking,      text: '徒歩会 (farthest 70.5km)'            },
+    {icon: faMapMarkerAlt, text: '東京都 (23区外)'},
+    {icon: faUniversity, text: '電気通信大学 4年'},
+    {icon: faBirthdayCake, text: '2000年10月17日 (21歳)'},
+    {icon: faHeart, text: 'コンピュータ / 開発 / 競プロ / 散歩'},
+    {icon: faLaptop, text: 'Macユーザー'},
+    {icon: faCode, text: 'AtCoder水色 (highest 1596)'},
+    {icon: faWalking, text: '徒歩会 (farthest 70.5km)'},
   ]
 
   return (
@@ -40,7 +42,7 @@ const AboutMe = ({id}: Props) => {
       </div>
 
       <p id={styles.intro_text}>
-                ふにゃ〜
+        ふにゃ〜
       </p>
 
       <ul id={styles.intro_attribute}>
@@ -62,7 +64,7 @@ const AboutMe = ({id}: Props) => {
         </div>
         <div>
           <FontAwesomeIcon icon={faEnvelope}/>{' '}
-                    dev<FontAwesomeIcon icon={faAt} style={{fontSize: '0.9em'}}/>trpfrog.net
+          dev<FontAwesomeIcon icon={faAt} style={{fontSize: '0.9em'}}/>trpfrog.net
         </div>
       </div>
     </Block>

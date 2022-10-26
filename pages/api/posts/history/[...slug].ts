@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {fetchPastPost, getPostData} from "../../../../lib/blog/load";
+import {fetchPastPost} from "../../../../lib/blog/load";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const [slug, sha, page] = req.query.slug as string[]

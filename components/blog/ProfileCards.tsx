@@ -5,10 +5,10 @@ import rehypeRaw from "rehype-raw";
 import dayjs from "dayjs";
 
 export type ProfileData = {
-    name: string
-    club?: string
-    twitter?: string
-    description: string
+  name: string
+  club?: string
+  twitter?: string
+  description: string
 }
 
 type ProfileKey = 'name' | 'club' | 'twitter' | 'description'
@@ -23,7 +23,7 @@ const CardFormat = ({personalDataList}: any) => (
           </div>
           <div className={styles.twitter_id}>
             <a href={'https://twitter.com/' + personalData.twitter}>
-                            @{personalData.twitter}
+              @{personalData.twitter}
             </a>
           </div>
         </div>
@@ -55,12 +55,12 @@ const ListFormat = ({personalDataList}: any) => (
           <li>{personalData.club}</li>
           <li>
             <a href={'https://twitter.com/' + personalData.twitter}>
-                            @{personalData.twitter}
+              @{personalData.twitter}
             </a>
           </li>
           <li>
             <ReactMarkdown
-              components={{ p: ({children}) => <>{children}</> }}
+              components={{p: ({children}) => <>{children}</>}}
               rehypePlugins={[rehypeRaw]}
             >
               {personalData.description}
@@ -72,7 +72,7 @@ const ListFormat = ({personalDataList}: any) => (
   </ul>
 )
 
-const ProfileCards = ({content, held}: {content: string, held?: string}) => {
+const ProfileCards = ({content, held}: { content: string, held?: string }) => {
   const cards = content.split('---')
 
   const personalDataList = cards.map(card => {
@@ -81,17 +81,17 @@ const ProfileCards = ({content, held}: {content: string, held?: string}) => {
 
     for (const line of lines) {
       const divided = line.split(':').map(e => e.trim())
-      const key     = divided[0] as ProfileKey
-      const value   = divided.slice(1).join(':')
+      const key = divided[0] as ProfileKey
+      const value = divided.slice(1).join(':')
       personalData[key] = value
     }
     return personalData as ProfileData
   })
 
   const twitterSearchLink = held ? 'https://twitter.com/search?q='
-        + personalDataList.map(e => 'from%3A' + e.twitter).join('%20OR%20')
-        + `%20until%3A${dayjs(held).add(1, 'd').format('YYYY-MM-DD')}_04%3A00%3A00_JST`
-        + '&src=typed_query&f=live&pf=on' : ''
+    + personalDataList.map(e => 'from%3A' + e.twitter).join('%20OR%20')
+    + `%20until%3A${dayjs(held).add(1, 'd').format('YYYY-MM-DD')}_04%3A00%3A00_JST`
+    + '&src=typed_query&f=live&pf=on' : ''
 
   const [showProfileCards, setShowProfileCards] = useState(true)
 
@@ -99,27 +99,32 @@ const ProfileCards = ({content, held}: {content: string, held?: string}) => {
     <>
       {showProfileCards ? (
         <p>
-          <button onClick={() => {setShowProfileCards(false)}}>
-                        リスト表示に切り替え
-          </button> {' '}
-                    横にスクロールできます。
+          <button onClick={() => {
+            setShowProfileCards(false)
+          }}>
+            リスト表示に切り替え
+          </button>
+          {' '}
+          横にスクロールできます。
         </p>
       ) : (
         <p>
-          <button onClick={() => {setShowProfileCards(true)}}>
-                        カード表示に切り替え
+          <button onClick={() => {
+            setShowProfileCards(true)
+          }}>
+            カード表示に切り替え
           </button>
         </p>
       )}
       {showProfileCards ? (
-        <CardFormat personalDataList={personalDataList} />
+        <CardFormat personalDataList={personalDataList}/>
       ) : (
-        <ListFormat personalDataList={personalDataList} />
+        <ListFormat personalDataList={personalDataList}/>
       )}
       {twitterSearchLink !== '' &&
-                <a href={twitterSearchLink} className={'linkButton'} target="_blank" rel="noreferrer">
-                    当日の同行者のツイートを見る
-                </a>
+        <a href={twitterSearchLink} className={'linkButton'} target="_blank" rel="noreferrer">
+          当日の同行者のツイートを見る
+        </a>
       }
     </>
   )

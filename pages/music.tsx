@@ -17,8 +17,8 @@ const Music: NextPage = () => {
       <NextSeo description={'ねぎ一世さん作曲「つまみのうた」の歌詞'}/>
       <Title title={'つまみのうた'}>
         <p>
-                    ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
-                    ありがとうございます！！！
+          ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
+          ありがとうございます！！！
         </p>
         <p>
           <a href="https://linkco.re/N4Z8hdvX" className="linkButton">購入・ストリーミング</a>
@@ -36,11 +36,11 @@ const Music: NextPage = () => {
       </Title>
       <Block title={'カラオケ'} h2icon={'think'}>
         <p>
-                    「つまみのうた」がJOYSOUNDのうたスキミュージックポスト対応機種で<b>歌えるようになりました！！！</b>(なんで？)
+          「つまみのうた」がJOYSOUNDのうたスキミュージックポスト対応機種で<b>歌えるようになりました！！！</b>(なんで？)
         </p>
         <p>
-                    「うたスキ」「うたスキ動画」の両方に対応した店舗で歌えるらしいので、カラオケ行く人はよろしくお願いします。
-                    僕は歌いません。(？)
+          「うたスキ」「うたスキ動画」の両方に対応した店舗で歌えるらしいので、カラオケ行く人はよろしくお願いします。
+          僕は歌いません。(？)
         </p>
         <p className={'link-area'}>
           <a href="https://musicpost.joysound.com/music/musicId:107765">楽曲詳細</a>
@@ -130,13 +130,13 @@ const Music: NextPage = () => {
       </Block>
       <Block title={'フル音源'} h2icon={'robot'}>
         <p>
-                    各種音楽配信サイトで配信中！買ってね (お金が入るので)
+          各種音楽配信サイトで配信中！買ってね (お金が入るので)
         </p>
         <p>
           <a href="https://linkco.re/N4Z8hdvX" className="linkButton">購入・ストリーミング</a>
         </p>
         <p>
-                    YouTubeでも公開中！
+          YouTubeでも公開中！
         </p>
         <div className="youtube-outer">
           <LiteYouTubeEmbed
@@ -147,7 +147,7 @@ const Music: NextPage = () => {
       </Block>
       <Block title={'ショート版'} h2icon={'robot'}>
         <p>
-                    作詞作曲：ねぎ一世
+          作詞作曲：ねぎ一世
         </p>
         <div className="youtube-outer">
           <LiteYouTubeEmbed

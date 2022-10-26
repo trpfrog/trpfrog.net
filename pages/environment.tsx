@@ -12,7 +12,7 @@ const Environment: NextPage = () => {
         description="つまみさんのデスク周りとか所持デバイスとか"
       >
         <p>
-                    Last updated: 2021/12/11
+          Last updated: 2021/12/11
         </p>
         <GadgetIntro name="" imagePath="desk"/>
       </Title>
@@ -61,7 +61,7 @@ const Environment: NextPage = () => {
         </GadgetIntro>
 
         <h3>マイク</h3>
-        <GadgetIntro name="Sony ECM-PCV80U" imagePath="computer/mic" />
+        <GadgetIntro name="Sony ECM-PCV80U" imagePath="computer/mic"/>
 
         <h3>キーボード</h3>
         <GadgetIntro name="東プレ REALFORCE TKL for Mac" imagePath="computer/realforce">

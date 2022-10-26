@@ -17,10 +17,10 @@ const TrpFrog500: NextPage = () => {
       >
         <h1 style={{textAlign: 'center'}}>
           <div style={{fontSize: '3em', color: 'var(--header-color)'}}>
-                        500
+            500
           </div>
           <div style={{fontSize: '0.9em'}}>
-                        Internal Server Error
+            Internal Server Error
           </div>
         </h1>
         <div style={{marginTop: '1rem', filter: 'drop-shadow(0 0 10px lightgray)'}}>
@@ -33,7 +33,7 @@ const TrpFrog500: NextPage = () => {
         </div>
         <div style={{padding: '0 1em'}}>
           <p>
-                        ご迷惑をおかけしております。サーバサイドでの問題が発生しています。
+            ご迷惑をおかけしております。サーバサイドでの問題が発生しています。
           </p>
           <p>
             <div style={{display: 'inline-block', textAlign: 'left'}}>
@@ -44,19 +44,19 @@ const TrpFrog500: NextPage = () => {
               </ul>
             </div>
             <div>
-                            などの手段で管理者 (つまみ) まで報告してくださると幸いです。
+              などの手段で管理者 (つまみ) まで報告してくださると幸いです。
             </div>
           </p>
         </div>
         <p className={'link-area'}>
           <Link href={'https://github.com/trpfrog/trpfrog.net/issues'}>
-                        GitHub Issues
+            GitHub Issues
           </Link>
           <Link href={'https://twitter.com/trpfrog'}>
-                        Twitter
+            Twitter
           </Link>
           <Link href={'/'}>
-                        トップページに戻る
+            トップページに戻る
           </Link>
         </p>
       </Title>

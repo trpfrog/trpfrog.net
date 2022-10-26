@@ -40,7 +40,7 @@ const applyTextlint = async (content: string) => {
     const output = engine.formatResults(resultsList)
     console.log(output);
     result.messages.forEach(({message, line}) => {
-      if (!ignoreLines.includes(line - 1) && !lines[line - 1].trim().startsWith("!["))  {
+      if (!ignoreLines.includes(line - 1) && !lines[line - 1].trim().startsWith("![")) {
         const underlined = (`
                         <span style="background:linear-gradient(transparent 60%, pink 60%);">
                             ${lines[line - 1]}

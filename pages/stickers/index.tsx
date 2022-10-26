@@ -13,8 +13,8 @@ const Index: NextPage = () => {
       <NextSeo description={'つまみスタンプ素材集'}/>
       <Title title={'スタンプ素材集'}>
         <p>
-                    つまみスタンプの元画像の5倍に拡大したやつです。<br/>
-                    良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
+          つまみスタンプの元画像の5倍に拡大したやつです。<br/>
+          良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
         </p>
         <a href={'https://store.line.me/stickershop/product/8879469/ja'}>LINEスタンプ発売中！</a>
       </Title>

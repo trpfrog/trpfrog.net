@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 export type MyLinkRecord = {
-    url: string,
-    siteName: string,
-    description: string
+  url: string,
+  siteName: string,
+  description: string
 }
 
 export const getMyLinkRecords: () => Promise<MyLinkRecord[]> = async () => {

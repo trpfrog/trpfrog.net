@@ -2,7 +2,7 @@ import type {GetStaticProps, NextPage} from 'next'
 import Layout from "../components/Layout";
 import styles from '../styles/top-page/main.module.scss';
 
-import {MyLinkRecord, getMyLinkRecords} from '../lib/MyLinks';
+import {getMyLinkRecords, MyLinkRecord} from '../lib/MyLinks';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import {NextSeo} from "next-seo";
@@ -24,8 +24,8 @@ import {parseCookies, setCookie} from "nookies";
 import {useEffect} from "react";
 
 type PageProps = {
-    myLinks: MyLinkRecord[]
-    whatsNew: WhatsNewRecord[]
+  myLinks: MyLinkRecord[]
+  whatsNew: WhatsNewRecord[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
@@ -72,8 +72,8 @@ const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
 
       <motion.div
         id={styles.top_page_grid_wrapper}
-        initial={doAnimation ? { y: 'calc(-1 * var(--anim-height))' } : {}}
-        animate={{ y: 0 }}
+        initial={doAnimation ? {y: 'calc(-1 * var(--anim-height))'} : {}}
+        animate={{y: 0}}
         transition={{
           delay: 0.4,
           duration: 1
@@ -81,14 +81,14 @@ const Home: NextPage<PageProps> = ({myLinks, whatsNew}) => {
       >
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid}/>
-          <WhatsNew id={styles.whats_new} whatsNewRecords={whatsNew} />
-          <Store id={styles.sticker} />
-          <TopPageIcons id={styles.icons} />
-          <TopPageMusic id={styles.music} />
-          <TopPageBalloons id={styles.balloon} />
+          <WhatsNew id={styles.whats_new} whatsNewRecords={whatsNew}/>
+          <Store id={styles.sticker}/>
+          <TopPageIcons id={styles.icons}/>
+          <TopPageMusic id={styles.music}/>
+          <TopPageBalloons id={styles.balloon}/>
           <Links id={styles.link_grid} myLinks={myLinks}/>
-          <Ratings id={styles.music_game} />
-          <Bird id={styles.bird} />
+          <Ratings id={styles.music_game}/>
+          <Bird id={styles.bird}/>
         </div>
       </motion.div>
     </Layout>

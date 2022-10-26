@@ -10,18 +10,18 @@ import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
 
 export type LectureData = {
-    semester: number
-    lectureName: string
-    teacher: string
-    type: string
-    dow: string
-    period: number
-    length?: number
-    review?: string
+  semester: number
+  lectureName: string
+  teacher: string
+  type: string
+  dow: string
+  period: number
+  length?: number
+  review?: string
 }
 
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "uec-review" });
+  const data = await client.get({endpoint: "uec-review"});
 
   const tables: LectureData[][] = Array(7)
   for (let i = 0; i < tables.length; i++) {
@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
 };
 
 type PageProps = {
-    tables: LectureData[][]
+  tables: LectureData[][]
 }
 
 const getSemester = (router: NextRouter, nPages: number) => {
@@ -76,13 +76,13 @@ const Review: NextPage<PageProps> = ({tables}) => {
       >
         <p>
           <b>注意！</b><br/>
-                    このページで紹介している内容は全て私の主観です。
-                    私が「面白くなすぎ！」と言っていてもあなたにとっては面白いかもしれませんし、
-                    私が「面白すぎ！」と言っていてもあなたにとっては苦行かもしれません。
-                    あくまで参考程度に読んでください。
+          このページで紹介している内容は全て私の主観です。
+          私が「面白くなすぎ！」と言っていてもあなたにとっては面白いかもしれませんし、
+          私が「面白すぎ！」と言っていてもあなたにとっては苦行かもしれません。
+          あくまで参考程度に読んでください。
         </p>
         <p>
-                    また、(怒られが発生したなどで)予告なく内容の変更・削除をする場合があります。ご了承ください。
+          また、(怒られが発生したなどで)予告なく内容の変更・削除をする場合があります。ご了承ください。
         </p>
       </Title>
       <NextSeo

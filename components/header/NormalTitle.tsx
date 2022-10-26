@@ -13,9 +13,9 @@ const backToTop = () => {
 
 const extractTitle = (router: NextRouter) => {
   const rawPageTitle =
-        typeof document !== 'undefined'
-          ? document.title
-          : process.env.title as string
+    typeof document !== 'undefined'
+      ? document.title
+      : process.env.title as string
 
   let pageTitle = rawPageTitle.split(' - ')[0]
   let subTitle = '';
@@ -36,7 +36,7 @@ export const NormalTitle = () => {
 
   const handleScroll = (y: number) => {
     const heightToChangeTitle =
-            (typeof window !== 'undefined') && window.innerWidth <= 800 ? 120 : 250;
+      (typeof window !== 'undefined') && window.innerWidth <= 800 ? 120 : 250;
     setShowPageTitle(y > heightToChangeTitle);
   }
   const {scrollY} = useViewportScroll()

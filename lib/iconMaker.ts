@@ -20,9 +20,9 @@ export default class IconCanvas {
       this.mask = new Image();
     }
   }
-    
-  upload (files: FileList | null) {
-    if(files == null) return;
+
+  upload(files: FileList | null) {
+    if (files == null) return;
 
     const canvas = document.getElementById(this.id) as HTMLCanvasElement;
     let context = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -97,9 +97,9 @@ export default class IconCanvas {
     canvas.height = ICON_SIZE;
 
     context.save();
-    context.translate(ICON_SIZE/2.0, ICON_SIZE/2.0);
-    context.rotate(this.angle * Math.PI/180);
-    context.translate(-ICON_SIZE/2.0, -ICON_SIZE/2.0);
+    context.translate(ICON_SIZE / 2.0, ICON_SIZE / 2.0);
+    context.rotate(this.angle * Math.PI / 180);
+    context.translate(-ICON_SIZE / 2.0, -ICON_SIZE / 2.0);
     context.drawImage(this.faceImage, this.x, this.y, this.w, this.h);
     context.restore();
 
@@ -109,7 +109,7 @@ export default class IconCanvas {
   }
 
   writeImage() {
-    if(typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
     const canvas = document.getElementById(this.id) as HTMLCanvasElement;
     const resImg = canvas.toDataURL();
     const result = document.getElementById('result-image') as HTMLImageElement;

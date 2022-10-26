@@ -1,6 +1,6 @@
 import type {NextPage} from 'next'
-import {getMutualLinkRecords, MutualLinkRecord} from "../lib/MutualLinks";
 import {GetStaticProps} from "next";
+import {getMutualLinkRecords, MutualLinkRecord} from "../lib/MutualLinks";
 
 import styles from "../styles/top-page/main.module.scss";
 
@@ -12,7 +12,7 @@ import React from "react";
 import Utils from "../lib/utils";
 
 type PageProps = {
-    mutualLinks: MutualLinkRecord[]
+  mutualLinks: MutualLinkRecord[]
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
@@ -29,13 +29,13 @@ const Links: NextPage<PageProps> = ({mutualLinks}: PageProps) => {
     <Layout>
       <Title title={'相互リンク'} description={'オタク各位のWebサイトです。'}>
         <p>
-                    順番はハンドルネームをUTF-8でソートしたもの。
+          順番はハンドルネームをUTF-8でソートしたもの。
           <s>片想いリンクになったやつもある</s>
         </p>
       </Title>
       <Block>
         <div className={styles.link_grid}>
-          {mutualLinks.map(({ url, siteName, ownerName, twitterId, description }) => {
+          {mutualLinks.map(({url, siteName, ownerName, twitterId, description}) => {
 
             // Shrink siteName if its length too long
             const style = Utils.calcMonospacedTextWidth(siteName) < 20 ? {} : {

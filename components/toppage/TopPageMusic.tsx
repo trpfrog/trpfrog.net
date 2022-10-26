@@ -1,18 +1,20 @@
 import Block from "../Block";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import Image from "next/legacy/image";;
+import Image from "next/legacy/image";
 import Link from "next/link";
 
+;
+
 type Props = {
-    id?: string
+  id?: string
 }
 
 const TopPageMusic = ({id}: Props) => {
   return (
     <Block title={'つまみのうた'} h2icon={'noa'} id={id}>
       <p>
-                ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
-                ありがとうございます！！！
+        ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「<b>つまみのうた</b>」を作っていただきました！(？？？？)
+        ありがとうございます！！！
       </p>
       <div className="youtube-outer">
         <LiteYouTubeEmbed
@@ -21,7 +23,7 @@ const TopPageMusic = ({id}: Props) => {
         />
       </div>
       <p>
-                Apple Music, Spotify, YouTube Music, LINE Music 他 各種サイトで配信中！(なんで？)
+        Apple Music, Spotify, YouTube Music, LINE Music 他 各種サイトで配信中！(なんで？)
       </p>
       <p>
         <Image

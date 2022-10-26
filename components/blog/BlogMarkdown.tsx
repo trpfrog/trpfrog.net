@@ -22,9 +22,9 @@ import {faFrog, faPaperclip, faTriangleExclamation} from "@fortawesome/free-soli
 import ReactPlayer from "react-player";
 
 type codeProps = {
-    className: string
-    inline: boolean
-    children: any
+  className: string
+  inline: boolean
+  children: any
 }
 
 const getLangName = (s: string) => {
@@ -63,11 +63,11 @@ export const parseInlineMarkdown = (markdown: string) => {
 }
 
 type MarkdownFunctionType = {
-    [content: string]: (
-        content: string,
-        entry?: BlogPost,
-        imageSize?: { [path: string]: BlogImageData }
-    ) => JSX.Element
+  [content: string]: (
+    content: string,
+    entry?: BlogPost,
+    imageSize?: { [path: string]: BlogImageData }
+  ) => JSX.Element
 }
 
 const myMarkdownClasses: MarkdownFunctionType = {
@@ -180,7 +180,7 @@ const myMarkdownClasses: MarkdownFunctionType = {
 
   'Twitter-archived': content => <TwitterArchive content={content}/>,
 
-  'Profile-cards' : (content, entry) => <ProfileCards content={content} held={entry?.held}/>,
+  'Profile-cards': (content, entry) => <ProfileCards content={content} held={entry?.held}/>,
 
   Centering: content => (
     <div style={{textAlign: 'center'}}>
@@ -269,9 +269,9 @@ const myMarkdownClasses: MarkdownFunctionType = {
           ))}
         </div>
         {caption != '' &&
-                    <ImageCaption>
-                      {parseInlineMarkdown(caption)}
-                    </ImageCaption>
+          <ImageCaption>
+            {parseInlineMarkdown(caption)}
+          </ImageCaption>
         }
       </figure>
     )
@@ -306,7 +306,7 @@ const myMarkdownClasses: MarkdownFunctionType = {
       const leftArrowIdentifier = '  ←'
       if (comment.includes(leftArrowIdentifier)) {
         [comment, outOfComment] =
-                    comment.split(leftArrowIdentifier).map(e => e.trim())
+          comment.split(leftArrowIdentifier).map(e => e.trim())
       }
 
       elements.push(
@@ -413,26 +413,26 @@ export const getPureCloudinaryPath = (path: string) => {
 }
 
 type Props = {
-    entry: BlogPost
-    imageSize: { [path: string]: BlogImageData }
-    style?: CSSProperties
-    className?: string
+  entry: BlogPost
+  imageSize: { [path: string]: BlogImageData }
+  style?: CSSProperties
+  className?: string
 }
 
 type RendererProps = {
-    toRender: string
-    entry?: BlogPost
-    imageSize?: { [path: string]: BlogImageData }
-    renderLaTeX?: boolean
+  toRender: string
+  entry?: BlogPost
+  imageSize?: { [path: string]: BlogImageData }
+  renderLaTeX?: boolean
 }
 
 const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX}: RendererProps) => {
 
   if (renderLaTeX) {
     const mathjaxConfig = {
-      loader: { load: ["[tex]/html"] },
+      loader: {load: ["[tex]/html"]},
       tex: {
-        packages: { "[+]": ["html"] },
+        packages: {"[+]": ["html"]},
         inlineMath: [["$", "$"]],
         displayMath: [["$$", "$$"]]
       }
@@ -452,7 +452,7 @@ const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX}: RendererProp
   }
 
   const markdownComponents = {
-    pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
+    pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: getFormatCodeComponent(entry, imageSize),
     p: (props: any) => {
       if (props.node.children[0]?.tagName === 'img') {
@@ -485,7 +485,6 @@ const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX}: RendererProp
   };
 
 
-
   return (
     <ReactMarkdown
       components={markdownComponents as any}
@@ -510,10 +509,10 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
       {markdown.map((content, idx) => (
         <Block key={'window-' + idx} style={style} className={className}>
           {idx === 0 &&
-                        <>
-                          <span id={'article'}/>
-                          <PageNavigation entry={entry} doNotShowOnFirst={true}/>
-                        </>
+            <>
+              <span id={'article'}/>
+              <PageNavigation entry={entry} doNotShowOnFirst={true}/>
+            </>
           }
           <article
             className={styles.post}
@@ -527,7 +526,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
             />
           </article>
           {idx === markdown.length - 1 &&
-                        <PageNavigation entry={entry}/>
+            <PageNavigation entry={entry}/>
           }
         </Block>
       ))}

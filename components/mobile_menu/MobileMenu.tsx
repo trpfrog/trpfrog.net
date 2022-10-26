@@ -3,12 +3,12 @@ import styles from "../../styles/common/MobileMenu.module.scss";
 import {NavigationLinks} from "../Navigation";
 
 export type HamburgerState = [
-    boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>
 ]
 
 type Props = {
-    hamburgerState: HamburgerState
+  hamburgerState: HamburgerState
 }
 
 const MobileMenu = ({hamburgerState}: Props) => {
@@ -16,7 +16,8 @@ const MobileMenu = ({hamburgerState}: Props) => {
   const toggleMenu = () => {
     setHamburgerState(!isOpened);
   }
-  const doNothing = () => {};
+  const doNothing = () => {
+  };
 
   return (
     <section id={styles.mobile_menu}>
@@ -28,7 +29,7 @@ const MobileMenu = ({hamburgerState}: Props) => {
       <aside id={styles.side_menu} data-menu-opened={isOpened}>
         <div id={styles.side_header}/>
         <div id={styles.side_links} onClick={toggleMenu}>
-          <NavigationLinks />
+          <NavigationLinks/>
         </div>
       </aside>
     </section>

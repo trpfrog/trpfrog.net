@@ -4,8 +4,8 @@ import Header from './header/Header'
 import Footer from "./Footer";
 import Navigation, {NAVIGATION_LINKS} from "./Navigation";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faAngleDoubleUp} from "@fortawesome/free-solid-svg-icons";
 import {useRouter} from "next/router";
 
 import {motion} from "framer-motion";
@@ -46,16 +46,16 @@ const Layout: React.FunctionComponent<Props> = ({
   if (typeof window !== 'undefined') {
     const item = globalThis?.sessionStorage?.getItem('prevPath');
 
-    if(item) {
+    if (item) {
       const getPageIndexOnNavbar = (url: string) => {
         const subPagePath = url.split('/').slice(0, 2).join('/')
         return NAVIGATION_LINKS.findIndex((value => (value.link === subPagePath)))
       }
       const prevIndex = getPageIndexOnNavbar(item)
-      const curIndex  = getPageIndexOnNavbar(router.pathname)
+      const curIndex = getPageIndexOnNavbar(router.pathname)
 
       // Determine moving direction
-      if(prevIndex !== -1 && curIndex !== -1 && prevIndex !== curIndex) {
+      if (prevIndex !== -1 && curIndex !== -1 && prevIndex !== curIndex) {
         motionDirection = prevIndex - curIndex < 0 ? -1 : 1;
       }
     }
@@ -107,7 +107,7 @@ const Layout: React.FunctionComponent<Props> = ({
         </main>
         <div id="page_top" onClick={backToTop}>
           <span id={'back-to-top-icon'}>
-            <FontAwesomeIcon icon={faAngleDoubleUp} />
+            <FontAwesomeIcon icon={faAngleDoubleUp}/>
           </span>
         </div>
         <Footer/>
