@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useScroll} from "framer-motion";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
@@ -34,16 +34,28 @@ const extractTitle = (router: NextRouter) => {
 export const NormalTitle = () => {
   const [showPageTitle, setShowPageTitle] = useState(false);
 
+  const [heightToChangeTitle, setHeightToChangeTitle] = useState(250)
+  useEffect(() => setHeightToChangeTitle(window.innerWidth <= 800 ? 120 : 250), [])
+
   const handleScroll = (y: number) => {
-    const heightToChangeTitle =
-      (typeof window !== 'undefined') && window.innerWidth <= 800 ? 120 : 250;
     setShowPageTitle(y > heightToChangeTitle);
   }
+
   const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
 
   const router = useRouter();
   const {pageTitle, subTitle} = extractTitle(router)
+
+  const [pageTitleElement, setPageTitleElement] = useState(<>{process.env.title}</>)
+  useEffect(() => {
+    setPageTitleElement(
+      <div className={styles.on_subtitle_showed}>
+        {pageTitle}<br/>
+        <div id={styles.subtitle}>{subTitle}</div>
+      </div>
+    )
+  }, [])
 
   return (
     <div id={styles.site_logo}>
@@ -52,12 +64,7 @@ export const NormalTitle = () => {
         <h1 id={styles.site_name}>
           {showPageTitle ? (
             <a onClick={backToTop} style={{cursor: 'pointer'}}>
-              {typeof window !== 'undefined' ?
-                <div className={styles.on_subtitle_showed}>
-                  {pageTitle}<br/>
-                  <div id={styles.subtitle}>{subTitle}</div>
-                </div> :
-                <>{process.env.title}</>}
+              {pageTitleElement}
             </a>
           ) : (
             <Link href="/">

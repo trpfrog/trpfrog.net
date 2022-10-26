@@ -42,8 +42,8 @@ const Layout: React.FunctionComponent<Props> = ({
   }
   useEffect(() => storePathValues, [router.asPath]);
 
-  let motionDirection = 0;
-  if (typeof window !== 'undefined') {
+  const [motionDirection, setMotionDirection] = useState(0 as (-1 | 0 | 1))
+  useEffect(() => {
     const item = globalThis?.sessionStorage?.getItem('prevPath');
 
     if (item) {
@@ -56,12 +56,13 @@ const Layout: React.FunctionComponent<Props> = ({
 
       // Determine moving direction
       if (prevIndex !== -1 && curIndex !== -1 && prevIndex !== curIndex) {
-        motionDirection = prevIndex - curIndex < 0 ? -1 : 1;
+        setMotionDirection(prevIndex - curIndex < 0 ? -1 : 1);
       }
     }
-  }
+  }, [])
 
-  const isMobile = (typeof window !== 'undefined') && window.innerWidth < 800;
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => setIsMobile(window.innerWidth < 800), [])
 
   const hamburgerState = useState(false);
 
