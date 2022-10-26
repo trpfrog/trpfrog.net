@@ -373,13 +373,13 @@ const Article: NextPage<PageProps> = ({ entry, imageSize, relatedPosts, pastArti
       <Block id={styles.entry_bottom_buttons}>
         <p className={'link-area'} style={{textAlign: 'center'}}>
           <Link href={'/blog'}>
-                        記事一覧
+            記事一覧
           </Link>
           <span onClick={() => share(post.slug)}>
             <a>ツイート</a>
           </span>
           <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                        訂正リクエスト
+            訂正リクエスト
           </Link>
         </p>
       </Block>

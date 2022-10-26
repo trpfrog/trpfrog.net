@@ -50,7 +50,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
         </div>
         <div className={styles.h3_wrapper}>
           <Link href={articleURL}>
-            <a><h3>{splitTitle}</h3></a>
+            <h3>{splitTitle}</h3>
           </Link>
         </div>
         <div className={styles.information}>

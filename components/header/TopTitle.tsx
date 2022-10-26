@@ -35,7 +35,7 @@ export const TopTitle = () => {
       <motion.div id={styles.site_name_wrapper} style={{x: titleX}}>
         <h1 id={styles.site_name}>
           <Link href="/">
-            <a>{process.env.title}</a>
+            {process.env.title}
           </Link>
         </h1>
       </motion.div>

@@ -16,9 +16,7 @@ const Index: NextPage = () => {
                     つまみスタンプの元画像の5倍に拡大したやつです。<br/>
                     良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
         </p>
-        <a>
-          <a href={'https://store.line.me/stickershop/product/8879469/ja'}>LINEスタンプ発売中！</a>
-        </a>
+        <a href={'https://store.line.me/stickershop/product/8879469/ja'}>LINEスタンプ発売中！</a>
       </Title>
       <Block>
         <div className={styles.icon_grid}>

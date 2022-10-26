@@ -95,8 +95,11 @@ const myMarkdownClasses: MarkdownFunctionType = {
     const id = lines[0].trim()
     const title = lines[1]?.trim()
     return (
-      <div style={{textAlign: 'center'}}>
-        <YouTube videoId={id} className={'youtube-iframe'} containerClassName={'youtube-outer'}/>
+      <div style={{textAlign: 'center'}} className={'youtube-outer'}>
+        <YouTube
+          videoId={id}
+          className={'youtube-iframe'}
+        />
       </div>
     )
   },

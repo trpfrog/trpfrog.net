@@ -61,9 +61,7 @@ export const NormalTitle = () => {
             </a>
           ) : (
             <Link href="/">
-              <a>
-                {process.env.title}
-              </a>
+              {process.env.title}
             </Link>
           )}
         </h1>

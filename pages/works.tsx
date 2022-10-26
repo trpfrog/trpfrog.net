@@ -3,14 +3,14 @@ import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
 import styles from '../styles/works.module.scss';
-import {FunctionComponent} from "react";
+import React from "react";
 import Image from "next/legacy/image";
 
 type KeywordsType = {
     keywords: string[]
 }
 
-const Keywords: FunctionComponent<KeywordsType> = ({children, keywords}) => {
+const Keywords: React.FC<KeywordsType> = ({keywords}) => {
   return (
     <p className={styles.keywords}>
       <span className={styles.keyword_title}>TECHNOLOGIES</span><br/>

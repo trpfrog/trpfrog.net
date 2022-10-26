@@ -35,7 +35,7 @@ const TopPageMusic = ({id}: Props) => {
       </p>
       <p className={'link-area'}>
         <a href="https://linkco.re/N4Z8hdvX">購入/ストリーミング</a>
-        <Link href={'/music'}><a>歌詞</a></Link>
+        <Link href={'/music'}>歌詞</Link>
       </p>
     </Block>
   )
