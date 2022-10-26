@@ -14,8 +14,8 @@ const TopPageBalloons = ({id}: Props) => {
         {Array.from(Array(7), (v, k) => <BalloonBox key={k} width={'100%'} height={'100%'}/>)}
       </div>
       <p>
-        <Link href={'/balloon'}>
-          <a className={'linkButton'}>もっと割る</a>
+        <Link href={'/balloon'} className={'linkButton'}>
+          もっと割る
         </Link>
       </p>
     </Block>

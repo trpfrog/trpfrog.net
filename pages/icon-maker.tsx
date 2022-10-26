@@ -113,7 +113,9 @@ const About: NextPage = () => {
           />
         </p>
         <p>
-          <a href={tweetLink} className="linkButton">Tweet</a>
+          <Link href={tweetLink} className="linkButton">
+            Tweet
+          </Link>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

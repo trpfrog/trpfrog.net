@@ -23,11 +23,13 @@ export const NavigationLinks = () => {
 
   return <>{
     NAVIGATION_LINKS.map(({link, name}) => (
-      <Link href={link} key={link}>
-        <a
-          className={styles.side_menu_link}
-          data-current-page={currentLink === link}
-        >{name}</a>
+      <Link
+        href={link}
+        key={link}
+        className={styles.side_menu_link}
+        data-current-page={currentLink === link}
+      >
+        {name}
       </Link>
     ))
   }</>

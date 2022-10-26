@@ -28,10 +28,8 @@ const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost
         {/* PC */}
         {relatedPosts.length > 6 &&
           <div style={{textAlign: 'center'}} className={'only-on-pc'}>
-            <Link href={'/blog/tags/' + tag}>
-              <a className={'linkButton'}>
-                もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-              </a>
+            <Link href={'/blog/tags/' + tag} className={'linkButton'}>
+              もっと見る (さらに {relatedPosts.length - 6} 件の記事)
             </Link>
           </div>
         }
@@ -39,10 +37,8 @@ const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 &&
           <div style={{textAlign: 'center'}} className={'only-on-sp'}>
-            <Link href={'/blog/tags/' + tag}>
-              <a className={'linkButton'}>
-                もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-              </a>
+            <Link href={'/blog/tags/' + tag} className={'linkButton'}>
+              もっと見る (さらに {relatedPosts.length - 3} 件の記事)
             </Link>
           </div>
         }

@@ -37,21 +37,19 @@ type Props = {
 
 const Tag = ({tag}: Props) => {
   return (
-    <Link href={'/blog/tags/' + tag} key={tag}>
-      <a className={styles.block}>
-        <span className={styles.emoji}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={getEmojiUrlFromTagName(tag)}
-            width={20}
-            height={20}
-            alt={'tag emoji'}
-          />
-        </span>
-        <span className={styles.name}>
-          {tag}
-        </span>
-      </a>
+    <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
+      <span className={styles.emoji}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={getEmojiUrlFromTagName(tag)}
+          width={20}
+          height={20}
+          alt={'tag emoji'}
+        />
+      </span>
+      <span className={styles.name}>
+        {tag}
+      </span>
     </Link>
   )
 }

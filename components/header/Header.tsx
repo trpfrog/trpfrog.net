@@ -63,8 +63,11 @@ const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
           <ul>
             {['home', 'works', 'blog'].map(e => (
               <li key={e}>
-                <Link href={e == 'home' ? '/' : '/' + e}>
-                  <a className="headerButton">{e}</a>
+                <Link
+                  href={e == 'home' ? '/' : '/' + e}
+                  className="headerButton"
+                >
+                  {e}
                 </Link>
               </li>
             ))}

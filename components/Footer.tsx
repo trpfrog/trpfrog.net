@@ -9,8 +9,8 @@ const Footer = () => {
           &copy; 2019-2022 つまみ
         </p>
         <p>
-          <Link href={'/legal'}>
-            <a className={styles.footer_button}>Legal</a>
+          <Link href={'/legal'} className={styles.footer_button}>
+            Legal
           </Link>
         </p>
       </div>

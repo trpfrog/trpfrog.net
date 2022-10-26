@@ -15,8 +15,8 @@ const Links = ({id, myLinks}: Props) => {
         {myLinks.map(({url, siteName, description}) => (
           <div key={siteName} className={styles.link_block}>
             <p style={{textAlign: "center"}}>
-              <Link href={url}>
-                <a className="linkButton">{siteName}</a>
+              <Link href={url} className="linkButton">
+                {siteName}
               </Link>
             </p>
             <p>
@@ -31,8 +31,8 @@ const Links = ({id, myLinks}: Props) => {
         移動しました！
       </p>
       <p>
-        <Link href={'/links'}>
-          <a className={'linkButton'}>相互リンク</a>
+        <Link href={'/links'} className={'linkButton'}>
+          相互リンク
         </Link>
       </p>
     </Block>

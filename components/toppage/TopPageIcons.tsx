@@ -26,8 +26,8 @@ const TopPageIcons = ({id}: Props) => {
           />
         ))}
       </div>
-      <Link href={'/icons'}>
-        <a className="linkButton">もっと見る</a>
+      <Link href={'/icons'} className="linkButton">
+        もっと見る
       </Link>
     </Block>
   )
