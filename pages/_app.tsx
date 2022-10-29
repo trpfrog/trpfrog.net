@@ -8,7 +8,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import {AnimatePresence} from "framer-motion";
 import {DefaultSeo} from "next-seo";
 import SEO from '../next-seo.config';
-import {useTransitionFix} from "../lib/useTransitionFix";
 
 // Progress Bar
 import NextNProgress from "nextjs-progressbar";
@@ -17,7 +16,6 @@ import Analytics from "../components/Analytics";
 config.autoAddCss = false
 
 const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
-  const transitionCallback = useTransitionFix()
   return (
     <>
       <DefaultSeo {...SEO}/>
@@ -30,7 +28,7 @@ const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
         showOnShallow={true}
         options={{showSpinner: false}}
       />
-      <AnimatePresence mode={'wait'} onExitComplete={transitionCallback}>
+      <AnimatePresence mode={'wait'}>
         <Component {...pageProps} key={router.route}/>
       </AnimatePresence>
     </>
