@@ -25,13 +25,10 @@ type Props = {
   children: React.ReactNode
 }
 
-const Layout: React.FunctionComponent<Props> = ({
-  children, style, className
-}) => {
-
+const usePathChangeRecording = () => {
   const router = useRouter();
 
-  const storePathValues = () => {
+  useEffect(() => {
     const storage = globalThis?.sessionStorage;
     if (!storage) return;
     const prevPath = storage.getItem("currentPath");
@@ -39,10 +36,13 @@ const Layout: React.FunctionComponent<Props> = ({
 
     storage.setItem('prevPath', prevPath ? prevPath : '');
     storage.setItem('currentPath', curPath);
-  }
-  useEffect(() => storePathValues, [router.asPath]);
+  }, [router.asPath]);
+}
 
+const useMotionDirection = (): (-1 | 0 | 1) => {
+  const router = useRouter();
   const [motionDirection, setMotionDirection] = useState(0 as (-1 | 0 | 1))
+
   useEffect(() => {
     const item = globalThis?.sessionStorage?.getItem('prevPath');
 
@@ -59,11 +59,62 @@ const Layout: React.FunctionComponent<Props> = ({
         setMotionDirection(prevIndex - curIndex < 0 ? -1 : 1);
       }
     }
-  }, [])
 
+    console.log(motionDirection)
+  }, [motionDirection, router.pathname])
+
+  return motionDirection
+}
+
+const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => setIsMobile(window.innerWidth < 800), [])
+  return isMobile
+}
 
+const PageTransitionMotion = ({children, motionDirection, isMobile}: {
+  children: React.ReactNode,
+  motionDirection: (-1 | 0 | 1),
+  isMobile: boolean
+}) => (
+  <motion.div
+    initial={
+      isMobile
+        ? {y: -motionDirection * 70, opacity: 0}
+        : {x: -motionDirection * 70, opacity: 0}
+    }
+    animate={
+      isMobile
+        ? {y: 0, opacity: 1}
+        : {x: 0, opacity: 1}
+    }
+    exit={
+      isMobile
+        ? {y: motionDirection * 70, opacity: 0}
+        : {x: motionDirection * 70, opacity: 0}
+    }
+    transition={{
+      duration: 0.4,
+      type: 'spring',
+      mass: 0.5
+    }}
+    style={{
+      display: 'flex',
+      flexFlow: 'column'
+    }}
+  >
+    {children}
+  </motion.div>
+)
+
+const Layout: React.FunctionComponent<Props> = ({
+  children, style, className
+}) => {
+
+  usePathChangeRecording()
+
+  const isMobile = useIsMobile();
+  const motionDirection = useMotionDirection();
   const hamburgerState = useState(false);
 
   return (
@@ -75,36 +126,11 @@ const Layout: React.FunctionComponent<Props> = ({
         <Navigation/>
         <MobileMenu hamburgerState={hamburgerState}/>
         <main>
-          <motion.div
-            initial={
-              isMobile
-                ? {y: -motionDirection * 70, opacity: 0}
-                : {x: -motionDirection * 70, opacity: 0}
-            }
-            animate={
-              isMobile
-                ? {y: 0, opacity: 1}
-                : {x: 0, opacity: 1}
-            }
-            exit={
-              isMobile
-                ? {y: motionDirection * 70, opacity: 0}
-                : {x: motionDirection * 70, opacity: 0}
-            }
-            transition={{
-              duration: 0.4,
-              type: 'spring',
-              mass: 0.5
-            }}
-            style={{
-              display: 'flex',
-              flexFlow: 'column'
-            }}
-          >
+          <PageTransitionMotion motionDirection={motionDirection} isMobile={isMobile}>
             <div id="main_wrapper" style={style} className={className}>
               {children}
             </div>
-          </motion.div>
+          </PageTransitionMotion>
         </main>
         <div id="page_top" onClick={backToTop}>
           <span id={'back-to-top-icon'}>
