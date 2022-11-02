@@ -7,7 +7,6 @@ import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 
-;
 
 type BlogImageProps = {
   src: string,
@@ -74,30 +73,47 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     } as CSSProperties
   }
 
+  const ImageOnArticle = () => (
+    <Image
+      src={srcPath}
+      alt={alt || src}
+      className={`rich_image ${styles.image}`}
+      width={imageWidth}
+      height={imageHeight}
+      quality={50}
+      placeholder="blur"
+      blurDataURL={blurPath}
+      onClick={() => setModalState(true)}
+    />
+  )
+
+  const ImageOnModal = () => (
+    <Image
+      src={srcPath}
+      alt={alt || src}
+      className={`rich_image`}
+      width={imageWidth}
+      height={imageHeight}
+      placeholder="blur"
+      blurDataURL={blurPath}
+    />
+  )
+
+  const TakenBy = (props: {photographer: string}) => (
+    <div className={styles.taken_by} style={{width: imageWidth}}>
+      <small>
+        <FontAwesomeIcon icon={faCamera}/>{' '}
+        撮影: {parseInlineMarkdown(props.photographer)}
+      </small>
+    </div>
+  )
+
   const [modalState, setModalState] = useState(false)
   return (
     <>
       <figure className={styles.img_wrapper} style={style}>
-        {takenBy &&
-          <div className={styles.taken_by} style={{width: imageWidth}}>
-            <small>
-              <FontAwesomeIcon icon={faCamera}/>{' '}
-              撮影: {parseInlineMarkdown(takenBy)}
-            </small>
-          </div>
-        }
-        <Image
-          src={srcPath}
-          alt={alt || src}
-          className={`rich_image ${styles.image}`}
-          width={imageWidth}
-          height={imageHeight}
-          quality={50}
-          placeholder="blur"
-          blurDataURL={blurPath}
-          objectFit="contain"
-          onClick={() => setModalState(true)}
-        />
+        {takenBy && <TakenBy photographer={takenBy}/>}
+        <ImageOnArticle/>
         {caption &&
           <ImageCaption>
             {parseInlineMarkdown(caption)}
@@ -109,16 +125,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         style={modalStyle}
         onRequestClose={() => setModalState(false)}
       >
-        <Image
-          src={srcPath}
-          alt={alt || src}
-          className={`rich_image`}
-          width={imageWidth}
-          height={imageHeight}
-          placeholder="blur"
-          blurDataURL={blurPath}
-          layout='responsive'
-        />
+        <ImageOnModal/>
       </Modal>
     </>
   )

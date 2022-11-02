@@ -1,14 +1,11 @@
-import styles from "../../styles/blog/TwitterArchive.module.scss";
+import styles from "../../../styles/blog/TwitterArchive.module.scss";
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDove} from "@fortawesome/free-solid-svg-icons";
-import getOtakuColor from "../../lib/blog/otakuColors";
+import getOtakuColor from "../../../lib/blog/otakuColors";
+import {ArticleParts} from "../BlogMarkdown";
 
-type Props = {
-  content: string
-}
-
-const TwitterArchive = ({content}: Props) => {
+const TwitterArchive: ArticleParts = content => {
   const tweetData: { [key: string]: string } = {}
   const lines = content.trim().split('\n')
   for (const line of lines) {

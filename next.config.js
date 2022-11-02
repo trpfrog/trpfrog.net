@@ -8,7 +8,7 @@ module.exports = {
   },
   images: {
     loader: 'cloudinary',
-    path: 'https://res.cloudinary.com/trpfrog/image/upload/'
+    path: 'https://res.cloudinary.com/trpfrog/image/upload/',
   },
 
   async redirects() {

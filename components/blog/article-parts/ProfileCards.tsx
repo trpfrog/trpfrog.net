@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from "../../styles/blog/ProfileCards.module.scss";
+import styles from "../../../styles/blog/ProfileCards.module.scss";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import dayjs from "dayjs";
