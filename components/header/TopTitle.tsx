@@ -27,7 +27,11 @@ export const TopTitle = () => {
 
   const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
-  useEffect(() => handleScroll(window.scrollY, false))
+
+  useEffect(
+    () => handleScroll(window.scrollY, false),
+    []
+  )
 
   return (
     <div id={styles.site_logo}>

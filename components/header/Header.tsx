@@ -6,7 +6,10 @@ import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "../../styles/common/Header.module.scss";
 
-export const HeaderFollowSticky = (props: { children: React.ReactNode, top: string | number }) => {
+export const HeaderFollowSticky = (props: {
+  children: React.ReactNode,
+  top: string | number
+}) => {
 
   const {scrollY} = useScroll()
   const [headerTop, setHeaderTop] = useState(`calc(var(--header-height) + ${props.top})`)
@@ -31,11 +34,11 @@ export const HeaderFollowSticky = (props: { children: React.ReactNode, top: stri
   )
 }
 
-const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
-
+const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const headerY = useMotionValue(0)
+  const {scrollY} = useScroll()
 
-  const handleScroll = (y: number) => {
+  scrollY.onChange((y: number) => {
     const v = scrollY.getVelocity()
     const shouldShowHeader = v < -1000 || y < 500;
     const shouldHideHeader = !shouldShowHeader && v > 1000;
@@ -45,37 +48,42 @@ const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
     } else if (shouldHideHeader) {
       animate(headerY, -100, {duration: 0.1, ease: 'linear'})
     }
-  }
+  })
+
+  return (
+    <motion.div style={{y: headerY}}>
+      {props.children}
+    </motion.div>
+  )
+}
+
+const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
 
   const router = useRouter();
 
-  const {scrollY} = useScroll()
-  scrollY.onChange(handleScroll)
-
   return (
-    <motion.header
-      id={styles.header}
-      style={{y: headerY}}
-    >
-      <div id={styles.inside}>
-        {router.pathname == '/' ? <TopTitle/> : <NormalTitle/>}
-        <nav id={styles.navigation}>
-          <ul>
-            {['home', 'works', 'blog'].map(e => (
-              <li key={e}>
-                <Link
-                  href={e == 'home' ? '/' : '/' + e}
-                  className="headerButton"
-                >
-                  {e}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        {children}
-      </div>
-    </motion.header>
+    <HideWhenScrollDown>
+      <header id={styles.header}>
+        <div id={styles.inside}>
+          {router.pathname == '/' ? <TopTitle/> : <NormalTitle/>}
+          <nav id={styles.navigation}>
+            <ul>
+              {['home', 'works', 'blog'].map(e => (
+                <li key={e}>
+                  <Link
+                    href={e == 'home' ? '/' : '/' + e}
+                    className="headerButton"
+                  >
+                    {e}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {children}
+        </div>
+      </header>
+    </HideWhenScrollDown>
   );
 }
 
