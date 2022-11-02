@@ -29,7 +29,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
   const thumbnail = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
   return (
-    <Link href={articleURL}>
+    <div onClick={() => {location.href = articleURL}}>
       <div className={styles.window} data-hero-article={hero} style={style}>
         <div className={styles.tags}>
           {entry.tags
@@ -60,7 +60,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
           {Math.ceil(entry.readTime / 60)} min to read
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 
