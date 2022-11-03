@@ -43,12 +43,12 @@ const About: NextPage = () => {
         <p>
           <b>既知のバグ:</b> ボタン操作をしないとつまみフレームが現れない
         </p>
-        <p>
+        <div>
           <div className="content">
             <canvas className="rich_image" id="canvas-result" style={{width: '100%', maxWidth: '500px'}}/>
           </div>
-        </p>
-        <p>
+        </div>
+        <div>
           <div className={styles.ctrl_btn_grid}>
             <button
               type="button"
@@ -96,7 +96,7 @@ const About: NextPage = () => {
               onClick={() => state.writeImage()}>描画
             </button>
           </div>
-        </p>
+        </div>
 
       </Block>
 
@@ -107,6 +107,7 @@ const About: NextPage = () => {
         <p>
           <Image
             src={'/icons_gallery/28'}
+            alt={'default image'}
             width={500}
             height={500}
             layout={"intrinsic"}
