@@ -12,10 +12,31 @@ import SEO from '../next-seo.config';
 // Progress Bar
 import NextNProgress from "nextjs-progressbar";
 import Analytics from "../components/Analytics";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
 config.autoAddCss = false
 
+const usePathChangeRecorder = () => {
+  const router = useRouter();
+
+  useEffect(() => { // unmount only
+    const storage = globalThis?.sessionStorage;
+    if (!storage) return;
+    const prevPath = storage.getItem("currentPath");
+    const curPath = globalThis.location.pathname;
+
+    if (prevPath == curPath) return;
+
+    storage.setItem('prevPath', prevPath ? prevPath : '');
+    storage.setItem('currentPath', curPath);
+  }, [router.asPath]);
+}
+
+
 const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
+  usePathChangeRecorder()
+  const preventScrollAnimation = () => window.scrollTo(0, 0);
   return (
     <>
       <DefaultSeo {...SEO}/>
@@ -28,8 +49,8 @@ const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
         showOnShallow={true}
         options={{showSpinner: false}}
       />
-      <AnimatePresence mode={'wait'}>
-        <Component {...pageProps} key={router.route}/>
+      <AnimatePresence mode="wait" onExitComplete={preventScrollAnimation}>
+        <Component {...pageProps} key={router.asPath}/>
       </AnimatePresence>
     </>
   )

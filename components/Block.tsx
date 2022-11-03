@@ -21,12 +21,7 @@ const Block: React.FunctionComponent<Props> = ({
   style,
   className = ''
 }) => {
-  let h2 = <></>;
-  if (title !== undefined) {
-    h2 = (
-      <h2 className={h2icon}>{title}</h2>
-    );
-  }
+
   let ribbon = <></>;
   if (newRibbon) ribbonText = 'NEW!';
   if (ribbonText != '') {
@@ -36,7 +31,7 @@ const Block: React.FunctionComponent<Props> = ({
   return (
     <div className={`main-window ${className}`} id={id} style={style}>
       {ribbon}
-      {h2}
+      {title && <h2 className={h2icon}>{title}</h2>}
       {children}
     </div>
   )

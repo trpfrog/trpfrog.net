@@ -25,19 +25,6 @@ type Props = {
   children: React.ReactNode
 }
 
-const usePathChangeRecording = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const storage = globalThis?.sessionStorage;
-    if (!storage) return;
-    const prevPath = storage.getItem("currentPath");
-    const curPath = globalThis.location.pathname;
-
-    storage.setItem('prevPath', prevPath ? prevPath : '');
-    storage.setItem('currentPath', curPath);
-  }, [router.asPath]);
-}
 
 const useMotionDirection = (): (-1 | 0 | 1) => {
   const router = useRouter();
@@ -45,7 +32,6 @@ const useMotionDirection = (): (-1 | 0 | 1) => {
 
   useEffect(() => {
     const item = globalThis?.sessionStorage?.getItem('prevPath');
-
     if (item) {
       const getPageIndexOnNavbar = (url: string) => {
         const subPagePath = url.split('/').slice(0, 2).join('/')
@@ -61,7 +47,7 @@ const useMotionDirection = (): (-1 | 0 | 1) => {
     }
 
     console.log(motionDirection)
-  }, [motionDirection, router.pathname])
+  }, []) // run only mounted
 
   return motionDirection
 }
@@ -110,9 +96,6 @@ const PageTransitionMotion = ({children, motionDirection, isMobile}: {
 const Layout: React.FunctionComponent<Props> = ({
   children, style, className
 }) => {
-
-  usePathChangeRecording()
-
   const isMobile = useIsMobile();
   const motionDirection = useMotionDirection();
   const hamburgerState = useState(false);
