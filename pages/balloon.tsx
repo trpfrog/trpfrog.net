@@ -7,44 +7,15 @@ import Title from "../components/Title";
 import Block from "../components/Block";
 import React, {useState} from "react";
 
-import useSound from 'use-sound';
 import Util from "../lib/utils";
+import {useBalloonSound} from "../components/Balloon";
+import dynamic from "next/dynamic";
 
-type BalloonProps = {
-  width: string
-  height: string
-}
+const Balloon = dynamic(() => import('../components/Balloon'), {ssr: false});
 
 type BalloonDivProps = {
   n: number
   width: number
-}
-
-let playSound = () => {
-};
-const balloonColors = ['blue', 'green', 'orange']
-
-export const BalloonBox = ({width = '100%', height = '100%'}: BalloonProps) => {
-  const [balloonColor] = useState(balloonColors[Math.floor(Math.random() * 3)])
-  const [isBroken, setState] = useState(false);
-
-  return (
-    <span
-      style={{
-        width, height,
-        backgroundSize: `${width} ${height}`
-      }}
-      className={styles.balloon}
-      data-broken-balloon={isBroken}
-      data-balloon-color={balloonColor}
-      onClick={() => {
-        setState(true);
-        if (!isBroken) {
-          playSound();
-        }
-      }}
-    />
-  )
 }
 
 export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
@@ -52,19 +23,15 @@ export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
   return (
     <div id={styles.balloon_grid}>
       {Array.from(Array(n), (v, k) => (
-        <BalloonBox key={k} width={`${width}px`} height={`${height}px`}/>
+        <Balloon key={k} width={`${width}px`} height={`${height}px`}/>
       ))}
     </div>
   );
 }
 
-const Balloon: NextPage = () => {
-  const [isSoundEnabled, setSoundEnabled] = useState(false)
+const BalloonPage: NextPage = () => {
 
-  const soundURL = 'https://res.cloudinary.com/trpfrog/video/upload/v1652447772/balloon/break-immeditary.mp3';
-  const [playFunction] = useSound(soundURL, {interrupt: false});
-  playSound = isSoundEnabled ? playFunction : () => {
-  };
+  const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
 
   const getValidInteger = (s: string) => {
     let n = parseInt(s, 10);
@@ -119,4 +86,4 @@ const Balloon: NextPage = () => {
   )
 }
 
-export default Balloon
+export default BalloonPage
