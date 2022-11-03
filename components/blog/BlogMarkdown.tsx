@@ -24,7 +24,6 @@ import Conversation from "./article-parts/Conversation";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import {ResultBox} from "./article-parts/WalkingParts";
 import {Caution, Infobox} from "./article-parts/HighlightedBoxes";
-import loadWebComponents from "../../lib/blog/webComponents";
 
 type codeProps = {
   className: string
@@ -217,9 +216,6 @@ type RendererProps = {
 }
 
 export const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX=true}: RendererProps) => {
-
-  useEffect(loadWebComponents, [])
-
   if (renderLaTeX) {
     const mathjaxConfig = {
       loader: {load: ["[tex]/html"]},
