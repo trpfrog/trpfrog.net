@@ -96,5 +96,12 @@
     "ownerName": "Terry",
     "twitterId": "terry_univ",
     "description": "技術系ブログ"
+  },
+  {
+    "url": "https://azumabashi.dev/",
+    "siteName": "Azumabashi",
+    "ownerName": "Azumabashi",
+    "twitterId": "azm_bashi",
+    "description": "自作 Web App の紹介など"
   }
 ]
