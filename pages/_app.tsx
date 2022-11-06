@@ -41,14 +41,14 @@ const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
     <>
       <DefaultSeo {...SEO}/>
       <Analytics/>
-      <NextNProgress
-        color="#90e200"
-        startPosition={0.35}
-        stopDelayMs={200}
-        height={5}
-        showOnShallow={true}
-        options={{showSpinner: false}}
-      />
+      {/*<NextNProgress*/}
+      {/*  color="#90e200"*/}
+      {/*  startPosition={0.35}*/}
+      {/*  stopDelayMs={200}*/}
+      {/*  height={5}*/}
+      {/*  showOnShallow={true}*/}
+      {/*  options={{showSpinner: false}}*/}
+      {/*/>*/}
       <AnimatePresence mode="wait" onExitComplete={preventScrollAnimation}>
         <Component {...pageProps} key={router.asPath}/>
       </AnimatePresence>
