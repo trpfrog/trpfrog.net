@@ -45,16 +45,25 @@ const Links: NextPage<PageProps> = ({mutualLinks}: PageProps) => {
             return (
               <div key={siteName} className={styles.link_block}>
                 <p style={{textAlign: "center"}}>
-                  <Link href={url} className="linkButton" style={style}>
-
+                  <Link
+                    href={url}
+                    className="linkButton"
+                    style={style}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     {siteName}
-
                   </Link>
                 </p>
                 <p>
-                  <b><Link href={`https://twitter.com/${twitterId}/`}>
-                    {ownerName}
-                  </Link></b>さんのHP
+                  <Link
+                    href={`https://twitter.com/${twitterId}/`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <b>{ownerName}</b>
+                  </Link>
+                  さんのHP
                 </p>
                 <p>
                   {description}
