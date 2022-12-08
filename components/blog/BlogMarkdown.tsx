@@ -155,6 +155,10 @@ const myMarkdownClasses: MarkdownFunctionType = {
     </>
   ),
 
+  'Dangerously-set-inner-html': content => (
+    <div dangerouslySetInnerHTML={{__html: content}}/>
+  ),
+
 
 }
 
