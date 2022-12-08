@@ -55,6 +55,7 @@ GitHub Pages は**なぜかデプロイされない**<sup>※1</sup>、**リポ�
 今回はただレンタルサーバ**的**に使うだけなので気にしなくてOKです。gitなんもわからん
 
 ```caution
+注意！
 **レンタルサーバではない**のでデカい動画とかアップロードすると怒られます。気をつけてください。
 実際、GitHubに申し訳ないので**徒歩ブログのクソデカ画像たち**は[別のサーバ](https://cloudinary.com)に置いてます。
 
@@ -161,6 +162,7 @@ Mac なら <span class="purple-btn md-btn">Download for macOS</span> みたい�
 次にサーバーと同期をします。右上の <span class="black-btn md-btn">Fetch origin</span> を押します。
 
 ```caution
+注意！
 <span class="black-btn md-btn">Fetch origin</span> は作業をする前に**必ずやってください**。git についての記事ではないので詳細は省きますが、**conflict**という**アホめんどい状態**になってなんもできんになることがあります。
 
 <small>conflict はサーバ上のファイルとコンピュータ上のファイルに矛盾が生じることにより起こります。ですので「**Fetch (pull) を必ずする**」または「Web上や他のコンピュータから編集をしない」ことで回避することができます。</small>

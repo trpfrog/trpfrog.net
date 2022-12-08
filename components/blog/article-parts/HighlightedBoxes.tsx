@@ -10,8 +10,8 @@ export const Caution: ArticleParts = content => (
       <FontAwesomeIcon icon={faTriangleExclamation}/>
     </div>
     <div className={styles.text_box_content}>
-      <h4>注意！</h4>
-      {parseRichMarkdown(content)}
+      <h4>{content.split('\n')[0]}</h4>
+      {parseRichMarkdown(content.split('\n').slice(1).join('\n').trim())}
     </div>
   </div>
 )
