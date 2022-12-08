@@ -65,7 +65,8 @@ a:visited {
 }
 
 h3 {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     padding: 0 7px 0 6px;
     border-left: solid 7px var(--header-color);
     background: rgba(120, 189, 0, 0.09);
@@ -97,6 +98,10 @@ h3 {
     .only-on-pc {
         display: none;
     }
+}
+
+.ib {
+    display: inline-block
 }
 
 @media screen {

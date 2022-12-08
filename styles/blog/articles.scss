@@ -22,10 +22,17 @@
 }
 
 .anchor {
+    width: 100%;
+    border-bottom: 1px gray solid;
+    padding-left: 1px;
+    margin-bottom: 1.1em !important;
+
     @include mixins.mq(pc) {
         position: relative;
-        left: -1.2em;
         a {
+            position: absolute;
+            left: -1.2em;
+            top: .2em;
             opacity: 0;
             margin-right: .3em;
         }

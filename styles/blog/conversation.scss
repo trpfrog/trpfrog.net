@@ -1,5 +1,7 @@
 @use '../mixins';
 
+$pad-top: .5rem;
+
 .conversation_box_grid {
     font-family: var(--main-font);
     display: grid;
@@ -19,7 +21,7 @@
     font-weight: bold;
     max-width: 35vw;
     line-height: 1.3;
-    padding-top: 0.25em;
+    padding-top: calc(0.25em + $pad-top);
 }
 
 .conversation_box_value {
@@ -32,13 +34,13 @@
     line-height: 1.6em;
     width: fit-content;
     margin-left: .1em;
-    padding: .1em .3em;
+    padding: $pad-top .7rem;
     border: 2px solid var(--bubble-color);
 
     @mixin triangle($color, $fix: 0) {
         content: "";
         position: absolute;
-        top: 1.25em;
+        top: calc(1.2em + $pad-top);
         left: -1em + $fix;
         margin-top: -.7em;
         border: .3em solid transparent;
