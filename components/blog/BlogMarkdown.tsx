@@ -95,6 +95,7 @@ const myMarkdownClasses: MarkdownFunctionType = {
   'Horizontal-scroll': HorizontalScroll,
   'Conversation': Conversation,
 
+  'Show-all': ShowAll,
 
   'Next-page': (content, entry) => {
     if (!entry) return <></>
