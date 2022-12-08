@@ -2,7 +2,7 @@ import {Tweet} from "react-twitter-widgets";
 import YouTube from "react-youtube";
 import ReactPlayer from "react-player";
 import React from "react";
-import {ArticleParts} from "../BlogMarkdown";
+import {ArticleParts, parseInlineMarkdown, parseRichMarkdown} from "../BlogMarkdown";
 
 export const Twitter: ArticleParts = (content) => {
   const id = content.split('\n')[0]
@@ -61,19 +61,29 @@ export const AutoYoutube: ArticleParts = (content) => {
   )
 }
 
-export const LinkEmbed: ArticleParts = content => (
-  <div style={{textAlign: 'center'}}>
-    <iframe
-      style={{
-        width: '100%',
-        height: 150,
-        maxWidth: 480
-      }}
-      src={`https://hatenablog-parts.com/embed?url=${
-        encodeURIComponent(content.trim())
-      }`}
-      frameBorder="0"
-      scrolling="no"
-    />
-  </div>
-)
+export const LinkEmbed: ArticleParts = content => {
+  const [url, ...captionArr] = content.split('\n')
+  return (
+    <div style={{textAlign: 'center'}}>
+      <div>
+        <iframe
+          style={{
+            width: '100%',
+            height: 150,
+            maxWidth: 480
+          }}
+          src={`https://hatenablog-parts.com/embed?url=${
+            encodeURIComponent(url.trim())
+          }`}
+          frameBorder="0"
+          scrolling="no"
+        />
+      </div>
+      {captionArr.length > 0 &&
+        <div style={{opacity: 0.8, margin: '0 0 1rem', lineHeight: 1.25}}>
+          <small>{parseInlineMarkdown(captionArr.join('\n').trim())}</small>
+        </div>
+      }
+    </div>
+  )
+}
