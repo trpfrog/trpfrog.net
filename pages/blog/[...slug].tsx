@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {DependencyList, useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/legacy/image";
@@ -139,6 +139,47 @@ const EntryButton = (props: { text: string, icon: IconProp, onClick?: any }) => 
       <span className={styles.entry_button_text}>
         {props.text}
       </span>
+    </div>
+  )
+}
+
+const FullscreenOni = ({ showProbability }: {showProbability: number}) => {
+  if (process.env.NODE_ENV !== 'production') {
+    showProbability = 0
+  }
+  useEffect(() => {
+    const rand = Math.random()
+    if (rand < showProbability) {
+      const oni = document.getElementById('fullscreen-oni')
+      if (!oni) return;
+      oni.style.display = 'flex'
+      setTimeout(() => {
+        oni.style.display = 'none'
+      }, 200)
+    }
+  }, [showProbability])
+
+  return (
+    <div id="fullscreen-oni" style={{
+      zIndex: 99999,
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      display: 'none',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: '#222',
+      color: '#eee',
+      fontSize: '2em'
+    }}>
+      <div style={{maxWidth: '100%', display: 'block', textAlign: 'center'}}>
+        <h1>歩くぞ !</h1>
+        <img src={'https://raw.githubusercontent.com/kyu099/oniCamera/main/oni1.PNG'} style={{
+          maxWidth: '300px'
+        }}/>
+      </div>
     </div>
   )
 }
@@ -313,6 +354,11 @@ const Article: NextPage<PageProps> = ({entry, imageSize, relatedPosts, pastArtic
 
         </div>
       </Title>
+      {
+        entry.slug.includes('skyscraper-walk') && (
+          <FullscreenOni showProbability={(entry.currentPage - 1) * 0.1}/>
+        )
+      }
       <NextSeo
         title={`${post.title} - つまみログ`}
         description={post.description}
