@@ -24,6 +24,7 @@ import Conversation from "./article-parts/Conversation";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import {ResultBox} from "./article-parts/WalkingParts";
 import {Caution, Infobox} from "./article-parts/HighlightedBoxes";
+import ShowAll from "./article-parts/ShowAll";
 
 type codeProps = {
   className: string
@@ -54,6 +55,7 @@ export const parseRichMarkdown = (markdown: string) => {
   return (
     <ReactMarkdown
       components={markdownComponents as any}
+      remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
     >{markdown}</ReactMarkdown>
   )
@@ -63,7 +65,12 @@ export const parseInlineMarkdown = (markdown: string) => {
   const comp = {
     p: ({children}: any) => <>{children}</>
   }
-  return <ReactMarkdown components={comp} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
+  return <ReactMarkdown
+    components={comp}
+    remarkPlugins={[remarkGfm]}
+    rehypePlugins={[rehypeRaw]}>
+    {markdown}
+  </ReactMarkdown>
 }
 
 export type ArticleParts = (
@@ -113,24 +120,28 @@ const myMarkdownClasses: MarkdownFunctionType = {
   },
 
 
-  Centering: content => (
+  Centering: (content, entry, imageSize) => (
     <div style={{textAlign: 'center'}}>
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
-      >{content}</ReactMarkdown>
+      <ArticleRenderer
+        toRender={content}
+        entry={entry}
+        imageSize={imageSize}
+        renderLaTeX={false}
+      />
     </div>
   ),
 
-  'Centering-with-size': content => {
+  'Centering-with-size': (content, entry, imageSize) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
-        >{content}</ReactMarkdown>
+        <ArticleRenderer
+          toRender={content}
+          entry={entry}
+          imageSize={imageSize}
+          renderLaTeX={false}
+        />
       </div>
     )
   },
