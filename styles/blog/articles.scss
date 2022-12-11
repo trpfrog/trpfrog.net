@@ -25,6 +25,8 @@
     width: 100%;
     border-bottom: 1px gray solid;
     padding-left: 1px;
+
+    margin-top: 1rem !important;
     margin-bottom: 1.1em !important;
 
     @include mixins.mq(pc) {
