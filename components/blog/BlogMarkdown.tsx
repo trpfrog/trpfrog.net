@@ -25,6 +25,7 @@ import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials"
 import {ResultBox} from "./article-parts/WalkingParts";
 import {Caution, Infobox, TitledFrame} from "./article-parts/HighlightedBoxes";
 import ShowAll from "./article-parts/ShowAll";
+import {parseWithBudouX} from "../../lib/wordSplit";
 
 type codeProps = {
   className: string
@@ -155,6 +156,15 @@ const myMarkdownClasses: MarkdownFunctionType = {
         rehypePlugins={[rehypeRaw]}
       >{content}</ReactMarkdown>
     </>
+  'Centering-with-size-bold': content => {
+    const [size, ...lines] = content.split('\n')
+    content = lines.join('\n')
+    return (
+      <div style={{textAlign: 'center', fontSize: size.trim()}}>
+        <strong>{parseWithBudouX(content, content)}</strong>
+      </div>
+    )
+  },
   ),
 
   'Dangerously-set-inner-html': content => (
