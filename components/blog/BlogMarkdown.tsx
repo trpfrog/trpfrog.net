@@ -149,13 +149,15 @@ const myMarkdownClasses: MarkdownFunctionType = {
     )
   },
 
-  'Ignore-read-count': content => (
-    <>
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
-      >{content}</ReactMarkdown>
-    </>
+  'Ignore-read-count': (content, entry, imageSize) => (
+    <ArticleRenderer
+      toRender={content}
+      entry={entry}
+      imageSize={imageSize}
+      renderLaTeX={false}
+    />
+  ),
+
   'Centering-with-size-bold': content => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
@@ -165,7 +167,6 @@ const myMarkdownClasses: MarkdownFunctionType = {
       </div>
     )
   },
-  ),
 
   'Dangerously-set-inner-html': content => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
