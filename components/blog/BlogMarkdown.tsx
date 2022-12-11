@@ -23,7 +23,7 @@ import HorizontalScroll from "./article-parts/HorizontalScroll";
 import Conversation from "./article-parts/Conversation";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import {ResultBox} from "./article-parts/WalkingParts";
-import {Caution, Infobox} from "./article-parts/HighlightedBoxes";
+import {Caution, Infobox, TitledFrame} from "./article-parts/HighlightedBoxes";
 import ShowAll from "./article-parts/ShowAll";
 
 type codeProps = {
@@ -97,6 +97,8 @@ const myMarkdownClasses: MarkdownFunctionType = {
   // Highlight Boxes
   Caution,
   Infobox,
+
+  'Titled-frame': TitledFrame,
 
   'Horizontal-images': HorizontalImages,
   'Horizontal-scroll': HorizontalScroll,
