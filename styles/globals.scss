@@ -104,6 +104,14 @@ h3 {
     display: inline-block
 }
 
+.google-maps-style {
+    width: min(100%, 600px);
+    height: min(70vw, 400px);
+    border-radius: 10px;
+    box-shadow: 0 0 1px 1px rgb(128 128 128 / 30%);
+    border: 0;
+}
+
 @media screen {
     ol {
         counter-reset: num;
