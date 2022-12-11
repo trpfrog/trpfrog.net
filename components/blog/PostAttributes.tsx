@@ -38,8 +38,8 @@ const PostAttributes = ({post}: Props) => {
     return (
       <time dateTime={d}>
         {Y}年<br/>
-        <span style={{fontSize: '1.7em'}}>{M}</span>月
-        <span style={{fontSize: '1.7em'}}>{D}</span>日
+        <span style={{fontSize: '1.7em', padding: '0 4px', letterSpacing: -1}}>{M}</span>月
+        <span style={{fontSize: '1.7em', padding: '0 4px', letterSpacing: -1}}>{D}</span>日
       </time>
     )
   }
