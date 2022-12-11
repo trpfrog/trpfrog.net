@@ -82,7 +82,7 @@ export type ArticleParts = (
 
 type MarkdownFunctionType = { [content: string]: ArticleParts }
 
-const myMarkdownClasses: MarkdownFunctionType = {
+export const myMarkdownClasses: MarkdownFunctionType = {
 
   // Socials
   Twitter,

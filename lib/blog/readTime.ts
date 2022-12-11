@@ -1,41 +1,91 @@
+import {myMarkdownClasses} from "../../components/blog/BlogMarkdown";
+
 export const getReadTimeSecond = (markdown: string) => {
   const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')
-  const linkRegex = new RegExp('\\[(.*?)\]\\(.*?\\)', 'g')
-  const linkRemoved = markdown.replace(imageRegex, '').replace(linkRegex, '$1')
+  const linkRegex = new RegExp('[^!]\\[(.*?)\]\\(.*?\\)', 'g')
+  const linkRemoved = markdown.replace(linkRegex, '$1')
 
-  let codeRemoved = linkRemoved
-    .replaceAll('```', '[READ_TIME_SEP]')
-    .replaceAll('<style>', '[READ_TIME_SEP]')
-    .replaceAll('</style>', '[READ_TIME_SEP]')
-    .split('[READ_TIME_SEP]')
-    .filter((e, index) =>
-      index % 2 === 0
-      || e.startsWith('centering')
-    )
-    .join('')
-    .replace(/[ 　\n*#]/g, '')
-    .replace(/centering/g, '')
+  const codeBlockStack: string[] = [];
+  const getStackTop = () => {
+    if (codeBlockStack.length > 0) {
+      return codeBlockStack[codeBlockStack.length - 1]
+    } else {
+      return undefined;
+    }
+  }
 
-  let images = (markdown.match(imageRegex) || []).length
+  const utilityCodeBlocks = new Set(Object.keys(myMarkdownClasses).map(e => e.toLowerCase()));
+  utilityCodeBlocks.delete('twitter');
+  utilityCodeBlocks.delete('ignore-read-count')
 
-  const twitterArchives = linkRemoved
-    .split('```')
-    .filter((e, index) => index % 2 === 1 && e.startsWith('twitter-archived'))
-    .filter(e => {
-      if (e.includes('image:')) images++
-      return e.includes('tweet:')
-    })
-    .map(e => e
-      .split('\n')
-      .filter(l => l.startsWith('tweet:'))[0] // extract tweet line
-      .slice('tweet:'.length).trim() // remove 'tweet:'
-      .replace(/<.*?>/g, '') // remove tags
-    ).join('')
+  let numOfCharacters: number = 0;
+  let enableWordCounting = true;
 
+  const imagePoint = 10;
 
-  const length = images * 20 + codeRemoved.length + twitterArchives.length * 0.6
+  for (let line of linkRemoved.split('\n')) {
 
-  return Math.floor(length * 60 / 700);
+    // code block
+    if (line.startsWith('```')) {
+      const cmd = line.replaceAll('`', '').trim()
+      if (cmd.length > 0) {
+        if (utilityCodeBlocks.has(cmd)) {
+          codeBlockStack.push(cmd)
+        } else {
+          codeBlockStack.push('code-block')
+        }
+      } else if (codeBlockStack.length > 0) {
+        codeBlockStack.pop()
+      }
+      continue;
+    }
+
+    if (codeBlockStack.includes('code-block')) {
+      continue;
+    }
+
+    if (line.startsWith('<!--')) {
+      continue;
+    }
+
+    if (line.includes('<style>')) {
+      enableWordCounting = false;
+    } else if (line.includes('</style>')) {
+      enableWordCounting = true;
+    }
+
+    if (!enableWordCounting) {
+      continue;
+    }
+
+    if (getStackTop() === 'twitter-archived') {
+      if (line.startsWith('tweet:')) {
+        line = line.slice(7);
+      } else if (line.startsWith('image:')) {
+
+        // console.log('found image!');
+        numOfCharacters += imagePoint;
+        continue;
+      } else {
+        continue;
+      }
+    }
+
+    if (line.startsWith('<iframe')) {
+      continue;
+    }
+
+    if (!!line.match(imageRegex)) {
+      // console.log('found image!');
+      numOfCharacters += imagePoint;
+      continue;
+    }
+
+    // console.log(line);
+    numOfCharacters += line.length;
+  }
+
+  return Math.floor(numOfCharacters * 60 / 700);
 }
 
 export const formatReadTime = (readTimeSec: number) => {
