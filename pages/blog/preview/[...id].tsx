@@ -51,9 +51,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let [id, page] = context.params?.id as string[]
   page = page ?? '1'
 
+  console.log(context.query)
+
   const option = {
     pagePos1Indexed: parseInt(page),
-    all: page === 'all'
+    all: page === 'all',
+    showPreviewCheckpoint: ('checkpoint' in (context.query ?? []))
   }
 
   const entry = id
@@ -99,9 +102,9 @@ const Article: NextPage<PageProps> = ({entry: post, imageSize}) => {
           <h1>{parseWithBudouX(post.title, post.slug)}</h1>
           <p>{post.description}</p>
           {!post.isError &&
-            <p style={{fontSize: '1.5em', color: 'red', fontWeight: 'bold'}}>
-              これは記事プレビューです<br/>
-              SNSなど外部への共有を禁じます
+            <p style={{fontSize: '1.5em', color: 'var(--header-color)', fontWeight: 'bold'}}>
+              記事プレビューです<br/>
+              URLを知っているユーザーのみが閲覧できます
             </p>
           }
           <PostAttributes post={post}/>

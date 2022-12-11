@@ -93,10 +93,11 @@ export const fetchPastPost = async (slug: string, file_sha: string, option: any)
   }
 }
 
-type BlogPostOption = {
-  pagePos1Indexed?: number
-  all?: boolean
-}
+type BlogPostOption = Partial<{
+  pagePos1Indexed: number
+  all: boolean
+  showPreviewCheckpoint?: boolean
+}>
 
 const buildBlogPost = async (
   slug: string,
@@ -134,7 +135,7 @@ const buildBlogPost = async (
     content = parsedContent[pagePosition - 1]
   }
 
-  if (previewContentId) {
+  if (previewContentId && option?.showPreviewCheckpoint) {
     const fullPath = path.join(process.cwd(), 'data', 'preview-checkpoint.md')
     const checkpoint = fs.readFileSync(fullPath, 'utf8')
     content = [checkpoint, ...content]
