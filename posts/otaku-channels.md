@@ -1,7 +1,7 @@
 ---
 title: Disnake + GitHub Actions で作るオタク鯖晒しサイト
 date: 2021-12-16
-updated: 2021-12-20
+updated: 2022-12-13
 tags: 大学, 技術
 description: 変なオタク鯖のチャンネルを晒すサイトを作った
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/thumbnail.webp
@@ -60,6 +60,20 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/t
 Python から簡単に Discord API を叩ける便利ライブラリといえば **discord.py** が有名でしたが、なんとこの前**開発終了**が発表されてしまいました。
 
 (まだ使えなくはないんだろうけど) 代替手段はないか……と探したところ、**[Disnake](https://github.com/DisnakeDev/disnake)** という discord.py の fork を見つけました。ちょこちょこメンテナンスされてそうなので今回はこちらを使ってみることにします。
+
+````caution
+discord.py の開発再開について (2022.12.13 追記)
+
+めちゃくちゃ情報のキャッチアップが出来ておらずお恥ずかしい限りなのですが、2022年3月頃に discord.py の開発を再開する方針が発表されていたみたいです。
+
+```link-embed
+https://gist.github.com/Rapptz/c4324f17a80c94776832430007ad40e6
+```
+
+実際、現在では discord.py は新たなメジャーバージョン **v2** がリリースされ、開発が再開されています。メンテナの方には頭が上がりませんね……。人口やドキュメントの多さの観点から、**現在は discord.py を使う方が楽だと思われます。**
+
+記事のメンテをする時間がないので以下はそのままとしていますが、まあだいたい同じ方法で作れると思います。**作らないと思いますが……**
+````
 
 
 
