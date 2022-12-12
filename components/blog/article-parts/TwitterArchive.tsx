@@ -61,8 +61,12 @@ const TwitterArchive: ArticleParts = content => {
         {tweetData.image &&
           <div className={styles.image}>
             <blockquote>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable @next/next/no-img-element */}
               <img src={tweetData.image} alt={'ツイートの画像'}/>
+              {tweetData.image2 && <img src={tweetData.image2} alt={'ツイートの画像'}/>}
+              {tweetData.image3 && <img src={tweetData.image3} alt={'ツイートの画像'}/>}
+              {tweetData.image4 && <img src={tweetData.image4} alt={'ツイートの画像'}/>}
+              {/* eslint-enable @next/next/no-img-element */}
             </blockquote>
           </div>
         }
