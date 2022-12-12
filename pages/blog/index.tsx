@@ -12,21 +12,23 @@ import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 
 export const getStaticProps = async () => {
   const articles = await getSortedPostsData()
+  const latestLongArticleIdx = articles.findIndex((e: BlogPost) => e.tags.includes("長編記事"))
+  const latestLongArticle = articles[latestLongArticleIdx];
+  articles.splice(latestLongArticleIdx, 1);
   return {
     props: {
-      articles
+      latestLongArticle,
+      otherArticles: articles
     }
   }
 }
 
 type Props = {
-  articles: BlogPost[]
+  latestLongArticle: BlogPost,
+  otherArticles: BlogPost[]
 };
 
-const Blog: NextPage<Props> = ({articles}) => {
-  const latestArticle = articles[0];
-  const pastArticles = articles.slice(1);
-
+const Blog: NextPage<Props> = ({latestLongArticle, otherArticles}) => {
   const description =
     'つまみさんのブログです。' +
     '主にお散歩やソフトウェアの記事を書いています。'
@@ -37,11 +39,11 @@ const Blog: NextPage<Props> = ({articles}) => {
         <Title title={'つまみログ'} description={description}/>
 
         <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar}/> LATEST <FontAwesomeIcon icon={faStar}/>
+          <FontAwesomeIcon icon={faStar}/> LATEST LONG ARTICLE <FontAwesomeIcon icon={faStar}/>
         </div>
 
         <div id={styles.hero_article}>
-          <ArticleCard entry={latestArticle} hero={true}/>
+          <ArticleCard entry={latestLongArticle} hero={true}/>
         </div>
 
         <div className={styles.hrule_block}>
@@ -49,7 +51,7 @@ const Blog: NextPage<Props> = ({articles}) => {
         </div>
 
         <ArticleGrid>
-          {pastArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
+          {otherArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
         </ArticleGrid>
       </Layout>
     </>
