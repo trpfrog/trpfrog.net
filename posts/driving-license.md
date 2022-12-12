@@ -281,8 +281,10 @@ date: 2021-03-10
 tweet: 悔しすぎる、このまま山行こうかな
 ```
 
-```twitter
-1369515202522218501
+```twitter-archived
+id: 1369515202522218501
+date: 2021-03-10
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867314/blog/driving-license/EwF-0KZVgAAT370.jpg
 ```
 
 ### 3月14日 初実車教習
@@ -710,8 +712,11 @@ tweet: バカ
 
 ### 予約監視ロボ完成！
 
-```twitter
-1384140856374960147
+```twitter-archived
+id: 1384140856374960147
+date: 2021-04-19
+tweet: 天才
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867324/blog/driving-license/EzV0w9PVUAAd_ck.png
 ```
 
 十数分に予約サイトを確認して空きがあったらDiscordでお知らせしてくれます。予約機能はバグって暴走したら頭にくるので実装していません。(技術的には実装可能)
@@ -1162,7 +1167,7 @@ tweet: <b>いかんでしょ</b>、どういうことですか？
 
 ```twitter-archived
 id: 1399917086923657222
-name: ミノガメ@タカ￥1000
+name: ミノガメ
 userid: sirominogame
 date: 2021-06-02
 color: green
@@ -1227,6 +1232,7 @@ tweet: 本当はちょっと<b>「技能落ちそうだけど落ちたら徒歩�
 
 ```twitter
 1399950828476125185
+umao1800:【実績解除】左に曲がりすぎたのに左にハンドルを切って怒られる
 ```
 
 ```twitter-archived
@@ -1237,16 +1243,27 @@ tweet: 運転下手くそ部はいつでも新規部員を募集しています�
 
 ### 6月2日午後 徒歩会
 
-```twitter
-1399956553554292741
+```twitter-archived
+id: 1399956553554292741
+date: 2021-06-02
+tweet: ワープ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867447/blog/driving-license/E22lD_CVIAAym_n.jpg
 ```
 
-```twitter
-1399987534906548229
+```twitter-archived
+id: 1399987534906548229
+name: ふみ
+userid: fmnpt
+date: 2021-06-02
+tweet: 初山親水広場
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867661/blog/driving-license/E23BO6dVUAI8n5S.jpg
 ```
 
-```twitter
-1400017939474968578
+```twitter-archived
+id: 1400017939474968578
+date: 2021-06-02
+tweet: 仮免合格❗️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867452/blog/driving-license/E23c5GQVkAQHV9s.jpg
 ```
 
 ```twitter-archived
@@ -1259,8 +1276,11 @@ tweet: <b>路上行くぜ‼️オタク怖いか？</b>
 合格してしまいました…… (筆記はその日の18時ごろに結果が出る)
 ```
 
-```twitter
-1400048140300914697
+```twitter-archived
+id: 1400048140300914697
+date: 2021-06-02
+tweet: 今日もgottiに奢らせています
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867460/blog/driving-license/E234V9IVUAsvntA.jpg
 ```
 
 ### 6月5日 教習第二段階突入！
@@ -1365,6 +1385,11 @@ tweet: これから技能で煽られたら<b>じゃあお前あのガバガバ�
 
 ```twitter
 1402851333040852993
+umao1800:
+乗車ぼく「えっと…エンジン…レバー…ブレーキ…これでいいんですよね…？」
+教官「……」
+ぼく「大丈夫ですよね」
+教官「シートベルトは？」
 ```
 
 ```twitter-archived
@@ -1375,6 +1400,11 @@ tweet: シートベルト、つい忘れちゃいますよね😁
 
 ```twitter
 1402849349864869892
+kyu_099:
+車あるある〜！
+左に曲がりまーす
+体がくっついちゃったー
+自転車なぎ倒して店内に 少年5人の乗用車
 ```
 
 ```twitter-archived
@@ -1527,6 +1557,9 @@ tweet: 教官「じゃあそこ<b>右</b>ね」<br/>わし「はい(<b>左</b>�
 
 ```twitter
 1418122136909123584
+ときーら
+@gyunyu_umasugi
+つまみさんの車校ツイートを見てたら俺も頑張れる気がしてくる
 ```
 
 ```twitter-archived
@@ -1591,8 +1624,13 @@ date: 2021-07-30
 tweet: 教官「ちょっとウインカー出すの早すぎ！！！<b>何m前に出すか知ってるよね！？</b>」<br/>わし「え？30mですよね」<br/>教官「そ、そうだよ、<b>わかってるならやろうね</b>」<br/>わし「はい」<br/><br/>…<br/><br/>教官「<b>早すぎだって！！！</b>」<br/>わし「え、<b>もしかして30mって結構近いですか？</b>😅😅😅」<br/>教官「はい……」
 ```
 
-```twitter
-1421016780613373955
+```twitter-archived
+id: 1455791242533507072
+name: もぐら
+userid: Rhm_mole
+color: blue
+date: 2021-11-03
+tweet: 教官「つまみくんの運転がハラハラすぎて漏らしちゃったヨ😅」
 ```
 
 ```twitter-archived
@@ -2043,8 +2081,22 @@ tweet: バカモノシミュレータやったら現実世界の路上の全人�
 
 ### 9月17日
 
-```twitter
-1438694521982750723
+```twitter-archived
+id: 1438692117358919689
+name: 淵野アタリ
+userid: ebioishii_u
+date: 2021-09-17
+tweet: いくぞ！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867974/blog/driving-license/E_dC2vDUcAYnFRG.jpg
+```
+
+```twitter-archived
+id: 1438694521982750723
+name: 淵野アタリ
+userid: ebioishii_u
+date: 2021-09-17
+tweet: 完成！いただきます！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670867975/blog/driving-license/E_dFCwPUYAUb2s1.jpg
 ```
 
 ```twitter-archived
@@ -2161,7 +2213,7 @@ tweet: 教官「Aくん、司会やる？」<br/>A「いや〜」<br/>教官「�
 
 ```twitter-archived
 id: 1439792462365544451
-name: 🎎
+name: きゅ〜
 userid: kyu_099
 date: 2021-09-20
 color: darkred
@@ -2296,8 +2348,19 @@ date: 2021-09-20
 tweet: 教習イヤイヤ期 + 単純に教習所がカスなので一生予約が取れない
 ```
 
-```twitter
-1439904767984091140
+```twitter-archived
+id: 1439904489700409356
+name: きゅ〜
+userid: kyu_099
+date: 2021-09-20
+tweet: つまみ免許取得チキンレース(教習期限ギリギリまで教習に行かない)
+```
+
+```twitter-archived
+id: 1439904767984091140
+date: 2021-09-20
+reply: @kyu_099
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868144/blog/driving-license/E_uRwSmUcAMwPMo.jpg
 ```
 
 ### 9月23日 技能教習
@@ -2545,8 +2608,13 @@ date: 2021-11-01
 tweet: 教習期限切れたらちくわぶとMランド行くの楽しみすぎ😁😁😁
 ```
 
-```twitter
-1455130083593637893
+```twitter-archived
+id: 1455130083593637893
+name: りんりんりんりんりんりんりんりん
+userid: lnln_ch
+color: yellow
+date: 2021-11-01
+tweet: つまみさん、俺が電通大入学した時から永遠に教習所通ってませんか？
 ```
 
 ```twitter-archived
@@ -2557,12 +2625,18 @@ tweet: 3月からです😓
 
 ### 11月2日
 
-```twitter
-1455382658054180866
+```twitter-archived
+id: 1455382658054180866
+date: 2021-11-02
+tweet: これは？
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868277/blog/driving-license/FDKO0FNakAEhhMA.jpg
 ```
 
-```twitter
-1455489402709241861
+```twitter-archived
+id: 1455489402709241861
+date: 2021-11-02
+tweet: 最後の一言は必要でしたか❓
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868279/blog/driving-license/FDLv06yaAAA45pf.png
 ```
 
 ```twitter-archived
@@ -2640,8 +2714,11 @@ tweet: 😨😨😨
 ・・・・・・
 ```
 
-```twitter
-1455789841443004418
+```twitter-archived
+id: 1455789841443004418
+date: 2021-11-03
+tweet: 教習所卒業‼️✡️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868383/blog/driving-license/FDQBI4yagAAGFLU.jpg
 ```
 
 ```twitter-archived
@@ -2678,12 +2755,18 @@ date: 2021-11-03
 tweet: 徒歩はネアンデルタール人😁令和人なら自動車の運転😁
 ```
 
-```twitter
-1455797141801091078
+```twitter-archived
+id: 1455797141801091078
+date: 2021-11-03
+tweet: これは本当にそう
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868414/blog/driving-license/FDQHyIbaUAAbASo.jpg
 ```
 
-```twitter
-1455798464965578756
+```twitter-archived
+id: 1455798464965578756
+date: 2021-11-03
+tweet: なんかもらった
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868417/blog/driving-license/FDQI-_oakAA0bVp.jpg
 ```
 
 ```twitter-archived
@@ -2708,16 +2791,27 @@ tweet: 今日エゴサで発見したヘイトスピーチです
 ・・・
 ```
 
-```twitter
-1455842613668442113
+```twitter-archived
+id: 1455842613668442113
+date: 2021-11-03
+tweet: レモン派だ……
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868460/blog/driving-license/FDQxIubaQAEsXeJ.jpg
 ```
-
 ```centering
 つまみさん卒業おめでとう飲み会 (ではなく偶然)
 ```
 
-```twitter
-1455900241626996739
+```twitter-archived
+id: 1455897554365796352
+date: 2021-11-03
+tweet: …… 
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868466/blog/driving-license/FDRjGvvaQAAH91L.jpg
+```
+
+```twitter-archived
+id: 1455900241626996739
+date: 2021-11-03
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868468/blog/driving-license/FDRljMwakAE_KWC.jpg
 ```
 
 ```centering
@@ -2916,8 +3010,11 @@ tweet: つまみは早く運転免許取得モードになって
 
 ### 1月16日
 
-```twitter
-1482414125770698757
+```twitter-archived
+id: 1482414125770698757
+date: 2022-01-15
+tweet: これは？
+image: https://res.cloudinary.com/trpfrog/image/upload/v1670868576/blog/driving-license/FJKXylXVkAA9rwp.jpg
 ```
 
 ```twitter-archived
@@ -2988,8 +3085,12 @@ date: 2022-01-31
 tweet: 嫌すぎ
 ```
 
-```twitter
-1488054984948076544
+```twitter-archived
+id: 1488054935971577858
+name: もっちゃん
+userid: sakuramochi0708
+date: 2022-01-31
+tweet: 別に免許取らなくてもいいよ、つまみさん。<b>あなたには立派な足がありますよね？</b>
 ```
 
 ```centering
@@ -3034,8 +3135,13 @@ tweet: 全部が並行してサイト作り始めるから駄目
 
 ### 2月6日
 
-```twitter
-1491452386669256706
+```twitter-archived
+id: 1491451949115637761
+name: 電通大生1号
+color: gray
+userid: uec_tl
+date: 2022-02-09
+tweet: つまみアイコンの自動車学校の課題どんなやつでは?w //
 ```
 
 ```twitter-archived
