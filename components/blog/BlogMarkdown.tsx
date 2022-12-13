@@ -207,9 +207,9 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
           </div>
         )}
         <SyntaxHighlighter
-          language={language}
           style={monokaiSublime}
           className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
+          language={language.toLowerCase()}
         >
           {children}
         </SyntaxHighlighter>
