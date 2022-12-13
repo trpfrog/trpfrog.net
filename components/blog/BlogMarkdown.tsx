@@ -1,6 +1,6 @@
 import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import {monokaiSublime} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import React, {CSSProperties, useEffect} from "react";
 import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
@@ -196,7 +196,7 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
       return myMarkdownClasses[language](children[0], entry, imageSize)
     }
 
-    const fileName = className.includes('.') ?
+    const fileName = className?.includes('.') ?
       className.replace('language-', '') : ''
 
     return (
@@ -207,9 +207,9 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
           </div>
         )}
         <SyntaxHighlighter
-          style={monokaiSublime}
-          className={`${styles.code_block} ${language != '' ? styles.code_block_with_lang : ''}`}
           language={language.toLowerCase()}
+          style={atomOneDarkReasonable}
+          className={`${styles.code_block} ${language !== '' ? styles.code_block_with_lang : ''}`}
         >
           {children}
         </SyntaxHighlighter>
@@ -221,11 +221,9 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
 
 export const getPureCloudinaryPath = (path: string) => {
   const cloudinaryUrl = 'https:\/\/res.cloudinary.com\/trpfrog'
-  const regex1 = new RegExp(cloudinaryUrl + '/image/upload/v[0-9]+')
-  const regex2 = new RegExp(cloudinaryUrl + '/image/upload')
   return (path ?? '')
-    .replace(regex1, '')
-    .replace(regex2, '')
+    .replace(/\/image\/upload/, '')
+    .replace(/\/image\/upload\/v[0-9]+/, '')
     .replace(cloudinaryUrl, '')
     .split('.')[0] // remove extension
 }
@@ -285,21 +283,17 @@ export const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX=true}: 
       }
       return <p>{props.children}</p>
     },
-    h2: (props: any) => {
-      return (
-        <h2 className={styles.anchor} id={props.id}>
-          <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
-          {props.children}
-        </h2>
-      )
-    },
-    a: (props: any) => {
-      return (
-        <a href={props.href} target="_blank" rel="noreferrer">
-          {props.children}
-        </a>
-      )
-    }
+    h2: (props: any) => (
+      <h2 className={styles.anchor} id={props.id}>
+        <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
+        {props.children}
+      </h2>
+    ),
+    a: (props: any) => (
+      <a href={props.href} target="_blank" rel="noreferrer">
+        {props.children}
+      </a>
+    )
   };
 
 

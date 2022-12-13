@@ -1,6 +1,7 @@
 @use '../mixins';
 
 $code-block-border: 1px;
+$brightness: 1.2;
 
 .post code {
     font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace !important;
@@ -15,9 +16,15 @@ $code-block-border: 1px;
     font-size: 0.95em;
     line-height: 1.8em;
 
+    filter: brightness($brightness);
+
     @include mixins.mq(sp) {
         padding: 10px !important;
         font-size: 0.85em;
+    }
+
+    &::-webkit-scrollbar{
+        display: none;
     }
 }
 
@@ -41,8 +48,14 @@ $code-block-border: 1px;
 
 .code_lang_wrapper {
     border-radius: 10px 10px 0 0 ;
-    background: #23241f;
+    background: rgb(40, 44, 52);
     margin-bottom: -1px;
+
+    filter: brightness($brightness);
+
+    .code_lang {
+        filter: brightness(calc(1/$brightness));
+    }
     
     @include mixins.mq(dark) {
         border: solid $code-block-border lightgray;
