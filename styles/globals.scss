@@ -189,3 +189,47 @@ main {
     line-height: 1.8;
     letter-spacing: 0.03em;
 }
+
+table {
+    * {
+        padding: 2px 10px;
+    }
+    margin: auto;
+    border-radius: 5px;
+
+    $radius: 8px;
+
+    *:first-child > tr:first-child {
+        *:first-child {
+            border-top-left-radius: $radius;
+        }
+        *:last-child {
+            border-top-right-radius: $radius;
+        }
+    }
+    *:last-child > tr:last-child {
+        *:first-child {
+            border-bottom-left-radius: $radius;
+        }
+        *:last-child {
+            border-bottom-right-radius: $radius;
+        }
+    }
+
+    thead {
+        text-align: center;
+    }
+
+    th {
+        background: var(--header-color);
+        color: white;
+    }
+    td {
+        background: rgba(120, 189, 0, 0.3);
+    }
+
+    .ct {
+        text-align: center;
+        line-height: 1;
+    }
+}
