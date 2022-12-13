@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({params}
   return {
     props: {
       entry: JSON.parse(JSON.stringify(entry)),
-      imageSize: await fetchAllImageProps(entry),
+      imageSize: await fetchAllImageProps(entry, process.env.NODE_ENV === 'production'),
       relatedPosts,
       pastArticleSHA: await fetchHistorySHA(slug)
     }
