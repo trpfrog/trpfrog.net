@@ -150,11 +150,15 @@
         }
     }
 
-    *:not(summary) {
+    & > *:not(summary):not(ul):not(details) {
         padding: 5px 10px;
         * {
             padding: initial;
         }
+    }
+
+    details {
+        margin: 1rem;
     }
 }
 

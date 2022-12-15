@@ -148,12 +148,12 @@ h3 {
 
     ul {
         counter-reset: num;
-        padding-left: 2em;
+        padding-left: 2em !important;
 
         li {
             list-style-type: none;
             position: relative;
-            padding-left: 0.4em;
+            padding-left: 0.4em !important;
         }
 
         li:before {
