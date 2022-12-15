@@ -17,7 +17,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 
 import BlogImage from "./BlogImage";
-import TwitterArchive from "./article-parts/TwitterArchive";
+import TwitterArchived from "./article-parts/TwitterArchive";
 import HorizontalImages from "./article-parts/HorizontalImages";
 import HorizontalScroll from "./article-parts/HorizontalScroll";
 import Conversation from "./article-parts/Conversation";
@@ -87,27 +87,27 @@ export const myMarkdownClasses: MarkdownFunctionType = {
   // Socials
   Twitter,
   Youtube,
-  'Auto-youtube': AutoYoutube,
-  'Link-embed': LinkEmbed,
-  'Twitter-archived': TwitterArchive,
+  AutoYoutube,
+  LinkEmbed,
+  TwitterArchived,
 
   // Walking Parts
-  'Result-box': ResultBox,
-  'Profile-cards': ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
+  ResultBox,
+  ProfileCards: ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
 
   // Highlight Boxes
   Caution,
   Infobox,
 
-  'Titled-frame': TitledFrame,
+  TitledFrame,
 
-  'Horizontal-images': HorizontalImages,
-  'Horizontal-scroll': HorizontalScroll,
-  'Conversation': Conversation,
+  HorizontalImages,
+  HorizontalScroll,
+  Conversation,
 
-  'Show-all': ShowAll,
+  ShowAll,
 
-  'Next-page': (content, entry) => {
+  NextPage: (content, entry) => {
     if (!entry) return <></>
     return (
       <div style={{textAlign: 'center'}}>
@@ -134,7 +134,7 @@ export const myMarkdownClasses: MarkdownFunctionType = {
     </div>
   ),
 
-  'Centering-with-size': (content, entry, imageSize) => {
+  CenteringWithSize: (content, entry, imageSize) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
@@ -149,7 +149,7 @@ export const myMarkdownClasses: MarkdownFunctionType = {
     )
   },
 
-  'Ignore-read-count': (content, entry, imageSize) => (
+  IgnoreReadCount: (content, entry, imageSize) => (
     <ArticleRenderer
       toRender={content}
       entry={entry}
@@ -158,7 +158,7 @@ export const myMarkdownClasses: MarkdownFunctionType = {
     />
   ),
 
-  'Centering-with-size-bold': content => {
+  CenteringWithSizeBold: content => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
@@ -168,11 +168,9 @@ export const myMarkdownClasses: MarkdownFunctionType = {
     )
   },
 
-  'Dangerously-set-inner-html': content => (
+  DangerouslySetInnerHtml: content => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
   ),
-
-
 }
 
 const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: BlogImageData }) => {
@@ -192,8 +190,13 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
         className.replace('language-', '').split('.').slice(-1)[0]
       ) : '';
 
-    if (language in myMarkdownClasses) {
-      return myMarkdownClasses[language](children[0], entry, imageSize)
+    const languageCamelCase = language
+      .split('-')
+      .map(word => word[0].toUpperCase() + word.slice(1))
+      .join('');
+
+    if (languageCamelCase in myMarkdownClasses) {
+      return myMarkdownClasses[languageCamelCase](children[0], entry, imageSize)
     }
 
     const fileName = className?.includes('.') ?
