@@ -28,10 +28,11 @@ export const Youtube: ArticleParts = (content) => {
   const id = lines[0].trim()
   const title = lines[1]?.trim()
   return (
-    <div style={{textAlign: 'center'}} className={'youtube-outer'}>
+    <div style={{textAlign: 'center'}}>
       <YouTube
         videoId={id}
-        className={'youtube-iframe'}
+        className={'youtube-outer'}
+        iframeClassName={'youtube-iframe'}
       />
     </div>
   )
