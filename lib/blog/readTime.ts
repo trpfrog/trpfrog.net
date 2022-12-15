@@ -45,6 +45,11 @@ export const getReadTimeSecond = (markdown: string) => {
     }
 
     if (line.startsWith('<!--')) {
+      if (line.includes('disable read-count')) {
+        enableWordCounting = false;
+      } else if (line.includes('enable read-count')) {
+        enableWordCounting = true;
+      }
       continue;
     }
 
