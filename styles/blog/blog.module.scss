@@ -150,11 +150,12 @@
         }
     }
 
-    & > *:not(summary):not(ul):not(details) {
-        padding: 5px 10px;
-        * {
-            padding: initial;
-        }
+    & > *:not(summary):not(ul):not(details):not(hr) {
+        padding: .3rem 1rem;
+    }
+
+    & > hr {
+        margin: 1rem;
     }
 
     details {
