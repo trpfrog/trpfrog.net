@@ -2,7 +2,8 @@ import styles from "../../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import {ArticleParts, parseRichMarkdown} from "../BlogMarkdown";
+import {parseRichMarkdown} from "../BlogMarkdown";
+import {ArticleParts} from "../../../lib/blog/articleParts";
 
 export const Caution: ArticleParts = content => (
   <div className={styles.caution}>

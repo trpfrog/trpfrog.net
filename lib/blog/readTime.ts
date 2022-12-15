@@ -1,4 +1,4 @@
-import {myMarkdownClasses} from "../../components/blog/BlogMarkdown";
+import partsDictionary from "./articleParts";
 
 export const getReadTimeSecond = (markdown: string) => {
   const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')
@@ -14,7 +14,7 @@ export const getReadTimeSecond = (markdown: string) => {
     }
   }
 
-  const utilityCodeBlocks = new Set(Object.keys(myMarkdownClasses).map(e => e.toLowerCase()));
+  const utilityCodeBlocks = new Set(Object.keys(partsDictionary).map(e => e.toLowerCase()));
   utilityCodeBlocks.delete('twitter');
   utilityCodeBlocks.delete('ignore-read-count')
 

@@ -2,7 +2,8 @@ import {Tweet} from "react-twitter-widgets";
 import YouTube from "react-youtube";
 import ReactPlayer from "react-player";
 import React from "react";
-import {ArticleParts, parseInlineMarkdown, parseRichMarkdown} from "../BlogMarkdown";
+import {parseInlineMarkdown, parseRichMarkdown} from "../BlogMarkdown";
+import {ArticleParts} from "../../../lib/blog/articleParts";
 
 export const Twitter: ArticleParts = (content) => {
   const id = content.split('\n')[0]

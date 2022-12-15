@@ -1,5 +1,6 @@
-import {ArticleParts, ArticleRenderer} from "../BlogMarkdown";
+import {ArticleRenderer} from "../BlogMarkdown";
 import React from "react";
+import {ArticleParts} from "../../../lib/blog/articleParts";
 
 const HorizontalScroll: ArticleParts = (content, entry, imageSize) => {
   const contents = content.split('\n\n').filter(e => e.trim() !== '')

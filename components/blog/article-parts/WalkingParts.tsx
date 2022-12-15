@@ -1,6 +1,6 @@
 import styles from "../../../styles/blog/blog.module.scss";
 import React from "react";
-import {ArticleParts} from "../BlogMarkdown";
+import {ArticleParts} from "../../../lib/blog/articleParts";
 import ProfileCards from "./ProfileCards";
 
 export const ResultBox: ArticleParts = content => {

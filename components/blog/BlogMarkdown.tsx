@@ -1,7 +1,7 @@
 import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import React, {CSSProperties, useEffect} from "react";
+import React, {CSSProperties} from "react";
 import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,23 +9,14 @@ import rehypeRaw from "rehype-raw";
 import {BlogPost} from "../../lib/blog/load";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
-import ProfileCards from "./article-parts/ProfileCards";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
-import PageNavigation, {PageTransferButton} from "./PageNavigation";
+import PageNavigation from "./PageNavigation";
 import Block from "../Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 
 import BlogImage from "./BlogImage";
-import TwitterArchived from "./article-parts/TwitterArchive";
-import HorizontalImages from "./article-parts/HorizontalImages";
-import HorizontalScroll from "./article-parts/HorizontalScroll";
-import Conversation from "./article-parts/Conversation";
-import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
-import {ResultBox} from "./article-parts/WalkingParts";
-import {Caution, Infobox, TitledFrame} from "./article-parts/HighlightedBoxes";
-import ShowAll from "./article-parts/ShowAll";
-import {parseWithBudouX} from "../../lib/wordSplit";
+import partsDictionary from "../../lib/blog/articleParts";
 
 type codeProps = {
   className: string
@@ -74,105 +65,6 @@ export const parseInlineMarkdown = (markdown: string) => {
   </ReactMarkdown>
 }
 
-export type ArticleParts = (
-  content: string,
-  entry?: BlogPost,
-  imageSize?: { [path: string]: BlogImageData }
-) => React.ReactNode
-
-type MarkdownFunctionType = { [content: string]: ArticleParts }
-
-export const myMarkdownClasses: MarkdownFunctionType = {
-
-  // Socials
-  Twitter,
-  Youtube,
-  AutoYoutube,
-  LinkEmbed,
-  TwitterArchived,
-
-  // Walking Parts
-  ResultBox,
-  ProfileCards: ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
-
-  // Highlight Boxes
-  Caution,
-  Infobox,
-
-  TitledFrame,
-
-  HorizontalImages,
-  HorizontalScroll,
-  Conversation,
-
-  ShowAll,
-
-  NextPage: (content, entry) => {
-    if (!entry) return <></>
-    return (
-      <div style={{textAlign: 'center'}}>
-        <div style={{margin: '1em 0'}}>
-          <PageTransferButton
-            entry={entry}
-            nextPage={entry.currentPage + 1}
-            buttonText={`Next: ${content} →`}
-          />
-        </div>
-      </div>
-    )
-  },
-
-
-  Centering: (content, entry, imageSize) => (
-    <div style={{textAlign: 'center'}}>
-      <ArticleRenderer
-        toRender={content}
-        entry={entry}
-        imageSize={imageSize}
-        renderLaTeX={false}
-      />
-    </div>
-  ),
-
-  CenteringWithSize: (content, entry, imageSize) => {
-    const [size, ...lines] = content.split('\n')
-    content = lines.join('\n')
-    return (
-      <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRenderer
-          toRender={content}
-          entry={entry}
-          imageSize={imageSize}
-          renderLaTeX={false}
-        />
-      </div>
-    )
-  },
-
-  IgnoreReadCount: (content, entry, imageSize) => (
-    <ArticleRenderer
-      toRender={content}
-      entry={entry}
-      imageSize={imageSize}
-      renderLaTeX={false}
-    />
-  ),
-
-  CenteringWithSizeBold: content => {
-    const [size, ...lines] = content.split('\n')
-    content = lines.join('\n')
-    return (
-      <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <strong>{parseWithBudouX(content, content)}</strong>
-      </div>
-    )
-  },
-
-  DangerouslySetInnerHtml: content => (
-    <div dangerouslySetInnerHTML={{__html: content}}/>
-  ),
-}
-
 const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: BlogImageData }) => {
   const formatCodeComponent = ({className, children, inline}: codeProps) => {
     if (inline) {
@@ -192,11 +84,11 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
 
     const languageCamelCase = language
       .split('-')
-      .map(word => word[0].toUpperCase() + word.slice(1))
+      .map(word => word.length > 0 ? word[0].toUpperCase() + word.slice(1) : '')
       .join('');
 
-    if (languageCamelCase in myMarkdownClasses) {
-      return myMarkdownClasses[languageCamelCase](children[0], entry, imageSize)
+    if (languageCamelCase in partsDictionary) {
+      return partsDictionary[languageCamelCase](children[0], entry, imageSize)
     }
 
     const fileName = className?.includes('.') ?

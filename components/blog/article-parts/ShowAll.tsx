@@ -1,6 +1,7 @@
-import {ArticleParts, ArticleRenderer, parseInlineMarkdown} from "../BlogMarkdown";
+import {ArticleRenderer, parseInlineMarkdown} from "../BlogMarkdown";
 import React, {useState} from "react";
-import styles from "../../../styles/blog/blog.module.scss";
+import {ArticleParts} from "../../../lib/blog/articleParts";
+
 
 const ShowAll: ArticleParts = (content, entry, imageSize) => {
   const [first, second] = content.split(/\n---+\n/)
