@@ -435,9 +435,11 @@ AI について「シンギュラリティが来る！」とか「エンジニ�
 
 <!-- window break --->
 
-## Acknowledgement
+## Special Thanks
 
-カバー画像は工学研究部の皆様にお願いして撮ってもらいました。特に AI 役のあずきバーさん (@azukibar_D)、カメラマンのりんりんさん (@lnln_ch)、ありがとうございました。
+カバー画像は工学研究部の部室で勝手に撮りました。特に AI 役のあずきバーさん (https://azukibar.dev) 、カメラマンのりんりんさん (https://lnln.dev) 、ありがとうございました。
+
+まためちゃくちゃ記事をチェックしてコメントを入れてくれたちくわぶさん (https://twitter.com/prgckwb) 、ありがとうございました。
 
 <!-- page break --->
 
