@@ -19,7 +19,7 @@ const Index: NextPage = () => {
           Hugging Face Datasets でも利用可能です！
         </p>
         <p>
-          <a href={'https://huggingface.co/TrpFrog/trpfrog-icons'} className={'linkButton'}>trpfrog-icons on 🤗Datasets</a>
+          <a href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} className={'linkButton'}>trpfrog-icons on 🤗Datasets</a>
         </p>
       </Title>
       <Block>
@@ -45,10 +45,7 @@ const Index: NextPage = () => {
           つまみアイコンデータセットが Hugging Face Datasets にて使えるようになりました！🎉
         </p>
         <p>
-          <a href={'https://huggingface.co/TrpFrog/trpfrog-icons'} className={'linkButton'}>trpfrog-icons</a>
-        </p>
-        <p>
-          <a href={'https://huggingface.co/TrpFrog/trpfrog-icons'} className={'linkButton'}>trpfrog-icons</a>
+          <a href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} className={'linkButton'}>trpfrog-icons</a>
         </p>
         <pre style={{background: "#333", color: "white", borderRadius: 5, padding: "4px 10px"}}>
           {"from datasets import load_dataset\n"}
