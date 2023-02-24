@@ -11,6 +11,10 @@ module.exports = {
     path: 'https://res.cloudinary.com/trpfrog/image/upload/',
   },
 
+  experimental: {
+    appDir: true,
+  },
+
   async redirects() {
     return [
       {
