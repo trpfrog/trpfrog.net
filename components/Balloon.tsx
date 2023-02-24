@@ -1,3 +1,5 @@
+'use client';
+
 import React, {Dispatch, useState} from "react";
 import styles from "../styles/balloon.module.scss";
 import useSound from "use-sound";

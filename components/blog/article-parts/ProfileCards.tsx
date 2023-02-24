@@ -1,3 +1,5 @@
+'use client';
+
 import React, {useState} from "react";
 import styles from "../../../styles/blog/ProfileCards.module.scss";
 import ReactMarkdown from "react-markdown";

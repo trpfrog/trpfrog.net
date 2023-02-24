@@ -1,3 +1,5 @@
+'use client';
+
 import styles from "../../styles/blog/blog.module.scss";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";

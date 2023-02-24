@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 import Header from './header/Header'
 import Footer from "./Footer";
@@ -6,9 +6,6 @@ import Navigation from "./Navigation";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngleDoubleUp} from "@fortawesome/free-solid-svg-icons";
-
-import MobileMenu from "./mobile_menu/MobileMenu";
-import MobileMenuButton from "./mobile_menu/MobileMenuButton";
 
 const backToTop = () => {
   window.scrollTo({
@@ -26,16 +23,11 @@ type Props = {
 const Layout: React.FunctionComponent<Props> = ({
   children, style, className
 }) => {
-  const hamburgerState = useState(false);
-
   return (
     <>
       <div id={'inner-body'}>
-        <Header>
-          <MobileMenuButton hamburgerState={hamburgerState}/>
-        </Header>
+        <Header/>
         <Navigation/>
-        <MobileMenu hamburgerState={hamburgerState}/>
         <main>
           <div id="main_wrapper" style={style} className={className}>
             {children}

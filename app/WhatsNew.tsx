@@ -1,14 +1,15 @@
-import styles from "../../styles/top-page/WhatsNew.module.scss";
+import styles from "../styles/top-page/WhatsNew.module.scss";
 import ReactMarkdown from "react-markdown";
-import Block from "../Block";
-import {WhatsNewRecord} from "../../lib/whats_new";
+import Block from "../components/Block";
+import {getWhatsNewRecords, WhatsNewRecord} from "../lib/whats_new";
+import React from "react";
 
 type Props = {
   id?: string
-  whatsNewRecords: WhatsNewRecord[]
 }
 
-const WhatsNew = ({id, whatsNewRecords}: Props) => {
+export default async function WhatsNew ({id}: Props) {
+  const whatsNewRecords: WhatsNewRecord[] = await getWhatsNewRecords()
   return (
     <Block title={'最新情報'} h2icon={'robot'} id={id}>
       <div id={styles.whats_new_table}>
@@ -29,5 +30,3 @@ const WhatsNew = ({id, whatsNewRecords}: Props) => {
     </Block>
   )
 }
-
-export default WhatsNew

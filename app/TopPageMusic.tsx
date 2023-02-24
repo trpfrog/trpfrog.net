@@ -1,9 +1,10 @@
-import Block from "../Block";
+'use client';
+
+import Block from "../components/Block";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import Image from "next/legacy/image";
 import Link from "next/link";
 
-;
 
 type Props = {
   id?: string

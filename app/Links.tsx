@@ -1,14 +1,15 @@
-import Block from "../Block";
-import styles from "../../styles/top-page/main.module.scss";
+import Block from "../components/Block";
+import styles from "../styles/top-page/main.module.scss";
 import Link from "next/link";
-import {MyLinkRecord} from "../../lib/MyLinks";
+import {getMyLinkRecords, MyLinkRecord} from "../lib/MyLinks";
 
 type Props = {
-  myLinks: MyLinkRecord[]
   id?: string
 }
 
-const Links = ({id, myLinks}: Props) => {
+export default async function Links({id}: Props) {
+  const myLinks: MyLinkRecord[] = await getMyLinkRecords()
+
   return (
     <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
       <div className={styles.link_grid}>
@@ -38,5 +39,3 @@ const Links = ({id, myLinks}: Props) => {
     </Block>
   )
 }
-
-export default Links

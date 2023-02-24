@@ -1,7 +1,9 @@
+'use client';
+
 import Link from 'next/link'
 import React from "react";
-import {useRouter} from "next/router";
 import styles from '../styles/common/Navigation.module.scss';
+import {usePathname} from "next/navigation";
 
 export const NAVIGATION_LINKS = [
   {link: '/', name: 'Home'},
@@ -18,8 +20,8 @@ export const NAVIGATION_LINKS = [
 ]
 
 export const NavigationLinks = () => {
-  const router = useRouter();
-  const currentLink = router.pathname.split('/').slice(0, 2).join('/');
+  const pathname = usePathname();
+  const currentLink = pathname?.split('/').slice(0, 2).join('/');
 
   return <>{
     NAVIGATION_LINKS.map(({link, name}) => (
@@ -36,7 +38,6 @@ export const NavigationLinks = () => {
 }
 
 const Navigation = () => {
-
   return (
     <>
       <nav id={styles.wide_nav}>

@@ -4,3 +4,6 @@
 
 export const doMarkdownHMR = () => {
 }
+
+ console.log()
+ console.log()

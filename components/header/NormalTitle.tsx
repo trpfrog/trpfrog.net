@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useScroll} from "framer-motion";
-import {NextRouter, useRouter} from "next/router";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
 
@@ -11,7 +11,7 @@ const backToTop = () => {
   });
 }
 
-const extractTitle = (router: NextRouter) => {
+const extractTitle = (pathname: string) => {
   const rawPageTitle =
     typeof document !== 'undefined'
       ? document.title
@@ -21,7 +21,7 @@ const extractTitle = (router: NextRouter) => {
   let subTitle = '';
 
   // Get article title
-  if (router.pathname.startsWith('/blog/')) {
+  if (pathname.startsWith('/blog/')) {
     subTitle = pageTitle
     pageTitle = 'つまみログ';
   }
@@ -44,8 +44,8 @@ export const NormalTitle = () => {
   const {scrollY} = useScroll()
   scrollY.onChange(handleScroll)
 
-  const router = useRouter();
-  const {pageTitle, subTitle} = extractTitle(router)
+  const pathname = usePathname()
+  const {pageTitle, subTitle} = extractTitle(pathname)
 
   const [pageTitleElement, setPageTitleElement] = useState(<>{process.env.title}</>)
   useEffect(() => {

@@ -1,3 +1,5 @@
+'use client';
+
 import {Tweet} from "react-twitter-widgets";
 import YouTube from "react-youtube";
 import ReactPlayer from "react-player";

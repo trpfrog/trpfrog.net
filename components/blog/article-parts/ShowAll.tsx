@@ -1,3 +1,5 @@
+'use client';
+
 import {ArticleRenderer, parseInlineMarkdown} from "../BlogMarkdown";
 import React, {useState} from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";

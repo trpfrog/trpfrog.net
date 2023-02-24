@@ -1,3 +1,5 @@
+'use client';
+
 import React, {CSSProperties, useState} from "react";
 import styles from "../../styles/blog/BlogImage.module.scss";
 import Image from "next/legacy/image";

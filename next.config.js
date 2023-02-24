@@ -13,6 +13,7 @@ module.exports = {
 
   experimental: {
     appDir: true,
+    typedRoutes: true,
   },
 
   async redirects() {

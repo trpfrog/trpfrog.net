@@ -1,10 +1,14 @@
+'use client';
+
 import Link from 'next/link'
-import {useRouter} from "next/router";
+import {usePathname} from "next/navigation";
 import {animate, motion, useMotionValue, useScroll} from "framer-motion";
 import React, {useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "../../styles/common/Header.module.scss";
+import MobileMenu from "../mobile_menu/MobileMenu";
+import MobileMenuButton from "../mobile_menu/MobileMenuButton";
 
 export const HeaderFollowSticky = (props: {
   children: React.ReactNode,
@@ -57,33 +61,37 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   )
 }
 
-const Header: React.FC<{children?: React.ReactNode}> = ({children}) => {
-
-  const router = useRouter();
-
+const Header: React.FC = () => {
+  const pathname = usePathname();
+  const hamburgerState = React.useState(false);
+  const topLinks = [
+    {href: '/', label: 'home'},
+    {href: '/works', label: 'works'},
+    {href: '/blog', label: 'blog'},
+  ];
   return (
-    <HideWhenScrollDown>
-      <header id={styles.header}>
-        <div id={styles.inside}>
-          {router.pathname == '/' ? <TopTitle/> : <NormalTitle/>}
-          <nav id={styles.navigation}>
-            <ul>
-              {['home', 'works', 'blog'].map(e => (
-                <li key={e}>
-                  <Link
-                    href={e == 'home' ? '/' : '/' + e}
-                    className="headerButton"
-                  >
-                    {e}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          {children}
-        </div>
-      </header>
-    </HideWhenScrollDown>
+    <>
+      <HideWhenScrollDown>
+        <header id={styles.header}>
+          <div id={styles.inside}>
+            {pathname == '/' ? <TopTitle/> : <NormalTitle/>}
+            <nav id={styles.navigation}>
+              <ul>
+                {topLinks.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link href={href} className="headerButton">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <MobileMenuButton hamburgerState={hamburgerState}/>
+          </div>
+        </header>
+      </HideWhenScrollDown>
+      <MobileMenu hamburgerState={hamburgerState}/>
+    </>
   );
 }
 
