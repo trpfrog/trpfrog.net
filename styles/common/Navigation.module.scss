@@ -5,7 +5,9 @@
     text-align: center;
     z-index: 50;
 
-    position: absolute;
+    //position: absolute;
+    display: flex;
+    align-items: flex-end;
     width: 100%;
     height: calc(var(--navigation-height) + var(--header-height));
 
@@ -21,10 +23,9 @@
 }
 
 #wide_nav_wrapper {
-    position: absolute;
-    bottom: 9px;
     width: 100%;
     vertical-align: bottom;
+    margin-bottom: 10px;
 }
 
 @include mixins.mq(dark) {
