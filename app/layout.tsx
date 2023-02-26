@@ -6,6 +6,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import BackToTop from "../components/blog/BackToTop";
 import {M_PLUS_Rounded_1c} from "next/font/google";
+import GoogleFonts from "../components/GoogleFonts";
 
 
 export const metadata: Metadata = {
@@ -32,7 +33,9 @@ type Props = {
 export default function RootLayout({children}: Props) {
   return (
     <html lang="ja">
-      <head/>
+      <head>
+        <GoogleFonts/>
+      </head>
       <body>
         <Header/>
         <Navigation/>
