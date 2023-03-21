@@ -17,7 +17,7 @@ export const NAVIGATION_LINKS = [
   {link: '/download', name: 'DLC'},
   {link: '/icon-maker', name: 'Maker'},
   {link: '/walking', name: 'Walk'}
-]
+] as const;
 
 export const NavigationLinks = () => {
   const pathname = usePathname();
