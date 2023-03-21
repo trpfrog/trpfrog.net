@@ -1,17 +1,17 @@
 import styles from '../styles/top-page/main.module.scss';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
-import TrpFrogAnimationFrame from "./TrpFrogAnimation";
+import TrpFrogAnimationFrame from "../components/toppage/TrpFrogAnimation";
 
-import AboutMe from "./AboutMe";
-import WhatsNew from "./WhatsNew";
-import Store from "./Store";
-import Bird from "./Bird";
-import Ratings from "./Ratings";
-import Links from "./Links";
-import TopPageBalloons from "./TopPageBalloons";
-import TopPageMusic from "./TopPageMusic";
-import TopPageIcons from "./TopPageIcons";
+import AboutMe from "../components/toppage/AboutMe";
+import WhatsNew from "../components/toppage/WhatsNew";
+import Store from "../components/toppage/Store";
+import Bird from "../components/toppage/Bird";
+import Ratings from "../components/toppage/Ratings";
+import Links from "../components/toppage/Links";
+import TopPageBalloons from "../components/toppage/TopPageBalloons";
+import TopPageMusic from "../components/toppage/TopPageMusic";
+import TopPageIcons from "../components/toppage/TopPageIcons";
 import React, {Suspense} from "react";
 
 
