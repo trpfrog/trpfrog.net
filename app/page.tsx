@@ -32,7 +32,7 @@ export default async function Index() {
           <AboutMe id={styles.about_me_grid}/>
           <Suspense fallback={null}>
             {/* @ts-expect-error Server Component */}
-            {/*<WhatsNew id={styles.whats_new}/>*/}
+            <WhatsNew id={styles.whats_new}/>
           </Suspense>
           <Store id={styles.sticker}/>
           <TopPageIcons id={styles.icons}/>
