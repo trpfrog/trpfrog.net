@@ -68,7 +68,7 @@ const Header: React.FC = () => {
     {href: '/', label: 'home'},
     {href: '/works', label: 'works'},
     {href: '/blog', label: 'blog'},
-  ];
+  ] as const;
   return (
     <>
       <HideWhenScrollDown>

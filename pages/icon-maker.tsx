@@ -10,10 +10,11 @@ import styles from '../styles/icon-maker.module.scss';
 
 const About: NextPage = () => {
   const state = new IconCanvas('canvas-result');
-  const tweetLink =
+  const tweetLink = (
     'https://twitter.com/intent/tweet' +
     '?text=' + encodeURIComponent('#つまみアイコンメーカー でアイコンを作成しました！') +
-    '&url=' + encodeURIComponent('https://trpfrog.net/iconmaker/');
+    '&url=' + encodeURIComponent('https://trpfrog.net/iconmaker/')
+  )
 
   return (
     <Layout>
@@ -114,9 +115,9 @@ const About: NextPage = () => {
           />
         </p>
         <p>
-          <Link href={tweetLink} className="linkButton">
+          <a href={tweetLink} className="linkButton">
             Tweet
-          </Link>
+          </a>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))
