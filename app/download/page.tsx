@@ -1,12 +1,10 @@
-import type {NextPage} from 'next'
 import Image from "next/legacy/image";
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import Block from "../components/Block";
+import Title from "../../components/Title";
+import Block from "../../components/Block";
 
-const About: NextPage = () => {
+export default function Index() {
   return (
-    <Layout>
+    <div id="main_wrapper">
       <Title
         title={'DLコンテンツ'}
         description={'壁紙などダウンロードできるコンテンツの提供ページです。'}
@@ -83,9 +81,7 @@ const About: NextPage = () => {
           <a href="https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/iphonex_bkg.png">縦長 (1:2, 背景のみ)</a>
         </p>
       </Block>
-    </Layout>
+    </div>
   )
 }
-
-export default About
 
