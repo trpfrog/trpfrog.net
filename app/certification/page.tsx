@@ -1,13 +1,9 @@
-import type {NextPage} from 'next'
-import {GetStaticProps} from "next";
+import styles from "../../styles/certification.module.scss";
 
-import styles from "../styles/certification.module.scss";
-
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import Block from "../components/Block";
+import Title from "../../components/Title";
+import Block from "../../components/Block";
 import path from "path";
-import fs from "fs";
+import fs from "fs/promises";
 
 type Cert = {
   name: string,
@@ -15,31 +11,17 @@ type Cert = {
   month: number
 }
 
-type PageProps = {
-  certs: Cert[]
-}
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
+export default async function Index() {
   const jsonPath = path.join(process.cwd(), 'data', 'certification.json');
-  const jsonText = fs.readFileSync(jsonPath, 'utf-8');
+  const jsonText = await fs.readFile(jsonPath, 'utf-8');
 
   const f = (x: Cert) => x.year * 100 + x.month
-  const certs = JSON
+  const certs: Cert[] = JSON
     .parse(jsonText)
     .sort((a: Cert, b: Cert) => f(b) - f(a))
 
-  return {
-    props: {
-      certs
-    }
-  }
-}
-
-const Certification: NextPage<PageProps> = ({certs}: PageProps) => {
-
-
   return (
-    <Layout>
+    <div id="main_wrapper">
       <Title
         title={'免許・資格'}
         description={'つまみさんの解除した実績を自慢するところです。'}
@@ -69,8 +51,6 @@ const Certification: NextPage<PageProps> = ({certs}: PageProps) => {
           ))}
         </div>
       </Block>
-    </Layout>
+    </div>
   )
 }
-
-export default Certification
