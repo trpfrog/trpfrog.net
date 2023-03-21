@@ -1,6 +1,6 @@
 import React, {CSSProperties} from "react";
 import Block from "./Block";
-import {NextSeo} from "next-seo";
+import NextSeoWrapper from "./utils/NextSeoWrapper";
 
 type Props = {
   title?: string
@@ -23,7 +23,7 @@ const Title: React.FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <NextSeo
+      <NextSeoWrapper
         title={title + ' - ' + process.env.title}
         description={props.description}
         openGraph={props.cardImageUrl ? {
