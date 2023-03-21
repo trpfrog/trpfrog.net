@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "../styles/environment.module.scss";
+import styles from "../../styles/environment.module.scss";
 import Image from 'next/legacy/image';
 
 type Props = {

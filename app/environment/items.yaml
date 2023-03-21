@@ -1,0 +1,274 @@
+computer:
+  categoryName: コンピュータ関係
+  items:
+  - name: コンピュータ
+    items:
+    - productName: Apple MacBook Pro (2021)
+      imagePath: computer/macbookpro
+      description:
+      - スペースグレイ
+      - 14 inch Liquid Retina XDR Display
+      - Apple M1 Pro:
+          - 8 core CPU
+          - 14 core GPU
+          - 1TB SSD
+          - 16GB Unified Memory
+      - US配列 Magic Keyboard with TouchID
+      - 裏にMoft貼ってる
+
+  - name: モニター
+    items:
+    - productName: LG UHD Monitor 4K
+      imagePath: computer/lg4k
+      description:
+      - 31.5 inch
+      - 白っぽかったけど頑張って調整した
+      - HDMI x2 + DP
+    - productName: Philips 246E
+      imagePath: computer/philips
+      description:
+      - 23 inch
+      - Full HD
+      - 父が捨てようとしたやつを譲り受けた、のですぐ砂嵐になる
+
+  - name: Webカメラ
+    items:
+    - productName: Logicool C270n
+      imagePath: computer/webcam
+      description:
+      - 720p
+      - 30fps
+      - オンライン授業はカメラの性能が悪い方が良いと言われています
+
+  - name: マイク
+    items:
+    - productName: Sony ECM-PCV80U
+      imagePath: computer/mic
+
+  - name: キーボード
+    items:
+    - productName: 東プレ REALFORCE TKL for Mac
+      imagePath: computer/realforce
+      description:
+      - R2TL-USVM-BK
+      - ブラック + シルバー
+      - スイッチ音標準
+      - 変荷重 (小指の方が軽い)
+      - 英語配列
+
+  - name: パームレスト
+    items:
+    - productName: FILCO Genuine Wood Wrist Rest M size
+      imagePath: computer/wristrest
+      description:
+      - 必須
+
+  - name: マウス
+    items:
+    - productName: Logicool MX Master 3 for Mac
+      imagePath: computer/mxmaster
+      description:
+      - MagSpeed電磁気スクロール:
+        - びゅんびゅんスクロールできて便利
+      - サムホイール (横スクロール)
+      - ジェスチャボタン:
+        - トラックパッドの3本指ジェスチャを割り当てると便利
+        - Mission Controlとかデスクトップ切り替えとか
+
+  - name: トラックパッド
+    items:
+    - productName: Apple Magic Trackpad
+      imagePath: computer/trackpad
+      description:
+      - ホワイト
+      - 充電はLightning
+      - マウスあるからいらなそうだけど無いとかなり不便
+      - Appleのトラックパッドは天才すぎなので……
+
+########################################################################
+
+desk:
+  categoryName: その他デスクまわり
+  items:
+  - name: デスク
+    items:
+    - productName: Flexispot E8 Bamboo
+      imagePath: desk/flexispot
+      description:
+      - 電動昇降机
+      - 天板 140×70×2cm (竹製)
+      - 高さ調節できるので立ったり座ったりできる
+
+  - name: イス
+    items:
+    - productName: なんかのゲーミングチェア
+
+  - name: 時計
+    items:
+    - productName: RHYTHM 掛け時計
+      imagePath: desk/amazonclock
+      description:
+      - デザイン:
+        - Amazonロゴ付き
+        - ダンボールっぽい印刷がされている
+      - クオーツ時計
+      - 単3電池で動く
+
+  - name: タペストリー
+    items:
+    - productName: 恋する小惑星
+      imagePath: desk/koias
+    - productName: 私に天使が舞い降りた！(姫坂乃愛)
+      imagePath: desk/watatennoa
+
+  - name: ライトスタンド
+    items:
+    - productName: 黒いライトスタンド
+      imagePath: desk/blacklightstand
+    - productName: 中学校の技術の授業で作った謎のスタンド
+      imagePath: desk/lightstand
+
+  - name: 電球
+    items:
+    - productName: Philips Hue
+      description:
+      - HomeKitに対応しているのでApple Homeから操作できて便利
+
+  - name: ゲーム機
+    items:
+    - productName: Nintendo Switch
+      imagePath: desk/switch
+      description:
+      - 初代:
+        - 予約して発売日に受け取りました、ウフフ
+      - SDカード 128GB
+      - コントローラ:
+        - Joy-Con ネオンブルー/ネオンレッド (付属)
+        - Joy-Con ネオングリーン/ネオンピンク
+        - Pro Controller
+        - Pro Controller (スプラトゥーン)
+        - Pro Controller (Xenoblade 2)
+        - 高校生のわしバイト成金すぎ
+
+
+  - name: ホワイトボード
+    items:
+    - productName: 父からもらった謎のホワイトボード
+      description:
+      - サイズはA2ぐらい
+
+########################################################################
+
+mobile:
+  categoryName: 持ち歩き端末・小物
+  items:
+  - name: スマートフォン
+    items:
+    - productName: Apple iPhone 11
+      imagePath: mobile/iphone
+      description:
+      - 128GB
+      - MoftXをつけている
+
+
+  - name: タブレット
+    items:
+    - productName: Apple iPad Pro (2020)
+      imagePath: mobile/ipad
+      description:
+      - 128GB
+      - with Apple Pencil
+
+
+  - name: イヤホン
+    items:
+    - productName: Apple AirPods Pro
+      imagePath: mobile/airpodspro
+      description:
+      - 外部音取り込み
+      - ノイズキャンセリング
+      - カナル型:
+        - カナル型、自分の体に合っていない可能性がある
+        - 長時間つけてると耳から液が出て最悪
+        - 初代AirPodsは別に何もならなかったため……
+
+    - productName: Aftershokz OpenMove
+      imagePath: mobile/aftershokz
+      description:
+      - 骨伝導型
+      - あまり持ち出さない、家でずっとつけている
+
+
+  - name: スマートウォッチ
+    items:
+    - productName: Apple Watch Series 7
+      imagePath: mobile/watch
+      description:
+      - 42mm アルミニウムケース
+      - スターライト
+      - バンド:
+        - ソロループ (サイズ2, スターライト)
+        - ブレイデッドソロループ (サイズ1, プライドエディション)
+
+
+  - name: モバイルバッテリー
+    items:
+    - productName: Anker PowerCore Essential 20000 PD
+      imagePath: mobile/powercore20k
+      description:
+      - USB Power Delivery 対応
+      - USB-C x1 + USB-A x1
+      - 1ポートのみ 18W, 2ポート合計 15W
+      - クソデカバッテリー
+      - とりあえずこれ持ってけばOKという感じ
+
+    - productName: Anker PowerCore Magnetic 5000
+      imagePath: mobile/powercoremag
+      description:
+      - USB-C x1 + MagSafe/Qi
+      - 有線 10W, ワイヤレス 5W
+      - iPhoneを無線充電できる
+      - ケーブルいらずで嬉しい
+      - ぼくのiPhoneにはMagSafeがついてないのでゴムバンドで留めている(え？)
+
+
+  - name: 落とし物トラッカー
+    items:
+    - productName: Apple AirTag
+      imagePath: mobile/airtag
+      description:
+      - 3つ持ってる:
+        - 財布用
+        - 鍵用
+        - AirPodsケース用
+
+  - name: 財布
+    items:
+    - productName: 100円ショップに売ってた布のやつ
+      imagePath: mobile/wallet
+      description:
+      - 小銭が取り出しにくい
+      - 中にAirTagを入れている
+
+  - name: リュックサック
+    items:
+    - productName: offtoco
+      imagePath: mobile/offtoco
+      description:
+      - ノパソが直挿しできる
+      - 紐の調整が簡単:
+        - 簡単すぎて意図せず紐がグイッと伸びるのが難点
+      - 長距離歩いたけどあまり肩が疲れない
+      - 容量は少なめ
+    - productName: 無印良品 肩が疲れないリュック
+      imagePath: mobile/muji
+      description:
+      - 歩くオタクがおすすめしてたので買った
+      - 肩が疲れなくて大容量
+
+  - name: お面
+    items:
+    - productName: 生協の節分の豆についてた鬼のお面
+      imagePath: mobile/oni
+      description:
+      - オタクからもらった(？)
