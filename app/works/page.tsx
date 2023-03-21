@@ -1,8 +1,6 @@
-import type {NextPage} from 'next'
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import Block from "../components/Block";
-import styles from '../styles/works.module.scss';
+import Title from "../../components/Title";
+import Block from "../../components/Block";
+import styles from '../../styles/works.module.scss';
 import React from "react";
 import Image from "next/legacy/image";
 
@@ -21,9 +19,9 @@ const Keywords: React.FC<KeywordsType> = ({keywords}) => {
   );
 }
 
-const Works: NextPage = () => {
+export default async function Index() {
   return (
-    <Layout>
+    <div id="main_wrapper">
       <Title
         title={'Works'}
         description={'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'}
@@ -461,8 +459,6 @@ const Works: NextPage = () => {
           </a>
         </p>
       </Block>
-    </Layout>
+    </div>
   )
 }
-
-export default Works
