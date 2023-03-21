@@ -1,24 +1,18 @@
-import type {NextPage} from 'next'
+'use client';
 
-import styles from "../styles/balloon.module.scss";
-
-import Layout from "../components/Layout";
-import Title from "../components/Title";
-import Block from "../components/Block";
-import React, {useState} from "react";
-
-import Util from "../lib/utils";
-import {useBalloonSound} from "../components/Balloon";
-import dynamic from "next/dynamic";
-
-const Balloon = dynamic(() => import('../components/Balloon'), {ssr: false});
+import React, { useState } from 'react';
+import Util from "../../lib/utils";
+import Balloon, {useBalloonSound} from "../../components/Balloon";
+import Title from "../../components/Title";
+import Block from "../../components/Block";
+import styles from "../../styles/balloon.module.scss";
 
 type BalloonDivProps = {
   n: number
   width: number
 }
 
-export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
+const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
   const height = width / 0.6;
   return (
     <div id={styles.balloon_grid}>
@@ -29,8 +23,7 @@ export const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
   );
 }
 
-const BalloonPage: NextPage = () => {
-
+export default function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
 
   const getValidInteger = (s: string) => {
@@ -50,9 +43,9 @@ const BalloonPage: NextPage = () => {
     const n = getValidInteger(s);
     setBalloonSize(n);
   }
-
+  
   return (
-    <Layout>
+    <>
       <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
         <p>
           <span onClick={() => setSoundEnabled(!isSoundEnabled)} className={'linkButton'} style={{marginRight: '10px'}}>
@@ -82,8 +75,6 @@ const BalloonPage: NextPage = () => {
       <Block>
         <BalloonDiv n={numberOfBalloons} width={balloonSize}/>
       </Block>
-    </Layout>
+    </>
   )
 }
-
-export default BalloonPage

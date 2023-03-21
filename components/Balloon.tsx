@@ -9,7 +9,6 @@ type BalloonProps = {
   height: string
 }
 
-
 const balloonColors = ['blue', 'green', 'orange']
 
 let playSound = () => {};
