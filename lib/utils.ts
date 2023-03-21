@@ -1,5 +1,4 @@
 import assert from "assert";
-import {useEffect, useState} from "react";
 
 const Util = {
   clamp: (x: number, min: number, max: number): number => {
@@ -24,26 +23,6 @@ const Util = {
       .length
     return text.length + doubledSizes
   },
-
-  useWindowSize: () => {
-    const [windowSize, setWindowSize] = useState({
-      width: 0,
-      height: 0
-    });
-    useEffect(() => {
-      if (typeof window === 'undefined') return;
-      const onResize = () => {
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight
-        });
-      }
-      window.addEventListener('resize', onResize);
-      onResize();
-      return () => window.removeEventListener('resize', onResize);
-    }, []);
-    return windowSize;
-  }
 }
 
 export default Util
