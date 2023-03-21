@@ -3,10 +3,9 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-import {createErrorArticle} from "../../pages/blog/preview/[...id]";
+import {createErrorArticle} from "./errorArticle";
 import microCMS from "../microCMS";
 import {Octokit} from "@octokit/rest";
-
 
 export type TimeMachineSHA = {
   sha: string

@@ -16,35 +16,11 @@ import {NextSeo} from "next-seo";
 import {formatReadTime} from "../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
-
+import {createErrorArticle, ErrorablePost} from "../../../lib/blog/errorArticle";
 
 type PageProps = {
   entry: ErrorablePost
   imageSize: { [path: string]: BlogImageData }
-}
-
-type ErrorablePost = BlogPost & {
-  isError: boolean
-}
-
-const errorArticle = {
-  isError: true,
-  title: 'ERROR!',
-  slug: 'slug',
-  date: '2000-10-17',
-  updated: '2020-10-17',
-  tags: 'test',
-  isAll: false,
-  readTime: 100,
-  currentPage: 1,
-  numberOfPages: 1,
-  content: ['Error has occurred']
-} as ErrorablePost
-
-export const createErrorArticle = (errTitle: string): ErrorablePost => {
-  let ret = {...errorArticle}
-  ret.title = 'ERR: ' + errTitle
-  return ret
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -72,7 +48,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Article: NextPage<PageProps> = ({entry: post, imageSize}) => {
-
   const openGraphImage = post.thumbnail ? {
     images: [
       {url: post.thumbnail}
