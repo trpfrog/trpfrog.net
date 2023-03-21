@@ -4,6 +4,7 @@ import Title from "../../components/Title";
 import Block from "../../components/Block";
 import path from "path";
 import fs from "fs/promises";
+import yaml from "js-yaml";
 
 type Cert = {
   name: string,
@@ -12,12 +13,11 @@ type Cert = {
 }
 
 export default async function Index() {
-  const jsonPath = path.join(process.cwd(), 'data', 'certification.json');
-  const jsonText = await fs.readFile(jsonPath, 'utf-8');
+  const yamlPath = path.join(process.cwd(), 'app', 'certification', 'certification.yaml');
+  const yamlText = await fs.readFile(yamlPath, 'utf-8');
 
   const f = (x: Cert) => x.year * 100 + x.month
-  const certs: Cert[] = JSON
-    .parse(jsonText)
+  const certs: Cert[] = (yaml.load(yamlText) as Cert[])
     .sort((a: Cert, b: Cert) => f(b) - f(a))
 
   return (
