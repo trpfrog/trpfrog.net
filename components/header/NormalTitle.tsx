@@ -42,10 +42,10 @@ export const NormalTitle = () => {
   }
 
   const {scrollY} = useScroll()
-  scrollY.onChange(handleScroll)
+  scrollY.on("change", handleScroll)
 
   const pathname = usePathname()
-  const {pageTitle, subTitle} = extractTitle(pathname)
+  const {pageTitle, subTitle} = extractTitle(pathname!)
 
   const [pageTitleElement, setPageTitleElement] = useState(<>{process.env.title}</>)
   useEffect(() => {

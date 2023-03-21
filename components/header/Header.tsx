@@ -29,7 +29,7 @@ export const HeaderFollowSticky = (props: {
       setHeaderTop(`${props.top}`)
     }
   }
-  scrollY.onChange(handleScroll)
+  scrollY.on("change", handleScroll)
 
   return (
     <div style={{transition: '0.1s', position: 'sticky', top: headerTop}}>
@@ -42,7 +42,7 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const headerY = useMotionValue(0)
   const {scrollY} = useScroll()
 
-  scrollY.onChange((y: number) => {
+  scrollY.on("change", (y: number) => {
     const v = scrollY.getVelocity()
     const shouldShowHeader = v < -1000 || y < 500;
     const shouldHideHeader = !shouldShowHeader && v > 1000;

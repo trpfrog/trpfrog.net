@@ -12,6 +12,7 @@ export const TopTitle = () => {
     const animationHeight = 280;
     const isMobile = window.innerWidth < 800;
     const config: AnimationOptions<number> = {
+      keyframes: [],
       duration: withAnimation ? 0.2 : 0,
       ease: 'linear'
     };
@@ -26,7 +27,7 @@ export const TopTitle = () => {
   }
 
   const {scrollY} = useScroll()
-  scrollY.onChange(handleScroll)
+  scrollY.on("change", handleScroll)
 
   useEffect(
     () => handleScroll(window.scrollY, false),
