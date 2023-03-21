@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock} from "@fortawesome/free-solid-svg-icons";
