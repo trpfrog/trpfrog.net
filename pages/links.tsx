@@ -4,7 +4,6 @@ import {getMutualLinkRecords, MutualLinkRecord} from "../lib/MutualLinks";
 
 import styles from "../styles/top-page/main.module.scss";
 
-import Link from "next/link";
 import Layout from "../components/Layout";
 import Title from "../components/Title";
 import Block from "../components/Block";
@@ -45,7 +44,7 @@ const Links: NextPage<PageProps> = ({mutualLinks}: PageProps) => {
             return (
               <div key={siteName} className={styles.link_block}>
                 <p style={{textAlign: "center"}}>
-                  <Link
+                  <a
                     href={url}
                     className="linkButton"
                     style={style}
@@ -53,16 +52,16 @@ const Links: NextPage<PageProps> = ({mutualLinks}: PageProps) => {
                     rel="noreferrer noopener"
                   >
                     {siteName}
-                  </Link>
+                  </a>
                 </p>
                 <p>
-                  <Link
+                  <a
                     href={`https://twitter.com/${twitterId}/`}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
                     <b>{ownerName}</b>
-                  </Link>
+                  </a>
                   さんのHP
                 </p>
                 <p>
