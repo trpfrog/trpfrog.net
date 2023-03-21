@@ -1,16 +1,15 @@
 import type {NextPage} from 'next'
 import Link from "next/link";
 import Image from "next/legacy/image";
-import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
-import {NextSeo} from "next-seo";
+import NextSeoWrapper from "../../components/utils/NextSeoWrapper";
 
-const Index: NextPage = () => {
+export default function Index() {
   return (
-    <Layout>
-      <NextSeo description={'つまみスタンプ素材集'}/>
+    <div id="main_wrapper">
+      <NextSeoWrapper description={'つまみスタンプ素材集'}/>
       <Title title={'スタンプ素材集'}>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。<br/>
@@ -21,8 +20,8 @@ const Index: NextPage = () => {
       <Block>
         <div className={styles.icon_grid}>
           {Array.from(Array(80), (v, k) => k).map(i => (
+            // @ts-ignore
             (<Link href={'/stickers/' + i} key={i}>
-
               <Image
                 src={'stickers/' + i}
                 width={100}
@@ -31,14 +30,11 @@ const Index: NextPage = () => {
                 quality={15}
                 alt={i + '番目のスタンプ画像'}
               />
-
             </Link>)
           ))}
         </div>
       </Block>
-    </Layout>
+    </div>
   );
 }
-
-export default Index
 

@@ -1,16 +1,14 @@
-import type {NextPage} from 'next'
 import Link from "next/link";
 import Image from "next/legacy/image";
-import Layout from "../../components/Layout";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
-import {NextSeo} from "next-seo";
+import NextSeoWrapper from "../../components/utils/NextSeoWrapper";
 
-const Index: NextPage = () => {
+export default function Index()  {
   return (
-    <Layout>
-      <NextSeo description={'つまみアイコン集'}/>
+    <div id="main_wrapper">
+      <NextSeoWrapper description={'つまみアイコン集'}/>
       <Title title={'アイコン集'}>
         <p>
           つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
@@ -25,8 +23,8 @@ const Index: NextPage = () => {
       <Block>
         <div className={styles.icon_grid}>
           {Array.from(Array(33), (v, k) => k).map(i => (
+            // @ts-ignore
             (<Link href={'/icons/' + i} key={i}>
-
               <Image
                 src={'icons_gallery/' + i}
                 width={100}
@@ -35,7 +33,6 @@ const Index: NextPage = () => {
                 quality={15}
                 alt={i + '番目のスタンプ画像'}
               />
-
             </Link>)
           ))}
         </div>
@@ -52,9 +49,7 @@ const Index: NextPage = () => {
           {"dataset = load_dataset('TrpFrog/trpfrog-icons')"}
         </pre>
       </Block>
-    </Layout>
+    </div>
   );
 }
-
-export default Index
 
