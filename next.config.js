@@ -2,6 +2,8 @@
 const config = {
   swcMinify: true,
   reactStrictMode: true,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+
   env: {
     title: 'つまみネット',
     twitterId: '@TrpFrog',
