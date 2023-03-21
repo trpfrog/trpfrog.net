@@ -1,7 +1,7 @@
-import Block from "../components/Block";
-import styles from "../styles/top-page/main.module.scss";
+import Block from "../Block";
+import styles from "../../styles/top-page/main.module.scss";
 import Link from "next/link";
-import {getMyLinkRecords, MyLinkRecord} from "../lib/MyLinks";
+import {getMyLinkRecords, MyLinkRecord} from "../../lib/MyLinks";
 
 type Props = {
   id?: string
@@ -16,9 +16,9 @@ export default async function Links({id}: Props) {
         {myLinks.map(({url, siteName, description}) => (
           <div key={siteName} className={styles.link_block}>
             <p style={{textAlign: "center"}}>
-              <Link href={url} className="linkButton">
+              <a href={url} className="linkButton">
                 {siteName}
-              </Link>
+              </a>
             </p>
             <p>
               {description}
