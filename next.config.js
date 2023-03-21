@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const config = {
   swcMinify: true,
   reactStrictMode: true,
   env: {
@@ -46,6 +46,21 @@ module.exports = {
     ]
   }
 }
+
+const withMdx = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      import("remark-gfm"),
+    ],
+    rehypePlugins: [],
+  },
+  experimental: {
+    mdxRs: true,
+  }
+})
+
+module.exports = withMdx(config)
 
 
 /*
