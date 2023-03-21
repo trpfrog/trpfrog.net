@@ -1,4 +1,4 @@
-import React, {DependencyList, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Link from 'next/link'
 import Image from "next/legacy/image";
@@ -9,13 +9,12 @@ import Block from "../../components/Block";
 
 import {
   BlogPost,
-  fetchHistorySHA,
   getAllPostPaths,
   getPostData,
   getSortedPostsData,
-  TimeMachineSHA
 } from "../../lib/blog/load";
 import {BlogImageData, fetchAllImageProps} from "../../lib/blog/imagePropsFetcher";
+import {fetchHistorySHA, TimeMachineSHA} from "../../lib/blog/timeMachine";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
 
@@ -302,11 +301,9 @@ const Article: NextPage<PageProps> = ({entry, imageSize, relatedPosts, pastArtic
             <span onClick={() => share(post.slug)}>
               <EntryButton icon={faTwitter} text={'ツイート'}/>
             </span>
-            <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-
+            <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
               <EntryButton icon={faPencil} text={'訂正依頼'}/>
-
-            </Link>
+            </a>
             <a onClick={handleUDFontButton}>
               {useUDFont ? (
                 <EntryButton icon={faFont} text={'通常書体'}/>
@@ -398,11 +395,9 @@ const Article: NextPage<PageProps> = ({entry, imageSize, relatedPosts, pastArtic
                 <span onClick={() => share(post.slug)}>
                   <EntryButton icon={faTwitter} text={'ツイート'}/>
                 </span>
-                <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-
+                <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                   <EntryButton icon={faPencil} text={'訂正依頼'}/>
-
-                </Link>
+                </a>
                 <div style={{height: '1em'}}/>
                 <PageNavigation entry={post}/>
               </div>
@@ -426,9 +421,9 @@ const Article: NextPage<PageProps> = ({entry, imageSize, relatedPosts, pastArtic
           <span onClick={() => share(post.slug)}>
             <a>ツイート</a>
           </span>
-          <Link href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+          <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
             訂正リクエスト
-          </Link>
+          </a>
         </p>
       </Block>
       <RelatedPosts

@@ -1,4 +1,7 @@
-import {BlogPost} from "./load";
+'use client';
+
+import {BlogPost, BlogPostOption, buildBlogPost} from "./load";
+import microCMS from "../microCMS";
 
 export type ErrorablePost = BlogPost & {
   isError: boolean
@@ -25,3 +28,15 @@ export const createErrorArticle = (errTitle: string): ErrorablePost => {
   return ret
 }
 
+export const getPreviewPostData = async (contentId: string, option?: BlogPostOption) => {
+  const data = await microCMS.get({
+    endpoint: "blog-preview",
+    contentId
+  }).catch(() => ({}))
+
+  if (!(data?.md && data?.slug)) {
+    return createErrorArticle('Invalid content ID')
+  }
+
+  return await buildBlogPost(data!.slug, data!.md, option, contentId)
+}

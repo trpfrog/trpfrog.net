@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
 
-import {BlogPost, getPreviewPostData} from "../../../lib/blog/load";
+import {getPreviewPostData} from "../../../lib/blog/loadPreview";
 import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
 import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
@@ -16,7 +16,7 @@ import {NextSeo} from "next-seo";
 import {formatReadTime} from "../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
-import {createErrorArticle, ErrorablePost} from "../../../lib/blog/errorArticle";
+import {createErrorArticle, ErrorablePost} from "../../../lib/blog/loadPreview";
 
 type PageProps = {
   entry: ErrorablePost

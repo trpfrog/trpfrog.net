@@ -3,15 +3,6 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-import {createErrorArticle} from "./errorArticle";
-import microCMS from "../microCMS";
-import {Octokit} from "@octokit/rest";
-
-export type TimeMachineSHA = {
-  sha: string
-  date: string
-}
-
 
 export type BlogPost = {
   title: string
@@ -47,40 +38,7 @@ const fetchAllMarkdownFileNames = async () => (
   })
 )
 
-export const fetchHistorySHA = async (slug: string): Promise<TimeMachineSHA[]> => {
 
-  const key = `${slug}-history-sha`
-  if (process.env[key]) {
-    process.env[key]!.split(';').map(e => {
-      const [sha, date] = e.split(',')
-      return {sha, date}
-    })
-  }
-
-  const octokit = new Octokit({
-    auth: `${process.env.GITHUB_TOKEN}`,
-  });
-
-  const response = await octokit.request(`GET /repos/TrpFrog/trpfrog.net/commits`, {
-    owner: 'TrpFrog',
-    repo: 'trpfrog.net',
-    path: `/posts/${slug}.md`
-  })
-
-  if (response) {
-    const data = response.data.map((e: any) => ({
-      sha: e.sha,
-      date: e.commit.author.date
-    })).sort((a: TimeMachineSHA, b: TimeMachineSHA) => {
-      return a.date < b.date
-    })
-    process.env[key] = data.map((e: TimeMachineSHA) => `${e.sha},${e.date}`).join(';')
-    return data
-  } else {
-    process.env[key] = ','
-    return []
-  }
-}
 
 export const fetchPastPost = async (slug: string, file_sha: string, option: any) => {
   const url = `https://raw.githubusercontent.com/TrpFrog/trpfrog.net/${file_sha}/posts/${slug}.md`
@@ -92,13 +50,13 @@ export const fetchPastPost = async (slug: string, file_sha: string, option: any)
   }
 }
 
-type BlogPostOption = Partial<{
+export type BlogPostOption = Partial<{
   pagePos1Indexed: number
   all: boolean
   showPreviewCheckpoint?: boolean
 }>
 
-const buildBlogPost = async (
+export const buildBlogPost = async (
   slug: string,
   markdownString: string,
   option?: BlogPostOption,
@@ -159,18 +117,6 @@ export const getPostData = async (slug: string, option?: BlogPostOption) => {
   return await buildBlogPost(slug, fileContents, option)
 }
 
-export const getPreviewPostData = async (contentId: string, option?: BlogPostOption) => {
-  const data = await microCMS.get({
-    endpoint: "blog-preview",
-    contentId
-  }).catch(() => ({}))
-
-  if (!(data?.md && data?.slug)) {
-    return createErrorArticle('Invalid content ID')
-  }
-
-  return await buildBlogPost(data!.slug, data!.md, option, contentId)
-}
 
 export const getSortedPostsData = async (tag: string = '') => {
   const fileNames = await fetchAllMarkdownFileNames()
