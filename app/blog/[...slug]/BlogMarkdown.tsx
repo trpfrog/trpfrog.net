@@ -1,24 +1,22 @@
-'use client';
-
-import styles from "../../styles/blog/blog.module.scss";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import styles from "../../../styles/blog/blog.module.scss";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import React, {CSSProperties} from "react";
-import {MathJax, MathJaxContext} from "better-react-mathjax";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogPost} from "../../lib/blog/load";
+import {BlogPost} from "../../../lib/blog/load";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
-import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
-import PageNavigation from "./PageNavigation";
-import Block from "../Block";
+import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
+import PageNavigation from "../../../components/blog/PageNavigation";
+import Block from "../../../components/Block";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 
-import BlogImage from "./BlogImage";
-import partsDictionary from "../../lib/blog/articleParts";
+import BlogImage from "../../../components/blog/BlogImage";
+import partsDictionary from "../../../lib/blog/articleParts";
+import {MathJaxWrapper} from "../../../components/utils/MathJaxWrapper";
+import SyntaxHighlighterWrapper from "../../../components/utils/SyntaxHighlighterWrapper";
 
 type codeProps = {
   className: string
@@ -103,13 +101,13 @@ const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: 
             <span className={styles.code_lang}>{fileName || language}</span>
           </div>
         )}
-        <SyntaxHighlighter
+        <SyntaxHighlighterWrapper
           language={language.toLowerCase()}
           style={atomOneDarkReasonable}
           className={`${styles.code_block} ${language !== '' ? styles.code_block_with_lang : ''}`}
         >
           {children}
-        </SyntaxHighlighter>
+        </SyntaxHighlighterWrapper>
       </pre>
     )
   }
@@ -141,29 +139,18 @@ type RendererProps = {
 
 export const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX=true}: RendererProps) => {
   if (renderLaTeX) {
-    const mathjaxConfig = {
-      loader: {load: ["[tex]/html"]},
-      tex: {
-        packages: {"[+]": ["html"]},
-        inlineMath: [["$", "$"]],
-        displayMath: [["$$", "$$"]]
-      }
-    };
     return (
-      <MathJaxContext version={3} config={mathjaxConfig}>
-        <MathJax>
-          <ArticleRenderer
-            toRender={toRender}
-            entry={entry}
-            imageSize={imageSize}
-            renderLaTeX={false}
-          />
-        </MathJax>
-      </MathJaxContext>
+      // @ts-ignore
+      <MathJaxWrapper>
+        <ArticleRenderer
+          toRender={toRender}
+          entry={entry}
+          imageSize={imageSize}
+          renderLaTeX={false}
+        />
+      </MathJaxWrapper>
     )
   }
-
-
   const markdownComponents = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: getFormatCodeComponent(entry, imageSize),

@@ -1,4 +1,4 @@
-import {ArticleRenderer} from "../BlogMarkdown";
+import {ArticleRenderer} from "../../../app/blog/[...slug]/BlogMarkdown";
 import React from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";
 

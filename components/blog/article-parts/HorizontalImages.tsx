@@ -1,7 +1,7 @@
 import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import BlogImage, {ImageCaption} from "../BlogImage";
 import React from "react";
-import {getPureCloudinaryPath, parseInlineMarkdown} from "../BlogMarkdown";
+import {getPureCloudinaryPath, parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
 import {ArticleParts} from "../../../lib/blog/articleParts";
 
 const HorizontalImages: ArticleParts = (content, entry, imageSize) => {

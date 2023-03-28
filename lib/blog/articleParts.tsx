@@ -12,7 +12,7 @@ import Conversation from "../../components/blog/article-parts/Conversation";
 import ShowAll from "../../components/blog/article-parts/ShowAll";
 import {PageTransferButton} from "../../components/blog/PageNavigation";
 import {parseWithBudouX} from "../wordSplit";
-import {ArticleRenderer} from "../../components/blog/BlogMarkdown";
+import {ArticleRenderer} from "../../app/blog/[...slug]/BlogMarkdown";
 
 export type ArticleParts = (
   content: string,

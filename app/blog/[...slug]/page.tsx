@@ -12,7 +12,7 @@ import {
 } from "../../../lib/blog/load";
 import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "./BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
@@ -20,14 +20,10 @@ import NextSeoWrapper from "../../../components/utils/NextSeoWrapper";
 import Tag from "../../../components/blog/Tag";
 import {parseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
-import {useRouter} from "next/router";
 import {
   faArrowLeft,
-  faFileLines,
   faPencil,
-  faToiletPaper,
 } from "@fortawesome/free-solid-svg-icons";
-import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import RelatedPosts from "../../../components/blog/RelatedPosts";
 import PageNavigation from "../../../components/blog/PageNavigation";
@@ -38,6 +34,8 @@ import EntryButton from "../../../components/blog/EntryButton";
 import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlogButton";
 import React from "react";
 import TogglePageViewLink from "../../../components/blog/TogglePageViewLink";
+import ShareSpan from "./ShareSpan";
+import EditButton from "./EditButton";
 
 type PageProps = {
   params: {
@@ -69,16 +67,6 @@ const processSlug = async (slug: string, page?: string) => {
     relatedPosts,
   }
 }
-
-const share = (slug: string) => {
-  if (typeof window === 'undefined') return;
-  const articleURL = 'https://trpfrog.net/blog/' + slug
-  const tweetURL = 'https://twitter.com/intent/tweet?'
-    + "text=" + encodeURIComponent(document.title) + "&"
-    + "url=" + encodeURIComponent(articleURL);
-  window.open(tweetURL);
-}
-
 
 export default async function Index({ params: { slug } }: PageProps) {
 
@@ -159,9 +147,9 @@ export default async function Index({ params: { slug } }: PageProps) {
               <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
 
             </Link>
-            <span onClick={() => share(post.slug)}>
+            <ShareSpan slug={post.slug}>
               <EntryButton icon={faTwitter} text={'ツイート'}/>
-            </span>
+            </ShareSpan>
             <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
               <EntryButton icon={faPencil} text={'訂正依頼'}/>
             </a>
@@ -171,12 +159,7 @@ export default async function Index({ params: { slug } }: PageProps) {
 
           {process.env.NODE_ENV === 'development' &&
             <p>
-              <a
-                className={'linkButton'}
-                onClick={() => fetch(`/api/posts/open/${post.slug}`)}
-              >
-                編集する
-              </a>
+              <EditButton slug={post.slug}/>
             </p>
           }
           <BadBlogButton/>
@@ -216,9 +199,9 @@ export default async function Index({ params: { slug } }: PageProps) {
                   <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
 
                 </Link>
-                <span onClick={() => share(post.slug)}>
+                <ShareSpan slug={post.slug}>
                   <EntryButton icon={faTwitter} text={'ツイート'}/>
-                </span>
+                </ShareSpan>
                 <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
                   <EntryButton icon={faPencil} text={'訂正依頼'}/>
                 </a>
@@ -234,9 +217,9 @@ export default async function Index({ params: { slug } }: PageProps) {
           <Link href={'/blog'}>
             記事一覧
           </Link>
-          <span onClick={() => share(post.slug)}>
+          <ShareSpan slug={post.slug}>
             <a>ツイート</a>
-          </span>
+          </ShareSpan>
           <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
             訂正リクエスト
           </a>

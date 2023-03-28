@@ -7,7 +7,7 @@ import Title from "../../../../components/Title";
 import {getPreviewPostData} from "../../../../lib/blog/loadPreview";
 import {fetchAllImageProps} from "../../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "../../[...slug]/BlogMarkdown";
 
 import styles from '../../../../styles/blog/blog.module.scss';
 

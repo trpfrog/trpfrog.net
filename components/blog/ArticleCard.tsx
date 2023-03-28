@@ -6,7 +6,7 @@ import {faCalendarDay, faClock} from "@fortawesome/free-solid-svg-icons";
 import {BlogPost} from "../../lib/blog/load";
 import styles from "../../styles/blog/ArticleCard.module.scss";
 import Image from "next/legacy/image";
-import {getPureCloudinaryPath} from "./BlogMarkdown";
+import {getPureCloudinaryPath} from "../../app/blog/[...slug]/BlogMarkdown";
 import dayjs from "dayjs";
 import Tag from "./Tag";
 import {parseWithBudouX} from "../../lib/wordSplit";
