@@ -1,8 +1,8 @@
 'use client';
 
-import {ArticleRenderer, parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
 import React, {useState} from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";
+import ArticleRendererFromContext from "../../../app/blog/ArticleRenderer";
 
 
 const ShowAll: ArticleParts = (content, entry, imageSize) => {
@@ -26,21 +26,11 @@ const ShowAll: ArticleParts = (content, entry, imageSize) => {
   return (
     <div>
       <div style={{position: 'relative'}}>
-        <ArticleRenderer
-          toRender={first}
-          entry={entry}
-          imageSize={imageSize}
-          renderLaTeX={false}
-        />
+        <ArticleRendererFromContext toRender={first}/>
         {!isShowAll && <Fog/>}
       </div>
       {isShowAll &&
-        <ArticleRenderer
-          toRender={second}
-          entry={entry}
-          imageSize={imageSize}
-          renderLaTeX={false}
-        />
+        <ArticleRendererFromContext toRender={second}/>
       }
       <div style={{textAlign: 'center', position: 'sticky', bottom: 10}}>
         <div

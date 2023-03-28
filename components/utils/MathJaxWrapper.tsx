@@ -11,6 +11,6 @@ export function MathJaxContextWrapper(props: MathJaxContextProps) {
   return <MathJaxContext {...props} />
 }
 
-export function MathJaxWrapper(props: MathJaxProps) {
+export function MathJaxWrapper(props: MathJaxProps & {children: React.ReactNode}) {
   return <MathJax {...props} />
 }

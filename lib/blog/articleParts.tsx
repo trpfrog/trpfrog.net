@@ -12,7 +12,7 @@ import Conversation from "../../components/blog/article-parts/Conversation";
 import ShowAll from "../../components/blog/article-parts/ShowAll";
 import {PageTransferButton} from "../../components/blog/PageNavigation";
 import {parseWithBudouX} from "../wordSplit";
-import {ArticleRenderer} from "../../app/blog/[...slug]/BlogMarkdown";
+import ArticleRendererFromContext from "../../app/blog/ArticleRenderer";
 
 export type ArticleParts = (
   content: string,
@@ -20,10 +20,7 @@ export type ArticleParts = (
   imageSize?: { [path: string]: BlogImageData }
 ) => React.ReactNode
 
-type MarkdownFunctionType = { [content: string]: ArticleParts }
-
-const myMarkdownClasses: MarkdownFunctionType = {
-
+const myMarkdownClasses = {
   // Socials
   Twitter,
   Youtube,
@@ -62,40 +59,24 @@ const myMarkdownClasses: MarkdownFunctionType = {
     )
   },
 
-
-  Centering: (content, entry, imageSize) => (
+  Centering: content => (
     <div style={{textAlign: 'center'}}>
-      <ArticleRenderer
-        toRender={content}
-        entry={entry}
-        imageSize={imageSize}
-        renderLaTeX={false}
-      />
+      <ArticleRendererFromContext toRender={content}/>
     </div>
   ),
 
-  CenteringWithSize: (content, entry, imageSize) => {
+  CenteringWithSize: content => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRenderer
-          toRender={content}
-          entry={entry}
-          imageSize={imageSize}
-          renderLaTeX={false}
-        />
+        <ArticleRendererFromContext toRender={content}/>
       </div>
     )
   },
 
-  IgnoreReadCount: (content, entry, imageSize) => (
-    <ArticleRenderer
-      toRender={content}
-      entry={entry}
-      imageSize={imageSize}
-      renderLaTeX={false}
-    />
+  IgnoreReadCount: content => (
+    <ArticleRendererFromContext toRender={content}/>
   ),
 
   CenteringWithSizeBold: content => {
@@ -111,6 +92,6 @@ const myMarkdownClasses: MarkdownFunctionType = {
   DangerouslySetInnerHtml: content => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
   ),
-}
+} as const satisfies Record<string, ArticleParts>
 
 export default myMarkdownClasses;

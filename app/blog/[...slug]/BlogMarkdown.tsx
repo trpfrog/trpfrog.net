@@ -1,57 +1,16 @@
 import styles from "../../../styles/blog/blog.module.scss";
-import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import React, {CSSProperties} from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {BlogPost} from "../../../lib/blog/load";
-import remarkToc from "remark-toc";
-import rehypeSlug from "rehype-slug";
 import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import PageNavigation from "../../../components/blog/PageNavigation";
 import Block from "../../../components/Block";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 
-import BlogImage from "../../../components/blog/BlogImage";
-import partsDictionary from "../../../lib/blog/articleParts";
 import {MathJaxWrapper} from "../../../components/utils/MathJaxWrapper";
-import SyntaxHighlighterWrapper from "../../../components/utils/SyntaxHighlighterWrapper";
-
-type codeProps = {
-  className: string
-  inline: boolean
-  children: any
-}
-
-const getLangName = (s: string) => {
-  switch (s) {
-  case 'javascript':
-    return 'JavaScript'
-  case 'html':
-  case 'yaml':
-  case 'css':
-  case 'scss':
-  case 'tsx':
-    return s.toUpperCase()
-  default:
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
-}
-
-export const parseRichMarkdown = (markdown: string) => {
-  const markdownComponents = {
-    pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
-    code: getFormatCodeComponent(),
-  }
-  return (
-    <ReactMarkdown
-      components={markdownComponents as any}
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw]}
-    >{markdown}</ReactMarkdown>
-  )
-}
+import {RendererProvider} from "../RendererContext";
+import ArticleRendererFromContext from "../ArticleRenderer";
 
 export const parseInlineMarkdown = (markdown: string) => {
   const comp = {
@@ -63,55 +22,6 @@ export const parseInlineMarkdown = (markdown: string) => {
     rehypePlugins={[rehypeRaw]}>
     {markdown}
   </ReactMarkdown>
-}
-
-const getFormatCodeComponent = (entry?: BlogPost, imageSize?: { [path: string]: BlogImageData }) => {
-  const formatCodeComponent = ({className, children, inline}: codeProps) => {
-    if (inline) {
-      return (
-        <code className={styles.inline_code_block}>
-          {children}
-        </code>
-      )
-    }
-
-    children[0] = children[0].trimEnd()
-
-    const language = className
-      ? getLangName(
-        className.replace('language-', '').split('.').slice(-1)[0]
-      ) : '';
-
-    const languageCamelCase = language
-      .split('-')
-      .map(word => word.length > 0 ? word[0].toUpperCase() + word.slice(1) : '')
-      .join('');
-
-    if (languageCamelCase in partsDictionary) {
-      return partsDictionary[languageCamelCase](children[0], entry, imageSize)
-    }
-
-    const fileName = className?.includes('.') ?
-      className.replace('language-', '') : ''
-
-    return (
-      <pre>
-        {language != '' && (
-          <div className={styles.code_lang_wrapper}>
-            <span className={styles.code_lang}>{fileName || language}</span>
-          </div>
-        )}
-        <SyntaxHighlighterWrapper
-          language={language.toLowerCase()}
-          style={atomOneDarkReasonable}
-          className={`${styles.code_block} ${language !== '' ? styles.code_block_with_lang : ''}`}
-        >
-          {children}
-        </SyntaxHighlighterWrapper>
-      </pre>
-    )
-  }
-  return formatCodeComponent
 }
 
 export const getPureCloudinaryPath = (path: string) => {
@@ -130,78 +40,10 @@ type Props = {
   className?: string
 }
 
-type RendererProps = {
-  toRender: string
-  entry?: BlogPost
-  imageSize?: { [path: string]: BlogImageData }
-  renderLaTeX?: boolean
-}
-
-export const ArticleRenderer = ({toRender, entry, imageSize, renderLaTeX=true}: RendererProps) => {
-  if (renderLaTeX) {
-    return (
-      // @ts-ignore
-      <MathJaxWrapper>
-        <ArticleRenderer
-          toRender={toRender}
-          entry={entry}
-          imageSize={imageSize}
-          renderLaTeX={false}
-        />
-      </MathJaxWrapper>
-    )
-  }
-  const markdownComponents = {
-    pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
-    code: getFormatCodeComponent(entry, imageSize),
-    p: (props: any) => {
-      if (props.node.children[0]?.tagName === 'img') {
-        const image = props.node.children[0]
-        return (
-          <BlogImage
-            src={image.properties.src}
-            alt={image.properties.alt}
-            imageData={imageSize ? imageSize[getPureCloudinaryPath(image.properties.src)] : undefined}
-          />
-        )
-      }
-      return <p>{props.children}</p>
-    },
-    h2: (props: any) => (
-      <h2 className={styles.anchor} id={props.id}>
-        <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
-        {props.children}
-      </h2>
-    ),
-    a: (props: any) => (
-      <a href={props.href} target="_blank" rel="noreferrer">
-        {props.children}
-      </a>
-    )
-  };
-
-
-  return (
-    <ReactMarkdown
-      components={markdownComponents as any}
-      remarkPlugins={[
-        remarkGfm,
-        () => remarkToc({heading: '目次'})
-      ]}
-      rehypePlugins={[
-        rehypeRaw,
-        rehypeSlug,
-      ]}
-    >
-      {toRender}
-    </ReactMarkdown>
-  )
-}
-
 const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
   const markdown = entry.content
   return (
-    <>
+    <RendererProvider entry={entry} imageSize={imageSize}>
       {markdown.map((content, idx) => (
         <Block key={'window-' + idx} style={style} className={className}>
           {idx === 0 &&
@@ -214,19 +56,16 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
             className={styles.post}
             style={{wordBreak: 'break-word'}}
           >
-            <ArticleRenderer
-              toRender={content}
-              entry={entry}
-              imageSize={imageSize}
-              renderLaTeX={true}
-            />
+            <MathJaxWrapper>
+              <ArticleRendererFromContext toRender={content}/>
+            </MathJaxWrapper>
           </article>
           {idx === markdown.length - 1 &&
             <PageNavigation entry={entry}/>
           }
         </Block>
       ))}
-    </>
+    </RendererProvider>
   )
 }
 

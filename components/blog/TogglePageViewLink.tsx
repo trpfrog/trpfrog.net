@@ -5,10 +5,11 @@ import {useRouter} from "next/router";
 import {faFileLines, faToiletPaper} from "@fortawesome/free-solid-svg-icons";
 import EntryButton from "./EntryButton";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {usePathname} from "next/navigation";
 
 export default function TogglePageViewLink ({post}: { post: BlogPost }) {
-  const router = useRouter()
-  const anchor = router.asPath.split('#').slice(-1)[0]
+  const pathname = usePathname() ?? ''
+  const anchor = pathname.split('#').slice(-1)[0]
 
   let previousArticlePage = NaN
   const originalPageAnchor = 'original-page-'
