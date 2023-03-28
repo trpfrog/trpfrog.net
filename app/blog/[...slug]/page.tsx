@@ -33,9 +33,11 @@ import RelatedPosts from "../../../components/blog/RelatedPosts";
 import PageNavigation from "../../../components/blog/PageNavigation";
 import {HeaderFollowSticky} from "../../../components/header/Header";
 import ArticleCard from "../../../components/blog/ArticleCard";
-import {UDFontBlock, UDFontButton} from "../../../components/blog/UDFontButton";
+import {UDFontBlock, UDFontButton} from "../../../components/blog/UDFontBlock";
 import EntryButton from "../../../components/blog/EntryButton";
 import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlogButton";
+import React from "react";
+import TogglePageViewLink from "../../../components/blog/TogglePageViewLink";
 
 type PageProps = {
   params: {
@@ -76,41 +78,6 @@ const share = (slug: string) => {
     + "url=" + encodeURIComponent(articleURL);
   window.open(tweetURL);
 }
-
-const TogglePageViewLink = ({post}: { post: BlogPost }) => {
-  const router = useRouter()
-  const anchor = router.asPath.split('#').slice(-1)[0]
-
-  let previousArticlePage = NaN
-  const originalPageAnchor = 'original-page-'
-  if (anchor.startsWith(originalPageAnchor)) {
-    previousArticlePage = parseInt(anchor.replace(originalPageAnchor, ''), 10)
-  }
-
-  let url = `/blog/${post.slug}`
-  let text: string
-  let icon: IconProp | string
-
-  if (post.isAll) {
-    url += '/' + (previousArticlePage || '');
-    text = '分割表示'
-    icon = faFileLines
-  } else {
-    url += post.currentPage === 1
-      ? '/all'
-      : '/all#original-page-' + post.currentPage
-    icon = faToiletPaper
-    text = '全文表示'
-  }
-
-  return (
-    <a href={url}>
-      <EntryButton icon={icon} text={text}/>
-    </a>
-  )
-}
-
-
 
 
 export default async function Index({ params: { slug } }: PageProps) {

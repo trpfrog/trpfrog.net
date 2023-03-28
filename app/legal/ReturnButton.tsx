@@ -13,6 +13,7 @@ export default function ReturnButton() {
     return <></>
   } else {
     return (
+      // @ts-ignore
       <Link href={'/legal'} className={'linkButton'}>
         戻る
       </Link>

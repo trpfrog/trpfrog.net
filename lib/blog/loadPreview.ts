@@ -1,5 +1,3 @@
-'use client';
-
 import {BlogPost, BlogPostOption, buildBlogPost} from "./load";
 import microCMS from "../microCMS";
 

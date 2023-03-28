@@ -27,6 +27,7 @@ export default function Index() {
           また、当サービスを使用したことにより発生したいかなる損害に対しても、 当サイトは一切の責任を負いません。
         </p>
         <p>
+          {/* @ts-ignore */}
           詳しくは<Link href={'/legal'}>こちら</Link>をご覧ください。
         </p>
       </Block>

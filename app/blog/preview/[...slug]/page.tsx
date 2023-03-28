@@ -42,7 +42,7 @@ const processSlug = async (slug: [string, string | undefined]) => {
   }
 }
 
-export async function Index (props: Props) {
+export default async function Index (props: Props) {
   const { entry: post, imageSize } = await processSlug(props.params.slug)
   const openGraphImage = post.thumbnail ? {
     images: [

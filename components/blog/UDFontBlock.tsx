@@ -1,11 +1,10 @@
 'use client';
 
 import React, {useContext, useEffect, useState} from "react";
-import {cookies} from "next/headers";
-import {setCookie} from "nookies";
+import {parseCookies, setCookie} from "nookies";
 import {faFont, faUniversalAccess} from "@fortawesome/free-solid-svg-icons";
 import EntryButton from "./EntryButton";
-import styles from '../../../styles/blog/blog.module.scss';
+import styles from '../../styles/blog/blog.module.scss';
 
 export const UDFontStateContext = React.createContext({
   useUDFont: false,
@@ -13,11 +12,11 @@ export const UDFontStateContext = React.createContext({
 })
 
 export function UDFontStateProvider(props: {children: React.ReactNode}) {
-  const cookie = cookies()
   const COOKIE_NAME_UD = 'useUDFonts'
+  const cookie = parseCookies()
   const [useUDFont, setUseUDFont] = useState(false)
   useEffect(() => {
-    setUseUDFont(cookie.get(COOKIE_NAME_UD)?.value === 'true')
+    setUseUDFont(cookie[COOKIE_NAME_UD] === 'true')
   }, [cookie])
 
   return (
@@ -30,7 +29,6 @@ export function UDFontStateProvider(props: {children: React.ReactNode}) {
 }
 
 export function UDFontButton() {
-  const cookie = cookies()
   const COOKIE_NAME_UD = 'useUDFonts'
   const {useUDFont, setUseUDFont} = useContext(UDFontStateContext)
 
