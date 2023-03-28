@@ -1,38 +1,35 @@
 import React from 'react'
-import {GetServerSideProps, NextPage} from "next";
 import Image from "next/legacy/image";
 
-import Layout from "../../../components/Layout";
-import Title from "../../../components/Title";
+import Layout from "../../../../components/Layout";
+import Title from "../../../../components/Title";
 
-import {getPreviewPostData} from "../../../lib/blog/loadPreview";
-import {BlogImageData, fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
+import {getPreviewPostData} from "../../../../lib/blog/loadPreview";
+import {fetchAllImageProps} from "../../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "../../../components/blog/BlogMarkdown";
+import BlogMarkdown, {getPureCloudinaryPath} from "../../../../components/blog/BlogMarkdown";
 
-import styles from '../../../styles/blog/blog.module.scss';
+import styles from '../../../../styles/blog/blog.module.scss';
 
 import {NextSeo} from "next-seo";
-import {formatReadTime} from "../../../lib/blog/readTime";
-import {parseWithBudouX} from "../../../lib/wordSplit";
-import PostAttributes from "../../../components/blog/PostAttributes";
-import {createErrorArticle, ErrorablePost} from "../../../lib/blog/loadPreview";
+import {formatReadTime} from "../../../../lib/blog/readTime";
+import {parseWithBudouX} from "../../../../lib/wordSplit";
+import PostAttributes from "../../../../components/blog/PostAttributes";
+import {createErrorArticle, ErrorablePost} from "../../../../lib/blog/loadPreview";
 
-type PageProps = {
-  entry: ErrorablePost
-  imageSize: { [path: string]: BlogImageData }
+type Props = {
+  params: {
+    slug: [string, string | undefined]
+  }
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  let [id, page] = context.params?.id as string[]
+const processSlug = async (slug: [string, string | undefined]) => {
+  let [id, page] = slug
   page = page ?? '1'
-
-  console.log(context.query)
 
   const option = {
     pagePos1Indexed: parseInt(page),
     all: page === 'all',
-    showPreviewCheckpoint: ('checkpoint' in (context.query ?? []))
   }
 
   const entry = id
@@ -40,14 +37,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     : createErrorArticle('ID is missing!')
   const imageSize = entry.isError ? {} : await fetchAllImageProps(entry);
   return {
-    props: {
-      entry: JSON.parse(JSON.stringify(entry)),
-      imageSize
-    }
+    entry: JSON.parse(JSON.stringify(entry)),
+    imageSize
   }
 }
 
-const Article: NextPage<PageProps> = ({entry: post, imageSize}) => {
+export async function Index (props: Props) {
+  const { entry: post, imageSize } = await processSlug(props.params.slug)
   const openGraphImage = post.thumbnail ? {
     images: [
       {url: post.thumbnail}
@@ -97,5 +93,3 @@ const Article: NextPage<PageProps> = ({entry: post, imageSize}) => {
     </Layout>
   )
 }
-
-export default Article

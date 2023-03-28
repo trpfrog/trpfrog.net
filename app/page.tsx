@@ -14,9 +14,8 @@ import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
 import React, {Suspense} from "react";
 
-
-export default async function Index() {
-
+// @ts-ignore
+export default async function Index(params) {
   const mainWrapperStyle: React.CSSProperties = {
     display: 'block',
     maxWidth: '100000px',

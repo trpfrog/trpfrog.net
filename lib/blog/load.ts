@@ -148,7 +148,7 @@ export const getSortedPostsData = async (tag: string = '') => {
     }
   });
 
-  return JSON.parse(JSON.stringify(sorted))
+  return JSON.parse(JSON.stringify(sorted)) as BlogPost[]
 }
 
 export const getAllPostSlugs = async (): Promise<string[]> => {

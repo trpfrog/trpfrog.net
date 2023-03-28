@@ -37,6 +37,7 @@ type Props = {
 
 const Tag = ({tag}: Props) => {
   return (
+    // @ts-ignore
     <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
       <span className={styles.emoji}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
