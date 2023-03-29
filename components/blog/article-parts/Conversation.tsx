@@ -1,4 +1,4 @@
-import {parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
+import {parseInlineMarkdown} from "../../../app/blog/renderer/BlogMarkdown";
 import React from "react";
 import styles from "../../../styles/blog/blog.module.scss";
 import {ArticleParts} from "../ArticleParts";

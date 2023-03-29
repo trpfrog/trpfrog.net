@@ -7,8 +7,8 @@ import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import PageNavigation from "../../../components/blog/PageNavigation";
 import Block from "../../../components/Block";
 
-import RendererProvider from "../renderer/RendererProvider";
-import ArticleRendererFromContext from "../renderer/ArticleRenderer";
+import RendererProvider from "./RendererProvider";
+import ArticleRendererFromContext from "./ArticleRenderer";
 import BlogPost from "../../../lib/blog/blogPost";
 
 export const parseInlineMarkdown = (markdown: string) => {

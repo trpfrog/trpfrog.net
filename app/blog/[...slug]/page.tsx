@@ -11,7 +11,7 @@ import {
 } from "../../../lib/blog/load";
 import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown from "./BlogMarkdown";
+import BlogMarkdown from "../renderer/BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
