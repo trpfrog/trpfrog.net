@@ -17,6 +17,7 @@ import myMarkdownClasses from "../../../components/blog/ComponentDictionary";
 import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../../lib/blog/blogPost";
+import {MathJaxContextWrapper} from "../../../components/utils/MathJaxWrapper";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -37,7 +38,11 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
   return ((
     {className, inline, children}
   ) => {
-    if (typeof children !== 'string') {
+
+    const isArrayStartingFromString = (arr: any): arr is [string, ...any] => {
+      return Array.isArray(arr) && typeof arr[0] === 'string'
+    }
+    if (!isArrayStartingFromString(children)) {
       return (
         <code className={styles.inline_code_block}>
           {children}
@@ -143,21 +148,35 @@ export default function RendererProvider ({
     )
   };
 
+  const mathjaxConfig = {
+    loader: {load: ["[tex]/html"]},
+    tex: {
+      packages: {"[+]": ["html"]},
+      inlineMath: [["$", "$"]],
+      displayMath: [["$$", "$$"]]
+    }
+  };
+
   return (
-    <RendererContext.Provider value={{
-      components: markdownComponents,
-      remarkPlugins: [
-        remarkGfm,
-        () => remarkToc({heading: '目次'})
-      ],
-      rehypePlugins: [
-        rehypeRaw,
-        rehypeSlug,
-      ],
-      debugStr: '=== debug ==='
-    }}>
-      {children}
-    </RendererContext.Provider>
+    <MathJaxContextWrapper version={3} config={mathjaxConfig}>
+      <RendererContext.Provider value={{
+        markdown: {
+          options: {
+            components: markdownComponents,
+            remarkPlugins: [
+              remarkGfm,
+              () => remarkToc({heading: '目次'})
+            ],
+            rehypePlugins: [
+              rehypeRaw,
+              rehypeSlug,
+            ],
+          }
+        }
+      }}>
+        {children}
+      </RendererContext.Provider>
+    </MathJaxContextWrapper>
   )
 }
 

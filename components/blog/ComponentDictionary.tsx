@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import TwitterArchived from "./article-parts/TwitterArchive";

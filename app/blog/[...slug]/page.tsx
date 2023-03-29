@@ -17,7 +17,7 @@ import styles from '../../../styles/blog/blog.module.scss';
 
 import NextSeoWrapper from "../../../components/utils/NextSeoWrapper";
 import Tag from "../../../components/blog/Tag";
-import {parseWithBudouX} from "../../../lib/wordSplit";
+import {ParseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
 import {
   faArrowLeft,
@@ -78,7 +78,6 @@ export default async function Index({ params: { slug } }: PageProps) {
     relatedPosts
   } = await processSlug(...slug)
 
-
   // // This code is used to reload page automatically on some changes appeared on md files
   // if (process.env.NODE_ENV !== 'production') {
   //   // For development, fetch article data from api
@@ -101,7 +100,7 @@ export default async function Index({ params: { slug } }: PageProps) {
   } : {}
 
   return (
-    <div id="main_wrapper">
+    <div id="main_wrapper" className={styles.layout}>
       <Title className={styles.article_title_block}>
         {post.thumbnail &&
           <Image
@@ -114,13 +113,17 @@ export default async function Index({ params: { slug } }: PageProps) {
           />
         }
         <div className={styles.inner_title_block}>
-          <h1>{parseWithBudouX((() => {
-            if (post.title.endsWith('！')) {
-              return post.title.slice(0, post.title.length - 1) + ' !'
-            } else {
-              return post.title
-            }
-          })(), post.slug)}</h1>
+          <h1>
+            <ParseWithBudouX str={
+              (() => {
+                if (post.title.endsWith('！')) {
+                  return post.title.slice(0, post.title.length - 1) + ' !'
+                } else {
+                  return post.title
+                }
+              })()
+            } slug={post.slug} />
+          </h1>
           <p style={{margin: '1em'}}>{post.description}</p>
           <PostAttributes post={post}/>
 

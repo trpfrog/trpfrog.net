@@ -7,7 +7,6 @@ import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import PageNavigation from "../../../components/blog/PageNavigation";
 import Block from "../../../components/Block";
 
-import {MathJaxWrapper} from "../../../components/utils/MathJaxWrapper";
 import RendererProvider from "../renderer/RendererProvider";
 import ArticleRendererFromContext from "../renderer/ArticleRenderer";
 import BlogPost from "../../../lib/blog/blogPost";
@@ -47,9 +46,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
             className={styles.post}
             style={{wordBreak: 'break-word'}}
           >
-            <MathJaxWrapper>
-              <ArticleRendererFromContext toRender={content}/>
-            </MathJaxWrapper>
+            <ArticleRendererFromContext toRender={content}/>
           </article>
           {idx === markdown.length - 1 &&
             <PageNavigation entry={entry}/>
