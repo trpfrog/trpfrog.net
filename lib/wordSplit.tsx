@@ -1,9 +1,10 @@
-import {loadDefaultJapaneseParser} from "budoux";
+'use client';
 
+// import {loadDefaultJapaneseParser} from "budoux";
 // const budouXParser = loadDefaultJapaneseParser()
 
 export const parseWithBudouX = (str: string, slug: string) => {
-  return []
+  return str
   // return budouXParser
   //   .parse(str)
   //   .map(e => e
@@ -16,4 +17,13 @@ export const parseWithBudouX = (str: string, slug: string) => {
   //       style={{display: 'inline-block'}}
   //     >{e}</span>
   //   ))
+}
+
+export function ParseWithBudouX(props: { str: string, slug: string }) {
+  return (
+    <>
+      {props.str}
+      {/*{parseWithBudouX(props.str, props.slug)}*/}
+    </>
+  )
 }
