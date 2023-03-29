@@ -3,24 +3,7 @@ import path from 'path'
 import matter from "gray-matter";
 import {getReadTimeSecond} from "./readTime";
 import parse from "./parse";
-
-export type BlogPost = {
-  title: string
-  slug: string
-  date: string
-  updated: string
-  tags: string
-  description?: string
-  thumbnail?: string
-  readTime: number
-  numberOfPhotos?: number
-  held?: string
-  previewContentId?: string
-  isAll: boolean
-  currentPage: number
-  numberOfPages: number
-  content: string[]
-}
+import BlogPost from "./blogPost";
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 

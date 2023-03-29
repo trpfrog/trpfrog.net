@@ -1,5 +1,5 @@
 import React, {CSSProperties} from "react";
-import {BlogPost} from "../../lib/blog/load";
+import BlogPost from "../../lib/blog/blogPost";
 
 type Props = {
   entry: BlogPost,

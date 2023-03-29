@@ -2,7 +2,7 @@
 
 import React, {useState} from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";
-import ArticleRendererFromContext from "../../../app/blog/ArticleRenderer";
+import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
 
 
 const ShowAll: ArticleParts = (content, entry, imageSize) => {

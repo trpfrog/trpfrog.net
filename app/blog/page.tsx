@@ -1,12 +1,13 @@
 import React from 'react'
 import Title from "../../components/Title";
-import {BlogPost, getSortedPostsData} from "../../lib/blog/load";
+import {getSortedPostsData} from "../../lib/blog/load";
 
 import styles from '../../styles/blog/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
+import BlogPost from "../../lib/blog/blogPost";
 
 
 export default async function Index() {

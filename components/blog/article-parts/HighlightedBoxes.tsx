@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";
-import ArticleRendererFromContext from "../../../app/blog/ArticleRenderer";
+import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
 
 export const Caution: ArticleParts = content => (
   <div className={styles.caution}>

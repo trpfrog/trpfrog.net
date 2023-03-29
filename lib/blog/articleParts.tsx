@@ -1,4 +1,3 @@
-import {BlogPost} from "./load";
 import {BlogImageData} from "./imagePropsFetcher";
 import React from "react";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "../../components/blog/article-parts/Socials";
@@ -12,7 +11,8 @@ import Conversation from "../../components/blog/article-parts/Conversation";
 import ShowAll from "../../components/blog/article-parts/ShowAll";
 import {PageTransferButton} from "../../components/blog/PageNavigation";
 import {parseWithBudouX} from "../wordSplit";
-import ArticleRendererFromContext from "../../app/blog/ArticleRenderer";
+import ArticleRendererFromContext from "../../app/blog/renderer/ArticleRenderer";
+import BlogPost from "./blogPost";
 
 export type ArticleParts = (
   content: string,

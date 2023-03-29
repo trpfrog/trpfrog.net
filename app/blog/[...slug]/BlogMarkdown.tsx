@@ -3,14 +3,14 @@ import React, {CSSProperties} from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogPost} from "../../../lib/blog/load";
 import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import PageNavigation from "../../../components/blog/PageNavigation";
 import Block from "../../../components/Block";
 
 import {MathJaxWrapper} from "../../../components/utils/MathJaxWrapper";
-import {RendererProvider} from "../RendererContext";
-import ArticleRendererFromContext from "../ArticleRenderer";
+import RendererProvider from "../renderer/RendererProvider";
+import ArticleRendererFromContext from "../renderer/ArticleRenderer";
+import BlogPost from "../../../lib/blog/blogPost";
 
 export const parseInlineMarkdown = (markdown: string) => {
   const comp = {
@@ -22,15 +22,6 @@ export const parseInlineMarkdown = (markdown: string) => {
     rehypePlugins={[rehypeRaw]}>
     {markdown}
   </ReactMarkdown>
-}
-
-export const getPureCloudinaryPath = (path: string) => {
-  const cloudinaryUrl = 'https:\/\/res.cloudinary.com\/trpfrog'
-  return (path ?? '')
-    .replace(/\/image\/upload\/v[0-9]+/, '')
-    .replace(/\/image\/upload/, '')
-    .replace(cloudinaryUrl, '')
-    .split('.')[0] // remove extension
 }
 
 type Props = {

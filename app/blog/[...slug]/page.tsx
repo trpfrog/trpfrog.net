@@ -5,14 +5,13 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 import {
-  BlogPost,
   getAllPostPaths,
   getPostData,
   getSortedPostsData,
 } from "../../../lib/blog/load";
 import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
 
-import BlogMarkdown, {getPureCloudinaryPath} from "./BlogMarkdown";
+import BlogMarkdown from "./BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
@@ -36,6 +35,8 @@ import React from "react";
 import TogglePageViewLink from "../../../components/blog/TogglePageViewLink";
 import ShareSpan from "./ShareSpan";
 import EditButton from "./EditButton";
+import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
+import BlogPost from "../../../lib/blog/blogPost";
 
 type PageProps = {
   params: {
@@ -61,9 +62,10 @@ const processSlug = async (slug: string, page?: string) => {
     : (await getSortedPostsData(tags[0]))
       .filter((e: BlogPost) => e.slug !== entry.slug)
 
+  const useCloudinary = process.env.NODE_ENV === 'production'
   return {
     entry: JSON.parse(JSON.stringify(entry)),
-    imageSize: await fetchAllImageProps(entry, process.env.NODE_ENV === 'production'),
+    imageSize: await fetchAllImageProps(entry, useCloudinary),
     relatedPosts,
   }
 }

@@ -2,7 +2,7 @@
 
 import React, {useContext} from "react";
 import ReactMarkdown from "react-markdown";
-import {RendererContext} from "./RendererContext";
+import RendererContext from "./RendererContext";
 
 export default function ArticleRendererFromContext ({toRender}: {
   toRender: string,

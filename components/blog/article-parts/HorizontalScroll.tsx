@@ -1,6 +1,6 @@
 import React from "react";
 import {ArticleParts} from "../../../lib/blog/articleParts";
-import ArticleRendererFromContext from "../../../app/blog/ArticleRenderer";
+import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
 
 const HorizontalScroll: ArticleParts = (content) => {
   const contents = content.split('\n\n').filter(e => e.trim() !== '')

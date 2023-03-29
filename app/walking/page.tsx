@@ -1,9 +1,10 @@
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 
-import {BlogPost, getSortedPostsData} from "../../lib/blog/load";
+import {getSortedPostsData} from "../../lib/blog/load";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 import Belongings from "./Belongings.mdx";
+import BlogPost from "../../lib/blog/blogPost";
 
 export default async function Index() {
   const tag = '徒歩'

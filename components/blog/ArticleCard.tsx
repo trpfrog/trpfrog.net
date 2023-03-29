@@ -3,14 +3,14 @@
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock} from "@fortawesome/free-solid-svg-icons";
-import {BlogPost} from "../../lib/blog/load";
 import styles from "../../styles/blog/ArticleCard.module.scss";
 import Image from "next/legacy/image";
-import {getPureCloudinaryPath} from "../../app/blog/[...slug]/BlogMarkdown";
 import dayjs from "dayjs";
 import Tag from "./Tag";
 import {parseWithBudouX} from "../../lib/wordSplit";
 import React from "react";
+import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
+import BlogPost from "../../lib/blog/blogPost";
 
 type Props = {
   entry: BlogPost

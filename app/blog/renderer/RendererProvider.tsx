@@ -1,26 +1,22 @@
 'use client';
 
-import React, {createContext} from "react";
-import BlogImage from "../../components/blog/BlogImage";
-import styles from "../../styles/blog/blog.module.scss";
+import React from "react";
+import BlogImage from "../../../components/blog/BlogImage";
+import styles from "../../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
-import {getPureCloudinaryPath} from "./[...slug]/BlogMarkdown";
-import {ReactMarkdownOptions} from "react-markdown/lib/react-markdown";
-import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
-import {BlogPost} from "../../lib/blog/load";
-import SyntaxHighlighterWrapper from "../../components/utils/SyntaxHighlighterWrapper";
+import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
+import SyntaxHighlighterWrapper from "../../../components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-
-import myMarkdownClasses from "../../lib/blog/articleParts";
-
-
-export const RendererContext = createContext<Partial<ReactMarkdownOptions>>({});
+import myMarkdownClasses from "../../../lib/blog/articleParts";
+import RendererContext from "./RendererContext";
+import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
+import BlogPost from "../../../lib/blog/blogPost";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -108,11 +104,11 @@ type RendererProviderProps = {
   entry?: BlogPost
 }
 
-export const RendererProvider = ({
+export default function RendererProvider ({
   children,
   entry,
   imageSize
-}: RendererProviderProps) => {
+}: RendererProviderProps) {
   const markdownComponents: Components = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),

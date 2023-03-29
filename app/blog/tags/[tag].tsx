@@ -1,4 +1,4 @@
-import {BlogPost, getAllTags, getSortedPostsData} from "../../../lib/blog/load";
+import {getAllTags, getSortedPostsData} from "../../../lib/blog/load";
 import {GetStaticProps, NextPage} from "next";
 import Layout from "../../../components/Layout";
 import Title from "../../../components/Title";
@@ -6,6 +6,7 @@ import {NextSeo} from "next-seo";
 import Link from "next/link";
 import React from "react";
 import ArticleCard, {ArticleGrid} from "../../../components/blog/ArticleCard";
+import BlogPost from "../../../lib/blog/blogPost";
 
 type Props = {
   tag: string

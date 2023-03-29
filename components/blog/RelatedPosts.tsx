@@ -6,7 +6,7 @@ import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "./ArticleCard";
 import Link from "next/link";
 import React from "react";
-import {BlogPost} from "../../lib/blog/load";
+import BlogPost from "../../lib/blog/blogPost";
 
 const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost[] }) => {
   if (relatedPosts.length <= 0) {
