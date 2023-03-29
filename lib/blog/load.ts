@@ -21,8 +21,6 @@ const fetchAllMarkdownFileNames = async () => (
   })
 )
 
-
-
 export const fetchPastPost = async (slug: string, file_sha: string, option: any) => {
   const url = `https://raw.githubusercontent.com/TrpFrog/trpfrog.net/${file_sha}/posts/${slug}.md`
   const res = await fetch(url)

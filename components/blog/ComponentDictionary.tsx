@@ -1,24 +1,17 @@
-import {BlogImageData} from "./imagePropsFetcher";
 import React from "react";
-import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "../../components/blog/article-parts/Socials";
-import TwitterArchived from "../../components/blog/article-parts/TwitterArchive";
-import {ResultBox} from "../../components/blog/article-parts/WalkingParts";
-import ProfileCards from "../../components/blog/article-parts/ProfileCards";
-import {Caution, Infobox, TitledFrame} from "../../components/blog/article-parts/HighlightedBoxes";
-import HorizontalImages from "../../components/blog/article-parts/HorizontalImages";
-import HorizontalScroll from "../../components/blog/article-parts/HorizontalScroll";
-import Conversation from "../../components/blog/article-parts/Conversation";
-import ShowAll from "../../components/blog/article-parts/ShowAll";
-import {PageTransferButton} from "../../components/blog/PageNavigation";
-import {parseWithBudouX} from "../wordSplit";
+import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
+import TwitterArchived from "./article-parts/TwitterArchive";
+import {ResultBox} from "./article-parts/WalkingParts";
+import ProfileCards from "./article-parts/ProfileCards";
+import {Caution, Infobox, TitledFrame} from "./article-parts/HighlightedBoxes";
+import HorizontalImages from "./article-parts/HorizontalImages";
+import HorizontalScroll from "./article-parts/HorizontalScroll";
+import Conversation from "./article-parts/Conversation";
+import ShowAll from "./article-parts/ShowAll";
+import {PageTransferButton} from "./PageNavigation";
+import {parseWithBudouX} from "../../lib/wordSplit";
 import ArticleRendererFromContext from "../../app/blog/renderer/ArticleRenderer";
-import BlogPost from "./blogPost";
-
-export type ArticleParts = (
-  content: string,
-  entry?: BlogPost,
-  imageSize?: { [path: string]: BlogImageData }
-) => React.ReactNode
+import {ArticleParts} from "./ArticleParts";
 
 const myMarkdownClasses = {
   // Socials

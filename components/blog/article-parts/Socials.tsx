@@ -5,7 +5,7 @@ import YouTube from "react-youtube";
 import ReactPlayer from "react-player";
 import React from "react";
 import {parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
-import {ArticleParts} from "../../../lib/blog/articleParts";
+import {ArticleParts} from "../ArticleParts";
 
 export const Twitter: ArticleParts = (content) => {
   const id = content.split('\n')[0]

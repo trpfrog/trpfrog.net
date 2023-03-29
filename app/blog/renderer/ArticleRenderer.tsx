@@ -8,9 +8,14 @@ export default function ArticleRendererFromContext ({toRender}: {
   toRender: string,
 }) {
   const options = useContext(RendererContext);
+  const {debugStr} = options;
+  delete options.debugStr;
   return (
-    <ReactMarkdown {...options}>
-      {toRender}
-    </ReactMarkdown>
+    <>
+      {debugStr ?? ''}
+      <ReactMarkdown {...options as any}>
+        {toRender}
+      </ReactMarkdown>
+    </>
   )
 }

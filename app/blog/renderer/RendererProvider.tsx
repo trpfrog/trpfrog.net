@@ -13,7 +13,7 @@ import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "../../../components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "../../../lib/blog/articleParts";
+import myMarkdownClasses from "../../../components/blog/ComponentDictionary";
 import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../../lib/blog/blogPost";
@@ -153,7 +153,8 @@ export default function RendererProvider ({
       rehypePlugins: [
         rehypeRaw,
         rehypeSlug,
-      ]
+      ],
+      debugStr: '=== debug ==='
     }}>
       {children}
     </RendererContext.Provider>

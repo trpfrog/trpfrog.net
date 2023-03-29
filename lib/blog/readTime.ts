@@ -1,4 +1,4 @@
-import partsDictionary from "./articleParts";
+import partsDictionary from "../../components/blog/ComponentDictionary";
 
 export const getReadTimeSecond = (markdown: string) => {
   const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')

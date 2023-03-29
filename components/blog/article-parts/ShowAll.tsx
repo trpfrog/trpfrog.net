@@ -1,8 +1,8 @@
 'use client';
 
 import React, {useState} from "react";
-import {ArticleParts} from "../../../lib/blog/articleParts";
 import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
+import {ArticleParts} from "../ArticleParts";
 
 
 const ShowAll: ArticleParts = (content, entry, imageSize) => {

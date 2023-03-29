@@ -2,9 +2,9 @@
 
 import React, {useState} from "react";
 import styles from "../../../styles/blog/ProfileCards.module.scss";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import dayjs from "dayjs";
+import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
+import {parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
 
 export type ProfileData = {
   name: string
@@ -36,9 +36,7 @@ const CardFormat = ({personalDataList}: any) => (
           </span>
         </div>
         <div className={styles.description}>
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-            {personalData.description}
-          </ReactMarkdown>
+          <ArticleRendererFromContext toRender={personalData.description}/>
         </div>
       </div>
     ))}
@@ -61,12 +59,7 @@ const ListFormat = ({personalDataList}: any) => (
             </a>
           </li>
           <li>
-            <ReactMarkdown
-              components={{p: ({children}) => <>{children}</>}}
-              rehypePlugins={[rehypeRaw]}
-            >
-              {personalData.description}
-            </ReactMarkdown>
+            {parseInlineMarkdown(personalData.description)}
           </li>
         </ul>
       </>

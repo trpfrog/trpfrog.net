@@ -1,7 +1,7 @@
 import {parseInlineMarkdown} from "../../../app/blog/[...slug]/BlogMarkdown";
-import {ArticleParts} from "../../../lib/blog/articleParts";
 import React from "react";
 import styles from "../../../styles/blog/blog.module.scss";
+import {ArticleParts} from "../ArticleParts";
 
 const Conversation: ArticleParts = content => (
   <div className={styles.conversation_box_grid}>

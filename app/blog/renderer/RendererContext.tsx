@@ -4,7 +4,11 @@ import {createContext} from "react";
 import {ReactMarkdownOptions} from "react-markdown/lib/react-markdown";
 
 const RendererContext = (
-  createContext<Partial<ReactMarkdownOptions>>({})
+  createContext<Partial<ReactMarkdownOptions & {
+    debugStr: string
+  }>>({
+    debugStr: 'not initialized',
+  })
 );
 
 export default RendererContext;
