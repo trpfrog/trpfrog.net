@@ -178,14 +178,14 @@ export default async function Index({ params: { slug } }: PageProps) {
 
       <div className={styles.main_content}>
         <div className={styles.article_wrapper}>
-          <BadBlogBlock>
-            <UDFontBlock>
+          <UDFontBlock>
+            <BadBlogBlock>
               <BlogMarkdown
                 entry={post}
                 imageSize={post.imageSize}
               />
-            </UDFontBlock>
-          </BadBlogBlock>
+            </BadBlogBlock>
+          </UDFontBlock>
         </div>
         <aside>
           <HeaderFollowSticky top={'1em'}>
