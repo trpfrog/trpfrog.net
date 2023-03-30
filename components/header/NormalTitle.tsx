@@ -11,19 +11,7 @@ const backToTop = () => {
   });
 }
 
-const extractTitle = (pathname: string) => {
-  // const rawPageTitle =
-  //   typeof document !== 'undefined'
-  //     ? document.title
-  //     : process.env.title as string
-  //
-  // let subTitle = rawPageTitle.split(' - ')[0]
-
-  // Get article title
-
-}
-
-const PageTitle = () => {
+const TitleWithPageName = () => {
   const pathname = usePathname() ?? '/'
 
   let siteTitle = pathname.startsWith('/blog/')
@@ -66,7 +54,7 @@ export const NormalTitle = () => {
         <h1 id={styles.site_name}>
           {showPageTitle ? (
             <a onClick={backToTop} style={{cursor: 'pointer'}}>
-              <PageTitle/>
+              <TitleWithPageName/>
             </a>
           ) : (
             <Link href="/">
