@@ -78,21 +78,6 @@ export default async function Index({ params: { slug } }: PageProps) {
     relatedPosts
   } = await processSlug(...slug)
 
-  // // This code is used to reload page automatically on some changes appeared on md files
-  // if (process.env.NODE_ENV !== 'production') {
-  //   // For development, fetch article data from api
-  //   // eslint-disable-next-line react-hooks/rules-of-hooks
-  //   useEffect(() => {
-  //     const f = async () => {
-  //       return await fetch(`/api/posts/${post.slug}/${post.currentPage}`).then((res) =>
-  //         res.json()
-  //       )
-  //     }
-  //     f().then(r => setPost(r))
-  //   }, [])
-  //   doMarkdownHMR()
-  // }
-
   const openGraphImage = post.thumbnail ? {
     images: [
       {url: post.thumbnail}
