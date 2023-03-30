@@ -1,12 +1,26 @@
 @use '../mixins';
 
-#header {
+#hide_when_scroll_down {
     position: fixed;
+    width: 100%;
+    z-index: 999;
+    transition-timing-function: ease-out;
+    &[data-show='false'] {
+        transition-duration: 80ms;
+        transform: translateY(-110%);
+    }
+    &[data-show='true'] {
+        transition-duration: 200ms;
+        transform: translateY(0px);
+    }
+}
+
+#header {
     background: var(--header-color);
     width: 100%;
 
     overflow: hidden;
-    z-index: 999;
+
 
     height: var(--header-height);
     -webkit-filter: var(--header-filter);

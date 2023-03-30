@@ -41,6 +41,7 @@ export const HeaderFollowSticky = (props: {
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const headerY = useMotionValue(0)
   const {scrollY} = useScroll()
+  const [showHeader, setShowHeader] = useState(true)
 
   scrollY.on("change", (y: number) => {
     const v = scrollY.getVelocity()
@@ -48,16 +49,16 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
     const shouldHideHeader = !shouldShowHeader && v > 1000;
 
     if (shouldShowHeader) {
-      animate(headerY, 0, {duration: 0.05, ease: 'linear'})
+      setShowHeader(true)
     } else if (shouldHideHeader) {
-      animate(headerY, -100, {duration: 0.1, ease: 'linear'})
+      setShowHeader(false)
     }
   })
 
   return (
-    <motion.div style={{y: headerY}}>
+    <div id={styles.hide_when_scroll_down} data-show={showHeader}>
       {props.children}
-    </motion.div>
+    </div>
   )
 }
 
