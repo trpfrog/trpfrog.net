@@ -1,3 +1,5 @@
+'use client';
+
 import {animate, AnimationOptions, motion, useMotionValue, useScroll} from "framer-motion";
 import {useEffect} from "react";
 import Link from "next/link";
@@ -11,8 +13,7 @@ export const TopTitle = () => {
   const handleScroll = (y: number, withAnimation: boolean = true) => {
     const animationHeight = 280;
     const isMobile = window.innerWidth < 800;
-    const config: AnimationOptions<number> = {
-      keyframes: [],
+    const config: Partial<AnimationOptions<number>> = {
       duration: withAnimation ? 0.2 : 0,
       ease: 'linear'
     };
