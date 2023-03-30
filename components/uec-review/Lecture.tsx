@@ -1,5 +1,5 @@
 import styles from "../../styles/uec-review.module.scss";
-import {LectureData} from "../../pages/uec-review";
+import {LectureData} from "../../app/uec-review/page";
 import {CSSProperties, useState} from "react";
 import ReactModal from "react-modal";
 import ReactMarkdown from "react-markdown";

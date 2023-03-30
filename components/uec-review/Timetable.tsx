@@ -1,5 +1,5 @@
 import styles from "../../styles/uec-review.module.scss";
-import {LectureData} from "../../pages/uec-review";
+import {LectureData} from "../../app/uec-review/page";
 import Lecture from "./Lecture";
 import React from "react";
 
