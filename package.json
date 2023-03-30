@@ -24,6 +24,7 @@
     "dayjs": "^1.11.7",
     "framer-motion": "^10.6.1",
     "gray-matter": "^4.0.3",
+    "http-status-codes": "^2.2.0",
     "js-yaml": "^4.1.0",
     "microcms-js-sdk": "^2.3.2",
     "next": "^13.2.4",

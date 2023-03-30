@@ -44,7 +44,7 @@ const BlogMarkdown = ({entry, imageSize, style, className}: Props) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       const f = async () => {
-        const apiUrl = `/api/posts/${entry.slug}/${entry.currentPage}`
+        const apiUrl = `/api/blog/posts/${entry.slug}/${entry.currentPage}`
         const res = await fetch(apiUrl)
         return await res.json()
       }
