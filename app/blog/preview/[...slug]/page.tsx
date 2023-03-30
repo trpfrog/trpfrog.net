@@ -17,12 +17,18 @@ import {parseWithBudouX} from "../../../../lib/wordSplit";
 import PostAttributes from "../../../../components/blog/PostAttributes";
 import {createErrorArticle, ErrorablePost} from "../../../../lib/blog/loadPreview";
 import {getPureCloudinaryPath} from "../../../../lib/blog/getPureCloudinaryPath";
+import {Metadata} from "next";
 
 type Props = {
   params: {
     slug: [string, string | undefined]
   }
 }
+
+export const metadata: Metadata = {
+  title: '記事プレビュー',
+}
+
 
 const processSlug = async (slug: [string, string | undefined]) => {
   let [id, page] = slug

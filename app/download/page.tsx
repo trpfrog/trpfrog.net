@@ -1,13 +1,19 @@
 import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
+import {Metadata} from "next";
+
+export const metadata = {
+  title: 'DLコンテンツ',
+  description: '壁紙などダウンロードできるコンテンツの提供ページです。'
+} satisfies Metadata
 
 export default function Index() {
   return (
     <div id="main_wrapper">
       <Title
-        title={'DLコンテンツ'}
-        description={'壁紙などダウンロードできるコンテンツの提供ページです。'}
+        title={metadata.title}
+        description={metadata.description}
       />
       <Block title={'鬼のウォッチフェイス'} newRibbon={true}>
         <p>

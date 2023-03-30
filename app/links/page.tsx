@@ -6,6 +6,7 @@ import Title from "../../components/Title";
 import Block from "../../components/Block";
 import React from "react";
 import Utils from "../../lib/utils";
+import {Metadata} from "next";
 
 function MutualLinkBlock (props: {
   record: MutualLinkRecord
@@ -51,12 +52,16 @@ function MutualLinkBlock (props: {
   );
 }
 
+export const metadata = {
+  title: '相互リンク',
+  description: 'オタク各位のWebサイトです。'
+} satisfies Metadata
 
 export default async function Index() {
   const mutualLinks: MutualLinkRecord[] = await loadMutualLinkRecords();
   return (
     <div id="main_wrapper">
-      <Title title={'相互リンク'} description={'オタク各位のWebサイトです。'}>
+      <Title title={metadata.title} description={metadata.description}>
         <p>
           順番はハンドルネームをUTF-8でソートしたもの。
           <s>片想いリンクになったやつもある</s>

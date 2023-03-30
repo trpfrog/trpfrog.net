@@ -10,6 +10,10 @@ import GoogleFonts from "../components/GoogleFonts";
 
 
 export const metadata: Metadata = {
+  title: {
+    default: process.env.title as string,
+    template: '%s - つまみネット',
+  },
   openGraph: {
     locale: 'ja-JP',
     url: 'https://trpfrog.net',

@@ -1,6 +1,7 @@
 import React, {CSSProperties} from "react";
 import Block from "./Block";
 import NextSeoWrapper from "./utils/NextSeoWrapper";
+import {Metadata} from "next";
 
 type Props = {
   title?: string
@@ -23,13 +24,6 @@ const Title: React.FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <NextSeoWrapper
-        title={title + ' - ' + process.env.title}
-        description={props.description}
-        openGraph={props.cardImageUrl ? {
-          images: [{url: props.cardImageUrl}]
-        } : {}}
-      />
       <Block
         id={"title"}
         className={props.className}

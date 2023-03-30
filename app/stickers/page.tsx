@@ -1,16 +1,19 @@
-import type {NextPage} from 'next'
+import type {Metadata} from 'next'
 import Link from "next/link";
 import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
-import NextSeoWrapper from "../../components/utils/NextSeoWrapper";
+
+export const metadata = {
+  title: 'スタンプ素材集',
+  description: 'つまみスタンプの素材集です'
+} satisfies Metadata
 
 export default function Index() {
   return (
     <div id="main_wrapper">
-      <NextSeoWrapper description={'つまみスタンプ素材集'}/>
-      <Title title={'スタンプ素材集'}>
+      <Title title={metadata.title}>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。<br/>
           良識の範囲内でご自由にどうぞ。(Twitterの会話とか)

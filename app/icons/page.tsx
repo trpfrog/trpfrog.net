@@ -3,12 +3,16 @@ import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../../styles/stickers.module.scss";
-import NextSeoWrapper from "../../components/utils/NextSeoWrapper";
+import {Metadata} from "next";
+
+export const metadata = {
+  title: 'つまみアイコン集',
+  description: 'つまみちゃんの作ったアイコンです。'
+} satisfies Metadata
 
 export default function Index()  {
   return (
     <div id="main_wrapper">
-      <NextSeoWrapper description={'つまみアイコン集'}/>
       <Title title={'アイコン集'}>
         <p>
           つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。

@@ -8,7 +8,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 import BlogPost from "../../lib/blog/blogPost";
+import {Metadata} from "next";
 
+export const metadata = {
+  description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。'
+} satisfies Metadata
 
 export default async function Index() {
   const articles = await getSortedPostsData()
@@ -17,14 +21,10 @@ export default async function Index() {
   articles.splice(latestLongArticleIdx, 1);
   const otherArticles = articles
 
-  const description =
-    'つまみさんのブログです。' +
-    '主にお散歩やソフトウェアの記事を書いています。'
-
   return (
     <>
       <div id="main_wrapper">
-        <Title title={'つまみログ'} description={description}/>
+        <Title title={'つまみログ'} description={metadata.description}/>
 
         <div className={styles.hrule_block}>
           <FontAwesomeIcon icon={faStar}/> LATEST LONG ARTICLE <FontAwesomeIcon icon={faStar}/>

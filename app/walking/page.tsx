@@ -5,6 +5,12 @@ import {getSortedPostsData} from "../../lib/blog/load";
 import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
 import Belongings from "./Belongings.mdx";
 import BlogPost from "../../lib/blog/blogPost";
+import {Metadata} from "next";
+
+export const metadata = {
+  title: '徒歩情報',
+  description: '長距離を歩いて移動することは面白いと言われています。'
+} satisfies Metadata
 
 export default async function Index() {
   const tag = '徒歩'
@@ -13,8 +19,8 @@ export default async function Index() {
   return (
     <div id="main_wrapper">
       <Title
-        title={'徒歩情報'}
-        description={'長距離を歩いて移動することは面白いと言われています。'}
+        title={metadata.title}
+        description={metadata.description}
       />
       <Block title={'新着徒歩記事'}>
         <p>

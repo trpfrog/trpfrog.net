@@ -15,7 +15,6 @@ import BlogMarkdown from "../renderer/BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
-import NextSeoWrapper from "../../../components/utils/NextSeoWrapper";
 import Tag from "../../../components/blog/Tag";
 import {ParseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
@@ -37,6 +36,7 @@ import ShareSpan from "./ShareSpan";
 import EditButton from "./EditButton";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../../lib/blog/blogPost";
+import {Metadata} from "next";
 
 type PageProps = {
   params: {
@@ -47,6 +47,26 @@ type PageProps = {
 export async function generateStaticParams() {
   const paths = await getAllPostPaths()
   return paths.map(slug => ({ slug: slug.toString() }))
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const {
+    title, description, thumbnail
+  } = await getPostData(params.slug[0])
+
+  const metadata: Metadata = {
+    title,
+    description
+  };
+
+  if (thumbnail) {
+    metadata.openGraph = {
+      images: [
+        {url: thumbnail}
+      ]
+    }
+  }
+  return metadata
 }
 
 const processSlug = async (slug: string, page?: string) => {
@@ -77,12 +97,6 @@ export default async function Index({ params: { slug } }: PageProps) {
     imageSize,
     relatedPosts
   } = await processSlug(...slug)
-
-  const openGraphImage = post.thumbnail ? {
-    images: [
-      {url: post.thumbnail}
-    ]
-  } : {}
 
   return (
     <div id="main_wrapper" className={styles.layout}>
@@ -155,11 +169,6 @@ export default async function Index({ params: { slug } }: PageProps) {
           <BadBlogButton/>
         </div>
       </Title>
-      <NextSeoWrapper
-        title={`${post.title} - つまみログ`}
-        description={post.description}
-        openGraph={openGraphImage}
-      />
 
       <div className={styles.main_content}>
         <div className={styles.article_wrapper}>

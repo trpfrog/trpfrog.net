@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from "next/legacy/image";
-import {GetStaticProps} from "next";
-import Layout from "../../../components/Layout";
+import {Metadata} from "next";
 import Block from "../../../components/Block";
 import styles from "../../../styles/imageview.module.scss"
 import Title from "../../../components/Title";
@@ -14,6 +13,10 @@ type PageProps = {
   }
 }
 
+export const metadata = {
+  title: 'スタンプビューア',
+} satisfies Metadata
+
 export async function generateStaticParams() {
   const ids = Array.from(Array(NUMBER_OF_IMAGES), (v, k) => k);
   return ids.map(id => ({ id: id.toString() }))
@@ -23,7 +26,7 @@ export default function Index ({ params: { id } }: PageProps) {
   const idInt = parseInt(id);
   return (
     <div id="main_wrapper">
-      <Title title={'スタンプビューア'} style={{display: 'none'}}/>
+      <Title title={metadata.title} style={{display: 'none'}}/>
       <Block>
         <div className={styles.img_wrapper_outside}>
           <div className={styles.img_wrapper_inside}>

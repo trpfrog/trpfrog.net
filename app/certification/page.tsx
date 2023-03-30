@@ -5,12 +5,18 @@ import Block from "../../components/Block";
 import path from "path";
 import fs from "fs/promises";
 import yaml from "js-yaml";
+import {Metadata} from "next";
 
 type Cert = {
   name: string,
   year: number,
   month: number
 }
+
+export const metadata = {
+  title: '免許・資格',
+  description: 'つまみさんの解除した実績を自慢するところです。'
+} satisfies Metadata
 
 export default async function Index() {
   const yamlPath = path.join(process.cwd(), 'app', 'certification', 'certification.yaml');
@@ -22,10 +28,7 @@ export default async function Index() {
 
   return (
     <div id="main_wrapper">
-      <Title
-        title={'免許・資格'}
-        description={'つまみさんの解除した実績を自慢するところです。'}
-      />
+      <Title title={metadata.title} description={metadata.description} />
       <Block>
         <div id={styles.cert_grid}>
           {certs.map(({name, year, month}, index) => (

@@ -3,6 +3,7 @@ import Block from "../../components/Block";
 import styles from '../../styles/works.module.scss';
 import React from "react";
 import Image from "next/legacy/image";
+import {Metadata} from "next";
 
 type KeywordsType = {
   keywords: string[]
@@ -19,12 +20,17 @@ const Keywords: React.FC<KeywordsType> = ({keywords}) => {
   );
 }
 
+export const metadata = {
+  title: 'Works',
+  description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'
+} satisfies Metadata
+
 export default async function Index() {
   return (
     <div id="main_wrapper">
       <Title
-        title={'Works'}
-        description={'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'}
+        title={metadata.title}
+        description={metadata.description}
       >
         <p>
           最終更新: 2022/1/2

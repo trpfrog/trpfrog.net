@@ -3,6 +3,7 @@ import Image from "next/legacy/image";
 import Block from "../../../components/Block";
 import styles from "../../../styles/imageview.module.scss"
 import Title from "../../../components/Title";
+import {Metadata} from "next";
 
 const NUMBER_OF_IMAGES = 33;
 
@@ -11,6 +12,10 @@ type PageProps = {
     id: string
   }
 }
+
+export const metadata = {
+  title: 'アイコンビューア',
+} satisfies Metadata
 
 export async function generateStaticParams() {
   const ids = Array.from(Array(NUMBER_OF_IMAGES), (v, k) => k);
@@ -21,7 +26,7 @@ export default function Index ({ params: { id } }: PageProps) {
   const idInt = parseInt(id);
   return (
     <div id="main_wrapper">
-      <Title title={'アイコンビューア'} style={{display: 'none'}}/>
+      <Title title={metadata.title} style={{display: 'none'}}/>
       <Block>
         <div className={styles.img_wrapper_outside}>
           <div className={styles.img_wrapper_inside}>

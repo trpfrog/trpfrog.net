@@ -6,6 +6,7 @@ import React from "react";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import GadgetIntro from "./GadgetIntro";
+import {Metadata} from "next";
 
 type StringItemizeRecord = (
   | string
@@ -56,6 +57,11 @@ function Itemize(props: {children: StringItemizeRecord | string | undefined}) {
   );
 }
 
+export const metadata = {
+  title: '作業環境',
+  description: 'つまみさんのデスク周りとか所持デバイスとか'
+} satisfies Metadata
+
 export default async function Index() {
   // read yaml
   const yamlPath = path.join(process.cwd(), 'app', 'environment', 'items.yaml');
@@ -65,10 +71,7 @@ export default async function Index() {
 
   return (
     <div id="main_wrapper">
-      <Title
-        title="作業環境"
-        description="つまみさんのデスク周りとか所持デバイスとか"
-      >
+      <Title title={metadata.title} description={metadata.description}>
         <p>
           Last updated: 2021/12/11
         </p>
