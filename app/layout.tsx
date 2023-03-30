@@ -4,7 +4,7 @@ import '../styles/globals.scss';
 import Header from "../components/header/Header";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import BackToTop from "../components/blog/BackToTop";
+import BackToTop from "../components/BackToTop";
 import {M_PLUS_Rounded_1c} from "next/font/google";
 import GoogleFonts from "../components/GoogleFonts";
 
