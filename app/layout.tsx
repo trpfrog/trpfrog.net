@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import {M_PLUS_Rounded_1c} from "next/font/google";
 import GoogleFonts from "../components/GoogleFonts";
+import Favicon from "../components/head/Favicon";
+import Analytics from "../components/Analytics";
 
 
 export const metadata: Metadata = {
@@ -38,7 +40,9 @@ export default function RootLayout({children}: Props) {
   return (
     <html lang="ja">
       <head>
+        <Analytics/>
         <GoogleFonts/>
+        <Favicon/>
       </head>
       <body>
         <Header/>
