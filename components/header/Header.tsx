@@ -74,7 +74,7 @@ const Header: React.FC = () => {
       <HideWhenScrollDown>
         <header id={styles.header}>
           <div id={styles.inside}>
-            {pathname == '/' ? <TopTitle/> : <NormalTitle/>}
+            {pathname === '/' ? <TopTitle/> : <NormalTitle/>}
             <nav id={styles.navigation}>
               <ul>
                 {topLinks.map(({ href, label }) => (
