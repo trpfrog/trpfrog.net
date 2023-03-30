@@ -1,10 +1,8 @@
 import {getAllTags, getSortedPostsData} from "../../../../lib/blog/load";
-import Layout from "../../../../components/Layout";
 import Title from "../../../../components/Title";
 import Link from "next/link";
 import React from "react";
 import ArticleCard, {ArticleGrid} from "../../../../components/blog/ArticleCard";
-import NextSeoWrapper from "../../../../components/utils/NextSeoWrapper";
 
 export async function generateStaticParams() {
   const tags = await getAllTags()
@@ -38,7 +36,6 @@ export default async function Index ({ params }: Props) {
           </Link>
         </p>
       </Title>
-      <NextSeoWrapper title={`タグ「${tag}」の記事一覧 - つまみログ`}/>
 
       <ArticleGrid>
         {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}

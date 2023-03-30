@@ -1,7 +1,5 @@
 import React, {CSSProperties} from "react";
 import Block from "./Block";
-import NextSeoWrapper from "./utils/NextSeoWrapper";
-import {Metadata} from "next";
 
 type Props = {
   title?: string
