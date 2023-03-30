@@ -4,13 +4,6 @@ import {usePathname} from "next/navigation";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
 
-const backToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
-
 const TitleWithPageName = () => {
   const pathname = usePathname() ?? '/'
 
@@ -53,9 +46,9 @@ export const NormalTitle = () => {
       <div id={styles.site_name_wrapper}>
         <h1 id={styles.site_name}>
           {showPageTitle ? (
-            <a onClick={backToTop} style={{cursor: 'pointer'}}>
+            <Link href="/" style={{cursor: 'pointer'}}>
               <TitleWithPageName/>
-            </a>
+            </Link>
           ) : (
             <Link href="/">
               {process.env.title}
