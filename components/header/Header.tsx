@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import {usePathname} from "next/navigation";
-import {animate, motion, useMotionValue, useScroll} from "framer-motion";
+import {useScroll} from "framer-motion";
 import React, {useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
@@ -39,7 +39,6 @@ export const HeaderFollowSticky = (props: {
 }
 
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
-  const headerY = useMotionValue(0)
   const {scrollY} = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
