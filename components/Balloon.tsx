@@ -1,7 +1,7 @@
 'use client';
 
 import React, {Dispatch, useState} from "react";
-import styles from "../styles/balloon.module.scss";
+import styles from "../app/balloon/BalloonApp.module.scss";
 import useSound from "use-sound";
 
 type BalloonProps = {

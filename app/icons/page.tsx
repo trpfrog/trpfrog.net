@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import styles from "../../styles/stickers.module.scss";
+import styles from "../stickers/style.module.scss";
 import {Metadata} from "next";
 
 export const metadata = {

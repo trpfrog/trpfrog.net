@@ -5,7 +5,7 @@ import Util from "../../lib/utils";
 import Balloon, {useBalloonSound} from "../../components/Balloon";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import styles from "../../styles/balloon.module.scss";
+import styles from "./BalloonApp.module.scss";
 
 type BalloonDivProps = {
   n: number

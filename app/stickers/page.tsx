@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import styles from "../../styles/stickers.module.scss";
+import styles from "./style.module.scss";
 
 export const metadata = {
   title: 'スタンプ素材集',

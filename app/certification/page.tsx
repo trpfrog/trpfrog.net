@@ -1,4 +1,4 @@
-import styles from "../../styles/certification.module.scss";
+import styles from "./style.module.scss";
 
 import Title from "../../components/Title";
 import Block from "../../components/Block";

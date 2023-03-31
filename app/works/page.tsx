@@ -1,6 +1,6 @@
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import styles from '../../styles/works.module.scss';
+import styles from './style.module.scss';
 import React from "react";
 import Image from "next/legacy/image";
 import {Metadata} from "next";

@@ -1,7 +1,7 @@
 'use client';
 
 import Block from "../../components/Block";
-import styles from "../../styles/icon-maker.module.scss";
+import styles from "./style.module.scss";
 import Image from "next/legacy/image";
 import IconCanvas from "../../lib/iconMaker";
 

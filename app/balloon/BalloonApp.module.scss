@@ -13,7 +13,7 @@
 
 .balloon {
     cursor: crosshair;
-    $path: '../public/images/balloon';
+    $path: '../../public/images/balloon';
 
     &[data-broken-balloon="true"] {
         background-image: url($path + '/broken.png');
