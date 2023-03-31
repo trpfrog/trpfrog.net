@@ -1,4 +1,4 @@
-import Block from "../Block";
+import Block from "../../components/Block";
 import styles from "../../styles/top-page/main.module.scss";
 
 type Props = {

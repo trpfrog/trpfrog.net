@@ -1,6 +1,6 @@
 import styles from "../../styles/top-page/WhatsNew.module.scss";
 import ReactMarkdown from "react-markdown";
-import Block from "../Block";
+import Block from "../../components/Block";
 import {getWhatsNewRecords, WhatsNewRecord} from "../../lib/whats_new";
 import React from "react";
 
