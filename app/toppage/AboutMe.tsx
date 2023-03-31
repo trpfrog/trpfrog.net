@@ -1,4 +1,4 @@
-import styles from "../../styles/top-page/AboutMe.module.scss";
+import styles from "./AboutMe.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Block from "../../components/Block";
 

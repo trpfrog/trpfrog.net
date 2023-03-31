@@ -1,4 +1,4 @@
-import styles from '../styles/top-page/main.module.scss';
+import styles from './style.module.scss';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import TrpFrogAnimationFrame from "./toppage/TrpFrogAnimation";
