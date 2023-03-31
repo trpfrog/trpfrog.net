@@ -10,35 +10,7 @@ import styles from "../../styles/common/Header.module.scss";
 import MobileMenu from "../mobile_menu/MobileMenu";
 import MobileMenuButton from "../mobile_menu/MobileMenuButton";
 
-export const HeaderFollowSticky = (props: {
-  children: React.ReactNode,
-  top: string | number
-}) => {
-
-  const {scrollY} = useScroll()
-  const [headerTop, setHeaderTop] = useState(`calc(var(--header-height) + ${props.top})`)
-
-  const handleScroll = (y: number) => {
-    const v = scrollY.getVelocity()
-    const shouldShowHeader = v < -1000 || y < 500;
-    const shouldHideHeader = !shouldShowHeader && v > 1000;
-
-    if (shouldShowHeader) {
-      setHeaderTop(`calc(var(--header-height) + ${props.top})`)
-    } else if (shouldHideHeader) {
-      setHeaderTop(`${props.top}`)
-    }
-  }
-  scrollY.on("change", handleScroll)
-
-  return (
-    <div style={{transition: '0.1s', position: 'sticky', top: headerTop}}>
-      {props.children}
-    </div>
-  )
-}
-
-const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
+const useHeaderVisibleStatus = () => {
   const {scrollY} = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
@@ -47,6 +19,8 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
     const shouldShowHeader = v < -1000 || y < 500;
     const shouldHideHeader = !shouldShowHeader && v > 1000;
 
+    console.log(`y: ${y}, v: ${v}, shouldShowHeader: ${shouldShowHeader}, shouldHideHeader: ${shouldHideHeader}`)
+
     if (shouldShowHeader) {
       setShowHeader(true)
     } else if (shouldHideHeader) {
@@ -54,6 +28,27 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
     }
   })
 
+  return showHeader
+}
+
+export const HeaderFollowSticky = (props: {
+  children: React.ReactNode,
+  top: string | number
+}) => {
+  const headerVisible = useHeaderVisibleStatus()
+  const getStyle = (isHeaderVisible: boolean) => isHeaderVisible
+    ? `calc(var(--header-height) + ${props.top})`
+    : `${props.top}`
+
+  return (
+    <div style={{transition: '0.1s', position: 'sticky', top: getStyle(headerVisible)}}>
+      {props.children}
+    </div>
+  )
+}
+
+const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
+  const showHeader = useHeaderVisibleStatus()
   return (
     <div id={styles.hide_when_scroll_down} data-show={showHeader}>
       {props.children}
