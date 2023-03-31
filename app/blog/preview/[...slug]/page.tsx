@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from "next/legacy/image";
 
-import Layout from "../../../../components/Layout";
 import Title from "../../../../components/Title";
 
 import {getPreviewPostData} from "../../../../lib/blog/loadPreview";
@@ -11,7 +10,6 @@ import BlogMarkdown from "../../renderer/BlogMarkdown";
 
 import styles from '../../../../styles/blog/blog.module.scss';
 
-import {NextSeo} from "next-seo";
 import {formatReadTime} from "../../../../lib/blog/readTime";
 import {parseWithBudouX} from "../../../../lib/wordSplit";
 import PostAttributes from "../../../../components/blog/PostAttributes";
@@ -25,10 +23,22 @@ type Props = {
   }
 }
 
-export const metadata: Metadata = {
-  title: '記事プレビュー',
+export async function generateMetadata({ params }: Props) {
+  const entry = await getPreviewPostData(params.slug[0])
+  const metadata: Metadata = {
+    title: '[記事プレビュー] ' + entry.title,
+    robots: 'noindex, nofollow',
+    description: entry.description,
+  }
+  if (entry.thumbnail) {
+    metadata.openGraph = {
+      images: [
+        {url: entry.thumbnail}
+      ]
+    }
+  }
+  return metadata
 }
-
 
 const processSlug = async (slug: [string, string | undefined]) => {
   let [id, page] = slug
@@ -51,11 +61,6 @@ const processSlug = async (slug: [string, string | undefined]) => {
 
 export default async function Index (props: Props) {
   const { entry: post, imageSize } = await processSlug(props.params.slug)
-  const openGraphImage = post.thumbnail ? {
-    images: [
-      {url: post.thumbnail}
-    ]
-  } : {}
 
   const {
     minutes: readMin,
@@ -63,8 +68,7 @@ export default async function Index (props: Props) {
   } = formatReadTime(post.readTime)
 
   return (
-    <Layout>
-      <NextSeo noindex={true}/>
+    <div id="main_wrapper">
       <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
         {post.thumbnail &&
           <Image
@@ -88,15 +92,10 @@ export default async function Index (props: Props) {
           <PostAttributes post={post}/>
         </div>
       </Title>
-      <NextSeo
-        title={`記事プレビュー - つまみログ`}
-        description={post.description}
-        openGraph={openGraphImage}
-      />
       <BlogMarkdown
         entry={post}
         imageSize={imageSize}
       />
-    </Layout>
+    </div>
   )
 }
