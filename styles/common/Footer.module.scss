@@ -7,7 +7,7 @@
     height: var(--footer-height);
 }
 
-#footer_wrapper {
+#inner_footer {
     display: flex;
     align-items: center;
     max-width: 950px;
@@ -49,7 +49,7 @@
         text-align: center;
     }
 
-    #footer_wrapper {
+    #inner_footer {
         text-align: center;
         padding: 0 30px;
     }

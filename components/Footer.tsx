@@ -4,7 +4,7 @@ import styles from '../styles/common/Footer.module.scss'
 const Footer = () => {
   return (
     <footer id={styles.footer}>
-      <div id={styles.footer_wrapper}>
+      <div id={styles.inner_footer}>
         <p id={styles.copyright}>
           &copy; 2019-2022 つまみ
         </p>

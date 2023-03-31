@@ -9,7 +9,7 @@
     display: flex;
     align-items: flex-end;
     width: 100%;
-    height: calc(var(--navigation-height) + var(--header-height));
+    height: var(--navigation-height);
 
     a {
         display: inline-block;
@@ -54,5 +54,11 @@
                 color: #90e200;
             }
         }
+    }
+}
+
+@include mixins.mq(sp) {
+    #wide_nav {
+        display: none;
     }
 }
