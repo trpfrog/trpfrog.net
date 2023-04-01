@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Image from "next/legacy/image";
 
 import Title from "../../../components/Title";
@@ -18,25 +17,16 @@ import styles from '../../../styles/blog/blog.module.scss';
 import Tag from "../../../components/blog/Tag";
 import {ParseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
-import {
-  faArrowLeft,
-  faPencil,
-} from "@fortawesome/free-solid-svg-icons";
-import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import RelatedPosts from "../../../components/blog/RelatedPosts";
-import PageNavigation from "../../../components/blog/PageNavigation";
-import {HeaderFollowSticky} from "../../../components/header/Header";
-import ArticleCard from "../../../components/blog/ArticleCard";
-import {UDFontBlock, UDFontButton} from "../../../components/blog/UDFontBlock";
-import EntryButton from "../../../components/blog/EntryButton";
+import {UDFontBlock} from "../../../components/blog/UDFontBlock";
 import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlogButton";
 import React from "react";
-import TogglePageViewLink from "../../../components/blog/TogglePageViewLink";
-import ShareSpan from "./ShareSpan";
 import EditButton from "./EditButton";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../../lib/blog/blogPost";
 import {Metadata} from "next";
+import {EntryButtons, RichEntryButtons} from "./EntryButtons";
+import ArticleSidebar from "./ArticleSidebar";
 
 type PageProps = {
   params: {
@@ -144,23 +134,9 @@ export default async function Index({ params: { slug } }: PageProps) {
               ))
             }
           </p>
-
           <div id={styles.entry_top_buttons}>
-            <Link href={'/blog'}>
-
-              <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
-
-            </Link>
-            <ShareSpan slug={post.slug}>
-              <EntryButton icon={faTwitter} text={'ツイート'}/>
-            </ShareSpan>
-            <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-              <EntryButton icon={faPencil} text={'訂正依頼'}/>
-            </a>
-            <UDFontButton/>
-            {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
+            <RichEntryButtons post={post} extended={true}/>
           </div>
-
           {process.env.NODE_ENV === 'development' &&
             <p>
               <EditButton slug={post.slug}/>
@@ -182,47 +158,12 @@ export default async function Index({ params: { slug } }: PageProps) {
           </UDFontBlock>
         </div>
         <aside>
-          <HeaderFollowSticky top={'1em'}>
-            <ArticleCard
-              entry={post}
-              style={{
-                pointerEvents: 'none',
-                borderRadius: 30,
-                marginBottom: '1em'
-              }}
-            />
-            <Block className={styles.blog_side_bar} style={{padding: '1.5em 0.5em'}}>
-              <div style={{transform: 'scale(0.9)', transformOrigin: 'top'}}>
-                <Link href={'/blog'}>
-
-                  <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
-
-                </Link>
-                <ShareSpan slug={post.slug}>
-                  <EntryButton icon={faTwitter} text={'ツイート'}/>
-                </ShareSpan>
-                <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-                  <EntryButton icon={faPencil} text={'訂正依頼'}/>
-                </a>
-                <div style={{height: '1em'}}/>
-                <PageNavigation entry={post}/>
-              </div>
-            </Block>
-          </HeaderFollowSticky>
+          <ArticleSidebar post={post}/>
         </aside>
       </div>
+
       <Block id={styles.entry_bottom_buttons}>
-        <p className={'link-area'} style={{textAlign: 'center'}}>
-          <Link href={'/blog'}>
-            記事一覧
-          </Link>
-          <ShareSpan slug={post.slug}>
-            <a>ツイート</a>
-          </ShareSpan>
-          <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-            訂正リクエスト
-          </a>
-        </p>
+        <EntryButtons post={post}/>
       </Block>
       <RelatedPosts
         tag={post.tags.split(',')[0].trim()}
