@@ -9,6 +9,7 @@ import {M_PLUS_Rounded_1c} from "next/font/google";
 import GoogleFonts from "../components/GoogleFonts";
 import Favicon from "../components/head/Favicon";
 import Analytics from "../components/Analytics";
+import FixTooLargeFontAwesomeIcons from "../components/utils/FixTooLargeFontAwesomeIcons";
 
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({children}: Props) {
         <Analytics/>
         <GoogleFonts/>
         <Favicon/>
+        <FixTooLargeFontAwesomeIcons/>
       </head>
       <body>
         <Header/>
