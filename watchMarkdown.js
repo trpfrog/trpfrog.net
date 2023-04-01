@@ -9,17 +9,17 @@ const chokidar = require('chokidar');
 let isUpdating = false
 const postsDir = './posts'
 const scriptDir = './lib/blog/fileWatch.ts'
+const originalFileContent = fs.readFileSync(scriptDir, 'utf-8')
 
 const handler = () => {
   if (isUpdating) return
   isUpdating = true
   const content = fs.readFileSync(scriptDir, 'utf-8')
-  const codeToInsert = `${content}\n console.log()`
-
+  const codeToInsert = `${content}\nconsole.log()`
   fs.writeFileSync(scriptDir, codeToInsert)
 
   setTimeout(() => {
-    fs.writeFileSync(scriptDir, content)
+    fs.writeFileSync(scriptDir, originalFileContent)
     isUpdating = false
   }, 1000)
 }
