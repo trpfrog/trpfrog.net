@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 /** @type {import('next').NextConfig} */
 const config = {
   swcMinify: true,
@@ -16,6 +18,17 @@ const config = {
   experimental: {
     appDir: true,
     mdxRs: true,
+  },
+
+  webpack: (config) => {
+    config.plugins = [
+      ...config.plugins,
+      new webpack.IgnorePlugin({
+        resourceRegExp: /canvas/,
+        contextRegExp: /jsdom$/,
+      }),
+    ]
+    return config
   },
 
   async redirects() {
