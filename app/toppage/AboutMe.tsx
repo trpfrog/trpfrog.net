@@ -24,7 +24,7 @@ const AboutMe = ({id}: Props) => {
 
   const attributes = [
     {icon: faMapMarkerAlt, text: '東京都 (23区外)'},
-    {icon: faUniversity, text: '電気通信大学 4年'},
+    {icon: faUniversity, text: '電気通信大学 修士1年 (情報学専攻)'},
     {icon: faBirthdayCake, text: '2000年10月17日 (22歳)'},
     {icon: faHeart, text: 'コンピュータ / 開発 / 競プロ / 散歩'},
     {icon: faLaptop, text: 'Macユーザー'},
