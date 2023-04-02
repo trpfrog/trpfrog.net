@@ -1,7 +1,7 @@
 import styles from "../../../styles/blog/blog.module.scss";
 import React from "react";
-import {ArticleParts} from "../../../lib/blog/articleParts";
 import ProfileCards from "./ProfileCards";
+import {ArticleParts} from "../ArticleParts";
 
 export const ResultBox: ArticleParts = content => {
   return (

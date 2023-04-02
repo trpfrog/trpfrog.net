@@ -1,6 +1,5 @@
 import React, {CSSProperties} from "react";
 import Block from "./Block";
-import {NextSeo} from "next-seo";
 
 type Props = {
   title?: string
@@ -23,13 +22,6 @@ const Title: React.FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <NextSeo
-        title={title + ' - ' + process.env.title}
-        description={props.description}
-        openGraph={props.cardImageUrl ? {
-          images: [{url: props.cardImageUrl}]
-        } : {}}
-      />
       <Block
         id={"title"}
         className={props.className}

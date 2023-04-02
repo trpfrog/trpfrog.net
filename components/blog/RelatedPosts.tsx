@@ -1,10 +1,12 @@
+'use client'
+
 import styles from "../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "./ArticleCard";
 import Link from "next/link";
 import React from "react";
-import {BlogPost} from "../../lib/blog/load";
+import BlogPost from "../../lib/blog/blogPost";
 
 const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost[] }) => {
   if (relatedPosts.length <= 0) {
@@ -28,6 +30,7 @@ const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost
         {/* PC */}
         {relatedPosts.length > 6 &&
           <div style={{textAlign: 'center'}} className={'only-on-pc'}>
+            {/* @ts-ignore */}
             <Link href={'/blog/tags/' + tag} className={'linkButton'}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
             </Link>
@@ -37,6 +40,7 @@ const RelatedPosts = ({tag, relatedPosts}: { tag: string, relatedPosts: BlogPost
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 &&
           <div style={{textAlign: 'center'}} className={'only-on-sp'}>
+            {/* @ts-ignore */}
             <Link href={'/blog/tags/' + tag} className={'linkButton'}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
             </Link>

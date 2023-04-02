@@ -1,7 +1,11 @@
+const webpack = require('webpack')
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const config = {
   swcMinify: true,
   reactStrictMode: true,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+
   env: {
     title: 'つまみネット',
     twitterId: '@TrpFrog',
@@ -9,6 +13,22 @@ module.exports = {
   images: {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/trpfrog/image/upload/',
+  },
+
+  experimental: {
+    appDir: true,
+    mdxRs: true,
+  },
+
+  webpack: (config) => {
+    config.plugins = [
+      ...config.plugins,
+      new webpack.IgnorePlugin({
+        resourceRegExp: /canvas/,
+        contextRegExp: /jsdom$/,
+      }),
+    ]
+    return config
   },
 
   async redirects() {
@@ -42,34 +62,19 @@ module.exports = {
   }
 }
 
+const withMdx = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      import("remark-gfm"),
+    ],
+    rehypePlugins: [],
+  },
+  experimental: {
+    mdxRs: true,
+  }
+})
 
-/*
- * HMR on Markdown files
- * Source: https://miyaoka.dev/posts/2020-12-31-hmr-on-markdown
- */
+module.exports = withMdx(config)
 
-const fs = require('fs');
-const chokidar = require('chokidar');
-
-let isUpdating  = false
-const postsDir  = './posts'
-const scriptDir = './lib/blog/fileWatch.ts'
-
-const handler = () => {
-  if (isUpdating) return
-  isUpdating = true
-  const content = fs.readFileSync(scriptDir, 'utf-8')
-  const codeToInsert = `${content}\n console.log()`
-
-  fs.writeFileSync(scriptDir, codeToInsert)
-
-  setTimeout(() => {
-    fs.writeFileSync(scriptDir, content)
-    isUpdating = false
-  }, 1000)
-}
-
-chokidar
-  .watch(postsDir, { ignoreInitial: true })
-  .on('add', handler)
-  .on('change', handler);
+require('./watchMarkdown')

@@ -1,11 +1,14 @@
+'use client';
+
 import React, {CSSProperties, useState} from "react";
 import styles from "../../styles/blog/BlogImage.module.scss";
 import Image from "next/legacy/image";
 import Modal from "react-modal";
-import {getPureCloudinaryPath, parseInlineMarkdown} from "./BlogMarkdown";
+import {parseInlineMarkdown} from "../../app/blog/renderer/BlogMarkdown";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
+import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
 
 
 type BlogImageProps = {

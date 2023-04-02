@@ -1,5 +1,5 @@
-import {getPureCloudinaryPath} from "../../components/blog/BlogMarkdown";
-import {BlogPost} from "./load";
+import {getPureCloudinaryPath} from "./getPureCloudinaryPath";
+import BlogPost from "./blogPost";
 
 export type BlogImageData = { size: { width: number, height: number }, caption: string }
 

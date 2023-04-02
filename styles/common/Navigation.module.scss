@@ -5,13 +5,15 @@
     text-align: center;
     z-index: 50;
 
-    position: absolute;
+    //position: absolute;
+    display: flex;
+    align-items: flex-end;
     width: 100%;
-    height: calc(var(--navigation-height) + var(--header-height));
+    height: var(--navigation-height);
 
     a {
         display: inline-block;
-        font-family: 'Comfortaa', sans-serif;
+        font-family: var(--font-comfortaa);
         text-decoration: none;
         color: white;
         padding: 1em;
@@ -21,10 +23,9 @@
 }
 
 #wide_nav_wrapper {
-    position: absolute;
-    bottom: 9px;
     width: 100%;
     vertical-align: bottom;
+    margin-bottom: 10px;
 }
 
 @include mixins.mq(dark) {
@@ -53,5 +54,11 @@
                 color: #90e200;
             }
         }
+    }
+}
+
+@include mixins.mq(sp) {
+    #wide_nav {
+        display: none;
     }
 }

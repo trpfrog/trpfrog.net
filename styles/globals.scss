@@ -44,6 +44,13 @@ html, body {
 body, #inner-body {
     background: var(--body-background);
     color: var(--base-font-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    & > main {
+        display: block;
+        flex: 1;
+    }
 }
 
 a:link {
@@ -133,7 +140,7 @@ h3 {
 
             background: #3c7709;
             color: white;
-            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-family: var(--font-m-plus-rounded-1c);
             font-weight: bold;
             font-size: 0.9em;
             line-height: 1.66;

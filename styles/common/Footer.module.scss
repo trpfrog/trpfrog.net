@@ -7,7 +7,7 @@
     height: var(--footer-height);
 }
 
-#footer_wrapper {
+#inner_footer {
     display: flex;
     align-items: center;
     max-width: 950px;
@@ -22,11 +22,12 @@
 
     text-align: left;
     color: #ffffff;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-size: 1.5em;
 }
 
 .footer_button {
+    text-align: center;
     background: white;
     cursor: pointer;
     text-decoration: none;
@@ -48,7 +49,7 @@
         text-align: center;
     }
 
-    #footer_wrapper {
+    #inner_footer {
         text-align: center;
         padding: 0 30px;
     }

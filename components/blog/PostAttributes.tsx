@@ -2,9 +2,9 @@ import styles from "../../styles/blog/PostAttributes.module.scss";
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faImages, faSyncAlt, faWalking} from "@fortawesome/free-solid-svg-icons";
-import {BlogPost} from "../../lib/blog/load";
 import dayjs from "dayjs";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import BlogPost from "../../lib/blog/blogPost";
 
 type Props = {
   post: BlogPost

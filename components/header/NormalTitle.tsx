@@ -1,34 +1,32 @@
 import {useEffect, useState} from "react";
 import {useScroll} from "framer-motion";
-import {NextRouter, useRouter} from "next/router";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
 import styles from "../../styles/common/Header.module.scss";
 
-const backToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
+const TitleWithPageName = () => {
+  const pathname = usePathname() ?? '/'
 
-const extractTitle = (router: NextRouter) => {
-  const rawPageTitle =
-    typeof document !== 'undefined'
-      ? document.title
-      : process.env.title as string
+  let siteTitle = pathname.startsWith('/blog/')
+    ? 'つまみログ'
+    : process.env.title as string
 
-  let pageTitle = rawPageTitle.split(' - ')[0]
-  let subTitle = '';
+  const [pageTitle, setPageTitle] = useState('')
+  useEffect(() => {
+    setPageTitle(document?.title.split(' - ')[0] ?? '')
+  }, [])
 
-  // Get article title
-  if (router.pathname.startsWith('/blog/')) {
-    subTitle = pageTitle
-    pageTitle = 'つまみログ';
-  }
-
-  return {
-    pageTitle, subTitle
-  }
+  return (
+    <div className={styles.on_subtitle_showed}>
+      {siteTitle}
+      {pageTitle ? (
+        <>
+          <br/>
+          <div id={styles.subtitle}>{pageTitle}</div>
+        </>
+      ) : null}
+    </div>
+  )
 }
 
 export const NormalTitle = () => {
@@ -37,25 +35,10 @@ export const NormalTitle = () => {
   const [heightToChangeTitle, setHeightToChangeTitle] = useState(250)
   useEffect(() => setHeightToChangeTitle(window.innerWidth <= 800 ? 120 : 250), [])
 
-  const handleScroll = (y: number) => {
-    setShowPageTitle(y > heightToChangeTitle);
-  }
-
   const {scrollY} = useScroll()
-  scrollY.onChange(handleScroll)
-
-  const router = useRouter();
-  const {pageTitle, subTitle} = extractTitle(router)
-
-  const [pageTitleElement, setPageTitleElement] = useState(<>{process.env.title}</>)
-  useEffect(() => {
-    setPageTitleElement(
-      <div className={styles.on_subtitle_showed}>
-        {pageTitle}<br/>
-        <div id={styles.subtitle}>{subTitle}</div>
-      </div>
-    )
-  }, [showPageTitle])
+  scrollY.on("change", (y: number) => {
+    setShowPageTitle(y > heightToChangeTitle);
+  })
 
   return (
     <div id={styles.site_logo}>
@@ -63,9 +46,9 @@ export const NormalTitle = () => {
       <div id={styles.site_name_wrapper}>
         <h1 id={styles.site_name}>
           {showPageTitle ? (
-            <a onClick={backToTop} style={{cursor: 'pointer'}}>
-              {pageTitleElement}
-            </a>
+            <Link href="/" style={{cursor: 'pointer'}}>
+              <TitleWithPageName/>
+            </Link>
           ) : (
             <Link href="/">
               {process.env.title}

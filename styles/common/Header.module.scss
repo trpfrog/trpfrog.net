@@ -1,12 +1,27 @@
 @use '../mixins';
 
+#hide_when_scroll_down {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition-timing-function: ease-out;
+
+    &[data-show='false'] {
+        transition-duration: 100ms;
+        transform: translateY(-110%);
+    }
+    &[data-show='true'] {
+        transition-duration: 200ms;
+        transform: translateY(0px);
+    }
+}
+
 #header {
-    position: fixed;
     background: var(--header-color);
     width: 100%;
 
     overflow: hidden;
-    z-index: 999;
 
     height: var(--header-height);
     -webkit-filter: var(--header-filter);
@@ -50,17 +65,13 @@
     margin: auto 0;
     display: block;
     color: #ffffff;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-weight: 800;
-
-
 
     @include mixins.mq(sp) {
         grid-area: page_title;
         font-size: 1.5em;
     }
-
-
 }
 
 #subtitle {
@@ -103,6 +114,32 @@
     grid-template-rows: var(--header-height);
     gap: 5px;
     grid-template-columns: var(--header-icon-size) auto;
+
+    // top-page animation
+    #trpfrog_icon, #site_name_wrapper {
+        transition-timing-function: ease-out;
+    }
+
+    &[data-show-icon='false'] {
+        #trpfrog_icon {
+            transition-duration: 300ms;
+            transform: translateY(90%);
+        }
+        #site_name_wrapper {
+            transition-duration: 320ms;
+            transform: translateX(calc(-1 * var(--header-icon-size) - 0px));
+        }
+    }
+    &[data-show-icon='true'] {
+        #trpfrog_icon {
+            transition-duration: 320ms;
+            transform: translateY(0);
+        }
+        #site_name_wrapper {
+            transition-duration: 300ms;
+            transform: translateX(0px);
+        }
+    }
 }
 
 .on_subtitle_showed {
@@ -115,13 +152,13 @@
     position: relative;
     top: 3px;
     text-align: right;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--font-comfortaa);
     color: #ffffff;
 
     li {
         display: inline-block;
         list-style-type: none;
-        font-family: 'Comfortaa', sans-serif;
+        font-family: var(--font-comfortaa);
         color: #ffffff;
         text-decoration: none;
         margin-right: 0.5em;

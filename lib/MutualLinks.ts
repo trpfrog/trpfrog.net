@@ -1,5 +1,6 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
+import yaml from 'js-yaml';
 
 export type MutualLinkRecord = {
   url: string,
@@ -9,10 +10,10 @@ export type MutualLinkRecord = {
   description: string
 }
 
-export const getMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
-  const jsonPath = path.join(process.cwd(), 'data', 'mutual_links.json');
-  const jsonText = fs.readFileSync(jsonPath, 'utf-8');
-  const links = JSON.parse(jsonText) as MutualLinkRecord[];
+export const loadMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
+  const yamlPath = path.join(process.cwd(), 'app', 'links', 'mutual_links.yaml');
+  const yamlText = await fs.readFile(yamlPath, 'utf-8');
+  const links = yaml.load(yamlText) as MutualLinkRecord[];
 
   return links.sort(({ownerName: a}, {ownerName: b}) => {
     if (a < b) {
