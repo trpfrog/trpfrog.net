@@ -71,6 +71,8 @@ const myMarkdownClasses = {
   },
 
   IgnoreReadCount: content => (
+    // This is a hack to make the read count not increase
+    // using "read counter does not count inside of code blocks"
     <ArticleRendererFromContext toRender={content}/>
   ),
 
