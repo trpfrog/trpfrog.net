@@ -1,6 +1,6 @@
 import {Head, Html, Main, NextScript} from 'next/document';
 import Favicon from '../components/head/Favicon'
-import GoogleFonts from "../components/GoogleFonts";
+import fontVariables from "../lib/googleFonts";
 
 const MyDocument = () => {
   return (
@@ -8,9 +8,8 @@ const MyDocument = () => {
       <Head>
         <meta charSet="utf-8"/>
         <Favicon/>
-        <GoogleFonts/>
       </Head>
-      <body>
+      <body className={fontVariables}>
         <Main/>
         <NextScript/>
       </body>

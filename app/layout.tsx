@@ -1,16 +1,14 @@
 import type { Metadata } from 'next';
 import React from "react";
 import '../styles/globals.scss';
+import fontVariables from "../lib/googleFonts";
 import Header from "../components/header/Header";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
-import {M_PLUS_Rounded_1c} from "next/font/google";
-import GoogleFonts from "../components/GoogleFonts";
 import Favicon from "../components/head/Favicon";
 import Analytics from "../components/Analytics";
 import FixTooLargeFontAwesomeIcons from "../components/utils/FixTooLargeFontAwesomeIcons";
-
 
 export const metadata: Metadata = {
   title: {
@@ -42,11 +40,10 @@ export default function RootLayout({children}: Props) {
     <html lang="ja">
       <head>
         <Analytics/>
-        <GoogleFonts/>
         <Favicon/>
         <FixTooLargeFontAwesomeIcons/>
       </head>
-      <body>
+      <body className={fontVariables}>
         <Header/>
         <Navigation/>
         <main>
