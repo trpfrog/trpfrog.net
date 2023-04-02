@@ -37,7 +37,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
     border-bottom: solid 3px #005704;
     font-weight: bold;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
 }
 
 .ctrl_btn:hover {

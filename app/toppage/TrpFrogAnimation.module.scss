@@ -50,7 +50,7 @@
     text-align: center;
     width: 100%;
     z-index: 0;
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-size: calc(min(1000px, 100vw) / 7 * 1.4);
     font-weight: bold;
     color: white;

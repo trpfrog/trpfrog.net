@@ -120,7 +120,7 @@
         }
 
         &::after {
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: var(--font-noto-sans-jp);
             transition: 100ms;
             font-weight: bold;
             color: var(--base-font-color);
@@ -226,11 +226,11 @@
 }
 
 .with_ud_font {
-    font-family: 'Roboto', 'BIZ UDPGothic', var(--main-font) !important;
+    font-family: var(--font-roboto), var(--font-biz-udp-gothic), var(--main-font) !important;
     letter-spacing: 1px;
 
     * {
-        --main-font: 'Roboto', 'BIZ UDPGothic', var(--main-font);
+        --main-font: var(--font-roboto), var(--font-biz-udp-gothic), var(--main-font);
     }
 
     strong, b {

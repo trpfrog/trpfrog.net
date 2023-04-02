@@ -1,7 +1,7 @@
 @use '../mixins';
 
 .hrule_block {
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-weight: bold;
     padding: 3px;
     margin-top: calc(-1 * var(--main-margin) * 0.2);

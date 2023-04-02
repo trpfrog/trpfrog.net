@@ -65,17 +65,13 @@
     margin: auto 0;
     display: block;
     color: #ffffff;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-weight: 800;
-
-
 
     @include mixins.mq(sp) {
         grid-area: page_title;
         font-size: 1.5em;
     }
-
-
 }
 
 #subtitle {
@@ -156,13 +152,13 @@
     position: relative;
     top: 3px;
     text-align: right;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--font-comfortaa);
     color: #ffffff;
 
     li {
         display: inline-block;
         list-style-type: none;
-        font-family: 'Comfortaa', sans-serif;
+        font-family: var(--font-comfortaa);
         color: #ffffff;
         text-decoration: none;
         margin-right: 0.5em;

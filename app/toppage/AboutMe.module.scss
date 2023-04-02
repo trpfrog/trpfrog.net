@@ -6,7 +6,7 @@
 
 #my_name {
     display: inline-block;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-weight: bold;
     font-size: 4em;
     margin: -0.2em 0;

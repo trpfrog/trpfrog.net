@@ -4,7 +4,7 @@ $code-block-border: 1px;
 $brightness: 1.2;
 
 .post code {
-    font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace !important;
+    font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace !important;
 }
 
 .code_block {
@@ -114,7 +114,7 @@ $brightness: 1.2;
         background-color: #313131 !important;
         color: white;
     }
-    font-family: 'Noto Sans Mono', 'Noto Sans JP', monospace;
+    font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace;
     padding: 0 4px;
     font-size: 0.9em;
     border-radius: 5px;

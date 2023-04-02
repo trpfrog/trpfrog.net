@@ -14,7 +14,7 @@
     padding: 2px;
     border-radius: 1000px;
 
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: var(--font-m-plus-rounded-1c);
     font-size: 0.8em;
 
     @include mixins.mq(dark) {

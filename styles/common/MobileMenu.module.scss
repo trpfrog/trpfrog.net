@@ -67,7 +67,7 @@
     display: inline-block;
     margin: 0;
     padding: 0;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: var(--font-comfortaa);
     width: 100%;
 
     *[data-current-page="true"] {
