@@ -11,6 +11,7 @@ import {parseWithBudouX} from "../../lib/wordSplit";
 import React from "react";
 import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../lib/blog/blogPost";
+import Balancer from "react-wrap-balancer";
 
 type Props = {
   entry: BlogPost
@@ -52,7 +53,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
         </div>
         <div className={styles.h3_wrapper}>
           <Link href={articleURL}>
-            <h3>{splitTitle}</h3>
+            <h3><Balancer>{splitTitle}</Balancer></h3>
           </Link>
         </div>
         <div className={styles.information}>

@@ -27,6 +27,7 @@ import BlogPost from "../../../lib/blog/blogPost";
 import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
+import Balancer from "react-wrap-balancer";
 
 type PageProps = {
   params: {
@@ -103,15 +104,17 @@ export default async function Index({ params: { slug } }: PageProps) {
         }
         <div className={styles.inner_title_block}>
           <h1>
-            <ParseWithBudouX str={
-              (() => {
-                if (post.title.endsWith('！')) {
-                  return post.title.slice(0, post.title.length - 1) + ' !'
-                } else {
-                  return post.title
-                }
-              })()
-            } slug={post.slug} />
+            <Balancer>
+              <ParseWithBudouX str={
+                (() => {
+                  if (post.title.endsWith('！')) {
+                    return post.title.slice(0, post.title.length - 1) + ' !'
+                  } else {
+                    return post.title
+                  }
+                })()
+              } slug={post.slug} />
+            </Balancer>
           </h1>
           <p style={{margin: '1em'}}>{post.description}</p>
           <PostAttributes post={post}/>
