@@ -4,7 +4,7 @@ import Title from "../../../components/Title";
 import Block from "../../../components/Block";
 
 import {
-  getAllPostPaths,
+  getAllPostSlugs,
   getPostData,
   getSortedPostsData,
 } from "../../../lib/blog/load";
@@ -36,8 +36,19 @@ type PageProps = {
 }
 
 export async function generateStaticParams() {
-  const paths = await getAllPostPaths()
-  return paths.map(slug => ({ slug: slug.toString() }))
+  const slugs = await getAllPostSlugs()
+  let paths = []
+
+  for (const slug of slugs) {
+    const entry = await getPostData(slug)
+    for (let i = 1; i <= entry.numberOfPages; i++) {
+      paths.push({slug: [slug, i + ""]})
+    }
+    paths.push({slug: [slug]})
+    paths.push({slug: [slug, 'all']})
+  }
+
+  return paths
 }
 
 export async function generateMetadata({ params }: PageProps) {
