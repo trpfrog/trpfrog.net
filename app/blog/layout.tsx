@@ -5,7 +5,7 @@ import {Metadata} from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: 'つまみログ',
+    absolute: 'つまみログ',
     template: '%s - つまみログ',
   },
 }
