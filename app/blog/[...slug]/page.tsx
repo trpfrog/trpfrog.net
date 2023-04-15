@@ -28,6 +28,7 @@ import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
+import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
 
 type PageProps = {
   params: {
@@ -164,10 +165,10 @@ export default async function Index({ params: { slug } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              <BlogMarkdown
-                entry={post}
-                imageSize={post.imageSize}
-              />
+              {process.env.NODE_ENV === 'production'
+                ? <BlogMarkdown entry={post} imageSize={post.imageSize}/>
+                : <DevBlogMarkdown entry={post} imageSize={post.imageSize}/>
+              }
             </BadBlogBlock>
           </UDFontBlock>
         </div>
