@@ -1,3 +1,5 @@
+'use client'
+
 import BlogPost from "../../../lib/blog/blogPost";
 import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
 import React, {CSSProperties} from "react";
@@ -12,8 +14,6 @@ type Props = {
 }
 
 export default function DevBlogMarkdown ({entry, imageSize, style, className}: Props) {
-  const markdown = entry.content
-
   const [post, setPost] = React.useState(entry)
 
   React.useEffect(() => {
