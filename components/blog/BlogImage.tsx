@@ -2,13 +2,13 @@
 
 import React, {CSSProperties, useState} from "react";
 import styles from "../../styles/blog/BlogImage.module.scss";
-import Image from "next/legacy/image";
 import Modal from "react-modal";
 import {parseInlineMarkdown} from "../../app/blog/renderer/BlogMarkdown";
 import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
+import {CldImage} from "next-cloudinary";
 
 
 type BlogImageProps = {
@@ -77,7 +77,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
   }
 
   const ImageOnArticle = () => (
-    <Image
+    <CldImage
       src={srcPath}
       alt={alt || src}
       className={`rich_image ${styles.image}`}
@@ -91,7 +91,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
   )
 
   const ImageOnModal = () => (
-    <Image
+    <CldImage
       src={srcPath}
       alt={alt || src}
       className={`rich_image`}
