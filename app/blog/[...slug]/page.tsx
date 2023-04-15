@@ -165,6 +165,7 @@ export default async function Index({ params: { slug } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
+              <BlogMarkdown entry={post} imageSize={post.imageSize}/>
               {process.env.NODE_ENV === 'production'
                 ? <BlogMarkdown entry={post} imageSize={post.imageSize}/>
                 : <DevBlogMarkdown entry={post} imageSize={post.imageSize}/>

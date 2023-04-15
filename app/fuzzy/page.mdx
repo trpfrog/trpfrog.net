@@ -1,0 +1,34 @@
+import Block from "../../components/Block";
+import styles from "./style.module.scss";
+import SearchBox from "./SearchBox";
+
+<Block style={{textAlign: "center"}} ribbonText={'BETA'}>
+  <h2 className={`none ${styles.title}`}>
+    trpfrog.net/<b style={{fontWeight: 800}}>fuzzy</b>
+  </h2>
+
+  あいまい URL リダイレクト
+</Block>
+
+<Block style={{textAlign: "center"}}>
+  <SearchBox/>
+</Block>
+
+<Block title="入力例">
+
+  - enoshima => https://trpfrog.net/blog/enoshima-walk
+  - balllloooon => https://trpfrog.net/balloon
+  - 山登り => https://trpfrog.net/blog/yamadori
+
+</Block>
+
+<Block title="仕組み">
+
+  OpenAI API の Chat でごにょごにょします (ディープでポン)。
+  単純な編集距離じゃないので日本語を突っ込んでも機能します。(すごい！)
+
+  API 料金が高いので飽きたらやめます。(1 時間に 10 リクエストまでの単純な rate limit があります)
+
+</Block>
+
+

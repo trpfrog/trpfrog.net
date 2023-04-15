@@ -26,6 +26,8 @@
     "gray-matter": "^4.0.3",
     "http-status-codes": "^2.2.0",
     "js-yaml": "^4.1.0",
+    "langchain": "^0.0.56",
+    "lru-cache": "^9.0.3",
     "microcms-js-sdk": "^2.3.2",
     "next": "^13.2.3",
     "next-cloudinary": "^4.3.0",
