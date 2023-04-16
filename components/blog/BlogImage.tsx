@@ -8,7 +8,8 @@ import {BlogImageData} from "../../lib/blog/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
-import {CldImage} from "next-cloudinary";
+import Image from "next/image";
+import cloudinaryLoader from "../../lib/blog/cloudinaryLoader";
 
 
 type BlogImageProps = {
@@ -77,7 +78,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
   }
 
   const ImageOnArticle = () => (
-    <CldImage
+    <Image
       src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image ${styles.image}`}
@@ -92,11 +93,12 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
         width: '100%',
         height: 'auto',
       }}
+      loader={cloudinaryLoader}
     />
   )
 
   const ImageOnModal = () => (
-    <CldImage
+    <Image
       src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image`}
@@ -105,6 +107,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
       placeholder="blur"
       blurDataURL={blurPath}
       sizes="100vw"  // Support responsive
+      loader={cloudinaryLoader}
     />
   )
 
