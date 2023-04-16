@@ -33,7 +33,6 @@ export function UDFontButton() {
   const {useUDFont, setUseUDFont} = useContext(UDFontStateContext)
 
   const handleUDFontButton = () => {
-    console.log(useUDFont)
     if (useUDFont) {
       setCookie(null, COOKIE_NAME_UD, 'false', {
         maxAge: 1,

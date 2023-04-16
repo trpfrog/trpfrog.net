@@ -19,8 +19,6 @@ const useHeaderVisibleStatus = () => {
     const shouldShowHeader = v < -1000 || y < 500;
     const shouldHideHeader = !shouldShowHeader && v > 1000;
 
-    console.log(`y: ${y}, v: ${v}, shouldShowHeader: ${shouldShowHeader}, shouldHideHeader: ${shouldHideHeader}`)
-
     if (shouldShowHeader) {
       setShowHeader(true)
     } else if (shouldHideHeader) {
