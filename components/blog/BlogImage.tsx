@@ -9,6 +9,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
 import {CldImage} from "next-cloudinary";
+import Image from "next/image";
 
 
 type BlogImageProps = {
@@ -77,7 +78,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
   }
 
   const ImageOnArticle = () => (
-    <CldImage
+    <Image
       src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image ${styles.image}`}
@@ -96,7 +97,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
   )
 
   const ImageOnModal = () => (
-    <CldImage
+    <Image
       src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image`}
