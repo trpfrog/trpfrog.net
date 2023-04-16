@@ -16,11 +16,10 @@
 }
 
 .img_wrapper {
+    width: 100%;
+    height: auto;
     text-align: center;
     margin: 2em 0;
-    span {
-        overflow: visible !important;
-    }
 }
 
 .image {

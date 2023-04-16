@@ -78,7 +78,7 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
 
   const ImageOnArticle = () => (
     <CldImage
-      src={srcPath}
+      src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image ${styles.image}`}
       width={imageWidth}
@@ -87,18 +87,24 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
       placeholder="blur"
       blurDataURL={blurPath}
       onClick={() => setModalState(true)}
+      sizes="100vw"
+      style={{
+        width: '100%',
+        height: 'auto',
+      }}
     />
   )
 
   const ImageOnModal = () => (
     <CldImage
-      src={srcPath}
+      src={imageData?.public_id ?? srcPath.slice(1)}
       alt={alt || src}
       className={`rich_image`}
       width={imageWidth}
       height={imageHeight}
       placeholder="blur"
       blurDataURL={blurPath}
+      sizes="100vw"  // Support responsive
     />
   )
 

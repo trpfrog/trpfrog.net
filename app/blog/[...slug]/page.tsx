@@ -87,7 +87,7 @@ const processSlug = async (slug: string, page?: string) => {
 
   const useCloudinary = process.env.NODE_ENV === 'production'
   return {
-    entry: JSON.parse(JSON.stringify(entry)),
+    entry: JSON.parse(JSON.stringify(entry)) as BlogPost,
     imageSize: await fetchAllImageProps(entry, useCloudinary),
     relatedPosts,
   }
@@ -165,10 +165,10 @@ export default async function Index({ params: { slug } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              <BlogMarkdown entry={post} imageSize={post.imageSize}/>
+              <BlogMarkdown entry={post} imageSize={imageSize}/>
               {process.env.NODE_ENV === 'production'
-                ? <BlogMarkdown entry={post} imageSize={post.imageSize}/>
-                : <DevBlogMarkdown entry={post} imageSize={post.imageSize}/>
+                ? <BlogMarkdown entry={post} imageSize={imageSize}/>
+                : <DevBlogMarkdown entry={post} imageSize={imageSize}/>
               }
             </BadBlogBlock>
           </UDFontBlock>
