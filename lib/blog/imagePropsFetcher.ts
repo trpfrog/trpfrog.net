@@ -1,24 +1,30 @@
 import {getPureCloudinaryPath} from "./getPureCloudinaryPath";
 import BlogPost from "./blogPost";
+import cloudinary from "../cloudinary";
+import type {ResourceApiResponse} from "cloudinary";
 
-export type BlogImageData = { size: { width: number, height: number }, caption: string }
+export type BlogImageData = {
+  size: { width: number, height: number },
+  public_id?: string,
+  caption: string
+}
 
 const fetchFromCloudinary = async (slug: string) => {
   let dict = {} as { [path: string]: BlogImageData }
 
-  const cloudinary = require('../cloudinary')
   const searchResult = await cloudinary.search
-    .expression(`resource_type:image AND folder=blog/${slug}`)
+    .expression(`folder=blog/${slug}`)
     .max_results(500)
-    .execute()
+    .execute() as ResourceApiResponse
 
-  searchResult.resources.forEach((image: any) => {
+  searchResult.resources.forEach((image) => {
     const src = '/' + image.public_id
     dict[src] = {
       size: {
-        width: parseInt(image.width ?? '800', 10),
-        height: parseInt(image.height ?? '600', 10),
+        width: image.width,
+        height: image.height,
       },
+      public_id: image.public_id,
       caption: ''
     }
   })
