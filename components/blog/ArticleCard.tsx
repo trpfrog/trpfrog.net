@@ -10,7 +10,6 @@ import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../lib/blog/blogPost";
 import Balancer from "react-wrap-balancer";
 import CldImageWrapper from "../utils/CldImageWrapper";
-import Image from "next/image";
 
 type Props = {
   entry: BlogPost
@@ -40,7 +39,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
           }
         </div>
         <div className={styles.thumbnail_wrapper}>
-          <Image
+          <CldImageWrapper
             src={thumbnail}
             alt={'thumbnail of ' + entry.slug}
             width={hero ? 1000 : 600}
