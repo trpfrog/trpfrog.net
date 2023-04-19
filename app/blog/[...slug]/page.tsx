@@ -30,6 +30,8 @@ import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
 
+export const dynamicParams = false
+
 type PageProps = {
   params: {
     slug: [string, string | undefined]
