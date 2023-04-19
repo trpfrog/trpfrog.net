@@ -11,9 +11,9 @@
 @include mixins.mq(sp) {
     :root {
         --header-height: 3.5rem;
-        --navigation-height: 0;
+        --navigation-height: 0px;
         --footer-height: 3em;
-        --main-margin: 0;
+        --main-margin: 0px;
     }
 }
 @include mixins.mq(dark) {
