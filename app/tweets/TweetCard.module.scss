@@ -9,9 +9,16 @@ $iconWidth: 50px;
 }
 
 .window {
-    margin: 1rem 0 !important;
     padding: 1rem !important;
-    border-radius: 20px !important;
+
+    @include mixins.mq(pc) {
+        margin: 1rem 0 !important;
+        border-radius: 20px !important;
+    }
+
+    @include mixins.mq(sp) {
+        margin-top: 12px;
+    }
 }
 
 .grid {
@@ -60,9 +67,6 @@ $iconWidth: 50px;
     margin: 0;
     font-size: 1.2em;
     line-height: 1.3;
-    white-space: pre-wrap;
-
-
 }
 
 .mention_string, .hashtag_string {

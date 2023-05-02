@@ -1,10 +1,18 @@
 import styles from "./TweetCard.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDove} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import reactStringReplace from "react-string-replace";
 import dayjs from "dayjs";
 import type {Tweet} from "@prisma/client";
+
+function createColorFromScreenName(screenName: string) {
+  const seed = screenName
+    .split('')
+    .map((c) => c.charCodeAt(0))
+    .reduce((a, b) => a + b, 0)
+  const unixTimeMin = Math.floor(Date.now() / 1000 / 60)
+  const hue = (seed + unixTimeMin) % 360
+  return `hsl(${hue}, 60%, 60%)`
+}
 
 function ScreenNameLink(props: {
   screenName: string,
@@ -23,7 +31,7 @@ function ScreenNameLink(props: {
   )
 }
 
-function TweetString({text}: {text: string}) {
+function TweetString({text, keyword}: {text: string, keyword?: string}) {
   let replaced = reactStringReplace(text, /(https?:\/\/\S+)/g, (match, i) => (
     <a key={`tweet-link-${i}`} href={match} target="_blank" rel="noreferrer">{match}</a>
   ))
@@ -38,6 +46,7 @@ function TweetString({text}: {text: string}) {
       @{match}
     </a>
   ))
+
   replaced = reactStringReplace(replaced, /\B#([^\s\n「」()#]+)/g, (match, i) => (
     <a
       key={`tweet-hashtag-${i}`}
@@ -49,15 +58,35 @@ function TweetString({text}: {text: string}) {
       #{match}
     </a>
   ))
+
+  replaced = reactStringReplace(replaced, /\n/g, (match, i) => (
+    <br key={`tweet-newline-${i}`}/>
+  ))
+
+  if (keyword) {
+    replaced = reactStringReplace(replaced, keyword, (match, i) => (
+      <strong key={`tweet-keyword-${i}`}>
+        {match}
+      </strong>
+    ))
+  }
+
+
   return <>{replaced}</>
 }
 
-export default function TweetCard({tweet}: {tweet: Tweet}) {
+const TweetBlock = (props: {children: React.ReactNode}) => (
+  <div className={`main-window ${styles.window}`}>
+    {props.children}
+  </div>
+)
+
+export default function TweetCard({tweet, keyword}: {tweet: Tweet, keyword?: string}) {
   const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
   const statusUrl = `https://twitter.com/${tweet.screenName}/status/${tweet.id}`
 
   return (
-    <div className={`main-window ${styles.window}`}>
+    <TweetBlock>
       <div className={styles.grid}>
         <div
           className={styles.icon}
@@ -65,8 +94,8 @@ export default function TweetCard({tweet}: {tweet: Tweet}) {
             background:
               tweet.screenName === 'TrpFrog'
                 ? `url("${trpfrogUrl}")`
-                : 'gray',
-            backgroundPosition: 'center'
+                : createColorFromScreenName(tweet.screenName),
+            backgroundPosition: 'center',
           }}
         />
         <div className={styles.user_names_and_tweets}>
@@ -88,11 +117,11 @@ export default function TweetCard({tweet}: {tweet: Tweet}) {
           </div>
           <div className={styles.tweet}>
             <blockquote>
-              <TweetString text={tweet.text}/>
+              <TweetString text={tweet.text} keyword={keyword}/>
             </blockquote>
           </div>
         </div>
       </div>
-    </div>
+    </TweetBlock>
   )
 }
