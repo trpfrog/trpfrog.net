@@ -1,0 +1,74 @@
+@use '../../styles/mixins';
+$iconWidth: 50px;
+
+.retweet {
+    margin: 0;
+    transform: translateY(-.3rem);
+    font-style: italic;
+    color: gray;
+}
+
+.window {
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    border-radius: 20px !important;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: $iconWidth 1fr;
+    gap: .5rem;
+}
+
+.icon {
+    width: 100%;
+    border-radius: 1000px;
+    aspect-ratio: 1;
+    background-size: cover !important;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    line-height: 1;
+    margin-bottom: .5rem;
+
+    * > a {
+        text-decoration: none;
+        color: inherit;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.name {
+    font-weight: bold;
+}
+
+.screen_name {
+
+}
+
+.header_left {
+    display: flex;
+    gap: .5rem;
+}
+
+.tweet > blockquote {
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.3;
+    white-space: pre-wrap;
+
+
+}
+
+.mention_string, .hashtag_string {
+    text-decoration: none;
+    color: var(--header-color) !important;
+    @include mixins.mq(dark) {
+        color: greenyellow !important;
+    }
+}
