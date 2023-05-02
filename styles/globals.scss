@@ -240,3 +240,23 @@ table {
         line-height: 1;
     }
 }
+
+input[type="text"] {
+    border-radius: 5px;
+    border: none;
+    background: #dddddd;
+    padding: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background: #3c7709;
+    color: white;
+    cursor: pointer;
+}
