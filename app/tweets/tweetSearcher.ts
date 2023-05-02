@@ -1,4 +1,4 @@
-import {PrismaClient} from "@prisma/client";
+import {Media, PrismaClient, Tweet} from "@prisma/client";
 
 const prisma = new PrismaClient()
 
@@ -87,7 +87,7 @@ export default async function search(searchParams: any) {
     where: {
       AND: whereAndQuery,
       NOT: whereNotQuery,
-    }
+    },
   }
 
   const count = await prisma.tweet.count(query)
@@ -101,10 +101,15 @@ export default async function search(searchParams: any) {
     ...query,
     take: maxTweetsPerPage,
     skip: offset,
+    include: {
+      media: true
+    },
   }
 
+  const results = await prisma.tweet.findMany(query) as (Tweet & {media: Media[]})[]
+
   return {
-    results: await prisma.tweet.findMany(query),
+    results,
     query,
     keywords: keywords,
     tweetCount: count,

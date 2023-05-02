@@ -2,7 +2,7 @@ import styles from "./TweetCard.module.scss";
 import React from "react";
 import reactStringReplace from "react-string-replace";
 import dayjs from "dayjs";
-import type {Tweet} from "@prisma/client";
+import type {Tweet, Media} from "@prisma/client";
 import {faStar, faRetweet, faHeart} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -91,10 +91,11 @@ const decodeHTMLEntities = (text: string) => {
   return text.replace(/(&amp;|&lt;|&gt;)/g, (match) => entities[match])
 }
 
-export default function TweetCard({tweet, keywords}: {tweet: Tweet, keywords?: string[]}) {
+export default function TweetCard({tweet, keywords}: {tweet: Tweet & {media: Media[]}, keywords?: string[]}) {
   const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
   const statusUrl = `https://twitter.com/${tweet.screenName}/status/${tweet.id}`
   const isMyTweet = tweet.screenName === 'TrpFrog'
+  const photos = tweet.media.filter(e => e.type === 'photo').length
 
   const applyStarFavs = tweet.createdAt < new Date('2015-11-03T00:00:00Z')
 
@@ -137,6 +138,40 @@ export default function TweetCard({tweet, keywords}: {tweet: Tweet, keywords?: s
             <blockquote>
               <TweetString text={decodeHTMLEntities(tweet.text)} keywords={keywords}/>
             </blockquote>
+            {photos > 0 && (
+              <div className={styles.media}>
+                {isMyTweet && tweet.media.map((media) => (
+                  <img
+                    key={media.id}
+                    width={media.width}
+                    height={media.height}
+                    className={styles.media_image}
+                    src={media.url}
+                    style={{
+                      aspectRatio: `${media.width}/${media.height}`,
+                      maxHeight: 600 / (Math.sqrt(photos)),
+                    }}
+                  />
+                ))}
+                {!isMyTweet && (
+                  <>
+                    <div
+                      className={styles.media_image}
+                      style={{
+                        aspectRatio: `${tweet.media[0].width}/${tweet.media[0].height}`,
+                        maxHeight: 200,
+                        backgroundColor: createColorFromScreenName(tweet.screenName),
+                        filter: 'brightness(0.4)',
+                      }}
+                    />
+                    <span style={{opacity: 0.5}}>
+                      View pictures on {' '}
+                      <a target="_blank" rel="noreferrer" href={statusUrl}>twitter.com</a>!
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
           </div>
           {isMyTweet && (
             <>
