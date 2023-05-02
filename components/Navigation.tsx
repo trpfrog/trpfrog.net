@@ -9,6 +9,7 @@ export const NAVIGATION_LINKS = [
   {link: '/', name: 'Home'},
   {link: '/works', name: 'Works'},
   {link: '/blog', name: 'Blog'},
+  {link: '/tweets', name: 'Tweets'},
   {link: '/balloon', name: 'Balloons'},
   {link: '/environment', name: 'Env'},
   {link: '/stickers', name: 'Stickers'},
