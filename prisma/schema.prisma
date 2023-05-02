@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model Tweet {
+  id         String   @id
+  name       String
+  screenName String
+  text       String
+  retweets   Int
+  favs       Int
+  source     String
+  isRetweet  Boolean
+  createdAt  DateTime @default(now())
+  media      Media[]
+}
+
+model Media {
+  id      String  @id
+  url     String
+  width   Int
+  height  Int
+  type    String
+  Tweet   Tweet?  @relation(fields: [tweetId], references: [id])
+  tweetId String?
+}
