@@ -21,12 +21,12 @@ export const metadata = {
 
 
 export default async function Index({ searchParams }: any) {
-  const { results, keyword } = await search(searchParams)
+  const { results, keywords } = await search(searchParams)
 
   const tweetCards = results.map((tweet) => {
     return (
       <React.Fragment key={tweet.id}>
-        <TweetCard tweet={tweet} keyword={keyword}/>
+        <TweetCard tweet={tweet} keywords={keywords}/>
       </React.Fragment>
     )
   })
@@ -35,14 +35,27 @@ export default async function Index({ searchParams }: any) {
     <div id="main_wrapper">
       <Title title={'Tweets'} ribbonText={'BETA'}>
         <p>
-          {metadata.description}
+          つまみさんの過去ツイデータベースです。
+        </p>
+        <p>
+          <strong>注意:</strong>{' '}
+          過去のツイートにはなかなか厳しいものも含まれます。
+          現在のつまみさんとは意見がだいぶ異なる場合があります。
+          だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <br/>
-        <h3 style={{all: 'initial', fontWeight: 'bold'}}>実装済みの機能:</h3>
-        <ul style={{marginTop: 0}}>
-          <li>キーワード検索 (AND OR 未実装)</li>
-          <li>since/until 検索</li>
-        </ul>
+        <details>
+          <summary>実装済みの機能</summary>
+          <ul style={{marginTop: 0}}>
+            <li>AND 検索</li>
+            <li>since/until 検索 (日付のみ e.g. 2000-10-17)</li>
+            <li>min_faves/max_faves 検索</li>
+            <li>min_retweets/max_retweets 検索</li>
+            <li>from 検索</li>
+            <li>order:asc で古い順に並び替え</li>
+            <li>マイナス検索 (上記のいずれにも使用可)</li>
+          </ul>
+        </details>
         <SearchForm defaultValue={searchParams.q}/>
       </Title>
 
