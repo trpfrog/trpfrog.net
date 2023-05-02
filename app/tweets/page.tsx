@@ -60,7 +60,7 @@ export default async function Index({ searchParams }: any) {
         </p>
         <p>
           <a
-            href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo)}
+            href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}
             className={'linkButton'}
           >
              1年前のツイートを見る
