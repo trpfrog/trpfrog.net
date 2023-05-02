@@ -1,4 +1,5 @@
 import {Media, PrismaClient, Tweet} from "@prisma/client";
+import dayjs from "dayjs";
 
 const prisma = new PrismaClient()
 
@@ -27,13 +28,23 @@ export default async function search(searchParams: any) {
 
     if (/^until:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
       queryArr.push({
-        createdAt: { lte: new Date(queryStr.slice(6)) }
+        createdAt: { lt: dayjs(queryStr.slice(6)).add(1, 'day').toDate() }
       })
       continue
     }
     if (/^since:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
       queryArr.push({
-        createdAt: { gte: new Date(queryStr.slice(6)) }
+        createdAt: { gte: dayjs(queryStr.slice(6)).toDate() }
+      })
+      continue
+    }
+    if (/^date:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
+      const date = dayjs(queryStr.slice(5))
+      queryArr.push({
+        createdAt: {
+          gte: date.toDate(),
+          lt: date.add(1, 'day').toDate()
+        }
       })
       continue
     }
@@ -111,6 +122,7 @@ export default async function search(searchParams: any) {
   return {
     results,
     query,
+    asc: params.asc,
     keywords: keywords,
     tweetCount: count,
     maxPage,

@@ -11,7 +11,7 @@ function Button(props: {pageNo: number, text?: string, current?: boolean}) {
   params.set('p', props.pageNo + '');
   return (
     <button className={styles.button} data-current={props.current}>
-      <a href={'/tweets?' + params.toString()}>
+      <a href={`/tweets?${params.toString()}#tweets`}>
         {props.text ?? props.pageNo}
       </a>
     </button>
@@ -24,6 +24,10 @@ export default function PageNavigation(props: {
   numTweets: number,
   key: string
 }) {
+
+  if (props.numTweets === 0) {
+    return <></>
+  }
 
   // create array like [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, ..., lastPage]
   let buttons: number[] = []

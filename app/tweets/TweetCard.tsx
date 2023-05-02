@@ -91,6 +91,16 @@ const decodeHTMLEntities = (text: string) => {
   return text.replace(/(&amp;|&lt;|&gt;)/g, (match) => entities[match])
 }
 
+export function DateCard({date}: {date: Date}) {
+  return (
+    <div className={`main-window ${styles.window} ${styles.date}`}>
+      <h3>
+        {dayjs(date).format('YYYY年M月D日')}
+      </h3>
+    </div>
+  )
+}
+
 export default function TweetCard({tweet, keywords}: {tweet: Tweet & {media: Media[]}, keywords?: string[]}) {
   const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
   const statusUrl = `https://twitter.com/${tweet.screenName}/status/${tweet.id}`
@@ -118,20 +128,13 @@ export default function TweetCard({tweet, keywords}: {tweet: Tweet & {media: Med
               <ScreenNameLink screenName={tweet.screenName} className={styles.name}>
                 {tweet.name}
               </ScreenNameLink>
+              {' '}
               <ScreenNameLink screenName={tweet.screenName} className={styles.screen_name}>
                 @{tweet.screenName}
               </ScreenNameLink>
             </div>
-            <div className={styles.header_right}>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                className={styles.date}
-                href={statusUrl}
-              >
-                {tweet.isRetweet ? 'Retweeted at ' : ''}
-                {dayjs(tweet.createdAt).format('YYYY-MM-DD HH:mm')}
-              </a>
+            <div className={styles.source}>
+              {tweet.source}
             </div>
           </div>
           <div className={styles.tweet}>
@@ -164,29 +167,52 @@ export default function TweetCard({tweet, keywords}: {tweet: Tweet & {media: Med
                         filter: 'brightness(0.4)',
                       }}
                     />
-                    <span style={{opacity: 0.5}}>
-                      View pictures on {' '}
-                      <a target="_blank" rel="noreferrer" href={statusUrl}>twitter.com</a>!
-                    </span>
                   </>
                 )}
               </div>
             )}
           </div>
-          {isMyTweet && (
-            <>
-              <span
-                className={styles.favorites}
-                data-use-star={applyStarFavs}
-                data-no-reaction={tweet.favs === 0}
+          <div className={styles.footer}>
+            {isMyTweet ? (
+              <div className={styles.reactions}>
+                <span
+                  className={styles.favorites}
+                  data-use-star={applyStarFavs}
+                  data-no-reaction={tweet.favs === 0}
+                >
+                  <FontAwesomeIcon icon={applyStarFavs ? faStar : faHeart}/> {tweet.favs}
+                </span>
+                <span className={styles.retweets} data-no-reaction={tweet.retweets === 0}>
+                  <FontAwesomeIcon icon={faRetweet}/> {tweet.retweets}
+                </span>
+              </div>
+            ) : (
+              photos > 0
+                ? (
+                  <span style={{opacity: 0.5}}>
+                    <span className={'only-on-pc'}>
+                      View pictures on {' '}
+                      <a target="_blank" rel="noreferrer" href={statusUrl}>
+                        twitter.com
+                      </a>!
+                    </span>
+                  </span>
+                )
+                : <><div/></>
+            )}
+            <div className={styles.footer_date}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer_date}
+                href={statusUrl}
               >
-                <FontAwesomeIcon icon={applyStarFavs ? faStar : faHeart}/> {tweet.favs}
-              </span>
-              <span className={styles.retweets} data-no-reaction={tweet.retweets === 0}>
-                <FontAwesomeIcon icon={faRetweet}/> {tweet.retweets}
-              </span>
-            </>
-          )}
+                {tweet.isRetweet ? 'Retweeted at ' : ''}
+                {dayjs(tweet.createdAt).format('YYYY-MM-DD HH:mm')}
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </TweetBlock>

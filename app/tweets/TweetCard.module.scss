@@ -1,5 +1,4 @@
 @use '../../styles/mixins';
-$iconWidth: 50px;
 
 .retweet {
     margin: 0;
@@ -9,7 +8,7 @@ $iconWidth: 50px;
 }
 
 .window {
-    padding: 1rem !important;
+    padding: .8rem .8rem .2rem .8rem !important;
 
     @include mixins.mq(pc) {
         margin: 1rem 0 !important;
@@ -22,8 +21,12 @@ $iconWidth: 50px;
 }
 
 .grid {
+    --icon-width: 50px;
+    @include mixins.mq(sp) {
+        --icon-width: 40px;
+    }
     display: grid;
-    grid-template-columns: $iconWidth 1fr;
+    grid-template-columns: var(--icon-width) 1fr;
     gap: .5rem;
 }
 
@@ -35,8 +38,10 @@ $iconWidth: 50px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
+    @include mixins.mq(pc) {
+        display: flex;
+        justify-content: space-between;
+    }
     color: gray;
     line-height: 1;
     margin-bottom: .5rem;
@@ -59,7 +64,7 @@ $iconWidth: 50px;
 }
 
 .header_left {
-    display: flex;
+    display: inline-block;
     gap: .5rem;
 }
 
@@ -80,29 +85,62 @@ $iconWidth: 50px;
     }
 }
 
-.favorites {
-    display: inline-block;
-    margin-right: .5rem;
-    color: deeppink;
-    &[data-use-star="true"] {
-        color: orange;
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reactions {
+    .favorites {
+        display: inline-block;
+        margin-right: .5rem;
+        color: deeppink;
+        &[data-use-star="true"] {
+            color: orange;
+        }
+    }
+
+    .retweets {
+        display: inline-block;
+        color: limegreen;
+    }
+
+    .favorites, .retweets {
+        font-weight: bold;
+        line-height: 1;
+        &[data-no-reaction="true"] {
+            color: var(--base-font-color);
+            font-weight: normal;
+            opacity: 0.25;
+        }
     }
 }
 
-.retweets {
-    display: inline-block;
-    color: limegreen;
+.source {
+    opacity: 0.3;
+    @include mixins.mq(sp) {
+        display: none;
+    }
 }
 
-.favorites, .retweets {
-    font-weight: bold;
+.footer_date {
+    opacity: 0.6;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.date {
+    h3 {
+        all: unset;
+        font-family: var(--font-m-plus-rounded-1c);
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    display: block;
     line-height: 1;
-    transform: translateY(5px);
-    &[data-no-reaction="true"] {
-        color: var(--base-font-color);
-        font-weight: normal;
-        opacity: 0.25;
-    }
+    background: var(--header-color);
+    color: #fff;
+    padding: 1rem !important;
 }
 
 .media_image {
