@@ -4,6 +4,8 @@ import React, {Suspense} from "react";
 import TweetCard from "./TweetCard";
 import SearchForm from "./SearchForm";
 import search from "./tweetSearcher";
+import Block from "../../components/Block";
+import PageNavigation from "./PageNavigation";
 
 // Prisma does not support Edge without the Data Proxy currently
 export const runtime = 'nodejs' // default
@@ -21,7 +23,7 @@ export const metadata = {
 
 
 export default async function Index({ searchParams }: any) {
-  const { results, keywords } = await search(searchParams)
+  const { results, maxPage, keywords, tweetCount } = await search(searchParams)
 
   const tweetCards = results.map((tweet) => {
     return (
@@ -36,6 +38,7 @@ export default async function Index({ searchParams }: any) {
       <Title title={'Tweets'} ribbonText={'BETA'}>
         <p>
           つまみさんの過去ツイデータベースです。
+          <strong>2023 年 4 月 22 日版</strong>
         </p>
         <p>
           <strong>注意:</strong>{' '}
@@ -59,9 +62,27 @@ export default async function Index({ searchParams }: any) {
         <SearchForm defaultValue={searchParams.q}/>
       </Title>
 
+      <PageNavigation
+        currentPage={parseInt(searchParams.p ?? '1', 10) ?? 1}
+        lastPage={maxPage}
+        numTweets={tweetCount}
+        key={'top'}
+      />
+
       <div>
         {tweetCards}
       </div>
+
+      <PageNavigation
+        currentPage={parseInt(searchParams.p ?? '1', 10) ?? 1}
+        lastPage={maxPage}
+        numTweets={tweetCount}
+        key={'bottom'}
+      />
+
+      <Block>
+        RT の削除依頼はお手数ですが contact ⭐︎ trpfrog.net または、@TrpFrog までお願いします。
+      </Block>
     </div>
   )
 }
