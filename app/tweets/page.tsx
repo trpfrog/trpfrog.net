@@ -5,6 +5,11 @@ import TweetCard from "./TweetCard";
 import SearchForm from "./SearchForm";
 import search from "./tweetSearcher";
 
+// Prisma does not support Edge without the Data Proxy currently
+export const runtime = 'nodejs' // default
+export const preferredRegion = 'home'
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'ツイートデータベース',
   description: 'つまみさんのツイートです',
