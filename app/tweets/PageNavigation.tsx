@@ -10,10 +10,10 @@ function Button(props: {pageNo: number, text?: string, current?: boolean}) {
   const params = new URLSearchParams(searchParams ?? {});
   params.set('p', props.pageNo + '');
   return (
-    <button className={styles.button} data-current={props.current}>
-      <a href={`/tweets?${params.toString()}#tweets`}>
-        {props.text ?? props.pageNo}
-      </a>
+    <button onClick={
+      () => {location.href = `/tweets?${params.toString()}#tweets`}
+    } className={styles.button} data-current={props.current}>
+      {props.text ?? props.pageNo}
     </button>
   )
 }
