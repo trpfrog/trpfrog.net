@@ -135,12 +135,20 @@
         font-family: var(--font-m-plus-rounded-1c);
         font-size: 1.5rem;
         font-weight: bold;
+        cursor: pointer;
     }
     display: block;
     line-height: 1;
     background: var(--header-color);
     color: #fff;
     padding: 1rem !important;
+    :hover {
+        color: #e0ff98;
+    }
+}
+
+.window + .date {
+    margin-top: 2.5rem !important;
 }
 
 .media_image {

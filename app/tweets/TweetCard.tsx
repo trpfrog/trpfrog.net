@@ -92,10 +92,14 @@ const decodeHTMLEntities = (text: string) => {
 }
 
 export function DateCard({date}: {date: Date}) {
+  const query = 'date:' +  dayjs(date).format('YYYY-MM-DD')
+  const url = '/tweets?q=' + encodeURIComponent(query) + '#tweets'
   return (
     <div className={`main-window ${styles.window} ${styles.date}`}>
       <h3>
-        {dayjs(date).format('YYYY年M月D日')}
+        <a style={{all: "inherit"}} href={url}>
+          {dayjs(date).format('YYYY年M月D日')}
+        </a>
       </h3>
     </div>
   )
