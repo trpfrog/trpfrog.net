@@ -1,4 +1,4 @@
-import { PrismaClient, Tweet, Media } from '@prisma/client'
+import {PrismaClient, Tweet, Media, PrismaPromise} from '@prisma/client'
 import fs from 'node:fs';
 import {homedir} from "node:os";
 
@@ -137,15 +137,35 @@ async function main() {
     prisma.media.deleteMany(),
   ])
 
-  await prisma.tweet.createMany({ data: tweets }).catch(e => {
-    console.error(e)
-    process.exit(1)
-  })
+  const LIMIT_ROWS_PER_QUERY = 1000
 
-  await prisma.media.createMany({ data: medias }).catch(e => {
-    console.error(e)
-    process.exit(1)
-  })
+  const queries: Promise<any>[] = []
+
+  for (let i = 0; i < tweets.length; i += LIMIT_ROWS_PER_QUERY) {
+    const tweetsChunk = tweets.slice(i, i + LIMIT_ROWS_PER_QUERY)
+    queries.push(
+      prisma.tweet.createMany({ data: tweetsChunk }).catch(e => {
+        console.error(e)
+        process.exit(1)
+      }).then(() => {
+        console.log(`Inserted tweets ${i} - ${Math.max(i + LIMIT_ROWS_PER_QUERY, tweets.length)}`)
+      })
+    )
+  }
+
+  for (let i = 0; i < medias.length; i += LIMIT_ROWS_PER_QUERY) {
+    const mediasChunk = medias.slice(i, i + LIMIT_ROWS_PER_QUERY)
+    queries.push(
+      prisma.media.createMany({ data: mediasChunk }).catch(e => {
+        console.error(e)
+        process.exit(1)
+      }).then(() => {
+        console.log(`Inserted medias ${i} - ${Math.max(i + LIMIT_ROWS_PER_QUERY, medias.length)}`)
+      })
+    )
+  }
+
+  await Promise.all(queries)
 }
 
 main()

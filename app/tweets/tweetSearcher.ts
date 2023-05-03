@@ -76,7 +76,6 @@ export default async function search(searchParams: any) {
       queryArr.push({
         screenName: {
           equals: queryStr.slice(5),
-          mode: 'insensitive'
         }
       })
       continue
@@ -85,7 +84,6 @@ export default async function search(searchParams: any) {
     queryArr.push({
       text: {
         contains: queryStr,
-        mode: 'insensitive'
       }
     })
     keywords.push(queryStr)
