@@ -132,40 +132,29 @@ async function main() {
     '~/Twitter/data/tweets-part2.js',
   ]);
 
-  await prisma.$transaction([
-    prisma.tweet.deleteMany(),
-    prisma.media.deleteMany(),
-  ])
+  // delete all rows
+  console.log('deleting all tweet rows')
+  while (await prisma.tweet.count() > 0) {
+    await prisma.$queryRaw`DELETE FROM Tweet LIMIT 100000;`
+  }
+  console.log('deleting all media rows')
+  while (await prisma.media.count() > 0) {
+    await prisma.$queryRaw`DELETE FROM Media LIMIT 100000;`
+  }
 
-  const LIMIT_ROWS_PER_QUERY = 1000
-
-  const queries: Promise<any>[] = []
+  const LIMIT_ROWS_PER_QUERY = 5000
 
   for (let i = 0; i < tweets.length; i += LIMIT_ROWS_PER_QUERY) {
+    console.log(`inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, tweets.length)} / ${tweets.length}`)
     const tweetsChunk = tweets.slice(i, i + LIMIT_ROWS_PER_QUERY)
-    queries.push(
-      prisma.tweet.createMany({ data: tweetsChunk }).catch(e => {
-        console.error(e)
-        process.exit(1)
-      }).then(() => {
-        console.log(`Inserted tweets ${i} - ${Math.max(i + LIMIT_ROWS_PER_QUERY, tweets.length)}`)
-      })
-    )
+    await prisma.tweet.createMany({ data: tweetsChunk })
   }
 
   for (let i = 0; i < medias.length; i += LIMIT_ROWS_PER_QUERY) {
+    console.log(`inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, medias.length)} / ${medias.length}`)
     const mediasChunk = medias.slice(i, i + LIMIT_ROWS_PER_QUERY)
-    queries.push(
-      prisma.media.createMany({ data: mediasChunk }).catch(e => {
-        console.error(e)
-        process.exit(1)
-      }).then(() => {
-        console.log(`Inserted medias ${i} - ${Math.max(i + LIMIT_ROWS_PER_QUERY, medias.length)}`)
-      })
-    )
+    await prisma.media.createMany({ data: mediasChunk })
   }
-
-  await Promise.all(queries)
 }
 
 main()
