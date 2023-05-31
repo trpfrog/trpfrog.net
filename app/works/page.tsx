@@ -33,7 +33,7 @@ export default async function Index() {
 
   // load all md files under /app/works/contents/*.md
   const markdownFiles = await fs.readdir('app/works/contents')
-  const contents = await Promise.all(
+  let contents = await Promise.all(
     markdownFiles.map(async (filename) => {
       const markdownString = await fs.readFile(`app/works/contents/${filename}`, 'utf-8')
       const matterResult = matter(markdownString)
@@ -44,6 +44,18 @@ export default async function Index() {
       }
     })
   )
+  contents = contents.sort((a, b) => {
+    // sort by released date (a.metadata.released)
+    const aDate = a.metadata.released?.split('/').map(Number) as [number, number, number]
+    const bDate = b.metadata.released?.split('/').map(Number) as [number, number, number]
+    if (aDate[0] !== bDate[0]) {
+      return bDate[0] - aDate[0]
+    }
+    if (aDate[1] !== bDate[1]) {
+      return bDate[1] - aDate[1]
+    }
+    return bDate[2] - aDate[2]
+  });
 
   return (
     <div id="main_wrapper">
@@ -63,16 +75,18 @@ export default async function Index() {
             title={metadata.title}
             h2icon={metadata.h2icon}
           >
-            <div className={styles.hero_image}>
-              <Image
-                src={metadata.image?.path}
-                width={metadata.image?.width}
-                height={metadata.image?.height}
-                objectFit={'cover'}
-                alt={metadata.title + 'の画像'}
-              />
-            </div>
-            <Keywords keywords={metadata.keywords ?? []}/>
+            {metadata.image && (
+              <div className={styles.hero_image}>
+                <Image
+                  src={metadata.image?.path}
+                  width={metadata.image?.width}
+                  height={metadata.image?.height}
+                  objectFit={'cover'}
+                  alt={metadata.title + 'の画像'}
+                />
+              </div>
+            )}
+            {metadata.keywords && <Keywords keywords={metadata.keywords}/>}
             <p>
               <b>Released:</b> {metadata.released}
             </p>
