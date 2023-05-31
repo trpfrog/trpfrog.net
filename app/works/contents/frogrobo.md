@@ -5,7 +5,7 @@ keywords:
   - Twitter API
 released: 2016/4/26
 links:
-  GitHub: https://github.com/TrpFrog/FrogRobo
+  GitHub: https://github.com/TrpFrog/old-FrogRobo
   つまみロボ (停止中): https://twitter.com/FrogRobo
 ---
 
