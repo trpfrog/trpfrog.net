@@ -7,14 +7,20 @@ image:
 keywords:
   - OpenGL
   - C++
+  - Computer Graphics
 released: 2021/12/1
 links:
   GitHub: https://github.com/TrpFrog/clover-bridge
 ---
 
-メディア情報学実験のOpenGL回で作成した
+学域 3 年メディア情報学実験のOpenGL回で作成した
 「[小名木川クローバー橋](https://goo.gl/maps/ZWmQnU2A28aHteVC7)」
-っぽい3Dモデル。
+っぽい3Dモデルです。
 
-制作期間約1週間でゴリ押したので細部までは作っていない。
-OpenGLで作るのがあまりにもつらすぎてモデリングソフトは偉大だ……となった。
+OpenGL の API を C++ で呼び出すことにより一から作成しています。
+画面をドラッグすると視点変更をしたり、WASD で移動したりできます。
+
+制作期間約 1 週間で急いで作ったので細部までは作れませんでした。
+OpenGLで作るのがあまりにもつらすぎて「モデリングソフトは偉大だ……」となっています。
+
+[Jellyfish Aquarium](#jellyfish-quarium) での経験とも合わさって自分には CG 系は (興味の点で) 向いてないなあと思いました。

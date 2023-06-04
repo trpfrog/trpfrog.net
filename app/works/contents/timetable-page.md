@@ -15,11 +15,8 @@ links:
   GitHub Packages: https://github.com/TrpFrog/timetable-page/pkgs/container/timetable
 ---
 
-大学の時間割を模したホームページが作れるソフトウェア。付属の timetable.js に
-「授業名」「時限」「担当者名」「授業ホームページ」「遠隔授業参加URL」などを書くと、
-それに合わせてサイトが生成される。
+大学の時間割を模したページを作るソフトウェアがあります。timetable.js に「授業名」「時限」「担当者名」「授業ホームページ」「遠隔授業参加URL」などを書くと、それに合わせてサイトが生成されます。
 
-timetable.js は授業の構造体のみが書かれた JavaScript ファイルであり、
-JSONファイルを扱うように書くことができ、特別なプログラミングの技術を必要としない。
+timetable.js は JavaScript ファイルであり、授業の構造体のみが書かれており、JSON ファイルを扱うことができます。特別なプログラミング技術は必要ありません。
 
-index.html にデータは反映されるが、配布しているDockerコンテナを使ってWebサーバを立てることも可能。
+データは index.html に反映されます。また、Docker コンテナを使って Web サーバを立てることもできます。

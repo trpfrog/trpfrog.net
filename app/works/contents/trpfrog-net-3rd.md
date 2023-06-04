@@ -11,10 +11,10 @@ keywords:
   - Python
 released: 2020/2/28
 links:
-  GitHub: https://github.com/TrpFrog/trpfrog-net
-  Webサイト: https://trpfrog.net
+  GitHub: https://github.com/TrpFrog/old.trpfrog.net
+  Webサイト: https://old.trpfrog.net
 ---
 
 デザインの大規模変更、アイコンメーカーの追加、
 Pythonによる自作サイトジェネレータを使った雑ブログの追加、
-アイコンメーカーや徒歩情報など大量にコンテンツを追加したつまみネット3代目。
+アイコンメーカーや徒歩情報など大量にコンテンツを追加した3代目つまみネットです。

@@ -16,10 +16,12 @@ links:
   ブログ記事: https://trpfrog.net/notes/otaku-channels/index.html
 ---
 
-UEC 2 Advent Calendar 2021 16日目のネタとして作った謎サイト。
+UEC 2 Advent Calendar 2021 16日目のネタとして作った謎サイトです。
 
-チャンネルを増やすことを生業としている最悪のオタクが生息するDiscordサーバの{}
-チャンネル一覧を晒すためのサイト。
+チャンネルを増やすことを生業としている最悪のオタクが生息する Discord サーバの
+チャンネル一覧を晒すためのサイトです。
 
-PythonでDiscord APIを叩いてJSファイルにまとめ、JavaScriptで整形して画面に表示する。
-GitHub Actions との併用で毎日1回最新情報がデプロイされる。
+Python で Discord API を叩いて JS ファイルにまとめ、JavaScript で整形して画面に表示します。
+GitHub Actions を使い、毎日 1 回最新情報がデプロイされます。
+
+詳細はブログ記事をご覧ください。

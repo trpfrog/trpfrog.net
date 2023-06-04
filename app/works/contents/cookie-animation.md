@@ -12,8 +12,8 @@ links:
   アニメーション (10.7MB): https://github.com/TrpFrog/CookieAnimation/blob/master/anim.gif
 ---
 
-基礎プログラミングで作成したCookie Clickerの再現アニメーション。
+学域 1 年後期・基礎プログラミングの講義のペアワークで作成した Cookie Clicker の再現アニメーションです。
 
-実際どうなのかは今更コードを見る気が起きないので不明だが、メモリリークと戦っていた気がする。
+GIF アニメの各フレームを画像として生成し、それらをまとめることでアニメーションを作成しています。
 
-[無果汁コロッケマン](https://twitter.com/croute_pillow)さんとの合作。
+[無果汁コロッケマン](https://twitter.com/croute_pillow)さんとの合作です。
