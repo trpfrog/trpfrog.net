@@ -9,7 +9,7 @@ keywords:
   - PyTorch
   - Deep Learning
   - Reinforcement Learning
-released: 2023/3/23
+date: 2023/3/23
 links:
   GitHub: https://github.com/TrpFrog/ppo-icm-mountaincar
   発表スライド: https://media.trpfrog.net/univ/lab/ppo-icm.pdf

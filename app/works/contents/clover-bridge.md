@@ -8,7 +8,7 @@ keywords:
   - OpenGL
   - C++
   - Computer Graphics
-released: 2021/12/1
+date: 2021/12/1
 links:
   GitHub: https://github.com/TrpFrog/clover-bridge
 ---

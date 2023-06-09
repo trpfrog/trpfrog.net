@@ -7,7 +7,7 @@ image:
 keywords:
   - Java
   - Swing
-released: 2021/2/24
+date: 2021/2/24
 links:
   GitHub: https://github.com/TrpFrog/medipro-game
   公式サイト: https://trpfrog.github.io/medipro-game

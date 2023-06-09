@@ -8,7 +8,7 @@ keywords:
   - HTML
   - CSS
   - JavaScript
-released: 2019/7/13
+date: 2019/7/13
 links:
   GitHub: https://github.com/TrpFrog/old.trpfrog.net/commit/9ab453ac255a010efdb593ef1a9d92930b9d5f2e
 ---

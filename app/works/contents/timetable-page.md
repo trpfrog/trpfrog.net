@@ -9,7 +9,7 @@ keywords:
   - CSS
   - JavaScript
   - Docker
-released: 2021/10/5
+date: 2021/10/5
 links:
   GitHub: https://github.com/TrpFrog/timetable-page
   GitHub Packages: https://github.com/TrpFrog/timetable-page/pkgs/container/timetable

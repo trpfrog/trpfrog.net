@@ -7,7 +7,7 @@ image:
 keywords:
   - HTML
   - CSS
-released: 2019/6/15
+date: 2019/6/15
 links:
   GitHub: https://github.com/TrpFrog/old.trpfrog.net/tree/5bca766b93b6070760cdf96f25c47b114b9ea73b
 ---

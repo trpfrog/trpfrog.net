@@ -6,8 +6,9 @@ import styles from './style.module.scss';
 import React from "react";
 import Image from "next/legacy/image";
 import {Metadata} from "next";
-import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import readMarkdowns from "../../lib/mdLoader";
+import path from "path";
 
 type KeywordsType = {
   keywords: string[]
@@ -24,6 +25,21 @@ const Keywords: React.FC<KeywordsType> = ({keywords}) => {
   );
 }
 
+type Frontmatter = {
+  title: string
+  h2icon?: string
+  image?: {
+    path: string
+    width: number
+    height: number
+  }
+  keywords?: string[]
+  links?: {
+    [key: string]: string
+  }
+  date: `${number}/${number}/${number}`
+}
+
 export const metadata = {
   title: 'Works',
   description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'
@@ -32,30 +48,7 @@ export const metadata = {
 export default async function Index() {
 
   // load all md files under /app/works/contents/*.md
-  const markdownFiles = await fs.readdir('app/works/contents')
-  let contents = await Promise.all(
-    markdownFiles.map(async (filename) => {
-      const markdownString = await fs.readFile(`app/works/contents/${filename}`, 'utf-8')
-      const matterResult = matter(markdownString)
-      return {
-        filename,
-        metadata: matterResult.data,
-        content: matterResult.content
-      }
-    })
-  )
-  contents = contents.sort((a, b) => {
-    // sort by released date (a.metadata.released)
-    const aDate = a.metadata.released?.split('/').map(Number) as [number, number, number]
-    const bDate = b.metadata.released?.split('/').map(Number) as [number, number, number]
-    if (aDate[0] !== bDate[0]) {
-      return bDate[0] - aDate[0]
-    }
-    if (aDate[1] !== bDate[1]) {
-      return bDate[1] - aDate[1]
-    }
-    return bDate[2] - aDate[2]
-  });
+  const contents = await readMarkdowns<Frontmatter>(path.join('app', 'works', 'contents'))
 
   return (
     <div id="main_wrapper">
@@ -88,7 +81,7 @@ export default async function Index() {
             )}
             {metadata.keywords && <Keywords keywords={metadata.keywords}/>}
             <p>
-              <b>Released:</b> {metadata.released}
+              <b>Released:</b> {metadata.date}
             </p>
             <ReactMarkdown>{content}</ReactMarkdown>
             <p className={'link-area'}>

@@ -9,7 +9,7 @@ keywords:
   - CSS
   - JavaScript
   - Cookie
-released: 2021/6/15
+date: 2021/6/15
 links:
   GitHub: https://github.com/TrpFrog/elements-learning
   Webサイト: https://trpfrog.github.io/elements-learning/

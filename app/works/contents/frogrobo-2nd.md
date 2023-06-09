@@ -10,7 +10,7 @@ keywords:
   - Google Cloud
   - Deep Learning
   - NLP
-released: 2023/1/17
+date: 2023/1/17
 links:
   GitHub: https://github.com/TrpFrog/FrogRobo
   つまみロボ (停止中): https://twitter.com/FrogRobo
