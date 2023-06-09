@@ -23,6 +23,18 @@ const Util = {
       .length
     return text.length + doubledSizes
   },
+
+  sortWithDates: (a: `${number}/${number}/${number}`, b: `${number}/${number}/${number}`) =>{
+    const aDate = a.split('/').map(Number) as [number, number, number]
+    const bDate = b.split('/').map(Number) as [number, number, number]
+    if (aDate[0] !== bDate[0]) {
+      return bDate[0] - aDate[0]
+    }
+    if (aDate[1] !== bDate[1]) {
+      return bDate[1] - aDate[1]
+    }
+    return bDate[2] - aDate[2]
+  },
 }
 
 export default Util
