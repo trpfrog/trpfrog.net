@@ -25,7 +25,7 @@
     "better-react-mathjax": "^2.0.2",
     "budoux": "^0.5.1",
     "chokidar": "^3.5.3",
-    "cloudinary": "^1.37.1",
+    "cloudinary": "^1.35.0",
     "dayjs": "^1.11.8",
     "framer-motion": "^10.12.16",
     "gray-matter": "^4.0.3",
