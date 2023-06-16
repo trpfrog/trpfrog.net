@@ -20,10 +20,16 @@ export default function DevBlogMarkdown ({entry, imageSize, style, className}: P
     const f = async () => {
       const apiUrl = `/api/blog/posts/${entry.slug}/${entry.currentPage}`
       const res = await fetch(apiUrl)
-      return await res.json()
+      const json = await res.json()
+      console.log(json)
+      return json
     }
     f().then(r => setPost(r))
-  }, [entry.currentPage, entry.slug])
+  }, [doMarkdownHMR])
+
+  // doMarkdownHMR() is called here to make sure that the HMR is working.
+  // This file is edited automatically by markdown watcher script.
+  // See also: watchMarkdown.js
   doMarkdownHMR()
 
   return (
