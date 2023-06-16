@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock} from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/blog/ArticleCard.module.scss";
@@ -10,6 +9,7 @@ import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
 import BlogPost from "../../lib/blog/blogPost";
 import Balancer from "react-wrap-balancer";
 import CldImageWrapper from "../utils/CldImageWrapper";
+import BlockLink from "../BlockLink";
 
 type Props = {
   entry: BlogPost
@@ -29,7 +29,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
   const thumbnail = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
   return (
-    <Link href={articlePath} prefetch={false}>
+    <BlockLink href={articlePath} prefetch={false}>
       <div className={styles.window} data-hero-article={hero} style={style}>
         <div className={styles.tags}>
           {entry.tags
@@ -62,7 +62,7 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
           {Math.ceil(entry.readTime / 60)} min to read
         </div>
       </div>
-    </Link>
+    </BlockLink>
   )
 }
 
