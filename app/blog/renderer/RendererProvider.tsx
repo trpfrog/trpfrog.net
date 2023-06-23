@@ -22,7 +22,13 @@ import {MathJaxContextWrapper} from "../../../components/utils/MathJaxWrapper";
 const getLangName = (s: string) => {
   switch (s) {
   case 'javascript':
+  case 'js':
     return 'JavaScript'
+  case 'typescript':
+  case 'ts':
+    return 'TypeScript'
+  case 'sh':
+    return 'Shell'
   case 'html':
   case 'yaml':
   case 'css':
