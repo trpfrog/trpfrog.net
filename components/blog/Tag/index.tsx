@@ -1,4 +1,4 @@
-import styles from "../../styles/blog/Tag.module.scss";
+import styles from "./index.module.scss";
 import React from "react";
 import Link from "next/link";
 
