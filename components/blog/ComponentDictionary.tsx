@@ -3,7 +3,7 @@
 import React from "react";
 import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import TwitterArchived from "./article-parts/TwitterArchive";
-import {ResultBox} from "./article-parts/WalkingParts";
+import WalkingResultBox from "./article-parts/WalkingResultBox";
 import ProfileCards from "./article-parts/ProfileCards";
 import {Caution, Infobox, TitledFrame} from "./article-parts/HighlightedBoxes";
 import HorizontalImages from "./article-parts/HorizontalImages";
@@ -24,7 +24,7 @@ const myMarkdownClasses = {
   TwitterArchived,
 
   // Walking Parts
-  ResultBox,
+  ResultBox: WalkingResultBox,
   ProfileCards: ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
 
   // Highlight Boxes

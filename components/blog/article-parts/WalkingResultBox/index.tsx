@@ -1,9 +1,8 @@
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "./index.module.scss";
 import React from "react";
-import ProfileCards from "./ProfileCards";
-import {ArticleParts} from "../ArticleParts";
+import {ArticleParts} from "../../ArticleParts";
 
-export const ResultBox: ArticleParts = content => {
+const WalkingResultBox: ArticleParts = content => {
   return (
     <div className={styles.result_box_grid}>
       {content.split('\n').map(line => {
@@ -20,3 +19,5 @@ export const ResultBox: ArticleParts = content => {
     </div>
   )
 }
+
+export default WalkingResultBox
