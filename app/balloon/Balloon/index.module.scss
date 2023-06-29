@@ -1,19 +1,9 @@
-#balloon_grid {
-    display: block;
-    margin: 10px 0;
-}
-
-#balloon_grid {
-    .balloon {
-        display: inline-block;
-        width: 57px;
-        height: 95px;
-    }
-}
-
 .balloon {
     cursor: crosshair;
-    $path: '../../public/images/balloon';
+    display: inline-block;
+    text-align: center;
+
+    $path: '../../../public/images/balloon';
 
     &[data-broken-balloon="true"] {
         background-image: url($path + '/broken.png');
