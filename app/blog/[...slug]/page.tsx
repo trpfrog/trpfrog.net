@@ -30,7 +30,10 @@ import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
 
-export const dynamicParams = false
+// Trick for NEXT-1214
+// export const dynamicParams = false
+const dynamicParams = false
+export {dynamicParams}
 
 type PageProps = {
   params: {
