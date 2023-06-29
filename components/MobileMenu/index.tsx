@@ -1,18 +1,13 @@
 import React from "react";
-import styles from "../../styles/common/MobileMenu.module.scss";
+import styles from "./index.module.scss";
 import {NavigationLinks} from "../Navigation";
+import {atom, useAtom} from "jotai";
 
-export type HamburgerState = [
-  boolean,
-  React.Dispatch<React.SetStateAction<boolean>>
-]
+export const mobileMenuAtom = atom(false)
 
-type Props = {
-  hamburgerState: HamburgerState
-}
+const MobileMenu = () => {
+  const [isOpened, setHamburgerState] = useAtom(mobileMenuAtom);
 
-const MobileMenu = ({hamburgerState}: Props) => {
-  const [isOpened, setHamburgerState] = hamburgerState
   const toggleMenu = () => {
     setHamburgerState(!isOpened);
   }

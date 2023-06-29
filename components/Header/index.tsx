@@ -7,8 +7,8 @@ import React, {useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "./index.module.scss";
-import MobileMenu from "../mobile_menu/MobileMenu";
-import MobileMenuButton from "../mobile_menu/MobileMenuButton";
+import MobileMenu from "../MobileMenu";
+import Hamburger from "../Hamburger";
 
 const useHeaderVisibleStatus = () => {
   const {scrollY} = useScroll()
@@ -56,7 +56,6 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
 
 const Header: React.FC = () => {
   const pathname = usePathname();
-  const hamburgerState = React.useState(false);
   const topLinks = [
     {href: '/', label: 'home'},
     {href: '/works', label: 'works'},
@@ -79,11 +78,11 @@ const Header: React.FC = () => {
                 ))}
               </ul>
             </nav>
-            <MobileMenuButton hamburgerState={hamburgerState}/>
+            <Hamburger/>
           </div>
         </header>
       </HideWhenScrollDown>
-      <MobileMenu hamburgerState={hamburgerState}/>
+      <MobileMenu/>
     </>
   );
 }
