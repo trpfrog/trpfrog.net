@@ -1,9 +1,9 @@
-import styles from "../../../styles/blog/TwitterArchive.module.scss";
+import styles from "./index.module.scss";
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDove} from "@fortawesome/free-solid-svg-icons";
-import getOtakuColor from "../../../lib/blog/otakuColors";
-import {ArticleParts} from "../ArticleParts";
+import getOtakuColor from "../../../../lib/blog/otakuColors";
+import {ArticleParts} from "../../ArticleParts";
 
 const TwitterArchive: ArticleParts = content => {
   const tweetData: { [key: string]: string } = {}
