@@ -1,6 +1,6 @@
-@use '../mixins';
+@use '../../styles/mixins';
 
-.block {
+.fullscreen_block {
     display: block;
     box-sizing: border-box;
     height: calc(100vh
