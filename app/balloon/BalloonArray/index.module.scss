@@ -1,0 +1,20 @@
+#balloon_grid {
+    display: block;
+    margin: 10px 0;
+    overflow: hidden;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .balloon {
+        display: inline-block;
+        width: 57px;
+        height: 95px;
+    }
+}
+
+#reward_start_point {
+    position: fixed;
+    top: 0;
+    left: 50%;
+}
