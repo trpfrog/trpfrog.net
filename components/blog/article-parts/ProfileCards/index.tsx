@@ -1,10 +1,10 @@
 'use client';
 
 import React, {useState} from "react";
-import styles from "../../../styles/blog/ProfileCards.module.scss";
+import styles from "./index.module.scss";
 import dayjs from "dayjs";
-import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
-import {parseInlineMarkdown} from "../../../app/blog/renderer/BlogMarkdown";
+import ArticleRendererFromContext from "../../../../app/blog/renderer/ArticleRenderer";
+import {parseInlineMarkdown} from "../../../../app/blog/renderer/BlogMarkdown";
 
 export type ProfileData = {
   name: string
