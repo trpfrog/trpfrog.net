@@ -1,7 +1,7 @@
 'use client';
 
 import {motion} from "framer-motion";
-import styles from "./TrpFrogAnimation.module.scss"
+import styles from "./index.module.scss"
 import React, {useEffect} from "react";
 import {parseCookies, setCookie} from "nookies";
 
