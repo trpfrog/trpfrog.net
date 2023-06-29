@@ -1,4 +1,4 @@
-@use '../mixins';
+@use '../../styles/mixins';
 
 #page_top {
     width: 50px;
@@ -19,7 +19,7 @@
     background: #18810abb;
 }
 
-#back-to-top-icon {
+#back_to_top_icon {
     position: relative;
     display: block;
     text-align: center;
