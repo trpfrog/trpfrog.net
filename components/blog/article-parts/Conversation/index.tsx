@@ -1,10 +1,10 @@
-import {parseInlineMarkdown} from "../../../app/blog/renderer/BlogMarkdown";
+import {parseInlineMarkdown} from "../../../../app/blog/renderer/BlogMarkdown";
 import React from "react";
-import styles from "../../../styles/blog/blog.module.scss";
-import {ArticleParts} from "../ArticleParts";
+import styles from "../../../../styles/blog/blog.module.scss";
+import {ArticleParts} from "../../ArticleParts";
 
 const Conversation: ArticleParts = content => (
-  <div className={styles.conversation_box_grid}>
+  <div className={styles.box_grid}>
     {content.split('\n')
       .reduce((arr, line) => {
         if (line.includes(':')) {
@@ -27,11 +27,11 @@ const Conversation: ArticleParts = content => (
 
         return (
           <React.Fragment key={speaker + '-' + idx}>
-            <div className={styles.conversation_box_name}>
+            <div className={styles.box_name}>
               {parseInlineMarkdown(speaker)}
             </div>
-            <div className={styles.conversation_box_value_wrapper}>
-              <div className={styles.conversation_box_value}>
+            <div className={styles.box_value_wrapper}>
+              <div className={styles.box_value}>
                 {parseInlineMarkdown(comment)}
               </div>
               {outOfComment && ` ←${outOfComment}`}

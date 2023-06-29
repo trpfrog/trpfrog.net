@@ -1,8 +1,8 @@
-@use '../mixins';
+@use '../../../../styles/mixins';
 
 $pad-top: .5rem;
 
-.conversation_box_grid {
+.box_grid {
     font-family: var(--main-font);
     display: grid;
     grid-template-columns: auto 1fr;
@@ -16,7 +16,7 @@ $pad-top: .5rem;
     }
 }
 
-.conversation_box_name {
+.box_name {
     text-align: right;
     font-weight: bold;
     max-width: 35vw;
@@ -24,7 +24,7 @@ $pad-top: .5rem;
     padding-top: calc(0.25em + $pad-top);
 }
 
-.conversation_box_value {
+.box_value {
     --bubble-color: var(--body-background);
 
     position: relative;
@@ -58,7 +58,7 @@ $pad-top: .5rem;
     }
 }
 
-.conversation_box_value_wrapper {
+.box_value_wrapper {
     display: inline-block;
     width: 100%;
     position: relative;
