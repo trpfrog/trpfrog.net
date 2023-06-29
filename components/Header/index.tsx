@@ -4,11 +4,11 @@ import Link from 'next/link'
 import {usePathname} from "next/navigation";
 import {useScroll} from "framer-motion";
 import React, {useState} from "react";
+import {NormalTitle} from "./NormalTitle";
+import {TopTitle} from "./TopTitle";
 import styles from "./index.module.scss";
 import MobileMenu from "../MobileMenu";
 import Hamburger from "../Hamburger";
-import {TopTitle} from "../Header/TopTitle";
-import {NormalTitle} from "../Header/NormalTitle";
 
 const useHeaderVisibleStatus = () => {
   const {scrollY} = useScroll()
