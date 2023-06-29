@@ -1,15 +1,15 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock} from "@fortawesome/free-solid-svg-icons";
-import styles from "../../styles/blog/ArticleCard.module.scss";
+import styles from "./index.module.scss";
 import dayjs from "dayjs";
-import Tag from "./Tag";
-import {ParseWithBudouX} from "../../lib/wordSplit";
+import Tag from "../Tag";
+import {ParseWithBudouX} from "../../../lib/wordSplit";
 import React from "react";
-import {getPureCloudinaryPath} from "../../lib/blog/getPureCloudinaryPath";
-import BlogPost from "../../lib/blog/blogPost";
+import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
+import BlogPost from "../../../lib/blog/blogPost";
 import Balancer from "react-wrap-balancer";
-import CldImageWrapper from "../utils/CldImageWrapper";
-import BlockLink from "../BlockLink";
+import CldImageWrapper from "../../utils/CldImageWrapper";
+import BlockLink from "../../BlockLink";
 
 type Props = {
   entry: BlogPost
