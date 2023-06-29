@@ -1,7 +1,7 @@
 'use client';
 
 import Block from "../../components/Block";
-import styles from "../style.module.scss";
+import styles from "../../app/balloon/Balloon/index.module.scss";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useBalloonState } from "../../app/balloon/BalloonArray";
