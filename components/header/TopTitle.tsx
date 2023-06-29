@@ -3,7 +3,7 @@
 import {useScroll} from "framer-motion";
 import {useEffect, useState} from "react";
 import Link from "next/link";
-import styles from "../../styles/common/Header.module.scss";
+import styles from "./index.module.scss";
 
 export const TopTitle = () => {
   const [visible, setVisible] = useState(false);

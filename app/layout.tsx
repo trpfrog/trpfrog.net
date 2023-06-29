@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import React from "react";
 import '../styles/globals.scss';
 import fontVariables from "../lib/googleFonts";
-import Header from "../components/header/Header";
+import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";

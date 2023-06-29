@@ -6,7 +6,7 @@ import {useScroll} from "framer-motion";
 import React, {useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
-import styles from "../../styles/common/Header.module.scss";
+import styles from "./index.module.scss";
 import MobileMenu from "../mobile_menu/MobileMenu";
 import MobileMenuButton from "../mobile_menu/MobileMenuButton";
 

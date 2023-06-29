@@ -3,7 +3,7 @@ import Block from "../../../components/Block";
 import styles from "../../../styles/blog/blog.module.scss";
 import {RichEntryButtons} from "./EntryButtons";
 import PageNavigation from "../../../components/blog/PageNavigation";
-import {HeaderFollowSticky} from "../../../components/header/Header";
+import {HeaderFollowSticky} from "../../../components/Header";
 import React from "react";
 import BlogPost from "../../../lib/blog/blogPost";
 

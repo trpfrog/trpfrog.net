@@ -1,4 +1,4 @@
-@use '../mixins';
+@use '../../styles/mixins';
 
 #hide_when_scroll_down {
     position: sticky;
@@ -100,7 +100,7 @@
     height: var(--header-icon-size);
     margin-top: 8px;
 
-    background-image: url('../../public/images/flat-trpfrog.gif');
+    background-image: url('flat-trpfrog.gif');
     background-size: contain;
     background-repeat: no-repeat;
 

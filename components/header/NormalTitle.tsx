@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useScroll} from "framer-motion";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
-import styles from "../../styles/common/Header.module.scss";
+import styles from "./index.module.scss";
 
 const TitleWithPageName = () => {
   const pathname = usePathname() ?? '/'
