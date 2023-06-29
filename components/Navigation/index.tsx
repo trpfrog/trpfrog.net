@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React from "react";
-import styles from '../styles/common/Navigation.module.scss';
+import styles from './index.module.scss';
 import {usePathname} from "next/navigation";
 
 export const NAVIGATION_LINKS = [
