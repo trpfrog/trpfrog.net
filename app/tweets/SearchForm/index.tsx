@@ -1,5 +1,5 @@
 'use client'
-import styles from './SearchForm.module.scss'
+import styles from './index.module.scss'
 
 export default function SearchForm(props: {defaultValue?: string}) {
   return (

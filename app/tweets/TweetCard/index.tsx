@@ -1,4 +1,4 @@
-import styles from "./TweetCard.module.scss";
+import styles from "./index.module.scss";
 import React from "react";
 import reactStringReplace from "react-string-replace";
 import dayjs from "dayjs";

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
-import styles from './PageNavigation.module.scss'
+import styles from './index.module.scss'
 
 function Button(props: {pageNo: number, text?: string, current?: boolean}) {
   const searchParams = useSearchParams()
