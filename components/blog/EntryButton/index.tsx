@@ -1,4 +1,4 @@
-import styles from "../../styles/blog/blog.module.scss";
+import styles from "./index.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
