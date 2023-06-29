@@ -9,6 +9,7 @@ import BackToTop from "../components/BackToTop";
 import Favicon from "../components/head/Favicon";
 import Analytics from "../components/Analytics";
 import FixTooLargeFontAwesomeIcons from "../components/utils/FixTooLargeFontAwesomeIcons";
+import GoogleFonts from "../components/GoogleFonts";
 
 export const metadata: Metadata = {
   title: {
@@ -41,6 +42,7 @@ export default function RootLayout({children}: Props) {
       <head>
         <Analytics/>
         <Favicon/>
+        <GoogleFonts/>
         <FixTooLargeFontAwesomeIcons/>
       </head>
       <body className={fontVariables}>

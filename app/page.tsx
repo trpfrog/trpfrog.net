@@ -12,10 +12,10 @@ import Links from "../components/toppage/Links";
 import TopPageBalloons from "../components/toppage/TopPageBalloons";
 import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
-import React, {Suspense} from "react";
+import React from "react";
 
 // @ts-ignore
-export default async function Index(params) {
+export default async function Index() {
   const mainWrapperStyle: React.CSSProperties = {
     display: 'block',
     maxWidth: '100000px',
@@ -29,18 +29,12 @@ export default async function Index(params) {
       <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper}>
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid}/>
-          <Suspense fallback={null}>
-            {/* @ts-expect-error Server Component */}
-            <WhatsNew id={styles.whats_new}/>
-          </Suspense>
+          <WhatsNew id={styles.whats_new}/>
           <Store id={styles.sticker}/>
           <TopPageIcons id={styles.icons}/>
           <TopPageMusic id={styles.music}/>
           <TopPageBalloons id={styles.balloon}/>
-          <Suspense fallback={null}>
-            {/* @ts-expect-error Server Component */}
-            <Links id={styles.link_grid}/>
-          </Suspense>
+          <Links id={styles.link_grid}/>
           <Ratings id={styles.music_game}/>
           <Bird id={styles.bird}/>
         </div>
