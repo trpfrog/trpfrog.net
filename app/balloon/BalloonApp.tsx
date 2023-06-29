@@ -1,27 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Util from "../../lib/utils";
-import Balloon, {useBalloonSound} from "../../components/Balloon";
+import {useBalloonSound} from "./Balloon";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
-import styles from "./BalloonApp.module.scss";
-
-type BalloonDivProps = {
-  n: number
-  width: number
-}
-
-const BalloonDiv = ({n, width = 80}: BalloonDivProps) => {
-  const height = width / 0.6;
-  return (
-    <div id={styles.balloon_grid}>
-      {Array.from(Array(n), (v, k) => (
-        <Balloon key={k} width={`${width}px`} height={`${height}px`}/>
-      ))}
-    </div>
-  );
-}
+import BalloonArray from "./BalloonArray";
 
 export default function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
@@ -33,7 +17,8 @@ export default function BalloonApp() {
   }
 
   const [numberOfBalloons, setNumberOfBalloons] = useState(96);
-  const changeNumber = (s: string) => {
+
+  const changeAmount = (s: string) => {
     const n = getValidInteger(s);
     setNumberOfBalloons(n);
   }
@@ -43,7 +28,7 @@ export default function BalloonApp() {
     const n = getValidInteger(s);
     setBalloonSize(n);
   }
-  
+
   return (
     <>
       <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
@@ -55,7 +40,7 @@ export default function BalloonApp() {
             <input
               type="number"
               value={numberOfBalloons}
-              onChange={(e) => changeNumber(e.target.value)}
+              onChange={(e) => changeAmount(e.target.value)}
               max={10000}
               min={1}
             /> balloons
@@ -72,8 +57,11 @@ export default function BalloonApp() {
           </label>
         </p>
       </Title>
-      <Block>
-        <BalloonDiv n={numberOfBalloons} width={balloonSize}/>
+      <Block id={'balloon-window'}>
+        <BalloonArray
+          n={numberOfBalloons}
+          width={balloonSize}
+        />
       </Block>
     </>
   )
