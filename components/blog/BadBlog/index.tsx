@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useState} from "react";
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "./index.module.scss";
 
 export const BadBlogStateContext = React.createContext({
   badBlog: 0,

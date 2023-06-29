@@ -1,6 +1,6 @@
 import {parseInlineMarkdown} from "../../../../app/blog/renderer/BlogMarkdown";
 import React from "react";
-import styles from "../../../../styles/blog/blog.module.scss";
+import styles from "./index.module.scss";
 import {ArticleParts} from "../../ArticleParts";
 
 const Conversation: ArticleParts = content => (
