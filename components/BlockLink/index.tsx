@@ -1,5 +1,5 @@
 import Link, {LinkProps} from "next/link";
-import styles from '../styles/BlockLink.module.scss';
+import styles from './index.module.scss';
 import React from "react";
 
 type Props = LinkProps & {
