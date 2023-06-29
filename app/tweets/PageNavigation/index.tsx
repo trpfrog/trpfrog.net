@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
-import styles from './PageNavigation.module.scss'
+import styles from './index.module.scss'
 
 function Button(props: {pageNo: number, text?: string, current?: boolean}) {
   const searchParams = useSearchParams()
@@ -35,10 +35,12 @@ export default function PageNavigation(props: {
   if (props.lastPage < 10) {
     buttons = [...Array(props.lastPage).keys()].map(e => e + 1)
   } else {
-    for (let i = props.currentPage; i <= props.lastPage; i *= 2) {
+    let dx = 1
+    for (let i = props.currentPage; i <= props.lastPage; i += dx, dx *= 2) {
       buttons.push(i)
     }
-    for (let i = props.currentPage; 1 <= i; i = Math.floor(i / 2)) {
+    dx = 1
+    for (let i = props.currentPage; 1 <= i; i -= dx, dx *= 2) {
       buttons.push(i)
     }
     buttons.push(1)
