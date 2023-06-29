@@ -19,7 +19,7 @@ import {ParseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
 import RelatedPosts from "../../../components/blog/RelatedPosts";
 import {UDFontBlock} from "../../../components/blog/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlogButton";
+import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
