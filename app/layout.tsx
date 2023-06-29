@@ -11,25 +11,33 @@ import Analytics from "../components/Analytics";
 import FixTooLargeFontAwesomeIcons from "../components/utils/FixTooLargeFontAwesomeIcons";
 import GoogleFonts from "../components/GoogleFonts";
 
+const siteName = process.env.title as string
+const description = 'さかなになりたいね'
+const productionURL = 'https://trpfrog.net'
+
 export const metadata: Metadata = {
   title: {
-    default: process.env.title as string,
-    template: '%s - つまみネット',
+    default: siteName,
+    template: `%s - ${siteName}`,
   },
+  description,
   openGraph: {
     locale: 'ja-JP',
-    url: 'https://trpfrog.net',
-    siteName: 'つまみネット',
-    images: [
-      {
-        url: 'https://res.cloudinary.com/trpfrog/TwitterCard',
-        alt: 'Og Image Alt',
-      }
-    ]
+    url: productionURL,
+    siteName,
+    description,
+    type: 'website',
   },
   twitter: {
+    card: 'summary_large_image',
+    title: process.env.title as string,
+    description,
     site: '@TrpFrog',
-  }
+    creator: '@TrpFrog',
+  },
+  alternates: {
+    canonical: productionURL,
+  },
 }
 
 type Props = {
