@@ -4,9 +4,9 @@ import Block from "../../components/Block";
 import styles from "../style.module.scss";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import {useBalloonState} from "../balloon/BalloonArray";
+import { useBalloonState } from "../../app/balloon/BalloonArray";
 
-const Balloon = dynamic(() => import('../balloon/Balloon'), {ssr: false});
+const Balloon = dynamic(() => import('../../app/balloon/Balloon'), {ssr: false});
 
 type Props = {
   id?: string
