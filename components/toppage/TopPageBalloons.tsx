@@ -1,12 +1,10 @@
 'use client';
 
 import Block from "../../components/Block";
-import styles from "../../app/balloon/Balloon/index.module.scss";
+import styles from "../../app/style.module.scss";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useBalloonState } from "../../app/balloon/BalloonArray";
-
-const Balloon = dynamic(() => import('../../app/balloon/Balloon'), {ssr: false});
+import Balloon from "../../app/balloon/Balloon";
 
 type Props = {
   id?: string
@@ -18,7 +16,7 @@ const TopPageBalloons = ({id}: Props) => {
   const {isBurst, balloonColorArray, onBurst} = useBalloonState(balloonAmount, id ?? '');
 
   return (
-    <Block title={'風船コーナー'} h2icon={'ice'} id={id}>
+    <Block title={'風船コーナー'} h2icon={'ice'} id={id} style={{overflow: 'hidden'}}>
       <div id={styles.top_balloon_grid}>
         {Array.from(Array(7), (v, k) => (
           <Balloon
