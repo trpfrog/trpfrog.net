@@ -1,18 +1,9 @@
 import React from "react";
 
-import Header from './header/Header'
+import Header from './Header'
 import Footer from "./Footer";
 import Navigation from "./Navigation";
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAngleDoubleUp} from "@fortawesome/free-solid-svg-icons";
-
-const backToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
+import BackToTop from "./BackToTop";
 
 type Props = {
   style?: any;
@@ -33,11 +24,7 @@ const Layout: React.FunctionComponent<Props> = ({
             {children}
           </div>
         </main>
-        <div id="page_top" onClick={backToTop}>
-          <span id={'back-to-top-icon'}>
-            <FontAwesomeIcon icon={faAngleDoubleUp}/>
-          </span>
-        </div>
+        <BackToTop/>
         <Footer/>
       </div>
     </>

@@ -1,0 +1,142 @@
+@use "../../../styles/mixins";
+
+.window {
+    display: block;
+    background: var(--window-bkg-color);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: var(--base-font-color) !important;
+    text-decoration: none;
+
+    $shadow-height: 6px;
+    box-shadow: 0 $shadow-height 0 var(--window-bottom-color);
+    transition: 100ms;
+
+    &:hover {
+        box-shadow: 0 ($shadow-height * 1.5) 0 var(--window-bottom-color);
+        transform: translateY(- $shadow-height / 2);
+    }
+
+    &:active {
+        box-shadow: none;
+        transform: translateY($shadow-height / 2);
+    }
+}
+
+.h3_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5em .2em;
+
+    text-align: center;
+    line-height: 1.5;
+    height: 5em;
+    h3 {
+        color: var(--base-font-color);
+        font-weight: bolder;
+        font-family: var(--font-m-plus-rounded-1c);
+        font-size: 1em;
+        border: none;
+        background: none;
+    }
+}
+
+.window[data-hero-article="true"] {
+    .h3_wrapper {
+        @include mixins.mq(pc) {
+            h3 {
+                font-size: 1.4em;
+            }
+        }
+    }
+}
+
+.tags {
+    margin: 4px 0 2px 4px;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+    white-space: nowrap;
+    a {
+        margin-right: 4px;
+    }
+}
+
+.img_wrapper {
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 200px;
+}
+
+.information {
+    margin: 1em;
+    text-align: center;
+    * {
+        margin: .2em;
+    }
+}
+
+.article_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 17px;
+
+    @include mixins.mq(sp) {
+        display: block;
+        margin: 0 8px;
+        column-gap: 8px;
+        row-gap: 12px;
+    }
+}
+
+@include mixins.mq(sp) {
+    .window[data-hero-article="false"] {
+        display: grid;
+        height: initial;
+        grid-template-areas:
+            "thumbnail tags"
+            "thumbnail title"
+            "thumbnail info";
+
+        --image-width: max(100px, 30vw);
+        grid-template-columns: var(--image-width) auto;
+
+        margin: 15px 0;
+
+        .tags {
+            grid-area: tags;
+            margin-bottom: 0;
+        }
+        .thumbnail_wrapper {
+            grid-area: thumbnail;
+            & > span {
+                width: var(--image-width) !important;
+                height: 100% !important;
+            }
+        }
+        .h3_wrapper {
+            grid-area: title;
+            height: initial;
+            h3 {
+                margin: 0 auto;
+            }
+        }
+        .information {
+            grid-area: info;
+            margin: 0 0 5px;
+            line-height: 1.5;
+        }
+    }
+}

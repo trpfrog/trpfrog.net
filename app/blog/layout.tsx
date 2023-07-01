@@ -1,5 +1,5 @@
 import React from "react";
-import {BadBlogStateProvider} from "../../components/blog/BadBlogButton";
+import {BadBlogStateProvider} from "../../components/blog/BadBlog";
 import {UDFontStateProvider} from "../../components/blog/UDFontBlock";
 import {Metadata} from "next";
 

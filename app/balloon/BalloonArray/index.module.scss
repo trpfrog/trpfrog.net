@@ -1,7 +1,7 @@
 #balloon_grid {
     display: block;
     margin: 10px 0;
-    overflow: hidden;
+    position: relative;
     &::-webkit-scrollbar {
         display: none;
     }

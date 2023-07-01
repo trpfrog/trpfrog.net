@@ -1,7 +1,10 @@
 .balloon {
     cursor: crosshair;
-    display: inline-block;
+    display: inline-flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
     $path: '../../../public/images/balloon';
 
@@ -22,4 +25,8 @@
             }
         }
     }
+}
+
+.starting_point_of_effect {
+    display: inline-block;
 }

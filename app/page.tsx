@@ -1,21 +1,21 @@
 import styles from './style.module.scss';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
-import TrpFrogAnimationFrame from "./toppage/TrpFrogAnimation";
+import TrpFrogAnimationFrame from "../components/toppage/TrpFrogAnimation";
 
-import AboutMe from "./toppage/AboutMe";
-import WhatsNew from "./toppage/WhatsNew";
-import Store from "./toppage/Store";
-import Bird from "./toppage/Bird";
-import Ratings from "./toppage/Ratings";
-import Links from "./toppage/Links";
-import TopPageBalloons from "./toppage/TopPageBalloons";
-import TopPageMusic from "./toppage/TopPageMusic";
-import TopPageIcons from "./toppage/TopPageIcons";
-import React, {Suspense} from "react";
+import AboutMe from "../components/toppage/AboutMe";
+import WhatsNew from "../components/toppage/WhatsNew";
+import Store from "../components/toppage/Store";
+import Bird from "../components/toppage/Bird";
+import Ratings from "../components/toppage/Ratings";
+import Links from "../components/toppage/Links";
+import TopPageBalloons from "../components/toppage/TopPageBalloons";
+import TopPageMusic from "../components/toppage/TopPageMusic";
+import TopPageIcons from "../components/toppage/TopPageIcons";
+import React from "react";
 
 // @ts-ignore
-export default async function Index(params) {
+export default async function Index() {
   const mainWrapperStyle: React.CSSProperties = {
     display: 'block',
     maxWidth: '100000px',
@@ -29,18 +29,12 @@ export default async function Index(params) {
       <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper}>
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid}/>
-          <Suspense fallback={null}>
-            {/* @ts-expect-error Server Component */}
-            <WhatsNew id={styles.whats_new}/>
-          </Suspense>
+          <WhatsNew id={styles.whats_new}/>
           <Store id={styles.sticker}/>
           <TopPageIcons id={styles.icons}/>
           <TopPageMusic id={styles.music}/>
           <TopPageBalloons id={styles.balloon}/>
-          <Suspense fallback={null}>
-            {/* @ts-expect-error Server Component */}
-            <Links id={styles.link_grid}/>
-          </Suspense>
+          <Links id={styles.link_grid}/>
           <Ratings id={styles.music_game}/>
           <Bird id={styles.bird}/>
         </div>

@@ -78,12 +78,11 @@ const Balloon = (props: BalloonProps) => {
         if (!props.isBurst) {
           playSound();
           reward();
-          console.log(`popped balloon ${balloonId} with color ${props.color}`);
           props.onBurst?.();
         }
       }}
     >
-      <span id={balloonId}/>
+      <span className={styles.starting_point_of_effect} id={balloonId}/>
     </span>
   )
 }

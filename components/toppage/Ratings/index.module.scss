@@ -1,0 +1,83 @@
+@use '../../../styles/mixins';
+
+.rating_list {
+    font-weight: bold;
+}
+
+.platinum{
+    /*filter:drop-shadow(1px 1px 0.6pt rgba(0, 0, 0,30));*/
+    color: #FF7C00;
+    background: -webkit-linear-gradient(top, #fff677 30%, #fffbb9 50%, #ffcb5d 50%, #fff4b3 80%);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);*/
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 1px #533c15;
+
+}
+
+.rainbow{
+    /*filter:drop-shadow(1px 1px 0.6pt rgba(0, 0, 0,30));*/
+    color: #fff0af;
+    background: -webkit-linear-gradient(top,
+            red 15%,
+            orange,
+            yellow,
+            #00d907 60%,
+            aqua ,
+            #002fff,
+            #f500f5);
+
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 1px #858585;
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);*/
+}
+
+.silver{
+    /*filter:drop-shadow(1px 1px 0.6pt rgba(0, 0, 0,30));*/
+    background: -webkit-linear-gradient(top, #fffdfd 30%,#cbc9c9 50%, #aeacac 51%, #828080 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-text-stroke: 1px #3d3d3d;
+    /*text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);*/
+}
+
+.brown{
+    background: -webkit-linear-gradient(top, #ffa200 25%,#c64000 75%);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.green{
+    background: -webkit-linear-gradient(top, #47c017 25%,#006609 75%);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.water{
+    background: -webkit-linear-gradient(top, #42c5f8 25%,#0a9cd6 75%);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.blue{
+    background: -webkit-linear-gradient(top, #2495ff 25%,#072792 75%);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    -webkit-background-clip: text;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+@include mixins.mq(dark){
+    .platinum , .rainbow , .silver , .brown , .green , .water , .blue  {
+        -webkit-text-stroke: 2px white;
+        text-stroke: 2px white;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.438));
+    }
+}
+
+ul.rating_list li {
+    margin-bottom: 0.5em;
+}

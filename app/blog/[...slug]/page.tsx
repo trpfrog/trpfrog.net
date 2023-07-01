@@ -19,7 +19,7 @@ import {ParseWithBudouX} from "../../../lib/wordSplit";
 import PostAttributes from "../../../components/blog/PostAttributes";
 import RelatedPosts from "../../../components/blog/RelatedPosts";
 import {UDFontBlock} from "../../../components/blog/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlogButton";
+import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
 import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
@@ -30,7 +30,10 @@ import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
 
-export const dynamicParams = false
+// Trick for NEXT-1214
+// export const dynamicParams = false
+const dynamicParams = false
+export {dynamicParams}
 
 type PageProps = {
   params: {
