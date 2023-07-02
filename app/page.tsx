@@ -13,6 +13,7 @@ import TopPageBalloons from "../components/toppage/TopPageBalloons";
 import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
 import React from "react";
+import TempTwitter from "../components/TempTwitter";
 
 // @ts-ignore
 export default async function Index() {
@@ -27,6 +28,7 @@ export default async function Index() {
   return (
     <div id="main_wrapper" style={mainWrapperStyle}>
       <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper}>
+        <TempTwitter/>
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid}/>
           <WhatsNew id={styles.whats_new}/>
