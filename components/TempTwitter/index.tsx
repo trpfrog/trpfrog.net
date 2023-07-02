@@ -9,9 +9,9 @@ import Block from "../Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {ShowAllComponent} from "../blog/article-parts/ShowAll";
+import styles from './index.module.scss'
 
 export default async function TempTwitter() {
-
   let md: string
   let frontMatter: { [key: string]: any }
   try {
@@ -34,15 +34,15 @@ export default async function TempTwitter() {
     const [date, ...contentArr] = line.split('---')
     const content = contentArr.join('---')
     return (
-      <li key={`temp-twitter-${idx}`}>
-        <div style={{display: 'flex', gap: 10}}>
-          <b style={{
-            display: 'inline-block',
-            opacity: idx === 0 ? 1 : 0.7,
-            whiteSpace: 'nowrap',
-          }}>
-            {date}
-          </b>
+      <React.Fragment key={`temp-twitter-${idx}`}>
+        <b style={{
+          display: 'inline-block',
+          opacity: idx === 0 ? 1 : 0.7,
+          whiteSpace: 'nowrap',
+        }}>
+          {date}
+        </b>
+        <div>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
@@ -53,15 +53,9 @@ export default async function TempTwitter() {
             {content}
           </ReactMarkdown>
         </div>
-      </li>
+      </React.Fragment>
     )
   })
-
-  const TweetsUL = ({children}: {children: React.ReactNode}) => (
-    <ul style={{paddingLeft: 0}}>
-      {children}
-    </ul>
-  )
 
   const maxTweetsDisplayedAtOnce = 5
 
@@ -74,18 +68,14 @@ export default async function TempTwitter() {
         <Suspense fallback={<LoadingBlock style={{height: 300}}/>}>
           {tweets.length > maxTweetsDisplayedAtOnce ? (
             <ShowAllComponent preview={
-              <TweetsUL>
-                {tweets.slice(0, maxTweetsDisplayedAtOnce)}
-              </TweetsUL>
-            }>
-              <TweetsUL>
-                {tweets.slice(maxTweetsDisplayedAtOnce)}
-              </TweetsUL>
+              tweets.slice(0, maxTweetsDisplayedAtOnce)
+            } className={styles.grid}>
+              {tweets.slice(maxTweetsDisplayedAtOnce)}
             </ShowAllComponent>
           ) : (
-            <TweetsUL>
-              {tweets}
-            </TweetsUL>
+            <div className={styles.grid}>
+              tweets
+            </div>
           )}
         </Suspense>
       </Block>

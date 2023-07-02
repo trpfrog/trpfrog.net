@@ -4,7 +4,13 @@ import React, {useId, useState} from "react";
 import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
 import {ArticleParts} from "../ArticleParts";
 
-export const ShowAllComponent = ({children, preview}: {children: React.ReactNode, preview: React.ReactNode}) => {
+type Props = {
+  children: React.ReactNode
+  preview: React.ReactNode
+  className?: string
+}
+
+export const ShowAllComponent = ({children, preview, className}: Props) => {
   const Fog = () => (
     <div style={{
       position: 'absolute',
@@ -22,13 +28,17 @@ export const ShowAllComponent = ({children, preview}: {children: React.ReactNode
 
   return (
     <div>
-      <div style={{position: 'relative'}}>
-        {preview}
-        {!isShowAll && <Fog/>}
-      </div>
-      {isShowAll &&
-        children
-      }
+      {isShowAll ? (
+        <div className={className}>
+          {preview}
+          {children}
+        </div>
+      ) : (
+        <div style={{position: 'relative'}} className={className}>
+          {preview}
+          <Fog/>
+        </div>
+      )}
       <div style={{textAlign: 'center', position: 'sticky', bottom: 10}}>
         <div
           style={{
