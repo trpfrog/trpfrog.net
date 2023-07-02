@@ -3,6 +3,9 @@
     grid-template-columns: 1fr auto;
     grid-gap: 10px;
     line-height: 1.4;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+    margin: 1rem 0;
 }
 
 .date {
@@ -13,4 +16,7 @@
     -webkit-text-stroke: 1px var(--footer-color);
     text-stroke: 1px var(--footer-color);
     transform: translateY(1px);
+}
+
+.text {
 }

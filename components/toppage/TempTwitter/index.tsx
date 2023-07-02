@@ -40,7 +40,7 @@ export default async function TempTwitter() {
         }}>
           {date}
         </span>
-        <div>
+        <div className={styles.text}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
