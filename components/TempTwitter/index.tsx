@@ -16,7 +16,7 @@ export default async function TempTwitter() {
   try {
     const data = await microCMS.get({
       endpoint: "blog-preview",
-      contentId: process.env.TEMP_TWITTER_CONTENT_ID!
+      contentId: process.env.TEMP_TWITTER_CONTENT_ID!,
     })
     const result = matter(data?.md)
     md = result.content
@@ -42,16 +42,24 @@ export default async function TempTwitter() {
               const content = contentArr.join('---')
               return (
                 <li key={`temp-twitter-${idx}`}>
-                  <b style={{opacity: idx === 0 ? 1 : 0.7}}>{date}: </b>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    components={{
-                      p: ({children}: any) => <>{children}</>
-                    }}
-                  >
-                    {content}
-                  </ReactMarkdown>
+                  <div style={{display: 'flex', gap: 10}}>
+                    <b style={{
+                      display: 'inline-block',
+                      opacity: idx === 0 ? 1 : 0.7,
+                      whiteSpace: 'nowrap',
+                    }}>
+                      {date}
+                    </b>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      components={{
+                        p: ({children}: any) => <>{children}</>
+                      }}
+                    >
+                      {content}
+                    </ReactMarkdown>
+                  </div>
                 </li>
               )
             })}
