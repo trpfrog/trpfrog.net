@@ -8,6 +8,7 @@ import MainWrapper from "../common/server/MainWrapper";
 import Block from "../Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import {ShowAllComponent} from "../blog/article-parts/ShowAll";
 
 export default async function TempTwitter() {
 
@@ -29,6 +30,41 @@ export default async function TempTwitter() {
     return <></>
   }
 
+  const tweets = md.split('\n').filter(Boolean).reverse().map((line, idx) => {
+    const [date, ...contentArr] = line.split('---')
+    const content = contentArr.join('---')
+    return (
+      <li key={`temp-twitter-${idx}`}>
+        <div style={{display: 'flex', gap: 10}}>
+          <b style={{
+            display: 'inline-block',
+            opacity: idx === 0 ? 1 : 0.7,
+            whiteSpace: 'nowrap',
+          }}>
+            {date}
+          </b>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+            components={{
+              p: ({children}: any) => <>{children}</>
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        </div>
+      </li>
+    )
+  })
+
+  const TweetsUL = ({children}: {children: React.ReactNode}) => (
+    <ul style={{paddingLeft: 0}}>
+      {children}
+    </ul>
+  )
+
+  const maxTweetsDisplayedAtOnce = 5
+
   return (
     <MainWrapper>
       <Block title={'Twitter 一時避難所'}>
@@ -36,34 +72,21 @@ export default async function TempTwitter() {
           なんらかの原因でツイートできなくなったときに逃げてくる場所です。
         </p>
         <Suspense fallback={<LoadingBlock style={{height: 300}}/>}>
-          <ul>
-            {md.split('\n').filter(Boolean).reverse().map((line, idx) => {
-              const [date, ...contentArr] = line.split('---')
-              const content = contentArr.join('---')
-              return (
-                <li key={`temp-twitter-${idx}`}>
-                  <div style={{display: 'flex', gap: 10}}>
-                    <b style={{
-                      display: 'inline-block',
-                      opacity: idx === 0 ? 1 : 0.7,
-                      whiteSpace: 'nowrap',
-                    }}>
-                      {date}
-                    </b>
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm]}
-                      rehypePlugins={[rehypeRaw]}
-                      components={{
-                        p: ({children}: any) => <>{children}</>
-                      }}
-                    >
-                      {content}
-                    </ReactMarkdown>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+          {tweets.length > maxTweetsDisplayedAtOnce ? (
+            <ShowAllComponent preview={
+              <TweetsUL>
+                {tweets.slice(0, maxTweetsDisplayedAtOnce)}
+              </TweetsUL>
+            }>
+              <TweetsUL>
+                {tweets.slice(maxTweetsDisplayedAtOnce)}
+              </TweetsUL>
+            </ShowAllComponent>
+          ) : (
+            <TweetsUL>
+              {tweets}
+            </TweetsUL>
+          )}
         </Suspense>
       </Block>
     </MainWrapper>

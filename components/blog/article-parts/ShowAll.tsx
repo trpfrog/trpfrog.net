@@ -1,15 +1,10 @@
 'use client';
 
-import React, {useState} from "react";
+import React, {useId, useState} from "react";
 import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
 import {ArticleParts} from "../ArticleParts";
 
-
-const ShowAll: ArticleParts = (content, entry, imageSize) => {
-  const [first, second] = content.split(/\n---+\n/)
-
-  const [isShowAll, setShowAll] = useState(false)
-
+export const ShowAllComponent = ({children, preview}: {children: React.ReactNode, preview: React.ReactNode}) => {
   const Fog = () => (
     <div style={{
       position: 'absolute',
@@ -23,14 +18,16 @@ const ShowAll: ArticleParts = (content, entry, imageSize) => {
     }}/>
   )
 
+  const [isShowAll, setShowAll] = useState(false)
+
   return (
     <div>
       <div style={{position: 'relative'}}>
-        <ArticleRendererFromContext toRender={first}/>
+        {preview}
         {!isShowAll && <Fog/>}
       </div>
       {isShowAll &&
-        <ArticleRendererFromContext toRender={second}/>
+        children
       }
       <div style={{textAlign: 'center', position: 'sticky', bottom: 10}}>
         <div
@@ -51,5 +48,17 @@ const ShowAll: ArticleParts = (content, entry, imageSize) => {
       </div>
     </div>
   )
+
 }
+
+const ShowAll: ArticleParts = (content, entry, imageSize) => {
+  const [first, second] = content.split(/\n---+\n/)
+  return (
+    <ShowAllComponent preview={<ArticleRendererFromContext toRender={first}/>}>
+      <ArticleRendererFromContext toRender={second}/>
+    </ShowAllComponent>
+  )
+}
+
+
 export default ShowAll
