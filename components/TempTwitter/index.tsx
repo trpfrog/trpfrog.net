@@ -35,13 +35,11 @@ export default async function TempTwitter() {
     const content = contentArr.join('---')
     return (
       <React.Fragment key={`temp-twitter-${idx}`}>
-        <b style={{
-          display: 'inline-block',
+        <span className={styles.date} style={{
           opacity: idx === 0 ? 1 : 0.7,
-          whiteSpace: 'nowrap',
         }}>
           {date}
-        </b>
+        </span>
         <div>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -65,6 +63,7 @@ export default async function TempTwitter() {
         <p>
           なんらかの原因でツイートできなくなったときに逃げてくる場所です。
         </p>
+        <hr style={{margin: '1.2rem 0'}}/>
         <Suspense fallback={<LoadingBlock style={{height: 300}}/>}>
           {tweets.length > maxTweetsDisplayedAtOnce ? (
             <ShowAllComponent preview={
