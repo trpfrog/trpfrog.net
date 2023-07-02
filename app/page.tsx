@@ -15,6 +15,8 @@ import TopPageIcons from "../components/toppage/TopPageIcons";
 import React from "react";
 import TempTwitter from "../components/TempTwitter";
 
+export const revalidate = 30
+
 // @ts-ignore
 export default async function Index() {
   const mainWrapperStyle: React.CSSProperties = {
