@@ -1,14 +1,14 @@
-import microCMS from "../../lib/microCMS";
+import microCMS from "../../../lib/microCMS";
 import matter from "gray-matter";
 import React from "react";
 import {Suspense} from "react";
-import LoadingBlock from "../LoadingBlock";
+import LoadingBlock from "../../LoadingBlock";
 import ReactMarkdown from "react-markdown";
-import MainWrapper from "../common/server/MainWrapper";
-import Block from "../Block";
+import MainWrapper from "../../common/server/MainWrapper";
+import Block from "../../Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {ShowAllComponent} from "../blog/article-parts/ShowAll";
+import {ShowAllComponent} from "../../blog/article-parts/ShowAll";
 import styles from './index.module.scss'
 
 export default async function TempTwitter() {

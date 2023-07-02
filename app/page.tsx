@@ -13,7 +13,7 @@ import TopPageBalloons from "../components/toppage/TopPageBalloons";
 import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
 import React from "react";
-import TempTwitter from "../components/TempTwitter";
+import TempTwitter from "../components/toppage/TempTwitter";
 
 export const revalidate = 30
 
