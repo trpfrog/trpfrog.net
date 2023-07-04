@@ -11,7 +11,15 @@ import rehypeRaw from "rehype-raw";
 import {ShowAllComponent} from "../../blog/article-parts/ShowAll";
 import styles from './index.module.scss'
 
-export default async function TempTwitter() {
+type Props = {
+  reducedDisplayByDefault?: boolean
+}
+
+export default async function TempTwitter(props: Props) {
+  const {
+    reducedDisplayByDefault = true
+  } = props
+
   let md: string
   let frontMatter: { [key: string]: any }
   try {
@@ -55,8 +63,6 @@ export default async function TempTwitter() {
     )
   })
 
-  const maxTweetsDisplayedAtOnce = 5
-
   return (
     <MainWrapper>
       <Block title={'Twitter 一時避難所'}>
@@ -65,19 +71,34 @@ export default async function TempTwitter() {
         </p>
         <hr style={{margin: '1.2rem 0'}}/>
         <Suspense fallback={<LoadingBlock style={{height: 300}}/>}>
-          {tweets.length > maxTweetsDisplayedAtOnce ? (
-            <ShowAllComponent preview={
-              tweets.slice(0, maxTweetsDisplayedAtOnce)
-            } className={styles.grid}>
-              {tweets.slice(maxTweetsDisplayedAtOnce)}
-            </ShowAllComponent>
+          {reducedDisplayByDefault ? (
+            <ReducedView tweets={tweets} maxTweetsDisplayedAtOnce={5}/>
           ) : (
             <div className={styles.grid}>
-              tweets
+              {tweets}
             </div>
           )}
         </Suspense>
       </Block>
     </MainWrapper>
+  )
+}
+
+function ReducedView(props: {
+  tweets: React.ReactNode[],
+  maxTweetsDisplayedAtOnce: number,
+}) {
+  const { tweets, maxTweetsDisplayedAtOnce } = props
+
+  return tweets.length > maxTweetsDisplayedAtOnce ? (
+    <ShowAllComponent preview={
+      tweets.slice(0, maxTweetsDisplayedAtOnce)
+    } className={styles.grid}>
+      {tweets.slice(maxTweetsDisplayedAtOnce)}
+    </ShowAllComponent>
+  ) : (
+    <div className={styles.grid}>
+      {tweets}
+    </div>
   )
 }
