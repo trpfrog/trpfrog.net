@@ -53,6 +53,22 @@ $link-button-font-color: var(--link-button-font-color);
     }
 }
 
+button.linkButton {
+    border: none;
+
+    &[disabled] {
+        background: #ccc;
+        box-shadow: none;
+        color: #333 !important;
+        cursor: default;
+
+        &:hover, &:active {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
+
 .link-area {
     a {
         @extend .linkButton;
