@@ -10,6 +10,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {ShowAllComponent} from "../../blog/article-parts/ShowAll";
 import styles from './index.module.scss'
+import PushNotificationButton from "../../SubscribeNotificationButton";
 
 type Props = {
   reducedDisplayByDefault?: boolean
@@ -79,6 +80,9 @@ export default async function TempTwitter(props: Props) {
             </div>
           )}
         </Suspense>
+        <PushNotificationButton>
+          通知を受け取る
+        </PushNotificationButton>
       </Block>
     </MainWrapper>
   )
