@@ -1,19 +1,19 @@
 import styles from './style.module.scss';
 
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
-import TrpFrogAnimationFrame from "@/components/toppage/TrpFrogAnimation";
-
-import AboutMe from "@/components/toppage/AboutMe";
-import WhatsNew from "@/components/toppage/WhatsNew";
-import Store from "@/components/toppage/Store";
-import Bird from "@/components/toppage/Bird";
-import Ratings from "@/components/toppage/Ratings";
-import Links from "@/components/toppage/Links";
-import TopPageBalloons from "@/components/toppage/TopPageBalloons";
-import TopPageMusic from "@/components/toppage/TopPageMusic";
-import TopPageIcons from "@/components/toppage/TopPageIcons";
 import React from "react";
-import TempTwitter from "@/components/toppage/TempTwitter";
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
+import TrpFrogAnimationFrame from "./_components/TrpFrogAnimation";
+import AboutMe from "./_components/AboutMe";
+import WhatsNew from "./_components/WhatsNew";
+import Store from "./_components/Store";
+import Bird from "./_components/Bird";
+import Ratings from "./_components/Ratings";
+import Links from "./_components/Links";
+import TopPageBalloons from "./_components/TopPageBalloons";
+import TopPageMusic from "./_components/TopPageMusic";
+import TopPageIcons from "./_components/TopPageIcons";
+import TempTwitter from "./_components/TempTwitter";
 import MainWrapper from "@/components/MainWrapper";
 
 export const revalidate = 30
