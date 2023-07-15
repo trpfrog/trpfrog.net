@@ -8,7 +8,7 @@ import {fetchAllImageProps} from "@blog/_lib/imagePropsFetcher";
 
 import BlogMarkdown from "@blog/_renderer/BlogMarkdown";
 
-import styles from '../../../../styles/blog/blog.module.scss';
+import styles from '@blog/_styles/blog.module.scss';
 
 import {formatReadTime} from "@blog/_lib/readTime";
 import {parseWithBudouX} from "@/lib/wordSplit";

@@ -2,7 +2,7 @@ import React from 'react'
 import Title from "@/components/Title";
 import {getSortedPostsData} from "@blog/_lib/load";
 
-import styles from '../../styles/blog/blog.module.scss';
+import styles from '@blog/_styles/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";

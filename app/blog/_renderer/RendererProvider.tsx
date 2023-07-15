@@ -2,7 +2,7 @@
 
 import React from "react";
 import BlogImage from "@blog/_components/BlogImage";
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "@blog/_styles/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import remarkGfm from "remark-gfm";

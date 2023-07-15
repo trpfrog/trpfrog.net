@@ -1,7 +1,7 @@
 @use 'code';
 @use 'articles';
 
-@use '../mixins';
+@use '../../../styles/mixins';
 
 .article_block {
     padding: 17px;

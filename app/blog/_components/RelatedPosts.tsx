@@ -1,6 +1,6 @@
 'use client'
 
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "@blog/_styles/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import ArticleCard, {ArticleGrid} from "./ArticleCard";

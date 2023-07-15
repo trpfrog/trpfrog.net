@@ -1,6 +1,6 @@
 import ArticleCard from "@blog/_components/ArticleCard";
 import Block from "@/components/Block";
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "@blog/_styles/blog.module.scss";
 import {RichEntryButtons} from "./EntryButtons";
 import PageNavigation from "@blog/_components/PageNavigation";
 import {HeaderFollowSticky} from "@/components/Header";

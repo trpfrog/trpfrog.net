@@ -1,4 +1,4 @@
-import styles from "../../../styles/blog/blog.module.scss";
+import styles from "@blog/_styles/blog.module.scss";
 import React, {CSSProperties} from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
