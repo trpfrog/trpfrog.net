@@ -1,15 +1,14 @@
-import {NextPage} from "next";
-import Layout from "@/components/Layout";
 import Link from 'next/link';
 import Image from "next/legacy/image";
 import Title from "@/components/Title";
+import MainWrapper from "@/components/MainWrapper";
 
-const TrpFrog404: NextPage = () => {
+export default function NotFound() {
   const IB = ({children}: any) => (
     <span style={{display: 'inline-block'}}>{children}</span>
   )
   return (
-    <Layout>
+    <MainWrapper>
       <Title
         title={'404 Not Found'}
         showDefaultText={false}
@@ -44,10 +43,7 @@ const TrpFrog404: NextPage = () => {
             </Link>
           </p>
         </div>
-
       </Title>
-    </Layout>
+    </MainWrapper>
   );
 }
-
-export default TrpFrog404;
