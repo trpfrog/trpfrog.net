@@ -14,12 +14,12 @@ import BlogMarkdown from "../renderer/BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
-import Tag from "@/components/blog/Tag";
+import Tag from "@blog/components/Tag";
 import {ParseWithBudouX} from "@/lib/wordSplit";
-import PostAttributes from "@/components/blog/PostAttributes";
-import RelatedPosts from "@/components/blog/RelatedPosts";
-import {UDFontBlock} from "@/components/blog/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "@/components/blog/BadBlog";
+import PostAttributes from "@blog/components/PostAttributes";
+import RelatedPosts from "@blog/components/RelatedPosts";
+import {UDFontBlock} from "@blog/components/UDFontBlock";
+import {BadBlogBlock, BadBlogButton} from "@blog/components/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
 import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";

@@ -2,7 +2,7 @@ import Title from "@/components/Title";
 import Block from "@/components/Block";
 
 import {getSortedPostsData} from "@blog/lib/load";
-import ArticleCard, {ArticleGrid} from "@/components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "@blog/components/ArticleCard";
 import Belongings from "./Belongings.mdx";
 import BlogPost from "@blog/lib/blogPost";
 import {Metadata} from "next";

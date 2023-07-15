@@ -12,7 +12,7 @@ import styles from '../../../../styles/blog/blog.module.scss';
 
 import {formatReadTime} from "@blog/lib/readTime";
 import {parseWithBudouX} from "@/lib/wordSplit";
-import PostAttributes from "@/components/blog/PostAttributes";
+import PostAttributes from "@blog/components/PostAttributes";
 import {createErrorArticle, ErrorablePost} from "@blog/lib/loadPreview";
 import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
 import {Metadata} from "next";

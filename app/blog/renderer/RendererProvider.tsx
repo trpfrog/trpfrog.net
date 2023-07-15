@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import BlogImage from "@/components/blog/BlogImage";
+import BlogImage from "@blog/components/BlogImage";
 import styles from "../../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ import {BlogImageData} from "@blog/lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "@/components/blog/ComponentDictionary";
+import myMarkdownClasses from "@blog/components/ComponentDictionary";
 import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
 import BlogPost from "@blog/lib/blogPost";

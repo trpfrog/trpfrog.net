@@ -1,10 +1,10 @@
 import Link from "next/link";
-import EntryButton from "@/components/blog/EntryButton";
+import EntryButton from "@blog/components/EntryButton";
 import {faArrowLeft, faPencil} from "@fortawesome/free-solid-svg-icons";
 import ShareSpan from "./ShareSpan";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {UDFontButton} from "@/components/blog/UDFontBlock";
-import TogglePageViewLink from "@/components/blog/TogglePageViewLink";
+import {UDFontButton} from "@blog/components/UDFontBlock";
+import TogglePageViewLink from "@blog/components/TogglePageViewLink";
 import React from "react";
 import BlogPost from "@blog/lib/blogPost";
 

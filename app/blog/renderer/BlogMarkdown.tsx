@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {BlogImageData} from "@blog/lib/imagePropsFetcher";
-import PageNavigation from "@/components/blog/PageNavigation";
+import PageNavigation from "@blog/components/PageNavigation";
 import Block from "@/components/Block";
 
 import RendererProvider from "./RendererProvider";

@@ -6,7 +6,7 @@ import styles from '../../styles/blog/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
-import ArticleCard, {ArticleGrid} from "@/components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "@blog/components/ArticleCard";
 import BlogPost from "@blog/lib/blogPost";
 import {Metadata} from "next";
 import MainWrapper from "@/components/MainWrapper";
