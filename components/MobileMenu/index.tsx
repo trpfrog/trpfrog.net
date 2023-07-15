@@ -1,12 +1,18 @@
+'use client';
+
 import React from "react";
 import styles from "./index.module.scss";
 import {NavigationLinks} from "../Navigation";
 import {atom, useAtom} from "jotai";
 
-export const mobileMenuAtom = atom(false)
+const mobileMenuAtom = atom(false)
+
+export function useMobileMenuState() {
+  return useAtom(mobileMenuAtom);
+}
 
 const MobileMenu = () => {
-  const [isOpened, setHamburgerState] = useAtom(mobileMenuAtom);
+  const [isOpened, setHamburgerState] = useMobileMenuState();
 
   const toggleMenu = () => {
     setHamburgerState(!isOpened);
