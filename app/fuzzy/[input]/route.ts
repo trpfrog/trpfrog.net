@@ -1,7 +1,7 @@
-import rateLimit from '../../../lib/rateLimit'
+import rateLimit from '@/lib/rateLimit'
 import {NextRequest, NextResponse} from "next/server";
 import { ChatOpenAI } from "langchain/chat_models/openai";
-import {getAllPostSlugs} from "../../../lib/blog/load";
+import {getAllPostSlugs} from "@blog/_lib/load";
 import {HumanChatMessage} from "langchain/schema";
 
 const limiter = rateLimit({

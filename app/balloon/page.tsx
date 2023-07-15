@@ -1,6 +1,7 @@
 // 'use client';
 import BalloonApp from "./BalloonApp";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata: Metadata = {
   title: 'Balloon',
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
 
 export default async function Index() {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <BalloonApp/>
-    </div>
+    </MainWrapper>
   )
 }

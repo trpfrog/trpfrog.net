@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 
 import IconMakerApp from "./IconMakerApp";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: 'アイコンメーカー',
@@ -12,7 +13,7 @@ export const metadata = {
 
 export default function Index() {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title
         title={'アイコンメーカー.ts'}
         ribbonText={'BETA'}
@@ -37,6 +38,6 @@ export default function Index() {
           詳しくは<Link href={'/legal'}>こちら</Link>をご覧ください。
         </p>
       </Block>
-    </div>
+    </MainWrapper>
   );
 }

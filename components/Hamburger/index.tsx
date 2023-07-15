@@ -1,10 +1,11 @@
+'use client';
+
 import React from "react";
 import styles from "./index.module.scss";
-import {useAtom} from "jotai";
-import {mobileMenuAtom} from "../MobileMenu";
+import {useMobileMenuState} from "@/components/MobileMenu";
 
 const Hamburger = () => {
-  const [isOpened, setHamburgerState] = useAtom(mobileMenuAtom)
+  const [isOpened, setHamburgerState] = useMobileMenuState();
   return (
     <div id={styles.hamburger_menu}>
       <a

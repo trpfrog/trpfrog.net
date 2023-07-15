@@ -1,0 +1,48 @@
+@use '../../../../styles/mixins';
+
+.block {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px #90e200;
+    background: white;
+
+    color: black !important;
+    text-decoration: none;
+
+    padding: 2px;
+    border-radius: 1000px;
+
+    font-family: var(--font-m-plus-rounded-1c);
+    font-size: 0.8em;
+
+    @include mixins.mq(dark) {
+        background: #172c00;
+        color: white !important;
+    }
+
+    @media print {
+        border: solid 2px black;
+    }
+
+    &:hover {
+        background: #90e20033;
+    }
+}
+
+.name {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px 3px 0 0;
+}
+
+.emoji {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2px;
+    width: 2em;
+    height: 2em;
+}

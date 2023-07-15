@@ -1,11 +1,12 @@
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 
-import {getSortedPostsData} from "../../lib/blog/load";
-import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
+import {getSortedPostsData} from "@blog/_lib/load";
+import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
 import Belongings from "./Belongings.mdx";
-import BlogPost from "../../lib/blog/blogPost";
+import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: '徒歩情報',
@@ -17,7 +18,7 @@ export default async function Index() {
   const articles = await getSortedPostsData(tag)
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title
         title={metadata.title}
         description={metadata.description}
@@ -36,7 +37,7 @@ export default async function Index() {
       <Block title={'持ち物'}>
         <Belongings/>
       </Block>
-    </div>
+    </MainWrapper>
   )
 }
 

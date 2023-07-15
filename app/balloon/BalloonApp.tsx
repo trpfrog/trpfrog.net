@@ -1,10 +1,10 @@
 'use client';
 
 import React, {useState} from 'react';
-import Util from "../../lib/utils";
+import Util from "@/lib/utils";
 import {useBalloonSound} from "./Balloon";
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 import BalloonArray from "./BalloonArray";
 
 export default function BalloonApp() {

@@ -1,0 +1,85 @@
+@use '../../../../styles/mixins';
+
+#intro_text {
+    margin: 0.7em 0.3em 0;
+}
+
+#my_name {
+    display: inline-block;
+    font-family: var(--font-m-plus-rounded-1c);
+    font-weight: bold;
+    font-size: 4em;
+    margin: -0.2em 0;
+    p {
+        margin: 0;
+    }
+}
+
+#my_name_jp {
+    font-weight: 700;
+}
+
+#my_name_en {
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.5em;
+    opacity: 0.8;
+}
+
+#intro_attribute {
+    padding: 0;
+    li {
+        padding: 0;
+    }
+    li:before {
+        background: none;
+        content: none;
+    }
+}
+
+#social {
+    div {
+        display: inline-block;
+        background: var(--header-color);
+        border-radius: 100px;
+        color: white;
+        padding: 0 8px;
+        margin: 0 5px 5px 0;
+        svg {
+            font-size: 1.1em;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+@include mixins.mq(sp) {
+    #intro_text {
+        margin: 0.3em 0 0;
+    }
+
+    #about_me_grid {
+        text-align: center;
+    }
+
+    #intro_attribute {
+        display: inline-block;
+        text-align: left;
+    }
+
+    #my_name {
+        text-align: center;
+        font-size: 2.5em;
+        margin: -0.1em 0;
+    }
+
+    #about_me_text {
+        display: grid;
+        grid-gap: 10px;
+        p {
+            margin: 0;
+        }
+    }
+}

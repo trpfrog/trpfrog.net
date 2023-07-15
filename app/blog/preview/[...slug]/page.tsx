@@ -1,21 +1,22 @@
 import React from 'react'
 import Image from "next/legacy/image";
 
-import Title from "../../../../components/Title";
+import Title from "@/components/Title";
 
-import {getPreviewPostData} from "../../../../lib/blog/loadPreview";
-import {fetchAllImageProps} from "../../../../lib/blog/imagePropsFetcher";
+import {getPreviewPostData} from "@blog/_lib/loadPreview";
+import {fetchAllImageProps} from "@blog/_lib/imagePropsFetcher";
 
-import BlogMarkdown from "../../renderer/BlogMarkdown";
+import BlogMarkdown from "@blog/_renderer/BlogMarkdown";
 
-import styles from '../../../../styles/blog/blog.module.scss';
+import styles from '@blog/_styles/blog.module.scss';
 
-import {formatReadTime} from "../../../../lib/blog/readTime";
-import {parseWithBudouX} from "../../../../lib/wordSplit";
-import PostAttributes from "../../../../components/blog/PostAttributes";
-import {createErrorArticle, ErrorablePost} from "../../../../lib/blog/loadPreview";
-import {getPureCloudinaryPath} from "../../../../lib/blog/getPureCloudinaryPath";
+import {formatReadTime} from "@blog/_lib/readTime";
+import {parseWithBudouX} from "@/lib/wordSplit";
+import PostAttributes from "@blog/_components/PostAttributes";
+import {createErrorArticle, ErrorablePost} from "@blog/_lib/loadPreview";
+import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 type Props = {
   params: {
@@ -68,7 +69,7 @@ export default async function Index (props: Props) {
   } = formatReadTime(post.readTime)
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
         {post.thumbnail &&
           <Image
@@ -96,6 +97,6 @@ export default async function Index (props: Props) {
         entry={post}
         imageSize={imageSize}
       />
-    </div>
+    </MainWrapper>
   )
 }

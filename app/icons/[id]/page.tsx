@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Image from "next/legacy/image";
-import Block from "../../../components/Block";
+import Block from "@/components/Block";
 import styles from "../../../styles/imageview.module.scss"
-import Title from "../../../components/Title";
+import Title from "@/components/Title";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 const NUMBER_OF_IMAGES = 33;
 
@@ -25,7 +26,7 @@ export async function generateStaticParams() {
 export default function Index ({ params: { id } }: PageProps) {
   const idInt = parseInt(id);
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={metadata.title} style={{display: 'none'}}/>
       <Block>
         <div className={styles.img_wrapper_outside}>
@@ -83,6 +84,6 @@ export default function Index ({ params: { id } }: PageProps) {
           画像のロードが遅すぎてページ遷移をしていないように見える
         </p>
       </Block>
-    </div>
+    </MainWrapper>
   );
 };

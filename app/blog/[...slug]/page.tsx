@@ -1,34 +1,35 @@
 import Image from "next/legacy/image";
 
-import Title from "../../../components/Title";
-import Block from "../../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 
 import {
   getAllPostSlugs,
   getPostData,
   getSortedPostsData,
-} from "../../../lib/blog/load";
-import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
+} from "@blog/_lib/load";
+import {fetchAllImageProps} from "@blog/_lib/imagePropsFetcher";
 
-import BlogMarkdown from "../renderer/BlogMarkdown";
+import BlogMarkdown from "@blog/_renderer/BlogMarkdown";
 
-import styles from '../../../styles/blog/blog.module.scss';
+import styles from '@blog/_styles/blog.module.scss';
 
-import Tag from "../../../components/blog/Tag";
-import {ParseWithBudouX} from "../../../lib/wordSplit";
-import PostAttributes from "../../../components/blog/PostAttributes";
-import RelatedPosts from "../../../components/blog/RelatedPosts";
-import {UDFontBlock} from "../../../components/blog/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlog";
+import Tag from "@blog/_components/Tag";
+import {ParseWithBudouX} from "@/lib/wordSplit";
+import PostAttributes from "@blog/_components/PostAttributes";
+import RelatedPosts from "@blog/_components/RelatedPosts";
+import {UDFontBlock} from "@blog/_components/UDFontBlock";
+import {BadBlogBlock, BadBlogButton} from "@blog/_components/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
-import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
-import BlogPost from "../../../lib/blog/blogPost";
+import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
+import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
-import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
+import DevBlogMarkdown from "@blog/_renderer/DevBlogMarkdown";
+import MainWrapper from "@/components/MainWrapper";
 
 // Trick for NEXT-1214
 // export const dynamicParams = false
@@ -107,7 +108,7 @@ export default async function Index({ params: { slug } }: PageProps) {
   } = await processSlug(...slug)
 
   return (
-    <div id="main_wrapper" className={styles.layout}>
+    <MainWrapper className={styles.layout}>
       <Title className={styles.article_title_block}>
         {post.thumbnail &&
           <Image
@@ -189,6 +190,6 @@ export default async function Index({ params: { slug } }: PageProps) {
         tag={post.tags.split(',')[0].trim()}
         relatedPosts={relatedPosts}
       />
-    </div>
+    </MainWrapper>
   );
 }

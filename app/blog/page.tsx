@@ -1,14 +1,15 @@
 import React from 'react'
-import Title from "../../components/Title";
-import {getSortedPostsData} from "../../lib/blog/load";
+import Title from "@/components/Title";
+import {getSortedPostsData} from "@blog/_lib/load";
 
-import styles from '../../styles/blog/blog.module.scss';
+import styles from '@blog/_styles/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
-import ArticleCard, {ArticleGrid} from "../../components/blog/ArticleCard";
-import BlogPost from "../../lib/blog/blogPost";
+import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
+import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。'
@@ -23,7 +24,7 @@ export default async function Index() {
 
   return (
     <>
-      <div id="main_wrapper">
+      <MainWrapper>
         <Title title={'つまみログ'} description={metadata.description}/>
 
         <div className={styles.hrule_block}>
@@ -41,7 +42,7 @@ export default async function Index() {
         <ArticleGrid>
           {otherArticles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
         </ArticleGrid>
-      </div>
+      </MainWrapper>
     </>
   )
 }

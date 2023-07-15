@@ -1,8 +1,9 @@
-import {getAllTags, getSortedPostsData} from "../../../../lib/blog/load";
-import Title from "../../../../components/Title";
+import {getAllTags, getSortedPostsData} from "@blog/_lib/load";
+import Title from "@/components/Title";
 import Link from "next/link";
 import React from "react";
-import ArticleCard, {ArticleGrid} from "../../../../components/blog/ArticleCard";
+import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
+import MainWrapper from "@/components/MainWrapper";
 
 export async function generateStaticParams() {
   const tags = await getAllTags()
@@ -27,7 +28,7 @@ export default async function Index ({ params }: Props) {
   const articles = await getSortedPostsData(tag)
 
   return <>
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title>
         <h1>タグ「{tag}」の記事一覧</h1>
         <p>
@@ -40,6 +41,6 @@ export default async function Index ({ params }: Props) {
       <ArticleGrid>
         {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
       </ArticleGrid>
-    </div>
+    </MainWrapper>
   </>;
 }

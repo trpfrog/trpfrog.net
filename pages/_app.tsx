@@ -6,12 +6,8 @@ import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 // Framer Motion
 import {AnimatePresence} from "framer-motion";
-import {DefaultSeo} from "next-seo";
-import SEO from '../next-seo.config';
 
-// Progress Bar
-import NextNProgress from "nextjs-progressbar";
-import Analytics from "../components/Analytics";
+import Analytics from "@/components/Analytics";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 
@@ -39,16 +35,7 @@ const TrpFrogNet = ({Component, pageProps, router}: AppProps) => {
   const preventScrollAnimation = () => window.scrollTo(0, 0);
   return (
     <>
-      <DefaultSeo {...SEO}/>
       <Analytics/>
-      {/*<NextNProgress*/}
-      {/*  color="#90e200"*/}
-      {/*  startPosition={0.35}*/}
-      {/*  stopDelayMs={200}*/}
-      {/*  height={5}*/}
-      {/*  showOnShallow={true}*/}
-      {/*  options={{showSpinner: false}}*/}
-      {/*/>*/}
       <AnimatePresence mode="wait" onExitComplete={preventScrollAnimation}>
         <Component {...pageProps} key={router.asPath}/>
       </AnimatePresence>
