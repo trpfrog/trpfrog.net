@@ -29,8 +29,8 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
   const thumbnail = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
   return (
-    <BlockLink href={articlePath} prefetch={false}>
-      <div className={styles.window} data-hero-article={hero} style={style}>
+    <div className={styles.window} data-hero-article={hero} style={style}>
+      <BlockLink href={articlePath} prefetch={false}>
         <div className={styles.tags}>
           {entry.tags
             .split(',')
@@ -61,8 +61,8 @@ const ArticleCard = ({entry, hero = false, style}: Props) => {
           <FontAwesomeIcon icon={faClock} style={{margin: 'auto'}}/>{' '}
           {Math.ceil(entry.readTime / 60)} min to read
         </div>
-      </div>
-    </BlockLink>
+      </BlockLink>
+    </div>
   )
 }
 
