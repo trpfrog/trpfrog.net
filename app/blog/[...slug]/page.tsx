@@ -1,29 +1,29 @@
 import Image from "next/legacy/image";
 
-import Title from "../../../components/Title";
-import Block from "../../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 
 import {
   getAllPostSlugs,
   getPostData,
   getSortedPostsData,
-} from "../../../lib/blog/load";
-import {fetchAllImageProps} from "../../../lib/blog/imagePropsFetcher";
+} from "@/lib/blog/load";
+import {fetchAllImageProps} from "@/lib/blog/imagePropsFetcher";
 
 import BlogMarkdown from "../renderer/BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
-import Tag from "../../../components/blog/Tag";
-import {ParseWithBudouX} from "../../../lib/wordSplit";
-import PostAttributes from "../../../components/blog/PostAttributes";
-import RelatedPosts from "../../../components/blog/RelatedPosts";
-import {UDFontBlock} from "../../../components/blog/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "../../../components/blog/BadBlog";
+import Tag from "@/components/blog/Tag";
+import {ParseWithBudouX} from "@/lib/wordSplit";
+import PostAttributes from "@/components/blog/PostAttributes";
+import RelatedPosts from "@/components/blog/RelatedPosts";
+import {UDFontBlock} from "@/components/blog/UDFontBlock";
+import {BadBlogBlock, BadBlogButton} from "@/components/blog/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
-import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
-import BlogPost from "../../../lib/blog/blogPost";
+import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
+import BlogPost from "@/lib/blog/blogPost";
 import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";

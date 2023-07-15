@@ -1,5 +1,5 @@
-import {MutualLinkRecord} from "../../lib/MutualLinks";
-import Utils from "../../lib/utils";
+import {MutualLinkRecord} from "@/lib/MutualLinks";
+import Utils from "@/lib/utils";
 import React from "react";
 import styles from "../style.module.scss";
 

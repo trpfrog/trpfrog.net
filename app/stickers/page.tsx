@@ -1,8 +1,8 @@
 import type {Metadata} from 'next'
 import Link from "next/link";
 import Image from "next/legacy/image";
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 import styles from "./style.module.scss";
 import MainWrapper from "@/components/MainWrapper";
 

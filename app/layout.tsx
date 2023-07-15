@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import React from "react";
 import '../styles/globals.scss';
-import fontVariables from "../lib/googleFonts";
-import Header from "../components/Header";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
-import BackToTop from "../components/BackToTop";
-import Favicon from "../components/head/Favicon";
-import Analytics from "../components/Analytics";
-import FixTooLargeFontAwesomeIcons from "../components/utils/FixTooLargeFontAwesomeIcons";
-import GoogleFonts from "../components/GoogleFonts";
+import fontVariables from "@/lib/googleFonts";
+import Header from "@/components/Header";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
+import Favicon from "@/components/head/Favicon";
+import Analytics from "@/components/Analytics";
+import FixTooLargeFontAwesomeIcons from "@/components/utils/FixTooLargeFontAwesomeIcons";
+import GoogleFonts from "@/components/GoogleFonts";
 
 const siteName = process.env.title as string
 const description = 'さかなになりたいね'

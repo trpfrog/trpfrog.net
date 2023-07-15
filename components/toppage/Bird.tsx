@@ -1,5 +1,5 @@
-import Block from "../Block";
-import styles from "../../app/style.module.scss";
+import Block from "@/components/Block";
+import styles from "@/app/style.module.scss";
 
 type Props = {
   id?: string

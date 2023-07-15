@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import Block from "../Block";
+import Block from "@/components/Block";
 import {CSSProperties} from "react";
 
 type Props = {

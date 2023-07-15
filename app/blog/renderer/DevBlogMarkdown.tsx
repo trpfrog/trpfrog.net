@@ -1,9 +1,9 @@
 'use client'
 
-import BlogPost from "../../../lib/blog/blogPost";
-import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
+import BlogPost from "@/lib/blog/blogPost";
+import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
 import React, {CSSProperties} from "react";
-import {doMarkdownHMR} from "../../../lib/blog/fileWatch";
+import {doMarkdownHMR} from "@/lib/blog/fileWatch";
 import BlogMarkdown from "./BlogMarkdown";
 
 type Props = {

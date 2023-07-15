@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from "next/legacy/image";
 import {Metadata} from "next";
-import Block from "../../../components/Block";
+import Block from "@/components/Block";
 import styles from "../../../styles/imageview.module.scss"
-import Title from "../../../components/Title";
+import Title from "@/components/Title";
 import MainWrapper from "@/components/MainWrapper";
 
 const NUMBER_OF_IMAGES = 80;

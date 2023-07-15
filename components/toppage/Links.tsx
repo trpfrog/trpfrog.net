@@ -1,7 +1,7 @@
-import Block from "../Block";
-import styles from "../../app/style.module.scss";
+import Block from "@/components/Block";
+import styles from "@/app/style.module.scss";
 import Link from "next/link";
-import {getMyLinkRecords, MyLinkRecord} from "../../lib/MyLinks";
+import {getMyLinkRecords, MyLinkRecord} from "@/lib/MyLinks";
 
 type Props = {
   id?: string

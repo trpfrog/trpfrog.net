@@ -1,12 +1,12 @@
 import Link from "next/link";
-import EntryButton from "../../../components/blog/EntryButton";
+import EntryButton from "@/components/blog/EntryButton";
 import {faArrowLeft, faPencil} from "@fortawesome/free-solid-svg-icons";
 import ShareSpan from "./ShareSpan";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {UDFontButton} from "../../../components/blog/UDFontBlock";
-import TogglePageViewLink from "../../../components/blog/TogglePageViewLink";
+import {UDFontButton} from "@/components/blog/UDFontBlock";
+import TogglePageViewLink from "@/components/blog/TogglePageViewLink";
 import React from "react";
-import BlogPost from "../../../lib/blog/blogPost";
+import BlogPost from "@/lib/blog/blogPost";
 
 type Props = {
   post: BlogPost

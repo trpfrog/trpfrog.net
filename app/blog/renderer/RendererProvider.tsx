@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import BlogImage from "../../../components/blog/BlogImage";
+import BlogImage from "@/components/blog/BlogImage";
 import styles from "../../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
@@ -9,15 +9,15 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
-import {BlogImageData} from "../../../lib/blog/imagePropsFetcher";
-import SyntaxHighlighterWrapper from "../../../components/utils/SyntaxHighlighterWrapper";
+import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
+import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "../../../components/blog/ComponentDictionary";
+import myMarkdownClasses from "@/components/blog/ComponentDictionary";
 import RendererContext from "./RendererContext";
-import {getPureCloudinaryPath} from "../../../lib/blog/getPureCloudinaryPath";
-import BlogPost from "../../../lib/blog/blogPost";
-import {MathJaxContextWrapper} from "../../../components/utils/MathJaxWrapper";
+import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
+import BlogPost from "@/lib/blog/blogPost";
+import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
 
 const getLangName = (s: string) => {
   switch (s) {

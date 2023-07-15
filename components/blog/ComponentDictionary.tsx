@@ -11,8 +11,8 @@ import HorizontalScroll from "./article-parts/HorizontalScroll";
 import Conversation from "./article-parts/Conversation";
 import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
-import {parseWithBudouX} from "../../lib/wordSplit";
-import ArticleRendererFromContext from "../../app/blog/renderer/ArticleRenderer";
+import {parseWithBudouX} from "@/lib/wordSplit";
+import ArticleRendererFromContext from "@/app/blog/renderer/ArticleRenderer";
 import {ArticleParts} from "./ArticleParts";
 
 const myMarkdownClasses = {

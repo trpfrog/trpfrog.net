@@ -1,5 +1,5 @@
-import {getPostData} from "../../../../../lib/blog/load";
-import {fetchAllImageProps} from "../../../../../lib/blog/imagePropsFetcher";
+import {getPostData} from "@/lib/blog/load";
+import {fetchAllImageProps} from "@/lib/blog/imagePropsFetcher";
 import {ReasonPhrases, StatusCodes} from "http-status-codes";
 import {NextResponse} from "next/server";
 

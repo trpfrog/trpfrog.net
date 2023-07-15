@@ -1,12 +1,12 @@
 import styles from "./style.module.scss";
 
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 import path from "path";
 import fs from "fs/promises";
 import yaml from "js-yaml";
 import {Metadata} from "next";
-import MainWrapper from "../../components/MainWrapper";
+import MainWrapper from "@/components/MainWrapper";
 
 type Cert = {
   name: string,

@@ -1,11 +1,11 @@
-import Title from "../../components/Title";
-import Block from "../../components/Block";
+import Title from "@/components/Title";
+import Block from "@/components/Block";
 import styles from './style.module.scss';
 import React from "react";
 import Image from "next/legacy/image";
 import {Metadata} from "next";
 import ReactMarkdown from "react-markdown";
-import readMarkdowns from "../../lib/mdLoader";
+import readMarkdowns from "@/lib/mdLoader";
 import path from "path";
 import MainWrapper from "@/components/MainWrapper";
 

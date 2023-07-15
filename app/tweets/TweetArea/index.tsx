@@ -1,5 +1,5 @@
 import PageNavigation from "../PageNavigation";
-import Block from "../../../components/Block";
+import Block from "@/components/Block";
 import React from "react";
 import search from "../tweetSearcher";
 import TweetCard, {DateCard} from "../TweetCard";

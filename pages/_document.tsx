@@ -1,7 +1,7 @@
 import {Head, Html, Main, NextScript} from 'next/document';
-import Favicon from '../components/head/Favicon'
-import fontVariables from "../lib/googleFonts";
-import GoogleFonts from "../components/GoogleFonts";
+import Favicon from '@/components/head/Favicon'
+import fontVariables from "@/lib/googleFonts";
+import GoogleFonts from "@/components/GoogleFonts";
 
 const MyDocument = () => {
   return (

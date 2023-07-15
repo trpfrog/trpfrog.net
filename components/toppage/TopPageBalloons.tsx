@@ -1,10 +1,10 @@
 'use client';
 
-import Block from "../../components/Block";
-import styles from "../../app/style.module.scss";
+import Block from "@/components/Block";
+import styles from "@/app/style.module.scss";
 import Link from "next/link";
-import { useBalloonState } from "../../app/balloon/BalloonArray";
-import Balloon from "../../app/balloon/Balloon";
+import { useBalloonState } from "@/app/balloon/BalloonArray";
+import Balloon from "@/app/balloon/Balloon";
 
 type Props = {
   id?: string

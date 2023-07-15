@@ -11,7 +11,7 @@ import SEO from '../next-seo.config';
 
 // Progress Bar
 import NextNProgress from "nextjs-progressbar";
-import Analytics from "../components/Analytics";
+import Analytics from "@/components/Analytics";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 

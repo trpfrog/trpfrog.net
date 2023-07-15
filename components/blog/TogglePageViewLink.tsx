@@ -5,7 +5,7 @@ import {faFileLines, faToiletPaper} from "@fortawesome/free-solid-svg-icons";
 import EntryButton from "./EntryButton";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {usePathname} from "next/navigation";
-import BlogPost from "../../lib/blog/blogPost";
+import BlogPost from "@/lib/blog/blogPost";
 
 export default function TogglePageViewLink ({post}: { post: BlogPost }) {
   const pathname = usePathname() ?? ''

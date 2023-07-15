@@ -1,9 +1,9 @@
 'use client';
 
-import Block from "../../components/Block";
+import Block from "@/components/Block";
 import styles from "./style.module.scss";
 import Image from "next/legacy/image";
-import IconCanvas from "../../lib/iconMaker";
+import IconCanvas from "@/lib/iconMaker";
 
 export default function IconMakerApp () {
   const state = new IconCanvas('canvas-result');

@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import ArticleRendererFromContext from "../../../../app/blog/renderer/ArticleRenderer";
+import ArticleRendererFromContext from "@/app/blog/renderer/ArticleRenderer";
 import {ArticleParts} from "../../ArticleParts";
 
 export const Caution: ArticleParts = content => (

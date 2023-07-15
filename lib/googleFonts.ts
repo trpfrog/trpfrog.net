@@ -55,7 +55,7 @@
 // const fontVariables = fonts.map((font) => font.variable).join(' ');
 
 // Temporary solution for the next/font issue
-import styles from '../components/GoogleFonts/index.module.scss'
+import styles from '@/components/GoogleFonts/index.module.scss'
 const fontVariables = styles.temp_google_font_variables;
 
 export default fontVariables;

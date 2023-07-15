@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleRendererFromContext from "../../../app/blog/renderer/ArticleRenderer";
+import ArticleRendererFromContext from "@/app/blog/renderer/ArticleRenderer";
 import {ArticleParts} from "../ArticleParts";
 
 const HorizontalScroll: ArticleParts = (content) => {
