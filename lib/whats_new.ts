@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import dayjs from "dayjs";
-import {getSortedPostsData} from "./blog/load";
+import {getSortedPostsData} from "@blog/lib/load";
 
 export type WhatsNewRecord = {
   type: 'page' | 'fix' | 'improve' | 'blog' | 'content',

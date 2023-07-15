@@ -1,6 +1,6 @@
 import {getPureCloudinaryPath} from "./getPureCloudinaryPath";
 import BlogPost from "./blogPost";
-import cloudinary from "../cloudinary";
+import cloudinary from "../../../lib/cloudinary";
 import type {ResourceApiResponse} from "cloudinary";
 
 export type BlogImageData = {

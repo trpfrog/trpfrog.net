@@ -9,14 +9,14 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
-import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
+import {BlogImageData} from "@blog/lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
 import myMarkdownClasses from "@/components/blog/ComponentDictionary";
 import RendererContext from "./RendererContext";
-import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
-import BlogPost from "@/lib/blog/blogPost";
+import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
+import BlogPost from "@blog/lib/blogPost";
 import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
 
 const getLangName = (s: string) => {

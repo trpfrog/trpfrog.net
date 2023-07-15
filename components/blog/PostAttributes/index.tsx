@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faClock, faImages, faSyncAlt, faWalking} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
-import BlogPost from "@/lib/blog/blogPost";
+import BlogPost from "@blog/lib/blogPost";
 
 type Props = {
   post: BlogPost

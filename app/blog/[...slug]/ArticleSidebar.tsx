@@ -5,7 +5,7 @@ import {RichEntryButtons} from "./EntryButtons";
 import PageNavigation from "@/components/blog/PageNavigation";
 import {HeaderFollowSticky} from "@/components/Header";
 import React from "react";
-import BlogPost from "@/lib/blog/blogPost";
+import BlogPost from "@blog/lib/blogPost";
 
 type Props = {
   post: BlogPost

@@ -4,12 +4,12 @@ import React, {CSSProperties, useState} from "react";
 import styles from "./index.module.scss";
 import Modal from "react-modal";
 import {parseInlineMarkdown} from "@/app/blog/renderer/BlogMarkdown";
-import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
+import {BlogImageData} from "@blog/lib/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
-import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
+import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
 import Image from "next/image";
-import cloudinaryLoader from "@/lib/blog/cloudinaryLoader";
+import cloudinaryLoader from "@blog/lib/cloudinaryLoader";
 
 
 type BlogImageProps = {

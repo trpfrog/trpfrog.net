@@ -1,4 +1,4 @@
-import {getAllTags, getSortedPostsData} from "@/lib/blog/load";
+import {getAllTags, getSortedPostsData} from "@blog/lib/load";
 import Title from "@/components/Title";
 import Link from "next/link";
 import React from "react";

@@ -1,7 +1,7 @@
-import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
+import {BlogImageData} from "@blog/lib/imagePropsFetcher";
 import BlogImage, {ImageCaption} from "../BlogImage";
 import React from "react";
-import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
+import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
 import {ArticleParts} from "../ArticleParts";
 import {parseInlineMarkdown} from "@/app/blog/renderer/BlogMarkdown";
 

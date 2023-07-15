@@ -6,7 +6,7 @@ import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {UDFontButton} from "@/components/blog/UDFontBlock";
 import TogglePageViewLink from "@/components/blog/TogglePageViewLink";
 import React from "react";
-import BlogPost from "@/lib/blog/blogPost";
+import BlogPost from "@blog/lib/blogPost";
 
 type Props = {
   post: BlogPost

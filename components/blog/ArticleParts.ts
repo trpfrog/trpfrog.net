@@ -1,5 +1,5 @@
-import BlogPost from "@/lib/blog/blogPost";
-import {BlogImageData} from "@/lib/blog/imagePropsFetcher";
+import BlogPost from "@blog/lib/blogPost";
+import {BlogImageData} from "@blog/lib/imagePropsFetcher";
 import React from "react";
 
 export type ArticleParts = (

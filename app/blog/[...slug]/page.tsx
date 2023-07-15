@@ -7,8 +7,8 @@ import {
   getAllPostSlugs,
   getPostData,
   getSortedPostsData,
-} from "@/lib/blog/load";
-import {fetchAllImageProps} from "@/lib/blog/imagePropsFetcher";
+} from "@blog/lib/load";
+import {fetchAllImageProps} from "@blog/lib/imagePropsFetcher";
 
 import BlogMarkdown from "../renderer/BlogMarkdown";
 
@@ -22,8 +22,8 @@ import {UDFontBlock} from "@/components/blog/UDFontBlock";
 import {BadBlogBlock, BadBlogButton} from "@/components/blog/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
-import {getPureCloudinaryPath} from "@/lib/blog/getPureCloudinaryPath";
-import BlogPost from "@/lib/blog/blogPost";
+import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
+import BlogPost from "@blog/lib/blogPost";
 import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
