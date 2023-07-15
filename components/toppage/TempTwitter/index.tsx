@@ -8,7 +8,7 @@ import MainWrapper from "../../MainWrapper";
 import Block from "@/components/Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {ShowAllComponent} from "@blog/components/article-parts/ShowAll";
+import {ShowAllComponent} from "@blog/_components/article-parts/ShowAll";
 import styles from './index.module.scss'
 
 export default async function TempTwitter() {

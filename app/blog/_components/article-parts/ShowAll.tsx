@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useId, useState} from "react";
-import ArticleRendererFromContext from "@blog/renderer/ArticleRenderer";
+import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "../ArticleParts";
 
 type Props = {

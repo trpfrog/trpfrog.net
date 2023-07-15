@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import BlogImage from "@blog/components/BlogImage";
+import BlogImage from "@blog/_components/BlogImage";
 import styles from "../../../styles/blog/blog.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperclip} from "@fortawesome/free-solid-svg-icons";
@@ -9,14 +9,14 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
-import {BlogImageData} from "@blog/lib/imagePropsFetcher";
+import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "@blog/components/ComponentDictionary";
+import myMarkdownClasses from "@blog/_components/ComponentDictionary";
 import RendererContext from "./RendererContext";
-import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
-import BlogPost from "@blog/lib/blogPost";
+import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
+import BlogPost from "@blog/_lib/blogPost";
 import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
 
 const getLangName = (s: string) => {

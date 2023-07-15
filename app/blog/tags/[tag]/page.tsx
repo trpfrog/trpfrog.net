@@ -1,8 +1,8 @@
-import {getAllTags, getSortedPostsData} from "@blog/lib/load";
+import {getAllTags, getSortedPostsData} from "@blog/_lib/load";
 import Title from "@/components/Title";
 import Link from "next/link";
 import React from "react";
-import ArticleCard, {ArticleGrid} from "@blog/components/ArticleCard";
+import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
 import MainWrapper from "@/components/MainWrapper";
 
 export async function generateStaticParams() {

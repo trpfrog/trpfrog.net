@@ -12,7 +12,7 @@ import Conversation from "./article-parts/Conversation";
 import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
 import {parseWithBudouX} from "@/lib/wordSplit";
-import ArticleRendererFromContext from "@blog/renderer/ArticleRenderer";
+import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "./ArticleParts";
 
 const myMarkdownClasses = {

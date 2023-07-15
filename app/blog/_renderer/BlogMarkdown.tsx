@@ -3,13 +3,13 @@ import React, {CSSProperties} from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {BlogImageData} from "@blog/lib/imagePropsFetcher";
-import PageNavigation from "@blog/components/PageNavigation";
+import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
+import PageNavigation from "@blog/_components/PageNavigation";
 import Block from "@/components/Block";
 
 import RendererProvider from "./RendererProvider";
 import ArticleRendererFromContext from "./ArticleRenderer";
-import BlogPost from "@blog/lib/blogPost";
+import BlogPost from "@blog/_lib/blogPost";
 
 export const parseInlineMarkdown = (markdown: string) => {
   const comp = {

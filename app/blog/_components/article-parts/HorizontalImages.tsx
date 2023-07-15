@@ -1,9 +1,9 @@
-import {BlogImageData} from "@blog/lib/imagePropsFetcher";
+import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import BlogImage, {ImageCaption} from "../BlogImage";
 import React from "react";
-import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
+import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import {ArticleParts} from "../ArticleParts";
-import {parseInlineMarkdown} from "@blog/renderer/BlogMarkdown";
+import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
 const HorizontalImages: ArticleParts = (content, entry, imageSize) => {
   const regex = new RegExp('^!\\[.*?\]\\(')

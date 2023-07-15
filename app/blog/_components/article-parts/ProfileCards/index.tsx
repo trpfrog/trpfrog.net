@@ -3,8 +3,8 @@
 import React, {useState} from "react";
 import styles from "./index.module.scss";
 import dayjs from "dayjs";
-import ArticleRendererFromContext from "@blog/renderer/ArticleRenderer";
-import {parseInlineMarkdown} from "@blog/renderer/BlogMarkdown";
+import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
+import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
 export type ProfileData = {
   name: string

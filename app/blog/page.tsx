@@ -1,13 +1,13 @@
 import React from 'react'
 import Title from "@/components/Title";
-import {getSortedPostsData} from "@blog/lib/load";
+import {getSortedPostsData} from "@blog/_lib/load";
 
 import styles from '../../styles/blog/blog.module.scss';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
-import ArticleCard, {ArticleGrid} from "@blog/components/ArticleCard";
-import BlogPost from "@blog/lib/blogPost";
+import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
+import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
 import MainWrapper from "@/components/MainWrapper";
 

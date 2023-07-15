@@ -7,28 +7,28 @@ import {
   getAllPostSlugs,
   getPostData,
   getSortedPostsData,
-} from "@blog/lib/load";
-import {fetchAllImageProps} from "@blog/lib/imagePropsFetcher";
+} from "@blog/_lib/load";
+import {fetchAllImageProps} from "@blog/_lib/imagePropsFetcher";
 
-import BlogMarkdown from "../renderer/BlogMarkdown";
+import BlogMarkdown from "@blog/_renderer/BlogMarkdown";
 
 import styles from '../../../styles/blog/blog.module.scss';
 
-import Tag from "@blog/components/Tag";
+import Tag from "@blog/_components/Tag";
 import {ParseWithBudouX} from "@/lib/wordSplit";
-import PostAttributes from "@blog/components/PostAttributes";
-import RelatedPosts from "@blog/components/RelatedPosts";
-import {UDFontBlock} from "@blog/components/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "@blog/components/BadBlog";
+import PostAttributes from "@blog/_components/PostAttributes";
+import RelatedPosts from "@blog/_components/RelatedPosts";
+import {UDFontBlock} from "@blog/_components/UDFontBlock";
+import {BadBlogBlock, BadBlogButton} from "@blog/_components/BadBlog";
 import React from "react";
 import EditButton from "./EditButton";
-import {getPureCloudinaryPath} from "@blog/lib/getPureCloudinaryPath";
-import BlogPost from "@blog/lib/blogPost";
+import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
+import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
 import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
-import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
+import DevBlogMarkdown from "@blog/_renderer/DevBlogMarkdown";
 import MainWrapper from "@/components/MainWrapper";
 
 // Trick for NEXT-1214
