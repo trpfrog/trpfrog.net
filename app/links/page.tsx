@@ -1,4 +1,4 @@
-import {loadMutualLinkRecords, MutualLinkRecord} from "@/lib/MutualLinks";
+import {loadMutualLinkRecords, MutualLinkRecord} from "./loader";
 
 import styles from "../(home)/style.module.scss";
 

@@ -1,4 +1,4 @@
-import {MutualLinkRecord} from "@/lib/MutualLinks";
+import {MutualLinkRecord} from "./loader";
 import Utils from "@/lib/utils";
 import React from "react";
 import styles from "../(home)/style.module.scss";
