@@ -1,4 +1,4 @@
-import MainWrapper from "../components/common/server/MainWrapper";
+import MainWrapper from "../components/MainWrapper";
 import LoadingBlock from "../components/LoadingBlock";
 
 export default function Loading() {

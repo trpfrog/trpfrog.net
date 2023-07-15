@@ -14,6 +14,7 @@ import TopPageMusic from "../components/toppage/TopPageMusic";
 import TopPageIcons from "../components/toppage/TopPageIcons";
 import React from "react";
 import TempTwitter from "../components/toppage/TempTwitter";
+import MainWrapper from "@/components/MainWrapper";
 
 export const revalidate = 30
 
@@ -28,7 +29,7 @@ export default async function Index() {
   }
 
   return (
-    <div id="main_wrapper" style={mainWrapperStyle}>
+    <MainWrapper style={mainWrapperStyle}>
       <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper}>
         <TempTwitter/>
         <div id={styles.top_page_grid}>
@@ -43,6 +44,6 @@ export default async function Index() {
           <Bird id={styles.bird}/>
         </div>
       </TrpFrogAnimationFrame>
-    </div>
+    </MainWrapper>
   )
 }

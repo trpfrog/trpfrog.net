@@ -59,16 +59,6 @@ main {
     text-align: center;
 }
 
-#main_wrapper {
-    width: calc(100% - 2 * var(--main-margin));
-    margin: var(--main-margin) auto;
-    max-width: 1000px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-gap: var(--main-margin);
-    text-align: left;
-}
-
 #wide_nav {
     grid-area: n;
 }
@@ -77,14 +67,6 @@ main {
     main {
         --main-margin: 12px;
         padding: 0;
-    }
-
-    #main_wrapper {
-        width: 100%;
-        margin:
-                calc(var(--window-padding-top-bottom) * 0.7)
-                0
-                calc(var(--window-padding-top-bottom) * 0.7);
     }
 
     #wide_nav {

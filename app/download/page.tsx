@@ -5,6 +5,7 @@ import {Metadata} from "next";
 import path from "path";
 import ReactMarkdown from "react-markdown";
 import readMarkdowns from "../../lib/mdLoader";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: 'DLコンテンツ',
@@ -32,7 +33,7 @@ export default async function Index() {
   const contents = await readMarkdowns<Frontmatter>(path.join('app', 'download', 'contents'))
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title
         title={metadata.title}
         description={metadata.description}
@@ -74,6 +75,6 @@ export default async function Index() {
           </Block>
         )
       })}
-    </div>
+    </MainWrapper>
   )
 }

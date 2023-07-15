@@ -29,6 +29,7 @@ import {EntryButtons, RichEntryButtons} from "./EntryButtons";
 import ArticleSidebar from "./ArticleSidebar";
 import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "../renderer/DevBlogMarkdown";
+import MainWrapper from "@/components/MainWrapper";
 
 // Trick for NEXT-1214
 // export const dynamicParams = false
@@ -107,7 +108,7 @@ export default async function Index({ params: { slug } }: PageProps) {
   } = await processSlug(...slug)
 
   return (
-    <div id="main_wrapper" className={styles.layout}>
+    <MainWrapper className={styles.layout}>
       <Title className={styles.article_title_block}>
         {post.thumbnail &&
           <Image
@@ -189,6 +190,6 @@ export default async function Index({ params: { slug } }: PageProps) {
         tag={post.tags.split(',')[0].trim()}
         relatedPosts={relatedPosts}
       />
-    </div>
+    </MainWrapper>
   );
 }

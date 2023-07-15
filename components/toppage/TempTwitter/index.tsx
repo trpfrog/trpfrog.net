@@ -4,7 +4,7 @@ import React from "react";
 import {Suspense} from "react";
 import LoadingBlock from "../../LoadingBlock";
 import ReactMarkdown from "react-markdown";
-import MainWrapper from "../../common/server/MainWrapper";
+import MainWrapper from "../../MainWrapper";
 import Block from "../../Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";

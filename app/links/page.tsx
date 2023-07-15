@@ -7,6 +7,7 @@ import Block from "../../components/Block";
 import React from "react";
 import {Metadata} from "next";
 import {MutualLinkBlock} from "./MutualLinkBlock";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: '相互リンク',
@@ -16,7 +17,7 @@ export const metadata = {
 export default async function Index() {
   const mutualLinks: MutualLinkRecord[] = await loadMutualLinkRecords();
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={metadata.title} description={metadata.description}>
         <p>
           順番はハンドルネームをUTF-8でソートしたもの。
@@ -33,7 +34,7 @@ export default async function Index() {
           ))}
         </div>
       </Block>
-    </div>
+    </MainWrapper>
   );
 }
 

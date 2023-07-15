@@ -1,5 +1,6 @@
 import React from "react";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata: Metadata = {
   title: 'つまみのうた',
@@ -12,8 +13,8 @@ type Props = {
 
 export default function RootLayout({children}: Props) {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       {children}
-    </div>
+    </MainWrapper>
   )
 }

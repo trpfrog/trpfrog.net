@@ -6,6 +6,7 @@ import Block from "../../components/Block";
 import dayjs from "dayjs";
 import LoadingBlock from "../../components/LoadingBlock";
 import TweetArea from "./TweetArea";
+import MainWrapper from "@/components/MainWrapper";
 
 // Prisma does not support Edge without the Data Proxy currently
 export const runtime = 'nodejs' // default
@@ -26,7 +27,7 @@ export default async function Index({ searchParams }: any) {
   const oneYearsAgo = dayjs(new Date()).subtract(1, 'year').format('YYYY-MM-DD')
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={'Tweets'} ribbonText={'BETA'}>
         <p>
           つまみさんの過去ツイデータベースです。
@@ -68,6 +69,6 @@ export default async function Index({ searchParams }: any) {
       <Block>
         RT の削除依頼はお手数ですが contact ⭐︎ trpfrog.net または、@TrpFrog までお願いします。
       </Block>
-    </div>
+    </MainWrapper>
   )
 }

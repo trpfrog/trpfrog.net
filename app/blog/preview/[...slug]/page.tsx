@@ -16,6 +16,7 @@ import PostAttributes from "../../../../components/blog/PostAttributes";
 import {createErrorArticle, ErrorablePost} from "../../../../lib/blog/loadPreview";
 import {getPureCloudinaryPath} from "../../../../lib/blog/getPureCloudinaryPath";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 type Props = {
   params: {
@@ -68,7 +69,7 @@ export default async function Index (props: Props) {
   } = formatReadTime(post.readTime)
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title style={{padding: 0, border: '5px solid var(--window-bkg-color)'}}>
         {post.thumbnail &&
           <Image
@@ -96,6 +97,6 @@ export default async function Index (props: Props) {
         entry={post}
         imageSize={imageSize}
       />
-    </div>
+    </MainWrapper>
   )
 }

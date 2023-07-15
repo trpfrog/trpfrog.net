@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import BackToTop from "./BackToTop";
+import MainWrapper from "@/components/MainWrapper";
 
 type Props = {
   style?: any;
@@ -20,9 +21,9 @@ const Layout: React.FunctionComponent<Props> = ({
         <Header/>
         <Navigation/>
         <main>
-          <div id="main_wrapper" style={style} className={className}>
+          <MainWrapper style={style} className={className}>
             {children}
-          </div>
+          </MainWrapper>
         </main>
         <BackToTop/>
         <Footer/>

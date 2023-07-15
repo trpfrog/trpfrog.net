@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs/promises";
 import yaml from "js-yaml";
 import {Metadata} from "next";
+import MainWrapper from "../../components/MainWrapper";
 
 type Cert = {
   name: string,
@@ -27,7 +28,7 @@ export default async function Index() {
     .sort((a: Cert, b: Cert) => f(b) - f(a))
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={metadata.title} description={metadata.description} />
       <Block>
         <div id={styles.cert_grid}>
@@ -54,6 +55,6 @@ export default async function Index() {
           ))}
         </div>
       </Block>
-    </div>
+    </MainWrapper>
   )
 }

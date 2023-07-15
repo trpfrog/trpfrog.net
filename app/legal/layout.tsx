@@ -1,5 +1,6 @@
 import React from "react";
 import ReturnButton from "./ReturnButton";
+import MainWrapper from "@/components/MainWrapper";
 
 type Props = {
   children: React.ReactNode
@@ -7,9 +8,9 @@ type Props = {
 
 export default function RootLayout({children}: Props) {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       {children}
       <ReturnButton/>
-    </div>
+    </MainWrapper>
   )
 }

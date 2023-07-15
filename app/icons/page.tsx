@@ -4,6 +4,7 @@ import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "../stickers/style.module.scss";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: 'つまみアイコン集',
@@ -12,7 +13,7 @@ export const metadata = {
 
 export default function Index()  {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={'アイコン集'}>
         <p>
           つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。
@@ -53,7 +54,7 @@ export default function Index()  {
           {"dataset = load_dataset('TrpFrog/trpfrog-icons')"}
         </pre>
       </Block>
-    </div>
+    </MainWrapper>
   );
 }
 

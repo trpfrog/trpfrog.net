@@ -4,6 +4,7 @@ import Image from "next/legacy/image";
 import Title from "../../components/Title";
 import Block from "../../components/Block";
 import styles from "./style.module.scss";
+import MainWrapper from "@/components/MainWrapper";
 
 export const metadata = {
   title: 'スタンプ素材集',
@@ -12,7 +13,7 @@ export const metadata = {
 
 export default function Index() {
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={metadata.title}>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。<br/>
@@ -37,7 +38,7 @@ export default function Index() {
           ))}
         </div>
       </Block>
-    </div>
+    </MainWrapper>
   );
 }
 

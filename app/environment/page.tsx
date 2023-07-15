@@ -7,6 +7,7 @@ import Title from "../../components/Title";
 import Block from "../../components/Block";
 import GadgetIntro from "./GadgetIntro";
 import {Metadata} from "next";
+import MainWrapper from "@/components/MainWrapper";
 
 type StringItemizeRecord = (
   | string
@@ -70,7 +71,7 @@ export default async function Index() {
   const items = yaml.load(yamlText) as Items
 
   return (
-    <div id="main_wrapper">
+    <MainWrapper>
       <Title title={metadata.title} description={metadata.description}>
         <p>
           Last updated: 2021/12/11
@@ -96,6 +97,6 @@ export default async function Index() {
           ))}
         </Block>
       ))}
-    </div>
+    </MainWrapper>
   )
 }
