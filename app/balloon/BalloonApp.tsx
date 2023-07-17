@@ -57,7 +57,7 @@ export default function BalloonApp() {
           </label>
         </p>
       </Title>
-      <Block id={'balloon-window'}>
+      <Block id={'balloon-window'} style={{overflow: 'hidden'}}>
         <BalloonArray
           n={numberOfBalloons}
           width={balloonSize}
