@@ -1,40 +1,40 @@
-import React, {CSSProperties} from "react";
+import React from "react";
 
-type Props = {
+type Props = React.ComponentProps<'div'> & {
   title?: string
   h2icon?: string
-  id?: string
   newRibbon?: boolean
   ribbonText?: string
-  className?: string
-  style?: CSSProperties | undefined
-  children?: React.ReactNode
 }
 
-const Block: React.FunctionComponent<Props> = ({
-  children,
-  title,
-  h2icon = 'trpfrog',
-  id = '',
-  newRibbon = false,
-  ribbonText = '',
-  style,
-  className = ''
-}) => {
+export default function Block (props: Props) {
+  const {
+    newRibbon,
+    ribbonText: initialRibbonText = '',
+    h2icon,
+    title,
+    className,
+    children,
+    ...otherProps
+  } = props;
+
+  let ribbonText = initialRibbonText
 
   let ribbon = <></>;
   if (newRibbon) ribbonText = 'NEW!';
   if (ribbonText != '') {
-    ribbon = <span className="new-ribbon">{ribbonText}</span>
+    ribbon = (
+      <span className="new-ribbon">
+        {ribbonText}
+      </span>
+    )
   }
 
   return (
-    <div className={`main-window ${className}`} id={id} style={style}>
+    <div className={`main-window ${className}`} {...otherProps}>
       {ribbon}
       {title && <h2 className={h2icon}>{title}</h2>}
       {children}
     </div>
   )
 }
-
-export default Block;

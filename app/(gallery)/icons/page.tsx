@@ -1,10 +1,8 @@
-import Link from "next/link";
-import Image from "next/legacy/image";
 import Title from "@/components/Title";
 import Block from "@/components/Block";
-import styles from "../stickers/style.module.scss";
 import {Metadata} from "next";
 import MainWrapper from "@/components/MainWrapper";
+import ImageList, {ImagePaths} from "@/app/(gallery)/_components/ImageList";
 
 export const metadata = {
   title: 'つまみアイコン集',
@@ -12,6 +10,13 @@ export const metadata = {
 } satisfies Metadata
 
 export default function Index()  {
+  const imagePaths: ImagePaths[] = Array.from(Array(33), (v, k) => k).map(i => {
+    return {
+      src: 'icons_gallery/' + i,
+      url: '/icons/' + i,
+    }
+  })
+
   return (
     <MainWrapper>
       <Title title={'アイコン集'}>
@@ -26,21 +31,7 @@ export default function Index()  {
         </p>
       </Title>
       <Block>
-        <div className={styles.icon_grid}>
-          {Array.from(Array(33), (v, k) => k).map(i => (
-            // @ts-ignore
-            (<Link href={'/icons/' + i} key={i}>
-              <Image
-                src={'icons_gallery/' + i}
-                width={100}
-                height={100}
-                objectFit={'contain'}
-                quality={15}
-                alt={i + '番目のスタンプ画像'}
-              />
-            </Link>)
-          ))}
-        </div>
+        <ImageList images={imagePaths}/>
       </Block>
       <Block title={'データセット'}>
         <p>

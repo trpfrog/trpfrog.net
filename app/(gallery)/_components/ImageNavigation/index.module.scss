@@ -1,28 +1,18 @@
-#thumbnails {
+.thumbnails {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(7, 1fr);
 }
 
-#prev_image, #next_image {
+.prev_image, .next_image {
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--link-button-color);
     border-radius: 10px;
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-weight: bold;
     margin: 10px;
     height: 60%;
-}
-
-.img_wrapper_outside {
-    text-align: center;
-}
-
-.img_wrapper_inside {
-    display: inline-block;
-    max-width: 500px;
-    width: 100%;
 }
