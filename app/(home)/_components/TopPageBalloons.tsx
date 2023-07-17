@@ -3,8 +3,8 @@
 import Block from "@/components/Block";
 import styles from "@/app/(home)/style.module.scss";
 import Link from "next/link";
-import { useBalloonState } from "@/app/balloon/BalloonArray";
-import Balloon from "@/app/balloon/Balloon";
+import { useBalloonState } from "app/balloon/_components/BalloonArray";
+import Balloon from "app/balloon/_components/Balloon";
 
 type Props = {
   id?: string
