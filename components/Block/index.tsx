@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./index.module.scss";
 
 type Props = React.ComponentProps<'div'> & {
   title?: string
@@ -24,7 +25,7 @@ export default function Block (props: Props) {
   if (newRibbon) ribbonText = 'NEW!';
   if (ribbonText != '') {
     ribbon = (
-      <span className="new-ribbon">
+      <span className={styles['new-ribbon']}>
         {ribbonText}
       </span>
     )
