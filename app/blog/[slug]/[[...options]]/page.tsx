@@ -21,12 +21,12 @@ import RelatedPosts from "@blog/_components/RelatedPosts";
 import {UDFontBlock} from "@blog/_components/UDFontBlock";
 import {BadBlogBlock, BadBlogButton} from "@blog/_components/BadBlog";
 import React from "react";
-import EditButton from "./EditButton";
+import EditButton from "./_components/EditButton";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
-import {EntryButtons, RichEntryButtons} from "./EntryButtons";
-import ArticleSidebar from "./ArticleSidebar";
+import {EntryButtons, RichEntryButtons} from "./_components/EntryButtons";
+import ArticleSidebar from "./_components/ArticleSidebar";
 import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "@blog/_renderer/DevBlogMarkdown";
 import MainWrapper from "@/components/MainWrapper";
@@ -38,30 +38,26 @@ export {dynamicParams}
 
 type PageProps = {
   params: {
-    slug: [string, string | undefined]
+    slug: string,
+    options?: string[]
   }
 }
 
-export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs()
-  let paths = []
-
-  for (const slug of slugs) {
-    const entry = await getPostData(slug)
-    for (let i = 1; i <= entry.numberOfPages; i++) {
-      paths.push({slug: [slug, i + ""]})
-    }
-    paths.push({slug: [slug]})
-    paths.push({slug: [slug, 'all']})
+export async function generateStaticParams({ params: { slug }}: { params: { slug: string }} ) {
+  const entry = await getPostData(slug)
+  const paths = []
+  for (let i = 1; i <= entry.numberOfPages; i++) {
+    paths.push({options: [i + ""]})
   }
-
+  paths.push({options: ['all']})
+  paths.push({options: undefined})
   return paths
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const {
     title, description, thumbnail
-  } = await getPostData(params.slug[0])
+  } = await getPostData(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -99,13 +95,14 @@ const processSlug = async (slug: string, page?: string) => {
   }
 }
 
-export default async function Index({ params: { slug } }: PageProps) {
+export default async function Index({ params: { slug, options } }: PageProps) {
+  const page = options?.[0]
 
   const {
     entry: post,
     imageSize,
     relatedPosts
-  } = await processSlug(...slug)
+  } = await processSlug(slug, page)
 
   return (
     <MainWrapper className={styles.layout}>
