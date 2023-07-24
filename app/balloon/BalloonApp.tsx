@@ -2,10 +2,10 @@
 
 import React, {useState} from 'react';
 import Util from "@/lib/utils";
-import {useBalloonSound} from "./Balloon";
+import {useBalloonSound} from "./_components/Balloon";
 import Title from "@/components/Title";
 import Block from "@/components/Block";
-import BalloonArray from "./BalloonArray";
+import BalloonArray from "./_components/BalloonArray";
 
 export default function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
@@ -57,7 +57,7 @@ export default function BalloonApp() {
           </label>
         </p>
       </Title>
-      <Block id={'balloon-window'}>
+      <Block id={'balloon-window'} style={{overflow: 'hidden'}}>
         <BalloonArray
           n={numberOfBalloons}
           width={balloonSize}

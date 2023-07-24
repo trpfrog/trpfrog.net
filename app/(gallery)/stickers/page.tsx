@@ -1,10 +1,8 @@
 import type {Metadata} from 'next'
-import Link from "next/link";
-import Image from "next/legacy/image";
 import Title from "@/components/Title";
 import Block from "@/components/Block";
-import styles from "./style.module.scss";
 import MainWrapper from "@/components/MainWrapper";
+import ImageList, {ImagePaths} from "@/app/(gallery)/_components/ImageList";
 
 export const metadata = {
   title: 'スタンプ素材集',
@@ -12,6 +10,14 @@ export const metadata = {
 } satisfies Metadata
 
 export default function Index() {
+
+  const imagePaths: ImagePaths[] = Array.from(Array(80), (v, k) => k).map(i => {
+    return {
+      src: 'stickers/' + i,
+      url: '/stickers/' + i,
+    }
+  })
+
   return (
     <MainWrapper>
       <Title title={metadata.title}>
@@ -22,21 +28,7 @@ export default function Index() {
         <a href={'https://store.line.me/stickershop/product/8879469/ja'}>LINEスタンプ発売中！</a>
       </Title>
       <Block>
-        <div className={styles.icon_grid}>
-          {Array.from(Array(80), (v, k) => k).map(i => (
-            // @ts-ignore
-            (<Link href={'/stickers/' + i} key={i}>
-              <Image
-                src={'stickers/' + i}
-                width={100}
-                height={100}
-                objectFit={'contain'}
-                quality={15}
-                alt={i + '番目のスタンプ画像'}
-              />
-            </Link>)
-          ))}
-        </div>
+        <ImageList images={imagePaths}/>
       </Block>
     </MainWrapper>
   );
