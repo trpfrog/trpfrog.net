@@ -2,8 +2,9 @@ import {getAllTags, getSortedPostsData} from "@blog/_lib/load";
 import Title from "@/components/Title";
 import Link from "next/link";
 import React from "react";
-import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
+import ArticleCard from "@blog/_components/ArticleCard";
 import MainWrapper from "@/components/MainWrapper";
+import ArticleGrid from "@blog/_components/ArticleGrid";
 
 export async function generateStaticParams() {
   const tags = await getAllTags()

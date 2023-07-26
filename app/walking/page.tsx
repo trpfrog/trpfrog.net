@@ -2,11 +2,12 @@ import Title from "@/components/Title";
 import Block from "@/components/Block";
 
 import {getSortedPostsData} from "@blog/_lib/load";
-import ArticleCard, {ArticleGrid} from "@blog/_components/ArticleCard";
+import ArticleCard from "@blog/_components/ArticleCard";
 import Belongings from "./Belongings.mdx";
 import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
 import MainWrapper from "@/components/MainWrapper";
+import ArticleGrid from "@blog/_components/ArticleGrid";
 
 export const metadata = {
   title: '徒歩情報',

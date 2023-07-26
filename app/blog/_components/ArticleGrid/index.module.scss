@@ -1,0 +1,13 @@
+@use "../../../../styles/mixins";
+
+.article_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 17px;
+
+    @include mixins.mq(sp) {
+        margin: 0 8px;
+        column-gap: 8px;
+        row-gap: 12px;
+    }
+}
