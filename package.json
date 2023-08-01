@@ -24,6 +24,7 @@
     "@types/react-modal": "^3.16.0",
     "better-react-mathjax": "^2.0.2",
     "budoux": "^0.5.2",
+    "bufferutil": "^4.0.7",
     "chokidar": "^3.5.3",
     "cloudinary": "^1.38.0",
     "dayjs": "^1.11.9",
@@ -59,7 +60,8 @@
     "remark-unwrap-images": "^3.0.1",
     "textlint": "^13.3.3",
     "textlint-rule-preset-japanese": "^7.0.0",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "utf-8-validate": "^5.0.10"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
