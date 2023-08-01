@@ -1,10 +1,10 @@
+@use '../../../../styles/mixins';
+
 #post_attributes {
     display: flex;
     justify-content: center;
     flex-flow: wrap;
-    opacity: 0.9;
     gap: 5px;
-
 }
 
 .post_attr {
@@ -13,8 +13,12 @@
     width: 10em;
     line-height: 1.2;
 
-    background: rgba(gray, 0.1);
-    padding: 15px 0 5px;
+    backdrop-filter: blur(3px) brightness(1.5);
+    @include mixins.mq(dark) {
+        backdrop-filter: blur(3px) brightness(0.7);
+    }
+    background-color: rgba(gray, 0.2);
+    padding: 12px 0 0px;
     border-radius: 5px;
 }
 
