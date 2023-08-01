@@ -14,45 +14,6 @@
     }
 }
 
-.article_title_block {
-    padding: 0 !important;
-    border: 5px solid var(--window-bkg-color);
-    overflow: hidden;
-}
-
-.inner_title_block {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-
-    padding:
-        var(--window-padding-top-bottom)
-        var(--window-padding-left-right);
-
-    @include mixins.mq(dark) {
-        background-color: rgba(#202020, 0.9);
-    }
-
-    text-align: center;
-
-    h1 {
-        text-align: center !important;
-        margin: .5em 0 !important;
-        line-height: 1.2 !important;
-    }
-
-    @include mixins.mq(pc) {
-        p {
-            margin: 1.5em !important;
-        }
-
-        h1 {
-            text-align: center !important;
-            font-size: 2.5em !important;
-        }
-    }
-}
-
 #entry_bottom_buttons {
     background: none;
     box-shadow: none;
