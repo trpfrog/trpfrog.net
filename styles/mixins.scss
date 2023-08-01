@@ -10,3 +10,14 @@ $mq-breakpoints: (
         @content;
     }
 }
+
+$cq-breakpoints: (
+    'narrow': '(max-width: 800px)',
+    'wide': '(min-width: 800px)',
+);
+
+@mixin cq($cq-breakpoint: narrow) {
+    @container #{map-get($cq-breakpoints, $cq-breakpoint)} {
+        @content;
+    }
+}
