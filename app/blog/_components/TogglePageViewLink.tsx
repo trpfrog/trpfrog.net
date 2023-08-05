@@ -1,6 +1,5 @@
 'use client';
 
-import {useRouter} from "next/router";
 import {faFileLines, faToiletPaper} from "@fortawesome/free-solid-svg-icons";
 import EntryButton from "./EntryButton";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
