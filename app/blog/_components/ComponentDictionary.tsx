@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
+import {AutoYoutube, Youtube} from "./article-parts/YouTube";
 import TwitterArchived from "./article-parts/TwitterArchive";
 import WalkingResultBox from "./article-parts/WalkingResultBox";
 import ProfileCards from "./article-parts/ProfileCards";
@@ -14,6 +14,8 @@ import {PageTransferButton} from "./PageNavigation";
 import {parseWithBudouX} from "@/lib/wordSplit";
 import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "./ArticleParts";
+import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
+import {Twitter} from "@blog/_components/article-parts/Twitter";
 
 
 /* eslint-disable react/display-name */
@@ -78,7 +80,7 @@ const myMarkdownClasses = {
     <ArticleRendererFromContext toRender={content}/>
   ),
 
-  CenteringWithSizeBold: ({ content }) => {
+  CenteringWithSizeBold: React.memo(({ content }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
@@ -86,7 +88,7 @@ const myMarkdownClasses = {
         <strong>{parseWithBudouX(content, content)}</strong>
       </div>
     )
-  },
+  }),
 
   DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
