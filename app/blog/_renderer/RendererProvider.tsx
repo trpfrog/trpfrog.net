@@ -18,6 +18,7 @@ import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
+import {ArticleParts} from "@blog/_components/ArticleParts";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -82,9 +83,13 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       return languageCamelCase in myMarkdownClasses
     }
     if (isValidComponentName(languageCamelCase)) {
+      const TargetComponent = myMarkdownClasses[languageCamelCase] as ArticleParts
       return (
-        myMarkdownClasses[languageCamelCase](children[0], entry)
-      ) as JSX.Element
+        <TargetComponent
+          content={children[0]}
+          entry={entry}
+        />
+      )
     }
 
     const fileName = className?.includes('.') ?

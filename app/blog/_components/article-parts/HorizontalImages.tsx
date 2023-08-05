@@ -5,7 +5,7 @@ import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import {ArticleParts} from "../ArticleParts";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
-const HorizontalImages: ArticleParts = (content, entry, imageSize) => {
+const HorizontalImages: ArticleParts = ({content, imageSize}) => {
   const regex = new RegExp('^!\\[.*?\]\\(')
   const defaultImageData: BlogImageData = {
     caption: "", size: {height: 600, width: 800}

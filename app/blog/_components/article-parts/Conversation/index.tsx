@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import {ArticleParts} from "../../ArticleParts";
 
-const Conversation: ArticleParts = content => (
+const Conversation: ArticleParts = ({content}) => (
   <div className={styles.box_grid}>
     {content.split('\n')
       .reduce((arr, line) => {

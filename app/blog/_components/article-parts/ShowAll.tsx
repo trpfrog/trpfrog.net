@@ -61,7 +61,7 @@ export const ShowAllComponent = ({children, preview, className}: Props) => {
 
 }
 
-const ShowAll: ArticleParts = (content, entry, imageSize) => {
+const ShowAll: ArticleParts = ({content}) => {
   const [first, second] = content.split(/\n---+\n/)
   return (
     <ShowAllComponent preview={<ArticleRendererFromContext toRender={first}/>}>

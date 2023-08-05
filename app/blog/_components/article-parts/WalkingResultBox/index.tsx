@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import React from "react";
 import {ArticleParts} from "../../ArticleParts";
 
-const WalkingResultBox: ArticleParts = content => {
+const WalkingResultBox: ArticleParts = ({content}) => {
   return (
     <div className={styles.result_box_grid}>
       {content.split('\n').map(line => {

@@ -15,6 +15,8 @@ import {parseWithBudouX} from "@/lib/wordSplit";
 import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "./ArticleParts";
 
+
+/* eslint-disable react/display-name */
 const myMarkdownClasses = {
   // Socials
   Twitter,
@@ -25,7 +27,7 @@ const myMarkdownClasses = {
 
   // Walking Parts
   ResultBox: WalkingResultBox,
-  ProfileCards: ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
+  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
 
   // Highlight Boxes
   Caution,
@@ -39,7 +41,7 @@ const myMarkdownClasses = {
 
   ShowAll,
 
-  NextPage: (content, entry) => {
+  NextPage: ({ content, entry }) => {
     if (!entry) return <></>
     return (
       <div style={{textAlign: 'center'}}>
@@ -54,13 +56,13 @@ const myMarkdownClasses = {
     )
   },
 
-  Centering: content => (
+  Centering: ({ content }) => (
     <div style={{textAlign: 'center'}}>
       <ArticleRendererFromContext toRender={content}/>
     </div>
   ),
 
-  CenteringWithSize: content => {
+  CenteringWithSize: ({ content }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
@@ -70,13 +72,13 @@ const myMarkdownClasses = {
     )
   },
 
-  IgnoreReadCount: content => (
+  IgnoreReadCount: ({ content }) => (
     // This is a hack to make the read count not increase
     // using "read counter does not count inside of code blocks"
     <ArticleRendererFromContext toRender={content}/>
   ),
 
-  CenteringWithSizeBold: content => {
+  CenteringWithSizeBold: ({ content }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
@@ -86,9 +88,10 @@ const myMarkdownClasses = {
     )
   },
 
-  DangerouslySetInnerHtml: content => (
+  DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
-  ),
+  )),
 } as const satisfies Record<string, ArticleParts>
+/* eslint-enable react/display-name */
 
 export default myMarkdownClasses;

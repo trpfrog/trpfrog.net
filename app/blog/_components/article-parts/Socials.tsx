@@ -7,7 +7,7 @@ import React from "react";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 import {ArticleParts} from "../ArticleParts";
 
-export const Twitter: ArticleParts = (content) => {
+export const Twitter: ArticleParts = ({content}) => {
   const id = content.split('\n')[0]
   const original = content.split('\n').slice(1)
   return (
@@ -26,7 +26,7 @@ export const Twitter: ArticleParts = (content) => {
   )
 }
 
-export const Youtube: ArticleParts = (content) => {
+export const Youtube: ArticleParts = ({content}) => {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
@@ -41,7 +41,7 @@ export const Youtube: ArticleParts = (content) => {
   )
 }
 
-export const AutoYoutube: ArticleParts = (content) => {
+export const AutoYoutube: ArticleParts = ({content}) => {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
@@ -65,7 +65,7 @@ export const AutoYoutube: ArticleParts = (content) => {
   )
 }
 
-export const LinkEmbed: ArticleParts = content => {
+export const LinkEmbed: ArticleParts = ({content}) => {
   const [url, ...captionArr] = content.split('\n')
   return (
     <div style={{textAlign: 'center'}}>

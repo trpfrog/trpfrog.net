@@ -5,7 +5,7 @@ import {faDove} from "@fortawesome/free-solid-svg-icons";
 import getOtakuColor from "@blog/_lib/otakuColors";
 import {ArticleParts} from "../../ArticleParts";
 
-const TwitterArchive: ArticleParts = content => {
+const TwitterArchive: ArticleParts = ({content}) => {
   const tweetData: { [key: string]: string } = {}
   const lines = content.trim().split('\n')
   for (const line of lines) {

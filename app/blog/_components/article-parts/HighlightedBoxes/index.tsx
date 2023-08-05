@@ -5,7 +5,7 @@ import React from "react";
 import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "../../ArticleParts";
 
-export const Caution: ArticleParts = content => (
+export const Caution: ArticleParts = ({content}) => (
   <div className={styles.caution}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faTriangleExclamation}/>
@@ -19,7 +19,7 @@ export const Caution: ArticleParts = content => (
   </div>
 )
 
-export const Infobox: ArticleParts = content => (
+export const Infobox: ArticleParts = ({content}) => (
   <div className={styles.infobox}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faFrog}/>
@@ -33,7 +33,7 @@ export const Infobox: ArticleParts = content => (
   </div>
 )
 
-export const TitledFrame: ArticleParts = content => {
+export const TitledFrame: ArticleParts = ({content}) => {
   const [title, ...lines] = content.split('\n');
   return (
     <div style={{transform: 'translateY(calc(-1 * (1em + 5px) / 2))'}}>
