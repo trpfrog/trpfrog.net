@@ -13,12 +13,12 @@
     width: 10em;
     line-height: 1.2;
 
-    backdrop-filter: blur(3px) brightness(1.5);
+    backdrop-filter: blur(3px) brightness(1.2);
     @include mixins.mq(dark) {
         backdrop-filter: blur(3px) brightness(0.7);
     }
     background-color: rgba(gray, 0.2);
-    padding: 12px 0 0px;
+    padding: 12px 0 0;
     border-radius: 5px;
 }
 
