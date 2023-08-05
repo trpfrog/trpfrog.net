@@ -8,14 +8,15 @@ import TogglePageViewLink from "@blog/_components/TogglePageViewLink";
 import React from "react";
 import BlogPost from "@blog/_lib/blogPost";
 
-type Props = {
+type EntryButtonProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   post: BlogPost
   extended?: boolean
 }
 
-export function RichEntryButtons({ post, extended }: Props) {
+export function RichEntryButtons(props: EntryButtonProps) {
+  const { post, extended, ...rest } = props
   return (
-    <>
+    <div {...rest}>
       <Link href={'/blog'}>
         <EntryButton icon={faArrowLeft} text={'記事一覧'}/>
       </Link>
@@ -31,24 +32,22 @@ export function RichEntryButtons({ post, extended }: Props) {
           {post.numberOfPages >= 2 && <TogglePageViewLink post={post}/>}
         </>
       )}
-    </>
+    </div>
   )
 }
 
-export function EntryButtons({ post }: Props) {
+export function EntryButtons({ post, className, style, ...rest }: EntryButtonProps) {
   return (
-    <>
-      <p className={'link-area'} style={{textAlign: 'center'}}>
-        <Link href={'/blog'}>
-          記事一覧
-        </Link>
-        <ShareSpan slug={post.slug}>
-          <a>ツイート</a>
-        </ShareSpan>
-        <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
-          訂正リクエスト
-        </a>
-      </p>
-    </>
+    <p className={`link-area ${className}`} style={{textAlign: 'center', ...style}} {...rest}>
+      <Link href={'/blog'}>
+        記事一覧
+      </Link>
+      <ShareSpan slug={post.slug}>
+        <a>ツイート</a>
+      </ShareSpan>
+      <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+        訂正リクエスト
+      </a>
+    </p>
   )
 }

@@ -1,10 +1,6 @@
-import Image from "next/legacy/image";
-
-import Title from "@/components/Title";
 import Block from "@/components/Block";
 
 import {
-  getAllPostSlugs,
   getPostData,
   getSortedPostsData,
 } from "@blog/_lib/load";
@@ -14,22 +10,17 @@ import BlogMarkdown from "@blog/_renderer/BlogMarkdown";
 
 import styles from '@blog/_styles/blog.module.scss';
 
-import Tag from "@blog/_components/Tag";
-import {ParseWithBudouX} from "@/lib/wordSplit";
-import PostAttributes from "@blog/_components/PostAttributes";
 import RelatedPosts from "@blog/_components/RelatedPosts";
 import {UDFontBlock} from "@blog/_components/UDFontBlock";
-import {BadBlogBlock, BadBlogButton} from "@blog/_components/BadBlog";
+import {BadBlogBlock} from "@blog/_components/BadBlog";
 import React from "react";
-import EditButton from "./_components/EditButton";
-import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
-import {EntryButtons, RichEntryButtons} from "./_components/EntryButtons";
+import {EntryButtons} from "./_components/EntryButtons";
 import ArticleSidebar from "./_components/ArticleSidebar";
-import Balancer from "react-wrap-balancer";
 import DevBlogMarkdown from "@blog/_renderer/DevBlogMarkdown";
 import MainWrapper from "@/components/MainWrapper";
+import ArticleHeader from "@blog/_components/ArticleHeader";
 
 // Trick for NEXT-1214
 // export const dynamicParams = false
@@ -106,64 +97,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
 
   return (
     <MainWrapper className={styles.layout}>
-      <Title className={styles.article_title_block}>
-        {post.thumbnail &&
-          <Image
-            src={getPureCloudinaryPath(post.thumbnail)}
-            alt={'Thumbnail of this article'}
-            width={1000}
-            height={400}
-            layout={'responsive'}
-            objectFit={'cover'}
-          />
-        }
-        <div className={styles.inner_title_block}>
-          <h1>
-            <Balancer>
-              <ParseWithBudouX str={
-                (() => {
-                  if (post.title.endsWith('！')) {
-                    return post.title.slice(0, post.title.length - 1) + ' !'
-                  } else {
-                    return post.title
-                  }
-                })()
-              } slug={post.slug} />
-            </Balancer>
-          </h1>
-          <p style={{margin: '1em'}}>{post.description}</p>
-          <PostAttributes post={post}/>
-
-          {/* Tags */}
-          <p>
-            {post.tags
-              .split(',')
-              .map((tag: string) => tag.trim())
-              .map((tag: string) => (
-                <span
-                  style={{
-                    margin: '3px 3px 0 0',
-                    display: 'inline-block'
-                  }}
-                  key={tag}
-                >
-                  <Tag tag={tag}/>
-                </span>
-              ))
-            }
-          </p>
-          <div id={styles.entry_top_buttons}>
-            <RichEntryButtons post={post} extended={true}/>
-          </div>
-          {process.env.NODE_ENV === 'development' &&
-            <p>
-              <EditButton slug={post.slug}/>
-            </p>
-          }
-          <BadBlogButton/>
-        </div>
-      </Title>
-
+      <ArticleHeader post={post}/>
       <div className={styles.main_content}>
         <div className={styles.article_wrapper}>
           <UDFontBlock>
