@@ -3,7 +3,7 @@
 import React, {useState} from "react";
 import styles from "./index.module.scss";
 import dayjs from "dayjs";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
 export type ProfileData = {
@@ -36,7 +36,10 @@ const CardFormat = ({personalDataList}: any) => (
           </span>
         </div>
         <div className={styles.description}>
-          <ArticleRendererFromContext toRender={personalData.description}/>
+          <ArticleRenderer
+            toRender={personalData.description}
+            markdownOptions={{}}
+          />
         </div>
       </div>
     ))}

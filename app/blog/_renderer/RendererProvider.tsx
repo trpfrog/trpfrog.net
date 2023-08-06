@@ -14,7 +14,6 @@ import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrappe
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
 import myMarkdownClasses from "@blog/_components/ComponentDictionary";
-import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
@@ -88,6 +87,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
         <TargetComponent
           content={children[0]}
           entry={entry}
+          mdOptions={getMarkdownOptions(entry)}
         />
       )
     }
@@ -120,12 +120,11 @@ type RendererProviderProps = {
   entry?: BlogPost
 }
 
-export default function RendererProvider ({
-  children,
-  entry,
-  imageSize
-}: RendererProviderProps) {
-  const markdownComponents: Components = {
+export function getMarkdownOptions(
+  entry?: BlogPost,
+  imageSize?: Record<string, BlogImageData>
+) {
+  const components: Components = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
 
@@ -157,36 +156,34 @@ export default function RendererProvider ({
         {props.children}
       </a>
     )
-  };
+  }
 
-  const mathjaxConfig = {
-    loader: {load: ["[tex]/html"]},
-    tex: {
-      packages: {"[+]": ["html"]},
-      inlineMath: [["$", "$"]],
-      displayMath: [["$$", "$$"]]
-    }
-  };
+  return {
+    components,
+    remarkPlugins: [
+      remarkGfm,
+      () => remarkToc({heading: '目次'})
+    ],
+    rehypePlugins: [
+      rehypeRaw,
+      rehypeSlug,
+    ],
+  }
+}
 
+export default function RendererProvider ({
+  children,
+}: RendererProviderProps) {
   return (
-    <MathJaxContextWrapper version={3} config={mathjaxConfig}>
-      <RendererContext.Provider value={{
-        markdown: {
-          options: {
-            components: markdownComponents,
-            remarkPlugins: [
-              remarkGfm,
-              () => remarkToc({heading: '目次'})
-            ],
-            rehypePlugins: [
-              rehypeRaw,
-              rehypeSlug,
-            ],
-          }
-        }
-      }}>
-        {children}
-      </RendererContext.Provider>
+    <MathJaxContextWrapper version={3} config={{
+      loader: {load: ["[tex]/html"]},
+      tex: {
+        packages: {"[+]": ["html"]},
+        inlineMath: [["$", "$"]],
+        displayMath: [["$$", "$$"]]
+      }
+    }}>
+      {children}
     </MathJaxContextWrapper>
   )
 }

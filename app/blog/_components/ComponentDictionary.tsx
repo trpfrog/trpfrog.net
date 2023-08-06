@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import {AutoYoutube, Youtube} from "./article-parts/YouTube";
 import TwitterArchived from "./article-parts/TwitterArchive";
@@ -12,7 +10,7 @@ import Conversation from "./article-parts/Conversation";
 import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
 import {parseWithBudouX} from "@/lib/wordSplit";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
@@ -58,26 +56,26 @@ const myMarkdownClasses = {
     )
   },
 
-  Centering: ({ content }) => (
+  Centering: ({ content, mdOptions }) => (
     <div style={{textAlign: 'center'}}>
-      <ArticleRendererFromContext toRender={content}/>
+      <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
     </div>
   ),
 
-  CenteringWithSize: ({ content }) => {
+  CenteringWithSize: ({ content, mdOptions }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRendererFromContext toRender={content}/>
+        <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
       </div>
     )
   },
 
-  IgnoreReadCount: ({ content }) => (
+  IgnoreReadCount: ({ content, mdOptions }) => (
     // This is a hack to make the read count not increase
     // using "read counter does not count inside of code blocks"
-    <ArticleRendererFromContext toRender={content}/>
+    <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
   ),
 
   CenteringWithSizeBold: React.memo(({ content }) => {

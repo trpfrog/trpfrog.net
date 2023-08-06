@@ -1,7 +1,7 @@
 'use client';
 
-import React, {useId, useState} from "react";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
+import React, {useState} from "react";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {ArticleParts} from "../ArticleParts";
 
 type Props = {
@@ -61,11 +61,13 @@ export const ShowAllComponent = ({children, preview, className}: Props) => {
 
 }
 
-const ShowAll: ArticleParts = ({content}) => {
+const ShowAll: ArticleParts = ({content, mdOptions}) => {
   const [first, second] = content.split(/\n---+\n/)
   return (
-    <ShowAllComponent preview={<ArticleRendererFromContext toRender={first}/>}>
-      <ArticleRendererFromContext toRender={second}/>
+    <ShowAllComponent preview={
+      <ArticleRenderer toRender={first} markdownOptions={mdOptions}/>
+    }>
+      <ArticleRenderer toRender={second} markdownOptions={mdOptions}/>
     </ShowAllComponent>
   )
 }

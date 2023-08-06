@@ -1,21 +1,17 @@
-'use client';
-
-import React, {useContext} from "react";
+import React from "react";
 import ReactMarkdown from "react-markdown";
-import RendererContext from "./RendererContext";
 import {MathJaxWrapper} from "@/components/utils/MathJaxWrapper";
+import {Options as ReactMarkdownOptions} from "react-markdown";
 
-export default function ArticleRendererFromContext ({toRender}: {
-  toRender: string,
+export default React.memo(function ArticleRenderer(props: {
+  toRender: string
+  markdownOptions: Partial<ReactMarkdownOptions>
 }) {
-  const context = useContext(RendererContext);
   return (
-    <>
-      <MathJaxWrapper>
-        <ReactMarkdown {...context.markdown.options as any}>
-          {toRender}
-        </ReactMarkdown>
-      </MathJaxWrapper>
-    </>
+    <MathJaxWrapper>
+      <ReactMarkdown {...props.markdownOptions}>
+        {props.toRender}
+      </ReactMarkdown>
+    </MathJaxWrapper>
   )
-}
+})
