@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import dayjs from "dayjs";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
+import {getMarkdownPlugins} from "@blog/_renderer/RendererProvider";
 
 export type ProfileData = {
   name: string
@@ -38,7 +39,7 @@ const CardFormat = ({personalDataList}: any) => (
         <div className={styles.description}>
           <ArticleRenderer
             toRender={personalData.description}
-            markdownOptions={{}}
+            markdownOptions={getMarkdownPlugins()}
           />
         </div>
       </div>
