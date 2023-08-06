@@ -5,9 +5,9 @@ import React from "react";
 type Props = LinkProps & {
   className?: string
   style?: React.CSSProperties
-  key?: string
+  key?: React.Key
   id?: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function BlockLink(props: Props) {
