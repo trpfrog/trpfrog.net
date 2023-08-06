@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import BlogImage from "@blog/_components/BlogImage";
 import styles from "@blog/_styles/blog.module.scss";
@@ -16,7 +14,6 @@ import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
 import myMarkdownClasses from "@blog/_components/ComponentDictionary";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
-import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
 import {ArticleParts} from "@blog/_components/ArticleParts";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -117,12 +114,6 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
   }) satisfies React.FC<CodeProps>;
 }
 
-type RendererProviderProps = {
-  children: React.ReactNode,
-  imageSize?: { [path: string]: BlogImageData },
-  entry?: BlogPost
-}
-
 export function getMarkdownOptions(
   entry?: BlogPost,
   imageSize?: Record<string, BlogImageData>
@@ -181,21 +172,3 @@ export function getMarkdownPlugins() {
     ],
   }
 }
-
-export default function RendererProvider ({
-  children,
-}: RendererProviderProps) {
-  return (
-    <MathJaxContextWrapper version={3} config={{
-      loader: {load: ["[tex]/html"]},
-      tex: {
-        packages: {"[+]": ["html"]},
-        inlineMath: [["$", "$"]],
-        displayMath: [["$$", "$$"]]
-      }
-    }}>
-      {children}
-    </MathJaxContextWrapper>
-  )
-}
-

@@ -7,7 +7,7 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import PageNavigation from "@blog/_components/PageNavigation";
 import Block from "@/components/Block";
 
-import RendererProvider, {getMarkdownOptions} from "./RendererProvider";
+import {getMarkdownOptions} from "./RendererProvider";
 import ArticleRenderer from "./ArticleRenderer";
 import BlogPost from "@blog/_lib/blogPost";
 
@@ -36,7 +36,7 @@ const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
   const mdOptions = getMarkdownOptions(entry, imageSize)
 
   return (
-    <RendererProvider entry={entry} imageSize={imageSize}>
+    <>
       {markdown.map((content, idx) => (
         <Block key={'window-' + idx} style={style} className={className}>
           {idx === 0 &&
@@ -56,7 +56,7 @@ const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
           }
         </Block>
       ))}
-    </RendererProvider>
+    </>
   )
 })
 
