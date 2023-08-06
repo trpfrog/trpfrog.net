@@ -18,6 +18,9 @@ import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
 import {ArticleParts} from "@blog/_components/ArticleParts";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import 'katex/dist/katex.min.css'
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -160,11 +163,19 @@ export function getMarkdownOptions(
 
   return {
     components,
+    ...getMarkdownPlugins()
+  }
+}
+
+export function getMarkdownPlugins() {
+  return {
     remarkPlugins: [
       remarkGfm,
+      remarkMath,
       () => remarkToc({heading: '目次'})
     ],
     rehypePlugins: [
+      rehypeKatex,
       rehypeRaw,
       rehypeSlug,
     ],
