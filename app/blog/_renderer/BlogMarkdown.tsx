@@ -7,7 +7,7 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import PageNavigation from "@blog/_components/PageNavigation";
 import Block from "@/components/Block";
 
-import {getMarkdownOptions} from "./RendererProvider";
+import {getMarkdownOptions} from "./rendererProperties";
 import ArticleRenderer from "./ArticleRenderer";
 import BlogPost from "@blog/_lib/blogPost";
 

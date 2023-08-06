@@ -11,13 +11,12 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "@blog/_components/ComponentDictionary";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
-import {ArticleParts} from "@blog/_components/ArticleParts";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import 'katex/dist/katex.min.css'
+import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -79,12 +78,12 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
 
     type ComponentNameType = keyof typeof myMarkdownClasses
     const isValidComponentName = (name: string): name is ComponentNameType => {
-      return languageCamelCase in myMarkdownClasses
+      return name in myMarkdownClasses
     }
     if (isValidComponentName(languageCamelCase)) {
-      const TargetComponent = myMarkdownClasses[languageCamelCase] as ArticleParts
       return (
-        <TargetComponent
+        <OriginalMarkdownComponent
+          componentName={languageCamelCase}
           content={children[0]}
           entry={entry}
           mdOptions={getMarkdownOptions(entry)}
