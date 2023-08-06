@@ -18,7 +18,6 @@ import BlogPost from "@blog/_lib/blogPost";
 import {Metadata} from "next";
 import {EntryButtons} from "./_components/EntryButtons";
 import ArticleSidebar from "./_components/ArticleSidebar";
-import DevBlogMarkdown from "@blog/_renderer/DevBlogMarkdown";
 import MainWrapper from "@/components/MainWrapper";
 import ArticleHeader from "@blog/_components/ArticleHeader";
 
@@ -102,10 +101,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              {process.env.NODE_ENV === 'production'
-                ? <BlogMarkdown entry={post} imageSize={imageSize}/>
-                : <DevBlogMarkdown entry={post} imageSize={imageSize}/>
-              }
+              <BlogMarkdown entry={post} imageSize={imageSize}/>
             </BadBlogBlock>
           </UDFontBlock>
         </div>
