@@ -17,7 +17,7 @@ import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
 
 
 /* eslint-disable react/display-name */
-const myMarkdownClasses = {
+export const myMarkdownClasses = {
   // Socials
   Twitter,
   Youtube: YouTube,
@@ -96,4 +96,10 @@ const myMarkdownClasses = {
 } as const satisfies Record<string, ArticleParts>
 /* eslint-enable react/display-name */
 
-export default myMarkdownClasses;
+export default async function OriginalMarkdownComponent(props: ArticlePartsProps & {
+  componentName: keyof typeof myMarkdownClasses
+}) {
+  const { componentName, ...rest } = props
+  const TargetComponent = myMarkdownClasses[props.componentName]
+  return <TargetComponent {...rest}/>
+}
