@@ -1,15 +1,11 @@
 'use client';
-
 import React, {useState} from "react";
-import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts} from "../ArticleParts";
 
 type Props = {
   children: React.ReactNode
   preview: React.ReactNode
   className?: string
 }
-
 export const ShowAllComponent = ({children, preview, className}: Props) => {
   const Fog = () => (
     <div style={{
@@ -58,19 +54,4 @@ export const ShowAllComponent = ({children, preview, className}: Props) => {
       </div>
     </div>
   )
-
 }
-
-const ShowAll: ArticleParts = ({content, mdOptions}) => {
-  const [first, second] = content.split(/\n---+\n/)
-  return (
-    <ShowAllComponent preview={
-      <ArticleRenderer toRender={first} markdownOptions={mdOptions}/>
-    }>
-      <ArticleRenderer toRender={second} markdownOptions={mdOptions}/>
-    </ShowAllComponent>
-  )
-}
-
-
-export default ShowAll

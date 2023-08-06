@@ -3,9 +3,8 @@
 import YouTube from "react-youtube";
 import ReactPlayer from "react-player";
 import React from "react";
-import {ArticleParts} from "../ArticleParts";
 
-export const Youtube: ArticleParts = ({content}) => {
+export function InnerYouTube({content}: {content: string}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
@@ -20,7 +19,7 @@ export const Youtube: ArticleParts = ({content}) => {
   )
 }
 
-export const AutoYoutube: ArticleParts = ({content}) => {
+export function InnerAutoYouTube({content}: {content: string}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()

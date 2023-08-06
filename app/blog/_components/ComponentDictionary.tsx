@@ -1,5 +1,4 @@
 import React from "react";
-import {AutoYoutube, Youtube} from "./article-parts/YouTube";
 import TwitterArchived from "./article-parts/TwitterArchive";
 import WalkingResultBox from "./article-parts/WalkingResultBox";
 import ProfileCards from "./article-parts/ProfileCards";
@@ -9,19 +8,20 @@ import HorizontalScroll from "./article-parts/HorizontalScroll";
 import Conversation from "./article-parts/Conversation";
 import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
-import {parseWithBudouX} from "@/lib/wordSplit";
+import {ParseWithBudouX} from "@/lib/wordSplit";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts} from "./ArticleParts";
+import {ArticleParts, ArticlePartsProps} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
+import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
 
 
 /* eslint-disable react/display-name */
 const myMarkdownClasses = {
   // Socials
   Twitter,
-  Youtube,
-  AutoYoutube,
+  Youtube: YouTube,
+  AutoYoutube: AutoYouTube,
   LinkEmbed,
   TwitterArchived,
 
@@ -83,7 +83,9 @@ const myMarkdownClasses = {
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <strong>{parseWithBudouX(content, content)}</strong>
+        <strong>
+          <ParseWithBudouX str={content} slug={content}/>
+        </strong>
       </div>
     )
   }),

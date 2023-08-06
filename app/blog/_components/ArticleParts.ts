@@ -3,7 +3,7 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import React from "react";
 import {Options as ReactMarkdownOptions} from "react-markdown";
 
-type ArticlePartsProps = {
+export type ArticlePartsProps = {
   content: string,
   entry?: BlogPost,
   imageSize?: { [path: string]: BlogImageData }
