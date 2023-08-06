@@ -1,8 +1,8 @@
 import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts} from "../ArticleParts";
+import {ServerArticleParts} from "../ArticleParts";
 
-const HorizontalScroll: ArticleParts = ({content, mdOptions}) => {
+const HorizontalScroll: ServerArticleParts = ({content, mdOptions}) => {
   const contents = content.split('\n\n').filter(e => e.trim() !== '')
   return (
     <div style={{display: 'flex', overflowX: 'scroll', gap: '1em', whiteSpace: 'nowrap'}}>

@@ -1,8 +1,8 @@
-import {ArticleParts} from "@blog/_components/ArticleParts";
+import {ServerArticleParts} from "@blog/_components/ArticleParts";
 import React from "react";
 import {Tweet} from "react-twitter-widgets";
 
-export const Twitter: ArticleParts = React.memo(function InnerTwitter({content}) {
+export const Twitter: ServerArticleParts = React.memo(function InnerTwitter({content}) {
   const id = content.split('\n')[0]
   return (
     <>

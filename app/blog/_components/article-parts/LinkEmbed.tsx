@@ -27,4 +27,5 @@ export const LinkEmbed: ArticleParts = React.memo(function InnerLinkEmbed({conte
       }
     </div>
   )
+export const LinkEmbed: ServerArticleParts = React.memo(function InnerLinkEmbed({content}) {
 })

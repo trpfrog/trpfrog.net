@@ -10,7 +10,7 @@ import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
 import {ParseWithBudouX} from "@/lib/wordSplit";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts, ArticlePartsProps} from "./ArticleParts";
+import {ServerArticleParts, ServerArticlePartsProps} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
 import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
@@ -27,7 +27,7 @@ export const myMarkdownClasses = {
 
   // Walking Parts
   ResultBox: WalkingResultBox,
-  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
+  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ServerArticleParts,
 
   // Highlight Boxes
   Caution,
@@ -93,10 +93,10 @@ export const myMarkdownClasses = {
   DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
   )),
-} as const satisfies Record<string, ArticleParts>
+} as const satisfies Record<string, ServerArticleParts>
 /* eslint-enable react/display-name */
 
-export default async function OriginalMarkdownComponent(props: ArticlePartsProps & {
+export default async function OriginalMarkdownComponent(props: ServerArticlePartsProps & {
   componentName: keyof typeof myMarkdownClasses
 }) {
   const { componentName, ...rest } = props
