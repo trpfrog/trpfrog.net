@@ -2,7 +2,7 @@
 
 import BlogPost from "@blog/_lib/blogPost";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
-import React, {CSSProperties} from "react";
+import React, {CSSProperties, useState, useTransition} from "react";
 import {doMarkdownHMR} from "@blog/_lib/fileWatch";
 import BlogMarkdown from "./BlogMarkdown";
 
@@ -14,7 +14,8 @@ type Props = {
 }
 
 export default function DevBlogMarkdown ({entry, imageSize, style, className}: Props) {
-  const [post, setPost] = React.useState(entry)
+  const [post, setPost] = useState(entry)
+  const [_, startTransition] = useTransition()
 
   React.useEffect(() => {
     const f = async () => {
@@ -24,8 +25,8 @@ export default function DevBlogMarkdown ({entry, imageSize, style, className}: P
       console.log(json)
       return json
     }
-    f().then(r => setPost(r))
-  }, [doMarkdownHMR])
+    f().then(r => startTransition(() => setPost(r)))
+  }, [entry.currentPage, entry.slug])
 
   // doMarkdownHMR() is called here to make sure that the HMR is working.
   // This file is edited automatically by markdown watcher script.
