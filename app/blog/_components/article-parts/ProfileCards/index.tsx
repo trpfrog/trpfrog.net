@@ -36,10 +36,7 @@ const CardFormat = ({personalDataList}: any) => (
           </span>
         </div>
         <div className={styles.description}>
-          <ArticleRenderer
-            toRender={personalData.description}
-            markdownOptions={getMarkdownPlugins()}
-          />
+          {parseInlineMarkdown(personalData.description)}
         </div>
       </div>
     ))}
