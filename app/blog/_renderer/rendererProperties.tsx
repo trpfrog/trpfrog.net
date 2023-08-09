@@ -21,6 +21,7 @@ import {MDXRemoteProps} from "next-mdx-remote/rsc";
 import {MDXProvider} from "@mdx-js/react";
 import {MDXComponents, MDXProps} from "mdx/types";
 import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -168,6 +169,7 @@ export function getMarkdownPlugins() {
     remarkPlugins: [
       remarkGfm,
       remarkMath,
+      remarkUnwrapImages,
       () => remarkToc({heading: '目次'})
     ],
     rehypePlugins: [
