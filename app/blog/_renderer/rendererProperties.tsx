@@ -17,6 +17,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import 'katex/dist/katex.min.css'
 import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
+import {MDXRemoteProps} from "next-mdx-remote/rsc";
+import {MDXProvider} from "@mdx-js/react";
+import {MDXComponents, MDXProps} from "mdx/types";
+import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -41,13 +45,13 @@ const getLangName = (s: string) => {
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return ((
-    {className, inline, children}
+    {className, children}
   ) => {
 
-    const isArrayStartingFromString = (arr: any): arr is [string, ...any] => {
-      return Array.isArray(arr) && typeof arr[0] === 'string'
+    const isChildrenString = (ch: any): ch is string => {
+      return typeof ch === 'string'
     }
-    if (!isArrayStartingFromString(children)) {
+    if (!isChildrenString(children)) {
       return (
         <code className={styles.inline_code_block}>
           {children}
@@ -55,7 +59,9 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    if (inline) {
+    const isInline = !className
+
+    if (isInline) {
       return (
         <code className={styles.inline_code_block}>
           {children}
@@ -63,7 +69,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    children[0] = children[0].trimEnd()
+    children = children.trimEnd()
 
     const language = className
       ? getLangName(
@@ -84,7 +90,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       return (
         <OriginalMarkdownComponent
           componentName={languageCamelCase}
-          content={children[0]}
+          content={children as string}
           entry={entry}
           mdOptions={getMarkdownOptions(entry)}
         />
@@ -106,38 +112,33 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
           style={atomOneDarkReasonable}
           className={`${styles.code_block} ${language !== '' ? styles.code_block_with_lang : ''}`}
         >
-          {children}
+          {children as string}
         </SyntaxHighlighterWrapper>
       </pre>
     )
-  }) satisfies React.FC<CodeProps>;
+  }) satisfies MDXComponents['code']
 }
 
 export function getMarkdownOptions(
   entry?: BlogPost,
   imageSize?: Record<string, BlogImageData>
 ) {
-  const components: Components = {
+  const components: MDXComponents = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
 
-    p: (props: any) => {
-      if (props.node.children[0]?.tagName === 'img') {
-        const image = props.node.children[0]
-        return (
-          <BlogImage
-            src={image.properties.src}
-            alt={image.properties.alt}
-            imageData={
-              imageSize
-                ? imageSize[getPureCloudinaryPath(image.properties.src)]
-                : undefined
-            }
-          />
-        )
-      }
-      return <p>{props.children}</p>
-    },
+    img: (props: any) => (
+      <BlogImage
+        src={props.src}
+        alt={props.alt}
+        imageData={
+          imageSize
+            ? imageSize[getPureCloudinaryPath(props.src)]
+            : undefined
+        }
+      />
+    ),
+
     h2: (props: any) => (
       <h2 className={styles.anchor} id={props.id}>
         <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
@@ -153,8 +154,13 @@ export function getMarkdownOptions(
 
   return {
     components,
-    ...getMarkdownPlugins()
-  }
+    options: {
+      mdxOptions: {
+        ...getMarkdownPlugins(),
+        format: 'md'
+      }
+    }
+  } satisfies MarkdownOptions
 }
 
 export function getMarkdownPlugins() {

@@ -1,13 +1,13 @@
 import BlogPost from "@blog/_lib/blogPost";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import React from "react";
-import {Options as ReactMarkdownOptions} from "react-markdown";
+import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 
 export type ServerArticlePartsProps = {
   content: string,
   entry?: BlogPost,
   imageSize?: { [path: string]: BlogImageData }
-  mdOptions: Partial<ReactMarkdownOptions>
+  mdOptions: MarkdownOptions
 }
 
 export type ServerArticleParts =
