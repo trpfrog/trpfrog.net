@@ -1,26 +1,29 @@
 import styles from "@blog/_styles/blog.module.scss";
 import React, {CSSProperties} from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import PageNavigation from "@blog/_components/PageNavigation";
 import Block from "@/components/Block";
 
-import {getMarkdownOptions} from "./rendererProperties";
+import {getMarkdownOptions, getMarkdownPlugins} from "./rendererProperties";
 import ArticleRenderer from "./ArticleRenderer";
 import BlogPost from "@blog/_lib/blogPost";
+import {MDXRemote} from "next-mdx-remote/rsc";
 
 export const parseInlineMarkdown = (markdown: string) => {
-  const comp = {
-    p: ({children}: any) => <>{children}</>
-  }
-  return <ReactMarkdown
-    components={comp}
-    remarkPlugins={[remarkGfm]}
-    rehypePlugins={[rehypeRaw]}>
-    {markdown}
-  </ReactMarkdown>
+  return (
+    <MDXRemote
+      source={markdown}
+      components={{
+        p: ({children}) => <>{children}</>
+      }}
+      options={{
+        mdxOptions: {
+          ...getMarkdownPlugins(),
+          format: 'md'
+        }
+      }}
+    />
+  )
 }
 
 type Props = {
