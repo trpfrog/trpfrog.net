@@ -1,8 +1,8 @@
-import {ArticleParts} from "@blog/_components/ArticleParts";
+import {ServerArticleParts} from "@blog/_components/ArticleParts";
 import React from "react";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
-export const LinkEmbed: ArticleParts = React.memo(function InnerLinkEmbed({content}) {
+export const LinkEmbed: ServerArticleParts = React.memo(function InnerLinkEmbed({content}) {
   const [url, ...captionArr] = content.split('\n')
   return (
     <div style={{textAlign: 'center'}}>
@@ -27,5 +27,4 @@ export const LinkEmbed: ArticleParts = React.memo(function InnerLinkEmbed({conte
       }
     </div>
   )
-export const LinkEmbed: ServerArticleParts = React.memo(function InnerLinkEmbed({content}) {
 })
