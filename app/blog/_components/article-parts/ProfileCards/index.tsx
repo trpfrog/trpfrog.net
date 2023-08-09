@@ -1,10 +1,10 @@
-'use client';
-
-import React, {useState} from "react";
+import React from "react";
 import styles from "./index.module.scss";
 import dayjs from "dayjs";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
+import {getMarkdownPlugins} from "@blog/_renderer/rendererProperties";
+import SwitchUI from "@blog/_components/article-parts/ProfileCards/SwitchUI";
 
 export type ProfileData = {
   name: string
@@ -36,7 +36,7 @@ const CardFormat = ({personalDataList}: any) => (
           </span>
         </div>
         <div className={styles.description}>
-          <ArticleRendererFromContext toRender={personalData.description}/>
+          {parseInlineMarkdown(personalData.description)}
         </div>
       </div>
     ))}
@@ -88,34 +88,14 @@ const ProfileCards = ({content, held}: { content: string, held?: string }) => {
     + `%20until%3A${dayjs(held).add(1, 'd').format('YYYY-MM-DD')}_04%3A00%3A00_JST`
     + '&src=typed_query&f=live&pf=on' : ''
 
-  const [showProfileCards, setShowProfileCards] = useState(true)
-
   return (
     <>
-      {showProfileCards ? (
-        <p>
-          <button onClick={() => {
-            setShowProfileCards(false)
-          }}>
-            リスト表示に切り替え
-          </button>
-          {' '}
-          横にスクロールできます。
-        </p>
-      ) : (
-        <p>
-          <button onClick={() => {
-            setShowProfileCards(true)
-          }}>
-            カード表示に切り替え
-          </button>
-        </p>
-      )}
-      {showProfileCards ? (
-        <CardFormat personalDataList={personalDataList}/>
-      ) : (
-        <ListFormat personalDataList={personalDataList}/>
-      )}
+      <SwitchUI
+        primaryChildren={<CardFormat personalDataList={personalDataList}/>}
+        primaryButtonText={'リスト表示に切り替え'}
+        secondaryChildren={<ListFormat personalDataList={personalDataList}/>}
+        secondaryButtonText={'カード表示に切り替え'}
+      />
       {twitterSearchLink !== '' &&
         <a href={twitterSearchLink} className={'linkButton'} target="_blank" rel="noreferrer">
           当日の同行者のツイートを見る

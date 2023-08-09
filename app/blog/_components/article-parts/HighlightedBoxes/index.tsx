@@ -2,38 +2,38 @@ import styles from "./index.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts} from "../../ArticleParts";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
+import {ServerArticleParts} from "../../ArticleParts";
 
-export const Caution: ArticleParts = content => (
+export const Caution: ServerArticleParts = ({content, mdOptions}) => (
   <div className={styles.caution}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faTriangleExclamation}/>
     </div>
     <div className={styles.text_box_content}>
       <h4>{content.split('\n')[0]}</h4>
-      <ArticleRendererFromContext toRender={
+      <ArticleRenderer toRender={
         content.split('\n').slice(1).join('\n').trim()
-      }/>
+      } markdownOptions={mdOptions}/>
     </div>
   </div>
 )
 
-export const Infobox: ArticleParts = content => (
+export const Infobox: ServerArticleParts = ({content, mdOptions}) => (
   <div className={styles.infobox}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faFrog}/>
     </div>
     <div className={styles.text_box_content}>
       <h4>{content.split('\n')[0]}</h4>
-      <ArticleRendererFromContext toRender={
+      <ArticleRenderer toRender={
         content.split('\n').slice(1).join('\n').trim()
-      }/>
+      } markdownOptions={mdOptions}/>
     </div>
   </div>
 )
 
-export const TitledFrame: ArticleParts = content => {
+export const TitledFrame: ServerArticleParts = ({content, mdOptions}) => {
   const [title, ...lines] = content.split('\n');
   return (
     <div style={{transform: 'translateY(calc(-1 * (1em + 5px) / 2))'}}>
@@ -55,7 +55,10 @@ export const TitledFrame: ArticleParts = content => {
         padding: '1.5em 1em 1em',
         borderRadius: 10
       }}>
-        <ArticleRendererFromContext toRender={lines.join('\n')}/>
+        <ArticleRenderer
+          toRender={lines.join('\n')}
+          markdownOptions={mdOptions}
+        />
       </div>
     </div>
   )

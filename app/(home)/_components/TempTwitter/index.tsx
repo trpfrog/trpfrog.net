@@ -8,8 +8,8 @@ import MainWrapper from "../../../../components/MainWrapper";
 import Block from "@/components/Block";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {ShowAllComponent} from "@blog/_components/article-parts/ShowAll";
 import styles from './index.module.scss'
+import {ShowAllComponent} from "@blog/_components/article-parts/ShowAll/ShowAllComponent";
 
 export default async function TempTwitter() {
   let md: string

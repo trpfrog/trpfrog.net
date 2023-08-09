@@ -1,8 +1,8 @@
 import styles from "./index.module.scss";
 import React from "react";
-import {ArticleParts} from "../../ArticleParts";
+import {ServerArticleParts} from "../../ArticleParts";
 
-const WalkingResultBox: ArticleParts = content => {
+const WalkingResultBox: ServerArticleParts = ({content}) => {
   return (
     <div className={styles.result_box_grid}>
       {content.split('\n').map(line => {

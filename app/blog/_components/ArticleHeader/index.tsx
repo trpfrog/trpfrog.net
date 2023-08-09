@@ -7,6 +7,7 @@ import {ParseWithBudouX} from "@/lib/wordSplit";
 import PostAttributes from "@blog/_components/PostAttributes";
 import Tag from "@blog/_components/Tag";
 import {EntryButtons} from "@blog/[slug]/[[...options]]/_components/EntryButtons";
+import EditButton from "@blog/[slug]/[[...options]]/_components/EditButton";
 
 export default function ArticleHeader({post}: {
   post: BlogPost,
@@ -61,11 +62,11 @@ export default function ArticleHeader({post}: {
           {/*<div id={styles.entry_top_buttons}>*/}
           {/*  <RichEntryButtons post={post} extended={true}/>*/}
           {/*</div>*/}
-          {/*{process.env.NODE_ENV === 'development' &&*/}
-          {/*  <p>*/}
-          {/*    <EditButton slug={post.slug}/>*/}
-          {/*  </p>*/}
-          {/*}*/}
+          {process.env.NODE_ENV === 'development' &&
+            <p>
+              <EditButton slug={post.slug}/>
+            </p>
+          }
           {/*<BadBlogButton/>*/}
         </div>
       </Title>

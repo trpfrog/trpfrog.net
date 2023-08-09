@@ -1,16 +1,10 @@
-'use client';
-
-import React, {CSSProperties, useState} from "react";
+import React, {CSSProperties} from "react";
 import styles from "./index.module.scss";
-import Modal from "react-modal";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
-import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
-import Image from "next/image";
-import cloudinaryLoader from "@blog/_lib/cloudinaryLoader";
-
+import ImageWithModal from "@blog/_components/BlogImage/ImageWithModal";
 
 type BlogImageProps = {
   src: string,
@@ -37,9 +31,6 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     }
   }
 
-  const srcPath = getPureCloudinaryPath(src)
-  const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
-
   let caption = imageData.caption ?? ''
   let takenBy: string | undefined
 
@@ -57,60 +48,6 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     imageHeight = maxHeight
   }
 
-  const modalStyle = {
-    overlay: {
-      position: 'fixed',
-      background: 'rgba(0,0,0,.8)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 10,
-    } as CSSProperties,
-    content: {
-      position: 'static',
-      width: `min(calc(80vh * ${imageWidth / imageHeight}), 95vw)`,
-      height: `min(calc(95vw * ${imageHeight / imageWidth}), 80vh)`,
-      padding: 0,
-      background: 'transparent',
-      border: 'none',
-      zIndex: 10,
-    } as CSSProperties
-  }
-
-  const ImageOnArticle = () => (
-    <Image
-      src={imageData?.public_id ?? srcPath.slice(1)}
-      alt={alt || src}
-      className={`rich_image ${styles.image}`}
-      width={imageWidth}
-      height={imageHeight}
-      quality={50}
-      placeholder="blur"
-      blurDataURL={blurPath}
-      onClick={() => setModalState(true)}
-      sizes="100vw"
-      style={{
-        width: '100%',
-        height: 'auto',
-      }}
-      loader={cloudinaryLoader}
-    />
-  )
-
-  const ImageOnModal = () => (
-    <Image
-      src={imageData?.public_id ?? srcPath.slice(1)}
-      alt={alt || src}
-      className={`rich_image`}
-      width={imageWidth}
-      height={imageHeight}
-      placeholder="blur"
-      blurDataURL={blurPath}
-      sizes="100vw"  // Support responsive
-      loader={cloudinaryLoader}
-    />
-  )
-
   const TakenBy = (props: {photographer: string}) => (
     <div className={styles.taken_by} style={{width: imageWidth}}>
       <small>
@@ -120,25 +57,23 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
     </div>
   )
 
-  const [modalState, setModalState] = useState(false)
   return (
     <>
       <figure className={styles.img_wrapper} style={style}>
         {takenBy && <TakenBy photographer={takenBy}/>}
-        <ImageOnArticle/>
+        <ImageWithModal
+          publicId={imageData?.public_id}
+          src={src}
+          alt={alt}
+          width={imageWidth}
+          height={imageHeight}
+        />
         {caption &&
           <ImageCaption>
             {parseInlineMarkdown(caption)}
           </ImageCaption>
         }
       </figure>
-      <Modal
-        isOpen={modalState}
-        style={modalStyle}
-        onRequestClose={() => setModalState(false)}
-      >
-        <ImageOnModal/>
-      </Modal>
     </>
   )
 }

@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import BlogImage from "@blog/_components/BlogImage";
 import styles from "@blog/_styles/blog.module.scss";
@@ -13,11 +11,17 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
-import myMarkdownClasses from "@blog/_components/ComponentDictionary";
-import RendererContext from "./RendererContext";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
-import {MathJaxContextWrapper} from "@/components/utils/MathJaxWrapper";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import 'katex/dist/katex.min.css'
+import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
+import {MDXRemoteProps} from "next-mdx-remote/rsc";
+import {MDXProvider} from "@mdx-js/react";
+import {MDXComponents, MDXProps} from "mdx/types";
+import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -42,13 +46,13 @@ const getLangName = (s: string) => {
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return ((
-    {className, inline, children}
+    {className, children}
   ) => {
 
-    const isArrayStartingFromString = (arr: any): arr is [string, ...any] => {
-      return Array.isArray(arr) && typeof arr[0] === 'string'
+    const isChildrenString = (ch: any): ch is string => {
+      return typeof ch === 'string'
     }
-    if (!isArrayStartingFromString(children)) {
+    if (!isChildrenString(children)) {
       return (
         <code className={styles.inline_code_block}>
           {children}
@@ -56,7 +60,9 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    if (inline) {
+    const isInline = !className
+
+    if (isInline) {
       return (
         <code className={styles.inline_code_block}>
           {children}
@@ -64,7 +70,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    children[0] = children[0].trimEnd()
+    children = children.trimEnd()
 
     const language = className
       ? getLangName(
@@ -79,12 +85,17 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
 
     type ComponentNameType = keyof typeof myMarkdownClasses
     const isValidComponentName = (name: string): name is ComponentNameType => {
-      return languageCamelCase in myMarkdownClasses
+      return name in myMarkdownClasses
     }
     if (isValidComponentName(languageCamelCase)) {
       return (
-        myMarkdownClasses[languageCamelCase](children[0], entry)
-      ) as JSX.Element
+        <OriginalMarkdownComponent
+          componentName={languageCamelCase}
+          content={children as string}
+          entry={entry}
+          mdOptions={getMarkdownOptions(entry)}
+        />
+      )
     }
 
     const fileName = className?.includes('.') ?
@@ -102,45 +113,33 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
           style={atomOneDarkReasonable}
           className={`${styles.code_block} ${language !== '' ? styles.code_block_with_lang : ''}`}
         >
-          {children}
+          {children as string}
         </SyntaxHighlighterWrapper>
       </pre>
     )
-  }) satisfies React.FC<CodeProps>;
+  }) satisfies MDXComponents['code']
 }
 
-type RendererProviderProps = {
-  children: React.ReactNode,
-  imageSize?: { [path: string]: BlogImageData },
-  entry?: BlogPost
-}
-
-export default function RendererProvider ({
-  children,
-  entry,
-  imageSize
-}: RendererProviderProps) {
-  const markdownComponents: Components = {
+export function getMarkdownOptions(
+  entry?: BlogPost,
+  imageSize?: Record<string, BlogImageData>
+) {
+  const components: MDXComponents = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
 
-    p: (props: any) => {
-      if (props.node.children[0]?.tagName === 'img') {
-        const image = props.node.children[0]
-        return (
-          <BlogImage
-            src={image.properties.src}
-            alt={image.properties.alt}
-            imageData={
-              imageSize
-                ? imageSize[getPureCloudinaryPath(image.properties.src)]
-                : undefined
-            }
-          />
-        )
-      }
-      return <p>{props.children}</p>
-    },
+    img: (props: any) => (
+      <BlogImage
+        src={props.src}
+        alt={props.alt}
+        imageData={
+          imageSize
+            ? imageSize[getPureCloudinaryPath(props.src)]
+            : undefined
+        }
+      />
+    ),
+
     h2: (props: any) => (
       <h2 className={styles.anchor} id={props.id}>
         <a href={'#' + props.id}><FontAwesomeIcon icon={faPaperclip}/></a>
@@ -152,37 +151,31 @@ export default function RendererProvider ({
         {props.children}
       </a>
     )
-  };
+  }
 
-  const mathjaxConfig = {
-    loader: {load: ["[tex]/html"]},
-    tex: {
-      packages: {"[+]": ["html"]},
-      inlineMath: [["$", "$"]],
-      displayMath: [["$$", "$$"]]
+  return {
+    components,
+    options: {
+      mdxOptions: {
+        ...getMarkdownPlugins(),
+        format: 'md'
+      }
     }
-  };
-
-  return (
-    <MathJaxContextWrapper version={3} config={mathjaxConfig}>
-      <RendererContext.Provider value={{
-        markdown: {
-          options: {
-            components: markdownComponents,
-            remarkPlugins: [
-              remarkGfm,
-              () => remarkToc({heading: '目次'})
-            ],
-            rehypePlugins: [
-              rehypeRaw,
-              rehypeSlug,
-            ],
-          }
-        }
-      }}>
-        {children}
-      </RendererContext.Provider>
-    </MathJaxContextWrapper>
-  )
+  } satisfies MarkdownOptions
 }
 
+export function getMarkdownPlugins() {
+  return {
+    remarkPlugins: [
+      remarkGfm,
+      remarkMath,
+      remarkUnwrapImages,
+      () => remarkToc({heading: '目次'})
+    ],
+    rehypePlugins: [
+      rehypeKatex,
+      rehypeRaw,
+      rehypeSlug,
+    ],
+  }
+}

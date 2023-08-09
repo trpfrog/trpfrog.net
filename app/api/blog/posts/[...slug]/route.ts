@@ -10,11 +10,10 @@ type GETProps = {
 }
 
 export async function GET(request: Request, props: GETProps) {
-  const [slug, page] = props.params.slug
+  let [slug, page] = props.params.slug
 
   if (page == null || page == '') {
-    const dist = `/api/blog/posts/${slug}/all`
-    return NextResponse.redirect(new URL(dist, request.url))
+    page = 'all'
   }
 
   if (slug) {
@@ -24,32 +23,26 @@ export async function GET(request: Request, props: GETProps) {
         all: page === 'all'
       })
       const imageSize = await fetchAllImageProps(entry, false);
-      return new Response(
-        JSON.stringify({...entry, imageSize}), {
+      return NextResponse.json(
+        {...entry, imageSize}, {
           status: StatusCodes.OK,
-          headers: {
-            'Content-Type': 'application/json'
-          }
         }
       )
     } catch (e) {
-      return new Response(JSON.stringify({
-        error: e
-      }), {
-        status: StatusCodes.BAD_REQUEST,
-        headers: {
-          'Content-Type': 'application/json'
+      return NextResponse.json(
+        {error: e}, {
+          status: StatusCodes.BAD_REQUEST,
         }
-      })
+      )
     }
   } else {
-    return new Response(JSON.stringify({
-      error: ReasonPhrases.NOT_FOUND
-    }), {
-      status: StatusCodes.NOT_FOUND,
-      headers: {
-        'Content-Type': 'application/json'
+    return NextResponse.json(
+      {error: ReasonPhrases.NOT_FOUND}, {
+        status: StatusCodes.NOT_FOUND,
       }
-    })
+    )
   }
 }
+
+export type BlogPostAPIResponseJsonType =
+  Awaited<ReturnType<typeof GET>> extends NextResponse<infer T> ? T : never

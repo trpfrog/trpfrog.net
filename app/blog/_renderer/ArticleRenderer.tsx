@@ -1,21 +1,21 @@
-'use client';
+import React from "react";
+import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
+import {doMarkdownHMR} from "@blog/_lib/fileWatch";
 
-import React, {useContext} from "react";
-import ReactMarkdown from "react-markdown";
-import RendererContext from "./RendererContext";
-import {MathJaxWrapper} from "@/components/utils/MathJaxWrapper";
+export type MarkdownOptions = Omit<MDXRemoteProps, 'source'>
 
-export default function ArticleRendererFromContext ({toRender}: {
-  toRender: string,
+export default React.memo(function ArticleRenderer(props: {
+  toRender: string
+  markdownOptions: MarkdownOptions
 }) {
-  const context = useContext(RendererContext);
+  // doMarkdownHMR() is called here to make sure that the HMR is working.
+  // This file is edited automatically by markdown watcher script.
+  // See also: watchMarkdown.js
+  doMarkdownHMR()
   return (
-    <>
-      <MathJaxWrapper>
-        <ReactMarkdown {...context.markdown.options as any}>
-          {toRender}
-        </ReactMarkdown>
-      </MathJaxWrapper>
-    </>
+    <MDXRemote
+      source={props.toRender}
+      {...props.markdownOptions}
+    />
   )
-}
+})

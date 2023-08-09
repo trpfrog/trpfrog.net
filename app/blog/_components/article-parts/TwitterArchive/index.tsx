@@ -3,9 +3,10 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDove} from "@fortawesome/free-solid-svg-icons";
 import getOtakuColor from "@blog/_lib/otakuColors";
-import {ArticleParts} from "../../ArticleParts";
+import {ServerArticleParts} from "../../ArticleParts";
+import BlockLink from "@/components/BlockLink";
 
-const TwitterArchive: ArticleParts = content => {
+const TwitterArchive: ServerArticleParts = ({content}) => {
   const tweetData: { [key: string]: string } = {}
   const lines = content.trim().split('\n')
   for (const line of lines) {
@@ -23,24 +24,25 @@ const TwitterArchive: ArticleParts = content => {
 
   return (
     <div className={styles.wrapper}>
-      <div
+      <BlockLink
         className={styles.box}
-        onClick={() => window.open(tweetLink)}
+        href={tweetLink}
         style={JSON.parse(tweetData.style ?? '{}')}
       >
         <div className={styles.header}>
           <div className={styles.header_left}>
-            <div
-              className={styles.icon}
-              style={{
-                background:
-                  tweetData.userid === 'TrpFrog'
-                    ? `url("${trpfrogUrl}")`
-                    : tweetData.color,
-                backgroundPosition: 'center'
-              }}
-              onClick={() => window.open(userLink)}
-            />
+            <BlockLink href={userLink}>
+              <div
+                className={styles.icon}
+                style={{
+                  background:
+                    tweetData.userid === 'TrpFrog'
+                      ? `url("${trpfrogUrl}")`
+                      : tweetData.color,
+                  backgroundPosition: 'center'
+                }}
+              />
+            </BlockLink>
             <div className={styles.name_box}>
               <a href={userLink} target="_blank" rel="noreferrer">
                 <div className={styles.name}>{tweetData.name}</div>
@@ -55,7 +57,7 @@ const TwitterArchive: ArticleParts = content => {
         <div className={styles.tweet}>
           <blockquote>
             <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
-            <span dangerouslySetInnerHTML={{__html: tweetData.tweet}}/>
+            <span dangerouslySetInnerHTML={{__html: tweetData.tweet ?? ''}}/>
           </blockquote>
         </div>
         {tweetData.image &&
@@ -73,7 +75,7 @@ const TwitterArchive: ArticleParts = content => {
         <div className={styles.date}>
           {tweetData.date}
         </div>
-      </div>
+      </BlockLink>
     </div>
   )
 }

@@ -31,19 +31,18 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half
 
 
 <div style="padding: 10px 20px; border: 2px solid #90e200; border-radius: 10px;">
-    <p>
-        <b>問題</b>
-    </p>
-    <p>
-        $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
-        このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
-    </p>
-    <p style="text-align:center">
-        <img 
-            class="rich_image" 
-            src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png"
-        >
-    </p>
+
+**問題**
+
+$xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
+このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
+        
+<p style="text-align:center">
+    <img 
+        class="rich_image" 
+        src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png"
+    >
+</p>
 </div>
 
 <div style="display: none">
@@ -56,13 +55,12 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half
 さて、いきなり半直線で考えるのは大変そうなので直線で考えてみましょう。すると次のような問題になります。
 
 <div style="padding: 10px 20px; border: 2px solid orange; border-radius: 10px;">
-    <p>
-        <b>問題 (2)</b>
-    </p>
-    <p>
-        $xy$ 平面上に<strong>直線</strong> $AB$ と点 $P(x, y)$ があります。
-        このとき、点 $P$ から最も近い直線 $AB$ 上の点 $R$ を求めてください。
-    </p>
+
+**問題 (2)**
+
+$xy$ 平面上に<strong>直線</strong> $AB$ と点 $P(x, y)$ があります。
+このとき、点 $P$ から最も近い直線 $AB$ 上の点 $R$ を求めてください。
+
 </div>
 
 
@@ -109,35 +107,35 @@ $$
 $\vec u$ と $\vec v$ は直行していますから、$\vec p - \vec a$ を $\vec v$ が $x$ **軸と平行になるように回転してあげて**、そのときの $x$ 座標を $|\vec v|$ で割った値を読むと $u$ がわかります。これは $\vec v$ の $x$ 軸となす角 (反時計回りを正とする) を $\theta$ として次のように表すことができます。
 
 $$
-\begin{align\*}
+\begin{align*}
 \begin{bmatrix}
-s \\\\ t
+s \\ t
 \end{bmatrix}
 &=
 \frac{1}{|\vec v|}
 \begin{bmatrix}
-\cos(-\theta) & -\sin(-\theta) \\\\
+\cos(-\theta) & -\sin(-\theta) \\
 \sin(-\theta) & \cos(-\theta)
 \end{bmatrix}
 \begin{bmatrix}
-x - x_A \\\\ y - y_A
-\end{bmatrix}\\\\
+x - x_A \\ y - y_A
+\end{bmatrix}\\
 &=
 \frac{1}{|\vec v|}
 \begin{bmatrix}
-\cos\theta & \sin\theta \\\\
+\cos\theta & \sin\theta \\
 -\sin\theta & \cos\theta
 \end{bmatrix}
 \begin{bmatrix}
-x - x_A \\\\ y - y_A
-\end{bmatrix}\\\\
+x - x_A \\ y - y_A
+\end{bmatrix}\\
 &=
 \frac{1}{|\vec v|}
 \begin{bmatrix}
-(x - x_A)\cos\theta + (y - y_A)\sin\theta \\\\
+(x - x_A)\cos\theta + (y - y_A)\sin\theta \\
 -(x - x_A)\sin\theta + (y - y_A\cos\theta
 \end{bmatrix}
-\end{align\*}
+\end{align*}
 $$
 
 従って $R$ を求めるのに必要だったパラメータ $s$ は
@@ -153,10 +151,10 @@ $$
 次に $s$ を求めるのに必要な $\theta$ を計算しましょう。$\vec v = \overrightarrow{AB} = \vec b - \vec a$ であったことを思い出してください。つまり直線 $AB$ の傾きが求まれば良いです。ここで $A(x_A, y_A), B(x_B, y_B)$ とすると
 
 $$
-\begin{align\*}
-\tan \theta &= \frac{y_B -y_A}{x_B-x_A}\\\\
+\begin{align*}
+\tan \theta &= \frac{y_B -y_A}{x_B-x_A}\\
 \theta &= \mathrm{arc\hspace{0px}tan}\frac{y_B -y_A}{x_B-x_A}
-\end{align\*}
+\end{align*}
 $$
 
 です。ただし $x_B - x_A \neq 0$ 。$x_B - x_A = 0$ の時は今回は議論しません。ここについては各プログラミング言語の標準ライブラリとして存在するはずの便利関数 $\mathrm{atan\hspace{0px}2}(y, x)$ を用いて
@@ -170,11 +168,11 @@ $$
 以上の議論より、問題(2)の答えの点 $R$ の位置ベクトル $\vec r$ は
 
 $$
-\begin{align\*}
-\vec r &= \vec a + s\vec v\\\\
-s &= \frac{(x - x_A) \cos \theta + (y - y_A) \sin \theta}{|\vec v|}\\\\
+\begin{align*}
+\vec r &= \vec a + s\vec v\\
+s &= \frac{(x - x_A) \cos \theta + (y - y_A) \sin \theta}{|\vec v|}\\
 \theta &= \mathrm{atan\hspace{0px}2}(y_B -y_A, x_B-x_A)
-\end{align\*}
+\end{align*}
 $$
 
 であると分かりました。
@@ -184,29 +182,29 @@ $$
 さて、ここまでで元の問題の9割は解き終わりました。ここで元の問題についてもう一度考えてみましょう。
 
 <div style="padding: 10px 20px; border: 2px solid #90e200; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;">
-    <p>
-        <b>問題 (再掲)</b>
-    </p>
-    <p>
-        $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
-        このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
-    </p>
-    <p style="text-align:center">
-        <img class="rich_image" src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png">
-    </p>
+
+**問題**
+
+$xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
+このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
+        
+<p style="text-align:center">
+    <img class="rich_image" src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png">
+</p>
+
 </div>
 
 結論から述べると、点 $Q$ の位置ベクトルを $\vec q$ としてこの問題の答えは次の通りです。
 
 $$
-\begin{align\*}
-\vec q &= \vec a + \max(0, s)\vec v\\\\
-\vec a &= (x_A, y_A) \\\\
-\vec b &= (x_B, y_B ) \\\\
-\vec v &= \vec b - \vec a\\\\
-s &= \frac{(x - x_A) \cos \theta + (y - y_A) \sin \theta}{|\vec v|}\\\\
+\begin{align*}
+\vec q &= \vec a + \max(0, s)\vec v\\
+\vec a &= (x_A, y_A) \\
+\vec b &= (x_B, y_B ) \\
+\vec v &= \vec b - \vec a\\
+s &= \frac{(x - x_A) \cos \theta + (y - y_A) \sin \theta}{|\vec v|}\\
 \theta &= \mathrm{atan\hspace{0px}2}(y_B -y_A, x_B-x_A)
-\end{align\*}
+\end{align*}
 $$
 
 $\vec v$ の係数を $\max(0, s)$ としただけです。なぜこうなるかは簡単です。パラメータ $s$ は直線のときと同様の議論をすることで

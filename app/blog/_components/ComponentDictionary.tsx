@@ -1,7 +1,4 @@
-'use client';
-
 import React from "react";
-import {AutoYoutube, LinkEmbed, Twitter, Youtube} from "./article-parts/Socials";
 import TwitterArchived from "./article-parts/TwitterArchive";
 import WalkingResultBox from "./article-parts/WalkingResultBox";
 import ProfileCards from "./article-parts/ProfileCards";
@@ -11,21 +8,26 @@ import HorizontalScroll from "./article-parts/HorizontalScroll";
 import Conversation from "./article-parts/Conversation";
 import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
-import {parseWithBudouX} from "@/lib/wordSplit";
-import ArticleRendererFromContext from "@blog/_renderer/ArticleRenderer";
-import {ArticleParts} from "./ArticleParts";
+import {ParseWithBudouX} from "@/lib/wordSplit";
+import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
+import {ServerArticleParts, ServerArticlePartsProps} from "./ArticleParts";
+import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
+import {Twitter} from "@blog/_components/article-parts/Twitter";
+import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
 
-const myMarkdownClasses = {
+
+/* eslint-disable react/display-name */
+export const myMarkdownClasses = {
   // Socials
   Twitter,
-  Youtube,
-  AutoYoutube,
+  Youtube: YouTube,
+  AutoYoutube: AutoYouTube,
   LinkEmbed,
   TwitterArchived,
 
   // Walking Parts
   ResultBox: WalkingResultBox,
-  ProfileCards: ((content, entry) => <ProfileCards content={content} held={entry?.held}/> ) as ArticleParts,
+  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ServerArticleParts,
 
   // Highlight Boxes
   Caution,
@@ -39,7 +41,7 @@ const myMarkdownClasses = {
 
   ShowAll,
 
-  NextPage: (content, entry) => {
+  NextPage: ({ content, entry }) => {
     if (!entry) return <></>
     return (
       <div style={{textAlign: 'center'}}>
@@ -54,41 +56,50 @@ const myMarkdownClasses = {
     )
   },
 
-  Centering: content => (
+  Centering: ({ content, mdOptions }) => (
     <div style={{textAlign: 'center'}}>
-      <ArticleRendererFromContext toRender={content}/>
+      <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
     </div>
   ),
 
-  CenteringWithSize: content => {
+  CenteringWithSize: ({ content, mdOptions }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRendererFromContext toRender={content}/>
+        <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
       </div>
     )
   },
 
-  IgnoreReadCount: content => (
+  IgnoreReadCount: ({ content, mdOptions }) => (
     // This is a hack to make the read count not increase
     // using "read counter does not count inside of code blocks"
-    <ArticleRendererFromContext toRender={content}/>
+    <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
   ),
 
-  CenteringWithSizeBold: content => {
+  CenteringWithSizeBold: React.memo(({ content }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <strong>{parseWithBudouX(content, content)}</strong>
+        <strong>
+          <ParseWithBudouX str={content} slug={content}/>
+        </strong>
       </div>
     )
-  },
+  }),
 
-  DangerouslySetInnerHtml: content => (
+  DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
-  ),
-} as const satisfies Record<string, ArticleParts>
+  )),
+} as const satisfies Record<string, ServerArticleParts>
+/* eslint-enable react/display-name */
 
-export default myMarkdownClasses;
+export default async function OriginalMarkdownComponent(props: ServerArticlePartsProps & {
+  componentName: keyof typeof myMarkdownClasses
+}) {
+  const { componentName, ...rest } = props
+  const TargetComponent = myMarkdownClasses[props.componentName]
+  return <TargetComponent {...rest}/>
+}
