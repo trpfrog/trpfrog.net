@@ -1,7 +1,7 @@
 'use client';
 
 import YouTube from "react-youtube";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/youtube";
 import React from "react";
 
 export function InnerYouTube({content}: {content: string}) {
@@ -30,12 +30,10 @@ export function InnerAutoYouTube({content}: {content: string}) {
         playing={true}
         volume={0}
         config={{
-          youtube: {
-            playerVars: {
-              modestbranding: 1,
-              loop: 1,
-              playlist: id  // it is needed to loop video
-            }
+          playerVars: {
+            modestbranding: 1,
+            loop: 1,
+            playlist: id  // it is needed to loop video
           }
         }}
       />
