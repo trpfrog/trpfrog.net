@@ -543,7 +543,7 @@ GPSを頼りにそれっぽい道を探します。
 インターネット情報だと
 
 $$
-\mathrm{必要な水分量} = \mathrm{自重} \times \mathrm{行動時間} \times 5 \ \mathrm{mL/(kg\cdot h)}
+\text{必要な水分量} = \text{自重} \times \text{行動時間} \times 5 \ \mathrm{mL/(kg\cdot h)}
 $$
 
 が良いらしいので、オタクの体重と今日の予定時間 7 時間で計算するとだいたい 2000mL くらいになります。500mLペットボトル4本分ですね♪
