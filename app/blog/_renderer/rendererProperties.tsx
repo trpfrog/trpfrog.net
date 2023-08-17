@@ -10,16 +10,13 @@ import rehypeSlug from "rehype-slug";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import 'katex/dist/katex.min.css'
 import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
-import {MDXRemoteProps} from "next-mdx-remote/rsc";
-import {MDXProvider} from "@mdx-js/react";
-import {MDXComponents, MDXProps} from "mdx/types";
+import {MDXComponents} from "mdx/types";
 import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 import remarkUnwrapImages from "remark-unwrap-images";
 
@@ -93,7 +90,6 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
           componentName={languageCamelCase}
           content={children as string}
           entry={entry}
-          mdOptions={getMarkdownOptions(entry)}
         />
       )
     }

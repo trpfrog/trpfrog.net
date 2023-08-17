@@ -5,7 +5,7 @@ import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {ServerArticleParts} from "../../ArticleParts";
 
-export const Caution: ServerArticleParts = ({content, mdOptions}) => (
+export const Caution: ServerArticleParts = ({content, entry, imageSize}) => (
   <div className={styles.caution}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faTriangleExclamation}/>
@@ -14,12 +14,12 @@ export const Caution: ServerArticleParts = ({content, mdOptions}) => (
       <h4>{content.split('\n')[0]}</h4>
       <ArticleRenderer toRender={
         content.split('\n').slice(1).join('\n').trim()
-      } markdownOptions={mdOptions}/>
+      } entry={entry} imageSize={imageSize}/>
     </div>
   </div>
 )
 
-export const Infobox: ServerArticleParts = ({content, mdOptions}) => (
+export const Infobox: ServerArticleParts = ({content, entry, imageSize}) => (
   <div className={styles.infobox}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faFrog}/>
@@ -28,12 +28,12 @@ export const Infobox: ServerArticleParts = ({content, mdOptions}) => (
       <h4>{content.split('\n')[0]}</h4>
       <ArticleRenderer toRender={
         content.split('\n').slice(1).join('\n').trim()
-      } markdownOptions={mdOptions}/>
+      } entry={entry} imageSize={imageSize}/>
     </div>
   </div>
 )
 
-export const TitledFrame: ServerArticleParts = ({content, mdOptions}) => {
+export const TitledFrame: ServerArticleParts = ({content, entry, imageSize}) => {
   const [title, ...lines] = content.split('\n');
   return (
     <div style={{transform: 'translateY(calc(-1 * (1em + 5px) / 2))'}}>
@@ -57,7 +57,7 @@ export const TitledFrame: ServerArticleParts = ({content, mdOptions}) => {
       }}>
         <ArticleRenderer
           toRender={lines.join('\n')}
-          markdownOptions={mdOptions}
+          entry={entry} imageSize={imageSize}
         />
       </div>
     </div>

@@ -36,7 +36,6 @@ type Props = {
 const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
   const {entry, imageSize, style, className} = props
   const markdown = entry.content
-  const mdOptions = getMarkdownOptions(entry, imageSize)
 
   return (
     <>
@@ -52,7 +51,7 @@ const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
             className={styles.post}
             style={{wordBreak: 'break-word'}}
           >
-            <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+            <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
           </article>
           {idx === markdown.length - 1 &&
             <PageNavigation entry={entry}/>

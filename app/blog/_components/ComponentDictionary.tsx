@@ -14,6 +14,7 @@ import {ServerArticleParts, ServerArticlePartsProps} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
 import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
+import {CamelToKebabCase} from "@/lib/types";
 
 
 /* eslint-disable react/display-name */
@@ -56,26 +57,26 @@ export const myMarkdownClasses = {
     )
   },
 
-  Centering: ({ content, mdOptions }) => (
+  Centering: ({ content, entry, imageSize }) => (
     <div style={{textAlign: 'center'}}>
-      <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+      <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
     </div>
   ),
 
-  CenteringWithSize: ({ content, mdOptions }) => {
+  CenteringWithSize: ({ content, entry, imageSize }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+        <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
       </div>
     )
   },
 
-  IgnoreReadCount: ({ content, mdOptions }) => (
+  IgnoreReadCount: ({ content, entry, imageSize }) => (
     // This is a hack to make the read count not increase
     // using "read counter does not count inside of code blocks"
-    <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
   ),
 
   CenteringWithSizeBold: React.memo(({ content }) => {
@@ -95,6 +96,13 @@ export const myMarkdownClasses = {
   )),
 } as const satisfies Record<string, ServerArticleParts>
 /* eslint-enable react/display-name */
+
+export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
+  Format extends 'camel'
+    ? keyof typeof myMarkdownClasses
+    : Format extends 'kebab'
+      ? CamelToKebabCase<keyof typeof myMarkdownClasses>
+      : never
 
 export default async function OriginalMarkdownComponent(props: ServerArticlePartsProps & {
   componentName: keyof typeof myMarkdownClasses

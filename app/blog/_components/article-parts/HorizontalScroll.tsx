@@ -2,7 +2,7 @@ import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
 import {ServerArticleParts} from "../ArticleParts";
 
-const HorizontalScroll: ServerArticleParts = ({content, mdOptions}) => {
+const HorizontalScroll: ServerArticleParts = ({content, entry, imageSize}) => {
   const contents = content.split('\n\n').filter(e => e.trim() !== '')
   return (
     <div style={{display: 'flex', overflowX: 'scroll', gap: '1em', whiteSpace: 'nowrap'}}>
@@ -11,7 +11,7 @@ const HorizontalScroll: ServerArticleParts = ({content, mdOptions}) => {
           key={'horizontal-element-key-' + idx}
           style={{display: 'inline-block', whiteSpace: 'initial'}}
         >
-          <ArticleRenderer toRender={e} markdownOptions={mdOptions}/>
+          <ArticleRenderer toRender={e} entry={entry} imageSize={imageSize}/>
         </div>
       ))}
     </div>
