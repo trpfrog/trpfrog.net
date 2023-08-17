@@ -94,6 +94,12 @@ export const myMarkdownClasses = {
   DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
   )),
+
+  ZeroPadding: React.memo(({ content }) => (
+    // This component is used to remove the padding of the parent component
+    // See also: @blog/_lib/parse.ts
+    <ArticleRenderer toRender={content}/>
+  )),
 } as const satisfies Record<string, ServerArticleParts>
 /* eslint-enable react/display-name */
 

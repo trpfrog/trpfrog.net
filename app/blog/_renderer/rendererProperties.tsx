@@ -15,7 +15,7 @@ import BlogPost from "@blog/_lib/blogPost";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import 'katex/dist/katex.min.css'
-import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
+import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/OriginalMarkdownComponent";
 import {MDXComponents} from "mdx/types";
 import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 import remarkUnwrapImages from "remark-unwrap-images";
