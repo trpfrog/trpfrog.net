@@ -1,8 +1,8 @@
-import {ServerArticleParts} from "@blog/_components/ArticleParts";
+import {IsomorphicArticleParts} from "@blog/_components/ArticleParts";
 import React from "react";
 import {Tweet} from "./TwitterWrapper";
 
-export const Twitter: ServerArticleParts = React.memo(function InnerTwitter({content}) {
+export const Twitter: IsomorphicArticleParts = React.memo(function InnerTwitter({content}) {
   const id = content.split('\n')[0]
   return (
     <>

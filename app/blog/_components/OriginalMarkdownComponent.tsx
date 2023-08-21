@@ -10,7 +10,7 @@ import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
 import {ParseWithBudouX} from "@/lib/wordSplit";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ServerArticleParts, ServerArticlePartsProps} from "./ArticleParts";
+import {IsomorphicArticleParts, IsomorphicArticlePartsProps} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
 import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
@@ -28,7 +28,7 @@ export const myMarkdownClasses = {
 
   // Walking Parts
   ResultBox: WalkingResultBox,
-  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ServerArticleParts,
+  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as IsomorphicArticleParts,
 
   // Highlight Boxes
   Caution,
@@ -95,12 +95,12 @@ export const myMarkdownClasses = {
     <div dangerouslySetInnerHTML={{__html: content}}/>
   )),
 
-  ZeroPadding: React.memo(({ content }) => (
+  ZeroPadding: React.memo(({ content, entry, imageSize }) => (
     // This component is used to remove the padding of the parent component
     // See also: @blog/_lib/parse.ts
-    <ArticleRenderer toRender={content}/>
+    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
   )),
-} as const satisfies Record<string, ServerArticleParts>
+} as const satisfies Record<string, IsomorphicArticleParts>
 /* eslint-enable react/display-name */
 
 export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
@@ -110,7 +110,7 @@ export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
       ? CamelToKebabCase<keyof typeof myMarkdownClasses>
       : never
 
-export default async function OriginalMarkdownComponent(props: ServerArticlePartsProps & {
+export default async function OriginalMarkdownComponent(props: IsomorphicArticlePartsProps & {
   componentName: keyof typeof myMarkdownClasses
 }) {
   const { componentName, ...rest } = props

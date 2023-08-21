@@ -2,10 +2,10 @@ import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import BlogImage, {ImageCaption} from "../BlogImage";
 import React from "react";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
-import {ServerArticleParts} from "../ArticleParts";
+import {IsomorphicArticleParts} from "../ArticleParts";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
-const HorizontalImages: ServerArticleParts = ({content, imageSize}) => {
+const HorizontalImages: IsomorphicArticleParts = ({content, imageSize}) => {
   const regex = new RegExp('^!\\[.*?\]\\(')
   const defaultImageData: BlogImageData = {
     caption: "", size: {height: 600, width: 800}

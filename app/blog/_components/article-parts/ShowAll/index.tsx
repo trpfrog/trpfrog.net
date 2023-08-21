@@ -1,9 +1,9 @@
 import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ServerArticleParts} from "../../ArticleParts";
+import {IsomorphicArticleParts} from "../../ArticleParts";
 import {ShowAllComponent} from "@blog/_components/article-parts/ShowAll/ShowAllComponent";
 
-const ShowAll: ServerArticleParts = ({content, entry, imageSize}) => {
+const ShowAll: IsomorphicArticleParts = ({content, entry, imageSize}) => {
   const [first, second] = content.split(/\n---+\n/)
   return (
     <ShowAllComponent preview={

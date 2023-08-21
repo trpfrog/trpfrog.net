@@ -1,8 +1,8 @@
 import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ServerArticleParts} from "../ArticleParts";
+import {IsomorphicArticleParts} from "../ArticleParts";
 
-const HorizontalScroll: ServerArticleParts = ({content, entry, imageSize}) => {
+const HorizontalScroll: IsomorphicArticleParts = ({content, entry, imageSize}) => {
   const contents = content.split('\n\n').filter(e => e.trim() !== '')
   return (
     <div style={{display: 'flex', overflowX: 'scroll', gap: '1em', whiteSpace: 'nowrap'}}>

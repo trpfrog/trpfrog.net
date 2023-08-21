@@ -3,9 +3,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFrog, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ServerArticleParts} from "../../ArticleParts";
+import {IsomorphicArticleParts} from "../../ArticleParts";
 
-export const Caution: ServerArticleParts = ({content, entry, imageSize}) => (
+export const Caution: IsomorphicArticleParts = ({content, entry, imageSize}) => (
   <div className={styles.caution}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faTriangleExclamation}/>
@@ -19,7 +19,7 @@ export const Caution: ServerArticleParts = ({content, entry, imageSize}) => (
   </div>
 )
 
-export const Infobox: ServerArticleParts = ({content, entry, imageSize}) => (
+export const Infobox: IsomorphicArticleParts = ({content, entry, imageSize}) => (
   <div className={styles.infobox}>
     <div className={styles.text_box_icon}>
       <FontAwesomeIcon icon={faFrog}/>
@@ -33,7 +33,7 @@ export const Infobox: ServerArticleParts = ({content, entry, imageSize}) => (
   </div>
 )
 
-export const TitledFrame: ServerArticleParts = ({content, entry, imageSize}) => {
+export const TitledFrame: IsomorphicArticleParts = ({content, entry, imageSize}) => {
   const [title, ...lines] = content.split('\n');
   return (
     <div style={{transform: 'translateY(calc(-1 * (1em + 5px) / 2))'}}>

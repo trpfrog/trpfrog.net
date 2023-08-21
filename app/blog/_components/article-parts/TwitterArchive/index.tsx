@@ -3,10 +3,10 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDove} from "@fortawesome/free-solid-svg-icons";
 import getOtakuColor from "@blog/_lib/otakuColors";
-import {ServerArticleParts} from "../../ArticleParts";
+import {IsomorphicArticleParts} from "../../ArticleParts";
 import BlockLink from "@/components/BlockLink";
 
-const TwitterArchive: ServerArticleParts = ({content}) => {
+const TwitterArchive: IsomorphicArticleParts = ({content}) => {
   const tweetData: { [key: string]: string } = {}
   const lines = content.trim().split('\n')
   for (const line of lines) {

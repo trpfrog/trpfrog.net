@@ -1,8 +1,8 @@
-import {ServerArticleParts} from "@blog/_components/ArticleParts";
+import {IsomorphicArticleParts} from "@blog/_components/ArticleParts";
 import React from "react";
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 
-export const LinkEmbed: ServerArticleParts = React.memo(function InnerLinkEmbed({content}) {
+export const LinkEmbed: IsomorphicArticleParts = React.memo(function InnerLinkEmbed({content}) {
   const [url, ...captionArr] = content.split('\n')
   return (
     <div style={{textAlign: 'center'}}>
