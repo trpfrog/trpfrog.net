@@ -110,7 +110,7 @@ export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
       ? CamelToKebabCase<keyof typeof myMarkdownClasses>
       : never
 
-export default async function OriginalMarkdownComponent(props: IsomorphicArticlePartsProps & {
+export default function OriginalMarkdownComponent(props: IsomorphicArticlePartsProps & {
   componentName: keyof typeof myMarkdownClasses
 }) {
   const { componentName, ...rest } = props
