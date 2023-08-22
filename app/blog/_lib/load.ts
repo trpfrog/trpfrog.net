@@ -27,6 +27,9 @@ export type BlogPostOption = Partial<{
   showPreviewCheckpoint?: boolean
 }>
 
+/**
+ * @deprecated Use buildBlogPost in blogPost.ts instead
+ */
 export const buildBlogPost = async (
   slug: string,
   markdownString: string,
@@ -47,7 +50,7 @@ export const buildBlogPost = async (
     .filter(e => e.startsWith('!['))
     .length
 
-  const parsedContent: string[][] = await parse(matterResult.content)
+  const parsedContent: string[][] = parse(matterResult.content)
   let content: string[] = []
   if (option?.all) {
     content = parsedContent

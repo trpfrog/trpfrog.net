@@ -57,7 +57,7 @@ const parseFootnote = (content: string) => {
 //   return content
 // }
 
-const parse = async (markdown: string) => {
+const parse = (markdown: string) => {
   let list = markdown
     .split('<!-- page break --->')
     .map(parseFootnote)
