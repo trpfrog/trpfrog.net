@@ -1,4 +1,6 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
+import {useUnmountEffect} from "@react-hookz/web";
+import {useRouter} from "next/navigation";
 
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
@@ -18,4 +20,14 @@ const useWindowSize = () => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
   return windowSize;
+}
+
+export function useSparseCallback(fn: (...args: any[]) => void, delay: number) {
+  const [timer, setTimer] = useState(Date.now());
+  return useCallback((...innerArgs: Parameters<typeof fn>) => {
+    if (Date.now() - timer > delay) {
+      fn(...innerArgs);
+      setTimer(Date.now());
+    }
+  }, [delay, fn, timer])
 }

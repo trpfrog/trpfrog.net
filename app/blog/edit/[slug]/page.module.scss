@@ -1,0 +1,13 @@
+.blog_markdown {
+    border-radius: 10px var(--window-border-radius) var(--window-border-radius) 10px;
+}
+
+.editor_block {
+    border-radius: var(--window-border-radius) 10px 10px var(--window-border-radius);
+}
+
+.editor_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+}
