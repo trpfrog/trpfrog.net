@@ -19,6 +19,8 @@ import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/Or
 import {MDXComponents} from "mdx/types";
 import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 import remarkUnwrapImages from "remark-unwrap-images";
+import {SerializeOptions} from "next-mdx-remote/dist/types";
+import {IsomorphicMarkdownComponent} from "@/lib/types";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -49,6 +51,11 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     const isChildrenString = (ch: any): ch is string => {
       return typeof ch === 'string'
     }
+
+    if (Array.isArray(children) && children.length > 0 && isChildrenString(children[0])) {
+      children = children[0]
+    }
+
     if (!isChildrenString(children)) {
       return (
         <code className={styles.inline_code_block}>
@@ -66,8 +73,6 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
         </code>
       )
     }
-
-    children = children.trimEnd()
 
     const language = className
       ? getLangName(
@@ -120,21 +125,23 @@ export function getMarkdownOptions(
   entry?: BlogPost,
   imageSize?: Record<string, BlogImageData>
 ) {
-  const components: MDXComponents = {
+  const components: IsomorphicMarkdownComponent = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
 
-    img: (props: any) => (
-      <BlogImage
-        src={props.src}
-        alt={props.alt}
-        imageData={
-          imageSize
-            ? imageSize[getPureCloudinaryPath(props.src)]
-            : undefined
-        }
-      />
-    ),
+    img: (props: any) => {
+      return (
+        <BlogImage
+          src={props.src ?? ''}
+          alt={props.alt ?? ''}
+          imageData={
+            imageSize
+              ? imageSize[getPureCloudinaryPath(props.src ?? '')]
+              : undefined
+          }
+        />
+      )
+    },
 
     h2: (props: any) => (
       <h2 className={styles.anchor} id={props.id}>
@@ -173,5 +180,6 @@ export function getMarkdownPlugins() {
       rehypeRaw,
       rehypeSlug,
     ],
-  }
+
+  } satisfies Partial<SerializeOptions['mdxOptions']>
 }
