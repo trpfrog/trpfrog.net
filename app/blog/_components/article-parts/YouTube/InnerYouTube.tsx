@@ -4,7 +4,7 @@ import YouTube from "react-youtube";
 import ReactPlayer from "react-player/youtube";
 import React from "react";
 
-export function InnerYouTube({content}: {content: string}) {
+export const InnerYouTube = React.memo(function InnerYouTube({content}: {content: string}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
@@ -17,9 +17,9 @@ export function InnerYouTube({content}: {content: string}) {
       />
     </div>
   )
-}
+})
 
-export function InnerAutoYouTube({content}: {content: string}) {
+export const InnerAutoYouTube = React.memo(function InnerAutoYouTube({content}: {content: string}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
@@ -39,5 +39,5 @@ export function InnerAutoYouTube({content}: {content: string}) {
       />
     </div>
   )
-}
+})
 
