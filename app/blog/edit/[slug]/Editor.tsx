@@ -2,9 +2,9 @@
 
 import "easymde/dist/easymde.min.css";
 import React, {useCallback, useState} from "react";
-import {useSparseCallback} from "@/lib/hooks";
 
 import dynamic from 'next/dynamic'
+import useSparseCallback from "@/hooks/useSparseCallback";
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false })
 
 export default function Editor(props: { rawMarkdown: string, setPost: ((value: string) => void) }) {
