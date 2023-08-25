@@ -53,13 +53,16 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
       }
       {Array.from(Array(entry.numberOfPages), (v, k) => (
         entry.currentPage !== k + 1
-          ? <PageTransferButton
-            entry={entry}
-            nextPage={k + 1}
-            buttonText={k + 1 + ''}
-            key={k}
-          />
-          : <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+          ? (
+            <PageTransferButton
+              entry={entry}
+              nextPage={k + 1}
+              buttonText={k + 1 + ''}
+              key={k}
+            />
+          ) : (
+            <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+          )
       ))}
       {entry.currentPage < entry.numberOfPages &&
         <PageTransferButton
