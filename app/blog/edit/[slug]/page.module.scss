@@ -7,7 +7,15 @@
 }
 
 .editor_grid {
+    height: calc(100vh - 100px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: .5rem;
+}
+
+.fullscreen {
+    max-height: 100vh;
+    margin: 10px;
+    max-width: initial;
+    box-sizing: border-box;
 }

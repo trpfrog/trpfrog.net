@@ -1,7 +1,7 @@
 'use client';
 
 import "easymde/dist/easymde.min.css";
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 
 import dynamic from 'next/dynamic'
 import useSparseCallback from "@/hooks/useSparseCallback";
