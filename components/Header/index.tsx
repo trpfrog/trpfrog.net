@@ -54,7 +54,7 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   )
 }
 
-const Header: React.FC = () => {
+const Header: React.FC = React.memo(function Header() {
   const pathname = usePathname();
   const topLinks = [
     {href: '/', label: 'home'},
@@ -85,6 +85,6 @@ const Header: React.FC = () => {
       <MobileMenu/>
     </>
   );
-}
+})
 
 export default Header;
