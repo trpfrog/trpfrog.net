@@ -22,12 +22,22 @@ const useWindowSize = () => {
   return windowSize;
 }
 
-export function useSparseCallback(fn: (...args: any[]) => void, delay: number) {
-  const [timer, setTimer] = useState(Date.now());
+export function useSparseCallback(fn: (...args: any[]) => void, delayMs: number) {
+  const [timer, setTimer] = useState(0);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   return useCallback((...innerArgs: Parameters<typeof fn>) => {
-    if (Date.now() - timer > delay) {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (Date.now() - timer > delayMs) {
       fn(...innerArgs);
       setTimer(Date.now());
+    } else {
+      const newTimeoutId = setTimeout(() => {
+        fn(...innerArgs);
+        setTimer(Date.now());
+      }, delayMs)
+      setTimeoutId(newTimeoutId);
     }
-  }, [delay, fn, timer])
+  }, [delayMs, fn, timeoutId, timer])
 }
