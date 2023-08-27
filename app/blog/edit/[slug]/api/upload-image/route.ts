@@ -48,13 +48,15 @@ export async function POST(req: Request, context: Context): Promise<NextResponse
       .join('-')
       .replaceAll(' ', '_')
 
+    const slug = context.params.slug.startsWith('_') ? context.params.slug.slice(1) : context.params.slug
+
     const uploadApiResponse = await new Promise<UploadApiResponse>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream({
         public_id: publicId,
         overwrite: true,
         invalidate: true,
         resource_type: 'image',
-        folder: `blog/${context.params.slug}`
+        folder: `blog/${slug}`
       }, (error, result) => {
         if (result) {
           resolve(result)
