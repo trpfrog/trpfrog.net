@@ -1,8 +1,9 @@
 import {useCallback, useState} from "react";
 
-export default function useSparseCallback(fn: (...args: any[]) => void, delayMs: number) {
+export default function useSparseCallback(fn: (...args: any[]) => void, deps: any[], delayMs: number) {
   const [timer, setTimer] = useState(0);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
   return useCallback((...innerArgs: Parameters<typeof fn>) => {
     if (timeoutId) {
       clearTimeout(timeoutId);
@@ -17,5 +18,5 @@ export default function useSparseCallback(fn: (...args: any[]) => void, delayMs:
       }, delayMs)
       setTimeoutId(newTimeoutId);
     }
-  }, [delayMs, fn, timeoutId, timer])
+  }, [delayMs, fn, timeoutId, timer, ...deps])
 }
