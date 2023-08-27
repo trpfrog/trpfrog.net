@@ -9,6 +9,7 @@ import type { SimpleMDEReactProps } from "react-simplemde-editor";
 import useSparseCallback from "@/hooks/useSparseCallback";
 import toast from "react-hot-toast";
 import {setTimeoutPromise} from "@/lib/setTimeoutPromise";
+import type {UploadApiResponse} from "cloudinary";
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false })
 
 type Props = {
@@ -59,6 +60,48 @@ function useSaveArticle(slug: string, articleText: string, delayMs: number) {
   }
 }
 
+function useUploadFunction(slug: string) {
+  return useCallback((
+    file: File,
+    onSuccess: (imageUrl: string) => void,
+    onError: (errorMessage: string) => void
+  ) => {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const uploadPromise = toast.promise(
+      (async () => {
+        const res = await fetch(`/blog/edit/${slug}/api/upload-image`, {
+          method: 'POST',
+          body: formData,
+        })
+        if (!res.ok) {
+          throw new Error(`Upload failed (${res.status} ${res.statusText})`)
+        }
+        return res
+      })(),
+      {
+        loading: 'Uploading...',
+        success: <b>Uploaded!</b>,
+        error: <b>Something went wrong...</b>,
+      }
+    )
+    uploadPromise
+      .then(res => res.json())
+      .then(({ data: { format, public_id} }: { data: UploadApiResponse }) => {
+        onSuccess(`/${public_id}.${format}`)
+      })
+      .catch(err => onError(err.message))
+  }, [slug])
+}
+
+function useToastErrorCallback() {
+  return useCallback((errorMessage: string) => {
+    console.error(errorMessage)
+    toast.error(errorMessage, { duration: 6000 })
+  }, [])
+}
+
 export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props) {
 
   const delayMs = 2000
@@ -70,17 +113,21 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
     sparseSetter(value)
   }, [sparseSetter, markAsUnsaved])
 
+  const imageUploadFunction = useUploadFunction(slug)
+  const errorCallback = useToastErrorCallback()
 
   const options = useMemo(() => ({
     renderingConfig: {
       codeSyntaxHighlighting: false,
     },
     unorderedListStyle: '-',
+
     uploadImage: true,
-    imageUploadEndpoint: `/blog/edit/${slug}/api/upload-image`,
-    imageMaxSize: 10 * 1024 * 1024,
-    imagePathAbsolute: false,
-  } satisfies SimpleMDEReactProps['options']), [slug])
+    imageUploadFunction,
+
+    nativeSpellcheck: false,
+    errorCallback,
+  } satisfies SimpleMDEReactProps['options']), [imageUploadFunction, errorCallback])
 
   return (
     <>
