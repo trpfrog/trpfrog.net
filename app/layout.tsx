@@ -10,6 +10,7 @@ import Favicon from "@/components/head/Favicon";
 import Analytics from "@/components/Analytics";
 import FixTooLargeFontAwesomeIcons from "@/components/utils/FixTooLargeFontAwesomeIcons";
 import GoogleFonts from "@/components/GoogleFonts";
+import {Toaster} from "react-hot-toast";
 
 const siteName = process.env.title as string
 const description = 'さかなになりたいね'
@@ -54,6 +55,7 @@ export default function RootLayout({children}: Props) {
         <FixTooLargeFontAwesomeIcons/>
       </head>
       <body className={fontVariables}>
+        <Toaster />
         <Header/>
         <Navigation/>
         <main>
