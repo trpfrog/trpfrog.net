@@ -2,8 +2,9 @@ import matter from "gray-matter";
 import parse from "@blog/_lib/parse";
 import {getReadTimeSecond} from "@blog/_lib/readTime";
 import type {BlogPostOption} from "@blog/_lib/load";
+import { z } from "zod";
 
-type BlogPost = {
+export default interface BlogPost {
   title: string
   slug: string
   date: string
@@ -21,7 +22,25 @@ type BlogPost = {
   content: string[]
 }
 
-export default BlogPost
+// YYYY-MM-DD
+const zBlogDate = z.coerce.date().transform((date) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+})
+
+export const blogFrontMatterSchema = z.object({
+  title: z.string(),
+  date: zBlogDate,
+  updated: zBlogDate.optional(),
+  held: zBlogDate.optional(),
+  tags: z.string().optional(),
+  description: z.string().optional(),
+  thumbnail: z.string().url().optional(),
+})
+
+export type BlogFrontMatter = z.infer<typeof blogFrontMatterSchema>
 
 export const buildBlogPost = (
   markdownString: string,
@@ -34,7 +53,7 @@ export const buildBlogPost = (
   const tags = (matterResult.data.tags ?? '')
     .split(',')
     .map((t: string) => t.trim())
-    .concat()
+    .join()
 
   const numberOfPhotos = matterResult.content
     .split('\n')
@@ -69,3 +88,8 @@ export const buildBlogPost = (
   } as BlogPost
 }
 
+export const blogPostToMarkdown = (blogPost: BlogPost) => {
+  const {content, ...rest} = blogPost
+  const frontMatter = blogFrontMatterSchema.parse(rest)
+  return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
+}

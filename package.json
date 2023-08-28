@@ -46,6 +46,7 @@
     "prisma": "^4.16.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.4",
     "react-hot-toast": "^2.4.1",
     "react-lite-youtube-embed": "^2.3.52",
     "react-markdown": "^8.0.7",
@@ -68,7 +69,8 @@
     "textlint": "^13.3.3",
     "textlint-rule-preset-japanese": "^7.0.0",
     "use-sound": "^4.0.1",
-    "utf-8-validate": "^5.0.10"
+    "utf-8-validate": "^5.0.10",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
