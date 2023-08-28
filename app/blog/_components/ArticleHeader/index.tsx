@@ -33,7 +33,7 @@ export default function ArticleHeader({post}: {
             <Balancer>
               <ParseWithBudouX str={
                 (() => {
-                  if (post.title.endsWith('！')) {
+                  if (post.title?.endsWith('！')) {
                     return post.title.slice(0, post.title.length - 1) + ' !'
                   } else {
                     return post.title

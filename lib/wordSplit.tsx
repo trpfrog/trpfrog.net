@@ -4,6 +4,7 @@ import {loadDefaultJapaneseParser} from "budoux";
 const budouXParser = loadDefaultJapaneseParser()
 
 export const parseWithBudouX = (str: string, slug: string) => {
+  if (!str) return []
   return budouXParser
     .parse(str)
     .map(e => e
