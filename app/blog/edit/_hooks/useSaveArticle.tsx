@@ -13,8 +13,10 @@ export default function useSaveArticle(slug: string, articleText: string, delayM
   useKeyboardEvent(isSaveKeyPressed, (e) => {
     e.preventDefault()
 
+    const openEditor = () => fetch(`/api/blog/open/${slug}`)
+
     if (alreadySaved) {
-      toast('Already saved!', {icon: '👍', duration: 2000})
+      toast(<span onClick={openEditor}>Already saved!</span>, {icon: '👍', duration: 2000})
       return
     }
 
@@ -28,7 +30,7 @@ export default function useSaveArticle(slug: string, articleText: string, delayM
       }, delayMs),
       {
         loading: 'Saving...',
-        success: <b>Saved!</b>,
+        success: <b onClick={openEditor}>Saved!</b>,
         error: <b>Something went wrong...</b>,
       }
     )
