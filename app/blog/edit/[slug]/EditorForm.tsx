@@ -16,6 +16,7 @@ export default function EditorForm(props: Props) {
   const { content: contentPart } = matter(props.rawMarkdown)
 
   const { register, handleSubmit, setValue } = useForm<BlogFrontMatter>();
+
   useEffect(() => {
     const formValues = blogFrontMatterSchema.partial().parse(blogPost)
     for (const [key, value] of getTypedEntries(formValues)) {
@@ -34,7 +35,7 @@ export default function EditorForm(props: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onChange={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="title">Title</label>
           <input {...register("title")} />
@@ -63,8 +64,6 @@ export default function EditorForm(props: Props) {
           <label htmlFor="thumbnail">Thumbnail</label>
           <input {...register("thumbnail")} />
         </div>
-
-        <input type="submit" />
       </form>
     </>
   );
