@@ -38,3 +38,11 @@ const Util = {
 }
 
 export default Util
+
+export function getTypedKeys<T extends Record<PropertyKey, unknown>>(obj: T): (keyof T)[] {
+  return Object.keys(obj)
+}
+
+export function getTypedEntries<T extends Record<PropertyKey, unknown>>(obj: T): [keyof T, T[keyof T]][] {
+  return Object.entries(obj) as [keyof T, T[keyof T]][]
+}
