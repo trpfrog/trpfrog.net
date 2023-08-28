@@ -9,6 +9,7 @@ import {useCallback, useEffect, useMemo} from "react";
 type Props = {
   setPost: ((value: string) => void)
   rawMarkdown: string
+  markAsUnsaved: () => void
 }
 
 export default function EditorForm(props: Props) {
@@ -30,6 +31,7 @@ export default function EditorForm(props: Props) {
         delete data[key]
       }
     }
+    props.markAsUnsaved()
     props.setPost(matter.stringify(contentPart, data))
   }, [props, contentPart])
 

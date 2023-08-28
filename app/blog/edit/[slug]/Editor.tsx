@@ -56,7 +56,11 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
 
   return (
     <>
-      <EditorForm setPost={setPost} rawMarkdown={rawMarkdown}/>
+      <EditorForm
+        setPost={setPost}
+        rawMarkdown={rawMarkdown}
+        markAsUnsaved={markAsUnsaved}
+      />
       <SimpleMDE
         value={initialContent}
         onChange={changeHandler}
