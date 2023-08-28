@@ -9,9 +9,22 @@ import Tag from "@blog/_components/Tag";
 import {EntryButtons} from "@blog/[slug]/[[...options]]/_components/EntryButtons";
 import EditButton from "@blog/[slug]/[[...options]]/_components/EditButton";
 
-export default function ArticleHeader({post}: {
-  post: BlogPost,
-}) {
+type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
+  post: BlogPost
+  addEntryButtons?: boolean
+  addEditButtonOnDevMode?: boolean
+}
+
+export default function ArticleHeader(props: Props) {
+
+  const {
+    post,
+    addEntryButtons = true,
+    addEditButtonOnDevMode = true,
+    className = '',
+    style = {},
+    ...rest
+  } = props
 
   const tags = post.tags
     .split(',')
@@ -20,10 +33,12 @@ export default function ArticleHeader({post}: {
   return (
     <>
       <Title
-        className={styles.article_title_block}
+        className={`${styles.article_title_block} ${className}`}
         style={{
-          backgroundImage: post.thumbnail ? `url(${post.thumbnail})` : undefined
+          backgroundImage: post.thumbnail ? `url(${post.thumbnail})` : undefined,
+          ...style
         }}
+        {...rest}
       >
         <div
           className={styles.inner_title_block}
@@ -62,7 +77,7 @@ export default function ArticleHeader({post}: {
           {/*<div id={styles.entry_top_buttons}>*/}
           {/*  <RichEntryButtons post={post} extended={true}/>*/}
           {/*</div>*/}
-          {process.env.NODE_ENV === 'development' &&
+          {process.env.NODE_ENV === 'development' && props.addEditButtonOnDevMode &&
             <p>
               <EditButton slug={post.slug}/>
             </p>
@@ -70,7 +85,7 @@ export default function ArticleHeader({post}: {
           {/*<BadBlogButton/>*/}
         </div>
       </Title>
-      <EntryButtons post={post} style={{margin: 0}}/>
+      {addEntryButtons && <EntryButtons post={post} style={{margin: 0}}/>}
     </>
   )
 }
