@@ -61,11 +61,15 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
 
   return (
     <>
+      <h2>つまみログエディタ</h2>
+      <hr style={{margin: '1rem 0'}}/>
+      <h3>Front-matter</h3>
       <EditorForm
         setPost={setPost}
         rawMarkdown={rawMarkdown}
         markAsUnsaved={markAsUnsaved}
       />
+      <h3>Contents</h3>
       <EditorUI
         initialContent={useDeferredValue(content)}
         onChange={changeHandler}
