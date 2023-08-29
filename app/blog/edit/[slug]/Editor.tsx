@@ -1,7 +1,7 @@
 'use client';
 
 import "easymde/dist/easymde.min.css";
-import React, {useCallback, useMemo} from "react";
+import React, {useCallback, useDeferredValue, useMemo} from "react";
 
 import dynamic from 'next/dynamic'
 import type {SimpleMDEReactProps} from "react-simplemde-editor";
@@ -25,12 +25,17 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
 
   const delayMs = 2000
   const { markAsUnsaved } = useSaveArticle(slug, rawMarkdown, delayMs)
-  const { data, content: initialContent } = matter(rawMarkdown)
 
-  const sparseSetter = useSparseCallback((content) => {
+
+  const { data, content } = useMemo(
+    () => matter(rawMarkdown),
+    [rawMarkdown]
+  )
+
+  const sparseSetter = useSparseCallback((content: string) => {
     const frontMatter = blogFrontMatterSchema.partial().parse(data)
     setPost(matter.stringify(content, frontMatter))
-  }, [data, setPost], delayMs)
+  }, [data, setPost], 1000)
 
   const changeHandler = useCallback((value: string) => {
     markAsUnsaved()
@@ -61,10 +66,27 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
         rawMarkdown={rawMarkdown}
         markAsUnsaved={markAsUnsaved}
       />
-      <SimpleMDE
-        value={initialContent}
+      <EditorUI
+        initialContent={useDeferredValue(content)}
         onChange={changeHandler}
         options={options}
+      />
+    </>
+  )
+})
+
+
+const EditorUI = React.memo(function EditorUI(props: {
+  initialContent: string
+  onChange:SimpleMDEReactProps['onChange']
+  options: SimpleMDEReactProps['options']
+}) {
+  return (
+    <>
+      <SimpleMDE
+        value={props.initialContent}
+        onChange={props.onChange}
+        options={props.options}
       />
     </>
   )

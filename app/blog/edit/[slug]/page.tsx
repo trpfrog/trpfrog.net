@@ -3,13 +3,20 @@
 import MainWrapper from "@/components/MainWrapper";
 import styles from "./page.module.scss";
 import Block from "@/components/Block";
-import React, {useDeferredValue, useRef} from "react";
+import React, {useDeferredValue, useMemo, useRef} from "react";
 import Viewer from "@blog/edit/[slug]/Viewer";
 import Editor from "@blog/edit/[slug]/Editor";
 import {useMountEffect} from "@react-hookz/web";
 import {buildBlogPost} from "@blog/_lib/blogPost";
 import useFullscreen from "@/hooks/useFullscreen";
 import useDisableScroll from "@/hooks/useDisableScroll";
+const crypto = require('crypto')
+
+function md5hex(str: string /*: string */) {
+  const md5 = crypto.createHash('md5')
+  return md5.update(str, 'binary').digest('hex')
+}
+
 
 export default function Index(props: { params: { slug: string } }) {
 
@@ -35,16 +42,23 @@ export default function Index(props: { params: { slug: string } }) {
   useFullscreen()
   useDisableScroll()
   const scrollToTopRef = useRef<HTMLDivElement>(null)
-  const entry = buildBlogPost(deferredPost, {pagePos1Indexed: deferredPageIdx})
+
+  const deferredBlogPost = useMemo(() => (
+    buildBlogPost(deferredPost, {pagePos1Indexed: deferredPageIdx})
+  ), [deferredPageIdx, deferredPost])
 
   return (
     <MainWrapper className={styles.fullscreen}>
       <div className={styles.editor_grid}>
         <Block className={styles.editor_block} style={{overflow: 'scroll'}}>
-          <Editor slug={props.params.slug} rawMarkdown={deferredPost} setPost={setPost}/>
+          <Editor slug={props.params.slug} rawMarkdown={post} setPost={setPost}/>
         </Block>
-        <div style={{overflow: 'scroll'}} ref={scrollToTopRef}>
-          <Viewer post={entry} pageNavOverwrite={{ setPageIdx, scrollToTopRef }}/>
+        <div className={styles.viewer_wrapper} ref={scrollToTopRef}>
+          <Viewer
+            post={deferredBlogPost}
+            setPageIdx={setPageIdx}
+            scrollToTopRef={scrollToTopRef}
+          />
         </div>
       </div>
     </MainWrapper>
