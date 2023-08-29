@@ -6,7 +6,7 @@ import getOtakuColor from "@blog/_lib/otakuColors";
 import {IsomorphicArticleParts} from "../../ArticleParts";
 import BlockLink from "@/components/BlockLink";
 
-const TwitterArchive: IsomorphicArticleParts = ({content}) => {
+const TwitterArchive: IsomorphicArticleParts = React.memo(function TwitterArchive({content}) {
   const tweetData: { [key: string]: string } = {}
   const lines = content.trim().split('\n')
   for (const line of lines) {
@@ -78,6 +78,6 @@ const TwitterArchive: IsomorphicArticleParts = ({content}) => {
       </BlockLink>
     </div>
   )
-}
+})
 
 export default TwitterArchive

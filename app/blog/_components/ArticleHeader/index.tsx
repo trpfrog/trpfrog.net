@@ -15,7 +15,7 @@ type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
   addEditButtonOnDevMode?: boolean
 }
 
-export default function ArticleHeader(props: Props) {
+export default React.memo(function ArticleHeader(props: Props) {
 
   const {
     post,
@@ -88,4 +88,4 @@ export default function ArticleHeader(props: Props) {
       {addEntryButtons && <EntryButtons post={post} style={{margin: 0}}/>}
     </>
   )
-}
+})
