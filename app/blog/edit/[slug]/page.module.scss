@@ -47,3 +47,12 @@ $layout-threshold: 1000px;
 .blog_markdown + .blog_markdown {
     margin-top: 1rem;
 }
+
+.editor_block {
+    padding: 1rem;
+}
+
+.viewer_wrapper {
+    overflow: scroll;
+    padding-bottom: 10px;
+}
