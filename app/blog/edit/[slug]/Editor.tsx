@@ -53,6 +53,7 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
 
     uploadImage: true,
     imageUploadFunction,
+    lineNumbers: true,
 
     nativeSpellcheck: false,
     spellChecker: false,
@@ -61,7 +62,12 @@ export default React.memo(function Editor({ setPost, slug, rawMarkdown }: Props)
 
   return (
     <>
-      <h2>つまみログエディタ</h2>
+      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+        <h2 style={{display: 'inline-block'}}>つまみログエディタ</h2>
+        <a className={'linkButton'} onClick={() => fetch(`/api/blog/open/${slug}`)}>
+          ファイルを開く
+        </a>
+      </div>
       <hr style={{margin: '1rem 0'}}/>
       <h3>Front-matter</h3>
       <EditorForm
@@ -91,6 +97,7 @@ const EditorUI = React.memo(function EditorUI(props: {
         value={props.initialContent}
         onChange={props.onChange}
         options={props.options}
+        style={{padding: 0}}
       />
     </>
   )
