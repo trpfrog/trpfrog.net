@@ -44,9 +44,8 @@ const getLangName = (s: string) => {
 }
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
-  return ((
-    {className, children}
-  ) => {
+  return ((props) => {
+    let {className, children} = props
 
     const isChildrenString = (ch: any): ch is string => {
       return typeof ch === 'string'
@@ -64,9 +63,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    const isInline = !className
-
-    if (isInline) {
+    if ('inline' in props && props.inline) {
       return (
         <code className={styles.inline_code_block}>
           {children}
