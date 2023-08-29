@@ -8,14 +8,7 @@ import Viewer from "@blog/edit/[slug]/Viewer";
 import Editor from "@blog/edit/[slug]/Editor";
 import {useMountEffect} from "@react-hookz/web";
 import {buildBlogPost} from "@blog/_lib/blogPost";
-import useFullscreen from "@/hooks/useFullscreen";
-import useDisableScroll from "@/hooks/useDisableScroll";
-const crypto = require('crypto')
-
-function md5hex(str: string /*: string */) {
-  const md5 = crypto.createHash('md5')
-  return md5.update(str, 'binary').digest('hex')
-}
+import {useAlwaysShownHeader} from "@/components/Header";
 
 
 export default function Index(props: { params: { slug: string } }) {
@@ -39,8 +32,7 @@ export default function Index(props: { params: { slug: string } }) {
       .catch(console.error)
   })
 
-  useFullscreen()
-  useDisableScroll()
+  useAlwaysShownHeader()
   const scrollToTopRef = useRef<HTMLDivElement>(null)
 
   const deferredBlogPost = useMemo(() => (
@@ -57,7 +49,6 @@ export default function Index(props: { params: { slug: string } }) {
           <Viewer
             post={deferredBlogPost}
             setPageIdx={setPageIdx}
-            scrollToTopRef={scrollToTopRef}
           />
         </div>
       </div>

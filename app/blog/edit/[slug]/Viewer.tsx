@@ -11,7 +11,7 @@ import useScrollPositionKeeper from "@/hooks/useScrollPositionKeeper";
 type Props = {
   post: BlogPost
   setPageIdx: (pageIdx: number) => void
-  scrollToTopRef: React.RefObject<any>
+  scrollToTopRef?: React.RefObject<any>
 }
 
 export default React.memo(function Viewer(props: Props) {

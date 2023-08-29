@@ -17,23 +17,23 @@ $layout-threshold: 1000px;
 
 
 .editor_grid {
-    height: calc(100vh - 100px);
     display: grid;
+    box-sizing: border-box;
     grid-template-columns: 1fr 1fr;
 
     @media (width < $layout-threshold) {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: 1fr 1fr;
     }
-    gap: .5rem;
+    gap: 1rem;
 }
 
 .fullscreen {
-    max-height: 100vh;
-    padding: 10px;
+    padding: 10px 2rem;
     max-width: initial;
     box-sizing: border-box;
     width: 100%;
+    margin: .5rem 0;
 }
 
 .article_header {
@@ -49,11 +49,15 @@ $layout-threshold: 1000px;
 }
 
 .editor_block {
+    display: block;
     padding: 1rem;
+    position: sticky;
+    box-sizing: border-box;
+    top: calc(var(--header-height) + .8rem);
+    height: calc(100vh - var(--header-height) - 2 * .8rem)
 }
 
 .viewer_wrapper {
-    overflow: scroll;
     padding-bottom: 10px;
 }
 
