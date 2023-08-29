@@ -56,3 +56,22 @@ $layout-threshold: 1000px;
     overflow: scroll;
     padding-bottom: 10px;
 }
+
+.form_item {
+    display: inline-flex;
+    flex-direction: column;
+    > label {
+        font-size: 0.8em;
+        line-height: 100%;
+    }
+    > div {
+        margin: 0;
+    }
+}
+
+.editor_form {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: .8rem .5rem;
+}
