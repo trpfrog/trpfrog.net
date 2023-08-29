@@ -50,9 +50,16 @@ export default function EditorForm(props: Props) {
   return (
     <>
       <form onChange={handleSubmit(onSubmit)} className={styles.editor_form}>
-        <FormItem htmlFor="title" label="Title">
-          <input {...register("title")} />
-        </FormItem>
+        <div style={{width: '100%'}}>
+          <FormItem htmlFor="title" label="Title">
+            <input {...register("title")} style={{width: 500}}/>
+          </FormItem>
+        </div>
+        <div style={{width: '100%'}}>
+          <FormItem htmlFor="description" label="Description">
+            <textarea {...register("description")} style={{width: 500}}/>
+          </FormItem>
+        </div>
         <FormItem htmlFor="date" label="Date">
           <input type="date" {...register("date")} />
         </FormItem>
@@ -65,9 +72,7 @@ export default function EditorForm(props: Props) {
         <FormItem htmlFor="tags" label="Tags">
           <input {...register("tags")} />
         </FormItem>
-        <FormItem htmlFor="description" label="Description">
-          <input {...register("description")} />
-        </FormItem>
+
         <FormItem htmlFor="thumbnail" label="Thumbnail">
           <input {...register("thumbnail")} />
         </FormItem>
