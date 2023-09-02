@@ -1,16 +1,31 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
-  "ignorePatterns": ["./*"],
+  "ignorePatterns": [
+    "./*"
+  ],
   "rules": {
-    "eol-last": ["error", "always"],
-    "react-hooks/exhaustive-deps": ["warn", {
-      "additionalHooks": "useSparseCallback"
-    }],
-    "no-restricted-imports": ["error", {
-      "patterns": ["../*", "@/app/blog/*"]
-    }]
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "useSparseCallback"
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "../*",
+          "@/app/blog/*"
+        ]
+      }
+    ]
   }
 }
