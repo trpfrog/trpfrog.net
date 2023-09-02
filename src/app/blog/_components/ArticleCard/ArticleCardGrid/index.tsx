@@ -1,0 +1,24 @@
+import React from 'react'
+import styles from './index.module.scss'
+
+type Props = React.ComponentProps<'div'> & {
+  isHero?: boolean
+}
+
+export const gridArea = {
+  title: 'title',
+  tags: 'tags',
+  thumbnail: 'thumbnail',
+  info: 'info',
+} as const
+
+export default function ArticleCardGrid(props: Props) {
+  const { className, isHero, ...rest } = props
+  return (
+    <div
+      className={`${styles.grid} ${className}`}
+      {...rest}
+      data-hero-article={!!isHero}
+    />
+  )
+}

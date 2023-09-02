@@ -21,10 +21,10 @@
     "incremental": true,
     "paths": {
       "@/*": [
-        "*"
+        "src/*"
       ],
       "@blog/*": [
-        "app/blog/*"
+        "src/app/blog/*"
       ],
     },
     "plugins": [

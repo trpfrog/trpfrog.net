@@ -1,0 +1,60 @@
+@use '@/styles/mixins';
+
+.fullscreen_block {
+  display: block;
+  box-sizing: border-box;
+  height: calc(
+    100vh - var(--header-height) - var(--footer-height) - var(
+        --navigation-height
+      ) - var(--main-margin) * 2
+  );
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  font-size: 2rem;
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: 800;
+  color: var(--footer-color);
+  @include mixins.mq(dark) {
+    color: white;
+  }
+
+  span {
+    $duration-per-period: 1.5s;
+    $interval: 0.7s;
+    $fig-count: 10;
+
+    display: inline-block;
+    animation: dots $duration-per-period ease-in-out infinite;
+
+    $delay: ($duration-per-period - $interval) / $fig-count;
+    @for $i from 1 through $fig-count {
+      &:nth-child(#{$i}) {
+        animation-delay: $delay * $i;
+      }
+    }
+  }
+}
+
+$amplitude: 0.5rem;
+@keyframes dots {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-$amplitude);
+  }
+  15% {
+    transform: translateY(-$amplitude);
+  }
+  30% {
+    transform: translateY(0);
+  }
+}

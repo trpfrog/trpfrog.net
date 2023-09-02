@@ -20,7 +20,7 @@ const config = {
     mdxRs: true,
   },
 
-  webpack: (config) => {
+  webpack: config => {
     config.plugins = [
       ...config.plugins,
       new webpack.IgnorePlugin({
@@ -36,49 +36,47 @@ const config = {
       {
         source: '/:path*/index.html',
         destination: '/:path*',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/medipro-game/:path*',
         destination: 'https://trpfrog.github.io/medipro-game/:path*',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/notes',
         destination: '/blog',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/notes/:path*',
         destination: '/blog/:path*',
-        permanent: true
+        permanent: true,
       },
       {
         source: '/blog/entry/:slug',
         destination: '/blog/:slug',
-        permanent: true
+        permanent: true,
       },
     ]
-  }
+  },
 }
 
-const withMdx = require("@next/mdx")({
+const withMdx = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [
-      import("remark-gfm"),
-    ],
+    remarkPlugins: [import('remark-gfm')],
     rehypePlugins: [],
   },
   experimental: {
     mdxRs: true,
-  }
+  },
 })
 
 // next.config.js
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 module.exports = withBundleAnalyzer(withMdx(config))
 

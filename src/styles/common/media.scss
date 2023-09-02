@@ -1,0 +1,82 @@
+.youtube-outer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.youtube-iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rich_image {
+  border-radius: 5px;
+  background: #90e20055;
+}
+
+.img-btn {
+  width: 100%;
+  border-radius: 10px;
+  border-bottom: solid 4px #b6760075;
+}
+
+.img-btn:hover {
+  filter: brightness(108%);
+}
+
+.img-btn:active {
+  -webkit-transform: translateY(2px);
+  -moz-transform: translateY(2px);
+  transform: translateY(2px);
+  border-bottom: none;
+}
+
+@media screen and (min-width: 500px) {
+  .thumbnail {
+    border-radius: 10px;
+    width: 50%;
+  }
+
+  .curved_image {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .thumbnail {
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .curved_image {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 0.5px;
+  }
+}
+
+.horizontal_photo_2 {
+  display: inline-block;
+  border-radius: 10px;
+  width: 49%;
+}
+
+.horizontal_photo_3 {
+  display: inline-block;
+  border-radius: 10px;
+  width: 33%;
+}
+
+.horizontal_photo_4 {
+  display: inline-block;
+  border-radius: 10px;
+  width: 24%;
+}

@@ -9,12 +9,12 @@ export default {
       {
         url: 'https://res.cloudinary.com/trpfrog/TwitterCard',
         alt: 'Og Image Alt',
-      }
-    ]
+      },
+    ],
   },
   twitter: {
     handle: '@TrpFrog',
     site: '@TrpFrog',
-    cardType: 'summary_large_image'
-  }
-};
+    cardType: 'summary_large_image',
+  },
+}

@@ -1,0 +1,77 @@
+@media print {
+  :root {
+    --body-background: none !important;
+    --window-bottom-color: none !important;
+    --header-filter: none !important;
+  }
+
+  body {
+    color: black;
+    zoom: 0.7;
+  }
+
+  #inner-body {
+    grid-template-areas: 'h' 'm' 'f';
+  }
+
+  a {
+    color: black !important;
+  }
+
+  .main-window {
+    border: solid 0.5mm gray !important;
+  }
+
+  #title h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    color: black !important;
+  }
+
+  header {
+    position: absolute;
+    background: none;
+    backdrop-filter: none;
+
+    h1 > a {
+      color: black !important;
+    }
+
+    margin: 0;
+    z-index: 0;
+  }
+
+  #header-wrapper {
+    max-width: none;
+    padding-left: 20px;
+    -webkit-print-color-adjust: exact;
+  }
+
+  nav {
+    display: none;
+  }
+
+  #page_top {
+    display: none;
+  }
+
+  footer {
+    background: none;
+    #copyright {
+      color: black !important;
+    }
+  }
+
+  p {
+    page-break-inside: avoid;
+  }
+
+  img {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+    position: relative;
+  }
+}

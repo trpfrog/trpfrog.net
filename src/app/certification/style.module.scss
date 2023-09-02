@@ -1,0 +1,43 @@
+#cert_grid {
+  gap: 1em;
+}
+
+.cert {
+  display: flex;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 0.2em;
+  text-align: left;
+}
+
+.date_wrapper {
+  width: fit-content;
+  padding: 0 3px;
+  border: 2px solid var(--body-background);
+  border-radius: 5px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date {
+  display: inline-grid;
+  grid-template-columns: 2.9em auto 1.5em auto;
+}
+
+.month_val {
+  text-align: center;
+}
+
+.year_val,
+.month_val {
+  font-weight: bold;
+}
+
+.value {
+  display: inline-block;
+  margin-left: 10px;
+  width: 100%;
+  border-bottom: 2px dashed var(--body-background);
+}
