@@ -27,7 +27,9 @@ const config = {
         resourceRegExp: /canvas/,
         contextRegExp: /jsdom$/,
       }),
-      new webpack.IgnorePlugin(/\.stor(ies|y).[tj]sx$/),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /\.stor(ies|y).[tj]sx$/,
+      }),
     ]
     return config
   },
