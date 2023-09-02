@@ -6,11 +6,16 @@
     "build": "prisma generate && next build",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "prisma": {
     "seed": "dotenv -e .env.local -- ts-node --compiler-options {\"module\":\"CommonJS\"} ./src/prisma/seed.ts",
     "schema": "src/prisma/schema.prisma"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -83,6 +88,8 @@
     "eslint": "^8.48.0",
     "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "3.0.3",
     "sass": "^1.66.1",
     "ts-node": "^10.9.1",
