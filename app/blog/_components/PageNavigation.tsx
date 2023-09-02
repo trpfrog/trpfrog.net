@@ -24,7 +24,7 @@ export const PageTransferButton = (props: PageTransferProps) => {
   }
 
   return entry.isAll ? <></> : (
-    <a href={href} className={'linkButton'}>
+    <a href={href} className={'linkButton'} data-page-transfer-to={nextPage}>
       {buttonText}
     </a>
   )
@@ -40,7 +40,10 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
     cursor: 'default'
   }
 
-  return entry.numberOfPages === 1 || (doNotShowOnFirst && entry.currentPage <= 1) ? (
+  const isHidden = entry.numberOfPages === 1
+    || (doNotShowOnFirst && entry.currentPage <= 1 && process.env.NODE_ENV === 'production')
+
+  return isHidden ? (
     <></>
   ) : (
     <div style={{textAlign: 'center'}} className={'link-area'}>
@@ -53,13 +56,16 @@ const PageNavigation = ({entry, doNotShowOnFirst = false}: Props) => {
       }
       {Array.from(Array(entry.numberOfPages), (v, k) => (
         entry.currentPage !== k + 1
-          ? <PageTransferButton
-            entry={entry}
-            nextPage={k + 1}
-            buttonText={k + 1 + ''}
-            key={k}
-          />
-          : <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+          ? (
+            <PageTransferButton
+              entry={entry}
+              nextPage={k + 1}
+              buttonText={k + 1 + ''}
+              key={k}
+            />
+          ) : (
+            <a style={disabledButtonStyle} className={'linkButton'} key={k}>{k + 1}</a>
+          )
       ))}
       {entry.currentPage < entry.numberOfPages &&
         <PageTransferButton

@@ -1,9 +1,9 @@
 import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
 import React from "react";
 import styles from "./index.module.scss";
-import {ServerArticleParts} from "../../ArticleParts";
+import {IsomorphicArticleParts} from "../../ArticleParts";
 
-const Conversation: ServerArticleParts = ({content}) => (
+const Conversation: IsomorphicArticleParts = ({content}) => (
   <div className={styles.box_grid}>
     {content.split('\n')
       .reduce((arr, line) => {

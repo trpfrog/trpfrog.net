@@ -10,18 +10,17 @@ import rehypeSlug from "rehype-slug";
 import {BlogImageData} from "@blog/_lib/imagePropsFetcher";
 import SyntaxHighlighterWrapper from "@/components/utils/SyntaxHighlighterWrapper";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import {CodeProps, Components} from "react-markdown/lib/ast-to-react";
 import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
 import BlogPost from "@blog/_lib/blogPost";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import 'katex/dist/katex.min.css'
-import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/ComponentDictionary";
-import {MDXRemoteProps} from "next-mdx-remote/rsc";
-import {MDXProvider} from "@mdx-js/react";
-import {MDXComponents, MDXProps} from "mdx/types";
+import OriginalMarkdownComponent, {myMarkdownClasses} from "@blog/_components/OriginalMarkdownComponent";
+import {MDXComponents} from "mdx/types";
 import {MarkdownOptions} from "@blog/_renderer/ArticleRenderer";
 import remarkUnwrapImages from "remark-unwrap-images";
+import {SerializeOptions} from "next-mdx-remote/dist/types";
+import {IsomorphicMarkdownComponent} from "@/lib/types";
 
 const getLangName = (s: string) => {
   switch (s) {
@@ -45,13 +44,17 @@ const getLangName = (s: string) => {
 }
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
-  return ((
-    {className, children}
-  ) => {
+  return ((props) => {
+    let {className, children} = props
 
     const isChildrenString = (ch: any): ch is string => {
       return typeof ch === 'string'
     }
+
+    if (Array.isArray(children) && children.length > 0 && isChildrenString(children[0])) {
+      children = children[0]
+    }
+
     if (!isChildrenString(children)) {
       return (
         <code className={styles.inline_code_block}>
@@ -60,17 +63,13 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    const isInline = !className
-
-    if (isInline) {
+    if ('inline' in props && props.inline) {
       return (
         <code className={styles.inline_code_block}>
           {children}
         </code>
       )
     }
-
-    children = children.trimEnd()
 
     const language = className
       ? getLangName(
@@ -93,7 +92,6 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
           componentName={languageCamelCase}
           content={children as string}
           entry={entry}
-          mdOptions={getMarkdownOptions(entry)}
         />
       )
     }
@@ -124,21 +122,23 @@ export function getMarkdownOptions(
   entry?: BlogPost,
   imageSize?: Record<string, BlogImageData>
 ) {
-  const components: MDXComponents = {
+  const components: IsomorphicMarkdownComponent = {
     pre: ({children}: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
 
-    img: (props: any) => (
-      <BlogImage
-        src={props.src}
-        alt={props.alt}
-        imageData={
-          imageSize
-            ? imageSize[getPureCloudinaryPath(props.src)]
-            : undefined
-        }
-      />
-    ),
+    img: (props: any) => {
+      return (
+        <BlogImage
+          src={props.src ?? ''}
+          alt={props.alt ?? ''}
+          imageData={
+            imageSize
+              ? imageSize[getPureCloudinaryPath(props.src ?? '')]
+              : undefined
+          }
+        />
+      )
+    },
 
     h2: (props: any) => (
       <h2 className={styles.anchor} id={props.id}>
@@ -177,5 +177,6 @@ export function getMarkdownPlugins() {
       rehypeRaw,
       rehypeSlug,
     ],
-  }
+
+  } satisfies Partial<SerializeOptions['mdxOptions']>
 }

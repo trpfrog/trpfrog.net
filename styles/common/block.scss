@@ -4,12 +4,14 @@
     --window-padding-top-bottom: 40px;
     --window-padding-left-right: 40px;
     --window-bottom-color: #9cc535;
+    --window-border-radius: 33px;
 }
 
 @include mixins.mq(sp) {
     :root {
         --window-padding-top-bottom: 18px;
         --window-padding-left-right: 12px;
+        --window-border-radius: 10px;
     }
 }
 
@@ -23,7 +25,7 @@
     position: relative;
     background-color: var(--window-bkg-color);
     padding: var(--window-padding-top-bottom) var(--window-padding-left-right);
-    border-radius: 33px;
+    border-radius: var(--window-border-radius);
     text-align: left;
     box-shadow: 0 6px 0 var(--window-bottom-color);
     overflow-x: hidden;
@@ -51,7 +53,6 @@
 @include mixins.mq(sp) {
     .main-window {
         background-color: var(--window-bkg-color);
-        border-radius: 10px;
         text-align: left;
         margin: 0 8px;
     }

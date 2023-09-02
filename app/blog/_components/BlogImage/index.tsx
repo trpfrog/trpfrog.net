@@ -19,7 +19,7 @@ export const ImageCaption = ({children}: { children: React.ReactNode }) => (
   </figcaption>
 )
 
-const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
+export default React.memo(function BlogImage({src, alt, imageData, style}: BlogImageProps) {
 
   if (!imageData) {
     imageData = {
@@ -76,6 +76,4 @@ const BlogImage = ({src, alt, imageData, style}: BlogImageProps) => {
       </figure>
     </>
   )
-}
-
-export default BlogImage
+})

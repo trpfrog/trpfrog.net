@@ -3,12 +3,23 @@
 import Link from 'next/link'
 import {usePathname} from "next/navigation";
 import {useScroll} from "framer-motion";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NormalTitle} from "./NormalTitle";
 import {TopTitle} from "./TopTitle";
 import styles from "./index.module.scss";
 import MobileMenu from "../MobileMenu";
 import Hamburger from "../Hamburger";
+import {atom, useAtomValue, useSetAtom} from "jotai";
+
+const alwaysShowHeaderAtom = atom(false)
+
+export function useAlwaysShownHeader() {
+  const set = useSetAtom(alwaysShowHeaderAtom)
+  useEffect(() => {
+    set(true)
+    return () => set(false)
+  }, [set]);
+}
 
 const useHeaderVisibleStatus = () => {
   const {scrollY} = useScroll()
@@ -26,7 +37,8 @@ const useHeaderVisibleStatus = () => {
     }
   })
 
-  return showHeader
+  const hide = useAtomValue(alwaysShowHeaderAtom)
+  return showHeader || hide
 }
 
 export const HeaderFollowSticky = (props: {
@@ -54,7 +66,7 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   )
 }
 
-const Header: React.FC = () => {
+const Header: React.FC = React.memo(function Header() {
   const pathname = usePathname();
   const topLinks = [
     {href: '/', label: 'home'},
@@ -85,6 +97,6 @@ const Header: React.FC = () => {
       <MobileMenu/>
     </>
   );
-}
+})
 
 export default Header;

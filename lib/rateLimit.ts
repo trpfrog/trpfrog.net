@@ -1,4 +1,3 @@
-import type { NextApiResponse } from 'next'
 import { LRUCache } from 'lru-cache'
 import {NextResponse} from "next/server";
 

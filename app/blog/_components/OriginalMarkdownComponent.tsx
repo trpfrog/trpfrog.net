@@ -10,10 +10,11 @@ import ShowAll from "./article-parts/ShowAll";
 import {PageTransferButton} from "./PageNavigation";
 import {ParseWithBudouX} from "@/lib/wordSplit";
 import ArticleRenderer from "@blog/_renderer/ArticleRenderer";
-import {ServerArticleParts, ServerArticlePartsProps} from "./ArticleParts";
+import {IsomorphicArticleParts, IsomorphicArticlePartsProps} from "./ArticleParts";
 import {LinkEmbed} from "@blog/_components/article-parts/LinkEmbed";
 import {Twitter} from "@blog/_components/article-parts/Twitter";
 import {AutoYouTube, YouTube} from "@blog/_components/article-parts/YouTube";
+import {CamelToKebabCase} from "@/lib/types";
 
 
 /* eslint-disable react/display-name */
@@ -27,7 +28,7 @@ export const myMarkdownClasses = {
 
   // Walking Parts
   ResultBox: WalkingResultBox,
-  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as ServerArticleParts,
+  ProfileCards: (({ content, entry }) => <ProfileCards content={content} held={entry?.held}/> ) as IsomorphicArticleParts,
 
   // Highlight Boxes
   Caution,
@@ -56,26 +57,26 @@ export const myMarkdownClasses = {
     )
   },
 
-  Centering: ({ content, mdOptions }) => (
+  Centering: ({ content, entry, imageSize }) => (
     <div style={{textAlign: 'center'}}>
-      <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+      <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
     </div>
   ),
 
-  CenteringWithSize: ({ content, mdOptions }) => {
+  CenteringWithSize: ({ content, entry, imageSize }) => {
     const [size, ...lines] = content.split('\n')
     content = lines.join('\n')
     return (
       <div style={{textAlign: 'center', fontSize: size.trim()}}>
-        <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+        <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
       </div>
     )
   },
 
-  IgnoreReadCount: ({ content, mdOptions }) => (
+  IgnoreReadCount: ({ content, entry, imageSize }) => (
     // This is a hack to make the read count not increase
     // using "read counter does not count inside of code blocks"
-    <ArticleRenderer toRender={content} markdownOptions={mdOptions}/>
+    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
   ),
 
   CenteringWithSizeBold: React.memo(({ content }) => {
@@ -93,10 +94,23 @@ export const myMarkdownClasses = {
   DangerouslySetInnerHtml: React.memo(({ content }) => (
     <div dangerouslySetInnerHTML={{__html: content}}/>
   )),
-} as const satisfies Record<string, ServerArticleParts>
+
+  ZeroPadding: React.memo(({ content, entry, imageSize }) => (
+    // This component is used to remove the padding of the parent component
+    // See also: @blog/_lib/parse.ts
+    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize}/>
+  )),
+} as const satisfies Record<string, IsomorphicArticleParts>
 /* eslint-enable react/display-name */
 
-export default async function OriginalMarkdownComponent(props: ServerArticlePartsProps & {
+export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
+  Format extends 'camel'
+    ? keyof typeof myMarkdownClasses
+    : Format extends 'kebab'
+      ? CamelToKebabCase<keyof typeof myMarkdownClasses>
+      : never
+
+export default function OriginalMarkdownComponent(props: IsomorphicArticlePartsProps & {
   componentName: keyof typeof myMarkdownClasses
 }) {
   const { componentName, ...rest } = props

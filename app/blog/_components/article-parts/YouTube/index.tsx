@@ -1,10 +1,10 @@
 import {InnerAutoYouTube, InnerYouTube} from "@blog/_components/article-parts/YouTube/InnerYouTube";
-import {ServerArticlePartsProps} from "@blog/_components/ArticleParts";
+import {IsomorphicArticlePartsProps} from "@blog/_components/ArticleParts";
 
-export function YouTube(props: ServerArticlePartsProps) {
+export function YouTube(props: IsomorphicArticlePartsProps) {
   return <InnerYouTube content={props.content}/>
 }
 
-export function AutoYouTube(props: ServerArticlePartsProps) {
+export function AutoYouTube(props: IsomorphicArticlePartsProps) {
   return <InnerAutoYouTube content={props.content}/>
 }

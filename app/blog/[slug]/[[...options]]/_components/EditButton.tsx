@@ -1,14 +1,15 @@
 'use client';
 
 import React from "react";
+import Link from "next/link";
 
 export default function EditButton({slug}: { slug: string }) {
   return (
-    <a
+    <Link
       className={'linkButton'}
-      onClick={() => fetch(`/api/blog/open/${slug}`)}
+      href={`/blog/edit/${slug}`}
     >
       編集する
-    </a>
+    </Link>
   )
 }
