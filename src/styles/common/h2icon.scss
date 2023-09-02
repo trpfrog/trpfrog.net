@@ -1,6 +1,6 @@
 @use '@/styles/mixins';
 
-main h2 {
+h2 {
   font-family: var(--font-m-plus-rounded-1c);
   font-weight: 800;
   color: #172c00;
@@ -8,12 +8,12 @@ main h2 {
 }
 
 @include mixins.mq(dark) {
-  main h2 {
+  h2 {
     color: #f1ffd0;
   }
 }
 
-main h2:before {
+h2:before {
   content: '';
   display: inline-block;
   width: 40px;
