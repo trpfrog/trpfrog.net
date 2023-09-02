@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { getAllPostSlugs } from '@/app/blog/_lib/load'
+import { getAllPostSlugs } from '@blog/_lib/load'
 
 export async function GET(req: Request) {
   const slug = req.headers.get('x-blog-slug')

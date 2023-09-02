@@ -2,14 +2,14 @@ import microCMS from '@/lib/microCMS'
 import matter from 'gray-matter'
 import React from 'react'
 import { Suspense } from 'react'
-import LoadingBlock from '../../../../components/LoadingBlock'
+import LoadingBlock from '@/components/LoadingBlock'
 import ReactMarkdown from 'react-markdown'
-import MainWrapper from '../../../../components/MainWrapper'
+import MainWrapper from '@/components/MainWrapper'
 import Block from '@/components/Block'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import styles from './index.module.scss'
-import { ShowAllComponent } from '@/app/blog/_components/article-parts/ShowAll/ShowAllComponent'
+import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 
 export default async function TempTwitter() {
   let md: string

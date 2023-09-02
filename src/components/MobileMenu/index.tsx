@@ -2,7 +2,7 @@
 
 import React from 'react'
 import styles from './index.module.scss'
-import { NavigationLinks } from '../Navigation'
+import { NavigationLinks } from '@/components/Navigation'
 import { atom, useAtom } from 'jotai'
 
 const mobileMenuAtom = atom(false)

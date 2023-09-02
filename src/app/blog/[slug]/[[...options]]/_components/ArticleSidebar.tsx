@@ -1,11 +1,11 @@
-import ArticleCard from '@/app/blog/_components/ArticleCard'
+import ArticleCard from '@blog/_components/ArticleCard'
 import Block from '@/components/Block'
-import styles from '@/app/blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.scss'
 import { RichEntryButtons } from './EntryButtons'
-import PageNavigation from '@/app/blog/_components/PageNavigation'
+import PageNavigation from '@blog/_components/PageNavigation'
 import { HeaderFollowSticky } from '@/components/Header'
 import React from 'react'
-import BlogPost from '@/app/blog/_lib/blogPost'
+import BlogPost from '@blog/_lib/blogPost'
 
 type Props = {
   post: BlogPost

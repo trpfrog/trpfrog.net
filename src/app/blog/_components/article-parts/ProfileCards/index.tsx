@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './index.module.scss'
 import dayjs from 'dayjs'
-import ArticleRenderer from '@/app/blog/_renderer/ArticleRenderer'
-import { parseInlineMarkdown } from '@/app/blog/_renderer/BlogMarkdown'
-import { getMarkdownPlugins } from '@/app/blog/_renderer/rendererProperties'
-import SwitchUI from '@/app/blog/_components/article-parts/ProfileCards/SwitchUI'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+import { getMarkdownPlugins } from '@blog/_renderer/rendererProperties'
+import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 
 export type ProfileData = {
   name: string

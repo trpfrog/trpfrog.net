@@ -1,7 +1,7 @@
 import { MutualLinkRecord } from './loader'
 import Utils from '@/lib/utils'
 import React from 'react'
-import styles from '../(home)/style.module.scss'
+import styles from '@/app/(home)/style.module.scss'
 
 export function MutualLinkBlock(props: {
   record: MutualLinkRecord

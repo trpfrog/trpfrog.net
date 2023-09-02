@@ -5,8 +5,8 @@ import {
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
-import ArticleRenderer from '@/app/blog/_renderer/ArticleRenderer'
-import { IsomorphicArticleParts } from '../../ArticleParts'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 
 export const Caution: IsomorphicArticleParts = ({
   content,

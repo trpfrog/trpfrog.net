@@ -9,17 +9,17 @@ import Conversation from './article-parts/Conversation'
 import ShowAll from './article-parts/ShowAll'
 import { PageTransferButton } from './PageNavigation'
 import { ParseWithBudouX } from '@/lib/wordSplit'
-import ArticleRenderer from '@/app/blog/_renderer/ArticleRenderer'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
 import {
   IsomorphicArticleParts,
   IsomorphicArticlePartsProps,
 } from './ArticleParts'
-import { LinkEmbed } from '@/app/blog/_components/article-parts/LinkEmbed'
-import { Twitter } from '@/app/blog/_components/article-parts/Twitter'
+import { LinkEmbed } from '@blog/_components/article-parts/LinkEmbed'
+import { Twitter } from '@blog/_components/article-parts/Twitter'
 import {
   AutoYouTube,
   YouTube,
-} from '@/app/blog/_components/article-parts/YouTube'
+} from '@blog/_components/article-parts/YouTube'
 import { CamelToKebabCase } from '@/lib/types'
 
 /* eslint-disable react/display-name */

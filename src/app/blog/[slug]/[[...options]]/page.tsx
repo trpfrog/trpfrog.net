@@ -1,22 +1,22 @@
 import Block from '@/components/Block'
 
-import { getPostData, getSortedPostsData } from '@/app/blog/_lib/load'
-import { fetchAllImageProps } from '@/app/blog/_lib/imagePropsFetcher'
+import { getPostData, getSortedPostsData } from '@blog/_lib/load'
+import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 
-import BlogMarkdown from '@/app/blog/_renderer/BlogMarkdown'
+import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
 
-import styles from '@/app/blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.scss'
 
-import RelatedPosts from '@/app/blog/_components/RelatedPosts'
-import { UDFontBlock } from '@/app/blog/_components/UDFontBlock'
-import { BadBlogBlock } from '@/app/blog/_components/BadBlog'
+import RelatedPosts from '@blog/_components/RelatedPosts'
+import { UDFontBlock } from '@blog/_components/UDFontBlock'
+import { BadBlogBlock } from '@blog/_components/BadBlog'
 import React from 'react'
-import BlogPost from '@/app/blog/_lib/blogPost'
+import BlogPost from '@blog/_lib/blogPost'
 import { Metadata } from 'next'
 import { EntryButtons } from './_components/EntryButtons'
 import ArticleSidebar from './_components/ArticleSidebar'
 import MainWrapper from '@/components/MainWrapper'
-import ArticleHeader from '@/app/blog/_components/ArticleHeader'
+import ArticleHeader from '@blog/_components/ArticleHeader'
 
 // Trick for NEXT-1214
 // export const dynamicParams = false

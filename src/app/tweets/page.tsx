@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 import Title from '@/components/Title'
-import React, { Suspense } from 'react'
+import React from 'react'
 import SearchForm from './SearchForm'
 import Block from '@/components/Block'
 import dayjs from 'dayjs'
-import LoadingBlock from '@/components/LoadingBlock'
 import TweetArea from './TweetArea'
 import MainWrapper from '@/components/MainWrapper'
 

@@ -1,6 +1,6 @@
 // Trick for NEXT-1214
 // export const dynamicParams = false
-import { getAllPostSlugs } from '@/app/blog/_lib/load'
+import { getAllPostSlugs } from '@blog/_lib/load'
 import React from 'react'
 
 const dynamicParams = false

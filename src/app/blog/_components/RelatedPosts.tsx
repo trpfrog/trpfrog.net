@@ -1,13 +1,13 @@
 'use client'
 
-import styles from '@/app/blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import ArticleCard from './ArticleCard'
 import Link from 'next/link'
 import React from 'react'
-import BlogPost from '@/app/blog/_lib/blogPost'
-import ArticleGrid from '@/app/blog/_components/ArticleGrid'
+import BlogPost from '@blog/_lib/blogPost'
+import ArticleGrid from '@blog/_components/ArticleGrid'
 
 const RelatedPosts = ({
   tag,

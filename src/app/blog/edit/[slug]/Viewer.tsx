@@ -1,11 +1,11 @@
 'use client'
 
-import BlogMarkdown from '@/app/blog/_renderer/BlogMarkdown'
+import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
 import React from 'react'
-import styles from '@/app/blog/edit/[slug]/page.module.scss'
-import BlogPost from '@/app/blog/_lib/blogPost'
-import useOverwritePageNavHref from '@/app/blog/edit/_hooks/useOverwritePageNavHref'
-import ArticleHeader from '@/app/blog/_components/ArticleHeader'
+import styles from '@blog/edit/[slug]/page.module.scss'
+import BlogPost from '@blog/_lib/blogPost'
+import useOverwritePageNavHref from '@blog/edit/_hooks/useOverwritePageNavHref'
+import ArticleHeader from '@blog/_components/ArticleHeader'
 import useScrollPositionKeeper from '@/hooks/useScrollPositionKeeper'
 
 type Props = {

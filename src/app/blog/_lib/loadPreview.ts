@@ -1,5 +1,5 @@
 import { BlogPostOption, buildBlogPost } from './load'
-import microCMS from '../../../lib/microCMS'
+import microCMS from '@/lib/microCMS'
 import BlogPost from './blogPost'
 
 export type ErrorablePost = BlogPost & {

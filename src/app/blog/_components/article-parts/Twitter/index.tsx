@@ -1,4 +1,4 @@
-import { IsomorphicArticleParts } from '@/app/blog/_components/ArticleParts'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import React from 'react'
 import { Tweet } from './TwitterWrapper'
 

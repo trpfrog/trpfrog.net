@@ -1,9 +1,9 @@
 import React from 'react'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-import { doMarkdownHMR } from '@/app/blog/_lib/fileWatch'
-import BlogPost from '@/app/blog/_lib/blogPost'
-import { BlogImageData } from '@/app/blog/_lib/imagePropsFetcher'
-import { getMarkdownOptions } from '@/app/blog/_renderer/rendererProperties'
+import { doMarkdownHMR } from '@blog/_lib/fileWatch'
+import BlogPost from '@blog/_lib/blogPost'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 import ReactMarkdown from 'react-markdown'
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 

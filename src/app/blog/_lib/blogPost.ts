@@ -1,7 +1,7 @@
 import matter from 'gray-matter'
-import parse from '@/app/blog/_lib/parse'
-import { getReadTimeSecond } from '@/app/blog/_lib/readTime'
-import type { BlogPostOption } from '@/app/blog/_lib/load'
+import parse from '@blog/_lib/parse'
+import { getReadTimeSecond } from '@blog/_lib/readTime'
+import type { BlogPostOption } from '@blog/_lib/load'
 import { z } from 'zod'
 
 export default interface BlogPost {

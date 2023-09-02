@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import EntryButton from '@/app/blog/_components/EntryButton'
+import EntryButton from '@blog/_components/EntryButton'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 import ShareSpan from './ShareSpan'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { UDFontButton } from '@/app/blog/_components/UDFontBlock'
-import TogglePageViewLink from '@/app/blog/_components/TogglePageViewLink'
+import { UDFontButton } from '@blog/_components/UDFontBlock'
+import TogglePageViewLink from '@blog/_components/TogglePageViewLink'
 import React from 'react'
-import BlogPost from '@/app/blog/_lib/blogPost'
+import BlogPost from '@blog/_lib/blogPost'
 
 type EntryButtonProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   post: BlogPost

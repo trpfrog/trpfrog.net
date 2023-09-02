@@ -1,4 +1,4 @@
-import { myMarkdownClasses as partsDictionary } from '@/app/blog/_components/OriginalMarkdownComponent'
+import { myMarkdownClasses as partsDictionary } from '@blog/_components/OriginalMarkdownComponent'
 
 export const getReadTimeSecond = (markdown: string) => {
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')

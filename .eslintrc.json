@@ -10,7 +10,7 @@
       "additionalHooks": "useSparseCallback"
     }],
     "no-restricted-imports": ["error", {
-      "patterns": ["../*", "./*/*"]
+      "patterns": ["../*", "@/app/blog/*"]
     }]
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import ArticleRenderer from '@/app/blog/_renderer/ArticleRenderer'
-import { IsomorphicArticleParts } from '../ArticleParts'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 
 const HorizontalScroll: IsomorphicArticleParts = ({
   content,

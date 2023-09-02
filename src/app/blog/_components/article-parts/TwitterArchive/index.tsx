@@ -2,8 +2,8 @@ import styles from './index.module.scss'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDove } from '@fortawesome/free-solid-svg-icons'
-import getOtakuColor from '@/app/blog/_lib/otakuColors'
-import { IsomorphicArticleParts } from '../../ArticleParts'
+import getOtakuColor from '@blog/_lib/otakuColors'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import BlockLink from '@/components/BlockLink'
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(

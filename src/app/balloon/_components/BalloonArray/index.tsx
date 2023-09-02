@@ -3,7 +3,7 @@
 import { useReward } from 'react-rewards'
 import styles from './index.module.scss'
 import React, { useEffect, useState } from 'react'
-import Balloon, { balloonColors } from '../Balloon'
+import Balloon, { balloonColors } from '@/app/balloon/_components/Balloon'
 
 type BalloonArrayProps = {
   n: number

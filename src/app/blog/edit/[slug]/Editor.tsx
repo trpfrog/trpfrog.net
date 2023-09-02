@@ -6,12 +6,12 @@ import React, { useCallback, useDeferredValue, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import type { SimpleMDEReactProps } from 'react-simplemde-editor'
 import useSparseCallback from '@/hooks/useSparseCallback'
-import useUploadFunction from '@/app/blog/edit/_hooks/useUploadFunction'
-import useSaveArticle from '@/app/blog/edit/_hooks/useSaveArticle'
-import useToastErrorCallback from '@/app/blog/edit/_hooks/useToastErrorCallback'
-import EditorForm from '@/app/blog/edit/[slug]/EditorForm'
+import useUploadFunction from '@blog/edit/_hooks/useUploadFunction'
+import useSaveArticle from '@blog/edit/_hooks/useSaveArticle'
+import useToastErrorCallback from '@blog/edit/_hooks/useToastErrorCallback'
+import EditorForm from '@blog/edit/[slug]/EditorForm'
 import matter from 'gray-matter'
-import { blogFrontMatterSchema } from '@/app/blog/_lib/blogPost'
+import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,

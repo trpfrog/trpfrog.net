@@ -3,16 +3,16 @@ import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.scss'
 import dayjs from 'dayjs'
 import React from 'react'
-import { getPureCloudinaryPath } from '@/app/blog/_lib/getPureCloudinaryPath'
-import BlogPost from '@/app/blog/_lib/blogPost'
-import CldImageWrapper from '../../../../components/utils/CldImageWrapper'
-import BlockLink from '../../../../components/BlockLink'
-import TagBar from '@/app/blog/_components/ArticleCard/TagBar'
-import ArticleTitle from '@/app/blog/_components/ArticleCard/ArticleTitle'
-import Card from '@/app/blog/_components/ArticleCard/Card'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import BlogPost from '@blog/_lib/blogPost'
+import CldImageWrapper from '@/components/utils/CldImageWrapper'
+import BlockLink from '@/components/BlockLink'
+import TagBar from '@blog/_components/ArticleCard/TagBar'
+import ArticleTitle from '@blog/_components/ArticleCard/ArticleTitle'
+import Card from '@blog/_components/ArticleCard/Card'
 import ArticleCardGrid, {
   gridArea,
-} from '@/app/blog/_components/ArticleCard/ArticleCardGrid'
+} from '@blog/_components/ArticleCard/ArticleCardGrid'
 
 type Props = {
   entry: BlogPost

@@ -4,7 +4,7 @@ import Block from '@/components/Block'
 import React from 'react'
 import path from 'path'
 import fs from 'fs'
-import { getSortedPostsData } from '@/app/blog/_lib/load'
+import { getSortedPostsData } from '@blog/_lib/load'
 import dayjs from 'dayjs'
 
 type Props = {

@@ -1,9 +1,9 @@
-import { BlogImageData } from '@/app/blog/_lib/imagePropsFetcher'
-import BlogImage, { ImageCaption } from '../BlogImage'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
+import BlogImage, { ImageCaption } from '@blog/_components/BlogImage'
 import React from 'react'
-import { getPureCloudinaryPath } from '@/app/blog/_lib/getPureCloudinaryPath'
-import { IsomorphicArticleParts } from '../ArticleParts'
-import { parseInlineMarkdown } from '@/app/blog/_renderer/BlogMarkdown'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 const HorizontalImages: IsomorphicArticleParts = ({ content, imageSize }) => {
   const regex = new RegExp('^!\\[.*?]\\(')

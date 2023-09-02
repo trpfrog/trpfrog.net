@@ -1,8 +1,8 @@
-import PageNavigation from '../PageNavigation'
+import PageNavigation from '@/app/tweets/PageNavigation'
 import Block from '@/components/Block'
 import React from 'react'
-import search from '../tweetSearcher'
-import TweetCard, { DateCard } from '../TweetCard'
+import search from '@/app/tweets/tweetSearcher'
+import TweetCard, { DateCard } from '@/app/tweets/TweetCard'
 
 export default async function TweetArea({
   searchParams,

@@ -7,8 +7,8 @@ import React, { useEffect, useState } from 'react'
 import { NormalTitle } from './NormalTitle'
 import { TopTitle } from './TopTitle'
 import styles from './index.module.scss'
-import MobileMenu from '../MobileMenu'
-import Hamburger from '../Hamburger'
+import MobileMenu from '@/components/MobileMenu'
+import Hamburger from '@/components/Hamburger'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 
 const alwaysShowHeaderAtom = atom(false)

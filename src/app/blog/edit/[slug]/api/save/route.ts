@@ -1,4 +1,4 @@
-import { getAllPostSlugs } from '@/app/blog/_lib/load'
+import { getAllPostSlugs } from '@blog/_lib/load'
 import fs from 'fs'
 import path from 'path'
 

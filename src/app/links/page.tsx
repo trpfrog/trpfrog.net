@@ -1,6 +1,6 @@
 import { loadMutualLinkRecords, MutualLinkRecord } from './loader'
 
-import styles from '../(home)/style.module.scss'
+import styles from '@/app/(home)/style.module.scss'
 
 import Title from '@/components/Title'
 import Block from '@/components/Block'

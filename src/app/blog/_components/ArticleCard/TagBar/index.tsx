@@ -1,5 +1,5 @@
 import styles from './index.module.scss'
-import Tag from '@/app/blog/_components/Tag'
+import Tag from '@blog/_components/Tag'
 import React from 'react'
 
 type Props = Omit<React.ComponentProps<'div'>, 'children'> & {

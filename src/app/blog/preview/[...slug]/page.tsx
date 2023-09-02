@@ -3,18 +3,18 @@ import Image from 'next/legacy/image'
 
 import Title from '@/components/Title'
 
-import { getPreviewPostData } from '@/app/blog/_lib/loadPreview'
-import { fetchAllImageProps } from '@/app/blog/_lib/imagePropsFetcher'
+import { getPreviewPostData } from '@blog/_lib/loadPreview'
+import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 
-import BlogMarkdown from '@/app/blog/_renderer/BlogMarkdown'
+import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
 
-import styles from '@/app/blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.scss'
 
-import { formatReadTime } from '@/app/blog/_lib/readTime'
+import { formatReadTime } from '@blog/_lib/readTime'
 import { parseWithBudouX } from '@/lib/wordSplit'
-import PostAttributes from '@/app/blog/_components/PostAttributes'
-import { createErrorArticle, ErrorablePost } from '@/app/blog/_lib/loadPreview'
-import { getPureCloudinaryPath } from '@/app/blog/_lib/getPureCloudinaryPath'
+import PostAttributes from '@blog/_components/PostAttributes'
+import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 import { Metadata } from 'next'
 import MainWrapper from '@/components/MainWrapper'
 

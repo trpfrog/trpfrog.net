@@ -1,13 +1,13 @@
-import BlogPost from '@/app/blog/_lib/blogPost'
+import BlogPost from '@blog/_lib/blogPost'
 import React from 'react'
 import Title from '@/components/Title'
 import styles from './index.module.scss'
 import Balancer from 'react-wrap-balancer'
 import { ParseWithBudouX } from '@/lib/wordSplit'
-import PostAttributes from '@/app/blog/_components/PostAttributes'
-import Tag from '@/app/blog/_components/Tag'
-import { EntryButtons } from '@/app/blog/[slug]/[[...options]]/_components/EntryButtons'
-import EditButton from '@/app/blog/[slug]/[[...options]]/_components/EditButton'
+import PostAttributes from '@blog/_components/PostAttributes'
+import Tag from '@blog/_components/Tag'
+import { EntryButtons } from '@blog/[slug]/[[...options]]/_components/EntryButtons'
+import EditButton from '@blog/[slug]/[[...options]]/_components/EditButton'
 
 type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
   post: BlogPost

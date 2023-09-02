@@ -5,7 +5,7 @@ import {
   BlogFrontMatter,
   blogFrontMatterSchema,
   buildBlogPost,
-} from '@/app/blog/_lib/blogPost'
+} from '@blog/_lib/blogPost'
 import { getTypedEntries, getTypedKeys } from '@/lib/utils'
 import matter from 'gray-matter'
 import React, { useCallback, useEffect, useMemo } from 'react'

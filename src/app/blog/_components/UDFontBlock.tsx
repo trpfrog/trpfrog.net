@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { parseCookies, setCookie } from 'nookies'
 import { faFont, faUniversalAccess } from '@fortawesome/free-solid-svg-icons'
 import EntryButton from './EntryButton'
-import styles from '@/app/blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.scss'
 
 export const UDFontStateContext = React.createContext({
   useUDFont: false,
