@@ -54,7 +54,12 @@ $layout-threshold: 1000px;
     position: sticky;
     box-sizing: border-box;
     top: calc(var(--header-height) + .8rem);
-    height: calc(100vh - var(--header-height) - 2 * .8rem)
+    height: calc(100vh - var(--header-height) - 2 * .8rem);
+
+    & *:global(.CodeMirror-wrap) {
+        padding: 0 !important;
+    }
+
 }
 
 .viewer_wrapper {
