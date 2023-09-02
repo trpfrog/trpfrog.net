@@ -27,6 +27,7 @@ const config = {
         resourceRegExp: /canvas/,
         contextRegExp: /jsdom$/,
       }),
+      new webpack.IgnorePlugin(/\.stor(ies|y).[tj]sx$/),
     ]
     return config
   },
@@ -57,6 +58,15 @@ const config = {
         source: '/blog/entry/:slug',
         destination: '/blog/:slug',
         permanent: true,
+      },
+    ]
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: '/storybook/:match*',
+        destination: process.env.STORYBOOK_URL + ':match*',
       },
     ]
   },
