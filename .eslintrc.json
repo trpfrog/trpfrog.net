@@ -5,7 +5,6 @@
   ],
   "ignorePatterns": ["./*"],
   "rules": {
-    "indent": ["error", 2],
     "eol-last": ["error", "always"],
     "react-hooks/exhaustive-deps": ["warn", {
       "additionalHooks": "useSparseCallback"
