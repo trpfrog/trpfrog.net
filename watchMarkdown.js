@@ -7,8 +7,8 @@ const fs = require('fs')
 const chokidar = require('chokidar')
 
 let isUpdating = false
-const postsDir = './posts'
-const scriptDir = './app/blog/_lib/fileWatch.ts'
+const postsDir = './src/posts'
+const scriptDir = './src/app/blog/_lib/fileWatch.ts'
 const originalFileContent = fs.readFileSync(scriptDir, 'utf-8')
 
 const handler = () => {

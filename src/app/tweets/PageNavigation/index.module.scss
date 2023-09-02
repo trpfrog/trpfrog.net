@@ -1,0 +1,49 @@
+@use '@/styles/mixins';
+
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+
+  &[data-current='true'] {
+    background-color: var(--header-color);
+    color: #fff;
+  }
+}
+
+.button:hover {
+  background-color: #e6e6e6;
+  border-color: #adadad;
+  color: #333;
+}
+
+.button_wrapper {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 5px 0 5px;
+}
+
+.navigation {
+  text-align: center;
+  line-height: 1.2;
+  font-weight: bold;
+  margin-top: 0.5em;
+}

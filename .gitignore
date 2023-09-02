@@ -37,7 +37,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # blog draft
-/posts/_*
+/src/posts/_*
 
 # prisma
-/prisma/migrations/
+/src/prisma/migrations/
