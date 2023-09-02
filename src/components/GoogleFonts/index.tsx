@@ -17,6 +17,11 @@ const fontObjectToString = ({ family, weight }: Font) => {
   return val
 }
 
+export const getGoogleFontsUrl = () =>
+  'https://fonts.googleapis.com/css2?' +
+  fonts.map(fontObjectToString).join('&') +
+  '&display=swap'
+
 const GoogleFonts = () => (
   <>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,14 +30,7 @@ const GoogleFonts = () => (
       href="https://fonts.gstatic.com"
       crossOrigin="anonymous"
     />
-    <link
-      href={
-        'https://fonts.googleapis.com/css2?' +
-        fonts.map(fontObjectToString).join('&') +
-        '&display=swap'
-      }
-      rel="stylesheet"
-    />
+    <link href={getGoogleFontsUrl()} rel="stylesheet" />
   </>
 )
 
