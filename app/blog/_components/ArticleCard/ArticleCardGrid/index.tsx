@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./index.module.scss";
+import React from 'react'
+import styles from './index.module.scss'
 
 type Props = React.ComponentProps<'div'> & {
   isHero?: boolean
@@ -13,8 +13,12 @@ export const gridArea = {
 } as const
 
 export default function ArticleCardGrid(props: Props) {
-  const {className, isHero, ...rest} = props
+  const { className, isHero, ...rest } = props
   return (
-    <div className={`${styles.grid} ${className}`} {...rest} data-hero-article={!!isHero}/>
+    <div
+      className={`${styles.grid} ${className}`}
+      {...rest}
+      data-hero-article={!!isHero}
+    />
   )
 }

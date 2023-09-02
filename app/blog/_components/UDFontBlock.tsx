@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import React, {useContext, useEffect, useState} from "react";
-import {parseCookies, setCookie} from "nookies";
-import {faFont, faUniversalAccess} from "@fortawesome/free-solid-svg-icons";
-import EntryButton from "./EntryButton";
-import styles from '@blog/_styles/blog.module.scss';
+import React, { useContext, useEffect, useState } from 'react'
+import { parseCookies, setCookie } from 'nookies'
+import { faFont, faUniversalAccess } from '@fortawesome/free-solid-svg-icons'
+import EntryButton from './EntryButton'
+import styles from '@blog/_styles/blog.module.scss'
 
 export const UDFontStateContext = React.createContext({
   useUDFont: false,
-  setUseUDFont: (() => {}) as any
+  setUseUDFont: (() => {}) as any,
 })
 
-export function UDFontStateProvider(props: {children: React.ReactNode}) {
+export function UDFontStateProvider(props: { children: React.ReactNode }) {
   const COOKIE_NAME_UD = 'useUDFonts'
   const cookie = parseCookies()
   const [useUDFont, setUseUDFont] = useState(false)
@@ -20,9 +20,12 @@ export function UDFontStateProvider(props: {children: React.ReactNode}) {
   }, [cookie])
 
   return (
-    <UDFontStateContext.Provider value={{
-      useUDFont, setUseUDFont
-    }}>
+    <UDFontStateContext.Provider
+      value={{
+        useUDFont,
+        setUseUDFont,
+      }}
+    >
       {props.children}
     </UDFontStateContext.Provider>
   )
@@ -30,7 +33,7 @@ export function UDFontStateProvider(props: {children: React.ReactNode}) {
 
 export function UDFontButton() {
   const COOKIE_NAME_UD = 'useUDFonts'
-  const {useUDFont, setUseUDFont} = useContext(UDFontStateContext)
+  const { useUDFont, setUseUDFont } = useContext(UDFontStateContext)
 
   const handleUDFontButton = () => {
     if (useUDFont) {
@@ -50,20 +53,16 @@ export function UDFontButton() {
   return (
     <a onClick={handleUDFontButton}>
       {useUDFont ? (
-        <EntryButton icon={faFont} text={'通常書体'}/>
+        <EntryButton icon={faFont} text={'通常書体'} />
       ) : (
-        <EntryButton icon={faUniversalAccess} text={'UD書体'}/>
+        <EntryButton icon={faUniversalAccess} text={'UD書体'} />
       )}
     </a>
   )
 }
 
-export function UDFontBlock ({children}: {children: React.ReactNode}) {
-  const {useUDFont} = useContext(UDFontStateContext)
+export function UDFontBlock({ children }: { children: React.ReactNode }) {
+  const { useUDFont } = useContext(UDFontStateContext)
 
-  return (
-    <div className={useUDFont ? styles.with_ud_font : ''}>
-      {children}
-    </div>
-  )
+  return <div className={useUDFont ? styles.with_ud_font : ''}>{children}</div>
 }

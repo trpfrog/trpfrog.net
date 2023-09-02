@@ -1,30 +1,31 @@
-import {myMarkdownClasses as partsDictionary} from "@blog/_components/OriginalMarkdownComponent";
+import { myMarkdownClasses as partsDictionary } from '@blog/_components/OriginalMarkdownComponent'
 
 export const getReadTimeSecond = (markdown: string) => {
-  const imageRegex = new RegExp('\!\\[(.*?)\]\\(.*?\\)', 'g')
-  const linkRegex = new RegExp('[^!]\\[(.*?)\]\\(.*?\\)', 'g')
+  const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
+  const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')
   const linkRemoved = markdown.replace(linkRegex, '$1')
 
-  const codeBlockStack: string[] = [];
+  const codeBlockStack: string[] = []
   const getStackTop = () => {
     if (codeBlockStack.length > 0) {
       return codeBlockStack[codeBlockStack.length - 1]
     } else {
-      return undefined;
+      return undefined
     }
   }
 
-  const utilityCodeBlocks = new Set(Object.keys(partsDictionary).map(e => e.toLowerCase()));
-  utilityCodeBlocks.delete('twitter');
+  const utilityCodeBlocks = new Set(
+    Object.keys(partsDictionary).map(e => e.toLowerCase()),
+  )
+  utilityCodeBlocks.delete('twitter')
   utilityCodeBlocks.delete('ignore-read-count')
 
-  let numOfCharacters: number = 0;
-  let enableWordCounting = true;
+  let numOfCharacters: number = 0
+  let enableWordCounting = true
 
-  const imagePoint = 10;
+  const imagePoint = 10
 
   for (let line of linkRemoved.split('\n')) {
-
     // code block
     if (line.startsWith('```')) {
       const cmd = line.replaceAll('`', '').trim()
@@ -37,60 +38,59 @@ export const getReadTimeSecond = (markdown: string) => {
       } else if (codeBlockStack.length > 0) {
         codeBlockStack.pop()
       }
-      continue;
+      continue
     }
 
     if (codeBlockStack.includes('code-block')) {
-      continue;
+      continue
     }
 
     if (line.startsWith('<!--')) {
       if (line.includes('disable read-count')) {
-        enableWordCounting = false;
+        enableWordCounting = false
       } else if (line.includes('enable read-count')) {
-        enableWordCounting = true;
+        enableWordCounting = true
       }
-      continue;
+      continue
     }
 
     if (line.includes('<style>')) {
-      enableWordCounting = false;
+      enableWordCounting = false
     } else if (line.includes('</style>')) {
-      enableWordCounting = true;
+      enableWordCounting = true
     }
 
     if (!enableWordCounting) {
-      continue;
+      continue
     }
 
     if (getStackTop() === 'twitter-archived') {
       if (line.startsWith('tweet:')) {
-        line = line.slice(7);
+        line = line.slice(7)
       } else if (line.startsWith('image:')) {
-
         // console.log('found image!');
-        numOfCharacters += imagePoint;
-        continue;
+        numOfCharacters += imagePoint
+        continue
       } else {
-        continue;
+        continue
       }
     }
 
     if (line.startsWith('<iframe')) {
-      continue;
+      continue
     }
 
     if (!!line.match(imageRegex)) {
       // console.log('found image!');
-      numOfCharacters += imagePoint;
-      continue;
+      numOfCharacters += imagePoint
+      continue
     }
 
     // console.log(line);
-    numOfCharacters += line.length;
+    numOfCharacters += line.length
   }
 
-  return Math.floor(numOfCharacters * 60 / 700);
+  return Math.floor((numOfCharacters * 60) / 700)
 }
 
 export const formatReadTime = (readTimeSec: number) => {
@@ -103,6 +103,6 @@ export const formatReadTime = (readTimeSec: number) => {
 
   return {
     minutes: readMin.toString(),
-    seconds: readSec !== 0 ? readSec.toString() : '00'
+    seconds: readSec !== 0 ? readSec.toString() : '00',
   }
 }

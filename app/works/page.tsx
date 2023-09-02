@@ -1,27 +1,30 @@
-import Title from "@/components/Title";
-import Block from "@/components/Block";
-import styles from './style.module.scss';
-import React from "react";
-import Image from "next/legacy/image";
-import {Metadata} from "next";
-import ReactMarkdown from "react-markdown";
-import readMarkdowns from "@/lib/mdLoader";
-import path from "path";
-import MainWrapper from "@/components/MainWrapper";
+import Title from '@/components/Title'
+import Block from '@/components/Block'
+import styles from './style.module.scss'
+import React from 'react'
+import Image from 'next/legacy/image'
+import { Metadata } from 'next'
+import ReactMarkdown from 'react-markdown'
+import readMarkdowns from '@/lib/mdLoader'
+import path from 'path'
+import MainWrapper from '@/components/MainWrapper'
 
 type KeywordsType = {
   keywords: string[]
 }
 
-const Keywords: React.FC<KeywordsType> = ({keywords}) => {
+const Keywords: React.FC<KeywordsType> = ({ keywords }) => {
   return (
     <p className={styles.keywords}>
-      <span className={styles.keyword_title}>TECHNOLOGIES</span><br/>
-      {keywords.map(k =>
-        <span key={k} className={styles.keyword}>{k}</span>
-      )}
+      <span className={styles.keyword_title}>TECHNOLOGIES</span>
+      <br />
+      {keywords.map(k => (
+        <span key={k} className={styles.keyword}>
+          {k}
+        </span>
+      ))}
     </p>
-  );
+  )
 }
 
 type Frontmatter = {
@@ -41,26 +44,23 @@ type Frontmatter = {
 
 export const metadata = {
   title: 'Works',
-  description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。'
+  description:
+    'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。',
 } satisfies Metadata
 
 export default async function Index() {
-
   // load all md files under /app/works/contents/*.md
-  const contents = await readMarkdowns<Frontmatter>(path.join('app', 'works', 'contents'))
+  const contents = await readMarkdowns<Frontmatter>(
+    path.join('app', 'works', 'contents'),
+  )
 
   return (
     <MainWrapper>
-      <Title
-        title={metadata.title}
-        description={metadata.description}
-      >
-        <p>
-          最終更新: 2023/5/31
-        </p>
+      <Title title={metadata.title} description={metadata.description}>
+        <p>最終更新: 2023/5/31</p>
       </Title>
 
-      {contents.map(({metadata, content}) => {
+      {contents.map(({ metadata, content }) => {
         return (
           <Block
             key={metadata.title}
@@ -78,7 +78,7 @@ export default async function Index() {
                 />
               </div>
             )}
-            {metadata.keywords && <Keywords keywords={metadata.keywords}/>}
+            {metadata.keywords && <Keywords keywords={metadata.keywords} />}
             <p>
               <b>Released:</b> {metadata.date}
             </p>

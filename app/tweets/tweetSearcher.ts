@@ -1,5 +1,5 @@
-import {Media, PrismaClient, Tweet} from "@prisma/client";
-import dayjs from "dayjs";
+import { Media, PrismaClient, Tweet } from '@prisma/client'
+import dayjs from 'dayjs'
 
 const prisma = new PrismaClient()
 
@@ -14,7 +14,6 @@ export default async function search(searchParams: any) {
   const whereNotQuery: any = []
   const keywords: string[] = []
   for (let queryStr of params.query.split(/[\s　]+/)) {
-
     let queryArr = whereAndQuery
     if (queryStr.startsWith('-')) {
       queryStr = queryStr.slice(1)
@@ -28,13 +27,13 @@ export default async function search(searchParams: any) {
 
     if (/^until:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
       queryArr.push({
-        createdAt: { lt: dayjs(queryStr.slice(6)).add(1, 'day').toDate() }
+        createdAt: { lt: dayjs(queryStr.slice(6)).add(1, 'day').toDate() },
       })
       continue
     }
     if (/^since:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
       queryArr.push({
-        createdAt: { gte: dayjs(queryStr.slice(6)).toDate() }
+        createdAt: { gte: dayjs(queryStr.slice(6)).toDate() },
       })
       continue
     }
@@ -43,32 +42,32 @@ export default async function search(searchParams: any) {
       queryArr.push({
         createdAt: {
           gte: date.toDate(),
-          lt: date.add(1, 'day').toDate()
-        }
+          lt: date.add(1, 'day').toDate(),
+        },
       })
       continue
     }
     if (/^min_faves:\d+$/.test(queryStr)) {
       queryArr.push({
-        favs: { gte: parseInt(queryStr.slice(10), 10) }
+        favs: { gte: parseInt(queryStr.slice(10), 10) },
       })
       continue
     }
     if (/^max_faves:\d+$/.test(queryStr)) {
       queryArr.push({
-        favs: { lte: parseInt(queryStr.slice(10), 10) }
+        favs: { lte: parseInt(queryStr.slice(10), 10) },
       })
       continue
     }
     if (/^min_retweets:\d+$/.test(queryStr)) {
       queryArr.push({
-        retweets: { gte: parseInt(queryStr.slice(13), 10) }
+        retweets: { gte: parseInt(queryStr.slice(13), 10) },
       })
       continue
     }
     if (/^max_retweets:\d+$/.test(queryStr)) {
       queryArr.push({
-        retweets: { lte: parseInt(queryStr.slice(13), 10) }
+        retweets: { lte: parseInt(queryStr.slice(13), 10) },
       })
       continue
     }
@@ -76,7 +75,7 @@ export default async function search(searchParams: any) {
       queryArr.push({
         screenName: {
           equals: queryStr.slice(5),
-        }
+        },
       })
       continue
     }
@@ -84,14 +83,14 @@ export default async function search(searchParams: any) {
     queryArr.push({
       text: {
         contains: queryStr,
-      }
+      },
     })
     keywords.push(queryStr)
   }
 
   let query: any = {
     orderBy: {
-      createdAt: params.asc ? 'asc' : 'desc'
+      createdAt: params.asc ? 'asc' : 'desc',
     },
     where: {
       AND: whereAndQuery,
@@ -111,11 +110,13 @@ export default async function search(searchParams: any) {
     take: maxTweetsPerPage,
     skip: offset,
     include: {
-      media: true
+      media: true,
     },
   }
 
-  const results = await prisma.tweet.findMany(query) as (Tweet & {media: Media[]})[]
+  const results = (await prisma.tweet.findMany(query)) as (Tweet & {
+    media: Media[]
+  })[]
 
   return {
     results,

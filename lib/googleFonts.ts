@@ -56,6 +56,6 @@
 
 // Temporary solution for the next/font issue
 import styles from '@/components/GoogleFonts/index.module.scss'
-const fontVariables = styles.temp_google_font_variables;
+const fontVariables = styles.temp_google_font_variables
 
-export default fontVariables;
+export default fontVariables

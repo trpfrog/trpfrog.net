@@ -1,5 +1,5 @@
 import { LRUCache } from 'lru-cache'
-import {NextResponse} from "next/server";
+import { NextResponse } from 'next/server'
 
 type Options = {
   uniqueTokenPerInterval?: number
@@ -26,7 +26,7 @@ export default function rateLimit(options?: Options) {
         res.headers.set('X-RateLimit-Limit', limit.toString(10))
         res.headers.set(
           'X-RateLimit-Remaining',
-          (isRateLimited ? 0 : limit - currentUsage).toString(10)
+          (isRateLimited ? 0 : limit - currentUsage).toString(10),
         )
 
         return isRateLimited ? reject() : resolve()

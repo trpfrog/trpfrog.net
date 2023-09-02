@@ -1,23 +1,23 @@
-import {getPureCloudinaryPath} from "./getPureCloudinaryPath";
-import BlogPost from "./blogPost";
-import cloudinary from "../../../lib/cloudinary";
-import type {ResourceApiResponse} from "cloudinary";
+import { getPureCloudinaryPath } from './getPureCloudinaryPath'
+import BlogPost from './blogPost'
+import cloudinary from '../../../lib/cloudinary'
+import type { ResourceApiResponse } from 'cloudinary'
 
 export type BlogImageData = {
-  size: { width: number, height: number },
-  public_id?: string,
+  size: { width: number; height: number }
+  public_id?: string
   caption: string
 }
 
 const fetchFromCloudinary = async (slug: string) => {
   let dict = {} as { [path: string]: BlogImageData }
 
-  const searchResult = await cloudinary.search
+  const searchResult = (await cloudinary.search
     .expression(`folder=blog/${slug}`)
     .max_results(500)
-    .execute() as ResourceApiResponse
+    .execute()) as ResourceApiResponse
 
-  searchResult.resources.forEach((image) => {
+  searchResult.resources.forEach(image => {
     const src = '/' + image.public_id
     dict[src] = {
       size: {
@@ -25,15 +25,17 @@ const fetchFromCloudinary = async (slug: string) => {
         height: image.height,
       },
       public_id: image.public_id,
-      caption: ''
+      caption: '',
     }
   })
 
   return dict
 }
 
-export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = true) => {
-
+export const fetchAllImageProps = async (
+  entry: BlogPost,
+  useCloudinaryApi = true,
+) => {
   const markdown = entry.content.join('\n')
   const slug = entry.slug.replace('_', '')
 
@@ -55,7 +57,7 @@ export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = tru
     process.env.CLOUDINARY_CACHE = JSON.stringify(cache)
   }
 
-  const srcRegex = new RegExp('^!\\[.*?\]\\(')
+  const srcRegex = new RegExp('^!\\[.*?]\\(')
 
   const removeLastBracket = (s: string) => {
     const i = s.lastIndexOf(')')
@@ -68,14 +70,14 @@ export const fetchAllImageProps = async (entry: BlogPost, useCloudinaryApi = tru
     .map(line => removeLastBracket(line.replace(srcRegex, '')).split(' '))
     .map(arr => ({
       path: getPureCloudinaryPath(arr[0]),
-      caption: arr[1] ? arr.slice(1).join(' ') : '""'
+      caption: arr[1] ? arr.slice(1).join(' ') : '""',
     }))
-    .forEach(({path, caption}) => {
+    .forEach(({ path, caption }) => {
       dict[path] = {
         ...dict[path],
-        caption: caption.slice(1, caption.length - 1) // Remove double quote
+        caption: caption.slice(1, caption.length - 1), // Remove double quote
       }
     })
 
-  return dict;
+  return dict
 }

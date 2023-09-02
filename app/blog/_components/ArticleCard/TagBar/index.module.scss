@@ -1,15 +1,15 @@
-@use "../../../../../styles/mixins";
+@use '../../../../../styles/mixins';
 
 .tags {
-    margin: 4px 0 2px 4px;
-    overflow-x: scroll;
+  margin: 4px 0 2px 4px;
+  overflow-x: scroll;
 
-    &::-webkit-scrollbar{
-        display: none;
-    }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-    white-space: nowrap;
-    a {
-        margin-right: 4px;
-    }
+  white-space: nowrap;
+  a {
+    margin-right: 4px;
+  }
 }

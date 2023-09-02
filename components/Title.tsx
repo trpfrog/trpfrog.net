@@ -1,5 +1,5 @@
-import React, {CSSProperties} from "react";
-import Block from "./Block";
+import React, { CSSProperties } from 'react'
+import Block from './Block'
 
 type Props = {
   title?: string
@@ -12,18 +12,13 @@ type Props = {
   className?: string
 }
 
-const Title: React.FunctionComponent<Props> = (props) => {
-  const {
-    children,
-    title,
-    description,
-    showDefaultText = true
-  } = props
+const Title: React.FunctionComponent<Props> = props => {
+  const { children, title, description, showDefaultText = true } = props
 
   return (
     <>
       <Block
-        id={"title"}
+        id={'title'}
         className={props.className}
         ribbonText={props.ribbonText ?? ''}
         style={props.style}
@@ -35,7 +30,7 @@ const Title: React.FunctionComponent<Props> = (props) => {
         </div>
       </Block>
     </>
-  );
+  )
 }
 
-export default Title;
+export default Title

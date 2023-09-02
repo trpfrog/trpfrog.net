@@ -5,9 +5,7 @@ const Footer = () => {
   return (
     <footer id={styles.footer}>
       <div id={styles.inner_footer}>
-        <p id={styles.copyright}>
-          &copy; 2019-2023 つまみ
-        </p>
+        <p id={styles.copyright}>&copy; 2019-2023 つまみ</p>
         <p>
           <Link href={'/legal'} className={styles.footer_button}>
             Legal
@@ -15,7 +13,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

@@ -1,54 +1,51 @@
 @use '../../../../../styles/mixins';
 
 .profile_card_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(280px,1fr);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
 
-    white-space: nowrap;
-    gap: 1em;
-    overflow-x: scroll;
-    margin: 1em 0;
+  white-space: nowrap;
+  gap: 1em;
+  overflow-x: scroll;
+  margin: 1em 0;
 
-    p {
-        margin: 0;
-    }
+  p {
+    margin: 0;
+  }
 }
 
 .profile_card {
-    display: inline-block;
-    border-radius: 10px;
-    overflow: hidden;
-    background: rgb(207, 241, 166);
-    @include mixins.mq(dark) {
-        background: var(--body-background);
-    }
-    padding: 1em;
-    white-space: normal;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgb(207, 241, 166);
+  @include mixins.mq(dark) {
+    background: var(--body-background);
+  }
+  padding: 1em;
+  white-space: normal;
 }
 
 .name {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.2em;
-    white-space: nowrap;
-    margin: 0.5em 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  white-space: nowrap;
+  margin: 0.5em 0;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .club {
-
 }
 
 .twitter_id {
-
 }
 
 .description {
-
 }

@@ -1,8 +1,8 @@
-import matter from "gray-matter";
-import parse from "@blog/_lib/parse";
-import {getReadTimeSecond} from "@blog/_lib/readTime";
-import type {BlogPostOption} from "@blog/_lib/load";
-import { z } from "zod";
+import matter from 'gray-matter'
+import parse from '@blog/_lib/parse'
+import { getReadTimeSecond } from '@blog/_lib/readTime'
+import type { BlogPostOption } from '@blog/_lib/load'
+import { z } from 'zod'
 
 export default interface BlogPost {
   title: string
@@ -23,11 +23,13 @@ export default interface BlogPost {
 }
 
 // YYYY-MM-DD
-const zBlogDate = z.coerce.date().transform((date) => {
+const zBlogDate = z.coerce.date().transform(date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
-  return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+  return `${year}-${month.toString().padStart(2, '0')}-${day
+    .toString()
+    .padStart(2, '0')}`
 })
 
 export const blogFrontMatterSchema = z.object({
@@ -46,7 +48,6 @@ export const buildBlogPost = (
   markdownString: string,
   option?: BlogPostOption,
 ): BlogPost => {
-
   const matterResult = matter(markdownString)
   const pagePosition = option?.pagePos1Indexed ?? -1
 
@@ -57,8 +58,7 @@ export const buildBlogPost = (
 
   const numberOfPhotos = matterResult.content
     .split('\n')
-    .filter(e => e.startsWith('!['))
-    .length
+    .filter(e => e.startsWith('![')).length
 
   const parsedContent: string[][] = parse(matterResult.content)
   let content: string[] = []
@@ -84,12 +84,15 @@ export const buildBlogPost = (
     currentPage: pagePosition,
     readTime: getReadTimeSecond(matterResult.content),
     numberOfPhotos,
-    ...matterResult.data
+    ...matterResult.data,
   } as BlogPost
 }
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
-  const {content, ...rest} = blogPost
+  const { content, ...rest } = blogPost
   const frontMatter = blogFrontMatterSchema.parse(rest)
-  return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
+  return matter.stringify(
+    content.join('\n\n<!-- page break -->\n\n'),
+    frontMatter,
+  )
 }

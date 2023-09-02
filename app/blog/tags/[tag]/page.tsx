@@ -1,10 +1,10 @@
-import {getAllTags, getSortedPostsData} from "@blog/_lib/load";
-import Title from "@/components/Title";
-import Link from "next/link";
-import React from "react";
-import ArticleCard from "@blog/_components/ArticleCard";
-import MainWrapper from "@/components/MainWrapper";
-import ArticleGrid from "@blog/_components/ArticleGrid";
+import { getAllTags, getSortedPostsData } from '@blog/_lib/load'
+import Title from '@/components/Title'
+import Link from 'next/link'
+import React from 'react'
+import ArticleCard from '@blog/_components/ArticleCard'
+import MainWrapper from '@/components/MainWrapper'
+import ArticleGrid from '@blog/_components/ArticleGrid'
 
 export async function generateStaticParams() {
   const tags = await getAllTags()
@@ -24,24 +24,28 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function Index ({ params }: Props) {
+export default async function Index({ params }: Props) {
   const tag = decodeURIComponent(params!.tag)
   const articles = await getSortedPostsData(tag)
 
-  return <>
-    <MainWrapper>
-      <Title>
-        <h1>タグ「{tag}」の記事一覧</h1>
-        <p>
-          <Link href={'/blog'} className={'linkButton'}>
-            記事一覧に戻る
-          </Link>
-        </p>
-      </Title>
+  return (
+    <>
+      <MainWrapper>
+        <Title>
+          <h1>タグ「{tag}」の記事一覧</h1>
+          <p>
+            <Link href={'/blog'} className={'linkButton'}>
+              記事一覧に戻る
+            </Link>
+          </p>
+        </Title>
 
-      <ArticleGrid>
-        {articles.map(entry => <ArticleCard entry={entry} key={entry.slug}/>)}
-      </ArticleGrid>
-    </MainWrapper>
-  </>;
+        <ArticleGrid>
+          {articles.map(entry => (
+            <ArticleCard entry={entry} key={entry.slug} />
+          ))}
+        </ArticleGrid>
+      </MainWrapper>
+    </>
+  )
 }

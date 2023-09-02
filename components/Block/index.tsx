@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./index.module.scss";
+import React from 'react'
+import styles from './index.module.scss'
 
 type Props = React.ComponentProps<'div'> & {
   title?: string
@@ -8,7 +8,7 @@ type Props = React.ComponentProps<'div'> & {
   ribbonText?: string
 }
 
-export default function Block (props: Props) {
+export default function Block(props: Props) {
   const {
     newRibbon,
     ribbonText: initialRibbonText = '',
@@ -17,18 +17,14 @@ export default function Block (props: Props) {
     className,
     children,
     ...otherProps
-  } = props;
+  } = props
 
   let ribbonText = initialRibbonText
 
-  let ribbon = <></>;
-  if (newRibbon) ribbonText = 'NEW!';
+  let ribbon = <></>
+  if (newRibbon) ribbonText = 'NEW!'
   if (ribbonText != '') {
-    ribbon = (
-      <span className={styles['new-ribbon']}>
-        {ribbonText}
-      </span>
-    )
+    ribbon = <span className={styles['new-ribbon']}>{ribbonText}</span>
   }
 
   return (

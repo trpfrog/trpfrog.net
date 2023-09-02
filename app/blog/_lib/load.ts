@@ -1,25 +1,24 @@
 import fs from 'fs'
 import path from 'path'
-import matter from "gray-matter";
-import {getReadTimeSecond} from "./readTime";
-import parse from "./parse";
-import BlogPost from "./blogPost";
+import matter from 'gray-matter'
+import { getReadTimeSecond } from './readTime'
+import parse from './parse'
+import BlogPost from './blogPost'
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), 'posts')
 
 const getFileContents = (slug: string) => {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(postsDirectory, `${slug}.md`)
   return fs.existsSync(fullPath)
     ? fs.readFileSync(fullPath, 'utf8')
     : fs.readFileSync(fullPath + 'x', 'utf8')
 }
 
-const fetchAllMarkdownFileNames = async () => (
+const fetchAllMarkdownFileNames = async () =>
   (await fs.promises.readdir(postsDirectory)).filter(e => {
     const ext = e.split('.').slice(-1)[0]
     return ext === 'md' || ext === 'mdx'
   })
-)
 
 export type BlogPostOption = Partial<{
   pagePos1Indexed: number
@@ -34,9 +33,8 @@ export const buildBlogPost = async (
   slug: string,
   markdownString: string,
   option?: BlogPostOption,
-  previewContentId?: string
+  previewContentId?: string,
 ): Promise<BlogPost> => {
-
   const matterResult = matter(markdownString)
   const pagePosition = option?.pagePos1Indexed ?? -1
 
@@ -47,8 +45,7 @@ export const buildBlogPost = async (
 
   const numberOfPhotos = matterResult.content
     .split('\n')
-    .filter(e => e.startsWith('!['))
-    .length
+    .filter(e => e.startsWith('![')).length
 
   const parsedContent: string[][] = parse(matterResult.content)
   let content: string[] = []
@@ -82,7 +79,7 @@ export const buildBlogPost = async (
     currentPage: pagePosition,
     readTime: getReadTimeSecond(matterResult.content),
     numberOfPhotos,
-    ...matterResult.data
+    ...matterResult.data,
   } as BlogPost
 }
 
@@ -91,28 +88,27 @@ export const getPostData = async (slug: string, option?: BlogPostOption) => {
   return await buildBlogPost(slug, fileContents, option)
 }
 
-
 export const getSortedPostsData = async (tag: string = '') => {
   const fileNames = await fetchAllMarkdownFileNames()
   const allPostsData = fileNames
     .map(fileName => {
-      const slug = fileName
-        .replace(/\.mdx$/, '')
-        .replace(/\.md$/, '')
+      const slug = fileName.replace(/\.mdx$/, '').replace(/\.md$/, '')
       const fileContents = getFileContents(slug)
-      return {matterResult: matter(fileContents), slug}
+      return { matterResult: matter(fileContents), slug }
     })
-    .filter(({matterResult}) => (tag == '') || matterResult.data.tags.search(tag) != -1)
-    .map(({matterResult, slug}) => {
+    .filter(
+      ({ matterResult }) =>
+        tag == '' || matterResult.data.tags.search(tag) != -1,
+    )
+    .map(({ matterResult, slug }) => {
       return {
         slug,
         readTime: getReadTimeSecond(matterResult.content),
-        ...matterResult.data
+        ...matterResult.data,
       } as BlogPost
-    }
-    )
+    })
 
-  const sorted = allPostsData.sort(({date: a}, {date: b}) => {
+  const sorted = allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
       return 1
     } else if (a > b) {
@@ -120,7 +116,7 @@ export const getSortedPostsData = async (tag: string = '') => {
     } else {
       return 0
     }
-  });
+  })
 
   return JSON.parse(JSON.stringify(sorted)) as BlogPost[]
 }
@@ -133,9 +129,7 @@ export const getAllPostSlugs = async (): Promise<string[]> => {
 export const getAllTags = async () => {
   const fileNames = await fetchAllMarkdownFileNames()
   const nested = fileNames
-    .map(fileName => fileName
-      .replace(/\.mdx$/, '')
-      .replace(/\.md$/, ''))
+    .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
     .map(slug => getFileContents(slug))
     .map(contents => matter(contents).data.tags as string)
     .map(tags => tags.split(',').map(tag => tag.trim()))
@@ -145,8 +139,8 @@ export const getAllTags = async () => {
   return tags.map(tag => {
     return {
       params: {
-        tag
-      }
+        tag,
+      },
     }
   })
 }

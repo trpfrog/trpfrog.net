@@ -1,40 +1,53 @@
-import React, {useCallback} from "react";
-import {useKeyboardEvent, useUnmountEffect} from "@react-hookz/web";
-import toast from "react-hot-toast";
-import {setTimeoutPromise} from "@/lib/setTimeoutPromise";
+import React, { useCallback } from 'react'
+import { useKeyboardEvent, useUnmountEffect } from '@react-hookz/web'
+import toast from 'react-hot-toast'
+import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
-export default function useSaveArticle(slug: string, articleText: string, delayMs: number) {
+export default function useSaveArticle(
+  slug: string,
+  articleText: string,
+  delayMs: number,
+) {
   const [alreadySaved, setAlreadySaved] = React.useState(true)
 
-  const isSaveKeyPressed = useCallback((e: KeyboardEvent) => (
-    ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) && e.key == 's'
-  ), [])
+  const isSaveKeyPressed = useCallback(
+    (e: KeyboardEvent) =>
+      ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) && e.key == 's',
+    [],
+  )
 
-  useKeyboardEvent(isSaveKeyPressed, (e) => {
-    e.preventDefault()
+  useKeyboardEvent(
+    isSaveKeyPressed,
+    e => {
+      e.preventDefault()
 
-    const openEditor = () => fetch(`/api/blog/open/${slug}`)
+      const openEditor = () => fetch(`/api/blog/open/${slug}`)
 
-    if (alreadySaved) {
-      toast(<span onClick={openEditor}>Already saved!</span>, {icon: '👍', duration: 2000})
-      return
-    }
-
-    void toast.promise(
-      setTimeoutPromise(() => {
-        setAlreadySaved(false)
-        void fetch(`/blog/edit/${slug}/api/save`, {
-          method: 'POST',
-          body: articleText,
+      if (alreadySaved) {
+        toast(<span onClick={openEditor}>Already saved!</span>, {
+          icon: '👍',
+          duration: 2000,
         })
-      }, delayMs),
-      {
-        loading: 'Saving...',
-        success: <b onClick={openEditor}>Saved!</b>,
-        error: <b>Something went wrong...</b>,
+        return
       }
-    )
-  }, [slug, articleText, setAlreadySaved])
+
+      void toast.promise(
+        setTimeoutPromise(() => {
+          setAlreadySaved(false)
+          void fetch(`/blog/edit/${slug}/api/save`, {
+            method: 'POST',
+            body: articleText,
+          })
+        }, delayMs),
+        {
+          loading: 'Saving...',
+          success: <b onClick={openEditor}>Saved!</b>,
+          error: <b>Something went wrong...</b>,
+        },
+      )
+    },
+    [slug, articleText, setAlreadySaved],
+  )
 
   useUnmountEffect(() => {
     if (!alreadySaved) {
@@ -43,6 +56,6 @@ export default function useSaveArticle(slug: string, articleText: string, delayM
   })
 
   return {
-    markAsUnsaved: useCallback(() => setAlreadySaved(false), [setAlreadySaved])
+    markAsUnsaved: useCallback(() => setAlreadySaved(false), [setAlreadySaved]),
   }
 }

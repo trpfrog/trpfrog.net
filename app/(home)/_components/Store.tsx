@@ -1,17 +1,17 @@
-import Block from "@/components/Block";
-import styles from "@/app/(home)/style.module.scss";
-import Image from "next/legacy/image";
-
+import Block from '@/components/Block'
+import styles from '@/app/(home)/style.module.scss'
+import Image from 'next/legacy/image'
 
 type Props = {
   id?: string
 }
 
-const Store = ({id}: Props) => {
+const Store = ({ id }: Props) => {
   return (
     <Block title={'ストア'} h2icon={'otaku'} id={id}>
       <p>
-        つまみさんのスタンプ・グッズ<br/>
+        つまみさんのスタンプ・グッズ
+        <br />
         好評発売中！
       </p>
       <div className={styles.link_grid}>
@@ -19,7 +19,9 @@ const Store = ({id}: Props) => {
           <a
             href="https://store.line.me/stickershop/product/4674940/ja"
             className="linkButton"
-          >LINEスタンプ vol.1</a>
+          >
+            LINEスタンプ vol.1
+          </a>
         </div>
         <div className={styles.link_block}>
           <Image
@@ -34,8 +36,10 @@ const Store = ({id}: Props) => {
           <a
             href="https://store.line.me/stickershop/product/8879469/ja"
             className="linkButton"
-            style={{marginTop: '10px'}}
-          >LINEスタンプ vol.2</a>
+            style={{ marginTop: '10px' }}
+          >
+            LINEスタンプ vol.2
+          </a>
         </div>
         <div className={styles.link_block}>
           <Image
@@ -46,10 +50,9 @@ const Store = ({id}: Props) => {
             objectFit={'contain'}
             alt={'つまみグッズの画像'}
           />
-          <a
-            href="https://suzuri.jp/TrpFrog"
-            className="linkButton"
-          >つまみグッズ on SUZURI</a>
+          <a href="https://suzuri.jp/TrpFrog" className="linkButton">
+            つまみグッズ on SUZURI
+          </a>
         </div>
       </div>
     </Block>

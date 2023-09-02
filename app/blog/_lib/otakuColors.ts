@@ -1,8 +1,9 @@
-const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28';
+const trpfrogUrl =
+  'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
 
 const palette = {
   azukibarStick: '248, 218, 192',
-  azukibarColor: '208, 138, 136'
+  azukibarColor: '208, 138, 136',
 }
 
 const colors: { [id: string]: string } = {
@@ -25,7 +26,7 @@ const colors: { [id: string]: string } = {
   fmnpt: 'mediumvioletred',
   lupicure20: 'rgb(195, 220, 249)',
   sakuramochi0708: 'rgb(250, 216, 255)',
-  ebioishii_u: '#cc986d'
+  ebioishii_u: '#cc986d',
 }
 
 const getOtakuColor = (twitterId: string): string => {

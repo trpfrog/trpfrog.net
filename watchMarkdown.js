@@ -3,8 +3,8 @@
  * Source: https://miyaoka.dev/posts/2020-12-31-hmr-on-markdown
  */
 
-const fs = require('fs');
-const chokidar = require('chokidar');
+const fs = require('fs')
+const chokidar = require('chokidar')
 
 let isUpdating = false
 const postsDir = './posts'
@@ -25,7 +25,6 @@ const handler = () => {
 }
 
 chokidar
-  .watch(postsDir, {ignoreInitial: true})
+  .watch(postsDir, { ignoreInitial: true })
   .on('add', handler)
-  .on('change', handler);
-
+  .on('change', handler)

@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 export default function SearchBox() {
   return (
@@ -6,12 +6,13 @@ export default function SearchBox() {
       https://trpfrog.net/fuzzy/{' '}
       <input type="text" name="url" placeholder="fuzzy-string" />
       <input
-        type="submit" value="Go"
+        type="submit"
+        value="Go"
         onClick={() => {
           // @ts-ignore
-          const url = document.querySelector('input[name="url"]').value;
+          const url = document.querySelector('input[name="url"]').value
           if (url) {
-            window.location.href = `https://trpfrog.net/fuzzy/${url}`;
+            window.location.href = `https://trpfrog.net/fuzzy/${url}`
           }
         }}
       />

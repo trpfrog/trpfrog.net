@@ -1,16 +1,15 @@
-import type {Metadata} from 'next'
-import Title from "@/components/Title";
-import Block from "@/components/Block";
-import MainWrapper from "@/components/MainWrapper";
-import ImageList, {ImagePaths} from "@/app/(gallery)/_components/ImageList";
+import type { Metadata } from 'next'
+import Title from '@/components/Title'
+import Block from '@/components/Block'
+import MainWrapper from '@/components/MainWrapper'
+import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
 
 export const metadata = {
   title: 'スタンプ素材集',
-  description: 'つまみスタンプの素材集です'
+  description: 'つまみスタンプの素材集です',
 } satisfies Metadata
 
 export default function Index() {
-
   const imagePaths: ImagePaths[] = Array.from(Array(80), (v, k) => k).map(i => {
     return {
       src: 'stickers/' + i,
@@ -22,15 +21,17 @@ export default function Index() {
     <MainWrapper>
       <Title title={metadata.title}>
         <p>
-          つまみスタンプの元画像の5倍に拡大したやつです。<br/>
+          つまみスタンプの元画像の5倍に拡大したやつです。
+          <br />
           良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
         </p>
-        <a href={'https://store.line.me/stickershop/product/8879469/ja'}>LINEスタンプ発売中！</a>
+        <a href={'https://store.line.me/stickershop/product/8879469/ja'}>
+          LINEスタンプ発売中！
+        </a>
       </Title>
       <Block>
-        <ImageList images={imagePaths}/>
+        <ImageList images={imagePaths} />
       </Block>
     </MainWrapper>
-  );
+  )
 }
-

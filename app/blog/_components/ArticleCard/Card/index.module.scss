@@ -1,29 +1,28 @@
-@use "../../../../../styles/mixins";
+@use '../../../../../styles/mixins';
 
 .window {
-    display: block;
-    background: var(--window-bkg-color);
-    width: 100%;
-    border-radius: 20px;
-    overflow: hidden;
+  display: block;
+  background: var(--window-bkg-color);
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    color: var(--base-font-color) !important;
-    text-decoration: none;
+  color: var(--base-font-color) !important;
+  text-decoration: none;
 
-    $shadow-height: 6px;
-    box-shadow: 0 $shadow-height 0 var(--window-bottom-color);
-    transition: 100ms;
+  $shadow-height: 6px;
+  box-shadow: 0 $shadow-height 0 var(--window-bottom-color);
+  transition: 100ms;
 
-    &:hover {
-        box-shadow: 0 ($shadow-height * 1.5) 0 var(--window-bottom-color);
-        transform: translateY(- $shadow-height / 2);
-    }
+  &:hover {
+    box-shadow: 0 ($shadow-height * 1.5) 0 var(--window-bottom-color);
+    transform: translateY(-$shadow-height / 2);
+  }
 
-    &:active {
-        box-shadow: none;
-        transform: translateY($shadow-height / 2);
-    }
+  &:active {
+    box-shadow: none;
+    transform: translateY($shadow-height / 2);
+  }
 }
-

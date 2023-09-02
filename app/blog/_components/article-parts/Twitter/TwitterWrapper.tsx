@@ -1,5 +1,5 @@
-'use client';
+'use client'
 
-import {Tweet} from "react-twitter-widgets";
+import { Tweet } from 'react-twitter-widgets'
 
-export {Tweet}
+export { Tweet }

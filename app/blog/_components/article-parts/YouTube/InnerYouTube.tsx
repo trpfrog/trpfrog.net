@@ -1,15 +1,19 @@
-'use client';
+'use client'
 
-import YouTube from "react-youtube";
-import ReactPlayer from "react-player/youtube";
-import React from "react";
+import YouTube from 'react-youtube'
+import ReactPlayer from 'react-player/youtube'
+import React from 'react'
 
-export const InnerYouTube = React.memo(function InnerYouTube({content}: {content: string}) {
+export const InnerYouTube = React.memo(function InnerYouTube({
+  content,
+}: {
+  content: string
+}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={{ textAlign: 'center' }}>
       <YouTube
         videoId={id}
         className={'youtube-outer'}
@@ -19,12 +23,22 @@ export const InnerYouTube = React.memo(function InnerYouTube({content}: {content
   )
 })
 
-export const InnerAutoYouTube = React.memo(function InnerAutoYouTube({content}: {content: string}) {
+export const InnerAutoYouTube = React.memo(function InnerAutoYouTube({
+  content,
+}: {
+  content: string
+}) {
   const lines = content.split('\n')
   const id = lines[0].trim()
   const title = lines[1]?.trim()
   return (
-    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <ReactPlayer
         url={'https://www.youtube.com/watch?v=' + id}
         playing={true}
@@ -33,11 +47,10 @@ export const InnerAutoYouTube = React.memo(function InnerAutoYouTube({content}: 
           playerVars: {
             modestbranding: 1,
             loop: 1,
-            playlist: id  // it is needed to loop video
-          }
+            playlist: id, // it is needed to loop video
+          },
         }}
       />
     </div>
   )
 })
-

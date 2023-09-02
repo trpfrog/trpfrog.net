@@ -3,84 +3,84 @@
 // Grid definition
 
 #top_page_grid_wrapper {
-    background: var(--body-background);
-    padding: 2em;
-    margin: 0;
+  background: var(--body-background);
+  padding: 2em;
+  margin: 0;
 }
 
 @include mixins.mq(sp) {
-    #top_page_grid_wrapper {
-        padding: 8px 0 0;
-    }
+  #top_page_grid_wrapper {
+    padding: 8px 0 0;
+  }
 }
 
 #top_page_grid {
-    max-width: 1000px;
-    display: inline-grid;
-    grid-template-areas:
-            "about_me about_me whats_new"
-            "about_me about_me whats_new"
-            "sticker  icons    icons"
-            "sticker  music    music"
-            "bird     music    music"
-            "balloon  balloon  balloon"
-            "links    links    music_game";
-    grid-template-columns: 3fr 2fr 3fr;
-    grid-gap: var(--main-margin);
-    text-align: left;
+  max-width: 1000px;
+  display: inline-grid;
+  grid-template-areas:
+    'about_me about_me whats_new'
+    'about_me about_me whats_new'
+    'sticker  icons    icons'
+    'sticker  music    music'
+    'bird     music    music'
+    'balloon  balloon  balloon'
+    'links    links    music_game';
+  grid-template-columns: 3fr 2fr 3fr;
+  grid-gap: var(--main-margin);
+  text-align: left;
 }
 
 @include mixins.mq(sp) {
-    #top_page_grid {
-        grid-template-areas:
-            "about_me"
-            "whats_new"
-            "icons"
-            "music"
-            "sticker"
-            "balloon"
-            "links"
-            "music_game"
-            "bird"
-            "stats";
-        grid-template-columns: 1fr;
-    }
+  #top_page_grid {
+    grid-template-areas:
+      'about_me'
+      'whats_new'
+      'icons'
+      'music'
+      'sticker'
+      'balloon'
+      'links'
+      'music_game'
+      'bird'
+      'stats';
+    grid-template-columns: 1fr;
+  }
 }
 
 // Grid-area definition
 
 #about_me_grid {
-    grid-area: about_me;
+  grid-area: about_me;
 }
 
 #music_game {
-    grid-area: music_game;
+  grid-area: music_game;
 }
 
 #links {
-    grid-area: links;
+  grid-area: links;
 }
 
 #music {
-    grid-area: music;
+  grid-area: music;
 }
 
 #icons {
-    grid-area: icons;
+  grid-area: icons;
 }
 
 #balloon {
-    grid-area: balloon;
+  grid-area: balloon;
 }
 
 #sticker {
-    grid-area: sticker;
+  grid-area: sticker;
 }
 
 #bird {
-    grid-area: bird;
+  grid-area: bird;
 }
 
 #whats_new {
-    grid-area: whats_new;
+  grid-area: whats_new;
 }

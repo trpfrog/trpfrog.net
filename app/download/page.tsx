@@ -1,15 +1,15 @@
-import Image from "next/legacy/image";
-import Title from "@/components/Title";
-import Block from "@/components/Block";
-import {Metadata} from "next";
-import path from "path";
-import ReactMarkdown from "react-markdown";
-import readMarkdowns from "@/lib/mdLoader";
-import MainWrapper from "@/components/MainWrapper";
+import Image from 'next/legacy/image'
+import Title from '@/components/Title'
+import Block from '@/components/Block'
+import { Metadata } from 'next'
+import path from 'path'
+import ReactMarkdown from 'react-markdown'
+import readMarkdowns from '@/lib/mdLoader'
+import MainWrapper from '@/components/MainWrapper'
 
 export const metadata = {
   title: 'DLコンテンツ',
-  description: '壁紙などダウンロードできるコンテンツの提供ページです。'
+  description: '壁紙などダウンロードできるコンテンツの提供ページです。',
 } satisfies Metadata
 
 type Frontmatter = {
@@ -29,24 +29,17 @@ type Frontmatter = {
 }
 
 export default async function Index() {
-
-  const contents = await readMarkdowns<Frontmatter>(path.join('app', 'download', 'contents'))
+  const contents = await readMarkdowns<Frontmatter>(
+    path.join('app', 'download', 'contents'),
+  )
 
   return (
     <MainWrapper>
-      <Title
-        title={metadata.title}
-        description={metadata.description}
-      />
-      {contents.map(({metadata, content}) => {
+      <Title title={metadata.title} description={metadata.description} />
+      {contents.map(({ metadata, content }) => {
         return (
-          <Block
-            key={metadata.title}
-            title={metadata.title}
-          >
-            <p>
-              {metadata.description}
-            </p>
+          <Block key={metadata.title} title={metadata.title}>
+            <p>{metadata.description}</p>
             {metadata.image && (
               <div className={'hero_image'}>
                 <Image
@@ -59,15 +52,10 @@ export default async function Index() {
                 />
               </div>
             )}
-            <ReactMarkdown>
-              {content}
-            </ReactMarkdown>
+            <ReactMarkdown>{content}</ReactMarkdown>
             <div className={'link-area'}>
-              {metadata.links.map(({href, text}) => (
-                <a
-                  key={href}
-                  href={href}
-                >
+              {metadata.links.map(({ href, text }) => (
+                <a key={href} href={href}>
                   {text}
                 </a>
               ))}

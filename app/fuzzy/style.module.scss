@@ -1,11 +1,11 @@
 @use '../../styles/mixins';
 
 .title {
-    font-size: 4rem;
-    font-weight: initial;
-    color: #333;
+  font-size: 4rem;
+  font-weight: initial;
+  color: #333;
 
-    @include mixins.mq(sp) {
-      font-size: 2rem;
-    }
+  @include mixins.mq(sp) {
+    font-size: 2rem;
+  }
 }

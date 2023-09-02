@@ -6,57 +6,57 @@ $link-button-color-highlighted: var(--link-button-color-highlighted);
 $link-button-font-color: var(--link-button-font-color);
 
 .linkButton {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-    line-height: 1;
-    padding: 0.7em 1em;
-    cursor: pointer;
-    border-radius: 1000px; // INF
-    box-sizing: border-box;
+  line-height: 1;
+  padding: 0.7em 1em;
+  cursor: pointer;
+  border-radius: 1000px; // INF
+  box-sizing: border-box;
 
-    @media screen {
-        background: $link-button-color;
-        box-shadow: 0 4px 0 $link-button-color-bottom;
-        color: $link-button-font-color !important;
+  @media screen {
+    background: $link-button-color;
+    box-shadow: 0 4px 0 $link-button-color-bottom;
+    color: $link-button-font-color !important;
+  }
+
+  @media print {
+    border: solid 0.6mm black;
+  }
+
+  font-family: var(--font-m-plus-rounded-1c);
+  text-align: center;
+  font-weight: bold;
+
+  text-decoration: none;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  margin-bottom: 4px;
+  transition: 100ms;
+
+  @include mixins.mq(pc) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 $link-button-color-bottom;
     }
+  }
 
-    @media print {
-        border: solid 0.6mm black;
-    }
-
-    font-family: var(--font-m-plus-rounded-1c);
-    text-align: center;
-    font-weight: bold;
-
-    text-decoration: none;
-
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-    margin-bottom: 4px;
-    transition: 100ms;
-
-    @include mixins.mq(pc) {
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 $link-button-color-bottom;
-        }
-    }
-
-    &:active {
-        transform: translateY(2px);
-        box-shadow: 0 0 0 $link-button-color-bottom;
-    }
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 $link-button-color-bottom;
+  }
 }
 
 .link-area {
-    a {
-        @extend .linkButton;
-        margin-right: 6px;
-        margin-bottom: 8px;
-    }
+  a {
+    @extend .linkButton;
+    margin-right: 6px;
+    margin-bottom: 8px;
+  }
 }

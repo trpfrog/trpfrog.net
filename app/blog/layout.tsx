@@ -1,7 +1,7 @@
-import React from "react";
-import {BadBlogStateProvider} from "@blog/_components/BadBlog";
-import {UDFontStateProvider} from "@blog/_components/UDFontBlock";
-import {Metadata} from "next";
+import React from 'react'
+import { BadBlogStateProvider } from '@blog/_components/BadBlog'
+import { UDFontStateProvider } from '@blog/_components/UDFontBlock'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {
@@ -14,12 +14,10 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function BlogLayout({children}: Props) {
+export default function BlogLayout({ children }: Props) {
   return (
     <BadBlogStateProvider>
-      <UDFontStateProvider>
-        {children}
-      </UDFontStateProvider>
+      <UDFontStateProvider>{children}</UDFontStateProvider>
     </BadBlogStateProvider>
   )
 }

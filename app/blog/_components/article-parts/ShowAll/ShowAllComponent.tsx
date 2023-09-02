@@ -1,23 +1,25 @@
-'use client';
-import React, {useState} from "react";
+'use client'
+import React, { useState } from 'react'
 
 type Props = {
   children: React.ReactNode
   preview: React.ReactNode
   className?: string
 }
-export const ShowAllComponent = ({children, preview, className}: Props) => {
+export const ShowAllComponent = ({ children, preview, className }: Props) => {
   const Fog = () => (
-    <div style={{
-      position: 'absolute',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      bottom: 0,
-      background: 'linear-gradient(transparent, var(--window-bkg-color))',
-      width: '100%',
-      height: 'min(60%, 400px)'
-    }}/>
+    <div
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        bottom: 0,
+        background: 'linear-gradient(transparent, var(--window-bkg-color))',
+        width: '100%',
+        height: 'min(60%, 400px)',
+      }}
+    />
   )
 
   const [isShowAll, setShowAll] = useState(false)
@@ -30,12 +32,12 @@ export const ShowAllComponent = ({children, preview, className}: Props) => {
           {children}
         </div>
       ) : (
-        <div style={{position: 'relative'}} className={className}>
+        <div style={{ position: 'relative' }} className={className}>
           {preview}
-          <Fog/>
+          <Fog />
         </div>
       )}
-      <div style={{textAlign: 'center', position: 'sticky', bottom: 10}}>
+      <div style={{ textAlign: 'center', position: 'sticky', bottom: 10 }}>
         <div
           style={{
             cursor: 'pointer',
@@ -45,7 +47,7 @@ export const ShowAllComponent = ({children, preview, className}: Props) => {
             width: 'fit-content',
             display: 'inline-block',
             padding: '.2rem 1rem',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}
           onClick={() => setShowAll(!isShowAll)}
         >

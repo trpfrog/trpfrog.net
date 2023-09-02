@@ -1,11 +1,12 @@
-import {parseInlineMarkdown} from "@blog/_renderer/BlogMarkdown";
-import React from "react";
-import styles from "./index.module.scss";
-import {IsomorphicArticleParts} from "../../ArticleParts";
+import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+import React from 'react'
+import styles from './index.module.scss'
+import { IsomorphicArticleParts } from '../../ArticleParts'
 
-const Conversation: IsomorphicArticleParts = ({content}) => (
+const Conversation: IsomorphicArticleParts = ({ content }) => (
   <div className={styles.box_grid}>
-    {content.split('\n')
+    {content
+      .split('\n')
       .reduce((arr, line) => {
         if (line.includes(':')) {
           arr.push(line)
@@ -21,8 +22,9 @@ const Conversation: IsomorphicArticleParts = ({content}) => (
         let outOfComment = ''
         const leftArrowIdentifier = '  ←'
         if (comment.includes(leftArrowIdentifier)) {
-          [comment, outOfComment] =
-            comment.split(leftArrowIdentifier).map(e => e.trim())
+          ;[comment, outOfComment] = comment
+            .split(leftArrowIdentifier)
+            .map(e => e.trim())
         }
 
         return (
@@ -38,10 +40,8 @@ const Conversation: IsomorphicArticleParts = ({content}) => (
             </div>
           </React.Fragment>
         )
-      })
-    }
+      })}
   </div>
 )
-
 
 export default Conversation

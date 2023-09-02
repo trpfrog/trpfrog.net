@@ -1,6 +1,6 @@
-import styles from "./index.module.scss";
-import Block from "@/components/Block";
-import {CSSProperties} from "react";
+import styles from './index.module.scss'
+import Block from '@/components/Block'
+import { CSSProperties } from 'react'
 
 type Props = {
   isFullHeight?: boolean
@@ -12,7 +12,10 @@ export default function LoadingBlock({
   ...props
 }: Props) {
   return (
-    <Block className={isFullHeight ? styles.fullscreen_block : ''} style={props.style}>
+    <Block
+      className={isFullHeight ? styles.fullscreen_block : ''}
+      style={props.style}
+    >
       <div className={styles.wrapper}>
         <span className={styles.text}>
           <span>L</span>

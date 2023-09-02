@@ -1,9 +1,9 @@
-import styles from "./index.module.scss";
-import Link from "next/link";
-import Image from "next/legacy/image";
+import styles from './index.module.scss'
+import Link from 'next/link'
+import Image from 'next/legacy/image'
 
 export type ImageListProps = {
-  images: ImagePaths[],
+  images: ImagePaths[]
   imageWidth?: number
   imageHeight?: number
   quality?: number
@@ -18,7 +18,7 @@ export type ImagePaths = {
 export default function ImageList(props: ImageListProps) {
   return (
     <div className={styles.icon_grid}>
-      {props.images.map(({src, url, alt}, idx) => (
+      {props.images.map(({ src, url, alt }, idx) => (
         <Link href={url} key={src}>
           <Image
             src={src}

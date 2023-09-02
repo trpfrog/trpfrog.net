@@ -1,25 +1,28 @@
-import {MutualLinkRecord} from "./loader";
-import Utils from "@/lib/utils";
-import React from "react";
-import styles from "../(home)/style.module.scss";
+import { MutualLinkRecord } from './loader'
+import Utils from '@/lib/utils'
+import React from 'react'
+import styles from '../(home)/style.module.scss'
 
 export function MutualLinkBlock(props: {
   record: MutualLinkRecord
   key?: string
 }) {
   const {
-    record: {url, siteName, ownerName, twitterId, description},
-    key
+    record: { url, siteName, ownerName, twitterId, description },
+    key,
   } = props
 
   // Shrink siteName if its length too long
-  const style = Utils.calcMonospacedTextWidth(siteName) < 20 ? {} : {
-    letterSpacing: -0.5
-  } as React.CSSProperties
+  const style =
+    Utils.calcMonospacedTextWidth(siteName) < 20
+      ? {}
+      : ({
+          letterSpacing: -0.5,
+        } as React.CSSProperties)
 
   return (
     <div key={key} className={styles.link_block}>
-      <p style={{textAlign: "center"}}>
+      <p style={{ textAlign: 'center' }}>
         <a
           href={url}
           className="linkButton"
@@ -40,9 +43,7 @@ export function MutualLinkBlock(props: {
         </a>
         さんのHP
       </p>
-      <p>
-        {description}
-      </p>
+      <p>{description}</p>
     </div>
-  );
+  )
 }

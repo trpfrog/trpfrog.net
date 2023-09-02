@@ -1,21 +1,20 @@
 @use '../mixins';
 
 :root {
-    --header-color: #66a928;
-    --header-filter: drop-shadow(0 0.2em 0 #5a9623);
-    --header-icon-size: 80px;
+  --header-color: #66a928;
+  --header-filter: drop-shadow(0 0.2em 0 #5a9623);
+  --header-icon-size: 80px;
 
-    @include mixins.mq(sp) {
-        --header-icon-size: 58px;
-    }
+  @include mixins.mq(sp) {
+    --header-icon-size: 58px;
+  }
 
-    @include mixins.mq(dark) {
-        --header-color: #4f831f;
-        --header-filter: drop-shadow(0 0.2em 0 rgb(49, 80, 15));
-    }
+  @include mixins.mq(dark) {
+    --header-color: #4f831f;
+    --header-filter: drop-shadow(0 0.2em 0 rgb(49, 80, 15));
+  }
 }
 
-
 #sp_menu {
-    display: none;
+  display: none;
 }

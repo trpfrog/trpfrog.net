@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import React, {CSSProperties, useState} from "react";
-import Modal from "react-modal";
-import CldImageWrapper from "@/components/utils/CldImageWrapper";
-import styles from "@blog/_components/BlogImage/index.module.scss";
-import {getPureCloudinaryPath} from "@blog/_lib/getPureCloudinaryPath";
+import React, { CSSProperties, useState } from 'react'
+import Modal from 'react-modal'
+import CldImageWrapper from '@/components/utils/CldImageWrapper'
+import styles from '@blog/_components/BlogImage/index.module.scss'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 
 export default function ImageWithModal(props: {
-  src: string,
-  alt?: string,
-  publicId?: string,
-  width: number,
-  height: number,
+  src: string
+  alt?: string
+  publicId?: string
+  width: number
+  height: number
 }) {
   const srcPath = getPureCloudinaryPath(props.src)
   const blurPath = `https://res.cloudinary.com/trpfrog/image/upload/w_10${srcPath}`
@@ -32,7 +32,7 @@ export default function ImageWithModal(props: {
       background: 'transparent',
       border: 'none',
       zIndex: 10,
-    } as CSSProperties
+    } as CSSProperties,
   }
 
   const [modalState, setModalState] = useState(false)
@@ -65,19 +65,19 @@ export default function ImageWithModal(props: {
       height={props.height}
       placeholder="blur"
       blurDataURL={blurPath}
-      sizes="100vw"  // Support responsive
+      sizes="100vw" // Support responsive
     />
   )
 
   return (
     <>
-      <ImageOnArticle/>
+      <ImageOnArticle />
       <Modal
         isOpen={modalState}
         style={modalStyle}
         onRequestClose={() => setModalState(false)}
       >
-        <ImageOnModal/>
+        <ImageOnModal />
       </Modal>
     </>
   )

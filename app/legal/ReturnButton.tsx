@@ -2,8 +2,8 @@
 
 import path from 'path'
 
-import Link from "next/link";
-import {usePathname} from "next/navigation";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function ReturnButton() {
   const pathname = usePathname()

@@ -1,22 +1,21 @@
 @use '../../../../../styles/mixins';
 
 .grid {
-    display: grid;
-    grid-template-areas:
-        "tags"
-        "thumbnail"
-        "title"
-        "info";
+  display: grid;
+  grid-template-areas:
+    'tags'
+    'thumbnail'
+    'title'
+    'info';
 
-
-    @include mixins.mq(sp) {
-        &[data-hero-article="false"] {
-            height: initial;
-            grid-template-areas:
-                "thumbnail tags"
-                "thumbnail title"
-                "thumbnail info";
-            grid-template-columns: max(100px, 30vw) auto;
-        }
+  @include mixins.mq(sp) {
+    &[data-hero-article='false'] {
+      height: initial;
+      grid-template-areas:
+        'thumbnail tags'
+        'thumbnail title'
+        'thumbnail info';
+      grid-template-columns: max(100px, 30vw) auto;
     }
+  }
 }

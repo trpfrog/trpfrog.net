@@ -1,6 +1,6 @@
-import React from "react"
-import styles from "./style.module.scss";
-import Image from 'next/legacy/image';
+import React from 'react'
+import styles from './style.module.scss'
+import Image from 'next/legacy/image'
 
 type Props = {
   name: string
@@ -8,8 +8,12 @@ type Props = {
   children?: React.ReactNode
 }
 
-const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}) => {
-  let imageHtml: JSX.Element = <></>;
+const GadgetIntro: React.FunctionComponent<Props> = ({
+  children,
+  name,
+  imagePath,
+}) => {
+  let imageHtml: JSX.Element = <></>
   if (imagePath !== undefined) {
     imageHtml = (
       <div className={styles.gadget_image_wrapper}>
@@ -22,7 +26,7 @@ const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}
           objectFit={'cover'}
         />
       </div>
-    );
+    )
   }
   return (
     <>
@@ -30,7 +34,7 @@ const GadgetIntro: React.FunctionComponent<Props> = ({children, name, imagePath}
       {imageHtml}
       {children}
     </>
-  );
+  )
 }
 
-export default GadgetIntro;
+export default GadgetIntro

@@ -1,5 +1,5 @@
-'use client';
-import React, {useState} from "react";
+'use client'
+import React, { useState } from 'react'
 
 type Props = {
   key?: React.Key
@@ -15,26 +15,26 @@ export default function SwitchUI(props: Props) {
     <React.Fragment key={props.key}>
       {showPrimary ? (
         <p>
-          <button onClick={() => {
-            setShowPrimary(false)
-          }}>
+          <button
+            onClick={() => {
+              setShowPrimary(false)
+            }}
+          >
             {props.primaryButtonText}
           </button>
         </p>
       ) : (
         <p>
-          <button onClick={() => {
-            setShowPrimary(true)
-          }}>
+          <button
+            onClick={() => {
+              setShowPrimary(true)
+            }}
+          >
             {props.secondaryButtonText}
           </button>
         </p>
       )}
-      {showPrimary ? (
-        props.primaryChildren
-      ) : (
-        props.secondaryChildren
-      )}
+      {showPrimary ? props.primaryChildren : props.secondaryChildren}
     </React.Fragment>
   )
 }

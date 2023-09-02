@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from 'react'
 
 export default function useFullscreen() {
   useEffect(() => {
@@ -9,21 +9,21 @@ export default function useFullscreen() {
       header: 'body > div:has(header)',
       nav: 'body > nav',
       footer: 'body > footer',
-      mobileMenu: 'body > section'
+      mobileMenu: 'body > section',
     }
 
     const defaultStyle = Object.fromEntries(
       Object.entries(selectors).map(([key, selector]) => {
         const el = document.querySelector(selector)
         return [key, el ? (el as HTMLElement).style.display : '']
-      })
+      }),
     )
 
     // hide header, nav, footer, mobile menu
     Object.values(selectors).forEach(selector => {
       const el = document.querySelector(selector)
       if (el) {
-        (el as HTMLElement).style.display = 'none'
+        ;(el as HTMLElement).style.display = 'none'
       }
     })
 
@@ -32,7 +32,7 @@ export default function useFullscreen() {
       Object.entries(selectors).forEach(([key, selector]) => {
         const el = document.querySelector(selector)
         if (el) {
-          (el as HTMLElement).style.display = defaultStyle[key]
+          ;(el as HTMLElement).style.display = defaultStyle[key]
         }
       })
     }

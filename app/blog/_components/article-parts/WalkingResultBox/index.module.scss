@@ -1,38 +1,37 @@
 @use '../../../../../styles/mixins';
 
 .result_box_title {
-
 }
 
 .result_box_value {
-    font-weight: bold;
-    font-size: 2em;
-    @include mixins.mq(sp) {
-        font-size: 1.2em;
-    }
+  font-weight: bold;
+  font-size: 2em;
+  @include mixins.mq(sp) {
+    font-size: 1.2em;
+  }
 }
 
 .result_box {
-    display: inline-block;
-    border-radius: 10px;
-    background: var(--header-color);
-    color: white;
-    padding: 10px 20px;
+  display: inline-block;
+  border-radius: 10px;
+  background: var(--header-color);
+  color: white;
+  padding: 10px 20px;
 
-    @include mixins.mq(sp) {
-        padding: 12px;
-    }
+  @include mixins.mq(sp) {
+    padding: 12px;
+  }
 }
 
 .result_box_grid {
-    font-family: var(--font-m-plus-rounded-1c);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  font-family: var(--font-m-plus-rounded-1c);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
-    gap: 0.8em;
-    @include mixins.mq(sp) {
-        gap: 0.3em;
-    }
+  gap: 0.8em;
+  @include mixins.mq(sp) {
+    gap: 0.3em;
+  }
 }

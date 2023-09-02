@@ -1,23 +1,23 @@
-'use client';
+'use client'
 
-import React from "react";
+import React from 'react'
 
 const share = (slug: string) => {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') return
   const articleURL = 'https://trpfrog.net/blog/' + slug
-  const tweetURL = 'https://twitter.com/intent/tweet?'
-    + "text=" + encodeURIComponent(document.title) + "&"
-    + "url=" + encodeURIComponent(articleURL);
-  window.open(tweetURL);
+  const tweetURL =
+    'https://twitter.com/intent/tweet?' +
+    'text=' +
+    encodeURIComponent(document.title) +
+    '&' +
+    'url=' +
+    encodeURIComponent(articleURL)
+  window.open(tweetURL)
 }
 
 export default function ShareSpan(props: {
-  slug: string,
+  slug: string
   children: React.ReactNode
 }) {
-  return (
-    <span onClick={() => share(props.slug)}>
-      {props.children}
-    </span>
-  )
+  return <span onClick={() => share(props.slug)}>{props.children}</span>
 }

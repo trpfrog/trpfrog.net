@@ -1,28 +1,28 @@
 .keyword_title {
-    display: inline-block;
-    color: gray;
-    font-size: 0.8em;
+  display: inline-block;
+  color: gray;
+  font-size: 0.8em;
 }
 
 .keyword {
-    display: inline-block;
-    border: solid 2px #90e200;
-    border-radius: 1000px;
-    padding: 0 10px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: inline-block;
+  border: solid 2px #90e200;
+  border-radius: 1000px;
+  padding: 0 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .hero_image {
-    position: relative;
-    overflow: hidden;
-    margin-top: 20px;
-    text-align: center;
-    width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
 
-    img {
-        border-radius: 10px;
-        border: 1px solid rgb(lightgray, 0.3) !important;
-    }
+  img {
+    border-radius: 10px;
+    border: 1px solid rgb(lightgray, 0.3) !important;
+  }
 }

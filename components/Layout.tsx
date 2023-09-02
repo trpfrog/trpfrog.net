@@ -1,35 +1,37 @@
-import React from "react";
+import React from 'react'
 
 import Header from './Header'
-import Footer from "./Footer";
-import Navigation from "./Navigation";
-import BackToTop from "./BackToTop";
-import MainWrapper from "@/components/MainWrapper";
+import Footer from './Footer'
+import Navigation from './Navigation'
+import BackToTop from './BackToTop'
+import MainWrapper from '@/components/MainWrapper'
 
 type Props = {
-  style?: any;
+  style?: any
   className?: string
   children: React.ReactNode
 }
 
 const Layout: React.FunctionComponent<Props> = ({
-  children, style, className
+  children,
+  style,
+  className,
 }) => {
   return (
     <>
       <div id={'inner-body'}>
-        <Header/>
-        <Navigation/>
+        <Header />
+        <Navigation />
         <main>
           <MainWrapper style={style} className={className}>
             {children}
           </MainWrapper>
         </main>
-        <BackToTop/>
-        <Footer/>
+        <BackToTop />
+        <Footer />
       </div>
     </>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

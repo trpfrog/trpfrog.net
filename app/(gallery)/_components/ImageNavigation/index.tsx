@@ -1,15 +1,15 @@
-import styles from "./index.module.scss";
-import Image from "next/legacy/image";
-import Link from "next/link";
-import React from "react";
+import styles from './index.module.scss'
+import Image from 'next/legacy/image'
+import Link from 'next/link'
+import React from 'react'
 
 type ImageNavigationProps = {
   icons: {
-    key: React.Key,
-    src: string,
+    key: React.Key
+    src: string
     alt: string
-  }[],
-  nextHref: string,
+  }[]
+  nextHref: string
   prevHref: string
 }
 

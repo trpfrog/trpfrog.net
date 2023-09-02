@@ -1,32 +1,32 @@
 @use '../mixins';
 
 :root {
-    --title-color: #172c00;
+  --title-color: #172c00;
 }
 
 @include mixins.mq(dark) {
-    :root {
-        --title-color: white;
-    }
+  :root {
+    --title-color: white;
+  }
 }
 
 #title h1 {
-    text-align: left;
-    font-size: 3em;
-    font-family: var(--font-m-plus-rounded-1c);
-    font-weight: 800;
-    line-height: 1;
-    margin: 0;
+  text-align: left;
+  font-size: 3em;
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
 
-    --shadow-weight: 2px;
+  --shadow-weight: 2px;
 }
 
 #title p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 @include mixins.mq(sp) {
-    #title h1 {
-        font-size: 2em;
-    }
+  #title h1 {
+    font-size: 2em;
+  }
 }

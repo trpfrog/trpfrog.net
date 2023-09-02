@@ -1,45 +1,45 @@
-import {PrismaClient, Tweet, Media, PrismaPromise} from '@prisma/client'
-import fs from 'node:fs';
-import {homedir} from "node:os";
+import { PrismaClient, Tweet, Media, PrismaPromise } from '@prisma/client'
+import fs from 'node:fs'
+import { homedir } from 'node:os'
 
-type NumberString = string;
+type NumberString = string
 type OriginalTweet = {
   tweet: {
-    edit_info: any;
-    retweeted: boolean;
-    source: string;
+    edit_info: any
+    retweeted: boolean
+    source: string
     entities: {
       user_mentions: {
-        name: string;
-        screen_name: string;
-        id_str: NumberString;
-      }[];
+        name: string
+        screen_name: string
+        id_str: NumberString
+      }[]
       media: OriginalMedia[]
-    };
-    display_text_range: NumberString[];
-    favorite_count: NumberString;
-    id_str: NumberString;
-    truncated: NumberString;
-    retweet_count: NumberString;
-    id: NumberString;
-    possibly_sensitive: boolean;
-    created_at: string;
-    favorited: boolean;
-    full_text: string;
+    }
+    display_text_range: NumberString[]
+    favorite_count: NumberString
+    id_str: NumberString
+    truncated: NumberString
+    retweet_count: NumberString
+    id: NumberString
+    possibly_sensitive: boolean
+    created_at: string
+    favorited: boolean
+    full_text: string
     lang: string
   }
-};
+}
 
 type OriginalMedia = {
-  media_url_https: string;
+  media_url_https: string
   sizes: {
     large: {
-      w: number;
-      h: number;
+      w: number
+      h: number
     }
-  };
-  type: string;
-  id_str: string;
+  }
+  type: string
+  id_str: string
 }
 
 const prisma = new PrismaClient()
@@ -53,23 +53,28 @@ function simplifyTweet(tweet: OriginalTweet): [Tweet, Media[]] {
     retweet_count,
     favorite_count,
     source: sourceHTML,
-  } = tweet.tweet;
+  } = tweet.tweet
   const { name, screen_name } = entities?.user_mentions[0] ?? {
     name: null,
     screen_name: null,
-  };
-  const isRetweet = full_text.startsWith('RT @') && screen_name != null
-  const user = isRetweet ? {
-    name: name ?? 'つまみ',
-    screenName: screen_name ?? 'TrpFrog',
-  } : {
-    name: 'つまみ',
-    screenName: 'TrpFrog',
   }
+  const isRetweet = full_text.startsWith('RT @') && screen_name != null
+  const user = isRetweet
+    ? {
+        name: name ?? 'つまみ',
+        screenName: screen_name ?? 'TrpFrog',
+      }
+    : {
+        name: 'つまみ',
+        screenName: 'TrpFrog',
+      }
 
-  const source = sourceHTML.replace(/<a href="(.+)" rel="nofollow">(.+)<\/a>/, '$2')
+  const source = sourceHTML.replace(
+    /<a href="(.+)" rel="nofollow">(.+)<\/a>/,
+    '$2',
+  )
 
-  const tweetRecord: Tweet =  {
+  const tweetRecord: Tweet = {
     id: id_str,
     createdAt: new Date(created_at),
     text: isRetweet ? full_text.replace(/^RT @\w+: /, '') : full_text,
@@ -80,30 +85,32 @@ function simplifyTweet(tweet: OriginalTweet): [Tweet, Media[]] {
     source,
   }
 
-  const mediaRecord: Media[] = (entities?.media ?? []).map(m => ({
-    url: m.media_url_https,
-    width: parseInt((m.sizes.large.w ?? '0') + '', 10),
-    height: parseInt((m.sizes.large.h ?? '0') + '', 10),
-    type: m.type,
-    id: m.id_str + '-' + id_str,
-    tweetId: id_str,
-  })) ?? []
-
+  const mediaRecord: Media[] =
+    (entities?.media ?? []).map(m => ({
+      url: m.media_url_https,
+      width: parseInt((m.sizes.large.w ?? '0') + '', 10),
+      height: parseInt((m.sizes.large.h ?? '0') + '', 10),
+      type: m.type,
+      id: m.id_str + '-' + id_str,
+      tweetId: id_str,
+    })) ?? []
 
   return [tweetRecord, mediaRecord]
 }
 
 function fetchSimplifiedTweetsFromLocal(files: string[]): [Tweet[], Media[]] {
-  let tweets: Tweet[] = [];
-  let medias: Media[] = [];
+  let tweets: Tweet[] = []
+  let medias: Media[] = []
   for (const fname of files) {
-    const jsLines = fs.readFileSync(fname.replace('~', homedir()), 'utf8').split('\n');
+    const jsLines = fs
+      .readFileSync(fname.replace('~', homedir()), 'utf8')
+      .split('\n')
     // REPLACE first line with '['
-    const jsons: OriginalTweet[] = JSON.parse('[' + jsLines.slice(1).join('\n'));
+    const jsons: OriginalTweet[] = JSON.parse('[' + jsLines.slice(1).join('\n'))
     for (const json of jsons) {
-      const [tweet, media] = simplifyTweet(json);
-      tweets.push(tweet);
-      medias.push(...media);
+      const [tweet, media] = simplifyTweet(json)
+      tweets.push(tweet)
+      medias.push(...media)
     }
   }
 
@@ -130,28 +137,38 @@ async function main() {
     '~/Twitter/data/tweets.js',
     '~/Twitter/data/tweets-part1.js',
     '~/Twitter/data/tweets-part2.js',
-  ]);
+  ])
 
   // delete all rows
   console.log('deleting all tweet rows')
-  while (await prisma.tweet.count() > 0) {
+  while ((await prisma.tweet.count()) > 0) {
     await prisma.$queryRaw`DELETE FROM Tweet LIMIT 100000;`
   }
   console.log('deleting all media rows')
-  while (await prisma.media.count() > 0) {
+  while ((await prisma.media.count()) > 0) {
     await prisma.$queryRaw`DELETE FROM Media LIMIT 100000;`
   }
 
   const LIMIT_ROWS_PER_QUERY = 5000
 
   for (let i = 0; i < tweets.length; i += LIMIT_ROWS_PER_QUERY) {
-    console.log(`inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, tweets.length)} / ${tweets.length}`)
+    console.log(
+      `inserting ${i} - ${Math.min(
+        i + LIMIT_ROWS_PER_QUERY,
+        tweets.length,
+      )} / ${tweets.length}`,
+    )
     const tweetsChunk = tweets.slice(i, i + LIMIT_ROWS_PER_QUERY)
     await prisma.tweet.createMany({ data: tweetsChunk })
   }
 
   for (let i = 0; i < medias.length; i += LIMIT_ROWS_PER_QUERY) {
-    console.log(`inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, medias.length)} / ${medias.length}`)
+    console.log(
+      `inserting ${i} - ${Math.min(
+        i + LIMIT_ROWS_PER_QUERY,
+        medias.length,
+      )} / ${medias.length}`,
+    )
     const mediasChunk = medias.slice(i, i + LIMIT_ROWS_PER_QUERY)
     await prisma.media.createMany({ data: mediasChunk })
   }

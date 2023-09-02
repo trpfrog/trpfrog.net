@@ -1,111 +1,110 @@
 .ctrl_btn_grid {
-    margin: 0;
-    max-width: 500px;
-    display: grid;
-    touch-action: manipulation;
+  margin: 0;
+  max-width: 500px;
+  display: grid;
+  touch-action: manipulation;
 }
 
 @media screen and (min-width: 500px) {
-    .ctrl_btn_grid {
-        grid-template-areas:
-        "L U R Plus  rotateleft rotateright Apply"
-        "L D R Minus rotateleft rotateright Apply";
-        grid-template-columns: 3fr 4fr 3fr 6fr 3fr 3.5fr 6fr;
-        grid-template-rows: 3em 3em;
-    }
+  .ctrl_btn_grid {
+    grid-template-areas:
+      'L U R Plus  rotateleft rotateright Apply'
+      'L D R Minus rotateleft rotateright Apply';
+    grid-template-columns: 3fr 4fr 3fr 6fr 3fr 3.5fr 6fr;
+    grid-template-rows: 3em 3em;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .ctrl_btn_grid {
-        grid-template-areas:
-        "L U R Plus  rotateleft Apply"
-        "L D R Minus rotateright Apply";
-        grid-template-columns: 3fr 4fr 3fr 4fr 4fr 6fr;
-        grid-template-rows: 3em 3em;
-    }
+  .ctrl_btn_grid {
+    grid-template-areas:
+      'L U R Plus  rotateleft Apply'
+      'L D R Minus rotateright Apply';
+    grid-template-columns: 3fr 4fr 3fr 4fr 4fr 6fr;
+    grid-template-rows: 3em 3em;
+  }
 }
 
 .ctrl_btn {
-    margin: 1px;
-    padding: 0;
-    background: #66a928;
-    cursor: pointer;
-    border: 0;
-    border-radius: 5px;
-    font-size: 1em;
-    color: white;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-    border-bottom: solid 3px #005704;
-    font-weight: bold;
-    font-family: var(--font-m-plus-rounded-1c);
+  margin: 1px;
+  padding: 0;
+  background: #66a928;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1em;
+  color: white;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  border-bottom: solid 3px #005704;
+  font-weight: bold;
+  font-family: var(--font-m-plus-rounded-1c);
 }
 
 .ctrl_btn:hover {
-    background: #90e200;
+  background: #90e200;
 }
 
 .ctrl_btn:active {
-    -webkit-transform: translateY(1px);
-    transform: translateY(2px);
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-    border-bottom: none;
+  -webkit-transform: translateY(1px);
+  transform: translateY(2px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
 }
 
 .ctrl_btn:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .ctrl_btn_grid button {
-    @extend .ctrl_btn;
+  @extend .ctrl_btn;
 }
 
-
 .left_btn {
-    grid-area: L;
+  grid-area: L;
 }
 
 .right_btn {
-    grid-area: R;
+  grid-area: R;
 }
 
 .up_btn {
-    grid-area: U;
+  grid-area: U;
 }
 
 .down_btn {
-    grid-area: D;
+  grid-area: D;
 }
 
 .plus_btn {
-    grid-area: Plus;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+  grid-area: Plus;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .minus_btn {
-    grid-area: Minus;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+  grid-area: Minus;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .apply_btn {
-    grid-area: Apply;
+  grid-area: Apply;
 }
 
 .rotate_right_btn {
-    grid-area: rotateright;
-    margin-right: 0.5em;
+  grid-area: rotateright;
+  margin-right: 0.5em;
 }
 
 @media screen and (min-width: 500px) {
-    .rotate_left_btn {
-        grid-area: rotateleft;
-    }
+  .rotate_left_btn {
+    grid-area: rotateleft;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .rotate_left_btn {
-        grid-area: rotateleft;
-        margin-right: 0.5em;
-    }
+  .rotate_left_btn {
+    grid-area: rotateleft;
+    margin-right: 0.5em;
+  }
 }

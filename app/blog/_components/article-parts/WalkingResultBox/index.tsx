@@ -1,8 +1,8 @@
-import styles from "./index.module.scss";
-import React from "react";
-import {IsomorphicArticleParts} from "../../ArticleParts";
+import styles from './index.module.scss'
+import React from 'react'
+import { IsomorphicArticleParts } from '../../ArticleParts'
 
-const WalkingResultBox: IsomorphicArticleParts = ({content}) => {
+const WalkingResultBox: IsomorphicArticleParts = ({ content }) => {
   return (
     <div className={styles.result_box_grid}>
       {content.split('\n').map(line => {

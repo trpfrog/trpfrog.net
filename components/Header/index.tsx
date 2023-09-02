@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
 import Link from 'next/link'
-import {usePathname} from "next/navigation";
-import {useScroll} from "framer-motion";
-import React, {useEffect, useState} from "react";
-import {NormalTitle} from "./NormalTitle";
-import {TopTitle} from "./TopTitle";
-import styles from "./index.module.scss";
-import MobileMenu from "../MobileMenu";
-import Hamburger from "../Hamburger";
-import {atom, useAtomValue, useSetAtom} from "jotai";
+import { usePathname } from 'next/navigation'
+import { useScroll } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { NormalTitle } from './NormalTitle'
+import { TopTitle } from './TopTitle'
+import styles from './index.module.scss'
+import MobileMenu from '../MobileMenu'
+import Hamburger from '../Hamburger'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
 
 const alwaysShowHeaderAtom = atom(false)
 
@@ -18,17 +18,17 @@ export function useAlwaysShownHeader() {
   useEffect(() => {
     set(true)
     return () => set(false)
-  }, [set]);
+  }, [set])
 }
 
 const useHeaderVisibleStatus = () => {
-  const {scrollY} = useScroll()
+  const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
-  scrollY.on("change", (y: number) => {
+  scrollY.on('change', (y: number) => {
     const v = scrollY.getVelocity()
-    const shouldShowHeader = v < -1000 || y < 500;
-    const shouldHideHeader = !shouldShowHeader && v > 1000;
+    const shouldShowHeader = v < -1000 || y < 500
+    const shouldHideHeader = !shouldShowHeader && v > 1000
 
     if (shouldShowHeader) {
       setShowHeader(true)
@@ -42,16 +42,23 @@ const useHeaderVisibleStatus = () => {
 }
 
 export const HeaderFollowSticky = (props: {
-  children: React.ReactNode,
+  children: React.ReactNode
   top: string | number
 }) => {
   const headerVisible = useHeaderVisibleStatus()
-  const getStyle = (isHeaderVisible: boolean) => isHeaderVisible
-    ? `calc(var(--header-height) + ${props.top})`
-    : `${props.top}`
+  const getStyle = (isHeaderVisible: boolean) =>
+    isHeaderVisible
+      ? `calc(var(--header-height) + ${props.top})`
+      : `${props.top}`
 
   return (
-    <div style={{transition: '0.1s', position: 'sticky', top: getStyle(headerVisible)}}>
+    <div
+      style={{
+        transition: '0.1s',
+        position: 'sticky',
+        top: getStyle(headerVisible),
+      }}
+    >
       {props.children}
     </div>
   )
@@ -67,18 +74,18 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
 }
 
 const Header: React.FC = React.memo(function Header() {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const topLinks = [
-    {href: '/', label: 'home'},
-    {href: '/works', label: 'works'},
-    {href: '/blog', label: 'blog'},
-  ] as const;
+    { href: '/', label: 'home' },
+    { href: '/works', label: 'works' },
+    { href: '/blog', label: 'blog' },
+  ] as const
   return (
     <>
       <HideWhenScrollDown>
         <header id={styles.header}>
           <div id={styles.inside}>
-            {pathname === '/' ? <TopTitle/> : <NormalTitle/>}
+            {pathname === '/' ? <TopTitle /> : <NormalTitle />}
             <nav id={styles.navigation}>
               <ul>
                 {topLinks.map(({ href, label }) => (
@@ -90,13 +97,13 @@ const Header: React.FC = React.memo(function Header() {
                 ))}
               </ul>
             </nav>
-            <Hamburger/>
+            <Hamburger />
           </div>
         </header>
       </HideWhenScrollDown>
-      <MobileMenu/>
+      <MobileMenu />
     </>
-  );
+  )
 })
 
-export default Header;
+export default Header

@@ -1,8 +1,8 @@
 import rateLimit from '@/lib/rateLimit'
-import {NextRequest, NextResponse} from "next/server";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import {getAllPostSlugs} from "@blog/_lib/load";
-import {HumanChatMessage} from "langchain/schema";
+import { NextRequest, NextResponse } from 'next/server'
+import { ChatOpenAI } from 'langchain/chat_models/openai'
+import { getAllPostSlugs } from '@blog/_lib/load'
+import { HumanChatMessage } from 'langchain/schema'
 
 const limiter = rateLimit({
   interval: 60 * 1000 * 60, // 1 hour
@@ -28,8 +28,7 @@ const pagePaths = [
 
 let blogPaths = [] as string[]
 
-const chat = new ChatOpenAI({temperature: 0})
-
+const chat = new ChatOpenAI({ temperature: 0 })
 
 type GETProps = {
   params: {
@@ -37,10 +36,8 @@ type GETProps = {
   }
 }
 
-
 export async function GET(req: NextRequest, props: GETProps) {
   const res = NextResponse.next()
-
 
   const input = props.params.input.slice(0, 100)
 
@@ -63,15 +60,14 @@ export async function GET(req: NextRequest, props: GETProps) {
     '\n' +
     '### input ###\n' +
     '\n' +
-    input + '\n' +
+    input +
+    '\n' +
     '\n' +
     '### output ###\n'
 
   try {
     await limiter.check(res, 5, req.ip ?? 'ip_not_found')
-    const chatResponse = await chat.call([
-      new HumanChatMessage(prompt)
-    ])
+    const chatResponse = await chat.call([new HumanChatMessage(prompt)])
     const output = chatResponse.text.trim()
     const url = blogPaths.includes(output) ? '/blog/' + output : '/' + output
     return NextResponse.redirect(new URL(url, req.url))

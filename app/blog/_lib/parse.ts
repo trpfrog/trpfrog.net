@@ -5,7 +5,7 @@ const parseFootnote = (content: string) => {
   const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
   const footnotes = content.match(regex) ?? []
 
-  if (footnotes.length < 1) return content;
+  if (footnotes.length < 1) return content
 
   const tmp = content.split(regex)
   content = ''
@@ -15,7 +15,10 @@ const parseFootnote = (content: string) => {
   content += tmp[tmp.length - 1]
 
   for (const i in footnotes) {
-    content += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
+    content += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(
+      2,
+      footnotes[i].length - 2,
+    )}`
   }
 
   return content
@@ -58,11 +61,9 @@ const parseFootnote = (content: string) => {
 // }
 
 const parse = (markdown: string) => {
-  let list = markdown
-    .split('<!-- page break --->')
-    .map(parseFootnote)
+  let list = markdown.split('<!-- page break --->').map(parseFootnote)
   // list = await Promise.all(list.map(applyTextlint))
   return list.map(e => e.split('<!-- window break --->'))
 }
 
-export default parse;
+export default parse
