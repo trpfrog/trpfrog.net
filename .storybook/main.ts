@@ -62,6 +62,7 @@ const config: StorybookConfig = {
 
   previewHead: (head: string) => `
     ${head}
+    <meta name="robots" content="noindex" />
     ${googleFontsLoaderHtml}
   `,
 
