@@ -11,8 +11,9 @@ import Analytics from '@/components/Analytics'
 import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import GoogleFonts from '@/components/GoogleFonts'
 import { Toaster } from 'react-hot-toast'
+import { SITE_NAME } from '@/lib/constants'
 
-const siteName = process.env.title as string
+const siteName = SITE_NAME
 const description = 'さかなになりたいね'
 const productionURL = 'https://trpfrog.net'
 
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: process.env.title as string,
+    title: SITE_NAME,
     description,
     site: '@TrpFrog',
     creator: '@TrpFrog',

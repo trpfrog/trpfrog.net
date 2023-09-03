@@ -3,13 +3,12 @@ import { useScroll } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import styles from './index.module.scss'
+import { SITE_NAME } from '@/lib/constants'
 
 const TitleWithPageName = () => {
   const pathname = usePathname() ?? '/'
 
-  let siteTitle = pathname.startsWith('/blog/')
-    ? 'つまみログ'
-    : (process.env.title as string)
+  let siteTitle = pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME
 
   const [pageTitle, setPageTitle] = useState('')
   useEffect(() => {
@@ -53,7 +52,7 @@ export const NormalTitle = () => {
               <TitleWithPageName />
             </Link>
           ) : (
-            <Link href="/">{process.env.title}</Link>
+            <Link href="/">{SITE_NAME}</Link>
           )}
         </h1>
       </div>
