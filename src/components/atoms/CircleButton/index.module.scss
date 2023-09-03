@@ -1,0 +1,30 @@
+.button {
+  width: 50px;
+  height: 50px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50%;
+  box-shadow:
+    0 2px 10px -6px rgba(0, 0, 0, 0.5),
+    0 3px 10px -4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s;
+
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 25px;
+  color: white;
+
+  opacity: 30%;
+
+  &:hover {
+    transition: 0.2s;
+    opacity: 100%;
+  }
+}
