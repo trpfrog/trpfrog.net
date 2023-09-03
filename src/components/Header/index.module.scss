@@ -26,15 +26,6 @@
   height: var(--header-height);
   -webkit-filter: var(--header-filter);
   filter: var(--header-filter);
-
-  a {
-    text-decoration: none;
-    color: white !important;
-
-    &:hover {
-      color: #90e200 !important;
-    }
-  }
 }
 
 #inside {
@@ -187,6 +178,17 @@
   @include mixins.mq(sp) {
     ul {
       display: none;
+    }
+  }
+}
+
+.title_link {
+  &,
+  a {
+    text-decoration: none !important;
+    color: white !important;
+    &:hover {
+      color: #90e200 !important;
     }
   }
 }

@@ -5,30 +5,41 @@ import Link from 'next/link'
 import styles from './index.module.scss'
 import { SITE_NAME } from '@/lib/constants'
 
-const TitleWithPageName = () => {
-  const pathname = usePathname() ?? '/'
-
-  let siteTitle = pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME
-
+function usePageTitle() {
   const [pageTitle, setPageTitle] = useState('')
   useEffect(() => {
     setPageTitle(document?.title.split(' - ')[0] ?? '')
   }, [])
+  return pageTitle
+}
+
+type Props = {
+  siteTitle?: string
+  pageTitle?: string
+}
+
+const TitleWithPageName = (props: Props) => {
+  const pathname = usePathname() ?? '/'
+  const siteTitle =
+    props.siteTitle ??
+    (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
+  const pageTitleFromHook = usePageTitle()
+  const pageTitle = props.pageTitle ?? pageTitleFromHook
 
   return (
-    <div className={styles.on_subtitle_showed}>
+    <span className={styles.on_subtitle_showed}>
       {siteTitle}
       {pageTitle ? (
         <>
           <br />
-          <div id={styles.subtitle}>{pageTitle}</div>
+          <span id={styles.subtitle}>{pageTitle}</span>
         </>
       ) : null}
-    </div>
+    </span>
   )
 }
 
-export const NormalTitle = () => {
+export const NormalTitle = (props: Props) => {
   const [showPageTitle, setShowPageTitle] = useState(false)
 
   const [heightToChangeTitle, setHeightToChangeTitle] = useState(250)
@@ -48,11 +59,20 @@ export const NormalTitle = () => {
       <div id={styles.site_name_wrapper}>
         <h1 id={styles.site_name}>
           {showPageTitle ? (
-            <Link href="/" style={{ cursor: 'pointer' }}>
-              <TitleWithPageName />
+            <Link
+              href="/"
+              style={{ cursor: 'pointer' }}
+              className={styles.title_link}
+            >
+              <TitleWithPageName
+                siteTitle={props.siteTitle}
+                pageTitle={props.pageTitle}
+              />
             </Link>
           ) : (
-            <Link href="/">{SITE_NAME}</Link>
+            <Link href="/" className={styles.title_link}>
+              {SITE_NAME}
+            </Link>
           )}
         </h1>
       </div>

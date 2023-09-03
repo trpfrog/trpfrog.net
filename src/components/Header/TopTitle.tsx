@@ -22,7 +22,9 @@ export const TopTitle = () => {
       <div id={styles.trpfrog_icon} />
       <div id={styles.site_name_wrapper}>
         <h1 id={styles.site_name}>
-          <Link href="/">{SITE_NAME}</Link>
+          <Link href="/" className={styles.title_link}>
+            {SITE_NAME}
+          </Link>
         </h1>
       </div>
     </div>
