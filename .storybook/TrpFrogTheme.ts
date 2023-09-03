@@ -2,7 +2,7 @@
 
 import { create } from '@storybook/theming/create'
 
-export default create({
+export const light = create({
   base: 'light',
   // Typography
   fontBase: '"Open Sans", sans-serif',
@@ -11,7 +11,7 @@ export default create({
   brandTitle: 'My custom Storybook',
   brandUrl: 'https://trpfrog.net',
   brandImage:
-    'https://res.cloudinary.com/trpfrog/image/upload/v1693667523/storybook-logo.svg',
+    'https://res.cloudinary.com/trpfrog/image/upload/storybook-logo.svg',
   brandTarget: '_self',
 
   //
@@ -37,5 +37,29 @@ export default create({
   inputBg: '#ffffff',
   inputBorder: '#161f00',
   inputTextColor: '#131a00',
-  inputBorderRadius: 2,
+  inputBorderRadius: 8,
+  booleanSelectedBg: '#c7e874',
+})
+
+export const dark = create({
+  ...light,
+  base: 'dark',
+
+  appBorderColor: '#6e6500',
+
+  textColor: light.textInverseColor,
+  textInverseColor: light.textColor,
+
+  appBg: '#393f1e',
+
+  appContentBg: '#38271c',
+  barBg: '#4f831f',
+
+  inputBg: '#000000',
+  inputTextColor: '#ffffff',
+
+  booleanBg: '#000000',
+
+  buttonBg: '#000000',
+  booleanSelectedBg: '#4f831f',
 })

@@ -106,6 +106,7 @@
     "prettier": "3.0.3",
     "sass": "^1.66.1",
     "storybook": "^7.4.0",
+    "storybook-dark-mode": "^3.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
