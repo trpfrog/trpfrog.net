@@ -2,11 +2,8 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Button from '@/components/atoms/Button'
 
 export default function EditButton({ slug }: { slug: string }) {
-  return (
-    <Link className={'linkButton'} href={`/blog/edit/${slug}`}>
-      編集する
-    </Link>
-  )
+  return <Button href={`/blog/edit/${slug}`}>編集する</Button>
 }

@@ -4,6 +4,7 @@ import Block from '@/components/molecules/Block'
 import styles from './style.module.scss'
 import Image from 'next/legacy/image'
 import IconCanvas from '@/lib/iconMaker'
+import Button from '@/components/atoms/Button'
 
 export default function IconMakerApp() {
   const state = new IconCanvas('canvas-result')
@@ -115,9 +116,9 @@ export default function IconMakerApp() {
           />
         </p>
         <p>
-          <a href={tweetLink} className="linkButton">
+          <Button externalLink={true} href={tweetLink}>
             Tweet
-          </a>
+          </Button>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

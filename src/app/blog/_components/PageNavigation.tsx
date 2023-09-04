@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import BlogPost from '@blog/_lib/blogPost'
+import Button from '@/components/atoms/Button'
 
 type Props = {
   entry: BlogPost
@@ -26,9 +27,9 @@ export const PageTransferButton = (props: PageTransferProps) => {
   return entry.isAll ? (
     <></>
   ) : (
-    <a href={href} className={'linkButton'} data-page-transfer-to={nextPage}>
+    <Button href={href} data-page-transfer-to={nextPage}>
       {buttonText}
-    </a>
+    </Button>
   )
 }
 
@@ -51,7 +52,14 @@ const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
   return isHidden ? (
     <></>
   ) : (
-    <div style={{ textAlign: 'center' }} className={'link-area'}>
+    <div
+      style={{
+        display: 'flex',
+        flexFlow: 'row wrap',
+        gap: '6px',
+        justifyContent: 'center',
+      }}
+    >
       {entry.currentPage > 1 && (
         <PageTransferButton
           entry={entry}
@@ -68,9 +76,9 @@ const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
             key={k}
           />
         ) : (
-          <a style={disabledButtonStyle} className={'linkButton'} key={k}>
+          <Button style={disabledButtonStyle} key={k}>
             {k + 1}
-          </a>
+          </Button>
         ),
       )}
       {entry.currentPage < entry.numberOfPages && (

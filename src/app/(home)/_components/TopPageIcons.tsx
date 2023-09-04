@@ -2,6 +2,7 @@ import Block from '@/components/molecules/Block'
 import styles from '@/app/(home)/style.module.scss'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
+import Button from '@/components/atoms/Button'
 
 type Props = {
   id?: string
@@ -26,9 +27,7 @@ const TopPageIcons = ({ id }: Props) => {
             />
           ))}
       </div>
-      <Link href={'/icons'} className="linkButton">
-        もっと見る
-      </Link>
+      <Button href={'/icons'}>もっと見る</Button>
     </Block>
   )
 }

@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import MainWrapper from '@/components/atoms/MainWrapper'
 import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
 import ImageNavigation from '@/app/(gallery)/_components/ImageNavigation'
+import Button from '@/components/atoms/Button'
 
 const NUMBER_OF_IMAGES = 33
 
@@ -48,9 +49,7 @@ export default function Index(context: PageProps) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <Link href={'/icons'} className={'linkButton'}>
-            一覧に戻る
-          </Link>
+          <Button href={'/icons'}>一覧に戻る</Button>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

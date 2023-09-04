@@ -5,6 +5,7 @@ import styles from '@/app/(home)/style.module.scss'
 import Link from 'next/link'
 import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
 import Balloon from '@/app/balloon/_components/Balloon'
+import Button from '@/components/atoms/Button'
 
 type Props = {
   id?: string
@@ -42,9 +43,7 @@ const TopPageBalloons = ({ id }: Props) => {
         ))}
       </div>
       <p>
-        <Link href={'/balloon'} className={'linkButton'}>
-          もっと割る
-        </Link>
+        <Button href={'/balloon'}>もっと割る</Button>
       </p>
     </Block>
   )

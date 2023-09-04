@@ -8,6 +8,7 @@ import Link from 'next/link'
 import React from 'react'
 import BlogPost from '@blog/_lib/blogPost'
 import ArticleGrid from '@blog/_components/ArticleGrid'
+import Button from '@/components/atoms/Button'
 
 const RelatedPosts = ({
   tag,
@@ -36,20 +37,18 @@ const RelatedPosts = ({
         {/* PC */}
         {relatedPosts.length > 6 && (
           <div style={{ textAlign: 'center' }} className={'only-on-pc'}>
-            {/* @ts-ignore */}
-            <Link href={'/blog/tags/' + tag} className={'linkButton'}>
+            <Button href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-            </Link>
+            </Button>
           </div>
         )}
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
           <div style={{ textAlign: 'center' }} className={'only-on-sp'}>
-            {/* @ts-ignore */}
-            <Link href={'/blog/tags/' + tag} className={'linkButton'}>
+            <Button href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-            </Link>
+            </Button>
           </div>
         )}
       </>

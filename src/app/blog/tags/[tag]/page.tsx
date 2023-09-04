@@ -1,10 +1,10 @@
 import { getAllTags, getSortedPostsData } from '@blog/_lib/load'
 import Title from '@/components/organisms/Title'
-import Link from 'next/link'
 import React from 'react'
 import ArticleCard from '@blog/_components/ArticleCard'
 import MainWrapper from '@/components/atoms/MainWrapper'
 import ArticleGrid from '@blog/_components/ArticleGrid'
+import Button from '@/components/atoms/Button'
 
 export async function generateStaticParams() {
   const tags = await getAllTags()
@@ -34,9 +34,7 @@ export default async function Index({ params }: Props) {
         <Title>
           <h1>タグ「{tag}」の記事一覧</h1>
           <p>
-            <Link href={'/blog'} className={'linkButton'}>
-              記事一覧に戻る
-            </Link>
+            <Button href={'/blog'}>記事一覧に戻る</Button>
           </p>
         </Title>
 

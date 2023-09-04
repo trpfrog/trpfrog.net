@@ -2,6 +2,7 @@ import { MutualLinkRecord } from './loader'
 import Utils from '@/lib/utils'
 import React from 'react'
 import styles from '@/app/(home)/style.module.scss'
+import Button from '@/components/atoms/Button'
 
 export function MutualLinkBlock(props: {
   record: MutualLinkRecord
@@ -23,15 +24,9 @@ export function MutualLinkBlock(props: {
   return (
     <div key={key} className={styles.link_block}>
       <p style={{ textAlign: 'center' }}>
-        <a
-          href={url}
-          className="linkButton"
-          style={style}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <Button externalLink={true} href={url} style={style}>
           {siteName}
-        </a>
+        </Button>
       </p>
       <p>
         <a

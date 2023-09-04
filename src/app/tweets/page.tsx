@@ -6,6 +6,7 @@ import Block from '@/components/molecules/Block'
 import dayjs from 'dayjs'
 import TweetArea from './TweetArea'
 import MainWrapper from '@/components/atoms/MainWrapper'
+import Button from '@/components/atoms/Button'
 
 // Prisma does not support Edge without the Data Proxy currently
 export const runtime = 'nodejs' // default
@@ -38,16 +39,15 @@ export default async function Index({ searchParams }: any) {
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
-          <a
+          <Button
             href={
               '/tweets?q=' +
               encodeURIComponent('date:' + oneYearsAgo) +
               '#tweets'
             }
-            className={'linkButton'}
           >
             1年前のツイートを見る
-          </a>
+          </Button>
         </p>
         <br />
         <details>
