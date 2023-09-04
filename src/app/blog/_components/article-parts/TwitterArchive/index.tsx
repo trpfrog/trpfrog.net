@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import getOtakuColor from '@blog/_lib/otakuColors'
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
-import BlockLink from '@/components/BlockLink'
+import BlockLink from '@/components/molecules/BlockLink'
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {

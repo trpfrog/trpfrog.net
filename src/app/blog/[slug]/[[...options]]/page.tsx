@@ -1,4 +1,4 @@
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 
 import { getPostData, getSortedPostsData } from '@blog/_lib/load'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
@@ -15,7 +15,7 @@ import BlogPost from '@blog/_lib/blogPost'
 import { Metadata } from 'next'
 import { EntryButtons } from './_components/EntryButtons'
 import ArticleSidebar from './_components/ArticleSidebar'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ArticleHeader from '@blog/_components/ArticleHeader'
 
 // Trick for NEXT-1214

@@ -1,5 +1,5 @@
-import MainWrapper from '@/components/MainWrapper'
-import LoadingBlock from '@/components/LoadingBlock'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import LoadingBlock from '@/components/molecules/LoadingBlock'
 
 export default function Loading() {
   return (

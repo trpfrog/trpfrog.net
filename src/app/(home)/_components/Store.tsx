@@ -1,6 +1,7 @@
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from '@/app/(home)/style.module.scss'
 import Image from 'next/legacy/image'
+import Button from '@/components/atoms/Button'
 
 type Props = {
   id?: string
@@ -16,12 +17,12 @@ const Store = ({ id }: Props) => {
       </p>
       <div className={styles.link_grid}>
         <div className={styles.link_block}>
-          <a
+          <Button
+            externalLink={true}
             href="https://store.line.me/stickershop/product/4674940/ja"
-            className="linkButton"
           >
             LINEスタンプ vol.1
-          </a>
+          </Button>
         </div>
         <div className={styles.link_block}>
           <Image
@@ -33,13 +34,13 @@ const Store = ({ id }: Props) => {
             objectFit={'contain'}
             alt={'つまみグッズの画像'}
           />
-          <a
+          <Button
+            externalLink={true}
             href="https://store.line.me/stickershop/product/8879469/ja"
-            className="linkButton"
             style={{ marginTop: '10px' }}
           >
             LINEスタンプ vol.2
-          </a>
+          </Button>
         </div>
         <div className={styles.link_block}>
           <Image
@@ -50,9 +51,9 @@ const Store = ({ id }: Props) => {
             objectFit={'contain'}
             alt={'つまみグッズの画像'}
           />
-          <a href="https://suzuri.jp/TrpFrog" className="linkButton">
+          <Button externalLink={true} href="https://suzuri.jp/TrpFrog">
             つまみグッズ on SUZURI
-          </a>
+          </Button>
         </div>
       </div>
     </Block>

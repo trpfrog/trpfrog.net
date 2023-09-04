@@ -1,7 +1,8 @@
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from '@/app/(home)/style.module.scss'
 import Link from 'next/link'
 import links from './links.json'
+import Button from '@/components/atoms/Button'
 
 export type MyLinkRecord = {
   url: string
@@ -20,9 +21,7 @@ export default async function Links({ id }: Props) {
         {(links as MyLinkRecord[]).map(({ url, siteName, description }) => (
           <div key={siteName} className={styles.link_block}>
             <p style={{ textAlign: 'center' }}>
-              <a href={url} className="linkButton">
-                {siteName}
-              </a>
+              <Button href={url}>{siteName}</Button>
             </p>
             <p>{description}</p>
           </div>
@@ -32,9 +31,7 @@ export default async function Links({ id }: Props) {
       <h2 className="hina">相互リンク</h2>
       <p>移動しました！</p>
       <p>
-        <Link href={'/links'} className={'linkButton'}>
-          相互リンク
-        </Link>
+        <Button href={'/links'}>相互リンク</Button>
       </p>
     </Block>
   )

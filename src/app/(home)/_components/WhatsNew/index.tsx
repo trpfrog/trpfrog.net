@@ -1,6 +1,6 @@
 import styles from './index.module.scss'
 import ReactMarkdown from 'react-markdown'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import React from 'react'
 import path from 'path'
 import fs from 'fs'

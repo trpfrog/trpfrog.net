@@ -1,6 +1,6 @@
 import { addons } from '@storybook/manager-api'
-import trpFrogTheme from './TrpFrogTheme'
+import * as trpFrogTheme from './TrpFrogTheme'
 
 addons.setConfig({
-  theme: trpFrogTheme,
+  theme: trpFrogTheme.light,
 })

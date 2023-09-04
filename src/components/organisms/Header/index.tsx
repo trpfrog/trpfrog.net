@@ -7,8 +7,8 @@ import React, { useEffect, useState } from 'react'
 import { NormalTitle } from './NormalTitle'
 import { TopTitle } from './TopTitle'
 import styles from './index.module.scss'
-import MobileMenu from '@/components/MobileMenu'
-import Hamburger from '@/components/Hamburger'
+import MobileMenu from '@/components/organisms/MobileMenu'
+import Hamburger from '@/components/molecules/Hamburger'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 
 const alwaysShowHeaderAtom = atom(false)
@@ -73,24 +73,34 @@ const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   )
 }
 
-const Header: React.FC = React.memo(function Header() {
+type Props = {
+  title?: React.ReactNode
+}
+
+export default React.memo(function Header(props: Props) {
   const pathname = usePathname()
   const topLinks = [
     { href: '/', label: 'home' },
     { href: '/works', label: 'works' },
     { href: '/blog', label: 'blog' },
   ] as const
+
+  const { title = pathname === '/' ? <TopTitle /> : <NormalTitle /> } = props
+
   return (
     <>
       <HideWhenScrollDown>
         <header id={styles.header}>
           <div id={styles.inside}>
-            {pathname === '/' ? <TopTitle /> : <NormalTitle />}
+            {title}
             <nav id={styles.navigation}>
               <ul>
                 {topLinks.map(({ href, label }) => (
                   <li key={href}>
-                    <Link href={href} className="headerButton">
+                    <Link
+                      href={href}
+                      className={`headerButton ${styles.title_link}`}
+                    >
                       {label}
                     </Link>
                   </li>
@@ -105,5 +115,3 @@ const Header: React.FC = React.memo(function Header() {
     </>
   )
 })
-
-export default Header

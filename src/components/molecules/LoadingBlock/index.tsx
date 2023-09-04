@@ -1,6 +1,7 @@
 import styles from './index.module.scss'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import { CSSProperties } from 'react'
+import WaveText from '@/components/atoms/WaveText'
 
 type Props = {
   isFullHeight?: boolean
@@ -17,18 +18,7 @@ export default function LoadingBlock({
       style={props.style}
     >
       <div className={styles.wrapper}>
-        <span className={styles.text}>
-          <span>L</span>
-          <span>o</span>
-          <span>a</span>
-          <span>d</span>
-          <span>i</span>
-          <span>n</span>
-          <span>g</span>
-          <span>.</span>
-          <span>.</span>
-          <span>.</span>
-        </span>
+        <WaveText className={styles.text}>Loading...</WaveText>
       </div>
     </Block>
   )

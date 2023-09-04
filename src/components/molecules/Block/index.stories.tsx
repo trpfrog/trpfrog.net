@@ -1,4 +1,4 @@
-import Block from '.'
+import Block from './index'
 import type { Meta, StoryObj } from '@storybook/react'
 import { LOREM_IPSUM } from '@/lib/constants'
 
@@ -9,17 +9,17 @@ const meta: Meta<typeof Block> = {
 export default meta
 type Story = StoryObj<typeof Block>
 
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/react/api/csf
- * to learn how to use render functions.
- */
 export const Primary: Story = {
   args: {
     title: 'Title',
     children: LOREM_IPSUM,
     h2icon: 'trpfrog',
     newRibbon: false,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'body',
+    },
   },
   render: args => (
     <Block {...args}>

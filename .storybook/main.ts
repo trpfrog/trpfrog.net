@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/nextjs'
 import path from 'path'
-import { getGoogleFontsUrl } from '../src/components/GoogleFonts'
+import { getGoogleFontsUrl } from '../src/components/head/GoogleFonts'
 import * as fs from 'fs'
 
 const googleFontsLoaderHtml = `
@@ -15,7 +15,7 @@ const googleFontsLoaderHtml = `
      ${fs.readFileSync(
        path.resolve(
          __dirname,
-         '../src/components/GoogleFonts/index.module.scss',
+         '../src/components/head/GoogleFonts/index.module.scss',
        ),
        'utf8',
      )}
@@ -34,6 +34,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
+    'storybook-dark-mode',
   ],
   framework: {
     name: '@storybook/nextjs',

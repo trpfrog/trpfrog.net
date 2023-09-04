@@ -12,6 +12,7 @@ import useToastErrorCallback from '@blog/edit/_hooks/useToastErrorCallback'
 import EditorForm from '@blog/edit/[slug]/EditorForm'
 import matter from 'gray-matter'
 import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
+import Button from '@/components/atoms/Button'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
@@ -82,12 +83,9 @@ export default React.memo(function Editor({
         }}
       >
         <h2 style={{ display: 'inline-block' }}>つまみログエディタ</h2>
-        <a
-          className={'linkButton'}
-          onClick={() => fetch(`/api/blog/open/${slug}`)}
-        >
+        <Button onClick={() => fetch(`/api/blog/open/${slug}`)}>
           ファイルを開く
-        </a>
+        </Button>
       </div>
       <hr style={{ margin: '1rem 0' }} />
       <h3>Front-matter</h3>

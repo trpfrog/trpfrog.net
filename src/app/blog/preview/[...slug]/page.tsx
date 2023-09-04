@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/legacy/image'
 
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 
 import { getPreviewPostData } from '@blog/_lib/loadPreview'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
@@ -16,7 +16,7 @@ import PostAttributes from '@blog/_components/PostAttributes'
 import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 import { Metadata } from 'next'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 type Props = {
   params: {

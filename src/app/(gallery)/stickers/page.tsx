@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Title from '@/components/Title'
-import Block from '@/components/Block'
-import MainWrapper from '@/components/MainWrapper'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
 
 export const metadata = {

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import styles from './index.module.scss'
+import Button from '@/components/atoms/Button'
 
 export const BadBlogStateContext = React.createContext({
   badBlog: 0,
@@ -51,9 +52,9 @@ export function BadBlogButton() {
   return (
     <div>
       <p style={badButtonFlag ? {} : { opacity: 0.05, height: 2, margin: 0 }}>
-        <a className={'linkButton'} onClick={handleBadBlog}>
+        <Button onClick={handleBadBlog}>
           {badBlog ? '元に戻す' : 'よくないブログ'}
-        </a>
+        </Button>
       </p>
       {badBlog > 0 && (
         <p>

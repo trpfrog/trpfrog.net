@@ -1,0 +1,10 @@
+@use '@/styles/mixins';
+
+.plain_block {
+  position: relative;
+  background-color: var(--window-bkg-color);
+  border-radius: var(--window-border-radius);
+  text-align: left;
+  box-shadow: 0 6px 0 var(--window-bottom-color);
+  overflow: hidden;
+}

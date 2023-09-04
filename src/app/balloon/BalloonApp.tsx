@@ -3,9 +3,10 @@
 import React, { useState } from 'react'
 import Util from '@/lib/utils'
 import { useBalloonSound } from './_components/Balloon'
-import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 import BalloonArray from './_components/BalloonArray'
+import Button from '@/components/atoms/Button'
 
 export default function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
@@ -36,13 +37,12 @@ export default function BalloonApp() {
         description={'風船を割ることができます。(？)'}
       >
         <p>
-          <span
+          <Button
             onClick={() => setSoundEnabled(!isSoundEnabled)}
-            className={'linkButton'}
             style={{ marginRight: '10px' }}
           >
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
-          </span>
+          </Button>
           <label style={{ marginRight: '10px' }}>
             <input
               type="number"

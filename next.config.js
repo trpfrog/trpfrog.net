@@ -6,10 +6,6 @@ const config = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 
-  env: {
-    title: 'つまみネット',
-    twitterId: '@TrpFrog',
-  },
   images: {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/trpfrog/image/upload/',

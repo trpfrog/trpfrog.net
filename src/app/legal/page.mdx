@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Title from "@/components/Title";
-import Block from "@/components/Block";
+import Title from "@/components/organisms/Title";
+import Block from "@/components/molecules/Block";
+import Button from "@/components/atoms/Button";
 
 export const metadata = {
   title: 'Legal Information'
@@ -12,7 +12,7 @@ export const metadata = {
 
   以下のページでは当サイトでお預かりした個人情報の管理の方法について説明しています。
 
-  <Link href={'/legal/privacy'} className={'linkButton'}>プライバシーポリシー</Link>
+  <Button href={'/legal/privacy'}>プライバシーポリシー</Button>
 
 </Block>
 
@@ -20,7 +20,7 @@ export const metadata = {
 
   以下のページでは免責事項について説明しています。
 
-  <Link href={'/legal/disclaimer'} className={'linkButton'}>免責事項</Link>
+  <Button href={'/legal/disclaimer'}>免責事項</Button>
 
 </Block>
 
@@ -28,6 +28,6 @@ export const metadata = {
 
   以下のページでは当サイト上に掲載されたコンテンツの権利について説明しています。
 
-  <Link href={'/legal/copyright'} className={'linkButton'}>著作権について</Link>
+  <Button href={'/legal/copyright'}>著作権について</Button>
 
 </Block>

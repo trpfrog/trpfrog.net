@@ -1,5 +1,5 @@
-import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 import styles from './style.module.scss'
 import React from 'react'
 import Image from 'next/legacy/image'
@@ -7,7 +7,8 @@ import { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import readMarkdowns from '@/lib/mdLoader'
 import path from 'path'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import Button from '@/components/atoms/Button'
 
 type KeywordsType = {
   keywords: string[]
@@ -83,17 +84,18 @@ export default async function Index() {
               <b>Released:</b> {metadata.date}
             </p>
             <ReactMarkdown>{content}</ReactMarkdown>
-            <p className={'link-area'}>
+            <p
+              style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
+            >
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <a
+                  <Button
+                    externalLink={true}
                     key={linkTxt}
                     href={url as string}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     {linkTxt}
-                  </a>
+                  </Button>
                 )
               })}
             </p>

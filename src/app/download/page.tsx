@@ -1,11 +1,12 @@
 import Image from 'next/legacy/image'
-import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 import { Metadata } from 'next'
 import path from 'path'
 import ReactMarkdown from 'react-markdown'
 import readMarkdowns from '@/lib/mdLoader'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import Button from '@/components/atoms/Button'
 
 export const metadata = {
   title: 'DLコンテンツ',
@@ -53,11 +54,13 @@ export default async function Index() {
               </div>
             )}
             <ReactMarkdown>{content}</ReactMarkdown>
-            <div className={'link-area'}>
+            <div
+              style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
+            >
               {metadata.links.map(({ href, text }) => (
-                <a key={href} href={href}>
+                <Button key={href} href={href}>
                   {text}
-                </a>
+                </Button>
               ))}
             </div>
           </Block>

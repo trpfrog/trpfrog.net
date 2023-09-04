@@ -2,8 +2,8 @@
 
 import path from 'path'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Button from '@/components/atoms/Button'
 
 export default function ReturnButton() {
   const pathname = usePathname()
@@ -12,11 +12,6 @@ export default function ReturnButton() {
   if (basename.startsWith('legal')) {
     return <></>
   } else {
-    return (
-      // @ts-ignore
-      <Link href={'/legal'} className={'linkButton'}>
-        戻る
-      </Link>
-    )
+    return <Button href={'/legal'}>戻る</Button>
   }
 }

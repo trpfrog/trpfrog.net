@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react'
-import Block from './Block'
+import Block from '@/components/molecules/Block'
 
 type Props = {
   title?: string

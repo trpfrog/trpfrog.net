@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './index.module.scss'
+import PlainBlock from '@/components/atoms/PlainBlock'
 
 type Props = React.ComponentProps<'div'> & {
   title?: string
@@ -24,14 +25,21 @@ export default function Block(props: Props) {
   let ribbon = <></>
   if (newRibbon) ribbonText = 'NEW!'
   if (ribbonText != '') {
-    ribbon = <span className={styles['new-ribbon']}>{ribbonText}</span>
+    ribbon = <span className={styles.new_ribbon}>{ribbonText}</span>
   }
 
   return (
-    <div className={`main-window ${className}`} {...otherProps}>
+    <PlainBlock
+      className={`${styles.main_window} ${className}`}
+      {...otherProps}
+    >
       {ribbon}
-      {title && <h2 className={h2icon}>{title}</h2>}
+      {title && (
+        <h2 style={{ margin: 0 }} className={h2icon}>
+          {title}
+        </h2>
+      )}
       {children}
-    </div>
+    </PlainBlock>
   )
 }

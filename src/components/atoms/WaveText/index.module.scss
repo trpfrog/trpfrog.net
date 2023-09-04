@@ -1,0 +1,26 @@
+@use '@/styles/mixins';
+
+.wave_text {
+  .char {
+    display: inline-block;
+    animation-name: dots;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  --amplitude: -0.5em;
+  @keyframes dots {
+    0% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(var(--amplitude));
+    }
+    15% {
+      transform: translateY(var(--amplitude));
+    }
+    30% {
+      transform: translateY(0);
+    }
+  }
+}

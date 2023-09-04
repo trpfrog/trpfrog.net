@@ -2,7 +2,8 @@ import { NextPage } from 'next'
 import Layout from '@/components/Layout'
 import Link from 'next/link'
 import Image from 'next/legacy/image'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
+import Button from '@/components/atoms/Button'
 
 const TrpFrog500: NextPage = () => {
   const IB = ({ children }: any) => (
@@ -46,12 +47,17 @@ const TrpFrog500: NextPage = () => {
             </div>
           </p>
         </div>
-        <p className={'link-area'}>
-          <Link href={'https://github.com/trpfrog/trpfrog.net/issues'}>
+        <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
+          <Button
+            externalLink={true}
+            href={'https://github.com/trpfrog/trpfrog.net/issues'}
+          >
             GitHub Issues
-          </Link>
-          <Link href={'https://twitter.com/trpfrog'}>Twitter</Link>
-          <Link href={'/'}>トップページに戻る</Link>
+          </Button>
+          <Button externalLink={true} href={'https://twitter.com/trpfrog'}>
+            Twitter
+          </Button>
+          <Button href={'/'}>トップページに戻る</Button>
         </p>
       </Title>
     </Layout>

@@ -5,6 +5,7 @@ import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { getMarkdownPlugins } from '@blog/_renderer/rendererProperties'
 import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
+import Button from '@/components/atoms/Button'
 
 export type ProfileData = {
   name: string
@@ -103,14 +104,9 @@ const ProfileCards = ({
         secondaryButtonText={'カード表示に切り替え'}
       />
       {twitterSearchLink !== '' && (
-        <a
-          href={twitterSearchLink}
-          className={'linkButton'}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Button externalLink={true} href={twitterSearchLink}>
           当日の同行者のツイートを見る
-        </a>
+        </Button>
       )}
     </>
   )

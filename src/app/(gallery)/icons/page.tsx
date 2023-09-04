@@ -1,8 +1,9 @@
-import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 import { Metadata } from 'next'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
+import Button from '@/components/atoms/Button'
 
 export const metadata = {
   title: 'つまみアイコン集',
@@ -25,12 +26,12 @@ export default function Index() {
         </p>
         <p>Hugging Face Datasets でも利用可能です！</p>
         <p>
-          <a
+          <Button
+            externalLink={true}
             href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}
-            className={'linkButton'}
           >
             trpfrog-icons on 🤗Datasets
-          </a>
+          </Button>
         </p>
       </Title>
       <Block>
@@ -42,12 +43,12 @@ export default function Index() {
           にて使えるようになりました！🎉
         </p>
         <p>
-          <a
+          <Button
+            externalLink={true}
             href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}
-            className={'linkButton'}
           >
             trpfrog-icons
-          </a>
+          </Button>
         </p>
         <pre
           style={{

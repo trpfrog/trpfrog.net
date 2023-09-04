@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/legacy/image'
-import Title from '@/components/Title'
-import MainWrapper from '@/components/MainWrapper'
+import Title from '@/components/organisms/Title'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import Button from '@/components/atoms/Button'
 
 export default function NotFound() {
   const IB = ({ children }: any) => (
@@ -32,9 +33,7 @@ export default function NotFound() {
             <IB>リンクが誤っている可能性があります。</IB>
           </p>
           <p>
-            <Link href={'/'} className={'linkButton'}>
-              トップページに戻る
-            </Link>
+            <Button href={'/'}>トップページに戻る</Button>
           </p>
         </div>
       </Title>

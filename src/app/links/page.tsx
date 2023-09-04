@@ -2,12 +2,12 @@ import { loadMutualLinkRecords, MutualLinkRecord } from './loader'
 
 import styles from '@/app/(home)/style.module.scss'
 
-import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 import React from 'react'
 import { Metadata } from 'next'
 import { MutualLinkBlock } from './MutualLinkBlock'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 export const metadata = {
   title: '相互リンク',

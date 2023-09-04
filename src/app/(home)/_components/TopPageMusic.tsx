@@ -1,9 +1,10 @@
 'use client'
 
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
+import Button from '@/components/atoms/Button'
 
 type Props = {
   id?: string
@@ -34,9 +35,11 @@ const TopPageMusic = ({ id }: Props) => {
           alt={'つまみのうたのバナー'}
         />
       </p>
-      <p className={'link-area'}>
-        <a href="https://linkco.re/N4Z8hdvX">購入/ストリーミング</a>
-        <Link href={'/music'}>歌詞</Link>
+      <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
+        <Button externalLink={true} href="https://linkco.re/N4Z8hdvX">
+          購入/ストリーミング
+        </Button>
+        <Button href={'/music'}>歌詞</Button>
       </p>
     </Block>
   )

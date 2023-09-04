@@ -7,6 +7,7 @@ import { UDFontButton } from '@blog/_components/UDFontBlock'
 import TogglePageViewLink from '@blog/_components/TogglePageViewLink'
 import React from 'react'
 import BlogPost from '@blog/_lib/blogPost'
+import Button from '@/components/atoms/Button'
 
 type EntryButtonProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   post: BlogPost
@@ -36,25 +37,28 @@ export function RichEntryButtons(props: EntryButtonProps) {
   )
 }
 
-export function EntryButtons({
-  post,
-  className,
-  style,
-  ...rest
-}: EntryButtonProps) {
+export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
   return (
     <p
-      className={`link-area ${className}`}
-      style={{ textAlign: 'center', ...style }}
+      style={{
+        justifyContent: 'center',
+        display: 'flex',
+        flexFlow: 'row wrap',
+        gap: '8px 6px',
+        ...style,
+      }}
       {...rest}
     >
-      <Link href={'/blog'}>記事一覧</Link>
+      <Button href={'/blog'}>記事一覧</Button>
       <ShareSpan slug={post.slug}>
-        <a>ツイート</a>
+        <Button>ツイート</Button>
       </ShareSpan>
-      <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+      <Button
+        externalLink={true}
+        href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}
+      >
         訂正リクエスト
-      </a>
+      </Button>
     </p>
   )
 }

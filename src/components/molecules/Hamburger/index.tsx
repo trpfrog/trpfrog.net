@@ -2,7 +2,7 @@
 
 import React from 'react'
 import styles from './index.module.scss'
-import { useMobileMenuState } from '@/components/MobileMenu'
+import { useMobileMenuState } from '@/components/organisms/MobileMenu'
 
 const Hamburger = () => {
   const [isOpened, setHamburgerState] = useMobileMenuState()

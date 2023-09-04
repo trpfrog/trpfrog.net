@@ -1,14 +1,14 @@
 'use client'
 
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import styles from './page.module.scss'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import React, { useDeferredValue, useMemo, useRef } from 'react'
 import Viewer from '@blog/edit/[slug]/Viewer'
 import Editor from '@blog/edit/[slug]/Editor'
 import { useMountEffect } from '@react-hookz/web'
 import { buildBlogPost } from '@blog/_lib/blogPost'
-import { useAlwaysShownHeader } from '@/components/Header'
+import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 export default function Index(props: { params: { slug: string } }) {
   const INITIAL_CONTENT = 'Loading...'

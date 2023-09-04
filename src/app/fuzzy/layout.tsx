@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import React from 'react'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 export const metadata: Metadata = {
   title: 'fuzzy',
