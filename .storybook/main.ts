@@ -15,7 +15,7 @@ const googleFontsLoaderHtml = `
      ${fs.readFileSync(
        path.resolve(
          __dirname,
-         '../src/components/GoogleFonts/index.module.scss',
+         '../src/components/head/GoogleFonts/index.module.scss',
        ),
        'utf8',
      )}
