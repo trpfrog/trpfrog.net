@@ -1,8 +1,8 @@
-import Header from '.'
+import Header from './index'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { TopTitle } from '@/components/Header/TopTitle'
-import { NormalTitle } from '@/components/Header/NormalTitle'
+import { TopTitle } from '@/components/organisms/Header/TopTitle'
+import { NormalTitle } from '@/components/organisms/Header/NormalTitle'
 
 const meta: Meta<typeof Header> = {
   component: Header,

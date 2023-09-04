@@ -1,6 +1,6 @@
 import React from 'react'
 import ReturnButton from './ReturnButton'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 type Props = {
   children: React.ReactNode

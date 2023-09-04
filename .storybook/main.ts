@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/nextjs'
 import path from 'path'
-import { getGoogleFontsUrl } from '../src/components/GoogleFonts'
+import { getGoogleFontsUrl } from '../src/components/head/GoogleFonts'
 import * as fs from 'fs'
 
 const googleFontsLoaderHtml = `

@@ -3,7 +3,7 @@ import Block from '@/components/molecules/Block'
 import styles from '@blog/_styles/blog.module.scss'
 import { RichEntryButtons } from './EntryButtons'
 import PageNavigation from '@blog/_components/PageNavigation'
-import { HeaderFollowSticky } from '@/components/Header'
+import { HeaderFollowSticky } from '@/components/organisms/Header'
 import React from 'react'
 import BlogPost from '@blog/_lib/blogPost'
 

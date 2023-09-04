@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import React from 'react'
 import SearchForm from './SearchForm'
 import Block from '@/components/molecules/Block'
 import dayjs from 'dayjs'
 import TweetArea from './TweetArea'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 // Prisma does not support Edge without the Data Proxy currently
 export const runtime = 'nodejs' // default

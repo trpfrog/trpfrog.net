@@ -1,4 +1,4 @@
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import Block from '@/components/molecules/Block'
 
 import { getSortedPostsData } from '@blog/_lib/load'
@@ -6,7 +6,7 @@ import ArticleCard from '@blog/_components/ArticleCard'
 import Belongings from './Belongings.mdx'
 import BlogPost from '@blog/_lib/blogPost'
 import { Metadata } from 'next'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ArticleGrid from '@blog/_components/ArticleGrid'
 
 export const metadata = {

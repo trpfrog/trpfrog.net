@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/legacy/image'
-import Title from '@/components/Title'
-import MainWrapper from '@/components/MainWrapper'
+import Title from '@/components/organisms/Title'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 export default function NotFound() {
   const IB = ({ children }: any) => (

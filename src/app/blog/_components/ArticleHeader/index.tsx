@@ -1,6 +1,6 @@
 import BlogPost from '@blog/_lib/blogPost'
 import React from 'react'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import styles from './index.module.scss'
 import Balancer from 'react-wrap-balancer'
 import { ParseWithBudouX } from '@/lib/wordSplit'

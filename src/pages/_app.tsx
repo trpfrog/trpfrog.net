@@ -7,7 +7,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 // Framer Motion
 import { AnimatePresence } from 'framer-motion'
 
-import Analytics from '@/components/Analytics'
+import Analytics from '@/components/head/Analytics'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 

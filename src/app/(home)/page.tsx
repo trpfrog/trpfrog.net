@@ -14,7 +14,7 @@ import TopPageBalloons from './_components/TopPageBalloons'
 import TopPageMusic from './_components/TopPageMusic'
 import TopPageIcons from './_components/TopPageIcons'
 import TempTwitter from './_components/TempTwitter'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 export const revalidate = 30
 

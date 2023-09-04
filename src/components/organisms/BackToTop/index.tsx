@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import styles from './index.module.scss'
+import CircleButton from '@/components/atoms/CircleButton'
 
 const backToTop = () => {
   window.scrollTo({
@@ -14,10 +15,8 @@ const backToTop = () => {
 
 export default function BackToTop() {
   return (
-    <div id={styles.page_top} onClick={backToTop}>
-      <span id={styles.back_to_top_icon}>
-        <FontAwesomeIcon icon={faAngleDoubleUp} />
-      </span>
-    </div>
+    <CircleButton id={styles.page_top} onClick={backToTop}>
+      <FontAwesomeIcon icon={faAngleDoubleUp} />
+    </CircleButton>
   )
 }

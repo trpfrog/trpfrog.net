@@ -1,11 +1,11 @@
 import Image from 'next/legacy/image'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import Block from '@/components/molecules/Block'
 import { Metadata } from 'next'
 import path from 'path'
 import ReactMarkdown from 'react-markdown'
 import readMarkdowns from '@/lib/mdLoader'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 export const metadata = {
   title: 'DLコンテンツ',

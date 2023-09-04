@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import { getSortedPostsData } from '@blog/_lib/load'
 
 import styles from '@blog/_styles/blog.module.scss'
@@ -9,7 +9,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import ArticleCard from '@blog/_components/ArticleCard'
 import BlogPost from '@blog/_lib/blogPost'
 import { Metadata } from 'next'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ArticleGrid from '@blog/_components/ArticleGrid'
 
 export const metadata = {

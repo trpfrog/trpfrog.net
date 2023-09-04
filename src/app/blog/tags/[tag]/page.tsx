@@ -1,9 +1,9 @@
 import { getAllTags, getSortedPostsData } from '@blog/_lib/load'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import Link from 'next/link'
 import React from 'react'
 import ArticleCard from '@blog/_components/ArticleCard'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 import ArticleGrid from '@blog/_components/ArticleGrid'
 
 export async function generateStaticParams() {

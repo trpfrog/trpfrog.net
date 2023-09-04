@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Util from '@/lib/utils'
 import { useBalloonSound } from './_components/Balloon'
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import Block from '@/components/molecules/Block'
 import BalloonArray from './_components/BalloonArray'
 

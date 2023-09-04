@@ -1,4 +1,4 @@
-import Title from '@/components/Title'
+import Title from '@/components/organisms/Title'
 import Block from '@/components/molecules/Block'
 import styles from './style.module.scss'
 import React from 'react'
@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import readMarkdowns from '@/lib/mdLoader'
 import path from 'path'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/atoms/MainWrapper'
 
 type KeywordsType = {
   keywords: string[]
