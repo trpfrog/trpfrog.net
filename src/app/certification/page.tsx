@@ -1,7 +1,7 @@
 import styles from './style.module.scss'
 
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import path from 'path'
 import fs from 'fs/promises'
 import yaml from 'js-yaml'

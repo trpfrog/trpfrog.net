@@ -1,6 +1,6 @@
 import styles from './index.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 
 import {
   faAt,

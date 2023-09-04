@@ -1,6 +1,6 @@
 import Image from 'next/legacy/image'
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import { Metadata } from 'next'
 import path from 'path'
 import ReactMarkdown from 'react-markdown'

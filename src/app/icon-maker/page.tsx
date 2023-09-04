@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 
 import IconMakerApp from './IconMakerApp'
 import { Metadata } from 'next'

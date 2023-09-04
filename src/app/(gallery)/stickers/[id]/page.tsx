@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import MainWrapper from '@/components/MainWrapper'
 import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
 import ImageNavigation from '@/app/(gallery)/_components/ImageNavigation'

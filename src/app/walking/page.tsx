@@ -1,5 +1,5 @@
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 
 import { getSortedPostsData } from '@blog/_lib/load'
 import ArticleCard from '@blog/_components/ArticleCard'

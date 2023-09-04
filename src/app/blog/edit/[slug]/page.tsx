@@ -2,7 +2,7 @@
 
 import MainWrapper from '@/components/MainWrapper'
 import styles from './page.module.scss'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import React, { useDeferredValue, useMemo, useRef } from 'react'
 import Viewer from '@blog/edit/[slug]/Viewer'
 import Editor from '@blog/edit/[slug]/Editor'

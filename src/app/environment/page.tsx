@@ -4,7 +4,7 @@ import fs from 'fs/promises'
 import React from 'react'
 
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import GadgetIntro from './GadgetIntro'
 import { Metadata } from 'next'
 import MainWrapper from '@/components/MainWrapper'

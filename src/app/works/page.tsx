@@ -1,5 +1,5 @@
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from './style.module.scss'
 import React from 'react'
 import Image from 'next/legacy/image'

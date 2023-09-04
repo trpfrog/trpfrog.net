@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Title from '@/components/Title'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import MainWrapper from '@/components/MainWrapper'
 import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
 

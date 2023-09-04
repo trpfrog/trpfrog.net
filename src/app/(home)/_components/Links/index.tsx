@@ -1,4 +1,4 @@
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from '@/app/(home)/style.module.scss'
 import Link from 'next/link'
 import links from './links.json'

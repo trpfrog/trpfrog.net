@@ -1,5 +1,5 @@
 import PageNavigation from '@/app/tweets/PageNavigation'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import React from 'react'
 import search from '@/app/tweets/tweetSearcher'
 import TweetCard, { DateCard } from '@/app/tweets/TweetCard'

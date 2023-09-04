@@ -1,6 +1,6 @@
 'use client'
 
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from './style.module.scss'
 import Image from 'next/legacy/image'
 import IconCanvas from '@/lib/iconMaker'

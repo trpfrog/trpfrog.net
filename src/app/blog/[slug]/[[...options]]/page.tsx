@@ -1,4 +1,4 @@
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 
 import { getPostData, getSortedPostsData } from '@blog/_lib/load'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'

@@ -1,5 +1,5 @@
 import ArticleCard from '@blog/_components/ArticleCard'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import styles from '@blog/_styles/blog.module.scss'
 import { RichEntryButtons } from './EntryButtons'
 import PageNavigation from '@blog/_components/PageNavigation'

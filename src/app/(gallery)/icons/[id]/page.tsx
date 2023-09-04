@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Block from '@/components/Block'
+import Block from '@/components/molecules/Block'
 import { Metadata } from 'next'
 import MainWrapper from '@/components/MainWrapper'
 import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
