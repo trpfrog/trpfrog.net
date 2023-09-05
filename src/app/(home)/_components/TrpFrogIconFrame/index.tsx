@@ -1,111 +1,34 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
-import WaveText from '@/components/atoms/WaveText'
+import { get } from '@vercel/edge-config'
+
+import { IconFrame } from '@/app/(home)/_components/TrpFrogIconFrame/IconFrame'
+
 import Block from '@/components/molecules/Block'
 
-import { generateRandomPrompt, generateTrpFrogImage } from '@/lib/randomTrpFrog'
-
-import styles from './index.module.scss'
-
-const AIIconFrame = React.memo(async function AIIconFrame(props: {
-  imageBase64: string
-  alt: string
-  size?: number | string
-}) {
-  return (
-    <img
-      style={{ width: props.size }}
-      className={styles.picture}
-      src={`data:image/png;base64,${props.imageBase64}`}
-      alt={`Auto generated image by AI: ${props.alt}`}
-    />
-  )
-})
-
-function DiffusionWaitingFallBack() {
-  return (
-    <figure style={{ margin: '20px 0' }}>
-      <div className={styles.loading_picture}>
-        <WaveText>Generating...</WaveText>
-      </div>
-      <figcaption className={styles.caption_wrapper}>
-        <div className={`${styles.caption_en} ${styles.waiting}`} />
-        <div className={`${styles.caption_ja} ${styles.waiting}`} />
-      </figcaption>
-    </figure>
-  )
-}
-
-function DiffusionErrorFallback() {
-  return (
-    <figure style={{ margin: '20px 0' }}>
-      <div className={styles.error_picture}>
-        <span>Error occurred</span>
-      </div>
-      <figcaption className={styles.caption_wrapper}>
-        <p>
-          エラーが発生しました。
-          <br />
-          時間をあけて再度お試しください。
-        </p>
-      </figcaption>
-    </figure>
-  )
-}
-
-async function IconFrame() {
-  if (process.env.NODE_ENV === 'development') {
-    return <DiffusionWaitingFallBack />
-  }
-
-  let base64 = ''
-  let prompt = ''
-  let translated = ''
-  const numberOfRetries = 3
-  for (const _ of Array(numberOfRetries)) {
-    try {
-      const promptRes = await generateRandomPrompt()
-      prompt = promptRes.prompt
-      translated = promptRes.translated
-      const result = await generateTrpFrogImage(prompt)
-      if (!result.success) {
-        continue
-      }
-      base64 = result.base64
-    } catch (e) {
-      console.error(e)
-      continue
-    }
-    break
-  }
-
-  if (!base64) {
-    return <DiffusionErrorFallback />
-  }
-
-  return (
-    <figure style={{ margin: '20px 0' }}>
-      <AIIconFrame imageBase64={base64} alt={prompt} />
-      <figcaption className={styles.caption_wrapper}>
-        <div className={styles.caption_en}>{prompt}</div>
-        <div className={styles.caption_ja}>{translated}</div>
-      </figcaption>
-    </figure>
-  )
-}
+import {
+  TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
+  TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
+} from '@/lib/constants'
 
 type Props = React.ComponentProps<'div'>
 
-export default function TrpFrogIconFrame(props: Props) {
-  return (
-    <Block title={'TrpFrog Diffusion'} h2icon={'robot'} {...props}>
-      <Suspense fallback={<DiffusionWaitingFallBack />}>
-        <IconFrame />
-      </Suspense>
+export default async function TrpFrogIconFrame(props: Props) {
+  const updateHours =
+    (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
+    TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS
 
+  return (
+    <Block title={'AIつまみアイコン'} h2icon={'robot'} {...props}>
+      <IconFrame />
       <hr />
-      <small style={{ fontSize: '0.6em' }}>
-        <div>この画像は一定時間ごとに自動生成されます。</div>
+      <small style={{ fontSize: '0.6em', textAlign: 'center' }}>
+        <div>
+          これは AI により自動生成された画像です。
+          <br />
+          最後の生成から{updateHours}
+          時間経つと再生成されます。
+        </div>
         <div>
           Powered by{' '}
           <a href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>

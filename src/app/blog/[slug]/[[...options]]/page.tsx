@@ -76,10 +76,9 @@ const processSlug = async (slug: string, page?: string) => {
         (e: BlogPost) => e.slug !== entry.slug,
       )
 
-  const useCloudinary = process.env.NODE_ENV === 'production'
   return {
     entry: JSON.parse(JSON.stringify(entry)) as BlogPost,
-    imageSize: await fetchAllImageProps(entry, useCloudinary),
+    imageSize: await fetchAllImageProps(entry, false),
     relatedPosts,
   }
 }

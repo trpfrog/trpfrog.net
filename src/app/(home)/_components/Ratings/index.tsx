@@ -8,7 +8,7 @@ type Props = {
 
 const Ratings = ({ id }: Props) => {
   return (
-    <Block title={'競プロ'} h2icon={'robot'} id={id}>
+    <Block title={'競プロ'} h2icon={'car'} id={id}>
       <ul className={styles.rating_list}>
         <li>
           <b>AtCoder</b> (<a href="https://atcoder.jp/users/TrpFrog">TrpFrog</a>
@@ -17,7 +17,7 @@ const Ratings = ({ id }: Props) => {
             highest
           </span>
           <span className={styles.water} style={{ fontSize: '2.8em' }}>
-            1572
+            1596
           </span>
         </li>
         <li>
