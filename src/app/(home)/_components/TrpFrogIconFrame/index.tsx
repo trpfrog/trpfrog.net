@@ -94,9 +94,11 @@ async function IconFrame() {
   )
 }
 
-export default function TrpFrogIconFrame() {
+type Props = React.ComponentProps<'div'>
+
+export default function TrpFrogIconFrame(props: Props) {
   return (
-    <Block title={'TrpFrog Diffusion'} h2icon={'robot'}>
+    <Block title={'TrpFrog Diffusion'} h2icon={'robot'} {...props}>
       <Suspense fallback={<DiffusionWaitingFallBack />}>
         <IconFrame />
       </Suspense>
