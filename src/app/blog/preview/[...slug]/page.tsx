@@ -51,7 +51,7 @@ const processSlug = async (slug: [string, string | undefined]) => {
   const entry = id
     ? ((await getPreviewPostData(id, option)) as ErrorablePost)
     : createErrorArticle('ID is missing!')
-  const imageSize = entry.isError ? {} : await fetchAllImageProps(entry)
+  const imageSize = entry.isError ? {} : await fetchAllImageProps(entry, false)
   return {
     entry: JSON.parse(JSON.stringify(entry)),
     imageSize,
