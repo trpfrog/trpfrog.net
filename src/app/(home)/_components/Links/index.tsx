@@ -17,7 +17,7 @@ type Props = {
 
 export default async function Links({ id }: Props) {
   return (
-    <Block title={'リンク集'} h2icon={'robot'} id={styles.links}>
+    <Block title={'リンク集'} h2icon={'pumpkin'} id={styles.links}>
       <div className={styles.link_grid}>
         {(links as MyLinkRecord[]).map(({ url, siteName, description }) => (
           <div key={siteName} className={styles.link_block}>

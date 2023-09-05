@@ -18,9 +18,6 @@ import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
 import WhatsNew from './_components/WhatsNew'
 import styles from './style.module.scss'
 
-export const revalidate = 21600 // 6 hours
-
-// @ts-ignore
 export default async function Index() {
   const mainWrapperStyle: React.CSSProperties = {
     display: 'block',
