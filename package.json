@@ -77,6 +77,7 @@
     "remark-math": "^5.1.1",
     "remark-toc": "^8.0.1",
     "remark-unwrap-images": "^3.0.1",
+    "swr": "^2.2.2",
     "textlint": "^13.3.3",
     "textlint-rule-preset-japanese": "^7.0.0",
     "use-sound": "^4.0.1",
