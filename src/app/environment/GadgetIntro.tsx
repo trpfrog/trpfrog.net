@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './style.module.scss'
+
 import Image from 'next/legacy/image'
+
+import styles from './style.module.scss'
 
 type Props = {
   name: string

@@ -1,20 +1,20 @@
-import styles from './style.module.scss'
-
 import React from 'react'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
-import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
-import AboutMe from './_components/AboutMe'
-import WhatsNew from './_components/WhatsNew'
-import Store from './_components/Store'
-import Bird from './_components/Bird'
-import Ratings from './_components/Ratings'
-import Links from './_components/Links'
-import TopPageBalloons from './_components/TopPageBalloons'
-import TopPageMusic from './_components/TopPageMusic'
-import TopPageIcons from './_components/TopPageIcons'
-import TempTwitter from './_components/TempTwitter'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import MainWrapper from '@/components/atoms/MainWrapper'
+
+import AboutMe from './_components/AboutMe'
+import Bird from './_components/Bird'
+import Links from './_components/Links'
+import Ratings from './_components/Ratings'
+import Store from './_components/Store'
+import TempTwitter from './_components/TempTwitter'
+import TopPageBalloons from './_components/TopPageBalloons'
+import TopPageIcons from './_components/TopPageIcons'
+import TopPageMusic from './_components/TopPageMusic'
+import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
+import WhatsNew from './_components/WhatsNew'
+import styles from './style.module.scss'
 
 export const revalidate = 30
 

@@ -1,14 +1,18 @@
 'use client'
 
-import styles from '@blog/_styles/blog.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import ArticleCard from './ArticleCard'
-import Link from 'next/link'
 import React from 'react'
-import BlogPost from '@blog/_lib/blogPost'
-import ArticleGrid from '@blog/_components/ArticleGrid'
+
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+
 import Button from '@/components/atoms/Button'
+
+import ArticleGrid from '@blog/_components/ArticleGrid'
+import BlogPost from '@blog/_lib/blogPost'
+import styles from '@blog/_styles/blog.module.scss'
+
+import ArticleCard from './ArticleCard'
 
 const RelatedPosts = ({
   tag,

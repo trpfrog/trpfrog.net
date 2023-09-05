@@ -1,11 +1,13 @@
 'use client'
 
-import Block from '@/components/molecules/Block'
-import styles from '@/app/(home)/style.module.scss'
 import Link from 'next/link'
-import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
+
+import styles from '@/app/(home)/style.module.scss'
 import Balloon from '@/app/balloon/_components/Balloon'
+import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
+
 import Button from '@/components/atoms/Button'
+import Block from '@/components/molecules/Block'
 
 type Props = {
   id?: string

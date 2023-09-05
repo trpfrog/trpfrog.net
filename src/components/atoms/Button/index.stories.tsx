@@ -1,6 +1,8 @@
-import FloatingCircleButton from '.'
-import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+
+import FloatingCircleButton from '.'
+
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof FloatingCircleButton> = {
   component: FloatingCircleButton,

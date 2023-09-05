@@ -1,10 +1,13 @@
 'use client'
 
-import Block from '@/components/molecules/Block'
-import styles from './style.module.scss'
 import Image from 'next/legacy/image'
-import IconCanvas from '@/lib/iconMaker'
+
 import Button from '@/components/atoms/Button'
+import Block from '@/components/molecules/Block'
+
+import IconCanvas from '@/lib/iconMaker'
+
+import styles from './style.module.scss'
 
 export default function IconMakerApp() {
   const state = new IconCanvas('canvas-result')

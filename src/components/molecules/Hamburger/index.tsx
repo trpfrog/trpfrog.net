@@ -1,8 +1,10 @@
 'use client'
 
 import React from 'react'
-import styles from './index.module.scss'
+
 import { useMobileMenuState } from '@/components/organisms/MobileMenu'
+
+import styles from './index.module.scss'
 
 const Hamburger = () => {
   const [isOpened, setHamburgerState] = useMobileMenuState()

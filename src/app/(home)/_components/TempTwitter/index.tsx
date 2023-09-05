@@ -1,15 +1,20 @@
-import microCMS from '@/lib/microCMS'
-import matter from 'gray-matter'
 import React from 'react'
 import { Suspense } from 'react'
-import LoadingBlock from '@/components/molecules/LoadingBlock'
+
+import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
+
 import MainWrapper from '@/components/atoms/MainWrapper'
 import Block from '@/components/molecules/Block'
-import remarkGfm from 'remark-gfm'
-import rehypeRaw from 'rehype-raw'
-import styles from './index.module.scss'
+import LoadingBlock from '@/components/molecules/LoadingBlock'
+
+import microCMS from '@/lib/microCMS'
+
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
+
+import styles from './index.module.scss'
 
 export default async function TempTwitter() {
   let md: string

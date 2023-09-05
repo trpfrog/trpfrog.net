@@ -1,6 +1,7 @@
-import styles from './index.module.scss'
-import Link from 'next/link'
 import Image from 'next/legacy/image'
+import Link from 'next/link'
+
+import styles from './index.module.scss'
 
 export type ImageListProps = {
   images: ImagePaths[]

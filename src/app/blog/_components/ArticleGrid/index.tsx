@@ -1,5 +1,6 @@
-import styles from './index.module.scss'
 import React from 'react'
+
+import styles from './index.module.scss'
 
 type Props = React.ComponentProps<'div'> & {
   children: React.ReactNode

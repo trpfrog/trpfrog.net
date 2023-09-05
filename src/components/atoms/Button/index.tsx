@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './index.module.scss'
+
 import Link from 'next/link'
+
+import styles from './index.module.scss'
 
 type LinkProps = Omit<Parameters<typeof Link>[0], 'href'> & {
   href: `/${string}`

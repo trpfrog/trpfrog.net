@@ -1,11 +1,15 @@
 import React from 'react'
-import styles from './index.module.scss'
+
 import dayjs from 'dayjs'
+
+import Button from '@/components/atoms/Button'
+
+import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { getMarkdownPlugins } from '@blog/_renderer/rendererProperties'
-import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
-import Button from '@/components/atoms/Button'
+
+import styles from './index.module.scss'
 
 export type ProfileData = {
   name: string

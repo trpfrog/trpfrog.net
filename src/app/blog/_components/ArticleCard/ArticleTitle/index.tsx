@@ -1,7 +1,10 @@
 import React from 'react'
-import styles from './index.module.scss'
-import { ParseWithBudouX } from '@/lib/wordSplit'
+
 import Balancer from 'react-wrap-balancer'
+
+import { ParseWithBudouX } from '@/lib/wordSplit'
+
+import styles from './index.module.scss'
 
 type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
   title: string

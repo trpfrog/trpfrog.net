@@ -1,8 +1,11 @@
-import Block from '@/components/molecules/Block'
-import styles from '@/app/(home)/style.module.scss'
 import Link from 'next/link'
-import links from './links.json'
+
+import styles from '@/app/(home)/style.module.scss'
+
 import Button from '@/components/atoms/Button'
+import Block from '@/components/molecules/Block'
+
+import links from './links.json'
 
 export type MyLinkRecord = {
   url: string

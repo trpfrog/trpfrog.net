@@ -1,6 +1,6 @@
-import styles from './index.module.scss'
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import {
   faCalendarDay,
   faClock,
@@ -8,9 +8,12 @@ import {
   faSyncAlt,
   faWalking,
 } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+
 import BlogPost from '@blog/_lib/blogPost'
+
+import styles from './index.module.scss'
 
 type Props = {
   post: BlogPost

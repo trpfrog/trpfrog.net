@@ -1,10 +1,13 @@
-import styles from './index.module.scss'
 import React from 'react'
-import reactStringReplace from 'react-string-replace'
-import dayjs from 'dayjs'
-import type { Tweet, Media } from '@prisma/client'
+
 import { faStar, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import dayjs from 'dayjs'
+import reactStringReplace from 'react-string-replace'
+
+import styles from './index.module.scss'
+
+import type { Tweet, Media } from '@prisma/client'
 
 function createColorFromScreenName(screenName: string) {
   const seed = screenName

@@ -1,11 +1,14 @@
-import ArticleCard from '@blog/_components/ArticleCard'
-import Block from '@/components/molecules/Block'
-import styles from '@blog/_styles/blog.module.scss'
-import { RichEntryButtons } from './EntryButtons'
-import PageNavigation from '@blog/_components/PageNavigation'
-import { HeaderFollowSticky } from '@/components/organisms/Header'
 import React from 'react'
+
+import Block from '@/components/molecules/Block'
+import { HeaderFollowSticky } from '@/components/organisms/Header'
+
+import ArticleCard from '@blog/_components/ArticleCard'
+import PageNavigation from '@blog/_components/PageNavigation'
 import BlogPost from '@blog/_lib/blogPost'
+import styles from '@blog/_styles/blog.module.scss'
+
+import { RichEntryButtons } from './EntryButtons'
 
 type Props = {
   post: BlogPost

@@ -1,10 +1,13 @@
 'use client'
 
 import React, { useContext, useEffect, useState } from 'react'
-import { parseCookies, setCookie } from 'nookies'
+
 import { faFont, faUniversalAccess } from '@fortawesome/free-solid-svg-icons'
-import EntryButton from './EntryButton'
+import { parseCookies, setCookie } from 'nookies'
+
 import styles from '@blog/_styles/blog.module.scss'
+
+import EntryButton from './EntryButton'
 
 export const UDFontStateContext = React.createContext({
   useUDFont: false,

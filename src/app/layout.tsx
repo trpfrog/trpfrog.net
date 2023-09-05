@@ -1,17 +1,21 @@
-import type { Metadata } from 'next'
 import React from 'react'
+
 import '@/styles/globals.scss'
-import fontVariables from '@/lib/googleFonts'
+import type { Metadata } from 'next'
+
+import { Toaster } from 'react-hot-toast'
+
+import Analytics from '@/components/head/Analytics'
+import Favicon from '@/components/head/Favicon'
+import GoogleFonts from '@/components/head/GoogleFonts'
+import BackToTop from '@/components/organisms/BackToTop'
+import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Navigation from '@/components/organisms/Navigation'
-import Footer from '@/components/organisms/Footer'
-import BackToTop from '@/components/organisms/BackToTop'
-import Favicon from '@/components/head/Favicon'
-import Analytics from '@/components/head/Analytics'
 import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAwesomeIcons'
-import GoogleFonts from '@/components/head/GoogleFonts'
-import { Toaster } from 'react-hot-toast'
+
 import { SITE_NAME } from '@/lib/constants'
+import fontVariables from '@/lib/googleFonts'
 
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'

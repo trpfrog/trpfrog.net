@@ -80,7 +80,7 @@ export const getReadTimeSecond = (markdown: string) => {
       continue
     }
 
-    if (!!line.match(imageRegex)) {
+    if (line.match(imageRegex)) {
       // console.log('found image!');
       numOfCharacters += imagePoint
       continue

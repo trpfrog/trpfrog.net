@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+
 import { getAllPostSlugs } from '@blog/_lib/load'
 
 export async function GET(req: Request) {

@@ -1,10 +1,12 @@
 'use client'
 
-import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
-import EntryButton from './EntryButton'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
 import { usePathname } from 'next/navigation'
+
 import BlogPost from '@blog/_lib/blogPost'
+
+import EntryButton from './EntryButton'
 
 export default function TogglePageViewLink({ post }: { post: BlogPost }) {
   const pathname = usePathname() ?? ''

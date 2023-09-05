@@ -1,12 +1,16 @@
-import { Metadata } from 'next'
-import Title from '@/components/organisms/Title'
 import React from 'react'
-import SearchForm from './SearchForm'
-import Block from '@/components/molecules/Block'
+
+import { Metadata } from 'next'
+
 import dayjs from 'dayjs'
-import TweetArea from './TweetArea'
-import MainWrapper from '@/components/atoms/MainWrapper'
+
 import Button from '@/components/atoms/Button'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import Block from '@/components/molecules/Block'
+import Title from '@/components/organisms/Title'
+
+import SearchForm from './SearchForm'
+import TweetArea from './TweetArea'
 
 // Prisma does not support Edge without the Data Proxy currently
 export const runtime = 'nodejs' // default

@@ -1,12 +1,16 @@
-import styles from '@blog/_styles/blog.module.scss'
 import React, { CSSProperties } from 'react'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
-import PageNavigation from '@blog/_components/PageNavigation'
-import Block from '@/components/molecules/Block'
-import { getMarkdownPlugins } from './rendererProperties'
-import ArticleRenderer from './ArticleRenderer'
-import BlogPost from '@blog/_lib/blogPost'
+
 import { MDXRemote } from 'next-mdx-remote/rsc'
+
+import Block from '@/components/molecules/Block'
+
+import PageNavigation from '@blog/_components/PageNavigation'
+import BlogPost from '@blog/_lib/blogPost'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
+import styles from '@blog/_styles/blog.module.scss'
+
+import ArticleRenderer from './ArticleRenderer'
+import { getMarkdownPlugins } from './rendererProperties'
 
 export const parseInlineMarkdown = (markdown: string) => {
   const isDevClient =

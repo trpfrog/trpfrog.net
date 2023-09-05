@@ -1,7 +1,9 @@
-import styles from './index.module.scss'
-import Block from '@/components/molecules/Block'
 import { CSSProperties } from 'react'
+
 import WaveText from '@/components/atoms/WaveText'
+import Block from '@/components/molecules/Block'
+
+import styles from './index.module.scss'
 
 type Props = {
   isFullHeight?: boolean

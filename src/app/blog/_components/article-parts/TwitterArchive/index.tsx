@@ -1,10 +1,14 @@
-import styles from './index.module.scss'
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { faDove } from '@fortawesome/free-solid-svg-icons'
-import getOtakuColor from '@blog/_lib/otakuColors'
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import BlockLink from '@/components/molecules/BlockLink'
+
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import getOtakuColor from '@blog/_lib/otakuColors'
+
+import styles from './index.module.scss'
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {

@@ -1,8 +1,10 @@
 'use client'
 
 import React from 'react'
+
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+
 import styles from './index.module.scss'
 
 function Button(props: { pageNo: number; text?: string; current?: boolean }) {

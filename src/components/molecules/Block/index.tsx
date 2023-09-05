@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './index.module.scss'
+
 import PlainBlock from '@/components/atoms/PlainBlock'
+
+import styles from './index.module.scss'
 
 type Props = React.ComponentProps<'div'> & {
   title?: string

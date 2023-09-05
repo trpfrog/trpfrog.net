@@ -1,4 +1,5 @@
 import WaveText from '.'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof WaveText> = {

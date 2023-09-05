@@ -1,6 +1,7 @@
-import styles from './index.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import styles from './index.module.scss'
 
 export default function EntryButton(props: {
   text: string
