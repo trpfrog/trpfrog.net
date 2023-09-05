@@ -71,7 +71,6 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
           {tweetData.image && (
             <div className={styles.image}>
               <blockquote>
-                {/* eslint-disable @next/next/no-img-element */}
                 <img src={tweetData.image} alt={'ツイートの画像'} />
                 {tweetData.image2 && (
                   <img src={tweetData.image2} alt={'ツイートの画像'} />
@@ -82,7 +81,6 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
                 {tweetData.image4 && (
                   <img src={tweetData.image4} alt={'ツイートの画像'} />
                 )}
-                {/* eslint-enable @next/next/no-img-element */}
               </blockquote>
             </div>
           )}
