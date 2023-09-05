@@ -24,6 +24,7 @@
     'sticker  music    music'
     'bird     music    music'
     'balloon  balloon  balloon'
+    'links    links    diffusion'
     'links    links    music_game';
   grid-template-columns: 3fr 2fr 3fr;
   grid-gap: var(--main-margin);
@@ -39,6 +40,7 @@
       'music'
       'sticker'
       'balloon'
+      'diffusion'
       'links'
       'music_game'
       'bird'
@@ -83,4 +85,8 @@
 
 #whats_new {
   grid-area: whats_new;
+}
+
+#diffusion {
+  grid-area: diffusion;
 }

@@ -8,37 +8,7 @@ type Props = {
 
 const Ratings = ({ id }: Props) => {
   return (
-    <Block title={'音楽ゲーム'} h2icon={'pumpkin'} id={id}>
-      <ul className={styles.rating_list}>
-        <li>
-          <b>チュウニズム</b>
-          <br />
-          <span className={styles.rainbow} style={{ fontSize: '2em' }}>
-            max
-          </span>
-          <span className={styles.rainbow} style={{ fontSize: '2.8em' }}>
-            15.03
-          </span>
-        </li>
-        <li>
-          <b>オンゲキ</b>
-          <br />
-          <span className={styles.platinum} style={{ fontSize: '2em' }}>
-            max
-          </span>
-          <span className={styles.platinum} style={{ fontSize: '2.8em' }}>
-            14.84
-          </span>
-        </li>
-        <li>
-          <b>SOUND VOLTEX</b>
-          <br />
-          <span className={styles.silver} style={{ fontSize: '2.5em' }}>
-            魔騎士
-          </span>
-        </li>
-      </ul>
-      <h2 className="robot">競プロ</h2>
+    <Block title={'競プロ'} h2icon={'robot'} id={id}>
       <ul className={styles.rating_list}>
         <li>
           <b>AtCoder</b> (<a href="https://atcoder.jp/users/TrpFrog">TrpFrog</a>

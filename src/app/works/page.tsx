@@ -66,7 +66,6 @@ export default async function Index() {
       <Title title={metadata.title} description={metadata.description}>
         <p>最終更新: 2023/5/31</p>
       </Title>
-
       {contents.map(({ metadata, content }) => {
         return (
           <Block
