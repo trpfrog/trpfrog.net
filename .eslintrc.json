@@ -7,7 +7,7 @@
   "ignorePatterns": [
     "./*"
   ],
-  "plugins": ["import", "@typescript-eslint"],
+  "plugins": ["import", "unused-imports", "@typescript-eslint"],
   "rules": {
     "eol-last": [
       "error",
@@ -28,6 +28,7 @@
         ]
       }
     ],
+    "unused-imports/no-unused-imports": "error",
     "import/order": [
       "warn",
       {

@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-
 import styles from '@/app/(home)/style.module.scss'
 import Balloon from '@/app/balloon/_components/Balloon'
 import { useBalloonState } from '@/app/balloon/_components/BalloonArray'

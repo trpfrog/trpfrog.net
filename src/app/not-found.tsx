@@ -1,5 +1,4 @@
 import Image from 'next/legacy/image'
-import Link from 'next/link'
 
 import Button from '@/components/atoms/Button'
 import MainWrapper from '@/components/atoms/MainWrapper'

@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown'
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import BlogPost from '@blog/_lib/blogPost'
-import { doMarkdownHMR } from '@blog/_lib/fileWatch'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 

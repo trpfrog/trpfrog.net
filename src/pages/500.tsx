@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 
 import Image from 'next/legacy/image'
-import Link from 'next/link'
 
 import Button from '@/components/atoms/Button'
 import Layout from '@/components/Layout'

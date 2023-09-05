@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/legacy/image'
-import Link from 'next/link'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 import Button from '@/components/atoms/Button'

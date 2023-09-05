@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
 
-import Link from 'next/link'
-
 import ImageNavigation from '@/app/(gallery)/_components/ImageNavigation'
 import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
 

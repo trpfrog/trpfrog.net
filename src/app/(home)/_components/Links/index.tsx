@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import styles from '@/app/(home)/style.module.scss'
 
 import Button from '@/components/atoms/Button'
