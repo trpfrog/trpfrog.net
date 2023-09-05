@@ -1,6 +1,7 @@
-import path from 'path'
-import fs from 'fs'
 import { execSync } from 'child_process'
+import fs from 'fs'
+import path from 'path'
+
 import { StatusCodes } from 'http-status-codes'
 
 type GETProps = {

@@ -1,10 +1,13 @@
 'use client'
 
-import { useScroll } from 'framer-motion'
 import { useEffect, useState } from 'react'
+
+import { useScroll } from 'framer-motion'
 import Link from 'next/link'
-import styles from './index.module.scss'
+
 import { SITE_NAME } from '@/lib/constants'
+
+import styles from './index.module.scss'
 
 export const TopTitle = () => {
   const [visible, setVisible] = useState(false)

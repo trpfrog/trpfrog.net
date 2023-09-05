@@ -1,10 +1,13 @@
 import React, { CSSProperties } from 'react'
-import styles from './index.module.scss'
-import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import ImageWithModal from '@blog/_components/BlogImage/ImageWithModal'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
+import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+
+import styles from './index.module.scss'
 
 type BlogImageProps = {
   src: string

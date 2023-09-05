@@ -1,10 +1,13 @@
-import CircleButton from '.'
-import type { Meta, StoryObj } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import React from 'react'
+
+import { faTwitter, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import { faTwitter, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { action } from '@storybook/addon-actions'
+
+import CircleButton from '.'
+
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof CircleButton> = {
   component: CircleButton,

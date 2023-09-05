@@ -1,11 +1,13 @@
 import React from 'react'
+
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-import { doMarkdownHMR } from '@blog/_lib/fileWatch'
+import ReactMarkdown from 'react-markdown'
+
+import { IsomorphicMarkdownComponent } from '@/lib/types'
+
 import BlogPost from '@blog/_lib/blogPost'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
-import ReactMarkdown from 'react-markdown'
-import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 export type MarkdownOptions = Omit<MDXRemoteProps, 'source' | 'components'> & {
   components: IsomorphicMarkdownComponent

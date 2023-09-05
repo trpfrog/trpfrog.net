@@ -1,7 +1,9 @@
 import React from 'react'
+
+import { Metadata } from 'next'
+
 import { BadBlogStateProvider } from '@blog/_components/BadBlog'
 import { UDFontStateProvider } from '@blog/_components/UDFontBlock'
-import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {

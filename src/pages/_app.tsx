@@ -1,16 +1,16 @@
-import '@/styles/globals.scss'
-import type { AppProps } from 'next/app'
+import { useEffect } from 'react'
 
 // Font Awesome
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 // Framer Motion
 import { AnimatePresence } from 'framer-motion'
-
-import Analytics from '@/components/head/Analytics'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 
+import '@/styles/globals.scss'
+import Analytics from '@/components/head/Analytics'
+
+import type { AppProps } from 'next/app'
 config.autoAddCss = false
 
 const usePathChangeRecorder = () => {

@@ -1,7 +1,8 @@
 import React from 'react'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
 
 const ShowAll: IsomorphicArticleParts = ({ content, entry, imageSize }) => {
   const [first, second] = content.split(/\n---+\n/)

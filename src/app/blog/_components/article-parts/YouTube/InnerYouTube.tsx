@@ -1,8 +1,9 @@
 'use client'
 
-import YouTube from 'react-youtube'
-import ReactPlayer from 'react-player/youtube'
 import React from 'react'
+
+import ReactPlayer from 'react-player/youtube'
+import YouTube from 'react-youtube'
 
 export const InnerYouTube = React.memo(function InnerYouTube({
   content,

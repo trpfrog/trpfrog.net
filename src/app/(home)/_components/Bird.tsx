@@ -1,5 +1,6 @@
-import Block from '@/components/molecules/Block'
 import styles from '@/app/(home)/style.module.scss'
+
+import Block from '@/components/molecules/Block'
 
 type Props = {
   id?: string

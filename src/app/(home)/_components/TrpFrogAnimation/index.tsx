@@ -1,9 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import styles from './index.module.scss'
 import React, { useEffect } from 'react'
+
+import { motion } from 'framer-motion'
 import { parseCookies, setCookie } from 'nookies'
+
+import styles from './index.module.scss'
 
 type Props = {
   children: React.ReactNode

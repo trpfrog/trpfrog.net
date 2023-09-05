@@ -1,6 +1,8 @@
-import Link, { LinkProps } from 'next/link'
-import styles from './index.module.scss'
 import React from 'react'
+
+import Link, { LinkProps } from 'next/link'
+
+import styles from './index.module.scss'
 
 type Props = LinkProps & {
   className?: string

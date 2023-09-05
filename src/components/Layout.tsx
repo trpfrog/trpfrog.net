@@ -1,10 +1,11 @@
 import React from 'react'
 
-import Header from './organisms/Header'
-import Footer from './organisms/Footer'
-import Navigation from './organisms/Navigation'
-import BackToTop from './organisms/BackToTop'
 import MainWrapper from '@/components/atoms/MainWrapper'
+
+import BackToTop from './organisms/BackToTop'
+import Footer from './organisms/Footer'
+import Header from './organisms/Header'
+import Navigation from './organisms/Navigation'
 
 type Props = {
   style?: any

@@ -1,7 +1,4 @@
-import styles from './index.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Block from '@/components/molecules/Block'
-
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import {
   faAt,
   faBirthdayCake,
@@ -13,8 +10,11 @@ import {
   faUniversity,
   faWalking,
 } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import Block from '@/components/molecules/Block'
+
+import styles from './index.module.scss'
 
 type Props = {
   id: string

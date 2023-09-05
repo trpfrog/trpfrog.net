@@ -1,9 +1,12 @@
 'use client'
 
 import React from 'react'
-import styles from './index.module.scss'
-import { NavigationLinks } from '@/components/organisms/Navigation'
+
 import { atom, useAtom } from 'jotai'
+
+import { NavigationLinks } from '@/components/organisms/Navigation'
+
+import styles from './index.module.scss'
 
 const mobileMenuAtom = atom(false)
 

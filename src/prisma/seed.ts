@@ -1,6 +1,7 @@
-import { PrismaClient, Tweet, Media, PrismaPromise } from '@prisma/client'
 import fs from 'node:fs'
 import { homedir } from 'node:os'
+
+import { PrismaClient, Tweet, Media } from '@prisma/client'
 
 type NumberString = string
 type OriginalTweet = {

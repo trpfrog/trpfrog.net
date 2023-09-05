@@ -1,13 +1,17 @@
-import Link from 'next/link'
-import EntryButton from '@blog/_components/EntryButton'
-import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
-import ShareSpan from './ShareSpan'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { UDFontButton } from '@blog/_components/UDFontBlock'
-import TogglePageViewLink from '@blog/_components/TogglePageViewLink'
 import React from 'react'
-import BlogPost from '@blog/_lib/blogPost'
+
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+
 import Button from '@/components/atoms/Button'
+
+import EntryButton from '@blog/_components/EntryButton'
+import TogglePageViewLink from '@blog/_components/TogglePageViewLink'
+import { UDFontButton } from '@blog/_components/UDFontBlock'
+import BlogPost from '@blog/_lib/blogPost'
+
+import ShareSpan from './ShareSpan'
 
 type EntryButtonProps = Omit<React.ComponentProps<'div'>, 'children'> & {
   post: BlogPost

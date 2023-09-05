@@ -1,18 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
-import styles from './index.module.scss'
-import dayjs from 'dayjs'
 import React from 'react'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
-import BlogPost from '@blog/_lib/blogPost'
-import CldImageWrapper from '@/components/utils/CldImageWrapper'
+
+import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import dayjs from 'dayjs'
+
 import BlockLink from '@/components/molecules/BlockLink'
-import TagBar from '@blog/_components/ArticleCard/TagBar'
-import ArticleTitle from '@blog/_components/ArticleCard/ArticleTitle'
-import Card from '@blog/_components/ArticleCard/Card'
+import CldImageWrapper from '@/components/utils/CldImageWrapper'
+
 import ArticleCardGrid, {
   gridArea,
 } from '@blog/_components/ArticleCard/ArticleCardGrid'
+import ArticleTitle from '@blog/_components/ArticleCard/ArticleTitle'
+import Card from '@blog/_components/ArticleCard/Card'
+import TagBar from '@blog/_components/ArticleCard/TagBar'
+import BlogPost from '@blog/_lib/blogPost'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+
+import styles from './index.module.scss'
 
 type Props = {
   entry: BlogPost

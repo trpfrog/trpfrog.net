@@ -1,7 +1,9 @@
-import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 import React from 'react'
-import styles from './index.module.scss'
+
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+
+import styles from './index.module.scss'
 
 const Conversation: IsomorphicArticleParts = ({ content }) => (
   <div className={styles.box_grid}>

@@ -1,22 +1,22 @@
 import React from 'react'
+
+import { Metadata } from 'next'
+
 import Image from 'next/legacy/image'
 
+import MainWrapper from '@/components/atoms/MainWrapper'
 import Title from '@/components/organisms/Title'
 
-import { getPreviewPostData } from '@blog/_lib/loadPreview'
-import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-
-import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
-
-import styles from '@blog/_styles/blog.module.scss'
-
-import { formatReadTime } from '@blog/_lib/readTime'
 import { parseWithBudouX } from '@/lib/wordSplit'
+
 import PostAttributes from '@blog/_components/PostAttributes'
-import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
-import { Metadata } from 'next'
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
+import { getPreviewPostData } from '@blog/_lib/loadPreview'
+import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
+import { formatReadTime } from '@blog/_lib/readTime'
+import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
+import styles from '@blog/_styles/blog.module.scss'
 
 type Props = {
   params: {

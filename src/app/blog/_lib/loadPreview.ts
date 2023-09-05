@@ -1,6 +1,7 @@
-import { BlogPostOption, buildBlogPost } from './load'
 import microCMS from '@/lib/microCMS'
+
 import BlogPost from './blogPost'
+import { BlogPostOption, buildBlogPost } from './load'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean

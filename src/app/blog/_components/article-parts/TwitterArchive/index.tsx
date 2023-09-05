@@ -1,10 +1,14 @@
-import styles from './index.module.scss'
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { faDove } from '@fortawesome/free-solid-svg-icons'
-import getOtakuColor from '@blog/_lib/otakuColors'
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import BlockLink from '@/components/molecules/BlockLink'
+
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import getOtakuColor from '@blog/_lib/otakuColors'
+
+import styles from './index.module.scss'
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {
@@ -67,7 +71,6 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
           {tweetData.image && (
             <div className={styles.image}>
               <blockquote>
-                {/* eslint-disable @next/next/no-img-element */}
                 <img src={tweetData.image} alt={'ツイートの画像'} />
                 {tweetData.image2 && (
                   <img src={tweetData.image2} alt={'ツイートの画像'} />
@@ -78,7 +81,6 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
                 {tweetData.image4 && (
                   <img src={tweetData.image4} alt={'ツイートの画像'} />
                 )}
-                {/* eslint-enable @next/next/no-img-element */}
               </blockquote>
             </div>
           )}

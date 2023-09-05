@@ -1,6 +1,8 @@
-import styles from './index.module.scss'
 import React from 'react'
+
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+
+import styles from './index.module.scss'
 
 const WalkingResultBox: IsomorphicArticleParts = ({ content }) => {
   return (

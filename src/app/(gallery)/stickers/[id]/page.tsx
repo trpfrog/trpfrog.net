@@ -1,10 +1,11 @@
-import Link from 'next/link'
 import { Metadata } from 'next'
-import Block from '@/components/molecules/Block'
-import MainWrapper from '@/components/atoms/MainWrapper'
-import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
+
 import ImageNavigation from '@/app/(gallery)/_components/ImageNavigation'
+import ImageViewer from '@/app/(gallery)/_components/ImageViewer'
+
 import Button from '@/components/atoms/Button'
+import MainWrapper from '@/components/atoms/MainWrapper'
+import Block from '@/components/molecules/Block'
 
 const NUMBER_OF_IMAGES = 80
 

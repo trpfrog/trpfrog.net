@@ -1,8 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import styles from './index.module.scss'
+
 import Button from '@/components/atoms/Button'
+
+import styles from './index.module.scss'
 
 export const BadBlogStateContext = React.createContext({
   badBlog: 0,

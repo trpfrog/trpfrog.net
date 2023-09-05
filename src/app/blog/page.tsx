@@ -1,16 +1,18 @@
 import React from 'react'
-import Title from '@/components/organisms/Title'
-import { getSortedPostsData } from '@blog/_lib/load'
 
-import styles from '@blog/_styles/blog.module.scss'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import ArticleCard from '@blog/_components/ArticleCard'
-import BlogPost from '@blog/_lib/blogPost'
 import { Metadata } from 'next'
+
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import MainWrapper from '@/components/atoms/MainWrapper'
+import Title from '@/components/organisms/Title'
+
+import ArticleCard from '@blog/_components/ArticleCard'
 import ArticleGrid from '@blog/_components/ArticleGrid'
+import BlogPost from '@blog/_lib/blogPost'
+import { getSortedPostsData } from '@blog/_lib/load'
+import styles from '@blog/_styles/blog.module.scss'
 
 export const metadata = {
   description:

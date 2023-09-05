@@ -1,8 +1,10 @@
-import rateLimit from '@/lib/rateLimit'
-import { NextRequest, NextResponse } from 'next/server'
 import { ChatOpenAI } from 'langchain/chat_models/openai'
-import { getAllPostSlugs } from '@blog/_lib/load'
 import { HumanChatMessage } from 'langchain/schema'
+import { NextRequest, NextResponse } from 'next/server'
+
+import rateLimit from '@/lib/rateLimit'
+
+import { getAllPostSlugs } from '@blog/_lib/load'
 
 const limiter = rateLimit({
   interval: 60 * 1000 * 60, // 1 hour

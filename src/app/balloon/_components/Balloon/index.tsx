@@ -1,9 +1,11 @@
 'use client'
 
 import React, { Dispatch, useId, useState } from 'react'
-import styles from './index.module.scss'
-import useSound from 'use-sound'
+
 import { useReward } from 'react-rewards'
+import useSound from 'use-sound'
+
+import styles from './index.module.scss'
 
 export const balloonColors = ['blue', 'green', 'orange'] as const
 

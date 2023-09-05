@@ -1,9 +1,12 @@
 'use client'
 
-import { useReward } from 'react-rewards'
-import styles from './index.module.scss'
 import React, { useEffect, useState } from 'react'
+
+import { useReward } from 'react-rewards'
+
 import Balloon, { balloonColors } from '@/app/balloon/_components/Balloon'
+
+import styles from './index.module.scss'
 
 type BalloonArrayProps = {
   n: number

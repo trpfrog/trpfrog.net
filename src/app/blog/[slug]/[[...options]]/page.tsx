@@ -1,22 +1,22 @@
+import React from 'react'
+
+import { Metadata } from 'next'
+
+import MainWrapper from '@/components/atoms/MainWrapper'
 import Block from '@/components/molecules/Block'
 
-import { getPostData, getSortedPostsData } from '@blog/_lib/load'
-import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-
-import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
-
-import styles from '@blog/_styles/blog.module.scss'
-
+import ArticleHeader from '@blog/_components/ArticleHeader'
+import { BadBlogBlock } from '@blog/_components/BadBlog'
 import RelatedPosts from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
-import { BadBlogBlock } from '@blog/_components/BadBlog'
-import React from 'react'
 import BlogPost from '@blog/_lib/blogPost'
-import { Metadata } from 'next'
-import { EntryButtons } from './_components/EntryButtons'
+import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
+import { getPostData, getSortedPostsData } from '@blog/_lib/load'
+import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
+import styles from '@blog/_styles/blog.module.scss'
+
 import ArticleSidebar from './_components/ArticleSidebar'
-import MainWrapper from '@/components/atoms/MainWrapper'
-import ArticleHeader from '@blog/_components/ArticleHeader'
+import { EntryButtons } from './_components/EntryButtons'
 
 // Trick for NEXT-1214
 // export const dynamicParams = false

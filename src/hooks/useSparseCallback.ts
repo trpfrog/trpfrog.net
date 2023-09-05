@@ -24,6 +24,7 @@ export default function useSparseCallback(
         setTimeoutId(newTimeoutId)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [delayMs, fn, timeoutId, timer, ...deps],
   )
 }

@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+
 import { useScroll } from 'framer-motion'
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import styles from './index.module.scss'
+import { usePathname } from 'next/navigation'
+
 import { SITE_NAME } from '@/lib/constants'
+
+import styles from './index.module.scss'
 
 function usePageTitle() {
   const [pageTitle, setPageTitle] = useState('')

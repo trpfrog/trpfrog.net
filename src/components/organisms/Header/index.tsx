@@ -1,15 +1,18 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
+
+import { useScroll } from 'framer-motion'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useScroll } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+
+import Hamburger from '@/components/molecules/Hamburger'
+import MobileMenu from '@/components/organisms/MobileMenu'
+
+import styles from './index.module.scss'
 import { NormalTitle } from './NormalTitle'
 import { TopTitle } from './TopTitle'
-import styles from './index.module.scss'
-import MobileMenu from '@/components/organisms/MobileMenu'
-import Hamburger from '@/components/molecules/Hamburger'
-import { atom, useAtomValue, useSetAtom } from 'jotai'
 
 const alwaysShowHeaderAtom = atom(false)
 

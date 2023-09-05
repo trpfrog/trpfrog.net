@@ -1,5 +1,7 @@
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import React from 'react'
+
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+
 import { Tweet } from './TwitterWrapper'
 
 export const Twitter: IsomorphicArticleParts = React.memo(

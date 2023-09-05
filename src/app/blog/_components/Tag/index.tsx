@@ -1,6 +1,8 @@
-import styles from './index.module.scss'
 import React from 'react'
+
 import Link from 'next/link'
+
+import styles from './index.module.scss'
 
 const getTagEmoji = (tag: string) => {
   const tags = {
@@ -39,7 +41,6 @@ const Tag = ({ tag }: Props) => {
     // @ts-ignore
     <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
       <span className={styles.emoji}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={getEmojiUrlFromTagName(tag)}
           width={20}

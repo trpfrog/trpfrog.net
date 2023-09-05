@@ -1,10 +1,13 @@
 'use client'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
-import styles from './index.module.scss'
+
+import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import CircleButton from '@/components/atoms/CircleButton'
+
+import styles from './index.module.scss'
 
 const backToTop = () => {
   window.scrollTo({

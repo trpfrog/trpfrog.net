@@ -1,8 +1,9 @@
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
-import BlogImage, { ImageCaption } from '@blog/_components/BlogImage'
 import React from 'react'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import BlogImage, { ImageCaption } from '@blog/_components/BlogImage'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 const HorizontalImages: IsomorphicArticleParts = ({ content, imageSize }) => {

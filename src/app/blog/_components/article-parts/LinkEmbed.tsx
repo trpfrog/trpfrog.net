@@ -1,5 +1,6 @@
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import React from 'react'
+
+import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 export const LinkEmbed: IsomorphicArticleParts = React.memo(

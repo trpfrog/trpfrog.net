@@ -1,12 +1,15 @@
-import styles from './index.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+
 import {
   faFrog,
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons'
-import React from 'react'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+
+import styles from './index.module.scss'
 
 export const Caution: IsomorphicArticleParts = ({
   content,

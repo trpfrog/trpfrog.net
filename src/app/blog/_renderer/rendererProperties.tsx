@@ -1,28 +1,32 @@
 import React from 'react'
-import BlogImage from '@blog/_components/BlogImage'
-import styles from '@blog/_styles/blog.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
-import remarkGfm from 'remark-gfm'
-import remarkToc from 'remark-toc'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { MDXComponents } from 'mdx/types'
+import { SerializeOptions } from 'next-mdx-remote/dist/types'
+import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import 'katex/dist/katex.min.css'
+import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
-import SyntaxHighlighterWrapper from '@/components/utils/SyntaxHighlighterWrapper'
-import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
-import BlogPost from '@blog/_lib/blogPost'
+import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-import 'katex/dist/katex.min.css'
+import remarkToc from 'remark-toc'
+import remarkUnwrapImages from 'remark-unwrap-images'
+
+import SyntaxHighlighterWrapper from '@/components/utils/SyntaxHighlighterWrapper'
+
+import { IsomorphicMarkdownComponent } from '@/lib/types'
+
+import BlogImage from '@blog/_components/BlogImage'
 import OriginalMarkdownComponent, {
   myMarkdownClasses,
 } from '@blog/_components/OriginalMarkdownComponent'
-import { MDXComponents } from 'mdx/types'
+import BlogPost from '@blog/_lib/blogPost'
+import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
-import remarkUnwrapImages from 'remark-unwrap-images'
-import { SerializeOptions } from 'next-mdx-remote/dist/types'
-import { IsomorphicMarkdownComponent } from '@/lib/types'
+import styles from '@blog/_styles/blog.module.scss'
 
 const getLangName = (s: string) => {
   switch (s) {

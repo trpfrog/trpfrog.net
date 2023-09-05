@@ -1,6 +1,8 @@
-import styles from './index.module.scss'
-import Image from 'next/legacy/image'
 import React from 'react'
+
+import Image from 'next/legacy/image'
+
+import styles from './index.module.scss'
 
 type ImageViewerProps = {
   src: string
