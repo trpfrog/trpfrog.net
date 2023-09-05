@@ -1,6 +1,8 @@
 import React from 'react'
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import TrpFrogIconFrame from '@/app/(home)/_components/TrpFrogIconFrame'
+
 import MainWrapper from '@/components/atoms/MainWrapper'
 
 import AboutMe from './_components/AboutMe'
@@ -16,7 +18,7 @@ import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
 import WhatsNew from './_components/WhatsNew'
 import styles from './style.module.scss'
 
-export const revalidate = 30
+export const revalidate = 21600 // 6 hours
 
 // @ts-ignore
 export default async function Index() {
@@ -39,6 +41,7 @@ export default async function Index() {
           <TopPageIcons id={styles.icons} />
           <TopPageMusic id={styles.music} />
           <TopPageBalloons id={styles.balloon} />
+          <TrpFrogIconFrame id={styles.diffusion} />
           <Links id={styles.link_grid} />
           <Ratings id={styles.music_game} />
           <Bird id={styles.bird} />

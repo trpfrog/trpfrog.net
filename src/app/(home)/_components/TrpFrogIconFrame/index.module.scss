@@ -1,0 +1,74 @@
+//const style = {
+//  width: props.size ?? '100%',
+//  aspectRatio: '1 / 1',
+//  borderRadius: '1rem',
+//  background: 'gray',
+//  display: 'flex',
+//  justifyContent: 'center',
+//  alignItems: 'center',
+//  fontSize: '2rem',
+//  color: 'white',
+//}
+
+.picture {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.loading_picture {
+  @extend .picture;
+  background: lightgray;
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.error_picture {
+  @extend .loading_picture;
+  background: #d25454;
+  color: white;
+}
+
+.error_caption {
+  font-family: var(--font-noto-sans-jp);
+  font-size: 1rem;
+}
+
+.caption_en {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.waiting.caption_en {
+  margin: 20px 0 0 0;
+  display: inline-block;
+  width: 50%;
+  height: 1em;
+  background: gray;
+  border-radius: 3px;
+}
+
+.caption_ja {
+  font-size: 0.8em;
+}
+
+.waiting.caption_ja {
+  display: inline-block;
+  margin-top: 0;
+  width: 80%;
+  height: 1em;
+  background: gray;
+  border-radius: 3px;
+}
+
+.caption_wrapper {
+  text-align: center;
+  line-height: 1.2;
+}
