@@ -1,8 +1,12 @@
+import { get } from '@vercel/edge-config'
 import { kv } from '@vercel/kv'
 import { LRUCache } from 'lru-cache'
 import { NextResponse } from 'next/server'
 
-import { TRPFROG_DIFFUSION_UPDATE_HOURS } from '@/lib/constants'
+import {
+  TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
+  TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
+} from '@/lib/constants'
 import { generateRandomPrompt, generateTrpFrogImage } from '@/lib/randomTrpFrog'
 export type TrpFrogImageGenerationResult = {
   generatedTime: number
@@ -20,7 +24,11 @@ const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
 
   fetchMethod: async key => {
     let record = await kv.get<TrpFrogImageGenerationResult>(key)
-    const kvTtl = TRPFROG_DIFFUSION_UPDATE_HOURS * 60 * 60 * 1000
+    const trpfrogDiffusionUpdateHours =
+      (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
+      TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS
+
+    const kvTtl = trpfrogDiffusionUpdateHours * 60 * 60 * 1000
     if (!record || Date.now() - record.generatedTime > kvTtl) {
       // Temporarily mark the stale value as up-to-date to prevent others from updating it.
       await kv.set(key, {
