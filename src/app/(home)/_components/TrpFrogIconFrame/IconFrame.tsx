@@ -9,6 +9,8 @@ import type { TrpFrogImageGenerationResult } from '@/app/api/trpfrog-diffusion/r
 
 import WaveText from '@/components/atoms/WaveText'
 
+import { ParseWithBudouX } from '@/lib/wordSplit'
+
 export function IconFrame() {
   const fetcher: Fetcher<TrpFrogImageGenerationResult, string> = url =>
     fetch(url).then(r => r.json())
@@ -59,7 +61,9 @@ export function IconFrame() {
           <Balancer>{prompt}</Balancer>
         </div>
         <div className={styles.caption_ja}>
-          <Balancer>{translated}</Balancer>
+          <Balancer>
+            <ParseWithBudouX str={translated} slug={'trpfrog-diffusion'} />
+          </Balancer>
         </div>
       </figcaption>
     </figure>

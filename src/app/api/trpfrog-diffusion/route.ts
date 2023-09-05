@@ -1,8 +1,9 @@
+import { kv } from '@vercel/kv'
+import { LRUCache } from 'lru-cache'
 import { NextResponse } from 'next/server'
 
 import { TRPFROG_DIFFUSION_UPDATE_HOURS } from '@/lib/constants'
 import { generateRandomPrompt, generateTrpFrogImage } from '@/lib/randomTrpFrog'
-
 export type TrpFrogImageGenerationResult = {
   generatedTime: number
   prompt: string
@@ -10,7 +11,35 @@ export type TrpFrogImageGenerationResult = {
   base64: string
 }
 
-let cache: TrpFrogImageGenerationResult | null = null
+const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
+
+const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
+  max: 1,
+  // local TTL 3 minutes (KV's TTL is TRPFROG_DIFFUSION_UPDATE_HOURS)
+  ttl: process.env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
+
+  fetchMethod: async key => {
+    let record = await kv.get<TrpFrogImageGenerationResult>(key)
+    const kvTtl = TRPFROG_DIFFUSION_UPDATE_HOURS * 60 * 60 * 1000
+    if (!record || Date.now() - record.generatedTime > kvTtl) {
+      // Temporarily mark the stale value as up-to-date to prevent others from updating it.
+      await kv.set(key, {
+        ...(record ?? {}),
+        generatedTime: Date.now(),
+      })
+      // Start update in background
+      generateNew()
+        .then(newRecord => kv.set(key, newRecord))
+        .catch(console.error)
+    }
+    // ignore type error because it happens only first time
+    return record as unknown as TrpFrogImageGenerationResult
+  },
+  allowStale: true,
+  noDeleteOnFetchRejection: true,
+  allowStaleOnFetchRejection: true,
+  allowStaleOnFetchAbort: true,
+})
 
 async function generateNew(options?: { numberOfRetries?: number }) {
   let base64 = ''
@@ -46,37 +75,29 @@ async function generateNew(options?: { numberOfRetries?: number }) {
   return generated
 }
 
-let updating = false
-
 export async function GET() {
-  if (process.env.NODE_ENV === 'development') {
-    const image = await fetch(
-      'https://res.cloudinary.com/trpfrog/icons_gallery/29',
-    ).then(res => res.blob())
-    return NextResponse.json({
-      generatedTime: Date.now(),
-      prompt: 'a photo of trpfrog',
-      translated: 'つまみさんの画像',
-      base64: Buffer.from(await image.arrayBuffer()).toString('base64'),
-      updating,
-    })
+  const cached = await cache.fetch(TRPFROG_DIFFUSION_KV_KEY)
+  if (!cached) {
+    return NextResponse.json(
+      {
+        error: 'Internal Server Error, please try again later.',
+      },
+      {
+        status: 500,
+      },
+    )
   }
-
-  // if cache is not available but updating is true, wait for generating new one
-  while (!cache && updating) {
-    // sleep 10 seconds
-    await new Promise(resolve => setTimeout(resolve, 10000))
-  }
-
-  if (!cache) {
-    try {
-      updating = true
-      const generated = await generateNew({
-        numberOfRetries: 3,
-      })
-      cache = generated
-      return NextResponse.json({ ...generated, updating })
-    } catch (e) {
+  if (!cached.base64) {
+    if (cached.generatedTime) {
+      return NextResponse.json(
+        {
+          info: 'Image generation is in progress, please try again later.',
+        },
+        {
+          status: 202,
+        },
+      )
+    } else {
       return NextResponse.json(
         {
           error: 'Internal Server Error, please try again later.',
@@ -85,48 +106,33 @@ export async function GET() {
           status: 500,
         },
       )
-    } finally {
-      updating = false
     }
   }
 
-  const needsUpdate =
-    Date.now() - cache.generatedTime >
-    1000 * 60 * 60 * TRPFROG_DIFFUSION_UPDATE_HOURS
-  if (needsUpdate) {
-    if (!updating) {
-      // generate new one **in background**
-      updating = true
-      generateNew()
-        .then(generated => {
-          cache = generated
-        })
-        .catch(console.error)
-        .finally(() => {
-          updating = false
-        })
-    }
-  }
-
-  return NextResponse.json({ ...cache, updating })
+  return NextResponse.json(cached)
 }
 
 export async function DELETE(request: Request) {
+  const errorResponse = NextResponse.json(
+    {
+      success: false,
+      error: 'Unauthorized',
+    },
+    {
+      status: 401,
+    },
+  )
   if (request.headers.get('X-Api-Key') !== process.env.TRPFROG_ADMIN_KEY) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Unauthorized',
-      },
-      {
-        status: 401,
-      },
-    )
+    return errorResponse
   }
-  const res = {
+
+  try {
+    await kv.del(TRPFROG_DIFFUSION_KV_KEY)
+  } catch (e) {
+    console.error(e)
+    return errorResponse
+  }
+  return NextResponse.json({
     success: true,
-    previous: { ...(cache ?? {}) },
-  }
-  cache = null
-  return NextResponse.json(res)
+  })
 }
