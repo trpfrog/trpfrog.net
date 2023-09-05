@@ -107,3 +107,23 @@ export async function GET() {
 
   return NextResponse.json({ ...cache, updating })
 }
+
+export async function DELETE(request: Request) {
+  if (request.headers.get('X-Api-Key') !== process.env.TRPFROG_ADMIN_KEY) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Unauthorized',
+      },
+      {
+        status: 401,
+      },
+    )
+  }
+  const res = {
+    success: true,
+    previous: { ...(cache ?? {}) },
+  }
+  cache = null
+  return NextResponse.json(res)
+}
