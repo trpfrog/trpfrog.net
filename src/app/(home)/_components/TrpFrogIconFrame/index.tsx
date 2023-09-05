@@ -4,15 +4,22 @@ import { IconFrame } from '@/app/(home)/_components/TrpFrogIconFrame/IconFrame'
 
 import Block from '@/components/molecules/Block'
 
+import { TRPFROG_DIFFUSION_UPDATE_HOURS } from '@/lib/constants'
+
 type Props = React.ComponentProps<'div'>
 
 export default function TrpFrogIconFrame(props: Props) {
   return (
-    <Block title={'TrpFrog Diffusion'} h2icon={'robot'} {...props}>
+    <Block title={'AIつまみアイコン'} h2icon={'robot'} {...props}>
       <IconFrame />
       <hr />
-      <small style={{ fontSize: '0.6em' }}>
-        <div>この画像は一定時間ごとに自動生成されます。</div>
+      <small style={{ fontSize: '0.6em', textAlign: 'center' }}>
+        <div>
+          これは AI により自動生成された画像です。
+          <br />
+          最後の生成から{TRPFROG_DIFFUSION_UPDATE_HOURS}
+          時間経つと再生成されます。
+        </div>
         <div>
           Powered by{' '}
           <a href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>

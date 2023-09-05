@@ -9,3 +9,5 @@ export const LOREM_IPSUM = [
 export const SITE_NAME = 'つまみネット'
 
 export const TWITTER_ID = 'TrpFrog'
+
+export const TRPFROG_DIFFUSION_UPDATE_HOURS = 3

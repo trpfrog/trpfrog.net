@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 
+import { TRPFROG_DIFFUSION_UPDATE_HOURS } from '@/lib/constants'
 import { generateRandomPrompt, generateTrpFrogImage } from '@/lib/randomTrpFrog'
 
 export type TrpFrogImageGenerationResult = {
@@ -89,8 +90,10 @@ export async function GET() {
     }
   }
 
-  const cacheHour = 3
-  if (Date.now() - cache.generatedTime > 1000 * 60 * 60 * cacheHour) {
+  const needsUpdate =
+    Date.now() - cache.generatedTime >
+    1000 * 60 * 60 * TRPFROG_DIFFUSION_UPDATE_HOURS
+  if (needsUpdate) {
     if (!updating) {
       // generate new one **in background**
       updating = true
