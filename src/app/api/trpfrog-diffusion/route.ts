@@ -23,8 +23,7 @@ export type TrpFrogImageGenerationResult = z.infer<
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
 const POST_CALLBACK_URL =
-  new URL('/api/trpfrog-diffusion', `https://${process.env.VERCEL_URL!}`).href +
-  '?token=' +
+  `https://${process.env.VERCEL_URL ?? 'trpfrog.net'}/api/trpfrog-diffusion` +
   process.env.TRPFROG_ADMIN_KEY
 
 const IMAGE_GENERATION_ENDPOINT =
