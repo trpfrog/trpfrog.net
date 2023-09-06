@@ -126,8 +126,8 @@ export async function POST(request: Request) {
     )
   }
 
-  const result = await TrpFrogImageGenerationResultSchema.safeParseAsync(
-    request.json(),
+  const result = TrpFrogImageGenerationResultSchema.safeParse(
+    await request.json(),
   )
   if (!result.success) {
     return NextResponse.json(
