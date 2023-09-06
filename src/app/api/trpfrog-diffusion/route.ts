@@ -29,7 +29,10 @@ const POST_CALLBACK_URL =
 const IMAGE_GENERATION_ENDPOINT =
   'https://asia-northeast1-trpfrog-net.cloudfunctions.net/update-trpfrog-diffusion'
 
-const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
+const cache = new LRUCache<
+  typeof TRPFROG_DIFFUSION_KV_KEY,
+  TrpFrogImageGenerationResult
+>({
   max: 1,
   // local TTL 3 minutes (KV's TTL is TRPFROG_DIFFUSION_UPDATE_HOURS)
   ttl: process.env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
@@ -38,40 +41,42 @@ const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
   noDeleteOnFetchRejection: true,
   allowStaleOnFetchRejection: true,
   allowStaleOnFetchAbort: true,
-
-  fetchMethod: async key => {
-    let record = await kv.get<TrpFrogImageGenerationResult>(key)
-    if (process.env.NODE_ENV === 'development') {
-      return record as unknown as TrpFrogImageGenerationResult
-    }
-
-    const trpfrogDiffusionUpdateHours =
-      (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
-      TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS
-
-    const kvTtl = trpfrogDiffusionUpdateHours * 60 * 60 * 1000
-    if (!record || Date.now() - record.generatedTime > kvTtl) {
-      // Temporarily mark the stale value as up-to-date to prevent others from updating it.
-      await kv.set(key, {
-        ...(record ?? {}),
-        generatedTime: Date.now(),
-      })
-
-      // Start update in background
-      fetch(IMAGE_GENERATION_ENDPOINT, {
-        headers: {
-          'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
-          'X-Callback-Url': POST_CALLBACK_URL,
-        },
-      }).catch(console.error)
-    }
-    // ignore type error because it happens only first time
-    return record as unknown as TrpFrogImageGenerationResult
-  },
 })
 
+async function getCache() {
+  const key = TRPFROG_DIFFUSION_KV_KEY
+  let record = await kv.get<TrpFrogImageGenerationResult>(key)
+  if (process.env.NODE_ENV === 'development') {
+    return record as unknown as TrpFrogImageGenerationResult
+  }
+
+  const trpfrogDiffusionUpdateHours =
+    (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
+    TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS
+
+  const kvTtl = trpfrogDiffusionUpdateHours * 60 * 60 * 1000
+  if (!record || Date.now() - record.generatedTime > kvTtl) {
+    // Temporarily mark the stale value as up-to-date to prevent others from updating it.
+    await kv.set(key, {
+      ...(record ?? {}),
+      generatedTime: Date.now(),
+    })
+
+    await fetch(IMAGE_GENERATION_ENDPOINT, {
+      headers: {
+        'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
+        'X-Callback-Url': POST_CALLBACK_URL,
+      },
+    }).catch(console.error)
+  }
+
+  // ignore type error because it happens only first time
+  cache.set(key, record as unknown as TrpFrogImageGenerationResult)
+  return record as unknown as TrpFrogImageGenerationResult
+}
+
 export async function GET() {
-  const cached = await cache.fetch(TRPFROG_DIFFUSION_KV_KEY)
+  const cached = await getCache()
   if (!cached) {
     return NextResponse.json(
       {
