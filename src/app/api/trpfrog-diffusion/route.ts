@@ -2,25 +2,43 @@ import { get } from '@vercel/edge-config'
 import { kv } from '@vercel/kv'
 import { LRUCache } from 'lru-cache'
 import { NextResponse } from 'next/server'
+import { z } from 'zod'
 
 import {
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
-import { generateRandomPrompt, generateTrpFrogImage } from '@/lib/randomTrpFrog'
-export type TrpFrogImageGenerationResult = {
-  generatedTime: number
-  prompt: string
-  translated: string
-  base64: string
-}
+
+const TrpFrogImageGenerationResultSchema = z.object({
+  generatedTime: z.number(),
+  prompt: z.string(),
+  translated: z.string(),
+  base64: z.string(),
+})
+
+export type TrpFrogImageGenerationResult = z.infer<
+  typeof TrpFrogImageGenerationResultSchema
+>
 
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
+
+const POST_CALLBACK_URL =
+  new URL('/api/trpfrog-diffusion', `https://${process.env.VERCEL_URL!}`).href +
+  '?token=' +
+  process.env.TRPFROG_ADMIN_KEY
+
+const IMAGE_GENERATION_ENDPOINT =
+  'https://asia-northeast1-trpfrog-net.cloudfunctions.net/update-trpfrog-diffusion'
 
 const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
   max: 1,
   // local TTL 3 minutes (KV's TTL is TRPFROG_DIFFUSION_UPDATE_HOURS)
   ttl: process.env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
+
+  allowStale: true,
+  noDeleteOnFetchRejection: true,
+  allowStaleOnFetchRejection: true,
+  allowStaleOnFetchAbort: true,
 
   fetchMethod: async key => {
     let record = await kv.get<TrpFrogImageGenerationResult>(key)
@@ -35,53 +53,21 @@ const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
         ...(record ?? {}),
         generatedTime: Date.now(),
       })
-      // Start update in background
-      generateNew()
-        .then(newRecord => kv.set(key, newRecord))
-        .catch(console.error)
+
+      if (process.env.NODE_ENV !== 'development') {
+        // Start update in background
+        fetch(IMAGE_GENERATION_ENDPOINT, {
+          headers: {
+            'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
+            'X-Callback-Url': POST_CALLBACK_URL,
+          },
+        }).catch(console.error)
+      }
     }
     // ignore type error because it happens only first time
     return record as unknown as TrpFrogImageGenerationResult
   },
-  allowStale: true,
-  noDeleteOnFetchRejection: true,
-  allowStaleOnFetchRejection: true,
-  allowStaleOnFetchAbort: true,
 })
-
-async function generateNew(options?: { numberOfRetries?: number }) {
-  let base64 = ''
-  let prompt = ''
-  let translated = ''
-  const numberOfRetries = options?.numberOfRetries ?? 1
-  for (const _ of Array.from(Array(numberOfRetries))) {
-    try {
-      const promptRes = await generateRandomPrompt()
-      prompt = promptRes.prompt
-      translated = promptRes.translated
-      const result = await generateTrpFrogImage(prompt)
-      if (!result.success) {
-        continue
-      }
-      base64 = result.base64
-    } catch (e) {
-      console.error(e)
-      continue
-    }
-    break
-  }
-
-  if (!base64) {
-    throw new Error('Failed to generate image')
-  }
-  const generated: TrpFrogImageGenerationResult = {
-    generatedTime: Date.now(),
-    prompt,
-    translated,
-    base64,
-  }
-  return generated
-}
 
 export async function GET() {
   const cached = await cache.fetch(TRPFROG_DIFFUSION_KV_KEY)
@@ -120,26 +106,52 @@ export async function GET() {
   return NextResponse.json(cached)
 }
 
-export async function DELETE(request: Request) {
-  const errorResponse = NextResponse.json(
-    {
-      success: false,
-      error: 'Unauthorized',
-    },
-    {
-      status: 401,
-    },
+export async function POST(request: Request) {
+  const query = new URL(request.url).searchParams
+  if (query.get('token') !== process.env.TRPFROG_ADMIN_KEY) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Unauthorized',
+      },
+      {
+        status: 401,
+      },
+    )
+  }
+
+  const result = await TrpFrogImageGenerationResultSchema.safeParseAsync(
+    request.json(),
   )
-  if (request.headers.get('X-Api-Key') !== process.env.TRPFROG_ADMIN_KEY) {
-    return errorResponse
+  if (!result.success) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Bad Request',
+      },
+      {
+        status: 400,
+      },
+    )
   }
 
   try {
-    await kv.del(TRPFROG_DIFFUSION_KV_KEY)
+    const newRecord = result.data
+    cache.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
+    await kv.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
   } catch (e) {
     console.error(e)
-    return errorResponse
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Internal Server Error, please try again later.',
+      },
+      {
+        status: 500,
+      },
+    )
   }
+
   return NextResponse.json({
     success: true,
   })
