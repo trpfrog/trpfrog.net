@@ -42,6 +42,10 @@ const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
 
   fetchMethod: async key => {
     let record = await kv.get<TrpFrogImageGenerationResult>(key)
+    if (process.env.NODE_ENV === 'development') {
+      return record as unknown as TrpFrogImageGenerationResult
+    }
+
     const trpfrogDiffusionUpdateHours =
       (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
       TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS
@@ -54,15 +58,13 @@ const cache = new LRUCache<string, TrpFrogImageGenerationResult>({
         generatedTime: Date.now(),
       })
 
-      if (process.env.NODE_ENV !== 'development') {
-        // Start update in background
-        fetch(IMAGE_GENERATION_ENDPOINT, {
-          headers: {
-            'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
-            'X-Callback-Url': POST_CALLBACK_URL,
-          },
-        }).catch(console.error)
-      }
+      // Start update in background
+      fetch(IMAGE_GENERATION_ENDPOINT, {
+        headers: {
+          'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
+          'X-Callback-Url': POST_CALLBACK_URL,
+        },
+      }).catch(console.error)
     }
     // ignore type error because it happens only first time
     return record as unknown as TrpFrogImageGenerationResult
