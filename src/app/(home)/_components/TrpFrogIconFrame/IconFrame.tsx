@@ -31,7 +31,7 @@ export function IconFrame() {
     )
   }
 
-  if (error || !data) {
+  if (error || !data || !data.base64) {
     return (
       <figure style={{ margin: '20px 0' }}>
         <div className={styles.error_picture}>
