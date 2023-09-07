@@ -2,21 +2,15 @@ import React from 'react'
 
 import { Metadata } from 'next'
 
-import Image from 'next/legacy/image'
-
 import MainWrapper from '@/components/atoms/MainWrapper'
-import Title from '@/components/organisms/Title'
+import Block from '@/components/molecules/Block'
 
-import { parseWithBudouX } from '@/lib/wordSplit'
-
-import PostAttributes from '@blog/_components/PostAttributes'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import ArticleHeader from '@blog/_components/ArticleHeader'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 import { getPreviewPostData } from '@blog/_lib/loadPreview'
 import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { formatReadTime } from '@blog/_lib/readTime'
 import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
-import styles from '@blog/_styles/blog.module.scss'
 
 type Props = {
   params: {
@@ -65,38 +59,23 @@ export default async function Index(props: Props) {
 
   return (
     <MainWrapper>
-      <Title
-        style={{ padding: 0, border: '5px solid var(--window-bkg-color)' }}
-      >
-        {post.thumbnail && (
-          <Image
-            src={getPureCloudinaryPath(post.thumbnail)}
-            alt={'Thumbnail of this article'}
-            width={1000}
-            height={400}
-            layout={'responsive'}
-            objectFit={'cover'}
-          />
+      <ArticleHeader post={post} addEntryButtons={false} />
+      <Block>
+        {!post.isError && (
+          <p
+            style={{
+              fontSize: '1.5em',
+              color: 'var(--header-color)',
+              fontWeight: 'bold',
+              textAlign: 'center',
+            }}
+          >
+            記事プレビューです
+            <br />
+            URLを知っているユーザーのみが閲覧できます
+          </p>
         )}
-        <div className={styles.inner_title_block}>
-          <h1>{parseWithBudouX(post.title, post.slug)}</h1>
-          <p>{post.description}</p>
-          {!post.isError && (
-            <p
-              style={{
-                fontSize: '1.5em',
-                color: 'var(--header-color)',
-                fontWeight: 'bold',
-              }}
-            >
-              記事プレビューです
-              <br />
-              URLを知っているユーザーのみが閲覧できます
-            </p>
-          )}
-          <PostAttributes post={post} />
-        </div>
-      </Title>
+      </Block>
       <BlogMarkdown entry={post} imageSize={imageSize} />
     </MainWrapper>
   )
