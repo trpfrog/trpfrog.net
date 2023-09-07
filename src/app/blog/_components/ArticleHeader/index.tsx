@@ -62,7 +62,13 @@ export default React.memo(function ArticleHeader(props: Props) {
               />
             </Balancer>
           </h1>
-          <p style={{ margin: '1em' }}>{post.description}</p>
+          {post.description && (
+            <p style={{ margin: '0.5em', fontSize: '1rem', lineHeight: 1.5 }}>
+              <Balancer>
+                <ParseWithBudouX str={post.description} slug={post.slug} />
+              </Balancer>
+            </p>
+          )}
           <PostAttributes post={post} />
 
           {/* Tags */}
