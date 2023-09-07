@@ -73,6 +73,10 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       return <code className={styles.inline_code_block}>{children}</code>
     }
 
+    if (!className && !children.includes('\n')) {
+      return <code className={styles.inline_code_block}>{children}</code>
+    }
+
     const language = className
       ? getLangName(className.replace('language-', '').split('.').slice(-1)[0])
       : ''
