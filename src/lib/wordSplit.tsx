@@ -5,13 +5,17 @@ const budouXParser = loadDefaultJapaneseParser()
 
 export const parseWithBudouX = (str: string, slug: string) => {
   if (!str) return []
+  const separator = '<%FORCE-BREAK%>'
   return budouXParser
     .parse(str)
-    .map(e => e.split('+').map((f, i) => (i % 2 === 0 ? f : '+' + f)))
+    .map(e => {
+      e = e.replaceAll('+', `${separator}+${separator}`)
+      return e.split(separator)
+    })
     .flat()
     .map((e, i) => (
       <span key={`${slug}-${i}`} style={{ display: 'inline-block' }}>
-        {e}
+        {e.replaceAll(' ', '\u00a0')} {/* &nbsp; */}
       </span>
     ))
 }
