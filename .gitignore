@@ -48,3 +48,8 @@ yarn-error.log*
 # storybook
 /storybook-static
 .env*.local
+
+# unused lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
