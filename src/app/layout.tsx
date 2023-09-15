@@ -17,6 +17,8 @@ import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAweso
 import { SITE_NAME } from '@/lib/constants'
 import fontVariables from '@/lib/googleFonts'
 
+import styles from './layout.module.scss'
+
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'
 const productionURL = 'https://trpfrog.net'
@@ -59,13 +61,15 @@ export default function RootLayout({ children }: Props) {
         <GoogleFonts />
         <FixTooLargeFontAwesomeIcons />
       </head>
-      <body className={fontVariables}>
+      <body className={`${fontVariables} ${styles.body}`}>
         <Toaster />
-        <Header />
-        <Navigation />
-        <main>{children}</main>
+        <div className={styles.layout}>
+          <Header />
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </div>
         <BackToTop />
-        <Footer />
       </body>
     </html>
   )
