@@ -10,16 +10,8 @@
     zoom: 0.7;
   }
 
-  #inner-body {
-    grid-template-areas: 'h' 'm' 'f';
-  }
-
   a {
     color: black !important;
-  }
-
-  .main-window {
-    border: solid 0.5mm gray !important;
   }
 
   #title h1 {
@@ -43,17 +35,7 @@
     z-index: 0;
   }
 
-  #header-wrapper {
-    max-width: none;
-    padding-left: 20px;
-    -webkit-print-color-adjust: exact;
-  }
-
   nav {
-    display: none;
-  }
-
-  #page_top {
     display: none;
   }
 

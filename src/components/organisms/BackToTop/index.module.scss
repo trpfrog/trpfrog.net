@@ -4,10 +4,12 @@
   position: fixed;
   right: 26px;
   bottom: 29px;
-}
 
-@include mixins.mq(sp) {
-  #page_top {
+  @include mixins.mq(sp) {
+    display: none;
+  }
+
+  @media print {
     display: none;
   }
 }
