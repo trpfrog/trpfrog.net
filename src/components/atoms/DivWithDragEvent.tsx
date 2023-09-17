@@ -1,48 +1,51 @@
 // 要素内でドラッグを開始したとき、要素外でもドラッグを継続するためのコンポーネント
 import React from 'react'
 
-type Props = Omit<React.ComponentPropsWithRef<'div'>, 'onDrag'> & {
-  onDrag: (e: MouseEvent) => void
+type Props = Omit<React.ComponentPropsWithRef<'div'>, 'onPointerDown'> & {
+  onPointerDown: (e: MouseEvent) => void
 }
 
 const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
   function DivWithDragEvent(props, ref) {
-    const { onDrag, onMouseDown, onClick, ...rest } = props
+    const { onPointerDown, onMouseDown, onClick, ...rest } = props
 
     const [isDragging, setIsDragging] = React.useState(false)
     const handleDrag = React.useCallback(
       (e: MouseEvent) => {
+        e.preventDefault()
+        document.body.style.touchAction = 'none'
         if (!isDragging) {
           return
         }
-        onDrag(e)
+        onPointerDown(e)
       },
-      [isDragging, onDrag],
+      [isDragging, onPointerDown],
     )
 
     const mouseUpHandler = React.useCallback(() => {
+      document.body.style.touchAction = ''
       setIsDragging(false)
     }, [setIsDragging])
 
     // 要素外でもドラッグと mouse up を検知するため document にイベントを登録する
     React.useEffect(() => {
-      document.addEventListener('mouseup', mouseUpHandler)
-      document.addEventListener('mousemove', handleDrag)
+      document.addEventListener('pointerup', mouseUpHandler)
+      document.addEventListener('pointermove', handleDrag, { passive: false })
       return () => {
-        document.removeEventListener('mouseup', mouseUpHandler)
-        document.removeEventListener('mousemove', handleDrag)
+        document.removeEventListener('pointerup', mouseUpHandler)
+        document.removeEventListener('pointermove', handleDrag)
       }
     }, [handleDrag, mouseUpHandler])
 
     return (
       <div
         ref={ref}
-        onMouseDown={e => {
+        onPointerDown={e => {
           setIsDragging(true)
-          onMouseDown?.(e)
+          onPointerDown?.(e)
         }}
         onClick={e => {
-          onDrag?.(e.nativeEvent)
+          onPointerDown?.(e.nativeEvent)
           onClick?.(e)
         }}
         {...rest}
