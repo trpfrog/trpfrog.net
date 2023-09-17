@@ -68,6 +68,7 @@
     "react-simplemde-editor": "^5.2.0",
     "react-string-replace": "^1.1.1",
     "react-syntax-highlighter": "^15.5.0",
+    "react-tooltip": "^5.21.4",
     "react-twitter-widgets": "^1.11.0",
     "react-wrap-balancer": "^1.1.0",
     "react-youtube": "^10.1.0",
