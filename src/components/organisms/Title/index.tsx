@@ -2,6 +2,8 @@ import React, { CSSProperties } from 'react'
 
 import Block from '@/components/molecules/Block'
 
+import styles from './index.module.scss'
+
 type Props = {
   title?: string
   description?: string
@@ -19,8 +21,7 @@ const Title: React.FunctionComponent<Props> = props => {
   return (
     <>
       <Block
-        id={'title'}
-        className={props.className}
+        className={`${styles.title} ${props.className}`}
         ribbonText={props.ribbonText ?? ''}
         style={props.style}
       >
