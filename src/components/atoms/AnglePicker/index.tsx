@@ -10,11 +10,20 @@ type Props = Omit<
   'children' | 'onDrag'
 > & {
   onAngleChange: (degree: number) => void
+  size: string | number
+  faceClassName?: string
 }
 
 export default function AnglePicker(props: Props) {
   const [angle, setAngle] = React.useState(0)
-  const { onAngleChange, ...rest } = props
+  const {
+    onAngleChange,
+    size,
+    style = {},
+    className = '',
+    faceClassName = '',
+    ...rest
+  } = props
 
   const ref = React.useRef<HTMLDivElement>(null)
 
@@ -39,14 +48,15 @@ export default function AnglePicker(props: Props) {
   return (
     <DivWithDragEvent
       ref={ref}
-      className={styles.frame}
-      onDrag={setAngleFromMouseEvent}
+      className={`${styles.frame} ${className}`}
+      onPointerDown={e => setAngleFromMouseEvent(e)}
+      style={{ width: size, height: size, ...style }}
       {...rest}
     >
-      <div className={styles.face} />
+      <div className={`${styles.face} ${faceClassName}`} />
       <div
         className={styles.clock_hand}
-        style={{ '--angle': `${angle}deg` } as React.CSSProperties}
+        style={{ transform: `rotate(${angle}deg)` } as React.CSSProperties}
       >
         <div className={styles.hand_dot} />
         <div className={styles.hand} />

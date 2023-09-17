@@ -1,3 +1,5 @@
+import { action } from '@storybook/addon-actions'
+
 import Angle from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -14,9 +16,8 @@ export const Primary: Story = {
   parameters: {
     layout: 'centered',
   },
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Angle />
-    </div>
-  ),
+  args: {
+    onAngleChange: degree => action(`${degree} deg`),
+    size: 300,
+  },
 }
