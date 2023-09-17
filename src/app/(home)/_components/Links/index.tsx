@@ -1,4 +1,4 @@
-import styles from '@/app/(home)/style.module.scss'
+import styles from '@/app/(home)/page.module.scss'
 
 import Button from '@/components/atoms/Button'
 import Block from '@/components/molecules/Block'

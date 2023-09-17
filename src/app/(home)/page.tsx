@@ -16,7 +16,7 @@ import TopPageIcons from './_components/TopPageIcons'
 import TopPageMusic from './_components/TopPageMusic'
 import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
 import WhatsNew from './_components/WhatsNew'
-import styles from './style.module.scss'
+import styles from './page.module.scss'
 
 export default async function Index() {
   const mainWrapperStyle: React.CSSProperties = {

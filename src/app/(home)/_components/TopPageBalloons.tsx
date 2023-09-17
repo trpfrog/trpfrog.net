@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '@/app/(home)/style.module.scss'
+import styles from '@/app/(home)/page.module.scss'
 import Balloon from '@/app/balloon/_components/Balloon'
 import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
 
