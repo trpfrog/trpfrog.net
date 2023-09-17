@@ -9,7 +9,7 @@ import AnglePicker from '@/components/atoms/AnglePicker'
 import styles from './index.module.scss'
 
 type Props = {
-  children: React.ReactNode
+  children?: React.ReactNode
   id?: string
 }
 
