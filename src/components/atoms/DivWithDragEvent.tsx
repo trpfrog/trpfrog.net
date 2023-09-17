@@ -12,11 +12,9 @@ const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
     const [isDragging, setIsDragging] = React.useState(false)
     const handleDrag = React.useCallback(
       (e: MouseEvent) => {
+        if (!isDragging) return // div 外のドラッグにも反応してしまうため、これより上には処理を書かない
         e.preventDefault()
         document.body.style.touchAction = 'none'
-        if (!isDragging) {
-          return
-        }
         onDragging(e)
       },
       [isDragging, onDragging],
