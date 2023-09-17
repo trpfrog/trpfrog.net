@@ -25,7 +25,8 @@
       {
         "patterns": [
           "../*",
-          "@/app/blog/*"
+          "@/app/blog/*",
+          "**/*.stories"
         ]
       }
     ],
