@@ -1,15 +1,5 @@
 @use '@/styles/mixins';
 
-.main-window {
-  margin: 1em;
-  border-radius: 33px;
-  text-align: left;
-
-  h2 {
-    margin: 0;
-  }
-}
-
 #links {
   table {
     border-spacing: 1em;

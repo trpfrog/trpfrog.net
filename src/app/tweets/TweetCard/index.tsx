@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 import reactStringReplace from 'react-string-replace'
 
+import PlainBlock from '@/components/atoms/PlainBlock'
+
 import styles from './index.module.scss'
 
 import type { Tweet, Media } from '@prisma/client'
@@ -93,7 +95,7 @@ function TweetString({
 }
 
 const TweetBlock = (props: { children: React.ReactNode }) => (
-  <div className={`main-window ${styles.window}`}>{props.children}</div>
+  <PlainBlock className={styles.window}>{props.children}</PlainBlock>
 )
 
 const decodeHTMLEntities = (text: string) => {
@@ -110,13 +112,13 @@ export function DateCard({ date }: { date: Date }) {
   const query = 'date:' + dayjs(date).format('YYYY-MM-DD')
   const url = '/tweets?q=' + encodeURIComponent(query) + '#tweets'
   return (
-    <div className={`main-window ${styles.window} ${styles.date}`}>
+    <PlainBlock className={`${styles.window} ${styles.date}`}>
       <h3>
         <a style={{ all: 'inherit' }} href={url}>
           {dayjs(date).format('YYYY年M月D日')}
         </a>
       </h3>
-    </div>
+    </PlainBlock>
   )
 }
 
