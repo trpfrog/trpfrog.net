@@ -49,7 +49,7 @@ export default function AnglePicker(props: Props) {
     <DivWithDragEvent
       ref={ref}
       className={`${styles.frame} ${className}`}
-      onPointerDown={e => setAngleFromMouseEvent(e)}
+      onDragging={setAngleFromMouseEvent}
       style={{ width: size, height: size, ...style }}
       {...rest}
     >
