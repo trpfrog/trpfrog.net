@@ -1,6 +1,5 @@
 @use '@/styles/common/grid';
 @use '@/styles/common/header';
-@use '@/styles/common/h2icon';
 @use '@/styles/common/block';
 @use '@/styles/common/media';
 @use '@/styles/common/linkbutton';
@@ -67,6 +66,17 @@ a:visited {
 
   a:visited {
     color: plum;
+  }
+}
+
+h2 {
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: 800;
+  color: #172c00;
+  line-height: 1.2;
+
+  @include mixins.mq(dark) {
+    color: #f1ffd0;
   }
 }
 

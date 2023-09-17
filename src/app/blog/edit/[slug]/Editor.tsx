@@ -7,6 +7,7 @@ import matter from 'gray-matter'
 import dynamic from 'next/dynamic'
 
 import Button from '@/components/atoms/Button'
+import H2 from '@/components/atoms/H2'
 
 import useSparseCallback from '@/hooks/useSparseCallback'
 
@@ -86,7 +87,9 @@ export default React.memo(function Editor({
           alignItems: 'center',
         }}
       >
-        <h2 style={{ display: 'inline-block' }}>つまみログエディタ</h2>
+        <H2 icon="trpfrog" style={{ display: 'inline-block' }}>
+          つまみログエディタ
+        </H2>
         <Button onClick={() => fetch(`/api/blog/open/${slug}`)}>
           ファイルを開く
         </Button>
