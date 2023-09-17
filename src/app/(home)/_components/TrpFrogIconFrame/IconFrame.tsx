@@ -21,7 +21,7 @@ export function IconFrame() {
     return (
       <figure style={{ margin: '20px 0' }}>
         <div className={styles.loading_picture}>
-          <WaveText>Generating...</WaveText>
+          <WaveText>Loading...</WaveText>
         </div>
         <figcaption className={styles.caption_wrapper}>
           <div className={`${styles.caption_en} ${styles.waiting}`} />
