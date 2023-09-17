@@ -32,8 +32,4 @@
 .main_window {
   padding: var(--window-padding-top-bottom) var(--window-padding-left-right);
   border-radius: var(--window-border-radius);
-
-  @include mixins.mq(sp) {
-    margin: 0 8px;
-  }
 }
