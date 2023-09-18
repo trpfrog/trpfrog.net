@@ -43,7 +43,7 @@ export default function TrpFrogAnimation({ children, id }: Props) {
           {showMaxRpm ? `${rpm.toFixed(0)}rpm` : 'Welcome!'}
         </div>
         <div id={styles.lines} />
-        <div id={styles.trpfrog_image} />
+        <div className={styles.trpfrog_image} data-turn-eyes={rpm > 180} />
         <div>
           <div className={styles.angle_picker_wrapper}>
             <AnglePicker

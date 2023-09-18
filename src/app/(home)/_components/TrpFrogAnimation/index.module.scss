@@ -30,11 +30,15 @@
   filter: blur(4px);
 }
 
-#trpfrog_image {
+.trpfrog_image {
   display: inline-block;
   width: var(--trpfrog-icon-size);
   height: var(--trpfrog-icon-size);
   background: no-repeat url('/images/flat-trpfrog.svg');
+
+  &[data-turn-eyes='true'] {
+    background-image: url('/images/flat-trpfrog-turn.svg');
+  }
 
   background-size: var(--trpfrog-icon-size) var(--trpfrog-icon-size);
   position: absolute;
