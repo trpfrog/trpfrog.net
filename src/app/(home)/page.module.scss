@@ -63,20 +63,6 @@
   grid-template-rows: min(217px, 20vw);
 }
 
-// Grid definition
-
-#top_page_grid_wrapper {
-  background: var(--body-background);
-  padding: 2em;
-  margin: 0;
-}
-
-@include mixins.mq(sp) {
-  #top_page_grid_wrapper {
-    padding: 8px 0 0;
-  }
-}
-
 #top_page_grid {
   max-width: 1000px;
   display: inline-grid;

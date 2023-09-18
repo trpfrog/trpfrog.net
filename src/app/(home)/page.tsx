@@ -21,7 +21,7 @@ import styles from './page.module.scss'
 export default async function Index() {
   return (
     <>
-      <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper} />
+      <TrpFrogAnimationFrame />
       <MainWrapper>
         <TempTwitter />
         <div id={styles.top_page_grid}>
