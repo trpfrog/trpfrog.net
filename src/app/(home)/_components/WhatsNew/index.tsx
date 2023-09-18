@@ -46,26 +46,28 @@ const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
 export default async function WhatsNew({ id }: Props) {
   const whatsNewRecords: WhatsNewRecord[] = await getWhatsNewRecords()
   return (
-    <Block title={'最新情報'} h2icon={'robot'} id={id}>
-      <div id={styles.whats_new_table}>
-        {whatsNewRecords.map(({ text, date }) => {
-          const [y, m, d] = date.split('-')
-          if (process.env.NODE_ENV !== 'production') {
-            const localhost = 'http://localhost:3000'
-            text = text.replace(/https:\/\/trpfrog.net/g, localhost)
-          }
-          return (
-            <div key={text} className={styles.whats_new_row}>
-              <div className={styles.whats_new_date}>
-                {y}-<br />
-                {m}-{d}
+    <Block title={'最新情報'} h2icon={'robot'} id={id} className={styles.block}>
+      <div className={styles.table_wrapper}>
+        <div id={styles.whats_new_table}>
+          {whatsNewRecords.map(({ text, date }) => {
+            const [y, m, d] = date.split('-')
+            if (process.env.NODE_ENV !== 'production') {
+              const localhost = 'http://localhost:3000'
+              text = text.replace(/https:\/\/trpfrog.net/g, localhost)
+            }
+            return (
+              <div key={text} className={styles.whats_new_row}>
+                <div className={styles.whats_new_date}>
+                  {y}-<br />
+                  {m}-{d}
+                </div>
+                <div>
+                  <ReactMarkdown>{text}</ReactMarkdown>
+                </div>
               </div>
-              <div>
-                <ReactMarkdown>{text}</ReactMarkdown>
-              </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
     </Block>
   )
