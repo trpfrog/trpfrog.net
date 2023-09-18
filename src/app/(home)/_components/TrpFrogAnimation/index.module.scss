@@ -60,7 +60,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  margin: 10px;
+  margin: 15px;
 
   display: flex;
   align-items: flex-end;
@@ -69,22 +69,5 @@
 
   .angle_picker {
     box-shadow: 0 0 5px 2px rgba(black, 0.2);
-  }
-
-  .angle_picker_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: lightgray 1px solid;
-    box-shadow: 0 0 5px 1px rgba(black, 0.1);
-    opacity: 0.3;
-    user-select: none;
-    transition: 300ms;
-    &:hover {
-      opacity: 1;
-    }
   }
 }

@@ -2,7 +2,8 @@
 
 import React from 'react'
 
-import { Tooltip } from 'react-tooltip'
+import RotateButton from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
+import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
 
 import AnglePicker from '@/components/atoms/AnglePicker'
 
@@ -15,6 +16,16 @@ type Props = {
 
 export default function TrpFrogAnimation({ children, id }: Props) {
   const ref = React.useRef<HTMLDivElement>(null)
+  const rotateAnimation = useRotateAnimation()
+
+  const rotateCallback = React.useCallback(() => {
+    if (rotateAnimation.isRotated) {
+      rotateAnimation.stopAnimation()
+    } else {
+      rotateAnimation.startAnimation()
+    }
+  }, [rotateAnimation])
+
   return (
     <>
       <div id={styles.animation} ref={ref}>
@@ -24,8 +35,10 @@ export default function TrpFrogAnimation({ children, id }: Props) {
         <div>
           <div className={styles.angle_picker_wrapper}>
             <AnglePicker
+              ref={rotateAnimation.anglePickerRef}
               size={70}
               className={styles.angle_picker}
+              onMouseDown={rotateAnimation.stopAnimation}
               onAngleChange={degree => {
                 ref.current?.style.setProperty(
                   '--trpfrog-animation-start-degree',
@@ -33,34 +46,11 @@ export default function TrpFrogAnimation({ children, id }: Props) {
                 )
               }}
             />
-            <div
-              className={styles.angle_picker_button}
-              data-tooltip-id="about-angle-picker"
-            >
-              ？
-            </div>
-            <Tooltip
-              id="about-angle-picker"
-              place="right"
-              style={{ textAlign: 'left', maxWidth: 'min(50vw, 500px)' }}
-            >
-              <p style={{ margin: 0 }}>
-                <span style={{ display: 'inline-block' }}>
-                  「集中線のアニメーションのせいで端末がアチアチになる」
-                </span>
-                <span style={{ display: 'inline-block' }}>
-                  との苦情を多数いただいたため、人力アニメーションにしました。
-                </span>
-              </p>
-              <p style={{ margin: 0 }}>
-                <span style={{ display: 'inline-block' }}>
-                  アニメーションしたい方は
-                </span>
-                <span style={{ display: 'inline-block' }}>
-                  頑張って左の回すやつをくるくるしてください。
-                </span>
-              </p>
-            </Tooltip>
+            <RotateButton
+              isRotated={rotateAnimation.isRotated}
+              rotateDirection={rotateAnimation.rotateDirection}
+              onClick={rotateCallback}
+            />
           </div>
         </div>
       </div>
