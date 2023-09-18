@@ -40,10 +40,11 @@
   text-decoration: none;
   display: block;
   font-weight: bold;
-  padding: 5px 10px;
-  width: 70px;
+  padding: 5px 15px;
+  width: fit-content;
   border-radius: 100px;
   color: var(--footer-color) !important;
+  opacity: 0.7;
 
   &:hover {
     background: #d7e3bb;
@@ -61,8 +62,8 @@
   }
 
   .footer_button {
-    padding: 1px;
-    font-size: 0.6em;
+    padding: 3px 8px;
+    font-size: 0.9em;
     margin-right: 0;
   }
 }
