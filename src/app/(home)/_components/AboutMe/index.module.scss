@@ -99,11 +99,23 @@
   margin: 5px 0;
   display: flex;
   gap: 3px;
-  opacity: 1;
+  @include mixins.mq(sp) {
+    gap: 10px;
+  }
+
   button {
     width: 2em;
     height: 2em;
     border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mixins.mq(sp) {
+      font-size: 1.2em;
+    }
+
     border: none;
     background: var(--header-color);
     color: white;

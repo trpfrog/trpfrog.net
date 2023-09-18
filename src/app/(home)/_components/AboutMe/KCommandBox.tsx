@@ -29,25 +29,28 @@ export default function KCommandBox({
   return isUnlocked ? (
     <>{children}</>
   ) : (
-    <div className={styles.command_keyboard}>
-      {(['↑', '↓', '←', '→', 'A', 'B'] as (keyof typeof figures)[]).map(e => (
-        <button
-          key={e}
-          onClick={() => {
-            const newInput = input + e
-            if (newInput === answer) {
-              setIsUnlocked(true)
-            }
-            if (newInput !== answer.slice(0, newInput.length)) {
-              setInput('')
-            } else {
-              setInput(newInput)
-            }
-          }}
-        >
-          {figures[e]}
-        </button>
-      ))}
-    </div>
+    <>
+      <div className={styles.command_keyboard}>
+        {(['↑', '↓', '←', '→', 'A', 'B'] as (keyof typeof figures)[]).map(e => (
+          <button
+            key={e}
+            onClick={() => {
+              const newInput = input + e
+              if (newInput === answer) {
+                setIsUnlocked(true)
+              }
+              if (newInput.length > answer.length) {
+                setInput('')
+              } else {
+                setInput(newInput)
+              }
+            }}
+          >
+            {figures[e]}
+          </button>
+        ))}
+      </div>
+      <div>{input.replaceAll(/./g, '●')}</div>
+    </>
   )
 }
