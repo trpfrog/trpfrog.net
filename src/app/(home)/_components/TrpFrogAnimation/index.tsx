@@ -4,6 +4,7 @@ import React from 'react'
 
 import RotateButton from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
 import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
+import useRpmCalculation from '@/app/(home)/_components/TrpFrogAnimation/useRpmCalculation'
 
 import AnglePicker from '@/components/atoms/AnglePicker'
 
@@ -26,10 +27,21 @@ export default function TrpFrogAnimation({ children, id }: Props) {
     }
   }, [rotateAnimation])
 
+  const { pushDegree, rpm: rawRpm } = useRpmCalculation(1500)
+  const rpm = Math.abs(rawRpm)
+
+  const [maxRpm, setMaxRpm] = React.useState(0)
+  const showMaxRpm = maxRpm >= 150
+
   return (
     <>
       <div id={styles.animation} ref={ref}>
-        <div id={styles.trpfrog_name}>Welcome!</div>
+        <div
+          id={styles.trpfrog_name}
+          className={showMaxRpm ? styles.current_rpm : ''}
+        >
+          {showMaxRpm ? `${rpm.toFixed(0)}rpm` : 'Welcome!'}
+        </div>
         <div id={styles.lines} />
         <div id={styles.trpfrog_image} />
         <div>
@@ -44,6 +56,8 @@ export default function TrpFrogAnimation({ children, id }: Props) {
                   '--trpfrog-animation-start-degree',
                   degree + 'deg',
                 )
+                pushDegree(degree)
+                setMaxRpm(prev => Math.max(prev, rpm))
               }}
             />
             <RotateButton
@@ -52,6 +66,9 @@ export default function TrpFrogAnimation({ children, id }: Props) {
               onClick={rotateCallback}
             />
           </div>
+          {showMaxRpm && (
+            <div className={styles.max_rpm}>MAX: {maxRpm.toFixed(2)} rpm</div>
+          )}
         </div>
       </div>
       <div id={id}>{children}</div>
