@@ -55,3 +55,19 @@
   font-weight: bold;
   color: white;
 }
+
+.angle_picker_wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 15px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  opacity: 0.9;
+
+  .angle_picker {
+    box-shadow: 0 0 5px 2px rgba(black, 0.2);
+  }
+}

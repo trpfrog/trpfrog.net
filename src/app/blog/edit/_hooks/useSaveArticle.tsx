@@ -18,6 +18,18 @@ export default function useSaveArticle(
     [],
   )
 
+  const save = useCallback(async () => {
+    if (!alreadySaved) {
+      return setTimeoutPromise(() => {
+        setAlreadySaved(true)
+        return fetch(`/blog/edit/${slug}/api/save`, {
+          method: 'POST',
+          body: articleText,
+        })
+      }, delayMs)
+    }
+  }, [alreadySaved, articleText, delayMs, slug])
+
   useKeyboardEvent(
     isSaveKeyPressed,
     e => {
@@ -33,28 +45,17 @@ export default function useSaveArticle(
         return
       }
 
-      void toast.promise(
-        setTimeoutPromise(() => {
-          setAlreadySaved(false)
-          void fetch(`/blog/edit/${slug}/api/save`, {
-            method: 'POST',
-            body: articleText,
-          })
-        }, delayMs),
-        {
-          loading: 'Saving...',
-          success: <b onClick={openEditor}>Saved!</b>,
-          error: <b>Something went wrong...</b>,
-        },
-      )
+      void toast.promise(save(), {
+        loading: 'Saving...',
+        success: <b onClick={openEditor}>Saved!</b>,
+        error: <b>Something went wrong...</b>,
+      })
     },
     [slug, articleText, setAlreadySaved],
   )
 
   useUnmountEffect(() => {
-    if (!alreadySaved) {
-      alert('You have unsaved changes! Please save before leaving the page.')
-    }
+    save().catch(console.error)
   })
 
   return {

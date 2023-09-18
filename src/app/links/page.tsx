@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Metadata } from 'next'
 
-import styles from '@/app/(home)/style.module.scss'
+import styles from '@/app/(home)/page.module.scss'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
 import Block from '@/components/molecules/Block'

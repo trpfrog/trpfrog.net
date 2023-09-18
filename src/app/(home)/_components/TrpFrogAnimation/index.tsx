@@ -1,59 +1,60 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { motion } from 'framer-motion'
-import { parseCookies, setCookie } from 'nookies'
+import RotateButton from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
+import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
+
+import AnglePicker from '@/components/atoms/AnglePicker'
 
 import styles from './index.module.scss'
 
 type Props = {
-  children: React.ReactNode
+  children?: React.ReactNode
   id?: string
 }
 
 export default function TrpFrogAnimation({ children, id }: Props) {
-  const cookies = parseCookies()
-  const cookieName = 'doNotPlayTopPageAnimation'
-  const doAnimation = cookies[cookieName] !== 'true'
+  const ref = React.useRef<HTMLDivElement>(null)
+  const rotateAnimation = useRotateAnimation()
 
-  useEffect(() => {
-    setCookie(null, cookieName, 'true', {
-      maxAge: 60 * 60 * 24 * 14,
-      path: '/',
-    })
-  }, [])
+  const rotateCallback = React.useCallback(() => {
+    if (rotateAnimation.isRotated) {
+      rotateAnimation.stopAnimation()
+    } else {
+      rotateAnimation.startAnimation()
+    }
+  }, [rotateAnimation])
 
   return (
     <>
-      <div id={styles.animation}>
-        <motion.div
-          id={styles.trpfrog_name}
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 0.7 }}
-          transition={{ delay: doAnimation ? 1.2 : 0.3, duration: 1 }}
-        >
-          Welcome!
-        </motion.div>
-        <motion.div
-          id={styles.lines}
-          initial={{ '--trpfrog-animation-start-degree': '0deg' } as any}
-          animate={{ '--trpfrog-animation-start-degree': '360deg' } as any}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        />
+      <div id={styles.animation} ref={ref}>
+        <div id={styles.trpfrog_name}>Welcome!</div>
+        <div id={styles.lines} />
         <div id={styles.trpfrog_image} />
+        <div>
+          <div className={styles.angle_picker_wrapper}>
+            <AnglePicker
+              ref={rotateAnimation.anglePickerRef}
+              size={70}
+              className={styles.angle_picker}
+              onMouseDown={rotateAnimation.stopAnimation}
+              onAngleChange={degree => {
+                ref.current?.style.setProperty(
+                  '--trpfrog-animation-start-degree',
+                  degree + 'deg',
+                )
+              }}
+            />
+            <RotateButton
+              isRotated={rotateAnimation.isRotated}
+              rotateDirection={rotateAnimation.rotateDirection}
+              onClick={rotateCallback}
+            />
+          </div>
+        </div>
       </div>
-      <motion.div
-        id={id}
-        initial={doAnimation ? { y: 'calc(-1 * var(--anim-height))' } : {}}
-        animate={{ y: 0 }}
-        transition={{
-          delay: 0.4,
-          duration: 1,
-        }}
-      >
-        {children}
-      </motion.div>
+      <div id={id}>{children}</div>
     </>
   )
 }

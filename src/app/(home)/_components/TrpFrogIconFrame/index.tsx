@@ -11,7 +11,7 @@ import {
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
 
-type Props = React.ComponentProps<'div'>
+type Props = React.ComponentPropsWithoutRef<'div'>
 
 export default async function TrpFrogIconFrame(props: Props) {
   const updateHours =

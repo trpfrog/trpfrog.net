@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import SearchBox from "./SearchBox";
 
 <Block style={{textAlign: "center"}} ribbonText={'BETA'}>
-  <h2 className={`none ${styles.title}`}>
+  <h2 className={styles.title}>
     trpfrog.net/<b style={{fontWeight: 800}}>fuzzy</b>
   </h2>
 
@@ -14,7 +14,7 @@ import SearchBox from "./SearchBox";
   <SearchBox/>
 </Block>
 
-<Block title="入力例">
+<Block title="入力例" h2icon="trpfrog">
 
   - enoshima => https://trpfrog.net/blog/enoshima-walk
   - balllloooon => https://trpfrog.net/balloon
@@ -22,7 +22,7 @@ import SearchBox from "./SearchBox";
 
 </Block>
 
-<Block title="仕組み">
+<Block title="仕組み" h2icon="robot">
 
   OpenAI API の Chat でごにょごにょします。
   単純な編集距離じゃないので日本語を突っ込んでも機能します。(すごい！)

@@ -14,7 +14,7 @@ import BlogPost from '@blog/_lib/blogPost'
 
 import styles from './index.module.scss'
 
-type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
   addEntryButtons?: boolean
   addEditButtonOnDevMode?: boolean

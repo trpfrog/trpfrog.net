@@ -4,7 +4,7 @@ import Tag from '@blog/_components/Tag'
 
 import styles from './index.module.scss'
 
-type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tags: string[]
 }
 

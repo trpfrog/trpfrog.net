@@ -71,7 +71,8 @@ export default async function Index() {
           <Block
             key={metadata.title}
             title={metadata.title}
-            h2icon={metadata.h2icon}
+            // @ts-ignore
+            h2icon={metadata.h2icon ?? 'trpfrog'}
           >
             {metadata.image && (
               <div className={styles.hero_image}>

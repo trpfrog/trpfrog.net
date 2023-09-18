@@ -1,8 +1,6 @@
 @use '@/styles/common/grid';
 @use '@/styles/common/header';
-@use '@/styles/common/h2icon';
 @use '@/styles/common/block';
-@use '@/styles/common/title_block';
 @use '@/styles/common/media';
 @use '@/styles/common/linkbutton';
 @use '@/styles/mixins';
@@ -37,10 +35,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--main-font);
-}
-
-body,
-#inner-body {
+  scroll-behavior: smooth;
   background: var(--body-background);
   color: var(--base-font-color);
   min-height: 100vh;
@@ -67,6 +62,17 @@ a:visited {
 
   a:visited {
     color: plum;
+  }
+}
+
+h2 {
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: 800;
+  color: #172c00;
+  line-height: 1.2;
+
+  @include mixins.mq(dark) {
+    color: #f1ffd0;
   }
 }
 
@@ -108,14 +114,6 @@ h3 {
 
 .ib {
   display: inline-block;
-}
-
-.google-maps-style {
-  width: min(100%, 600px);
-  height: min(70vw, 400px);
-  border-radius: 10px;
-  box-shadow: 0 0 1px 1px rgb(128 128 128 / 30%);
-  border: 0;
 }
 
 @media screen {

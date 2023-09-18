@@ -16,20 +16,13 @@ import TopPageIcons from './_components/TopPageIcons'
 import TopPageMusic from './_components/TopPageMusic'
 import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
 import WhatsNew from './_components/WhatsNew'
-import styles from './style.module.scss'
+import styles from './page.module.scss'
 
 export default async function Index() {
-  const mainWrapperStyle: React.CSSProperties = {
-    display: 'block',
-    maxWidth: '100000px',
-    margin: '0',
-    width: '100%',
-    textAlign: 'center',
-  }
-
   return (
-    <MainWrapper style={mainWrapperStyle}>
-      <TrpFrogAnimationFrame id={styles.top_page_grid_wrapper}>
+    <>
+      <TrpFrogAnimationFrame />
+      <MainWrapper>
         <TempTwitter />
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid} />
@@ -43,7 +36,7 @@ export default async function Index() {
           <Ratings id={styles.music_game} />
           <Bird id={styles.bird} />
         </div>
-      </TrpFrogAnimationFrame>
-    </MainWrapper>
+      </MainWrapper>
+    </>
   )
 }

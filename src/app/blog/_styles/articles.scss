@@ -58,7 +58,6 @@
 
 #hero_article {
   @include mixins.mq(sp) {
-    margin: 0 8px;
     column-gap: 8px;
     row-gap: 12px;
   }

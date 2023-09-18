@@ -1,10 +1,28 @@
 @use '@/styles/mixins';
 
+.block {
+  display: flex;
+  flex-direction: column;
+  padding: var(--window-padding-top-bottom)
+    min(var(--window-padding-left-right), 1.5em);
+}
+
+.table_wrapper {
+  position: relative;
+  height: 100%;
+  min-height: 350px;
+  flex: 1;
+}
+
 #whats_new_table {
-  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
   font-size: 0.8em;
   line-height: 1.2em;
-  max-height: 350px;
   width: 100%;
   margin-top: 10px;
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './index.module.scss'
 
 type Props<T extends string> = Omit<
-  React.ComponentProps<'span'>,
+  React.ComponentPropsWithoutRef<'span'>,
   'children'
 > & {
   children: T

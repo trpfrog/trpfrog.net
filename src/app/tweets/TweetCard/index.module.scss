@@ -140,7 +140,7 @@
   }
   display: block;
   line-height: 1;
-  background: var(--header-color);
+  background: var(--header-color) !important;
   color: #fff;
   padding: 1rem !important;
   :hover {

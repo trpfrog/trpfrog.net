@@ -7,4 +7,8 @@
   text-align: left;
   box-shadow: 0 6px 0 var(--window-bottom-color);
   overflow: hidden;
+
+  @media print {
+    border: solid 0.5mm gray !important;
+  }
 }
