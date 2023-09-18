@@ -13,3 +13,6 @@ export const TWITTER_ID = 'TrpFrog'
 export const TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS = 3
 export const TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY =
   'trpfrog-diffusion-update-hours'
+
+export const ATCODER_HIGHEST = 1596
+export const WALKING_FARTHEST = '70.5km'
