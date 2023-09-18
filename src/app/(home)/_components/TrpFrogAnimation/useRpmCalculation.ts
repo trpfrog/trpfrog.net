@@ -62,7 +62,10 @@ export default function useRpmCalculation(queueTTLMillis: number) {
   const firstUnixTime = q.first?.unixTime
   const lastUnixTime = q.last?.unixTime
   const rpm =
-    firstUnixTime && lastUnixTime && firstUnixTime !== lastUnixTime
+    q.items.length > 50 &&
+    firstUnixTime &&
+    lastUnixTime &&
+    firstUnixTime !== lastUnixTime
       ? ((diffSum / (lastUnixTime - firstUnixTime)) * 1000 * 60) / 360
       : 0
 
