@@ -9,9 +9,9 @@ import styles from './index.module.scss'
 type LinkProps = Omit<Parameters<typeof Link>[0], 'href'> & {
   href: `/${string}`
 }
-type ButtonProps = React.ComponentProps<'button'>
-type DivProps = React.ComponentProps<'div'>
-type AProps = React.ComponentProps<'a'>
+type ButtonProps = React.ComponentPropsWithoutRef<'button'>
+type DivProps = React.ComponentPropsWithoutRef<'div'>
+type AProps = React.ComponentPropsWithoutRef<'a'>
 
 type Props =
   | ({ externalLink?: false } & DivProps)
@@ -36,7 +36,7 @@ function getType<P extends Props>(props: P): TagType {
 
 function Wrapper<T extends TagType>(
   props: { tag: T } & (T extends infer U extends 'a' | 'div' | 'button'
-    ? React.ComponentProps<U>
+    ? React.ComponentPropsWithoutRef<U>
     : LinkProps),
 ) {
   const { tag, ...rest } = props

@@ -13,7 +13,10 @@ import BlogPost from '@blog/_lib/blogPost'
 
 import ShareSpan from './ShareSpan'
 
-type EntryButtonProps = Omit<React.ComponentProps<'div'>, 'children'> & {
+type EntryButtonProps = Omit<
+  React.ComponentPropsWithoutRef<'div'>,
+  'children'
+> & {
   post: BlogPost
   extended?: boolean
 }

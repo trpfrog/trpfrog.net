@@ -6,7 +6,7 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import styles from './index.module.scss'
 
-type Props = Omit<React.ComponentProps<'div'>, 'children'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   title: string
   isHero?: boolean
 }

@@ -5,7 +5,7 @@ import PlainBlock from '@/components/atoms/PlainBlock'
 
 import styles from './index.module.scss'
 
-type Props = React.ComponentProps<'div'> & {
+type Props = React.ComponentPropsWithoutRef<'div'> & {
   title?: string
   h2icon?: H2Icon
   newRibbon?: boolean

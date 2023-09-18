@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './index.module.scss'
 
-type Props = React.ComponentProps<'div'> & {
+type Props = React.ComponentPropsWithoutRef<'div'> & {
   isHero?: boolean
 }
 
