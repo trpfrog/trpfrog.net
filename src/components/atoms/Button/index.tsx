@@ -2,6 +2,8 @@ import React from 'react'
 
 import Link from 'next/link'
 
+import type { SelectedRequired } from '@/lib/types'
+
 import styles from './index.module.scss'
 
 type LinkProps = Omit<Parameters<typeof Link>[0], 'href'> & {
@@ -12,8 +14,8 @@ type DivProps = React.ComponentProps<'div'>
 type AProps = React.ComponentProps<'a'>
 
 type Props =
-  | DivProps
-  | ({ onClick: ButtonProps['onClick'] } & ButtonProps)
+  | ({ externalLink?: false } & DivProps)
+  | ({ externalLink?: false } & SelectedRequired<ButtonProps, 'onClick'>)
   | ({ externalLink?: false } & LinkProps)
   | ({ externalLink: true } & AProps)
 
@@ -56,7 +58,7 @@ function Wrapper<T extends TagType>(
 
 export default function Button(props: Props) {
   const tag = getType(props)
-  const { className = '', ...rest } = props
+  const { className = '', externalLink, ...rest } = props
   return (
     <Wrapper {...rest} tag={tag} className={`${styles.button} ${className}`} />
   )
