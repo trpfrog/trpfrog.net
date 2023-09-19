@@ -1,0 +1,20 @@
+.main {
+  position: relative;
+  overflow: hidden;
+}
+
+.fog {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(
+    transparent,
+    var(--window-bkg-color) 90%,
+    var(--window-bkg-color) 100%
+  );
+}
