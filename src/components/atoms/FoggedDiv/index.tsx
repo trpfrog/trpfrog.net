@@ -3,12 +3,12 @@ import React from 'react'
 
 import styles from './index.module.scss'
 
-type Props = React.ComponentPropsWithoutRef<'div'> & {
+export type FoggedDivProps = React.ComponentPropsWithoutRef<'div'> & {
   height: number | string
   fogHeight?: number | string
 }
 
-export function FoggedDiv(props: Props) {
+export function FoggedDiv(props: FoggedDivProps) {
   const { className = '', children, height, fogHeight, ...rest } = props
 
   const cssPreviewHeight = typeof height === 'number' ? `${height}px` : height
