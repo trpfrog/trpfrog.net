@@ -1,0 +1,20 @@
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  opacity: 0.7;
+  border: var(--base-font-color) 2px solid;
+  border-radius: 10000px;
+  width: fit-content;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  font-weight: bold;
+  background: var(--window-bkg-color);
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}

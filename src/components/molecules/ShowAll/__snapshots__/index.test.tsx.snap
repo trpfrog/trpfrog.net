@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowAll snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="main "
+      data-testid="hidden-contents"
+      style="max-height: 300px;"
+    >
+      <div
+        class="fog"
+        data-testid="fogged-div-fog"
+      />
+    </div>
+    <div
+      class="button_wrapper"
+    >
+      <button
+        class="button"
+        data-testid="show-all-button"
+      >
+        もっと見る
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
