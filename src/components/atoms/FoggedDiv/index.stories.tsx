@@ -2,7 +2,7 @@ import React from 'react'
 
 import { LOREM_IPSUM } from '@/lib/constants'
 
-import FoggedDiv from '.'
+import { FoggedDiv } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

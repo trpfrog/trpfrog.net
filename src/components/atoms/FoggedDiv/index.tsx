@@ -8,7 +8,7 @@ type Props = React.ComponentPropsWithoutRef<'div'> & {
   fogHeight?: number | string
 }
 
-export default function FoggedDiv(props: Props) {
+export function FoggedDiv(props: Props) {
   const { className = '', children, height, fogHeight, ...rest } = props
 
   const cssPreviewHeight = typeof height === 'number' ? `${height}px` : height

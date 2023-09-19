@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import FoggedDiv from '.'
+import { FoggedDiv } from '.'
 
 describe('ShowAll', () => {
   test('snapshot test', () => {
