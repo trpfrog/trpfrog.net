@@ -12,6 +12,6 @@ type Story = StoryObj<typeof TweetTextarea>
 
 export const Primary: Story = {
   args: {
-    children: 'Hello, world!',
+    tweet: '@TrpFrog ごきげんよう！ 今日は良い天気ですね。 #hashtag',
   },
 }

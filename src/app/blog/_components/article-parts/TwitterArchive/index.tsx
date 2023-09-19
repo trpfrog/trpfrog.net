@@ -38,10 +38,13 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
             screenName={tweetData.userid}
             iconStyle={tweetData.color}
           />
-          <TweetTextarea>
-            <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
-            <span dangerouslySetInnerHTML={{ __html: tweetData.tweet ?? '' }} />
-          </TweetTextarea>
+          <TweetTextarea
+            tweet={
+              tweetData.reply
+                ? tweetData.reply + ' ' + tweetData.tweet
+                : tweetData.tweet
+            }
+          />
           {tweetData.image && (
             <TwitterImage
               images={[

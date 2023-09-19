@@ -1,3 +1,5 @@
+@use '@/styles/mixins';
+
 .tweet {
   font-size: 1.2em;
   line-height: 1.3em;
@@ -11,4 +13,16 @@
   font-style: normal;
   margin: 0;
   padding: 0;
+}
+
+.mention,
+.hashtag {
+  text-decoration: none;
+  color: var(--header-color) !important;
+  @include mixins.mq(dark) {
+    color: greenyellow !important;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
 }
