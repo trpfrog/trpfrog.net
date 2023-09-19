@@ -6,6 +6,10 @@ type Props = {
   preview: React.ReactNode
   className?: string
 }
+
+/**
+ * @deprecated Use `@/components/molecules/ShowAll` instead.
+ */
 export const ShowAllComponent = ({ children, preview, className }: Props) => {
   const Fog = () => (
     <div

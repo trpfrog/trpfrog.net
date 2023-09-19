@@ -28,3 +28,15 @@ export const Primary: Story = {
     )),
   },
 }
+
+export const TooShort: Story = {
+  parameters: {
+    backgrounds: {
+      default: 'window',
+    },
+  },
+  args: {
+    height: 100,
+    children: 'Hello, World!',
+  },
+}
