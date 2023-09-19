@@ -16,3 +16,8 @@ export const TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY =
 
 export const ATCODER_HIGHEST = 1596
 export const WALKING_FARTHEST = '70.5km'
+
+export const PRODUCTION_HOST = 'https://trpfrog.net'
+export const DEVELOPMENT_HOST = 'http://localhost:3000'
+export const CURRENT_HOST =
+  process.env.NODE_ENV === 'production' ? PRODUCTION_HOST : DEVELOPMENT_HOST
