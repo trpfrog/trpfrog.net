@@ -59,5 +59,11 @@
         ]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ]
 }
