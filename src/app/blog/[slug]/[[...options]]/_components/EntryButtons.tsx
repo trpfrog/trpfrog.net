@@ -46,7 +46,7 @@ export function RichEntryButtons(props: EntryButtonProps) {
 
 export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
   return (
-    <p
+    <div
       style={{
         justifyContent: 'center',
         display: 'flex',
@@ -66,6 +66,6 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       >
         訂正リクエスト
       </Button>
-    </p>
+    </div>
   )
 }
