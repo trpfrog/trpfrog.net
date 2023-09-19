@@ -1,68 +1,79 @@
 import React from 'react'
 
-import { TweetTextarea } from '@/components/atoms/twitter/TweetTextarea'
-import { TwitterImage } from '@/components/atoms/twitter/TwitterImage'
-import BlockLink from '@/components/molecules/BlockLink'
-import { TwitterHeader } from '@/components/molecules/TwitterHeader'
+import dayjs from 'dayjs'
+import { z } from 'zod'
+
+import { ErrorFallback } from '@/components/atoms/ErrorFallback'
+import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
+import { TwitterArchived } from '@/components/organisms/TwitterArchived'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 
-import styles from './index.module.scss'
+const TwitterArchiveSchema = z.object({
+  name: z.string().default('つまみ'),
+  userid: z.string().default('TrpFrog'),
+  color: z.string().optional(),
+  tweet: z.string(),
+  reply: z.string().optional(),
+  id: z.string(),
+  date: z.coerce.date().transform(date => dayjs(date).format('YYYY-MM-DD')),
+
+  image: z.string().optional(),
+  image2: z.string().optional(),
+  image3: z.string().optional(),
+  image4: z.string().optional(),
+})
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {
-    const tweetData: { [key: string]: string } = {}
+    const rawTweetData: { [key: string]: string } = {}
     const lines = content.trim().split('\n')
     for (const line of lines) {
       const key = line.split(':')[0]
-      tweetData[key] = line.split(':').slice(1).join(':').trim()
+      rawTweetData[key] = line.split(':').slice(1).join(':').trim()
     }
-    const userLink = 'https://twitter.com/' + tweetData.userid
-    const tweetLink = userLink + '/status/' + tweetData.id
 
-    if (!tweetData.name) tweetData.name = 'つまみ'
-    if (!tweetData.userid) tweetData.userid = 'TrpFrog'
+    const parsed = TwitterArchiveSchema.safeParse(rawTweetData)
+    if (!parsed.success) {
+      if (process.env.NODE_ENV === 'development') {
+        return (
+          <ErrorFallback title={'TwitterArchive: Error Occurred'}>
+            {parsed.error.message}
+          </ErrorFallback>
+        )
+      } else {
+        throw parsed.error
+      }
+    }
 
-    const trpfrogUrl =
-      'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
+    const tweetData = parsed.data
+
+    const images: TwitterImageData[] = [
+      tweetData.image ?? '',
+      tweetData.image2 ?? '',
+      tweetData.image3 ?? '',
+      tweetData.image4 ?? '',
+    ]
+      .filter(Boolean)
+      .map(src => ({
+        src,
+        alt: 'ツイートの画像',
+      }))
+
+    const tweet = tweetData.reply
+      ? tweetData.reply + ' ' + tweetData.tweet
+      : tweetData.tweet
 
     return (
-      <div className={styles.wrapper}>
-        <BlockLink
-          className={styles.box}
-          href={tweetLink}
-          style={JSON.parse(tweetData.style ?? '{}')}
-        >
-          <TwitterHeader
-            name={tweetData.name}
-            screenName={tweetData.userid}
-            iconStyle={tweetData.color}
-          />
-          <TweetTextarea
-            tweet={
-              tweetData.reply
-                ? tweetData.reply + ' ' + tweetData.tweet
-                : tweetData.tweet
-            }
-          />
-          {tweetData.image && (
-            <TwitterImage
-              images={[
-                tweetData.image,
-                tweetData.image2,
-                tweetData.image3,
-                tweetData.image4,
-              ]
-                .filter(Boolean)
-                .map(src => ({
-                  src,
-                  alt: 'ツイートの画像',
-                }))}
-            />
-          )}
-          <div className={styles.date}>{tweetData.date}</div>
-        </BlockLink>
-      </div>
+      <TwitterArchived
+        author={tweetData.name}
+        screenName={tweetData.userid}
+        iconStyle={tweetData.color}
+        tweet={tweet}
+        id={tweetData.id}
+        date={tweetData.date}
+        images={images}
+      />
     )
   },
 )
