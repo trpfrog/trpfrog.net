@@ -3,11 +3,13 @@ import React from 'react'
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { TweetTextarea } from '@/components/atoms/twitter/TweetTextarea'
+import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
+import getOtakuColor from '@/components/atoms/twitter/TwitterIcon/preset'
 import { TwitterImage } from '@/components/atoms/twitter/TwitterImage'
 import BlockLink from '@/components/molecules/BlockLink'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
-import getOtakuColor from '@blog/_lib/otakuColors'
 
 import styles from './index.module.scss'
 
@@ -24,7 +26,8 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
 
     if (!tweetData.name) tweetData.name = 'つまみ'
     if (!tweetData.userid) tweetData.userid = 'TrpFrog'
-    if (!tweetData.color) tweetData.color = getOtakuColor(tweetData.userid)
+    if (!tweetData.color)
+      tweetData.color = getOtakuColor(tweetData.userid) as string
 
     const trpfrogUrl =
       'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
@@ -39,15 +42,12 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
           <div className={styles.header}>
             <div className={styles.header_left}>
               <BlockLink href={userLink}>
-                <div
-                  className={styles.icon}
-                  style={{
-                    background:
-                      tweetData.userid === 'TrpFrog'
-                        ? `url("${trpfrogUrl}")`
-                        : tweetData.color,
-                    backgroundPosition: 'center',
-                  }}
+                <TwitterIcon
+                  iconStyle={
+                    tweetData.userid === 'TrpFrog'
+                      ? `url("${trpfrogUrl}")`
+                      : tweetData.color
+                  }
                 />
               </BlockLink>
               <div className={styles.name_box}>
@@ -61,14 +61,10 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
               <FontAwesomeIcon icon={faDove} style={{ fontSize: '1.5em' }} />
             </div>
           </div>
-          <div className={styles.tweet}>
-            <blockquote>
-              <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
-              <span
-                dangerouslySetInnerHTML={{ __html: tweetData.tweet ?? '' }}
-              />
-            </blockquote>
-          </div>
+          <TweetTextarea>
+            <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
+            <span dangerouslySetInnerHTML={{ __html: tweetData.tweet ?? '' }} />
+          </TweetTextarea>
           {tweetData.image && (
             <TwitterImage
               images={[
