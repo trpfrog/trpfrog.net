@@ -1,0 +1,50 @@
+@use '@/styles/mixins';
+
+.wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.box {
+  display: inline-block;
+  text-align: left;
+  position: relative;
+
+  max-width: 550px;
+  width: 100%;
+
+  background: white;
+  border: solid 1px lightgray;
+  @include mixins.mq(dark) {
+    background: black;
+    border-color: rgb(52, 54, 58);
+  }
+
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0.5em 0;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &:hover {
+    background: #f5f5f5;
+    @include mixins.mq(dark) {
+      background: rgb(22, 22, 22);
+    }
+  }
+}
+
+.date {
+  a {
+    color: gray;
+  }
+}
