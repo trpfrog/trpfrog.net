@@ -1,34 +1,23 @@
 import React from 'react'
 
-import {
-  faFrog,
-  faTriangleExclamation,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Alert from '@/components/atoms/Alert'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
-
-import styles from './index.module.scss'
 
 export const Caution: IsomorphicArticleParts = ({
   content,
   entry,
   imageSize,
 }) => (
-  <div className={styles.caution}>
-    <div className={styles.text_box_icon}>
-      <FontAwesomeIcon icon={faTriangleExclamation} />
-    </div>
-    <div className={styles.text_box_content}>
-      <h4>{content.split('\n')[0]}</h4>
-      <ArticleRenderer
-        toRender={content.split('\n').slice(1).join('\n').trim()}
-        entry={entry}
-        imageSize={imageSize}
-      />
-    </div>
-  </div>
+  <Alert type={'caution'}>
+    <h4>{content.split('\n')[0]}</h4>
+    <ArticleRenderer
+      toRender={content.split('\n').slice(1).join('\n').trim()}
+      entry={entry}
+      imageSize={imageSize}
+    />
+  </Alert>
 )
 
 export const Infobox: IsomorphicArticleParts = ({
@@ -36,19 +25,14 @@ export const Infobox: IsomorphicArticleParts = ({
   entry,
   imageSize,
 }) => (
-  <div className={styles.infobox}>
-    <div className={styles.text_box_icon}>
-      <FontAwesomeIcon icon={faFrog} />
-    </div>
-    <div className={styles.text_box_content}>
-      <h4>{content.split('\n')[0]}</h4>
-      <ArticleRenderer
-        toRender={content.split('\n').slice(1).join('\n').trim()}
-        entry={entry}
-        imageSize={imageSize}
-      />
-    </div>
-  </div>
+  <Alert type={'frog'}>
+    <h4>{content.split('\n')[0]}</h4>
+    <ArticleRenderer
+      toRender={content.split('\n').slice(1).join('\n').trim()}
+      entry={entry}
+      imageSize={imageSize}
+    />
+  </Alert>
 )
 
 export const TitledFrame: IsomorphicArticleParts = ({
