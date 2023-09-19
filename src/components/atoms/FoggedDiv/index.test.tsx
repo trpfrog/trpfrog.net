@@ -14,4 +14,9 @@ describe('FoggedDiv', () => {
     render(<FoggedDiv height={300}>{LOREM_IPSUM}</FoggedDiv>)
     expect(screen.getByText(LOREM_IPSUM)).toBeInTheDocument()
   })
+
+  test('max-height should be set', () => {
+    render(<FoggedDiv height={300} />)
+    expect(screen.getByTestId('fogged-div')).toHaveStyle('max-height: 300px')
+  })
 })

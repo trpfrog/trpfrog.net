@@ -19,10 +19,12 @@ export function FoggedDiv(props: FoggedDivProps) {
     <div
       className={`${styles.main} ${className}`}
       style={{ maxHeight: cssPreviewHeight }}
+      data-testid="fogged-div"
       {...rest}
     >
       {children}
       <div
+        data-testid="fogged-div-fog"
         className={styles.fog}
         style={{ height: `min(${cssFogHeight}, ${cssPreviewHeight})` }}
       />
