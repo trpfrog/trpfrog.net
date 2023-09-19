@@ -22,9 +22,9 @@ export type TrpFrogImageGenerationResult = z.infer<
 
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
-const POST_CALLBACK_URL = `https://${
-  process.env.VERCEL_URL ?? 'trpfrog.net'
-}/api/trpfrog-diffusion?token=${process.env.TRPFROG_ADMIN_KEY}`
+const POST_CALLBACK_URL = createURL('/api/trpfrog-diffusion', HOST_URL, {
+  token: process.env.TRPFROG_ADMIN_KEY!,
+})
 
 const IMAGE_GENERATION_ENDPOINT =
   'https://asia-northeast1-trpfrog-net.cloudfunctions.net/update-trpfrog-diffusion'
