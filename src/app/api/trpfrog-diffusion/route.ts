@@ -5,9 +5,11 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import {
+  HOST_URL,
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
+import { createURL } from '@/lib/url'
 
 const TrpFrogImageGenerationResultSchema = z.object({
   generatedTime: z.number(),
