@@ -24,6 +24,7 @@ const description = 'さかなになりたいね'
 const productionURL = 'https://trpfrog.net'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://trpfrog.net'),
   title: {
     default: siteName,
     template: `%s - ${siteName}`,
