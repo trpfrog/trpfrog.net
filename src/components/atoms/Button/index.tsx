@@ -2,6 +2,7 @@ import React from 'react'
 
 import Link from 'next/link'
 
+import { DEVELOPMENT_HOST, PRODUCTION_HOST } from '@/lib/constants'
 import type { SelectedRequired } from '@/lib/types'
 
 import styles from './index.module.scss'
@@ -25,11 +26,23 @@ function getType<P extends Props>(props: P): TagType {
   if ('onClick' in props) {
     return 'button'
   }
-  if ('externalLink' in props && props.externalLink) {
-    return 'a'
+  if ('externalLink' in props) {
+    return props.externalLink ? 'a' : 'Link'
   }
   if ('href' in props) {
-    return 'Link'
+    const isInternalLink = [
+      '/',
+      '#',
+      'mailto:',
+      PRODUCTION_HOST,
+      DEVELOPMENT_HOST,
+    ].some(prefix => props.href.startsWith(prefix))
+
+    if (isInternalLink) {
+      return 'Link'
+    } else {
+      return 'a'
+    }
   }
   return 'div'
 }
@@ -44,15 +57,22 @@ function Wrapper<T extends TagType>(
   switch (tag) {
     case 'Link':
       // @ts-ignore
-      return <Link {...(rest as LinkProps)} />
+      return <Link {...(rest as LinkProps)} data-testid="button-component" />
     case 'a':
       return (
-        <a {...(rest as AProps)} target="_blank" rel="noreferrer noopener" />
+        <a
+          {...(rest as AProps)}
+          target="_blank"
+          rel="noreferrer noopener"
+          data-testid="button-component"
+        />
       )
     case 'button':
-      return <button {...(rest as ButtonProps)} />
+      return (
+        <button {...(rest as ButtonProps)} data-testid="button-component" />
+      )
     case 'div':
-      return <div {...(rest as DivProps)} />
+      return <div {...(rest as DivProps)} data-testid="button-component" />
   }
 }
 

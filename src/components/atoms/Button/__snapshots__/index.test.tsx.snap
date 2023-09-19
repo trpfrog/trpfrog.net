@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button a mode snapshot testing (external link) 1`] = `
+<DocumentFragment>
+  <a
+    class="button "
+    data-testid="button-component"
+    href="https://github.com"
+    rel="noreferrer noopener"
+    target="_blank"
+  >
+    test
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Button a mode snapshot testing (internal link) 1`] = `
+<DocumentFragment>
+  <a
+    class="button "
+    data-testid="button-component"
+    href="/"
+  >
+    test
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Button button mode snapshot testing 1`] = `
+<DocumentFragment>
+  <button
+    class="button "
+    data-testid="button-component"
+  >
+    test
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button div mode snapshot testing 1`] = `
+<DocumentFragment>
+  <div
+    class="button "
+    data-testid="button-component"
+  >
+    test
+  </div>
+</DocumentFragment>
+`;
