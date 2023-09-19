@@ -23,7 +23,14 @@ export function degreeDifference(prev: number, cur: number) {
 
 const queues: Record<string, Queue<RpmRecord>> = {}
 
-export default function useRpmCalculation(queueTTLMillis: number) {
+export type RpmCalculationOptions = Partial<{
+  minQueueSize: number
+}>
+
+export default function useRpmCalculation(
+  queueTTLMillis: number,
+  options?: RpmCalculationOptions,
+) {
   if (queueTTLMillis < 1) throw new Error('heapSize must be greater than 0')
 
   const queueId = React.useId()
@@ -62,7 +69,7 @@ export default function useRpmCalculation(queueTTLMillis: number) {
   const firstUnixTime = q.first?.unixTime
   const lastUnixTime = q.last?.unixTime
   const rpm =
-    q.items.length > 50 &&
+    q.items.length >= Math.max(options?.minQueueSize ?? 2, 2) &&
     firstUnixTime &&
     lastUnixTime &&
     firstUnixTime !== lastUnixTime
