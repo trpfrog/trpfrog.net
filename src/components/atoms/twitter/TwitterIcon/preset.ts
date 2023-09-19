@@ -30,12 +30,3 @@ export const iconPreset: Record<string, React.CSSProperties['background']> = {
   sakuramochi0708: 'rgb(250, 216, 255)',
   ebioishii_u: '#cc986d',
 }
-
-const getOtakuColor = (
-  twitterId: string,
-): React.CSSProperties['background'] => {
-  twitterId = twitterId.toLowerCase()
-  return iconPreset[twitterId] ?? '#90e200'
-}
-
-export default getOtakuColor

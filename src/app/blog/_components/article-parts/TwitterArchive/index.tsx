@@ -1,13 +1,9 @@
 import React from 'react'
 
-import { faDove } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { TweetTextarea } from '@/components/atoms/twitter/TweetTextarea'
-import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
-import getOtakuColor from '@/components/atoms/twitter/TwitterIcon/preset'
 import { TwitterImage } from '@/components/atoms/twitter/TwitterImage'
 import BlockLink from '@/components/molecules/BlockLink'
+import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 
@@ -26,8 +22,6 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
 
     if (!tweetData.name) tweetData.name = 'つまみ'
     if (!tweetData.userid) tweetData.userid = 'TrpFrog'
-    if (!tweetData.color)
-      tweetData.color = getOtakuColor(tweetData.userid) as string
 
     const trpfrogUrl =
       'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
@@ -39,28 +33,11 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
           href={tweetLink}
           style={JSON.parse(tweetData.style ?? '{}')}
         >
-          <div className={styles.header}>
-            <div className={styles.header_left}>
-              <BlockLink href={userLink}>
-                <TwitterIcon
-                  iconStyle={
-                    tweetData.userid === 'TrpFrog'
-                      ? `url("${trpfrogUrl}")`
-                      : tweetData.color
-                  }
-                />
-              </BlockLink>
-              <div className={styles.name_box}>
-                <a href={userLink} target="_blank" rel="noreferrer">
-                  <div className={styles.name}>{tweetData.name}</div>
-                  <div className={styles.userid}>@{tweetData.userid}</div>
-                </a>
-              </div>
-            </div>
-            <div className={styles.logo}>
-              <FontAwesomeIcon icon={faDove} style={{ fontSize: '1.5em' }} />
-            </div>
-          </div>
+          <TwitterHeader
+            name={tweetData.name}
+            screenName={tweetData.userid}
+            iconStyle={tweetData.color}
+          />
           <TweetTextarea>
             <span className={styles.reply}>{tweetData.reply ?? ''}</span>{' '}
             <span dangerouslySetInnerHTML={{ __html: tweetData.tweet ?? '' }} />
