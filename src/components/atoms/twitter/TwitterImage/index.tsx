@@ -2,13 +2,13 @@ import React from 'react'
 
 import styles from './index.module.scss'
 
-type ImageData = {
+export type TwitterImageData = {
   src: string
   alt?: string
 }
 
 export type TwitterImageProps = {
-  images: ImageData[]
+  images: TwitterImageData[]
 }
 
 export function TwitterImage(props: TwitterImageProps) {

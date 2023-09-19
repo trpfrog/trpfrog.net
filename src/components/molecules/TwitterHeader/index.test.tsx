@@ -11,6 +11,6 @@ describe('TwitterHeader', () => {
   test('should render correctly', () => {
     render(<TwitterHeader name="サンプルユーザー" screenName="example" />)
     expect(screen.getByText('サンプルユーザー')).toBeInTheDocument()
-    expect(screen.getByText('example')).toBeInTheDocument()
+    expect(screen.getByText('@example')).toBeInTheDocument()
   })
 })
