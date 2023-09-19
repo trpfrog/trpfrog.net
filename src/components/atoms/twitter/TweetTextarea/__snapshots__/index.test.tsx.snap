@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TweetTextarea snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="tweet "
+  >
+    <blockquote
+      class="blockquote"
+    />
+  </div>
+</DocumentFragment>
+`;
