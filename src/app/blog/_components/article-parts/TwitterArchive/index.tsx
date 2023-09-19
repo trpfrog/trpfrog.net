@@ -3,6 +3,7 @@ import React from 'react'
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { TwitterImage } from '@/components/atoms/twitter/TwitterImage'
 import BlockLink from '@/components/molecules/BlockLink'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
@@ -69,20 +70,19 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
             </blockquote>
           </div>
           {tweetData.image && (
-            <div className={styles.image}>
-              <blockquote>
-                <img src={tweetData.image} alt={'ツイートの画像'} />
-                {tweetData.image2 && (
-                  <img src={tweetData.image2} alt={'ツイートの画像'} />
-                )}
-                {tweetData.image3 && (
-                  <img src={tweetData.image3} alt={'ツイートの画像'} />
-                )}
-                {tweetData.image4 && (
-                  <img src={tweetData.image4} alt={'ツイートの画像'} />
-                )}
-              </blockquote>
-            </div>
+            <TwitterImage
+              images={[
+                tweetData.image,
+                tweetData.image2,
+                tweetData.image3,
+                tweetData.image4,
+              ]
+                .filter(Boolean)
+                .map(src => ({
+                  src,
+                  alt: 'ツイートの画像',
+                }))}
+            />
           )}
           <div className={styles.date}>{tweetData.date}</div>
         </BlockLink>

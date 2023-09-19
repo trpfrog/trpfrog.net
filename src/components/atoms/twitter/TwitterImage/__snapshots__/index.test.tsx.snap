@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TwitterImage snapshot test 1`] = `
+<DocumentFragment>
+  <blockquote
+    class="blockquote"
+  >
+    <img
+      alt="1st image"
+      class="image"
+      src="https://res.cloudinary.com/trpfrog/blog/omiya-walk/9BC93754-1D27-4B38-B66F-50D4BCB698E8_1_105_c.jpg"
+    />
+  </blockquote>
+</DocumentFragment>
+`;
