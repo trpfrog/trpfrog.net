@@ -14,7 +14,7 @@ const Conversation: IsomorphicArticleParts = ({ content }) => {
       {conversation.map(({ speaker, comment, outOfComment }, idx) => (
         <Talk.Item
           key={speaker + '-' + idx}
-          speaker={parseInlineMarkdown(speaker)}
+          speaker={speaker}
           outOfComment={outOfComment}
         >
           {parseInlineMarkdown(comment)}

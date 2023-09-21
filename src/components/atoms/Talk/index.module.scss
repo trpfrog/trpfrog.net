@@ -13,18 +13,29 @@ $pad-top: 0.5rem;
   }
 }
 
-.name {
+.name_wrapper {
   @include mixins.mq(pc) {
-    text-align: right;
-    padding-top: calc(0.25em + $pad-top);
+    display: flex;
+    justify-content: flex-end;
+    margin-top: calc($pad-top - 0.11em);
   }
   @include mixins.mq(sp) {
-    margin: 0.7em 0 0.7em 0.3em;
+    margin: 1em 0;
   }
 
-  font-weight: bold;
   max-width: 35vw;
   line-height: 1.3;
+}
+
+.name {
+  display: inline-block;
+  height: fit-content;
+  min-width: 2em;
+  text-align: center;
+  background: rgba(80, 168, 0, 0.2);
+  font-weight: bold;
+  border-radius: 1000px;
+  padding: 0.2em 0.5em;
 }
 
 .value {

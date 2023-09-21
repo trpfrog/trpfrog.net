@@ -14,15 +14,18 @@ export function Talk(props: ConversationProps) {
 }
 
 export type ConversationItemProps = React.ComponentPropsWithoutRef<'div'> & {
-  speaker: React.ReactNode
+  speaker: string
   outOfComment?: React.ReactNode
 }
 
 Talk.Item = React.memo(function Item(props: ConversationItemProps) {
   const { speaker, outOfComment, className = '', ...rest } = props
+  console.log(speaker)
   return (
     <>
-      <div className={styles.name}>{speaker}</div>
+      <div className={styles.name_wrapper}>
+        {speaker && <span className={styles.name}>{speaker}</span>}
+      </div>
       <div className={styles.value_wrapper}>
         <div className={`${styles.value} ${className}`} {...rest} />
         {outOfComment && (
