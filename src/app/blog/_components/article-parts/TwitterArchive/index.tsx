@@ -14,7 +14,7 @@ const TwitterArchiveSchema = z.object({
   name: z.string().default('つまみ'),
   userid: z.string().default('TrpFrog'),
   color: z.string().optional(),
-  tweet: z.string(),
+  tweet: z.string().optional(),
   reply: z.string().optional(),
   id: z.string(),
   date: z.coerce.date().transform(date => dayjs(date).format('YYYY-MM-DD')),
@@ -37,6 +37,9 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
           </ErrorFallback>
         )
       } else {
+        console.error('\n```twitter-archived')
+        console.error(content.trim())
+        console.error('```\n')
         throw parsed.error
       }
     }

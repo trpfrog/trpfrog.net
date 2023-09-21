@@ -16,7 +16,7 @@ export type TwitterArchivedProps = Omit<
 > & {
   author: string
   screenName: string
-  tweet: string
+  tweet?: string
   id: string
   date: string
   images?: TwitterImageData[]
@@ -46,7 +46,7 @@ export function TwitterArchived(props: TwitterArchivedProps) {
           screenName={screenName}
           iconStyle={iconStyle}
         />
-        <TweetTextarea tweet={tweet} />
+        {tweet && <TweetTextarea tweet={tweet} />}
         {images && images.length > 0 && <TwitterImage images={images} />}
         <div className={styles.date}>{date}</div>
       </BlockLink>
