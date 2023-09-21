@@ -8,6 +8,7 @@ import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchived } from '@/components/organisms/TwitterArchived'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { parseColonSeparatedDict } from '@blog/_lib/codeBlockParser'
 
 const TwitterArchiveSchema = z.object({
   name: z.string().default('つまみ'),
@@ -26,13 +27,7 @@ const TwitterArchiveSchema = z.object({
 
 const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {
-    const rawTweetData: { [key: string]: string } = {}
-    const lines = content.trim().split('\n')
-    for (const line of lines) {
-      const key = line.split(':')[0]
-      rawTweetData[key] = line.split(':').slice(1).join(':').trim()
-    }
-
+    const rawTweetData = parseColonSeparatedDict(content)
     const parsed = TwitterArchiveSchema.safeParse(rawTweetData)
     if (!parsed.success) {
       if (process.env.NODE_ENV === 'development') {

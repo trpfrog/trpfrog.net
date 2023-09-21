@@ -1,3 +1,11 @@
+import { parseColonSeparatedList } from '@blog/_lib/codeBlockParser'
+
+export type ConversationRecord = {
+  speaker: string
+  comment: string
+  outOfComment?: string
+}
+
 /**
  * Parse a conversation notation into ConversationRecord
  *
@@ -11,29 +19,10 @@
  *
  * @param rawText colon separated conversation notation
  */
-
-export type ConversationRecord = {
-  speaker: string
-  comment: string
-  outOfComment?: string
-}
-
 export function parseConversation(rawText: string): ConversationRecord[] {
-  const lines = rawText.trim().split('\n')
+  const rawRecords = parseColonSeparatedList(rawText)
 
-  const rawRecords = lines.reduce<string[]>((arr, line) => {
-    if (line.includes(':')) {
-      arr.push(line)
-    } else if (arr.length > 0) {
-      arr[arr.length - 1] += '\n' + line
-    }
-    return arr
-  }, [])
-
-  return rawRecords.map(line => {
-    const [speaker, ...splitComments] = line.split(':')
-    let comment = splitComments.join(':')
-
+  return rawRecords.map(({ key: speaker, value: comment }) => {
     let outOfComment = ''
     const leftArrowIdentifier = '  ←' // 2 spaces before left arrow
     if (comment.includes(leftArrowIdentifier)) {

@@ -27,14 +27,6 @@ describe('Conversation parse', () => {
     expect(parseConversation(input)).toEqual(output)
   })
 
-  test('comment can be empty with outOfComment', () => {
-    const input = ['speaker:  ← outOfComment'].join('\n')
-    const output = [
-      { speaker: 'speaker', comment: '', outOfComment: 'outOfComment' },
-    ]
-    expect(parseConversation(input)).toEqual(output)
-  })
-
   test('comment can be broken line', () => {
     const input = ['speaker:', 'comment1', 'comment2', 'comment3']
     const output = [

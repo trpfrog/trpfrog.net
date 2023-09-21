@@ -1,24 +1,32 @@
 import React from 'react'
 
 import dayjs from 'dayjs'
+import { z } from 'zod'
 
 import Button from '@/components/atoms/Button'
 
+import { createURL } from '@/lib/url'
+
 import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
+import { parseObjectList } from '@blog/_lib/codeBlockParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import styles from './index.module.scss'
 
-export type ProfileData = {
-  name: string
-  club?: string
-  twitter?: string
-  description: string
-}
+const ProfileDataSchema = z.object({
+  name: z.string(),
+  club: z.string().optional(),
+  twitter: z.string().optional(),
+  description: z.string(),
+})
 
-type ProfileKey = 'name' | 'club' | 'twitter' | 'description'
+export type ProfileData = z.infer<typeof ProfileDataSchema>
 
-const CardFormat = ({ personalDataList }: any) => (
+const CardFormat = ({
+  personalDataList,
+}: {
+  personalDataList: ProfileData[]
+}) => (
   <div className={styles.profile_card_grid}>
     {personalDataList.map((personalData: any) => (
       <div className={styles.profile_card} key={personalData.name}>
@@ -44,7 +52,11 @@ const CardFormat = ({ personalDataList }: any) => (
   </div>
 )
 
-const ListFormat = ({ personalDataList }: any) => (
+const ListFormat = ({
+  personalDataList,
+}: {
+  personalDataList: ProfileData[]
+}) => (
   <ul>
     {personalDataList.map((personalData: any) => (
       <>
@@ -73,29 +85,23 @@ const ProfileCards = ({
   content: string
   held?: string
 }) => {
-  const cards = content.split('---')
+  const personalDataList = parseObjectList(content)
+    .map(e => ProfileDataSchema.safeParse(e))
+    .filter(e => e.success && e.data)
+    .map(e => {
+      if (e.success) {
+        return e.data
+      } else {
+        throw e.error
+      }
+    })
 
-  const personalDataList = cards.map(card => {
-    const personalData: { [key: string]: string } = {}
-    const lines = card.trim().split('\n')
-
-    for (const line of lines) {
-      const divided = line.split(':').map(e => e.trim())
-      const key = divided[0] as ProfileKey
-      const value = divided.slice(1).join(':')
-      personalData[key] = value
-    }
-    return personalData as ProfileData
+  const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
+    q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),
+    until: dayjs(held).add(1, 'd').format('YYYY-MM-DD') + '_04:00:00_JST',
+    f: 'live',
+    pf: 'on',
   })
-
-  const twitterSearchLink = held
-    ? 'https://twitter.com/search?q=' +
-      personalDataList.map(e => 'from%3A' + e.twitter).join('%20OR%20') +
-      `%20until%3A${dayjs(held)
-        .add(1, 'd')
-        .format('YYYY-MM-DD')}_04%3A00%3A00_JST` +
-      '&src=typed_query&f=live&pf=on'
-    : ''
 
   return (
     <>
