@@ -8,13 +8,9 @@ import Utils from '@/lib/utils'
 
 import { MutualLinkRecord } from './loader'
 
-export function MutualLinkBlock(props: {
-  record: MutualLinkRecord
-  key?: string
-}) {
+export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
   const {
     record: { url, siteName, ownerName, twitterId, description },
-    key,
   } = props
 
   // Shrink siteName if its length too long
@@ -26,7 +22,7 @@ export function MutualLinkBlock(props: {
         } as React.CSSProperties)
 
   return (
-    <div key={key} className={styles.link_block}>
+    <div className={styles.link_block}>
       <p style={{ textAlign: 'center' }}>
         <Button externalLink={true} href={url} style={style}>
           {siteName}
