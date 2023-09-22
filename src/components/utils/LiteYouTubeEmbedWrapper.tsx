@@ -1,5 +1,5 @@
 /**
- * This is a wrapper for NextSeo to prevent the Server Component error.
+ * This is a wrapper for LiteYouTubeEmbed to prevent the Server Component error.
  */
 
 'use client'
