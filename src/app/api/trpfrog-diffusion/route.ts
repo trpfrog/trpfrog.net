@@ -5,9 +5,11 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import {
+  HOST_URL,
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
+import { createURL } from '@/lib/url'
 
 const TrpFrogImageGenerationResultSchema = z.object({
   generatedTime: z.number(),
@@ -22,9 +24,9 @@ export type TrpFrogImageGenerationResult = z.infer<
 
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
-const POST_CALLBACK_URL = `https://${
-  process.env.VERCEL_URL ?? 'trpfrog.net'
-}/api/trpfrog-diffusion?token=${process.env.TRPFROG_ADMIN_KEY}`
+const POST_CALLBACK_URL = createURL('/api/trpfrog-diffusion', HOST_URL, {
+  token: process.env.TRPFROG_ADMIN_KEY!,
+})
 
 const IMAGE_GENERATION_ENDPOINT =
   'https://asia-northeast1-trpfrog-net.cloudfunctions.net/update-trpfrog-diffusion'

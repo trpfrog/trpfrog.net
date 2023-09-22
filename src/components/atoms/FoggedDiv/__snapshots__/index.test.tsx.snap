@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoggedDiv snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="main "
+    data-testid="fogged-div"
+    style="max-height: 100px;"
+  >
+    <div
+      class="fog"
+      data-testid="fogged-div-fog"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ShowAll snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    class="main "
+    style="max-height: 100px;"
+  >
+    <div
+      class="fog"
+    />
+  </div>
+</DocumentFragment>
+`;

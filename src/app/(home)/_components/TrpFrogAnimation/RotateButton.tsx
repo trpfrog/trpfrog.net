@@ -20,6 +20,7 @@ const RotateButton = React.memo(function RotateButton(props: Props) {
         }
         className={styles.angle_picker_button}
         onClick={props.onClick}
+        data-testid="rotate-button"
       >
         {props.isRotated ? (
           <FontAwesomeIcon icon={faStop} />

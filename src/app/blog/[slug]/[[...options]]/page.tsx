@@ -18,10 +18,7 @@ import styles from '@blog/_styles/blog.module.scss'
 import ArticleSidebar from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
 
-// Trick for NEXT-1214
-// export const dynamicParams = false
-const dynamicParams = false
-export { dynamicParams }
+export const dynamicParams = false
 
 type PageProps = {
   params: {

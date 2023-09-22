@@ -1,3 +1,5 @@
+import React from 'react'
+
 const trpfrogUrl =
   'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
 
@@ -6,7 +8,7 @@ const palette = {
   azukibarColor: '208, 138, 136',
 }
 
-const colors: { [id: string]: string } = {
+export const iconPreset: Record<string, React.CSSProperties['background']> = {
   trpfrog: `url(${trpfrogUrl})`,
   azukibar_d: `
         linear-gradient(
@@ -28,10 +30,3 @@ const colors: { [id: string]: string } = {
   sakuramochi0708: 'rgb(250, 216, 255)',
   ebioishii_u: '#cc986d',
 }
-
-const getOtakuColor = (twitterId: string): string => {
-  twitterId = twitterId.toLowerCase()
-  return colors[twitterId] ?? '#90e200'
-}
-
-export default getOtakuColor

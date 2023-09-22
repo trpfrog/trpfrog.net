@@ -27,7 +27,9 @@ export default function TrpFrogAnimation({ children, id }: Props) {
     }
   }, [rotateAnimation])
 
-  const { pushDegree, rpm: rawRpm } = useRpmCalculation(1500)
+  const { pushDegree, rpm: rawRpm } = useRpmCalculation(1500, {
+    minQueueSize: 50,
+  })
   const rpm = Math.abs(rawRpm)
 
   const [maxRpm, setMaxRpm] = React.useState(0)

@@ -1,0 +1,117 @@
+@use '@/styles/mixins';
+
+$pad-top: 0.5rem;
+
+.grid {
+  font-family: var(--main-font);
+
+  @include mixins.mq(pc) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1em;
+    row-gap: 0.5em;
+  }
+}
+
+.name_wrapper {
+  @include mixins.mq(pc) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: calc($pad-top - 0.11em);
+  }
+  @include mixins.mq(sp) {
+    margin: 1em 0;
+  }
+
+  max-width: 35vw;
+  line-height: 1.3;
+}
+
+.name {
+  display: inline-block;
+  height: fit-content;
+  min-width: 2em;
+  text-align: center;
+  background: rgba(80, 168, 0, 0.2);
+  font-weight: bold;
+  border-radius: 1000px;
+  padding: 0.2em 0.5em;
+}
+
+.value {
+  --bubble-color: var(--body-background);
+
+  position: relative;
+  display: inline-block;
+  border-radius: 0.3em;
+
+  line-height: 1.6em;
+  width: fit-content;
+  margin-left: 0.1em;
+  padding: $pad-top 0.7rem;
+  border: 2px solid var(--bubble-color);
+
+  @mixin left-triangle($color, $fix: 0) {
+    content: '';
+    position: absolute;
+    top: calc(1.2em + #{$pad-top});
+    left: -1em + $fix;
+    margin-top: -0.7em;
+    border: 0.3em solid transparent;
+    border-right: 0.7em solid $color;
+  }
+
+  &:before {
+    @include left-triangle(var(--bubble-color));
+    z-index: 1;
+  }
+
+  &:after {
+    @include left-triangle(var(--window-bkg-color), 0.35em);
+    z-index: 2;
+  }
+
+  @mixin top-triangle($color, $fix: 0px) {
+    content: '';
+    position: absolute;
+    left: calc(1.2em + $pad-top);
+    top: calc(-0.25rem + #{$fix});
+    margin-left: -0.7em;
+    border: 0.3em solid transparent;
+    border-bottom: 0.7em solid $color;
+  }
+
+  @include mixins.mq(sp) {
+    &:before {
+      @include top-triangle(var(--bubble-color));
+      z-index: 1;
+    }
+
+    &:after {
+      @include top-triangle(var(--window-bkg-color), 0.3rem);
+      z-index: 2;
+    }
+  }
+}
+
+.value_wrapper {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  top: -0.1em;
+}
+
+.out_of_comment {
+  display: inline-block;
+  margin: 0.3rem 0 0 0.3rem;
+  &:before {
+    content: '\02190'; // ←
+    margin-right: 0.1em;
+    @include mixins.mq(sp) {
+      content: '\02191'; // ↑
+    }
+  }
+  @include mixins.mq(sp) {
+    display: block;
+  }
+}

@@ -17,11 +17,13 @@ export type ArticleRendererProps =
   | {
       toRender: string
       markdownOptions: MarkdownOptions
+      useClient?: boolean
     }
   | {
       toRender: string
       entry?: BlogPost
       imageSize?: Record<string, BlogImageData>
+      useClient?: boolean
     }
 
 export default React.memo(function ArticleRenderer(
@@ -36,7 +38,7 @@ export default React.memo(function ArticleRenderer(
 
   const isDevClient =
     process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
-  return isDevClient ? (
+  return isDevClient || props.useClient ? (
     <ReactMarkdown
       components={options.components}
       remarkPlugins={options.options?.mdxOptions?.remarkPlugins ?? undefined}

@@ -19,5 +19,5 @@ export default function ShareSpan(props: {
   slug: string
   children: React.ReactNode
 }) {
-  return <span onClick={() => share(props.slug)}>{props.children}</span>
+  return <div onClick={() => share(props.slug)}>{props.children}</div>
 }
