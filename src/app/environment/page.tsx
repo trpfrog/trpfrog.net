@@ -96,14 +96,13 @@ export default async function Index() {
             <div key={item.name}>
               <h3>{item.name}</h3>
               {item.items.map(gadget => (
-                <React.Fragment key={gadget.productName}>
-                  <GadgetIntro
-                    name={gadget.productName}
-                    imagePath={gadget.imagePath}
-                  >
-                    <Itemize>{gadget.description}</Itemize>
-                  </GadgetIntro>
-                </React.Fragment>
+                <GadgetIntro
+                  name={gadget.productName}
+                  imagePath={gadget.imagePath}
+                  key={gadget.productName}
+                >
+                  <Itemize>{gadget.description}</Itemize>
+                </GadgetIntro>
               ))}
             </div>
           ))}
