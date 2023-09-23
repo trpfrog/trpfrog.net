@@ -33,7 +33,7 @@ export function TitleWithPageName(props: TitleWithPageNameProps) {
       {pageTitle ? (
         <>
           <br />
-          <span id={styles.subtitle}>{pageTitle}</span>
+          <span className={styles.subtitle}>{pageTitle}</span>
         </>
       ) : null}
     </span>

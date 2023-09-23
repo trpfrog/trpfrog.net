@@ -53,7 +53,7 @@ export const HeaderFollowSticky = (props: {
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const showHeader = useHeaderVisibleStatus()
   return (
-    <div id={styles.hide_when_scroll_down} data-show={showHeader}>
+    <div className={styles.hide_when_scroll_down} data-show={showHeader}>
       {props.children}
     </div>
   )
@@ -73,27 +73,26 @@ export default React.memo(function Header(props: Props) {
   return (
     <>
       <HideWhenScrollDown>
-        <header id={styles.header}>
+        <header className={styles.header}>
           <MainWrapper
-            id={styles.inside}
+            className={styles.inside}
             style={{ marginTop: 0, marginBottom: 0 }}
           >
             <SiteName />
-            <nav id={styles.navigation}>
-              <ul>
-                {topLinks.map(({ href, label }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className={`headerButton ${styles.title_link}`}
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <Hamburger />
+            <div className={styles.nav_wrapper}>
+              <nav className={styles.navigation}>
+                <ul>
+                  {topLinks.map(({ href, label }) => (
+                    <li key={href}>
+                      <Link href={href} className={styles.title_link}>
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <Hamburger />
+            </div>
           </MainWrapper>
         </header>
       </HideWhenScrollDown>

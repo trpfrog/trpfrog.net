@@ -19,10 +19,10 @@ export const SiteName = (props: TitleProps) => {
   const shouldShowTrpFrog = useShouldShowTrpFrog()
 
   return (
-    <div id={styles.site_logo} data-show-icon={shouldShowTrpFrog}>
-      <div id={styles.trpfrog_icon} />
-      <div id={styles.site_name_wrapper}>
-        <h1 id={styles.site_name}>
+    <div className={styles.site_logo} data-show-icon={shouldShowTrpFrog}>
+      <div className={styles.trpfrog_icon} />
+      <div className={styles.site_name_wrapper}>
+        <h1 className={styles.site_name}>
           {shouldShowSubtitle ? (
             <Link
               href="/"

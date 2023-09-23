@@ -1,6 +1,6 @@
 @use '@/styles/mixins';
 
-#hide_when_scroll_down {
+.hide_when_scroll_down {
   position: sticky;
   top: 0;
   width: 100%;
@@ -17,7 +17,7 @@
   }
 }
 
-#header {
+.header {
   background: var(--header-color);
   width: 100%;
 
@@ -28,7 +28,7 @@
   filter: var(--header-filter);
 }
 
-#inside {
+.inside {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +36,7 @@
   height: var(--header-height);
 }
 
-#site_name_wrapper {
+.site_name_wrapper {
   position: relative;
   top: 2px;
   display: inline-flex;
@@ -44,7 +44,7 @@
   height: var(--header-height);
 }
 
-#site_name {
+.site_name {
   text-align: left;
   margin: auto 0;
   display: block;
@@ -59,7 +59,7 @@
   }
 }
 
-#subtitle {
+.subtitle {
   --nav-width: 370px;
   --width: calc(
     min(100vw - 5em, 900px) - var(--header-icon-size) - var(--nav-width)
@@ -80,7 +80,7 @@
   width: var(--width);
 }
 
-#trpfrog_icon {
+.trpfrog_icon {
   width: var(--header-icon-size);
   height: var(--header-icon-size);
   margin-top: 4px;
@@ -94,7 +94,7 @@
   }
 }
 
-#site_logo {
+.site_logo {
   display: grid;
   grid-template-rows: var(--header-height);
   gap: 5px;
@@ -134,7 +134,11 @@
   }
 }
 
-#navigation {
+.nav_wrapper {
+  display: flex;
+}
+
+.navigation {
   position: relative;
   top: 3px;
   text-align: right;
