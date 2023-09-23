@@ -6,10 +6,12 @@ import { atom, useAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { Details } from '@/components/atoms/Details'
 import { useSetAlwaysShownHeader } from '@/components/organisms/Header'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
 import styles from './index.module.scss'
+import { Settings } from './Settings'
 
 const mobileMenuAtom = atom(false)
 
@@ -55,6 +57,11 @@ const MobileMenu = () => {
               {name}
             </Link>
           ))}
+        </div>
+        <div className={styles.settings_wrapper}>
+          <Details summary="高度な設定" className={styles.settings}>
+            <Settings />
+          </Details>
         </div>
       </aside>
     </section>

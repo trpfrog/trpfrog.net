@@ -139,6 +139,10 @@
   position: relative;
   top: 3px;
   gap: 1em;
+
+  @include mixins.mq(sp) {
+    gap: 0;
+  }
 }
 
 .navigation {

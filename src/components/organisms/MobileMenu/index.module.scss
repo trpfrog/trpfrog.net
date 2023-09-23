@@ -148,3 +148,13 @@ $menu-z-index: 151;
     }
   }
 }
+
+.settings_wrapper {
+  width: 100%;
+}
+
+.settings {
+  margin: 1em 5px;
+  box-sizing: border-box;
+  background: var(--window-bkg-color);
+}

@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
@@ -84,7 +84,15 @@ const withMdx = require('@next/mdx')({
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const withVercelToolbar = require('@vercel/toolbar/plugins/next')()
 
-module.exports = withBundleAnalyzer(withMdx(config))
+const composeFunctions = (...fns) => {
+  return x => fns.reverse().reduce((v, f) => f(v), x)
+}
+module.exports = composeFunctions(
+  withBundleAnalyzer,
+  withVercelToolbar,
+  withMdx,
+)(nextConfig)
 
 require('./watchMarkdown')
