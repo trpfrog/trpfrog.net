@@ -34,6 +34,7 @@
     "@react-hookz/web": "^23.1.0",
     "@vercel/edge-config": "^0.2.1",
     "@vercel/kv": "^0.2.2",
+    "@vercel/toolbar": "^0.1.4",
     "better-react-mathjax": "^2.0.2",
     "budoux": "^0.5.2",
     "bufferutil": "^4.0.7",
