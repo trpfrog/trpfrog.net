@@ -22,3 +22,6 @@ export const DEVELOPMENT_HOST = 'http://localhost:3000'
 export const CURRENT_HOST =
   process.env.NODE_ENV === 'production' ? PRODUCTION_HOST : DEVELOPMENT_HOST
 export const HOST_URL = `https://${process.env.VERCEL_URL || 'trpfrog.net'}`
+
+export const DEFAULT_BLOG_THUMBNAIL =
+  'https://res.cloudinary.com/trpfrog/TwitterCard'

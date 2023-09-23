@@ -4,12 +4,15 @@ import { Metadata } from 'next'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import dayjs from 'dayjs'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
 import Title from '@/components/organisms/Title'
 
+import { getTypedEntries } from '@/lib/utils'
+
 import ArticleCard from '@blog/_components/ArticleCard'
-import ArticleGrid from '@blog/_components/ArticleGrid'
+import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
 import BlogPost from '@blog/_lib/blogPost'
 import { getSortedPostsData } from '@blog/_lib/load'
 import styles from '@blog/_styles/blog.module.scss'
@@ -26,7 +29,13 @@ export default async function Index() {
   )
   const latestLongArticle = articles[latestLongArticleIdx]
   articles.splice(latestLongArticleIdx, 1)
-  const otherArticles = articles
+
+  const articlesGroupedByYear = articles.reduce((acc: any, cur: BlogPost) => {
+    const year = dayjs(cur.date).format('YYYY')
+    if (acc[year] === undefined) acc[year] = []
+    acc[year].push(cur)
+    return acc
+  }, {})
 
   return (
     <>
@@ -42,16 +51,24 @@ export default async function Index() {
           <ArticleCard entry={latestLongArticle} hero={true} />
         </div>
 
-        <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar} /> OTHER ARTICLES{' '}
-          <FontAwesomeIcon icon={faStar} />
-        </div>
+        {getTypedEntries(articlesGroupedByYear)
+          .reverse()
+          .map(([year, articles]) => (
+            <React.Fragment key={year as string}>
+              <div className={styles.hrule_block}>
+                <FontAwesomeIcon icon={faStar} /> {year as string} 年{' '}
+                <FontAwesomeIcon icon={faStar} />
+              </div>
 
-        <ArticleGrid>
-          {otherArticles.map(entry => (
-            <ArticleCard entry={entry} key={entry.slug} />
+              <div
+                style={{ display: 'flex', flexDirection: 'column', gap: 15 }}
+              >
+                {articles.map((entry: BlogPost) => (
+                  <LiteArticleCard entry={entry} key={entry.slug} />
+                ))}
+              </div>
+            </React.Fragment>
           ))}
-        </ArticleGrid>
       </MainWrapper>
     </>
   )
