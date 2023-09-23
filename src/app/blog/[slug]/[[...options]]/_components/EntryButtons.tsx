@@ -24,7 +24,7 @@ type EntryButtonProps = Omit<
 export function RichEntryButtons(props: EntryButtonProps) {
   const { post, extended, ...rest } = props
   return (
-    <div {...rest}>
+    <div {...rest} style={{ display: 'flex' }}>
       <Link href={'/blog'}>
         <EntryButton icon={faArrowLeft} text={'記事一覧'} />
       </Link>
