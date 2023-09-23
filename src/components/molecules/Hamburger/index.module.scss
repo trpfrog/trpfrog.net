@@ -1,10 +1,15 @@
 @use '@/styles/mixins';
 
+.wrapper {
+}
+
 #hamburger_menu {
-  display: block;
-  position: absolute;
-  top: 1.1em;
-  right: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
   width: 2em;
   z-index: 199;
 

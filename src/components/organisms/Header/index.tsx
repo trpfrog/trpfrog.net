@@ -1,18 +1,17 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-import { useScroll } from 'framer-motion'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
+import MainWrapper from '@/components/atoms/MainWrapper'
 import Hamburger from '@/components/molecules/Hamburger'
 import MobileMenu from '@/components/organisms/MobileMenu'
 
+import { useHeaderVisibleStatus } from './hooks/useHeaderVisibleStatus'
 import styles from './index.module.scss'
-import { NormalTitle } from './NormalTitle'
-import { TopTitle } from './TopTitle'
+import { SiteName } from './SiteName'
 
 const alwaysShowHeaderAtom = atom(false)
 
@@ -24,24 +23,8 @@ export function useAlwaysShownHeader() {
   }, [set])
 }
 
-const useHeaderVisibleStatus = () => {
-  const { scrollY } = useScroll()
-  const [showHeader, setShowHeader] = useState(true)
-
-  scrollY.on('change', (y: number) => {
-    const v = scrollY.getVelocity()
-    const shouldShowHeader = v < -1000 || y < 500
-    const shouldHideHeader = !shouldShowHeader && v > 1000
-
-    if (shouldShowHeader) {
-      setShowHeader(true)
-    } else if (shouldHideHeader) {
-      setShowHeader(false)
-    }
-  })
-
-  const hide = useAtomValue(alwaysShowHeaderAtom)
-  return showHeader || hide
+export function useIsAlwaysShownHeader() {
+  return useAtomValue(alwaysShowHeaderAtom)
 }
 
 export const HeaderFollowSticky = (props: {
@@ -81,21 +64,21 @@ type Props = {
 }
 
 export default React.memo(function Header(props: Props) {
-  const pathname = usePathname()
   const topLinks = [
     { href: '/', label: 'home' },
     { href: '/works', label: 'works' },
     { href: '/blog', label: 'blog' },
   ] as const
 
-  const { title = pathname === '/' ? <TopTitle /> : <NormalTitle /> } = props
-
   return (
     <>
       <HideWhenScrollDown>
         <header id={styles.header}>
-          <div id={styles.inside}>
-            {title}
+          <MainWrapper
+            id={styles.inside}
+            style={{ marginTop: 0, marginBottom: 0 }}
+          >
+            <SiteName />
             <nav id={styles.navigation}>
               <ul>
                 {topLinks.map(({ href, label }) => (
@@ -111,7 +94,7 @@ export default React.memo(function Header(props: Props) {
               </ul>
             </nav>
             <Hamburger />
-          </div>
+          </MainWrapper>
         </header>
       </HideWhenScrollDown>
       <MobileMenu />

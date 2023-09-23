@@ -33,14 +33,7 @@
   align-items: center;
   justify-content: space-between;
 
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 4em;
   height: var(--header-height);
-
-  @include mixins.mq(sp) {
-    padding: 0 10px;
-  }
 }
 
 #site_name_wrapper {
@@ -56,12 +49,13 @@
   margin: auto 0;
   display: block;
   color: #ffffff;
+  font-size: 1.7em;
   font-family: var(--font-m-plus-rounded-1c);
   font-weight: 800;
 
   @include mixins.mq(sp) {
     grid-area: page_title;
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 }
 
@@ -71,10 +65,10 @@
     min(100vw - 5em, 900px) - var(--header-icon-size) - var(--nav-width)
   );
 
-  font-size: 18px;
+  font-size: 15px;
   @include mixins.mq(sp) {
     --width: calc(100vw - var(--header-icon-size) - 70px);
-    font-size: 13px;
+    font-size: 12px;
   }
 
   display: block;
@@ -89,14 +83,14 @@
 #trpfrog_icon {
   width: var(--header-icon-size);
   height: var(--header-icon-size);
-  margin-top: 8px;
+  margin-top: 4px;
 
   background-image: url('/images/flat-trpfrog.gif');
   background-size: contain;
   background-repeat: no-repeat;
 
   @include mixins.mq(sp) {
-    margin-top: 5px;
+    margin-top: 2px;
   }
 }
 

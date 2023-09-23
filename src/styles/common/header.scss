@@ -3,7 +3,7 @@
 :root {
   --header-color: #66a928;
   --header-filter: drop-shadow(0 0.2em 0 #5a9623);
-  --header-icon-size: 80px;
+  --header-icon-size: 70px;
 
   @include mixins.mq(sp) {
     --header-icon-size: 58px;
