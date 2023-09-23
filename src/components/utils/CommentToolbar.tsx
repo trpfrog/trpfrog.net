@@ -2,9 +2,9 @@
 
 import { VercelToolbar } from '@vercel/toolbar/next'
 
-import { useShowSiteComments } from '@/states/showSiteComments'
+import { useShowSiteCommentsAtom } from '@/states/showSiteCommentsAtom'
 
 export function CommentToolbar() {
-  const [showSiteComments] = useShowSiteComments()
+  const [showSiteComments] = useShowSiteCommentsAtom()
   return showSiteComments ? <VercelToolbar /> : null
 }

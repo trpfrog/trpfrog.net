@@ -4,6 +4,8 @@ import { useScroll } from 'framer-motion'
 
 import { useIsAlwaysShownHeader } from '@/components/organisms/Header'
 
+import { useShouldHideHeaderAtom } from '@/states/shouldHideHeaderAtom'
+
 export function useHeaderVisibleStatus() {
   const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
@@ -21,5 +23,6 @@ export function useHeaderVisibleStatus() {
   })
 
   const isAlwaysShowHeader = useIsAlwaysShownHeader()
-  return showHeader || isAlwaysShowHeader
+  const [useSettingShouldHideHeader] = useShouldHideHeaderAtom()
+  return showHeader || isAlwaysShowHeader || !useSettingShouldHideHeader
 }

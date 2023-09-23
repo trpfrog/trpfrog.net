@@ -7,7 +7,11 @@ import Link from 'next/link'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
 import Hamburger from '@/components/molecules/Hamburger'
-import MobileMenu from '@/components/organisms/MobileMenu'
+import MobileMenu, {
+  useMobileMenuState,
+} from '@/components/organisms/MobileMenu'
+
+import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
 
 import { useHeaderVisibleStatus } from './hooks/useHeaderVisibleStatus'
 import styles from './index.module.scss'
@@ -56,8 +60,16 @@ export const HeaderFollowSticky = (props: {
 
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const showHeader = useHeaderVisibleStatus()
+  const [isMobileMenuOpened] = useMobileMenuState()
+  const [userSettingFollowSticky] = useShouldFollowHeaderAtom()
+
+  const useSticky = userSettingFollowSticky || isMobileMenuOpened // メニューを開いているときは強制的にヘッダを表示
   return (
-    <div className={styles.hide_when_scroll_down} data-show={showHeader}>
+    <div
+      className={styles.hide_when_scroll_down}
+      data-show={useSticky ? showHeader : true} // sticky でないときはアニメーションを無効化
+      style={useSticky ? { position: 'sticky' } : { position: 'relative' }}
+    >
       {props.children}
     </div>
   )

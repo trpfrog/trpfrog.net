@@ -3,6 +3,6 @@ import { atomWithStorage } from 'jotai/utils'
 
 const showSiteCommentsAtom = atomWithStorage('showSiteComments', false)
 
-export function useShowSiteComments() {
+export function useShowSiteCommentsAtom() {
   return useAtom(showSiteCommentsAtom)
 }
