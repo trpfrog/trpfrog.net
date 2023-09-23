@@ -79,12 +79,14 @@ const withMdx = require('@next/mdx')({
     mdxRs: true,
   },
 })
-
-// next.config.js
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const withVercelToolbar = require('@vercel/toolbar/plugins/next')()
+
+const withVercelToolbar =
+  process.env.NODE_ENV === 'development'
+    ? require('@vercel/toolbar/plugins/next')()
+    : x => x // In production, do nothing
 
 const composeFunctions = (...fns) => {
   return x => fns.reverse().reduce((v, f) => f(v), x)
