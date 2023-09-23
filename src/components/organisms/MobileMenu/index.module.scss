@@ -113,7 +113,12 @@ $menu-z-index: 151;
     flex-direction: column;
     align-items: center;
 
-    box-shadow: 0 5px 0 0 var(--window-bottom-color);
+    $outer-glow-for-dark-mode: 0 0 25px 15px #f1f1f155;
+    $box-bottom-shadow: 0 5px 0 0 var(--window-bottom-color);
+    box-shadow: $box-bottom-shadow;
+    @include mixins.mq(dark) {
+      box-shadow: $box-bottom-shadow, $outer-glow-for-dark-mode;
+    }
 
     transition: 0.3s;
     animation-timing-function: linear;
@@ -162,7 +167,7 @@ $menu-z-index: 151;
 }
 
 .settings {
-  margin: 1em 0;
+  margin-top: 1em;
   @include mixins.mq(sp) {
     margin: 1em 5px;
   }
