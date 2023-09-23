@@ -168,6 +168,7 @@ $menu-z-index: 151;
 
 .settings {
   margin-top: 1em;
+  font-size: 0.9em;
   @include mixins.mq(sp) {
     margin: 1em 5px;
   }

@@ -141,6 +141,7 @@
   gap: 1em;
 
   @include mixins.mq(sp) {
+    top: 0;
     gap: 0;
   }
 }
