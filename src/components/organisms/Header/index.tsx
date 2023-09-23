@@ -27,6 +27,10 @@ export function useIsAlwaysShownHeader() {
   return useAtomValue(alwaysShowHeaderAtom)
 }
 
+export function useSetAlwaysShownHeader() {
+  return useSetAtom(alwaysShowHeaderAtom)
+}
+
 export const HeaderFollowSticky = (props: {
   children: React.ReactNode
   top: string | number

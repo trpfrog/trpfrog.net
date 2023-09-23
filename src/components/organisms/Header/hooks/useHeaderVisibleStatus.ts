@@ -20,6 +20,6 @@ export function useHeaderVisibleStatus() {
     }
   })
 
-  const hide = useIsAlwaysShownHeader()
-  return showHeader || hide
+  const isAlwaysShowHeader = useIsAlwaysShownHeader()
+  return showHeader || isAlwaysShowHeader
 }
