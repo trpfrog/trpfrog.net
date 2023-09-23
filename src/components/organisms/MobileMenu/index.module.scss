@@ -91,14 +91,22 @@ $menu-z-index: 151;
 }
 
 @include mixins.mq(pc) {
+  .scrollable {
+    padding: 1rem;
+    height: 100%;
+    overflow-y: scroll;
+    z-index: 152;
+  }
+
   .side_menu {
     position: fixed;
     right: max(calc((100vw - 1000px) / 2 - 20px), 20px);
     width: 300px;
     background: var(--window-bkg-color);
-    padding: 1rem;
+
     z-index: 151;
 
+    max-height: calc(100vh - var(--header-height) - 4em);
     border-radius: 10px;
 
     display: flex;
@@ -109,16 +117,16 @@ $menu-z-index: 151;
 
     transition: 0.3s;
     animation-timing-function: linear;
+    top: 0;
 
     &[data-menu-opened='false'] {
-      top: -600px;
+      transform: translateY(-100%);
       z-index: -1;
       opacity: 0;
     }
 
     &[data-menu-opened='true'] {
-      top: 6em;
-      z-index: $menu-z-index;
+      transform: translateY(6em);
       opacity: 0.9;
       backdrop-filter: blur(15px);
     }
@@ -154,7 +162,10 @@ $menu-z-index: 151;
 }
 
 .settings {
-  margin: 1em 5px;
+  margin: 1em 0;
+  @include mixins.mq(sp) {
+    margin: 1em 5px;
+  }
   box-sizing: border-box;
   background: var(--window-bkg-color);
 }

@@ -29,7 +29,7 @@ export function useToggleMenuCallback() {
   }, [isOpened, setAlwaysShownHeader, setHamburgerState])
 }
 
-const MobileMenu = () => {
+const MobileMenu = React.memo(function MobileMenu() {
   const doNothing = () => {}
   const toggleMenu = useToggleMenuCallback()
 
@@ -47,25 +47,27 @@ const MobileMenu = () => {
       />
       <aside className={styles.side_menu} data-menu-opened={isOpened}>
         <div className={styles.side_header} />
-        <div className={styles.side_links} onClick={toggleMenu}>
-          {NAVIGATION_LINKS.map(({ link, name }) => (
-            <Link
-              href={link}
-              key={link}
-              data-current-page={currentLink === link}
-            >
-              {name}
-            </Link>
-          ))}
-        </div>
-        <div className={styles.settings_wrapper}>
-          <Details summary="高度な設定" className={styles.settings}>
-            <Settings />
-          </Details>
+        <div className={styles.scrollable}>
+          <div className={styles.side_links} onClick={toggleMenu}>
+            {NAVIGATION_LINKS.map(({ link, name }) => (
+              <Link
+                href={link}
+                key={link}
+                data-current-page={currentLink === link}
+              >
+                {name}
+              </Link>
+            ))}
+          </div>
+          <div className={styles.settings_wrapper}>
+            <Details summary="高度な設定" className={styles.settings}>
+              <Settings />
+            </Details>
+          </div>
         </div>
       </aside>
     </section>
   )
-}
+})
 
 export default MobileMenu
