@@ -6,10 +6,12 @@
 
   &:hover {
     cursor: pointer;
-    background-color: #eaffd8;
+    box-shadow: 0 8px 0 var(--window-bottom-color);
+    transform: translateY(-2px);
   }
+
   &:active {
-    transform: translateY(3px);
+    transform: translateY(6px);
     box-shadow: none;
   }
 }
