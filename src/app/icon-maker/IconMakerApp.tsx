@@ -6,17 +6,16 @@ import Button from '@/components/atoms/Button'
 import Block from '@/components/molecules/Block'
 
 import IconCanvas from '@/lib/iconMaker'
+import { createURL } from '@/lib/url'
 
 import styles from './style.module.scss'
 
 export default function IconMakerApp() {
   const state = new IconCanvas('canvas-result')
-  const tweetLink =
-    'https://twitter.com/intent/tweet' +
-    '?text=' +
-    encodeURIComponent('#つまみアイコンメーカー でアイコンを作成しました！') +
-    '&url=' +
-    encodeURIComponent('https://trpfrog.net/iconmaker/')
+  const tweetLink = createURL('/intent/tweet', 'https://twitter.com', {
+    text: '#つまみアイコンメーカー でアイコンを作成しました！',
+    url: 'https://trpfrog.net/iconmaker/',
+  })
 
   const controlButtons = [
     {

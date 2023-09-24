@@ -2,17 +2,22 @@
 
 import React from 'react'
 
-import { useMobileMenuState } from '@/components/organisms/MobileMenu'
+import {
+  useMobileMenuState,
+  useToggleMenuCallback,
+} from '@/components/organisms/MobileMenu'
 
 import styles from './index.module.scss'
 
 const Hamburger = () => {
-  const [isOpened, setHamburgerState] = useMobileMenuState()
+  const [isOpened] = useMobileMenuState()
+  const toggleMenuCallback = useToggleMenuCallback()
+
   return (
     <div id={styles.hamburger_menu}>
       <a
         id={styles.menu_trigger}
-        onClick={() => setHamburgerState(!isOpened)}
+        onClick={toggleMenuCallback}
         data-menu-opened={isOpened}
       >
         <span />

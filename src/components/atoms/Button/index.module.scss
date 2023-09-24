@@ -5,7 +5,7 @@ $link-button-color-bottom: var(--link-button-color-bottom);
 $link-button-color-highlighted: var(--link-button-color-highlighted);
 $link-button-font-color: var(--link-button-font-color);
 
-.button {
+@mixin button-style {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -53,4 +53,8 @@ $link-button-font-color: var(--link-button-font-color);
   }
   border: none;
   font-size: 1em;
+}
+
+.button {
+  @include button-style;
 }

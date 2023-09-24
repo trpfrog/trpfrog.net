@@ -1,20 +1,17 @@
 @use '@/styles/mixins';
 
 #hamburger_menu {
-  display: block;
-  position: absolute;
-  top: 1.1em;
-  right: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 2em;
   z-index: 199;
-
-  @include mixins.mq(pc) {
-    display: none;
-  }
 }
 
 #menu_trigger {
   position: relative;
+  cursor: pointer;
   width: 28px;
   height: 24px;
 

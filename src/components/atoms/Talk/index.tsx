@@ -20,7 +20,6 @@ export type ConversationItemProps = React.ComponentPropsWithoutRef<'div'> & {
 
 Talk.Item = React.memo(function Item(props: ConversationItemProps) {
   const { speaker, outOfComment, className = '', ...rest } = props
-  console.log(speaker)
   return (
     <>
       <div className={styles.name_wrapper}>

@@ -1,18 +1,21 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-import { useScroll } from 'framer-motion'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
+import MainWrapper from '@/components/atoms/MainWrapper'
 import Hamburger from '@/components/molecules/Hamburger'
-import MobileMenu from '@/components/organisms/MobileMenu'
+import MobileMenu, {
+  useMobileMenuState,
+} from '@/components/organisms/MobileMenu'
 
+import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
+
+import { useHeaderVisibleStatus } from './hooks/useHeaderVisibleStatus'
 import styles from './index.module.scss'
-import { NormalTitle } from './NormalTitle'
-import { TopTitle } from './TopTitle'
+import { SiteName } from './SiteName'
 
 const alwaysShowHeaderAtom = atom(false)
 
@@ -24,24 +27,12 @@ export function useAlwaysShownHeader() {
   }, [set])
 }
 
-const useHeaderVisibleStatus = () => {
-  const { scrollY } = useScroll()
-  const [showHeader, setShowHeader] = useState(true)
+export function useIsAlwaysShownHeader() {
+  return useAtomValue(alwaysShowHeaderAtom)
+}
 
-  scrollY.on('change', (y: number) => {
-    const v = scrollY.getVelocity()
-    const shouldShowHeader = v < -1000 || y < 500
-    const shouldHideHeader = !shouldShowHeader && v > 1000
-
-    if (shouldShowHeader) {
-      setShowHeader(true)
-    } else if (shouldHideHeader) {
-      setShowHeader(false)
-    }
-  })
-
-  const hide = useAtomValue(alwaysShowHeaderAtom)
-  return showHeader || hide
+export function useSetAlwaysShownHeader() {
+  return useSetAtom(alwaysShowHeaderAtom)
 }
 
 export const HeaderFollowSticky = (props: {
@@ -69,8 +60,16 @@ export const HeaderFollowSticky = (props: {
 
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
   const showHeader = useHeaderVisibleStatus()
+  const [isMobileMenuOpened] = useMobileMenuState()
+  const [userSettingFollowSticky] = useShouldFollowHeaderAtom()
+
+  const useSticky = userSettingFollowSticky || isMobileMenuOpened // メニューを開いているときは強制的にヘッダを表示
   return (
-    <div id={styles.hide_when_scroll_down} data-show={showHeader}>
+    <div
+      className={styles.hide_when_scroll_down}
+      data-show={useSticky ? showHeader : true} // sticky でないときはアニメーションを無効化
+      style={useSticky ? { position: 'sticky' } : { position: 'relative' }}
+    >
       {props.children}
     </div>
   )
@@ -81,37 +80,36 @@ type Props = {
 }
 
 export default React.memo(function Header(props: Props) {
-  const pathname = usePathname()
   const topLinks = [
     { href: '/', label: 'home' },
     { href: '/works', label: 'works' },
     { href: '/blog', label: 'blog' },
   ] as const
 
-  const { title = pathname === '/' ? <TopTitle /> : <NormalTitle /> } = props
-
   return (
     <>
       <HideWhenScrollDown>
-        <header id={styles.header}>
-          <div id={styles.inside}>
-            {title}
-            <nav id={styles.navigation}>
-              <ul>
-                {topLinks.map(({ href, label }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className={`headerButton ${styles.title_link}`}
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <Hamburger />
-          </div>
+        <header className={styles.header}>
+          <MainWrapper
+            className={styles.inside}
+            style={{ marginTop: 0, marginBottom: 0 }}
+          >
+            <SiteName />
+            <div className={styles.nav_wrapper}>
+              <nav className={styles.navigation}>
+                <ul>
+                  {topLinks.map(({ href, label }) => (
+                    <li key={href}>
+                      <Link href={href} className={styles.title_link}>
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <Hamburger />
+            </div>
+          </MainWrapper>
         </header>
       </HideWhenScrollDown>
       <MobileMenu />

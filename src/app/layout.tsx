@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import '@/styles/globals.scss'
 import type { Metadata } from 'next'
@@ -12,7 +12,9 @@ import BackToTop from '@/components/organisms/BackToTop'
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Navigation from '@/components/organisms/Navigation'
+import { CommentToolbar } from '@/components/utils/CommentToolbar'
 import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAwesomeIcons'
+import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
 import fontVariables from '@/lib/googleFonts'
@@ -63,14 +65,19 @@ export default function RootLayout({ children }: Props) {
         <FixTooLargeFontAwesomeIcons />
       </head>
       <body className={`${fontVariables} ${styles.body}`}>
-        <Toaster />
-        <div className={styles.layout}>
-          <Header />
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-        </div>
-        <BackToTop />
+        <JotaiProvider>
+          <Toaster />
+          <div className={styles.layout}>
+            <Header />
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <BackToTop />
+          <Suspense>
+            <CommentToolbar />
+          </Suspense>
+        </JotaiProvider>
       </body>
     </html>
   )
