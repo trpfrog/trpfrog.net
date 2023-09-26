@@ -3,6 +3,7 @@ import React from 'react'
 import styles from '@/app/(home)/page.module.scss'
 
 import Button from '@/components/atoms/Button'
+import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 
 import Utils from '@/lib/utils'
 
@@ -29,13 +30,9 @@ export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
         </Button>
       </p>
       <p>
-        <a
-          href={`https://twitter.com/${twitterId}/`}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <OpenInNewTab href={`https://twitter.com/${twitterId}/`}>
           <b>{ownerName}</b>
-        </a>
+        </OpenInNewTab>
         さんのHP
       </p>
       <p>{description}</p>

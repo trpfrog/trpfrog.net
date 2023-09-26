@@ -2,6 +2,8 @@ import React from 'react'
 
 import Link from 'next/link'
 
+import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+
 import { DEVELOPMENT_HOST, PRODUCTION_HOST } from '@/lib/constants'
 import type { SelectedRequired } from '@/lib/types'
 
@@ -60,12 +62,7 @@ function Wrapper<T extends TagType>(
       return <Link {...(rest as LinkProps)} data-testid="button-component" />
     case 'a':
       return (
-        <a
-          {...(rest as AProps)}
-          target="_blank"
-          rel="noreferrer noopener"
-          data-testid="button-component"
-        />
+        <OpenInNewTab {...(rest as AProps)} data-testid="button-component" />
       )
     case 'button':
       return (

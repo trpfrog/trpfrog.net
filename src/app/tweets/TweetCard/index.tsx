@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 import reactStringReplace from 'react-string-replace'
 
+import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 import PlainBlock from '@/components/atoms/PlainBlock'
 
 import styles from './index.module.scss'
@@ -27,14 +28,12 @@ function ScreenNameLink(props: {
   children: React.ReactNode
 }) {
   return (
-    <a
+    <OpenInNewTab
       href={`https://twitter.com/${props.screenName}`}
-      target="_blank"
-      rel="noreferrer"
       className={props.className}
     >
       {props.children}
-    </a>
+    </OpenInNewTab>
   )
 }
 
@@ -49,36 +48,32 @@ function TweetString({
     text,
     /(https?:\/\/[^\s\n　]+)/g,
     (match, i) => (
-      <a key={`tweet-link-${i}`} href={match} target="_blank" rel="noreferrer">
+      <OpenInNewTab key={`tweet-link-${i}`} href={match}>
         {match}
-      </a>
+      </OpenInNewTab>
     ),
   )
   replaced = reactStringReplace(replaced, /\B@([\w_]+)/g, (match, i) => (
-    <a
+    <OpenInNewTab
       key={`tweet-mention-${i}`}
       href={`https://twitter.com/${match}`}
-      target="_blank"
-      rel="noreferrer"
       className={styles.mention_string}
     >
       @{match}
-    </a>
+    </OpenInNewTab>
   ))
 
   replaced = reactStringReplace(
     replaced,
     /\B#([^\s\n「」()#]+)/g,
     (match, i) => (
-      <a
+      <OpenInNewTab
         key={`tweet-hashtag-${i}`}
         href={`https://twitter.com/hashtag/${match}`}
-        target="_blank"
-        rel="noreferrer"
         className={styles.hashtag_string}
       >
         #{match}
-      </a>
+      </OpenInNewTab>
     ),
   )
 
@@ -230,10 +225,7 @@ export default function TweetCard({
               <span style={{ opacity: 0.5 }}>
                 <span className={'only-on-pc'}>
                   View pictures on{' '}
-                  <a target="_blank" rel="noreferrer" href={statusUrl}>
-                    twitter.com
-                  </a>
-                  !
+                  <OpenInNewTab href={statusUrl}>twitter.com</OpenInNewTab>!
                 </span>
               </span>
             ) : (
@@ -242,15 +234,10 @@ export default function TweetCard({
               </>
             )}
             <div className={styles.footer_date}>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                className={styles.footer_date}
-                href={statusUrl}
-              >
+              <OpenInNewTab className={styles.footer_date} href={statusUrl}>
                 {tweet.isRetweet ? 'Retweeted at ' : ''}
                 {dayjs(tweet.createdAt).format('YYYY-MM-DD HH:mm')}
-              </a>
+              </OpenInNewTab>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
+import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 import SyntaxHighlighterWrapper from '@/components/utils/SyntaxHighlighterWrapper'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
@@ -158,9 +159,7 @@ export function getMarkdownOptions(
       </h2>
     ),
     a: (props: any) => (
-      <a href={props.href} target="_blank" rel="noreferrer">
-        {props.children}
-      </a>
+      <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
     ),
   }
 
