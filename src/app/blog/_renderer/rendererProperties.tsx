@@ -141,6 +141,7 @@ export function getMarkdownOptions(
         <BlogImage
           src={props.src ?? ''}
           alt={props.alt ?? ''}
+          caption={props.title}
           imageData={
             imageSize
               ? imageSize[getPureCloudinaryPath(props.src ?? '')]

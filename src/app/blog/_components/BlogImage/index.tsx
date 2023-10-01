@@ -12,6 +12,7 @@ import styles from './index.module.scss'
 type BlogImageProps = {
   src: string
   alt: string
+  caption?: string
   imageData?: BlogImageData
   style?: CSSProperties
 }
@@ -25,6 +26,7 @@ export default React.memo(function BlogImage({
   alt,
   imageData,
   style,
+  ...props
 }: BlogImageProps) {
   if (!imageData) {
     imageData = {
@@ -36,7 +38,7 @@ export default React.memo(function BlogImage({
     }
   }
 
-  let caption = imageData.caption ?? ''
+  let caption = props.caption ?? imageData.caption ?? ''
   let takenBy: string | undefined
 
   const takenByIdentifier = 'taken-by:'
