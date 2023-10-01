@@ -2,11 +2,11 @@ import { ChatOpenAI } from 'langchain/chat_models/openai'
 import { HumanChatMessage } from 'langchain/schema'
 import { NextRequest, NextResponse } from 'next/server'
 
-import rateLimit from '@/lib/rateLimit'
+import createRateLimit from '@/lib/rateLimit'
 
 import { getAllPostSlugs } from '@blog/_lib/load'
 
-const limiter = rateLimit({
+const limiter = createRateLimit({
   interval: 60 * 1000 * 60, // 1 hour
   uniqueTokenPerInterval: 500, // Max 500 users per second
 })
