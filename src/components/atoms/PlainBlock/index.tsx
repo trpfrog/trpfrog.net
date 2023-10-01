@@ -2,9 +2,18 @@ import React from 'react'
 
 import styles from './index.module.scss'
 
-type Props = React.ComponentPropsWithoutRef<'div'>
+type Props = React.ComponentPropsWithoutRef<'div'> & {
+  clickable?: boolean
+}
 
 export default function PlainBlock(props: Props) {
-  const { className = '', ...rest } = props
-  return <div className={`${styles.plain_block} ${className}`} {...rest} />
+  const { className = '', clickable = false, ...rest } = props
+  return (
+    <div
+      className={`${styles.plain_block} ${
+        clickable ? styles.clickable : ''
+      } ${className}`}
+      {...rest}
+    />
+  )
 }

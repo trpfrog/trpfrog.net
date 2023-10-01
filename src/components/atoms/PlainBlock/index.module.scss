@@ -12,3 +12,15 @@
     border: solid 0.5mm gray !important;
   }
 }
+
+.clickable {
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 0 var(--window-bottom-color);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: none;
+    transform: translateY(6px);
+  }
+}
