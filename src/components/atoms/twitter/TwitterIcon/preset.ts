@@ -29,4 +29,5 @@ export const iconPreset: Record<string, React.CSSProperties['background']> = {
   lupicure20: 'rgb(195, 220, 249)',
   sakuramochi0708: 'rgb(250, 216, 255)',
   ebioishii_u: '#cc986d',
+  degui_3bitto: 'khaki',
 }
