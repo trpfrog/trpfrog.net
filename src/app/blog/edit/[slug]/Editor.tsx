@@ -45,7 +45,7 @@ export default React.memo(function Editor({
       setPost(matter.stringify(content, frontMatter))
     },
     [data, setPost],
-    1000,
+    delayMs,
   )
 
   const changeHandler = useCallback(
