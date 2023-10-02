@@ -5,7 +5,7 @@ import React, { useDeferredValue, useMemo, useRef } from 'react'
 import { useMountEffect } from '@react-hookz/web'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 import { buildBlogPost } from '@blog/_lib/blogPost'
@@ -42,10 +42,25 @@ export default function Index(props: { params: { slug: string } }) {
     [deferredPageIdx, deferredPost],
   )
 
+  const editorBlockRef = React.useRef<HTMLDivElement>(null)
+  const scrollToBottom = React.useCallback(() => {
+    if (editorBlockRef.current) {
+      editorBlockRef.current.scrollTop = editorBlockRef.current.scrollHeight
+    }
+    if (document) {
+      document.documentElement.scrollTop = document.documentElement.scrollHeight
+    }
+  }, [])
+
   return (
     <MainWrapper className={styles.fullscreen}>
+      <button onClick={scrollToBottom}>Scroll to bottom</button>
       <div className={styles.editor_grid}>
-        <Block className={styles.editor_block} style={{ overflow: 'scroll' }}>
+        <Block
+          ref={editorBlockRef}
+          className={styles.editor_block}
+          style={{ overflow: 'scroll' }}
+        >
           <Editor
             slug={props.params.slug}
             rawMarkdown={post}
