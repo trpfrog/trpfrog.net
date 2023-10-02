@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react'
 
 import WaveText from '@/components/atoms/WaveText'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import styles from './index.module.scss'
 

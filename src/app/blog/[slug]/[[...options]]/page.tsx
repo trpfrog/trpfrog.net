@@ -3,7 +3,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import ArticleHeader from '@blog/_components/ArticleHeader'
 import { BadBlogBlock } from '@blog/_components/BadBlog'

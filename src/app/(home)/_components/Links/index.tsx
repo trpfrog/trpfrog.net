@@ -2,7 +2,7 @@ import styles from '@/app/(home)/page.module.scss'
 
 import Button from '@/components/atoms/Button'
 import H2 from '@/components/atoms/H2'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import links from './links.json'
 

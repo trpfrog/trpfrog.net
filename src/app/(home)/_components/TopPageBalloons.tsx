@@ -5,7 +5,7 @@ import Balloon from '@/app/balloon/_components/Balloon'
 import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
 
 import Button from '@/components/atoms/Button'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 type Props = {
   id?: string

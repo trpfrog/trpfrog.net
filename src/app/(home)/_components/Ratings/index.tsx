@@ -1,4 +1,4 @@
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import styles from './index.module.scss'
 

@@ -1,6 +1,6 @@
 import { LOREM_IPSUM } from '@/lib/constants'
 
-import Block from './index'
+import { Block } from './index'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

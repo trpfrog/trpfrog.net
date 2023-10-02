@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 import Title from '@/components/organisms/Title'
 
 import ArticleCard from '@blog/_components/ArticleCard'

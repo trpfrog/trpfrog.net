@@ -4,7 +4,7 @@ import PageNavigation from '@/app/tweets/PageNavigation'
 import TweetCard, { DateCard } from '@/app/tweets/TweetCard'
 import search from '@/app/tweets/tweetSearcher'
 
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 export default async function TweetArea({
   searchParams,

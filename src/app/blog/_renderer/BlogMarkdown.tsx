@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import PageNavigation from '@blog/_components/PageNavigation'
 import BlogPost from '@blog/_lib/blogPost'

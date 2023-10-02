@@ -10,7 +10,7 @@ import {
 } from '@/app/(home)/_components/AboutMe/attributes'
 import KCommandBox from '@/app/(home)/_components/AboutMe/KCommandBox'
 
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import styles from './index.module.scss'
 

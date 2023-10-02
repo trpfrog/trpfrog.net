@@ -4,7 +4,7 @@ import { get } from '@vercel/edge-config'
 
 import { IconFrame } from '@/app/(home)/_components/TrpFrogIconFrame/IconFrame'
 
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 
 import {
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
