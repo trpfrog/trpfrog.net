@@ -17,7 +17,7 @@ const Conversation: IsomorphicArticleParts = ({ content }) => {
           speaker={speaker}
           outOfComment={outOfComment}
         >
-          {parseInlineMarkdown(comment)}
+          {comment ? parseInlineMarkdown(comment) : <>&nbsp;</>}
         </Talk.Item>
       ))}
     </Talk>
