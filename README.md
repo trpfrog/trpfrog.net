@@ -68,3 +68,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     ├── prisma/         # Schema definition for tweets DB
     └── styles/         # Stylesheets
 ```
+
+## 🛠️ Troubleshooting
+
+### Something went wrong installing the "sharp" module
+
+"Something went wrong installing the "sharp" module..." error occurs on Apple Silicon Macs. 
+To fix this, run the following commands:
+
+```sh
+bun install --platform=darwin --arch=x64 sharp
+npm rebuild --platform=darwin --arch=arm64 sharp
+```
