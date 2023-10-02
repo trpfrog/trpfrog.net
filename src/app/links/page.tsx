@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import styles from '@/app/(home)/page.module.scss'
 
 import MainWrapper from '@/components/atoms/MainWrapper'
-import Block from '@/components/molecules/Block'
+import { Block } from '@/components/molecules/Block'
 import Title from '@/components/organisms/Title'
 
 import { loadMutualLinkRecords, MutualLinkRecord } from './loader'
