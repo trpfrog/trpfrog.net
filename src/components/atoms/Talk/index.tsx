@@ -19,14 +19,16 @@ export type ConversationItemProps = React.ComponentPropsWithoutRef<'div'> & {
 }
 
 Talk.Item = React.memo(function Item(props: ConversationItemProps) {
-  const { speaker, outOfComment, className = '', ...rest } = props
+  const { speaker, outOfComment, className = '', children, ...rest } = props
   return (
     <>
       <div className={styles.name_wrapper}>
         {speaker && <span className={styles.name}>{speaker}</span>}
       </div>
       <div className={styles.value_wrapper}>
-        <div className={`${styles.value} ${className}`} {...rest} />
+        <div className={`${styles.value} ${className}`} {...rest}>
+          {children ?? <>&nbsp;</>}
+        </div>
         {outOfComment && (
           <span className={styles.out_of_comment}>{outOfComment}</span>
         )}
