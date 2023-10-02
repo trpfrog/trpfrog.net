@@ -4,7 +4,7 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 
-import PlainBlock from '@/components/atoms/PlainBlock'
+import { PlainBlock } from '@/components/atoms/PlainBlock'
 import BlockLink from '@/components/molecules/BlockLink'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'

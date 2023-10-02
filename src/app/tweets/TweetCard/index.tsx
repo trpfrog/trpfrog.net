@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 import reactStringReplace from 'react-string-replace'
 
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
-import PlainBlock from '@/components/atoms/PlainBlock'
+import { PlainBlock } from '@/components/atoms/PlainBlock'
 
 import styles from './index.module.scss'
 

@@ -1,4 +1,4 @@
-import PlainBlock from '.'
+import { PlainBlock } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
