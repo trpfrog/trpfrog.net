@@ -83,7 +83,9 @@ const PostAttributes = ({ post }: Props) => {
         分
       </Content>
 
-      {['徒歩', '登山'].some(e => post.tags.includes(e)) && (
+      {['徒歩', '登山', '旅行', 'ドライブ'].some(e =>
+        post.tags.includes(e),
+      ) && (
         <Content icon={faImages} title={'写真の枚数'}>
           <span className={styles.attr_num}>{post.numberOfPhotos}</span> 枚
         </Content>
