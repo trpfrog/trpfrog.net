@@ -22,6 +22,11 @@ export const parseInlineMarkdown = (markdown: string) => {
         components: {
           p: ({ children }: any) => <>{children}</>,
         },
+        options: {
+          mdxOptions: {
+            ...getMarkdownPlugins(),
+          },
+        },
       }}
     />
   ) : (
