@@ -25,8 +25,6 @@ export const metadata = {
 export default async function Index() {
   const articles = await getSortedPostsData()
 
-  console.log(articles.map((e: BlogPost) => e.title))
-
   // Get latest featured article
   const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {
     return !!e.thumbnail // We assume that the latest featured article has thumbnail
