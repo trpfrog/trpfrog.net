@@ -115,7 +115,9 @@ export const getSortedPostsData = async (tag: string = '') => {
       } as BlogPost
     })
 
-  const sorted = allPostsData.sort(({ date: a }, { date: b }) => {
+  const sorted = allPostsData.sort(({ date: _a }, { date: _b }) => {
+    const a = new Date(_a)
+    const b = new Date(_b)
     if (a < b) {
       return 1
     } else if (a > b) {
