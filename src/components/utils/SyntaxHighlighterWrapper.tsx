@@ -11,8 +11,10 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/light'
 
 SyntaxHighlighter.registerLanguage('javascript', javascript)
 SyntaxHighlighter.registerLanguage('js', javascript)
+SyntaxHighlighter.registerLanguage('jsx', javascript)
 SyntaxHighlighter.registerLanguage('typescript', typescript)
 SyntaxHighlighter.registerLanguage('ts', typescript)
+SyntaxHighlighter.registerLanguage('tsx', typescript)
 SyntaxHighlighter.registerLanguage('sh', sh)
 SyntaxHighlighter.registerLanguage('shell', sh)
 SyntaxHighlighter.registerLanguage('html', html)

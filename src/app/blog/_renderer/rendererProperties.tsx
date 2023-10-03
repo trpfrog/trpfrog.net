@@ -44,6 +44,8 @@ const getLangName = (s: string) => {
     case 'css':
     case 'scss':
     case 'tsx':
+    case 'jsx':
+    case 'json':
       return s.toUpperCase()
     default:
       return s.charAt(0).toUpperCase() + s.slice(1)
