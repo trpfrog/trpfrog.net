@@ -4,7 +4,6 @@ import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDXComponents } from 'mdx/types'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
-import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import 'katex/dist/katex.min.css'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
@@ -15,7 +14,7 @@ import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
-import SyntaxHighlighterWrapper from '@/components/utils/SyntaxHighlighterWrapper'
+import { CodeBlock } from '@/components/molecules/CodeBlock'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -28,29 +27,6 @@ import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
 import styles from '@blog/_styles/blog.module.scss'
-
-const getLangName = (s: string) => {
-  switch (s) {
-    case 'javascript':
-    case 'js':
-      return 'JavaScript'
-    case 'typescript':
-    case 'ts':
-      return 'TypeScript'
-    case 'sh':
-      return 'Shell'
-    case 'html':
-    case 'yaml':
-    case 'css':
-    case 'scss':
-    case 'tsx':
-    case 'jsx':
-    case 'json':
-      return s.toUpperCase()
-    default:
-      return s.charAt(0).toUpperCase() + s.slice(1)
-  }
-}
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return (props => {
@@ -81,7 +57,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     }
 
     const language = className
-      ? getLangName(className.replace('language-', '').split('.').slice(-1)[0])
+      ? className.replace('language-', '').split('.').slice(-1)[0]
       : ''
 
     const languageCamelCase = language
@@ -110,22 +86,9 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       : ''
 
     return (
-      <pre>
-        {language != '' && (
-          <div className={styles.code_lang_wrapper}>
-            <span className={styles.code_lang}>{fileName || language}</span>
-          </div>
-        )}
-        <SyntaxHighlighterWrapper
-          language={language.toLowerCase()}
-          style={atomOneDarkReasonable}
-          className={`${styles.code_block} ${
-            language !== '' ? styles.code_block_with_lang : ''
-          }`}
-        >
-          {children as string}
-        </SyntaxHighlighterWrapper>
-      </pre>
+      <CodeBlock language={language} fileName={fileName}>
+        {children as string}
+      </CodeBlock>
     )
   }) satisfies MDXComponents['code']
 }

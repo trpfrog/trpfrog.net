@@ -3,11 +3,12 @@
 $code-block-border: 1px;
 $brightness: 1.2;
 
-.post code {
-  font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace !important;
-}
-
 .code_block {
+  font-family: var(--font-inconsolata), var(--font-noto-sans-mono),
+    var(--font-noto-sans-jp), monospace !important;
+  font-weight: 200 !important;
+
+  border: none !important;
   color: white;
   padding: 1em 1.5em !important;
   vertical-align: 5%;
@@ -28,10 +29,9 @@ $brightness: 1.2;
   }
 }
 
-.code_block_with_lang {
-  margin-top: -1px;
-  border-radius: 0 0 10px 10px;
-  padding: 0.5em 1.5em 1em 1.5em !important;
+.code_lang_wrapper + .code_block {
+  margin-top: 0 !important;
+  border-radius: 0 0 10px 10px !important;
 
   @include mixins.mq(dark) {
     border: solid $code-block-border lightgray;
@@ -49,9 +49,17 @@ $brightness: 1.2;
 }
 
 .code_lang_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   border-radius: 10px 10px 0 0;
-  background: rgb(40, 44, 52);
+  background: #536b2f;
   margin-bottom: -1px;
+  height: 2em;
+  padding: 0 1rem;
+
+  font-size: 0.8rem;
 
   filter: brightness($brightness);
 
@@ -75,19 +83,17 @@ $brightness: 1.2;
 }
 
 .code_lang {
-  font-size: 0.9em;
-  font-family: var(--main-font) !important;
+  font-size: 1em;
+  font-family: var(--font-m-plus-rounded-1c) !important;
+  font-weight: bold;
 
-  display: inline-block;
+  height: 98%;
+  line-height: 1;
+
+  display: inline-flex;
+  align-items: center;
   color: white;
-  margin-left: 1.5em;
   padding: 0 8px;
-
-  position: relative;
-
-  background: var(--header-color);
-  border-radius: 0 0 10px 10px;
-  width: auto;
 
   @include mixins.mq(sp) {
     border-radius: 10px 0 10px 0;
@@ -107,27 +113,13 @@ $brightness: 1.2;
   }
 }
 
-.inline_code_block {
-  display: inline;
-  word-break: break-all;
-  background-color: #0001 !important;
+.copy_button {
+  display: flex;
+  align-items: center;
 
-  @include mixins.mq(dark) {
-    background-color: #313131 !important;
-    color: white;
-  }
-  font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace;
-  padding: 0 4px;
-  font-size: 0.9em;
-  border-radius: 5px;
-
-  @include mixins.mq(dark) {
-    border: solid 1px gray;
-  }
-
-  @media print {
-    border: solid 1px gray;
-    background: #eee !important;
-    color: black;
+  color: white;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
   }
 }
