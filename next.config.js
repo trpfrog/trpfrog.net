@@ -58,15 +58,6 @@ const nextConfig = {
       },
     ]
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/storybook/:match*',
-        destination: process.env.STORYBOOK_URL + ':match*',
-      },
-    ]
-  },
 }
 
 const withMdx = require('@next/mdx')({
