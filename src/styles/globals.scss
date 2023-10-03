@@ -182,7 +182,8 @@ h3 {
 }
 
 hr {
-  border: 0.1px dashed gray;
+  border: 2px dashed var(--header-color);
+  margin: 2rem 0;
 }
 
 *:focus {
