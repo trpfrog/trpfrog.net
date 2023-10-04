@@ -3,17 +3,20 @@
 $code-block-border: 1px;
 $brightness: 1.2;
 
+$code-block-border-radius: 10px;
+
 .code_block {
   font-family: var(--font-inconsolata), var(--font-noto-sans-mono),
     var(--font-noto-sans-jp), monospace !important;
   font-weight: 200 !important;
 
   border: none !important;
+  border-radius: $code-block-border-radius !important;
+
   color: white;
   padding: 1em 1.5em !important;
   vertical-align: 5%;
   overflow: scroll;
-  border-radius: 10px;
   font-size: 0.95em;
   line-height: 1.8em;
 
@@ -31,7 +34,7 @@ $brightness: 1.2;
 
 .code_lang_wrapper + .code_block {
   margin-top: 0 !important;
-  border-radius: 0 0 10px 10px !important;
+  border-radius: 0 0 $code-block-border-radius $code-block-border-radius !important;
 
   @include mixins.mq(dark) {
     border: solid $code-block-border lightgray;
@@ -53,7 +56,7 @@ $brightness: 1.2;
   justify-content: space-between;
   align-items: center;
 
-  border-radius: 10px 10px 0 0;
+  border-radius: $code-block-border-radius $code-block-border-radius 0 0;
   background: #536b2f;
   margin-bottom: -1px;
   height: 2em;
@@ -96,7 +99,6 @@ $brightness: 1.2;
   padding: 0 8px;
 
   @include mixins.mq(sp) {
-    border-radius: 10px 0 10px 0;
     margin-left: 0;
 
     @include mixins.mq(dark) {
@@ -116,6 +118,8 @@ $brightness: 1.2;
 .copy_button {
   display: flex;
   align-items: center;
+  background: none;
+  border: none;
 
   color: white;
   opacity: 0.5;
