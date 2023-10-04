@@ -26,10 +26,15 @@ description: >-
 
 ```src/app/blog/[slug]/og-image/route.tsx
 import { ImageResponse, NextRequest } from 'next/server'
+
+export const runtime = 'edge'
+
 type Context = { params: { slug: string } }
 
 export async function GET(req: NextRequest, context: Context) {
-  const { title, thumbnail } = await getPostData(context.params.slug)
+  const slug = context.params.slug
+  const articleEndpoint = 'https://trpfrog.net/api/blog/posts/' + slug
+  const { title, thumbnail } = await fetch(articleEndpoint).then(res => res.json())
 
   return new ImageResponse(
     (
