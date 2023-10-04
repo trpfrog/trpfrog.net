@@ -1,9 +1,6 @@
 import { ImageResponse, NextRequest } from 'next/server'
-import sharp from 'sharp'
 
 import { fetchFont } from '@/lib/fetchFont'
-
-import { getPostData } from '@blog/_lib/load'
 
 type Context = {
   params: {
@@ -15,6 +12,8 @@ const ogpImageSize = {
   width: 1200,
   height: 630,
 }
+
+export const runtime = 'edge'
 
 function TrpFrogIcon({
   size,
@@ -43,13 +42,18 @@ function TrpFrogIcon({
 }
 
 export async function GET(req: NextRequest, context: Context) {
-  let { title, thumbnail } = await getPostData(context.params.slug)
+  const slug = context.params.slug
+
+  // TODO: デプロイ済みじゃないとビルドがコケるのなんとかしたい (microCMS とか使えば良い話ではある)
+  const postEndpoint = 'https://trpfrog.net/api/blog/posts/' + slug
+
+  const articleInfo = await fetch(postEndpoint).then(res => res.json())
+  let { title, thumbnail } = articleInfo
 
   // Satori doesn't support webp, so convert it to jpeg
   if (thumbnail?.endsWith('.webp')) {
-    const buffer = await fetch(thumbnail).then(res => res.arrayBuffer())
-    const image = await sharp(buffer).jpeg().toBuffer()
-    thumbnail = `data:image/jpeg;base64,${image.toString('base64')}`
+    // Thumbnail is probably provided by Cloudinary, so replace the extension to convert it to jpeg
+    thumbnail = thumbnail.replace(/\.webp$/, '.jpg')
   }
 
   const fontFamily = 'M PLUS Rounded 1c'
