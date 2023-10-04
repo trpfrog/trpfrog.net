@@ -1,6 +1,9 @@
+import { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types'
 import { ImageResponse, NextRequest } from 'next/server'
 
+import { HOST_URL } from '@/lib/constants'
 import { fetchFont } from '@/lib/fetchFont'
+import { createURL } from '@/lib/url'
 
 type Context = {
   params: {
@@ -43,9 +46,7 @@ function TrpFrogIcon({
 
 export async function GET(req: NextRequest, context: Context) {
   const slug = context.params.slug
-
-  // TODO: デプロイ済みじゃないとビルドがコケるのなんとかしたい (microCMS とか使えば良い話ではある)
-  const postEndpoint = 'https://trpfrog.net/api/blog/posts/' + slug
+  const postEndpoint = createURL(`/api/blog/posts/${slug}`, HOST_URL)
 
   const articleInfo = await fetch(postEndpoint).then(res => res.json())
   let { title, thumbnail } = articleInfo
@@ -56,8 +57,23 @@ export async function GET(req: NextRequest, context: Context) {
     thumbnail = thumbnail.replace(/\.webp$/, '.jpg')
   }
 
+  const imageResponseOptions: ImageResponseOptions = {
+    ...ogpImageSize,
+    fonts: [],
+  }
+
   const fontFamily = 'M PLUS Rounded 1c'
-  const fontData = await fetchFont(fontFamily, 800)
+  try {
+    const fontData = await fetchFont(fontFamily, 800)
+    imageResponseOptions.fonts?.push({
+      name: fontFamily,
+      data: fontData,
+      style: 'normal',
+    })
+  } catch (e) {
+    console.error('Failed to fetch font')
+    console.error(e)
+  }
 
   return new ImageResponse(
     (
@@ -120,15 +136,6 @@ export async function GET(req: NextRequest, context: Context) {
         </div>
       </>
     ),
-    {
-      ...ogpImageSize,
-      fonts: [
-        {
-          name: fontFamily,
-          data: fontData,
-          style: 'normal',
-        },
-      ],
-    },
+    imageResponseOptions,
   )
 }
