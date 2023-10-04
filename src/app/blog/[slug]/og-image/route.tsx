@@ -1,5 +1,6 @@
 import { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types'
-import { ImageResponse, NextRequest } from 'next/server'
+import { notFound } from 'next/navigation'
+import { ImageResponse, NextRequest, NextResponse } from 'next/server'
 
 import { HOST_URL } from '@/lib/constants'
 import { fetchFont } from '@/lib/fetchFont'
@@ -49,6 +50,20 @@ export async function GET(req: NextRequest, context: Context) {
   const postEndpoint = createURL(`/api/blog/posts/${slug}`, HOST_URL)
 
   const articleInfo = await fetch(postEndpoint).then(res => res.json())
+  if ('error' in articleInfo) {
+    console.error('Failed to fetch article info', articleInfo)
+    if ('code' in articleInfo.error && articleInfo.error.code === 'ENOENT') {
+      notFound()
+    } else {
+      return NextResponse.json(
+        {
+          error: 'Internal Server Error',
+        },
+        { status: 500 },
+      )
+    }
+  }
+
   let { title, thumbnail } = articleInfo
 
   // Satori doesn't support webp, so convert it to jpeg
