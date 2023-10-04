@@ -1,0 +1,65 @@
+import React from 'react'
+
+import { Tooltip } from 'react-tooltip'
+
+export interface ButtonWithTooltipProps
+  extends React.ComponentPropsWithoutRef<'button'> {
+  hoveredTooltipContent: React.ReactNode
+  clickedTooltipContent: React.ReactNode
+}
+
+export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
+  const {
+    children,
+    onClick,
+    hoveredTooltipContent,
+    clickedTooltipContent,
+    ...rest
+  } = props
+
+  const [isClicked, setIsClicked] = React.useState(false)
+  const [tooltipTimeoutId, setTooltipTimeoutId] = React.useState<number>(0)
+  const tooltipId = React.useId()
+
+  const clickHandler = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(e)
+      if (tooltipTimeoutId) {
+        clearTimeout(tooltipTimeoutId)
+      }
+      setIsClicked(true)
+      const timeoutId = window.setTimeout(() => {
+        setIsClicked(false)
+      }, 2000)
+      setTooltipTimeoutId(timeoutId)
+    },
+    [onClick, tooltipTimeoutId],
+  )
+
+  const mouseLeaveHandler = React.useCallback(() => {
+    if (tooltipTimeoutId) {
+      clearTimeout(tooltipTimeoutId)
+    }
+    setIsClicked(false)
+  }, [tooltipTimeoutId])
+
+  return (
+    <>
+      <button
+        data-tooltip-id={tooltipId}
+        onClick={clickHandler}
+        onMouseLeave={mouseLeaveHandler}
+        {...rest}
+      >
+        {children}
+      </button>
+      <Tooltip
+        id={tooltipId}
+        place={'top'}
+        style={{ padding: '0.5em', lineHeight: 1 }}
+      >
+        {isClicked ? clickedTooltipContent : hoveredTooltipContent}
+      </Tooltip>
+    </>
+  )
+}

@@ -90,9 +90,14 @@ export default React.memo(function Editor({
         <H2 icon="trpfrog" style={{ display: 'inline-block' }}>
           つまみログエディタ
         </H2>
-        <Button onClick={() => fetch(`/api/blog/open/${slug}`)}>
-          ファイルを開く
-        </Button>
+        <div style={{ display: 'flex', gap: 5 }}>
+          <Button onClick={() => fetch(`/api/blog/open/${slug}`)}>
+            Open in CotEditor
+          </Button>
+          <Button externalLink href={`/blog/${slug}/og-image`}>
+            View OG Image
+          </Button>
+        </div>
       </div>
       <hr style={{ margin: '1rem 0' }} />
       <h3>Front-matter</h3>

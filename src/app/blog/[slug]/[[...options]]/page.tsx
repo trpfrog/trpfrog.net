@@ -48,13 +48,22 @@ export async function generateMetadata({ params }: PageProps) {
   const metadata: Metadata = {
     title,
     description,
+    openGraph: {
+      locale: 'ja-JP',
+      siteName: title,
+      description,
+      type: 'website',
+      images: [{ url: `/blog/${params.slug}/og-image` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: '@TrpFrog',
+      creator: '@TrpFrog',
+    },
   }
 
-  if (thumbnail) {
-    metadata.openGraph = {
-      images: [{ url: thumbnail }],
-    }
-  }
   return metadata
 }
 

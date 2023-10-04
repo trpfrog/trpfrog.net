@@ -24,11 +24,17 @@ export const metadata = {
 
 export default async function Index() {
   const articles = await getSortedPostsData()
-  const latestLongArticleIdx = articles.findIndex((e: BlogPost) =>
-    e.tags.includes('長編記事'),
-  )
-  const latestLongArticle = articles[latestLongArticleIdx]
-  articles.splice(latestLongArticleIdx, 1)
+
+  // Get latest featured article
+  const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {
+    return !!e.thumbnail // We assume that the latest featured article has thumbnail
+  })
+  const latestFeaturedArticle = articles[latestFeaturedArticleIdx]
+
+  // Remove featured article from articles list if it is the first article
+  if (latestFeaturedArticleIdx === 0) {
+    articles.splice(latestFeaturedArticleIdx, 1)
+  }
 
   const articlesGroupedByYear = articles.reduce((acc: any, cur: BlogPost) => {
     const year = dayjs(cur.date).format('YYYY')
@@ -48,7 +54,7 @@ export default async function Index() {
         </div>
 
         <div id={styles.hero_article}>
-          <ArticleCard entry={latestLongArticle} hero={true} />
+          <ArticleCard entry={latestFeaturedArticle} hero={true} />
         </div>
 
         {getTypedEntries(articlesGroupedByYear)
