@@ -1,10 +1,10 @@
 ---
 title: 中央環状線+湾岸線を歩いて一周した
-date: 2021-12-06
-updated: 2022-03-06
-tags: 徒歩, 長編記事
+date: '2021-12-06'
+updated: '2022-03-06'
+tags: '徒歩, 長編記事'
 description: 距離も記事もクソデカい、もうオタク歩くな
-thumbnail: https://res.cloudinary.com/trpfrog/blog/c2walker/20211206005055
+thumbnail: 'https://res.cloudinary.com/trpfrog/blog/c2walker/20211206005055'
 ---
 
 **この記事は [UEC Advent Calendar 2021](https://adventar.org/calendars/6400) 6日目の記事です。**
@@ -126,8 +126,13 @@ https://trpfrog.net/blog/entry/takao-full-search
 
 あー、山手線、それなりにデカい企画だと思ったけど先越されちゃったからなー……
 
-```twitter
-1379031639003688965
+```twitter-archived
+id: 1379031639003688965
+color: orange
+name: マリなート
+userid: marine_uec19
+date: 2021-04-05
+tweet: 徒歩部へ<br/>次の企画は40km以上で頼みました
 ```
 
 
@@ -322,9 +327,12 @@ description: I 類メディア。すぐ走るので最悪！**明日のアドカ
 
 ここから一周を始めます……！！！！
 
-```twitter
-1464234114341498884
+```twitter-archived
+id: 1464234114341498884
+date: 2021-11-26
+tweet: 徒歩会開始❗️<br><br> <video controls src="https://res.cloudinary.com/trpfrog/video/upload/v1696596603/blog/c2walker/start-walking.mp4"></video>
 ```
+
 
 
 ```next-page
@@ -422,11 +430,12 @@ Googleマップを見るに、**北池袋IC**のようです。
 
 ところでオタクから差し入れがありました。ありがとうございます！
 
-```twitter
-1464254396783415300
+```twitter-archived
+id: 1464254396783415300
+date: 2021-11-26
+tweet: マトーサン (@mato1370)
+image: https://res.cloudinary.com/trpfrog/blog/c2walker/FFITnG6aIAAbUss.jpg
 ```
-
-
 
 スパチャは徒歩部のエネルギーになります。皆さんも送っていただけると嬉しいです(物乞い)
 
@@ -868,13 +877,13 @@ _s9Cqd4PzkM
 
 一応僕を含めて3人で歩いているのですが会話が持ちません。**助けてくれー！**
 
-```twitter
-1464316713202163714
+```twitter-archived
+id: 1464316713202163714
+date: 2021-11-26
+tweet: 泣きそう
+image: https://res.cloudinary.com/trpfrog/blog/c2walker/FFJMRxqaAAEcfFD.jpg
+image2: https://res.cloudinary.com/trpfrog/blog/c2walker/FFJMRxraQAEobXD.jpg
 ```
-
-
-
- 
 
 ![](https://res.cloudinary.com/trpfrog/blog/c2walker/20211205142842 "途切れ歩道")
 
@@ -1019,8 +1028,11 @@ _s9Cqd4PzkM
 ---
 2022年3月5日追記: **貼られてた** ところで違法工作物って何
 
-```twitter
-1483752179336769539
+```twitter-archived
+id: 1483752179336769539
+date: 2022-01-19
+tweet: 昨日工研に遊びに行ったら例の画像貼られてて笑っちゃった
+image: https://res.cloudinary.com/trpfrog/blog/c2walker/FJdYu9DVkAAE0cB.jpg
 ```
 ---
 
@@ -1042,16 +1054,7 @@ _s9Cqd4PzkM
 
 ![](https://res.cloudinary.com/trpfrog/blog/c2walker/20211205162944 "良いトンネル")
 
-良いですね。ところでどこかで似た景色を見たような……
-
-
-
-```twitter
-1347503989676408835
-```
-
-
-
+良いですね。
  
 
 ### 5:50 堀切橋児童遊園 (21km地点)
@@ -1080,9 +1083,6 @@ _s9Cqd4PzkM
 
 
 もうそろそろ**朝と呼んでも良さそうな明るさ**になってきました。今日もスカイツリーが見えますね！
-
-
-
  
 
 ![](https://res.cloudinary.com/trpfrog/blog/c2walker/20211205164719 "海まで10kmくん")
@@ -1099,14 +1099,13 @@ _s9Cqd4PzkM
 
 **休憩中にすることそれしかないのかね！！！！！**
 
-```twitter
-1464341716228456448
+```twitter-archived
+id: 1464341716228456448
+date: 2021-11-26
+tweet: おはようございます<br/><br/>今日もよい日に
+image: https://res.cloudinary.com/trpfrog/blog/c2walker/FFJjBn5aIAATMiB.jpg
 ```
-
-
-
  
-
 ![](https://res.cloudinary.com/trpfrog/blog/c2walker/20211205165406 "荒川の看板があったのでとりあえず撮る")
 
 ![](https://res.cloudinary.com/trpfrog/blog/c2walker/20211205165443 "東京タワーとスカイツリーが重なっています")
@@ -1978,11 +1977,14 @@ MSerNmysFkA
 
 品川駅です。
 
-```twitter
-1464520731979517957
+```twitter-archived
+id: 1464520731979517957
+name: あずきバー
+userid: azukibar_D
+date: 2021-11-27
+tweet: つらすぎるので途中離脱 
+image: https://res.cloudinary.com/trpfrog/blog/c2walker/FFMF15YaIAEF2MT.jpg
 ```
-
-
 
 あずきバーさんが離脱してしまいました。**正しい、君は正しいよ……**
 
@@ -2274,8 +2276,10 @@ wXIn2g2tczk
 ```
  
 
-```twitter
-1464584809863254021
+```twitter-archived
+id: 1464584809863254021
+date: 2021-11-27
+tweet: <video src="https://res.cloudinary.com/trpfrog/video/upload/v1696598072/blog/c2walker/finish-walking.mp4" controls></video>
 ```
 
 
