@@ -15,7 +15,7 @@ type Props = {
   className?: string
 }
 
-const Title: React.FunctionComponent<Props> = props => {
+export const Title: React.FunctionComponent<Props> = props => {
   const { children, title, description, showDefaultText = true } = props
 
   return (
@@ -34,5 +34,3 @@ const Title: React.FunctionComponent<Props> = props => {
     </>
   )
 }
-
-export default Title

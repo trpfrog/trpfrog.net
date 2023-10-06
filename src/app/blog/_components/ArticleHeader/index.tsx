@@ -2,7 +2,7 @@ import React from 'react'
 
 import Balancer from 'react-wrap-balancer'
 
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 

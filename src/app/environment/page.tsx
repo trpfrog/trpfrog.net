@@ -9,7 +9,7 @@ import yaml from 'js-yaml'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
 import GadgetIntro from './GadgetIntro'
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
 import IconMakerApp from './IconMakerApp'
 
