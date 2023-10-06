@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
+import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
 import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'

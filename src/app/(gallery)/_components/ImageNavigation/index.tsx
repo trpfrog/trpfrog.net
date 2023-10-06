@@ -15,7 +15,7 @@ type ImageNavigationProps = {
   prevHref: string
 }
 
-export default function ImageNavigation(props: ImageNavigationProps) {
+export function ImageNavigation(props: ImageNavigationProps) {
   return (
     <div className={styles.thumbnails}>
       <Link href={props.prevHref} className={styles.prev_image}>

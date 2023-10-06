@@ -9,7 +9,7 @@ type ImageViewerProps = {
   alt: string
 }
 
-export default function ImageViewer(props: ImageViewerProps) {
+export function ImageViewer(props: ImageViewerProps) {
   return (
     <div className={styles.img_wrapper_outside}>
       <div className={styles.img_wrapper_inside}>
