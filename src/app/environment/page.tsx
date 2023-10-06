@@ -11,7 +11,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import GadgetIntro from './GadgetIntro'
+import { GadgetIntro } from './GadgetIntro'
 
 type StringItemizeRecord = (
   | string

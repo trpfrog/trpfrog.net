@@ -9,7 +9,7 @@ import { Title } from '@/components/organisms/Title'
 import { Util } from '@/lib/utils'
 
 import { useBalloonSound } from './_components/Balloon'
-import BalloonArray from './_components/BalloonArray'
+import { BalloonArray } from './_components/BalloonArray'
 
 export function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()

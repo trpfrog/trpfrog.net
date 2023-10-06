@@ -10,7 +10,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-const GadgetIntro: React.FunctionComponent<Props> = ({
+export const GadgetIntro: React.FunctionComponent<Props> = ({
   children,
   name,
   imagePath,
@@ -38,5 +38,3 @@ const GadgetIntro: React.FunctionComponent<Props> = ({
     </>
   )
 }
-
-export default GadgetIntro

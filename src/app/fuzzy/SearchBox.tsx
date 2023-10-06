@@ -1,6 +1,6 @@
 'use client'
 
-export default function SearchBox() {
+export function SearchBox() {
   return (
     <div>
       https://trpfrog.net/fuzzy/{' '}

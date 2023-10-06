@@ -117,7 +117,7 @@ export function DateCard({ date }: { date: Date }) {
   )
 }
 
-export default function TweetCard({
+export function TweetCard({
   tweet,
   keywords,
 }: {

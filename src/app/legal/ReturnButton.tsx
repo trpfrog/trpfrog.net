@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/atoms/Button'
 
-export default function ReturnButton() {
+export function ReturnButton() {
   const pathname = usePathname()
   const basename = path.basename(pathname ?? '')
 

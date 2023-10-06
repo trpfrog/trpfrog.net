@@ -1,16 +1,12 @@
 import React from 'react'
 
-import PageNavigation from '@/app/tweets/PageNavigation'
-import TweetCard, { DateCard } from '@/app/tweets/TweetCard'
-import search from '@/app/tweets/tweetSearcher'
+import { PageNavigation } from '@/app/tweets/PageNavigation'
+import { DateCard, TweetCard } from '@/app/tweets/TweetCard'
+import { search } from '@/app/tweets/tweetSearcher'
 
 import { Block } from '@/components/molecules/Block'
 
-export default async function TweetArea({
-  searchParams,
-}: {
-  searchParams: any
-}) {
+export async function TweetArea({ searchParams }: { searchParams: any }) {
   const { results, maxPage, keywords, tweetCount } = await search(searchParams)
 
   const tweetCards: React.ReactNode[] = []
