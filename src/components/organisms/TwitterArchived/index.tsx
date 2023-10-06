@@ -5,7 +5,6 @@ import {
   TwitterImage,
   TwitterImageData,
 } from '@/components/atoms/twitter/TwitterImage'
-import { BlockLink } from '@/components/molecules/BlockLink'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 
 import styles from './index.module.scss'
@@ -36,11 +35,11 @@ export function TwitterArchived(props: TwitterArchivedProps) {
     ...rest
   } = props
 
-  const tweetLink = 'https://twitter.com/' + screenName + '/status/' + id
+  const tweetLink = `https://twitter.com/${screenName}/status/${id}`
 
   return (
     <div className={`${styles.wrapper} ${className}`} {...rest}>
-      <BlockLink className={styles.box} href={tweetLink}>
+      <div className={styles.box}>
         <TwitterHeader
           name={author}
           screenName={screenName}
@@ -48,8 +47,10 @@ export function TwitterArchived(props: TwitterArchivedProps) {
         />
         {tweet && <TweetTextarea tweet={tweet} />}
         {images && images.length > 0 && <TwitterImage images={images} />}
-        <div className={styles.date}>{date}</div>
-      </BlockLink>
+        <div className={styles.date}>
+          {tweetLink ? <a href={tweetLink}>{date}</a> : date}
+        </div>
+      </div>
     </div>
   )
 }
