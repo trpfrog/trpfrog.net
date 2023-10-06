@@ -5,7 +5,7 @@ import {
   TwitterImage,
   TwitterImageData,
 } from '@/components/atoms/twitter/TwitterImage'
-import BlockLink from '@/components/molecules/BlockLink'
+import { BlockLink } from '@/components/molecules/BlockLink'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 
 import styles from './index.module.scss'
