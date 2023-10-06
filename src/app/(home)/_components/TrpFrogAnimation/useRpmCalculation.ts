@@ -25,7 +25,7 @@ export type RpmCalculationOptions = Partial<{
   minQueueSize: number
 }>
 
-export default function useRpmCalculation(
+export function useRpmCalculation(
   queueTTLMillis: number,
   options?: RpmCalculationOptions,
 ) {

@@ -13,7 +13,7 @@ import {
 
 type Props = React.ComponentPropsWithoutRef<'div'>
 
-export default async function TrpFrogIconFrame(props: Props) {
+export async function TrpFrogIconFrame(props: Props) {
   const updateHours =
     (await get<number>(TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY)) ??
     TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS

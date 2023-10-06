@@ -6,7 +6,7 @@ type Props = {
   id?: string
 }
 
-const Ratings = ({ id }: Props) => {
+export const Ratings = ({ id }: Props) => {
   return (
     <Block title={'競プロ'} h2icon={'car'} id={id}>
       <ul className={styles.rating_list}>
@@ -34,5 +34,3 @@ const Ratings = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default Ratings

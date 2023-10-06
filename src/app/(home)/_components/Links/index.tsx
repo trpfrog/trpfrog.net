@@ -16,7 +16,7 @@ type Props = {
   id?: string
 }
 
-export default async function Links({ id }: Props) {
+export async function Links({ id }: Props) {
   return (
     <Block title={'リンク集'} h2icon={'pumpkin'} id={styles.links}>
       <div className={styles.link_grid}>

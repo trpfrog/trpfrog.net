@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-import RotateButton from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
+import { RotateButton } from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
 import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
-import useRpmCalculation from '@/app/(home)/_components/TrpFrogAnimation/useRpmCalculation'
+import { useRpmCalculation } from '@/app/(home)/_components/TrpFrogAnimation/useRpmCalculation'
 
 import { AnglePicker } from '@/components/atoms/AnglePicker'
 
@@ -15,7 +15,7 @@ type Props = {
   id?: string
 }
 
-export default function TrpFrogAnimation({ children, id }: Props) {
+export function TrpFrogAnimation({ children, id }: Props) {
   const ref = React.useRef<HTMLDivElement>(null)
   const rotateAnimation = useRotateAnimation()
 

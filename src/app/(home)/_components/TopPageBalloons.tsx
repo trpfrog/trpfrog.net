@@ -11,7 +11,7 @@ type Props = {
   id?: string
 }
 
-const TopPageBalloons = ({ id }: Props) => {
+export const TopPageBalloons = ({ id }: Props) => {
   const balloonAmount = 7
   const { isBurst, balloonColorArray, onBurst } = useBalloonState(
     balloonAmount,
@@ -48,5 +48,3 @@ const TopPageBalloons = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default TopPageBalloons

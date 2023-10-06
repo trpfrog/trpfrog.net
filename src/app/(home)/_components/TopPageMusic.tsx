@@ -10,7 +10,7 @@ type Props = {
   id?: string
 }
 
-const TopPageMusic = ({ id }: Props) => {
+export const TopPageMusic = ({ id }: Props) => {
   return (
     <Block title={'つまみのうた'} h2icon={'noa'} id={id}>
       <p>
@@ -44,5 +44,3 @@ const TopPageMusic = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default TopPageMusic

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import RotateButton from './RotateButton'
+import { RotateButton } from './RotateButton'
 
 describe('RotateButton', () => {
   const cases = [

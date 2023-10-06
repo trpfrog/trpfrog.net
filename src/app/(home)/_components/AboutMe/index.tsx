@@ -8,7 +8,7 @@ import {
   additionalAttributes,
   attributes,
 } from '@/app/(home)/_components/AboutMe/attributes'
-import KCommandBox from '@/app/(home)/_components/AboutMe/KCommandBox'
+import { KCommandBox } from '@/app/(home)/_components/AboutMe/KCommandBox'
 
 import { Block } from '@/components/molecules/Block'
 
@@ -18,7 +18,7 @@ type Props = {
   id: string
 }
 
-const AboutMe = ({ id }: Props) => {
+export const AboutMe = ({ id }: Props) => {
   return (
     <Block id={id}>
       <div className={styles.my_name}>
@@ -85,5 +85,3 @@ const AboutMe = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default AboutMe

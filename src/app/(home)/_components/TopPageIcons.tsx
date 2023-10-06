@@ -9,7 +9,7 @@ type Props = {
   id?: string
 }
 
-const TopPageIcons = ({ id }: Props) => {
+export const TopPageIcons = ({ id }: Props) => {
   return (
     <Block title={'作ったアイコン'} h2icon={'evil'} id={id}>
       <div className={styles.top_icons}>
@@ -32,5 +32,3 @@ const TopPageIcons = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default TopPageIcons

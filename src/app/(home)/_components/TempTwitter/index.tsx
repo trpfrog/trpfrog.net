@@ -16,7 +16,7 @@ import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAl
 
 import styles from './index.module.scss'
 
-export default async function TempTwitter() {
+export async function TempTwitter() {
   let md: string
   let frontMatter: { [key: string]: any }
   try {
