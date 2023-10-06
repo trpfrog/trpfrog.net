@@ -6,7 +6,7 @@ import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-import Hamburger from '@/components/molecules/Hamburger'
+import { Hamburger } from '@/components/molecules/Hamburger'
 import MobileMenu, {
   useMobileMenuState,
 } from '@/components/organisms/MobileMenu'

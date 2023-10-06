@@ -1,4 +1,4 @@
-import Hamburger from './index'
+import { Hamburger } from './index'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

@@ -9,7 +9,7 @@ import {
 
 import styles from './index.module.scss'
 
-const Hamburger = () => {
+export const Hamburger = () => {
   const [isOpened] = useMobileMenuState()
   const toggleMenuCallback = useToggleMenuCallback()
 
@@ -27,5 +27,3 @@ const Hamburger = () => {
     </div>
   )
 }
-
-export default Hamburger
