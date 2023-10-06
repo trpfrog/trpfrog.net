@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Alert from '@/components/atoms/Alert'
+import { Alert } from '@/components/atoms/Alert'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import { parseTitleAndBody } from '@blog/_lib/codeBlockParser'

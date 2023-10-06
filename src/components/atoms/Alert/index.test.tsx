@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 
 import { LOREM_IPSUM } from '@/lib/constants'
 
-import Alert, { AlertTypes } from '.'
+import { AlertTypes, Alert } from '.'
 
 describe('Alert', () => {
   const types: AlertTypes[] = ['caution', 'frog', 'info']
