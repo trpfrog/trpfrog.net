@@ -13,7 +13,7 @@ import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Navigation from '@/components/organisms/Navigation'
 import { CommentToolbar } from '@/components/utils/CommentToolbar'
-import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAwesomeIcons'
+import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
