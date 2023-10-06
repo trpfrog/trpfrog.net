@@ -1,4 +1,4 @@
-import Footer from './index'
+import { Footer } from './index'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
