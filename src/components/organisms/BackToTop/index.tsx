@@ -16,7 +16,7 @@ const backToTop = () => {
   })
 }
 
-export default function BackToTop() {
+export function BackToTop() {
   return (
     <CircleButton id={styles.page_top} onClick={backToTop}>
       <FontAwesomeIcon icon={faAngleDoubleUp} />

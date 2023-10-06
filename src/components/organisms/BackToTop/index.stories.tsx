@@ -1,4 +1,4 @@
-import BackToTop from './index'
+import { BackToTop } from './index'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
