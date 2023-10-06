@@ -5,7 +5,7 @@ import React from 'react'
 type Props = React.ComponentPropsWithoutRef<'div'>
 import styles from './index.module.scss'
 
-export default function HoverScrollBox(props: Props) {
+export function HoverScrollBox(props: Props) {
   const { className = '', children, ...rest } = props
 
   const scrollAreaRef = React.useRef<HTMLDivElement>(null)

@@ -6,7 +6,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 
-import HoverScrollBox from '@/components/atoms/HoverScrollBox'
+import { HoverScrollBox } from '@/components/atoms/HoverScrollBox'
 import { Block } from '@/components/molecules/Block'
 
 import { getSortedPostsData } from '@blog/_lib/load'

@@ -1,4 +1,4 @@
-import HoverScrollBox from '.'
+import { HoverScrollBox } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
