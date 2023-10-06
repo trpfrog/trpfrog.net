@@ -1,4 +1,4 @@
-import H2, { iconURLs } from '.'
+import { iconURLs, H2 } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
