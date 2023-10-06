@@ -2,7 +2,7 @@ import Script from 'next/script'
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || ''
 
-const Analytics = () => {
+export const Analytics = () => {
   if (!GA_TRACKING_ID) return <></>
   return (
     <>
@@ -23,5 +23,3 @@ const Analytics = () => {
     </>
   )
 }
-
-export default Analytics

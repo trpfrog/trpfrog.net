@@ -7,7 +7,7 @@ type Props = {
   image?: string
 }
 
-const TwitterCard = ({
+export const TwitterCard = ({
   title = SITE_NAME,
   description = 'さかなになりたいね',
   url,
@@ -27,5 +27,3 @@ const TwitterCard = ({
     </>
   )
 }
-
-export default TwitterCard

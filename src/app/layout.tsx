@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 
 import { Toaster } from 'react-hot-toast'
 
-import Analytics from '@/components/head/Analytics'
-import Favicon from '@/components/head/Favicon'
-import GoogleFonts from '@/components/head/GoogleFonts'
+import { Analytics } from '@/components/head/Analytics'
+import { Favicon } from '@/components/head/Favicon'
+import { GoogleFonts } from '@/components/head/GoogleFonts'
 import { BackToTop } from '@/components/organisms/BackToTop'
 import { Footer } from '@/components/organisms/Footer'
 import { Header } from '@/components/organisms/Header'
