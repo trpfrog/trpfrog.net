@@ -60,10 +60,8 @@ const parseFootnote = (content: string) => {
 //   return content
 // }
 
-const parse = (markdown: string) => {
+export const parse = (markdown: string) => {
   let list = markdown.split('<!-- page break --->').map(parseFootnote)
   // list = await Promise.all(list.map(applyTextlint))
   return list.map(e => e.split('<!-- window break --->'))
 }
-
-export default parse

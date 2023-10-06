@@ -13,7 +13,7 @@ export const gridArea = {
   info: 'info',
 } as const
 
-export default function ArticleCardGrid(props: Props) {
+export function ArticleCardGrid(props: Props) {
   const { className, isHero, ...rest } = props
   return (
     <div

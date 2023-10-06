@@ -5,12 +5,12 @@ import { Metadata } from 'next'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
-import ArticleHeader from '@blog/_components/ArticleHeader'
+import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 import { getPreviewPostData } from '@blog/_lib/loadPreview'
 import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { formatReadTime } from '@blog/_lib/readTime'
-import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
+import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 type Props = {
   params: {

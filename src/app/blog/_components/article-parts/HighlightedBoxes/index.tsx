@@ -4,7 +4,7 @@ import { Alert } from '@/components/atoms/Alert'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
 import { parseTitleAndBody } from '@blog/_lib/codeBlockParser'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const Caution: IsomorphicArticleParts = ({
   content,

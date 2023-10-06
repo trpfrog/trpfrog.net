@@ -5,17 +5,17 @@ import { Metadata } from 'next'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
-import ArticleHeader from '@blog/_components/ArticleHeader'
+import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BadBlogBlock } from '@blog/_components/BadBlog'
-import RelatedPosts from '@blog/_components/RelatedPosts'
+import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 import { getPostData, getSortedPostsData } from '@blog/_lib/load'
-import BlogMarkdown from '@blog/_renderer/BlogMarkdown'
+import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import styles from '@blog/_styles/blog.module.scss'
 
-import ArticleSidebar from './_components/ArticleSidebar'
+import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
 
 export const dynamicParams = false

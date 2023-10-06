@@ -15,9 +15,6 @@ const share = (slug: string) => {
   window.open(tweetURL)
 }
 
-export default function ShareSpan(props: {
-  slug: string
-  children: React.ReactNode
-}) {
+export function ShareSpan(props: { slug: string; children: React.ReactNode }) {
   return <div onClick={() => share(props.slug)}>{props.children}</div>
 }

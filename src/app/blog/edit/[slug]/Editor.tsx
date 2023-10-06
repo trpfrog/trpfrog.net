@@ -12,10 +12,10 @@ import { H2 } from '@/components/atoms/H2'
 import useSparseCallback from '@/hooks/useSparseCallback'
 
 import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
-import EditorForm from '@blog/edit/[slug]/EditorForm'
-import useSaveArticle from '@blog/edit/_hooks/useSaveArticle'
-import useToastErrorCallback from '@blog/edit/_hooks/useToastErrorCallback'
-import useUploadFunction from '@blog/edit/_hooks/useUploadFunction'
+import { EditorForm } from '@blog/edit/[slug]/EditorForm'
+import { useSaveArticle } from '@blog/edit/_hooks/useSaveArticle'
+import { useToastErrorCallback } from '@blog/edit/_hooks/useToastErrorCallback'
+import { useUploadFunction } from '@blog/edit/_hooks/useUploadFunction'
 
 import type { SimpleMDEReactProps } from 'react-simplemde-editor'
 
@@ -29,7 +29,7 @@ type Props = {
   slug: string
 }
 
-export default React.memo(function Editor({
+export const Editor = React.memo(function Editor({
   setPost,
   slug,
   rawMarkdown,

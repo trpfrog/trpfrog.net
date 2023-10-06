@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './index.module.scss'
 
-export default function EntryButton(props: {
+export function EntryButton(props: {
   text: string
   icon: IconProp
   onClick?: any

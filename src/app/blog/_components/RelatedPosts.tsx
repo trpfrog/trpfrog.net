@@ -7,13 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Button } from '@/components/atoms/Button'
 
-import ArticleGrid from '@blog/_components/ArticleGrid'
-import BlogPost from '@blog/_lib/blogPost'
+import { ArticleGrid } from '@blog/_components/ArticleGrid'
+import { BlogPost } from '@blog/_lib/blogPost'
 import styles from '@blog/_styles/blog.module.scss'
 
-import ArticleCard from './ArticleCard'
+import { ArticleCard } from './ArticleCard'
 
-const RelatedPosts = ({
+export const RelatedPosts = ({
   tag,
   relatedPosts,
 }: {
@@ -58,5 +58,3 @@ const RelatedPosts = ({
     )
   }
 }
-
-export default RelatedPosts

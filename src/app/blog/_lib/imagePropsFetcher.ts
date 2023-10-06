@@ -1,6 +1,6 @@
 import cloudinary from '@/lib/cloudinary'
 
-import BlogPost from './blogPost'
+import { BlogPost } from './blogPost'
 import { getPureCloudinaryPath } from './getPureCloudinaryPath'
 
 import type { ResourceApiResponse } from 'cloudinary'

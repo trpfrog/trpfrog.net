@@ -6,12 +6,12 @@ import Link from 'next/link'
 
 import { Button } from '@/components/atoms/Button'
 
-import EntryButton from '@blog/_components/EntryButton'
-import TogglePageViewLink from '@blog/_components/TogglePageViewLink'
+import { EntryButton } from '@blog/_components/EntryButton'
+import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
 import { UDFontButton } from '@blog/_components/UDFontBlock'
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 
-import ShareSpan from './ShareSpan'
+import { ShareSpan } from './ShareSpan'
 
 type EntryButtonProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,

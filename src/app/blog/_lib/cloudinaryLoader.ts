@@ -1,4 +1,4 @@
-export default function cloudinaryLoader({ src, width, quality }: any) {
+export function cloudinaryLoader({ src, width, quality }: any) {
   const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
   if (src.startsWith('/')) {
     src = src.substring(1)

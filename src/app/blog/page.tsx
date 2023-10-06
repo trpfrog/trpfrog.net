@@ -11,9 +11,9 @@ import { Title } from '@/components/organisms/Title'
 
 import { getTypedEntries } from '@/lib/utils'
 
-import ArticleCard from '@blog/_components/ArticleCard'
+import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { getSortedPostsData } from '@blog/_lib/load'
 import styles from '@blog/_styles/blog.module.scss'
 

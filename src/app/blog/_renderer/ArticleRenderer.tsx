@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
@@ -26,7 +26,7 @@ export type ArticleRendererProps =
       useClient?: boolean
     }
 
-export default React.memo(function ArticleRenderer(
+export const ArticleRenderer = React.memo(function ArticleRenderer(
   props: ArticleRendererProps,
 ) {
   let options: MarkdownOptions

@@ -9,7 +9,7 @@ import { BlockLink } from '@/components/molecules/BlockLink'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { formatReadTime } from '@blog/_lib/readTime'
 
 import styles from './index.module.scss'

@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 
 import styles from './index.module.scss'
 
@@ -19,7 +19,7 @@ type Props = {
   post: BlogPost
 }
 
-const PostAttributes = ({ post }: Props) => {
+export const PostAttributes = ({ post }: Props) => {
   type ContentProps = {
     icon: IconProp
     title: string
@@ -93,5 +93,3 @@ const PostAttributes = ({ post }: Props) => {
     </div>
   )
 }
-
-export default PostAttributes

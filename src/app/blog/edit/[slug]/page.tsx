@@ -9,8 +9,8 @@ import { Block } from '@/components/molecules/Block'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 import { buildBlogPost } from '@blog/_lib/blogPost'
-import Editor from '@blog/edit/[slug]/Editor'
-import Viewer from '@blog/edit/[slug]/Viewer'
+import { Editor } from '@blog/edit/[slug]/Editor'
+import { Viewer } from '@blog/edit/[slug]/Viewer'
 
 import styles from './page.module.scss'
 

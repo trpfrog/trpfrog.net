@@ -7,13 +7,14 @@ import dayjs from 'dayjs'
 import { BlockLink } from '@/components/molecules/BlockLink'
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
-import ArticleCardGrid, {
+import {
   gridArea,
+  ArticleCardGrid,
 } from '@blog/_components/ArticleCard/ArticleCardGrid'
-import ArticleTitle from '@blog/_components/ArticleCard/ArticleTitle'
-import Card from '@blog/_components/ArticleCard/Card'
-import TagBar from '@blog/_components/ArticleCard/TagBar'
-import BlogPost from '@blog/_lib/blogPost'
+import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
+import { Card } from '@blog/_components/ArticleCard/Card'
+import { TagBar } from '@blog/_components/ArticleCard/TagBar'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 
 import styles from './index.module.scss'
@@ -24,7 +25,7 @@ type Props = {
   style?: React.CSSProperties
 }
 
-const ArticleCard = ({ entry, hero = false, style }: Props) => {
+export const ArticleCard = ({ entry, hero = false, style }: Props) => {
   const articlePath = '/blog/' + entry.slug
   const thumbnail = getPureCloudinaryPath(entry.thumbnail ?? '/TwitterCard')
 
@@ -70,5 +71,3 @@ const ArticleCard = ({ entry, hero = false, style }: Props) => {
     </Card>
   )
 }
-
-export default ArticleCard

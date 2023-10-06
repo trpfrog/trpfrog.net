@@ -3,9 +3,9 @@ import React from 'react'
 import { Block } from '@/components/molecules/Block'
 import { HeaderFollowSticky } from '@/components/organisms/Header'
 
-import ArticleCard from '@blog/_components/ArticleCard'
-import PageNavigation from '@blog/_components/PageNavigation'
-import BlogPost from '@blog/_lib/blogPost'
+import { ArticleCard } from '@blog/_components/ArticleCard'
+import { PageNavigation } from '@blog/_components/PageNavigation'
+import { BlogPost } from '@blog/_lib/blogPost'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { RichEntryButtons } from './EntryButtons'
@@ -14,7 +14,7 @@ type Props = {
   post: BlogPost
 }
 
-export default function ArticleSidebar({ post }: Props) {
+export function ArticleSidebar({ post }: Props) {
   return (
     <HeaderFollowSticky top={'1em'}>
       <ArticleCard

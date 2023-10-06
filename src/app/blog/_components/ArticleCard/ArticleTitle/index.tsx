@@ -11,7 +11,7 @@ type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   isHero?: boolean
 }
 
-export default function ArticleTitle(props: Props) {
+export function ArticleTitle(props: Props) {
   const { title, className, isHero, ...rest } = props
   return (
     <div

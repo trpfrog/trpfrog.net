@@ -5,7 +5,7 @@ import { parseColonSeparatedList } from '@blog/_lib/codeBlockParser'
 
 import styles from './index.module.scss'
 
-const WalkingResultBox: IsomorphicArticleParts = ({ content }) => {
+export const WalkingResultBox: IsomorphicArticleParts = ({ content }) => {
   const data = parseColonSeparatedList(content)
   return (
     <div className={styles.result_box_grid}>
@@ -20,5 +20,3 @@ const WalkingResultBox: IsomorphicArticleParts = ({ content }) => {
     </div>
   )
 }
-
-export default WalkingResultBox

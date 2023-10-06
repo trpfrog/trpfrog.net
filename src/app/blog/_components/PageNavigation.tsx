@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react'
 
 import { Button } from '@/components/atoms/Button'
 
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 
 type Props = {
   entry: BlogPost
@@ -35,7 +35,7 @@ export const PageTransferButton = (props: PageTransferProps) => {
   )
 }
 
-const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
+export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
   const pagePosition1Indexed = entry.currentPage
 
   const disabledButtonStyle: CSSProperties = {
@@ -93,5 +93,3 @@ const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
     </div>
   )
 }
-
-export default PageNavigation

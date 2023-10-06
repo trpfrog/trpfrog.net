@@ -7,7 +7,7 @@ import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import { parseConversation } from './parse'
 
-const Conversation: IsomorphicArticleParts = ({ content }) => {
+export const Conversation: IsomorphicArticleParts = ({ content }) => {
   const conversation = parseConversation(content)
   return (
     <Talk>
@@ -23,5 +23,3 @@ const Conversation: IsomorphicArticleParts = ({ content }) => {
     </Talk>
   )
 }
-
-export default Conversation
