@@ -10,10 +10,7 @@ type Props = {
   style?: CSSProperties
 }
 
-export default function LoadingBlock({
-  isFullHeight = false,
-  ...props
-}: Props) {
+export function LoadingBlock({ isFullHeight = false, ...props }: Props) {
   return (
     <Block
       className={isFullHeight ? styles.fullscreen_block : ''}

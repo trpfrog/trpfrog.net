@@ -1,4 +1,4 @@
-import LoadingBlock from './index'
+import { LoadingBlock } from './index'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

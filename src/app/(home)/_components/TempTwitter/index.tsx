@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import LoadingBlock from '@/components/molecules/LoadingBlock'
+import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
 import microCMS from '@/lib/microCMS'
 
