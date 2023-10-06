@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 
-import ImageList, { ImagePaths } from '@/app/(gallery)/_components/ImageList'
+import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
-import Button from '@/components/atoms/Button'
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { Button } from '@/components/atoms/Button'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
 export const metadata = {
   title: 'つまみアイコン集',

@@ -25,7 +25,7 @@ const TwitterArchiveSchema = z.object({
   image4: z.string().optional(),
 })
 
-const TwitterArchive: IsomorphicArticleParts = React.memo(
+export const TwitterArchive: IsomorphicArticleParts = React.memo(
   function TwitterArchive({ content }) {
     const rawTweetData = parseColonSeparatedDict(content)
     const parsed = TwitterArchiveSchema.safeParse(rawTweetData)
@@ -75,5 +75,3 @@ const TwitterArchive: IsomorphicArticleParts = React.memo(
     )
   },
 )
-
-export default TwitterArchive

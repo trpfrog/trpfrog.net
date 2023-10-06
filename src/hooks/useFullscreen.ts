@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export default function useFullscreen() {
+export function useFullscreen() {
   useEffect(() => {
     if (typeof document === 'undefined') {
       return

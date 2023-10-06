@@ -9,7 +9,7 @@ type Props = {
   secondaryButtonText: string
 }
 
-export default function SwitchUI(props: Props) {
+export function SwitchUI(props: Props) {
   const [showPrimary, setShowPrimary] = useState(true)
   return (
     <React.Fragment key={props.key}>

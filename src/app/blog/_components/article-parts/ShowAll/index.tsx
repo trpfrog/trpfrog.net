@@ -2,9 +2,13 @@ import React from 'react'
 
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
-const ShowAll: IsomorphicArticleParts = ({ content, entry, imageSize }) => {
+export const ShowAll: IsomorphicArticleParts = ({
+  content,
+  entry,
+  imageSize,
+}) => {
   const [first, second] = content.split(/\n---+\n/)
   return (
     <ShowAllComponent
@@ -16,5 +20,3 @@ const ShowAll: IsomorphicArticleParts = ({ content, entry, imageSize }) => {
     </ShowAllComponent>
   )
 }
-
-export default ShowAll

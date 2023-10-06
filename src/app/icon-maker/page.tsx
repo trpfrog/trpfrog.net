@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 
 import Link from 'next/link'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
-import IconMakerApp from './IconMakerApp'
+import { IconMakerApp } from './IconMakerApp'
 
 export const metadata = {
   title: 'アイコンメーカー',

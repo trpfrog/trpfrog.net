@@ -1,24 +1,24 @@
 import React from 'react'
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-import TrpFrogIconFrame from '@/app/(home)/_components/TrpFrogIconFrame'
+import { TrpFrogIconFrame } from '@/app/(home)/_components/TrpFrogIconFrame'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 
-import AboutMe from './_components/AboutMe'
-import Bird from './_components/Bird'
-import Links from './_components/Links'
-import Ratings from './_components/Ratings'
-import Store from './_components/Store'
-import TempTwitter from './_components/TempTwitter'
-import TopPageBalloons from './_components/TopPageBalloons'
-import TopPageIcons from './_components/TopPageIcons'
-import TopPageMusic from './_components/TopPageMusic'
-import TrpFrogAnimationFrame from './_components/TrpFrogAnimation'
-import WhatsNew from './_components/WhatsNew'
+import { AboutMe } from './_components/AboutMe'
+import { Bird } from './_components/Bird'
+import { Links } from './_components/Links'
+import { Ratings } from './_components/Ratings'
+import { Store } from './_components/Store'
+import { TempTwitter } from './_components/TempTwitter'
+import { TopPageBalloons } from './_components/TopPageBalloons'
+import { TopPageIcons } from './_components/TopPageIcons'
+import { TopPageMusic } from './_components/TopPageMusic'
+import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrogAnimation'
+import { WhatsNew } from './_components/WhatsNew'
 import styles from './page.module.scss'
 
-export default async function Index() {
+export default function Index() {
   return (
     <>
       <TrpFrogAnimationFrame />

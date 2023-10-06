@@ -2,14 +2,14 @@ import Image from 'next/legacy/image'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
 type Props = {
   id?: string
 }
 
-const Store = ({ id }: Props) => {
+export const Store = ({ id }: Props) => {
   return (
     <Block title={'ストア'} h2icon={'otaku'} id={id}>
       <p>
@@ -61,5 +61,3 @@ const Store = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default Store

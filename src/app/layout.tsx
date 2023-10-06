@@ -5,19 +5,19 @@ import type { Metadata } from 'next'
 
 import { Toaster } from 'react-hot-toast'
 
-import Analytics from '@/components/head/Analytics'
-import Favicon from '@/components/head/Favicon'
-import GoogleFonts from '@/components/head/GoogleFonts'
-import BackToTop from '@/components/organisms/BackToTop'
-import Footer from '@/components/organisms/Footer'
-import Header from '@/components/organisms/Header'
-import Navigation from '@/components/organisms/Navigation'
+import { Analytics } from '@/components/head/Analytics'
+import { Favicon } from '@/components/head/Favicon'
+import { GoogleFonts } from '@/components/head/GoogleFonts'
+import { BackToTop } from '@/components/organisms/BackToTop'
+import { Footer } from '@/components/organisms/Footer'
+import { Header } from '@/components/organisms/Header'
+import { Navigation } from '@/components/organisms/Navigation'
 import { CommentToolbar } from '@/components/utils/CommentToolbar'
-import FixTooLargeFontAwesomeIcons from '@/components/utils/FixTooLargeFontAwesomeIcons'
+import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
-import fontVariables from '@/lib/googleFonts'
+import { fontVariables } from '@/lib/googleFonts'
 
 import styles from './layout.module.scss'
 

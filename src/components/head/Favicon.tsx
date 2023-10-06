@@ -1,4 +1,4 @@
-const Favicon = () => {
+export const Favicon = () => {
   return (
     <>
       <link
@@ -40,5 +40,3 @@ const Favicon = () => {
     </>
   )
 }
-
-export default Favicon

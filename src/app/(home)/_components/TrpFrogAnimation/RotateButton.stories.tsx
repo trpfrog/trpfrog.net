@@ -1,4 +1,4 @@
-import RotateButton from './RotateButton'
+import { RotateButton } from './RotateButton'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

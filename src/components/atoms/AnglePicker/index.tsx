@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import DivWithDragEvent from '@/components/atoms/DivWithDragEvent'
+import { DivWithDragEvent } from '@/components/atoms/DivWithDragEvent'
 
 import styles from './index.module.scss'
 
@@ -17,7 +17,7 @@ export interface AnglePickerHandle {
   setDegree: (degree: number | ((prev: number) => number)) => void
 }
 
-const AnglePicker = React.forwardRef<AnglePickerHandle, Props>(
+export const AnglePicker = React.forwardRef<AnglePickerHandle, Props>(
   function AnglePicker(props, ref) {
     const {
       onAngleChange,
@@ -85,5 +85,3 @@ const AnglePicker = React.forwardRef<AnglePickerHandle, Props>(
     )
   },
 )
-
-export default AnglePicker

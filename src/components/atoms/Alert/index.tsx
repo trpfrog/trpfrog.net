@@ -21,7 +21,7 @@ type Props = React.ComponentPropsWithoutRef<'div'> & {
   type: AlertTypes
 }
 
-export default function Alert(props: Props) {
+export function Alert(props: Props) {
   const { title, children, type, className = '', ...rest } = props
 
   const alertAppearance: Record<AlertTypes, AlertAppearance> = {

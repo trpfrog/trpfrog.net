@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 
-import useRpmCalculation, { degreeDifference } from './useRpmCalculation'
+import { degreeDifference, useRpmCalculation } from './useRpmCalculation'
 
 describe('degreeDifference', () => {
   test('0, 0', () => {

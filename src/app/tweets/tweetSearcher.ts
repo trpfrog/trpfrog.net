@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 
 const prisma = new PrismaClient()
 
-export default async function search(searchParams: any) {
+export async function search(searchParams: any) {
   const params: any = {
     page: parseInt(searchParams.p ?? '1', 10),
     query: decodeURIComponent(searchParams.q ?? ''),

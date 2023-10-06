@@ -73,7 +73,7 @@ function Wrapper<T extends TagType>(
   }
 }
 
-export default function Button(props: Props) {
+export function Button(props: Props) {
   const tag = getType(props)
   const { className = '', externalLink, ...rest } = props
   return (

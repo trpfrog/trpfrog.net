@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useReward } from 'react-rewards'
 
-import Balloon, { balloonColors } from '@/app/balloon/_components/Balloon'
+import { balloonColors, Balloon } from '@/app/balloon/_components/Balloon'
 
 import styles from './index.module.scss'
 
@@ -72,7 +72,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
   }
 }
 
-export default function BalloonArray({ n, width = 80 }: BalloonArrayProps) {
+export function BalloonArray({ n, width = 80 }: BalloonArrayProps) {
   const height = width / 0.6
 
   const { updateAmount, isBurst, balloonColorArray, onBurst } = useBalloonState(

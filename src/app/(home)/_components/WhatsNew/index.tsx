@@ -6,7 +6,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 
-import HoverScrollBox from '@/components/atoms/HoverScrollBox'
+import { HoverScrollBox } from '@/components/atoms/HoverScrollBox'
 import { Block } from '@/components/molecules/Block'
 
 import { getSortedPostsData } from '@blog/_lib/load'
@@ -44,7 +44,7 @@ const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
   })
 }
 
-export default async function WhatsNew({ id }: Props) {
+export async function WhatsNew({ id }: Props) {
   const whatsNewRecords: WhatsNewRecord[] = await getWhatsNewRecords()
   return (
     <Block title={'最新情報'} h2icon={'robot'} id={id} className={styles.block}>

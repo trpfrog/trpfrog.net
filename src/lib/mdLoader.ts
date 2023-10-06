@@ -3,7 +3,7 @@ import path from 'path'
 
 import matter from 'gray-matter'
 
-import Utils from './utils'
+import { Util as Utils } from './utils'
 
 type DateObject = { date: `${number}/${number}/${number}` }
 
@@ -13,7 +13,7 @@ type MarkdownWithFrontmatter<T> = {
   content: string
 }
 
-export default async function readMarkdowns<T extends DateObject>(
+export async function readMarkdowns<T extends DateObject>(
   dirpath: string,
 ): Promise<MarkdownWithFrontmatter<T>[]> {
   const files = await fs.readdir(dirpath)

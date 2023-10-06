@@ -5,7 +5,7 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { action } from '@storybook/addon-actions'
 
-import CircleButton from '.'
+import { CircleButton } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

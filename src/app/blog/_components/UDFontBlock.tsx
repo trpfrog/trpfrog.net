@@ -7,7 +7,7 @@ import { parseCookies, setCookie } from 'nookies'
 
 import styles from '@blog/_styles/blog.module.scss'
 
-import EntryButton from './EntryButton'
+import { EntryButton } from './EntryButton'
 
 export const UDFontStateContext = React.createContext({
   useUDFont: false,

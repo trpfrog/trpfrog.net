@@ -5,7 +5,7 @@ type Props = React.ComponentPropsWithRef<'div'> & {
   onDragging: (e: MouseEvent) => void
 }
 
-const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
+export const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
   function DivWithDragEvent(props, ref) {
     const { onDragging, onMouseDown, onClick, ...rest } = props
 
@@ -51,5 +51,3 @@ const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
     )
   },
 )
-
-export default DivWithDragEvent

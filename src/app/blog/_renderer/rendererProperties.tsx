@@ -18,11 +18,12 @@ import { CodeBlock } from '@/components/molecules/CodeBlock'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
-import BlogImage from '@blog/_components/BlogImage'
-import OriginalMarkdownComponent, {
+import { BlogImage } from '@blog/_components/BlogImage'
+import {
   myMarkdownClasses,
+  OriginalMarkdownComponent,
 } from '@blog/_components/OriginalMarkdownComponent'
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'

@@ -11,7 +11,7 @@ interface Props {
   onClick?: () => void
 }
 
-const RotateButton = React.memo(function RotateButton(props: Props) {
+export const RotateButton = React.memo(function RotateButton(props: Props) {
   return (
     <>
       <button
@@ -34,5 +34,3 @@ const RotateButton = React.memo(function RotateButton(props: Props) {
     </>
   )
 })
-
-export default RotateButton

@@ -3,11 +3,11 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 
 import { createURL } from '@/lib/url'
 
-import SwitchUI from '@blog/_components/article-parts/ProfileCards/SwitchUI'
+import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { parseObjectList } from '@blog/_lib/codeBlockParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
@@ -78,7 +78,7 @@ const ListFormat = ({
   </ul>
 )
 
-const ProfileCards = ({
+export const ProfileCards = ({
   content,
   held,
 }: {
@@ -119,5 +119,3 @@ const ProfileCards = ({
     </>
   )
 }
-
-export default ProfileCards

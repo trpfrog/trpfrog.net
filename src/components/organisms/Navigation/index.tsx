@@ -56,7 +56,7 @@ export const NavigationLinks = () => {
   )
 }
 
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <>
       <nav id={styles.wide_nav}>
@@ -67,5 +67,3 @@ const Navigation = () => {
     </>
   )
 }
-
-export default Navigation

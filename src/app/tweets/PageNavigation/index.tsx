@@ -23,7 +23,7 @@ function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   )
 }
 
-export default function PageNavigation(props: {
+export function PageNavigation(props: {
   currentPage: number
   lastPage: number
   numTweets: number

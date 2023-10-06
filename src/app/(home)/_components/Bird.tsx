@@ -6,7 +6,7 @@ type Props = {
   id?: string
 }
 
-const Bird = ({ id }: Props) => {
+export const Bird = ({ id }: Props) => {
   const birdX = [
     '',
     '　　 ／￣￣＼　ﾑｼｬﾑｼｬ',
@@ -46,5 +46,3 @@ const Bird = ({ id }: Props) => {
     </Block>
   )
 }
-
-export default Bird

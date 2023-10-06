@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 
 import styles from './index.module.scss'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer id={styles.footer}>
       <MainWrapper id={styles.inner_footer}>
@@ -25,5 +25,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

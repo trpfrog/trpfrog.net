@@ -37,7 +37,7 @@ type Props = {
   tag: string
 }
 
-const Tag = ({ tag }: Props) => {
+export const Tag = ({ tag }: Props) => {
   return (
     // @ts-ignore
     <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
@@ -53,5 +53,3 @@ const Tag = ({ tag }: Props) => {
     </Link>
   )
 }
-
-export default Tag

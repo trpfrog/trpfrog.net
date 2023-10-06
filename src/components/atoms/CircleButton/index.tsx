@@ -6,7 +6,7 @@ type Props = React.ComponentPropsWithoutRef<'button'> & {
   backgroundColor?: string
 }
 
-export default function CircleButton(props: Props) {
+export function CircleButton(props: Props) {
   const {
     className = '',
     backgroundColor = 'var(--header-color)',

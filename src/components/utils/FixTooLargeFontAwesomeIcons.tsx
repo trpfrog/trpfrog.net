@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config, dom } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 
-export default function FixTooLargeFontAwesomeIcons() {
+export function FixTooLargeFontAwesomeIcons() {
   return (
     <style jsx global>{`
       ${dom.css()}

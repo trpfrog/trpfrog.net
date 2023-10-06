@@ -6,16 +6,16 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 import { LinkEmbed } from '@blog/_components/article-parts/LinkEmbed'
 import { Twitter } from '@blog/_components/article-parts/Twitter'
 import { AutoYouTube, YouTube } from '@blog/_components/article-parts/YouTube'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
-import Conversation from './article-parts/Conversation'
+import { Conversation } from './article-parts/Conversation'
 import { Caution, Infobox, TitledFrame } from './article-parts/HighlightedBoxes'
-import HorizontalImages from './article-parts/HorizontalImages'
-import HorizontalScroll from './article-parts/HorizontalScroll'
-import ProfileCards from './article-parts/ProfileCards'
-import ShowAll from './article-parts/ShowAll'
-import TwitterArchived from './article-parts/TwitterArchive'
-import WalkingResultBox from './article-parts/WalkingResultBox'
+import { HorizontalImages } from './article-parts/HorizontalImages'
+import { HorizontalScroll } from './article-parts/HorizontalScroll'
+import { ProfileCards } from './article-parts/ProfileCards'
+import { ShowAll } from './article-parts/ShowAll'
+import { TwitterArchive as TwitterArchived } from './article-parts/TwitterArchive'
+import { WalkingResultBox } from './article-parts/WalkingResultBox'
 import {
   IsomorphicArticleParts,
   IsomorphicArticlePartsProps,
@@ -121,7 +121,7 @@ export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
     ? CamelToKebabCase<keyof typeof myMarkdownClasses>
     : never
 
-export default function OriginalMarkdownComponent(
+export function OriginalMarkdownComponent(
   props: IsomorphicArticlePartsProps & {
     componentName: keyof typeof myMarkdownClasses
   },

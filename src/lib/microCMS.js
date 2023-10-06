@@ -5,4 +5,4 @@ const client = createClient({
   apiKey: process.env.MICRO_CMS_API_KEY,
 })
 
-export default client
+export { client as microCMS }

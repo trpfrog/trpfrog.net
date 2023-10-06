@@ -32,7 +32,7 @@ function FormItem(
   )
 }
 
-export default function EditorForm(props: Props) {
+export function EditorForm(props: Props) {
   const blogPost = useMemo(
     () => buildBlogPost(props.rawMarkdown, { all: true }),
     [props.rawMarkdown],

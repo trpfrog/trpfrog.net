@@ -53,7 +53,7 @@ const colors: Record<(typeof balloonColors)[number], string[]> = {
   ],
 }
 
-const Balloon = (props: BalloonProps) => {
+export const Balloon = (props: BalloonProps) => {
   const balloonId = useId()
   const { reward } = useReward(balloonId, 'confetti', {
     zIndex: 100,
@@ -88,5 +88,3 @@ const Balloon = (props: BalloonProps) => {
     </span>
   )
 }
-
-export default Balloon

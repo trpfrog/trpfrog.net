@@ -3,8 +3,8 @@ import path from 'path'
 
 import matter from 'gray-matter'
 
-import BlogPost from './blogPost'
-import parse from './parse'
+import { BlogPost } from './blogPost'
+import { parse } from './parse'
 import { getReadTimeSecond } from './readTime'
 
 const postsDirectory = path.join(process.cwd(), 'src', 'posts')

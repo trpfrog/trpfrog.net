@@ -2,15 +2,15 @@
 
 import Image from 'next/legacy/image'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
-import IconCanvas from '@/lib/iconMaker'
+import { IconCanvas } from '@/lib/iconMaker'
 import { createURL } from '@/lib/url'
 
 import styles from './style.module.scss'
 
-export default function IconMakerApp() {
+export function IconMakerApp() {
   const state = new IconCanvas('canvas-result')
   const tweetLink = createURL('/intent/tweet', 'https://twitter.com', {
     text: '#つまみアイコンメーカー でアイコンを作成しました！',

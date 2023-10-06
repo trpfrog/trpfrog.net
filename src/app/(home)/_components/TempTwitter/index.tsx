@@ -6,17 +6,17 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import LoadingBlock from '@/components/molecules/LoadingBlock'
+import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
-import microCMS from '@/lib/microCMS'
+import { microCMS } from '@/lib/microCMS'
 
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 
 import styles from './index.module.scss'
 
-export default async function TempTwitter() {
+export async function TempTwitter() {
   let md: string
   let frontMatter: { [key: string]: any }
   try {

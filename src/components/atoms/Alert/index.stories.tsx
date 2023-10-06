@@ -1,6 +1,6 @@
 import { LOREM_IPSUM } from '@/lib/constants'
 
-import Alert from '.'
+import { Alert } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

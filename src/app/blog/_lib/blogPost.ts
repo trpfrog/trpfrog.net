@@ -2,10 +2,10 @@ import matter from 'gray-matter'
 import { z } from 'zod'
 
 import type { BlogPostOption } from '@blog/_lib/load'
-import parse from '@blog/_lib/parse'
+import { parse } from '@blog/_lib/parse'
 import { getReadTimeSecond } from '@blog/_lib/readTime'
 
-export default interface BlogPost {
+export interface BlogPost {
   title: string
   slug: string
   date: string

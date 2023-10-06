@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
-import ArticleRenderer from '@blog/_renderer/ArticleRenderer'
+import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
-const HorizontalScroll: IsomorphicArticleParts = ({
+export const HorizontalScroll: IsomorphicArticleParts = ({
   content,
   entry,
   imageSize,
@@ -29,5 +29,3 @@ const HorizontalScroll: IsomorphicArticleParts = ({
     </div>
   )
 }
-
-export default HorizontalScroll

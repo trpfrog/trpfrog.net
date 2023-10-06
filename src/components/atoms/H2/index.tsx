@@ -24,15 +24,15 @@ type Props = React.ComponentPropsWithRef<'h2'> & {
   icon?: H2Icon
 }
 
-const H2 = React.forwardRef<HTMLHeadingElement, Props>(function H2(props, ref) {
-  const { icon, className = '', children, ...rest } = props
+export const H2 = React.forwardRef<HTMLHeadingElement, Props>(
+  function H2(props, ref) {
+    const { icon, className = '', children, ...rest } = props
 
-  return (
-    <h2 className={`${styles.h2} ${className}`} ref={ref} {...rest}>
-      {icon && <img className={styles.icon} src={iconURLs[icon]} alt="" />}
-      {children}
-    </h2>
-  )
-})
-
-export default H2
+    return (
+      <h2 className={`${styles.h2} ${className}`} ref={ref} {...rest}>
+        {icon && <img className={styles.icon} src={iconURLs[icon]} alt="" />}
+        {children}
+      </h2>
+    )
+  },
+)

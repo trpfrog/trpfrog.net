@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlogPost from '@blog/_lib/blogPost'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 
 export type IsomorphicArticlePartsProps = {

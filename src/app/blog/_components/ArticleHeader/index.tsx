@@ -2,15 +2,15 @@ import React from 'react'
 
 import Balancer from 'react-wrap-balancer'
 
-import Title from '@/components/organisms/Title'
+import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import EditButton from '@blog/[slug]/[[...options]]/_components/EditButton'
+import { EditButton } from '@blog/[slug]/[[...options]]/_components/EditButton'
 import { EntryButtons } from '@blog/[slug]/[[...options]]/_components/EntryButtons'
-import PostAttributes from '@blog/_components/PostAttributes'
-import Tag from '@blog/_components/Tag'
-import BlogPost from '@blog/_lib/blogPost'
+import { PostAttributes } from '@blog/_components/PostAttributes'
+import { Tag } from '@blog/_components/Tag'
+import { BlogPost } from '@blog/_lib/blogPost'
 
 import styles from './index.module.scss'
 
@@ -20,7 +20,7 @@ type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   addEditButtonOnDevMode?: boolean
 }
 
-export default React.memo(function ArticleHeader(props: Props) {
+export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
   const {
     post,
     addEntryButtons = true,

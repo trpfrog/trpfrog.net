@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-export default function useOverwritePageNavHref(
+export function useOverwritePageNavHref(
   setPageIdx: (idx: number) => void,
   scrollRef?: React.RefObject<any>,
 ) {

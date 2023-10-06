@@ -23,7 +23,7 @@ export const getGoogleFontsUrl = () =>
   fonts.map(fontObjectToString).join('&') +
   '&display=swap'
 
-const GoogleFonts = () => (
+export const GoogleFonts = () => (
   <>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -34,5 +34,3 @@ const GoogleFonts = () => (
     <link href={getGoogleFontsUrl()} rel="stylesheet" />
   </>
 )
-
-export default GoogleFonts

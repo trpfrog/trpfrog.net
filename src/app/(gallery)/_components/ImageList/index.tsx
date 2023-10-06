@@ -16,7 +16,7 @@ export type ImagePaths = {
   alt?: string
 }
 
-export default function ImageList(props: ImageListProps) {
+export function ImageList(props: ImageListProps) {
   return (
     <div className={styles.icon_grid}>
       {props.images.map(({ src, url, alt }, idx) => (

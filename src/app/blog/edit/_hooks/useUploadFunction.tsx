@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { UploadApiResponse } from 'cloudinary'
 import toast from 'react-hot-toast'
 
-export default function useUploadFunction(slug: string) {
+export function useUploadFunction(slug: string) {
   return useCallback(
     (
       file: File,

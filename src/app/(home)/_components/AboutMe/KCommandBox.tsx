@@ -8,11 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from '@/app/(home)/_components/AboutMe/index.module.scss'
 
-export default function KCommandBox({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export function KCommandBox({ children }: { children: React.ReactNode }) {
   const [isUnlocked, setIsUnlocked] = React.useState(false)
   const [input, setInput] = React.useState('')
   const answer = '↑↑↓↓←→←→BA' // ソースまで辿り着くような人間はどうせこれも知ってるのでソース直書きで良い

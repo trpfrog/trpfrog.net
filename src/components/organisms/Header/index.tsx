@@ -5,10 +5,11 @@ import React, { useEffect } from 'react'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
-import Hamburger from '@/components/molecules/Hamburger'
-import MobileMenu, {
+import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { Hamburger } from '@/components/molecules/Hamburger'
+import {
   useMobileMenuState,
+  MobileMenu,
 } from '@/components/organisms/MobileMenu'
 
 import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
@@ -79,7 +80,7 @@ type Props = {
   title?: React.ReactNode
 }
 
-export default React.memo(function Header(props: Props) {
+export const Header = React.memo(function Header(props: Props) {
   const topLinks = [
     { href: '/', label: 'home' },
     { href: '/works', label: 'works' },

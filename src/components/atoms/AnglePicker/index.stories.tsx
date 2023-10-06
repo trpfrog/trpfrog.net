@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 
-import Angle from '.'
+import { AnglePicker as Angle } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

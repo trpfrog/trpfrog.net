@@ -3,7 +3,7 @@ import React, { CSSProperties } from 'react'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import ImageWithModal from '@blog/_components/BlogImage/ImageWithModal'
+import { ImageWithModal } from '@blog/_components/BlogImage/ImageWithModal'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
@@ -21,7 +21,7 @@ export const ImageCaption = ({ children }: { children: React.ReactNode }) => (
   <figcaption className={styles.caption}>{children}</figcaption>
 )
 
-export default React.memo(function BlogImage({
+export const BlogImage = React.memo(function BlogImage({
   src,
   alt,
   imageData,

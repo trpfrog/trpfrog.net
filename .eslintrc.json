@@ -30,6 +30,18 @@
         ]
       }
     ],
+    "no-restricted-exports":  [
+      "error",
+      {
+        "restrictDefaultExports": {
+          "direct": true,
+          "named": true,
+          "defaultFrom": true,
+          "namedFrom": true,
+          "namespaceFrom": true
+        }
+      }
+    ],
     "unused-imports/no-unused-imports": "error",
     "import/order": [
       "warn",
@@ -64,6 +76,15 @@
     {
       "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
+    },
+    {
+      "files": [
+        "src/app/**/{page,layout,route,loading,not-found}.{js,jsx,ts,tsx}", // Next.js
+        "*.stories.{js,jsx,ts,tsx}" // Storybook
+      ],
+      "rules": {
+        "no-restricted-exports": "off"
+      }
     }
   ]
 }

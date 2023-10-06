@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
 import { iconPreset } from '@/components/atoms/twitter/TwitterIcon/preset'
-import BlockLink from '@/components/molecules/BlockLink'
+import { BlockLink } from '@/components/molecules/BlockLink'
 
 import { createURL } from '@/lib/url'
 

@@ -4,12 +4,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Block } from '@/components/molecules/Block'
 
-import PageNavigation from '@blog/_components/PageNavigation'
-import BlogPost from '@blog/_lib/blogPost'
+import { PageNavigation } from '@blog/_components/PageNavigation'
+import { BlogPost } from '@blog/_lib/blogPost'
 import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import styles from '@blog/_styles/blog.module.scss'
 
-import ArticleRenderer from './ArticleRenderer'
+import { ArticleRenderer } from './ArticleRenderer'
 import { getMarkdownPlugins } from './rendererProperties'
 
 export const parseInlineMarkdown = (markdown: string) => {
@@ -52,7 +52,9 @@ type Props = {
   className?: string
 }
 
-const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
+export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
+  props: Props,
+) {
   const { entry, imageSize, style, className } = props
   const markdown = entry.content
 
@@ -79,5 +81,3 @@ const BlogMarkdown = React.memo(function InnerBlogMarkdown(props: Props) {
     </>
   )
 })
-
-export default BlogMarkdown

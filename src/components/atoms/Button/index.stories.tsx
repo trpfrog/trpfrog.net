@@ -1,16 +1,16 @@
 import { action } from '@storybook/addon-actions'
 
-import FloatingCircleButton from '.'
+import { Button } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<typeof FloatingCircleButton> = {
-  component: FloatingCircleButton,
+const meta: Meta<typeof Button> = {
+  component: Button,
 }
 
 export default meta
 
-type Story = StoryObj<typeof FloatingCircleButton>
+type Story = StoryObj<typeof Button>
 
 export const NextLink: Story = {
   parameters: {
@@ -33,7 +33,7 @@ export const ExternalLink: Story = {
   },
 }
 
-export const Button: Story = {
+export const ButtonTag: Story = {
   parameters: {
     layout: 'centered',
   },

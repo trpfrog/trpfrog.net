@@ -1,7 +1,7 @@
 'use client'
 import styles from './index.module.scss'
 
-export default function SearchForm(props: { defaultValue?: string }) {
+export function SearchForm(props: { defaultValue?: string }) {
   return (
     <form action="/tweets#tweets" method="get" className={styles.searchForm}>
       <input

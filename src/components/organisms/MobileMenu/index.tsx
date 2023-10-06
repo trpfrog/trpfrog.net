@@ -29,7 +29,7 @@ export function useToggleMenuCallback() {
   }, [isOpened, setAlwaysShownHeader, setHamburgerState])
 }
 
-const MobileMenu = React.memo(function MobileMenu() {
+export const MobileMenu = React.memo(function MobileMenu() {
   const doNothing = () => {}
   const toggleMenu = useToggleMenuCallback()
 
@@ -69,5 +69,3 @@ const MobileMenu = React.memo(function MobileMenu() {
     </section>
   )
 })
-
-export default MobileMenu

@@ -12,7 +12,7 @@ type Props = LinkProps & {
   children?: React.ReactNode
 }
 
-export default function BlockLink(props: Props) {
+export function BlockLink(props: Props) {
   const { className = '', id, key, children, ...linkProps } = props
   return (
     <div className={`${styles.box} ${className}`} id={id} key={key}>

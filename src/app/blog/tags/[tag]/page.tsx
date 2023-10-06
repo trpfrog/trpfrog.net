@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Button from '@/components/atoms/Button'
-import MainWrapper from '@/components/atoms/MainWrapper'
-import Title from '@/components/organisms/Title'
+import { Button } from '@/components/atoms/Button'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { Title } from '@/components/organisms/Title'
 
-import ArticleCard from '@blog/_components/ArticleCard'
-import ArticleGrid from '@blog/_components/ArticleGrid'
+import { ArticleCard } from '@blog/_components/ArticleCard'
+import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { getAllTags, getSortedPostsData } from '@blog/_lib/load'
 
 export async function generateStaticParams() {

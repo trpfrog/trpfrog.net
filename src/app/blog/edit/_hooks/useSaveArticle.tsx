@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 
 import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
-export default function useSaveArticle(
+export function useSaveArticle(
   slug: string,
   articleText: string,
   delayMs: number,

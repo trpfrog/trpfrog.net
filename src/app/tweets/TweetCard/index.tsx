@@ -117,7 +117,7 @@ export function DateCard({ date }: { date: Date }) {
   )
 }
 
-export default function TweetCard({
+export function TweetCard({
   tweet,
   keywords,
 }: {
@@ -179,6 +179,7 @@ export default function TweetCard({
                       height={media.height}
                       className={styles.media_image}
                       src={media.url}
+                      alt={'Image attached to this tweet'} // TODO: Add alt property in database
                       style={{
                         aspectRatio: `${media.width}/${media.height}`,
                         maxHeight: 600 / Math.sqrt(photos),
