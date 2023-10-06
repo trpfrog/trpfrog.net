@@ -15,7 +15,8 @@ export function useOverwritePageNavHref(
       const pageIdx = parseInt(a.dataset.pageTransferTo!, 10)
       a.href = '#'
       element?.scroll(0, 0)
-      a.onclick = () => {
+      a.onclick = e => {
+        e.preventDefault()
         setPageIdx(pageIdx)
         return false
       }
