@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic'
 import { Button } from '@/components/atoms/Button'
 import { H2 } from '@/components/atoms/H2'
 
-import useSparseCallback from '@/hooks/useSparseCallback'
+import { useSparseCallback } from '@/hooks/useSparseCallback'
 
 import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
 import { EditorForm } from '@blog/edit/[slug]/EditorForm'

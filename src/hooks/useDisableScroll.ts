@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export default function useDisableScroll() {
+export function useDisableScroll() {
   useEffect(() => {
     if (typeof window === 'undefined') {
       return

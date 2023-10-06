@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import useScrollPositionKeeper from '@/hooks/useScrollPositionKeeper'
+import { useScrollPositionKeeper } from '@/hooks/useScrollPositionKeeper'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BlogPost } from '@blog/_lib/blogPost'

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-export default function useSparseCallback(
+export function useSparseCallback(
   fn: (...args: any[]) => void,
   deps: any[],
   delayMs: number,
