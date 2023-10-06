@@ -330,7 +330,8 @@ description: I 類メディア。すぐ走るので最悪！**明日のアドカ
 ```twitter-archived
 id: 1464234114341498884
 date: 2021-11-26
-tweet: 徒歩会開始❗️<br><br> <video controls src="https://res.cloudinary.com/trpfrog/video/upload/v1696596603/blog/c2walker/start-walking.mp4"></video>
+tweet: 徒歩会開始❗️
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696596603/blog/c2walker/start-walking.mp4
 ```
 
 
@@ -2279,7 +2280,7 @@ wXIn2g2tczk
 ```twitter-archived
 id: 1464584809863254021
 date: 2021-11-27
-tweet: <video src="https://res.cloudinary.com/trpfrog/video/upload/v1696598072/blog/c2walker/finish-walking.mp4" controls></video>
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696598072/blog/c2walker/finish-walking.mp4
 ```
 
 
