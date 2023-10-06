@@ -78,12 +78,13 @@ description: ThinkPad担いて山に登るのが好き。今日は置いてき�
 
 少食なので牛めしの並です。皆さんは**腹の容量が無限**なので朝定食を頼んでいました。ごっちさんは**ご飯をおかわりしていました**。すごい
 
-```twitter
-1374108869836775426
+```twitter-archived
+id: 1374108869836775426
+name: gotti
+userid: _nil_a_
+date: 2021-03-22
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613673/blog/tokyotower-walking/ExHQueuVEAEnD7i.jpg
 ```
-
-
- 
 
 ![](https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210324170113 "出発！")
 
@@ -173,15 +174,12 @@ tweet: この時間に帰宅する人と調布に来た人が遭遇する奇跡
 https://goo.gl/maps/ozDXENbZS3mpqMjG7
 ```
 
- 
-
-```twitter
-1374123271621210113
+```twitter-archived
+id: 1374123271621210113
+date: 2021-03-22
+tweet: タマがぶら下がっています
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612344/blog/tokyotower-walking/ExHd0eHVoAU1f3c.jpg
 ```
-
-
- 
-
  
 
 しばらく歩くと仙川駅付近で **「あ」** を見つけました。
@@ -234,17 +232,24 @@ tweet: 吐き気に襲われてなそ千歳烏山でダウンしてる、ばか
 ということでこっちはしばらく待ちます((「こっち」には「ごっち」は含まれない))。
 待っているのもアレなので千歳烏山で遊びます。
 
-```twitter
-1374142030289334272
+```twitter-archived
+id: 1374142030289334272
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-22
+tweet: 遊んでる
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612423/blog/tokyotower-walking/ExHu4mmVcAQj-RD.jpg
 ```
-
 
 広場では校外学習をしている高校生集団がかなりいました。ここそんな見るものある？ 
 
-```twitter
-1374144557894356992
+```twitter-archived
+id: 1374144557894356992
+name: gotti
+userid: _nil_a_
+date: 2021-03-22
+tweet: 高校生多すぎて目が潰れてる
 ```
-
 
 gottiさんいつ戻ってくるかな〜？と待って千歳烏山ぐるぐるしてる途中にgottiさんらしき人がいました。しかし**よく見たら違ったので無視しました。**
 
@@ -304,9 +309,13 @@ tweet: 公園でモルカー見る異常男性している
 歩道橋を渡るとまた緑道があるので戻ります。
 
  
-
-```twitter
-1374157779858944001
+```twitter-archived
+id: 1374157779858944001
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-23
+tweet: サイゼって車も売っているのか
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612522/blog/tokyotower-walking/ExH9NZdUUAQjrT6.jpg
 ```
 
 
@@ -328,11 +337,12 @@ tweet: 公園でモルカー見る異常男性している
 
 ![](https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210324190432 "Fuck the Police‼️")
 
-```twitter
-1374159484919054336
+```twitter-archived
+id: 1374159484919054336
+date: 2021-03-23
+tweet: SOUND VOLTEX
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612543/blog/tokyotower-walking/ExH-w1TU8AM_ErA.jpg
 ```
-
-
  
 
 ちなみに他の橋の下はそんなに落書きされていませんでした。なぜかここだけ落書き祭り、なんで？
@@ -352,10 +362,14 @@ tweet: 公園でモルカー見る異常男性している
 
 世田谷のお金がありそうな地区((そういうこと言わない))に来ました。水が流れています。
 
-```twitter
-1374161532146262020
+```twitter-archived
+id: 1374161532146262020
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-23
+tweet: 全然動かない
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696612628/blog/tokyotower-walking/1374161496658219008.mp4
 ```
-
 
 動かない魚の群れがいました。
 
@@ -365,15 +379,17 @@ tweet: 公園でモルカー見る異常男性している
 
 店内でごっちさんらしき人物を見つけました。**え？** よく見ても本物でした。でもここまでは**歩かないと来られないはずでは？**
 
-```twitter
-1374166130160328709
+```twitter-archived
+id: 1374166130160328709
+name: gotti
+userid: _nil_a_
+date: 2021-03-23
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612683/blog/tokyotower-walking/ExIEwSCUYAUNvZ6.jpg
+image2: https://res.cloudinary.com/trpfrog/image/upload/v1696612687/blog/tokyotower-walking/ExIEzRiVoAAJ9p0.jpg
 ```
-
 
 歩いているが……**おかしいだろ、強すぎない？**
 意味がわかりませんが、合流して先に進みます。
-
- 
 
 先に上げた地図の通りここからはショートカットして赤堤通りを通って行きます。
 
@@ -443,10 +459,14 @@ tweet: 公園でモルカー見る異常男性している
 ![](https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210324200037 "緑道の合流地点、右から来た (ショートカットしなければ左だった)")
 
 
-```twitter
-1374187157791727618
+```twitter-archived
+id: 1374187157791727618
+name: 🍁
+userid: kyu_099
+date: 2021-03-23
+tweet: 調布から歩くあなたはこんなにイキイキ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612732/blog/tokyotower-walking/ExIX7pFVcAUi7dE.jpg
 ```
-
 
 ![](https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210324200150 "ビルが見えてきた")
 
@@ -641,17 +661,21 @@ tweet: 公園でモルカー見る異常男性している
 
 でも**1台でしか売ってない** かつ **ちょっとしか売ってなかった**ので売り切れてたらヤバかった……
 
-```twitter
-1374234214577565703
+```twitter-archived
+id: 1374234214577565703
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-23
+tweet: 2周目しんどすぎるやろ
 ```
 
-
-```twitter
-1374237841165721602
+```twitter-archived
+id: 1374237841165721602
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-23
+tweet: アナウンス「日頃の運動不足を解消しましょう」<br/><b>ここまで歩いて来て2回上って下りているのだが？</b>「ワイ」
 ```
-
-
- 
 
 ### 15:00 3周目
 
@@ -663,12 +687,14 @@ tweet: 公園でモルカー見る異常男性している
 
 ところで階段を上る途中には**東京タワークイズ**があるのですが、徒歩部は上るのに夢中で3周目にして初めてクイズをやりました。クイズをやりながらだと気が紛れて少し楽になりました。しかし**一度クイズをやってしまったので4周目以降はこの手が使えません**😢
 
-```twitter
-1374245092047822850
+```twitter-archived
+id: 1374245092047822850
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-23
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612797/blog/tokyotower-walking/ExJMnAvVIAU_4Jc.jpg
+image2: https://res.cloudinary.com/trpfrog/image/upload/v1696612799/blog/tokyotower-walking/ExJMn0SUcAE2MRJ.jpg
 ```
-
-
- 
 
 ### 15:30 4周目
 
@@ -810,10 +836,14 @@ EE1sRNEiUEw
 ```
 <div style="height: 10em"></div>
 
-```twitter
-1374277865433309184
+```twitter-archived
+id: 1374277865433309184
+name: きゅ〜
+userid: kyu_099
+date: 2021-03-23
+tweet: 日が傾いてきましたね
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696612847/blog/tokyotower-walking/ExJqbIeVgAIpWFg.jpg
 ```
-
 
 ```twitter-archived
 id: 1374283759663542274
@@ -907,10 +937,14 @@ tweet: 靴のソールがボロボロになっている<br>流石に新しい靴
 
 味は良かったです。文句があるとすれば**食欲がまともなときに来たかった。**
 
-```twitter
-1374315982055874560
+```twitter-archived
+id: 1374315982055874560
+name: 🍁
+userid: kyu_099
+date: 2021-03-23
+tweet: 金蠍<br/>東京タワーの中(？)のラーメン屋<br/>スープがおいしい<br/> #UEC_RL2021
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613046/blog/tokyotower-walking/ExKNGXsVgAIzEID.jpg
 ```
-
 
 ```link-embed
 https://goo.gl/maps/GbDyKVmqw2rasHS37
@@ -1195,13 +1229,13 @@ iPhone 11 + Apple Watch Series 3 での計測結果は
 でした((距離が結構多めに出てる気はするのですが、これは寄り道とかが結構影響してるんじゃないかな？と思っています。でもちょっと多い気はします。が、他の人も大体似たような結果だったのでもしかすると正しいです。ええ〜？))。僕の計測結果なので他の人とは多少違いますが。というのも
 
  
-
-```twitter
-1374372002035724300
+```twitter-archived
+id: 1374372002035724300
+date: 2021-03-23
+tweet: うるさい❗️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613310/blog/tokyotower-walking/ExLAC-1VcAIN7M_.jpg
 ```
 
-
- 
 
 **バスが消滅して家まで歩いて帰っている**からです。バカ
 
@@ -1223,36 +1257,52 @@ iPhone 11 + Apple Watch Series 3 での計測結果は
 
 ## おまけ
 
-```twitter
-1375006966536314882
+```twitter-archived
+id: 1375006966536314882
+name: きゅ〜
+userid: kyu_099
+date: 2021-03-25
+tweet: #罵倒ロボ写真コンテスト
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613225/blog/tokyotower-walking/ExUBi2bUYAIk9Y7.jpg
 ```
 
-
-```twitter
-1375007064829816835
+```twitter-archived
+id: 1375007064829816835
+name: あずきバー
+userid: azukibar_D
+date: 2021-03-25
+tweet: #罵倒ロボ写真コンテスト
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613242/blog/tokyotower-walking/ExUBluNVEAQ-OB9.jpg
 ```
 
-
-```twitter
-1375007180911300611
+```twitter-archived
+id: 1375007180911300611
+name: gotti
+userid: _nil_a_
+date: 2021-03-25
+tweet: #罵倒ロボ写真コンテスト
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696613276/blog/tokyotower-walking/ExUBvRCVEAMst8u.jpg
 ```
 
-
-```twitter
-1375007271499952129
+```twitter-archived
+id: 1375007271499952129
+date: 2021-03-25
+tweet: <b>もしかして徒歩会打ち上げ僕だけハブられていますか？</b>
 ```
 
-
-```twitter
-1375007327854600192
+```twitter-archived
+id: 1375007327854600192
+name: 🍁
+userid: kyu_099
+date: 2021-03-25
+tweet: <b>歩いて来てください😁</b>
 ```
 
-
-```twitter
-1375007379696197634
+```twitter-archived
+id: 1375007379696197634
+date: 2021-03-25
+tweet: バカモン❗️
 ```
-
- 
 
 ## 読者プレゼント
 
