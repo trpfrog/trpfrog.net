@@ -11,7 +11,7 @@ type Props<T extends string> = Omit<
   intervalMs?: number
 }
 
-export default function WaveText<T extends string>(props: Props<T>) {
+export function WaveText<T extends string>(props: Props<T>) {
   if (props.children.length === 0) return <></>
 
   const { durationPerPeriodMs = 1500, intervalMs = 700 } = props

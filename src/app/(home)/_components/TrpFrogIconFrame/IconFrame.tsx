@@ -7,7 +7,7 @@ import useSWR, { Fetcher } from 'swr'
 import styles from '@/app/(home)/_components/TrpFrogIconFrame/index.module.scss'
 import type { TrpFrogImageGenerationResult } from '@/app/api/trpfrog-diffusion/route'
 
-import WaveText from '@/components/atoms/WaveText'
+import { WaveText } from '@/components/atoms/WaveText'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 

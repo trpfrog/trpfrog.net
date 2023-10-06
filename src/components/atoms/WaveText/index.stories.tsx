@@ -1,4 +1,4 @@
-import WaveText from '.'
+import { WaveText } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
