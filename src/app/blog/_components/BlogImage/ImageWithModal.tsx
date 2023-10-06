@@ -4,7 +4,7 @@ import React, { CSSProperties, useState } from 'react'
 
 import Modal from 'react-modal'
 
-import CldImageWrapper from '@/components/utils/CldImageWrapper'
+import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import styles from '@blog/_components/BlogImage/index.module.scss'
 import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'

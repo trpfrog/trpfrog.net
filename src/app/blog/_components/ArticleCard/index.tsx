@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 
 import { BlockLink } from '@/components/molecules/BlockLink'
-import CldImageWrapper from '@/components/utils/CldImageWrapper'
+import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import ArticleCardGrid, {
   gridArea,
