@@ -338,14 +338,16 @@ tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外み�
 ```
 
 
-
-```twitter
-1343356703442550785
+```twitter-archived
+id: 1343356703442550785
+name: めがすこ
+userid: megane_sukore
+tweet: 電通大⁉️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696610063/blog/enoshima-walk/EqSPzAzUYAEIH0H.jpg
+date: 2020-12-28
 ```
 
-
-
-電通大のボートが近くにあったらしいです。見損ねちゃった、味噌こねちゃった！(爆笑)
+電通大のボートが近くにあったらしいです。見損ねちゃった
 
  
 
@@ -405,8 +407,10 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654511937/blog/enoshima
 何故か足つぼのやつがありました。
 オタクの天敵((コメダ徒歩会を参照。こっちも記事書いた方がいいかな？とか思ったけど流石に記憶が薄れていそう。))。
 
-```twitter
-1343360643936694275
+```twitter-archived
+id: 1343360643936694275
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696610676/blog/enoshima-walk/ashitsubo-240p.mp4
 ```
 
 
@@ -466,8 +470,12 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512075/blog/enoshima
 
 たぶん唯一の公園です。観光地にある割には普通に公園公園していました。いや、観光地に公園がないわけではないんだけどこう、狭いエリアにもあるんだなあ、と。
 
-```twitter
-1343365979636518912
+```twitter-archived
+id: 1343365979636518912
+userid: fmnpt
+name: ふみ
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696611099/blog/enoshima-walk/suberidai.mp4
 ```
 
 
@@ -826,8 +834,14 @@ tweet: みんな２つの海の色の写真あげてるかど最初に見つけ�
 
 ![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229222127 "パノラマ")
 
-```twitter
-1343413149895065600
+```twitter-archived
+id: 1343413149895065600
+name: 🍁
+userid: kyu_099
+date: 2020-12-28
+tweet: てっぺん
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696611192/blog/enoshima-walk/EqTDIwCUUAI422w.jpg
+image2: https://res.cloudinary.com/trpfrog/image/upload/v1696611193/blog/enoshima-walk/EqTDIv_UUAMOXQt.jpg
 ```
 
 ```twitter-archived
@@ -899,8 +913,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513512/blog/enoshima
 
 朝ごはん((みんな昼ごはんって言い張ってるけど俺は朝ごはんだと思う))を食べたところの方にカップルがいたら行くといいよ！と言われたので行きます。
 
-```twitter
-1343425692348780544
+```twitter-archived
+id: 1343425692348780544
+date: 2020-12-28
+tweet: 龍恋の鐘
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696611291/blog/enoshima-walk/1343425638091264000.mp4
 ```
 
 
@@ -1592,9 +1609,10 @@ date: 2020-12-28
 tweet: イルミのところで写真撮ってください〜って言ってきたキラキラ女子3人組がワシの格好見てあっヤベ声かける人ミスったみたいな顔したのが忘れらない<br/>結局撮ったけど
 ```
 
-
-```twitter
-1343522037973708800
+```twitter-archived
+id: 1343522037973708800
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696611659/blog/enoshima-walk/1343521980725673984.mp4
 ```
 
 ミラーボールがあったので[パーティー会場と間違えた](https://twitter.com/TrpFrog/status/1201812851708444674)人々
@@ -1607,12 +1625,12 @@ tweet: イルミのところで写真撮ってください〜って言ってき�
 
 **<span style="font-size:1.5em">楽しかったですね！</span>**
 
-```twitter
-1343530382231146496
+```twitter-archived
+id: 1343530382231146496
+date: 2020-12-28
+tweet: 撤退！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1654778683/blog/enoshima-walk/EqUtwYiUwAACCx7.jpg
 ```
-
-
-
  
 
 あ、イルミネーションですが時期によってやってる時間が短かったりするので**逆RTAする予定のある人**は気をつけてください。
@@ -1642,29 +1660,38 @@ tweet: 自分の年齢と生まれた年を足したら2020になった！<br/>�
 ```
 
  
-
-```twitter
-1343549614528446465
+```twitter-archived
+id: 1343549614528446465
+name: ふみ
+userid: fmnpt
+date: 2020-12-28
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696611842/blog/enoshima-walk/EqU_P18U0AAJX97.jpg
 ```
 
 
 飯テロするな！
 
- 
-
-```twitter
-1343561334328152064
+```twitter-archived
+id: 1343561334328152064
+name: めがすこ
+userid: megane_sukore
+color: lightgray
+date: 2020-12-28
+tweet: 餃子定食❗
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696611879/blog/enoshima-walk/EqVJ6MEUYAEvRk1.jpg
 ```
 
 ウギャー！
 
  
-
-```twitter
-1343564010679988225
+```twitter-archived
+id: 1343564010679988225
+name: きゅ〜
+userid: kyu_099
+date: 2020-12-28
+tweet: 大勝軒<br/>閉まるので来ました
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696611973/blog/enoshima-walk/EqVMV8rUwAEf4an.jpg
 ```
-
-
 
  🥟
 
