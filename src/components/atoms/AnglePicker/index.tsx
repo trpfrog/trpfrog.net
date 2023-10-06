@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import DivWithDragEvent from '@/components/atoms/DivWithDragEvent'
+import { DivWithDragEvent } from '@/components/atoms/DivWithDragEvent'
 
 import styles from './index.module.scss'
 
