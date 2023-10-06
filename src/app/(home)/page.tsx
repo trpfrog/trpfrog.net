@@ -3,7 +3,7 @@ import React from 'react'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import TrpFrogIconFrame from '@/app/(home)/_components/TrpFrogIconFrame'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 
 import AboutMe from './_components/AboutMe'
 import Bird from './_components/Bird'

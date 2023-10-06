@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image'
 
 import { Button } from '@/components/atoms/Button'
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import Title from '@/components/organisms/Title'
 
 export default function NotFound() {

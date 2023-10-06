@@ -1,7 +1,7 @@
 // 'use client';
 import { Metadata } from 'next'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 
 import BalloonApp from './BalloonApp'
 

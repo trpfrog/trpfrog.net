@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 
 import ReturnButton from './ReturnButton'
 

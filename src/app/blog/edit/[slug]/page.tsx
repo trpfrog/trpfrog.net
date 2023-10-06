@@ -4,7 +4,7 @@ import React, { useDeferredValue, useMemo, useRef } from 'react'
 
 import { useMountEffect } from '@react-hookz/web'
 
-import MainWrapper from '@/components/atoms/MainWrapper'
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
