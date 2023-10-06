@@ -6,7 +6,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import IconMakerApp from './IconMakerApp'
+import { IconMakerApp } from './IconMakerApp'
 
 export const metadata = {
   title: 'アイコンメーカー',

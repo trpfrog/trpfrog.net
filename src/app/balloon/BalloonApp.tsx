@@ -6,12 +6,12 @@ import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import Util from '@/lib/utils'
+import { Util } from '@/lib/utils'
 
 import { useBalloonSound } from './_components/Balloon'
 import BalloonArray from './_components/BalloonArray'
 
-export default function BalloonApp() {
+export function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
 
   const getValidInteger = (s: string) => {

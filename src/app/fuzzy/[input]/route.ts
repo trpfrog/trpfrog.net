@@ -2,7 +2,7 @@ import { ChatOpenAI } from 'langchain/chat_models/openai'
 import { HumanChatMessage } from 'langchain/schema'
 import { NextRequest, NextResponse } from 'next/server'
 
-import createRateLimit from '@/lib/rateLimit'
+import { createRateLimit } from '@/lib/rateLimit'
 
 import { getAllPostSlugs } from '@blog/_lib/load'
 

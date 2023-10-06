@@ -1,4 +1,4 @@
-import cloudinary from '@/lib/cloudinary'
+import { cloudinary } from '@/lib/cloudinary'
 
 import { BlogPost } from './blogPost'
 import { getPureCloudinaryPath } from './getPureCloudinaryPath'

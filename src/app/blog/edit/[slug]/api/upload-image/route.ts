@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import cloudinary from '@/lib/cloudinary'
+import { cloudinary } from '@/lib/cloudinary'
 
 import type { UploadApiResponse } from 'cloudinary'
 

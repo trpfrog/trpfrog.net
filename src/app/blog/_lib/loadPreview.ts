@@ -1,4 +1,4 @@
-import microCMS from '@/lib/microCMS'
+import { microCMS } from '@/lib/microCMS'
 
 import { BlogPost } from './blogPost'
 import { BlogPostOption, buildBlogPost } from './load'

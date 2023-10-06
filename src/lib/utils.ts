@@ -1,6 +1,7 @@
 import assert from 'assert'
 
-const Util = {
+/** @deprecated */
+export const Util = {
   clamp: (x: number, min: number, max: number): number => {
     assert(min <= max)
     if (x < min) return min
@@ -37,8 +38,6 @@ const Util = {
     return bDate[2] - aDate[2]
   },
 }
-
-export default Util
 
 export function getTypedKeys<T extends Record<PropertyKey, unknown>>(
   obj: T,

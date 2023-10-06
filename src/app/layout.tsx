@@ -17,7 +17,7 @@ import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontA
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
-import fontVariables from '@/lib/googleFonts'
+import { fontVariables } from '@/lib/googleFonts'
 
 import styles from './layout.module.scss'
 

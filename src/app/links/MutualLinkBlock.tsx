@@ -5,7 +5,7 @@ import styles from '@/app/(home)/page.module.scss'
 import { Button } from '@/components/atoms/Button'
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 
-import Utils from '@/lib/utils'
+import { Util as Utils } from '@/lib/utils'
 
 import { MutualLinkRecord } from './loader'
 

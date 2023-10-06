@@ -10,7 +10,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
-import microCMS from '@/lib/microCMS'
+import { microCMS } from '@/lib/microCMS'
 
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 

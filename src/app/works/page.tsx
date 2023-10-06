@@ -12,7 +12,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import readMarkdowns from '@/lib/mdLoader'
+import { readMarkdowns } from '@/lib/mdLoader'
 
 import styles from './style.module.scss'
 

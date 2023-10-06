@@ -1,7 +1,7 @@
 export const ICON_SIZE = 500,
   CIRCLE_SIZE = 430
 
-export default class IconCanvas {
+export class IconCanvas {
   id: string
   x: number = 35
   y: number = 0
