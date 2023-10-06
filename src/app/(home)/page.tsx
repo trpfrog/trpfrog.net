@@ -18,7 +18,7 @@ import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrog
 import { WhatsNew } from './_components/WhatsNew'
 import styles from './page.module.scss'
 
-export default async function Index() {
+export default function Index() {
   return (
     <>
       <TrpFrogAnimationFrame />
