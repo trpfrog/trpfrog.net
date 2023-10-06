@@ -2,7 +2,7 @@ import Image from 'next/legacy/image'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
 type Props = {

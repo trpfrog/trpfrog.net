@@ -3,7 +3,7 @@
 import Image from 'next/legacy/image'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
 type Props = {

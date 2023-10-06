@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import Image from 'next/legacy/image'
 import ReactMarkdown from 'react-markdown'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import MainWrapper from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import Title from '@/components/organisms/Title'

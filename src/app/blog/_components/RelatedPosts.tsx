@@ -5,7 +5,7 @@ import React from 'react'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 
 import ArticleGrid from '@blog/_components/ArticleGrid'
 import BlogPost from '@blog/_lib/blogPost'

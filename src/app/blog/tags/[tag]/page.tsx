@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import MainWrapper from '@/components/atoms/MainWrapper'
 import Title from '@/components/organisms/Title'
 

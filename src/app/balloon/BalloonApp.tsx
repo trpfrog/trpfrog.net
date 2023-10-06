@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import Title from '@/components/organisms/Title'
 

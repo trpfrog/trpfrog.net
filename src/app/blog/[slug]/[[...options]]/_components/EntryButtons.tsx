@@ -4,7 +4,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 
 import EntryButton from '@blog/_components/EntryButton'
 import TogglePageViewLink from '@blog/_components/TogglePageViewLink'

@@ -2,7 +2,7 @@
 
 import Image from 'next/legacy/image'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
 import IconCanvas from '@/lib/iconMaker'

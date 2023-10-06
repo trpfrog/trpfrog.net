@@ -3,7 +3,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import Button from '@/components/atoms/Button'
+import { Button } from '@/components/atoms/Button'
 
 import { createURL } from '@/lib/url'
 
