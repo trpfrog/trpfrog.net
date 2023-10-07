@@ -150,8 +150,13 @@ lI2uhrGmNQo
 
 ということでまた来ました、**多摩川スカイブリッジ**です。もう開通したのでここを抜けて羽田空港方面へ向かいます。
 
-```twitter
-1503142910820163586
+```twitter-archived
+id: 1503142910820163586
+name: あずきバー
+userid: azukibar_D
+date: 2022-03-13
+tweet: 偏在ロンドロンドロンド
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696691317/blog/haneda-tokyo-tower/FNw8gccVIAELREW.jpg
 ```
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/v1647352833/blog/haneda-tokyo-tower/16452EC9-88C3-4ADB-841A-02998491C3AA_1_102_o.jpg)
@@ -1263,8 +1268,12 @@ tweet: <b>電車で寝てたら2駅前で間違えて降りちゃった……</b
 
 ということで今日は羽田から歩いて東京タワーの外階段を10**往復**しようとして失敗した記事でした。近いうちにリベンジしたいと思います。
 
-```twitter
-1503316217876316164
+```twitter-archived
+id: 1503316217876316164
+name: きゅ〜
+userid: kyu_099
+date: 2022-03-14
+tweet: 今回行ってない人だけで現地スタートでやりませんか？
 ```
 
 はい、僕も参加します。

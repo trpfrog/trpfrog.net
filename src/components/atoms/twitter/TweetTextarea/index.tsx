@@ -7,15 +7,20 @@ export type TweetTextareaProps = Omit<
   'children'
 > & {
   tweet: string
+  cite?: string
 }
 
 export function parseTweet(tweet: string) {
   tweet = ' ' + tweet + ' '
 
-  const sep = ['\\s', '\\n', '\\(', '\\)', '、', '。', '！', '？'].join('|')
+  const sepFigures = ['\\s', '\\n', '\\(', '\\)', '、', '。', '！', '？']
+  const sep = sepFigures.join('|')
   const urlRegex = new RegExp(`(${sep})(https?:\\/\\/[^${sep}]+)(${sep})`, 'g')
   const mentionRegex = new RegExp(`(${sep})@([a-zA-Z0-9_]+)(${sep})`, 'g')
-  const hashtagRegex = new RegExp(`(${sep})#([a-zA-Z0-9_]+)(${sep})`, 'g')
+  const hashtagRegex = new RegExp(
+    `(${sep})#([^${sepFigures.join('')}]+)(${sep})`,
+    'g',
+  )
 
   tweet = tweet.replace(
     urlRegex,
@@ -42,6 +47,7 @@ export function TweetTextarea(props: TweetTextareaProps) {
     <div className={`${styles.tweet} ${className}`} {...rest}>
       <blockquote
         className={styles.blockquote}
+        cite={props.cite}
         dangerouslySetInnerHTML={{ __html: parsedTweet }}
       />
     </div>

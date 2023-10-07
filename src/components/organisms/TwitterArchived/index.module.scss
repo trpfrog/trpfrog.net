@@ -10,7 +10,7 @@
   text-align: left;
   position: relative;
 
-  max-width: 550px;
+  max-width: 600px;
   width: 100%;
 
   background: white;
@@ -25,8 +25,6 @@
   padding: 1em;
   margin: 0.5em 0;
 
-  cursor: pointer;
-
   transition: 0.2s;
 
   a {
@@ -35,15 +33,13 @@
       text-decoration: underline;
     }
   }
-  &:hover {
-    background: #f5f5f5;
-    @include mixins.mq(dark) {
-      background: rgb(22, 22, 22);
-    }
-  }
 }
 
 .date {
-  color: gray;
+  color: gray !important;
   line-height: 1;
+  > a:hover {
+    color: gray !important;
+    text-decoration: underline;
+  }
 }

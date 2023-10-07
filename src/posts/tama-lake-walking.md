@@ -56,9 +56,28 @@ description: 私の中学時代の友人、というかもうインターネッ�
 
 ### 4月10日 8:00 (集合時間) 調布駅
 
+<style>
+  .somen-screen {
+    width: 100%; 
+    aspect-ratio: 16 / 9; 
+    background: lightgray; 
+    margin: 1rem 0; 
+    display: grid; 
+    place-items: center;
+    border-radius: 10px;
+    color: gray;
+  }
+</style>
 
-```twitter
-1380656381221498881
+```twitter-archived
+id: 1380656381221498881
+name: きゅ〜
+userid: kyu_099
+date: 2021-04-09
+tweet: <b style="font-size:1.2em">そうめん茹で生配信</b> <br>
+<div class="somen-screen">
+<i>そうめんを茹でている配信画面</i>
+</div>
 ```
 
 
@@ -114,12 +133,23 @@ tweet: @Maety_So 今からそうめん食べます
 
 <div style="height: 5em"></div>
 
-```twitter
-1380660796183638018
+
+```twitter-archived
+id: 1380660796183638018
+name: きゅ〜
+userid: kyu_099
+date: 2021-04-09
+tweet: @TrpFrog いただきます❗️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696675914/blog/tama-lake-walking/EykXrLrUcAMfzNt.jpg
 ```
 
-```twitter
-1380660839519166464
+```twitter-archived
+id: 1380660839519166464
+name: 淵野アタリ
+userid: ebioishii_u
+date: 2021-04-09
+tweet: @TrpFrog おいしそう！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696675931/blog/tama-lake-walking/EykXrZ8VgAE-qnr.jpg
 ```
 
 ```centering
@@ -153,10 +183,25 @@ tweet: @Maety_So 今からそうめん食べます
 <div style="height: 10em"></div>
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420211413)
+```twitter-archived
+id: 1380666414999080960
+name: ねぎ一世
+userid: negiissei
+date: 2021-04-09
+image:https://res.cloudinary.com/trpfrog/image/upload/v1696676044/blog/tama-lake-walking/EykcyOlUUAAw1JR.jpg
+```
+
+```twitter-archived
+id: 1380666240989941764
+name: gotti
+userid: _nil_a_
+date: 2021-04-09
+tweet: 偽造鬼面もらった
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lake-walking/EykcnkHUYAMCycr.jpg
+```
 
 <span style="font-size: 1.5em; font-weight: bold">
-    ちょうどバカモンが到着してジェネリック鬼面配布会が始まってしまいました……
+    ちょうどそうめんを食べ終えたバカモンが到着してジェネリック鬼面配布会が始まってしまいました……
 </span>
 
  <div style="height: 10em"></div>
@@ -510,11 +555,11 @@ tweet: @Maety_So 今からそうめん食べます
 
  
 
-```twitter
-1380752503730401282
+```twitter-archived
+id: 1380752503730401282
+date: 2021-04-10
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696676549/blog/tama-lake-walking/1380752443420504064.mp4
 ```
-
-
 
  
 
@@ -783,11 +828,13 @@ VOLT　 ◢███◤<br>
 
  
 
-```twitter
-1380834168154693634
+```twitter-archived
+id: 1380834168154693634
+name: きゅ〜
+userid: kyu_099
+date: 2021-04-10
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696676715/blog/tama-lake-walking/1380834084218269697_360p.mp4
 ```
-
-
 
 シカ漢プリケツダービー
 

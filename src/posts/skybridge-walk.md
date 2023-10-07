@@ -486,16 +486,35 @@ tweet: @sirominogame 歩け❗️
 
 僕は牛肉とピーマンの炒め定食を食べました。美味しかったです。(雑魚食レポ)
 
-```twitter
-1497431207386091521
+
+```twitter-archived
+id: 1497431207386091521
+name: ふみ
+userid: fmnpt
+date: 2022-02-26
+color: mediumvioletred
+tweet: つまみ(@TrpFrog)さん、ゴチになります‼️
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696683228/blog/takao-full-search/FMfxu74VgAgtp40.jpg
+image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683230/blog/takao-full-search/FMfxvbbVkAQtz6Y.jpg
 ```
 
-```twitter
-1497435317116170240
+```twitter-archived
+id: 1497435317116170240
+name: きゅ〜
+userid: kyu_099
+date: 2022-02-26
+tweet: 高級中華
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696683288/blog/takao-full-search/FMf1evyagAYmkJD.jpg
+image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683286/blog/takao-full-search/FMf1evvaUAEFGHG.jpg
 ```
 
-```twitter
-1497434834880237570
+```twitter-archived
+id: 1497434834880237570
+name: きゅ〜
+userid: kyu_099
+date: 2022-02-26
+tweet: つまみさんゴチになります笑😄
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696683339/blog/takao-full-search/FMf1CdkaMAAwlg9.jpg
 ```
 
 ```twitter-archived
@@ -595,8 +614,13 @@ B: この階段キツくない？なんでそんな軽々のぼれるの？？�
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/v1645894006/blog/skybridge-walk/F478A4E5-F69E-4380-BC7A-6BB41BEE4DAC_1_105_c.jpg)
 
-```twitter
-1497454856377798656
+```twitter-archived
+id: 1497454856377798656
+name: ミノガメ
+userid: sirominogame
+date: 2022-02-26
+color: green
+tweet: バ休憩
 ```
 
 ```twitter-archived

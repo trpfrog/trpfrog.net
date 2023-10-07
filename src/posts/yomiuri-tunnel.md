@@ -19,14 +19,17 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/yomiuri-tunnel/t
 -   あずきバー ([@azukibar_D](https://twitter.com/azukibar_D))
 
 
-
 ## 京王よみうりランド駅
 
 まず**電車で**京王よみうりランド駅へ向かいます。
 
-```twitter
-1448540719778385922
+```twitter-archived
+id: 1448540719778385922
+date: 2021-10-14
+tweet: 徒歩会開始❗️
+image: https://res.cloudinary.com/trpfrog/blog/yomiuri-tunnel/FBpAGXlUcAMw2vi.jpg
 ```
+
 ![IMG_4353](https://res.cloudinary.com/trpfrog/image/upload/blog/yomiuri-tunnel/IMG_4353.webp)
 
 普通は駅をすぐ出て左へ進むとゴンドラがあるのでそれに乗るのですが、今日のお目当ては**トンネル**ですので真っ直ぐ進みます。

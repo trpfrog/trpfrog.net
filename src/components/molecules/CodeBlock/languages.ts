@@ -1,5 +1,6 @@
 import sh from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css'
+import java from 'react-syntax-highlighter/dist/cjs/languages/prism/java'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
@@ -18,6 +19,7 @@ export function registerLanguages() {
   SyntaxHighlighter.registerLanguage('typescript', typescript)
   SyntaxHighlighter.registerLanguage('ts', typescript)
   SyntaxHighlighter.registerLanguage('tsx', tsx)
+  SyntaxHighlighter.registerLanguage('java', java)
   SyntaxHighlighter.registerLanguage('sh', sh)
   SyntaxHighlighter.registerLanguage('shell', sh)
   SyntaxHighlighter.registerLanguage('html', html)

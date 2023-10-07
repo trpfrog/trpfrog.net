@@ -5,15 +5,11 @@ import {
   TwitterImage,
   TwitterImageData,
 } from '@/components/atoms/twitter/TwitterImage'
-import { BlockLink } from '@/components/molecules/BlockLink'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 
 import styles from './index.module.scss'
 
-export type TwitterArchivedProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
-  'children'
-> & {
+type TwitterData = {
   author: string
   screenName: string
   tweet?: string
@@ -22,6 +18,14 @@ export type TwitterArchivedProps = Omit<
   images?: TwitterImageData[]
   iconStyle?: React.CSSProperties['background']
 }
+
+export type TwitterArchivedProps = Omit<
+  React.ComponentPropsWithoutRef<'div'>,
+  'children'
+> &
+  TwitterData & {
+    quote?: TwitterData
+  }
 
 export function TwitterArchived(props: TwitterArchivedProps) {
   const {
@@ -33,23 +37,29 @@ export function TwitterArchived(props: TwitterArchivedProps) {
     date,
     images,
     iconStyle,
+    quote,
     ...rest
   } = props
 
-  const tweetLink = 'https://twitter.com/' + screenName + '/status/' + id
+  const tweetLink = `https://twitter.com/${screenName}/status/${id}`
 
   return (
     <div className={`${styles.wrapper} ${className}`} {...rest}>
-      <BlockLink className={styles.box} href={tweetLink}>
+      <div className={styles.box}>
         <TwitterHeader
           name={author}
           screenName={screenName}
           iconStyle={iconStyle}
         />
-        {tweet && <TweetTextarea tweet={tweet} />}
-        {images && images.length > 0 && <TwitterImage images={images} />}
-        <div className={styles.date}>{date}</div>
-      </BlockLink>
+        {tweet && <TweetTextarea tweet={tweet} cite={tweetLink} />}
+        {quote && <TwitterArchived {...quote} />}
+        {images && images.length > 0 && (
+          <TwitterImage images={images} cite={tweetLink} />
+        )}
+        <div className={styles.date}>
+          {tweetLink ? <a href={tweetLink}>{date}</a> : date}
+        </div>
+      </div>
     </div>
   )
 }

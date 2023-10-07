@@ -146,6 +146,12 @@
   details {
     @extend .pretty_details;
   }
+
+  video {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+  }
 }
 
 .with_ud_font {

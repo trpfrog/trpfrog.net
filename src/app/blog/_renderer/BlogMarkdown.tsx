@@ -63,10 +63,10 @@ export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
       {markdown.map((content, idx) => (
         <Block key={'window-' + idx} style={style} className={className}>
           {idx === 0 && (
-            <>
+            <div style={{ marginBottom: '1rem' }}>
               <span id={'article'} />
               <PageNavigation entry={entry} doNotShowOnFirst={true} />
-            </>
+            </div>
           )}
           <article className={styles.post} style={{ wordBreak: 'break-word' }}>
             <ArticleRenderer
@@ -75,7 +75,11 @@ export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
               imageSize={imageSize}
             />
           </article>
-          {idx === markdown.length - 1 && <PageNavigation entry={entry} />}
+          {idx === markdown.length - 1 && (
+            <div style={{ marginTop: '1rem' }}>
+              <PageNavigation entry={entry} />
+            </div>
+          )}
         </Block>
       ))}
     </>

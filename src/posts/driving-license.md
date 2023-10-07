@@ -1230,9 +1230,13 @@ tweet: 本当はちょっと<b>「技能落ちそうだけど落ちたら徒歩�
 車 <<< 徒歩会 になっている人 (2)
 ```
 
-```twitter
-1399950828476125185
-umao1800:【実績解除】左に曲がりすぎたのに左にハンドルを切って怒られる
+```twitter-archived
+id: 1399950828476125185
+name: うまお
+userid: umao1800
+date: 2021-06-02
+tweet: 【実績解除】左に曲がりすぎたのに左にハンドルを切って怒られる
+color: repeating-conic-gradient(#2ea5fc, #2ea5fc 22.5deg, #7ffcae 22.5deg, #7ffcae 45deg)
 ```
 
 ```twitter-archived
@@ -1383,13 +1387,13 @@ tweet: これから技能で煽られたら<b>じゃあお前あのガバガバ�
 
 ### 6月10日
 
-```twitter
-1402851333040852993
-umao1800:
-乗車ぼく「えっと…エンジン…レバー…ブレーキ…これでいいんですよね…？」
-教官「……」
-ぼく「大丈夫ですよね」
-教官「シートベルトは？」
+```twitter-archived
+id: 1402850597292838916
+name: うまお
+userid: umao1800
+date: 2021-06-10
+tweet: 乗車ぼく「えっと…エンジン…レバー…ブレーキ…これでいいんですよね…？」<br/>教官「……」<br/>ぼく「大丈夫ですよね」<br/>教官「シートベルトは？」
+color: repeating-conic-gradient(#2ea5fc, #2ea5fc 22.5deg, #7ffcae 22.5deg, #7ffcae 45deg)
 ```
 
 ```twitter-archived
@@ -1398,13 +1402,12 @@ date: 2021-06-10
 tweet: シートベルト、つい忘れちゃいますよね😁
 ```
 
-```twitter
-1402849349864869892
-kyu_099:
-車あるある〜！
-左に曲がりまーす
-体がくっついちゃったー
-自転車なぎ倒して店内に 少年5人の乗用車
+```twitter-archived
+id: 1402849349864869892
+name: きゅ〜
+userid: kyu_099
+date: 2021-06-10
+tweet: <a href="https://t.co/1iYT2Gp0Vz">pic.twitter.com/1iYT2Gp0Vz</a>
 ```
 
 ```twitter-archived
@@ -1555,11 +1558,13 @@ date: 2021-07-22
 tweet: 教官「じゃあそこ<b>右</b>ね」<br/>わし「はい(<b>左</b>レーンにとどまる)」<br/>教官「<b>え？右折だよ</b>」<br/>わし「え？はい……<b>あ〜！</b>」<br/>教官「ちゃんと車線変更しようね」<br/>わし「はい (また左右間違えてたとか言えねえ〜〜〜)」
 ```
 
-```twitter
-1418122136909123584
-ときーら
-@gyunyu_umasugi
-つまみさんの車校ツイートを見てたら俺も頑張れる気がしてくる
+```twitter-archived
+id: 1418120813325164544
+name: ときーら
+userid: gyunyu_umasugi
+date: 2021-07-22
+tweet: つまみさんの車校ツイートを見てたら俺も頑張れる気がしてくる
+color: #d4b87a
 ```
 
 ```twitter-archived
