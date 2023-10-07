@@ -324,8 +324,12 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-```twitter
-1474665470657966084
+```twitter-archived
+id: 1474665470657966084
+name: gotti
+userid: _nil_a_
+date: 2021-12-25
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681183/blog/illumination2021/FHcQasiaUAcq2V2.jpg
 ```
 
 ```centering
@@ -335,8 +339,13 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 <br><br><br>
 
 
-```twitter
-1415340892790005766
+```twitter-archived
+id: 1415340892790005766
+name: gotti
+userid: _nil_a_
+date: 2021-07-14
+tweet: ハズレ馬券を見てしまったウマ娘
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumination2021/E6RNCl-VUAMPse-.jpg
 ```
 
  
@@ -633,11 +642,26 @@ https://trpfrog.net/blog/entry/c2walker
 
 ん、**ビールを入れているな**……？
 
-```twitter
-1474723366171209730
+
+```twitter-archived
+id: 1474716967651377160
+name: めがすこ
+userid: megane_sukore
+color: lightgray
+date: 2021-12-25
+tweet: トンカツ！！！！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681318/blog/illumination2021/FHc_QzmacAkuauZ.jpg
 ```
 
-
+```twitter-archived
+id: 1474723366171209730
+name: めがすこ
+userid: megane_sukore
+color: lightgray
+date: 2021-12-25
+tweet: 茶碗蒸しとわらび餅！
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681320/blog/illumination2021/FHdFFOJacAAcISR.jpg
+```
 
 すごい！
 
@@ -645,16 +669,25 @@ https://trpfrog.net/blog/entry/c2walker
 
 一方**五右衛門チーム**は
 
-```twitter
-1474709747047989251
-```
 
+```twitter-archived
+id: 1474709747047989251
+name: ふみ
+userid: fmnpt
+date: 2021-12-25
+tweet: クリームパスタ
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681429/blog/illumination2021/FHc4sWFaUAYHfwl.jpg
+```
 
 
 良いですね
 
-```twitter
-1474703470469206025
+```twitter-archived
+id: 1474703470469206025
+name: あずきバー
+userid: azukibar_D
+date: 2021-12-25
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681467/blog/illumination2021/FHcy-mZaUAAfAr_.jpg
 ```
 
 
@@ -792,20 +825,28 @@ https://trpfrog.net/blog/entry/tokyotower-walking
 
 ![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226155735 "ふみ vs あずきバー")
 
-```twitter
-1474734727030804481
-```
 
+```twitter-archived
+id: 1474734727030804481
+name: ふみ
+userid: fmnpt
+date: 2021-12-25
+tweet: えー、、、
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681813/blog/illumination2021/FHdPaiQaIAczRO0.jpg
+```
 
 
 ふみ「**バカ野郎**！クリームパスタ→アーモンドミルク→**カレー！？**」「うわ〜〜〜カレーの匂いがすごい！」「レトルトカレーそのままじゃねえか！」「おいこれ**おにぎりと一緒に食べる**って書いてあるぞ！バカモノ」
 
  
-
-```twitter
-1474733313323835396
+```twitter-archived
+id: 1474733313323835396
+name: あずきバー
+userid: azukibar_D
+date: 2021-12-25
+tweet: あられ降ってきてて笑っちゃった
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696681751/blog/illumination2021/FHdOIHDaUAQwOeb.jpg
 ```
-
 
 
 ホワイトクリスマス！？
