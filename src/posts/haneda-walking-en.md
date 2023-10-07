@@ -433,11 +433,15 @@ Speaking of which, at the height of this anger ((to be exact, it's the limit of 
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124022134)
 
-```twitter
-1330667069440811008
+```twitter-archived
+id: 1330667069440811008
+date: 2020-11-23
+tweet: Walk home! and a message flew in from a nerd, to which I replied with a snap. <a href="https://t.co/pCa0ejGAdK">pic.twitter.com/pCa0ejGAdK</a>
 ```
 
-
+```youtube
+https://youtu.be/jksshGslrdA
+```
 ## 2: 25.5km point
 
 ![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124022649 "It should have been the final point of Tama River 50km")
@@ -502,8 +506,10 @@ I also went to the top. It was a time, so it was a rattle. It's an international
 
 
 
-```twitter
-1330454338494484482
+```twitter-archived
+id: 1330454338494484482
+date: 2020-11-22
+image: https://res.cloudinary.com/trpfrog/video/upload/v1696683897/blog/haneda-walking/1330454222177878016-360p.mp4
 ```
 
 I came to the airport! I'm glad I enjoyed the feeling. Let's go home! on the train!
