@@ -2,13 +2,17 @@
   max-width: 100%;
   border-radius: 8px;
   max-height: 500px;
-  margin-bottom: 0.8em;
 }
 
 .blockquote {
   background: none !important;
   text-align: left !important;
   font-style: normal !important;
-  margin: 0 !important;
+  margin: 1rem 0 !important;
   padding: 0 !important;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8em;
 }
