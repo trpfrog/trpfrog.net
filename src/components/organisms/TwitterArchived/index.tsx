@@ -9,10 +9,7 @@ import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 
 import styles from './index.module.scss'
 
-export type TwitterArchivedProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
-  'children'
-> & {
+type TwitterData = {
   author: string
   screenName: string
   tweet?: string
@@ -21,6 +18,14 @@ export type TwitterArchivedProps = Omit<
   images?: TwitterImageData[]
   iconStyle?: React.CSSProperties['background']
 }
+
+export type TwitterArchivedProps = Omit<
+  React.ComponentPropsWithoutRef<'div'>,
+  'children'
+> &
+  TwitterData & {
+    quote?: TwitterData
+  }
 
 export function TwitterArchived(props: TwitterArchivedProps) {
   const {
@@ -32,6 +37,7 @@ export function TwitterArchived(props: TwitterArchivedProps) {
     date,
     images,
     iconStyle,
+    quote,
     ...rest
   } = props
 
@@ -46,6 +52,7 @@ export function TwitterArchived(props: TwitterArchivedProps) {
           iconStyle={iconStyle}
         />
         {tweet && <TweetTextarea tweet={tweet} />}
+        {quote && <TwitterArchived {...quote} />}
         {images && images.length > 0 && <TwitterImage images={images} />}
         <div className={styles.date}>
           {tweetLink ? <a href={tweetLink}>{date}</a> : date}
