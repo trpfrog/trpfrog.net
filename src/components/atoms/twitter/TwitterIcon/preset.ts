@@ -7,6 +7,7 @@ const palette = {
   azukibarStick: '248, 218, 192',
   azukibarColor: '208, 138, 136',
   ebioishiiUColor: '#cc986d',
+  negiiseiColor: '#29ab15',
 }
 
 export const iconPreset: Record<string, React.CSSProperties['background']> = {
@@ -68,4 +69,5 @@ export const iconPreset: Record<string, React.CSSProperties['background']> = {
         ${palette.ebioishiiUColor}
   `,
   degui_3bitto: 'khaki',
+  negiissei: palette.negiiseiColor,
 }
