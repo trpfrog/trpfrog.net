@@ -8,9 +8,9 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
+import { Editor } from '@blog/[slug]/edit/Editor'
+import { Viewer } from '@blog/[slug]/edit/Viewer'
 import { buildBlogPost } from '@blog/_lib/blogPost'
-import { Editor } from '@blog/edit/[slug]/Editor'
-import { Viewer } from '@blog/edit/[slug]/Viewer'
 
 import styles from './page.module.scss'
 
@@ -24,7 +24,7 @@ export default function Index(props: { params: { slug: string } }) {
 
   useMountEffect(() => {
     console.log('fire')
-    fetch(`/blog/edit/${props.params.slug}/api`, {
+    fetch(`/blog/${props.params.slug}/edit/api/read`, {
       headers: {
         'x-blog-slug': props.params.slug,
       },

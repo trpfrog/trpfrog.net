@@ -4,11 +4,11 @@ import React from 'react'
 
 import { useScrollPositionKeeper } from '@/hooks/useScrollPositionKeeper'
 
+import { useOverwritePageNavHref } from '@blog/[slug]/edit/_hooks/useOverwritePageNavHref'
+import styles from '@blog/[slug]/edit/page.module.scss'
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BlogPost } from '@blog/_lib/blogPost'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
-import styles from '@blog/edit/[slug]/page.module.scss'
-import { useOverwritePageNavHref } from '@blog/edit/_hooks/useOverwritePageNavHref'
 
 type Props = {
   post: BlogPost

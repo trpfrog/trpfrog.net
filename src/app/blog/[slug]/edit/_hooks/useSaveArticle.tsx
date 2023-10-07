@@ -31,7 +31,7 @@ export function useSaveArticle(
     if (!alreadySaved) {
       return setTimeoutPromise(() => {
         setAlreadySaved(true)
-        return fetch(`/blog/edit/${slug}/api/save`, {
+        return fetch(`/blog/${slug}/edit/api/save`, {
           method: 'POST',
           body: articleTextRef.current!,
         })
