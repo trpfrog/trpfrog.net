@@ -2073,12 +2073,23 @@ tweet: 鬼ホニウム
 <details>
 <summary>既視感の正体</summary>
 
-```twitter
-1301394723500822528
+```twitter-archived
+id: 1301394723500822528
+name: あずきバー
+userid: azukibar_D
+date: 2020-09-03
+tweet: UEC19のキャラに似たのがいたのでつい
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696692231/blog/omiya-walk/Eg97mN1U4AURaVu.jpg
 ```
 
-```twitter
-1506263063372402693
+```twitter-archived
+id: 1506263063372402693
+name: レプリカ
+userid: nnaacc5_uec
+date: 2022-03-22
+color: lightpink
+tweet: 股濡れてそう
+image: https://res.cloudinary.com/trpfrog/image/upload/v1696692235/blog/omiya-walk/FOdSRYHakAEv6Tu.jpg
 ```
 
 </details>
