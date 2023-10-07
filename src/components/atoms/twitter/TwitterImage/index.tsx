@@ -9,13 +9,14 @@ export type TwitterImageData = {
 
 export type TwitterImageProps = {
   images: TwitterImageData[]
+  cite?: string
 }
 
 export function TwitterImage(props: TwitterImageProps) {
   const isVideoFormat = (fileName: string) =>
     ['.mp4', '.webm', '.mov'].some(ext => fileName?.trim().endsWith(ext))
   return (
-    <blockquote className={styles.blockquote}>
+    <blockquote className={styles.blockquote} cite={props.cite}>
       {props.images
         .filter(Boolean)
         .map((image, index) =>

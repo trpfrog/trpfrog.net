@@ -51,9 +51,11 @@ export function TwitterArchived(props: TwitterArchivedProps) {
           screenName={screenName}
           iconStyle={iconStyle}
         />
-        {tweet && <TweetTextarea tweet={tweet} />}
+        {tweet && <TweetTextarea tweet={tweet} cite={tweetLink} />}
         {quote && <TwitterArchived {...quote} />}
-        {images && images.length > 0 && <TwitterImage images={images} />}
+        {images && images.length > 0 && (
+          <TwitterImage images={images} cite={tweetLink} />
+        )}
         <div className={styles.date}>
           {tweetLink ? <a href={tweetLink}>{date}</a> : date}
         </div>

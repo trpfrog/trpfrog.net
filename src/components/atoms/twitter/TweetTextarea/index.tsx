@@ -7,6 +7,7 @@ export type TweetTextareaProps = Omit<
   'children'
 > & {
   tweet: string
+  cite?: string
 }
 
 export function parseTweet(tweet: string) {
@@ -46,6 +47,7 @@ export function TweetTextarea(props: TweetTextareaProps) {
     <div className={`${styles.tweet} ${className}`} {...rest}>
       <blockquote
         className={styles.blockquote}
+        cite={props.cite}
         dangerouslySetInnerHTML={{ __html: parsedTweet }}
       />
     </div>
