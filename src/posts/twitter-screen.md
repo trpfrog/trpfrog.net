@@ -31,11 +31,12 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twit
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123201741.png "トレンド上位にあったハッシュタグを雑に流した、政治系ハッシュタグ読まされて鬱(自爆)")
 
-```twitter
-1330753236391796736
-本当にコメント(公式だが)流れててテンション上がってる https://t.co/4YMEn1mrLu
+```twitter-archived
+id: 1330753236391796736
+date: 2020-11-23
+tweet: 本当にコメント<small style="opacity: 0.3">(公式のだが)</small>流れててテンション上がってる
+image: https://res.cloudinary.com/trpfrog/blog/twitter-screen/EnfJA4KUwAEheRh.jpg
 ```
-
 
 ![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123203116.png "[依頼主のサークルの配信](https://www.youtube.com/watch?v=mzzegvls8PQ&feature=youtu.be)に使われて生まれて初めてSpecial Thanksされた、うれし〜")
 
