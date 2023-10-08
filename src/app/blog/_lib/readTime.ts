@@ -1,4 +1,17 @@
-import { myMarkdownClasses as partsDictionary } from '@blog/_components/OriginalMarkdownComponent'
+import {
+  ExtraCodeBlockComponentName,
+  isValidExtraCodeBlockComponentName,
+} from '@blog/_components/OriginalMarkdownComponent'
+
+function isUtilityCodeBlock(name: string): boolean {
+  const ignoreTarget: ExtraCodeBlockComponentName[] = [
+    'twitter',
+    'ignore-read-count',
+  ]
+  return (
+    isValidExtraCodeBlockComponentName(name) && !ignoreTarget.includes(name)
+  )
+}
 
 export const getReadTimeSecond = (markdown: string) => {
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
@@ -14,12 +27,6 @@ export const getReadTimeSecond = (markdown: string) => {
     }
   }
 
-  const utilityCodeBlocks = new Set(
-    Object.keys(partsDictionary).map(e => e.toLowerCase()),
-  )
-  utilityCodeBlocks.delete('twitter')
-  utilityCodeBlocks.delete('ignore-read-count')
-
   let numOfCharacters: number = 0
   let enableWordCounting = true
 
@@ -30,7 +37,7 @@ export const getReadTimeSecond = (markdown: string) => {
     if (line.startsWith('```')) {
       const cmd = line.replaceAll('`', '').trim()
       if (cmd.length > 0) {
-        if (utilityCodeBlocks.has(cmd)) {
+        if (isUtilityCodeBlock(cmd)) {
           codeBlockStack.push(cmd)
         } else {
           codeBlockStack.push('code-block')

@@ -15,7 +15,7 @@ export function useUploadFunction(slug: string) {
 
       const uploadPromise = toast.promise(
         (async () => {
-          const res = await fetch(`/blog/edit/${slug}/api/upload-image`, {
+          const res = await fetch(`/blog/${slug}/edit/api/upload-image`, {
             method: 'POST',
             body: formData,
           })

@@ -12,3 +12,9 @@ export type IsomorphicArticlePartsProps = {
 export type IsomorphicArticleParts =
   | ((props: IsomorphicArticlePartsProps) => React.ReactNode)
   | React.ExoticComponent<IsomorphicArticlePartsProps>
+
+export type ArticleParts = {
+  readonly name: string
+  Component: IsomorphicArticleParts
+  DevComponent?: IsomorphicArticleParts
+}

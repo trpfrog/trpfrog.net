@@ -11,11 +11,11 @@ import { H2 } from '@/components/atoms/H2'
 
 import { useSparseCallback } from '@/hooks/useSparseCallback'
 
+import { useSaveArticle } from '@blog/[slug]/edit/_hooks/useSaveArticle'
+import { useToastErrorCallback } from '@blog/[slug]/edit/_hooks/useToastErrorCallback'
+import { useUploadFunction } from '@blog/[slug]/edit/_hooks/useUploadFunction'
+import { EditorForm } from '@blog/[slug]/edit/EditorForm'
 import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
-import { EditorForm } from '@blog/edit/[slug]/EditorForm'
-import { useSaveArticle } from '@blog/edit/_hooks/useSaveArticle'
-import { useToastErrorCallback } from '@blog/edit/_hooks/useToastErrorCallback'
-import { useUploadFunction } from '@blog/edit/_hooks/useUploadFunction'
 
 import type { SimpleMDEReactProps } from 'react-simplemde-editor'
 

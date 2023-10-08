@@ -1,132 +1,153 @@
 import React from 'react'
 
-import { CamelToKebabCase } from '@/lib/types'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import { LinkEmbed } from '@blog/_components/article-parts/LinkEmbed'
-import { Twitter } from '@blog/_components/article-parts/Twitter'
-import { AutoYouTube, YouTube } from '@blog/_components/article-parts/YouTube'
+import { conversationParts } from '@blog/_components/article-parts/Conversation'
+import {
+  cautionParts,
+  infoboxParts,
+  titledFrameParts,
+} from '@blog/_components/article-parts/HighlightedBoxes'
+import { horizontalImagesParts } from '@blog/_components/article-parts/HorizontalImages'
+import { horizontalScrollParts } from '@blog/_components/article-parts/HorizontalScroll'
+import { linkEmbedParts } from '@blog/_components/article-parts/LinkEmbed'
+import { profileCardParts } from '@blog/_components/article-parts/ProfileCards'
+import { showAllParts } from '@blog/_components/article-parts/ShowAll'
+import { twitterParts } from '@blog/_components/article-parts/Twitter'
+import { twitterArchiveParts } from '@blog/_components/article-parts/TwitterArchive'
+import { walkingResultBoxParts } from '@blog/_components/article-parts/WalkingResultBox'
+import {
+  autoYouTubeParts,
+  youTubeParts,
+} from '@blog/_components/article-parts/YouTube'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
-import { Conversation } from './article-parts/Conversation'
-import { Caution, Infobox, TitledFrame } from './article-parts/HighlightedBoxes'
-import { HorizontalImages } from './article-parts/HorizontalImages'
-import { HorizontalScroll } from './article-parts/HorizontalScroll'
-import { ProfileCards } from './article-parts/ProfileCards'
-import { ShowAll } from './article-parts/ShowAll'
-import { TwitterArchive as TwitterArchived } from './article-parts/TwitterArchive'
-import { WalkingResultBox } from './article-parts/WalkingResultBox'
 import {
+  ArticleParts,
   IsomorphicArticleParts,
   IsomorphicArticlePartsProps,
 } from './ArticleParts'
 import { PageTransferButton } from './PageNavigation'
 
-/* eslint-disable react/display-name */
-export const myMarkdownClasses = {
-  // Socials
-  Twitter,
-  Youtube: YouTube,
-  AutoYoutube: AutoYouTube,
-  LinkEmbed,
-  TwitterArchived,
-
-  // Walking Parts
-  ResultBox: WalkingResultBox,
-  ProfileCards: (({ content, entry }) => (
-    <ProfileCards content={content} held={entry?.held} />
-  )) as IsomorphicArticleParts,
-
-  // Highlight Boxes
-  Caution,
-  Infobox,
-
-  TitledFrame,
-
-  HorizontalImages,
-  HorizontalScroll,
-  Conversation,
-
-  ShowAll,
-
-  NextPage: ({ content, entry }) => {
-    if (!entry) return <></>
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <div style={{ margin: '1em 0' }}>
-          <PageTransferButton
-            entry={entry}
-            nextPage={entry.currentPage + 1}
-            buttonText={`Next: ${content} →`}
-          />
+const extraCodeBlockComponents = [
+  conversationParts,
+  cautionParts,
+  infoboxParts,
+  titledFrameParts,
+  profileCardParts,
+  showAllParts,
+  twitterParts,
+  twitterArchiveParts,
+  walkingResultBoxParts,
+  youTubeParts,
+  autoYouTubeParts,
+  horizontalImagesParts,
+  horizontalScrollParts,
+  linkEmbedParts,
+  {
+    name: 'next-page',
+    Component: ({ content, entry }) => {
+      if (!entry) return <></>
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ margin: '1em 0' }}>
+            <PageTransferButton
+              entry={entry}
+              nextPage={entry.currentPage + 1}
+              buttonText={`Next: ${content} →`}
+            />
+          </div>
         </div>
-      </div>
-    )
+      )
+    },
   },
-
-  Centering: ({ content, entry, imageSize }) => (
-    <div style={{ textAlign: 'center' }}>
-      <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize} />
-    </div>
-  ),
-
-  CenteringWithSize: ({ content, entry, imageSize }) => {
-    const [size, ...lines] = content.split('\n')
-    content = lines.join('\n')
-    return (
-      <div style={{ textAlign: 'center', fontSize: size.trim() }}>
+  {
+    name: 'centering',
+    Component: ({ content, entry, imageSize }) => (
+      <div style={{ textAlign: 'center' }}>
         <ArticleRenderer
           toRender={content}
           entry={entry}
           imageSize={imageSize}
         />
       </div>
-    )
+    ),
   },
+  {
+    name: 'centering-with-size',
+    Component: ({ content, entry, imageSize }) => {
+      const [size, ...lines] = content.split('\n')
+      content = lines.join('\n')
+      return (
+        <div style={{ textAlign: 'center', fontSize: size.trim() }}>
+          <ArticleRenderer
+            toRender={content}
+            entry={entry}
+            imageSize={imageSize}
+          />
+        </div>
+      )
+    },
+  },
+  {
+    name: 'centering-with-size-bold',
+    Component: React.memo(function CenteringSizeWithBold({ content }) {
+      const [size, ...lines] = content.split('\n')
+      content = lines.join('\n')
+      return (
+        <div style={{ textAlign: 'center', fontSize: size.trim() }}>
+          <strong>
+            <ParseWithBudouX str={content} slug={content} />
+          </strong>
+        </div>
+      )
+    }),
+  },
+  {
+    name: 'ignore-read-count',
+    Component: ({ content, entry, imageSize }) => (
+      // This is a hack to make the read count not increase
+      // using "read counter does not count inside of code blocks"
+      <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize} />
+    ),
+  },
+  {
+    name: 'dangerously-set-inner-html',
+    Component: React.memo(function DangerouslySetInnerHtmlDiv({ content }) {
+      return <div dangerouslySetInnerHTML={{ __html: content }} />
+    }),
+  },
+] as const satisfies readonly ArticleParts[]
 
-  IgnoreReadCount: ({ content, entry, imageSize }) => (
-    // This is a hack to make the read count not increase
-    // using "read counter does not count inside of code blocks"
-    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize} />
+export type ExtraCodeBlockComponentName =
+  (typeof extraCodeBlockComponents)[number]['name']
+
+// TODO: ArticleParts の DevComponent の扱いを考える
+const extraCodeBlockComponentRecord = Object.fromEntries(
+  (extraCodeBlockComponents as readonly ArticleParts[]).map(
+    ({ name, Component }) => [name, Component],
   ),
+) as Record<ExtraCodeBlockComponentName, IsomorphicArticleParts>
 
-  CenteringWithSizeBold: React.memo(({ content }) => {
-    const [size, ...lines] = content.split('\n')
-    content = lines.join('\n')
-    return (
-      <div style={{ textAlign: 'center', fontSize: size.trim() }}>
-        <strong>
-          <ParseWithBudouX str={content} slug={content} />
-        </strong>
-      </div>
-    )
-  }),
+/**
+ * code block component として存在しているかどうかを判定する
+ * @param name
+ */
+export function isValidExtraCodeBlockComponentName(
+  name: string,
+): name is ExtraCodeBlockComponentName {
+  return name in extraCodeBlockComponentRecord
+}
 
-  DangerouslySetInnerHtml: React.memo(({ content }) => (
-    <div dangerouslySetInnerHTML={{ __html: content }} />
-  )),
-
-  ZeroPadding: React.memo(({ content, entry, imageSize }) => (
-    // This component is used to remove the padding of the parent component
-    // See also: @blog/_lib/parse.ts
-    <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize} />
-  )),
-} as const satisfies Record<string, IsomorphicArticleParts>
-/* eslint-enable react/display-name */
-
-export type MarkdownComponentName<Format extends 'kebab' | 'camel'> =
-  Format extends 'camel'
-    ? keyof typeof myMarkdownClasses
-    : Format extends 'kebab'
-    ? CamelToKebabCase<keyof typeof myMarkdownClasses>
-    : never
-
+/**
+ * code block component を呼び出す
+ */
 export function OriginalMarkdownComponent(
   props: IsomorphicArticlePartsProps & {
-    componentName: keyof typeof myMarkdownClasses
+    componentName: ExtraCodeBlockComponentName
   },
 ) {
   const { componentName, ...rest } = props
-  const TargetComponent = myMarkdownClasses[props.componentName]
+  const TargetComponent = extraCodeBlockComponentRecord[props.componentName]
   return <TargetComponent {...rest} />
 }

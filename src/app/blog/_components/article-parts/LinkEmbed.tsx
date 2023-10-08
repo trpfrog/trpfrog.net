@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
-export const LinkEmbed: IsomorphicArticleParts = React.memo(
-  function InnerLinkEmbed({ content }) {
+export const linkEmbedParts = {
+  name: 'link-embed',
+  Component: React.memo(function InnerLinkEmbed({ content }) {
     const [url, ...captionArr] = content.split('\n')
     return (
       <div style={{ textAlign: 'center' }}>
@@ -29,5 +30,5 @@ export const LinkEmbed: IsomorphicArticleParts = React.memo(
         )}
       </div>
     )
-  },
-)
+  }),
+} as const satisfies ArticleParts

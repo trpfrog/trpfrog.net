@@ -20,7 +20,7 @@ import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import { BlogImage } from '@blog/_components/BlogImage'
 import {
-  myMarkdownClasses,
+  isValidExtraCodeBlockComponentName,
   OriginalMarkdownComponent,
 } from '@blog/_components/OriginalMarkdownComponent'
 import { BlogPost } from '@blog/_lib/blogPost'
@@ -61,21 +61,10 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       ? className.replace('language-', '').split('.').slice(-1)[0]
       : ''
 
-    const languageCamelCase = language
-      .split('-')
-      .map(word =>
-        word.length > 0 ? word[0].toUpperCase() + word.slice(1) : '',
-      )
-      .join('')
-
-    type ComponentNameType = keyof typeof myMarkdownClasses
-    const isValidComponentName = (name: string): name is ComponentNameType => {
-      return name in myMarkdownClasses
-    }
-    if (isValidComponentName(languageCamelCase)) {
+    if (isValidExtraCodeBlockComponentName(language)) {
       return (
         <OriginalMarkdownComponent
-          componentName={languageCamelCase}
+          componentName={language}
           content={children as string}
           entry={entry}
         />
