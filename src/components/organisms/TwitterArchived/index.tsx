@@ -42,6 +42,7 @@ export function TwitterArchived(props: TwitterArchivedProps) {
   } = props
 
   const tweetLink = `https://twitter.com/${screenName}/status/${id}`
+  const hasImage = images && images.length > 0
 
   return (
     <div className={`${styles.wrapper} ${className}`} {...rest}>
@@ -52,10 +53,8 @@ export function TwitterArchived(props: TwitterArchivedProps) {
           iconStyle={iconStyle}
         />
         {tweet && <TweetTextarea tweet={tweet} cite={tweetLink} />}
+        {hasImage && <TwitterImage images={images} cite={tweetLink} />}
         {quote && <TwitterArchived {...quote} />}
-        {images && images.length > 0 && (
-          <TwitterImage images={images} cite={tweetLink} />
-        )}
         <div className={styles.date}>
           {tweetLink ? <a href={tweetLink}>{date}</a> : date}
         </div>
