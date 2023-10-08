@@ -8,7 +8,7 @@ import {
   TwitterArchivedProps,
 } from '@/components/organisms/TwitterArchived'
 
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseColonSeparatedDict } from '@blog/_lib/codeBlockParser'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
@@ -28,8 +28,9 @@ function Fallback(props: { content: string; error: z.ZodError }) {
   }
 }
 
-export const TwitterArchive: IsomorphicArticleParts = React.memo(
-  function TwitterArchive({ content }) {
+export const twitterArchiveParts = {
+  name: 'twitter-archived',
+  Component: React.memo(function TwitterArchive({ content }) {
     const rawTweetData = parseColonSeparatedDict(content)
     let props: TwitterArchivedProps
     try {
@@ -38,5 +39,5 @@ export const TwitterArchive: IsomorphicArticleParts = React.memo(
       return <Fallback content={content} error={error as z.ZodError} />
     }
     return <TwitterArchived {...props} />
-  },
-)
+  }),
+} as const satisfies ArticleParts

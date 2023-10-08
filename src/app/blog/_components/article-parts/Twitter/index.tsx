@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { IsomorphicArticleParts } from '@blog/_components/ArticleParts'
+import { ArticleParts } from '@blog/_components/ArticleParts'
 
 import { Tweet } from './TwitterWrapper'
 
-export const Twitter: IsomorphicArticleParts = React.memo(
-  function InnerTwitter({ content }) {
+export const twitterParts = {
+  name: 'twitter',
+  Component: React.memo(function InnerTwitter({ content }) {
     const id = content.split('\n')[0]
     return (
       <>
@@ -21,5 +22,5 @@ export const Twitter: IsomorphicArticleParts = React.memo(
         </div>
       </>
     )
-  },
-)
+  }),
+} as const satisfies ArticleParts

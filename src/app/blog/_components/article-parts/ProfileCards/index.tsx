@@ -8,6 +8,7 @@ import { Button } from '@/components/atoms/Button'
 import { createURL } from '@/lib/url'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
+import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseObjectList } from '@blog/_lib/codeBlockParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
@@ -78,44 +79,41 @@ const ListFormat = ({
   </ul>
 )
 
-export const ProfileCards = ({
-  content,
-  held,
-}: {
-  content: string
-  held?: string
-}) => {
-  const personalDataList = parseObjectList(content)
-    .map(e => ProfileDataSchema.safeParse(e))
-    .filter(e => e.success && e.data)
-    .map(e => {
-      if (e.success) {
-        return e.data
-      } else {
-        throw e.error
-      }
+export const profileCardParts = {
+  name: 'profile-cards',
+  Component: ({ content, held }: { content: string; held?: string }) => {
+    const personalDataList = parseObjectList(content)
+      .map(e => ProfileDataSchema.safeParse(e))
+      .filter(e => e.success && e.data)
+      .map(e => {
+        if (e.success) {
+          return e.data
+        } else {
+          throw e.error
+        }
+      })
+
+    const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
+      q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),
+      until: dayjs(held).add(1, 'd').format('YYYY-MM-DD') + '_04:00:00_JST',
+      f: 'live',
+      pf: 'on',
     })
 
-  const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
-    q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),
-    until: dayjs(held).add(1, 'd').format('YYYY-MM-DD') + '_04:00:00_JST',
-    f: 'live',
-    pf: 'on',
-  })
-
-  return (
-    <>
-      <SwitchUI
-        primaryChildren={<CardFormat personalDataList={personalDataList} />}
-        primaryButtonText={'リスト表示に切り替え'}
-        secondaryChildren={<ListFormat personalDataList={personalDataList} />}
-        secondaryButtonText={'カード表示に切り替え'}
-      />
-      {twitterSearchLink !== '' && (
-        <Button externalLink={true} href={twitterSearchLink}>
-          当日の同行者のツイートを見る
-        </Button>
-      )}
-    </>
-  )
-}
+    return (
+      <>
+        <SwitchUI
+          primaryChildren={<CardFormat personalDataList={personalDataList} />}
+          primaryButtonText={'リスト表示に切り替え'}
+          secondaryChildren={<ListFormat personalDataList={personalDataList} />}
+          secondaryButtonText={'カード表示に切り替え'}
+        />
+        {twitterSearchLink !== '' && (
+          <Button externalLink={true} href={twitterSearchLink}>
+            当日の同行者のツイートを見る
+          </Button>
+        )}
+      </>
+    )
+  },
+} as const satisfies ArticleParts
