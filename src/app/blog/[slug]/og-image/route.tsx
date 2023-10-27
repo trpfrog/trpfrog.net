@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types'
-import { ImageResponse, NextRequest, NextResponse } from 'next/server'
+import { ImageResponse } from 'next/og'
+import { NextRequest, NextResponse } from 'next/server'
 
 import { fetchFont } from '@/lib/fetchFont'
 
