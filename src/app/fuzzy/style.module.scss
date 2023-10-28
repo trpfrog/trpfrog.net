@@ -3,8 +3,7 @@
 .title {
   font-size: 4rem;
   font-weight: initial;
-  color: #333;
-
+  color: var(--base-font-color);
   @include mixins.mq(sp) {
     font-size: 2rem;
   }
