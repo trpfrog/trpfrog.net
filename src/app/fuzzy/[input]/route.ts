@@ -1,5 +1,5 @@
 import { ChatOpenAI } from 'langchain/chat_models/openai'
-import { HumanChatMessage } from 'langchain/schema'
+import { HumanMessage } from 'langchain/schema'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
@@ -69,8 +69,8 @@ export async function GET(req: NextRequest, props: GETProps) {
 
   try {
     await limiter.check(res, 5, req.ip ?? 'ip_not_found')
-    const chatResponse = await chat.call([new HumanChatMessage(prompt)])
-    const output = chatResponse.text.trim()
+    const chatResponse = await chat.call([new HumanMessage(prompt)])
+    const output = chatResponse.content.trim()
     const url = blogPaths.includes(output) ? '/blog/' + output : '/' + output
     return NextResponse.redirect(new URL(url, req.url))
   } catch {
