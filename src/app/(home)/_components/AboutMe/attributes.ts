@@ -24,7 +24,7 @@ export const attributes: Attribute[] = [
     iconName: '大学',
     text: '電気通信大学大学院 情報学専攻 修士1年',
   },
-  { icon: faBirthdayCake, iconName: '誕生日', text: '2000年10月17日 (22歳)' },
+  { icon: faBirthdayCake, iconName: '誕生日', text: '2000年10月17日 (23歳)' },
   { icon: faHeart, iconName: '好き', text: 'コンピュータ / Web開発 / 散歩' },
   {
     icon: faCode,
