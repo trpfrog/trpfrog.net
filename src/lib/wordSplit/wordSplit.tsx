@@ -3,7 +3,7 @@
 import { loadDefaultJapaneseParser } from 'budoux'
 const budouXParser = loadDefaultJapaneseParser()
 
-export const parseWithBudouX = (str: string, slug: string) => {
+const parseWithBudouX = (str: string, slug: string) => {
   if (!str) return []
   const separator = '<%FORCE-BREAK%>'
   return budouXParser
@@ -20,6 +20,6 @@ export const parseWithBudouX = (str: string, slug: string) => {
     ))
 }
 
-export function ParseWithBudouX(props: { str: string; slug: string }) {
+export function _ParseWithBudouX(props: { str: string; slug: string }) {
   return <>{parseWithBudouX(props.str, props.slug)}</>
 }

@@ -1,6 +1,7 @@
 ---
 title: Satori に Google Fonts を使う
 date: '2023-10-04'
+updated: '2023-10-27'
 tags: 技術
 description: >-
   HTML/CSS から SVG を生成するライブラリ vercel/satori に Google Fonts を使う方法の備忘録 (Next.js の動的
@@ -25,7 +26,8 @@ description: >-
 例えば次のようなイメージです。(実際はもう少し複雑な処理をしていますが)
 
 ```src/app/blog/[slug]/og-image/route.tsx
-import { ImageResponse, NextRequest } from 'next/server'
+import { NextRequest } from 'next/server'
+import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
@@ -52,6 +54,13 @@ export async function GET(req: NextRequest, context: Context) {
   )
 }
 ```
+
+<small>
+
+**2023/10/27 追記:**
+Next.js 14 で `ImageResponse` を `next/og` から import するようになったのでこちらのコードも変更しました。
+
+</small>
 
 
 OGP 画像をこだわって作ると、フォントにもこだわりたい気持ちが出てきます。
