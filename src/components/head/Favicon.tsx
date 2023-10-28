@@ -27,16 +27,6 @@ export const Favicon = () => {
       <link rel="shortcut icon" href="/favicons/favicon.ico" />
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: light)"
-        content="#66a928"
-      />
-      <meta
-        name="theme-color"
-        media="(prefers-color-scheme: dark)"
-        content="#4f831f"
-      />
     </>
   )
 }

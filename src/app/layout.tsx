@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 
 import '@/styles/globals.scss'
 import type { Metadata } from 'next'
+import { Viewport } from 'next'
 
 import { Toaster } from 'react-hot-toast'
 
@@ -41,14 +42,20 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME,
-    description,
     site: '@TrpFrog',
     creator: '@TrpFrog',
   },
   alternates: {
     canonical: productionURL,
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#66a928' },
+    { media: '(prefers-color-scheme: dark)', color: '#4f831f' },
+  ],
+  colorScheme: 'light dark',
 }
 
 type Props = {
