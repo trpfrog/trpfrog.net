@@ -56,7 +56,7 @@ export const getAllPostSlugs = async (): Promise<string[]> => {
   return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
 }
 
-export const getAllTags = async () => {
+export async function retrieveExistingAllTags() {
   const fileNames = await fetchAllMarkdownFileNames()
   const nested = await Promise.all(
     fileNames
@@ -65,13 +65,5 @@ export const getAllTags = async () => {
         fetchBlogPost(slug, { noContentNeeded: true }).then(e => e.tags),
       ),
   )
-  const tags = [...new Set(nested.flat())]
-
-  return tags.map(tag => {
-    return {
-      params: {
-        tag,
-      },
-    }
-  })
+  return [...new Set(nested.flat())]
 }
