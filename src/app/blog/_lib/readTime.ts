@@ -1,18 +1,14 @@
-import type { ExtraCodeBlockComponentName } from '@blog/_components/OriginalMarkdownComponent'
+import {
+  ExtraCodeBlockComponentName,
+  isValidExtraCodeBlockComponentName,
+} from '@blog/_components/OriginalMarkdownComponent'
 
 function isUtilityCodeBlock(name: string): boolean {
-  // to prevent error in testing-library, we need to import this function here
-  // (OriginalMarkdownComponent has React server component)
-  const {
-    isValidExtraCodeBlockComponentName,
-  } = require('@blog/_components/OriginalMarkdownComponent')
-
   const ignoreTarget: ExtraCodeBlockComponentName[] = [
     'twitter',
     'ignore-read-count',
   ]
   return (
-    // @ts-ignore (require returns any)
     isValidExtraCodeBlockComponentName(name) && !ignoreTarget.includes(name)
   )
 }
