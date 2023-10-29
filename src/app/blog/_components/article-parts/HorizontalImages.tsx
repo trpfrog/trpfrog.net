@@ -2,42 +2,26 @@ import React from 'react'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ImageCaption, BlogImage } from '@blog/_components/BlogImage'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 export const horizontalImagesParts = {
   name: 'horizontal-images',
-  Component: ({ content, imageSize }) => {
+  Component: ({ content }) => {
     const regex = new RegExp('^!\\[.*?]\\(')
-    const defaultImageData: BlogImageData = {
-      caption: '',
-      size: { height: 600, width: 800 },
-    }
 
     const imageSources = content
       .split('\n')
       .filter(line => line.match(regex))
       .map(line => line.replace(regex, '').slice(0, -1))
-      .map(src => {
-        if (!imageSize || !imageSize.size) {
-          return { src, imageData: defaultImageData }
-        } else {
-          return {
-            src,
-            imageData:
-              imageSize[getPureCloudinaryPath(src)] ?? defaultImageData,
-          }
-        }
-      })
+      .map(src => ({ src, imageData: { height: 600, width: 800 } }))
 
     const minImageHeight = imageSources
-      .map(e => e.imageData.size.height)
+      .map(e => e.imageData.height)
       .reduce((prv, cur) => Math.min(prv, cur), 1000000)
 
     imageSources.forEach(e => {
-      e.imageData.size.width *= minImageHeight / e.imageData.size.height
-      e.imageData.size.height = minImageHeight
+      e.imageData.width *= minImageHeight / e.imageData.height
+      e.imageData.height = minImageHeight
     })
 
     const caption = content
@@ -56,11 +40,10 @@ export const horizontalImagesParts = {
             margin: '2em 0 ' + (caption != '' ? '0' : '2em'),
           }}
         >
-          {imageSources.map(({ src, imageData }, index) => (
+          {imageSources.map(({ src }, index) => (
             <BlogImage
               src={src}
               alt={src}
-              imageData={imageData}
               key={`${src}-${index}`}
               style={{ margin: 0 }}
             />

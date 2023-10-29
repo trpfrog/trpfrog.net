@@ -27,11 +27,7 @@ export const Viewer = React.memo(function Viewer(props: Props) {
         addEntryButtons={false}
         addEditButtonOnDevMode={false}
       />
-      <BlogMarkdown
-        entry={props.post}
-        imageSize={{}}
-        className={styles.blog_markdown}
-      />
+      <BlogMarkdown entry={props.post} className={styles.blog_markdown} />
     </>
   )
 })

@@ -10,7 +10,6 @@ import { BadBlogBlock } from '@blog/_components/BadBlog'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
 import { fetchBlogPost, getSortedPostsData } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import styles from '@blog/_styles/blog.module.scss'
@@ -82,7 +81,6 @@ const processSlug = async (slug: string, page?: string) => {
 
   return {
     entry: JSON.parse(JSON.stringify(entry)) as BlogPost,
-    imageSize: await fetchAllImageProps(entry, false),
     relatedPosts,
   }
 }
@@ -90,7 +88,7 @@ const processSlug = async (slug: string, page?: string) => {
 export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
-  const { entry: post, imageSize, relatedPosts } = await processSlug(slug, page)
+  const { entry: post, relatedPosts } = await processSlug(slug, page)
 
   return (
     <MainWrapper className={styles.layout}>
@@ -99,7 +97,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              <BlogMarkdown entry={post} imageSize={imageSize} />
+              <BlogMarkdown entry={post} />
             </BadBlogBlock>
           </UDFontBlock>
         </div>

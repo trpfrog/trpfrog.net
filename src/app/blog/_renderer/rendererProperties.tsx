@@ -24,8 +24,6 @@ import {
   OriginalMarkdownComponent,
 } from '@blog/_components/OriginalMarkdownComponent'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
 import styles from '@blog/_styles/blog.module.scss'
 
@@ -83,10 +81,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
   }) satisfies MDXComponents['code']
 }
 
-export function getMarkdownOptions(
-  entry?: BlogPost,
-  imageSize?: Record<string, BlogImageData>,
-) {
+export function getMarkdownOptions(entry?: BlogPost) {
   const components: IsomorphicMarkdownComponent = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
@@ -97,11 +92,6 @@ export function getMarkdownOptions(
           src={props.src ?? ''}
           alt={props.alt ?? ''}
           caption={props.title}
-          imageData={
-            imageSize
-              ? imageSize[getPureCloudinaryPath(props.src ?? '')]
-              : undefined
-          }
         />
       )
     },
