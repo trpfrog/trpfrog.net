@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown'
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import { BlogPost } from '@blog/_lib/blogPost'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 export type MarkdownOptions = Omit<MDXRemoteProps, 'source' | 'components'> & {
@@ -22,7 +21,6 @@ export type ArticleRendererProps =
   | {
       toRender: string
       entry?: BlogPost
-      imageSize?: Record<string, BlogImageData>
       useClient?: boolean
     }
 
@@ -33,7 +31,7 @@ export const ArticleRenderer = React.memo(function ArticleRenderer(
   if ('markdownOptions' in props) {
     options = props.markdownOptions
   } else {
-    options = getMarkdownOptions(props.entry, props.imageSize)
+    options = getMarkdownOptions(props.entry)
   }
 
   const isDevClient =

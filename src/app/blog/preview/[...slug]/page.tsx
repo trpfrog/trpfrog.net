@@ -6,8 +6,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
-import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-import { getPreviewPostData } from '@blog/_lib/loadPreview'
+import { fetchPreviewBlogPost } from '@blog/_lib/loadPreview'
 import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { formatReadTime } from '@blog/_lib/readTime'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
@@ -19,7 +18,7 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const entry = await getPreviewPostData(params.slug[0])
+  const entry = await fetchPreviewBlogPost(params.slug[0])
   const metadata: Metadata = {
     title: '[記事プレビュー] ' + entry.title,
     robots: 'noindex, nofollow',
@@ -43,17 +42,16 @@ const processSlug = async (slug: [string, string | undefined]) => {
   }
 
   const entry = id
-    ? ((await getPreviewPostData(id, option)) as ErrorablePost)
+    ? ((await fetchPreviewBlogPost(id, option)) as ErrorablePost)
     : createErrorArticle('ID is missing!')
-  const imageSize = entry.isError ? {} : await fetchAllImageProps(entry, false)
+
   return {
     entry: JSON.parse(JSON.stringify(entry)),
-    imageSize,
   }
 }
 
 export default async function Index(props: Props) {
-  const { entry: post, imageSize } = await processSlug(props.params.slug)
+  const { entry: post } = await processSlug(props.params.slug)
 
   const { minutes: readMin, seconds: readSec } = formatReadTime(post.readTime)
 
@@ -76,7 +74,7 @@ export default async function Index(props: Props) {
           </p>
         )}
       </Block>
-      <BlogMarkdown entry={post} imageSize={imageSize} />
+      <BlogMarkdown entry={post} />
     </MainWrapper>
   )
 }

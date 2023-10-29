@@ -10,8 +10,7 @@ import { BadBlogBlock } from '@blog/_components/BadBlog'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-import { getPostData, getSortedPostsData } from '@blog/_lib/load'
+import { fetchBlogPost, retrieveSortedBlogPostList } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import styles from '@blog/_styles/blog.module.scss'
 
@@ -32,7 +31,7 @@ export async function generateStaticParams({
 }: {
   params: { slug: string }
 }) {
-  const entry = await getPostData(slug)
+  const entry = await fetchBlogPost(slug)
   const paths = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
     paths.push({ options: [i + ''] })
@@ -43,7 +42,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description, thumbnail } = await getPostData(params.slug)
+  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -68,23 +67,20 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 const processSlug = async (slug: string, page?: string) => {
-  const postDataOption = {
+  const entry: BlogPost = await fetchBlogPost(slug, {
     pagePos1Indexed: page ? parseInt(page, 10) : 1,
     all: page === 'all',
-  }
+  })
 
-  const entry: BlogPost = await getPostData(slug, postDataOption)
-
-  const tags = entry.tags.split(',')[0].trim()
-  const relatedPosts: BlogPost[] = !tags[0]
+  const tags = entry.tags
+  const relatedPosts: BlogPost[] = tags[0]
     ? []
-    : (await getSortedPostsData(tags[0])).filter(
+    : (await retrieveSortedBlogPostList(tags[0])).filter(
         (e: BlogPost) => e.slug !== entry.slug,
       )
 
   return {
     entry: JSON.parse(JSON.stringify(entry)) as BlogPost,
-    imageSize: await fetchAllImageProps(entry, false),
     relatedPosts,
   }
 }
@@ -92,7 +88,7 @@ const processSlug = async (slug: string, page?: string) => {
 export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
-  const { entry: post, imageSize, relatedPosts } = await processSlug(slug, page)
+  const { entry: post, relatedPosts } = await processSlug(slug, page)
 
   return (
     <MainWrapper className={styles.layout}>
@@ -101,7 +97,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              <BlogMarkdown entry={post} imageSize={imageSize} />
+              <BlogMarkdown entry={post} />
             </BadBlogBlock>
           </UDFontBlock>
         </div>
@@ -113,10 +109,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
       <Block id={styles.entry_bottom_buttons}>
         <EntryButtons post={post} />
       </Block>
-      <RelatedPosts
-        tag={post.tags.split(',')[0].trim()}
-        relatedPosts={relatedPosts}
-      />
+      <RelatedPosts tag={post.tags[0]} relatedPosts={relatedPosts} />
     </MainWrapper>
   )
 }

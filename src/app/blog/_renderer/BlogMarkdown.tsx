@@ -6,7 +6,6 @@ import { Block } from '@/components/molecules/Block'
 
 import { PageNavigation } from '@blog/_components/PageNavigation'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { BlogImageData } from '@blog/_lib/imagePropsFetcher'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleRenderer } from './ArticleRenderer'
@@ -47,7 +46,6 @@ export const parseInlineMarkdown = (markdown: string) => {
 
 type Props = {
   entry: BlogPost
-  imageSize: { [path: string]: BlogImageData }
   style?: CSSProperties
   className?: string
 }
@@ -55,7 +53,7 @@ type Props = {
 export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
   props: Props,
 ) {
-  const { entry, imageSize, style, className } = props
+  const { entry, style, className } = props
   const markdown = entry.content
 
   return (
@@ -69,11 +67,7 @@ export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
             </div>
           )}
           <article className={styles.post} style={{ wordBreak: 'break-word' }}>
-            <ArticleRenderer
-              toRender={content}
-              entry={entry}
-              imageSize={imageSize}
-            />
+            <ArticleRenderer toRender={content} entry={entry} />
           </article>
           {idx === markdown.length - 1 && (
             <div style={{ marginTop: '1rem' }}>

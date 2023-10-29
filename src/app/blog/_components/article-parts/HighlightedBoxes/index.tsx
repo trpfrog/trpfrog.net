@@ -3,17 +3,17 @@ import React from 'react'
 import { Alert } from '@/components/atoms/Alert'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseTitleAndBody } from '@blog/_lib/codeBlockParser'
+import { parseTitleAndBody } from '@blog/_lib/rawTextParser'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const cautionParts = {
   name: 'caution',
-  Component: ({ content, entry, imageSize }) => {
+  Component: ({ content, entry }) => {
     const { title, body } = parseTitleAndBody(content)
     return (
       <Alert type={'caution'}>
         <h4>{title}</h4>
-        <ArticleRenderer toRender={body} entry={entry} imageSize={imageSize} />
+        <ArticleRenderer toRender={body} entry={entry} />
       </Alert>
     )
   },
@@ -21,12 +21,12 @@ export const cautionParts = {
 
 export const infoboxParts = {
   name: 'infobox',
-  Component: ({ content, entry, imageSize }) => {
+  Component: ({ content, entry }) => {
     const { title, body } = parseTitleAndBody(content)
     return (
       <Alert type={'frog'}>
         <h4>{title}</h4>
-        <ArticleRenderer toRender={body} entry={entry} imageSize={imageSize} />
+        <ArticleRenderer toRender={body} entry={entry} />
       </Alert>
     )
   },
@@ -34,7 +34,7 @@ export const infoboxParts = {
 
 export const titledFrameParts = {
   name: 'titled-frame',
-  Component: ({ content, entry, imageSize }) => {
+  Component: ({ content, entry }) => {
     const { title, body } = parseTitleAndBody(content)
     return (
       <div style={{ transform: 'translateY(calc(-1 * (1em + 5px) / 2))' }}>
@@ -64,11 +64,7 @@ export const titledFrameParts = {
             borderRadius: 10,
           }}
         >
-          <ArticleRenderer
-            toRender={body}
-            entry={entry}
-            imageSize={imageSize}
-          />
+          <ArticleRenderer toRender={body} entry={entry} />
         </div>
       </div>
     )

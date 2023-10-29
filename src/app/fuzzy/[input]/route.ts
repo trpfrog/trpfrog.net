@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
 
-import { getAllPostSlugs } from '@blog/_lib/load'
+import { retrieveAllPostSlugs } from '@blog/_lib/load'
 
 const limiter = createRateLimit({
   interval: 60 * 1000 * 60, // 1 hour
@@ -44,7 +44,7 @@ export async function GET(req: NextRequest, props: GETProps) {
   const input = props.params.input.slice(0, 100)
 
   if (blogPaths.length === 0) {
-    blogPaths = await getAllPostSlugs()
+    blogPaths = await retrieveAllPostSlugs()
   }
 
   const prompt =

@@ -34,7 +34,7 @@ function FormItem(
 
 export function EditorForm(props: Props) {
   const blogPost = useMemo(
-    () => buildBlogPost(props.rawMarkdown, { all: true }),
+    () => buildBlogPost('', props.rawMarkdown, { all: true }),
     [props.rawMarkdown],
   )
   const { content: contentPart } = matter(props.rawMarkdown)

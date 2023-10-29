@@ -5,7 +5,7 @@ import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const horizontalScrollParts = {
   name: 'horizontal-scroll',
-  Component: ({ content, entry, imageSize }) => {
+  Component: ({ content, entry }) => {
     const contents = content.split('\n\n').filter(e => e.trim() !== '')
     return (
       <div
@@ -21,7 +21,7 @@ export const horizontalScrollParts = {
             key={'horizontal-element-key-' + idx}
             style={{ display: 'inline-block', whiteSpace: 'initial' }}
           >
-            <ArticleRenderer toRender={e} entry={entry} imageSize={imageSize} />
+            <ArticleRenderer toRender={e} entry={entry} />
           </div>
         ))}
       </div>

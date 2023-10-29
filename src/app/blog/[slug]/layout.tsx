@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getAllPostSlugs } from '@blog/_lib/load'
+import { retrieveAllPostSlugs } from '@blog/_lib/load'
 
 export const dynamicParams = false
 
@@ -12,7 +12,7 @@ type PageProps = {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs()
+  const slugs = await retrieveAllPostSlugs()
   return slugs.map(slug => ({ slug }))
 }
 

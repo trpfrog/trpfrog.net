@@ -6,23 +6,13 @@ import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const showAllParts = {
   name: 'show-all',
-  Component: ({ content, entry, imageSize }) => {
+  Component: ({ content, entry }) => {
     const [first, second] = content.split(/\n---+\n/)
     return (
       <ShowAllComponent
-        preview={
-          <ArticleRenderer
-            toRender={first}
-            entry={entry}
-            imageSize={imageSize}
-          />
-        }
+        preview={<ArticleRenderer toRender={first} entry={entry} />}
       >
-        <ArticleRenderer
-          toRender={second}
-          entry={entry}
-          imageSize={imageSize}
-        />
+        <ArticleRenderer toRender={second} entry={entry} />
       </ShowAllComponent>
     )
   },

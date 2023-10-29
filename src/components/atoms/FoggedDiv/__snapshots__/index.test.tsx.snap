@@ -14,16 +14,3 @@ exports[`FoggedDiv snapshot test 1`] = `
   </div>
 </DocumentFragment>
 `;
-
-exports[`ShowAll snapshot test 1`] = `
-<DocumentFragment>
-  <div
-    class="main "
-    style="max-height: 100px;"
-  >
-    <div
-      class="fog"
-    />
-  </div>
-</DocumentFragment>
-`;

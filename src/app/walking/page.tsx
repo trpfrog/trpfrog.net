@@ -7,7 +7,7 @@ import { Title } from '@/components/organisms/Title'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { getSortedPostsData } from '@blog/_lib/load'
+import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 
 import Belongings from './Belongings.mdx'
 
@@ -18,7 +18,7 @@ export const metadata = {
 
 export default async function Index() {
   const tag = '徒歩'
-  const articles = await getSortedPostsData(tag)
+  const articles = await retrieveSortedBlogPostList(tag)
 
   return (
     <MainWrapper>

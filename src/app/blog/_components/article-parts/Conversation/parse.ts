@@ -1,4 +1,4 @@
-import { parseColonSeparatedList } from '@blog/_lib/codeBlockParser'
+import { parseColonSeparatedList } from '@blog/_lib/rawTextParser'
 
 export type ConversationRecord = {
   speaker: string

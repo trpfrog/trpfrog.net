@@ -9,7 +9,7 @@ import ReactMarkdown from 'react-markdown'
 import { HoverScrollBox } from '@/components/atoms/HoverScrollBox'
 import { Block } from '@/components/molecules/Block'
 
-import { getSortedPostsData } from '@blog/_lib/load'
+import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 
 import styles from './index.module.scss'
 
@@ -28,7 +28,7 @@ const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
   const jsonText = fs.readFileSync(jsonPath, 'utf-8')
   const records = JSON.parse(jsonText) as WhatsNewRecord[]
 
-  const blogData = await getSortedPostsData()
+  const blogData = await retrieveSortedBlogPostList()
 
   for (const post of blogData) {
     records.push({

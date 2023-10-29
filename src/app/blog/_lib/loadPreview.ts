@@ -1,7 +1,9 @@
+import { z } from 'zod'
+
 import { microCMS } from '@/lib/microCMS'
 
-import { BlogPost } from './blogPost'
-import { BlogPostOption, buildBlogPost } from './load'
+import { BlogPost, BlogPostBuildOption } from './blogPost'
+import { buildBlogPost } from './blogPost'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean
@@ -13,7 +15,7 @@ const errorArticle = {
   slug: 'slug',
   date: '2000-10-17',
   updated: '2020-10-17',
-  tags: 'test',
+  tags: ['test'],
   isAll: false,
   readTime: 100,
   currentPage: 1,
@@ -21,16 +23,26 @@ const errorArticle = {
   content: ['Error has occurred'],
 } satisfies ErrorablePost
 
-export const createErrorArticle = (errTitle: string): ErrorablePost => {
+export function createErrorArticle(errTitle: string): ErrorablePost {
   let ret = { ...errorArticle }
   ret.title = 'ERR: ' + errTitle
   return ret
 }
 
-export const getPreviewPostData = async (
+const MicroCMSBlogPostSchema = z.object({
+  md: z.string(),
+  slug: z.string(),
+})
+
+/**
+ * Fetch blog post from microCMS
+ * @param contentId
+ * @param option
+ */
+export async function fetchPreviewBlogPost(
   contentId: string,
-  option?: BlogPostOption,
-) => {
+  option?: BlogPostBuildOption,
+) {
   const data = await microCMS
     .get({
       endpoint: 'blog-preview',
@@ -38,9 +50,13 @@ export const getPreviewPostData = async (
     })
     .catch(() => ({}))
 
-  if (!(data?.md && data?.slug)) {
+  try {
+    const { md, slug } = MicroCMSBlogPostSchema.parse(data)
+    return buildBlogPost(slug, md, {
+      ...option,
+      previewContentId: contentId,
+    })
+  } catch {
     return createErrorArticle('Invalid content ID')
   }
-
-  return await buildBlogPost(data!.slug, data!.md, option, contentId)
 }

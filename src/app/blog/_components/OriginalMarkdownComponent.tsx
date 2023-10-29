@@ -63,28 +63,20 @@ const extraCodeBlockComponents = [
   },
   {
     name: 'centering',
-    Component: ({ content, entry, imageSize }) => (
+    Component: ({ content, entry }) => (
       <div style={{ textAlign: 'center' }}>
-        <ArticleRenderer
-          toRender={content}
-          entry={entry}
-          imageSize={imageSize}
-        />
+        <ArticleRenderer toRender={content} entry={entry} />
       </div>
     ),
   },
   {
     name: 'centering-with-size',
-    Component: ({ content, entry, imageSize }) => {
+    Component: ({ content, entry }) => {
       const [size, ...lines] = content.split('\n')
       content = lines.join('\n')
       return (
         <div style={{ textAlign: 'center', fontSize: size.trim() }}>
-          <ArticleRenderer
-            toRender={content}
-            entry={entry}
-            imageSize={imageSize}
-          />
+          <ArticleRenderer toRender={content} entry={entry} />
         </div>
       )
     },
@@ -105,10 +97,10 @@ const extraCodeBlockComponents = [
   },
   {
     name: 'ignore-read-count',
-    Component: ({ content, entry, imageSize }) => (
+    Component: ({ content, entry }) => (
       // This is a hack to make the read count not increase
       // using "read counter does not count inside of code blocks"
-      <ArticleRenderer toRender={content} entry={entry} imageSize={imageSize} />
+      <ArticleRenderer toRender={content} entry={entry} />
     ),
   },
   {

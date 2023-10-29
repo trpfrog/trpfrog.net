@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { getAllPostSlugs } from '@blog/_lib/load'
+import { retrieveAllPostSlugs } from '@blog/_lib/load'
 
 type Context = {
   params: {
@@ -15,7 +15,7 @@ export async function POST(req: Request, context: Context) {
   }
 
   const slug = context.params.slug
-  if (!(await getAllPostSlugs()).includes(slug)) {
+  if (!(await retrieveAllPostSlugs()).includes(slug)) {
     return new Response('Not found', { status: 404 })
   }
 

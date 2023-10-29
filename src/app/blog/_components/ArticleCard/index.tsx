@@ -15,7 +15,7 @@ import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
 import { Card } from '@blog/_components/ArticleCard/Card'
 import { TagBar } from '@blog/_components/ArticleCard/TagBar'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
 
 import styles from './index.module.scss'
 
@@ -33,10 +33,7 @@ export const ArticleCard = ({ entry, hero = false, style }: Props) => {
     <Card isHero={hero} style={style}>
       <BlockLink href={articlePath} prefetch={false}>
         <ArticleCardGrid isHero={hero}>
-          <TagBar
-            tags={entry.tags.split(',').map((t: string) => t.trim())}
-            style={{ gridArea: gridArea.tags }}
-          />
+          <TagBar tags={entry.tags} style={{ gridArea: gridArea.tags }} />
           <div
             className={styles.thumbnail_wrapper}
             data-hero-article={hero}
