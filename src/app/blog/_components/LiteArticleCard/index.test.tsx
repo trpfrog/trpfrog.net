@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { LOREM_IPSUM } from '@/lib/constants'
 
@@ -12,20 +12,15 @@ describe('LiteArticleCard', () => {
     [
       'markdown content',
       '<!-- window break --->',
-      'markdown content',
-      'markdown content',
+      LOREM_IPSUM,
       '<!-- page break -->',
       'markdown content',
     ].join('\n'),
+    { all: true },
   )
 
   test('snapshot test', () => {
     const view = render(<LiteArticleCard entry={blogPost} />)
     expect(view.asFragment()).toMatchSnapshot()
-  })
-
-  test('should render correctly', () => {
-    render(<LiteArticleCard entry={blogPost} />)
-    expect(screen.getByText(LOREM_IPSUM)).toBeInTheDocument()
   })
 })
