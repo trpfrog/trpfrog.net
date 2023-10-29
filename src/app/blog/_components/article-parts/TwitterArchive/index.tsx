@@ -9,7 +9,7 @@ import {
 } from '@/components/organisms/TwitterArchived'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseColonSeparatedDict } from '@blog/_lib/codeBlockParser'
+import { parseColonSeparatedDict } from '@blog/_lib/rawTextParser'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 

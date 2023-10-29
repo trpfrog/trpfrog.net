@@ -3,7 +3,7 @@ import React from 'react'
 import { Alert } from '@/components/atoms/Alert'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseTitleAndBody } from '@blog/_lib/codeBlockParser'
+import { parseTitleAndBody } from '@blog/_lib/rawTextParser'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const cautionParts = {

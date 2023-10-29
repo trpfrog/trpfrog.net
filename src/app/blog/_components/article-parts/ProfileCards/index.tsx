@@ -9,7 +9,7 @@ import { createURL } from '@/lib/url'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseObjectList } from '@blog/_lib/codeBlockParser'
+import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import styles from './index.module.scss'

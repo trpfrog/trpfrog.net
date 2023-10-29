@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseColonSeparatedList } from '@blog/_lib/codeBlockParser'
+import { parseColonSeparatedList } from '@blog/_lib/rawTextParser'
 
 import styles from './index.module.scss'
 

@@ -3,7 +3,7 @@ import {
   parseColonSeparatedList,
   parseColonSeparatedDict,
   parseObjectList,
-} from './codeBlockParser'
+} from './rawTextParser'
 
 describe('parseTitleAndBody', () => {
   it('should parse title and body', () => {
