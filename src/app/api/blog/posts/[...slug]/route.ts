@@ -2,7 +2,7 @@ import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { NextResponse } from 'next/server'
 
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-import { getPostData } from '@blog/_lib/load'
+import { fetchBlogPost } from '@blog/_lib/load'
 
 type GETProps = {
   params: {
@@ -19,7 +19,7 @@ export async function GET(request: Request, props: GETProps) {
 
   if (slug) {
     try {
-      const entry = await getPostData(slug, {
+      const entry = await fetchBlogPost(slug, {
         pagePos1Indexed: parseInt(page ?? '-1', 10) || -1,
         all: page === 'all',
       })

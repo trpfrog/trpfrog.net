@@ -11,7 +11,7 @@ import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
 import { fetchAllImageProps } from '@blog/_lib/imagePropsFetcher'
-import { getPostData, getSortedPostsData } from '@blog/_lib/load'
+import { fetchBlogPost, getSortedPostsData } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import styles from '@blog/_styles/blog.module.scss'
 
@@ -32,7 +32,7 @@ export async function generateStaticParams({
 }: {
   params: { slug: string }
 }) {
-  const entry = await getPostData(slug)
+  const entry = await fetchBlogPost(slug)
   const paths = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
     paths.push({ options: [i + ''] })
@@ -43,7 +43,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description, thumbnail } = await getPostData(params.slug)
+  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -73,7 +73,7 @@ const processSlug = async (slug: string, page?: string) => {
     all: page === 'all',
   }
 
-  const entry: BlogPost = await getPostData(slug, postDataOption)
+  const entry: BlogPost = await fetchBlogPost(slug, postDataOption)
 
   const tags = entry.tags.split(',')[0].trim()
   const relatedPosts: BlogPost[] = !tags[0]

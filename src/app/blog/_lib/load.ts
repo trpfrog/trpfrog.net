@@ -90,7 +90,7 @@ export const buildBlogPost = async (
   } as BlogPost
 }
 
-export const getPostData = async (slug: string, option?: BlogPostOption) => {
+export const fetchBlogPost = async (slug: string, option?: BlogPostOption) => {
   const fileContents = getFileContents(slug)
   return await buildBlogPost(slug, fileContents, option)
 }
