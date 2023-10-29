@@ -38,7 +38,7 @@ export default function Index(props: { params: { slug: string } }) {
   const scrollToTopRef = useRef<HTMLDivElement>(null)
 
   const deferredBlogPost = useMemo(
-    () => buildBlogPost(deferredPost, { pagePos1Indexed: deferredPageIdx }),
+    () => buildBlogPost('', deferredPost, { pagePos1Indexed: deferredPageIdx }),
     [deferredPageIdx, deferredPost],
   )
 
