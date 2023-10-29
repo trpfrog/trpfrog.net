@@ -1,0 +1,531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeBlock snapshot test 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="code_lang_wrapper"
+    >
+      <span
+        class="code_lang"
+      >
+        TypeScript
+      </span>
+      <button
+        class="copy_button"
+        data-tooltip-id=":r0:"
+      >
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-clone "
+          data-icon="clone"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </div>
+    <pre
+      class="code_block"
+      style="color: rgb(248, 248, 242); background: rgb(43, 43, 43); font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto; border-radius: 0.3em;"
+    >
+      <code
+        class="language-ts"
+        style="color: rgb(248, 248, 242); background: none; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"
+      >
+        <span>
+          
+
+        </span>
+        <span>
+                    
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          function
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(255, 215, 0);"
+        >
+          fizzBuzz
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          (
+        </span>
+        <span>
+          n
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          :
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(171, 227, 56);"
+        >
+          number
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          )
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          {
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                      
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          if
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          (
+        </span>
+        <span>
+          n 
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          %
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          15
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          ===
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          0
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          )
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          {
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                        
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          return
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(171, 227, 56);"
+        >
+          'FizzBuzz'
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                      
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          }
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          else
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          if
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          (
+        </span>
+        <span>
+          n 
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          %
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          3
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          ===
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          0
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          )
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          {
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                        
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          return
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(171, 227, 56);"
+        >
+          'Fizz'
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                      
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          }
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          else
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          if
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          (
+        </span>
+        <span>
+          n 
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          %
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          5
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          ===
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          0
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          )
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          {
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                        
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          return
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(171, 227, 56);"
+        >
+          'Buzz'
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                      
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          }
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          else
+        </span>
+        <span>
+           
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          {
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                        
+        </span>
+        <span
+          class="token"
+          style="color: rgb(0, 224, 224);"
+        >
+          return
+        </span>
+        <span>
+           n
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          .
+        </span>
+        <span
+          class="token"
+          style="color: rgb(255, 215, 0);"
+        >
+          toString
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          (
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          )
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                      
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          }
+        </span>
+        <span>
+          
+
+        </span>
+        <span>
+                    
+        </span>
+        <span
+          class="token"
+          style="color: rgb(254, 254, 254);"
+        >
+          }
+        </span>
+        <span>
+          
+
+        </span>
+                
+      </code>
+    </pre>
+  </div>
+</DocumentFragment>
+`;

@@ -6,7 +6,7 @@ exports[`TwitterArchived snapshot test 1`] = `
     class="wrapper "
   >
     <div
-      class="box box"
+      class="box"
     >
       <div
         class="header"
@@ -31,7 +31,7 @@ exports[`TwitterArchived snapshot test 1`] = `
           >
             <a
               href="https://twitter.com/TrpFrog"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               target="_blank"
             >
               <div
@@ -69,9 +69,11 @@ exports[`TwitterArchived snapshot test 1`] = `
         </div>
       </div>
       <div
+        cite="https://twitter.com/TrpFrog/status/1353937432136228864"
         class="tweet "
       >
         <blockquote
+          cite="https://twitter.com/TrpFrog/status/1353937432136228864"
           class="blockquote"
         >
           <a
@@ -96,12 +98,12 @@ exports[`TwitterArchived snapshot test 1`] = `
       <div
         class="date"
       >
-        2000-10-17
+        <a
+          href="https://twitter.com/TrpFrog/status/1353937432136228864"
+        >
+          2000-10-17
+        </a>
       </div>
-      <a
-        class="link"
-        href="https://twitter.com/TrpFrog/status/1353937432136228864"
-      />
     </div>
   </div>
 </DocumentFragment>
