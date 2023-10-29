@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 import { z } from 'zod'
 
 import { preprocessMarkdown } from '@blog/_lib/preprocessMarkdown'
-import { getReadTimeSecond } from '@blog/_lib/readTime'
+import { computeReadTimeSecondFrom } from '@blog/_lib/readTime'
 
 export type BlogPostBuildOption = {
   pagePos1Indexed?: number
@@ -85,7 +85,7 @@ export function buildBlogPost(
     isAll: option?.all ?? false,
     numberOfPages,
     currentPage: pagePosition,
-    readTime: getReadTimeSecond(matterResult.content),
+    readTime: computeReadTimeSecondFrom(matterResult.content),
     numberOfPhotos,
     previewContentId: option?.previewContentId,
   }

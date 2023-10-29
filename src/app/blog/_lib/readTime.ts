@@ -13,7 +13,7 @@ function isUtilityCodeBlock(name: string): boolean {
   )
 }
 
-export const getReadTimeSecond = (markdown: string) => {
+export function computeReadTimeSecondFrom(markdown: string) {
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
   const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')
   const linkRemoved = markdown.replace(linkRegex, '$1')
