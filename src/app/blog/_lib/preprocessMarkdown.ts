@@ -93,8 +93,10 @@ export const preprocessMarkdown = (
       .join('<!-- window break -->')
   }
 
-  const targetPageIdx = (options.pageIdx1Indexed ?? 1) - 1
-  const page = markdown.split(pageBreakRegex)[targetPageIdx]
+  const targetPageIdx = options.concatenateAllPages
+    ? 0
+    : (options.pageIdx1Indexed ?? 1) - 1
 
+  const page = markdown.split(pageBreakRegex)[targetPageIdx]
   return page.split(windowBreakRegex).map(parseFootnote)
 }

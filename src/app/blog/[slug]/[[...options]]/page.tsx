@@ -68,15 +68,13 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 const processSlug = async (slug: string, page?: string) => {
-  const postDataOption = {
+  const entry: BlogPost = await fetchBlogPost(slug, {
     pagePos1Indexed: page ? parseInt(page, 10) : 1,
     all: page === 'all',
-  }
+  })
 
-  const entry: BlogPost = await fetchBlogPost(slug, postDataOption)
-
-  const tags = entry.tags.split(',')[0].trim()
-  const relatedPosts: BlogPost[] = !tags[0]
+  const tags = entry.tags
+  const relatedPosts: BlogPost[] = tags[0]
     ? []
     : (await getSortedPostsData(tags[0])).filter(
         (e: BlogPost) => e.slug !== entry.slug,
@@ -113,10 +111,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
       <Block id={styles.entry_bottom_buttons}>
         <EntryButtons post={post} />
       </Block>
-      <RelatedPosts
-        tag={post.tags.split(',')[0].trim()}
-        relatedPosts={relatedPosts}
-      />
+      <RelatedPosts tag={post.tags[0]} relatedPosts={relatedPosts} />
     </MainWrapper>
   )
 }

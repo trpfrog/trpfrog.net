@@ -18,12 +18,25 @@ const BlogDateSchema = z.coerce.date().transform(date => {
   return dayjs(date).format('YYYY-MM-DD')
 })
 
+const BlogTagSchema = z
+  .string()
+  .array()
+  .default([])
+  .or(
+    z.string().transform(str => {
+      if (str === '') {
+        return []
+      }
+      return str.split(',').map(e => e.trim())
+    }),
+  )
+
 export const blogFrontMatterSchema = z.object({
   title: z.string(),
   date: BlogDateSchema,
   updated: BlogDateSchema.optional(),
   held: BlogDateSchema.optional(),
-  tags: z.string().default(''),
+  tags: BlogTagSchema,
   description: z.string().optional(),
   thumbnail: z.string().url().optional(),
 })
@@ -48,13 +61,8 @@ export function buildBlogPost(
   option?: BlogPostBuildOption,
 ): BlogPost {
   const matterResult = matter(markdownString)
-  const pagePosition = option?.pagePos1Indexed ?? -1
+  const pagePosition = option?.pagePos1Indexed ?? 1
   const frontMatter = blogFrontMatterSchema.parse(matterResult.data)
-
-  const tags = frontMatter.tags
-    .split(',')
-    .map((t: string) => t.trim())
-    .join()
 
   const numberOfPhotos = matterResult.content
     .split('\n')
@@ -74,7 +82,6 @@ export function buildBlogPost(
     slug,
     ...frontMatter,
     content: pageContent,
-    tags,
     isAll: option?.all ?? false,
     numberOfPages,
     currentPage: pagePosition,

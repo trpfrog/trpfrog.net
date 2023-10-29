@@ -19,7 +19,7 @@ export type LiteArticleCardProps = {
 }
 
 export function LiteArticleCard({ entry }: LiteArticleCardProps) {
-  const tags = entry.tags.split(',').map(tag => `#${tag.trim()}`)
+  const tags = entry.tags.map(tag => `#${tag.trim()}`)
   const hasThumbnail = !!entry.thumbnail
   const { minutes: readTimeMinutes } = formatReadTime(entry.readTime)
 

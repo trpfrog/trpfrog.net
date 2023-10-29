@@ -33,10 +33,7 @@ export const ArticleCard = ({ entry, hero = false, style }: Props) => {
     <Card isHero={hero} style={style}>
       <BlockLink href={articlePath} prefetch={false}>
         <ArticleCardGrid isHero={hero}>
-          <TagBar
-            tags={entry.tags.split(',').map((t: string) => t.trim())}
-            style={{ gridArea: gridArea.tags }}
-          />
+          <TagBar tags={entry.tags} style={{ gridArea: gridArea.tags }} />
           <div
             className={styles.thumbnail_wrapper}
             data-hero-article={hero}

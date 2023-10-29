@@ -30,7 +30,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
     ...rest
   } = props
 
-  const tags = post.tags.split(',').map((tag: string) => tag.trim())
+  const tags = post.tags
 
   return (
     <>

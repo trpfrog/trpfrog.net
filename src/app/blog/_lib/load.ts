@@ -1,10 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import matter from 'gray-matter'
-
 import { BlogPost, BlogPostBuildOption, buildBlogPost } from './blogPost'
-import { getReadTimeSecond } from './readTime'
 
 const postsDirectory = path.join(process.cwd(), 'src', 'posts')
 
@@ -35,21 +32,11 @@ export const getSortedPostsData = async (tag: string = '') => {
     .map(fileName => {
       const slug = fileName.replace(/\.mdx$/, '').replace(/\.md$/, '')
       const fileContents = getFileContents(slug)
-      return { matterResult: matter(fileContents), slug }
+      return buildBlogPost(slug, fileContents, { noContentNeeded: true })
     })
-    .filter(
-      ({ matterResult }) =>
-        tag == '' || matterResult.data.tags.search(tag) != -1,
-    )
-    .map(({ matterResult, slug }) => {
-      return {
-        slug,
-        readTime: getReadTimeSecond(matterResult.content),
-        ...matterResult.data,
-      } as BlogPost
-    })
+    .filter(blogPost => tag === '' || blogPost.tags.includes(tag))
 
-  const sorted = allPostsData.sort(({ date: _a }, { date: _b }) => {
+  const sorted: BlogPost[] = allPostsData.sort(({ date: _a }, { date: _b }) => {
     const a = new Date(_a)
     const b = new Date(_b)
     if (a < b) {
@@ -71,13 +58,14 @@ export const getAllPostSlugs = async (): Promise<string[]> => {
 
 export const getAllTags = async () => {
   const fileNames = await fetchAllMarkdownFileNames()
-  const nested = fileNames
-    .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
-    .map(slug => getFileContents(slug))
-    .map(contents => matter(contents).data.tags as string)
-    .map(tags => tags.split(',').map(tag => tag.trim()))
-    .flat()
-  const tags = [...new Set(nested)]
+  const nested = await Promise.all(
+    fileNames
+      .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
+      .map(slug =>
+        fetchBlogPost(slug, { noContentNeeded: true }).then(e => e.tags),
+      ),
+  )
+  const tags = [...new Set(nested.flat())]
 
   return tags.map(tag => {
     return {

@@ -15,7 +15,7 @@ const errorArticle = {
   slug: 'slug',
   date: '2000-10-17',
   updated: '2020-10-17',
-  tags: 'test',
+  tags: ['test'],
   isAll: false,
   readTime: 100,
   currentPage: 1,
