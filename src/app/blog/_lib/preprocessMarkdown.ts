@@ -60,8 +60,41 @@ const parseFootnote = (content: string) => {
 //   return content
 // }
 
-export const parse = (markdown: string) => {
-  let list = markdown.split('<!-- page break --->').map(parseFootnote)
-  // list = await Promise.all(list.map(applyTextlint))
-  return list.map(e => e.split('<!-- window break --->'))
+type PreprocessOption = {
+  pageIdx1Indexed?: number
+  concatenateAllPages?: boolean
+}
+
+/**
+ * Split markdown using <!-- page break --> and <!-- window break -->
+ * @param markdown
+ * @param options
+ */
+export const preprocessMarkdown = (
+  markdown: string,
+  options: PreprocessOption,
+): string[] => {
+  const pageBreakRegex = /<!--+ page break --+>/g
+  const windowBreakRegex = /<!--+ window break --+>/g
+
+  if (!options.pageIdx1Indexed && !options.concatenateAllPages) {
+    throw new Error(
+      'Either pageIdx1Indexed or concatenateAllPages must be specified',
+    )
+  }
+
+  // Replace <!-- page break --> with <!-- window break --> to concatenate all pages
+  if (options.concatenateAllPages) {
+    markdown = markdown
+      .split(pageBreakRegex)
+      .map(
+        (content, idx) => `<span id="original-page-${idx + 1}"/>\n${content}`,
+      )
+      .join('<!-- window break -->')
+  }
+
+  const targetPageIdx = (options.pageIdx1Indexed ?? 1) - 1
+  const page = markdown.split(pageBreakRegex)[targetPageIdx]
+
+  return page.split(windowBreakRegex).map(parseFootnote)
 }

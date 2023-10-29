@@ -1,18 +1,36 @@
+import dayjs from 'dayjs'
 import matter from 'gray-matter'
 import { z } from 'zod'
 
-import type { BlogPostOption } from '@blog/_lib/load'
-import { parse } from '@blog/_lib/parse'
+import { preprocessMarkdown } from '@blog/_lib/preprocessMarkdown'
 import { getReadTimeSecond } from '@blog/_lib/readTime'
 
-export interface BlogPost {
-  title: string
+export type BlogPostBuildOption = {
+  pagePos1Indexed?: number
+  all?: boolean
+  showPreviewCheckpoint?: boolean
+  previewContentId?: string
+}
+
+// YYYY-MM-DD
+const zBlogDate = z.coerce.date().transform(date => {
+  return dayjs(date).format('YYYY-MM-DD')
+})
+
+export const blogFrontMatterSchema = z.object({
+  title: z.string(),
+  date: zBlogDate,
+  updated: zBlogDate.optional(),
+  held: zBlogDate.optional(),
+  tags: z.string().default(''),
+  description: z.string().optional(),
+  thumbnail: z.string().url().optional(),
+})
+
+export type BlogFrontMatter = z.infer<typeof blogFrontMatterSchema>
+
+export interface BlogPost extends BlogFrontMatter {
   slug: string
-  date: string
-  updated: string
-  tags: string
-  description?: string
-  thumbnail?: string
   readTime: number
   numberOfPhotos?: number
   held?: string
@@ -23,36 +41,16 @@ export interface BlogPost {
   content: string[]
 }
 
-// YYYY-MM-DD
-const zBlogDate = z.coerce.date().transform(date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  return `${year}-${month.toString().padStart(2, '0')}-${day
-    .toString()
-    .padStart(2, '0')}`
-})
-
-export const blogFrontMatterSchema = z.object({
-  title: z.string(),
-  date: zBlogDate,
-  updated: zBlogDate.optional(),
-  held: zBlogDate.optional(),
-  tags: z.string().optional(),
-  description: z.string().optional(),
-  thumbnail: z.string().url().optional(),
-})
-
-export type BlogFrontMatter = z.infer<typeof blogFrontMatterSchema>
-
-export const buildBlogPost = (
+export function buildBlogPost(
+  slug: string,
   markdownString: string,
-  option?: BlogPostOption,
-): BlogPost => {
+  option?: BlogPostBuildOption,
+): BlogPost {
   const matterResult = matter(markdownString)
   const pagePosition = option?.pagePos1Indexed ?? -1
+  const frontMatter = blogFrontMatterSchema.parse(matterResult.data)
 
-  const tags = (matterResult.data.tags ?? '')
+  const tags = frontMatter.tags
     .split(',')
     .map((t: string) => t.trim())
     .join()
@@ -61,32 +59,26 @@ export const buildBlogPost = (
     .split('\n')
     .filter(e => e.startsWith('![')).length
 
-  const parsedContent: string[][] = parse(matterResult.content)
-  let content: string[] = []
-  if (option?.all) {
-    content = parsedContent
-      .map((windows, idx) => {
-        windows[0] = `<span id="original-page-${idx + 1}"></span>` + windows[0]
-        return windows
-      })
-      .flat()
-  } else if (pagePosition) {
-    if (pagePosition > parsedContent.length) {
-      throw 'Too large page position!'
-    }
-    content = parsedContent[pagePosition - 1]
-  }
+  const pageContent = preprocessMarkdown(matterResult.content, {
+    concatenateAllPages: option?.all,
+    pageIdx1Indexed: pagePosition,
+  })
+
+  const pageBreakRegex = /<!--+ page break --+>/g
+  const numberOfPages = matterResult.content.split(pageBreakRegex).length
 
   return {
-    content,
+    slug,
+    ...frontMatter,
+    content: pageContent,
     tags,
     isAll: option?.all ?? false,
-    numberOfPages: parsedContent.length,
+    numberOfPages,
     currentPage: pagePosition,
     readTime: getReadTimeSecond(matterResult.content),
     numberOfPhotos,
-    ...matterResult.data,
-  } as BlogPost
+    previewContentId: option?.previewContentId,
+  }
 }
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
