@@ -13,15 +13,15 @@ export type BlogPostBuildOption = {
 }
 
 // YYYY-MM-DD
-const zBlogDate = z.coerce.date().transform(date => {
+const BlogDateSchema = z.coerce.date().transform(date => {
   return dayjs(date).format('YYYY-MM-DD')
 })
 
 export const blogFrontMatterSchema = z.object({
   title: z.string(),
-  date: zBlogDate,
-  updated: zBlogDate.optional(),
-  held: zBlogDate.optional(),
+  date: BlogDateSchema,
+  updated: BlogDateSchema.optional(),
+  held: BlogDateSchema.optional(),
   tags: z.string().default(''),
   description: z.string().optional(),
   thumbnail: z.string().url().optional(),
