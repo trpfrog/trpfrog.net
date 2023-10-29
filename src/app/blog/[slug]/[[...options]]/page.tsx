@@ -10,7 +10,7 @@ import { BadBlogBlock } from '@blog/_components/BadBlog'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { fetchBlogPost, getSortedPostsData } from '@blog/_lib/load'
+import { fetchBlogPost, retrieveSortedBlogPostList } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import styles from '@blog/_styles/blog.module.scss'
 
@@ -75,7 +75,7 @@ const processSlug = async (slug: string, page?: string) => {
   const tags = entry.tags
   const relatedPosts: BlogPost[] = tags[0]
     ? []
-    : (await getSortedPostsData(tags[0])).filter(
+    : (await retrieveSortedBlogPostList(tags[0])).filter(
         (e: BlogPost) => e.slug !== entry.slug,
       )
 

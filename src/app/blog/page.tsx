@@ -14,7 +14,7 @@ import { getTypedEntries } from '@/lib/utils'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { getSortedPostsData } from '@blog/_lib/load'
+import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 import styles from '@blog/_styles/blog.module.scss'
 
 export const metadata = {
@@ -23,7 +23,7 @@ export const metadata = {
 } satisfies Metadata
 
 export default async function Index() {
-  const articles = await getSortedPostsData()
+  const articles = await retrieveSortedBlogPostList()
 
   // Get latest featured article
   const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {

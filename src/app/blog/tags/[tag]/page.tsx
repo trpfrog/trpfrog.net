@@ -6,7 +6,10 @@ import { Title } from '@/components/organisms/Title'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
-import { getSortedPostsData, retrieveExistingAllTags } from '@blog/_lib/load'
+import {
+  retrieveSortedBlogPostList,
+  retrieveExistingAllTags,
+} from '@blog/_lib/load'
 
 export async function generateStaticParams() {
   const tags = await retrieveExistingAllTags()
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Index({ params }: Props) {
   const tag = decodeURIComponent(params!.tag)
-  const articles = await getSortedPostsData(tag)
+  const articles = await retrieveSortedBlogPostList(tag)
 
   return (
     <>

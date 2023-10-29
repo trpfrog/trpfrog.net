@@ -5,33 +5,46 @@ import { BlogPost, BlogPostBuildOption, buildBlogPost } from './blogPost'
 
 const postsDirectory = path.join(process.cwd(), 'src', 'posts')
 
-const getFileContents = (slug: string) => {
+/**
+ * Read markdown from slug (without extension)
+ * @param slug
+ */
+function readMarkdownFromSlug(slug: string) {
   const fullPath = path.join(postsDirectory, `${slug}.md`)
-  return fs.existsSync(fullPath)
-    ? fs.readFileSync(fullPath, 'utf8')
-    : fs.readFileSync(fullPath + 'x', 'utf8')
+  const paths = [fullPath, fullPath + 'x'] // for mdx
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      return fs.readFileSync(p, 'utf8')
+    }
+  }
+  throw new Error(`No such file: ${fullPath}`)
 }
 
-const fetchAllMarkdownFileNames = async () =>
-  (await fs.promises.readdir(postsDirectory)).filter(e => {
+/**
+ * Read all markdown file names
+ */
+function readAllMarkdownFileNames() {
+  const dir = fs.readdirSync(postsDirectory)
+  return dir.filter(e => {
     const ext = e.split('.').slice(-1)[0]
     return ext === 'md' || ext === 'mdx'
   })
+}
 
 export async function fetchBlogPost(
   slug: string,
   option?: BlogPostBuildOption,
 ): Promise<BlogPost> {
-  const fileContents = getFileContents(slug)
+  const fileContents = readMarkdownFromSlug(slug)
   return buildBlogPost(slug, fileContents, option)
 }
 
-export const getSortedPostsData = async (tag: string = '') => {
-  const fileNames = await fetchAllMarkdownFileNames()
+export const retrieveSortedBlogPostList = async (tag: string = '') => {
+  const fileNames = readAllMarkdownFileNames()
   const allPostsData = fileNames
     .map(fileName => {
       const slug = fileName.replace(/\.mdx$/, '').replace(/\.md$/, '')
-      const fileContents = getFileContents(slug)
+      const fileContents = readMarkdownFromSlug(slug)
       return buildBlogPost(slug, fileContents, { noContentNeeded: true })
     })
     .filter(blogPost => tag === '' || blogPost.tags.includes(tag))
@@ -51,13 +64,13 @@ export const getSortedPostsData = async (tag: string = '') => {
   return JSON.parse(JSON.stringify(sorted)) as BlogPost[]
 }
 
-export const getAllPostSlugs = async (): Promise<string[]> => {
-  const fileNames = await fetchAllMarkdownFileNames()
+export const retrieveAllPostSlugs = async (): Promise<string[]> => {
+  const fileNames = readAllMarkdownFileNames()
   return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
 }
 
 export async function retrieveExistingAllTags() {
-  const fileNames = await fetchAllMarkdownFileNames()
+  const fileNames = readAllMarkdownFileNames()
   const nested = await Promise.all(
     fileNames
       .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
