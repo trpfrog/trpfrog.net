@@ -5,7 +5,7 @@ import React from 'react'
 import { faClone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light'
-import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import a11yDark from 'react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark'
 
 import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { registerLanguages } from '@/components/molecules/CodeBlock/languages'
