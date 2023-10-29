@@ -15,7 +15,7 @@ import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
 import { Card } from '@blog/_components/ArticleCard/Card'
 import { TagBar } from '@blog/_components/ArticleCard/TagBar'
 import { BlogPost } from '@blog/_lib/blogPost'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
 
 import styles from './index.module.scss'
 

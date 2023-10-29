@@ -7,7 +7,7 @@ import Modal from 'react-modal'
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import styles from '@blog/_components/BlogImage/index.module.scss'
-import { getPureCloudinaryPath } from '@blog/_lib/getPureCloudinaryPath'
+import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
 
 export function ImageWithModal(props: {
   src: string
