@@ -23,6 +23,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'bun'
-      - run: bun install --frozen-lockfile
-      - run: bun run test
+          cache: 'npm'
+      - run: npm install
+      - run: npm run test
