@@ -10,6 +10,7 @@ export type BlogPostBuildOption = {
   all?: boolean
   showPreviewCheckpoint?: boolean
   previewContentId?: string
+  noContentNeeded?: boolean
 }
 
 // YYYY-MM-DD
@@ -59,10 +60,12 @@ export function buildBlogPost(
     .split('\n')
     .filter(e => e.startsWith('![')).length
 
-  const pageContent = preprocessMarkdown(matterResult.content, {
-    concatenateAllPages: option?.all,
-    pageIdx1Indexed: pagePosition,
-  })
+  const pageContent = option?.noContentNeeded
+    ? []
+    : preprocessMarkdown(matterResult.content, {
+        concatenateAllPages: option?.all,
+        pageIdx1Indexed: pagePosition,
+      })
 
   const pageBreakRegex = /<!--+ page break --+>/g
   const numberOfPages = matterResult.content.split(pageBreakRegex).length
