@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { microCMS } from '@/lib/microCMS'
 
-import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/blogPostUtils'
+import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
 
 import { BlogPost } from './blogPost'
 

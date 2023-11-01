@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/blogPostUtils'
+import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
 
 import { BlogPost } from './blogPost'
 
