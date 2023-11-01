@@ -1,8 +1,8 @@
 import matter from 'gray-matter'
 
 import { blogFrontMatterSchema, BlogPost } from '@blog/_lib/blogPost'
+import { computeReadTimeSecondFrom } from '@blog/_lib/computeReadTimeSecondFrom'
 import { preprocessMarkdown } from '@blog/_lib/preprocessMarkdown'
-import { computeReadTimeSecondFrom } from '@blog/_lib/readTime'
 
 export type BlogPostBuildOption = {
   pagePos1Indexed?: number
