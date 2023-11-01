@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types'
 import { ImageResponse } from 'next/og'
-import { NextRequest, NextResponse } from 'next/server'
+import { ImageResponseOptions, NextRequest } from 'next/server'
 
 import { fetchFont } from '@/lib/fetchFont'
 
+import { fetchArticle } from '@blog/[slug]/og-image/fetchArticle'
 import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
 
 import {
@@ -19,7 +19,6 @@ import {
   OgWhiteBackground,
   OgWindow,
 } from './components'
-import { fetchArticle } from './fetchArticle'
 
 export const runtime = 'edge'
 
@@ -56,10 +55,10 @@ type Context = {
 export async function GET(req: NextRequest, context: Context) {
   const slug = context.params.slug
   const res = await fetchArticle(slug)
-  if (res instanceof NextResponse) {
-    return res
+  if (!res.success) {
+    return res.response
   }
-  const { title, thumbnail, tags, date } = res
+  const { title, thumbnail, tags, date } = res.data
 
   const imageResponseOptions = await createImageResponseOptions()
 
