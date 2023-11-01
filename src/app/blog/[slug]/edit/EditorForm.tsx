@@ -7,11 +7,8 @@ import { useForm } from 'react-hook-form'
 
 import { getTypedEntries, getTypedKeys } from '@/lib/utils'
 
-import {
-  BlogFrontMatter,
-  blogFrontMatterSchema,
-  buildBlogPost,
-} from '@blog/_lib/blogPost'
+import { BlogFrontMatter, blogFrontMatterSchema } from '@blog/_lib/blogPost'
+import { buildBlogPost } from '@blog/_lib/buildBlogPost'
 
 import styles from './page.module.scss'
 

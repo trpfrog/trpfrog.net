@@ -6,9 +6,9 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
+import { formatReadTime } from '@blog/_lib/formatReadTime'
 import { fetchPreviewBlogPost } from '@blog/_lib/loadPreview'
 import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
-import { formatReadTime } from '@blog/_lib/readTime'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 type Props = {

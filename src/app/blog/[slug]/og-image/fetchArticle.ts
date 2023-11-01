@@ -1,19 +1,27 @@
-import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
-import { z } from 'zod'
 
 import { HOST_URL } from '@/lib/constants'
 import { createURL } from '@/lib/url'
 
-const PostApiSchema = z.object({
-  title: z.string(),
-  thumbnail: z.string().url().optional(),
-  date: z.coerce.date().transform(d => dayjs(d).format('YYYY-MM-DD')),
-  tags: z.string().optional(),
-})
+import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
 
-export async function fetchArticle(slug: string) {
+export type FetchArticleResult =
+  | {
+      success: true
+      data: {
+        title: string
+        thumbnail?: string
+        tags: string[]
+        date: string
+      }
+    }
+  | {
+      success: false
+      response: NextResponse
+    }
+
+export async function fetchArticle(slug: string): Promise<FetchArticleResult> {
   const postEndpoint = createURL(`/api/blog/posts/${slug}`, HOST_URL)
 
   const articleInfo = await fetch(postEndpoint).then(res => res.json())
@@ -22,22 +30,20 @@ export async function fetchArticle(slug: string) {
     if ('code' in articleInfo.error && articleInfo.error.code === 'ENOENT') {
       notFound()
     } else {
-      return NextResponse.json(
-        {
-          error: 'Internal Server Error',
-        },
-        { status: 500 },
-      )
+      return {
+        success: false,
+        response: NextResponse.json(
+          {
+            error: 'Internal Server Error',
+          },
+          { status: 500 },
+        ),
+      }
     }
   }
 
-  let {
-    title,
-    thumbnail,
-    tags: tmpTag,
-    date,
-  } = PostApiSchema.parse(articleInfo)
-  const tags = tmpTag?.split(',').map(t => t.trim()) ?? []
+  let { title, thumbnail, tags, date } =
+    blogFrontMatterSchema.parse(articleInfo)
 
   // Satori doesn't support webp, so convert it to jpeg
   if (thumbnail?.endsWith('.webp')) {
@@ -45,5 +51,8 @@ export async function fetchArticle(slug: string) {
     thumbnail = thumbnail.replace(/\.webp$/, '.jpg')
   }
 
-  return { title, thumbnail, tags, date }
+  return {
+    success: true,
+    data: { title, thumbnail, tags, date },
+  }
 }

@@ -1,7 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 
-import { BlogPost, BlogPostBuildOption, buildBlogPost } from './blogPost'
+import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
+
+import { BlogPost } from './blogPost'
 
 const postsDirectory = path.join(process.cwd(), 'src', 'posts')
 

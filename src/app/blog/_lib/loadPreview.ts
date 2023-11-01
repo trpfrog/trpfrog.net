@@ -2,8 +2,9 @@ import { z } from 'zod'
 
 import { microCMS } from '@/lib/microCMS'
 
-import { BlogPost, BlogPostBuildOption } from './blogPost'
-import { buildBlogPost } from './blogPost'
+import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
+
+import { BlogPost } from './blogPost'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean
