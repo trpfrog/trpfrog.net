@@ -10,7 +10,7 @@ import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 import { Editor } from '@blog/[slug]/edit/Editor'
 import { Viewer } from '@blog/[slug]/edit/Viewer'
-import { buildBlogPost } from '@blog/_lib/blogPost'
+import { buildBlogPost } from '@blog/_lib/blogPostUtils'
 
 import styles from './page.module.scss'
 
