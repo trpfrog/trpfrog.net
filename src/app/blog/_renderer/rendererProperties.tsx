@@ -60,11 +60,14 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       : ''
 
     if (isValidExtraCodeBlockComponentName(language)) {
+      const isDevClient =
+        process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <OriginalMarkdownComponent
           componentName={language}
           content={children as string}
           entry={entry}
+          useDevComponent={isDevClient}
         />
       )
     }
