@@ -3,23 +3,28 @@
 import { loadDefaultJapaneseParser } from 'budoux'
 const budouXParser = loadDefaultJapaneseParser()
 
-const parseWithBudouX = (str: string, slug: string) => {
+const parseWithBudouX = (str: string) => {
   if (!str) return []
   const separator = '<%FORCE-BREAK%>'
   return budouXParser
     .parse(str)
-    .map(e => {
-      e = e.replaceAll('+', `${separator}+${separator}`)
-      return e.split(separator)
-    })
-    .flat()
-    .map((e, i) => (
-      <span key={`${slug}-${i}`} style={{ display: 'inline-block' }}>
-        {e.replaceAll(' ', '\u00a0')} {/* &nbsp; */}
+    .join(separator)
+    .replaceAll('+', `${separator}+${separator}`)
+    .replaceAll('(' + separator, '(')
+    .replaceAll(separator + ')', ')')
+    .replaceAll('(', separator + '(')
+    .replaceAll(')', ')' + separator)
+    .replaceAll(' ', '\u00a0') // &nbsp;
+    .split(separator)
+    .filter(Boolean)
+    .map((word, i) => (
+      <span key={i} style={{ display: 'inline-block' }}>
+        {word}
       </span>
     ))
 }
 
+// TODO: slug を消す
 export function _ParseWithBudouX(props: { str: string; slug: string }) {
-  return <>{parseWithBudouX(props.str, props.slug)}</>
+  return <>{parseWithBudouX(props.str)}</>
 }
