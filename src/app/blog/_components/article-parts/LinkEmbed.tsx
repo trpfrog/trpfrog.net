@@ -31,4 +31,20 @@ export const linkEmbedParts = {
       </div>
     )
   }),
+  DevComponent: React.memo(function InnerLinkEmbed({ content }) {
+    return (
+      <div
+        style={{
+          textAlign: 'center',
+          color: 'gray',
+          fontStyle: 'italic',
+          padding: '1rem',
+          background: 'lightgray',
+          borderRadius: 5,
+        }}
+      >
+        link-embed: {content}
+      </div>
+    )
+  }),
 } as const satisfies ArticleParts
