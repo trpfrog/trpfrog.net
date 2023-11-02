@@ -127,18 +127,6 @@
     word-break: break-word;
   }
 
-  blockquote {
-    background: #90e20033;
-    padding: 10px 2em;
-    border-radius: 15px;
-    font-style: italic;
-
-    @include mixins.mq(sp) {
-      padding: 5px 1em;
-      margin: 0.5em auto;
-    }
-  }
-
   h3 {
     margin-top: 2em;
   }
@@ -227,5 +215,17 @@
     border: solid 1px gray;
     background: #eee !important;
     color: black;
+  }
+}
+
+.blockquote {
+  border-left: lightgray 5px solid;
+  padding: 0 1em;
+  font-style: italic;
+  opacity: 0.75;
+
+  @include mixins.mq(sp) {
+    padding: 5px 1em;
+    margin: 0.5em auto;
   }
 }

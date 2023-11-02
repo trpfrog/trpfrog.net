@@ -110,6 +110,9 @@ export function getMarkdownOptions(entry?: BlogPost) {
     a: (props: any) => (
       <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
     ),
+    blockquote: (props: any) => (
+      <blockquote className={styles.blockquote}>{props.children}</blockquote>
+    ),
   }
 
   return {
