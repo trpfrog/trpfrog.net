@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ArticleParts } from '@blog/_components/ArticleParts'
+import { Tweet } from 'react-tweet'
 
-import { Tweet } from './TwitterWrapper'
+import { ArticleParts } from '@blog/_components/ArticleParts'
 
 export const twitterParts = {
   name: 'twitter',
@@ -10,13 +10,17 @@ export const twitterParts = {
     const id = content.split('\n')[0]
     return (
       <>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ width: 'min(550px, 100%)', display: 'inline-block' }}>
-            <div className={'only-on-light-mode'}>
-              <Tweet tweetId={id} options={{ theme: 'light' }} />
+        <div style={{ display: 'grid', placeItems: 'center' }}>
+          <div
+            style={{
+              width: 'min(550px, 100%)',
+            }}
+          >
+            <div className={'only-on-light-mode'} data-theme="light">
+              <Tweet id={id} />
             </div>
-            <div className={'only-on-dark-mode'}>
-              <Tweet tweetId={id} options={{ theme: 'dark' }} />
+            <div className={'only-on-dark-mode'} data-theme="dark">
+              <Tweet id={id} />
             </div>
           </div>
         </div>
