@@ -12,7 +12,7 @@ export const conversationParts = {
   Component: ({ content }) => {
     const conversation = parseConversation(content)
     return (
-      <Talk>
+      <Talk style={{ margin: '1rem' }}>
         {conversation.map(({ speaker, comment, outOfComment }, idx) => (
           <Talk.Item
             key={speaker + '-' + idx}
