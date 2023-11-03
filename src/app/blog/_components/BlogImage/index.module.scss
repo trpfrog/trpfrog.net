@@ -25,7 +25,6 @@
 .image {
   box-shadow: 0 0 1px 1px rgba(gray, 0.3);
   transition: box-shadow ease-in-out 0.2s;
-  cursor: zoom-in;
 
   @include mixins.mq(pc) {
     &:hover {
@@ -33,4 +32,34 @@
     }
   }
   page-break-inside: avoid;
+}
+
+.client_img_wrapper {
+  position: relative;
+}
+
+.spoiler {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 5px);
+  border-radius: 5px;
+  backdrop-filter: blur(20px);
+}
+
+.spoiler_text {
+  border-radius: 1000px;
+  padding: 0.5em 1em;
+  background: rgba(white, 0.5);
+  color: black;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(white, 0.7);
+  }
 }

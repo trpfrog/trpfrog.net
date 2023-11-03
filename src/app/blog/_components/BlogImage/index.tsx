@@ -12,6 +12,7 @@ type BlogImageProps = {
   src: string
   alt: string
   caption?: string
+  spoiler?: boolean
   style?: CSSProperties
 }
 
@@ -32,6 +33,7 @@ export const BlogImage = React.memo(function BlogImage({
   src,
   alt,
   style,
+  spoiler,
   ...props
 }: BlogImageProps) {
   let caption = props.caption ?? ''
@@ -49,6 +51,7 @@ export const BlogImage = React.memo(function BlogImage({
         <ImageWithModal
           src={src}
           alt={alt}
+          spoiler={spoiler}
           width={800} // TODO: サイズ指定を不要にする
           height={600}
         />

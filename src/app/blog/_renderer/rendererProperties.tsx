@@ -109,6 +109,7 @@ export function getMarkdownOptions(entry?: BlogPost) {
           src={props.src ?? ''}
           alt={props.alt ?? ''}
           caption={props.title}
+          spoiler={'data-spoiler' in props}
         />
       )
     },
