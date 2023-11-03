@@ -84,6 +84,20 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
   }) satisfies MDXComponents['code']
 }
 
+function styledTag(tag: React.ElementType, className: string) {
+  return function StyledTag(props: any) {
+    const { children, className: originalClassName = '', ...rest } = props
+    return React.createElement(
+      tag,
+      {
+        className: [className, originalClassName].filter(Boolean).join(' '),
+        ...rest,
+      },
+      children,
+    )
+  }
+}
+
 export function getMarkdownOptions(entry?: BlogPost) {
   const components: IsomorphicMarkdownComponent = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
@@ -100,7 +114,7 @@ export function getMarkdownOptions(entry?: BlogPost) {
     },
 
     h2: (props: any) => (
-      <h2 className={styles.anchor} id={props.id}>
+      <h2 className={[styles.anchor, styles.h2].join(' ')} id={props.id}>
         <a href={'#' + props.id}>
           <FontAwesomeIcon icon={faPaperclip} />
         </a>
@@ -110,9 +124,11 @@ export function getMarkdownOptions(entry?: BlogPost) {
     a: (props: any) => (
       <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
     ),
-    blockquote: (props: any) => (
-      <blockquote className={styles.blockquote}>{props.children}</blockquote>
-    ),
+    blockquote: styledTag('blockquote', styles.blockquote),
+    details: styledTag('details', styles.details),
+    summary: styledTag('summary', styles.summary),
+    h3: styledTag('h3', styles.h3),
+    video: styledTag('video', styles.video),
   }
 
   return {
