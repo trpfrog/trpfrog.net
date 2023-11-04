@@ -7,7 +7,7 @@ import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
 export function useSaveArticle(
   slug: string,
-  articleText: string,
+  initialArticleText: string,
   delayMs: number,
 ) {
   const [alreadySaved, setAlreadySaved] = React.useState(true)
@@ -16,8 +16,8 @@ export function useSaveArticle(
   // (逐次更新が起こるとオートセーブの interval が毎度更新され、オートセーブされなくなる)
   const articleTextRef = React.useRef<string | null>(null)
   useEffect(() => {
-    articleTextRef.current = articleText
-  }, [articleText])
+    articleTextRef.current = initialArticleText
+  }, [initialArticleText])
 
   // Check if Ctrl+S is pressed
   const isSaveKeyPressed = useCallback(
@@ -98,5 +98,9 @@ export function useSaveArticle(
     markAsUnsaved: useCallback(() => setAlreadySaved(false), [setAlreadySaved]),
     save,
     saveWithToast,
+    updateCurrent: useCallback(
+      (text: string) => (articleTextRef.current = text),
+      [],
+    ),
   }
 }

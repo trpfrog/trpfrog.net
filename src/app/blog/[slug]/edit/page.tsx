@@ -1,46 +1,42 @@
 'use client'
 
-import React, { useDeferredValue, useMemo, useRef } from 'react'
-
-import { useMountEffect } from '@react-hookz/web'
+import React, { useDeferredValue, useRef } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
+import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 import { Editor } from '@blog/[slug]/edit/Editor'
 import { Viewer } from '@blog/[slug]/edit/Viewer'
-import { buildBlogPost } from '@blog/_lib/buildBlogPost'
 
 import styles from './page.module.scss'
 
 export default function Index(props: { params: { slug: string } }) {
   const INITIAL_CONTENT = 'Loading...'
   const [post, setPost] = React.useState(INITIAL_CONTENT)
+  const [initialPost, setInitialPost] = React.useState(INITIAL_CONTENT)
+
   const deferredPost = useDeferredValue(post)
 
   const [pageIdx, setPageIdx] = React.useState(1)
-  const deferredPageIdx = useDeferredValue(pageIdx)
 
-  useMountEffect(() => {
-    console.log('fire')
+  React.useEffect(() => {
     fetch(`/blog/${props.params.slug}/edit/api/read`, {
       headers: {
         'x-blog-slug': props.params.slug,
       },
     })
       .then(res => res.text())
-      .then(text => setPost(text))
+      .then(text => {
+        setPost(text)
+        setInitialPost(text)
+      })
       .catch(console.error)
-  })
+  }, [props.params.slug])
 
   useAlwaysShownHeader()
   const scrollToTopRef = useRef<HTMLDivElement>(null)
-
-  const deferredBlogPost = useMemo(
-    () => buildBlogPost('', deferredPost, { pagePos1Indexed: deferredPageIdx }),
-    [deferredPageIdx, deferredPost],
-  )
 
   const editorBlockRef = React.useRef<HTMLDivElement>(null)
   const scrollToBottom = React.useCallback(() => {
@@ -51,6 +47,14 @@ export default function Index(props: { params: { slug: string } }) {
       document.documentElement.scrollTop = document.documentElement.scrollHeight
     }
   }, [])
+
+  if (post === INITIAL_CONTENT) {
+    return (
+      <MainWrapper>
+        <LoadingBlock isFullHeight={true} />
+      </MainWrapper>
+    )
+  }
 
   return (
     <MainWrapper className={styles.fullscreen}>
@@ -63,12 +67,16 @@ export default function Index(props: { params: { slug: string } }) {
         >
           <Editor
             slug={props.params.slug}
-            rawMarkdown={post}
+            rawMarkdown={initialPost}
             setPost={setPost}
           />
         </Block>
         <div className={styles.viewer_wrapper} ref={scrollToTopRef}>
-          <Viewer post={deferredBlogPost} setPageIdx={setPageIdx} />
+          <Viewer
+            rawMarkdown={deferredPost}
+            pageIdx={pageIdx}
+            setPageIdx={setPageIdx}
+          />
         </div>
       </div>
     </MainWrapper>

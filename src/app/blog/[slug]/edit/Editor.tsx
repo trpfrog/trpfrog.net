@@ -35,7 +35,12 @@ export const Editor = React.memo(function Editor({
   rawMarkdown,
 }: Props) {
   const delayMs = 2000
-  const { markAsUnsaved } = useSaveArticle(slug, rawMarkdown, delayMs)
+
+  const { markAsUnsaved, updateCurrent } = useSaveArticle(
+    slug,
+    rawMarkdown,
+    delayMs,
+  )
 
   const { data, content } = useMemo(() => matter(rawMarkdown), [rawMarkdown])
 
@@ -43,8 +48,9 @@ export const Editor = React.memo(function Editor({
     (content: string) => {
       const frontMatter = blogFrontMatterSchema.partial().parse(data)
       setPost(matter.stringify(content, frontMatter))
+      updateCurrent(content)
     },
-    [data, setPost],
+    [data, setPost, updateCurrent],
     delayMs,
   )
 
