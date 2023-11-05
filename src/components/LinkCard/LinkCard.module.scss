@@ -1,0 +1,64 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+  background: var(--window-bkg-color);
+  border: 1px lightgray solid;
+  border-radius: 10px;
+  overflow: hidden;
+
+  :hover {
+    filter: brightness(0.9);
+  }
+}
+
+.textArea {
+  padding: 1rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1rem auto;
+  gap: 10px;
+}
+
+.image {
+  display: block;
+  width: 300px;
+  max-width: 30vw;
+  object-fit: cover;
+  aspect-ratio: 1.91 / 1;
+  border-left: 1px lightgray solid;
+}
+
+.domain {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.domainText {
+  height: 100%;
+  opacity: 0.6;
+}
+
+.favicon {
+  height: 100%;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+.titleDescription {
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.description {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
