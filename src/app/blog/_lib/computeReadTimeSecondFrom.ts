@@ -1,16 +1,11 @@
-import {
-  ExtraCodeBlockComponentName,
-  isValidExtraCodeBlockComponentName,
-} from '@blog/_components/OriginalMarkdownComponent'
+import type { ExtraCodeBlockComponentName } from '@blog/_components/OriginalMarkdownComponent'
 
 function isUtilityCodeBlock(name: string): boolean {
-  const ignoreTarget: ExtraCodeBlockComponentName[] = [
+  const ignoreTarget: string[] = [
     'twitter',
     'ignore-read-count',
-  ]
-  return (
-    isValidExtraCodeBlockComponentName(name) && !ignoreTarget.includes(name)
-  )
+  ] satisfies ExtraCodeBlockComponentName[]
+  return !ignoreTarget.includes(name)
 }
 
 export function computeReadTimeSecondFrom(markdown: string) {
