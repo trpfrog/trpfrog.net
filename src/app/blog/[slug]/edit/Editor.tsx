@@ -47,8 +47,9 @@ export const Editor = React.memo(function Editor({
   const sparseSetter = useSparseCallback(
     (content: string) => {
       const frontMatter = blogFrontMatterSchema.partial().parse(data)
-      setPost(matter.stringify(content, frontMatter))
-      updateCurrent(content)
+      const markdownWithFrontMatter = matter.stringify(content, frontMatter)
+      setPost(markdownWithFrontMatter)
+      updateCurrent(markdownWithFrontMatter)
     },
     [data, setPost, updateCurrent],
     delayMs,
