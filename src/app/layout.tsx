@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 
 import '@/styles/globals.scss'
+import 'react-loading-skeleton/dist/skeleton.css'
 import type { Metadata } from 'next'
 import { Viewport } from 'next'
 
