@@ -1,17 +1,28 @@
 import 'server-only'
 import React from 'react'
 
-import ogs from 'open-graph-scraper'
-
+import { fetchOGP } from '@/components/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/LinkCard/LinkCard'
 
-export type LinkCardProps = React.ComponentPropsWithoutRef<'div'> & {
+export type LinkCardProps = Omit<
+  React.ComponentPropsWithoutRef<'div'>,
+  'children'
+> & {
   href: string
 }
 
 export async function ServerLinkCard(props: LinkCardProps) {
-  const { className, children, href, ...rest } = props
-  const { result } = await ogs({ url: href })
+  const { href, ...rest } = props
+  const result = await fetchOGP(href)
+
+  if (!result) {
+    return (
+      <div {...rest}>
+        <a href={href}>{href}</a>
+      </div>
+    )
+  }
+
   return (
     <LinkCard
       title={result.ogTitle ?? ''}

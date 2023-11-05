@@ -9,25 +9,21 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import styles from './LinkCard.module.scss'
 
-export type LinkCardProps = React.ComponentPropsWithoutRef<'div'> & {
+export type LinkCardProps = Omit<
+  React.ComponentPropsWithoutRef<'div'>,
+  'children'
+> & {
   title: string
   description?: string
   imageUrl?: string
   favicon?: string
   href: string
+  skeleton?: false
 }
 
 export function LinkCard(props: LinkCardProps) {
-  let {
-    className,
-    favicon,
-    children,
-    title,
-    description,
-    imageUrl,
-    href,
-    ...rest
-  } = props
+  let { className, favicon, title, description, imageUrl, href, ...rest } =
+    props
 
   const hostname = new URL(href).hostname
   const origin = new URL(href).origin
@@ -49,8 +45,8 @@ export function LinkCard(props: LinkCardProps) {
   }
 
   return (
-    <BlockLink href={href}>
-      <div className={classNames(styles.main, className)} {...rest}>
+    <div className={classNames(className)} {...rest}>
+      <BlockLink href={href} className={styles.main}>
         <div className={styles.textArea}>
           <div className={styles.domain}>
             {favicon && <img className={styles.favicon} alt="" src={favicon} />}
@@ -65,8 +61,8 @@ export function LinkCard(props: LinkCardProps) {
             )}
           </div>
         </div>
-        <img className={styles.image} alt="" src={imageUrl} />
-      </div>
-    </BlockLink>
+        {imageUrl && <img className={styles.image} alt="" src={imageUrl} />}
+      </BlockLink>
+    </div>
   )
 }
