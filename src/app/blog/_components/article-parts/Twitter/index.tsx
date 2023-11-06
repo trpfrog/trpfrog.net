@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Tweet } from 'react-tweet'
+import { Tweet } from '@/components/utils/TweetWrapper'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 
@@ -8,6 +8,22 @@ export const twitterParts = {
   name: 'twitter',
   Component: React.memo(function InnerTwitter({ content }) {
     const id = content.split('\n')[0]
+
+    const tweet = (
+      <Tweet
+        id={id}
+        fallback={
+          <p style={{ fontStyle: 'italic', textAlign: 'center' }}>
+            <b>Tweet not found</b>
+            <br />
+            <small>
+              id = <a href={`https://twitter.com/trpfrog/status/${id}`}>{id}</a>
+            </small>
+          </p>
+        }
+      />
+    )
+
     return (
       <>
         <div style={{ display: 'grid', placeItems: 'center' }}>
@@ -17,10 +33,10 @@ export const twitterParts = {
             }}
           >
             <div className={'only-on-light-mode'} data-theme="light">
-              <Tweet id={id} />
+              {tweet}
             </div>
             <div className={'only-on-dark-mode'} data-theme="dark">
-              <Tweet id={id} />
+              {tweet}
             </div>
           </div>
         </div>
