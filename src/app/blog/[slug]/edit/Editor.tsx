@@ -13,6 +13,7 @@ import { useSparseCallback } from '@/hooks/useSparseCallback'
 
 import { getTypedKeys } from '@/lib/utils'
 
+import { openInCotEditor } from '@blog/[slug]/edit/_actions/openInCotEditor'
 import { useSaveArticle } from '@blog/[slug]/edit/_hooks/useSaveArticle'
 import { useToastErrorCallback } from '@blog/[slug]/edit/_hooks/useToastErrorCallback'
 import { useUploadFunction } from '@blog/[slug]/edit/_hooks/useUploadFunction'
@@ -114,7 +115,7 @@ export const Editor = React.memo(function Editor({
           つまみログエディタ
         </H2>
         <div style={{ display: 'flex', gap: 5 }}>
-          <Button onClick={() => fetch(`/api/blog/open/${slug}`)}>
+          <Button onClick={() => openInCotEditor(slug)}>
             Open in CotEditor
           </Button>
           <Button externalLink href={`/blog/${slug}/og-image`}>

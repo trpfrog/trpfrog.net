@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 
 import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
+import { openInCotEditor } from '@blog/[slug]/edit/_actions/openInCotEditor'
 import { saveOnDisk } from '@blog/[slug]/edit/_actions/saveOnDisk'
 import { BlogFrontMatter } from '@blog/_lib/blogPost'
 
@@ -41,7 +42,7 @@ export function useSaveArticle(
   }, [alreadySaved, delayMs, slug])
 
   const saveWithToast = useCallback(async () => {
-    const openEditor = () => fetch(`/api/blog/open/${slug}`)
+    const openEditor = () => openInCotEditor(slug)
     if (alreadySaved) {
       toast(<span onClick={openEditor}>Already saved!</span>, {
         icon: '👍',
