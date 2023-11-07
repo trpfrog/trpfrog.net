@@ -7,10 +7,10 @@ import { Block } from '@/components/molecules/Block'
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
-import { Editor } from '@blog/[slug]/edit/Editor'
-import { Viewer } from '@blog/[slug]/edit/Viewer'
-
+import { loadMarkdownFromServer } from './_actions/loadMarkdownFromServer'
+import { Editor } from './Editor'
 import styles from './page.module.scss'
+import { Viewer } from './Viewer'
 
 export default function Index(props: { params: { slug: string } }) {
   const INITIAL_CONTENT = 'Loading...'
@@ -22,12 +22,7 @@ export default function Index(props: { params: { slug: string } }) {
   const [pageIdx, setPageIdx] = React.useState(1)
 
   React.useEffect(() => {
-    fetch(`/blog/${props.params.slug}/edit/api/read`, {
-      headers: {
-        'x-blog-slug': props.params.slug,
-      },
-    })
-      .then(res => res.text())
+    loadMarkdownFromServer(props.params.slug)
       .then(text => {
         setPost(text)
         setInitialPost(text)
