@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useKeyboardEvent, useUnmountEffect } from '@react-hookz/web'
+import matter from 'gray-matter'
 import toast from 'react-hot-toast'
 
 import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
 import { saveOnDisk } from '@blog/[slug]/edit/_actions/saveOnDisk'
+import { BlogFrontMatter } from '@blog/_lib/blogPost'
+
 export function useSaveArticle(
   slug: string,
   initialArticleText: string,
@@ -97,7 +100,15 @@ export function useSaveArticle(
     save,
     saveWithToast,
     updateCurrent: useCallback(
-      (text: string) => (articleTextRef.current = text),
+      (frontMatter?: BlogFrontMatter, text?: string) => {
+        const { data: currentFrontMatter, content: currentContent } = matter(
+          articleTextRef.current!,
+        )
+        const newFrontMatter = frontMatter ?? currentFrontMatter
+        const newContent = text ?? currentContent
+        articleTextRef.current = matter.stringify(newContent, newFrontMatter)
+        return articleTextRef.current
+      },
       [],
     ),
   }

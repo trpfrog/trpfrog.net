@@ -1,21 +1,19 @@
 'use client'
 
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 
 import matter from 'gray-matter'
 import { useForm } from 'react-hook-form'
 
-import { getTypedEntries, getTypedKeys } from '@/lib/utils'
+import { getTypedEntries } from '@/lib/utils'
 
 import { BlogFrontMatter, blogFrontMatterSchema } from '@blog/_lib/blogPost'
-import { buildBlogPost } from '@blog/_lib/buildBlogPost'
 
 import styles from './page.module.scss'
 
 type Props = {
-  setPost: (value: string) => void
-  rawMarkdown: string
-  markAsUnsaved: () => void
+  onChange: (value: BlogFrontMatter) => void
+  initialMarkdown: string
 }
 
 function FormItem(
@@ -30,37 +28,30 @@ function FormItem(
 }
 
 export function EditorForm(props: Props) {
-  const blogPost = useMemo(
-    () => buildBlogPost('', props.rawMarkdown, { all: true }),
-    [props.rawMarkdown],
-  )
-  const { content: contentPart } = matter(props.rawMarkdown)
-
   const { register, handleSubmit, setValue } = useForm<BlogFrontMatter>()
 
   useEffect(() => {
-    const formValues = blogFrontMatterSchema.partial().parse(blogPost)
+    const formValues = blogFrontMatterSchema
+      .partial()
+      .parse(matter(props.initialMarkdown).data)
     for (const [key, value] of getTypedEntries(formValues)) {
       setValue(key, value)
     }
-  }, [blogPost, setValue])
-
-  const onSubmit = useCallback(
-    (data: BlogFrontMatter) => {
-      for (const key of getTypedKeys(data)) {
-        if (!data[key]) {
-          delete data[key]
-        }
-      }
-      props.markAsUnsaved()
-      props.setPost(matter.stringify(contentPart, data))
-    },
-    [props, contentPart],
-  )
+  }, [props.initialMarkdown, setValue])
 
   return (
     <>
-      <form onChange={handleSubmit(onSubmit)} className={styles.editor_form}>
+      <form
+        onChange={handleSubmit(data => {
+          for (const [key, value] of getTypedEntries(data)) {
+            if (value === '') {
+              delete data[key]
+            }
+          }
+          props.onChange(data)
+        })}
+        className={styles.editor_form}
+      >
         <div style={{ width: '100%' }}>
           <FormItem htmlFor="title" label="Title">
             <input {...register('title')} style={{ width: 500 }} />

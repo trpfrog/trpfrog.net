@@ -11,11 +11,13 @@ import { H2 } from '@/components/atoms/H2'
 
 import { useSparseCallback } from '@/hooks/useSparseCallback'
 
+import { getTypedKeys } from '@/lib/utils'
+
 import { useSaveArticle } from '@blog/[slug]/edit/_hooks/useSaveArticle'
 import { useToastErrorCallback } from '@blog/[slug]/edit/_hooks/useToastErrorCallback'
 import { useUploadFunction } from '@blog/[slug]/edit/_hooks/useUploadFunction'
 import { EditorForm } from '@blog/[slug]/edit/EditorForm'
-import { blogFrontMatterSchema } from '@blog/_lib/blogPost'
+import { BlogFrontMatter, blogFrontMatterSchema } from '@blog/_lib/blogPost'
 
 import type { SimpleMDEReactProps } from 'react-simplemde-editor'
 
@@ -45,22 +47,36 @@ export const Editor = React.memo(function Editor({
   const { data, content } = useMemo(() => matter(rawMarkdown), [rawMarkdown])
 
   const sparseSetter = useSparseCallback(
-    (content: string) => {
-      const frontMatter = blogFrontMatterSchema.partial().parse(data)
-      const markdownWithFrontMatter = matter.stringify(content, frontMatter)
-      setPost(markdownWithFrontMatter)
-      updateCurrent(markdownWithFrontMatter)
+    (frontMatter?: BlogFrontMatter, content?: string) => {
+      if (frontMatter) {
+        for (const key of getTypedKeys(frontMatter)) {
+          if (!data[key]) {
+            delete data[key]
+          }
+        }
+      }
+      const saved = updateCurrent(frontMatter, content)
+      setPost(saved)
     },
     [data, setPost, updateCurrent],
     delayMs,
   )
 
-  const changeHandler = useCallback(
+  const onFormChange = useCallback(
+    (rawFrontMatter: BlogFrontMatter) => {
+      const frontMatter = blogFrontMatterSchema.partial().parse(rawFrontMatter)
+      markAsUnsaved()
+      sparseSetter(frontMatter, null)
+    },
+    [markAsUnsaved, sparseSetter],
+  )
+
+  const onMarkdownChange = useCallback(
     (value: string) => {
       markAsUnsaved()
-      sparseSetter(value)
+      sparseSetter(null, value)
     },
-    [sparseSetter, markAsUnsaved],
+    [markAsUnsaved, sparseSetter],
   )
 
   const imageUploadFunction = useUploadFunction(slug)
@@ -108,15 +124,11 @@ export const Editor = React.memo(function Editor({
       </div>
       <hr style={{ margin: '1rem 0' }} />
       <h3>Front-matter</h3>
-      <EditorForm
-        setPost={setPost}
-        rawMarkdown={rawMarkdown}
-        markAsUnsaved={markAsUnsaved}
-      />
+      <EditorForm onChange={onFormChange} initialMarkdown={rawMarkdown} />
       <h3>Contents</h3>
       <EditorUI
         initialContent={useDeferredValue(content)}
-        onChange={changeHandler}
+        onChange={onMarkdownChange}
         options={options}
       />
     </>
