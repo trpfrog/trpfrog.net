@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 
 import { setTimeoutPromise } from '@/lib/setTimeoutPromise'
 
+import { saveOnDisk } from '@blog/[slug]/edit/_actions/saveOnDisk'
 export function useSaveArticle(
   slug: string,
   initialArticleText: string,
@@ -31,10 +32,7 @@ export function useSaveArticle(
     if (!alreadySaved) {
       return setTimeoutPromise(() => {
         setAlreadySaved(true)
-        return fetch(`/blog/${slug}/edit/api/save`, {
-          method: 'POST',
-          body: articleTextRef.current!,
-        })
+        return saveOnDisk(slug, articleTextRef.current!)
       }, delayMs)
     }
   }, [alreadySaved, delayMs, slug])
