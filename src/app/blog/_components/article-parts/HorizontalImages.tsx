@@ -22,8 +22,6 @@ export const horizontalImagesParts = {
         }
       })
 
-    console.log(imageSources)
-
     const caption = content
       .split('\n')
       .filter(line => !line.match(regex))
