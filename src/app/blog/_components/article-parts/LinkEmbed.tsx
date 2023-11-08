@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ClientLinkCard } from '@/components/LinkCard/ClientLinkCard'
+import { ServerLinkCard } from '@/components/LinkCard/ServerLinkCard'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
@@ -11,7 +11,7 @@ export const linkEmbedParts = {
     const [url, ...captionArr] = content.split('\n')
     return (
       <div style={{ display: 'grid', placeItems: 'center' }}>
-        <ClientLinkCard
+        <ServerLinkCard
           href={url}
           style={{
             width: '100%',

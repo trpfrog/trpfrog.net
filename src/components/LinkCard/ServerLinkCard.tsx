@@ -1,6 +1,6 @@
-import 'server-only'
 import React from 'react'
 
+import { ClientLinkCard } from '@/components/LinkCard/ClientLinkCard'
 import { fetchOGP } from '@/components/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/LinkCard/LinkCard'
 
@@ -13,14 +13,10 @@ export type LinkCardProps = Omit<
 
 export async function ServerLinkCard(props: LinkCardProps) {
   const { href, ...rest } = props
-  const result = await fetchOGP(href)
 
+  const result = await fetchOGP(href).catch(() => null)
   if (!result) {
-    return (
-      <div {...rest}>
-        <a href={href}>{href}</a>
-      </div>
-    )
+    return <ClientLinkCard href={href} {...rest} />
   }
 
   return (
