@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { faEarthAsia } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
 
 import { BlockLink } from '@/components/molecules/BlockLink'
@@ -49,7 +51,15 @@ export function LinkCard(props: LinkCardProps) {
       <BlockLink href={href} className={styles.main}>
         <div className={styles.textArea}>
           <div className={styles.domain}>
-            {favicon && <img className={styles.favicon} alt="" src={favicon} />}
+            {favicon ? (
+              <img className={styles.favicon} alt="" src={favicon} />
+            ) : (
+              <FontAwesomeIcon
+                className={styles.favicon}
+                icon={faEarthAsia}
+                data-default-favicon
+              />
+            )}
             {hostname && <span className={styles.domainText}>{hostname}</span>}
           </div>
           <div className={styles.titleDescription}>

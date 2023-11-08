@@ -45,6 +45,10 @@
   height: 100%;
   border-radius: 2px;
   margin-right: 5px;
+
+  &[data-default-favicon] {
+    opacity: 0.6;
+  }
 }
 
 .titleDescription {
