@@ -12,11 +12,10 @@
   @extend .caption;
   display: inline-block;
   text-align: right;
-  max-width: 100%;
+  width: 100%;
 }
 
 .img_wrapper {
-  width: 100%;
   height: auto;
   text-align: center;
   margin: 2em 0;
@@ -26,6 +25,7 @@
   box-shadow: 0 0 1px 1px rgba(gray, 0.3);
   transition: box-shadow ease-in-out 0.2s;
   cursor: zoom-in;
+  max-height: 600px;
 
   @include mixins.mq(pc) {
     &:hover {
