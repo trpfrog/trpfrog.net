@@ -88,11 +88,13 @@ export function getMarkdownOptions(entry?: BlogPost) {
 
     img: (props: any) => {
       return (
-        <BlogImage
-          src={props.src ?? ''}
-          alt={props.alt ?? ''}
-          caption={props.title}
-        />
+        <div className={styles.img}>
+          <BlogImage
+            src={props.src ?? ''}
+            alt={props.alt ?? ''}
+            caption={props.title}
+          />
+        </div>
       )
     },
 

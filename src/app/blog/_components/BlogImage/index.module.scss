@@ -1,31 +1,25 @@
 @use '@/styles/mixins';
 
-.caption {
+.img_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-width: 100%;
+  width: fit-content;
+  text-align: center;
+  gap: 5px;
+  margin: 0;
+
   color: gray;
-  line-height: 1.5;
   @include mixins.mq(dark) {
     color: lightgray;
   }
 }
 
-.taken_by {
-  @extend .caption;
-  display: inline-block;
-  text-align: right;
-  width: 100%;
-}
-
-.img_wrapper {
-  height: auto;
-  text-align: center;
-  margin: 2em 0;
-}
-
 .image {
+  max-width: 100%;
   box-shadow: 0 0 1px 1px rgba(gray, 0.3);
   transition: box-shadow ease-in-out 0.2s;
-  cursor: zoom-in;
-  max-height: 600px;
 
   @include mixins.mq(pc) {
     &:hover {
@@ -33,4 +27,15 @@
     }
   }
   page-break-inside: avoid;
+}
+
+.caption {
+  line-height: 1.5;
+}
+
+.taken_by {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  line-height: 1;
 }
