@@ -46,12 +46,7 @@ export const BlogImage = React.memo(function BlogImage({
     <>
       <figure className={styles.img_wrapper} style={style}>
         {takenBy && <TakenBy photographer={takenBy} />}
-        <ImageWithModal
-          src={src}
-          alt={alt}
-          width={800} // TODO: サイズ指定を不要にする
-          height={600}
-        />
+        <ImageWithModal src={src} alt={alt} />
         {caption && <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>}
       </figure>
     </>

@@ -24,7 +24,7 @@ description: Pythonで作る静的サイトジェネレータ
 
 「Python のスクリプトでmdファイルをHTMLに変換、自作のテンプレHTMLに貼り付ける」というのを **Cloudflare Pages** にやらせています。
 
-![build_config](https://res.cloudinary.com/trpfrog/image/upload/v1641046570/blog/about-notes/build_config.webp)
+![build_config](/blog/about-notes/build_config?w=812&h=592)
 
 ライブラリのインストールとかもやりたいのでシェルスクリプトも使います。
 
@@ -36,7 +36,7 @@ description: Pythonで作る静的サイトジェネレータ
 
 Cloudflare Pages が新しいサービスすぎたのか、あと Python 動かしたいぜ！みたいな変な人がいない (普通はHugoとか使うので) ので3.7で動かす方法を探るのが一番大変でした。うにうに
 
-![errors](https://res.cloudinary.com/trpfrog/image/upload/v1641046570/blog/about-notes/errors.webp)
+![errors](/blog/about-notes/errors?w=577&h=438)
 
 数多の失敗
 

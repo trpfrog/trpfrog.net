@@ -245,7 +245,7 @@ date: 2022-12-03
 tweet: <b>朝9時は人間の集合できる時間じゃないだろ</b>
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670505093/blog/skyscraper-walk/FjF0gQ3VEAMvpiz.jpg "9時集合なのに8:40頃に来た娘 もっちゃん taken-by: もっちゃん")
+![](/blog/skyscraper-walk/FjF0gQ3VEAMvpiz?w=2048&h=1155 "9時集合なのに8:40頃に来た娘 もっちゃん taken-by: もっちゃん")
 
 ```centering-with-size
 1.5em
@@ -347,17 +347,17 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 熱いうどんを爆速で食べたので口の中が溶けました。
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670506149/blog/skyscraper-walk/55328F2E-5013-4FCB-88D0-D0A87F644E45_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670506152/blog/skyscraper-walk/C659DA13-3353-4976-8FE4-FB37AD93BDFA_1_105_c.jpg)
+![](/blog/skyscraper-walk/55328F2E-5013-4FCB-88D0-D0A87F644E45_1_105_c?w=1024&h=769)
+![](/blog/skyscraper-walk/C659DA13-3353-4976-8FE4-FB37AD93BDFA_1_105_c?w=1024&h=769)
 ごちうさ × atre コラボやってて良かった
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670506570/blog/skyscraper-walk/4035BBD9-DC6A-4EAC-9EB8-7DBFC4A67122_1_201_a.jpg "NewDays で売ってたかわいいハンカチ (すぐ買った)")
+![](/blog/skyscraper-walk/4035BBD9-DC6A-4EAC-9EB8-7DBFC4A67122_1_201_a?w=3024&h=3024 "NewDays で売ってたかわいいハンカチ (すぐ買った)")
 
 
 ## 9:30 秋葉原駅 中央口
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670505043/blog/skyscraper-walk/77962FA8-E4A8-46D1-8484-1806712533C6_1_201_a.jpg "受付")
+![](/blog/skyscraper-walk/77962FA8-E4A8-46D1-8484-1806712533C6_1_201_a?w=4032&h=3024 "受付")
 
 さて、今日は展望台巡りと同時並行で JR の「**駅からハイキング & ウォーキングイベント FROM 秋葉原駅**」にも参加します。
 
@@ -373,7 +373,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 **受付開始の 9:30** になったので早速受付に向かいましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670506925/blog/skyscraper-walk/89F9D586-CC28-42BB-A677-96D732C0785A_1_201_a.jpg "地図とか")
+![](/blog/skyscraper-walk/89F9D586-CC28-42BB-A677-96D732C0785A_1_201_a?w=4032&h=3024 "地図とか")
 
 受付では地図とウェットティッシュと**チケットラリー**の台紙を貰いました。
 
@@ -385,7 +385,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 しません。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670507404/blog/skyscraper-walk/start.png)
+![](/blog/skyscraper-walk/start?w=2334&h=1454)
 
 ```centering
 それでは **<span style="font-size: 1.6em">徒歩会、開始！</span>**
@@ -397,18 +397,18 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 もっちゃん: ジョナサン開店凸のために2月まで待つの！？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670507778/blog/skyscraper-walk/0F267ACA-0D15-47A2-8D4B-164871BA1FF6_1_201_a.jpg "たぶんポケモンカードの列")
+![](/blog/skyscraper-walk/0F267ACA-0D15-47A2-8D4B-164871BA1FF6_1_201_a?w=2993&h=2244 "たぶんポケモンカードの列")
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670507570/blog/skyscraper-walk/08340A82-F741-43E6-816F-E0BD9115AEEA_1_105_c.jpg)
+![](/blog/skyscraper-walk/08340A82-F741-43E6-816F-E0BD9115AEEA_1_105_c?w=1024&h=768)
 
 ということで始まりました、まずは**東京駅**へ向かいます。紙の地図を使うのは (徒歩会では) 初めてです。なんか宝の地図みたいで楽しいですね。**徒歩のルートが示されているだけですが……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670507561/blog/skyscraper-walk/D766ED6F-E1A6-4AE4-8306-6BB239DF12A4_1_105_c.jpg)
+![](/blog/skyscraper-walk/D766ED6F-E1A6-4AE4-8306-6BB239DF12A4_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670508130/blog/skyscraper-walk/15E87A9C-6CF6-4329-9918-0B03550D8C3E_1_105_c.jpg "神田川")
+![](/blog/skyscraper-walk/15E87A9C-6CF6-4329-9918-0B03550D8C3E_1_105_c?w=1024&h=768 "神田川")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670508262/blog/skyscraper-walk/CE3CB297-E5BF-40C8-A073-78662E705A8D_1_105_c.jpg "ちくわ缶は売ってなかった")
+![](/blog/skyscraper-walk/CE3CB297-E5BF-40C8-A073-78662E705A8D_1_105_c?w=1024&h=768 "ちくわ缶は売ってなかった")
 
 ```conversation
 もっちゃん: おでん缶じゃんけんしませんか？
@@ -417,11 +417,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 ## 9:45 旧万世橋駅
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670508493/blog/skyscraper-walk/A54B4763-A3F3-4CED-A7C8-0565DBF1762F_1_105_c.jpg "マーチエキュート神田万世橋")
+![](/blog/skyscraper-walk/A54B4763-A3F3-4CED-A7C8-0565DBF1762F_1_105_c?w=768&h=1024 "マーチエキュート神田万世橋")
 
 ウォーキングイベント、第 1 のチェックポイントである**旧万世橋駅**につきました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670508604/blog/skyscraper-walk/A54B4763-A3F3-4CED-A7C8-0565DBF1762F_1_201_a.jpg)
+![](/blog/skyscraper-walk/A54B4763-A3F3-4CED-A7C8-0565DBF1762F_1_201_a?w=1490&h=1118)
 
 ```conversation
 つまみ: <span style="font-size:1.5em"> **1935階段！？！？！？！？** 👀 👀 👀 ✨✨</span>
@@ -430,21 +430,21 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 中に入ろうと思いましたが朝早すぎて開いていませんでした。ざんねん (11時から)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670508922/blog/skyscraper-walk/EB572863-029D-4BAD-978E-8CBE2C0EEB03_1_201_a.jpg "よりお店っぽい方の入口")
+![](/blog/skyscraper-walk/EB572863-029D-4BAD-978E-8CBE2C0EEB03_1_201_a?w=4032&h=3024 "よりお店っぽい方の入口")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509022/blog/skyscraper-walk/108B0D8F-CE0D-4567-A679-081337FD2766_1_105_c.jpg)
+![](/blog/skyscraper-walk/108B0D8F-CE0D-4567-A679-081337FD2766_1_105_c?w=1024&h=768)
 
 ```conversation
 きゅ〜: ポケストップある！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509125/blog/skyscraper-walk/856EE6DA-3E08-48C4-82CC-ED65FB8E3635_1_201_a.jpg)
+![](/blog/skyscraper-walk/856EE6DA-3E08-48C4-82CC-ED65FB8E3635_1_201_a?w=2877&h=2158)
 
 ```conversation
 もっちゃん: あ！！！！！**ウォーキングイベント公式のトイレ**ありますよ！トイレ！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509149/blog/skyscraper-walk/4332FE01-758C-4886-A498-4EA10CF28D1C_1_201_a.jpg)
+![](/blog/skyscraper-walk/4332FE01-758C-4886-A498-4EA10CF28D1C_1_201_a?w=2778&h=2084)
 
 
 ```conversation
@@ -453,8 +453,8 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 ```
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509368/blog/skyscraper-walk/F872431E-B8B3-4BF7-93CB-A00D5CFBA3EE_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509371/blog/skyscraper-walk/3F927C84-E93D-4840-953F-D8E8F4CED216_1_105_c.jpg)
+![](/blog/skyscraper-walk/F872431E-B8B3-4BF7-93CB-A00D5CFBA3EE_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/3F927C84-E93D-4840-953F-D8E8F4CED216_1_105_c?w=1024&h=768)
 ウォーキングイベント公式トイレ
 ```
 
@@ -463,14 +463,14 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 とはいえ (とはいえ？)、都心のトイレは綺麗ですね。というか公衆便所自体、都心を離れると珍しい気がします。
 と思ったけど最近 (最近？) 調布駅周辺にも綺麗めのトイレ生えましたね。あれ、**もしかしたらもう 3 年前かもしれない……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509618/blog/skyscraper-walk/C071BCF9-F569-447F-A48D-7C97056586F4_1_201_a.jpg)
+![](/blog/skyscraper-walk/C071BCF9-F569-447F-A48D-7C97056586F4_1_201_a?w=3398&h=2548)
 
 ```conversation
 ふみ: この川少しのぼってくと御茶ノ水ですよ
 つまみ: え〜御茶ノ水秋葉原から近いんですね
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509759/blog/skyscraper-walk/akiba-ocha.png)
+![](/blog/skyscraper-walk/akiba-ocha?w=1858&h=954)
 
 ```conversation
 つまみ: **想像の10倍近かった**
@@ -479,23 +479,23 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 御茶ノ水は中学時代に吹部の人とよく行った思い出があります。楽器店が多いからすぐ行きたくなるんですよね。
 えーそんな近くに秋葉原あったんだ……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670509921/blog/skyscraper-walk/CDF11CBD-2041-489E-A570-D9F4E6F4E875_1_105_c.jpg)
+![](/blog/skyscraper-walk/CDF11CBD-2041-489E-A570-D9F4E6F4E875_1_105_c?w=1024&h=769)
 
 オタクの排尿が終わったので進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510070/blog/skyscraper-walk/8E280A61-552A-4C52-A217-68D7B6577B89_1_105_c.jpg "もうそんな時期か……")
+![](/blog/skyscraper-walk/8E280A61-552A-4C52-A217-68D7B6577B89_1_105_c?w=1024&h=769 "もうそんな時期か……")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510186/blog/skyscraper-walk/3071A8E4-7B6F-42C0-8533-93C25963CD1F_1_105_c.jpg)
+![](/blog/skyscraper-walk/3071A8E4-7B6F-42C0-8533-93C25963CD1F_1_105_c?w=1024&h=768)
 
 ```conversation
 きゅ〜: 酒を飲んだポスト
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510232/blog/skyscraper-walk/6CED2178-669D-49F5-835E-E5D4E2292A1D_1_105_c.jpg)
+![](/blog/skyscraper-walk/6CED2178-669D-49F5-835E-E5D4E2292A1D_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510325/blog/skyscraper-walk/9D9211FA-BFEE-47E1-BB9A-E20931327B9B_1_201_a.jpg "偏在府中")
+![](/blog/skyscraper-walk/9D9211FA-BFEE-47E1-BB9A-E20931327B9B_1_201_a?w=3553&h=2665 "偏在府中")
 
 ```conversation
 ふみ: 静岡にも府中ありますよ
@@ -504,7 +504,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 暇な徒歩部はやってみてください(丸投げ)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510465/blog/skyscraper-walk/183C86B0-767A-4013-8B81-124218AFDA75_1_201_a.jpg "イチョウ並木")
+![](/blog/skyscraper-walk/183C86B0-767A-4013-8B81-124218AFDA75_1_201_a?w=3319&h=2489 "イチョウ並木")
 
 イチョウ並木が出てきました。紅葉巡りがこのイベントの趣旨なのでやっと本番といったところでしょうか。
 
@@ -513,20 +513,20 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 ふみ: **12月だから紅葉してないんだろ**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510748/blog/skyscraper-walk/D15150E4-5193-4259-A967-6F388FBF92C8_1_105_c.jpg)
+![](/blog/skyscraper-walk/D15150E4-5193-4259-A967-6F388FBF92C8_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510778/blog/skyscraper-walk/EC5B553B-FD4D-4EBB-83A9-3B76D01454B4_1_105_c.jpg "謎の像")
+![](/blog/skyscraper-walk/EC5B553B-FD4D-4EBB-83A9-3B76D01454B4_1_105_c?w=1024&h=768 "謎の像")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670510804/blog/skyscraper-walk/F774B6B9-C3EC-4BF5-B17D-0D6FBEE4E747_1_105_c.jpg "トイレ2")
+![](/blog/skyscraper-walk/F774B6B9-C3EC-4BF5-B17D-0D6FBEE4E747_1_105_c?w=1024&h=768 "トイレ2")
 
 ```conversation
 もっちゃん: ウオートイレがあります！
 つまみ: そうだね
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511270/blog/skyscraper-walk/9911B4B7-687C-43FA-8FA4-E4164A363863_1_105_c.jpg)
+![](/blog/skyscraper-walk/9911B4B7-687C-43FA-8FA4-E4164A363863_1_105_c?w=1024&h=768)
 
 ```conversation
 ふみ: **つまみさんは自転車かもしれないけど**自転車も入っちゃダメだからね
@@ -535,15 +535,15 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 
 ※徒歩部には自分のことを自転車だと思っている人がいます
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511394/blog/skyscraper-walk/62D55A6F-FD35-435D-B101-BBBEB3D0D77A_1_105_c.jpg)
+![](/blog/skyscraper-walk/62D55A6F-FD35-435D-B101-BBBEB3D0D77A_1_105_c?w=1024&h=768)
 
 進みます。<small style="opacity: 0.05">ズームして撮っただけでここまで接近はしていません。本当に入っちゃダメだからな！</small>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511546/blog/skyscraper-walk/EE16E73D-9705-450C-A41E-4A86574881A3_1_105_c.jpg "大規模接種会場")
+![](/blog/skyscraper-walk/EE16E73D-9705-450C-A41E-4A86574881A3_1_105_c?w=1024&h=768 "大規模接種会場")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511632/blog/skyscraper-walk/1C2A43F2-280A-43F3-A02F-2D607057B25A_1_105_c.jpg)
+![](/blog/skyscraper-walk/1C2A43F2-280A-43F3-A02F-2D607057B25A_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511643/blog/skyscraper-walk/65A2939F-CF92-44E5-ACC7-EAB6D209E945_1_105_c.jpg "箱根駅伝スタート地点の銅像")
+![](/blog/skyscraper-walk/65A2939F-CF92-44E5-ACC7-EAB6D209E945_1_105_c?w=768&h=1024 "箱根駅伝スタート地点の銅像")
 
 **箱根駅伝のゴール地点**らしいです。
 
@@ -552,7 +552,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 つまみ: 銅像の人に失礼だろ😡
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511646/blog/skyscraper-walk/1647AD8F-CB60-494F-B9A1-80ACC9D27806_1_105_c.jpg "歴代優勝校")
+![](/blog/skyscraper-walk/1647AD8F-CB60-494F-B9A1-80ACC9D27806_1_105_c?w=1024&h=768 "歴代優勝校")
 
 ```conversation
 きゅ〜: **電通大はどこかな〜……**
@@ -560,57 +560,57 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 ふみ: 帰れなくなるだろ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511925/blog/skyscraper-walk/473E9CC9-4F46-4232-8D1E-6806FD244B82_1_201_a.jpg)
+![](/blog/skyscraper-walk/473E9CC9-4F46-4232-8D1E-6806FD244B82_1_201_a?w=3693&h=2770)
 
 進みます。
 
 ## 10:30 将門塚
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511928/blog/skyscraper-walk/E74C4F1B-9DEE-4635-A974-838A9E86C633_1_105_c.jpg "将門塚")
+![](/blog/skyscraper-walk/E74C4F1B-9DEE-4635-A974-838A9E86C633_1_105_c?w=1024&h=768 "将門塚")
 
 だいたい 1 時間くらいで 2 つ目のチェックポイント **将門塚** に来ました。**平将門**の首を供養するために建てられたという石碑があります。(ソース: https://visit-chiyoda.tokyo/app/spot/detail/65)
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512297/blog/skyscraper-walk/807A9776-1807-48BD-99FD-5CD4FEB57E25_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670511930/blog/skyscraper-walk/4A9056CE-053A-4381-84FB-E1FECFFF4B32_1_105_c.jpg)
+![](/blog/skyscraper-walk/807A9776-1807-48BD-99FD-5CD4FEB57E25_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/4A9056CE-053A-4381-84FB-E1FECFFF4B32_1_105_c?w=1024&h=768)
 ```
 
 最近リフォーム？されたのかちょっと新しめの雰囲気です。**塀のパーツがクリア**だったりしています。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512367/blog/skyscraper-walk/521C3B94-B877-4DC9-AA92-84871828CB87_1_105_c.jpg)
+![](/blog/skyscraper-walk/521C3B94-B877-4DC9-AA92-84871828CB87_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512375/blog/skyscraper-walk/4A21D463-8F02-4E54-AF7B-8C50A26F06C7_1_105_c.jpg)
+![](/blog/skyscraper-walk/4A21D463-8F02-4E54-AF7B-8C50A26F06C7_1_105_c?w=1024&h=768)
 
 皇居のお堀です。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512429/blog/skyscraper-walk/FE239990-CD29-43FE-881E-E2715B5F41BE_1_105_c.jpg)
+![](/blog/skyscraper-walk/FE239990-CD29-43FE-881E-E2715B5F41BE_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512464/blog/skyscraper-walk/92FC84D8-F634-4A5A-825F-AEA815E880CF_1_201_a.jpg)
+![](/blog/skyscraper-walk/92FC84D8-F634-4A5A-825F-AEA815E880CF_1_201_a?w=2960&h=2220)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512482/blog/skyscraper-walk/6B0D3129-617A-4FCC-9098-5E4B97425A5C_1_201_a.jpg)
+![](/blog/skyscraper-walk/6B0D3129-617A-4FCC-9098-5E4B97425A5C_1_201_a?w=4032&h=3024)
 
 進みま……待って、**<span style="font-size: 1.6em">人が多いね！？</span>**
 
 ## 10:50 皇居
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512756/blog/skyscraper-walk/kokyo1.jpg)
+![](/blog/skyscraper-walk/kokyo1?w=3000&h=1256)
 
 それもそのはず、今日は**皇居乾通り一般公開**の最終日でした。偶然来ることができました。ラッキーですね！行ってみましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512676/blog/skyscraper-walk/0051C2E2-B002-4F22-8867-875C8C972C0C_1_105_c.jpg)
+![](/blog/skyscraper-walk/0051C2E2-B002-4F22-8867-875C8C972C0C_1_105_c?w=1024&h=768)
 
 ```conversation
 もっちゃん: うおー皇居の仮設トイレです
 つまみ: そうなんだ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670512753/blog/skyscraper-walk/kokyo2.jpg)
+![](/blog/skyscraper-walk/kokyo2?w=1500&h=1057)
 
 皇居に入るので荷物検査を受けます。**変なモノ**を持ってる人が来たら嫌ですからね。
 
@@ -621,7 +621,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670506438/blog/skyscrap
 👹: すみません……
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513264/blog/skyscraper-walk/58FF891D-523E-4430-A5D2-01C1CC4968C7_1_105_c.jpg)
+![](/blog/skyscraper-walk/58FF891D-523E-4430-A5D2-01C1CC4968C7_1_105_c?w=1024&h=768)
 
 幸いにもアイデンティティの喪失 (物理) は免れました。危なかった……(？)
 
@@ -635,48 +635,48 @@ tweet: お荷物検査で鬼持つ検査
 
 ワハハ
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513267/blog/skyscraper-walk/6A97B8B6-3F30-4C06-BCAB-6B9BA67C3C94_1_105_c.jpg "宮殿")
+![](/blog/skyscraper-walk/6A97B8B6-3F30-4C06-BCAB-6B9BA67C3C94_1_105_c?w=1024&h=768 "宮殿")
 
 宮殿はちょっとだけ見えました。一般参賀ではないので前まで行けないのですね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513686/blog/skyscraper-walk/20D49F7A-4000-4705-8FB5-DDD48B98C273_1_105_c.jpg "宮内庁")
+![](/blog/skyscraper-walk/20D49F7A-4000-4705-8FB5-DDD48B98C273_1_105_c?w=1024&h=768 "宮内庁")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513700/blog/skyscraper-walk/7093DA3D-EF25-4D20-A98F-1837929FFB5C_1_105_c.jpg "トイレ4")
+![](/blog/skyscraper-walk/7093DA3D-EF25-4D20-A98F-1837929FFB5C_1_105_c?w=1024&h=768 "トイレ4")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513703/blog/skyscraper-walk/66BAB800-05A5-45AF-9BD9-98015D49E628_1_105_c.jpg "乾通り")
+![](/blog/skyscraper-walk/66BAB800-05A5-45AF-9BD9-98015D49E628_1_105_c?w=1024&h=768 "乾通り")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513711/blog/skyscraper-walk/E1A5446F-5E37-45D6-8400-0821D44B6A56_1_105_c.jpg "紅葉")
+![](/blog/skyscraper-walk/E1A5446F-5E37-45D6-8400-0821D44B6A56_1_105_c?w=1024&h=768 "紅葉")
 
 ```conversation
 つまみ: 紅葉サイドから写真を撮りませんか？
 ふみ: どういうこと？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670514382/blog/skyscraper-walk/DEAFFEDE-2F99-490F-BF1C-86BEB12632C5_1_201_a.jpg)
+![](/blog/skyscraper-walk/DEAFFEDE-2F99-490F-BF1C-86BEB12632C5_1_201_a?w=4032&h=3024)
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513878/blog/skyscraper-walk/57C495E0-7E89-4A2B-BDC2-5C742201F20F_1_201_a.jpg "山下通り")
+![](/blog/skyscraper-walk/57C495E0-7E89-4A2B-BDC2-5C742201F20F_1_201_a?w=2183&h=1637 "山下通り")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513729/blog/skyscraper-walk/D817E697-8158-4C45-B392-6982C6C8EA11_1_105_c.jpg "局門")
+![](/blog/skyscraper-walk/D817E697-8158-4C45-B392-6982C6C8EA11_1_105_c?w=1024&h=768 "局門")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513738/blog/skyscraper-walk/2CF9EFD8-5B58-40F2-8AAD-1481E708D20F_1_105_c.jpg "進みます")
+![](/blog/skyscraper-walk/2CF9EFD8-5B58-40F2-8AAD-1481E708D20F_1_105_c?w=1024&h=768 "進みます")
 
 ## 11:05 乾門
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670514479/blog/skyscraper-walk/6855EA8F-0707-4391-963E-624CEF76E46C_1_105_c.jpg "乾門")
+![](/blog/skyscraper-walk/6855EA8F-0707-4391-963E-624CEF76E46C_1_105_c?w=1024&h=768 "乾門")
 
 **乾門**につきました。出口です。いや〜**1km**はあっという間ですね！良かったです。
 
 トイレに寄ってから出ます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513792/blog/skyscraper-walk/5644BE69-E643-4A48-A31C-62F808B7E596_1_201_a.jpg)
+![](/blog/skyscraper-walk/5644BE69-E643-4A48-A31C-62F808B7E596_1_201_a?w=4032&h=3024)
 
 ```conversation
 ふみ: 宮内庁の金でトイレ！
 きゅ〜: 宮内庁の金でトイレ！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670513851/blog/skyscraper-walk/C581824B-B1F1-4AFB-946E-7FAA1C8CDDB7_1_201_a.jpg)
+![](/blog/skyscraper-walk/C581824B-B1F1-4AFB-946E-7FAA1C8CDDB7_1_201_a?w=4032&h=3024)
 
 ```conversation
 ふみ: 宮内庁の金でトイレ！
@@ -685,7 +685,7 @@ tweet: お荷物検査で鬼持つ検査
 
 「人の金で焼肉」の仲間？
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670514838/blog/skyscraper-walk/7CA2EEE2-0125-4BFD-8A12-F6C1A2F73B63_1_201_a.jpg)
+![](/blog/skyscraper-walk/7CA2EEE2-0125-4BFD-8A12-F6C1A2F73B63_1_201_a?w=3076&h=2307)
 
 乾通りの一般公開は桜の時期と紅葉の時期に毎年やっているみたいです。気になる方は行ってみてはいかがでしょうか？(ソース: https://www.kunaicho.go.jp/event/inui-r04aki.html)
 
@@ -702,7 +702,7 @@ tweet: お荷物検査で鬼持つ検査
 
 ここで衝撃の事実に気付きます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670515271/blog/skyscraper-walk/IMG_0092.jpg)
+![](/blog/skyscraper-walk/IMG_0092?w=1395&h=1145)
 
 ```centering-with-size
 2em
@@ -711,11 +711,11 @@ tweet: お荷物検査で鬼持つ検査
 
 急いで戻ります。実は今参加しているウォーキングイベント、最終受付が **16:30** までなのでのんびりしている余裕はありません。現在 11 時で残り 8km も無いので余裕に見えます。しかし今回は<b>「展望台にたくさん登りたい！」</b>という回なので、いろいろ時間が足りなくなりそうです。**急ぎましょう！**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670515587/blog/skyscraper-walk/32B497A2-788F-4467-902D-439BEE078CBB_1_201_a.jpg)
+![](/blog/skyscraper-walk/32B497A2-788F-4467-902D-439BEE078CBB_1_201_a?w=4032&h=3024)
 
 急ぎます！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670515609/blog/skyscraper-walk/FB4FC60A-B7C3-48AD-ACB0-62D5F7EADAA7_1_201_a.jpg)
+![](/blog/skyscraper-walk/FB4FC60A-B7C3-48AD-ACB0-62D5F7EADAA7_1_201_a?w=3455&h=1943)
 
 ```centering-with-size
 1.8em
@@ -732,11 +732,11 @@ tweet: お荷物検査で鬼持つ検査
 </div>
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670515893/blog/skyscraper-walk/0D7789BA-16E3-49A3-B745-0684DF463FD2_1_105_c.jpg)
+![](/blog/skyscraper-walk/0D7789BA-16E3-49A3-B745-0684DF463FD2_1_105_c?w=1024&h=768)
 
 歩道橋に向かいます
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670515624/blog/skyscraper-walk/2039E1E9-41EC-41BC-857E-4B782297B490_1_105_c.jpg)
+![](/blog/skyscraper-walk/2039E1E9-41EC-41BC-857E-4B782297B490_1_105_c?w=1024&h=768)
 
 <span style="font-size: 1.5em"> **え！！！！** </span>
 
@@ -744,32 +744,32 @@ tweet: お荷物検査で鬼持つ検査
 
 やっぱり人が多いと歩道橋は封鎖されがちなのでしょうか。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670516221/blog/skyscraper-walk/FA59FF52-6F5B-484A-B142-DA274720B6C5_1_105_c.jpg)
+![](/blog/skyscraper-walk/FA59FF52-6F5B-484A-B142-DA274720B6C5_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670516199/blog/skyscraper-walk/F527E48F-9F6A-4987-B3A9-19191D722E28_1_105_c.jpg)
+![](/blog/skyscraper-walk/F527E48F-9F6A-4987-B3A9-19191D722E28_1_105_c?w=1024&h=768)
 
 ```conversation
 きゅ〜: **ピカピカの泥団子があります！**
 つまみ: 君たちが変なものを見つける度にワシが写真撮らなきゃいけなくなるの分かってる？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670516369/blog/skyscraper-walk/BC1CEDB1-4691-4ED0-BAF2-5E75C7779999_1_201_a.jpg "トイレ6")
+![](/blog/skyscraper-walk/BC1CEDB1-4691-4ED0-BAF2-5E75C7779999_1_201_a?w=4032&h=3024 "トイレ6")
 
 ```conversation
 きゅ〜: **うんこ行きます**
 つまみ: 分かりました。
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670516466/blog/skyscraper-walk/61146F15-5612-4F22-9FD5-5141EE7501A6_1_105_c.jpg "銅像")
+![](/blog/skyscraper-walk/61146F15-5612-4F22-9FD5-5141EE7501A6_1_105_c?w=1024&h=768 "銅像")
 
 ```conversation
 もっちゃん: 鬼のお面被って銅像と写真撮りませんか？
 つまみ: 銅像の人に失礼だろ😡
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670516524/blog/skyscraper-walk/FE582CDA-5180-44F0-B69A-A5BD84BE6656_1_201_a.jpg "気象庁前")
+![](/blog/skyscraper-walk/FE582CDA-5180-44F0-B69A-A5BD84BE6656_1_201_a?w=3322&h=2492 "気象庁前")
 
 ```conversation
 つまみ: この先**気象庁前**らしいです
@@ -782,15 +782,15 @@ tweet: お荷物検査で鬼持つ検査
 
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517355/blog/skyscraper-walk/46C10BEF-A85E-4D18-A614-AAFDF70F3AAC_1_105_c.jpg "バチバチタクシー")
+![](/blog/skyscraper-walk/46C10BEF-A85E-4D18-A614-AAFDF70F3AAC_1_105_c?w=1024&h=768 "バチバチタクシー")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517425/blog/skyscraper-walk/21C0F956-8A70-4374-A1F9-3848E3D1216D_1_201_a.jpg "和田倉噴水公園")
+![](/blog/skyscraper-walk/21C0F956-8A70-4374-A1F9-3848E3D1216D_1_201_a?w=4032&h=3024 "和田倉噴水公園")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517445/blog/skyscraper-walk/489D91B3-0DA2-4264-8968-07BE3EF477C2_1_201_a.jpg)
+![](/blog/skyscraper-walk/489D91B3-0DA2-4264-8968-07BE3EF477C2_1_201_a?w=3896&h=2922)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517448/blog/skyscraper-walk/FC5001D2-3979-46F6-8718-E429E95E4201_1_105_c.jpg "飛石渡")
+![](/blog/skyscraper-walk/FC5001D2-3979-46F6-8718-E429E95E4201_1_105_c?w=1024&h=768 "飛石渡")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517606/blog/skyscraper-walk/C0C087FD-D929-4398-B39B-0BB258843583_1_105_c.jpg)
+![](/blog/skyscraper-walk/C0C087FD-D929-4398-B39B-0BB258843583_1_105_c?w=1024&h=768)
 
 公園の建物はスタバらしいです。
 
@@ -798,19 +798,19 @@ tweet: お荷物検査で鬼持つ検査
 きゅ〜: **景観に配慮したスタバ**だ……(ロゴが黒いので)
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517664/blog/skyscraper-walk/35BA88E9-25EB-436D-8EBE-EAFFCE913A90_1_105_c.jpg)
+![](/blog/skyscraper-walk/35BA88E9-25EB-436D-8EBE-EAFFCE913A90_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517868/blog/skyscraper-walk/8F0E15CB-606D-4B18-B8AC-9F54B1B9B272_1_105_c.jpg "404 Not Found")
+![](/blog/skyscraper-walk/8F0E15CB-606D-4B18-B8AC-9F54B1B9B272_1_105_c?w=1024&h=768 "404 Not Found")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670517875/blog/skyscraper-walk/383D2FA1-64D5-4494-9EA8-EEC86FFE707E_1_105_c.jpg "なんか撮った")
+![](/blog/skyscraper-walk/383D2FA1-64D5-4494-9EA8-EEC86FFE707E_1_105_c?w=1024&h=768 "なんか撮った")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670518059/blog/skyscraper-walk/8B3A43BC-3A80-4772-935A-46A9721FB21F_1_201_a.jpg)
+![](/blog/skyscraper-walk/8B3A43BC-3A80-4772-935A-46A9721FB21F_1_201_a?w=3800&h=2850)
 
 **ルイ・ヴィトンのスケートリンク**(？)がありました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670518073/blog/skyscraper-walk/509DD02B-B48B-402D-910F-4C984DE0EC48_1_201_a.jpg)
+![](/blog/skyscraper-walk/509DD02B-B48B-402D-910F-4C984DE0EC48_1_201_a?w=3187&h=2390)
 
 氷ではなく**樹脂**でできているらしいです。面白い〜
 
@@ -818,21 +818,21 @@ tweet: お荷物検査で鬼持つ検査
 
 ## 11:50 東京駅
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670518475/blog/skyscraper-walk/191F0BDC-1ABF-4067-B23E-60A70311855C_1_201_a.jpg)
+![](/blog/skyscraper-walk/191F0BDC-1ABF-4067-B23E-60A70311855C_1_201_a?w=4032&h=3024)
 
 東京駅に着きました。ここまで来るといくつか展望台があるはずなので上ってみましょう！
 
 ## 11:55 展望台(1) 新丸の内ビルディング
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670518913/blog/skyscraper-walk/9D63BC28-A3FF-4C9C-AD72-7FCC1F92689C_1_201_a.jpg "新丸の内ビルディング")
+![](/blog/skyscraper-walk/9D63BC28-A3FF-4C9C-AD72-7FCC1F92689C_1_201_a?w=4032&h=3024 "新丸の内ビルディング")
 
 ここに何かあるらしいので上ってみます。もちろん**階段**を使いたいですね！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670518915/blog/skyscraper-walk/29B1CEBF-CBA2-48E3-9621-A7D38755F9F1_1_105_c.jpg)
+![](/blog/skyscraper-walk/29B1CEBF-CBA2-48E3-9621-A7D38755F9F1_1_105_c?w=1024&h=768)
 
 早速行きましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519099/blog/skyscraper-walk/B319CA4C-57A0-48F8-9A9A-2AB67A73A161_1_201_a.jpg)
+![](/blog/skyscraper-walk/B319CA4C-57A0-48F8-9A9A-2AB67A73A161_1_201_a?w=1827&h=1370)
 
 ```centering-with-size
 1.5em
@@ -842,29 +842,29 @@ tweet: お荷物検査で鬼持つ検査
 **う〜ん、階段、無いねえ**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519177/blog/skyscraper-walk/13079649-B09A-4D96-97AE-4D3C69A4D68F_1_105_c.jpg)
+![](/blog/skyscraper-walk/13079649-B09A-4D96-97AE-4D3C69A4D68F_1_105_c?w=1024&h=768)
 
 ```centering-with-size-bold
 1.8em
 しかも展望台らしきやつは工事中だねえ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519280/blog/skyscraper-walk/D5833A06-F8B2-40BA-8B8E-856A5ECB20C6_1_201_a.jpg "足クロスピクトグラムくん")
+![](/blog/skyscraper-walk/D5833A06-F8B2-40BA-8B8E-856A5ECB20C6_1_201_a?w=2571&h=1928 "足クロスピクトグラムくん")
 
 次行きます
 
 
 ## 12:05 展望台(2) 丸の内ビルディング
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519385/blog/skyscraper-walk/0494ED98-72CF-43A7-8C98-CFF90BAC76B2_1_105_c.jpg "丸の内ビルディング")
+![](/blog/skyscraper-walk/0494ED98-72CF-43A7-8C98-CFF90BAC76B2_1_105_c?w=768&h=1024 "丸の内ビルディング")
 
 今度は”新”じゃない方の**丸の内ビルディング**です。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519391/blog/skyscraper-walk/86C58B24-5046-4478-B7FD-E3958BB1DC8F_1_105_c.jpg "スプリンクラーっぽいのがついてるロボ")
+![](/blog/skyscraper-walk/86C58B24-5046-4478-B7FD-E3958BB1DC8F_1_105_c?w=1024&h=768 "スプリンクラーっぽいのがついてるロボ")
 
 さて、**まずは階段を探しましょう！**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519483/blog/skyscraper-walk/0F45E3CF-D880-48E2-837E-4EB214A416D6_1_201_a.jpg)
+![](/blog/skyscraper-walk/0F45E3CF-D880-48E2-837E-4EB214A416D6_1_201_a?w=4032&h=3024)
 
 ```centering-with-size-bold
 2em
@@ -879,15 +879,15 @@ tweet: お荷物検査で鬼持つ検査
 
 **悔しすぎ**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519486/blog/skyscraper-walk/68AC2720-CE5E-463C-AC71-A2A8D274975C_1_105_c.jpg "&gt;&lt;")
+![](/blog/skyscraper-walk/68AC2720-CE5E-463C-AC71-A2A8D274975C_1_105_c?w=1024&h=768 "&gt;&lt;")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519787/blog/skyscraper-walk/DA9F29A1-A9C8-4E08-BABF-4E1CFDD0C976_1_105_c.jpg "エレベーター内では英語のニュースが流れていました")
+![](/blog/skyscraper-walk/DA9F29A1-A9C8-4E08-BABF-4E1CFDD0C976_1_105_c?w=1024&h=768 "エレベーター内では英語のニュースが流れていました")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519713/blog/skyscraper-walk/9959F213-25C0-4F8F-8484-315151D53D31_1_105_c.jpg)
+![](/blog/skyscraper-walk/9959F213-25C0-4F8F-8484-315151D53D31_1_105_c?w=1024&h=768)
 
 ということで**丸の内ビルディング 35F**の展望ロビーです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519745/blog/skyscraper-walk/79D32E86-867A-4D95-8673-2F88F3CCA766_1_201_a.jpg "丸の内ビルディングからの景色")
+![](/blog/skyscraper-walk/79D32E86-867A-4D95-8673-2F88F3CCA766_1_201_a?w=3973&h=2980 "丸の内ビルディングからの景色")
 
 うおーいいね、**ミニチュアみたい**で面白いです。
 
@@ -895,15 +895,15 @@ tweet: お荷物検査で鬼持つ検査
 
 ということで次行きます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519968/blog/skyscraper-walk/FBAEB3C8-FD8B-4506-9B89-4C516971BCC2_1_105_c.jpg "Apple 丸の内")
+![](/blog/skyscraper-walk/FBAEB3C8-FD8B-4506-9B89-4C516971BCC2_1_105_c?w=1024&h=768 "Apple 丸の内")
 
 ## 12:25 展望台(3) KITTE 丸の内
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670519999/blog/skyscraper-walk/CADD0D42-49C5-439E-882B-833BFA55373A_1_201_a.jpg)
+![](/blog/skyscraper-walk/CADD0D42-49C5-439E-882B-833BFA55373A_1_201_a?w=4032&h=3024)
 
 **KITTE 丸の内** です。もう普通にエスカレーターとかで上ります。**諦めたので**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520098/blog/skyscraper-walk/162A5057-ABBF-4D3F-9069-BA5AC8091A92_1_105_c.jpg)
+![](/blog/skyscraper-walk/162A5057-ABBF-4D3F-9069-BA5AC8091A92_1_105_c?w=1024&h=768)
 
 ```centering-with-size-bold
 2em
@@ -912,51 +912,51 @@ tweet: お荷物検査で鬼持つ検査
 
 いいね、いいね
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520114/blog/skyscraper-walk/B4BA3679-7549-4A90-BAD0-8EC80CC478A6_1_201_a.jpg "屋上庭園")
+![](/blog/skyscraper-walk/B4BA3679-7549-4A90-BAD0-8EC80CC478A6_1_201_a?w=4032&h=3024 "屋上庭園")
 
 上まで着きました。**屋上庭園**です。屋上庭園、不思議な雰囲気があって好きです。[羽田から東京タワー回](https://trpfrog.net/blog/haneda-tokyo-tower)でも屋上庭園がありましたが、やっぱりこの**空中に緑がある不思議な雰囲気**は何度見ても飽きませんね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520116/blog/skyscraper-walk/EB158CC2-D5B9-4ED3-B750-88DB9B2F9273_1_105_c.jpg)
+![](/blog/skyscraper-walk/EB158CC2-D5B9-4ED3-B750-88DB9B2F9273_1_105_c?w=1024&h=768)
 
 景色もいいです。屋外なので開放感もあったかなり良いです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520125/blog/skyscraper-walk/DB0097DC-63AD-45EF-9CA8-C15E79673C9F_1_105_c.jpg)
+![](/blog/skyscraper-walk/DB0097DC-63AD-45EF-9CA8-C15E79673C9F_1_105_c?w=1024&h=768)
 
 電車を撮影している人も結構いました。ここ最強じゃん、気に入りました。また来ます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520130/blog/skyscraper-walk/87332DDC-93FC-4D9E-AC7F-11612E0BF0E8_1_105_c.jpg "下に**続かない**屋外階段")
+![](/blog/skyscraper-walk/87332DDC-93FC-4D9E-AC7F-11612E0BF0E8_1_105_c?w=1024&h=768 "下に**続かない**屋外階段")
 
 普通に満足しました。時間がないので次行きます。
 
 ## 12:40 汐留へ
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670520578/blog/skyscraper-walk/C2EBA3B9-EB43-45A7-8AE2-5DB5310BE6AC_1_105_c.jpg)
+![](/blog/skyscraper-walk/C2EBA3B9-EB43-45A7-8AE2-5DB5310BE6AC_1_105_c?w=1024&h=768)
 
 ここで少しウォーキングイベントのルートからは外れて**汐留**方面へ向かいます。ウォーキングイベントのコースは、そのままぐるっと皇居を1/3周して……みたいな感じなのですが、一旦離れます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670601824/blog/skyscraper-walk/F7FA3B78-AB3A-462E-814B-50A484C5A30C_1_201_a.jpg)
+![](/blog/skyscraper-walk/F7FA3B78-AB3A-462E-814B-50A484C5A30C_1_201_a?w=4032&h=3024)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670601855/blog/skyscraper-walk/F93AF20D-F64F-439E-B851-B83F160FD105_1_201_a.jpg "東京駅2")
+![](/blog/skyscraper-walk/F93AF20D-F64F-439E-B851-B83F160FD105_1_201_a?w=4032&h=3024 "東京駅2")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670601964/blog/skyscraper-walk/9682C443-210F-47C1-9241-09F3EAAC84F6_1_105_c.jpg)
+![](/blog/skyscraper-walk/9682C443-210F-47C1-9241-09F3EAAC84F6_1_105_c?w=1024&h=768)
 
 進みます。
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670601993/blog/skyscraper-walk/EB4B2699-6035-4501-A605-1D355E5ACD5B_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670601995/blog/skyscraper-walk/541FBDC1-0237-4CB6-B20E-B62F25265DCB_1_201_a.jpg)
+![](/blog/skyscraper-walk/EB4B2699-6035-4501-A605-1D355E5ACD5B_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/541FBDC1-0237-4CB6-B20E-B62F25265DCB_1_201_a?w=2778&h=2084)
 北海道と福岡が道路を挟んで向かい側にある
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603320/blog/skyscraper-walk/D701ED5F-9BC6-4DCC-A402-D236DA4E2394_1_201_a.jpg "緑に支配されたビル")
+![](/blog/skyscraper-walk/D701ED5F-9BC6-4DCC-A402-D236DA4E2394_1_201_a?w=3024&h=3024 "緑に支配されたビル")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603398/blog/skyscraper-walk/645A4E07-11D4-4D58-A33B-EFE34F9B8317_1_201_a.jpg)
+![](/blog/skyscraper-walk/645A4E07-11D4-4D58-A33B-EFE34F9B8317_1_201_a?w=3854&h=2890)
 
 そういえばこのあたりは前にも**何度か**通った記憶があります。**徒歩会で……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603557/blog/skyscraper-walk/E9BA8748-2236-40C3-8BBF-1C189CC5FE1C_1_201_a.jpg "警察博物館")
+![](/blog/skyscraper-walk/E9BA8748-2236-40C3-8BBF-1C189CC5FE1C_1_201_a?w=2904&h=2647 "警察博物館")
 
 ```conversation
 つまみ: へえ〜警察博物館とかあるんですね
@@ -971,13 +971,13 @@ tweet: お荷物検査で鬼持つ検査
 
 ## 12:50 警察博物館
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603594/blog/skyscraper-walk/3002D728-3FAA-4735-B7E0-0C92A19F5C65_1_201_a.jpg "警察博物館")
+![](/blog/skyscraper-walk/3002D728-3FAA-4735-B7E0-0C92A19F5C65_1_201_a?w=3084&h=2676 "警察博物館")
 
 ということでやってきました、**警察博物館**です。なんと**入館料無料**です。**すごい！**
 
 グループの代表者名と連絡先だけ入館シートに書けば誰でも入れます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603596/blog/skyscraper-walk/9356463D-F357-41DC-9CD3-0383A2DC3FB2_1_105_c.jpg "1Fの展示")
+![](/blog/skyscraper-walk/9356463D-F357-41DC-9CD3-0383A2DC3FB2_1_105_c?w=1024&h=768 "1Fの展示")
 
 ```conversation
 受付の人: 4, 5F 以外は撮影OK、6Fには**ピーポくんのお土産がある**から持っていってね
@@ -987,18 +987,18 @@ tweet: お荷物検査で鬼持つ検査
 
 ### 警察博物館 2F
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603599/blog/skyscraper-walk/C199B34B-CC55-4A29-84F9-4C31ABF0B100_1_105_c.jpg)
+![](/blog/skyscraper-walk/C199B34B-CC55-4A29-84F9-4C31ABF0B100_1_105_c?w=1024&h=768)
 
 館内には制服から信号機まで (？) いろいろ展示されていました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670604857/blog/skyscraper-walk/57E8739E-8F9F-4FBE-A620-3DC2955EB7AD_1_201_a.jpg)
+![](/blog/skyscraper-walk/57E8739E-8F9F-4FBE-A620-3DC2955EB7AD_1_201_a?w=3024&h=3024)
 
 ```conversation
 ふみ: キウイ
 つまみ: ?
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603609/blog/skyscraper-walk/9391C490-AD28-4B25-A0E5-7D451F574B1B_1_105_c.jpg)
+![](/blog/skyscraper-walk/9391C490-AD28-4B25-A0E5-7D451F574B1B_1_105_c?w=1024&h=768)
 
 ```conversation
 つまみ: きゅ〜さんめっちゃその画面見てますね、面白いですか？
@@ -1006,11 +1006,11 @@ tweet: お荷物検査で鬼持つ検査
 つまみ: ？？？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670603611/blog/skyscraper-walk/2DFC9B17-220B-437F-9101-E17CAD5442FE_1_105_c.jpg)
+![](/blog/skyscraper-walk/2DFC9B17-220B-437F-9101-E17CAD5442FE_1_105_c?w=1024&h=768)
 
 **2F から 1F に吹き抜けで繋がっている**救助する人のマネキンが置いてありました。迫力がある
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670604424/blog/skyscraper-walk/0D3481F7-CD3A-4AF3-A308-E67C2C559BD3_1_105_c.jpg)
+![](/blog/skyscraper-walk/0D3481F7-CD3A-4AF3-A308-E67C2C559BD3_1_105_c?w=768&h=1024)
 
 「泥棒に狙われやすそうな場所」のイラスト <small>(イラストは次の写真に小さく写ってます)</small> のバーコードを定数回読み取って、”狙われやすさポイント” の合計を最大化するゲームがありました。
 
@@ -1018,7 +1018,7 @@ tweet: お荷物検査で鬼持つ検査
 もっちゃん: **仮装大賞の得点ゲージ？**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670604427/blog/skyscraper-walk/4D78320C-59A6-4C43-AD09-4F94DE6FBB32_1_105_c.jpg "右後ろに映り込んでいるのがイラストとバーコード")
+![](/blog/skyscraper-walk/4D78320C-59A6-4C43-AD09-4F94DE6FBB32_1_105_c?w=768&h=1024 "右後ろに映り込んでいるのがイラストとバーコード")
 
 ゲームが終わると**強制的に得点シートが印刷されて持ち帰りを指示されます**。そんな……
 
@@ -1036,13 +1036,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670754364/blog/skyscrap
 
 ### 警察博物館 3F
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605053/blog/skyscraper-walk/666D4DF9-7B64-4698-A45C-9867212BB7DF_1_105_c.jpg)
+![](/blog/skyscraper-walk/666D4DF9-7B64-4698-A45C-9867212BB7DF_1_105_c?w=1024&h=768)
 
 **交番がありました！**
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605325/blog/skyscraper-walk/7EB7FEBF-9AAA-4ED6-A49C-D7342C9DB3BD_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605327/blog/skyscraper-walk/05863090-D7E6-49CC-B7B0-1C6BECE3642D_1_105_c.jpg)
+![](/blog/skyscraper-walk/7EB7FEBF-9AAA-4ED6-A49C-D7342C9DB3BD_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/05863090-D7E6-49CC-B7B0-1C6BECE3642D_1_105_c?w=1024&h=768)
 ```
 
 交番の中には[指名手配犯](https://twitter.com/search?q=from%3Anozuktkr%20%E6%A1%90%E5%B3%B6%E8%81%A1&src=typed_query&f=live)の写真が展示されていたり、ミニドラマが流れていたりしました。
@@ -1053,13 +1053,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670754364/blog/skyscrap
 つまみ: 違うよ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605312/blog/skyscraper-walk/821712A5-43AB-4B1B-9157-82C28D0FB93B_1_105_c.jpg "鑑識グッズ")
+![](/blog/skyscraper-walk/821712A5-43AB-4B1B-9157-82C28D0FB93B_1_105_c?w=1024&h=768 "鑑識グッズ")
 
 **科学捜査で使うグッズの展示**がありました。面白い！こういうの楽しいですよね
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605688/blog/skyscraper-walk/9B8282EF-DBC0-4625-8A97-0DC409B3DB71_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605692/blog/skyscraper-walk/6D1A07E1-493B-4945-96FB-8E7D734435F1_1_105_c.jpg)
+![](/blog/skyscraper-walk/9B8282EF-DBC0-4625-8A97-0DC409B3DB71_1_105_c?w=768&h=1024)
+![](/blog/skyscraper-walk/6D1A07E1-493B-4945-96FB-8E7D734435F1_1_105_c?w=768&h=1024)
 ```
 
 **着せ替えパネル**的なものがありました。敬礼をするとコスチュームが入れ替わります。
@@ -1072,23 +1072,23 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670754364/blog/skyscrap
 
 ### 警察博物館 6F
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670605884/blog/skyscraper-walk/E8478EA9-FCEC-427B-8409-72AB21387447_1_105_c.jpg "敬礼というか遠くを見る人じゃないですか？これ")
+![](/blog/skyscraper-walk/E8478EA9-FCEC-427B-8409-72AB21387447_1_105_c?w=768&h=1024 "敬礼というか遠くを見る人じゃないですか？これ")
 
 **ピーポくんフロア**です。着ぐるみもあるし、**アニメも**流れています。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670606165/blog/skyscraper-walk/AD173F3D-49F9-4FD9-A189-0F39DAA1102B_1_201_a.jpg "ピーポくんのお土産")
+![](/blog/skyscraper-walk/AD173F3D-49F9-4FD9-A189-0F39DAA1102B_1_201_a?w=3024&h=4032 "ピーポくんのお土産")
 
 お土産も配られていてこんな感じでした。配られていた、というか束で置いてあって<span style="font-size: 1.5em"><strong>「たくさん持っていってお友達にもあげてね」</strong></span>と書いてありました。**どういうことだよ**
 
 友達想いなのでお土産は**3つ**貰って帰りました。1つは**誕生日プレゼントとしてピーポくんのステッカーを押し付けてきた**ごっちさんにあげます。おめでとうございます✨
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670606391/blog/skyscraper-walk/F33262D9-E3C5-4507-9EE6-C5FBBBFF3AE3_1_201_a.jpg "内容物")
+![](/blog/skyscraper-walk/F33262D9-E3C5-4507-9EE6-C5FBBBFF3AE3_1_201_a?w=4032&h=3024 "内容物")
 
 中身はこんな感じです。ステッカーが2セットとイベント告知、鉛筆が入っていました。**無料なのにかなり豪華だ……**
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670606394/blog/skyscraper-walk/F8613DFE-175F-43A6-8235-68F29CA775DC_1_102_o.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670606397/blog/skyscraper-walk/D57443D4-D4E8-4482-A73C-D4186CE44CFC_1_102_o.jpg)
+![](/blog/skyscraper-walk/F8613DFE-175F-43A6-8235-68F29CA775DC_1_102_o?w=2048&h=1536)
+![](/blog/skyscraper-walk/D57443D4-D4E8-4482-A73C-D4186CE44CFC_1_102_o?w=2048&h=1536)
 切り離すとクリアファイルになる
 ```
 
@@ -1100,23 +1100,23 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670754364/blog/skyscrap
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.076435795148!2d139.76696597784488!3d35.67511987258946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188be3bb06cc57%3A0x67affab3356a75d4!2z44Od44Oq44K544Of44Ol44O844K444Ki44OgIOitpuWvn-WNmueJqemkqA!5e0!3m2!1sja!2sjp!4v1670606975410!5m2!1sja!2sjp" class="google-maps-style" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670607363/blog/skyscraper-walk/0195BB63-5BBB-46B2-ACF0-06DA505B94BF_1_105_c.jpg "コラ")
+![](/blog/skyscraper-walk/0195BB63-5BBB-46B2-ACF0-06DA505B94BF_1_105_c?w=1024&h=768 "コラ")
 
 次行きます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670607676/blog/skyscraper-walk/B01B6408-DC73-49D9-AA72-1E03A4B380CA_1_201_a.jpg "歩行者天国")
+![](/blog/skyscraper-walk/B01B6408-DC73-49D9-AA72-1E03A4B380CA_1_201_a?w=4032&h=3024 "歩行者天国")
 
 **歩行者天国**です。この道、**広くてとっても歩きやすい**です(デジャヴ)。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670607611/blog/skyscraper-walk/DAFD208C-EC91-46FE-A385-10908D0A1F27_1_201_a.jpg)
+![](/blog/skyscraper-walk/DAFD208C-EC91-46FE-A385-10908D0A1F27_1_201_a?w=4032&h=3024)
 
 人間が増えてきました。路上に人型のものがたくさん歩いているとゾンビ映画っぽく見えませんか？**ちょうど信号機も光ってないし……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608166/blog/skyscraper-walk/D3CEDBBE-1310-4453-A4A7-3A7A526C7D0F_1_201_a.jpg)
+![](/blog/skyscraper-walk/D3CEDBBE-1310-4453-A4A7-3A7A526C7D0F_1_201_a?w=4032&h=3024)
 
 道路の真ん中にあるイス、良い
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608471/blog/skyscraper-walk/0733F45D-8A9E-418E-A762-0E8E3B3B4A64_1_201_a.jpg "ターゲット1900 の 2018 年版表紙")
+![](/blog/skyscraper-walk/0733F45D-8A9E-418E-A762-0E8E3B3B4A64_1_201_a?w=4032&h=3024 "ターゲット1900 の 2018 年版表紙")
 
 ```twitter-archived
 id: 984470860332347392
@@ -1125,7 +1125,7 @@ tweet: そういえば本屋でターゲット買ったけどかっこいいな�
 image: https://res.cloudinary.com/trpfrog/image/upload/v1670608335/blog/skyscraper-walk/DamLBgbU0AElbCn.jpg
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608502/blog/skyscraper-walk/BD2DE5B8-6BA5-4A57-9C02-1179B53FDB42_1_105_c.jpg "Apple 銀座")
+![](/blog/skyscraper-walk/BD2DE5B8-6BA5-4A57-9C02-1179B53FDB42_1_105_c?w=768&h=1024 "Apple 銀座")
 
 **Apple 銀座**です。Apple 銀座といえば日本初出店の銀色のデカいアレですが、アレは現在改装工事中で、この写真は改装期間の仮店舗です。
 
@@ -1137,7 +1137,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670608335/blog/skyscrap
 
 **そういえば時間が無い**んでした。現在 **13:30** なのでウォーキングイベント終了までは残り **3 時間**です。ま、まあ 3 時間なら、まあ……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608826/blog/skyscraper-walk/769620E0-08F1-42E3-91AC-52D9A49BAD0C_1_201_a.jpg)
+![](/blog/skyscraper-walk/769620E0-08F1-42E3-91AC-52D9A49BAD0C_1_201_a?w=3579&h=2684)
 
 進みます。
 
@@ -1157,7 +1157,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670608335/blog/skyscrap
 
 <small style="opacity: 0.5">※記事プレビュー: 徒歩会参加者には公開前に記事を読んでもらっている</small>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670865192/blog/skyscraper-walk/261ADC4F-AEA8-4E85-835E-33391EF33C0A_1_105_c.jpg "トイレ7")
+![](/blog/skyscraper-walk/261ADC4F-AEA8-4E85-835E-33391EF33C0A_1_105_c?w=1024&h=768 "トイレ7")
 
 はい、トイレの写真を貼りました。進みます。
 
@@ -1168,25 +1168,25 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670608335/blog/skyscrap
 
 <br>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608835/blog/skyscraper-walk/7F25427E-D35E-4054-BE48-870F98CF5926_1_201_a.jpg)
+![](/blog/skyscraper-walk/7F25427E-D35E-4054-BE48-870F98CF5926_1_201_a?w=4032&h=3024)
 
 面白そうなところがあります！**高速道路の下をくぐる歩道橋です**。そういえばこの歩道橋は去年のイルミネーション回で見ました (記事には書かれていなかったが……)。前回は**見ただけで潜れずじまい**だったのでリベンジです！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670608842/blog/skyscraper-walk/36858ED4-3DA5-4FCE-87DE-ED813B974E5C_1_105_c.jpg)
+![](/blog/skyscraper-walk/36858ED4-3DA5-4FCE-87DE-ED813B974E5C_1_105_c?w=1024&h=768)
 
 ウォ〜
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670609486/blog/skyscraper-walk/8C6EB8F8-81B0-4F3D-81C4-9DFAFD393589_1_105_c.jpg)
+![](/blog/skyscraper-walk/8C6EB8F8-81B0-4F3D-81C4-9DFAFD393589_1_105_c?w=1024&h=768)
 
 いいですね
 
 前回は奥の橋を左側から歩いてきて、ドンキホーテの横の階段から降りて手前側に進むルートでした。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670609587/blog/skyscraper-walk/E72E9EA1-AA02-4090-98BA-1482C8A9010C_1_201_a.jpg)
+![](/blog/skyscraper-walk/E72E9EA1-AA02-4090-98BA-1482C8A9010C_1_201_a?w=4032&h=3024)
 
 そしてもうしばらく進むと……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670609590/blog/skyscraper-walk/A8198EC1-9DF2-429B-BCF6-77C8E53279D8_1_105_c.jpg "カレッタ汐留")
+![](/blog/skyscraper-walk/A8198EC1-9DF2-429B-BCF6-77C8E53279D8_1_105_c?w=1024&h=768 "カレッタ汐留")
 
 **第4の展望台、SKY VIEW**のある**カレッタ汐留**につきました！
 
@@ -1202,11 +1202,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670608335/blog/skyscrap
 まあまあ、展望台に上る前にお昼を食べます。きゅ〜さんが **なんでお昼食べないの！？** とずっとキレていたから、というのもあります。
 **もう14時前なんだからそりゃそうだろ**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610057/blog/skyscraper-walk/4ABEE0A6-A1BF-4EEF-9294-E5EE3D78090D_1_105_c.jpg)
+![](/blog/skyscraper-walk/4ABEE0A6-A1BF-4EEF-9294-E5EE3D78090D_1_105_c?w=1024&h=768)
 
 カレッタの階段を降りていくと、
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610097/blog/skyscraper-walk/E74D4856-7014-44BB-9DD9-22803CFE2132_1_201_a.jpg)
+![](/blog/skyscraper-walk/E74D4856-7014-44BB-9DD9-22803CFE2132_1_201_a?w=4032&h=3024)
 
 **丸亀製麺**があります。**初期の徒歩会で丸亀に行きすぎて丸亀アンチになって**いましたが、久しぶりに来るといいですね。
 僕は**豚汁うどん**を食べました。
@@ -1244,7 +1244,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670610313/blog/skyscrap
 
 ということで **SKY VIEW に行きます！**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610395/blog/skyscraper-walk/3B2B4B46-D65E-4CE3-8AA0-48F8E0A3581F_1_105_c.jpg)
+![](/blog/skyscraper-walk/3B2B4B46-D65E-4CE3-8AA0-48F8E0A3581F_1_105_c?w=1024&h=768)
 
 ```centering-with-size-bold
 2em
@@ -1257,15 +1257,15 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670610313/blog/skyscrap
 
 SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上げるわけにはいかないんでしょうね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610619/blog/skyscraper-walk/B4C0BB44-FD2A-48B5-A1B1-3FCB57CD2746_1_201_a.jpg "SKY VIEW からの景色")
+![](/blog/skyscraper-walk/B4C0BB44-FD2A-48B5-A1B1-3FCB57CD2746_1_201_a?w=3846&h=2884 "SKY VIEW からの景色")
 
 ということで景色はこんな感じです！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610725/blog/skyscraper-walk/62F5EF90-D04B-4FEC-A5AD-B4F99DFB5218_1_201_a.jpg "お台場方面")
+![](/blog/skyscraper-walk/62F5EF90-D04B-4FEC-A5AD-B4F99DFB5218_1_201_a?w=4032&h=3024 "お台場方面")
 
 お台場方面が見えます。もっと奥にはぼんやり<b>アクアラインの「風の塔」</b>も見えます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610738/blog/skyscraper-walk/195D872B-221B-4FFF-AA72-491B10409CD7_1_201_a.jpg "浜離宮庭園")
+![](/blog/skyscraper-walk/195D872B-221B-4FFF-AA72-491B10409CD7_1_201_a?w=4032&h=3024 "浜離宮庭園")
 
 **浜離宮庭園**を真上から見ることができます。
 
@@ -1275,7 +1275,7 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 つまみ: クソ〜また今度行きましょう
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670610744/blog/skyscraper-walk/FF7E452A-F255-4196-9630-F4683BFEC0D5_1_201_a.jpg "環２トンネル")
+![](/blog/skyscraper-walk/FF7E452A-F255-4196-9630-F4683BFEC0D5_1_201_a?w=4032&h=3024 "環２トンネル")
 
 明後日 18 日開通の**環状第2号線**のトンネルです。実は今月の10日に完成したばかりのトンネルを**徒歩で**通る[ウォーキングイベント](https://www.metro.tokyo.lg.jp/tosei/hodohappyo/press/2022/10/14/07.html)**(抽選2000人)** があり、徒歩部みんなで応募したのですが、よろしゅうさん以外全員**落選**してしまいました。**ウォーキングイベント人気すぎだろ**
 
@@ -1291,7 +1291,7 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 
 次の目的地へ進みましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670611386/blog/skyscraper-walk/C5F6379C-94F2-42A0-9357-30034E611864_1_201_a.jpg)
+![](/blog/skyscraper-walk/C5F6379C-94F2-42A0-9357-30034E611864_1_201_a?w=3024&h=4032)
 
 ```conversation
 きゅ〜: 足はなんともなってないけど、あまりに**眠すぎる**
@@ -1304,25 +1304,25 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 
 ## 14:25 日比谷公園へ向かう
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670611592/blog/skyscraper-walk/3898B000-89C8-4248-91E7-D856142335F9_1_201_a.jpg)
+![](/blog/skyscraper-walk/3898B000-89C8-4248-91E7-D856142335F9_1_201_a?w=3832&h=2874)
 
 ウォーキングイベントのコースに戻ります！タイムリミットまで**残り 2 時間**、ゴールまで**残り 9km 弱**です。厳しいね！頑張るぞ！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670611630/blog/skyscraper-walk/E6374DCC-123E-411D-8C8D-B31407228CDC_1_201_a.jpg "mino_tv のサブチャンネル mino_game の甲羅")
+![](/blog/skyscraper-walk/E6374DCC-123E-411D-8C8D-B31407228CDC_1_201_a?w=4032&h=3024 "mino_tv のサブチャンネル mino_game の甲羅")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670614729/blog/skyscraper-walk/B4C45C59-C863-490D-96B2-C94CF05A9A2A_1_105_c.jpg)
+![](/blog/skyscraper-walk/B4C45C59-C863-490D-96B2-C94CF05A9A2A_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670614781/blog/skyscraper-walk/9C1F2D67-A1A9-4CAF-A978-C2479EDCD2CE_1_201_a.jpg)
+![](/blog/skyscraper-walk/9C1F2D67-A1A9-4CAF-A978-C2479EDCD2CE_1_201_a?w=4032&h=3024)
 
 僕とふみさんだけカレーを使ってしまい、すみません。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670614822/blog/skyscraper-walk/FDB3098F-1EE9-4086-991F-93836A7F7055_1_201_a.jpg "オン！オン！ONZI")
+![](/blog/skyscraper-walk/FDB3098F-1EE9-4086-991F-93836A7F7055_1_201_a?w=3045&h=2284 "オン！オン！ONZI")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670614978/blog/skyscraper-walk/960B438B-346C-42F6-A963-013C58853165_1_201_a.jpg "新幹線に乗車する男")
+![](/blog/skyscraper-walk/960B438B-346C-42F6-A963-013C58853165_1_201_a?w=3597&h=2698 "新幹線に乗車する男")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670614980/blog/skyscraper-walk/9A0CFBDD-FD10-4995-9627-6284DB8FB488_1_201_a.heic)
+![](/blog/skyscraper-walk/9A0CFBDD-FD10-4995-9627-6284DB8FB488_1_201_a?w=905&h=679)
 
 ```conversation
 つまみ: きゅ〜さん WINS あるらしいですよ
@@ -1332,23 +1332,23 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 つまみ: やめてください
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664019/blog/skyscraper-walk/hato.gif "全然逃げない")
+![](/blog/skyscraper-walk/hato?w=428&h=240 "全然逃げない")
 
 ハトがたくさんいました。調布のハトも全然逃げませんが、新橋のハトは**調布のハト以上に**逃げません。どうなってるんだ
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670766821/blog/skyscraper-walk/F62264B7-3634-48E0-A187-8FBC4D88E6B0_1_201_a.jpg "新橋駅 taken-by: もっちゃん")
+![](/blog/skyscraper-walk/F62264B7-3634-48E0-A187-8FBC4D88E6B0_1_201_a?w=2453&h=1840 "新橋駅 taken-by: もっちゃん")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664266/blog/skyscraper-walk/B495D0E3-D2DF-4E76-A63A-273154C0EE6E_1_105_c.jpg "SL広場のSL")
+![](/blog/skyscraper-walk/B495D0E3-D2DF-4E76-A63A-273154C0EE6E_1_105_c?w=1024&h=768 "SL広場のSL")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664407/blog/skyscraper-walk/5061FA19-5C3E-49A5-8FF3-C5BF61D56907_1_201_a.jpg)
+![](/blog/skyscraper-walk/5061FA19-5C3E-49A5-8FF3-C5BF61D56907_1_201_a?w=3864&h=2898)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664439/blog/skyscraper-walk/0B0823F1-22B4-4DFC-A54C-9CC02893A640_1_201_a.jpg)
+![](/blog/skyscraper-walk/0B0823F1-22B4-4DFC-A54C-9CC02893A640_1_201_a?w=3310&h=2482)
 
 お！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664471/blog/skyscraper-walk/3753E007-5BA2-493A-9E8C-6658D394AB48_1_201_a.jpg)
+![](/blog/skyscraper-walk/3753E007-5BA2-493A-9E8C-6658D394AB48_1_201_a?w=3309&h=2481)
 
 **千代田区にやってきました！**
 
@@ -1361,24 +1361,24 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 
 ## 14:45 日比谷公園
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670664509/blog/skyscraper-walk/7B018463-D8AE-4B54-A338-CA81880E85E9_1_201_a.jpg "日比谷公園")
+![](/blog/skyscraper-walk/7B018463-D8AE-4B54-A338-CA81880E85E9_1_201_a?w=3875&h=2906 "日比谷公園")
 
 **日比谷公園**にやってきました。ここを抜けるとウォーキングのコースである**桜田門外**付近に出ます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681432/blog/skyscraper-walk/DB06ACD6-D850-4A01-86FB-2D451E46E041_1_105_c.jpg "トイレ8")
+![](/blog/skyscraper-walk/DB06ACD6-D850-4A01-86FB-2D451E46E041_1_105_c?w=1024&h=768 "トイレ8")
 
 ```conversation
 もっちゃん: トイレがあります！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665045/blog/skyscraper-walk/662AABD2-54A7-411D-8361-30409CCECE60_1_105_c.jpg)
+![](/blog/skyscraper-walk/662AABD2-54A7-411D-8361-30409CCECE60_1_105_c?w=1024&h=768)
 
 ```conversation
 きゅ〜: **出た〜！出た！出た〜………**
 つまみ: 最悪
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665040/blog/skyscraper-walk/A9EDD88A-539F-404E-933F-97EBF7767323_1_201_a.jpg)
+![](/blog/skyscraper-walk/A9EDD88A-539F-404E-933F-97EBF7767323_1_201_a?w=4032&h=3024)
 
 ```conversation
 きゅ〜: **スネ夫がいます！**
@@ -1387,15 +1387,15 @@ SKY VIEW は特に**電通**本社ビルにくっついてるので階段で上�
 ふみ: ？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665163/blog/skyscraper-walk/0CBBCCAE-3374-412C-86AE-8F581F6285F5_1_201_a.jpg)
+![](/blog/skyscraper-walk/0CBBCCAE-3374-412C-86AE-8F581F6285F5_1_201_a?w=4032&h=3024)
 
 こういう売店のある公園って良いですよね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665173/blog/skyscraper-walk/9C878FE1-B470-4D15-98B4-39965557266E_1_105_c.jpg "わかります")
+![](/blog/skyscraper-walk/9C878FE1-B470-4D15-98B4-39965557266E_1_105_c?w=1024&h=768 "わかります")
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665187/blog/skyscraper-walk/D5F2B045-3EA1-4261-86AE-D28F57B74540_1_105_c.jpg "三笠山")
+![](/blog/skyscraper-walk/D5F2B045-3EA1-4261-86AE-D28F57B74540_1_105_c?w=1024&h=768 "三笠山")
 
 **三笠山**がありました。**山！？** 山を見つけてしまったので登りましょう！
 
@@ -1411,23 +1411,23 @@ GESuWT8Ofbw
 ```
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665195/blog/skyscraper-walk/F9AC913D-5501-4B2E-BE81-27480BC14B83_1_105_c.jpg "山頂からの眺め")
+![](/blog/skyscraper-walk/F9AC913D-5501-4B2E-BE81-27480BC14B83_1_105_c?w=1024&h=768 "山頂からの眺め")
 
 やっぱり登山は良いですね！**登山より動画にモザイク付ける作業の方がキツかったです**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665203/blog/skyscraper-walk/F5622FD4-6B69-4431-835C-96B3FE1CC3B1_1_105_c.jpg "山の紹介")
+![](/blog/skyscraper-walk/F5622FD4-6B69-4431-835C-96B3FE1CC3B1_1_105_c?w=1024&h=768 "山の紹介")
 
 ```centering
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d578.9346761432514!2d139.7560702103904!3d35.67518513434227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf3b91a4771%3A0xf5c72e4224b9e5b2!2z5pel5q-U6LC35YWs5ZySIOS4ieesoOWxsQ!5e0!3m2!1sja!2sjp!4v1670676880749!5m2!1sja!2sjp" class="google-maps-style" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670665207/blog/skyscraper-walk/837A5855-0307-4426-8579-A04A81B1AB3B_1_105_c.jpg)
+![](/blog/skyscraper-walk/837A5855-0307-4426-8579-A04A81B1AB3B_1_105_c?w=1024&h=768)
 
 進みます。
 
 ## 15:00 ウォーキングイベントのコースに復帰
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670676554/blog/skyscraper-walk/2163D0AA-977B-43F4-AEDE-FAB15FAEB14A_1_201_a.jpg)
+![](/blog/skyscraper-walk/2163D0AA-977B-43F4-AEDE-FAB15FAEB14A_1_201_a?w=3686&h=2764)
 
 ウォーキングイベントのコースに戻ってきました！**残り 90 分**、頑張りましょう！
 
@@ -1436,38 +1436,38 @@ GESuWT8Ofbw
 つまみ: まだ諦めるには早いですよ！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670676551/blog/skyscraper-walk/30E32DAD-A555-4A10-B6B0-D70A64FBF201_1_201_a.jpg)
+![](/blog/skyscraper-walk/30E32DAD-A555-4A10-B6B0-D70A64FBF201_1_201_a?w=4032&h=3024)
 
 法務省・検察庁・公安などが入っているビルらしいです。**つよそう**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670676841/blog/skyscraper-walk/101CACC7-C567-4539-B191-0E38B3C573ED_1_201_a.jpg "桜田門")
+![](/blog/skyscraper-walk/101CACC7-C567-4539-B191-0E38B3C573ED_1_201_a?w=4032&h=3024 "桜田門")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670676759/blog/skyscraper-walk/375801B5-0186-4CE6-BD3F-DB88F424A1FB_1_201_a.jpg "国会が見えてきた")
+![](/blog/skyscraper-walk/375801B5-0186-4CE6-BD3F-DB88F424A1FB_1_201_a?w=3883&h=2912 "国会が見えてきた")
 
 **国会議事堂**が見えてきました！ウオ〜、本当に都心なんですね〜(？)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677259/blog/skyscraper-walk/E201270E-0C0F-4D81-86B0-44FAAABE203B_1_201_a.jpg)
+![](/blog/skyscraper-walk/E201270E-0C0F-4D81-86B0-44FAAABE203B_1_201_a?w=4032&h=3024)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677260/blog/skyscraper-walk/77280920-73FC-4757-8285-16B432A08C0F_1_105_c.jpg)
+![](/blog/skyscraper-walk/77280920-73FC-4757-8285-16B432A08C0F_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677268/blog/skyscraper-walk/F3C57F70-4BDC-4FD8-9D63-D31B04FD5A5C_1_105_c.jpg "イチョウ並木")
+![](/blog/skyscraper-walk/F3C57F70-4BDC-4FD8-9D63-D31B04FD5A5C_1_105_c?w=1024&h=768 "イチョウ並木")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677331/blog/skyscraper-walk/721B554F-762C-430E-B06C-C0A4CD31FF14_1_201_a.jpg "正面から見た国会")
+![](/blog/skyscraper-walk/721B554F-762C-430E-B06C-C0A4CD31FF14_1_201_a?w=3900&h=2924 "正面から見た国会")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677338/blog/skyscraper-walk/718F3EB6-355F-47B6-9763-2608A374F7CB_1_105_c.jpg)
+![](/blog/skyscraper-walk/718F3EB6-355F-47B6-9763-2608A374F7CB_1_105_c?w=1024&h=768)
 
 ```conversation
 もっちゃん: **徒歩記事の後半いつも内容薄くなってませんか？**
 わし: 「徒歩記事は後半になると内容が薄くなる」というのは羽田回から受け継がれている伝統です
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677351/blog/skyscraper-walk/4AC48AC6-9290-4006-BFC1-6E56FEDDF6A9_1_105_c.jpg "盾")
+![](/blog/skyscraper-walk/4AC48AC6-9290-4006-BFC1-6E56FEDDF6A9_1_105_c?w=1024&h=768 "盾")
 
 **盾**が落ちていました。ちょっと持ってみたくなりましたが、たぶん持つと**後ろにいる警備員に確保される**ので我慢します。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677470/blog/skyscraper-walk/88D1C34C-8D49-4E5D-ADCD-DA50694BAF05_1_201_a.jpg "山王坂")
+![](/blog/skyscraper-walk/88D1C34C-8D49-4E5D-ADCD-DA50694BAF05_1_201_a?w=3899&h=2924 "山王坂")
 
 **山王坂**です。ここを下ると次の目的地、**日枝神社**があります。
 
@@ -1477,11 +1477,11 @@ GESuWT8Ofbw
 つまみ: 勝手にやっててください
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670677594/blog/skyscraper-walk/kyousou.gif)
+![](/blog/skyscraper-walk/kyousou?w=428&h=240)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670678515/blog/skyscraper-walk/9338C7D8-C079-4AF7-8877-AA89FBD38E0C_1_105_c.jpg "下から見た天王坂")
+![](/blog/skyscraper-walk/9338C7D8-C079-4AF7-8877-AA89FBD38E0C_1_105_c?w=1024&h=768 "下から見た天王坂")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670678544/blog/skyscraper-walk/9F55B872-9E42-41F6-A988-BC12391DD10A_1_201_a.jpg)
+![](/blog/skyscraper-walk/9F55B872-9E42-41F6-A988-BC12391DD10A_1_201_a?w=2933&h=2200)
 
 ```conversation
 つまみ: アパカレー買いませんか？
@@ -1497,7 +1497,7 @@ GESuWT8Ofbw
 
 ## 15:30 日枝神社
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670678743/blog/skyscraper-walk/84FD1961-BC0B-4B9C-AE11-038D4746B28A_1_201_a.jpg "日枝神社")
+![](/blog/skyscraper-walk/84FD1961-BC0B-4B9C-AE11-038D4746B28A_1_201_a?w=4032&h=3024 "日枝神社")
 
 **日枝神社**です。
 
@@ -1514,29 +1514,29 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 ？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670678997/blog/skyscraper-walk/83776C9B-9673-4A08-AFD8-A5119D86E018_1_201_a.jpg)
+![](/blog/skyscraper-walk/83776C9B-9673-4A08-AFD8-A5119D86E018_1_201_a?w=3822&h=2866)
 
 めちゃくちゃ人がいました。並んでられないので<b>(クソ失礼)</b>次行きます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679024/blog/skyscraper-walk/96F51F9A-F4DC-4CE2-B6AC-520A9F279F8B_1_201_a.jpg)
+![](/blog/skyscraper-walk/96F51F9A-F4DC-4CE2-B6AC-520A9F279F8B_1_201_a?w=4032&h=3024)
 
 進みます。**エスカレーター**が出てきました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679066/blog/skyscraper-walk/A56CC348-FA6A-4E2F-B74F-61B3C6DD353A_1_201_a.jpg)
+![](/blog/skyscraper-walk/A56CC348-FA6A-4E2F-B74F-61B3C6DD353A_1_201_a?w=3152&h=2364)
 
 神社にエスカレーターがあるの、かなり異様な光景で面白いです。**現代だ……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679087/blog/skyscraper-walk/EEC543ED-4E4E-40F4-87D6-131AD3880121_1_105_c.jpg "首相官邸")
+![](/blog/skyscraper-walk/EEC543ED-4E4E-40F4-87D6-131AD3880121_1_105_c?w=1024&h=768 "首相官邸")
 
 **首相官邸**が見えました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679085/blog/skyscraper-walk/FFB0A42C-F72A-4C0D-B28A-418045CE5AE1_1_201_a.jpg)
+![](/blog/skyscraper-walk/FFB0A42C-F72A-4C0D-B28A-418045CE5AE1_1_201_a?w=4032&h=3024)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679151/blog/skyscraper-walk/3541FE3C-FB9A-440E-B82E-4604788484DA_1_201_a.jpg)
+![](/blog/skyscraper-walk/3541FE3C-FB9A-440E-B82E-4604788484DA_1_201_a?w=4032&h=3024)
 
 下から見るとこんな感じです。**デカい**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679170/blog/skyscraper-walk/D4205E12-5EAD-42AC-A9BA-0BDECEB7297F_1_201_a.jpg)
+![](/blog/skyscraper-walk/D4205E12-5EAD-42AC-A9BA-0BDECEB7297F_1_201_a?w=2293&h=1720)
 
 ```conversation
 きゅ〜: bori-dori、ワハハ
@@ -1545,15 +1545,15 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 つまみ: どういうことですか？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670679792/blog/skyscraper-walk/6FD257C1-605C-47B9-92BE-C8458F84DA1A_1_105_c.jpg "TBS")
+![](/blog/skyscraper-walk/6FD257C1-605C-47B9-92BE-C8458F84DA1A_1_105_c?w=1024&h=768 "TBS")
 
 横でヒップホップ(？)流してるスケボー抱えた2人組が<b>「ビルでけえ〜！」</b>とか言っていて良かったです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680366/blog/skyscraper-walk/C380D512-83CA-489C-9596-87C875F169D5_1_201_a.jpg)
+![](/blog/skyscraper-walk/C380D512-83CA-489C-9596-87C875F169D5_1_201_a?w=3336&h=2502)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680374/blog/skyscraper-walk/79046BD0-F108-4DDC-813E-A704A3D0FF55_1_201_a.jpg)
+![](/blog/skyscraper-walk/79046BD0-F108-4DDC-813E-A704A3D0FF55_1_201_a?w=3934&h=2950)
 
 ここをまっすぐ進むと六本木ヒルズの方につきます。
 
@@ -1566,31 +1566,31 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 
 スリーコインズ (300円以下のご飯しか食べない人) にとって **1500 円は 5 食分**なので仕方ないですね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680409/blog/skyscraper-walk/A52BAC49-6BC8-473D-AB2E-20973126DB78_1_201_a.jpg)
+![](/blog/skyscraper-walk/A52BAC49-6BC8-473D-AB2E-20973126DB78_1_201_a?w=3926&h=2944)
 
 **歩道橋がありました！**
 
 よく見るとエレベーターがあります。使っちゃいましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670773353/blog/skyscraper-walk/3D142B1A-1647-4ED2-9538-E1FA497FAAB6_1_201_a.jpg "自転車乗り入れ禁止")
+![](/blog/skyscraper-walk/3D142B1A-1647-4ED2-9538-E1FA497FAAB6_1_201_a?w=2015&h=1511 "自転車乗り入れ禁止")
 
 **自転車なので乗れませんでした……**
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680425/blog/skyscraper-walk/0683262F-6506-44D2-9367-D5731F9CD712_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680430/blog/skyscraper-walk/7BB5E105-5973-4463-9497-C9A9773F0075_1_105_c.jpg)
+![](/blog/skyscraper-walk/0683262F-6506-44D2-9367-D5731F9CD712_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/7BB5E105-5973-4463-9497-C9A9773F0075_1_105_c?w=1024&h=768)
 ```
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680787/blog/skyscraper-walk/79F6F917-0368-4038-B8A1-0742403AF016_1_105_c.jpg)
+![](/blog/skyscraper-walk/79F6F917-0368-4038-B8A1-0742403AF016_1_105_c?w=1024&h=768)
 
 ```conversation
 きゅ〜: つまみさん！**あれアパホテルじゃないですか？**
 つまみ: え！？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680803/blog/skyscraper-walk/79F6F917-0368-4038-B8A1-0742403AF016_1_201_a.jpg)
+![](/blog/skyscraper-walk/79F6F917-0368-4038-B8A1-0742403AF016_1_201_a?w=1209&h=907)
 
 ```conversation
 つまみ: え！？！？！？！？**歩道橋がなければアパカレー買えたのに……**
@@ -1598,11 +1598,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 
 アパ運なし
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680938/blog/skyscraper-walk/A3835CC4-5E5C-414E-A448-094D41283985_1_105_c.jpg)
+![](/blog/skyscraper-walk/A3835CC4-5E5C-414E-A448-094D41283985_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670680956/blog/skyscraper-walk/40791FFC-6084-4620-A2A8-FC7AB3F91035_1_105_c.jpg)
+![](/blog/skyscraper-walk/40791FFC-6084-4620-A2A8-FC7AB3F91035_1_105_c?w=1024&h=768)
 
 陽が沈みそうです。急ぎましょう！
 
@@ -1613,7 +1613,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 もっちゃん: お！**あれは！**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681112/blog/skyscraper-walk/0E619E01-31DE-44DC-8C56-0398C0FDC91A_1_105_c.jpg)
+![](/blog/skyscraper-walk/0E619E01-31DE-44DC-8C56-0398C0FDC91A_1_105_c?w=1024&h=768)
 
 **出雲大社 東京分祠** につきました
 
@@ -1621,11 +1621,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 もっちゃん: つまみさん撮るもの間違えてますよ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681205/blog/skyscraper-walk/7B9CC3D2-602D-4988-AA2E-6C660B74AE1E_1_105_c.jpg "出雲大社 東京分祠")
+![](/blog/skyscraper-walk/7B9CC3D2-602D-4988-AA2E-6C660B74AE1E_1_105_c?w=768&h=1024 "出雲大社 東京分祠")
 
 出雲大社、東京にもあったのか……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681307/blog/skyscraper-walk/F779AF71-309D-43CF-BF76-45C5BE184D6C_1_201_a.jpg "ハイテク手水")
+![](/blog/skyscraper-walk/F779AF71-309D-43CF-BF76-45C5BE184D6C_1_201_a?w=4032&h=3024 "ハイテク手水")
 
 **自動で水が流れるタイプ**の手を洗うやつがありました。無理やりつけた感が良い
 
@@ -1638,11 +1638,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 もっちゃん: **調べなくても書いてあったよ！**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681368/blog/skyscraper-walk/5E5A97FC-8309-4B87-A91C-E36BD267D9BD_1_201_a.jpg)
+![](/blog/skyscraper-walk/5E5A97FC-8309-4B87-A91C-E36BD267D9BD_1_201_a?w=3340&h=2505)
 
 次行きます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681370/blog/skyscraper-walk/A3338465-9647-499E-910F-6E4436EAA13C_1_105_c.jpg "良い集合住宅")
+![](/blog/skyscraper-walk/A3338465-9647-499E-910F-6E4436EAA13C_1_105_c?w=1024&h=768 "良い集合住宅")
 
 ```next-page
 タイムリミット 20 分
@@ -1664,13 +1664,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 
 <small>※徒歩部の平均移動速度は時速4km</small>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681388/blog/skyscraper-walk/41335F57-96E0-4704-83ED-D0B64BF4A297_1_105_c.jpg)
+![](/blog/skyscraper-walk/41335F57-96E0-4704-83ED-D0B64BF4A297_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670681395/blog/skyscraper-walk/C30FD74C-19E3-468B-A743-B465F069A20B_1_105_c.jpg "政策研究大学院大学")
+![](/blog/skyscraper-walk/C30FD74C-19E3-468B-A743-B465F069A20B_1_105_c?w=1024&h=768 "政策研究大学院大学")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670756790/blog/skyscraper-walk/FD9600CC-0A1C-4E3C-821A-999EE5640737_1_201_a.jpg)
+![](/blog/skyscraper-walk/FD9600CC-0A1C-4E3C-821A-999EE5640737_1_201_a?w=4032&h=3024)
 
 ```conversation
 つまみ: もっちゃん！**トイレがありますよ！**
@@ -1678,7 +1678,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 つまみ: え！？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670756910/blog/skyscraper-walk/IMG_4100.jpg)
+![](/blog/skyscraper-walk/IMG_4100?w=1583&h=1187)
 
 ```conversation
 つまみ: **傘置き場**なのか……
@@ -1686,15 +1686,15 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 
 謎の傘置き場の写真しか撮っていませんでしたがここは**国立新美術館**です。**そっちの写真を撮れ**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683296/blog/skyscraper-walk/F6018CBD-FE4F-4556-A6E3-6FB7A5EB504F_1_105_c.jpg)
+![](/blog/skyscraper-walk/F6018CBD-FE4F-4556-A6E3-6FB7A5EB504F_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683310/blog/skyscraper-walk/3376F668-E239-487E-914B-210EA4EC6EDB_1_105_c.jpg "日本学術会議")
+![](/blog/skyscraper-walk/3376F668-E239-487E-914B-210EA4EC6EDB_1_105_c?w=1024&h=768 "日本学術会議")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683322/blog/skyscraper-walk/3C6318E5-7A33-4FAF-A8C2-FAA5707170AE_1_105_c.jpg "偽[学費バス](https://www.uec.ac.jp/news/announcement/2020/20200924_2779.html)")
+![](/blog/skyscraper-walk/3C6318E5-7A33-4FAF-A8C2-FAA5707170AE_1_105_c?w=1024&h=768 "偽[学費バス](https://www.uec.ac.jp/news/announcement/2020/20200924_2779.html)")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683330/blog/skyscraper-walk/041C9840-5498-4FBC-990F-7BD69C37E0B6_1_105_c.jpg)
+![](/blog/skyscraper-walk/041C9840-5498-4FBC-990F-7BD69C37E0B6_1_105_c?w=1024&h=768)
 
 進みます。
 
@@ -1706,7 +1706,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670678836/blog/skyscrap
 
 **時速 24km で歩けば間に合う………**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683342/blog/skyscraper-walk/FE35F857-3F6A-41AB-81EC-8582ADA06D4E_1_105_c.jpg "トイレ9")
+![](/blog/skyscraper-walk/FE35F857-3F6A-41AB-81EC-8582ADA06D4E_1_105_c?w=1024&h=768 "トイレ9")
 
 トイレがありました！
 
@@ -1717,37 +1717,37 @@ Zb_SiV3JPFI
 ```
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683342/blog/skyscraper-walk/FE35F857-3F6A-41AB-81EC-8582ADA06D4E_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670757925/blog/skyscraper-walk/hikakintv1.jpg)
+![](/blog/skyscraper-walk/FE35F857-3F6A-41AB-81EC-8582ADA06D4E_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/hikakintv1?w=6016&h=3384)
 ```
 
 当然のようにこのトイレも登場しています。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683344/blog/skyscraper-walk/137E6BF3-B675-4906-B395-826D8ED46BE6_1_105_c.jpg)
+![](/blog/skyscraper-walk/137E6BF3-B675-4906-B395-826D8ED46BE6_1_105_c?w=1024&h=768)
 
 進みます。歩道橋がありました！渡りましょう
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683348/blog/skyscraper-walk/945B2AE9-7A88-4E39-A4A3-CAD5D5780454_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670757926/blog/skyscraper-walk/hikakintv2.jpg)
+![](/blog/skyscraper-walk/945B2AE9-7A88-4E39-A4A3-CAD5D5780454_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/hikakintv2?w=6016&h=3384)
 ```
 
 はい、**歩道橋は気持ち良いです**。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683363/blog/skyscraper-walk/58F38EE9-49BC-4CFA-B74F-AF286F625EEC_1_105_c.jpg)
+![](/blog/skyscraper-walk/58F38EE9-49BC-4CFA-B74F-AF286F625EEC_1_105_c?w=1024&h=768)
  
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683485/blog/skyscraper-walk/49B859C9-3FC1-4C18-9EF7-4B27A557E500_1_201_a.jpg)
+![](/blog/skyscraper-walk/49B859C9-3FC1-4C18-9EF7-4B27A557E500_1_201_a?w=4032&h=3024)
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670758545/blog/skyscraper-walk/IMG_4119.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670758642/blog/skyscraper-walk/hikakintv4.jpg)
+![](/blog/skyscraper-walk/IMG_4119?w=996&h=747)
+![](/blog/skyscraper-walk/hikakintv4?w=6016&h=3384)
 ```
 
 ## 16:45 明治神宮外苑 イチョウ並木
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683479/blog/skyscraper-walk/2FE8318A-3312-45D5-ADCC-78AD16D6969E_1_201_a.jpg)
+![](/blog/skyscraper-walk/2FE8318A-3312-45D5-ADCC-78AD16D6969E_1_201_a?w=4032&h=3024)
 **明治神宮外苑のイチョウ並木**です。
 
 タイムリミットは **-15分** です。
@@ -1758,17 +1758,17 @@ Zb_SiV3JPFI
 もっちゃん: ？？？
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683503/blog/skyscraper-walk/D2FB6C30-5CBB-43F7-9D77-FA8D64AEED2F_1_201_a.jpg)
+![](/blog/skyscraper-walk/D2FB6C30-5CBB-43F7-9D77-FA8D64AEED2F_1_201_a?w=3611&h=2708)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683650/blog/skyscraper-walk/FE6248CD-30B5-4CD8-B63D-69DF3BCE9C4F_1_201_a.jpg)
+![](/blog/skyscraper-walk/FE6248CD-30B5-4CD8-B63D-69DF3BCE9C4F_1_201_a?w=4032&h=3024)
 
 綺麗でした。
 
 めっちゃ自撮りしてる✨陽のオーラ✨をまとった方々がたくさんいらして灰になってしまいました……(日陰者)
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683651/blog/skyscraper-walk/4591402D-6B28-4B69-B793-9765F048FFD9_1_105_c.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670757930/blog/skyscraper-walk/hikakintv3.jpg)
+![](/blog/skyscraper-walk/4591402D-6B28-4B69-B793-9765F048FFD9_1_105_c?w=1024&h=768)
+![](/blog/skyscraper-walk/hikakintv3?w=6016&h=3384)
 ```
 
 ```conversation
@@ -1779,28 +1779,28 @@ HIKAKIN: **とにかくトイレを見たら絞り出していく！**
 HIKAKIN: **えっ！閉まってんじゃん！**
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683659/blog/skyscraper-walk/AD3C4F1B-DD5D-4F94-A5AB-BC453C9898E3_1_105_c.jpg)
+![](/blog/skyscraper-walk/AD3C4F1B-DD5D-4F94-A5AB-BC453C9898E3_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683668/blog/skyscraper-walk/962464F5-CCA2-4535-92DC-447AA3CDEB07_1_105_c.jpg)
+![](/blog/skyscraper-walk/962464F5-CCA2-4535-92DC-447AA3CDEB07_1_105_c?w=1024&h=768)
 
 **新国立競技場**がありました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670761160/blog/skyscraper-walk/FjHnvxXUYAIGFmc.jpg "taken-by: ふみ")
+![](/blog/skyscraper-walk/FjHnvxXUYAIGFmc?w=2048&h=1536 "taken-by: ふみ")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683682/blog/skyscraper-walk/6D8B9546-8E82-4DA3-ABA2-0583544587E6_1_105_c.jpg)
+![](/blog/skyscraper-walk/6D8B9546-8E82-4DA3-ABA2-0583544587E6_1_105_c?w=1024&h=768)
 
 そしてもうしばらく進むと……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683695/blog/skyscraper-walk/51A55964-4D33-44D5-9CA7-0D1D9266A039_1_105_c.jpg)
+![](/blog/skyscraper-walk/51A55964-4D33-44D5-9CA7-0D1D9266A039_1_105_c?w=1024&h=768)
 
 これは……？
 
 
 ## 17:10 千駄ヶ谷駅
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670765426/blog/skyscraper-walk/FjHqqMJVUAE9oMG.jpg "千駄ヶ谷駅 taken-by: もっちゃん")
+![](/blog/skyscraper-walk/FjHqqMJVUAE9oMG?w=2048&h=1154 "千駄ヶ谷駅 taken-by: もっちゃん")
 
 **千駄ヶ谷駅** です。
 
@@ -1841,7 +1841,7 @@ HIKAKIN: **えっ！閉まってんじゃん！**
 
 <br>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683689/blog/skyscraper-walk/1B78EEDD-D0D0-4D0D-ACCA-57D670429112_1_105_c.jpg "徒歩会終了！")
+![](/blog/skyscraper-walk/1B78EEDD-D0D0-4D0D-ACCA-57D670429112_1_105_c?w=1024&h=768 "徒歩会終了！")
 
 ```centering-with-size-bold
 2rem
@@ -1854,35 +1854,35 @@ HIKAKIN: **えっ！閉まってんじゃん！**
 
 そういえばこの辺に**ちょっと高めのモスバーガーがあるらしい**です。行ってみましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683971/blog/skyscraper-walk/2F05BF91-C7C5-4046-8194-316F7DE40D4B_1_201_a.jpg)
+![](/blog/skyscraper-walk/2F05BF91-C7C5-4046-8194-316F7DE40D4B_1_201_a?w=4032&h=3024)
 
 店内を見たところ、**とても落ち着いた雰囲気**で、**身なりのきちっとした感じの人**が数人いました。
 
 **キッズ度の高めの徒歩部にはちょっと場違いか……？**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683976/blog/skyscraper-walk/66067FCE-1961-4EBD-8A74-670A6EB1A197_1_105_c.jpg)
+![](/blog/skyscraper-walk/66067FCE-1961-4EBD-8A74-670A6EB1A197_1_105_c?w=1024&h=768)
 
 ま、まあ！**メニューを見てみましょう！** メニューを……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683998/blog/skyscraper-walk/9E8EA1BF-0595-4340-8F6B-A60A5BF3D987_1_201_a.jpg)
+![](/blog/skyscraper-walk/9E8EA1BF-0595-4340-8F6B-A60A5BF3D987_1_201_a?w=2268&h=3024)
 
 <div style="height: 80vh"></div>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684004/blog/skyscraper-walk/4955A3DE-2A2E-4EBE-9874-D182C2930802_1_105_c.jpg)
+![](/blog/skyscraper-walk/4955A3DE-2A2E-4EBE-9874-D182C2930802_1_105_c?w=1024&h=768)
 
 <div style="height: 50vh"></div>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684032/blog/skyscraper-walk/CD7194B7-F774-4205-B23E-768C2517352D_1_201_a.jpg)
+![](/blog/skyscraper-walk/CD7194B7-F774-4205-B23E-768C2517352D_1_201_a?w=4032&h=3024)
 
 <div style="height: 50vh"></div>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684034/blog/skyscraper-walk/3B1CD6D8-7C3E-48BD-85BB-BB9BE2D985A6_1_105_c.jpg)
+![](/blog/skyscraper-walk/3B1CD6D8-7C3E-48BD-85BB-BB9BE2D985A6_1_105_c?w=1024&h=768)
 
 <div style="height: 50vh"></div>
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684039/blog/skyscraper-walk/796E1470-B2FC-435E-98CF-E587E15FF950_1_105_c.jpg)
+![](/blog/skyscraper-walk/796E1470-B2FC-435E-98CF-E587E15FF950_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684048/blog/skyscraper-walk/40CBEBC1-6454-4F43-8928-1E63FC4CE6EE_1_105_c.jpg)
+![](/blog/skyscraper-walk/40CBEBC1-6454-4F43-8928-1E63FC4CE6EE_1_105_c?w=1024&h=769)
 
 <div style="height: 50vh"></div>
 
@@ -1934,7 +1934,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670763930/blog/skyscrap
 上った展望台: 4つ
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684224/blog/skyscraper-walk/473647A6-6BE6-4941-8477-BE94BB6C3110_1_105_c.jpg "ルート")
+![](/blog/skyscraper-walk/473647A6-6BE6-4941-8477-BE94BB6C3110_1_105_c?w=948&h=829 "ルート")
 
 今日の結果です。たぶん距離的には UEC アドベントカレンダー 2022 の中で最弱ですが **(なんでだよ)** ちょうど良い徒歩ができたのではないでしょうか。足の疲れは何もなかったですしまあそう……
 
@@ -1945,7 +1945,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670763930/blog/skyscrap
 
 ## Bonus: 新宿までは歩こうよ
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684132/blog/skyscraper-walk/61D27F21-99B4-497F-8DAA-AE68B6D2430F_1_201_a.jpg "帰るふみさん")
+![](/blog/skyscraper-walk/61D27F21-99B4-497F-8DAA-AE68B6D2430F_1_201_a?w=3211&h=2408 "帰るふみさん")
 
 **千駄ヶ谷駅の増設ホームを見たがっていたふみさん**は先に帰ってしまいましたが、残った3人は新宿まで歩いて帰ろうと思います。たかだか 1.5km なので楽勝ですね。
 
@@ -1959,35 +1959,35 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1670765282/blog/skyscrap
 ```
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670766045/blog/skyscraper-walk/EAyna6_U0AAUwB3.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670683689/blog/skyscraper-walk/1B78EEDD-D0D0-4D0D-ACCA-57D670429112_1_105_c.jpg)
+![](/blog/skyscraper-walk/EAyna6_U0AAUwB3?w=2048&h=1536)
+![](/blog/skyscraper-walk/1B78EEDD-D0D0-4D0D-ACCA-57D670429112_1_105_c?w=1024&h=768)
 千駄ヶ谷駅 (左は2019年7月31日撮影)
 ```
 
 そういえば千駄ヶ谷駅って昔こんなデカくなかった気がするんだよなあ……と思っていたのですが、やっぱりリニューアルされてたんですね。(写真が分かりづらい)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684139/blog/skyscraper-walk/41E461AC-1BD9-468C-B8ED-9450BF581FC4_1_105_c.jpg)
+![](/blog/skyscraper-walk/41E461AC-1BD9-468C-B8ED-9450BF581FC4_1_105_c?w=1024&h=768)
 
 面白そうなトンネルを潜っていきます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684143/blog/skyscraper-walk/4F4EEDBE-B9BB-4E63-9D91-39B0CAA1565E_1_105_c.jpg)
+![](/blog/skyscraper-walk/4F4EEDBE-B9BB-4E63-9D91-39B0CAA1565E_1_105_c?w=1024&h=768)
 
 そういえばすっごく昔にここ通ったなあ、となっています。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670766355/blog/skyscraper-walk/CDB49FD0-EC05-45A2-B8EF-AA03456E7151_1_105_c.jpg "2019年7月31日撮影")
+![](/blog/skyscraper-walk/CDB49FD0-EC05-45A2-B8EF-AA03456E7151_1_105_c?w=1024&h=768 "2019年7月31日撮影")
 
 ```link-embed
 https://twilog.org/TrpFrog/date-190731/asc
 この日は君の名は・天気の子の聖地巡礼をしていました。記事はないです。暇な人は Twilog を見てみてください
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684145/blog/skyscraper-walk/FE11FB88-0A68-43DB-9710-CA09D029CAED_1_105_c.jpg)
+![](/blog/skyscraper-walk/FE11FB88-0A68-43DB-9710-CA09D029CAED_1_105_c?w=1024&h=768)
 
 進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684147/blog/skyscraper-walk/E108A611-D8C2-4173-B3DE-FF8C0D6A41E6_1_105_c.jpg "魔法使いの住む家")
+![](/blog/skyscraper-walk/E108A611-D8C2-4173-B3DE-FF8C0D6A41E6_1_105_c?w=1024&h=768 "魔法使いの住む家")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684156/blog/skyscraper-walk/4119053F-F5E5-4A8C-87C3-12B7761449E0_1_105_c.jpg)
+![](/blog/skyscraper-walk/4119053F-F5E5-4A8C-87C3-12B7761449E0_1_105_c?w=1024&h=768)
 
 ```centering-with-size-bold
 1.5em
@@ -2000,9 +2000,9 @@ Eys-lWXFnmo
 
 そんなわけで帰ります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684176/blog/skyscraper-walk/9397428B-119E-46A4-9212-D81B36E1FC83_1_105_c.jpg)
+![](/blog/skyscraper-walk/9397428B-119E-46A4-9212-D81B36E1FC83_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1670684213/blog/skyscraper-walk/90418F71-58D5-405C-BBDD-C15D992B9A92_1_201_a.jpg)
+![](/blog/skyscraper-walk/90418F71-58D5-405C-BBDD-C15D992B9A92_1_201_a?w=4032&h=3024)
 
 (ここまで記事を読んでくれた皆さんも) お疲れ様でした。
 

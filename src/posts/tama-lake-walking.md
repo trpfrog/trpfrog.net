@@ -170,13 +170,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696675931/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210421033144 "松屋")
+![](/blog/tama-lake-walking/20210421033144?w=1024&h=768 "松屋")
 
  
 
 ### 8:30 ドーム絆 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420210920)
+![](/blog/tama-lake-walking/20210420210920?w=512&h=384)
 
 フリー住所ドーム絆に来ました。でも誰も来ないので先に行きましょう！
 
@@ -208,7 +208,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420211605 "出発！")
+![](/blog/tama-lake-walking/20210420211605?w=716&h=537 "出発！")
 
 ということで出発！**残り20km** 
 
@@ -218,13 +218,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 ここで今日のルートです。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210504014719 "今日のルート(1) (Apple Mapsより)")
+![](/blog/tama-lake-walking/20210504014719?w=991&h=1200 "今日のルート(1) (Apple Mapsより)")
 
  
 
 ### 8:55 野川
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420212139 "野川")
+![](/blog/tama-lake-walking/20210420212139?w=716&h=537 "野川")
 
 車道沿いでは**僕がブランコから落ちて怪我した**以外に何も起きなかったので省略、野川につきました。
 
@@ -233,37 +233,37 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420212956 "下に降りてみました。たのしい")
+![](/blog/tama-lake-walking/20210420212956?w=716&h=537 "下に降りてみました。たのしい")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420213105)
+![](/blog/tama-lake-walking/20210420213105?w=716&h=537)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420213118)
+![](/blog/tama-lake-walking/20210420213118?w=1200&h=916)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420213351 "川にカメいるもんなの？")
+![](/blog/tama-lake-walking/20210420213351?w=1024&h=768 "川にカメいるもんなの？")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420213428 "川に沈んでる木みたいなやつ、なんだろう？")
+![](/blog/tama-lake-walking/20210420213428?w=1024&h=768 "川に沈んでる木みたいなやつ、なんだろう？")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210420214943 "イシロックが出てきそう")
+![](/blog/tama-lake-walking/20210420214943?w=1024&h=768 "イシロックが出てきそう")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210421033232 "木の切り株みたいな石")
+![](/blog/tama-lake-walking/20210421033232?w=716&h=537 "木の切り株みたいな石")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210421033547 "水車")
+![](/blog/tama-lake-walking/20210421033547?w=1200&h=793 "水車")
 
 **水車**がありました。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210421033750 "葉っぱレース")
+![](/blog/tama-lake-walking/20210421033750?w=1200&h=728 "葉っぱレース")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210421033854 "飛び石を飛ぶ人")
+![](/blog/tama-lake-walking/20210421033854?w=716&h=537 "飛び石を飛ぶ人")
 
 罵倒ロボ名物 **飛び石**渡り選手権です。落ちたら嫌なので彼以外誰もやりません。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501010047)
+![](/blog/tama-lake-walking/20210501010047?w=1024&h=768)
 
 跳んでいます。**足から湿気を感じますが**きっと気のせいでしょう。
 
@@ -273,21 +273,21 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 きゅ〜さんが**うんこに行って**しまったので公園で遊びましょう！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501010619 "配信をする鬼を見ながら配信をする鬼を見る")
+![](/blog/tama-lake-walking/20210501010619?w=1024&h=768 "配信をする鬼を見ながら配信をする鬼を見る")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011101 "うんてい")
+![](/blog/tama-lake-walking/20210501011101?w=1024&h=768 "うんてい")
 
 久しぶりに雲梯をやりました。足がついて悲しかったです。
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011147 "オニハウス")
+![](/blog/tama-lake-walking/20210501011147?w=1024&h=768 "オニハウス")
 
 **なんだこいつ！？**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011223)
+![](/blog/tama-lake-walking/20210501011223?w=1024&h=768)
 
 
 **<span style="font-size: 1.5em">こっち見んな</span>**
@@ -296,33 +296,33 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011243 "謎の遊具")
+![](/blog/tama-lake-walking/20210501011243?w=1024&h=768 "謎の遊具")
 
 **輪郭がうんこに見える**
 
 うんこを見ていたらうんこマンが帰ってきたので先に進みます。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011459 "歩道橋 (？)")
+![](/blog/tama-lake-walking/20210501011459?w=1024&h=768 "歩道橋 (？)")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011603 "広い")
+![](/blog/tama-lake-walking/20210501011603?w=1024&h=768 "広い")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501011945 "のどか〜〜〜")
+![](/blog/tama-lake-walking/20210501011945?w=1024&h=768 "のどか〜〜〜")
 
 さっきからのどかすぎて何も起きません。**いつものキレまくってる徒歩会はなんなのでしょうか？**
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501012039 "自然観察園")
+![](/blog/tama-lake-walking/20210501012039?w=1024&h=768 "自然観察園")
 
 自然観察園です。自然を観察しましょう！面白そうなのでここを抜けて先へ進むことにします。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501012244 "楽しい感じのやつ")
+![](/blog/tama-lake-walking/20210501012244?w=1024&h=768 "楽しい感じのやつ")
 
 **きゅ〜「目を瞑って歩きませんか？」**
 
 バカモン！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501012343 "まる池")
+![](/blog/tama-lake-walking/20210501012343?w=1024&h=768 "まる池")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501012403 "ほたる池")
+![](/blog/tama-lake-walking/20210501012403?w=1024&h=768 "ほたる池")
 
 今日のルート、本当に楽しいです。いいな〜〜調布に住んでる人は〜〜こんな楽しいお散歩ルートあって！！！いいな〜〜〜〜！
 
@@ -330,14 +330,14 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501021059 "勝負！")
+![](/blog/tama-lake-walking/20210501021059?w=857&h=643 "勝負！")
 
 
 そろそろ自然観察園が抜けられそうなのでこのまま進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501020554)
+![](/blog/tama-lake-walking/20210501020554?w=1200&h=900)
 
 
 ん？
@@ -346,46 +346,46 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501020826)
+![](/blog/tama-lake-walking/20210501020826?w=666&h=486)
 
 ```centering
 **<span style="font-size: 1.5em">行き止まり 290m戻る</span>**
 ```
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501021254)
+![](/blog/tama-lake-walking/20210501021254?w=857&h=643)
 
 
 合計580m余計に歩いています。歩くって楽しい！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501021457 "木登り男")
+![](/blog/tama-lake-walking/20210501021457?w=536&h=714 "木登り男")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501021542)
+![](/blog/tama-lake-walking/20210501021542?w=857&h=643)
 
 
 良い雰囲気のトンネルに来ました。雰囲気が良くて好きです。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501021733 "伏線")
+![](/blog/tama-lake-walking/20210501021733?w=536&h=714 "伏線")
 
 実はここには前にも来たことがあります。
 
 今どこに向かっているかというとロッテリアなのですが、
 このときも**クーポンを使うためだけに**歩いてロッテリアに向かっていました。安い飯は交通費0で食べたいですからね！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501022216 "鉄塔祭り")
+![](/blog/tama-lake-walking/20210501022216?w=687&h=506 "鉄塔祭り")
 
  
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501022345 "デカい階段")
+![](/blog/tama-lake-walking/20210501022345?w=857&h=643 "デカい階段")
 
 **デカい階段を見つけました！** ルートからは外れましたが、こんなデカい階段楽しいに決まっています！
 当然！登りますよ！**周りの人間の意見なんて無視です！**
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501022453 "うおおおおお")
+![](/blog/tama-lake-walking/20210501022453?w=857&h=643 "うおおおおお")
 
 **デカい階段、楽しい〜〜〜〜〜〜！！！！！**
 
@@ -397,7 +397,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 ここで問題が発生しました。この先進むと**めちゃくちゃ遠回り**になります。仕方ないので別の階段で降りましょう。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501022624 "階段2")
+![](/blog/tama-lake-walking/20210501022624?w=857&h=643 "階段2")
 
 <span style="font-size: 1.5em">あ〜面白かった！</span>
 
@@ -406,29 +406,29 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501024755 "綺麗めのトイレ")
+![](/blog/tama-lake-walking/20210501024755?w=857&h=643 "綺麗めのトイレ")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501024827 "【警告】犯罪です")
+![](/blog/tama-lake-walking/20210501024827?w=857&h=643 "【警告】犯罪です")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501024904 "流石にもう上らないよ")
+![](/blog/tama-lake-walking/20210501024904?w=536&h=714 "流石にもう上らないよ")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501024934 "βつょんカメラ")
+![](/blog/tama-lake-walking/20210501024934?w=857&h=643 "βつょんカメラ")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501025010 "階段3")
+![](/blog/tama-lake-walking/20210501025010?w=857&h=643 "階段3")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501025030 "街だ！")
+![](/blog/tama-lake-walking/20210501025030?w=857&h=643 "街だ！")
 
 うお〜〜〜〜川祭りから変わって**街っぽいところ**に出ました。
 
 第一目的地のロッテリアはすぐそこです。はい、今日の目的もポテトバカ安クーポンです。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501025155 "色が似てる")
+![](/blog/tama-lake-walking/20210501025155?w=857&h=643 "色が似てる")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501025225 "この中にロッテリアが……！")
+![](/blog/tama-lake-walking/20210501025225?w=857&h=643 "この中にロッテリアが……！")
 
 ほぼつきました！ここです、ここでお昼を食べましょう！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210501025303 "入口に手洗いコーナーがあった")
+![](/blog/tama-lake-walking/20210501025303?w=536&h=714 "入口に手洗いコーナーがあった")
 
 可動式の手洗いコーナーがありました。インターネットで存在は知ってたけど実物は初めて見た。
 
@@ -438,13 +438,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 ### 11:50 ロッテリア武蔵小金井店
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503011210 "ロッテリア")
+![](/blog/tama-lake-walking/20210503011210?w=1100&h=825 "ロッテリア")
 
 うおおおおお！**ポテト祭り！** LINEクーポンでたまにバケツポテト+ポテトS 4つが500円とかいうバカモンのクーポンがあるので是非チェックしてください。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503175423 "肉")
+![](/blog/tama-lake-walking/20210503175423?w=720&h=540 "肉")
 
 
 
@@ -456,20 +456,20 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 オタクなのでゲームセンターに行きます。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503014406 "あ！")
+![](/blog/tama-lake-walking/20210503014406?w=740&h=987 "あ！")
 
 **<span style="font-size: 1.5em">お！楽しそうですね！やりましょう！</span>**
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503014652)
+![](/blog/tama-lake-walking/20210503014652?w=900&h=1200)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503014913)
+![](/blog/tama-lake-walking/20210503014913?w=1100&h=825)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503015101)
+![](/blog/tama-lake-walking/20210503015101?w=1100&h=825)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503015212)
+![](/blog/tama-lake-walking/20210503015212?w=1100&h=825)
 
 
 **<span style="font-size: 2em">なにこれ？</span>**
@@ -482,11 +482,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 お昼休憩しすぎたので早く向かいましょう！
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210504014808 "午後ルート (Apple Mapsより)")
+![](/blog/tama-lake-walking/20210504014808?w=1200&h=1027 "午後ルート (Apple Mapsより)")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503015431)
+![](/blog/tama-lake-walking/20210503015431?w=1100&h=825)
 
 
 **「あ！歩道橋があります！」**
@@ -495,7 +495,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503015854 "謎差し入れ")
+![](/blog/tama-lake-walking/20210503015854?w=1100&h=825 "謎差し入れ")
 
 マトーサン([@mato1370](https://twitter.com/mato1370))、Shudonさん([@0205shun](https://twitter.com/chikuwabutenshi)) にクーリッシュと
 ハイボールの差し入れをいただきました！これはなんですか？
@@ -510,13 +510,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 ```
 
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503020609 "飲酒徒歩会が始まってしまいました……")
+![](/blog/tama-lake-walking/20210503020609?w=1100&h=825 "飲酒徒歩会が始まってしまいました……")
 
  
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503020742 "餃子無人販売所")
+![](/blog/tama-lake-walking/20210503020742?w=1100&h=825 "餃子無人販売所")
 
 **餃子の無人販売所**がありました。中見たら本当に店員0人でびっくりしちゃった
 
@@ -528,27 +528,27 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696676100/blog/tama-lak
 
 ### 13:40 玉川上水
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503022532 "玉川上水")
+![](/blog/tama-lake-walking/20210503022532?w=1100&h=825 "玉川上水")
 
 玉川上水です。ここを沿って進んでいきます。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023007 "緑道！")
+![](/blog/tama-lake-walking/20210503023007?w=1100&h=825 "緑道！")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023044 "どーん、長そう！")
+![](/blog/tama-lake-walking/20210503023044?w=1100&h=825 "どーん、長そう！")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023224 "長いぜ！")
+![](/blog/tama-lake-walking/20210503023224?w=1100&h=825 "長いぜ！")
 
 めっちゃ長い道を進んでいきます。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023330 "ebioishii_u")
+![](/blog/tama-lake-walking/20210503023330?w=900&h=1200 "ebioishii_u")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503030350 "踏切")
+![](/blog/tama-lake-walking/20210503030350?w=1200&h=900 "踏切")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503030415 "**ごっち「見てください、単線です！」**")
+![](/blog/tama-lake-walking/20210503030415?w=1200&h=900 "**ごっち「見てください、単線です！」**")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023628 "ぐねってる")
+![](/blog/tama-lake-walking/20210503023628?w=1100&h=825 "ぐねってる")
 
 こういう階段がすごいごちゃってるところはとても好きです。その場にいた徒歩部から無作為に4人ぐらい選んで聞いたら
 **「僕も好きです！」** とみんな言っていました。
@@ -565,7 +565,7 @@ image: https://res.cloudinary.com/trpfrog/video/upload/v1696676549/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023734)
+![](/blog/tama-lake-walking/20210503023734?w=1100&h=825)
 
 ```centering
 <div style="text-align: left; display: inline-block">
@@ -590,9 +590,9 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503023859 "風穴が空きまくっている木")
+![](/blog/tama-lake-walking/20210503023859?w=900&h=1200 "風穴が空きまくっている木")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503024252 "玉川上水立坑")
+![](/blog/tama-lake-walking/20210503024252?w=900&h=1200 "玉川上水立坑")
 
 何？この謎の構造物？とスルーしそうになりましたが、
 ドアに浮かぶ謎の文字「**列車通過中**」にオタクの足が止まりました。耳をすますと……
@@ -612,14 +612,14 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503024812)
+![](/blog/tama-lake-walking/20210503024812?w=1100&h=825)
 
 
  **え！？**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503024914 "小平市ふれあい下水道館")
+![](/blog/tama-lake-walking/20210503024914?w=1100&h=825 "小平市ふれあい下水道館")
 
  
 
@@ -651,11 +651,11 @@ VOLT　 ◢███◤<br>
 
 ### 14:45 小平市ふれあい下水道館
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503025420 "マンホールの下の構造")
+![](/blog/tama-lake-walking/20210503025420?w=900&h=1200 "マンホールの下の構造")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503025511 "さかな")
+![](/blog/tama-lake-walking/20210503025511?w=1100&h=825 "さかな")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503025835 "トイレでツイッターする人")
+![](/blog/tama-lake-walking/20210503025835?w=1200&h=900 "トイレでツイッターする人")
 
 入場無料ですので小平市に来たの際はぜひお立ち寄りください。
 
@@ -665,11 +665,11 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503030657 "**ごっち「見てください！単線があります！」**")
+![](/blog/tama-lake-walking/20210503030657?w=1200&h=900 "**ごっち「見てください！単線があります！」**")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503031027 "学校の敷地内の歩道橋のため渡れず……")
+![](/blog/tama-lake-walking/20210503031027?w=900&h=1200 "学校の敷地内の歩道橋のため渡れず……")
 
  
 
@@ -681,7 +681,7 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503161322 "アイス")
+![](/blog/tama-lake-walking/20210503161322?w=1079&h=809 "アイス")
 
 眠い眠いって駄々こねてたらアイスを買わせてくれました。**うお〜元気！** 元気……
 
@@ -711,7 +711,7 @@ VOLT　 ◢███◤<br>
 <div style="height: 5em"></div>
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503031118)
+![](/blog/tama-lake-walking/20210503031118?w=1200&h=900)
 
 
 **バカ** (説明しよう！徒歩部は歩道橋を渡る)
@@ -722,17 +722,17 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503031214 "眠すぎるのを必死に堪えて証拠写真を撮る人")
+![](/blog/tama-lake-walking/20210503031214?w=1200&h=900 "眠すぎるのを必死に堪えて証拠写真を撮る人")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503161502 "山田うどん")
+![](/blog/tama-lake-walking/20210503161502?w=1080&h=810 "山田うどん")
 
  
 
 ### 17:00 中華そば 中野 青葉 東大和店
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503161641 "麺")
+![](/blog/tama-lake-walking/20210503161641?w=1024&h=768 "麺")
 
 気がついたらラーメン屋に連行されていました。**なんも覚えてねえ……**
 
@@ -740,13 +740,13 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503162024 "スパチャ")
+![](/blog/tama-lake-walking/20210503162024?w=1080&h=810 "スパチャ")
 
 マトーサンから6人分のスパチャが届きました。いつもありがとうございます。ところでお茶の差し入れがあったらスーパー茶になりますね
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503162238)
+![](/blog/tama-lake-walking/20210503162238?w=1080&h=810)
 
 
 先に進みます。というか、**今見えてる山の向こうが目的地です！** うお〜もうすぐ！
@@ -757,28 +757,28 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503162639 "進みます。")
+![](/blog/tama-lake-walking/20210503162639?w=1080&h=810 "進みます。")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503162714 "ここは……？")
+![](/blog/tama-lake-walking/20210503162714?w=1080&h=810 "ここは……？")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503163132 "おっと？")
+![](/blog/tama-lake-walking/20210503163132?w=1080&h=810 "おっと？")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503163215)
+![](/blog/tama-lake-walking/20210503163215?w=1080&h=810)
 
 
 ### 18:10 多摩湖
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503163447 "多摩湖、デカい〜！")
+![](/blog/tama-lake-walking/20210503163447?w=1080&h=810 "多摩湖、デカい〜！")
 
 うお〜着きました！**なぜか9時間弱ぐらいかかったけど**、着きました！
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503171752 "上ってきたところを見下ろす")
+![](/blog/tama-lake-walking/20210503171752?w=1080&h=810 "上ってきたところを見下ろす")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503163419 "パノラマ〜")
+![](/blog/tama-lake-walking/20210503163419?w=1080&h=397 "パノラマ〜")
 
 8、9時間かかりましたがなんとか着きました！長かった！
 毎回思うのですが、よく知ったところからなんの交通機関も使わずに歩いてきて、
@@ -793,7 +793,7 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503171909)
+![](/blog/tama-lake-walking/20210503171909?w=1080&h=810)
 
 
 <span style="font-size: 1.5em">これはなんですか？</span>
@@ -804,7 +804,7 @@ VOLT　 ◢███◤<br>
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503172220 "飲酒徒歩会2")
+![](/blog/tama-lake-walking/20210503172220?w=1080&h=810 "飲酒徒歩会2")
 
 本当はもっと見たかったけど**もう遅いので帰りましょう！**
 
@@ -818,9 +818,9 @@ VOLT　 ◢███◤<br>
 
 ということで帰ります！**モノレール乗りたい〜〜！** の駄々こねチームはモノレールの駅まで歩いて向かいます。
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503172539 "謎のかっこよさがある写真")
+![](/blog/tama-lake-walking/20210503172539?w=1080&h=810 "謎のかっこよさがある写真")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503172618 "バカモンのトイレ")
+![](/blog/tama-lake-walking/20210503172618?w=1080&h=810 "バカモンのトイレ")
 
 **飲酒したバカモン**のせいで定期的にトイレに行きます。バカ？
 
@@ -840,9 +840,9 @@ image: https://res.cloudinary.com/trpfrog/video/upload/v1696676715/blog/tama-lak
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503172927 "モノレールの駅")
+![](/blog/tama-lake-walking/20210503172927?w=1080&h=810 "モノレールの駅")
 
-![](https://res.cloudinary.com/trpfrog/blog/tama-lake-walking/20210503173134 "ついたついた")
+![](/blog/tama-lake-walking/20210503173134?w=1080&h=810 "ついたついた")
 
 モノレールの駅です！終わり〜！帰宅！
 

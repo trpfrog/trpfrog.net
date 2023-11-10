@@ -70,7 +70,7 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 ようやくヨドバシカメラにつきました。**オタクを見つけました！**
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226015440 "新宿駅 → ドンキホーテ → ビックロ → ヨドバシカメラ")
+![](/blog/illumination2021/20211226015440?w=1200&h=678 "新宿駅 → ドンキホーテ → ビックロ → ヨドバシカメラ")
 
 ```centering
 **バカ**
@@ -82,11 +82,11 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 ## 15:00 新宿駅
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226015857 "集合場所の目印")
+![](/blog/illumination2021/20211226015857?w=1024&h=768 "集合場所の目印")
 
 15時、今日の**徒歩会の集合時間**です。京王線新宿駅西口集合であることを**他の参加者に伝えず**「ここにいるよ」と公衆電話の写真だけを投げるオタクがいて最悪でした。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226020034 "行き止まり同好会")
+![](/blog/illumination2021/20211226020034?w=1024&h=768 "行き止まり同好会")
 
 そういえば日曜日 (徒歩会の次の日) は有馬記念があるらしいです。**集合時間を待たず**馬のオタクは新宿WINSに馬券を買いに行ってしまいました。**自由すぎ**
 
@@ -98,19 +98,19 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226162943 "今日のルート")
+![](/blog/illumination2021/20211226162943?w=1200&h=793 "今日のルート")
 
 ```centering
 **<span style="font-size: 1.5em">徒歩会開始！</span>**
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226020849 "プロジェクターで投影される西改札の案内")
+![](/blog/illumination2021/20211226020849?w=1024&h=768 "プロジェクターで投影される西改札の案内")
 
 ところでイルミネーションは16:00から始まるところが多いので多少スタートが遅れてもノーダメージです。**そういえばイルミネーション徒歩会だった**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226021155)
+![](/blog/illumination2021/20211226021155?w=1024&h=768)
 
 
 お外に出ました。うーん、**人が多いですね！！！！！**
@@ -121,7 +121,7 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 ## 15:45 新宿WINS
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226021520 "新宿WINS")
+![](/blog/illumination2021/20211226021520?w=1024&h=768 "新宿WINS")
 
 **なんですか？ここ**
 
@@ -129,18 +129,18 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 それでは第一の目的地、**表参道**に向かいましょう。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226021821 "良い空中歩道 (カズレーザーを添えて)")
+![](/blog/illumination2021/20211226021821?w=1024&h=768 "良い空中歩道 (カズレーザーを添えて)")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226021920 "わざわざ意味のない遠回りをする")
+![](/blog/illumination2021/20211226021920?w=1024&h=768 "わざわざ意味のない遠回りをする")
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022001)
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022003)
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022008)
+![](/blog/illumination2021/20211226022001?w=1024&h=768)
+![](/blog/illumination2021/20211226022003?w=1200&h=900)
+![](/blog/illumination2021/20211226022008?w=1200&h=900)
 「先に進みます」画像シリーズ
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022059 "歩道橋1")
+![](/blog/illumination2021/20211226022059?w=1200&h=900 "歩道橋1")
 
 ```centering
 **<span style="font-size: 1.5em">ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!!</span>**
@@ -150,28 +150,28 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022257)
+![](/blog/illumination2021/20211226022257?w=1200&h=900)
 
 
 先に進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022313 "Galaxyの店があった")
+![](/blog/illumination2021/20211226022313?w=1200&h=900 "Galaxyの店があった")
 
  
 
 ## 16:28 表参道
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226022334 "表参道")
+![](/blog/illumination2021/20211226022334?w=1200&h=900 "表参道")
 
 表参道につきました。まだライトアップされていないみたいですね。というか**人多すぎるどっから湧いてきた**、新宿離れてからしばらく人いなかったじゃん！
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226023435 "表参道イルミネーション")
+![](/blog/illumination2021/20211226023435?w=1200&h=900 "表参道イルミネーション")
 
 **16:30**、イルミネーションが始まりました！かなり丁度良いタイミングで来れたみたいです。**公衆電話の写真を投げたオタクありがとう！**
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226023645 "歩道橋")
+![](/blog/illumination2021/20211226023645?w=1200&h=900 "歩道橋")
 
 歩道橋があります………**え！？**
 
@@ -179,23 +179,23 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 悲しいよ〜歩道橋キャンセル成功！
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226024318 "表参道ヒルズのクリスマスツリー")
+![](/blog/illumination2021/20211226024318?w=1200&h=900 "表参道ヒルズのクリスマスツリー")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226025339 "渡れない歩道橋2")
+![](/blog/illumination2021/20211226025339?w=1200&h=900 "渡れない歩道橋2")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226025419 "Apple表参道")
+![](/blog/illumination2021/20211226025419?w=1200&h=900 "Apple表参道")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226030023 "人が多すぎる")
+![](/blog/illumination2021/20211226030023?w=1200&h=900 "人が多すぎる")
 
 ありえん量の人間がいて百合子が出現しないかひやひやしながら歩いていました。**なんでこんな人いるの？**
 
 快適な徒歩のためには12月25日を避けるか[荒川の土手を歩く](https://trpfrog.net/blog/entry/c2walker)方が良いでしょう。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226025530 "クリスマスツリーとQRコード")
+![](/blog/illumination2021/20211226025530?w=1200&h=900 "クリスマスツリーとQRコード")
 
 ## 16:45 東京ミッドタウンへ向かう
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226030449 "抜けた先から振り返った表参道")
+![](/blog/illumination2021/20211226030449?w=1200&h=900 "抜けた先から振り返った表参道")
 
 表参道を抜けました。次は**東京ミッドタウン**に向かいましょう。
 
@@ -203,51 +203,51 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031152)
+![](/blog/illumination2021/20211226031152?w=1200&h=900)
 
 
 先に進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031224 "おしゃれ建物")
+![](/blog/illumination2021/20211226031224?w=900&h=1200 "おしゃれ建物")
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031330)
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031334)
+![](/blog/illumination2021/20211226031330?w=1200&h=900)
+![](/blog/illumination2021/20211226031334?w=1200&h=900)
 橋
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031446)
+![](/blog/illumination2021/20211226031446?w=1200&h=900)
 
 
 運命さんからもらったピカピカ (ところでこれ[何か](https://twitter.com/TrpFrog/status/1474697466985730055)に似ていませんか？)
 
 **イルミネーション徒歩会**ということで運命さんから**ピカピカグッズ**を貰いました。ありがとうございます！**異常ピカピカオタク集団が完成してしまいました。**
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226031905 "異常ピカピカオタク集団")
+![](/blog/illumination2021/20211226031905?w=1200&h=900 "異常ピカピカオタク集団")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226032037 "ピカピカ美少女.gotti")
+![](/blog/illumination2021/20211226032037?w=1200&h=900 "ピカピカ美少女.gotti")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226032142 "乃木坂トンネル")
+![](/blog/illumination2021/20211226032142?w=1200&h=900 "乃木坂トンネル")
 
 乃木坂トンネルです。形が面白くて好き
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226032230 "歩道はトンネルの外に続く")
+![](/blog/illumination2021/20211226032230?w=1200&h=900 "歩道はトンネルの外に続く")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226032334 "乃木坂トンネルは太陽の光を照明に使っています")
+![](/blog/illumination2021/20211226032334?w=1200&h=900 "乃木坂トンネルは太陽の光を照明に使っています")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226034224 "もう買わんでいい")
+![](/blog/illumination2021/20211226034224?w=1200&h=900 "もう買わんでいい")
 
 ## 17:15 東京ミッドタウン
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226034357 "東京ミッドタウン")
+![](/blog/illumination2021/20211226034357?w=1200&h=900 "東京ミッドタウン")
 
 **東京ミッドタウン**につきました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226034704)
+![](/blog/illumination2021/20211226034704?w=1200&h=900)
 
 ```centering
 **<span style="font-size: 2em">人が！多すぎる！！！！！！</span>**
@@ -259,10 +259,10 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226034902)
+![](/blog/illumination2021/20211226034902?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226034944)
+![](/blog/illumination2021/20211226034944?w=1200&h=900)
 
 
 ```centering
@@ -275,7 +275,7 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226035231)
+![](/blog/illumination2021/20211226035231?w=1200&h=900)
 
 
 ひい、ひい、やっと抜けました。17:30です。**たった300mの移動に10分以上使いました。** のろすぎ、もうクリスマスは出かけません。
@@ -284,28 +284,28 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226035603)
+![](/blog/illumination2021/20211226035603?w=1200&h=900)
 
 
 東京タワーへと進んでいきます。[調布からスタートしたバカの回](https://trpfrog.hateblo.jp/entry/tokyotower-walking)より全然足は軽いです。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226035814)
+![](/blog/illumination2021/20211226035814?w=1200&h=900)
 
 
 **高さがマイナスの歩道橋**を見つけました。表参道の歩道橋封鎖ラッシュで脚がうずうずしていたので潜っていきましょう！
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226035942)
+![](/blog/illumination2021/20211226035942?w=900&h=1200)
 
 
 だいぶ東京タワーが近づいてきました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040006)
+![](/blog/illumination2021/20211226040006?w=1200&h=900)
 
 
 進みます。(ブレブレ)
@@ -314,11 +314,11 @@ description: 馬券購入オタク観測愛好オタク / 工研部長頑張れ�
 
 ## 17:50 東京タワー
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040047 "東京タワー")
+![](/blog/illumination2021/20211226040047?w=900&h=1200 "東京タワー")
 
 **東京タワー**です。そういえば「六本木ヒルズのイルミネーションも行くぞ！」と言っていたのですが、**ミッドタウンのショックで完全に忘れていました。**
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040212 "JRAコラボクリスマスツリー")
+![](/blog/illumination2021/20211226040212?w=900&h=1200 "JRAコラボクリスマスツリー")
 
 東京タワーのイルミネーションは**JRA**とのコラボらしいです。**またウマ**
 
@@ -352,13 +352,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
 ## 18:05 芝公園のはずれの方
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040524 "**ここは……！？**")
+![](/blog/illumination2021/20211226040524?w=1200&h=900 "**ここは……！？**")
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040547 "**え！？**")
+![](/blog/illumination2021/20211226040547?w=1200&h=900 "**え！？**")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040601 "**ウワー！**")
+![](/blog/illumination2021/20211226040601?w=900&h=1200 "**ウワー！**")
 
 **<span style="font-size: 1.5em">スタァライトで見たとこだ！！！！！！！！</span>**
 
@@ -372,14 +372,14 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
 東京タワーにいた時間より聖地の公園にいた時間の方が長く、すみません。**歩くのが好きというよりイルミネーションにそこまで興味がない可能性がある**
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226040955)
+![](/blog/illumination2021/20211226040955?w=1200&h=900)
 
 
 ということで元気に歩いていきます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041022 "飛び石")
+![](/blog/illumination2021/20211226041022?w=1200&h=900 "飛び石")
 
 **飛び石祭り**です！
 
@@ -389,7 +389,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041259)
+![](/blog/illumination2021/20211226041259?w=1200&h=900)
 
 
 **児童公園**を見つけました。とりあえず面白いので寄ります。
@@ -398,21 +398,21 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041351 "おもしろトンネル")
+![](/blog/illumination2021/20211226041351?w=1200&h=900 "おもしろトンネル")
 
 しばらく歩くと**おもしろいトンネル**を見つけました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041421)
+![](/blog/illumination2021/20211226041421?w=1200&h=900)
 
 
 良い雰囲気のトンネルですね！歩き甲斐があります。
 
  
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041505)
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041509)
+![](/blog/illumination2021/20211226041505?w=1200&h=900)
+![](/blog/illumination2021/20211226041509?w=1200&h=900)
 ```
 
 ```centering
@@ -423,47 +423,47 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041734 "歩道橋2")
+![](/blog/illumination2021/20211226041734?w=1200&h=900 "歩道橋2")
 
 トンネルを抜けて後ろを振り返ると歩道橋(？)がありました。**歩道橋に飢えているオタク**は見逃しません。戻って渡ります。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041918 "しんはまばし")
+![](/blog/illumination2021/20211226041918?w=1200&h=900 "しんはまばし")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226041959 "おもしろベルトコンベア")
+![](/blog/illumination2021/20211226041959?w=1200&h=900 "おもしろベルトコンベア")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042020 "歩道橋3")
+![](/blog/illumination2021/20211226042020?w=1200&h=900 "歩道橋3")
 
 歩道橋？を渡るとありがたいことに**もう一つ**歩道橋が出てきました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042203 "クリスマスツリー")
+![](/blog/illumination2021/20211226042203?w=1200&h=900 "クリスマスツリー")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042243 "東京タワーから結構歩いてきた")
+![](/blog/illumination2021/20211226042243?w=1024&h=768 "東京タワーから結構歩いてきた")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042308 "クリスマスツリー")
+![](/blog/illumination2021/20211226042308?w=1200&h=900 "クリスマスツリー")
 
 先に進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042401 "イタリア街")
+![](/blog/illumination2021/20211226042401?w=1200&h=900 "イタリア街")
 
 歩いていると**突然おしゃれな街並みが出現しました**。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042450 "いい感じ〜")
+![](/blog/illumination2021/20211226042450?w=1200&h=900 "いい感じ〜")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042547 "おしゃれな建物、なんかのホテルかな〜？")
+![](/blog/illumination2021/20211226042547?w=1200&h=900 "おしゃれな建物、なんかのホテルかな〜？")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042630 "JRA")
+![](/blog/illumination2021/20211226042630?w=1200&h=900 "JRA")
 
 
 ```centering
@@ -471,7 +471,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 ```
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226042819 "ピカピカトンネル")
+![](/blog/illumination2021/20211226042819?w=1200&h=900 "ピカピカトンネル")
 
 さらに先に進むと**ピカピカしたトンネル**がありました。きれい〜
 
@@ -481,25 +481,25 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226043104 "あれ？")
+![](/blog/illumination2021/20211226043104?w=1200&h=900 "あれ？")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226043121 "「呼んだ？」")
+![](/blog/illumination2021/20211226043121?w=1200&h=900 "「呼んだ？」")
 
 **ウワー！**お呼びではありません。左折して**歩道橋はキャンセル**します。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226043336 "進みます。")
+![](/blog/illumination2021/20211226043336?w=1200&h=900 "進みます。")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226043350 "人間のキャラクターの顔みたいなタイル")
+![](/blog/illumination2021/20211226043350?w=1200&h=900 "人間のキャラクターの顔みたいなタイル")
 
 今回のように人数の多い徒歩会では**歩くのが速いチーム**と**遅いチーム**で前後に分かれがちです。遅いチームだった僕たちは速いチームが速すぎて、その姿を見失ってしまいました。速いオタクは**後ろの人を気にせず結構先まで進む**ことがよくあるので大変です。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226043710 "歩道橋4 (汐留駅)")
+![](/blog/illumination2021/20211226043710?w=1200&h=900 "歩道橋4 (汐留駅)")
 
 と思った矢先に歩道橋らしきものを見つけました。「**歩道橋大好きオタクならそっちにいるはず……！**」とのぼったところ、なんと速いチームが待っていました！
 
@@ -509,36 +509,36 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044024)
+![](/blog/illumination2021/20211226044024?w=1200&h=900)
 
 
 ぐるぐるしているタイプの歩道橋でした。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044048 "ファミマ！！！！！！！！！！！！！！！")
+![](/blog/illumination2021/20211226044048?w=1200&h=900 "ファミマ！！！！！！！！！！！！！！！")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044201 "電通")
+![](/blog/illumination2021/20211226044201?w=1200&h=900 "電通")
 
 **電通**がありました。オタクが大量にいる方ではなく
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044317)
+![](/blog/illumination2021/20211226044317?w=900&h=1200)
 
 
 電通のビルは切れ味が良さそうです。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044339)
+![](/blog/illumination2021/20211226044339?w=1200&h=900)
 
 
 ここの歩道は雰囲気が良くて楽しく歩けます。**荒川の土手とは大違い**です。うきうきしちゃいますね
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044446)
+![](/blog/illumination2021/20211226044446?w=1024&h=768)
 
 ```centering
 **<span style="font-size: 1.5em">あずきバーもう走るな</span>**
@@ -549,7 +549,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
 ## 19:20 新橋・銀座周辺
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044650)
+![](/blog/illumination2021/20211226044650?w=1200&h=900)
 
 
 空中の歩道を降りて通りを進んでいきます。
@@ -558,23 +558,23 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226044957)
+![](/blog/illumination2021/20211226044957?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045001)
+![](/blog/illumination2021/20211226045001?w=1200&h=900)
 
 
 進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045055 "心が汚れている人には別のものに見える飾り")
+![](/blog/illumination2021/20211226045055?w=1200&h=900 "心が汚れている人には別のものに見える飾り")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045154 "街並み")
+![](/blog/illumination2021/20211226045154?w=1200&h=900 "街並み")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045206 "GAP男の聖地")
+![](/blog/illumination2021/20211226045206?w=1200&h=900 "GAP男の聖地")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045226 "まち針の刺さった数奇屋橋交番 ([参考](https://ja.wikipedia.org/wiki/待ち針))")
+![](/blog/illumination2021/20211226045226?w=1200&h=900 "まち針の刺さった数奇屋橋交番 ([参考](https://ja.wikipedia.org/wiki/待ち針))")
 
 ```conversation
 ごっち: なんかお腹空いてきましたね
@@ -587,14 +587,14 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
 ## 19:40 丸の内イルミネーション
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045518)
+![](/blog/illumination2021/20211226045518?w=1024&h=768)
 
 
 丸の内周辺のイルミネーションです。
 
 イルミネーションに飽きてきたのかこの周辺の写真を全然撮っていませんでした。(最悪)
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045622 "Apple 丸の内")
+![](/blog/illumination2021/20211226045622?w=1024&h=768 "Apple 丸の内")
 
 熱心な信者なのでこういうのは撮り逃さない
 
@@ -602,7 +602,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681184/blog/illumina
 
 ## 20:00 東京駅
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226045859 "東京駅")
+![](/blog/illumination2021/20211226045859?w=1024&h=768 "東京駅")
 
 東京駅です。ここでたるとさんと合流しました。睡眠は大切ですからね。
 
@@ -638,7 +638,7 @@ https://trpfrog.net/blog/entry/c2walker
 
 きゅ〜さんたちが頼んだやつを見てみましょう。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226150915 "きゅ〜さんのやつ (無断転載)")
+![](/blog/illumination2021/20211226150915?w=1200&h=900 "きゅ〜さんのやつ (無断転載)")
 
 ん、**ビールを入れているな**……？
 
@@ -700,11 +700,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681467/blog/illumina
 
 僕は**おろしとんかつ御飯**を食べました。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226050332 "おろしとんかつご飯")
+![](/blog/illumination2021/20211226050332?w=1200&h=900 "おろしとんかつご飯")
 
 とんかつはとてもおいしかったです。大根おろしをつけると全てが美味しくなると言われています。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226051530 "ごっちさんありがとうございます！")
+![](/blog/illumination2021/20211226051530?w=1200&h=900 "ごっちさんありがとうございます！")
 
 お会計はごっちさん持ちらしいです！**ありがとうございます！** いや〜後輩に奢ってもらって本当にすみません。
 
@@ -746,23 +746,23 @@ tweet: バカ、つまみさんの林檎時計で払ったのでつまみさん�
 
 が、**早く歩きたがり**なので ふみ + ずきバー + ごっち + わし で先に歩いてしまいます。
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152915 "行くぞ")
+![](/blog/illumination2021/20211226152915?w=1024&h=768 "行くぞ")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226151912 "謎の光るボール")
+![](/blog/illumination2021/20211226151912?w=1024&h=768 "謎の光るボール")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152009 "飛び出し坊や")
+![](/blog/illumination2021/20211226152009?w=1024&h=768 "飛び出し坊や")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152048)
+![](/blog/illumination2021/20211226152048?w=1024&h=768)
 
 
 **これは……！？**
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152116)
+![](/blog/illumination2021/20211226152116?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152128)
+![](/blog/illumination2021/20211226152128?w=1024&h=768)
 
 ```centering
 **<span style="font-size: 1.5em">クリスマス、終了‼️</span>**
@@ -772,7 +772,7 @@ tweet: バカ、つまみさんの林檎時計で払ったのでつまみさん�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152351 "日本橋")
+![](/blog/illumination2021/20211226152351?w=1024&h=768 "日本橋")
 
 **日本橋**です。**東京タワー徒歩会延長戦**を思い出しますね、ごっちさん！
 
@@ -783,13 +783,13 @@ https://trpfrog.net/blog/entry/tokyotower-walking
 ```
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152157)
+![](/blog/illumination2021/20211226152157?w=1200&h=900)
 
 ```centering
 **<span style="font-size: 1.5em">クリスマス、終了‼️2</span>**
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152605 "東京中央銀行")
+![](/blog/illumination2021/20211226152605?w=1024&h=768 "東京中央銀行")
 
 ```conversation
 ごっち: そろそろ足が痛いので早く帰ってもよろしいか？
@@ -799,31 +799,31 @@ https://trpfrog.net/blog/entry/tokyotower-walking
 ごっち: バカ
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226152627 "イルミネーション")
+![](/blog/illumination2021/20211226152627?w=1024&h=768 "イルミネーション")
 
 ## 22:20 神田駅
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226153244 "帰宅gotti")
+![](/blog/illumination2021/20211226153244?w=901&h=1200 "帰宅gotti")
 
 ごっちさんが「**足ヤバすぎ！**」と帰宅されました。((でも……))
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226153544 "ふみ「ごっちの帰宅、ゴチ帰宅」")
+![](/blog/illumination2021/20211226153544?w=640&h=420 "ふみ「ごっちの帰宅、ゴチ帰宅」")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226153727 "見覚えがある場所が……")
+![](/blog/illumination2021/20211226153727?w=1024&h=768 "見覚えがある場所が……")
 
  
 
 ## 22:30 秋葉原
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226154518 "秋葉原")
+![](/blog/illumination2021/20211226154518?w=1024&h=768 "秋葉原")
 
 秋葉原につきました！
 
 自販機で「**飲む缶カレー**」を見つけました！
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226160111 "ふみ vs つまみ vs あずきバー")
+![](/blog/illumination2021/20211226160111?w=1186&h=952 "ふみ vs つまみ vs あずきバー")
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226155735 "ふみ vs あずきバー")
+![](/blog/illumination2021/20211226155735?w=1200&h=673 "ふみ vs あずきバー")
 
 
 ```twitter-archived
@@ -855,11 +855,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1696681751/blog/illumina
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226160425 "[ポム、回路実験をやれ……](https://twitter.com/Prgckwb/status/1468417988647071745)")
+![](/blog/illumination2021/20211226160425?w=1024&h=768 "[ポム、回路実験をやれ……](https://twitter.com/Prgckwb/status/1468417988647071745)")
 
 ## 23:05 上野駅
 
-![](https://res.cloudinary.com/trpfrog/blog/illumination2021/20211226160846 "上野駅のツリー")
+![](/blog/illumination2021/20211226160846?w=768&h=1024 "上野駅のツリー")
 
 **終電ギリギリの怪しい時間**ですがなんとか上野駅につきました！今日はこれでおしまい、**帰宅！**
 

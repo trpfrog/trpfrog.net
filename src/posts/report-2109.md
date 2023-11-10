@@ -16,7 +16,7 @@ description: 夏休みまとめ
 
 社員の人も優しいし、バイト内容もゆるゆるでとっても居心地が良いです。いや、雰囲気はゆるいけどそれなりの責任が伴うお仕事デスノデ……。ジャンルは技術？系です……？よくわからん、パソコンを使っています。**パソコンカタカタオタクにぴったり！** いや、カタカタはあんまりしないかもしれぬ
 
-![meisai](https://res.cloudinary.com/trpfrog/image/upload/v1641545171/blog/report-2109/meisai.webp)
+![meisai](/blog/report-2109/meisai?w=1837&h=1378)
 
 給与明細についてた切手
 
@@ -106,7 +106,7 @@ description: 夏休みまとめ
 
 後期も勉強頑張っちゃうぞ！！！
 
-![desk](https://res.cloudinary.com/trpfrog/image/upload/v1641545170/blog/report-2109/desk.webp)
+![desk](/blog/report-2109/desk?w=783&h=587)
 
 
 
