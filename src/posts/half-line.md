@@ -47,7 +47,7 @@ $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点
 
 <div style="display: none">
 <!-- register image size to my parser --->
-![](https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png)
+![](/blog/half-line/thumbnail?w=645&h=427)
 </div>
 
 ## 直線で考える

@@ -25,7 +25,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/t
 
 さて、皆さんはDiscordサーバーに入ったら**粗悪なチャンネルを大量生産するバカタレがいた**という経験はありますでしょうか？そうですよね、困りますよね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/channels.webp)
+![](/blog/otaku-channels/channels?w=480&h=1006)
 
 僕のいるサーバはこんなのが**250個**近くあり最悪です。
 
@@ -43,7 +43,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/t
 
 ### Discord とは
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/discord.webp)
+![](/blog/otaku-channels/discord?w=1058&h=562)
 
 [**Discord**](https://discord.com) については [UEC Advent Calendar 2021 12日目のあすなろわさび先生](https://asunarowasabi.hatenablog.jp/entry/2021/12/12/235143)が書いて下さっているのでそちらを引用したいと思います。
 
@@ -55,7 +55,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/t
 
 ### Disnake とは
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/disnake.webp)
+![](/blog/otaku-channels/disnake?w=1774&h=696)
 
 Python から簡単に Discord API を叩ける便利ライブラリといえば **discord.py** が有名でしたが、なんとこの前**開発終了**が発表されてしまいました。
 
@@ -96,11 +96,11 @@ https://gist.github.com/Rapptz/c4324f17a80c94776832430007ad40e6
 
 まずチャンネル情報を入手するために [Discord Developer Portal](https://discord.com/developers/applications) で Discord の botを作ります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/bot.webp)
+![](/blog/otaku-channels/bot?w=780&h=361)
 
 このスパイをとりあえず**変なオタクサーバーに侵入**させます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/join.webp)
+![](/blog/otaku-channels/join?w=511&h=167)
 
 上手く忍び込めたようです。**botの設定ページからTokenが貰える**のでこれを使ってチャンネル一覧を吐くコードを書いてみましょう。
 
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
 フォイ！できました！実行してみましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/channelstest.webp)
+![](/blog/otaku-channels/channelstest?w=1132&h=906)
 
 ちゃんと一覧が出ていていい感じです。
 
@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
 なんかゴリゴリしてますが頑張ってやるとこんな感じです。動かしてみましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/array.webp)
+![](/blog/otaku-channels/array?w=1060&h=584)
 
 気持ち悪いファイルが出てきました。しかし、これは**JavaScriptには配列に見える**のでWebページに組み込むのがかなり簡単になりました！更に頑張ってコードを書いて綺麗に出力すると[こんな感じ](https://github.com/TrpFrog/otaku-channels/blob/gh-pages/channels.js)です。
 
@@ -234,11 +234,11 @@ onload = writeChannels;
 
 できました。先ほどPythonに生成させた `categories` 配列を使ってサイトに組み込んでいます。動かしてみましょう。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/simplewebsite.webp)
+![](/blog/otaku-channels/simplewebsite?w=371&h=614)
 
 いい感じに出力されました！もうちょい上手く手直ししたり**CSSを書いたり**するとこうなります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/otaku-channels.webp)
+![](/blog/otaku-channels/otaku-channels?w=1052&h=911)
 
 良い感じです！**254チャンネルは多すぎるだろ**
 
@@ -254,7 +254,7 @@ onload = writeChannels;
 
 そこで環境変数とActions Secretという機能を使います。実はGitHub Actionsでは**秘密にしたい情報を隠しておく機能**があります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/secret.webp)
+![](/blog/otaku-channels/secret?w=724&h=212)
 
 リポジトリの設定の Secrets -> Actions にあります。この値には GitHub Actions に使うファイルからアクセスすることができます。更にこれを**環境変数にできる**ので、Pythonのコードもそんな感じで書き換えていましょう。
 
@@ -287,7 +287,7 @@ GUILD_ID = int(os.environ.get('DISCORD_GUILD_ID'))
 
 リポジトリの Actions タブから新しい workflow を作ります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/actions.webp)
+![](/blog/otaku-channels/actions?w=986&h=277)
 
 するとエディタが出てくるのでこんな感じで書きます。
 
@@ -355,13 +355,13 @@ jobs:
 
 **12/20追記:** ちゃんと毎日更新されていました！が、諸事情により GitHub Pages での公開をやめました。詳しくは記事の最後に追記したのでお読みください。新URLはこちらです: [otaku-discord.trpfrog.net](https://otaku-discord.trpfrog.net)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/otaku-channels.webp)
+![](/blog/otaku-channels/otaku-channels?w=1052&h=911)
 
 
 
 ## 余談
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/xss.webp)
+![](/blog/otaku-channels/xss?w=1610&h=200)
 
 この話を聞いたオタクがウキウキしながら**XSS(?)を仕掛けて来やがった**のでサニタイズライブラリの[**bleach**](https://github.com/mozilla/bleach)を使って殺してやりました。
 
@@ -404,7 +404,7 @@ bleachはMozillaが作っているらしいです。
 
 そこで今回は Vercel を使うことにします。なんと最近 Python **3.9** が使えるようになった？みたいなのでバージョン問題はクリアです。早速設定します。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/vercel.webp)
+![](/blog/otaku-channels/vercel?w=2450&h=2958)
 
 Vercel と GitHub を連携してはいはい設定を進めると上のような画面に出ます。
 
@@ -417,7 +417,7 @@ Deployを押すとデプロイが始まります。するとなんとこれだ�
 
 次に定期実行の設定をします。定期的なデプロイ自体は (おそらく) Vercel単体ではできないのでGitHub Actionsを使います。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/blog/otaku-channels/deploy-hook.webp)
+![](/blog/otaku-channels/deploy-hook?w=1608&h=778)
 
 まずはVercelの設定から git → **Deploy Hooks** に入ると「**叩くと勝手にデプロイが始まるリンク**」が手に入るのでそれをもらいます。
 

@@ -228,3 +228,10 @@
   border-radius: 10px;
   height: auto;
 }
+
+.img {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin: 2rem 0;
+}

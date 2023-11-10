@@ -13,7 +13,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932
 
 ## 11月22日 午前0時 都内某所
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123233927 "調布駅、戦いまであと4時間")
+![](/blog/haneda-walking/20201123233927?w=1200&h=900 "調布駅、戦いまであと4時間")
 
 調布につきました。着きたくありません。**集合は4時**ですが**0時**にきました。そう、**4時に間に合う電車がない**のです。バカか？？？
 
@@ -36,7 +36,7 @@ tweet: クソ〜嫌がらせに自分がかかってしまいました……
 
 ## 午前1時
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235150 "深夜徘徊は楽しいぞい！")
+![](/blog/haneda-walking/20201123235150?w=1200&h=900 "深夜徘徊は楽しいぞい！")
 
 駅前で本読んだり徘徊したりして楽しみました。**なんで歩く会の前に徘徊してるんですか？**
 
@@ -54,7 +54,7 @@ tweet: さむい、あるきたい
 
 ## 午前3時
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123234150 "最後の晩餐")
+![](/blog/haneda-walking/20201123234150?w=1200&h=900 "最後の晩餐")
 
 19のオタクと合流して松屋でご飯を食べました。おいしかったです。**今日は帰って寝ようと思います。**
 
@@ -79,7 +79,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510234/blog/haneda-w
 
 ## 午前4時
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235314 "職質されてくれ")
+![](/blog/haneda-walking/20201123235314?w=1200&h=900 "職質されてくれ")
 
 オタクが集合場所に集合しました。本当に20がいて怖かったです。**なんで来てるんですか？**
 
@@ -89,13 +89,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510234/blog/haneda-w
 
 ## 午前5時 2.3km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235839 "なんかいきなり橋を潜るトンネルが出てきてよかった")
+![](/blog/haneda-walking/20201123235839?w=1200&h=900 "なんかいきなり橋を潜るトンネルが出てきてよかった")
 
 **多摩水道橋**につきました。結構遠く見えたけどこれで2.3kmなんですね。先は長いです。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201123235844 "通行止めが好きなので写真を撮りました。")
+![](/blog/haneda-walking/20201123235844?w=1200&h=900 "通行止めが好きなので写真を撮りました。")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000223 "いい感じの写真が撮れてテンションが上がった")
+![](/blog/haneda-walking/20201124000223?w=1200&h=651 "いい感じの写真が撮れてテンションが上がった")
 
 始発の時間らしいです。
 
@@ -104,11 +104,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510234/blog/haneda-w
 
 ## 午前5時半 5.5km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000341 "二ヶ領用水")
+![](/blog/haneda-walking/20201124000341?w=900&h=1200 "二ヶ領用水")
 
 ちょっと多摩川から外れて**二ヶ領用水**を辿ります。寄り道その1。水がきれいな気がします。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124000956 "飛び石を渡る19")
+![](/blog/haneda-walking/20201124000956?w=900&h=1200 "飛び石を渡る19")
 
 **飛び石を渡って遊んでいたら**20が冷たい視線をぶつけてきました。**それぐらいいいだろ！** 飛び石というにはあまりに距離が離れていてバカでした。落ちるし**そもそも飛び石なのか怪しい**
 
@@ -120,26 +120,26 @@ tweet: 20に置いてかれました……
 
 ところでこの日は単位取得が危ういオタクが居たので **「落ちる」** というワードが禁句だったらしいです。僕はめちゃくちゃ言っていました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001337 "かなり低い線路下の道")
+![](/blog/haneda-walking/20201124001337?w=1200&h=900 "かなり低い線路下の道")
 
 **線路のめちゃくちゃ真下を通らせてくる**珍しいタイプの橋がありました。天井が網になっているので、電車が通った時は電車の裏を見られるらしいです。見たかったのですが電車が10分後に来るとかで断念。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001601 "こっちの線路もなんかよかった、今見たら普通な気がする")
+![](/blog/haneda-walking/20201124001601?w=1200&h=900 "こっちの線路もなんかよかった、今見たら普通な気がする")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001635 "水路立体交差！こういうのいいよね")
+![](/blog/haneda-walking/20201124001635?w=1200&h=900 "水路立体交差！こういうのいいよね")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001706 "食われた")
+![](/blog/haneda-walking/20201124001706?w=900&h=1200 "食われた")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001729 "ようこそ人間！みたいな鳩")
+![](/blog/haneda-walking/20201124001729?w=1200&h=900 "ようこそ人間！みたいな鳩")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124001800 "でも餌やりはしません")
+![](/blog/haneda-walking/20201124001800?w=1200&h=900 "でも餌やりはしません")
 
 
 ## 午前7時 7.2km地点
 
 あれ？と思ったかもしれません。はい、水路で遊びすぎて**90分で2kmぐらいしか進んでいません**。うーん、でも飛び石楽しかったから仕方ないよね！
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124002014 "全然進んでないのにくつろぐ人")
+![](/blog/haneda-walking/20201124002014?w=900&h=1200 "全然進んでないのにくつろぐ人")
 
 日が昇ってくると流石に若干焦ります。**焦ってない19の3人組は20に怒られてしまいました……。**
 
@@ -147,7 +147,7 @@ tweet: 20に置いてかれました……
 
 ## 午前7時半 7.6km地点 久地円筒分水
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124002227 "久地円筒分水")
+![](/blog/haneda-walking/20201124002227?w=1200&h=900 "久地円筒分水")
 
 **ケツをしばかれながら**進んでいると、ついに寄り道のお目当てに到着しました。**久地円筒分水**です。
 
@@ -155,7 +155,7 @@ tweet: 20に置いてかれました……
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124002441 "説明の看板")
+![](/blog/haneda-walking/20201124002441?w=1200&h=900 "説明の看板")
 
 **お目当ての場所に着いたし帰っていい？**
 
@@ -163,7 +163,7 @@ tweet: 20に置いてかれました……
 
 ## 午前7時半 8.2km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124003940 "酒販売機")
+![](/blog/haneda-walking/20201124003940?w=900&h=1200 "酒販売機")
 
 **酒の自動販売機**がありました。**成人なので買うぜ！** と思いましたが運転免許証がないので買えませんでした。トホホ
 
@@ -171,7 +171,7 @@ tweet: 20に置いてかれました……
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124003723 "川がないのに土手だけある")
+![](/blog/haneda-walking/20201124003723?w=1200&h=900 "川がないのに土手だけある")
 
 土手だけある謎エリアに来ました。川は流れていません。**え？**
 
@@ -180,32 +180,32 @@ tweet: 20に置いてかれました……
 
 ## 午前8時 9km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124004401 "新二子橋からの眺め")
+![](/blog/haneda-walking/20201124004401?w=1200&h=900 "新二子橋からの眺め")
 
 新二子橋につきました。新二子橋には**歩道橋っぽい何か**があったので**歩道橋を見かけたら絶対に渡らなければいけない男たち**は歩道橋っぽい何かを渡りました。
 
 歩道橋だ〜！！！とキャッキャしていたら**前を歩いていた20の人たちに置いてかれてしまいました……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1644000718/blog/haneda-walking/IMG_0439 "青: 我々は歩道橋ルールに則り、橋を渡ったので <br> 緑: 前方を進むオタクもこう渡ってくれると思ったが <br> 赤: 実際のチーム20は変なオタクを見限って先に進んでしまった😅")
+![](/blog/haneda-walking/IMG_0439?w=1145&h=900 "青: 我々は歩道橋ルールに則り、橋を渡ったので <br> 緑: 前方を進むオタクもこう渡ってくれると思ったが <br> 赤: 実際のチーム20は変なオタクを見限って先に進んでしまった😅")
 
 そんなこんなで19に呆れた20はほとんど別行動になってしました。 クソ〜。ということでここからは私、[淵野アタリ](https://twitter.com/ebioishii_u)、[きゅ〜](https://twitter.com/kyu_099)、[るぴしあ](https://twitter.com/lupicure20)だけになりました。**なんで？** ((保護者役0人))
 
 ちなみに「クソ〜」も禁句です。10秒に1回ぐらい言っていたので禁止になりました。でも誰も守っていませんでした。どういうことですか？
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005334 "世田谷区！")
+![](/blog/haneda-walking/20201124005334?w=1200&h=900 "世田谷区！")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005401 "ワルなので車道のど真ん中を歩いています。(本当は封鎖された道路)")
+![](/blog/haneda-walking/20201124005401?w=1200&h=900 "ワルなので車道のど真ん中を歩いています。(本当は封鎖された道路)")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005455 "前も自転車で来た[ねぎ一世](https://twitter.com/negiissei)3人組")
+![](/blog/haneda-walking/20201124005455?w=1200&h=900 "前も自転車で来た[ねぎ一世](https://twitter.com/negiissei)3人組")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005550 "シチューに注意")
+![](/blog/haneda-walking/20201124005550?w=900&h=1200 "シチューに注意")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005614 "二子玉川駅")
+![](/blog/haneda-walking/20201124005614?w=1200&h=900 "二子玉川駅")
 
 ## 午前8時半 10km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124005825 "ファミマ!!ファミマではなくファミマ!!")
+![](/blog/haneda-walking/20201124005825?w=1200&h=900 "ファミマ!!ファミマではなくファミマ!!")
 
 ファミマ<b>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</b> に来ました。!!ってなに？
 
@@ -218,7 +218,7 @@ tweet: 20に置いてかれました……
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124010413)
+![](/blog/haneda-walking/20201124010413?w=1077&h=620)
 
  
 
@@ -228,7 +228,7 @@ tweet: 20に置いてかれました……
 
 エクスクラメーションマークに気を取られて何をしに来たかを忘れてしまいました。トイレを探しに来たのでした。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124011120 "ベビールームの案内板 (Googleマップより)")
+![](/blog/haneda-walking/20201124011120?w=1067&h=701 "ベビールームの案内板 (Googleマップより)")
 
 「トイレ、見当たらないな〜」<br>
 「ベビールームの案内板があります！」<br>
@@ -244,13 +244,13 @@ tweet: 20に置いてかれました……
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124011712 "@mato1370さんありがとうございます！")
+![](/blog/haneda-walking/20201124011712?w=788&h=890 "@mato1370さんありがとうございます！")
 
 ここで徒歩会来てないオタクから謎の**コーヒーの差し入れ**をいただきました。**寒かったのでありがてえ〜！** ありがとうございます！
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124011932 "なんで全員人形持ってきてんだよ")
+![](/blog/haneda-walking/20201124011932?w=1200&h=900 "なんで全員人形持ってきてんだよ")
 
 でも**アイスコーヒーを頼んで外で飲みました。** なんで？
 
@@ -270,22 +270,22 @@ tweet: 20に置いてかれました……
 
 ## 午前9時 10.5km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124013059 "スマホ持ってる手を揺らされ、レンズ前でピース攻撃されたにも関わらず全ての攻撃を交わした一枚")
+![](/blog/haneda-walking/20201124013059?w=1200&h=900 "スマホ持ってる手を揺らされ、レンズ前でピース攻撃されたにも関わらず全ての攻撃を交わした一枚")
 
 二子玉川公園に来ました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124013302 "二郎系ラーメンも公園に出店しませんか？")
+![](/blog/haneda-walking/20201124013302?w=1200&h=900 "二郎系ラーメンも公園に出店しませんか？")
 
 公園にスタバがありました。こういうの見ると都会に来た感がありますね。生意気な
 
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124013508 "Amazon")
+![](/blog/haneda-walking/20201124013508?w=1200&h=900 "Amazon")
 
 多摩川沿いルートに復帰しました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124013928 "クジラ (持ち手のデザインがいい)")
+![](/blog/haneda-walking/20201124013928?w=900&h=1200 "クジラ (持ち手のデザインがいい)")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124014001 "急に現れた高層ビル群")
+![](/blog/haneda-walking/20201124014001?w=1200&h=900 "急に現れた高層ビル群")
 
 このあたり、多摩川沿いはめちゃくちゃ野球をやっています。どこをみても野球、向こうから走ってくる集団も野球少年でした。羽田から来たのかな？
 
@@ -297,11 +297,11 @@ tweet: るぴしあさん野球少年に混じって走ってったけど……
 
 ## 午前10時 14km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124014128 "多摩川台公園、古墳とかあるらしいけどよく分からなかった")
+![](/blog/haneda-walking/20201124014128?w=1200&h=900 "多摩川台公園、古墳とかあるらしいけどよく分からなかった")
 
 **多摩川台公園**に来ました。これを越えれば多摩川駅なのでなんか食べましょうという話になりました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124014303)
+![](/blog/haneda-walking/20201124014303?w=1056&h=976)
 
 <span style="display:block; text-align: center; font-size: 2em; font-weight: bold">
     飲食店、少ねえ
@@ -309,15 +309,15 @@ tweet: るぴしあさん野球少年に混じって走ってったけど……
 
 ということで悲しくローソンに行くことにしました。ローソンがあってよかったね。((時間に押されているのでラーメンとかガッツリ食べてる場合でもない))
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124014908 "水生植物園、雰囲気がいい感じ")
+![](/blog/haneda-walking/20201124014908?w=1200&h=900 "水生植物園、雰囲気がいい感じ")
 
 水生植物園で **「目を瞑って渡りませんか？」** とか変なことを言ってた人がいましたが、流石に落ちる((禁句))
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124015036 "謎の庭園")
+![](/blog/haneda-walking/20201124015036?w=1200&h=900 "謎の庭園")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124015101 "多摩川駅")
+![](/blog/haneda-walking/20201124015101?w=1200&h=900 "多摩川駅")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124015151 "Lチキオタク <br>(補足: 僕は旨辛、きゅ〜さんとアタリさんは旨塩、るぴしあさんは確か肉まん？会計してないので忘れた、けどこんな情報誰も求めてない)")
+![](/blog/haneda-walking/20201124015151?w=900&h=1200 "Lチキオタク <br>(補足: 僕は旨辛、きゅ〜さんとアタリさんは旨塩、るぴしあさんは確か肉まん？会計してないので忘れた、けどこんな情報誰も求めてない)")
 
 ## 午前11時 15.5km地点
 
@@ -329,7 +329,7 @@ date: 2020-11-22
 tweet: クソ〜Googleマップ到着5時間とか嘘だろ、もう10時間近く歩いてるけど
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124015659 "多摩川に復帰。ビルとビルをつなぐやつ好き")
+![](/blog/haneda-walking/20201124015659?w=1200&h=900 "多摩川に復帰。ビルとビルをつなぐやつ好き")
 
 ## 午前12時 19km地点
 
@@ -338,7 +338,7 @@ tweet: クソ〜Googleマップ到着5時間とか嘘だろ、もう10時間近�
 
 飲み物を買うためにファミマに寄ったあと川に戻ると、ここのオタクの敵である**アレ**が出現しました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124020120 "複雑な構造の歩道橋")
+![](/blog/haneda-walking/20201124020120?w=900&h=1200 "複雑な構造の歩道橋")
 
 **歩道橋**です。歩道橋を見ると必ず渡らないといけないオタクたちでしたが(なんで？)、この歩道橋は川に復帰するには必ず通らないといけない上、<b>構造が面白かった</b>ので安堵しました。
 
@@ -347,7 +347,7 @@ tweet: クソ〜Googleマップ到着5時間とか嘘だろ、もう10時間近�
 **という喜びも束の間、** ヤツは再び現れるのでした。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124020719 "敵 (Googleマップより)")
+![](/blog/haneda-walking/20201124020719?w=1116&h=742 "敵 (Googleマップより)")
 
 もうそろそろ足も脚も痛くなってきました。
 
@@ -355,7 +355,7 @@ tweet: クソ〜Googleマップ到着5時間とか嘘だろ、もう10時間近�
 
 ## 午後1時 22.8km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124020919 "川沿いは永久に野球チームがいると思ったら珍しくサッカーの人がいた")
+![](/blog/haneda-walking/20201124020919?w=1200&h=900 "川沿いは永久に野球チームがいると思ったら珍しくサッカーの人がいた")
 
 
 <span style="font-size: 2em; font-weight: bold;">
@@ -376,15 +376,15 @@ date: 2020-11-22
 tweet: クソ〜
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124021313 "歩道は続くよどこまでも")
+![](/blog/haneda-walking/20201124021313?w=1200&h=900 "歩道は続くよどこまでも")
 
 直線のコースを見るとマジでムカつくようになってきました。本当になんなんだこれ、**バカなのか？** 疲れすぎて道を拡がって歩いていたら外国人の人がなんか大声でキレて通過して行きましたが、頭がバカなので **「罵倒ロボだ！」** とゲラゲラ笑って歩いていました。**広がって歩くのは邪魔なのでやめようね**
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124021720 "罵倒ロボ")
+![](/blog/haneda-walking/20201124021720?w=588&h=893 "罵倒ロボ")
 
 そういえばこの怒りの絶頂期((正確には怒りの限界なのでこれ以上上がらない、故にここからずっと同じ調子でキレてた))に徒歩不参加オタクからこんなお便りが届きました。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124022134)
+![](/blog/haneda-walking/20201124022134?w=828&h=168)
 
 ```twitter-archived
 id: 1330667069440811008
@@ -398,17 +398,17 @@ https://youtu.be/jksshGslrdA
 
 ## 午後2時 25.5km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124022649 "たまリバー50kmの最終地点だったはず")
+![](/blog/haneda-walking/20201124022649?w=1200&h=900 "たまリバー50kmの最終地点だったはず")
 
 というわけで**たまリバー50km**とかいう謎の区間を抜けました。オタクは **「50kmも歩くやついるのか？バカじゃねえの？」** とキレていましたが、普通は自転車だと思います。歩きすぎて変なこと言ってますね。と思ったけどフルマラソンは42.195kmなわけだし50km走る人がいてもおかしくないのか。バケモンすぎ
 
 あまりに疲れたのでしばらく休憩、休憩を終え少し進むとそこには……
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124023038 "なにこれ？ (Googleマップより)")
+![](/blog/haneda-walking/20201124023038?w=1098&h=770 "なにこれ？ (Googleマップより)")
 
 **謎の展望台**が立ちはだかるのでした。オタクの足の痛みは好奇心に負け、ブチギレながら階段を登ることに。
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124023142 "上からの眺め")
+![](/blog/haneda-walking/20201124023142?w=1200&h=476 "上からの眺め")
 
 別にそんな大した景色じゃないのになんなのこれは？と思いながら後ろを見るとテニスコートが。なるほどね……
 
@@ -416,7 +416,7 @@ https://youtu.be/jksshGslrdA
 
 ## 午後2時半 27km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124023734 "川沿いルート終点")
+![](/blog/haneda-walking/20201124023734?w=1200&h=900 "川沿いルート終点")
 
 
 
@@ -428,7 +428,7 @@ https://youtu.be/jksshGslrdA
 
 ## 午後2時50分 27.6km地点 羽田空港
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124024221 "羽田空港")
+![](/blog/haneda-walking/20201124024221?w=1200&h=900 "羽田空港")
 
 <span style="font-size: 2em; font-weight: bold">すげーーー！！！！！本当に羽田空港に！！！！徒歩で！！！ついた！！！！</span>
 
@@ -439,24 +439,24 @@ https://youtu.be/jksshGslrdA
 
 ## 午後3時10分 28.8km地点 羽田空港第3ターミナル
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031408 "Terminal 3")
+![](/blog/haneda-walking/20201124031408?w=1200&h=900 "Terminal 3")
 
 **国際線ターミナル**らしいです。文字がかっこいい。いいね！もう疲れたから座ろう！ということで乗客でもないのに椅子で寝ていました。うーん、いいんですかね？と思ったけど陸の旅を苦しんだので休ませてほしい。とはいえ**第1, 2ターミナルにも行かなくてはならない**ので早く椅子を退きます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031700 "3F 出国ロビー")
+![](/blog/haneda-walking/20201124031700?w=1200&h=900 "3F 出国ロビー")
 
 上にも行ってみました。時期が時期なので流石にガラガラでしたね。国際線だし。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031826 "4F お土産・レストラン街 (1)")
+![](/blog/haneda-walking/20201124031826?w=1200&h=900 "4F お土産・レストラン街 (1)")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031853 "4F お土産・レストラン街 (2)")
+![](/blog/haneda-walking/20201124031853?w=1200&h=900 "4F お土産・レストラン街 (2)")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124031932 "展望デッキからの眺め (1)")
+![](/blog/haneda-walking/20201124031932?w=1200&h=900 "展望デッキからの眺め (1)")
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124032005 "展望デッキからの眺め (2)")
+![](/blog/haneda-walking/20201124032005?w=1200&h=900 "展望デッキからの眺め (2)")
 
 
 
@@ -493,7 +493,7 @@ image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683975/blog/haneda-
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124032508 "通行止めが好きなので写真を撮りました。")
+![](/blog/haneda-walking/20201124032508?w=900&h=1200 "通行止めが好きなので写真を撮りました。")
 
 近道らしき場所があったので行ってみると通行止め。**嫌がらせか？**
 
@@ -501,7 +501,7 @@ image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683975/blog/haneda-
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124033008 "長いトンネル、700mぐらいある、ここ数年で一番心折れるかと思った")
+![](/blog/haneda-walking/20201124033008?w=1200&h=900 "長いトンネル、700mぐらいある、ここ数年で一番心折れるかと思った")
 
 そんなこんなでマジで長い、クソ長い、死ぬほど長い直線の道を<span style="font-size: 1.5em; font-weight: bold">3km</span>ひたすら歩かされてイライラして、曲がってまた長い道、長いトンネルを<span style="font-size: 1.5em; font-weight: bold">2.5km</span>歩かされてようやく第1ターミナルにつきました。**マジでどうなってんのこの空港？**
 
@@ -509,7 +509,7 @@ image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683975/blog/haneda-
 
 ## 17時47分 33.6km地点 羽田空港第1ターミナル
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124033253 "ついた！！！！！！！！！！！！！！")
+![](/blog/haneda-walking/20201124033253?w=1200&h=900 "ついた！！！！！！！！！！！！！！")
 
 <span style="font-size: 1.8em; font-weight: bold">ウオオオオやりました！遠すぎ！バカ！</span>
 
@@ -525,7 +525,7 @@ image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683975/blog/haneda-
 
 ウオオオオオオオオオ丸亀製麺！！！！！！！！！！！！
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124033543 "丸亀製麺")
+![](/blog/haneda-walking/20201124033543?w=1200&h=900 "丸亀製麺")
 
 <div style="font-weight: bold; font-size: 4em; text-align: center">
 は？
@@ -536,7 +536,7 @@ image2: https://res.cloudinary.com/trpfrog/image/upload/v1696683975/blog/haneda-
 **空港まできて食うものそれ？** <ruby>稲田堤<rp> (</rp><rt>調布の近く</rt><rp>) </rp></ruby>にも<ruby>府中<rp> (</rp><rt>調布の近く</rt><rp>) </rp></ruby>にもあるじゃん、俺はキレそうだよ。**クソ〜〜〜〜** だからと言ってじゃあどこに行くの？と言われたら思いつかないので、これが平和なのかもしれない。そうです。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/haneda-walking/20201124033946 "タル鶏天うどん")
+![](/blog/haneda-walking/20201124033946?w=1200&h=900 "タル鶏天うどん")
 
 おいしかったです。 ((若干もやもやは残るけど……))
 

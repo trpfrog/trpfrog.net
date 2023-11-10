@@ -16,7 +16,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twit
 
 先日[某電通大東方サークル](https://twitter.com/uec_Touhou_)の[方](https://twitter.com/Asunarowasabi_U)に「ハッシュタグ拾って画面に流すツール作れない？」と頼まれ、<s>面白そうだったので</s>そういうツールを作ってみることにしました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123164502.png)
+![](/blog/twitter-screen/20201123164502?w=827&h=411)
 
 車輪の再発明はしたくありません。とりあえずググってみてもヒットしなかったので作ることにしました。完成品はこちらになります！
 
@@ -25,11 +25,11 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twit
 背景を透明化できるので、Twitterのコメントを流しながら配信イベントを見たり
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123201542.png "電通大のバーチャルライブ研究会のイベントMIKUECで使った例")
+![](/blog/twitter-screen/20201123201542?w=1200&h=643 "電通大のバーチャルライブ研究会のイベントMIKUECで使った例")
 
 背景色を緑に設定してクロマキー合成で配信に使ったりできます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123201741.png "トレンド上位にあったハッシュタグを雑に流した、政治系ハッシュタグ読まされて鬱(自爆)")
+![](/blog/twitter-screen/20201123201741?w=1144&h=622 "トレンド上位にあったハッシュタグを雑に流した、政治系ハッシュタグ読まされて鬱(自爆)")
 
 ```twitter-archived
 id: 1330753236391796736
@@ -38,7 +38,7 @@ tweet: 本当にコメント<small style="opacity: 0.3">(公式のだが)</small
 image: https://res.cloudinary.com/trpfrog/blog/twitter-screen/EnfJA4KUwAEheRh.jpg
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twitter-screen/20201123203116.png "[依頼主のサークルの配信](https://www.youtube.com/watch?v=mzzegvls8PQ&feature=youtu.be)に使われて生まれて初めてSpecial Thanksされた、うれし〜")
+![](/blog/twitter-screen/20201123203116?w=541&h=197 "[依頼主のサークルの配信](https://www.youtube.com/watch?v=mzzegvls8PQ&feature=youtu.be)に使われて生まれて初めてSpecial Thanksされた、うれし〜")
 
 完成後、記事を書くぞ！と編集画面を立ち上げて「ニコニコ風に流すツール」まで書いたところで嫌な予感がしました。
 

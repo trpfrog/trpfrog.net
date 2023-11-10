@@ -80,15 +80,15 @@ description: 歩くときにぐるぐる回ったりとか、いきなりダッ�
 
 前日に18時間睡眠をキメた私は始発できゅ〜さんと江ノ島へ向かいました。到着は午前7時。まだうっすら暗い時間です。徒歩部の朝は早い。**集合は8時半なのに。** バカだろ
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229041515 "到着する鬼")
+![](/blog/enoshima-walk/20201229041515?w=1200&h=900 "到着する鬼")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229174007 "くらげ〜(本物)")
+![](/blog/enoshima-walk/20201229174007?w=1200&h=900 "くらげ〜(本物)")
 
 そういえばきゅ〜さんが「くらげは飼うのがとても楽」と言っていました。だから駅にいるのかな
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229041632 "駅")
+![](/blog/enoshima-walk/20201229041632?w=1200&h=900 "駅")
 
 早く来ているのは僕たちだけではなく、ふみさんもその一人でした。
 
@@ -103,11 +103,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510573/blog/enoshima
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229042024 "反射する江ノ島")
+![](/blog/enoshima-walk/20201229042024?w=1200&h=900 "反射する江ノ島")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229042059 "を、撮影するオタク")
+![](/blog/enoshima-walk/20201229042059?w=1200&h=900 "を、撮影するオタク")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229042256 "海に伸びてるやつの先まで行く")
+![](/blog/enoshima-walk/20201229042256?w=1200&h=900 "海に伸びてるやつの先まで行く")
 
 変な人とも遭遇しました。(羽田の記事を参照)
 
@@ -128,7 +128,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510917/blog/enoshima
 もともと運命さんが「**(普通に)** 江ノ島に行かないか？」と言って来たのに、バカの人……じゃなくて徒歩部((徒歩部って何？))が 「江ノ島に **(めちゃくちゃ歩きに)** 行くぞ！」と言い出したせいで全部巡る羽目になってしまいました。
 ですから、当然意味わからんチェックポイントもあります。**「なんか行き止まりになってるところ」とか**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229042855 "全18チェックポイント")
+![](/blog/enoshima-walk/20201229042855?w=1200&h=649 "全18チェックポイント")
 
 江ノ島、あまり見るところがなく……というのは**語弊がありまくり**ますが、**微妙に面白い**ところというのがあまり見つかりません。**全部面白観光地**なせいで「全部楽しみたいわんぱく観光客」みたいな徒歩計画になってしまうのも癪であります。逆張りオタクとして……**(？)** 
 
@@ -150,7 +150,7 @@ eno=passをご存知ですか？
 **それを1000円にまとめた**、**eno=pass**なるものが存在するのです！
 ということでまずそれを10人分買います。再発行はできないので注意しましょう。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229053747 "eno=pass")
+![](/blog/enoshima-walk/20201229053747?w=1200&h=900 "eno=pass")
 
 今回は行っていませんが、スパとか水族館とかもこれで割引になるらしいです。
 
@@ -176,11 +176,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654510998/blog/enoshima
 
 ## 入島
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229173311 "江ノ島の入り口")
+![](/blog/enoshima-walk/20201229173311?w=1200&h=900 "江ノ島の入り口")
 
 江ノ島に入ります。にゅうとうって温泉に入るみたいですね。きゅ〜さんにこの話をしたらケーキの話を始めました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229173607 "公衆電話")
+![](/blog/enoshima-walk/20201229173607?w=900&h=1200 "公衆電話")
 
 公衆電話を見つけました。最近の**オタク・ウォーキング**のルールとして、公衆電話を見つけたら[あすなろママ](https://twitter.com/Asunarowasabi_U)に電話をしなくてはいけない……ではなくて連絡を取らないといけないのでTwitterで写真を送ります。微笑んでくれるといいですね。
 
@@ -245,7 +245,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654511079/blog/enoshima
 
 **これをあえて避けて**左に曲がり、横断歩道をわたり、しばらく進んで左に曲がると第一チェックポイント、**モース記念碑**が現れます。苔むしてたらモス記念碑だったな(爆笑)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229170622 "モース記念碑")
+![](/blog/enoshima-walk/20201229170622?w=1200&h=900 "モース記念碑")
 
 海洋生物の研究をしたエドワード・S・モースの功績を讃える記念碑、らしいです。江ノ島に実験所があったとか。**「ここにあったんじゃない？」みたいな碑** があったらしいのですが調査不足により巡り忘れてしまいました……。
 
@@ -258,8 +258,8 @@ tweet: しょぼいチェックポイント
 ```
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/image/upload/v1654511320/blog/enoshima-walk/EqSH_ouVQAAEw9e.jpg)
-![](https://res.cloudinary.com/trpfrog/image/upload/v1654511313/blog/enoshima-walk/EqSH-fVVoAI5F-c.jpg)
+![](/blog/enoshima-walk/EqSH_ouVQAAEw9e?w=1536&h=2048)
+![](/blog/enoshima-walk/EqSH-fVVoAI5F-c?w=2048&h=1536)
 撮影: fmnpt
 ```
 
@@ -269,7 +269,7 @@ tweet: しょぼいチェックポイント
 
 ### 弁財天と世界女性群像噴水池
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229171953 "弁財天と世界女性群像噴水池")
+![](/blog/enoshima-walk/20201229171953?w=1200&h=900 "弁財天と世界女性群像噴水池")
 
 こちらはチェックポイントではありません。チェックポイントらしいといえばらしいのですが、なんとなく省きました。モース記念碑と近かったため……
 
@@ -289,7 +289,7 @@ tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外み�
 
 ### なんか行き止まりになってるところ (チェックポイント2/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229174621 "なんか行き止まりになってるところ")
+![](/blog/enoshima-walk/20201229174621?w=1200&h=900 "なんか行き止まりになってるところ")
 
 穴場休憩スペースという感じがします。ただ**バカのオタクが侵攻してくる可能性**((普通はない))があるのでデートにはお勧めはしません。
 
@@ -299,7 +299,7 @@ tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外み�
 
 ### 江ノ島ヨットハーバー (チェックポイント 3/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229175005 "江ノ島ヨットハーバー展望デッキ")
+![](/blog/enoshima-walk/20201229175005?w=1200&h=900 "江ノ島ヨットハーバー展望デッキ")
 
 建物を撮るのを忘れてしまいましたが、江ノ島ヨットハーバーの展望デッキです。こっちも穴場ではないでしょうか？というか**江ノ島の東側は普通来ない。**
 
@@ -313,7 +313,7 @@ tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外み�
 
 展望デッキからは海が見えます。あと江ノ島と、海が見えます。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229175306 "江ノ島とか崖とかが見える")
+![](/blog/enoshima-walk/20201229175306?w=1200&h=900 "江ノ島とか崖とかが見える")
 
 曇っているのであんまり良い景色には見えないけど、晴れてたら良い景色だと思います。分かりません。
 
@@ -325,11 +325,11 @@ tweet: ⠀  　　　　　　　　　 、、、<br/>マジでワシ以外み�
 
 航空写真見てたら**ぐるぐるしてる公園**がありました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229180004 "ぐるぐる (画像はGoogleマップ)")
+![](/blog/enoshima-walk/20201229180004?w=1002&h=874 "ぐるぐる (画像はGoogleマップ)")
 
 ということで当然行きます。楽しそうですね！
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229180102 "工事中")
+![](/blog/enoshima-walk/20201229180102?w=1200&h=900 "工事中")
 
 オリンピックか何かの**工事をしていて入れませんでした**……泣いちゃった。
 
@@ -353,7 +353,7 @@ date: 2020-12-28
 
 ### 湘南港灯台 (チェックポイント5/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229184332 "湘南港灯台")
+![](/blog/enoshima-walk/20201229184332?w=1200&h=900 "湘南港灯台")
 
 江ノ島の最東端、**湘南港灯台**です。結構灯台という感じ。これで僕は灯台にも東大((国立天文台にある東大生協))にも行ったことがある人間になりました。
 
@@ -365,7 +365,7 @@ date: 2020-12-28
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229184803 "テトラちゃん")
+![](/blog/enoshima-walk/20201229184803?w=1200&h=900 "テトラちゃん")
 
 ナフサくんと**テトラポッド**を見に行きました。テトラテトラしている。テトラポッドを見に行ったつもりだったのに何故か**謎の儀式が始まってしまいました。**
 
@@ -424,7 +424,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512038/blog/enoshima
 
 ### なんか立入禁止のところ (チェックポイント 6/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229185725 "立入危険、だった")
+![](/blog/enoshima-walk/20201229185725?w=1200&h=900 "立入危険、だった")
 
 なんか立入**禁止**、だった気がするのですが立入禁止ではありませんでした。あれー？
 
@@ -436,7 +436,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512038/blog/enoshima
 
 この先は磯場で釣り人がたくさんいました。釣具は持っていませんが、オタクも突進します。**楽しそうなので。**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229185919 "磯場")
+![](/blog/enoshima-walk/20201229185919?w=1200&h=900 "磯場")
 
 濡れているところは結構ぬめっているので避けて歩く必要があります。誰かコケそうだなって思ったけど誰もコケてなかった、と思います。**残念〜**
 
@@ -456,7 +456,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512075/blog/enoshima
 
 この近くの立入危険エリアでは岩が**イワイワ**していました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229191226 "立入危険！")
+![](/blog/enoshima-walk/20201229191226?w=1200&h=900 "立入危険！")
 
 あの看板も危険を覚悟で設置しに行ったのでしょうか。
 
@@ -466,7 +466,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512075/blog/enoshima
 
 ### 聖天島公園 (チェックポイント 7/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229191714 "聖天島公園")
+![](/blog/enoshima-walk/20201229191714?w=1200&h=900 "聖天島公園")
 
 たぶん唯一の公園です。観光地にある割には普通に公園公園していました。いや、観光地に公園がないわけではないんだけどこう、狭いエリアにもあるんだなあ、と。
 
@@ -486,7 +486,7 @@ image: https://res.cloudinary.com/trpfrog/video/upload/v1696611099/blog/enoshima
 
 ### さざえ島 (チェックポイント 8/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229193646 "さざえ島")
+![](/blog/enoshima-walk/20201229193646?w=1200&h=900 "さざえ島")
 
 ヨットハーバーの奥に進むと行けるのですが、さっき行き忘れていたのでここで回収します。
 
@@ -506,13 +506,13 @@ date: 2020-12-28
 image: https://res.cloudinary.com/trpfrog/image/upload/v1654512117/blog/enoshima-walk/EqSdbyQUwAIyVRa.jpg
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229193715 "オリンピックの聖火台")
+![](/blog/enoshima-walk/20201229193715?w=900&h=1200 "オリンピックの聖火台")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229193725)
+![](/blog/enoshima-walk/20201229193725?w=1200&h=900)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229193736 "さざえ島までの景色")
+![](/blog/enoshima-walk/20201229193736?w=1200&h=900 "さざえ島までの景色")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229194123 "磯遊び？ができるスペース？磯遊べなかったけども")
+![](/blog/enoshima-walk/20201229194123?w=1200&h=900 "磯遊び？ができるスペース？磯遊べなかったけども")
 
 
 
@@ -528,7 +528,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512117/blog/enoshima
 
 そういう声も聞こえましたが、これから<b>ご飯食べずにチェックポイント回るぞ！</b>とか言い出すバカは出てくると思うし、そもそもお昼時間帯でこんな大人数受け付けてくれる店があるとは思えません。ここは食べに行くところでしょう！**行くぞ！**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229195622 "テラス席！")
+![](/blog/enoshima-walk/20201229195622?w=1200&h=900 "テラス席！")
 
 というわけでテラス席につきました。**こんなとこに来てまでツイッターすんな**
 
@@ -545,7 +545,7 @@ tweet: オタクテラス席占領❗️
 
 僕は無難に**生しらす丼**(たしか税込1265円くらい？)を注文しました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229200153 "生しらす丼")
+![](/blog/enoshima-walk/20201229200153?w=1200&h=900 "生しらす丼")
 
 過去2, 3回江ノ島には来ているんだけども、生しらす丼は初めて食べた来た気がします。**つるつるしてて良いですね！** おいしかったです！
 
@@ -707,7 +707,7 @@ tweet: エスカー勢全員ツイッターしてないか？おかしいよ
 
 ### 江島神社 (チェックポイント 9/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229203809 "江島神社")
+![](/blog/enoshima-walk/20201229203809?w=1200&h=900 "江島神社")
 
 
 100分ぶりぐらいのチェックポイントです。神社の紋章が三角形三つだからか、後ろに並んでた小学生が「トライフォースだ！」と嬉しそうでした。**大学生も嬉しそうです。**
@@ -733,7 +733,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512841/blog/enoshima
 手を清めるところが567対策されていました。にしても水がちょろちょろすぎる、端っこ何も流れてなかった。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229204337 "上から見た景色")
+![](/blog/enoshima-walk/20201229204337?w=1200&h=900 "上から見た景色")
 
 **縁結びの絵馬**が吊るされてて、それを見てまわってキャッキャしてるオタクがいっぱいいました。**恥ずかしいからやめてくれ……** 
 
@@ -741,13 +741,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512841/blog/enoshima
 
 ### 児玉神社 (チェックポイント 10/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229204628 "児玉神社")
+![](/blog/enoshima-walk/20201229204628?w=1200&h=900 "児玉神社")
 
 下に降りていくと**児玉神社**に行けます。看板の解説によると神楽殿が建て直しされるらしく、今だけ本殿を覗くことができるみたいです。レア。
 
 **激穴場スポット**なのか、本当に人が誰もいませんでした。確かに誰も行かなそうなひっそりした感じの所に道がありました。**こういう微おもしろスポットが見つかるとアツいんですよ！！！！！！！！！！(大声)(失礼)**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229205024 "神社へと向かう道")
+![](/blog/enoshima-walk/20201229205024?w=1200&h=900 "神社へと向かう道")
 
 神社へと向かう道がなんか隠れた感じの、崖沿いの細い道で良かったです。こういう雰囲気好き！
 
@@ -757,11 +757,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512841/blog/enoshima
 
 ### 展望台広場ウッドデッキ (チェックポイント 11/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229210110 "ウッドデッキ")
+![](/blog/enoshima-walk/20201229210110?w=1200&h=900 "ウッドデッキ")
 
 ウッドなデッキに来ました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229211327 "ウッドデッキからの眺め")
+![](/blog/enoshima-walk/20201229211327?w=1200&h=900 "ウッドデッキからの眺め")
 
 右側も撮れ！
 
@@ -777,11 +777,11 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513085/blog/enoshima
 
 ### 江ノ島展望台(名称不明) (チェックポイント 12/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229211846 "Enoshima Aussichtsplatform")
+![](/blog/enoshima-walk/20201229211846?w=1200&h=900 "Enoshima Aussichtsplatform")
 
 Googleマップには「**Enoshima Aussichtsplatform**」と書いてあったので直訳したチェックポイントですが、正式名称は謎。まさかEnoshima Aussichtsplatformが正式名称とは思えないしな……。展望台と聞いてパッとAussichtsplatformが思い浮かぶ人もそう多くはないと思うし、Aussichtsplatformと聞いて展望台が浮かぶ人もそんなにいないと思います。僕はAussichtsplatformを見てGoogle翻訳にかけてしまいました。ダメ学生でごめんなAussichtsplatform。読み方わからないけど
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229212402 "富士山")
+![](/blog/enoshima-walk/20201229212402?w=1200&h=900 "富士山")
 
 富士山がよく見えました。すごいぞ、Enoshima Aussichtsplatform
  
@@ -803,9 +803,9 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512955/blog/enoshima
 
 **そんな寝ることある？** と思いましたが、調布から江ノ島まで歩いていく会をしていた可能性を話したらみんな納得していました。**納得するな**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229220254 "自撮りできるスタンドがあったので撮った")
+![](/blog/enoshima-walk/20201229220254?w=1200&h=900 "自撮りできるスタンドがあったので撮った")
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229221152 "こんな感じの道がある、おもしろい")
+![](/blog/enoshima-walk/20201229221152?w=1200&h=900 "こんな感じの道がある、おもしろい")
 
 ここ自体は植物園？花がいっぱい咲いてるところ？とかそんな感じのお庭((お庭の鬼の部分))です。奥まで進むと次のチェックポイント、シーキャンドルにたどり着きます。
 
@@ -813,13 +813,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654512955/blog/enoshima
 
 ### 江ノ島シーキャンドル (展望灯台) (チェックポイント 13/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229221459 "シーキャンドル")
+![](/blog/enoshima-walk/20201229221459?w=900&h=1200 "シーキャンドル")
 
 海のろうそく、**シーキャンドル**です。**螺旋階段**が魅力的です。しかし上りはエレベーター強制らしく、泣いてしまいました。今度**東京タワーを階段使って上りましょう！** 皆さん
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229221933 "海が二色！")
+![](/blog/enoshima-walk/20201229221933?w=1200&h=900 "海が二色！")
 
 ```twitter-archived
 id: 1343413393621807104
@@ -832,7 +832,7 @@ tweet: みんな２つの海の色の写真あげてるかど最初に見つけ�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229222127 "パノラマ")
+![](/blog/enoshima-walk/20201229222127?w=1200&h=472 "パノラマ")
 
 ```twitter-archived
 id: 1343413149895065600
@@ -875,7 +875,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513541/blog/enoshima
 
 帰りは当然階段を使います。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229222436 "下り階段")
+![](/blog/enoshima-walk/20201229222436?w=1200&h=900 "下り階段")
 
 下の売店ではお土産を売っています。
 
@@ -903,7 +903,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513512/blog/enoshima
 
 ### 山ふたつ
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229223943 "山ふたつ")
+![](/blog/enoshima-walk/20201229223943?w=1024&h=768 "山ふたつ")
 
 山が二つあるところです。
 
@@ -930,7 +930,7 @@ image: https://res.cloudinary.com/trpfrog/video/upload/v1696611291/blog/enoshima
 
 ### 稚児ヶ淵 (チェックポイント 15/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229231158 "稚児ヶ淵")
+![](/blog/enoshima-walk/20201229231158?w=1200&h=900 "稚児ヶ淵")
 
 ここは磯場です。しかし**整備されすぎていて**さっきの磯場で遊んだオタクの皆さんは不満を垂れていました。**なんでだよ**
 
@@ -948,7 +948,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513710/blog/enoshima
 
 ### べんてん丸乗り場 (チェックポイント 16/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229231537 "べんてん丸乗り場")
+![](/blog/enoshima-walk/20201229231537?w=1200&h=900 "べんてん丸乗り場")
 
 別に乗るわけではないですが、べんてん丸乗り場まで来ました。
 今回の目標が**江ノ島の行ける場所だいたい全部行く**((そのつもりだけど結構網羅できてなそう))、
@@ -960,21 +960,21 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513710/blog/enoshima
 
 ### 江ノ島岩屋 (チェックポイント 17/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229232019)
+![](/blog/enoshima-walk/20201229232019?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229232040 "江ノ島岩屋")
+![](/blog/enoshima-walk/20201229232040?w=1200&h=900 "江ノ島岩屋")
 
 **岩屋！** 洞窟みたいなやつです。洞窟なのかな？穴の一番奥まで辿ると富士山の地下の洞窟にまでつながるらしいです。行きてえ〜〜〜(行けない)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229232558 "岩屋から見た海")
+![](/blog/enoshima-walk/20201229232558?w=1200&h=900 "岩屋から見た海")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229232402 "岩屋・イルミネーション")
+![](/blog/enoshima-walk/20201229232402?w=900&h=1200 "岩屋・イルミネーション")
 
 イルミネーションされた岩屋がありました。イルミネーテッド岩屋、岩屋ネーション。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229232929 "ナフサくんがめちゃくちゃ「エロい……！」って言ってた龍、たぶん言ってた")
+![](/blog/enoshima-walk/20201229232929?w=900&h=1200 "ナフサくんがめちゃくちゃ「エロい……！」って言ってた龍、たぶん言ってた")
 
 ### オタク・インターバル
 
@@ -993,22 +993,22 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513770/blog/enoshima
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229233241 "ヤギとか住んでそう")
+![](/blog/enoshima-walk/20201229233241?w=1200&h=900 "ヤギとか住んでそう")
 
 **寝不足オタクがだいぶ厳しそう**にしていました。あとチェックポイント1つだから頑張って！僕は死にかけのiPhoneをこの隙に充電します。
 
 ### 西浦漁港 (チェックポイント 18/18)
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229233543 "西浦漁港")
+![](/blog/enoshima-walk/20201229233543?w=1200&h=487 "西浦漁港")
 
 漁港です。細い道を伝わないといけない場所なのであまり人がいません。もう1組ぐらい学生グループがいたくらいでした。そういうところです。雰囲気が良いのでデートにおすすめ！**オタクが突撃します！**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229233824 "漁港への道")
+![](/blog/enoshima-walk/20201229233824?w=900&h=1200 "漁港への道")
 
 
 奥の出っ張ってるところには歩いて行けるのでちゃんと行きます。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229233953 "出っ張りからの景色")
+![](/blog/enoshima-walk/20201229233953?w=1200&h=303 "出っ張りからの景色")
 
 **オタク、来い！** と構えていたのですが、来たのはkissyくんだけでした。**オタク疲れてる？** あと、ふみさんからの「早く戻ってこーい」という電話をガン無視(気づかなかった)したので怒られました。**ガハハ**
 
@@ -1036,13 +1036,13 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513867/blog/enoshima
 
 楽しかったですね！ということで、楽しく入り口の通りのお店でいろいろ買って食べます。アイスクリームのリベンジとか僕はしました。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229234652 "しらすアイス")
+![](/blog/enoshima-walk/20201229234652?w=900&h=1200 "しらすアイス")
 
 しらす入りミルクアイスを食べました。**しらすが入っているなあ**。しらすアイスは普通に美味しいです。しらす風味はあまりしないです。しらすが入ってるだけ。おすすめです！
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229235320 "しらすコロッケ")
+![](/blog/enoshima-walk/20201229235320?w=1200&h=900 "しらすコロッケ")
 
 こちらはしらすコロッケ。しらすが入ったコロッケです。**しらすが入っているなあ**。いや、それだけではなかった、イモ部分が結構もちもちしていました。いももちと一緒に売ってたからかな？(？) おすすめです！(雑な締め)
 
@@ -1066,7 +1066,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513867/blog/enoshima
 
 ## 第二部 鎌倉観光会
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230073210)
+![](/blog/enoshima-walk/20201230073210?w=995&h=789)
 
 
 <div style="text-align: center">
@@ -1087,7 +1087,7 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654513867/blog/enoshima
 
 ### いざ鎌倉
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230034431 "第二部開始！")
+![](/blog/enoshima-walk/20201230034431?w=1200&h=900 "第二部開始！")
 
 ということで始まりました。現時点で総歩行距離はだいたい15km。 しょぼい〜！徒歩部にとっては15kmなぞ、
 **電通大から国立天文台まで行って府中の丸亀製麺に行くぐらいの距離**なのです。**伝わらない例えやめろ**
@@ -1117,7 +1117,7 @@ date: 2020-12-28
 tweet: <b>死の行軍が始まってしまいました</b>
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201229044910 "一旦江ノ島を離れます")
+![](/blog/enoshima-walk/20201229044910?w=1200&h=900 "一旦江ノ島を離れます")
 
 **<span style="font-size:1.5em">楽しいね！！！！！</span>**
 
@@ -1131,7 +1131,7 @@ tweet: <b>死の行軍が始まってしまいました</b>
 
 そんなことを思いつつ、中間地点の**稲村ヶ崎**を目指します。((最初はみんな最終を稲村ヶ崎にしよう！とか言ってた、弱気すぎるだろ))
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230033626 "稲村ヶ崎までの道のり")
+![](/blog/enoshima-walk/20201230033626?w=1200&h=671 "稲村ヶ崎までの道のり")
 
 ### 1km地点 鎌倉市
 
@@ -1151,18 +1151,18 @@ image: https://res.cloudinary.com/trpfrog/image/upload/v1654514742/blog/enoshima
 
 ### 2km地点 鎌倉高校前
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230035535 "江ノ電")
+![](/blog/enoshima-walk/20201230035535?w=962&h=1200 "江ノ電")
 
 江ノ電の線路と歩道がセットになっているところです。つまりめっちゃ真横を江ノ電が走ります。
 そういえば3年前写真部((僕が1年生のときはまともに活動してたけど、2年になってわしの代になってから全てが破壊された。主に僕のせい、たぶん))のときも同じところに来た気がします。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230040006 "フォントがかわいい")
+![](/blog/enoshima-walk/20201230040006?w=1200&h=900 "フォントがかわいい")
 
 ### 3km地点
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230040252 "火を吹く店")
+![](/blog/enoshima-walk/20201230040252?w=1200&h=900 "火を吹く店")
 
 火を噴く店がありました。ファイヤー！ファイヤーエンブレム。死ぬほどどうでもいいんだけど、なんか珍しくてみんな写真を撮っています。常識人チームは「撮るほどか？」みたいに言っています。**お前らにこの気持ちはわからないぜ……**(？)
 
@@ -1175,7 +1175,7 @@ tweet: ゴジラビーム‼️‼️‼️
 image: https://res.cloudinary.com/trpfrog/image/upload/v1654514905/blog/enoshima-walk/EqTzrT5VEAATs6Q.jpg
 ```
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230041054 "結構離れた")
+![](/blog/enoshima-walk/20201230041054?w=1200&h=900 "結構離れた")
 
 **シーキャンドルが白く光っています。** そうなのです。江ノ島ではイルミネーション((イルミネーションってなんかイリュージョンしてるイルカみたいな感じしませんか？))をやっているのです。これに間に合うためにも早く帰る必要があります。この時点で17時、イルミネーション会場のサムエル・コッキング苑の入場は20時30分まで、つまり**残り3時間30分。**
 
@@ -1194,10 +1194,10 @@ tweet: <b>皆さんは自転車やバイク、電車などと言った文明の�
 
 ### 4km地点 稲村ヶ崎
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230041930)
+![](/blog/enoshima-walk/20201230041930?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230041940 "稲村ヶ崎とそこから見た江ノ島")
+![](/blog/enoshima-walk/20201230041940?w=1200&h=900 "稲村ヶ崎とそこから見た江ノ島")
 
 というわけで特に難なく稲村ヶ崎まで到着しました。**なーんだ！楽勝じゃん！**
 
@@ -1255,7 +1255,7 @@ tweet: <b>ざけんな</b>
 
 ということで残り**4km**、**鶴岡八幡宮**を目指します。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230043254 "鶴岡八幡宮への道のり")
+![](/blog/enoshima-walk/20201230043254?w=1200&h=671 "鶴岡八幡宮への道のり")
 
 ところで、鶴岡八幡宮の鶴岡は「つるおか」じゃなくて「つる**が**おか」と読むんですね。なんか小学生の移動教室((林間学校のこと。うちの小学校ではそう言っていました。だからなんか教室移動のことを移動教室って言ってるの見るとめちゃめちゃ大袈裟に感じる、これ地域によるのかしら？漫画とかでたまに見るので))で行った時に「つるおか」とみんな読んでた記憶があり、僕もずっとそう読んでいました。いや、歴史知識がカスなので普通に僕が悪いのかもしれないけれども、むむむ。
 
@@ -1265,7 +1265,7 @@ tweet: <b>ざけんな</b>
 
 時刻は17時半。残り**3時間**。楽勝な気がしますが徒歩会は順調に進むとは限りません。なぜなら寄り道するバカが現れたり、足が痛んで速度が落ちたりするからです。**前者は防げるだろ**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230044016 "誰がなんと言おうと真っ暗な海")
+![](/blog/enoshima-walk/20201230044016?w=1200&h=900 "誰がなんと言おうと真っ暗な海")
 
 真っ黒の海を撮ったつもりだったのにiPhoneのナイトモードのせいで青い海が撮れてキレています。ナイトモードを切れ！
 
@@ -1305,7 +1305,7 @@ tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電�
 
 ### 6.5km地点 ローソン休憩
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230050659 "羽田のときも食べた気がする")
+![](/blog/enoshima-walk/20201230050659?w=900&h=1200 "羽田のときも食べた気がする")
 
 ローソンがありました！**休憩タイム**です！やったー！……じゃなかった、クソ〜まだ歩き足りないぜ！
 
@@ -1313,20 +1313,20 @@ tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電�
 
 ここのローソンのトイレは素敵でした。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230050734 "予備から消費されるトイレットペーパー")
+![](/blog/enoshima-walk/20201230050734?w=1200&h=900 "予備から消費されるトイレットペーパー")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230050800 "あのさあ")
+![](/blog/enoshima-walk/20201230050800?w=1200&h=900 "あのさあ")
 
 ### 7.5km地点 鶴岡八幡宮 段葛
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230051156 "段葛")
+![](/blog/enoshima-walk/20201230051156?w=1200&h=900 "段葛")
 
 現在時刻は18時40分。タイムリミットは2時間を切り、**残り110分**です。ここをどう乗り切るかがカギとなります。とか言ってるけどあまり時間は気にしていません。**江ノ電**もあるし、**エスカー**もあるので。
 
 段葛は「だんかずら」と読みます。道路より一段高くなった鶴岡八幡宮へと続く参道のことらしいです。神社の土地のくせに、檀家ずらするな！
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230053501 "段葛 (2)")
+![](/blog/enoshima-walk/20201230053501?w=900&h=1200 "段葛 (2)")
 
 ラスト500m。足がしんどい人々が大勢いるわけですが、乗り切れるでしょうか。僕ときゅ〜さんとふみさんは **「5本目の国旗まで競争な！」** と言って競争しました。げんき、げんきー！
 
@@ -1338,7 +1338,7 @@ tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電�
 
 ### 目的地 鶴岡八幡宮
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230053728 "八幡宮前")
+![](/blog/enoshima-walk/20201230053728?w=1200&h=900 "八幡宮前")
 
 すごい！着いてしまいました。
 
@@ -1346,10 +1346,10 @@ tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電�
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230054126)
+![](/blog/enoshima-walk/20201230054126?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230054151 "最後の関門、大階段")
+![](/blog/enoshima-walk/20201230054151?w=1200&h=900 "最後の関門、大階段")
 
 出た！デカい階段が現れました！勝負です。実は**足の痛みは引いている**ので、なんとなく場の空気に合わせてとりあえず「ウワー！階段があります！」と嫌がる声を出しました。大げさ。
 
@@ -1357,7 +1357,7 @@ tweet: 江ノ島から鎌倉まで歩いている間に塾講から採用の電�
 
 実際、神社の階段でグリコされたら神様はどうするのでしょうか？僕だったら階段から突き落とします。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230054732 "オタク・スナイパー")
+![](/blog/enoshima-walk/20201230054732?w=1200&h=952 "オタク・スナイパー")
 
 階段を上りきり後ろを振り返ると、スローオタクが下にいました。意外と早い。**よく見てみるとレンズでこっちを撃ち抜こうと狙っています**。怖すぎる
 
@@ -1425,10 +1425,10 @@ style: {"width": "250px", "height": "460px"}
 
 間に合うわけがないので仕方なく江ノ電です。まあ観光しにきた感じがするしいいよね。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230060133)
+![](/blog/enoshima-walk/20201230060133?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230060138 "鎌倉駅から江ノ電で向かう")
+![](/blog/enoshima-walk/20201230060138?w=1200&h=900 "鎌倉駅から江ノ電で向かう")
 
 鎌倉駅につき、江ノ電で江ノ島駅へと向かいます。
 
@@ -1479,7 +1479,7 @@ id:
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230060707 "江ノ島駅")
+![](/blog/enoshima-walk/20201230060707?w=1200&h=900 "江ノ島駅")
 
 電車に揺らされること30分。江ノ島駅につきました。時刻は19時48分。**残り42分**です。**勝ちました。** ゆっくり行ってエスカーに乗れば、間に合います。**エスカー最高！**
 
@@ -1537,7 +1537,7 @@ tweet: 江ノ島上陸！！(2度目)
 
 <br><br><br>
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230061246 "デデドン")
+![](/blog/enoshima-walk/20201230061246?w=1200&h=900 "デデドン")
 
 **<span style="font-size:2em">バカ！！！！！！！！エスカーやってねえ！！！！！！！！！！！！</span>**
 
@@ -1545,13 +1545,13 @@ tweet: 江ノ島上陸！！(2度目)
 
 **<span style="font-size:1.5em">うぎゃー！階段を駆け上がります！</span>**
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230061026 "江島神社に続く階段、長い")
+![](/blog/enoshima-walk/20201230061026?w=1200&h=900 "江島神社に続く階段、長い")
 
 ところでこれは**道を間違えています**。こっちルートは無駄に階段を登ることになるため、左に行くのが正しいです。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230062722 "青が近道、赤が実際に通ったルート")
+![](/blog/enoshima-walk/20201230062722?w=1200&h=891 "青が近道、赤が実際に通ったルート")
 
  
 
@@ -1561,13 +1561,13 @@ tweet: 江ノ島上陸！！(2度目)
 
 ちなみに徒歩部とタコさんは**それ以上に**まだ元気です。**くるくる回ったりダッシュしたり**してる。意味がわからない。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230061711 "中間地点、こっちもイルミネーションしている")
+![](/blog/enoshima-walk/20201230061711?w=1200&h=900 "中間地点、こっちもイルミネーションしている")
 
 なんだかんだ**全員ぐんぐん階段を登って行きます。すごい。**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230061829 "10分前に到着！")
+![](/blog/enoshima-walk/20201230061829?w=1200&h=900 "10分前に到着！")
 
 そんなこんなでサムエル・コッキング苑までの**エスカー3本分**を全部脚でかっ飛ばしてギリギリ、というか飛ばしすぎて**10分前**に間に合いました。
 
@@ -1581,17 +1581,17 @@ tweet: 江ノ島上陸！！(2度目)
 
 ということで、無事つきました。あとはもう、イルミネーション見てるだけなので画像だけ貼ります。((書くのをサボるだと？つまみ、男塾観てもっと勉強しろよ))
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230063654 "イルミネーション (1)")
+![](/blog/enoshima-walk/20201230063654?w=1200&h=900 "イルミネーション (1)")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230063830 "イルミネーション (2)")
+![](/blog/enoshima-walk/20201230063830?w=1200&h=900 "イルミネーション (2)")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230063911 "小さいシーキャンドル")
+![](/blog/enoshima-walk/20201230063911?w=1200&h=900 "小さいシーキャンドル")
 
 シーキャンドルに上って**上から**イルミネーションを見ることもできます。
 
-![](https://res.cloudinary.com/trpfrog/blog/enoshima-walk/20201230064022 "イルミネーション 上から見るか")
+![](/blog/enoshima-walk/20201230064022?w=1200&h=900 "イルミネーション 上から見るか")
 
 ```twitter
 1343521222823309313

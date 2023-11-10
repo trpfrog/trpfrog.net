@@ -139,4 +139,4 @@ https://ouchi.trpfrog.net/callback
 
 なんか喋ってオウム返しされたら成功！お疲れ様でした。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1641538924/blog/line-bot/thumbnail.webp)
+![](/blog/line-bot/thumbnail?w=828&h=756)

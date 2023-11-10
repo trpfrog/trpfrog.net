@@ -9,7 +9,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/time
 
 時間割がブラウザのホームページにあると便利！
 
-![thumbnail](https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/timetable-page/thumbnail.webp)
+![thumbnail](/blog/timetable-page/thumbnail?w=1343&h=1059)
 
 <a href="https://github.com/TrpFrog/timetable-page" class="linkButton">GitHubで見る</a>
 
@@ -32,13 +32,13 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/time
 
 ちなみに timetable.js はこんな感じです。
 
-![timetablejs](https://res.cloudinary.com/trpfrog/image/upload/v1641545316/blog/timetable-page/timetablejs.webp)
+![timetablejs](/blog/timetable-page/timetablejs?w=981&h=966)
 
 割とわかりやすいのではないでしょうか。
 
 これを保存してindex.htmlを開くとこうなります。
 
-![screenshot](https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/timetable-page/screenshot.webp)
+![screenshot](/blog/timetable-page/screenshot?w=1340&h=1057)
 
 うふふ (関係ないですが、これは確定した時間割ではないです。結構単位を持っているので**ガハハ**)
 
