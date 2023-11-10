@@ -38,8 +38,8 @@ export function useUploadFunction(slug: string) {
       })
 
       uploadPromise
-        .then(({ public_id, format }) => {
-          onSuccess(`/${public_id}.${format}`)
+        .then(({ public_id, format, width, height }) => {
+          onSuccess(`/${public_id}.${format}?w=${width}&h=${height}`)
         })
         .catch(err => onError(err.message))
     },
