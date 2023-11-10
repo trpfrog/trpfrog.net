@@ -53,15 +53,15 @@ description: 島根の合宿免許に行くらしい
 
 ## 2021年10月24日 9:30 きゅ〜ハウス
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024214111 "そうめん")
+![](/blog/bikkuri-donkey-walking/20211024214111?w=1200&h=900 "そうめん")
 
 **[<span style="font-size: 1.3em">もうそうめん作るな</span>](https://trpfrog.net/blog/entry/tama-lake-walking)**
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024214038 "そうめんで食神の春雨を再現しているらしい")
+![](/blog/bikkuri-donkey-walking/20211024214038?w=1200&h=900 "そうめんで食神の春雨を再現しているらしい")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024214331 "きゅ〜さんのマイカー")
+![](/blog/bikkuri-donkey-walking/20211024214331?w=1200&h=900 "きゅ〜さんのマイカー")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029185110)
+![](/blog/bikkuri-donkey-walking/20211029185110?w=1200&h=900)
 
 ```centering
 **<span style="font-size: 1.8em">？</span>**
@@ -69,19 +69,19 @@ description: 島根の合宿免許に行くらしい
 
 ## 10:15 調布出発
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024214356)
+![](/blog/bikkuri-donkey-walking/20211024214356?w=1200&h=900)
 
 
 集合時刻の45分遅れでお送りしております。まずは**多摩川**を目指します。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029171916)
+![](/blog/bikkuri-donkey-walking/20211029171916?w=1200&h=613)
 
 
 今日はこんな感じのルートで行きます。
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024214524)
+![](/blog/bikkuri-donkey-walking/20211024214524?w=1200&h=900)
 
 
 **これは……？**
@@ -94,7 +94,7 @@ description: 島根の合宿免許に行くらしい
 はい。(( 徒歩部は階段を見つけたら渡らなければならないらしい[初回](https://twitter.com/TrpFrog/status/1315910401310121984) ))
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024215330)
+![](/blog/bikkuri-donkey-walking/20211024215330?w=1024&h=768)
 
 
 先に進みます。
@@ -103,36 +103,36 @@ description: 島根の合宿免許に行くらしい
 
 ## 10:40 多摩川
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024215532)
+![](/blog/bikkuri-donkey-walking/20211024215532?w=1024&h=768)
 
 
 **良い天気ですね！** 川沿いを歩いていきます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024215637 "謎のオブジェ")
+![](/blog/bikkuri-donkey-walking/20211024215637?w=1024&h=768 "謎のオブジェ")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024221828 "久しぶりの徒歩会にはしゃいで走るオタク")
+![](/blog/bikkuri-donkey-walking/20211024221828?w=428&h=240 "久しぶりの徒歩会にはしゃいで走るオタク")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024223103)
+![](/blog/bikkuri-donkey-walking/20211024223103?w=1024&h=768)
 
 
 進みます
 
 ## 11:10 多摩川親水公園
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024223404)
+![](/blog/bikkuri-donkey-walking/20211024223404?w=1024&h=768)
 
 
 多摩川の全体像を模した小川が流れる公園です。
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024224624 "**連続ジャンプ男(捏造)**")
+![](/blog/bikkuri-donkey-walking/20211024224624?w=428&h=240 "**連続ジャンプ男(捏造)**")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211024224812)
+![](/blog/bikkuri-donkey-walking/20211024224812?w=1024&h=768)
 
 
 これが「多摩川」らしく、実在する名前の橋も至る所にかけられていました。
@@ -141,7 +141,7 @@ description: 島根の合宿免許に行くらしい
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003744)
+![](/blog/bikkuri-donkey-walking/20211029003744?w=1200&h=936)
 
 
 ```centering
@@ -152,43 +152,43 @@ description: 島根の合宿免許に行くらしい
 
 ## 11:30 是政駅
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003100)
+![](/blog/bikkuri-donkey-walking/20211029003100?w=1024&h=768)
 
 
 是政駅です。**電話しか撮ってなかった……**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020737 "😅")
+![](/blog/bikkuri-donkey-walking/20211029020737?w=660&h=722 "😅")
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003255)
+![](/blog/bikkuri-donkey-walking/20211029003255?w=1024&h=768)
 
 
 面白い場所があったので行ってみましょう！
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003318)
+![](/blog/bikkuri-donkey-walking/20211029003318?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003324)
+![](/blog/bikkuri-donkey-walking/20211029003324?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003345)
+![](/blog/bikkuri-donkey-walking/20211029003345?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003404)
+![](/blog/bikkuri-donkey-walking/20211029003404?w=1024&h=768)
 
 
 **是政橋**に出ました！
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029185706)
+![](/blog/bikkuri-donkey-walking/20211029185706?w=1200&h=900)
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029003511 "奥には鉄道橋")
+![](/blog/bikkuri-donkey-walking/20211029003511?w=1024&h=768 "奥には鉄道橋")
 
 オタク(あずきバー)が電車の写真を撮っていたので
 
@@ -198,7 +198,7 @@ description: 島根の合宿免許に行くらしい
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029004054)
+![](/blog/bikkuri-donkey-walking/20211029004054?w=1024&h=768)
 
 
 今日は行きませんでしたが、この奥は面白いです。行き止まりになっているので (行き止まりが好きなオタク) ((行き止まりに行ったときのツイート: [その1](https://twitter.com/TrpFrog/status/1235903159395991552), [その2](https://twitter.com/TrpFrog/status/1235903169785298944) ))
@@ -217,53 +217,53 @@ cSCC-oEb_QA
 
 公園の写真を撮り忘れたので、昔きゅ〜さんが撮っていた写真を無断転載します。
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/EoxwsLrUwAMpifK)
+![](/blog/bikkuri-donkey-walking/EoxwsLrUwAMpifK?w=1200&h=900)
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/EoxwsLuVQAMuGLx)
-
- 
+![](/blog/bikkuri-donkey-walking/EoxwsLuVQAMuGLx?w=1200&h=900)
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020005)
+ 
+
+![](/blog/bikkuri-donkey-walking/20211029020005?w=1024&h=768)
 
 
 公園を抜けたら川崎街道を進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020031)
+![](/blog/bikkuri-donkey-walking/20211029020031?w=1024&h=768)
 
 
 進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020507)
+![](/blog/bikkuri-donkey-walking/20211029020507?w=1024&h=768)
 
 
 **またポスターと写真撮ってる……**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020908)
+![](/blog/bikkuri-donkey-walking/20211029020908?w=1200&h=900)
 
 
 進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020948)
+![](/blog/bikkuri-donkey-walking/20211029020948?w=1024&h=768)
 
 
 進みます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020806)
+![](/blog/bikkuri-donkey-walking/20211029020806?w=1200&h=900)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029020818)
+![](/blog/bikkuri-donkey-walking/20211029020818?w=1200&h=900)
 
 
 **<span style="font-size: 1.3em">うれしそう</span>**
@@ -272,21 +272,21 @@ cSCC-oEb_QA
 
 ## 12:40 桜ヶ丘公園
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029021144)
+![](/blog/bikkuri-donkey-walking/20211029021144?w=1024&h=768)
 
 
 **桜ヶ丘公園**につきました。公園は面白いので近くにあったら寄ると良いと言われています。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029021224)
+![](/blog/bikkuri-donkey-walking/20211029021224?w=1024&h=768)
 
 
 **面白い道があります！行ってみましょう！**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029021256)
+![](/blog/bikkuri-donkey-walking/20211029021256?w=1024&h=768)
 
 
 **<span style="font-size: 1.2em">ハチが出る</span>らしいので引き返します。**
@@ -296,7 +296,7 @@ cSCC-oEb_QA
 
 ## 12:45 旧多摩聖蹟記念館
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029021433 "旧多摩聖蹟記念館")
+![](/blog/bikkuri-donkey-walking/20211029021433?w=1024&h=768 "旧多摩聖蹟記念館")
 
 公園内にこの地域の資料館がありました。
 
@@ -312,12 +312,12 @@ cSCC-oEb_QA
 
 お腹も空いてきたので早く先に進みます。
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022017)
+![](/blog/bikkuri-donkey-walking/20211029022017?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022232 "宇宙桜、らしい")
+![](/blog/bikkuri-donkey-walking/20211029022232?w=1024&h=768 "宇宙桜、らしい")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022302 "おもしろ道路")
+![](/blog/bikkuri-donkey-walking/20211029022302?w=1024&h=768 "おもしろ道路")
 
 
 
@@ -325,14 +325,14 @@ cSCC-oEb_QA
 
 **<span style="font-size: 1.4em">あ！！！！！！！！！</span>**
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022338)
+![](/blog/bikkuri-donkey-walking/20211029022338?w=1024&h=768)
 
 
 **<span style="font-size: 1.5em">歩道橋があります！！渡りましょう！！</span>**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022441)
+![](/blog/bikkuri-donkey-walking/20211029022441?w=1024&h=738)
 
 
 **<span style="font-size: 1.8em">え！？！？</span>**
@@ -343,19 +343,19 @@ cSCC-oEb_QA
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022633)
+![](/blog/bikkuri-donkey-walking/20211029022633?w=1024&h=768)
 
 
 老害なのでわし、きゅ〜、ふみの3人で歩道橋を渡りました😢
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022744)
+![](/blog/bikkuri-donkey-walking/20211029022744?w=654&h=1015)
 
 
 ## 13:20 びっくりドンキー聖蹟桜ヶ丘店
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029022857)
+![](/blog/bikkuri-donkey-walking/20211029022857?w=1024&h=768)
 
 
 **<span style="font-size: 1.2em">目的地に到着しました！</span>**
@@ -364,29 +364,29 @@ cSCC-oEb_QA
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023013)
+![](/blog/bikkuri-donkey-walking/20211029023013?w=1024&h=768)
 
 
 僕はめちゃくちゃネギが乗ってるハンバーグを食べました。ふみさんも確か同じものを頼んでいました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023330 "きゅ〜さんが頼んだやつ")
+![](/blog/bikkuri-donkey-walking/20211029023330?w=1200&h=900 "きゅ〜さんが頼んだやつ")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023408 "あずきバーさんが頼んだやつ")
+![](/blog/bikkuri-donkey-walking/20211029023408?w=1200&h=900 "あずきバーさんが頼んだやつ")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029184907 "そうなんだ")
+![](/blog/bikkuri-donkey-walking/20211029184907?w=655&h=435 "そうなんだ")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023509 "アタリさんが頼んだやつ")
+![](/blog/bikkuri-donkey-walking/20211029023509?w=680&h=510 "アタリさんが頼んだやつ")
 
 ```horizontal-images
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023434)
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023438)
+![](/blog/bikkuri-donkey-walking/20211029023434?w=900&h=1200)
+![](/blog/bikkuri-donkey-walking/20211029023438?w=900&h=1200)
 ごっちさんとあずきバーさんの
 ```
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029023529 "200円のアイス、白玉が入っている")
+![](/blog/bikkuri-donkey-walking/20211029023529?w=1024&h=768 "200円のアイス、白玉が入っている")
 
 以上**飯テロ祭り**でした。
 
@@ -410,36 +410,36 @@ cSCC-oEb_QA
 <ruby>工研の人<rp>(</rp><rt>歩道橋を渡ってない人</rt><rp>)</rp></ruby>たちは京王れーるランドに用事があるみたいです。
 しかし流石に徒歩だと営業時間に間に合わなそうなので**電車でワープします。**
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024009 "駅までの道のりで見つけたしましま道路")
+![](/blog/bikkuri-donkey-walking/20211029024009?w=1024&h=768 "駅までの道のりで見つけたしましま道路")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024043 "多摩動物公園線")
+![](/blog/bikkuri-donkey-walking/20211029024043?w=1024&h=768 "多摩動物公園線")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029184937)
-
-
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024158 "京王れーるランド、多摩動物公園の前にある")
-
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024225 "見慣れた券売機で入場券を買える")
+![](/blog/bikkuri-donkey-walking/20211029184937?w=662&h=679)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024307)
+![](/blog/bikkuri-donkey-walking/20211029024158?w=1024&h=768 "京王れーるランド、多摩動物公園の前にある")
+
+![](/blog/bikkuri-donkey-walking/20211029024225?w=768&h=1024 "見慣れた券売機で入場券を買える")
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024331)
+![](/blog/bikkuri-donkey-walking/20211029024307?w=1200&h=838)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029185038)
+![](/blog/bikkuri-donkey-walking/20211029024331?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029184523 "お土産がデカい淵野アタリ")
-
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029184659 "1枚800円で買えるらしい")
+![](/blog/bikkuri-donkey-walking/20211029185038?w=1200&h=900)
 
 
+![](/blog/bikkuri-donkey-walking/20211029184523?w=1200&h=1041 "お土産がデカい淵野アタリ")
+
+![](/blog/bikkuri-donkey-walking/20211029184659?w=652&h=462 "1枚800円で買えるらしい")
 
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029024435)
+
+
+![](/blog/bikkuri-donkey-walking/20211029024435?w=1024&h=768)
 
 
 以上京王れーるランド写真ダイジェストでした。
@@ -450,19 +450,19 @@ cSCC-oEb_QA
 
 流石に久しぶりと言えど10km程度だとしょぼいのでもっと歩きます。
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029164729)
+![](/blog/bikkuri-donkey-walking/20211029164729?w=1024&h=768)
 
 
 モノレールに沿って歩いて行くと多摩センターに着きます。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029164803 "逆電気通信大学 (電通大生はむしろオンラインをやりたがるので)")
+![](/blog/bikkuri-donkey-walking/20211029164803?w=1024&h=768 "逆電気通信大学 (電通大生はむしろオンラインをやりたがるので)")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029164853)
+![](/blog/bikkuri-donkey-walking/20211029164853?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029164908)
+![](/blog/bikkuri-donkey-walking/20211029164908?w=1024&h=768)
 
 
 モノレール沿いをずっと歩いていきます。
@@ -481,17 +481,17 @@ cSCC-oEb_QA
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029164927)
+![](/blog/bikkuri-donkey-walking/20211029164927?w=1024&h=768)
 
 
 **あれは……？**
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165029)
+![](/blog/bikkuri-donkey-walking/20211029165029?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165045)
+![](/blog/bikkuri-donkey-walking/20211029165045?w=1024&h=768)
 
 
 渡ります。
@@ -500,26 +500,26 @@ cSCC-oEb_QA
 
 ## 17:30 多摩センター駅
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165254 "多摩センター駅")
+![](/blog/bikkuri-donkey-walking/20211029165254?w=1200&h=846 "多摩センター駅")
 
 つきました！ **+4km** でした。1時間歩いていたらもうあたりはすっかり真っ暗になってしまいました。
 
  
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165405)
+![](/blog/bikkuri-donkey-walking/20211029165405?w=1024&h=768)
 
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165422 "うどん")
+![](/blog/bikkuri-donkey-walking/20211029165422?w=1024&h=768 "うどん")
 
 **うどん**を食べました。とろろゆず
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165514 "かわいい")
+![](/blog/bikkuri-donkey-walking/20211029165514?w=1024&h=768 "かわいい")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165442 "ベネッセ")
+![](/blog/bikkuri-donkey-walking/20211029165442?w=1024&h=768 "ベネッセ")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165453 "卵")
+![](/blog/bikkuri-donkey-walking/20211029165453?w=1024&h=768 "卵")
 
-![](https://res.cloudinary.com/trpfrog/blog/bikkuri-donkey-walking/20211029165554 "記念撮影")
+![](/blog/bikkuri-donkey-walking/20211029165554?w=1200&h=1160 "記念撮影")
 
 ということで今日は
 

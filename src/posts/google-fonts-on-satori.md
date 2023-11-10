@@ -19,7 +19,7 @@ description: >-
 
 このサイトでは OGP 生成に Next.js の `ImageResponse` を使っています。例えばこの記事の OGP 画像は https://trpfrog.net/blog/google-fonts-on-satori/og-image にあります。
 
-![](/blog/google-fonts-on-satori/og-image.png "生成例")
+![](/blog/google-fonts-on-satori/og-image?w=1200&h=630 "生成例")
 
 これらは記事ごとに手作業で作成しているのではなく、**自動的に生成**しているものです。これを実現するために Next.js の `ImageResponse` を使用しています。
 
@@ -166,7 +166,7 @@ const svg = await satori(
 fs.writeFileSync('output.svg', svg);
 ```
 
-![](/blog/google-fonts-on-satori/スクリーンショット_2023-10-03_22-46-44.png "Google Fonts を使って生成できている")
+![](/blog/google-fonts-on-satori/スクリーンショット_2023-10-03_22-46-44?w=1360&h=1042 "Google Fonts を使って生成できている")
 
 確かに Google Fonts を使って生成できていることが確認できました。
 

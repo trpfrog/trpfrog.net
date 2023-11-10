@@ -12,7 +12,7 @@ thumbnail: >-
 
 ## 2023年10月1日 (日) 23:55 調布市
 
-![](/blog/sea-of-clouds/65848AB4-2C68-4B80-B207-75A33EC7499C_1_102_o.jpg)
+![](/blog/sea-of-clouds/65848AB4-2C68-4B80-B207-75A33EC7499C_1_102_o?w=2048&h=1536)
 
 15時〜21時の6時間で仮眠を取り、調布へ向かいました。<br>
 お菓子をいろいろ買って出発します。
@@ -28,17 +28,17 @@ thumbnail: >-
 
 ## 10月2日 (月) 1:05 所沢航空記念公園
 
-![](/blog/sea-of-clouds/991BD534-4B5F-4307-A7B1-4873492D4CCC_1_102_o.jpg)
+![](/blog/sea-of-clouds/991BD534-4B5F-4307-A7B1-4873492D4CCC_1_102_o?w=2048&h=1536)
 
 時間があったので[**所沢航空記念公園**](https://www.parks.or.jp/tokorozawa-kokuu/)に寄り道しました。
 
-![飛行機の写真](/blog/sea-of-clouds/1FA078AF-0389-4E86-849E-FBA783522404_1_201_a.jpg)
+![飛行機の写真](/blog/sea-of-clouds/1FA078AF-0389-4E86-849E-FBA783522404_1_201_a?w=4032&h=3024)
 
 飛行機が所々にありました。
 
-![コバトンの写った看板](/blog/sea-of-clouds/1806F9E8-07C5-410F-85BC-86292704EFB2_1_102_o.jpg "コバトン")
+![コバトンの写った看板](/blog/sea-of-clouds/1806F9E8-07C5-410F-85BC-86292704EFB2_1_102_o?w=2048&h=1536 "コバトン")
 
-![](/blog/sea-of-clouds/498329E2-8EFD-4189-95A7-FD76454009FE_1_102_o.jpg "右は滑走路")
+![](/blog/sea-of-clouds/498329E2-8EFD-4189-95A7-FD76454009FE_1_102_o?w=2048&h=1536 "右は滑走路")
 
 結構広い公園で楽しそうでした。
 少しまわったら満足したので次に行きます。
@@ -46,14 +46,14 @@ thumbnail: >-
 
 ## 2:55 道の駅 果樹公園あしがくぼ
 
-![](/blog/sea-of-clouds/508A22F1-D632-4291-8356-623AD93D96F4_1_102_o.jpg)
+![](/blog/sea-of-clouds/508A22F1-D632-4291-8356-623AD93D96F4_1_102_o?w=2048&h=1536)
 
 秩父へと続く山道にある道の駅、[**道の駅 果樹公園あしがくぼ**](https://maps.app.goo.gl/ZYruSjG8336yjUi26) に着きました。<br>
 少しトイレ休憩をします。
 
-![トイレに「トイレットペーパー販売中　盗まれるほど人気な当駅のトイレットペーパー！ 1個80円」と書かれた張り紙が貼られている](/blog/sea-of-clouds/664F5ED2-28B1-4776-A598-2E6152F1B2D7_1_201_a.jpg "道の駅のトイレ 最高の瞬間")
+![トイレに「トイレットペーパー販売中　盗まれるほど人気な当駅のトイレットペーパー！ 1個80円」と書かれた張り紙が貼られている](/blog/sea-of-clouds/664F5ED2-28B1-4776-A598-2E6152F1B2D7_1_201_a?w=2960&h=2220 "道の駅のトイレ 最高の瞬間")
 
-![看板に「多少 誤差があります。どうぞ ゆ(ここに青い鳥の写真が入る)を」と書かれている](/blog/sea-of-clouds/C07AC7E1-8385-4D41-9EB2-ABF5FAABD0EB_1_201_a.jpg "穴埋めクイズ")
+![看板に「多少 誤差があります。どうぞ ゆ(ここに青い鳥の写真が入る)を」と書かれている](/blog/sea-of-clouds/C07AC7E1-8385-4D41-9EB2-ABF5FAABD0EB_1_201_a?w=2693&h=2020 "穴埋めクイズ")
 
 ```conversation
 つまみ: **穴埋めクイズ**がありますよ！この鳥の名前分かります？
@@ -63,9 +63,9 @@ thumbnail: >-
 
 実写の写真入れられたら鳥の名前当てクイズだと思うだろ
 
-![障害者専用駐車スペースに「健常者駐車禁止」と大きく赤文字で書かれた看板が置かれている](/blog/sea-of-clouds/1B30E7FC-366E-47BF-8418-DE100087242B_1_102_o.jpg "語気の強い看板")
+![障害者専用駐車スペースに「健常者駐車禁止」と大きく赤文字で書かれた看板が置かれている](/blog/sea-of-clouds/1B30E7FC-366E-47BF-8418-DE100087242B_1_102_o?w=1536&h=2048 "語気の強い看板")
 
-![](/blog/sea-of-clouds/9F7A550E-E6A4-42CF-A304-CBF5AB973A1E_1_102_o.jpg "歩道橋")
+![](/blog/sea-of-clouds/9F7A550E-E6A4-42CF-A304-CBF5AB973A1E_1_102_o?w=2048&h=1536 "歩道橋")
 
 ```conversation
 つまみ: あ！歩道橋があります！
@@ -75,25 +75,25 @@ thumbnail: >-
 つまみ: すみません、助手席で助手をしておらず
 ```
 
-![](/blog/sea-of-clouds/bridge.gif "良い橋 (3倍速)")
+![](/blog/sea-of-clouds/bridge?w=428&h=240 "良い橋 (3倍速)")
 
 暗闇の中で光り輝く橋がありました。良かったです。
 
 ## 4:10 秩父湖
 
-![](/blog/sea-of-clouds/18598206-13A6-4FE7-BF33-11644328AC6E_1_102_o.jpg "秩父湖")
+![](/blog/sea-of-clouds/18598206-13A6-4FE7-BF33-11644328AC6E_1_102_o?w=2048&h=1536 "秩父湖")
 
 **秩父湖**に着きました。トイレ休憩などをします。
 
-![](/blog/sea-of-clouds/C5ACA519-9B3B-408F-B7F2-E0AA0EDE893C_1_102_o.jpg "ダム方面")
+![](/blog/sea-of-clouds/C5ACA519-9B3B-408F-B7F2-E0AA0EDE893C_1_102_o?w=2048&h=1536 "ダム方面")
 
-![](/blog/sea-of-clouds/71FDA4AC-68BE-4AFC-8937-CF52836C62C9_1_102_o.jpg "流木無料配布")
+![](/blog/sea-of-clouds/71FDA4AC-68BE-4AFC-8937-CF52836C62C9_1_102_o?w=2048&h=1536 "流木無料配布")
 
-![](/blog/sea-of-clouds/88F8DA1E-1213-4010-B424-33779F103054_1_102_o.jpg)
+![](/blog/sea-of-clouds/88F8DA1E-1213-4010-B424-33779F103054_1_102_o?w=2048&h=1536)
 
 ## 4:50 三峰神社駐車場
 
-![細い人型に見える交通整理用の柵が灯の少ない駐車場の真ん中にポツンと立っている](/blog/sea-of-clouds/B02C40E1-DE66-42D2-A798-D7C347B1DD97_1_102_o.jpg)
+![細い人型に見える交通整理用の柵が灯の少ない駐車場の真ん中にポツンと立っている](/blog/sea-of-clouds/B02C40E1-DE66-42D2-A798-D7C347B1DD97_1_102_o?w=2048&h=1536)
 
 ```conversation
 つまみ: あそこに細いエイリアンがいますよ
@@ -102,9 +102,9 @@ thumbnail: >-
 りんりん: ？
 ```
 
-![自販機の最下列一列すべてに飲む冷麺 (おいしくないらしい, ごっち談) が並んでいる](/blog/sea-of-clouds/61087926-CA5D-4CB1-9156-91526FD31A8C_1_105_c.jpg "飲む冷麺の群生地")
+![自販機の最下列一列すべてに飲む冷麺 (おいしくないらしい, ごっち談) が並んでいる](/blog/sea-of-clouds/61087926-CA5D-4CB1-9156-91526FD31A8C_1_105_c?w=1024&h=768 "飲む冷麺の群生地")
 
-![階段を登るオタクの画像](/blog/sea-of-clouds/FE6BA6F9-7CA3-4CED-9A56-C3A685807E9E_1_105_c.jpg)
+![階段を登るオタクの画像](/blog/sea-of-clouds/FE6BA6F9-7CA3-4CED-9A56-C3A685807E9E_1_105_c?w=1024&h=768)
 
 進みます。
 
@@ -117,30 +117,30 @@ thumbnail: >-
 つまみ: 違うよね
 ```
 
-![](/blog/sea-of-clouds/11BEE1BB-D00C-4489-A2D7-CDFF968AF324_1_105_c.jpg)
+![](/blog/sea-of-clouds/11BEE1BB-D00C-4489-A2D7-CDFF968AF324_1_105_c?w=1024&h=768)
 
-![](/blog/sea-of-clouds/4678F1F2-1CF5-4EBB-96D8-4E3385E31638_1_105_c.jpg)
+![](/blog/sea-of-clouds/4678F1F2-1CF5-4EBB-96D8-4E3385E31638_1_105_c?w=1024&h=768)
 
 もう既にモクモクしていて期待が高まります。
 
-![](/blog/sea-of-clouds/E564713F-E30D-40CC-AFFB-43735D20279B_1_105_c.jpg)
+![](/blog/sea-of-clouds/E564713F-E30D-40CC-AFFB-43735D20279B_1_105_c?w=1024&h=768)
 
 そして階段を登ると……
 
 ## 5:15 三峰神社
 
-![](/blog/sea-of-clouds/clouds.gif) 
+![](/blog/sea-of-clouds/clouds?w=428&h=240) 
 
 ```centering-with-size
 2em
 **雲海がありました！！！！！！**
 ```
 
-![](/blog/sea-of-clouds/IMG_9929.jpg)
+![](/blog/sea-of-clouds/IMG_9929?w=2990&h=2242)
 
-![](/blog/sea-of-clouds/IMG_9942.jpg "？")
+![](/blog/sea-of-clouds/IMG_9942?w=4032&h=3024 "？")
 
-![](/blog/sea-of-clouds/4D386969-499C-431E-AB55-D96789E46A8F_1_105_c.jpg "標高 1076m")
+![](/blog/sea-of-clouds/4D386969-499C-431E-AB55-D96789E46A8F_1_105_c?w=1024&h=768 "標高 1076m")
 
 ```conversation
 ごっち: **ウオー！あったかくなってきました！** (半袖一枚) (外気温 12℃)
@@ -150,31 +150,31 @@ thumbnail: >-
 🔇 ごっち: ミュートしないでね
 ```
 
-![雲海を撮っている人を撮っている人を撮っている人を撮っている人](/blog/sea-of-clouds/C84B93AA-0D08-4DF7-9BA5-5A9CFDE4C1CD_1_201_a.jpg "もういいから")
+![雲海を撮っている人を撮っている人を撮っている人を撮っている人](/blog/sea-of-clouds/C84B93AA-0D08-4DF7-9BA5-5A9CFDE4C1CD_1_201_a?w=4032&h=3024 "もういいから")
 
-![](/blog/sea-of-clouds/dash.gif "もっと良い場所で日の出を見ようと周囲を探索したものの見つからず、慌てて元の場所に戻る人々<br> ***「おい！日の出は待ってくれないぞ！」***")
+![](/blog/sea-of-clouds/dash?w=428&h=240 "もっと良い場所で日の出を見ようと周囲を探索したものの見つからず、慌てて元の場所に戻る人々<br> ***「おい！日の出は待ってくれないぞ！」***")
 
-![](/blog/sea-of-clouds/849E1619-A0E7-45C2-A849-D48B1FF38323_1_105_c.jpg "日の出")
+![](/blog/sea-of-clouds/849E1619-A0E7-45C2-A849-D48B1FF38323_1_105_c?w=1024&h=768 "日の出")
 
 6:00 には日も昇ってきました。
 来たときよりは雲が減ってしまいましたが良い景色でした。来て良かった…………
 
 ## 6:05 参拝して帰る
 
-![](/blog/sea-of-clouds/3BE2B882-4CA2-4F6A-A02D-8ACC238487C6_1_102_o.jpg)
+![](/blog/sea-of-clouds/3BE2B882-4CA2-4F6A-A02D-8ACC238487C6_1_102_o?w=2048&h=1536)
 
 1時間弱見て満足したので、神社に参拝して帰ります。
 写真を撮り忘れてしまいましたが、**人感センサー付きの手水舎**があって良かったです。
 
-![](/blog/sea-of-clouds/9ACFBFDD-F39D-42C9-B027-8B54CB35B7F9_1_102_o.jpg)
+![](/blog/sea-of-clouds/9ACFBFDD-F39D-42C9-B027-8B54CB35B7F9_1_102_o?w=2048&h=1536)
 
-![](/blog/sea-of-clouds/B84CF6EA-535A-42BE-9ADC-928BBCED64EF_1_102_o.jpg "手打ちうどんそば")
+![](/blog/sea-of-clouds/B84CF6EA-535A-42BE-9ADC-928BBCED64EF_1_102_o?w=2048&h=1536 "手打ちうどんそば")
 
-![](/blog/sea-of-clouds/57D1607C-A08A-47DC-A1BE-10F728935480_1_102_o.jpg "だいぶ明るくなってきました")
+![](/blog/sea-of-clouds/57D1607C-A08A-47DC-A1BE-10F728935480_1_102_o?w=2048&h=1536 "だいぶ明るくなってきました")
 
-![](/blog/sea-of-clouds/A6BFED47-9913-4FF1-A77B-5DBD8E407E99_1_102_o.jpg)
+![](/blog/sea-of-clouds/A6BFED47-9913-4FF1-A77B-5DBD8E407E99_1_102_o?w=2048&h=1536)
 
-![](/blog/sea-of-clouds/0BE9F01F-FE7A-4BC5-B256-4CA4FE7249D0_1_201_a.jpg "雲海の中")
+![](/blog/sea-of-clouds/0BE9F01F-FE7A-4BC5-B256-4CA4FE7249D0_1_201_a?w=3118&h=2338 "雲海の中")
 
 ## 10:10 研究室
 

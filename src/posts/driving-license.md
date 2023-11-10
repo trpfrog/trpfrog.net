@@ -86,9 +86,9 @@ date: 2021-03-01
 tweet: 安全性テスト、<b>安全運転度D……</b>
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646322696/blog/driving-license/EvZLIg-UUAofwEu.jpg "チクチクリザルト")
+![](/blog/driving-license/EvZLIg-UUAofwEu?w=680&h=249 "チクチクリザルト")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646322688/blog/driving-license/EvZLmfaVEAE9RKy.jpg)
+![](/blog/driving-license/EvZLmfaVEAE9RKy?w=680&h=242)
 
 ```twitter-archived
 id: 1366296292020822018
@@ -3307,7 +3307,7 @@ date: 2022-02-28
 tweet: <b>免許取得‼️もう歩きません‼️‼️‼️</b>
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646319824/blog/driving-license/22A22BDA-B5DE-4D0C-B763-228616120231_1_105_c.jpg)
+![](/blog/driving-license/22A22BDA-B5DE-4D0C-B763-228616120231_1_105_c?w=886&h=886)
 
 ということで無事合格しました！！！！**早く受ければよかった！！！！**
 
@@ -3328,146 +3328,146 @@ tweet: ということで<B>免許取得記念で調布まで歩いて帰る</B>
 そういうわけで (どういうわけで？) **調布まで歩いて帰ります。**
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320384/blog/driving-license/IMG_7695.jpg "今日のルート")
+![](/blog/driving-license/IMG_7695?w=828&h=1145 "今日のルート")
 
 ### 14:35 武蔵野公園
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320525/blog/driving-license/9C724C30-3274-4F49-8F99-EA5CCFA0E22C_1_105_c.jpg)
+![](/blog/driving-license/9C724C30-3274-4F49-8F99-EA5CCFA0E22C_1_105_c?w=1024&h=768)
 
 **武蔵野公園**です。鳥の写真を撮っている人が結構いました。僕は見つけられませんでしたが……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320529/blog/driving-license/08C37F86-03F1-4AA3-94DC-F400162250EB_1_105_c.jpg)
+![](/blog/driving-license/08C37F86-03F1-4AA3-94DC-F400162250EB_1_105_c?w=1024&h=768)
 
 ちょっと歩くと野川につきました。景色が良さそうだったのでここで「免許取ったぞ！」写真を撮ります。
 
 ### 14:50 野川 (武蔵野公園付近) 出発
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/79516846-ABA1-42F6-8ECC-A1FAE41587F8_1_105_c.jpg)
+![](/blog/driving-license/79516846-ABA1-42F6-8ECC-A1FAE41587F8_1_105_c?w=1024&h=768)
 
 川沿いに進んでいきます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/2715F991-4D50-496C-A0C6-7347D3F61BE5_1_105_c.jpg "橋")
+![](/blog/driving-license/2715F991-4D50-496C-A0C6-7347D3F61BE5_1_105_c?w=768&h=1024 "橋")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/4D4E9128-2EB1-4D4F-90B2-20B12B7CD3D7_1_105_c.jpg)
+![](/blog/driving-license/4D4E9128-2EB1-4D4F-90B2-20B12B7CD3D7_1_105_c?w=1024&h=768)
 
 ### 15:00 野川公園
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/6950D2CC-1AC6-4DF1-80ED-0DA50580656A_1_105_c.jpg)
+![](/blog/driving-license/6950D2CC-1AC6-4DF1-80ED-0DA50580656A_1_105_c?w=1024&h=768)
 
 「橋の下を通ると上に出られなくなる」と思い**わざわざ橋の上を通ってきた**のですが、下に道があるあたり潜っても良かったみたいです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/FB0BFB6F-8C2C-4413-ACCE-26782B6DCD92_1_105_c.jpg "芝生")
+![](/blog/driving-license/FB0BFB6F-8C2C-4413-ACCE-26782B6DCD92_1_105_c?w=1024&h=768 "芝生")
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320253/blog/driving-license/9284CB01-51AE-4BB2-A65B-AF208369A9F6_1_105_c.jpg "Rhm_mole")
+![](/blog/driving-license/9284CB01-51AE-4BB2-A65B-AF208369A9F6_1_105_c?w=1024&h=768 "Rhm_mole")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320251/blog/driving-license/B492A659-4EB3-4A18-86EF-895F59736E2E_1_105_c.jpg "何度か見たけどこれすき")
+![](/blog/driving-license/B492A659-4EB3-4A18-86EF-895F59736E2E_1_105_c?w=1024&h=768 "何度か見たけどこれすき")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320252/blog/driving-license/265AADC0-6D75-455C-A673-CA726A0DFEFE_1_105_c.jpg "進みます")
+![](/blog/driving-license/265AADC0-6D75-455C-A673-CA726A0DFEFE_1_105_c?w=1024&h=768 "進みます")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320252/blog/driving-license/5FC97531-0B3E-4877-84DC-5570F62BA817_1_105_c.jpg "デカい道路")
+![](/blog/driving-license/5FC97531-0B3E-4877-84DC-5570F62BA817_1_105_c?w=1024&h=768 "デカい道路")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320253/blog/driving-license/171B318C-7067-442C-B076-240F47378B0A_1_105_c.jpg "うんこシェイプ (2回目)")
+![](/blog/driving-license/171B318C-7067-442C-B076-240F47378B0A_1_105_c?w=1024&h=768 "うんこシェイプ (2回目)")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320252/blog/driving-license/BDE7F714-47B6-476B-A79E-90C6444F53EC_1_105_c.jpg "中に鬼がいそう")
+![](/blog/driving-license/BDE7F714-47B6-476B-A79E-90C6444F53EC_1_105_c?w=1024&h=768 "中に鬼がいそう")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320253/blog/driving-license/8DCEB921-4065-4DB5-8DEF-61925269A347_1_105_c.jpg "出口")
+![](/blog/driving-license/8DCEB921-4065-4DB5-8DEF-61925269A347_1_105_c?w=1024&h=768 "出口")
 
 野川公園を出ます。
 
 ### 15:35 野川 (野川公園付近)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320254/blog/driving-license/2AE9FF15-E9E3-4359-B30F-7D84856EAC6A_1_105_c.jpg "良い散歩道")
+![](/blog/driving-license/2AE9FF15-E9E3-4359-B30F-7D84856EAC6A_1_105_c?w=1024&h=768 "良い散歩道")
 
 楽しい道を歩きます。そういえばもう気がついてる方もいるかもしれませんが、ここのルートは[多摩湖に行く回](https://trpfrog.net/blog/entry/tama-lake-walking)とほぼ被っています。逆走する形ですね。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646321594/blog/driving-license/06CE1DD3-4BEE-4DCF-ABE3-EF07F8E41DDC "淵野アタリ水上歩行ゾーン")
+![](/blog/driving-license/06CE1DD3-4BEE-4DCF-ABE3-EF07F8E41DDC?w=4032&h=3024 "淵野アタリ水上歩行ゾーン")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320252/blog/driving-license/06CE1DD3-4BEE-4DCF-ABE3-EF07F8E41DDC_1_201_a "バサバサ")
+![](/blog/driving-license/06CE1DD3-4BEE-4DCF-ABE3-EF07F8E41DDC_1_201_a?w=853&h=640 "バサバサ")
 
 ### 15:40 飛石があるところ
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320258/blog/driving-license/776F2C77-8E90-4CF9-B0F2-141EFBF68FE9_1_105_c.jpg "飛石")
+![](/blog/driving-license/776F2C77-8E90-4CF9-B0F2-141EFBF68FE9_1_105_c?w=1024&h=768 "飛石")
 
 ```centering
 あ！！！！！！
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320254/blog/driving-license/5778814A-CCEF-4317-8176-955518F56ABF_1_105_c.jpg "渡ります。")
+![](/blog/driving-license/5778814A-CCEF-4317-8176-955518F56ABF_1_105_c?w=1024&h=768 "渡ります。")
 
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320255/blog/driving-license/A1AD16DB-C1F0-47BC-AE63-271E8FFDB1FF_1_105_c.jpg "お！")
+![](/blog/driving-license/A1AD16DB-C1F0-47BC-AE63-271E8FFDB1FF_1_105_c?w=1024&h=768 "お！")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320254/blog/driving-license/A4B3C98A-0D84-4B4C-8B44-37E3A55E9269_1_105_c.jpg "渡る")
+![](/blog/driving-license/A4B3C98A-0D84-4B4C-8B44-37E3A55E9269_1_105_c?w=1024&h=768 "渡る")
 
 
 ### 15:45 水車
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320255/blog/driving-license/ECAC8A8E-C2B6-499B-9000-C92B59B72346_1_105_c.jpg)
+![](/blog/driving-license/ECAC8A8E-C2B6-499B-9000-C92B59B72346_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320256/blog/driving-license/0EC92282-083B-4B15-9D56-BAA4E1B63240_1_105_c.jpg)
+![](/blog/driving-license/0EC92282-083B-4B15-9D56-BAA4E1B63240_1_105_c?w=1024&h=768)
 
 良い雰囲気でした。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320257/blog/driving-license/0AC344D7-5FCB-4165-94CC-AB5F5F31AF58_1_105_c.jpg "鳥がいた")
+![](/blog/driving-license/0AC344D7-5FCB-4165-94CC-AB5F5F31AF58_1_105_c?w=1024&h=768 "鳥がいた")
 
 
 ### 15:55 野川大沢調節池
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320255/blog/driving-license/9C9D409D-DDFC-44EF-8BA5-2F778B10C1C8_1_105_c.jpg)
+![](/blog/driving-license/9C9D409D-DDFC-44EF-8BA5-2F778B10C1C8_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320254/blog/driving-license/B6C8A83D-A860-4CEA-A7A4-D445D3E29EDF_1_105_c.jpg "広い！")
+![](/blog/driving-license/B6C8A83D-A860-4CEA-A7A4-D445D3E29EDF_1_105_c?w=1024&h=768 "広い！")
 
 とても広いです。前までこんなのありましたか？
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320258/blog/driving-license/9A820CF0-9A13-4A3E-911A-F02BBC3885AA_1_102_o.jpg "パノラマ")
+![](/blog/driving-license/9A820CF0-9A13-4A3E-911A-F02BBC3885AA_1_102_o?w=3736&h=840 "パノラマ")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320255/blog/driving-license/113EA90D-1098-42D3-A35B-293A79A02B72_1_105_c.jpg "看板")
+![](/blog/driving-license/113EA90D-1098-42D3-A35B-293A79A02B72_1_105_c?w=1024&h=768 "看板")
 
 どうやら最近できたみたいですね。**調節池**らしいです。普段はサッカー・野球・テニスのコートとして使われるらしいです。
 
 先に進みます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320257/blog/driving-license/3C8C6CAC-BF08-48E0-8EEC-9E0BAD65600E_1_105_c.jpg "おもしろポイント")
+![](/blog/driving-license/3C8C6CAC-BF08-48E0-8EEC-9E0BAD65600E_1_105_c?w=1024&h=768 "おもしろポイント")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320257/blog/driving-license/D9989966-C8F1-48E5-889F-53289EA7A6EE_1_105_c.jpg)
+![](/blog/driving-license/D9989966-C8F1-48E5-889F-53289EA7A6EE_1_105_c?w=1024&h=768)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320257/blog/driving-license/8010E474-DDEE-4DEF-89F7-B83FA637600B_1_105_c.jpg "これ前も撮った気がするな")
+![](/blog/driving-license/8010E474-DDEE-4DEF-89F7-B83FA637600B_1_105_c?w=1024&h=768 "これ前も撮った気がするな")
 
 ここも歩いてみたいですね。**歩くことを歓迎している感じはしませんが……**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320256/blog/driving-license/1CFA6356-31F8-4ECA-823A-38F169FC2AA5_1_105_c.jpg "進みます")
+![](/blog/driving-license/1CFA6356-31F8-4ECA-823A-38F169FC2AA5_1_105_c?w=1024&h=768 "進みます")
 
 ### 16:25 野川を出る
 
 川沿いを出て調布駅に向かいます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320257/blog/driving-license/288F095D-9B1E-4253-8F20-5584E076EA65_1_105_c.jpg "お前は！！！！")
+![](/blog/driving-license/288F095D-9B1E-4253-8F20-5584E076EA65_1_105_c?w=1024&h=768 "お前は！！！！")
 
 僕が落ちたブランコがありました。許せん！！！！(自業自得)
 
 ### 16:40 電気通信大学
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320258/blog/driving-license/0B155D94-8C4B-4B9C-8B8F-DAA9DC03BF8C_1_105_c.jpg "ドーム")
+![](/blog/driving-license/0B155D94-8C4B-4B9C-8B8F-DAA9DC03BF8C_1_105_c?w=1024&h=768 "ドーム")
 
 大学まで来ました。この写真を「**オタクがたくさん詰まってるところだ！**」とツイートしたところ、**鍵引用RTがついて怖くて泣いてしまいました。**
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320258/blog/driving-license/3481443F-8EC2-49C4-9598-E412FB4D6DD0_1_105_c.jpg "ログボポイント")
+![](/blog/driving-license/3481443F-8EC2-49C4-9598-E412FB4D6DD0_1_105_c?w=1024&h=768 "ログボポイント")
 
 ### 16:55 調布駅
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320258/blog/driving-license/EEA6C5A9-4CF6-400E-80D6-32AD320FF6ED_1_105_c.jpg)
+![](/blog/driving-license/EEA6C5A9-4CF6-400E-80D6-32AD320FF6ED_1_105_c?w=1024&h=768)
 
 ということで調布駅につきました。ここからは電車を使って帰ろうと思います。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320259/blog/driving-license/9C68F6D6-2E9B-4B1D-B8EF-F356B2535409_1_105_c.jpg "6.85km歩きました")
+![](/blog/driving-license/9C68F6D6-2E9B-4B1D-B8EF-F356B2535409_1_105_c?w=1024&h=768 "6.85km歩きました")
 
 ということで今日は武蔵野公園から調布駅まで歩く記事でした。**いかがでしたか？**
 
 それでは次回の徒歩記事でお会いしましょう！さようなら
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646320259/blog/driving-license/11F8AD9E-67AA-466A-8222-75187D133A19_1_105_c.jpg "食べた、うまい")
+![](/blog/driving-license/11F8AD9E-67AA-466A-8222-75187D133A19_1_105_c?w=1024&h=768 "食べた、うまい")
 
 
 

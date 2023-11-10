@@ -9,7 +9,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 <span style="font-size: 2em">**つまみさん誕生日おめでとう！！！！！！**</span>
 
-![oni](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.webp)
+![oni](/blog/birthday-21/oni?w=768&h=1024)
 
 と言うことで**21歳**になってしまいました。うぎゃー！
 
@@ -26,7 +26,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 ## ナカバヤシ デスクオーガナイザー M
 
-![desk1](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/desk1.webp)
+![desk1](/blog/birthday-21/desk1?w=1536&h=2048)
 
 [デギ3bittoさん](https://twitter.com/degui_3bitto)から頂きました！ありがとうございます。
 
@@ -34,7 +34,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 
 
-![desk2](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/desk2.webp)
+![desk2](/blog/birthday-21/desk2?w=2048&h=1536)
 
 こんな感じ。平べったく1枚にできるので大学で使ったら便利そう。
 
@@ -55,7 +55,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 [マトーサン](https://twitter.com/mato1370)から頂きました！こちらも欲しいものリストから。うれし〜！
 
-![jaga](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/jaga.webp)
+![jaga](/blog/birthday-21/jaga?w=2000&h=1500)
 
 >   お誕生日おめでとうございます！<br>
 >   これでも食べて徒歩部頑張って下さい！<br>
@@ -69,7 +69,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 [ねぎ一世さん](https://twitter.com/negiissei)から頂きました！こちらも欲しいものリストから。**うひょ〜！**
 
-![butamen](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/butamen.webp)
+![butamen](/blog/birthday-21/butamen?w=2048&h=1536)
 
 >   イケメンには早すぎたカナ？^^;
 
@@ -81,13 +81,13 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 [ねぎ一世さん](https://twitter.com/negiissei) + [Shunkoさん](https://twitter.com/chikuwabutenshi) から頂きました！
 
-![handle1](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/handle1.webp)
+![handle1](/blog/birthday-21/handle1?w=2048&h=1536)
 
 **<span style="font-size: 1.5em"> は？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？**</span>
 
 
 
-![handle2](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/handle2.webp)
+![handle2](/blog/birthday-21/handle2?w=2048&h=1536)
 
 **<span style="font-size: 1.5em"> ？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？**</span>
 
@@ -103,7 +103,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 **電気通信大学エクレア研究部**の[ごっちさん](https://twitter.com/_nil_a_)から頂きました！
 
-![trpfrog](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/trpfrog.webp)
+![trpfrog](/blog/birthday-21/trpfrog?w=2000&h=1500)
 
 お酒飲まないけどこういうの好きなのでわくわくしますね！ありがとうございます。
 
@@ -117,17 +117,17 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 [たなかさん](https://twitter.com/tnak10114101)から頂きました！ありがとうございます。
 
-![tea](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/tea.webp)
+![tea](/blog/birthday-21/tea?w=2048&h=1536)
 
 ところでコップも後でくるらしいです。
 
-![cup](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/cup.webp)
+![cup](/blog/birthday-21/cup?w=653&h=353)
 
 ということで待っていると……
 
 <div style="height: 400px"></div>
 
-![urine1](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/urine1.webp)
+![urine1](/blog/birthday-21/urine1?w=2048&h=1536)
 
 <span style="font-size: 4em">**え？**</span>
 
@@ -135,7 +135,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 ## PiP HEALTH 透明尿器 専用洗浄ブラシ付
 
-![urine2](https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/urine2.webp)
+![urine2](/blog/birthday-21/urine2?w=2000&h=1500)
 
 <span style="font-size: 2em">**なんで？**</span>
 

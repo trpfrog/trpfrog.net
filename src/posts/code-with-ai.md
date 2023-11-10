@@ -25,7 +25,7 @@ https://qiita.com/advent-calendar/2022/nyobi
 [ChatGPT](https://chat.openai.com) は OpenAI の開発したチャットボットです。とても賢くてすごいので、
 連日ツイッターでは ChatGPT とのやりとりのスクリーンショットが流れてきます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671075926/blog/code-with-ai/chatgpt-intro.jpg "ChatGPTとの対話の様子 (めちゃくちゃ喋るな……)")
+![](/blog/code-with-ai/chatgpt-intro?w=1902&h=1136 "ChatGPTとの対話の様子 (めちゃくちゃ喋るな……)")
 
 もし **ChatGPT を初めて知ったよ！** という方がいれば**今すぐ** OpenAI の ID を取得して ChatGPT を使ってみてください。
 面倒だから登録したくないぜ……！という方も Twitter でバズっている ChatGPT 関連のツイートを見てみてください。
@@ -52,7 +52,7 @@ https://qiita.com/advent-calendar/2022/nyobi
 
 と言ってみます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671072041/blog/code-with-ai/chatgpt3.jpg)
+![](/blog/code-with-ai/chatgpt3?w=1906&h=2432)
 
 **適切な答えが返ってきました。**
 
@@ -97,7 +97,7 @@ https://qiita.com/advent-calendar/2022/nyobi
 
 ### Case 1: とりあえず補完してもらう
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671070686/blog/code-with-ai/copilot2.jpg)
+![](/blog/code-with-ai/copilot2?w=1116&h=250)
 
 これはエディタにインストールするタイプの AI ツール (後述) 限定の機能ですが、一番よくある (というか勝手にやられる) 使い方です。
 
@@ -141,7 +141,7 @@ const result = array.slice(startIndex + 1, endIndex);
 console.log(result); // ["3", "4", "5"]
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671072041/blog/code-with-ai/chatgpt4.jpg)
+![](/blog/code-with-ai/chatgpt4?w=1842&h=2120)
 
 一発で目的のコードが出てきました！しかし先ほど「提案してくるコードが誤っている場合があるので、必ずコードの確認はしてください」と書きました。
 ですので、ここで知った関数について JavaScript の公式ドキュメントを調べてみましょう。
@@ -160,7 +160,7 @@ console.log(result); // ["3", "4", "5"]
 
 これは他のコード生成サービス (後述) でも使うことができます。例えば GitHub Copilot では次のような使い方ができます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671075003/blog/code-with-ai/copilot3.jpg)
+![](/blog/code-with-ai/copilot3?w=1706&h=300)
 
 コメントに処理したい内容を書いて改行、しばらく待つと候補が出てきます。これを使えばブラウザを開かずともエディタ上で推論してもらうことができて便利です。
 
@@ -170,7 +170,7 @@ console.log(result); // ["3", "4", "5"]
 
 ### Tabnine
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671070057/blog/code-with-ai/tabnine.jpg)
+![](/blog/code-with-ai/tabnine?w=2704&h=1574)
 
 <div class="link-area">
 
@@ -183,7 +183,7 @@ Tabnine 社の AI コーディング支援ツールです。独自でトレー�
 
 以前は学生無料だったはずだったのですが無くなってしまいました。残念
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671070213/blog/code-with-ai/tabnine2.jpg)
+![](/blog/code-with-ai/tabnine2?w=1208&h=416)
 
 エディタにプラグインとしてインストールして使います。
 入力候補がポップアップの中に出てくるので邪魔にならなくて良いです。
@@ -192,7 +192,7 @@ Tabnine 社の AI コーディング支援ツールです。独自でトレー�
 
 ### GitHub Copilot
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671070400/blog/code-with-ai/copilot.jpg)
+![](/blog/code-with-ai/copilot?w=2410&h=1900)
 
 <div class="link-area">
 
@@ -203,7 +203,7 @@ Tabnine 社の AI コーディング支援ツールです。独自でトレー�
 GitHub 社の AI コーディング支援ツールです。OpenAI Codex (OpenAI GPT-3 をコード生成向けに改良したもの) を使っているみたいです。
 Tabnine 同様にエディタにプラグインとしてインストールして使います。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671070686/blog/code-with-ai/copilot2.jpg)
+![](/blog/code-with-ai/copilot2?w=1116&h=250)
 
 GitHub Copilot はエディタにそのまま介入してきて入力候補を提示してきます。
 <kbd>Ctrl</kbd> + <kbd>[</kbd>, <kbd>Ctrl</kbd> + <kbd>]</kbd> で別の候補を見ることもできます。
@@ -216,7 +216,7 @@ GitHub Copilot はエディタにそのまま介入してきて入力候補を�
 
 ### AI Programmer
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671071140/blog/code-with-ai/aiprog.jpg)
+![](/blog/code-with-ai/aiprog?w=2994&h=1364)
 
 <div class="link-area">
 
@@ -227,11 +227,11 @@ GitHub Copilot はエディタにそのまま介入してきて入力候補を�
 
 こちらは Tabnine や GitHub Copilot とは異なって Web アプリケーションです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671071141/blog/code-with-ai/aiprog1.jpg)
+![](/blog/code-with-ai/aiprog1?w=1866&h=880)
 
 書かせたいコードの内容を説明すると、
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671071143/blog/code-with-ai/aiprog2.jpg)
+![](/blog/code-with-ai/aiprog2?w=2218&h=1688)
 
 コードを書いてくれます。
 実は OpenAI GPT-3 (めっちゃ強い言語モデル) のフロントエンドなので、性能はかなり良いです。
@@ -239,7 +239,7 @@ GitHub Copilot はエディタにそのまま介入してきて入力候補を�
 
 ### OpenAI ChatGPT
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671071907/blog/code-with-ai/chatgpt.jpg)
+![](/blog/code-with-ai/chatgpt?w=2368&h=1600)
 
 <div class="link-area">
 
@@ -254,11 +254,11 @@ OpenAI が先日公開したばかりのチャットボットです。OpenAI は
 
 チャットボットなので自然言語でのやり取りができます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671071908/blog/code-with-ai/chatgpt2.jpg)
+![](/blog/code-with-ai/chatgpt2?w=1984&h=1354)
 
 ChatGPT にはコーディングに関する質問をすることもできます。例えば以下のようになります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671072041/blog/code-with-ai/chatgpt3.jpg)
+![](/blog/code-with-ai/chatgpt3?w=1906&h=2432)
 
 コードを提示してくるだけでなく、内容について説明もしてくれます。便利です。
 
@@ -827,9 +827,9 @@ if __name__ == '__main__':
 
 そして最終的にはこのように推論できました。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671024616/blog/code-with-ai/myplot2.png "最終的な推論結果 (オレンジが正解、青が予測、横軸が $x$、縦軸が $f(x) = x^2$)")
+![](/blog/code-with-ai/myplot2?w=640&h=480 "最終的な推論結果 (オレンジが正解、青が予測、横軸が $x$、縦軸が $f(x) = x^2$)")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1671024616/blog/code-with-ai/myplot1.png "各段階での推論結果 (濃い方が新しい)")
+![](/blog/code-with-ai/myplot1?w=640&h=480 "各段階での推論結果 (濃い方が新しい)")
 
 このように徐々にパラメータを変化させ、正解に近づけることをパラメータの**学習**と言います。なので、**学習されるパラメータ** はそれぞれを徐々に変化させることによって勝手に決まるものなんだな〜と思ってください。
 

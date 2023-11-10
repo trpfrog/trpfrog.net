@@ -68,7 +68,7 @@ GitHub Pages は**なぜかデプロイされない**<sup>※1</sup>、**リポ�
 https://github.com/signup
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1645455913/blog/make-your-website/github.png "GitHubに登録")
+![](/blog/make-your-website/github?w=1080&h=430 "GitHubに登録")
 
 **登録は適当にやっていただいて**、次にリポジトリを作ります。
 
@@ -76,11 +76,11 @@ https://github.com/signup
 
 ホームページのファイル置き場となるリポジトリを作ります。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1645470421/blog/make-your-website/new-repo.jpg "リポジトリの作成")
+![](/blog/make-your-website/new-repo?w=2160&h=1888 "リポジトリの作成")
 
 `New` を押すとリポジトリを作ることができます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1645470566/blog/make-your-website/new-repo2.png)
+![](/blog/make-your-website/new-repo2?w=2722&h=2396)
 
 上のように打って `Create Repository` を押しましょう。**リポジトリ名はなんでも良い**です。僕は `trpfrog.net` にしています。
 
@@ -141,23 +141,23 @@ Mac なら <span class="purple-btn md-btn">Download for macOS</span> みたい�
 
 さて、無事インストールできるとこんな感じの画面が出てくると思います。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646660764/blog/make-your-website/trpfrog-net-repo.png "ちょっと違うけど")
+![](/blog/make-your-website/trpfrog-net-repo?w=2388&h=1674 "ちょっと違うけど")
 
 実際はチュートリアルが出てくるはずなので違う画面だとは思いますが、雰囲気で乗り切ってください (ひどい)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646660981/blog/make-your-website/repo-menu.png)
+![](/blog/make-your-website/repo-menu?w=2388&h=1674)
 
 左上をクリックするとこんな感じのメニューが出ます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646660760/blog/make-your-website/clone-a-repo-menu.png)
+![](/blog/make-your-website/clone-a-repo-menu?w=1696&h=716)
 
 <span class="gray-btn md-btn"> Add</span> → Clone repository から……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646660763/blog/make-your-website/clone-a-repo.png)
+![](/blog/make-your-website/clone-a-repo?w=2388&h=1674)
 
 先ほど作成したリポジトリ (先ほどの画像の例ならば `homepage` ) を選びます。ここで **Local Path の部分を覚えておいてください** ((説明に載せた画像の場合は `/Users/trpfrog/Projects/trpfrog.net` ですが、ディレクトリ名にピリオドがつくのはあまり好ましくないので `_` とかにしておくと無難だと思います。))。あとで開きます。覚えたら <span class="blue-btn md-btn">Clone</span> します。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646660764/blog/make-your-website/trpfrog-net-repo.png)
+![](/blog/make-your-website/trpfrog-net-repo?w=2388&h=1674)
 
 次にサーバーと同期をします。右上の <span class="black-btn md-btn">Fetch origin</span> を押します。
 
@@ -176,7 +176,7 @@ HTMLファイルのファイル名は `index.html` にしておくと例えば `
 `profile` フォルダの中に `index.html` を入れると `https://trpfrog.net/profile/` でアクセスすることができます。 
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646661868/blog/make-your-website/commit-window.png "画像だとhtmlファイルではないがこんな感じ")
+![](/blog/make-your-website/commit-window?w=2014&h=1696 "画像だとhtmlファイルではないがこんな感じ")
 
 好きなだけ突っ込んで満足したら**ファイルをアップロードします**。
 
@@ -184,7 +184,7 @@ GitHub Desktop に戻って左下の部分から**コミットメッセージ**(
 
 このままではまだ公開できていません！**最後に右上の** <span class="black-btn md-btn">Push origin</span> **を押します**。これでGitHubに変更が記録されました！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646699567/blog/make-your-website/github-uploaded.png "こんなにファイルは多くないだろうけども")
+![](/blog/make-your-website/github-uploaded?w=2134&h=2044 "こんなにファイルは多くないだろうけども")
 
 GitHub のリポジトリに戻ってみましょう。きっと先ほどのファイルがアップロードされたはずです。**これでサイトを公開する準備ができました。**
 
@@ -232,13 +232,13 @@ https://vercel.com/
   - つまみネットも Next.js 製で Vercel でデプロイしている
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646663560/blog/make-your-website/vercel-top.png)
+![](/blog/make-your-website/vercel-top?w=1073&h=870)
 
 ログインするとおそらくこんな感じの画面が出るはずです。出なければ **Import Git Repository** の真下の(画像では)TrpFrogとなっている部分をクリックして**それっぽいもの**を選んでください。
 
 できたら自分のウェブサイトのリポジトリ名の隣の <span class="blue-btn md-btn">Import</span> を押してください。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646664017/blog/make-your-website/vercel-settings.png)
+![](/blog/make-your-website/vercel-settings?w=1069&h=870)
 
 Import するとおそらくこの画面が出ます。プロジェクト名を好きなものに設定して <span class="blue-btn md-btn">Deploy</span> を押しましょう。**他の操作はいりません。**
 
@@ -253,7 +253,7 @@ Import するとおそらくこの画面が出ます。プロジェクト名を�
 どちらもそこまで[凝ったこと](https://trpfrog.net/blog/entry/otaku-discord)をしないのであれば使わなくて良いです。
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646665052/blog/make-your-website/vercel-built.png)
+![](/blog/make-your-website/vercel-built?w=2476&h=1812)
 
 
 うまく Deploy ができれば**サイトが公開されます！** **簡単すぎ！** 他の人とプロジェクト名が被っていなければ https://*プロジェクト名*.vercel.app で公開されると思います。被っている場合は知りません……(被ったことがないので)
@@ -280,7 +280,7 @@ Import するとおそらくこの画面が出ます。プロジェクト名を�
 買うところによっては値段が違うのですが、[Cloudflare Registrar](https://www.cloudflare.com/ja-jp/products/registrar/)
 だとめちゃくちゃ安いです。特に **.com** ドメインは脅威の **985** 円！(2022-02-22 現在)
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1645452273/blog/make-your-website/tamanegiissei.png "正気？")
+![](/blog/make-your-website/tamanegiissei?w=780&h=318 "正気？")
 
 今日は **[Google Domains](https://domains.google)** でのドメインの買い方について紹介します。
 日本語で使えるし、あの超有名なGoogle先生ですからね。Cloudflare も同じような流れで買えるので値段重視の人はそっちでも良いです。**僕は昨日 Cloudflare で本名ドメインを買いました**、ウフフ <small> ~~就活用捨てアドレスを大量に作るのに使えますね！(カス)~~ </small>
@@ -291,23 +291,23 @@ Import するとおそらくこの画面が出ます。プロジェクト名を�
 
 さて、**[Google Domains](https://domains.google)** にアクセスするとこんな画面が出てくると思います。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646692358/blog/make-your-website/gdomains.png "Google Domains")
+![](/blog/make-your-website/gdomains?w=2992&h=1466 "Google Domains")
 
 検索ボックスに買いたいドメインを入れてみましょう！例えば `kasana-chan.なんとか` が欲しいとします。
 `kasana-chan` を入れて検索、「すべての末尾」を押すと……
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646692359/blog/make-your-website/gdomains-search.png)
+![](/blog/make-your-website/gdomains-search?w=2996&h=2120)
 
 いろいろな末尾のドメインが出てきました！**見た目**と**値段**から判断して欲しいドメインを買いましょう！
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646692468/blog/make-your-website/gdomains-purchase.png)
+![](/blog/make-your-website/gdomains-purchase?w=2146&h=2130)
 
 さて、購入画面に移ります。ここで<b>「プライバシー保護が有効です」にチェックがついていることを確認してください</b>。「WHOIS公開代行」のことです。これにチェックをつけないと**住所を含めた個人情報が公開されてしまいます**。また、この表示がないドメインは恐らく公開代行に対応していないのでやめた方が良いです。
 <small>本名で活動している、住所も明かしている([フリー住所](https://www.uec.ac.jp/campus/welfare/)に住んでいる)場合は良いかもしれませんが……</small>
 
 初めての登録の場合は住所など必要な情報も入力して購入しましょう。購入には Google Pay が使えるはずです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694020/blog/make-your-website/gdomains-completed.png "購入完了！")
+![](/blog/make-your-website/gdomains-completed?w=2376&h=1562 "購入完了！")
 
 購入が完了するとこんな画面が出ます。
 
@@ -315,15 +315,15 @@ Import するとおそらくこの画面が出ます。プロジェクト名を�
 
 次に Vercel の方でドメインの設定をします。あとで Google Domains に戻ってくるので、新しいタブかウィンドウで Vercel を開いてください。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694020/blog/make-your-website/vercel-top-2.png "プロジェクトを選んで")
+![](/blog/make-your-website/vercel-top-2?w=2350&h=1338 "プロジェクトを選んで")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694019/blog/make-your-website/vercel-to-settings.png "設定から")
+![](/blog/make-your-website/vercel-to-settings?w=2362&h=786 "設定から")
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694019/blog/make-your-website/vercel-domains.png "Domains を選ぶ")
+![](/blog/make-your-website/vercel-domains?w=2192&h=1142 "Domains を選ぶ")
 
 という感じでまずドメインの設定を開きます。次に上の画像の `mywebsite.com` のところに自分のドメインを入力してください。サブドメイン (`walk.trpfrog.net` みたいな) でも良いです。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694019/blog/make-your-website/add-domains.png)
+![](/blog/make-your-website/add-domains?w=990&h=1108)
 
 `trpfrog.net` のようなドメイン (ネイキッドドメイン) を入力すると上のような画面が出ます。
 
@@ -345,11 +345,11 @@ Import するとおそらくこの画面が出ます。プロジェクト名を�
 
 さて、このままだと**なんと Vercel に怒られます**。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646694019/blog/make-your-website/vercel-add-cname.png "Invalid Configuration!")
+![](/blog/make-your-website/vercel-add-cname?w=1588&h=1006 "Invalid Configuration!")
 
 これは Google Domains 側での設定をしていないためです。親切にもこの画面にやり方が書いてあるので参考にしながら作業を進めます。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646695452/blog/make-your-website/dns-settings.png "Google Domains で DNS の設定")
+![](/blog/make-your-website/dns-settings?w=2674&h=1712 "Google Domains で DNS の設定")
 
 Google Domains に戻ります。次の操作を行いましょう。
 
@@ -362,7 +362,7 @@ Google Domains に戻ります。次の操作を行いましょう。
 
 Vercel に戻りましょう。
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646695884/blog/make-your-website/dns-completed.png)
+![](/blog/make-your-website/dns-completed?w=797&h=301)
 
 エラーが消えて画像のようになっていれば登録完了です！もし反映されない場合は Refresh をクリックしてみてください。
 
@@ -370,7 +370,7 @@ Vercel に戻りましょう。
 🎉 **これであなたのドメインでサイトにアクセスできるようになりました！** 🎉
 ```
 
-![](https://res.cloudinary.com/trpfrog/image/upload/v1646698469/blog/make-your-website/your-domain.png)
+![](/blog/make-your-website/your-domain?w=1016&h=484)
 
 自分のドメインで作るホームページはより一層かわいく思えることでしょう。
 
