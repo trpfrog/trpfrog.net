@@ -3,6 +3,24 @@ import React, { useCallback } from 'react'
 import { UploadApiResponse } from 'cloudinary'
 import toast from 'react-hot-toast'
 
+async function uploadToCloudinary(
+  slug: string,
+  file: File,
+): Promise<UploadApiResponse> {
+  const formData = new FormData()
+  formData.append('image', file)
+
+  const endpoint = `/blog/${slug}/edit/api/upload-image`
+  const res = await fetch(endpoint, { method: 'POST', body: formData })
+
+  if (!res.ok) {
+    throw new Error(`Upload failed (${res.status} ${res.statusText})`)
+  }
+
+  const json = await res.json()
+  return json.data
+}
+
 export function useUploadFunction(slug: string) {
   return useCallback(
     (
@@ -13,30 +31,16 @@ export function useUploadFunction(slug: string) {
       const formData = new FormData()
       formData.append('image', file)
 
-      const uploadPromise = toast.promise(
-        (async () => {
-          const res = await fetch(`/blog/${slug}/edit/api/upload-image`, {
-            method: 'POST',
-            body: formData,
-          })
-          if (!res.ok) {
-            throw new Error(`Upload failed (${res.status} ${res.statusText})`)
-          }
-          return res
-        })(),
-        {
-          loading: 'Uploading...',
-          success: <b>Uploaded!</b>,
-          error: <b>Something went wrong...</b>,
-        },
-      )
+      const uploadPromise = toast.promise(uploadToCloudinary(slug, file), {
+        loading: 'Uploading...',
+        success: <b>Uploaded!</b>,
+        error: <b>Something went wrong...</b>,
+      })
+
       uploadPromise
-        .then(res => res.json())
-        .then(
-          ({ data: { format, public_id } }: { data: UploadApiResponse }) => {
-            onSuccess(`/${public_id}.${format}`)
-          },
-        )
+        .then(({ public_id, format }) => {
+          onSuccess(`/${public_id}.${format}`)
+        })
         .catch(err => onError(err.message))
     },
     [slug],

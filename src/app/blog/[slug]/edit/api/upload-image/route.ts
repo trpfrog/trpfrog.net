@@ -38,10 +38,7 @@ export async function POST(
 
   try {
     const form = await req.formData()
-    const file = form.get('image') as {
-      name: string
-      stream: () => ReadableStream<Uint16Array>
-    } | null
+    const file = form.get('image') as File
 
     if (!file) {
       return NextResponse.json(
