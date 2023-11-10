@@ -87,5 +87,3 @@ module.exports = composeFunctions(
   withVercelToolbar,
   withMdx,
 )(nextConfig)
-
-require('./watchMarkdown')
