@@ -62,12 +62,14 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
         justifyContent: 'center',
       }}
     >
-      {entry.currentPage > 1 && (
+      {entry.currentPage > 1 ? (
         <PageTransferButton
           entry={entry}
           nextPage={pagePosition1Indexed - 1}
           buttonText={'← Prev'}
         />
+      ) : (
+        <Button style={disabledButtonStyle}>← Prev</Button>
       )}
       {Array.from(Array(entry.numberOfPages), (v, k) =>
         entry.currentPage !== k + 1 ? (
@@ -83,12 +85,14 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
           </Button>
         ),
       )}
-      {entry.currentPage < entry.numberOfPages && (
+      {entry.currentPage < entry.numberOfPages ? (
         <PageTransferButton
           entry={entry}
           nextPage={pagePosition1Indexed + 1}
           buttonText={'Next →'}
         />
+      ) : (
+        <Button style={disabledButtonStyle}>Next →</Button>
       )}
     </div>
   )
