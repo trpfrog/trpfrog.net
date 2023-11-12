@@ -7,14 +7,28 @@ import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 import styles from '@blog/_components/BlogImage/index.module.scss'
 import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
 
+function ImageSpoiler() {
+  const [spoilerState, setSpoilerState] = useState(true)
+  return spoilerState ? (
+    <div className={styles.spoiler}>
+      <div
+        className={styles.spoiler_text}
+        onClick={() => setSpoilerState(false)}
+      >
+        画像を表示する
+      </div>
+    </div>
+  ) : (
+    <></>
+  )
+}
+
 export function ImageWithModal(props: {
   src: string
   alt?: string
   publicId?: string
   spoiler?: boolean
 }) {
-  const [spoilerState, setSpoilerState] = useState(props.spoiler ?? false)
-
   const searchParams = new URLSearchParams(props.src.split('?')[1])
   let width = parseInt(searchParams.get('w') ?? '', 10) || 1000
   let height = parseInt(searchParams.get('h') ?? '', 10) || 750
@@ -50,16 +64,7 @@ export function ImageWithModal(props: {
           aspectRatio: `${width}/${height}`,
         }}
       />
-      {spoilerState && (
-        <div className={styles.spoiler}>
-          <div
-            className={styles.spoiler_text}
-            onClick={() => setSpoilerState(false)}
-          >
-            画像を表示する
-          </div>
-        </div>
-      )}
+      {props.spoiler && <ImageSpoiler />}
     </div>
   )
 }

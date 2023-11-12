@@ -131,7 +131,14 @@ export function getMarkdownOptions(entry?: BlogPost) {
     details: styledTag('details', styles.details),
     summary: styledTag('summary', styles.summary),
     h3: styledTag('h3', styles.h3),
-    video: styledTag('video', styles.video),
+    video: (props: any) => (
+      <BlogImage
+        src={props.src ?? ''}
+        alt={props.alt ?? ''}
+        caption={props.title}
+        isVideo
+      />
+    ),
   }
 
   return {

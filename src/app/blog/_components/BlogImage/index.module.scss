@@ -14,18 +14,17 @@
   @include mixins.mq(dark) {
     color: lightgray;
   }
+
+  &:has(.video) {
+    width: 100%;
+  }
 }
 
 .image {
   max-width: 100%;
   box-shadow: 0 0 1px 1px rgba(gray, 0.3);
   transition: box-shadow ease-in-out 0.2s;
-
-  @include mixins.mq(pc) {
-    &:hover {
-      box-shadow: 0 3px 10px 1px rgba(gray, 0.7);
-    }
-  }
+  display: block;
   page-break-inside: avoid;
 }
 
@@ -36,7 +35,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 5px);
+  height: 100%;
   border-radius: 5px;
   backdrop-filter: blur(20px);
 }
@@ -64,4 +63,10 @@
   text-align: right;
   width: 100%;
   line-height: 1;
+}
+
+.video {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
 }
