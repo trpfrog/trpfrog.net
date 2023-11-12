@@ -7,6 +7,8 @@ import { Block } from '@/components/molecules/Block'
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
+import { useHealthCheck } from '@blog/[slug]/edit/_hooks/useHealthCheck'
+
 import { loadMarkdownFromServer } from './_actions/loadMarkdownFromServer'
 import { Editor } from './Editor'
 import styles from './page.module.scss'
@@ -31,6 +33,7 @@ export default function Index(props: { params: { slug: string } }) {
   }, [props.params.slug])
 
   useAlwaysShownHeader()
+  useHealthCheck()
   const scrollToTopRef = useRef<HTMLDivElement>(null)
 
   const editorBlockRef = React.useRef<HTMLDivElement>(null)
