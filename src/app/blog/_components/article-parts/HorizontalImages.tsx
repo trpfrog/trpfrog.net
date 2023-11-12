@@ -29,7 +29,7 @@ export const horizontalImagesParts = {
       .join('')
 
     return (
-      <figure style={{ textAlign: 'center', margin: 'auto 0' }}>
+      <div style={{ textAlign: 'center', margin: 'auto 0' }}>
         <div
           style={{
             display: 'grid',
@@ -51,7 +51,7 @@ export const horizontalImagesParts = {
         {caption != '' && (
           <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
         )}
-      </figure>
+      </div>
     )
   },
 } as const satisfies ArticleParts
