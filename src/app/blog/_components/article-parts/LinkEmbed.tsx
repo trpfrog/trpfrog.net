@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ServerLinkCard } from '@/components/LinkCard/ServerLinkCard'
+import { ServerLinkCard } from '@/components/organisms/LinkCard/ServerLinkCard'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'

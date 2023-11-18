@@ -4,9 +4,9 @@ import React from 'react'
 
 import useSWR from 'swr'
 
-import { fetchOGP } from '@/components/LinkCard/fetchOGP'
-import { LinkCard } from '@/components/LinkCard/LinkCard'
-import { SkeletonLinkCard } from '@/components/LinkCard/SkeletonLinkCard'
+import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
+import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
+import { SkeletonLinkCard } from '@/components/organisms/LinkCard/SkeletonLinkCard'
 
 export type ClientLinkCardProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,

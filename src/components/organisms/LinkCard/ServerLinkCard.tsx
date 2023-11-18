@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ClientLinkCard } from '@/components/LinkCard/ClientLinkCard'
-import { fetchOGP } from '@/components/LinkCard/fetchOGP'
-import { LinkCard } from '@/components/LinkCard/LinkCard'
+import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
+import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
+import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
 export type LinkCardProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,

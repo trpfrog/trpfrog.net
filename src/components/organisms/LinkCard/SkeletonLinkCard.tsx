@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import Skeleton from 'react-loading-skeleton'
 
-import styles from '@/components/LinkCard/LinkCard.module.scss'
+import styles from '@/components/organisms/LinkCard/LinkCard.module.scss'
 
 export type LinkCardProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,
