@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 
 import { Button } from '@/components/atoms/Button'
 
@@ -13,6 +13,7 @@ type PageTransferProps = {
   entry: BlogPost
   nextPage: number
   buttonText: string
+  disabled?: boolean
 }
 
 export const PageTransferButton = (props: PageTransferProps) => {
@@ -29,7 +30,11 @@ export const PageTransferButton = (props: PageTransferProps) => {
   return entry.isAll ? (
     <></>
   ) : (
-    <Button href={href} data-page-transfer-to={nextPage}>
+    <Button
+      href={href}
+      disabled={props.disabled}
+      data-page-transfer-to={nextPage}
+    >
       {buttonText}
     </Button>
   )
@@ -37,13 +42,6 @@ export const PageTransferButton = (props: PageTransferProps) => {
 
 export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
   const pagePosition1Indexed = entry.currentPage
-
-  const disabledButtonStyle: CSSProperties = {
-    background: 'darkgray',
-    transform: 'translateY(2px)',
-    boxShadow: 'none',
-    cursor: 'default',
-  }
 
   const isHidden =
     entry.numberOfPages === 1 ||
@@ -62,38 +60,27 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
         justifyContent: 'center',
       }}
     >
-      {entry.currentPage > 1 ? (
+      <PageTransferButton
+        entry={entry}
+        nextPage={pagePosition1Indexed - 1}
+        buttonText={'← Prev'}
+        disabled={entry.currentPage <= 1}
+      />
+      {Array.from(Array(entry.numberOfPages), (v, k) => (
         <PageTransferButton
           entry={entry}
-          nextPage={pagePosition1Indexed - 1}
-          buttonText={'← Prev'}
+          nextPage={k + 1}
+          buttonText={k + 1 + ''}
+          key={k}
+          disabled={entry.currentPage === k + 1}
         />
-      ) : (
-        <Button style={disabledButtonStyle}>← Prev</Button>
-      )}
-      {Array.from(Array(entry.numberOfPages), (v, k) =>
-        entry.currentPage !== k + 1 ? (
-          <PageTransferButton
-            entry={entry}
-            nextPage={k + 1}
-            buttonText={k + 1 + ''}
-            key={k}
-          />
-        ) : (
-          <Button style={disabledButtonStyle} key={k}>
-            {k + 1}
-          </Button>
-        ),
-      )}
-      {entry.currentPage < entry.numberOfPages ? (
-        <PageTransferButton
-          entry={entry}
-          nextPage={pagePosition1Indexed + 1}
-          buttonText={'Next →'}
-        />
-      ) : (
-        <Button style={disabledButtonStyle}>Next →</Button>
-      )}
+      ))}
+      <PageTransferButton
+        entry={entry}
+        nextPage={pagePosition1Indexed + 1}
+        buttonText={'Next →'}
+        disabled={entry.currentPage >= entry.numberOfPages}
+      />
     </div>
   )
 }

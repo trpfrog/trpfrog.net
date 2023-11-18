@@ -41,13 +41,13 @@ $link-button-font-color: var(--link-button-font-color);
   transition: 100ms;
 
   @include mixins.mq(pc) {
-    &:hover {
+    &:not(.disabled):hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 0 $link-button-color-bottom;
     }
   }
 
-  &:active {
+  &:not(.disabled):active {
     transform: translateY(2px);
     box-shadow: 0 0 0 $link-button-color-bottom;
   }
@@ -57,4 +57,12 @@ $link-button-font-color: var(--link-button-font-color);
 
 .button {
   @include button-style;
+}
+
+.disabled {
+  background: darkgray;
+  transform: translateY(2px);
+  box-shadow: none;
+  pointer-events: none;
+  cursor: default;
 }
