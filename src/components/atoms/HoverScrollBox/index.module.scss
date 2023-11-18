@@ -76,8 +76,20 @@
 
 .scroll_up {
   top: 10px;
+
+  opacity: 0.5;
+  &[data-scroll-position='top'] {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .scroll_down {
   bottom: 10px;
+
+  opacity: 0.5;
+  &[data-scroll-position='bottom'] {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
