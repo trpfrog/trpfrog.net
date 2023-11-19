@@ -23,6 +23,7 @@ export function computeReadTimeSecondFrom(markdown: string) {
   }
 
   let numOfCharacters: number = 0
+  let addtionalSeconds: number = 0
   let enableWordCounting = true
 
   const imagePoint = 10
@@ -47,11 +48,19 @@ export function computeReadTimeSecondFrom(markdown: string) {
       continue
     }
 
-    if (line.startsWith('<!--')) {
-      if (line.includes('disable read-count')) {
+    const commentRegex = /^<!--+ ?(.*) ?--+>/
+    if (commentRegex.test(line)) {
+      const content = commentRegex.exec(line)![1].trim()
+
+      if (content.includes('disable read-count')) {
         enableWordCounting = false
-      } else if (line.includes('enable read-count')) {
+      } else if (content.includes('enable read-count')) {
         enableWordCounting = true
+      } else if (content.includes('add-read-time-seconds')) {
+        const sec = parseFloat(
+          content.replace('add-read-time-seconds', '').trim(),
+        )
+        addtionalSeconds += Number.isNaN(sec) ? 0 : sec
       }
       continue
     }
@@ -92,5 +101,5 @@ export function computeReadTimeSecondFrom(markdown: string) {
     numOfCharacters += line.length
   }
 
-  return Math.floor((numOfCharacters * 60) / 700)
+  return Math.floor((numOfCharacters * 60) / 700) + addtionalSeconds
 }
