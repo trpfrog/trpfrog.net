@@ -3,13 +3,12 @@
 import 'easymde/dist/easymde.min.css'
 import React, { useCallback, useDeferredValue, useMemo } from 'react'
 
+import { useDebouncedCallback } from '@react-hookz/web'
 import matter from 'gray-matter'
 import dynamic from 'next/dynamic'
 
 import { Button } from '@/components/atoms/Button'
 import { H2 } from '@/components/atoms/H2'
-
-import { useSparseCallback } from '@/hooks/useSparseCallback'
 
 import { getTypedKeys } from '@/lib/utils'
 
@@ -47,7 +46,7 @@ export const Editor = React.memo(function Editor({
 
   const { data, content } = useMemo(() => matter(rawMarkdown), [rawMarkdown])
 
-  const sparseSetter = useSparseCallback(
+  const debouncedSetter = useDebouncedCallback(
     (frontMatter?: BlogFrontMatter, content?: string) => {
       if (frontMatter) {
         for (const key of getTypedKeys(frontMatter)) {
@@ -60,24 +59,24 @@ export const Editor = React.memo(function Editor({
       setPost(saved)
     },
     [data, setPost, updateCurrent],
-    delayMs,
+    1000,
   )
 
   const onFormChange = useCallback(
     (rawFrontMatter: BlogFrontMatter) => {
-      const frontMatter = blogFrontMatterSchema.partial().parse(rawFrontMatter)
+      const frontMatter = blogFrontMatterSchema.parse(rawFrontMatter)
       markAsUnsaved()
-      sparseSetter(frontMatter, null)
+      debouncedSetter(frontMatter, undefined)
     },
-    [markAsUnsaved, sparseSetter],
+    [markAsUnsaved, debouncedSetter],
   )
 
   const onMarkdownChange = useCallback(
     (value: string) => {
       markAsUnsaved()
-      sparseSetter(null, value)
+      debouncedSetter(undefined, value)
     },
-    [markAsUnsaved, sparseSetter],
+    [markAsUnsaved, debouncedSetter],
   )
 
   const imageUploadFunction = useUploadFunction(slug)
