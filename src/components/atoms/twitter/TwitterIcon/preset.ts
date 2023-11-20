@@ -30,6 +30,7 @@ export const iconPreset: Record<string, React.CSSProperties['background']> = {
   fmnpt: 'mediumvioletred',
   lupicure20: 'rgb(195, 220, 249)',
   sakuramochi0708: 'rgb(250, 216, 255)',
+  lnln_ch: '#f47120',
   ebioishii_u: `
         radial-gradient(circle at 40% 35%, black 0%, black 3%, transparent 3%, transparent 100%),
         radial-gradient(circle at 60% 35%, black 0%, black 3%, transparent 3%, transparent 100%),
