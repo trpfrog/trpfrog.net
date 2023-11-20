@@ -24,9 +24,10 @@ export function computeReadTimeSecondFrom(markdown: string) {
 
   let numOfCharacters: number = 0
   let addtionalSeconds: number = 0
-  let enableWordCounting = true
+  let manualEnableWordCounting = true
+  let inStyleTag = false
 
-  const imagePoint = 10
+  const isEnabledWordCounting = () => manualEnableWordCounting && !inStyleTag
 
   for (let line of linkRemoved.split('\n')) {
     // code block
@@ -53,9 +54,9 @@ export function computeReadTimeSecondFrom(markdown: string) {
       const content = commentRegex.exec(line)![1].trim()
 
       if (content.includes('disable read-count')) {
-        enableWordCounting = false
+        manualEnableWordCounting = false
       } else if (content.includes('enable read-count')) {
-        enableWordCounting = true
+        manualEnableWordCounting = true
       } else if (content.includes('add-read-time-seconds')) {
         const sec = parseFloat(
           content.replace('add-read-time-seconds', '').trim(),
@@ -66,21 +67,20 @@ export function computeReadTimeSecondFrom(markdown: string) {
     }
 
     if (line.includes('<style>')) {
-      enableWordCounting = false
+      inStyleTag = true
     } else if (line.includes('</style>')) {
-      enableWordCounting = true
+      inStyleTag = false
     }
 
-    if (!enableWordCounting) {
+    if (!isEnabledWordCounting()) {
       continue
     }
 
     if (getStackTop() === 'twitter-archived') {
       if (line.startsWith('tweet:')) {
         line = line.slice(7)
-      } else if (line.startsWith('image:')) {
-        // console.log('found image!');
-        numOfCharacters += imagePoint
+      } else if (/^image[234]?:.*/.test(line)) {
+        addtionalSeconds += 1
         continue
       } else {
         continue
@@ -92,14 +92,15 @@ export function computeReadTimeSecondFrom(markdown: string) {
     }
 
     if (line.match(imageRegex)) {
-      // console.log('found image!');
-      numOfCharacters += imagePoint
+      addtionalSeconds += 1
       continue
     }
 
-    // console.log(line);
+    line = line.replace(/\s/g, '').trim()
     numOfCharacters += line.length
   }
 
-  return Math.floor((numOfCharacters * 60) / 700) + addtionalSeconds
+  const CHARACTERS_PER_MINUTE = 700
+  const CHARACTERS_PER_SECOND = CHARACTERS_PER_MINUTE / 60.0
+  return Math.floor(numOfCharacters / CHARACTERS_PER_SECOND) + addtionalSeconds
 }
