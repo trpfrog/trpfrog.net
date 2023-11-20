@@ -10,14 +10,31 @@ type Props = LinkProps & {
   key?: React.Key
   id?: string
   children?: React.ReactNode
+  openInNewTab?: boolean
 }
 
 export function BlockLink(props: Props) {
-  const { className = '', id, key, children, ...linkProps } = props
+  const {
+    className = '',
+    id,
+    key,
+    children,
+    openInNewTab,
+    ...linkProps
+  } = props
   return (
     <div className={`${styles.box} ${className}`} id={id} key={key}>
       {children}
-      <Link {...linkProps} className={styles.link} />
+      {openInNewTab ? (
+        <Link
+          {...linkProps}
+          className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        />
+      ) : (
+        <Link {...linkProps} className={styles.link} />
+      )}
     </div>
   )
 }
