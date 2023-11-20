@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useDeferredValue, useRef } from 'react'
+import React, { useDeferredValue } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -8,45 +8,25 @@ import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { useAlwaysShownHeader } from '@/components/organisms/Header'
 
 import { useHealthCheck } from '@blog/[slug]/edit/_hooks/useHealthCheck'
+import { useMarkdownState } from '@blog/[slug]/edit/_hooks/useMarkdownState'
+import { useScrollToBottom } from '@blog/[slug]/edit/_hooks/useScrollToBottom'
 
-import { loadMarkdownFromServer } from './_actions/loadMarkdownFromServer'
 import { Editor } from './Editor'
 import styles from './page.module.scss'
 import { Viewer } from './Viewer'
 
 export default function Index(props: { params: { slug: string } }) {
-  const INITIAL_CONTENT = 'Loading...'
-  const [post, setPost] = React.useState(INITIAL_CONTENT)
-  const [initialPost, setInitialPost] = React.useState(INITIAL_CONTENT)
-
-  const deferredPost = useDeferredValue(post)
-
   const [pageIdx, setPageIdx] = React.useState(1)
 
-  React.useEffect(() => {
-    loadMarkdownFromServer(props.params.slug)
-      .then(text => {
-        setPost(text)
-        setInitialPost(text)
-      })
-      .catch(console.error)
-  }, [props.params.slug])
+  const markdownState = useMarkdownState(props.params.slug)
+  const deferredPost = useDeferredValue(markdownState.currentMarkdown)
 
   useAlwaysShownHeader()
   useHealthCheck()
-  const scrollToTopRef = useRef<HTMLDivElement>(null)
 
-  const editorBlockRef = React.useRef<HTMLDivElement>(null)
-  const scrollToBottom = React.useCallback(() => {
-    if (editorBlockRef.current) {
-      editorBlockRef.current.scrollTop = editorBlockRef.current.scrollHeight
-    }
-    if (document) {
-      document.documentElement.scrollTop = document.documentElement.scrollHeight
-    }
-  }, [])
+  const { editorBlockRef, scrollToBottom } = useScrollToBottom()
 
-  if (post === INITIAL_CONTENT) {
+  if (markdownState.isLoading) {
     return (
       <MainWrapper>
         <LoadingBlock isFullHeight={true} />
@@ -63,13 +43,9 @@ export default function Index(props: { params: { slug: string } }) {
           className={styles.editor_block}
           style={{ overflow: 'scroll' }}
         >
-          <Editor
-            slug={props.params.slug}
-            rawMarkdown={initialPost}
-            setPost={setPost}
-          />
+          <Editor markdownState={markdownState} />
         </Block>
-        <div className={styles.viewer_wrapper} ref={scrollToTopRef}>
+        <div className={styles.viewer_wrapper}>
           <Viewer
             rawMarkdown={deferredPost}
             pageIdx={pageIdx}

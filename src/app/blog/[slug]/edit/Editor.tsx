@@ -1,23 +1,22 @@
 'use client'
 
 import 'easymde/dist/easymde.min.css'
-import React, { useCallback, useDeferredValue, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
-import { useDebouncedCallback } from '@react-hookz/web'
 import matter from 'gray-matter'
 import dynamic from 'next/dynamic'
 
 import { Button } from '@/components/atoms/Button'
 import { H2 } from '@/components/atoms/H2'
 
-import { getTypedKeys } from '@/lib/utils'
-
 import { openInCotEditor } from '@blog/[slug]/edit/_actions/openInCotEditor'
+import { useEditorHandler } from '@blog/[slug]/edit/_hooks/useEditorHandler'
 import { useSaveArticle } from '@blog/[slug]/edit/_hooks/useSaveArticle'
 import { useToastErrorCallback } from '@blog/[slug]/edit/_hooks/useToastErrorCallback'
 import { useUploadFunction } from '@blog/[slug]/edit/_hooks/useUploadFunction'
 import { EditorForm } from '@blog/[slug]/edit/EditorForm'
-import { BlogFrontMatter, blogFrontMatterSchema } from '@blog/_lib/blogPost'
+
+import { MarkdownState } from './_hooks/useMarkdownState'
 
 import type { SimpleMDEReactProps } from 'react-simplemde-editor'
 
@@ -26,57 +25,16 @@ const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
 })
 
 type Props = {
-  rawMarkdown: string
-  setPost: (value: string) => void
-  slug: string
+  markdownState: MarkdownState
 }
 
-export const Editor = React.memo(function Editor({
-  setPost,
-  slug,
-  rawMarkdown,
-}: Props) {
-  const delayMs = 2000
+export const Editor = React.memo(function Editor({ markdownState }: Props) {
+  const { slug, currentMarkdown, initialMarkdown } = markdownState
 
-  const { markAsUnsaved, updateCurrent } = useSaveArticle(
-    slug,
-    rawMarkdown,
-    delayMs,
-  )
-
-  const { data, content } = useMemo(() => matter(rawMarkdown), [rawMarkdown])
-
-  const debouncedSetter = useDebouncedCallback(
-    (frontMatter?: BlogFrontMatter, content?: string) => {
-      if (frontMatter) {
-        for (const key of getTypedKeys(frontMatter)) {
-          if (!data[key]) {
-            delete data[key]
-          }
-        }
-      }
-      const saved = updateCurrent(frontMatter, content)
-      setPost(saved)
-    },
-    [data, setPost, updateCurrent],
-    1000,
-  )
-
-  const onFormChange = useCallback(
-    (rawFrontMatter: BlogFrontMatter) => {
-      const frontMatter = blogFrontMatterSchema.parse(rawFrontMatter)
-      markAsUnsaved()
-      debouncedSetter(frontMatter, undefined)
-    },
-    [markAsUnsaved, debouncedSetter],
-  )
-
-  const onMarkdownChange = useCallback(
-    (value: string) => {
-      markAsUnsaved()
-      debouncedSetter(undefined, value)
-    },
-    [markAsUnsaved, debouncedSetter],
+  useSaveArticle(slug, currentMarkdown)
+  const { onFormChange, onMarkdownChange } = useEditorHandler(
+    markdownState.currentMarkdown,
+    markdownState.setCurrentMarkdown,
   )
 
   const imageUploadFunction = useUploadFunction(slug)
@@ -101,6 +59,10 @@ export const Editor = React.memo(function Editor({
     [imageUploadFunction, errorCallback],
   )
 
+  const { content: initialContent } = useMemo(
+    () => matter(initialMarkdown),
+    [initialMarkdown],
+  )
   return (
     <>
       <div
@@ -124,10 +86,10 @@ export const Editor = React.memo(function Editor({
       </div>
       <hr style={{ margin: '1rem 0' }} />
       <h3>Front-matter</h3>
-      <EditorForm onChange={onFormChange} initialMarkdown={rawMarkdown} />
+      <EditorForm onChange={onFormChange} initialMarkdown={initialMarkdown} />
       <h3>Contents</h3>
       <EditorUI
-        initialContent={useDeferredValue(content)}
+        initialContent={initialContent}
         onChange={onMarkdownChange}
         options={options}
       />

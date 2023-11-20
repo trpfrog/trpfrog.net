@@ -10,12 +10,10 @@ import { openInCotEditor } from '@blog/[slug]/edit/_actions/openInCotEditor'
 import { saveOnDisk } from '@blog/[slug]/edit/_actions/saveOnDisk'
 import { BlogFrontMatter } from '@blog/_lib/blogPost'
 
-export function useSaveArticle(
-  slug: string,
-  initialArticleText: string,
-  delayMs: number,
-) {
-  const [alreadySaved, setAlreadySaved] = React.useState(true)
+export function useSaveArticle(slug: string, initialArticleText: string) {
+  const [articleLastSaved, setArticleLastSaved] = React.useState<
+    string | null
+  >()
 
   // articleText を直接参照すると save 関数が逐次更新されてしまうため ref を経由させる
   // (逐次更新が起こるとオートセーブの interval が毎度更新され、オートセーブされなくなる)
@@ -24,26 +22,32 @@ export function useSaveArticle(
     articleTextRef.current = initialArticleText
   }, [initialArticleText])
 
+  const isAlreadySaved = useCallback(() => {
+    const articleToSave = articleTextRef.current!
+    return articleLastSaved === articleToSave
+  }, [articleLastSaved])
+
   // Check if Ctrl+S is pressed
   const isSaveKeyPressed = useCallback(
     (e: KeyboardEvent) =>
-      ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) && e.key == 's',
+      ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) && e.key === 's',
     [],
   )
 
   // Save function
   const save = useCallback(async () => {
-    if (!alreadySaved) {
-      return setTimeoutPromise(() => {
-        setAlreadySaved(true)
-        return saveOnDisk(slug, articleTextRef.current!)
-      }, delayMs)
-    }
-  }, [alreadySaved, delayMs, slug])
+    return setTimeoutPromise(() => {
+      if (!isAlreadySaved()) {
+        const articleToSave = articleTextRef.current!
+        setArticleLastSaved(articleToSave)
+        return saveOnDisk(slug, articleToSave)
+      }
+    }, 1500)
+  }, [isAlreadySaved, slug])
 
   const saveWithToast = useCallback(async () => {
     const openEditor = () => openInCotEditor(slug)
-    if (alreadySaved) {
+    if (isAlreadySaved()) {
       toast(<span onClick={openEditor}>Already saved!</span>, {
         icon: '👍',
         duration: 2000,
@@ -56,7 +60,7 @@ export function useSaveArticle(
         error: <b>Something went wrong...</b>,
       })
     }
-  }, [alreadySaved, save, slug])
+  }, [isAlreadySaved, save, slug])
 
   // Save on Ctrl+S
   useKeyboardEvent(
@@ -71,14 +75,14 @@ export function useSaveArticle(
   // Auto saving
   useEffect(() => {
     const interval = setInterval(() => {
-      if (alreadySaved) return
+      if (!isAlreadySaved()) return
       saveWithToast().catch(console.error)
     }, 1000 * 60)
 
     console.log('effect')
 
     return () => clearInterval(interval)
-  }, [alreadySaved, saveWithToast])
+  }, [isAlreadySaved, saveWithToast])
 
   // Save on unmount
   useUnmountEffect(() => {
@@ -88,16 +92,15 @@ export function useSaveArticle(
   // Prevent closing window without saving
   useEffect(() => {
     const handler = (e: BeforeUnloadEvent) => {
-      if (alreadySaved) return
+      if (isAlreadySaved()) return
       e.preventDefault()
       e.returnValue = true
     }
     window.addEventListener('beforeunload', handler)
     return () => window.removeEventListener('beforeunload', handler)
-  }, [alreadySaved])
+  }, [isAlreadySaved])
 
   return {
-    markAsUnsaved: useCallback(() => setAlreadySaved(false), [setAlreadySaved]),
     save,
     saveWithToast,
     updateCurrent: useCallback(
