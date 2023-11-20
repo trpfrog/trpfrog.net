@@ -7,9 +7,11 @@
   border: 1px lightgray solid;
   border-radius: 10px;
   overflow: hidden;
+}
 
+.wrapper {
   :hover {
-    filter: brightness(0.9);
+    filter: brightness(0.97);
   }
 }
 

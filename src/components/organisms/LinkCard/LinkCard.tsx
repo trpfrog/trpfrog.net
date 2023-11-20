@@ -47,8 +47,8 @@ export function LinkCard(props: LinkCardProps) {
   }
 
   return (
-    <div className={classNames(className)} {...rest}>
-      <BlockLink href={href} className={styles.main}>
+    <div className={classNames(className, styles.wrapper)} {...rest}>
+      <BlockLink href={href} className={styles.main} openInNewTab>
         <div className={styles.textArea}>
           <div className={styles.domain}>
             {favicon ? (
