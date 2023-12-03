@@ -26,6 +26,7 @@ export async function ServerLinkCard(props: LinkCardProps) {
       href={href}
       imageUrl={result.ogImage?.[0]?.url}
       favicon={result.favicon}
+      themeColor={result.customMetaTags?.themeColor}
       {...rest}
     />
   )

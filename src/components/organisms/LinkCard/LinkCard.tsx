@@ -20,12 +20,21 @@ export type LinkCardProps = Omit<
   imageUrl?: string
   favicon?: string
   href: string
+  themeColor?: string
   skeleton?: false
 }
 
 export function LinkCard(props: LinkCardProps) {
-  let { className, favicon, title, description, imageUrl, href, ...rest } =
-    props
+  let {
+    className,
+    favicon,
+    title,
+    description = '',
+    imageUrl,
+    href,
+    themeColor,
+    ...rest
+  } = props
 
   const hostname = new URL(href).hostname
   const origin = new URL(href).origin
@@ -34,6 +43,22 @@ export function LinkCard(props: LinkCardProps) {
     title = title.slice(0, 80) + '...'
   }
 
+  const maxDescriptionLength = {
+    pc: 80,
+    sp: 40,
+  }
+  const descriptionNode = (
+    <>
+      <span className="only-on-pc">
+        {description.slice(0, maxDescriptionLength.pc)}
+        {description.length > maxDescriptionLength.pc && '...'}
+      </span>
+      <span className="only-on-sp">
+        {description.slice(0, maxDescriptionLength.sp)}
+        {description.length > maxDescriptionLength.sp && '...'}
+      </span>
+    </>
+  )
   if (description && description?.length > 80) {
     description = description.slice(0, 80) + '...'
   }
@@ -67,7 +92,7 @@ export function LinkCard(props: LinkCardProps) {
               <ParseWithBudouX str={title} slug={''} />
             </div>
             {description && (
-              <div className={styles.description}>{description}</div>
+              <div className={styles.description}>{descriptionNode}</div>
             )}
           </div>
         </div>

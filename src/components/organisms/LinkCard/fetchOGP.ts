@@ -13,7 +13,12 @@ export async function fetchOGP(url: string) {
   if (cache.has(url)) {
     return cache.get(url)
   }
-  const { result } = await ogs({ url })
+  const { result } = await ogs({
+    url,
+    customMetaTags: [
+      { property: 'theme-color', multiple: false, fieldName: 'themeColor' },
+    ],
+  })
   cache.set(url, result)
   return result
 }
