@@ -10,6 +10,7 @@ import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { customPrismTheme } from '@/components/molecules/CodeBlock/customPrismTheme'
 import { registerLanguages } from '@/components/molecules/CodeBlock/languages'
 import { normalizeLangName } from '@/components/molecules/CodeBlock/normalizeLangName'
+import { useLineHighlight } from '@/components/molecules/CodeBlock/useLineHighlight'
 
 import styles from './index.module.scss'
 
@@ -22,10 +23,21 @@ export type CodeBlockProps = Omit<
   children?: string
   language?: string
   fileName?: string
+  highlightLines?: {
+    error?: number[]
+    warning?: number[]
+    info?: number[]
+  }
 }
 
 export function CodeBlock(props: CodeBlockProps) {
   const { className = '', children, language = '', fileName, ...rest } = props
+
+  const ref = useLineHighlight({
+    errorLines: props.highlightLines?.error,
+    warningLines: props.highlightLines?.warning,
+    infoLines: props.highlightLines?.info,
+  })
 
   return (
     <div {...rest}>
@@ -52,6 +64,8 @@ export function CodeBlock(props: CodeBlockProps) {
         language={language.toLowerCase()}
         style={customPrismTheme}
         className={styles.code_block}
+        codeTagProps={{ className: styles.lines, ref }}
+        wrapLines
       >
         {children as string}
       </SyntaxHighlighter>

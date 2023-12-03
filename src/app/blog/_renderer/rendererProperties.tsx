@@ -14,7 +14,8 @@ import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
-import { CodeBlock } from '@/components/molecules/CodeBlock'
+import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
+import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -76,8 +77,27 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       ? className.replace('language-', '')
       : ''
 
+    const highlightLines: CodeBlockProps['highlightLines'] = {
+      error: [],
+      warning: [],
+      info: [],
+    }
+    if ('data-error' in props) {
+      highlightLines.error = parseDataLine(props['data-error'] as string)
+    }
+    if ('data-warning' in props) {
+      highlightLines.warning = parseDataLine(props['data-warning'] as string)
+    }
+    if ('data-info' in props) {
+      highlightLines.info = parseDataLine(props['data-info'] as string)
+    }
+
     return (
-      <CodeBlock language={language} fileName={fileName}>
+      <CodeBlock
+        language={language}
+        fileName={fileName}
+        highlightLines={highlightLines}
+      >
         {children as string}
       </CodeBlock>
     )
