@@ -45,6 +45,7 @@
     "easymde": "^2.18.0",
     "eslint-config-next": "^14.0.3",
     "framer-motion": "^10.16.2",
+    "gatsby-remark-remove-cjk-breaks": "^1.2.1",
     "gray-matter": "^4.0.3",
     "http-status-codes": "^2.2.0",
     "jotai": "^2.4.1",
