@@ -15,7 +15,6 @@ export const linkEmbedParts = {
           href={url}
           style={{
             width: '100%',
-            maxWidth: 700,
           }}
         />
         {captionArr.length > 0 && (

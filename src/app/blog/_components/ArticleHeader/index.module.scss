@@ -51,6 +51,7 @@
     text-align: center !important;
     margin: 0.5em 0 !important;
     line-height: 1.2 !important;
+    letter-spacing: -0.15px;
   }
 
   @include mixins.mq(pc) {
