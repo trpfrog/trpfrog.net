@@ -5,9 +5,9 @@ import React from 'react'
 import { faClone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light'
-import a11yDark from 'react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark'
 
 import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
+import { customPrismTheme } from '@/components/molecules/CodeBlock/customPrismTheme'
 import { registerLanguages } from '@/components/molecules/CodeBlock/languages'
 import { normalizeLangName } from '@/components/molecules/CodeBlock/normalizeLangName'
 
@@ -50,7 +50,7 @@ export function CodeBlock(props: CodeBlockProps) {
       )}
       <SyntaxHighlighter
         language={language.toLowerCase()}
-        style={a11yDark}
+        style={customPrismTheme}
         className={styles.code_block}
       >
         {children as string}
