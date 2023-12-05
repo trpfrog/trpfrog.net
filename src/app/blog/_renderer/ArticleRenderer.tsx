@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-import ReactMarkdown from 'react-markdown'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -16,12 +15,10 @@ export type ArticleRendererProps =
   | {
       toRender: string
       markdownOptions: MarkdownOptions
-      useClient?: boolean
     }
   | {
       toRender: string
       entry?: BlogPost
-      useClient?: boolean
     }
 
 export const ArticleRenderer = React.memo(function ArticleRenderer(
@@ -34,17 +31,5 @@ export const ArticleRenderer = React.memo(function ArticleRenderer(
     options = getMarkdownOptions(props.entry)
   }
 
-  const isDevClient =
-    process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
-  return isDevClient || props.useClient ? (
-    <ReactMarkdown
-      components={options.components}
-      remarkPlugins={options.options?.mdxOptions?.remarkPlugins ?? undefined}
-      rehypePlugins={options.options?.mdxOptions?.rehypePlugins ?? undefined}
-    >
-      {props.toRender}
-    </ReactMarkdown>
-  ) : (
-    <MDXRemote source={props.toRender} {...options} />
-  )
+  return <MDXRemote source={props.toRender} {...options} />
 })

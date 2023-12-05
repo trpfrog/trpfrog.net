@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 import toast from 'react-hot-toast'
 
-import { uploadToCloudinaryOnServer } from '@blog/[slug]/edit/_actions/uploadToCloudinaryOnServer'
+import { uploadToCloudinaryOnServer } from '@blog/_renderer/DevBlogMarkdown/uploadToCloudinaryOnServer'
 
 export function useUploadFunction(slug: string) {
   return useCallback(

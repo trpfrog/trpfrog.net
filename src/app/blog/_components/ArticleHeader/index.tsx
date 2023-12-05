@@ -88,7 +88,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
           {/*<div id={styles.entry_top_buttons}>*/}
           {/*  <RichEntryButtons post={post} extended={true}/>*/}
           {/*</div>*/}
-          {process.env.NODE_ENV === 'development' && addEditButtonOnDevMode && (
+          {addEditButtonOnDevMode && (
             <p>
               <EditButton slug={post.slug} />
             </p>

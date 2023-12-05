@@ -18,10 +18,17 @@ type DivProps = React.ComponentPropsWithoutRef<'div'>
 type AProps = React.ComponentPropsWithoutRef<'a'>
 
 type TypeSpecificProps =
-  | ({ externalLink?: false } & DivProps)
-  | ({ externalLink?: false } & SelectedRequired<ButtonProps, 'onClick'>)
-  | ({ externalLink?: false } & LinkProps)
-  | ({ externalLink: true } & AProps)
+  | ({ tag?: undefined; externalLink?: false } & DivProps)
+  | ({ tag?: undefined; externalLink?: false } & SelectedRequired<
+      ButtonProps,
+      'onClick'
+    >)
+  | ({ tag?: undefined; externalLink?: false } & LinkProps)
+  | ({ tag?: undefined; externalLink: true } & AProps)
+  | ({ tag: 'Link'; externalLink?: false } & LinkProps)
+  | ({ tag: 'a'; externalLink: true } & AProps)
+  | ({ tag: 'button'; externalLink?: false } & ButtonProps)
+  | ({ tag: 'div'; externalLink?: false } & DivProps)
 
 type Props = TypeSpecificProps & {
   disabled?: boolean
@@ -30,6 +37,9 @@ type Props = TypeSpecificProps & {
 type TagType = 'div' | 'button' | 'a' | 'Link'
 
 function getType<P extends Props>(props: P): TagType {
+  if ('tag' in props && props.tag) {
+    return props.tag
+  }
   if ('onClick' in props) {
     return 'button'
   }
