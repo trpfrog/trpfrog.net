@@ -2,7 +2,7 @@
   "name": "trpfrog-net",
   "private": true,
   "scripts": {
-    "dev": "prisma generate && next dev",
+    "dev": "prisma generate && npx concurrently 'next dev' 'bun tools/markdownWatcher.ts'",
     "build": "prisma generate && next build",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
@@ -86,6 +86,8 @@
     "remark-unwrap-images": "^3.0.1",
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "swr": "^2.2.2",
     "textlint": "^13.3.3",
     "textlint-rule-preset-japanese": "^7.0.0",
