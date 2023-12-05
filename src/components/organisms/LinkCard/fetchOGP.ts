@@ -31,7 +31,6 @@ export async function fetchOGP(url: string) {
     url,
     customMetaTags: [
       { property: 'theme-color', multiple: false, fieldName: 'themeColor' },
-      { property: 'twitter:card', multiple: false, fieldName: 'twitterCard' },
     ],
   })
   if (result.ogImage) {
