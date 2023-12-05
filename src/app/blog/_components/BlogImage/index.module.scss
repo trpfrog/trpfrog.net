@@ -10,11 +10,6 @@
   gap: 5px;
   margin: 0;
 
-  color: gray;
-  @include mixins.mq(dark) {
-    color: lightgray;
-  }
-
   &:has(.video) {
     width: 100%;
   }
@@ -56,6 +51,10 @@
 
 .caption {
   line-height: 1.5;
+  color: gray;
+  @include mixins.mq(dark) {
+    color: lightgray;
+  }
 }
 
 .taken_by {
@@ -63,6 +62,10 @@
   text-align: right;
   width: 100%;
   line-height: 1;
+  color: gray;
+  @include mixins.mq(dark) {
+    color: lightgray;
+  }
 }
 
 .video {

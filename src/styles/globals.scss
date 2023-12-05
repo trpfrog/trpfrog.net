@@ -183,7 +183,8 @@ h3 {
 }
 
 hr {
-  border: 2px dashed var(--header-color);
+  border: none;
+  border-top: 5px dotted var(--body-background);
   margin: 2rem 0;
 }
 

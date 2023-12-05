@@ -49,7 +49,9 @@ export const horizontalImagesParts = {
           ))}
         </div>
         {caption != '' && (
-          <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
+          <div style={{ marginTop: 3 }}>
+            <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
+          </div>
         )}
       </div>
     )
