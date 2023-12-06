@@ -8,6 +8,7 @@ import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
 import { MARKDOWN_WATCHER_PORT } from '@/lib/constants'
 
+import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 
 export type DevBlogMarkdownProps = {
@@ -48,5 +49,10 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
   }, [props.page, props.slug])
 
   // Returns stale article while fetching
-  return useDeferredValue(articleJSX)
+  return (
+    <>
+      {useDeferredValue(articleJSX)}
+      <ImageDragAndDrop />
+    </>
+  )
 }

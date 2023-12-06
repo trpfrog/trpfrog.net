@@ -6,25 +6,24 @@ import { uploadToCloudinaryOnServer } from '@blog/_renderer/DevBlogMarkdown/uplo
 
 export function useUploadFunction(slug: string) {
   return useCallback(
-    (
-      file: File,
-      onSuccess: (imageUrl: string) => void,
-      onError: (errorMessage: string) => void,
-    ) => {
+    async (file: File) => {
       const formData = new FormData()
       formData.append('image', file)
       const uploadPromise = uploadToCloudinaryOnServer(formData, slug)
 
-      toast
-        .promise(uploadPromise, {
-          loading: 'Uploading...',
-          success: <b>Uploaded!</b>,
-          error: <b>Something went wrong...</b>,
-        })
-        .then(({ public_id, format, width, height }) => {
-          onSuccess(`/${public_id}.${format}?w=${width}&h=${height}`)
-        })
-        .catch(err => onError(err.message))
+      try {
+        const { public_id, format, width, height } = await toast.promise(
+          uploadPromise,
+          {
+            loading: 'Uploading...',
+            success: <b>Uploaded!</b>,
+            error: <b>Something went wrong...</b>,
+          },
+        )
+        return `/${public_id}.${format}?w=${width}&h=${height}` as const
+      } catch (err) {
+        throw err
+      }
     },
     [slug],
   )

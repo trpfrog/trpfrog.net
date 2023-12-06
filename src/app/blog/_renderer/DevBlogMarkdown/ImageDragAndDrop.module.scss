@@ -1,0 +1,39 @@
+@use '@/styles/mixins';
+
+.wrapper {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  width: 300px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  z-index: 100;
+
+  @include mixins.mq(sp) {
+    display: none;
+  }
+}
+
+.drag_and_drop {
+  display: grid;
+  place-items: center;
+  height: 200px;
+  background: var(--window-bkg-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.tab {
+  background: var(--header-color);
+  width: 100%;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
