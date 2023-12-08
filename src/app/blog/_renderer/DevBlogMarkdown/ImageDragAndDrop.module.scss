@@ -4,12 +4,13 @@
   display: block;
   position: fixed;
   bottom: 0;
-  left: 20px;
+  right: 100px;
   width: 300px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px 10px 0 0;
   overflow: hidden;
   z-index: 100;
+  background: var(--window-bkg-color);
 
   @include mixins.mq(sp) {
     display: none;
@@ -17,14 +18,22 @@
 }
 
 .drag_and_drop {
-  display: grid;
-  place-items: center;
   height: 200px;
-  background: var(--window-bkg-color);
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.2;
   text-align: center;
+  padding: 15px;
+}
+
+.drag_and_drop_text {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-style: dashed;
+  border-width: 2px;
 }
 
 .tab {
@@ -36,4 +45,9 @@
   display: grid;
   place-items: center;
   cursor: pointer;
+}
+
+.code_block {
+  padding: 5px;
+  font-size: 0.8em;
 }

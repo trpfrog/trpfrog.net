@@ -1,6 +1,8 @@
 'use client'
 import React, { useCallback, useState } from 'react'
 
+import { CodeBlock } from '@/components/molecules/CodeBlock'
+
 import { useUploadFunction } from '@blog/_renderer/DevBlogMarkdown/useUploadFunction'
 
 import styles from './ImageDragAndDrop.module.scss'
@@ -8,6 +10,7 @@ import styles from './ImageDragAndDrop.module.scss'
 export function ImageDragAndDrop(props: { slug: string }) {
   const [isDragging, setIsDragging] = useState(false)
   const [isTabOpen, setIsTabOpen] = useState(false)
+  const [recentlyUploaded, setRecentlyUploaded] = useState('')
   const uploadImage = useUploadFunction(props.slug)
 
   const onDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -28,9 +31,8 @@ export function ImageDragAndDrop(props: { slug: string }) {
         const paths = await Promise.all(
           Array.from(e.dataTransfer.files).map(uploadImage),
         )
-        await navigator.clipboard.writeText(
-          paths.map(e => `![](${e})` as const).join('\n'),
-        )
+        const imageMarkdown = paths.map(e => `![](${e})` as const).join('\n')
+        setRecentlyUploaded(imageMarkdown)
         e.dataTransfer.clearData()
       }
     },
@@ -43,18 +45,36 @@ export function ImageDragAndDrop(props: { slug: string }) {
         Image Uploader
       </div>
       {isTabOpen && (
-        <div
-          className={styles.drag_and_drop}
-          onDragEnter={onDragEnter}
-          onDragLeave={onDragLeave}
-          onDragOver={e => e.preventDefault()}
-          onDrop={onDrop}
-          style={{ color: isDragging ? 'inherit' : 'lightgray' }}
-        >
-          Drag and drop
-          <br />
-          images here
-        </div>
+        <>
+          <div
+            className={styles.drag_and_drop}
+            onDragEnter={onDragEnter}
+            onDragLeave={onDragLeave}
+            onDragOver={e => e.preventDefault()}
+            onDrop={onDrop}
+            style={{ color: isDragging ? 'inherit' : 'lightgray' }}
+          >
+            <div
+              className={styles.drag_and_drop_text}
+              style={{
+                borderColor: isDragging
+                  ? 'var(--header-color)'
+                  : 'var(--window-bkg-color)',
+              }}
+            >
+              Drag and drop
+              <br />
+              images here
+            </div>
+          </div>
+          {recentlyUploaded !== '' && (
+            <div className={styles.code_block}>
+              <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
+                {recentlyUploaded}
+              </CodeBlock>
+            </div>
+          )}
+        </>
       )}
     </div>
   )

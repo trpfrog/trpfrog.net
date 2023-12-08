@@ -52,7 +52,7 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
   return (
     <>
       {useDeferredValue(articleJSX)}
-      <ImageDragAndDrop />
+      <ImageDragAndDrop slug={props.slug} />
     </>
   )
 }
