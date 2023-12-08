@@ -2,6 +2,7 @@ import React from 'react'
 
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import remarkRemoveCjkBreaks from 'gatsby-remark-remove-cjk-breaks'
 import { MDXComponents } from 'mdx/types'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
 import 'katex/dist/katex.min.css'
@@ -182,6 +183,7 @@ export function getMarkdownPlugins() {
       remarkGfm,
       remarkMath,
       remarkUnwrapImages,
+      () => markdownAST => remarkRemoveCjkBreaks({ markdownAST }),
       () => remarkToc({ heading: '目次' }),
     ],
     rehypePlugins: [rehypeKatex, rehypeRaw, rehypeSlug],
