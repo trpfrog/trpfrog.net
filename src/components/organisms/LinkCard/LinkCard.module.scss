@@ -7,6 +7,7 @@
   border: 1px lightgray solid;
   border-radius: 10px;
   overflow: hidden;
+  font-size: 0.9em;
 }
 
 .wrapper {
@@ -16,11 +17,11 @@
 }
 
 .textArea {
-  padding: 1.3rem 1.3rem 1.3rem calc(1.3rem - 4px);
+  padding: 1rem 1rem 1rem calc(1rem - 4px);
   position: relative;
   display: grid;
   grid-template-rows: 1rem auto;
-  gap: 15px;
+  gap: 10px;
 }
 
 .image {
@@ -58,7 +59,7 @@
   line-height: 1.3;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
 }
 
