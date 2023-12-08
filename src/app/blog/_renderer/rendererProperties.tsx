@@ -118,7 +118,7 @@ function styledTag(tag: React.ElementType, className: string) {
   }
 }
 
-export function getMarkdownOptions(entry?: BlogPost) {
+export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
   const components: IsomorphicMarkdownComponent = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
@@ -134,6 +134,10 @@ export function getMarkdownOptions(entry?: BlogPost) {
           />
         </div>
       )
+    },
+
+    p: (props: React.PropsWithChildren<'p'>) => {
+      return React.createElement(isInline ? 'div' : 'p', props)
     },
 
     h2: (props: any) => (
