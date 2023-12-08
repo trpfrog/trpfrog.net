@@ -59,9 +59,9 @@ $code-block-border-radius: 10px;
   background: #536b2f;
   margin-bottom: -1px;
   height: 2em;
-  padding: 0 1rem;
+  padding: 0 1em;
 
-  font-size: 0.8rem;
+  font-size: 0.8em;
 
   filter: brightness($brightness);
 
@@ -130,7 +130,7 @@ $code-block-border-radius: 10px;
 .lines {
   display: grid;
   grid-auto-flow: row;
-  --padding-side: 1.5rem;
+  --padding-side: 1.5em;
 
   & > span {
     display: inline-block;
@@ -143,8 +143,8 @@ $code-block-border-radius: 10px;
   & > .warning_line,
   & > .info_line {
     border-left-style: solid;
-    border-left-width: 0.5rem;
-    padding: 0 var(--padding-side) 0 calc(var(--padding-side) - 0.5rem);
+    border-left-width: 0.5em;
+    padding: 0 var(--padding-side) 0 calc(var(--padding-side) - 0.5em);
   }
 }
 

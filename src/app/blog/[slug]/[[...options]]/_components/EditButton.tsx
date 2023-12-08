@@ -4,6 +4,12 @@ import React from 'react'
 
 import { Button } from '@/components/atoms/Button'
 
+import { openInCotEditor } from '@blog/actions/openInCotEditor'
+
 export function EditButton({ slug }: { slug: string }) {
-  return <Button href={`/blog/${slug}/edit`}>編集する</Button>
+  return process.env.NODE_ENV === 'development' ? (
+    <Button onClick={() => openInCotEditor(slug)}>編集する</Button>
+  ) : (
+    <></>
+  )
 }

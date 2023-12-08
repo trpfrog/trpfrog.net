@@ -28,3 +28,5 @@ export const HOST_URL =
 
 export const DEFAULT_BLOG_THUMBNAIL =
   'https://res.cloudinary.com/trpfrog/TwitterCard'
+
+export const MARKDOWN_WATCHER_PORT = 4000
