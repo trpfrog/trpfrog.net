@@ -136,8 +136,8 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
       )
     },
 
-    p: (props: React.PropsWithChildren<'p'>) => {
-      return React.createElement(isInline ? 'div' : 'p', props)
+    p: (props: React.ComponentProps<'p'>) => {
+      return React.createElement(isInline ? 'span' : 'p', props)
     },
 
     h2: (props: any) => (
