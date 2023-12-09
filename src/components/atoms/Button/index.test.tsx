@@ -117,5 +117,28 @@ describe('Button', () => {
       render(<Button disabled>test</Button>)
       expect(screen.getByTestId('button-component')).toHaveAttribute('disabled')
     })
+
+    test('should not call onClick', () => {
+      const onClick = jest.fn()
+      render(
+        <Button onClick={onClick} disabled>
+          test
+        </Button>,
+      )
+      screen.getByTestId('button-component').click()
+      expect(onClick).not.toHaveBeenCalled()
+    })
+
+    test('should not jump to /', () => {
+      render(
+        <Button href="/" disabled>
+          test
+        </Button>,
+      )
+      expect(screen.getByTestId('button-component')).toHaveAttribute(
+        'href',
+        '/',
+      )
+    })
   })
 })

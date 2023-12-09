@@ -1,16 +1,11 @@
-import {
-  ExtraCodeBlockComponentName,
-  isValidExtraCodeBlockComponentName,
-} from '@blog/_components/OriginalMarkdownComponent'
+import type { ExtraCodeBlockComponentName } from '@blog/_components/OriginalMarkdownComponent'
 
 function isUtilityCodeBlock(name: string): boolean {
-  const ignoreTarget: ExtraCodeBlockComponentName[] = [
+  const ignoreTarget: string[] = [
     'twitter',
     'ignore-read-count',
-  ]
-  return (
-    isValidExtraCodeBlockComponentName(name) && !ignoreTarget.includes(name)
-  )
+  ] satisfies ExtraCodeBlockComponentName[]
+  return !ignoreTarget.includes(name)
 }
 
 export function computeReadTimeSecondFrom(markdown: string) {
@@ -28,9 +23,11 @@ export function computeReadTimeSecondFrom(markdown: string) {
   }
 
   let numOfCharacters: number = 0
-  let enableWordCounting = true
+  let addtionalSeconds: number = 0
+  let manualEnableWordCounting = true
+  let inStyleTag = false
 
-  const imagePoint = 10
+  const isEnabledWordCounting = () => manualEnableWordCounting && !inStyleTag
 
   for (let line of linkRemoved.split('\n')) {
     // code block
@@ -52,31 +49,38 @@ export function computeReadTimeSecondFrom(markdown: string) {
       continue
     }
 
-    if (line.startsWith('<!--')) {
-      if (line.includes('disable read-count')) {
-        enableWordCounting = false
-      } else if (line.includes('enable read-count')) {
-        enableWordCounting = true
+    const commentRegex = /^<!--+ ?(.*) ?--+>/
+    if (commentRegex.test(line)) {
+      const content = commentRegex.exec(line)![1].trim()
+
+      if (content.includes('disable read-count')) {
+        manualEnableWordCounting = false
+      } else if (content.includes('enable read-count')) {
+        manualEnableWordCounting = true
+      } else if (content.includes('add-read-time-seconds')) {
+        const sec = parseFloat(
+          content.replace('add-read-time-seconds', '').trim(),
+        )
+        addtionalSeconds += Number.isNaN(sec) ? 0 : sec
       }
       continue
     }
 
     if (line.includes('<style>')) {
-      enableWordCounting = false
+      inStyleTag = true
     } else if (line.includes('</style>')) {
-      enableWordCounting = true
+      inStyleTag = false
     }
 
-    if (!enableWordCounting) {
+    if (!isEnabledWordCounting()) {
       continue
     }
 
     if (getStackTop() === 'twitter-archived') {
       if (line.startsWith('tweet:')) {
         line = line.slice(7)
-      } else if (line.startsWith('image:')) {
-        // console.log('found image!');
-        numOfCharacters += imagePoint
+      } else if (/^image[234]?:.*/.test(line)) {
+        addtionalSeconds += 1
         continue
       } else {
         continue
@@ -88,14 +92,15 @@ export function computeReadTimeSecondFrom(markdown: string) {
     }
 
     if (line.match(imageRegex)) {
-      // console.log('found image!');
-      numOfCharacters += imagePoint
+      addtionalSeconds += 1
       continue
     }
 
-    // console.log(line);
+    line = line.replace(/\s/g, '').trim()
     numOfCharacters += line.length
   }
 
-  return Math.floor((numOfCharacters * 60) / 700)
+  const CHARACTERS_PER_MINUTE = 700
+  const CHARACTERS_PER_SECOND = CHARACTERS_PER_MINUTE / 60.0
+  return Math.floor(numOfCharacters / CHARACTERS_PER_SECOND) + addtionalSeconds
 }

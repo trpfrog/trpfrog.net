@@ -3,7 +3,7 @@
 exports[`Button a mode snapshot testing (external link) 1`] = `
 <DocumentFragment>
   <a
-    class="button "
+    class="button"
     data-testid="button-component"
     href="https://github.com"
     rel="noreferrer noopener"
@@ -17,7 +17,7 @@ exports[`Button a mode snapshot testing (external link) 1`] = `
 exports[`Button a mode snapshot testing (internal link) 1`] = `
 <DocumentFragment>
   <a
-    class="button "
+    class="button"
     data-testid="button-component"
     href="/"
   >
@@ -29,7 +29,7 @@ exports[`Button a mode snapshot testing (internal link) 1`] = `
 exports[`Button button mode snapshot testing 1`] = `
 <DocumentFragment>
   <button
-    class="button "
+    class="button"
     data-testid="button-component"
   >
     test
@@ -40,7 +40,7 @@ exports[`Button button mode snapshot testing 1`] = `
 exports[`Button div mode snapshot testing 1`] = `
 <DocumentFragment>
   <div
-    class="button "
+    class="button"
     data-testid="button-component"
   >
     test

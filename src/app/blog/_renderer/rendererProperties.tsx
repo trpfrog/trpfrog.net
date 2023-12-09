@@ -14,7 +14,8 @@ import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
-import { CodeBlock } from '@/components/molecules/CodeBlock'
+import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
+import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -60,11 +61,14 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       : ''
 
     if (isValidExtraCodeBlockComponentName(language)) {
+      const isDevClient =
+        process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <OriginalMarkdownComponent
           componentName={language}
           content={children as string}
           entry={entry}
+          useDevComponent={isDevClient}
         />
       )
     }
@@ -73,15 +77,48 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       ? className.replace('language-', '')
       : ''
 
+    const highlightLines: CodeBlockProps['highlightLines'] = {
+      error: [],
+      warning: [],
+      info: [],
+    }
+    if ('data-error' in props) {
+      highlightLines.error = parseDataLine(props['data-error'] as string)
+    }
+    if ('data-warning' in props) {
+      highlightLines.warning = parseDataLine(props['data-warning'] as string)
+    }
+    if ('data-info' in props) {
+      highlightLines.info = parseDataLine(props['data-info'] as string)
+    }
+
     return (
-      <CodeBlock language={language} fileName={fileName}>
+      <CodeBlock
+        language={language}
+        fileName={fileName}
+        highlightLines={highlightLines}
+      >
         {children as string}
       </CodeBlock>
     )
   }) satisfies MDXComponents['code']
 }
 
-export function getMarkdownOptions(entry?: BlogPost) {
+function styledTag(tag: React.ElementType, className: string) {
+  return function StyledTag(props: any) {
+    const { children, className: originalClassName = '', ...rest } = props
+    return React.createElement(
+      tag,
+      {
+        className: [className, originalClassName].filter(Boolean).join(' '),
+        ...rest,
+      },
+      children,
+    )
+  }
+}
+
+export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
   const components: IsomorphicMarkdownComponent = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(entry),
@@ -93,13 +130,18 @@ export function getMarkdownOptions(entry?: BlogPost) {
             src={props.src ?? ''}
             alt={props.alt ?? ''}
             caption={props.title}
+            spoiler={'data-spoiler' in props}
           />
         </div>
       )
     },
 
+    p: (props: React.ComponentProps<'p'>) => {
+      return React.createElement(isInline ? 'span' : 'p', props)
+    },
+
     h2: (props: any) => (
-      <h2 className={styles.anchor} id={props.id}>
+      <h2 className={[styles.anchor, styles.h2].join(' ')} id={props.id}>
         <a href={'#' + props.id}>
           <FontAwesomeIcon icon={faPaperclip} />
         </a>
@@ -108,6 +150,18 @@ export function getMarkdownOptions(entry?: BlogPost) {
     ),
     a: (props: any) => (
       <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
+    ),
+    blockquote: styledTag('blockquote', styles.blockquote),
+    details: styledTag('details', styles.details),
+    summary: styledTag('summary', styles.summary),
+    h3: styledTag('h3', styles.h3),
+    video: (props: any) => (
+      <BlogImage
+        src={props.src ?? ''}
+        alt={props.alt ?? ''}
+        caption={props.title}
+        isVideo
+      />
     ),
   }
 

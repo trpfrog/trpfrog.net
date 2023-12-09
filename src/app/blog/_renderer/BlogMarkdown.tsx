@@ -9,39 +9,11 @@ import { BlogPost } from '@blog/_lib/blogPost'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleRenderer } from './ArticleRenderer'
-import { getMarkdownPlugins } from './rendererProperties'
+import { getMarkdownOptions } from './rendererProperties'
 
 export const parseInlineMarkdown = (markdown: string) => {
-  const isDevClient =
-    process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
-  return isDevClient ? (
-    <ArticleRenderer
-      toRender={markdown}
-      markdownOptions={{
-        components: {
-          p: ({ children }: any) => <>{children}</>,
-        },
-        options: {
-          mdxOptions: {
-            ...getMarkdownPlugins(),
-          },
-        },
-      }}
-    />
-  ) : (
-    <MDXRemote
-      source={markdown}
-      components={{
-        p: ({ children }) => <>{children}</>,
-      }}
-      options={{
-        mdxOptions: {
-          ...getMarkdownPlugins(),
-          format: 'md',
-        },
-      }}
-    />
-  )
+  const options = getMarkdownOptions(undefined, true)
+  return <MDXRemote source={markdown} {...options} />
 }
 
 type Props = {

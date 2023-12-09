@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 
-const TwitterArchiveSchema = z.object({
+export const BlogTwitterArchiveSchema = z.object({
   name: z.string().default('つまみ'),
   userid: z.string().default('TrpFrog'),
   color: z.string().optional(),
@@ -21,7 +21,7 @@ const TwitterArchiveSchema = z.object({
 export function generateTwitterArchiveProps(
   rawTweetData: unknown,
 ): TwitterArchivedProps {
-  const parsed = TwitterArchiveSchema.passthrough().safeParse(rawTweetData)
+  const parsed = BlogTwitterArchiveSchema.passthrough().safeParse(rawTweetData)
   if (!parsed.success) {
     throw parsed.error
   }

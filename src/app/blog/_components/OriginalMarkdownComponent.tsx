@@ -117,9 +117,21 @@ export type ExtraCodeBlockComponentName =
 // TODO: ArticleParts の DevComponent の扱いを考える
 const extraCodeBlockComponentRecord = Object.fromEntries(
   (extraCodeBlockComponents as readonly ArticleParts[]).map(
-    ({ name, Component }) => [name, Component],
+    ({ name, Component, DevComponent }) => [
+      name,
+      {
+        Component,
+        DevComponent: DevComponent ?? Component,
+      },
+    ],
   ),
-) as Record<ExtraCodeBlockComponentName, IsomorphicArticleParts>
+) as Record<
+  ExtraCodeBlockComponentName,
+  {
+    Component: IsomorphicArticleParts
+    DevComponent: IsomorphicArticleParts
+  }
+>
 
 /**
  * code block component として存在しているかどうかを判定する
@@ -137,9 +149,17 @@ export function isValidExtraCodeBlockComponentName(
 export function OriginalMarkdownComponent(
   props: IsomorphicArticlePartsProps & {
     componentName: ExtraCodeBlockComponentName
+    useDevComponent?: boolean
   },
 ) {
-  const { componentName, ...rest } = props
-  const TargetComponent = extraCodeBlockComponentRecord[props.componentName]
+  const { componentName, useDevComponent = false, ...rest } = props
+  let TargetComponent: IsomorphicArticleParts
+  if (useDevComponent) {
+    TargetComponent =
+      extraCodeBlockComponentRecord[props.componentName].DevComponent
+  } else {
+    TargetComponent =
+      extraCodeBlockComponentRecord[props.componentName].Component
+  }
   return <TargetComponent {...rest} />
 }

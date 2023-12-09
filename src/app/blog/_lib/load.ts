@@ -11,7 +11,7 @@ const postsDirectory = path.join(process.cwd(), 'src', 'posts')
  * Read markdown from slug (without extension)
  * @param slug
  */
-function readMarkdownFromSlug(slug: string) {
+export function readMarkdownFromSlug(slug: string) {
   const fullPath = path.join(postsDirectory, `${slug}.md`)
   const paths = [fullPath, fullPath + 'x'] // for mdx
   for (const p of paths) {

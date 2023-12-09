@@ -12,6 +12,8 @@ type BlogImageProps = {
   src: string
   alt: string
   caption?: string
+  spoiler?: boolean
+  isVideo?: boolean
   style?: CSSProperties
 }
 
@@ -32,6 +34,8 @@ export const BlogImage = React.memo(function BlogImage({
   src,
   alt,
   style,
+  spoiler,
+  isVideo,
   ...props
 }: BlogImageProps) {
   let caption = props.caption ?? ''
@@ -42,11 +46,19 @@ export const BlogImage = React.memo(function BlogImage({
     ;[caption, takenBy] = caption.split(takenByIdentifier).map(e => e.trim())
   }
 
+  if (isVideo && spoiler) {
+    throw new Error('Video with spoiler is not supported.')
+  }
+
   return (
     <>
       <figure className={styles.img_wrapper} style={style}>
         {takenBy && <TakenBy photographer={takenBy} />}
-        <ImageWithModal src={src} alt={alt} />
+        {isVideo ? (
+          <video src={src} controls className={styles.video} />
+        ) : (
+          <ImageWithModal src={src} alt={alt} spoiler={spoiler} />
+        )}
         {caption && <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>}
       </figure>
     </>

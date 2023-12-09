@@ -5,7 +5,7 @@ const fonts: Font[] = [
   { family: 'M PLUS Rounded 1c', weight: [100, 400, 700, 800] },
   { family: 'Roboto' },
   { family: 'Noto Sans JP', weight: [400, 700] },
-  { family: 'Noto Sans Mono' },
+  { family: 'Noto Sans Mono', weight: [400, 700] },
   { family: 'Inconsolata', weight: [200] },
   { family: 'BIZ UDPGothic', weight: [400, 700] },
 ]

@@ -12,6 +12,8 @@ import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
 import { fetchBlogPost, retrieveSortedBlogPostList } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
+import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
+import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
@@ -89,6 +91,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
   const { entry: post, relatedPosts } = await processSlug(slug, page)
+  const initialNode = await renderBlog(slug, page)
 
   return (
     <MainWrapper className={styles.layout}>
@@ -97,7 +100,11 @@ export default async function Index({ params: { slug, options } }: PageProps) {
         <div className={styles.article_wrapper}>
           <UDFontBlock>
             <BadBlogBlock>
-              <BlogMarkdown entry={post} />
+              {process.env.NODE_ENV === 'production' ? (
+                <BlogMarkdown entry={post} />
+              ) : (
+                <DevBlogMarkdown slug={slug} page={page} />
+              )}
             </BadBlogBlock>
           </UDFontBlock>
         </div>

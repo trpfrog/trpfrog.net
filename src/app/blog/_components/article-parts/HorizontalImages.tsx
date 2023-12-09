@@ -7,22 +7,20 @@ import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 export const horizontalImagesParts = {
   name: 'horizontal-images',
   Component: ({ content }) => {
-    const regex = new RegExp('^!\\[.*?]\\(')
+    const regex = /^!\[(.*)]\((.*?)( "(.*)")?\)/
 
-    const imageSources = content
+    type ImageSource = { src: string; alt: string; title?: string }
+    const imageSources: ImageSource[] = content
       .split('\n')
       .filter(line => line.match(regex))
-      .map(line => line.replace(regex, '').slice(0, -1))
-      .map(src => ({ src, imageData: { height: 600, width: 800 } }))
-
-    const minImageHeight = imageSources
-      .map(e => e.imageData.height)
-      .reduce((prv, cur) => Math.min(prv, cur), 1000000)
-
-    imageSources.forEach(e => {
-      e.imageData.width *= minImageHeight / e.imageData.height
-      e.imageData.height = minImageHeight
-    })
+      .map(line => {
+        const match = line.match(regex)!
+        return {
+          src: match[2],
+          alt: match[1] ?? '',
+          title: match[4],
+        }
+      })
 
     const caption = content
       .split('\n')
@@ -31,7 +29,7 @@ export const horizontalImagesParts = {
       .join('')
 
     return (
-      <figure style={{ textAlign: 'center', margin: 'auto 0' }}>
+      <div style={{ textAlign: 'center', margin: 'auto 0' }}>
         <div
           style={{
             display: 'grid',
@@ -40,19 +38,22 @@ export const horizontalImagesParts = {
             margin: '2em 0 ' + (caption != '' ? '0' : '2em'),
           }}
         >
-          {imageSources.map(({ src }, index) => (
+          {imageSources.map(({ src, alt, title }, index) => (
             <BlogImage
               src={src}
-              alt={src}
+              alt={alt}
+              caption={title}
               key={`${src}-${index}`}
               style={{ margin: 0 }}
             />
           ))}
         </div>
         {caption != '' && (
-          <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
+          <div style={{ marginTop: 3 }}>
+            <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
+          </div>
         )}
-      </figure>
+      </div>
     )
   },
 } as const satisfies ArticleParts

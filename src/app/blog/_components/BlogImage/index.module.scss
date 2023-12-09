@@ -10,9 +10,8 @@
   gap: 5px;
   margin: 0;
 
-  color: gray;
-  @include mixins.mq(dark) {
-    color: lightgray;
+  &:has(.video) {
+    width: 100%;
   }
 }
 
@@ -20,17 +19,42 @@
   max-width: 100%;
   box-shadow: 0 0 1px 1px rgba(gray, 0.3);
   transition: box-shadow ease-in-out 0.2s;
-
-  @include mixins.mq(pc) {
-    &:hover {
-      box-shadow: 0 3px 10px 1px rgba(gray, 0.7);
-    }
-  }
+  display: block;
   page-break-inside: avoid;
+}
+
+.spoiler {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  backdrop-filter: blur(20px);
+}
+
+.spoiler_text {
+  border-radius: 1000px;
+  padding: 0.5em 1em;
+  background: rgba(white, 0.5);
+  color: black;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(white, 0.7);
+  }
 }
 
 .caption {
   line-height: 1.5;
+  color: gray;
+  @include mixins.mq(dark) {
+    color: lightgray;
+  }
 }
 
 .taken_by {
@@ -38,4 +62,14 @@
   text-align: right;
   width: 100%;
   line-height: 1;
+  color: gray;
+  @include mixins.mq(dark) {
+    color: lightgray;
+  }
+}
+
+.video {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
 }

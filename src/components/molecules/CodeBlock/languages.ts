@@ -4,6 +4,7 @@ import java from 'react-syntax-highlighter/dist/cjs/languages/prism/java'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
+import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown'
 import html from 'react-syntax-highlighter/dist/cjs/languages/prism/markup'
 import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss'
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx'
@@ -26,4 +27,6 @@ export function registerLanguages() {
   SyntaxHighlighter.registerLanguage('yaml', yaml)
   SyntaxHighlighter.registerLanguage('css', css)
   SyntaxHighlighter.registerLanguage('scss', scss)
+  SyntaxHighlighter.registerLanguage('markdown', markdown)
+  SyntaxHighlighter.registerLanguage('md', markdown)
 }

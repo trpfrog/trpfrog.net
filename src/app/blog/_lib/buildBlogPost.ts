@@ -23,7 +23,7 @@ export function buildBlogPost(
 
   const numberOfPhotos = matterResult.content
     .split('\n')
-    .filter(e => e.startsWith('![')).length
+    .filter(e => /^(!\[)|(<img)|(image[234]?:)/.test(e)).length
 
   const pageContent = option?.noContentNeeded
     ? []
