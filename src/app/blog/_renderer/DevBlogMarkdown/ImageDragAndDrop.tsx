@@ -28,6 +28,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
       e.preventDefault()
       setIsDragging(false)
       if (e.dataTransfer.files !== null && e.dataTransfer.files.length > 0) {
+        setRecentlyUploaded('Uploading...')
         const paths = await Promise.all(
           Array.from(e.dataTransfer.files).map(uploadImage),
         )

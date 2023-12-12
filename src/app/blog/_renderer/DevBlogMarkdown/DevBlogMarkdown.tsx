@@ -48,6 +48,33 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
     }
   }, [props.page, props.slug])
 
+  // scroll
+  const documentHeight = React.useRef<number>(-1)
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (documentHeight.current === -1) {
+        documentHeight.current = document.documentElement.offsetHeight
+      } else {
+        window.requestAnimationFrame(() => {
+          const nextHeight = document.documentElement.offsetHeight
+          const diff = nextHeight - documentHeight.current
+          documentHeight.current = nextHeight
+          if (Math.abs(diff) > 1000) {
+            // ignore
+            return
+          }
+          window.scrollBy(0, diff)
+        })
+      }
+    })
+    resizeObserver.observe(document.body)
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [articleJSX])
+
   // Returns stale article while fetching
   return (
     <>
