@@ -1,6 +1,6 @@
 'use client'
-
-import React, { useState } from 'react'
+import { useContext, useState } from 'react'
+import * as React from 'react'
 
 import { Button } from '@/components/atoms/Button'
 
@@ -40,7 +40,7 @@ export function BadBlogButton() {
   ]
 
   const { badBlog, setBadBlog, badButtonFlag, setBadButtonFlag } =
-    React.useContext(BadBlogStateContext)
+    useContext(BadBlogStateContext)
 
   const handleBadBlog = () => {
     setBadButtonFlag(true)
@@ -68,7 +68,7 @@ export function BadBlogButton() {
 }
 
 export function BadBlogBlock({ children }: { children: React.ReactNode }) {
-  const { badBlog } = React.useContext(BadBlogStateContext)
+  const { badBlog } = useContext(BadBlogStateContext)
   return (
     <div className={styles.bad_blog_wrapper} data-bad-blog={badBlog}>
       {children}

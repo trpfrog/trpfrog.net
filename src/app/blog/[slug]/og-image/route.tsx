@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

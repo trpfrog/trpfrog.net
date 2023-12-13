@@ -1,5 +1,3 @@
-import React from 'react'
-
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { TrpFrogIconFrame } from '@/app/(home)/_components/TrpFrogIconFrame'
 

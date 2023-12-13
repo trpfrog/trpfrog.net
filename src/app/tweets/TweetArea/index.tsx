@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { PageNavigation } from '@/app/tweets/PageNavigation'
 import { DateCard, TweetCard } from '@/app/tweets/TweetCard'

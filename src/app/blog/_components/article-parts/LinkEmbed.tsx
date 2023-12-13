@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
 import { ServerLinkCard } from '@/components/organisms/LinkCard/ServerLinkCard'
 

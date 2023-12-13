@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useState, useCallback } from 'react'
 
 import { Queue } from '@/lib/queue'
 
@@ -31,13 +31,13 @@ export function useRpmCalculation(
 ) {
   if (queueTTLMillis < 1) throw new Error('heapSize must be greater than 0')
 
-  const q = React.useRef<Queue<RpmRecord> | null>(null)
+  const q = useRef<Queue<RpmRecord> | null>(null)
   if (!q.current) {
     q.current = new Queue()
   }
 
-  const [diffSum, setDiffSum] = React.useState(0)
-  const pushDegree = React.useCallback(
+  const [diffSum, setDiffSum] = useState(0)
+  const pushDegree = useCallback(
     (degree: number) => {
       const curLast = q.current?.last
       if (curLast) {

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import { memo, CSSProperties } from 'react'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -22,9 +22,7 @@ type Props = {
   className?: string
 }
 
-export const BlogMarkdown = React.memo(function InnerBlogMarkdown(
-  props: Props,
-) {
+export const BlogMarkdown = memo(function InnerBlogMarkdown(props: Props) {
   const { entry, style, className } = props
   const markdown = entry.content
 

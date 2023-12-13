@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import { FoggedDiv, FoggedDivProps } from '@/components/atoms/FoggedDiv'
 import { usePixelValueFromCSSLength } from '@/components/molecules/ShowAll/usePixelValueFromCSSLength'
@@ -20,14 +20,14 @@ export function ShowAll(props: ShowAllProps) {
     children,
     ...rest
   } = props
-  const [isShowAll, setIsShowAll] = React.useState(showAllByDefault ?? false)
-  const [needsFog, setNeedsFog] = React.useState(true) // コンテンツが少なすぎるときは Fog を表示しない
+  const [isShowAll, setIsShowAll] = useState(showAllByDefault ?? false)
+  const [needsFog, setNeedsFog] = useState(true) // コンテンツが少なすぎるときは Fog を表示しない
 
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const maxHeightPx = usePixelValueFromCSSLength(ref, height)
 
   // コンテンツの高さから、Fog を表示するかどうかを決める
-  React.useEffect(() => {
+  useEffect(() => {
     const innerHeight = ref.current?.clientHeight
     if (innerHeight && maxHeightPx) {
       setNeedsFog(innerHeight > maxHeightPx)

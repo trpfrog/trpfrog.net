@@ -1,5 +1,6 @@
 'use client'
-import React from 'react'
+import * as React from 'react'
+import { useCallback, useImperativeHandle, useRef, useState } from 'react'
 
 import { DivWithDragEvent } from '@/components/atoms/DivWithDragEvent'
 
@@ -28,12 +29,12 @@ export const AnglePicker = React.forwardRef<AnglePickerHandle, Props>(
       initialDegree = 0,
       ...rest
     } = props
-    const [degree, setDegree] = React.useState(initialDegree)
+    const [degree, setDegree] = useState(initialDegree)
 
-    const innerRef = React.useRef<HTMLDivElement>(null)
+    const innerRef = useRef<HTMLDivElement>(null)
 
     // ref.current.setDegree で手動での角度変更をできるようにする
-    React.useImperativeHandle(ref, () => ({
+    useImperativeHandle(ref, () => ({
       setDegree: manualDegree => {
         setDegree(prev => {
           const newDegree =
@@ -46,7 +47,7 @@ export const AnglePicker = React.forwardRef<AnglePickerHandle, Props>(
       },
     }))
 
-    const setAngleFromMouseEvent = React.useCallback(
+    const setAngleFromMouseEvent = useCallback(
       (e: MouseEvent) => {
         const rect = innerRef.current?.getBoundingClientRect()
         if (!e || !rect) {

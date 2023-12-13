@@ -1,5 +1,6 @@
 // 要素内でドラッグを開始したとき、要素外でもドラッグを継続するためのコンポーネント
-import React from 'react'
+import * as React from 'react'
+import { useCallback, useState, useEffect } from 'react'
 
 type Props = React.ComponentPropsWithRef<'div'> & {
   onDragging: (e: MouseEvent) => void
@@ -9,8 +10,8 @@ export const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
   function DivWithDragEvent(props, ref) {
     const { onDragging, onMouseDown, onClick, ...rest } = props
 
-    const [isDragging, setIsDragging] = React.useState(false)
-    const handleDrag = React.useCallback(
+    const [isDragging, setIsDragging] = useState(false)
+    const handleDrag = useCallback(
       (e: MouseEvent) => {
         if (!isDragging) return // div 外のドラッグにも反応してしまうため、これより上には処理を書かない
         e.preventDefault()
@@ -20,13 +21,13 @@ export const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
       [isDragging, onDragging],
     )
 
-    const mouseUpHandler = React.useCallback(() => {
+    const mouseUpHandler = useCallback(() => {
       document.body.style.touchAction = ''
       setIsDragging(false)
     }, [setIsDragging])
 
     // 要素外でもドラッグと mouse up を検知するため document にイベントを登録する
-    React.useEffect(() => {
+    useEffect(() => {
       document.addEventListener('pointerup', mouseUpHandler)
       document.addEventListener('pointermove', handleDrag)
       return () => {

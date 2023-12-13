@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 
 import { faRotate, faStop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,7 +11,7 @@ interface Props {
   onClick?: () => void
 }
 
-export const RotateButton = React.memo(function RotateButton(props: Props) {
+export const RotateButton = memo(function RotateButton(props: Props) {
   return (
     <>
       <button

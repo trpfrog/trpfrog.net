@@ -1,5 +1,4 @@
-import React from 'react'
-import { Suspense } from 'react'
+import { Fragment, Suspense } from 'react'
 
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
@@ -43,7 +42,7 @@ export async function TempTwitter() {
       const [date, ...contentArr] = line.split('---')
       const content = contentArr.join('---')
       return (
-        <React.Fragment key={`temp-twitter-${idx}`}>
+        <Fragment key={`temp-twitter-${idx}`}>
           <span
             className={styles.date}
             style={{
@@ -63,7 +62,7 @@ export async function TempTwitter() {
               {content}
             </ReactMarkdown>
           </div>
-        </React.Fragment>
+        </Fragment>
       )
     })
 

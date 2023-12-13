@@ -1,15 +1,13 @@
 'use client'
 
-import React from 'react'
+import { createContext, useContext } from 'react'
 
 import dynamic from 'next/dynamic'
 
 import type { ParseWithBudouXProps } from '@/lib/wordSplit/wordSplit'
 
 // Hack to pass props to loading() of dynamic import
-const LoadingPropsContext = React.createContext<ParseWithBudouXProps | null>(
-  null,
-)
+const LoadingPropsContext = createContext<ParseWithBudouXProps | null>(null)
 
 const SSRSafeParseWithBudouX = dynamic(
   () => import('./wordSplit').then(m => m._ParseWithBudouX),
@@ -17,7 +15,7 @@ const SSRSafeParseWithBudouX = dynamic(
     ssr: false,
     loading: () => {
       function InnerLoadingParseWithBudouX() {
-        const props = React.useContext(LoadingPropsContext)
+        const props = useContext(LoadingPropsContext)
         return props ? <span>{props.str}</span> : <></>
       }
       return <InnerLoadingParseWithBudouX />

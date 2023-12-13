@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { H2Icon, H2 } from '@/components/atoms/H2'
 import { PlainBlock } from '@/components/atoms/PlainBlock'

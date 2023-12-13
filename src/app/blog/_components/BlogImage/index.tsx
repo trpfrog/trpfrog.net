@@ -1,4 +1,5 @@
-import React, { CSSProperties } from 'react'
+import { CSSProperties } from 'react'
+import * as React from 'react'
 
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

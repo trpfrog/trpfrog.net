@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 
 import { Metadata } from 'next'
 
@@ -60,7 +60,7 @@ export default async function Index() {
         {getTypedEntries(articlesGroupedByYear)
           .reverse()
           .map(([year, articles]) => (
-            <React.Fragment key={year as string}>
+            <Fragment key={year as string}>
               <div className={styles.hrule_block}>
                 <FontAwesomeIcon icon={faStar} /> {year as string} 年{' '}
                 <FontAwesomeIcon icon={faStar} />
@@ -73,7 +73,7 @@ export default async function Index() {
                   <LiteArticleCard entry={entry} key={entry.slug} />
                 ))}
               </div>
-            </React.Fragment>
+            </Fragment>
           ))}
       </MainWrapper>
     </>

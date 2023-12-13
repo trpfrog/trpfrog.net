@@ -1,6 +1,6 @@
 'use client'
-
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import * as React from 'react'
 
 import { faFont, faUniversalAccess } from '@fortawesome/free-solid-svg-icons'
 import { parseCookies, setCookie } from 'nookies'

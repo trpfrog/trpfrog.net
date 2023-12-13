@@ -1,4 +1,5 @@
-import React from 'react'
+import * as React from 'react'
+import { useCallback, useId, useState } from 'react'
 
 import { Tooltip } from 'react-tooltip'
 
@@ -17,11 +18,11 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
     ...rest
   } = props
 
-  const [isClicked, setIsClicked] = React.useState(false)
-  const [tooltipTimeoutId, setTooltipTimeoutId] = React.useState<number>(0)
-  const tooltipId = React.useId()
+  const [isClicked, setIsClicked] = useState(false)
+  const [tooltipTimeoutId, setTooltipTimeoutId] = useState<number>(0)
+  const tooltipId = useId()
 
-  const clickHandler = React.useCallback(
+  const clickHandler = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(e)
       if (tooltipTimeoutId) {
@@ -36,7 +37,7 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
     [onClick, tooltipTimeoutId],
   )
 
-  const mouseLeaveHandler = React.useCallback(() => {
+  const mouseLeaveHandler = useCallback(() => {
     if (tooltipTimeoutId) {
       clearTimeout(tooltipTimeoutId)
     }

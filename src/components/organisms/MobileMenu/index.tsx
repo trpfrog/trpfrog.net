@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useCallback, memo } from 'react'
 
 import { atom, useAtom } from 'jotai'
 import Link from 'next/link'
@@ -23,13 +23,13 @@ export function useToggleMenuCallback() {
   const [isOpened, setHamburgerState] = useMobileMenuState()
   const setAlwaysShownHeader = useSetAlwaysShownHeader()
 
-  return React.useCallback(() => {
+  return useCallback(() => {
     setHamburgerState(!isOpened)
     setAlwaysShownHeader(!isOpened)
   }, [isOpened, setAlwaysShownHeader, setHamburgerState])
 }
 
-export const MobileMenu = React.memo(function MobileMenu() {
+export const MobileMenu = memo(function MobileMenu() {
   const doNothing = () => {}
   const toggleMenu = useToggleMenuCallback()
 

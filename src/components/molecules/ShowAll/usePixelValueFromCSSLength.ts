@@ -1,5 +1,5 @@
 // return the pixel value of the CSS length (e.g. '1em' => 16)
-import React from 'react'
+import * as React from 'react'
 
 import { useRerender } from '@react-hookz/web'
 

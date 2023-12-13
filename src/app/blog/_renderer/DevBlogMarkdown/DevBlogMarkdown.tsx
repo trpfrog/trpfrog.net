@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useDeferredValue, useEffect, useState } from 'react'
+import { useRef, useDeferredValue, useEffect, useState } from 'react'
 
 import { io } from 'socket.io-client'
 
@@ -49,7 +49,7 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
   }, [props.page, props.slug])
 
   // scroll
-  const documentHeight = React.useRef<number>(-1)
+  const documentHeight = useRef<number>(-1)
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {

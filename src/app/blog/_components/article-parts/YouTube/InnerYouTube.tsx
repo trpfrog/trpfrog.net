@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import { memo } from 'react'
 
 import ReactPlayer from 'react-player/youtube'
 import YouTube from 'react-youtube'
 
-export const InnerYouTube = React.memo(function InnerYouTube({
+export const InnerYouTube = memo(function InnerYouTube({
   content,
 }: {
   content: string
@@ -24,7 +24,7 @@ export const InnerYouTube = React.memo(function InnerYouTube({
   )
 })
 
-export const InnerAutoYouTube = React.memo(function InnerAutoYouTube({
+export const InnerAutoYouTube = memo(function InnerAutoYouTube({
   content,
 }: {
   content: string

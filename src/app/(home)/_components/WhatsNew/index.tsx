@@ -1,8 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 
-import React from 'react'
-
 import dayjs from 'dayjs'
 import ReactMarkdown from 'react-markdown'
 

@@ -1,6 +1,4 @@
 'use client'
-import React from 'react'
-
 import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
 import { useShouldHideHeaderAtom } from '@/states/shouldHideHeaderAtom'
 import { useShowSiteCommentsAtom } from '@/states/showSiteCommentsAtom'

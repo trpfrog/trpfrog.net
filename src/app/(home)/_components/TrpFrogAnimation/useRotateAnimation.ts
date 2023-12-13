@@ -1,17 +1,17 @@
-import React from 'react'
+import { useRef, useState, useCallback } from 'react'
 
 import { AnglePickerHandle } from '@/components/atoms/AnglePicker'
 
 export function useRotateAnimation() {
   // AnglePicker の操作用 ref
-  const anglePickerRef = React.useRef<AnglePickerHandle>(null)
+  const anglePickerRef = useRef<AnglePickerHandle>(null)
 
-  const [intervalId, setIntervalId] = React.useState<number | null>(null)
-  const [rotateDirection, setRotateDirection] = React.useState<
-    'left' | 'right'
-  >('right')
+  const [intervalId, setIntervalId] = useState<number | null>(null)
+  const [rotateDirection, setRotateDirection] = useState<'left' | 'right'>(
+    'right',
+  )
 
-  const startAnimation = React.useCallback(() => {
+  const startAnimation = useCallback(() => {
     if (intervalId !== null) {
       return
     }
@@ -23,7 +23,7 @@ export function useRotateAnimation() {
     setIntervalId(id)
   }, [intervalId, rotateDirection])
 
-  const stopAnimation = React.useCallback(() => {
+  const stopAnimation = useCallback(() => {
     if (intervalId === null) {
       return
     }

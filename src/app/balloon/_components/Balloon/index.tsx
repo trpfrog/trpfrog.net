@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Dispatch, useId, useState } from 'react'
+import { Dispatch, useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
 import useSound from 'use-sound'
