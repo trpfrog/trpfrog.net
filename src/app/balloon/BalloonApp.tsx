@@ -6,7 +6,7 @@ import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import { Util } from '@/lib/utils'
+import { clamp } from '@/lib/utils'
 
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
@@ -17,7 +17,7 @@ export function BalloonApp() {
   const getValidInteger = (s: string) => {
     let n = parseInt(s, 10)
     if (isNaN(n)) return 1
-    return Util.clamp(n, 1, 10000)
+    return clamp(n, 1, 10000)
   }
 
   const [numberOfBalloons, setNumberOfBalloons] = useState(96)

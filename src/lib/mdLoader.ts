@@ -3,7 +3,7 @@ import path from 'path'
 
 import matter from 'gray-matter'
 
-import { Util as Utils } from './utils'
+import { sortWithDates } from './utils'
 
 type DateObject = { date: `${number}/${number}/${number}` }
 
@@ -32,6 +32,6 @@ export async function readMarkdowns<T extends DateObject>(
     }),
   )
   return markdownsWithFrontmatter.sort((a, b) =>
-    Utils.sortWithDates(a.metadata.date, b.metadata.date),
+    sortWithDates(a.metadata.date, b.metadata.date),
   )
 }
