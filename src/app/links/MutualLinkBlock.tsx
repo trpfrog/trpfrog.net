@@ -5,7 +5,7 @@ import styles from '@/app/(home)/page.module.scss'
 import { Button } from '@/components/atoms/Button'
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 
-import { Util as Utils } from '@/lib/utils'
+import { calcMonospacedTextWidth } from '@/lib/utils'
 
 import { MutualLinkRecord } from './loader'
 
@@ -16,7 +16,7 @@ export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
 
   // Shrink siteName if its length too long
   const style =
-    Utils.calcMonospacedTextWidth(siteName) < 20
+    calcMonospacedTextWidth(siteName) < 20
       ? {}
       : ({
           letterSpacing: -0.5,
