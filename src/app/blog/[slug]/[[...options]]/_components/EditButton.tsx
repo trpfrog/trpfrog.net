@@ -1,7 +1,4 @@
 'use client'
-
-import React from 'react'
-
 import { Button } from '@/components/atoms/Button'
 
 import { openInCotEditor } from '@blog/actions/openInCotEditor'

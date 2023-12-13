@@ -1,7 +1,4 @@
 'use client'
-
-import React from 'react'
-
 import {
   useMobileMenuState,
   useToggleMenuCallback,

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 
 import { LOREM_IPSUM } from '@/lib/constants'
 
@@ -24,7 +24,7 @@ export const Primary: Story = {
     showAllByDefault: false,
     height: 100,
     children: Array.from(Array(20)).map((e, i) => (
-      <React.Fragment key={i}>{LOREM_IPSUM}</React.Fragment>
+      <Fragment key={i}>{LOREM_IPSUM}</Fragment>
     )),
   },
 }

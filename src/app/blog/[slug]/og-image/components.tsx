@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
 

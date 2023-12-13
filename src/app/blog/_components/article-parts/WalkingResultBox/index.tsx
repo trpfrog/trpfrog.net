@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseColonSeparatedList } from '@blog/_lib/rawTextParser'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { Fragment } from 'react'
 
 import { useSearchParams } from 'next/navigation'
 
@@ -76,9 +76,9 @@ export function PageNavigation(props: {
       </span>
       <div className={styles.button_wrapper}>
         {buttons.map(pageNo => (
-          <React.Fragment key={`navigation-${pageNo}-${props.key}`}>
+          <Fragment key={`navigation-${pageNo}-${props.key}`}>
             <Button pageNo={pageNo} current={pageNo === props.currentPage} />
-          </React.Fragment>
+          </Fragment>
         ))}
       </div>
     </div>

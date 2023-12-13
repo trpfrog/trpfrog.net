@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 export const customPrismTheme: Record<string, React.CSSProperties> = {
   'code[class*="language-"]': {

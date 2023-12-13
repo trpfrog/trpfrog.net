@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Metadata } from 'next'
 
 import styles from '@/app/(home)/page.module.scss'

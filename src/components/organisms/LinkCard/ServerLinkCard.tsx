@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
 import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'

@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 
-import React from 'react'
+import { Fragment } from 'react'
 
 import { Metadata } from 'next'
 
@@ -51,14 +51,14 @@ function Itemize(props: {
           return <li key={index}>{child}</li>
         }
         return (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             {Object.entries(child).map(([key, value]) => (
-              <React.Fragment key={key}>
+              <Fragment key={key}>
                 <li>{key}</li>
                 <Itemize>{value}</Itemize>
-              </React.Fragment>
+              </Fragment>
             ))}
-          </React.Fragment>
+          </Fragment>
         )
       })}
     </ul>

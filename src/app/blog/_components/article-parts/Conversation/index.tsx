@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Talk } from '@/components/atoms/Talk'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'

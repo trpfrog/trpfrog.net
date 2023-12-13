@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { RotateButton } from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
 import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
@@ -16,10 +17,10 @@ type Props = {
 }
 
 export function TrpFrogAnimation({ children, id }: Props) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const rotateAnimation = useRotateAnimation()
 
-  const rotateCallback = React.useCallback(() => {
+  const rotateCallback = useCallback(() => {
     if (rotateAnimation.isRotated) {
       rotateAnimation.stopAnimation()
     } else {
@@ -32,7 +33,7 @@ export function TrpFrogAnimation({ children, id }: Props) {
   })
   const rpm = Math.abs(rawRpm)
 
-  const [maxRpm, setMaxRpm] = React.useState(0)
+  const [maxRpm, setMaxRpm] = useState(0)
   const showMaxRpm = maxRpm >= 150
 
   return (

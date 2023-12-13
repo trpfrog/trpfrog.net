@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ImageCaption, BlogImage } from '@blog/_components/BlogImage'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'

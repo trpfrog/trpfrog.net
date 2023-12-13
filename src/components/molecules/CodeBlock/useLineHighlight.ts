@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useEffect } from 'react'
 
 import styles from './index.module.scss'
 
@@ -7,10 +7,10 @@ export function useLineHighlight(lines: {
   warningLines?: number[]
   infoLines?: number[]
 }) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   const { errorLines, warningLines, infoLines } = lines
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       const lines = ref.current?.children
       if (lines) {

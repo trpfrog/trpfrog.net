@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Block } from '@/components/molecules/Block'
 import { HeaderFollowSticky } from '@/components/organisms/Header'
 

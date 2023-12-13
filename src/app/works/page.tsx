@@ -1,7 +1,5 @@
 import path from 'path'
 
-import React from 'react'
-
 import { Metadata } from 'next'
 
 import Image from 'next/legacy/image'
@@ -16,11 +14,11 @@ import { readMarkdowns } from '@/lib/mdLoader'
 
 import styles from './style.module.scss'
 
-type KeywordsType = {
+type KeywordsProps = {
   keywords: string[]
 }
 
-const Keywords: React.FC<KeywordsType> = ({ keywords }) => {
+function Keywords({ keywords }: KeywordsProps) {
   return (
     <p className={styles.keywords}>
       <span className={styles.keyword_title}>TECHNOLOGIES</span>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 
@@ -21,7 +21,7 @@ export type ArticleRendererProps =
       entry?: BlogPost
     }
 
-export const ArticleRenderer = React.memo(function ArticleRenderer(
+export const ArticleRenderer = memo(function ArticleRenderer(
   props: ArticleRendererProps,
 ) {
   let options: MarkdownOptions

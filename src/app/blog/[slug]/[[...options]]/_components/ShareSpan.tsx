@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 
 const share = (slug: string) => {
   if (typeof window === 'undefined') return

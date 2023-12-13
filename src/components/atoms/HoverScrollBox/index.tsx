@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
-
 type Props = React.ComponentPropsWithoutRef<'div'>
+
+import * as React from 'react'
+import { useRef } from 'react'
 
 import styles from './index.module.scss'
 import { useHoverScrollBoxEvent } from './useHoverScrollBoxEvent'
@@ -11,7 +12,7 @@ import { useScrollPosition } from './useScrollPosition'
 export function HoverScrollBox(props: Props) {
   const { className = '', children, ...rest } = props
 
-  const scrollAreaRef = React.useRef<HTMLDivElement>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
   const { handleMouseEnter, handleMouseLeave } =
     useHoverScrollBoxEvent(scrollAreaRef)
   const { scrollPosition, handleScroll } = useScrollPosition()

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'

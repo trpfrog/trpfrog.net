@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faAt, faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

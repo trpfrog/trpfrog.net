@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Alert } from '@/components/atoms/Alert'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
