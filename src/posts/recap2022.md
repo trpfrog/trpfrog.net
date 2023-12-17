@@ -1,5 +1,5 @@
 ---
-title: Recap of 2022
+title: A Recap of 2022
 date: 2022-12-31
 tags: 日記
 description: 今年もありがとうございました
