@@ -77,7 +77,14 @@ export function LinkCard(props: LinkCardProps) {
         <div className={styles.textArea}>
           <div className={styles.domain}>
             {favicon ? (
-              <img className={styles.favicon} alt="" src={favicon} />
+              <img
+                className={styles.favicon}
+                alt=""
+                src={favicon}
+                loading="lazy"
+                width={16}
+                height={16}
+              />
             ) : (
               <FontAwesomeIcon
                 className={styles.favicon}
@@ -96,7 +103,9 @@ export function LinkCard(props: LinkCardProps) {
             )}
           </div>
         </div>
-        {imageUrl && <img className={styles.image} alt="" src={imageUrl} />}
+        {imageUrl && (
+          <img className={styles.image} alt="" src={imageUrl} loading="lazy" />
+        )}
       </BlockLink>
     </div>
   )
