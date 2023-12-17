@@ -11,8 +11,9 @@ import {
   OgAttributesWrapper,
   OgBody,
   OgGradientBackground,
+  OgSubtitle,
   OgThumbnail,
-  OgTitle,
+  OgTitleWrapper,
   OgTrpFrogIcon,
   OgWhiteBackground,
   OgWindow,
@@ -56,7 +57,7 @@ export async function GET(req: NextRequest, context: Context) {
   if (!res.success) {
     return res.response
   }
-  const { title, thumbnail, tags, date } = res.data
+  const { title, subtitle, thumbnail, tags, date } = res.data
 
   const imageResponseOptions = await createImageResponseOptions()
 
@@ -68,14 +69,17 @@ export async function GET(req: NextRequest, context: Context) {
         <OgWindow>
           <OgThumbnail src={thumbnail} />
           <Background>
-            <OgTitle>{title}</OgTitle>
+            <OgTitleWrapper>
+              {title}
+              {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
+            </OgTitleWrapper>
+            <OgAttributesWrapper>
+              <OgAttribute>{date}</OgAttribute>
+              {tags.map(tag => (
+                <OgAttribute key={tag}>#{tag}</OgAttribute>
+              ))}
+            </OgAttributesWrapper>
           </Background>
-          <OgAttributesWrapper>
-            <OgAttribute>{date}</OgAttribute>
-            {tags.map(tag => (
-              <OgAttribute key={tag}>#{tag}</OgAttribute>
-            ))}
-          </OgAttributesWrapper>
         </OgWindow>
         <OgTrpFrogIcon size={100} pos={{ x: 38, y: 38 }} />
       </OgBody>

@@ -53,9 +53,10 @@ export const OgAttribute = styledDiv({
   boxShadow: '0 2px 6px #00000040',
 })
 
-export const OgTitle = styledDiv({
+export const OgTitleWrapper = styledDiv({
   padding: 30,
   display: 'flex',
+  flexDirection: 'column',
   width: '100%',
   height: '100%',
   justifyContent: 'center',
@@ -66,8 +67,14 @@ export const OgTitle = styledDiv({
   textShadow: 'white 1px 0 20px',
 })
 
+export const OgSubtitle = styledDiv({
+  marginTop: 10,
+  fontSize: 30,
+})
+
 export const OgWhiteBackground = styledDiv({
   display: 'flex',
+  flexDirection: 'column',
   width: '100%',
   height: '100%',
   background: 'white',
@@ -75,13 +82,14 @@ export const OgWhiteBackground = styledDiv({
 
 export const OgGradientBackground = styledDiv({
   display: 'flex',
+  flexDirection: 'column',
   width: '100%',
   height: '100%',
   background: `linear-gradient(${[
     '166deg',
     'white',
-    'rgba(255,255,255,0.8) 30%',
-    'rgba(255,255,255,0.4) 70%',
+    'rgba(255,255,255,0.9) 30%',
+    'rgba(255,255,255,0.5) 70%',
     'transparent',
   ].join(',')})`,
 })

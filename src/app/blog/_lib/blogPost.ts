@@ -21,6 +21,7 @@ const BlogTagSchema = z
 
 export const blogFrontMatterSchema = z.object({
   title: z.string().default(''),
+  subtitle: z.string().optional(),
   date: BlogDateSchema.default(new Date(0)),
   updated: BlogDateSchema.optional(),
   held: BlogDateSchema.optional(),

@@ -11,6 +11,7 @@ export type FetchArticleResult =
       success: true
       data: {
         title: string
+        subtitle?: string
         thumbnail?: string
         tags: string[]
         date: string
@@ -42,7 +43,7 @@ export async function fetchArticle(slug: string): Promise<FetchArticleResult> {
     }
   }
 
-  let { title, thumbnail, tags, date } =
+  let { title, subtitle, thumbnail, tags, date } =
     blogFrontMatterSchema.parse(articleInfo)
 
   // Satori doesn't support webp, so convert it to jpeg
@@ -53,6 +54,6 @@ export async function fetchArticle(slug: string): Promise<FetchArticleResult> {
 
   return {
     success: true,
-    data: { title, thumbnail, tags, date },
+    data: { title, subtitle, thumbnail, tags, date },
   }
 }
