@@ -58,6 +58,8 @@ UEC23 **(院)** です。フレッシュ！
 https://www.uec.ac.jp/campus/welfare/sugadaira/
 ```
 
+![](/blog/sugadaira-travel/sugadaira-map.jpg?w=1928&h=1139 "ここ、めちゃ遠いので車が必須")
+
 ここでのポイントなのが、サークル・研究室単位での利用に限っておらず**電通大生なら誰でも使える**という点です。つまり**旅行に使うことができます**。しかも恐ろしいのがその利用料金です。
 
 <blockquote>
