@@ -4,6 +4,7 @@ function isUtilityCodeBlock(name: string): boolean {
   const ignoreTarget: string[] = [
     'twitter',
     'ignore-read-count',
+    'define-component',
   ] satisfies ExtraCodeBlockComponentName[]
   return !ignoreTarget.includes(name)
 }
