@@ -9,25 +9,41 @@ export type LinkCardProps = Omit<
   'children'
 > & {
   href: string
+  fallbackToClient?: boolean
 }
 
 export async function ServerLinkCard(props: LinkCardProps) {
   const { href, ...rest } = props
 
-  const result = await fetchOGP(href).catch(() => null)
-  if (!result) {
-    return <ClientLinkCard href={href} {...rest} />
+  try {
+    const result = await fetchOGP(href).catch(() => null)
+    if (!result) {
+      throw new Error('OGP not found')
+    }
+    return (
+      <LinkCard
+        title={result.ogTitle ?? ''}
+        description={result.ogDescription}
+        href={href}
+        imageUrl={result.ogImage?.[0]?.url}
+        favicon={result.favicon}
+        themeColor={result.customMetaTags?.themeColor}
+        {...rest}
+      />
+    )
+  } catch (e) {
+    if (props.fallbackToClient) {
+      return <ClientLinkCard href={href} {...rest} />
+    } else {
+      return (
+        <LinkCard
+          title={href}
+          href={href}
+          description={href}
+          {...rest}
+          skeleton={false}
+        />
+      )
+    }
   }
-
-  return (
-    <LinkCard
-      title={result.ogTitle ?? ''}
-      description={result.ogDescription}
-      href={href}
-      imageUrl={result.ogImage?.[0]?.url}
-      favicon={result.favicon}
-      themeColor={result.customMetaTags?.themeColor}
-      {...rest}
-    />
-  )
 }
