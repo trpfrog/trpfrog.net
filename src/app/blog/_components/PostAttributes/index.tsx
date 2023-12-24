@@ -83,7 +83,7 @@ export const PostAttributes = ({ post }: Props) => {
         分
       </Content>
 
-      {['徒歩', '登山', '旅行', 'ドライブ'].some(e =>
+      {['徒歩', '登山', '旅行', 'ドライブ', '自転車'].some(e =>
         post.tags.includes(e),
       ) && (
         <Content icon={faImages} title={'写真の枚数'}>
