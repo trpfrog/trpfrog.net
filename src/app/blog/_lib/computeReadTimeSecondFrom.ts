@@ -5,6 +5,8 @@ function isUtilityCodeBlock(name: string): boolean {
     'twitter',
     'ignore-read-count',
     'define-component',
+    'use-defined-component',
+    'use-effect',
   ] satisfies ExtraCodeBlockComponentName[]
   return !ignoreTarget.includes(name)
 }
