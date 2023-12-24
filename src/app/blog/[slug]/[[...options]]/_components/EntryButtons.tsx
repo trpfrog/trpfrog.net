@@ -62,7 +62,7 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       </ShareSpan>
       <Button
         externalLink={true}
-        href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}
+        href={'https://github.com/TrpFrog/trpfrog.net/issues'}
       >
         訂正リクエスト
       </Button>
