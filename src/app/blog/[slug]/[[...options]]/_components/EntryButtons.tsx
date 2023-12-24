@@ -31,7 +31,7 @@ export function RichEntryButtons(props: EntryButtonProps) {
       <ShareSpan slug={post.slug}>
         <EntryButton icon={faTwitter} text={'ツイート'} />
       </ShareSpan>
-      <a href={'https://github.com/TrpFrog/next-trpfrog-net/issues'}>
+      <a href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         <EntryButton icon={faPencil} text={'訂正依頼'} />
       </a>
       {extended && (
