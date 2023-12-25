@@ -99,7 +99,18 @@ export function computeReadTimeSecondFrom(markdown: string) {
       continue
     }
 
-    line = line.replace(/\s/g, '').trim()
+    line = line
+      .replace(/\*\*\*(.+?)\*\*\*/g, '$1')
+      .replace(/\*\*(.+?)\*\*/g, '$1')
+      .replace(/\*(.+?)\*/g, '$1')
+      .replace(/<(.+?)>/g, '')
+      .replace(/https?:\/\/.*?(\s|$)/g, '')
+      .replace(/|\-+/g, '')
+      .replace(/[\.…,。、:~〜！？!?\-\(\)「」]/g, '')
+      .replace(/^#+/, '')
+      .replace(/\s/g, '')
+      .trim()
+
     numOfCharacters += line.length
   }
 
