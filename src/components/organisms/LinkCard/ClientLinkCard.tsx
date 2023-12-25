@@ -24,11 +24,7 @@ export function ClientLinkCard(props: ClientLinkCardProps) {
   }
 
   if (error || !data) {
-    return (
-      <div {...rest}>
-        <a href={href}>{href}</a>
-      </div>
-    )
+    return <LinkCard title={href} href={href} {...rest} />
   }
 
   return (

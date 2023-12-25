@@ -6,6 +6,7 @@ held: '2023-10-14'
 tags:
   - 日記
   - 旅行
+  - 長編記事
 description: '徒歩は怒りと共に #ファスト合宿'
 thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1702824337/blog/sugadaira-travel/thumbnail.jpg
 

@@ -76,6 +76,16 @@ export const preprocessMarkdown = (
 ): string[] => {
   const pageBreakRegex = /<!--+ page break --+>/g
   const windowBreakRegex = /<!--+ window break --+>/g
+  const beginHeadRegex = /<!--+ begin head --+>/g
+  const endHeadRegex = /<!--+ end head --+>/g
+
+  let head = ''
+  if (markdown.match(beginHeadRegex) && markdown.match(endHeadRegex)) {
+    const [beforeHead, tmp] = markdown.split(beginHeadRegex)
+    const [_head, afterHead] = tmp.split(endHeadRegex)
+    head = _head
+    markdown = beforeHead + afterHead
+  }
 
   if (!options.pageIdx1Indexed && !options.concatenateAllPages) {
     throw new Error(
@@ -97,6 +107,7 @@ export const preprocessMarkdown = (
     ? 0
     : (options.pageIdx1Indexed ?? 1) - 1
 
-  const page = markdown.split(pageBreakRegex)[targetPageIdx]
+  const page = head + markdown.split(pageBreakRegex)[targetPageIdx]
+
   return page.split(windowBreakRegex).map(parseFootnote)
 }

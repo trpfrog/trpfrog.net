@@ -2,24 +2,7 @@ import * as React from 'react'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import { conversationParts } from '@blog/_components/article-parts/Conversation'
-import {
-  cautionParts,
-  infoboxParts,
-  titledFrameParts,
-} from '@blog/_components/article-parts/HighlightedBoxes'
-import { horizontalImagesParts } from '@blog/_components/article-parts/HorizontalImages'
-import { horizontalScrollParts } from '@blog/_components/article-parts/HorizontalScroll'
-import { linkEmbedParts } from '@blog/_components/article-parts/LinkEmbed'
-import { profileCardParts } from '@blog/_components/article-parts/ProfileCards'
-import { showAllParts } from '@blog/_components/article-parts/ShowAll'
-import { twitterParts } from '@blog/_components/article-parts/Twitter'
-import { twitterArchiveParts } from '@blog/_components/article-parts/TwitterArchive'
-import { walkingResultBoxParts } from '@blog/_components/article-parts/WalkingResultBox'
-import {
-  autoYouTubeParts,
-  youTubeParts,
-} from '@blog/_components/article-parts/YouTube'
+import * as parts from '@blog/_components/article-parts'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 import {
@@ -30,20 +13,7 @@ import {
 import { PageTransferButton } from './PageNavigation'
 
 const extraCodeBlockComponents = [
-  conversationParts,
-  cautionParts,
-  infoboxParts,
-  titledFrameParts,
-  profileCardParts,
-  showAllParts,
-  twitterParts,
-  twitterArchiveParts,
-  walkingResultBoxParts,
-  youTubeParts,
-  autoYouTubeParts,
-  horizontalImagesParts,
-  horizontalScrollParts,
-  linkEmbedParts,
+  ...Object.values(parts),
   {
     name: 'next-page',
     Component: ({ content, entry }) => {
