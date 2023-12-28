@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import styles from './index.module.scss'
+import { tv } from 'tailwind-variants'
 
 export const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',
@@ -24,13 +24,22 @@ type Props = React.ComponentPropsWithRef<'h2'> & {
   icon?: H2Icon
 }
 
+const styles = tv({
+  slots: {
+    h2: 'tw-my-3 tw-flex tw-align-middle tw-text-2xl',
+    icon: 'tw-mr-2 tw-h-8 tw-align-baseline',
+  },
+})()
+
 export const H2 = React.forwardRef<HTMLHeadingElement, Props>(
   function H2(props, ref) {
-    const { icon, className = '', children, ...rest } = props
+    const { icon, className, children, ...rest } = props
 
     return (
-      <h2 className={`${styles.h2} ${className}`} ref={ref} {...rest}>
-        {icon && <img className={styles.icon} src={iconURLs[icon]} alt="" />}
+      <h2 className={styles.h2({ className })} ref={ref} {...rest}>
+        {icon && icon in iconURLs && (
+          <img className={styles.icon()} src={iconURLs[icon]} alt="" />
+        )}
         {children}
       </h2>
     )
