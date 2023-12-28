@@ -130,6 +130,7 @@
     "lint-staged": "^14.0.1",
     "postcss": "^8.4.32",
     "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.10",
     "sass": "^1.66.1",
     "storybook": "^7.4.2",
     "storybook-dark-mode": "^3.0.1",
