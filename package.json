@@ -88,6 +88,7 @@
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "swr": "^2.2.2",
+    "tailwind-variants": "^0.1.19",
     "textlint": "^13.3.3",
     "textlint-rule-preset-japanese": "^7.0.0",
     "use-sound": "^4.0.1",
