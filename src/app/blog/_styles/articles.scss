@@ -21,38 +21,6 @@
   }
 }
 
-.anchor {
-  width: 100%;
-  border-bottom: 1px gray solid;
-  padding-left: 1px;
-
-  @include mixins.mq(pc) {
-    position: relative;
-    a {
-      position: absolute;
-      left: -1.2em;
-      top: 0.2em;
-      opacity: 0;
-      margin-right: 0.3em;
-    }
-    &:hover {
-      a {
-        opacity: 1;
-        color: lightgray;
-
-        &:hover {
-          color: #90e200;
-        }
-      }
-    }
-  }
-  @include mixins.mq(sp) {
-    a {
-      display: none;
-    }
-  }
-}
-
 #hero_article {
   @include mixins.mq(sp) {
     column-gap: 8px;

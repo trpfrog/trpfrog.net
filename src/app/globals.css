@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-body: 192 225 121;
+    --color-text: 21 21 21;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --color-body: 61 77 34;
+      --color-text: 229 229 229;
+    }
+  }
+}

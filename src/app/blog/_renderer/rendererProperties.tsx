@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDXComponents } from 'mdx/types'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
 import 'katex/dist/katex.min.css'
@@ -16,9 +14,11 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
+import { HorizontalRule } from '@/components/wrappers/HorizontalRule'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
+import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
 import {
   isValidExtraCodeBlockComponentName,
@@ -140,14 +140,7 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
       return React.createElement(isInline ? 'span' : 'p', props)
     },
 
-    h2: (props: any) => (
-      <h2 className={[styles.anchor, styles.h2].join(' ')} id={props.id}>
-        <a href={'#' + props.id}>
-          <FontAwesomeIcon icon={faPaperclip} />
-        </a>
-        {props.children}
-      </h2>
-    ),
+    h2: (props: any) => <BlogH2 {...props} />,
     a: (props: any) => (
       <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
     ),
@@ -163,6 +156,11 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
         isVideo
       />
     ),
+
+    hr: (props: any) => {
+      const { className = '', ...rest } = props
+      return <HorizontalRule className={className} {...rest} />
+    },
   }
 
   return {

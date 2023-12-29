@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
+import { HorizontalRule } from '@/components/wrappers/HorizontalRule'
 
 import { microCMS } from '@/lib/microCMS'
 
@@ -72,7 +73,7 @@ export async function TempTwitter() {
     <MainWrapper>
       <Block title={'Twitter 一時避難所'}>
         <p>なんらかの原因でツイートできなくなったときに逃げてくる場所です。</p>
-        <hr style={{ margin: '1.2rem 0' }} />
+        <HorizontalRule className="tw-my-5" />
         <Suspense fallback={<LoadingBlock style={{ height: 300 }} />}>
           {tweets.length > maxTweetsDisplayedAtOnce ? (
             <ShowAllComponent
