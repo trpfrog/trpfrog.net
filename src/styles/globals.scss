@@ -66,17 +66,6 @@ a:visited {
   }
 }
 
-h2 {
-  font-family: var(--font-m-plus-rounded-1c);
-  font-weight: 800;
-  color: #172c00;
-  line-height: 1.2;
-
-  @include mixins.mq(dark) {
-    color: #f1ffd0;
-  }
-}
-
 h3 {
   display: block;
   width: fit-content;

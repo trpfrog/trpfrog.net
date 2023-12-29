@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -26,6 +28,12 @@ module.exports = {
     screens: {
       sp: { max: '999px' },
       pc: { min: '1000px' },
+    },
+    fontFamily: {
+      'mplus-rounded': [
+        'var(--font-m-plus-rounded-1c)',
+        ...defaultTheme.fontFamily.sans,
+      ],
     },
   },
   plugins: [],

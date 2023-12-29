@@ -39,12 +39,8 @@ export const Block = React.forwardRef<HTMLDivElement, Props>(
         className={`${styles.main_window} ${className}`}
         {...otherProps}
       >
+        {title && <H2 icon={h2icon}>{title}</H2>}
         {ribbon}
-        {title && (
-          <H2 style={{ margin: 0 }} icon={h2icon}>
-            {title}
-          </H2>
-        )}
         {children}
       </PlainBlock>
     )
