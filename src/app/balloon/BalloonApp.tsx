@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { Input } from '@/components/wrappers/Input'
+import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
 

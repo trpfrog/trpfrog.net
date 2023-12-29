@@ -2,7 +2,7 @@
 
 import { tv } from 'tailwind-variants'
 
-import { Input } from '@/components/wrappers/Input'
+import { Input } from '@/components/wrappers'
 
 const styles = tv({
   slots: {

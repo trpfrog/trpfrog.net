@@ -1,5 +1,5 @@
 'use client'
-import { Input } from '@/components/wrappers/Input'
+import { Input } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 

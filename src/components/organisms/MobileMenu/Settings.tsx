@@ -1,7 +1,7 @@
 'use client'
 import { tv } from 'tailwind-variants'
 
-import { Input } from '@/components/wrappers/Input'
+import { Input } from '@/components/wrappers'
 
 import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
 import { useShouldHideHeaderAtom } from '@/states/shouldHideHeaderAtom'

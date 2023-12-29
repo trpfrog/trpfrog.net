@@ -4,7 +4,7 @@ import Image from 'next/legacy/image'
 
 import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
-import { Input } from '@/components/wrappers/Input'
+import { Input } from '@/components/wrappers'
 
 import { IconCanvas } from '@/lib/iconMaker'
 import { createURL } from '@/lib/url'
