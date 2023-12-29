@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { z } from 'zod'
 
 import { Button } from '@/components/atoms/Button'
+import { InlineLink } from '@/components/atoms/InlineLink'
 
 import { createURL } from '@/lib/url'
 
@@ -32,9 +33,9 @@ const CardFormat = ({
         <div className={styles.header}>
           <div className={styles.club}>{personalData.club}</div>
           <div className={styles.twitter_id}>
-            <a href={'https://twitter.com/' + personalData.twitter}>
+            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
               @{personalData.twitter}
-            </a>
+            </InlineLink>
           </div>
         </div>
         <div className={styles.name}>
@@ -66,9 +67,9 @@ const ListFormat = ({
         <ul key={personalData.name + '-info'}>
           <li>{personalData.club}</li>
           <li>
-            <a href={'https://twitter.com/' + personalData.twitter}>
+            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
               @{personalData.twitter}
-            </a>
+            </InlineLink>
           </li>
           <li>{parseInlineMarkdown(personalData.description)}</li>
         </ul>

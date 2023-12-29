@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Tweet } from '@/components/utils/TweetWrapper'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
@@ -17,7 +18,10 @@ export const twitterParts = {
             <b>Tweet not found</b>
             <br />
             <small>
-              id = <a href={`https://twitter.com/trpfrog/status/${id}`}>{id}</a>
+              id ={' '}
+              <InlineLink href={`https://twitter.com/trpfrog/status/${id}`}>
+                {id}
+              </InlineLink>
             </small>
           </p>
         }

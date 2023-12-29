@@ -4,6 +4,7 @@ import Image from 'next/legacy/image'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 import { Button } from '@/components/atoms/Button'
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 
 type Props = {
@@ -14,7 +15,9 @@ export const TopPageMusic = ({ id }: Props) => {
   return (
     <Block title={'つまみのうた'} h2icon={'noa'} id={id}>
       <p>
-        ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに「
+        ねぎ一世(
+        <InlineLink href="https://twitter.com/negiissei">@negiissei</InlineLink>
+        )さんに「
         <b>つまみのうた</b>」を作っていただきました！(？？？？)
         ありがとうございます！！！
       </p>

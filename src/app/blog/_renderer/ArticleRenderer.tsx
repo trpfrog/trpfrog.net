@@ -28,7 +28,7 @@ export const ArticleRenderer = memo(function ArticleRenderer(
   if ('markdownOptions' in props) {
     options = props.markdownOptions
   } else {
-    options = getMarkdownOptions(props.entry)
+    options = getMarkdownOptions({ entry: props.entry })
   }
 
   return <MDXRemote source={props.toRender} {...options} />

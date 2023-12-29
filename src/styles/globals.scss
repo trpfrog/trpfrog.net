@@ -48,24 +48,6 @@ body {
   }
 }
 
-a:link {
-  color: forestgreen;
-}
-
-a:visited {
-  color: olive;
-}
-
-@include mixins.mq(dark) {
-  a:link:not(.linkButton) {
-    color: aquamarine;
-  }
-
-  a:visited {
-    color: plum;
-  }
-}
-
 h3 {
   display: block;
   width: fit-content;

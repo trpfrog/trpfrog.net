@@ -4,6 +4,7 @@ import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { tv } from 'tailwind-variants'
 
+import { A } from '@/components/wrappers'
 import { H2 } from '@/components/wrappers/H2'
 
 const styles = tv({
@@ -23,9 +24,9 @@ export function BlogH2(props: React.ComponentPropsWithoutRef<'h2'>) {
   return (
     <H2 className={styles.h2({ className })} {...rest}>
       <span className={styles.text()}>{children}</span>
-      <a href={'#' + props.id} className={styles.anchor()}>
+      <A href={'#' + props.id} className={styles.anchor()}>
         <FontAwesomeIcon icon={faPaperclip} />
-      </a>
+      </A>
     </H2>
   )
 }

@@ -3,9 +3,9 @@ import * as React from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { A } from '@/components/wrappers'
 
-import { DEVELOPMENT_HOST, PRODUCTION_HOST } from '@/lib/constants'
+import { isInternalLink } from '@/lib/isInternalLink'
 import type { SelectedRequired } from '@/lib/types'
 
 import styles from './index.module.scss'
@@ -47,15 +47,7 @@ function getType<P extends Props>(props: P): TagType {
     return props.externalLink ? 'a' : 'Link'
   }
   if ('href' in props) {
-    const isInternalLink = [
-      '/',
-      '#',
-      'mailto:',
-      PRODUCTION_HOST,
-      DEVELOPMENT_HOST,
-    ].some(prefix => props.href.startsWith(prefix))
-
-    if (isInternalLink) {
+    if (isInternalLink(props.href)) {
       return 'Link'
     } else {
       return 'a'
@@ -78,7 +70,7 @@ function Wrapper<T extends TagType>(
     case 'Link':
       return <Link {...(rest as LinkProps)} />
     case 'a':
-      return <OpenInNewTab {...(rest as AProps)} />
+      return <A openInNewTab {...(rest as AProps)} />
     case 'button':
       return <button {...(rest as ButtonProps)} />
     case 'div':

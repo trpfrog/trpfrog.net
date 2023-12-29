@@ -1,6 +1,7 @@
 import Image from 'next/legacy/image'
 
 import { Button } from '@/components/atoms/Button'
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { LiteYouTubeEmbedWrapper } from '@/components/utils/LiteYouTubeEmbedWrapper'
@@ -13,8 +14,11 @@ export default function Music() {
     <>
       <Title title={'つまみのうた'}>
         <p>
-          ねぎ一世(<a href="https://twitter.com/negiissei">@negiissei</a>)さんに
-          「<b>つまみのうた</b>」を作っていただきました！(？？？？)
+          ねぎ一世(
+          <InlineLink href="https://twitter.com/negiissei">
+            @negiissei
+          </InlineLink>
+          )さんに 「<b>つまみのうた</b>」を作っていただきました！(？？？？)
           ありがとうございます！！！
         </p>
         <p>

@@ -1,7 +1,5 @@
-import Link from 'next/link'
-
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 
@@ -11,15 +9,16 @@ export const Footer = () => {
       <MainWrapper id={styles.inner_footer}>
         <div id={styles.copyright}>&copy; 2019-2023 つまみ</div>
         <div style={{ display: 'flex', gap: 5 }}>
-          <OpenInNewTab
+          <A
+            openInNewTab
             href={'https://github.com/trpfrog/trpfrog.net'}
             className={styles.footer_button}
           >
             GitHub
-          </OpenInNewTab>
-          <Link href={'/legal'} className={styles.footer_button}>
+          </A>
+          <A href={'/legal'} className={styles.footer_button}>
             Legal
-          </Link>
+          </A>
         </div>
       </MainWrapper>
     </footer>

@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link'
 
 import { Button } from '@/components/atoms/Button'
+import { A } from '@/components/wrappers'
 
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
@@ -25,15 +25,15 @@ export function RichEntryButtons(props: EntryButtonProps) {
   const { post, extended, ...rest } = props
   return (
     <div {...rest} style={{ display: 'flex' }}>
-      <Link href={'/blog'}>
+      <A href={'/blog'}>
         <EntryButton icon={faArrowLeft} text={'記事一覧'} />
-      </Link>
+      </A>
       <ShareSpan slug={post.slug}>
         <EntryButton icon={faTwitter} text={'ツイート'} />
       </ShareSpan>
-      <a href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
+      <A href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         <EntryButton icon={faPencil} text={'訂正依頼'} />
-      </a>
+      </A>
       {extended && (
         <>
           <UDFontButton />

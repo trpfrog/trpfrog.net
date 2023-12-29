@@ -4,6 +4,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
 import { usePathname } from 'next/navigation'
 
+import { A } from '@/components/wrappers'
+
 import { BlogPost } from '@blog/_lib/blogPost'
 
 import { EntryButton } from './EntryButton'
@@ -34,8 +36,8 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
   }
 
   return (
-    <a href={url}>
+    <A href={url}>
       <EntryButton icon={icon} text={text} />
-    </a>
+    </A>
   )
 }

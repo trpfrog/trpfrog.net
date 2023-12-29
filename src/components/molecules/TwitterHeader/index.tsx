@@ -3,10 +3,10 @@ import * as React from 'react'
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
 import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
 import { iconPreset } from '@/components/atoms/twitter/TwitterIcon/preset'
 import { BlockLink } from '@/components/molecules/BlockLink'
+import { A } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
 
@@ -31,10 +31,10 @@ export function TwitterHeader(props: TwitterHeaderProps) {
           />
         </BlockLink>
         <div className={styles.name_box}>
-          <OpenInNewTab href={userLink}>
+          <A openInNewTab href={userLink}>
             <div className={styles.name}>{props.name}</div>
             <div className={styles.userid}>@{props.screenName}</div>
-          </OpenInNewTab>
+          </A>
         </div>
       </div>
       <div className={styles.logo}>

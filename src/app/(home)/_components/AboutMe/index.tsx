@@ -9,6 +9,7 @@ import {
 import { KCommandBox } from '@/app/(home)/_components/AboutMe/KCommandBox'
 
 import { Block } from '@/components/molecules/Block'
+import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 
@@ -68,11 +69,11 @@ export const AboutMe = ({ id }: Props) => {
       <div className={styles.social}>
         <div>
           <FontAwesomeIcon icon={faTwitter} />{' '}
-          <a href={'https://twitter.com/TrpFrog'}>TrpFrog</a>
+          <A href={'https://twitter.com/TrpFrog'}>TrpFrog</A>
         </div>
         <div>
           <FontAwesomeIcon icon={faGithub} />{' '}
-          <a href={'https://github.com/TrpFrog'}>TrpFrog</a>
+          <A href={'https://github.com/TrpFrog'}>TrpFrog</A>
         </div>
         <div>
           <FontAwesomeIcon icon={faEnvelope} /> dev

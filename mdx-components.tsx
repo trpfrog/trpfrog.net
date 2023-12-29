@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { H2, HorizontalRule } from '@/components/wrappers'
 
 import type { MDXComponents } from 'mdx/types'
@@ -20,6 +21,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: props => {
       const { ref, ...rest } = props
       return <HorizontalRule {...rest} />
+    },
+
+    a: props => {
+      const { ref, ...rest } = props
+      return <InlineLink {...rest} />
     },
   }
 }

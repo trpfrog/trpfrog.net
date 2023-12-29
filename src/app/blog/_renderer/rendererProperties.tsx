@@ -11,7 +11,7 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
 import { HorizontalRule } from '@/components/wrappers/HorizontalRule'
@@ -118,10 +118,14 @@ function styledTag(tag: React.ElementType, className: string) {
   }
 }
 
-export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
+export function getMarkdownOptions(options?: {
+  entry?: BlogPost
+  inline?: boolean
+  openInNewTab?: 'always' | 'external' | 'never'
+}) {
   const components: IsomorphicMarkdownComponent = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
-    code: formatCodeComponentFactory(entry),
+    code: formatCodeComponentFactory(options?.entry),
 
     img: (props: any) => {
       return (
@@ -137,12 +141,14 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
     },
 
     p: (props: React.ComponentProps<'p'>) => {
-      return React.createElement(isInline ? 'span' : 'p', props)
+      return React.createElement(options?.inline ? 'span' : 'p', props)
     },
 
     h2: (props: any) => <BlogH2 {...props} />,
     a: (props: any) => (
-      <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
+      <InlineLink openInNewTab={options?.openInNewTab} href={props.href}>
+        {props.children}
+      </InlineLink>
     ),
     blockquote: styledTag('blockquote', styles.blockquote),
     details: styledTag('details', styles.details),

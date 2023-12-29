@@ -1,9 +1,7 @@
 import { Fragment, Suspense } from 'react'
 
 import matter from 'gray-matter'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -13,6 +11,7 @@ import { HorizontalRule } from '@/components/wrappers/HorizontalRule'
 import { microCMS } from '@/lib/microCMS'
 
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 import styles from './index.module.scss'
 
@@ -53,15 +52,10 @@ export async function TempTwitter() {
             {date}
           </span>
           <div className={styles.text}>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-              components={{
-                p: ({ children }: any) => <>{children}</>,
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+            <MDXRemote
+              source={content}
+              {...getMarkdownOptions({ inline: true })}
+            />
           </div>
         </Fragment>
       )

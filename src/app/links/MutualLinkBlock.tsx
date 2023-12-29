@@ -3,7 +3,7 @@ import * as React from 'react'
 import styles from '@/app/(home)/page.module.scss'
 
 import { Button } from '@/components/atoms/Button'
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { A } from '@/components/wrappers'
 
 import { calcMonospacedTextWidth } from '@/lib/utils'
 
@@ -30,9 +30,9 @@ export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
         </Button>
       </p>
       <p>
-        <OpenInNewTab href={`https://twitter.com/${twitterId}/`}>
+        <A href={`https://twitter.com/${twitterId}/`}>
           <b>{ownerName}</b>
-        </OpenInNewTab>
+        </A>
         さんのHP
       </p>
       <p>{description}</p>

@@ -1,3 +1,4 @@
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 
 import { SearchBox } from './SearchBox'
@@ -21,21 +22,21 @@ export default function Fuzzy() {
         <ul>
           <li>
             enoshima {'=> '}
-            <a href={'https://trpfrog.net/blog/enoshima-walk'}>
+            <InlineLink href={'https://trpfrog.net/blog/enoshima-walk'}>
               https://trpfrog.net/blog/enoshima-walk
-            </a>
+            </InlineLink>
           </li>
           <li>
             balllloooon {'=> '}
-            <a href={'https://trpfrog.net/balloon'}>
+            <InlineLink href={'https://trpfrog.net/balloon'}>
               https://trpfrog.net/balloon
-            </a>
+            </InlineLink>
           </li>
           <li>
             山登り {'=> '}
-            <a href={'https://trpfrog.net/blog/takao-full-search'}>
+            <InlineLink href={'https://trpfrog.net/blog/takao-full-search'}>
               https://trpfrog.net/blog/takao-full-search
-            </a>
+            </InlineLink>
           </li>
         </ul>
       </Block>
