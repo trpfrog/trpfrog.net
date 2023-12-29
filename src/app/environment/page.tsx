@@ -10,7 +10,7 @@ import yaml from 'js-yaml'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { H3 } from '@/components/wrappers'
+import { H3, Li, UnorderedList } from '@/components/wrappers'
 
 import { GadgetIntro } from './GadgetIntro'
 
@@ -46,23 +46,23 @@ function Itemize(props: {
     return <p>{props.children}</p>
   }
   return (
-    <ul>
+    <UnorderedList>
       {props.children.map((child, index) => {
         if (typeof child === 'string') {
-          return <li key={index}>{child}</li>
+          return <Li key={index}>{child}</Li>
         }
         return (
           <Fragment key={index}>
             {Object.entries(child).map(([key, value]) => (
               <Fragment key={key}>
-                <li>{key}</li>
+                <Li>{key}</Li>
                 <Itemize>{value}</Itemize>
               </Fragment>
             ))}
           </Fragment>
         )
       })}
-    </ul>
+    </UnorderedList>
   )
 }
 

@@ -14,7 +14,7 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
-import { Kbd, HorizontalRule, H3, H4, H5 } from '@/components/wrappers'
+import * as Wrapper from '@/components/wrappers'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -145,16 +145,20 @@ export function getMarkdownOptions(options?: {
     },
 
     h2: (props: any) => <BlogH2 {...props} />,
-    h3: (props: any) => <H3 {...props} className="tw-mt-8" />,
-    h4: (props: any) => <H4 {...props} />,
-    h5: (props: any) => <H5 {...props} />,
+    h3: (props: any) => <Wrapper.H3 {...props} className="tw-mt-8" />,
+    h4: (props: any) => <Wrapper.H4 {...props} />,
+    h5: (props: any) => <Wrapper.H5 {...props} />,
+
+    ul: (props: any) => <Wrapper.UnorderedList {...props} />,
+    ol: (props: any) => <Wrapper.OrderedList {...props} />,
+    li: (props: any) => <Wrapper.Li {...props} />,
 
     a: (props: any) => (
       <InlineLink openInNewTab={options?.openInNewTab} href={props.href}>
         {props.children}
       </InlineLink>
     ),
-    kbd: (props: any) => <Kbd {...props} />,
+    kbd: (props: any) => <Wrapper.Kbd {...props} />,
     blockquote: styledTag('blockquote', styles.blockquote),
     details: styledTag('details', styles.details),
     summary: styledTag('summary', styles.summary),
@@ -169,7 +173,7 @@ export function getMarkdownOptions(options?: {
 
     hr: (props: any) => {
       const { className = '', ...rest } = props
-      return <HorizontalRule className={className} {...rest} />
+      return <Wrapper.HorizontalRule className={className} {...rest} />
     },
   }
 

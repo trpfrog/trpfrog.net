@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 import { Button } from '@/components/atoms/Button'
 import { InlineLink } from '@/components/atoms/InlineLink'
+import { Li, UnorderedList } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
 
@@ -57,25 +58,25 @@ const ListFormat = ({
 }: {
   personalDataList: ProfileData[]
 }) => (
-  <ul>
+  <UnorderedList>
     {personalDataList.map((personalData: any) => (
       <>
-        <li key={personalData.name + '-name'}>
+        <Li key={personalData.name + '-name'}>
           {personalData.name}
           {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
-        </li>
-        <ul key={personalData.name + '-info'}>
-          <li>{personalData.club}</li>
-          <li>
+        </Li>
+        <UnorderedList key={personalData.name + '-info'}>
+          <Li>{personalData.club}</Li>
+          <Li>
             <InlineLink href={'https://twitter.com/' + personalData.twitter}>
               @{personalData.twitter}
             </InlineLink>
-          </li>
-          <li>{parseInlineMarkdown(personalData.description)}</li>
-        </ul>
+          </Li>
+          <Li>{parseInlineMarkdown(personalData.description)}</Li>
+        </UnorderedList>
       </>
     ))}
-  </ul>
+  </UnorderedList>
 )
 
 export const profileCardParts = {

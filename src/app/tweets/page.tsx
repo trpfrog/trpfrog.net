@@ -6,6 +6,7 @@ import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { Li, UnorderedList } from '@/components/wrappers'
 
 import { SearchForm } from './SearchForm'
 import { TweetArea } from './TweetArea'
@@ -54,16 +55,16 @@ export default async function Index({ searchParams }: any) {
         <br />
         <details>
           <summary>実装済みの機能</summary>
-          <ul style={{ marginTop: 0 }}>
-            <li>AND 検索</li>
-            <li>since/until 検索 (日付のみ e.g. 2000-10-17)</li>
-            <li>date 検索 (特定の日のツイートを検索します)</li>
-            <li>min_faves/max_faves 検索</li>
-            <li>min_retweets/max_retweets 検索</li>
-            <li>from 検索</li>
-            <li>order:asc で古い順に並び替え</li>
-            <li>マイナス検索 (上記のいずれにも使用可)</li>
-          </ul>
+          <UnorderedList style={{ marginTop: 0 }}>
+            <Li>AND 検索</Li>
+            <Li>since/until 検索 (日付のみ e.g. 2000-10-17)</Li>
+            <Li>date 検索 (特定の日のツイートを検索します)</Li>
+            <Li>min_faves/max_faves 検索</Li>
+            <Li>min_retweets/max_retweets 検索</Li>
+            <Li>from 検索</Li>
+            <Li>order:asc で古い順に並び替え</Li>
+            <Li>マイナス検索 (上記のいずれにも使用可)</Li>
+          </UnorderedList>
         </details>
         <SearchForm defaultValue={searchParams.q} />
       </Title>
