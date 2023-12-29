@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { Input } from '@/components/wrappers/Input'
 
 import { clamp } from '@/lib/utils'
 
@@ -47,7 +48,7 @@ export function BalloonApp() {
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
           </Button>
           <label style={{ marginRight: '10px' }}>
-            <input
+            <Input
               type="number"
               value={numberOfBalloons}
               onChange={e => changeAmount(e.target.value)}
@@ -57,7 +58,7 @@ export function BalloonApp() {
             balloons
           </label>{' '}
           <label>
-            <input
+            <Input
               type="number"
               value={balloonSize}
               onChange={e => changeSize(e.target.value)}

@@ -12,7 +12,7 @@ const style = tv({
   ],
 })
 
-export const Kbd = React.forwardRef<HTMLHeadingElement, Props>(
+export const Kbd = React.forwardRef<HTMLDivElement, Props>(
   function Kbd(props, ref) {
     const { className, ...rest } = props
     return <kbd className={style({ className })} ref={ref} {...rest} />

@@ -4,6 +4,7 @@ import Image from 'next/legacy/image'
 
 import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
+import { Input } from '@/components/wrappers/Input'
 
 import { IconCanvas } from '@/lib/iconMaker'
 import { createURL } from '@/lib/url'
@@ -72,7 +73,7 @@ export function IconMakerApp() {
   return (
     <>
       <Block title={'画像の選択'}>
-        <input
+        <Input
           type="file"
           onChange={e => {
             state.upload(e.target.files)
