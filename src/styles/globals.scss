@@ -158,7 +158,6 @@ h3 {
 }
 
 main {
-  line-height: 1.8;
   letter-spacing: 0.03em;
 }
 
@@ -180,16 +179,6 @@ input[type='submit'] {
   background: #3c7709;
   color: white;
   cursor: pointer;
-}
-
-kbd {
-  background: #3b3b3b;
-  color: white;
-  border-radius: 2px;
-  padding: 2px 5px;
-  font-size: 0.9em;
-  vertical-align: middle;
-  box-shadow: 0 0 1px 1px rgb(128 128 128 / 30%);
 }
 
 .good-break {

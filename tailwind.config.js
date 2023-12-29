@@ -34,6 +34,7 @@ module.exports = {
         'var(--font-m-plus-rounded-1c)',
         ...defaultTheme.fontFamily.sans,
       ],
+      mono: ['var(--font-noto-sans-mono)', ...defaultTheme.fontFamily.mono],
     },
   },
   plugins: [],

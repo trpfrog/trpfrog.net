@@ -14,7 +14,7 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
-import { HorizontalRule } from '@/components/wrappers/HorizontalRule'
+import { Kbd, HorizontalRule } from '@/components/wrappers'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -150,6 +150,7 @@ export function getMarkdownOptions(options?: {
         {props.children}
       </InlineLink>
     ),
+    kbd: (props: any) => <Kbd {...props} />,
     blockquote: styledTag('blockquote', styles.blockquote),
     details: styledTag('details', styles.details),
     summary: styledTag('summary', styles.summary),
