@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
-import { H2, HorizontalRule, Kbd } from '@/components/wrappers'
+import { H2, H3, H4, H5, HorizontalRule, Kbd } from '@/components/wrappers'
 
 import type { MDXComponents } from 'mdx/types'
 
@@ -16,6 +16,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       // props contains legacyRef, so we need to remove it.
       const { ref, ...rest } = props
       return <H2 {...rest} />
+    },
+
+    h3: props => {
+      const { ref, ...rest } = props
+      return <H3 {...rest} />
+    },
+
+    h4: props => {
+      const { ref, ...rest } = props
+      return <H4 {...rest} />
+    },
+
+    h5: props => {
+      const { ref, ...rest } = props
+      return <H5 {...rest} />
     },
 
     hr: props => {

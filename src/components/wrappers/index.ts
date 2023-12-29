@@ -1,4 +1,5 @@
 export { H2 } from './H2'
+export { H3, H4, H5 } from './headings'
 export { HorizontalRule } from './HorizontalRule'
 export { A } from './A'
 export { Kbd } from './Kbd'

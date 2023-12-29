@@ -14,7 +14,7 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
-import { Kbd, HorizontalRule } from '@/components/wrappers'
+import { Kbd, HorizontalRule, H3, H4, H5 } from '@/components/wrappers'
 
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
@@ -145,6 +145,10 @@ export function getMarkdownOptions(options?: {
     },
 
     h2: (props: any) => <BlogH2 {...props} />,
+    h3: (props: any) => <H3 {...props} className="tw-mt-8" />,
+    h4: (props: any) => <H4 {...props} />,
+    h5: (props: any) => <H5 {...props} />,
+
     a: (props: any) => (
       <InlineLink openInNewTab={options?.openInNewTab} href={props.href}>
         {props.children}
@@ -154,7 +158,6 @@ export function getMarkdownOptions(options?: {
     blockquote: styledTag('blockquote', styles.blockquote),
     details: styledTag('details', styles.details),
     summary: styledTag('summary', styles.summary),
-    h3: styledTag('h3', styles.h3),
     video: (props: any) => (
       <BlogImage
         src={props.src ?? ''}

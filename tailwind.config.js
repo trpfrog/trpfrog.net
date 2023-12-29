@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         trpfrog: {
+          25: '#f5ffe6',
           50: '#e5f8c0',
           100: '#c7e876',
           200: '#b2d558',
