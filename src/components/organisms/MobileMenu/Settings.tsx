@@ -57,9 +57,9 @@ function HeaderCheckbox() {
         <label className={styles.label()}>
           <Input
             type="checkbox"
-            checked={shouldHideHeader}
+            checked={!shouldHideHeader}
             disabled={!shouldFollowHeader}
-            onChange={e => setShouldHideHeader(e.target.checked)}
+            onChange={e => setShouldHideHeader(!e.target.checked)}
           />
           スクロール時ヘッダを隠す
         </label>

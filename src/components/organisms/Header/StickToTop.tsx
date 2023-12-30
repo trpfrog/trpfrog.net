@@ -1,23 +1,22 @@
 import * as React from 'react'
 
-import { useHeaderStatus } from './hooks/useHeaderStatus'
+import { useHeaderStatus } from './useHeaderStatus'
 
-export const StickToTop = (props: {
+interface StickToTopProps {
   children: React.ReactNode
   top: string | number
-}) => {
+}
+
+export function StickToTop(props: StickToTopProps) {
   const headerVisible = useHeaderStatus().visible
-  const getStyle = (isHeaderVisible: boolean) =>
-    isHeaderVisible
-      ? `calc(var(--header-height) + ${props.top})`
-      : `${props.top}`
 
   return (
     <div
+      className="tw-sticky tw-duration-100"
       style={{
-        transition: '0.1s',
-        position: 'sticky',
-        top: getStyle(headerVisible),
+        top: headerVisible
+          ? `calc(var(--header-height) + ${props.top})`
+          : `${props.top}`,
       }}
     >
       {props.children}

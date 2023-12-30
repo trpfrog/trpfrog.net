@@ -22,14 +22,16 @@ module.exports = {
         'body-color': 'rgb(var(--color-body))',
         'text-color': 'rgb(var(--color-text))',
         'window-color': 'rgb(var(--color-window))',
+        'header-color': 'rgb(var(--color-header))',
       },
       borderWidth: {
         1: '1px',
       },
     },
     screens: {
-      sp: { max: '999px' },
-      pc: { min: '1000px' },
+      sp: { max: '799px' },
+      pc: { min: '800px' },
+      wide: { min: '1000px' },
     },
     fontFamily: {
       'mplus-rounded': [
