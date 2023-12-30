@@ -42,11 +42,17 @@ const styles = {
     ],
   }),
   link: tv({
-    base: 'tw-inline-block tw-rounded-full tw-px-4 tw-pt-1 tw-font-comfortaa',
+    base: [
+      'tw-inline-block tw-rounded-full tw-px-4 tw-pt-1',
+      'tw-duration-1200 tw-font-comfortaa',
+    ],
     variants: {
       current: {
-        true: 'tw-cursor-default tw-bg-white tw-text-[#81bd4a] dark:tw-text-trpfrog-700',
-        false: 'tw-text-white hover:tw-bg-white/10',
+        true: `
+          tw-bg-white tw-text-[#81bd4a] hover:tw-bg-white/80
+          dark:tw-text-trpfrog-700
+        `,
+        false: 'tw-text-white hover:tw-bg-white/20',
       },
     },
     defaultVariants: {
@@ -62,16 +68,15 @@ export function Navigation() {
     <div className={styles.wrapper()}>
       <nav className={styles.nav()}>
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
-          ({ link, name, shortName }) =>
-            currentLink !== link ? (
-              <A href={link} key={link} className={styles.link()}>
-                {shortName ?? name}
-              </A>
-            ) : (
-              <div key={link} className={styles.link({ current: true })}>
-                {shortName ?? name}
-              </div>
-            ),
+          ({ link, name, shortName }) => (
+            <A
+              href={link}
+              key={link}
+              className={styles.link({ current: currentLink === link })}
+            >
+              {shortName ?? name}
+            </A>
+          ),
         )}
       </nav>
     </div>
