@@ -36,10 +36,10 @@ export const twitterParts = {
               width: 'min(550px, 100%)',
             }}
           >
-            <div className={'only-on-light-mode'} data-theme="light">
+            <div className="dark:tw-hidden" data-theme="light">
               {tweet}
             </div>
-            <div className={'only-on-dark-mode'} data-theme="dark">
+            <div className="tw-hidden dark:tw-block" data-theme="dark">
               {tweet}
             </div>
           </div>

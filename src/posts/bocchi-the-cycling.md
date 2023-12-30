@@ -154,8 +154,8 @@ if (minutesLeft >= 0) {
 <!-- end head -->
 
 ```centering
-**この記事は<span class="ib">「[散歩・徒歩・苦行 Advent Calendar 2023](https://adventar.org/calendars/8696)」</span>
-<span class="ib"><span style="font-size: 1.5em">25</span> 日目の記事です。</span>**
+**この記事は<span class="tw-inline-block">「[散歩・徒歩・苦行 Advent Calendar 2023](https://adventar.org/calendars/8696)」</span>
+<span class="tw-inline-block"><span style="font-size: 1.5em">25</span> 日目の記事です。</span>**
 ```
 
 ```link-embed

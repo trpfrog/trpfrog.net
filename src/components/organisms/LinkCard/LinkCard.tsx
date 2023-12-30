@@ -49,11 +49,11 @@ export function LinkCard(props: LinkCardProps) {
   }
   const descriptionNode = (
     <>
-      <span className="only-on-pc">
+      <span className="sp:tw-hidden">
         {description.slice(0, maxDescriptionLength.pc)}
         {description.length > maxDescriptionLength.pc && '...'}
       </span>
-      <span className="only-on-sp">
+      <span className="pc:tw-hidden">
         {description.slice(0, maxDescriptionLength.sp)}
         {description.length > maxDescriptionLength.sp && '...'}
       </span>

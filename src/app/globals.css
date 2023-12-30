@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  *:focus {
+    outline-color: #90e200;
+  }
+
   :root {
     --color-body: 192 225 121;
     --color-text: 21 21 21;
@@ -25,5 +29,12 @@
 
   article {
     @apply tw-leading-relaxed tw-tracking-wide;
+  }
+}
+
+@layer utilities {
+  .break-anywhere {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 }

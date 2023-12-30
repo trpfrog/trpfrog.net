@@ -7,8 +7,8 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1671174054/blog/code
 ---
 
 ```centering
-**この記事は<span class="ib">「[N予備校プログラミングコース Advent Calendar 2022](https://qiita.com/advent-calendar/2022/nyobi)」</span>
-<span class="ib"><span style="font-size: 1.5em">17</span> 日目の記事です。</span>**
+**この記事は<span class="tw-inline-block">「[N予備校プログラミングコース Advent Calendar 2022](https://qiita.com/advent-calendar/2022/nyobi)」</span>
+<span class="tw-inline-block"><span style="font-size: 1.5em">17</span> 日目の記事です。</span>**
 ```
 
 ```link-embed
@@ -322,9 +322,9 @@ Deep Learning というのは人間の脳を模倣した計算モデルである
 
 <div style="font-style: italic; text-align: center">
 
-<span class="ib">「AI！」「人間の脳を模倣している！」と聞くとめちゃくちゃ強そうですが、</span>
-<span class="ib">完全なる謎技術なんかではなく、</span>
-<span class="ib">**ちゃんと人間に理解できる計算の繰り返し**でできているんですよ！</span>
+<span class="tw-inline-block">「AI！」「人間の脳を模倣している！」と聞くとめちゃくちゃ強そうですが、</span>
+<span class="tw-inline-block">完全なる謎技術なんかではなく、</span>
+<span class="tw-inline-block">**ちゃんと人間に理解できる計算の繰り返し**でできているんですよ！</span>
 
 </div>
 
@@ -570,8 +570,8 @@ function selectNextWord(text) {
 分かち書きの例
 
 ```centering
-<span class="ib">今日は良い天気です。</span>
-<span class="ib">→  今日 / は / 良い / 天気 / です / 。</span>
+<span class="tw-inline-block">今日は良い天気です。</span>
+<span class="tw-inline-block">→  今日 / は / 良い / 天気 / です / 。</span>
 ```
 ````
 

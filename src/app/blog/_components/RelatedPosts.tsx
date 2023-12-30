@@ -28,7 +28,7 @@ export const RelatedPosts = ({
         </div>
         <ArticleGrid>
           {relatedPosts.slice(0, 6).map((e, idx) => (
-            <div key={e.slug} className={idx > 2 ? 'only-on-pc' : ''}>
+            <div key={e.slug} className={idx > 2 ? 'sp:tw-hidden' : ''}>
               <ArticleCard entry={e} />
             </div>
           ))}
@@ -36,7 +36,7 @@ export const RelatedPosts = ({
 
         {/* PC */}
         {relatedPosts.length > 6 && (
-          <div style={{ textAlign: 'center' }} className={'only-on-pc'}>
+          <div style={{ textAlign: 'center' }} className="sp:tw-hidden">
             <Button href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
             </Button>
@@ -45,7 +45,7 @@ export const RelatedPosts = ({
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
-          <div style={{ textAlign: 'center' }} className={'only-on-sp'}>
+          <div style={{ textAlign: 'center' }} className="pc:tw-hidden">
             <Button href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
             </Button>
