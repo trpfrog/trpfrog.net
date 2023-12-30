@@ -8,7 +8,6 @@ import { A } from '@/components/wrappers'
 
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
-import { UDFontButton } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
 
 import { ShareSpan } from './ShareSpan'
@@ -34,11 +33,8 @@ export function RichEntryButtons(props: EntryButtonProps) {
       <A href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         <EntryButton icon={faPencil} text={'訂正依頼'} />
       </A>
-      {extended && (
-        <>
-          <UDFontButton />
-          {post.numberOfPages >= 2 && <TogglePageViewLink post={post} />}
-        </>
+      {extended && post.numberOfPages >= 2 && (
+        <TogglePageViewLink post={post} />
       )}
     </div>
   )
