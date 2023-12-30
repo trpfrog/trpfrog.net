@@ -93,10 +93,9 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/blog/birthday-21/oni.
 
 お金は大切に使って下さい。
 
-<div class="youtube-outer">
-    <lite-youtube videoid="brevdPjOiCA" playlabel="Play: ミュージックでGO！のりのりドライブハンドル"></lite-youtube>
-</div>
-
+```youtube
+brevdPjOiCA
+```
 
 
 ## グリコ 宅飲みスナックアソートセット

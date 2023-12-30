@@ -21,9 +21,3 @@
     --window-bkg-color: #202020;
   }
 }
-
-@include mixins.mq(dark) {
-  .grid {
-    background: #0c2400;
-  }
-}

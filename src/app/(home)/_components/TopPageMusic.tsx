@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/legacy/image'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 import { Button } from '@/components/atoms/Button'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
+import { YouTube } from '@/components/organisms/YouTube'
 
 type Props = {
   id?: string
@@ -21,9 +21,7 @@ export const TopPageMusic = ({ id }: Props) => {
         <b>つまみのうた</b>」を作っていただきました！(？？？？)
         ありがとうございます！！！
       </p>
-      <div className="youtube-outer">
-        <LiteYouTubeEmbed id="h5C_yiBEAMg" title="つまみのうた" />
-      </div>
+      <YouTube videoId="h5C_yiBEAMg" />
       <p>
         Apple Music, Spotify, YouTube Music, LINE Music 他
         各種サイトで配信中！(なんで？)

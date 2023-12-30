@@ -4,7 +4,7 @@ import { Button } from '@/components/atoms/Button'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { LiteYouTubeEmbedWrapper } from '@/components/utils/LiteYouTubeEmbedWrapper'
+import { YouTube } from '@/components/organisms/YouTube'
 
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'
@@ -72,16 +72,12 @@ export default function Music() {
           購入・ストリーミング
         </Button>
         <p>YouTubeでも公開中！</p>
-        <div className="youtube-outer">
-          <LiteYouTubeEmbedWrapper id="VO64Ih8c1yU" title="つまみのうた" />
-        </div>
+        <YouTube videoId="VO64Ih8c1yU" />
       </Block>
 
       <Block title={'ショート版'} h2icon={'robot'}>
         <p>作詞作曲：ねぎ一世</p>
-        <div className="youtube-outer">
-          <LiteYouTubeEmbedWrapper id="h5C_yiBEAMg" title="つまみのうた" />
-        </div>
+        <YouTube videoId="h5C_yiBEAMg" />
       </Block>
     </>
   )
