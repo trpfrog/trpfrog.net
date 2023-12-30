@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 
-import { tv } from 'tailwind-variants'
+import { twMerge } from '@/lib/tailwind/merge'
+import { tv } from '@/lib/tailwind/variants'
 
 export const gridLayoutStyle = tv({
   base: [
@@ -32,6 +33,7 @@ export interface MainWrapperProps
 
 export function MainWrapper(props: MainWrapperProps) {
   const { className, children, gridLayout, ...otherProps } = props
+
   const style = useMemo(
     () =>
       mainWrapperStyle({
@@ -42,7 +44,7 @@ export function MainWrapper(props: MainWrapperProps) {
   )
 
   return (
-    <div className={style} {...otherProps}>
+    <div className={twMerge(style, className)} {...otherProps}>
       {children}
     </div>
   )

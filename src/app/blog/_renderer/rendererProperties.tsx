@@ -10,13 +10,13 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import { twMerge } from 'tailwind-merge'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
 import * as Wrapper from '@/components/wrappers'
 
+import { twMerge } from '@/lib/tailwind/merge'
 import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import { BlogH2 } from '@blog/_components/BlogH2'
