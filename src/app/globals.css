@@ -20,6 +20,6 @@
   }
 
   article {
-    @apply tw-leading-relaxed;
+    @apply tw-leading-relaxed tw-tracking-wide;
   }
 }

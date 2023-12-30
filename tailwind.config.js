@@ -35,6 +35,7 @@ module.exports = {
         'var(--font-m-plus-rounded-1c)',
         ...defaultTheme.fontFamily.sans,
       ],
+      comfortaa: ['var(--font-comfortaa)', ...defaultTheme.fontFamily.sans],
       mono: ['var(--font-noto-sans-mono)', ...defaultTheme.fontFamily.mono],
     },
   },
