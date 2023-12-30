@@ -29,7 +29,7 @@ export default function Index(context: PageProps) {
   const idInt = parseInt(id, 10)
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Block>
         <ImageViewer src={'stickers/' + id} alt={id + '番目のスタンプ画像'} />
       </Block>

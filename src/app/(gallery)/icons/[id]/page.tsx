@@ -28,7 +28,7 @@ export default function Index(context: PageProps) {
   const id = context.params.id
   const idInt = parseInt(id)
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Block>
         <ImageViewer src={'icons_gallery/' + id} alt={id + '番目のアイコン'} />
       </Block>

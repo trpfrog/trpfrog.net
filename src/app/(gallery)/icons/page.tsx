@@ -21,7 +21,7 @@ export default function Index() {
   })
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={'アイコン集'}>
         <p>
           つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。

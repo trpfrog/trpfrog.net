@@ -21,7 +21,7 @@ export default function Index() {
   })
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title}>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。

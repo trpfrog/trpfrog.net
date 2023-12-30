@@ -9,7 +9,7 @@ export default function NotFound() {
     <span style={{ display: 'inline-block' }}>{children}</span>
   )
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title
         title={'404 Not Found'}
         showDefaultText={false}

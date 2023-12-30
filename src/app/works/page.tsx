@@ -62,7 +62,7 @@ export default async function Index() {
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>最終更新: 2023/5/31</p>
       </Title>

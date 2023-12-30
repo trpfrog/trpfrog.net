@@ -9,27 +9,32 @@ const createStyles = tv({
     'tw-w-[calc(100%-2*var(--main-margin))] tw-max-w-[1000px]',
   ],
   variants: {
-    grid: {
-      true: {
-        base: `
-          sp:tw-grid-gap-[calc(var(--main-margin)*1.5)] tw-grid tw-grid-cols-1
-          tw-gap-[var(--main-margin)]
-        `,
-      },
+    gridLayout: {
+      true: `
+        sp:tw-grid-gap-[calc(var(--main-margin)*1.5)] tw-grid tw-grid-cols-1
+        tw-gap-[var(--main-margin)]
+      `,
     },
+  },
+  defaultVariants: {
+    gridLayout: false,
   },
 })
 
-// TODO: grid の使用を任意にする
-export function MainWrapper(props: React.ComponentPropsWithoutRef<'div'>) {
-  const { className, children, ...otherProps } = props
+export interface MainWrapperProps
+  extends React.ComponentPropsWithoutRef<'div'> {
+  gridLayout?: boolean
+}
+
+export function MainWrapper(props: MainWrapperProps) {
+  const { className, children, gridLayout, ...otherProps } = props
   const style = useMemo(
     () =>
       createStyles({
         className,
-        grid: !className?.split(' ').includes('tw-flex'),
+        gridLayout,
       }),
-    [className],
+    [className, gridLayout],
   )
 
   return (

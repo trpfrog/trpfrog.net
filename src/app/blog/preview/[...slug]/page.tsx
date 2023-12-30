@@ -54,7 +54,7 @@ export default async function Index(props: Props) {
   const { minutes: readMin, seconds: readSec } = formatReadTime(post.readTime)
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <ArticleHeader post={post} addEntryButtons={false} />
       <Block>
         {!post.isError && (

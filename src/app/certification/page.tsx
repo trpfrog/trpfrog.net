@@ -38,7 +38,7 @@ export default async function Index() {
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />
       <Block>
         <div id={styles.cert_grid}>

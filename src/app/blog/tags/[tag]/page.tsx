@@ -37,7 +37,7 @@ export default async function Index({ params }: Props) {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper gridLayout>
         <Title>
           <h1>タグ「{tag}」の記事一覧</h1>
           <p>

@@ -41,7 +41,7 @@ export default async function Index() {
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />
       {contents.map(({ metadata, content }) => {
         return (

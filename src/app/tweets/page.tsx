@@ -29,7 +29,7 @@ export default async function Index({ searchParams }: any) {
   const oneYearsAgo = dayjs(new Date()).subtract(1, 'year').format('YYYY-MM-DD')
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={'Tweets'} ribbonText={'BETA'}>
         <p>
           つまみさんの過去ツイデータベースです。

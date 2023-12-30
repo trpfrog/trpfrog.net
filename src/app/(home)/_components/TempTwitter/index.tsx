@@ -64,7 +64,7 @@ export async function TempTwitter() {
   const maxTweetsDisplayedAtOnce = 5
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Block title={'Twitter 一時避難所'}>
         <p>なんらかの原因でツイートできなくなったときに逃げてくる場所です。</p>
         <HorizontalRule className="tw-my-5" />

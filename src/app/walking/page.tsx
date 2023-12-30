@@ -21,7 +21,7 @@ export default async function Index() {
   const articles = await retrieveSortedBlogPostList(tag)
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />
       <Block title={'新着徒歩記事'}>
         <p>

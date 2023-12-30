@@ -85,7 +85,7 @@ export default async function Index() {
   const items = yaml.load(yamlText) as Items
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>Last updated: 2021/12/11</p>
         <GadgetIntro name="" imagePath="desk" />
