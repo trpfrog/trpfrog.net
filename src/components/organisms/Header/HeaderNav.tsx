@@ -21,7 +21,7 @@ const styles = tv({
   },
 })()
 
-export function HeaderNav() {
+export const HeaderNav = React.memo(function HeaderNav() {
   return (
     <nav className={styles.navigation()}>
       {topLinks.map(({ href, label }) => (
@@ -31,4 +31,4 @@ export function HeaderNav() {
       ))}
     </nav>
   )
-}
+})

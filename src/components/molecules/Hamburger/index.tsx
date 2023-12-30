@@ -1,4 +1,6 @@
 'use client'
+import { memo } from 'react'
+
 import {
   useMobileMenuState,
   useToggleMenuCallback,
@@ -6,7 +8,7 @@ import {
 
 import styles from './index.module.scss'
 
-export const Hamburger = () => {
+export const Hamburger = memo(function Hamburger() {
   const [isOpened] = useMobileMenuState()
   const toggleMenuCallback = useToggleMenuCallback()
 
@@ -23,4 +25,4 @@ export const Hamburger = () => {
       </a>
     </div>
   )
-}
+})

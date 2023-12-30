@@ -1,5 +1,7 @@
 'use client'
 
+import { memo } from 'react'
+
 import Link from 'next/link'
 import { tv } from 'tailwind-variants'
 
@@ -36,10 +38,12 @@ const createStyles = tv({
   },
 })
 
-export function SiteNameWithIcon(props: TitleProps) {
-  const headerStatus = useHeaderStatus()
+export const SiteNameWithIcon = memo(function SiteNameWithIcon(
+  props: TitleProps,
+) {
+  const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
   const styles = createStyles({
-    showTrpFrog: headerStatus.visibleTrpFrog,
+    showTrpFrog: visibleTrpFrog,
   })
 
   return (
@@ -50,10 +54,10 @@ export function SiteNameWithIcon(props: TitleProps) {
           <SiteName
             siteTitle={props.siteTitle}
             pageTitle={props.pageTitle}
-            showPageTitle={headerStatus.visibleSubtitle}
+            showPageTitle={visibleSubtitle}
           />
         </Link>
       </div>
     </div>
   )
-}
+})
