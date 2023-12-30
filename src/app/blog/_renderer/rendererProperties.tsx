@@ -175,6 +175,11 @@ export function getMarkdownOptions(options?: {
       const { className = '', ...rest } = props
       return <Wrapper.HorizontalRule className={className} {...rest} />
     },
+
+    table: (props: any) => {
+      const { className, ...rest } = props
+      return <Wrapper.Table className={className} {...rest} />
+    },
   }
 
   return {

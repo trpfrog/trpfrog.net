@@ -21,6 +21,7 @@ module.exports = {
         },
         'body-color': 'rgb(var(--color-body))',
         'text-color': 'rgb(var(--color-text))',
+        'window-color': 'rgb(var(--color-window))',
       },
       borderWidth: {
         1: '1px',

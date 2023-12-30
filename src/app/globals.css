@@ -6,12 +6,14 @@
   :root {
     --color-body: 192 225 121;
     --color-text: 21 21 21;
+    --color-window: 255 255 255;
   }
 
   @media screen and (prefers-color-scheme: dark) {
     :root {
       --color-body: 61 77 34;
       --color-text: 229 229 229;
+      --color-window: 32 32 32;
     }
   }
 

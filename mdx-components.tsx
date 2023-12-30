@@ -62,5 +62,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const { ref, ...rest } = props
       return <Wrapper.Li {...rest} />
     },
+
+    table: props => {
+      const { ref, ...rest } = props
+      return <Wrapper.Table {...rest} />
+    },
   }
 }

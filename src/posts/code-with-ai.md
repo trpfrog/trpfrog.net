@@ -581,17 +581,17 @@ function selectNextWord(text) {
 <div><b>トークナイザの辞書</b></div>
 ````
 
-|index|単語|備考|
-|----|-----|----|
-| <div class="ct">0</div> | [BOS] | 文章の開始 |
-| <div class="ct">1</div> | [EOS] | 文章の終了 |
-| <div class="ct">2</div> | [UNK] | 未知の単語 |
-| <div class="ct">3</div> |  。   |
-| <div class="ct">4</div> |  良い |
-| <div class="ct">5</div> |  天気 | 
-| <div class="ct">6</div> |  は   |
-| <div class="ct">7</div> |  今日 |
-| <div class="ct">8</div> |  です |
+| index                               |単語|備考|
+|-------------------------------------|-----|----|
+| 0 | [BOS] | 文章の開始 |
+| 1 | [EOS] | 文章の終了 |
+| 2 | [UNK] | 未知の単語 |
+| 3 |  。   |
+| 4 |  良い |
+| 5 |  天気 | 
+| 6 |  は   |
+| 7 |  今日 |
+| 8 |  です |
 
 この場合、トークナイザは
 
