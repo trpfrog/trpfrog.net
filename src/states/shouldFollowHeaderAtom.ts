@@ -3,6 +3,6 @@ import { atomWithStorage } from 'jotai/utils'
 
 const shouldFollowHeaderAtom = atomWithStorage('shouldFollowHeader', true)
 
-export function useShouldFollowHeaderAtom() {
+export function useUserSettingStickyHeader() {
   return useAtom(shouldFollowHeaderAtom)
 }

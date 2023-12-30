@@ -3,8 +3,8 @@ import { tv } from 'tailwind-variants'
 
 import { Input } from '@/components/wrappers'
 
-import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
-import { useShouldHideHeaderAtom } from '@/states/shouldHideHeaderAtom'
+import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
+import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
 import { useShowSiteCommentsAtom } from '@/states/showSiteCommentsAtom'
 
 const styles = tv({
@@ -37,8 +37,9 @@ function FeedbackServiceCheckbox() {
 
 function HeaderCheckbox() {
   const [shouldFollowHeader, setShouldFollowHeader] =
-    useShouldFollowHeaderAtom()
-  const [shouldHideHeader, setShouldHideHeader] = useShouldHideHeaderAtom()
+    useUserSettingStickyHeader()
+  const [shouldHideHeader, setShouldHideHeader] =
+    useUserSettingAlwaysVisibleHeader()
 
   return (
     <>

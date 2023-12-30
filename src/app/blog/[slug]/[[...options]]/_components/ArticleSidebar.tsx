@@ -1,5 +1,5 @@
 import { Block } from '@/components/molecules/Block'
-import { HeaderFollowSticky } from '@/components/organisms/Header'
+import { StickToTop } from '@/components/organisms/Header'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { PageNavigation } from '@blog/_components/PageNavigation'
@@ -14,7 +14,7 @@ type Props = {
 
 export function ArticleSidebar({ post }: Props) {
   return (
-    <HeaderFollowSticky top={'1em'}>
+    <StickToTop top={'1em'}>
       <ArticleCard
         entry={post}
         style={{
@@ -33,6 +33,6 @@ export function ArticleSidebar({ post }: Props) {
           <PageNavigation entry={post} />
         </div>
       </Block>
-    </HeaderFollowSticky>
+    </StickToTop>
   )
 }

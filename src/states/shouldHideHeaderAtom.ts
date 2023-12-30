@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
-const shouldHideHeaderAtom = atomWithStorage('shouldHideHeader', true)
+const shouldHideHeaderAtom = atomWithStorage('alwaysStickHeader', false)
 
-export function useShouldHideHeaderAtom() {
+export function useUserSettingAlwaysVisibleHeader() {
   return useAtom(shouldHideHeaderAtom)
 }

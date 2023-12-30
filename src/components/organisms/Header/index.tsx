@@ -1,75 +1,32 @@
 'use client'
-import { useEffect } from 'react'
 import * as React from 'react'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai'
 import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
-import {
-  useMobileMenuState,
-  MobileMenu,
-} from '@/components/organisms/MobileMenu'
+import { useHeaderStatus } from '@/components/organisms/Header/hooks/useHeaderStatus'
+import { MobileMenu } from '@/components/organisms/MobileMenu'
 
-import { useShouldFollowHeaderAtom } from '@/states/shouldFollowHeaderAtom'
+export { StickToTop } from './StickToTop'
+export {
+  useSetAlwaysShownHeader,
+  useHeaderStatus,
+} from './hooks/useHeaderStatus'
 
-import { useHeaderVisibleStatus } from './hooks/useHeaderVisibleStatus'
 import styles from './index.module.scss'
 import { SiteName } from './SiteName'
 
-const alwaysShowHeaderAtom = atom(false)
-
-export function useAlwaysShownHeader() {
-  const set = useSetAtom(alwaysShowHeaderAtom)
-  useEffect(() => {
-    set(true)
-    return () => set(false)
-  }, [set])
-}
-
-export function useIsAlwaysShownHeader() {
-  return useAtomValue(alwaysShowHeaderAtom)
-}
-
-export function useSetAlwaysShownHeader() {
-  return useSetAtom(alwaysShowHeaderAtom)
-}
-
-export const HeaderFollowSticky = (props: {
-  children: React.ReactNode
-  top: string | number
-}) => {
-  const headerVisible = useHeaderVisibleStatus()
-  const getStyle = (isHeaderVisible: boolean) =>
-    isHeaderVisible
-      ? `calc(var(--header-height) + ${props.top})`
-      : `${props.top}`
-
-  return (
-    <div
-      style={{
-        transition: '0.1s',
-        position: 'sticky',
-        top: getStyle(headerVisible),
-      }}
-    >
-      {props.children}
-    </div>
-  )
-}
-
 const HideWhenScrollDown = (props: { children: React.ReactNode }) => {
-  const showHeader = useHeaderVisibleStatus()
-  const [isMobileMenuOpened] = useMobileMenuState()
-  const [userSettingFollowSticky] = useShouldFollowHeaderAtom()
+  const headerStatus = useHeaderStatus()
 
-  const useSticky = userSettingFollowSticky || isMobileMenuOpened // メニューを開いているときは強制的にヘッダを表示
   return (
     <div
       className={styles.hide_when_scroll_down}
-      data-show={useSticky ? showHeader : true} // sticky でないときはアニメーションを無効化
-      style={useSticky ? { position: 'sticky' } : { position: 'relative' }}
+      data-show={headerStatus.visible} // sticky でないときはアニメーションを無効化
+      style={
+        headerStatus.visible ? { position: 'sticky' } : { position: 'relative' }
+      }
     >
       {props.children}
     </div>
