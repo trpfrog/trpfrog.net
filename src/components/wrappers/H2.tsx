@@ -29,7 +29,6 @@ const styles = tv({
     h2: [
       'tw-font-mplus-rounded tw-text-2xl tw-font-bold',
       'tw-my-3 tw-flex tw-align-middle',
-      'first-of-type:tw-mt-0', // 最初の要素であれば上の margin を消す
     ],
     icon: 'tw-mr-2 tw-h-8 tw-align-baseline',
   },

@@ -39,7 +39,11 @@ export const Block = React.forwardRef<HTMLDivElement, Props>(
         className={`${styles.main_window} ${className}`}
         {...otherProps}
       >
-        {title && <H2 icon={h2icon}>{title}</H2>}
+        {title && (
+          <H2 icon={h2icon} className="tw-mt-0">
+            {title}
+          </H2>
+        )}
         {ribbon}
         {children}
       </PlainBlock>

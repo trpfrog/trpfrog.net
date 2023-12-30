@@ -9,15 +9,16 @@ const style = tv({
     // layout
     'tw-mb-4 tw-mt-6 tw-block tw-w-fit tw-px-2',
     // background
-    'tw-bg-gradient-to-r tw-from-trpfrog-25 tw-to-transparent',
+    'tw-bg-gradient-to-r tw-to-transparent',
+    'tw-from-trpfrog-25 dark:tw-from-trpfrog-800',
     // text
     'tw-font-bold tw-leading-relaxed',
   ],
   variants: {
     type: {
-      h3: 'tw-border-l-[7px] tw-border-l-trpfrog-500 tw-text-xl',
-      h4: 'tw-border-l-[5px] tw-border-l-trpfrog-300 tw-text-lg',
-      h5: 'tw-border-l-[3px] tw-border-l-trpfrog-200 tw-text-base',
+      h3: 'tw-border-l-[6px] tw-border-l-trpfrog-500 tw-text-xl dark:tw-border-l-trpfrog-400',
+      h4: 'tw-border-l-[4px] tw-border-l-trpfrog-300 tw-text-lg dark:tw-border-l-trpfrog-600',
+      h5: 'tw-border-l-[2px] tw-border-l-trpfrog-200 tw-text-base dark:tw-border-l-trpfrog-700',
     },
   },
 })
