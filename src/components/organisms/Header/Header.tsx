@@ -21,13 +21,35 @@ const createStyles = tv({
   variants: {
     sticky: {
       true: {
-        wrapper: 'tw-sticky tw-top-0 tw-duration-200',
-      },
-      false: {
-        wrapper: 'tw-translate-y-[-110%] tw-duration-100',
+        wrapper: 'tw-sticky tw-top-0',
       },
     },
+    visible: { true: '' },
+    scrolled: { true: '' },
   },
+  compoundVariants: [
+    {
+      sticky: true,
+      visible: true,
+      class: {
+        wrapper: 'tw-duration-200',
+      },
+    },
+    {
+      sticky: true,
+      visible: false,
+      class: {
+        wrapper: 'tw-translate-y-[-100%] tw-duration-100',
+      },
+    },
+    {
+      sticky: true,
+      scrolled: true,
+      class: {
+        header: 'tw-shadow-md',
+      },
+    },
+  ],
 })
 
 type Props = {
@@ -35,8 +57,17 @@ type Props = {
 }
 
 export const Header = React.memo(function Header(props: Props) {
-  const { visible } = useHeaderStatus()
-  const styles = useMemo(() => createStyles({ sticky: visible }), [visible])
+  const { sticky, visible, visibleShadow } = useHeaderStatus()
+
+  const styles = useMemo(
+    () =>
+      createStyles({
+        sticky,
+        visible,
+        scrolled: visibleShadow,
+      }),
+    [sticky, visible, visibleShadow],
+  )
 
   return (
     <>

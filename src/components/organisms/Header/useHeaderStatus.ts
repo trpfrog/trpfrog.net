@@ -23,6 +23,12 @@ export function useSetAlwaysShownHeader() {
   return useSetAtom(alwaysShowHeaderAtom)
 }
 
+function useShouldUseStickyStatus(): boolean {
+  const [isMobileMenuOpened] = useMobileMenuState()
+  const [userSettingFollowSticky] = useUserSettingStickyHeader()
+  return isMobileMenuOpened || userSettingFollowSticky
+}
+
 /**
  * ヘッダーを表示するかどうかを返す
  */
@@ -115,18 +121,34 @@ function useTrpFrogVisibleStatus(): boolean {
   return visible
 }
 
+function useShadowVisibleStatus(): boolean {
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const handler = () => {
+      setVisible(window.scrollY > 0)
+    }
+    window.addEventListener('scroll', handler)
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
+  return visible
+}
+
 interface HeaderStatus {
+  sticky: boolean
   visible: boolean
   visibleSubtitle: boolean
   visibleTrpFrog: boolean
+  visibleShadow: boolean
 }
 
 export function useHeaderStatus(): HeaderStatus {
+  const sticky = useShouldUseStickyStatus()
   const visible = useHeaderVisibleStatus()
   const visibleSubtitle = useSubtitleVisibleStatus()
   const visibleTrpFrog = useTrpFrogVisibleStatus()
+  const visibleShadow = useShadowVisibleStatus()
   return useMemo(
-    () => ({ visible, visibleSubtitle, visibleTrpFrog }),
-    [visible, visibleSubtitle, visibleTrpFrog],
+    () => ({ sticky, visible, visibleSubtitle, visibleTrpFrog, visibleShadow }),
+    [sticky, visible, visibleSubtitle, visibleTrpFrog, visibleShadow],
   )
 }
