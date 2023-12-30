@@ -10,6 +10,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
+import { twMerge } from 'tailwind-merge'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
@@ -177,7 +178,8 @@ export function getMarkdownOptions(options?: {
     },
 
     table: (props: any) => {
-      const { className, ...rest } = props
+      let { className, ...rest } = props
+      className = twMerge('tw-mx-auto', className)
       return <Wrapper.Table className={className} {...rest} />
     },
   }

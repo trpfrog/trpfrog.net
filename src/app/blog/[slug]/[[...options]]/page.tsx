@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
@@ -93,7 +93,7 @@ export default async function Index({ params: { slug, options } }: PageProps) {
     <MainWrapper gridLayout className={styles.layout}>
       <ArticleHeader post={post} />
       <div className={styles.main_content}>
-        <div className={styles.article_wrapper}>
+        <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
           {process.env.NODE_ENV === 'production' ? (
             <BlogMarkdown entry={post} />
           ) : (

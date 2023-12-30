@@ -27,7 +27,7 @@ type Props = React.ComponentPropsWithRef<'h2'> & {
 const styles = tv({
   slots: {
     h2: [
-      'tw-font-mplus-rounded tw-text-2xl tw-font-bold',
+      'tw-font-mplus-rounded tw-text-2xl tw-font-extrabold',
       'tw-my-3 tw-flex tw-align-middle',
     ],
     icon: 'tw-mr-2 tw-h-8 tw-align-baseline',
