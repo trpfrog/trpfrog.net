@@ -4,7 +4,6 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
-import { BadBlogBlock } from '@blog/_components/BadBlog'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { UDFontBlock } from '@blog/_components/UDFontBlock'
 import { BlogPost } from '@blog/_lib/blogPost'
@@ -97,13 +96,11 @@ export default async function Index({ params: { slug, options } }: PageProps) {
       <div className={styles.main_content}>
         <div className={styles.article_wrapper}>
           <UDFontBlock>
-            <BadBlogBlock>
-              {process.env.NODE_ENV === 'production' ? (
-                <BlogMarkdown entry={post} />
-              ) : (
-                <DevBlogMarkdown slug={slug} page={page} />
-              )}
-            </BadBlogBlock>
+            {process.env.NODE_ENV === 'production' ? (
+              <BlogMarkdown entry={post} />
+            ) : (
+              <DevBlogMarkdown slug={slug} page={page} />
+            )}
           </UDFontBlock>
         </div>
         <aside>

@@ -15,21 +15,21 @@
   border-radius: 50%;
   box-shadow: 0 0 30px 5px rgba(black, 0.3) inset;
 
-  $thickness: 6deg;
-  $scales: 8;
-  $length: 45%;
+  --thickness: 6deg;
+  --scales: 8;
+  --length: 45%;
 
   background: radial-gradient(
       circle at 50% 50%,
       white 0%,
-      white (100% - $length),
-      transparent (100% - $length),
+      white calc(100% - var(--length)),
+      transparent calc(100% - var(--length)),
       transparent 100%
     ),
     repeating-conic-gradient(
-      from (-$thickness / 2) at 50% 50%,
-      rgba(105, 105, 105, 0.75) 0deg $thickness,
-      transparent $thickness (360deg / $scales)
+      from calc(-1 * var(--thickness) / 2) at 50% 50%,
+      rgba(105, 105, 105, 0.75) 0deg var(--thickness),
+      transparent var(--thickness) calc(360deg / var(--scales))
     ),
     white;
 }
@@ -48,21 +48,21 @@
 
 .hand_dot {
   position: absolute;
-  $size: 18%;
-  top: -$size / 2;
-  left: 50% - $size / 2;
-  width: $size;
-  height: $size;
+  --size: 18%;
+  top: calc(-1 * var(--size) / 2);
+  left: calc(50% - var(--size) / 2);
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   background: var(--hand-color);
 }
 
 .hand {
   position: absolute;
-  $thickness: 5%;
+  --thickness: 5%;
   top: 0;
-  left: 50% - $thickness / 2;
-  width: $thickness;
+  left: calc(50% - var(--thickness) / 2);
+  width: var(--thickness);
   height: 50%;
   background: var(--hand-color);
 }
@@ -71,12 +71,12 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  $size: 8%;
+  --size: 8%;
   background: radial-gradient(
     circle at 50% 50%,
     var(--hand-color) 0%,
-    var(--hand-color) $size,
-    transparent $size,
+    var(--hand-color) var(--size),
+    transparent var(--size),
     transparent 100%
   );
 }

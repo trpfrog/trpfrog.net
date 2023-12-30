@@ -1,11 +1,11 @@
-@use '@/styles/common/grid';
-@use '@/styles/common/header';
-@use '@/styles/common/block';
-@use '@/styles/common/media';
-@use '@/styles/common/linkbutton';
-@use '@/styles/mixins';
+@use './common/grid';
+@use './common/header';
+@use './common/block';
+@use './common/media';
+@use './common/linkbutton';
+@use '../styles/mixins';
 @use 'colors';
-@use '@/styles/common/print';
+@use './common/print';
 
 :root {
   --h3-marker-color: #90e200;

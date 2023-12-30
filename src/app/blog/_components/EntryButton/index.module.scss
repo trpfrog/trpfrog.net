@@ -1,5 +1,5 @@
-@use '@/styles/mixins';
-@use '@/styles/common/linkbutton';
+@use '../../../../styles/mixins';
+@use '../../../../styles/common/linkbutton';
 
 .entry_button {
   @extend .linkButton;

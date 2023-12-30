@@ -2,7 +2,7 @@
   "name": "trpfrog-net",
   "private": true,
   "scripts": {
-    "dev": "prisma generate && npx concurrently 'next dev' 'bun tools/markdownWatcher.ts'",
+    "dev": "prisma generate && npx concurrently 'next dev --turbo' 'bun tools/markdownWatcher.ts'",
     "build": "prisma generate && next build",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
