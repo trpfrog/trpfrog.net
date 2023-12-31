@@ -1,6 +1,5 @@
-import Image from 'next/legacy/image'
-
 import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -26,16 +25,13 @@ export default function Music() {
             購入・ストリーミング
           </Button>
         </p>
-        <p>
-          <Image
-            src={'musicbanner'}
-            className={'rich_image'}
-            width={'500'}
-            height={'100'}
-            layout={'responsive'}
-            alt={'つまみのうたのバナー'}
-          />
-        </p>
+        <Image
+          src={'musicbanner'}
+          className="tw-my-4"
+          width={500}
+          height={100}
+          alt={'つまみのうたのバナー'}
+        />
       </Title>
 
       <Block title={'カラオケ'} h2icon={'think'}>

@@ -2,10 +2,10 @@ import path from 'path'
 
 import { Metadata } from 'next'
 
-import Image from 'next/legacy/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -53,8 +53,6 @@ export default async function Index() {
                   src={metadata.image.src}
                   width={metadata.image.width}
                   height={metadata.image.height}
-                  className={'rich_image'}
-                  layout={'intrinsic'}
                   alt={metadata.image.alt}
                 />
               </div>

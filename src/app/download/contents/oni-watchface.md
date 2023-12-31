@@ -2,7 +2,7 @@
 title: 鬼のウォッチフェイス
 description: Apple Watch の文字盤です。誰得？
 image: 
-  src: download/watchfaces/oni/thumbnail
+  src: /download/watchfaces/oni/thumbnail
   alt: 鬼のウォッチフェイスの画像
   width: 512
   height: 384

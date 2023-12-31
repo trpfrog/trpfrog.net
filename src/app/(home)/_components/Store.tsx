@@ -1,8 +1,7 @@
-import Image from 'next/legacy/image'
-
 import styles from '@/app/(home)/page.module.scss'
 
 import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { Block } from '@/components/molecules/Block'
 
 type Props = {
@@ -28,12 +27,9 @@ export const Store = ({ id }: Props) => {
         </div>
         <div className={styles.link_block}>
           <Image
-            src={'sticker_pr'}
+            src={'/sticker_pr'}
             width={18}
             height={15}
-            className={'rich_image'}
-            layout={'responsive'}
-            objectFit={'contain'}
             alt={'つまみグッズの画像'}
           />
           <Button
@@ -46,11 +42,10 @@ export const Store = ({ id }: Props) => {
         </div>
         <div className={styles.link_block}>
           <Image
-            src={'goods'}
+            src={'/goods'}
             width={100}
-            height={70}
-            layout={'responsive'}
-            objectFit={'contain'}
+            height={50}
+            className="tw-bg-transparent tw-shadow-none"
             alt={'つまみグッズの画像'}
           />
           <Button externalLink={true} href="https://suzuri.jp/TrpFrog">

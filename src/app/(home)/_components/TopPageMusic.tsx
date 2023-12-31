@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/legacy/image'
-
 import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { YouTube } from '@/components/organisms/YouTube'
@@ -29,10 +28,8 @@ export const TopPageMusic = ({ id }: Props) => {
       <p>
         <Image
           src={'musicbanner'}
-          className={'rich_image'}
-          width={'500'}
-          height={'100'}
-          layout={'responsive'}
+          width={500}
+          height={100}
           alt={'つまみのうたのバナー'}
         />
       </p>
