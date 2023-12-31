@@ -44,7 +44,7 @@ export default function Music() {
           「うたスキ」「うたスキ動画」の両方に対応した店舗で歌えるらしいので、カラオケ行く人はよろしくお願いします。
           僕は歌いません。(？)
         </p>
-        <div className={'link-area'}>
+        <div>
           <MagicButton
             href={'https://musicpost.joysound.com/music/musicId:107765'}
           >

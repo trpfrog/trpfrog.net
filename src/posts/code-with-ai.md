@@ -31,12 +31,8 @@ https://qiita.com/advent-calendar/2022/nyobi
 面倒だから登録したくないぜ……！という方も Twitter でバズっている ChatGPT 関連のツイートを見てみてください。
 きっと**驚くと思います**。
 
-<div class="link-area">
-
-[ChatGPT を使ってみる](https://chat.openai.com/)
-[Twitter で ChatGPT について調べてみる](https://twitter.com/search?q=ChatGPT%20min_retweets%3A100%20lang%3Aja)
-
-</div>
+- [ChatGPT を使ってみる](https://chat.openai.com/)
+- [Twitter で ChatGPT について調べてみる](https://twitter.com/search?q=ChatGPT%20min_retweets%3A100%20lang%3Aja)
 
 <br>
 
@@ -172,11 +168,7 @@ console.log(result); // ["3", "4", "5"]
 
 ![](/blog/code-with-ai/tabnine?w=2704&h=1574)
 
-<div class="link-area">
-
-[Tabnine (公式サイト)](https://www.tabnine.com/)
-
-</div>
+- [Tabnine (公式サイト)](https://www.tabnine.com/)
 
 Tabnine 社の AI コーディング支援ツールです。独自でトレーニングしたモデルを使っているみたいです。
 月額 **$12** ですが、無料版も存在します。(が、機械学習モデルがちょっと古いらしい？)
@@ -194,11 +186,8 @@ Tabnine 社の AI コーディング支援ツールです。独自でトレー�
 
 ![](/blog/code-with-ai/copilot?w=2410&h=1900)
 
-<div class="link-area">
 
-[GitHub Copilot (公式サイト)](https://github.com/features/copilot)
-
-</div>
+- [GitHub Copilot (公式サイト)](https://github.com/features/copilot)
 
 GitHub 社の AI コーディング支援ツールです。OpenAI Codex (OpenAI GPT-3 をコード生成向けに改良したもの) を使っているみたいです。
 Tabnine 同様にエディタにプラグインとしてインストールして使います。
@@ -218,12 +207,9 @@ GitHub Copilot はエディタにそのまま介入してきて入力候補を�
 
 ![](/blog/code-with-ai/aiprog?w=2994&h=1364)
 
-<div class="link-area">
 
-[AI Programmer](https://aiprogrammer.hashlab.jp/)
-[インタビュー記事 (ITmedia)](https://www.itmedia.co.jp/news/articles/2210/14/news053.html)
-
-</div>
+- [AI Programmer](https://aiprogrammer.hashlab.jp/)
+- [インタビュー記事 (ITmedia)](https://www.itmedia.co.jp/news/articles/2210/14/news053.html)
 
 こちらは Tabnine や GitHub Copilot とは異なって Web アプリケーションです。
 
@@ -241,12 +227,8 @@ GitHub Copilot はエディタにそのまま介入してきて入力候補を�
 
 ![](/blog/code-with-ai/chatgpt?w=2368&h=1600)
 
-<div class="link-area">
-
-[ChatGPT](https://chat.openai.com/)
-[公式の紹介記事](https://openai.com/blog/chatgpt/)
-
-</div>
+- [ChatGPT](https://chat.openai.com/)
+- [公式の紹介記事](https://openai.com/blog/chatgpt/)
 
 OpenAI が先日公開したばかりのチャットボットです。OpenAI はイーロン・マスクを始めとする IT の強い人たちが出資して作った研究組織です ([ソース](https://japan.zdnet.com/article/35074857/))。
 
@@ -424,11 +406,6 @@ AI について「シンギュラリティが来る！」とか「エンジニ�
 
 <br>
 
-````centering
-```dangerously-set-inner-html
-<a class="linkButton" href="https://qiita.com/advent-calendar/2022/nyobi">アドベントカレンダーに戻る</a>
-```
-````
 ```next-page
 付録: AI はどのように文章を生成するか？
 ```
@@ -956,12 +933,4 @@ softmax は
 実際にはもっと複雑なアーキテクチャを使っていたり、もっと複雑なサンプリングをしていたり、もっと複雑な微調整をしていたりします。
 興味を持った方はぜひ本編で紹介した本や講座などを覗いてみてください！
 
-````centering
-```dangerously-set-inner-html
-<p class="link-area">
-<a class="linkButton" href="/blog/code-with-ai#appendix-jump-from">前のページに戻る</a>
-<a class="linkButton" href="https://qiita.com/advent-calendar/2022/nyobi">アドベントカレンダーに戻る</a>
-</p>
-```
-````
 

@@ -11,7 +11,8 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/time
 
 ![thumbnail](/blog/timetable-page/thumbnail?w=1343&h=1059)
 
-<a href="https://github.com/TrpFrog/timetable-page" class="linkButton">GitHubで見る</a>
+- [GitHubで見る](https://github.com/TrpFrog/timetable-page)
+
 
 ## これは何？
 
@@ -68,4 +69,4 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641545315/blog/time
 
 ぜひ使ってみてね！さようなら
 
-<a href="https://github.com/TrpFrog/timetable-page" class="linkButton">GitHubで見る</a>
+- [GitHubで見る](https://github.com/TrpFrog/timetable-page)

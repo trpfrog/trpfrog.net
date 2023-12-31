@@ -1,8 +1,8 @@
 @use '../../../../styles/mixins';
-@use '../../../../styles/common/linkbutton';
+@use '../../../../components/atoms/Button/index.module.scss' as button;
 
 .entry_button {
-  @extend .linkButton;
+  @extend .button;
 
   text-align: center;
   display: inline-block;
