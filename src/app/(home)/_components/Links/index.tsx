@@ -1,8 +1,8 @@
 import styles from '@/app/(home)/page.module.scss'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
+import { MagicButton } from 'src/components/atoms/MagicButton'
 import { H2 } from 'src/components/wrappers/H2'
 
 import links from './links.json'

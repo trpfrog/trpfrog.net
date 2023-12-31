@@ -1,5 +1,5 @@
 @use '../../../../styles/mixins';
-@use '../../../../components/atoms/Button/index.module.scss' as button;
+@use '../../../../components/atoms/MagicButton/index.module.scss' as button;
 
 .entry_button {
   @extend .button;

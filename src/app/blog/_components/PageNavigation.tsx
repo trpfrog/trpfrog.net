@@ -1,6 +1,6 @@
-import { MagicButton } from '@/components/atoms/Button'
-
 import { BlogPost } from '@blog/_lib/blogPost'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 type Props = {
   entry: BlogPost

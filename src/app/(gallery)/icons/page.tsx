@@ -2,10 +2,11 @@ import { Metadata } from 'next'
 
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export const metadata = {
   title: 'つまみアイコン集',

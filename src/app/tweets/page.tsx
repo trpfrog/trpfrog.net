@@ -2,11 +2,12 @@ import { Metadata } from 'next'
 
 import dayjs from 'dayjs'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { Li, UnorderedList } from '@/components/wrappers'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { SearchForm } from './SearchForm'
 import { TweetArea } from './TweetArea'

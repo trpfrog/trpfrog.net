@@ -1,8 +1,9 @@
 import styles from '@/app/(home)/page.module.scss'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { Block } from '@/components/molecules/Block'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 type Props = {
   id?: string

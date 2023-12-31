@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'

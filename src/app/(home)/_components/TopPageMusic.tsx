@@ -1,10 +1,11 @@
 'use client'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { YouTube } from '@/components/organisms/YouTube'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 type Props = {
   id?: string

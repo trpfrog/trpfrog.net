@@ -4,7 +4,7 @@ import path from 'path'
 
 import { usePathname } from 'next/navigation'
 
-import { MagicButton } from '@/components/atoms/Button'
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export function ReturnButton() {
   const pathname = usePathname()

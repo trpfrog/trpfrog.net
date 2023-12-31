@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { A } from '@/components/wrappers'
 
 import { calcMonospacedTextWidth } from '@/lib/utils'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { MutualLinkRecord } from './loader'
 

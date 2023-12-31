@@ -1,8 +1,9 @@
 import Image from 'next/legacy/image'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export default function NotFound() {
   const IB = ({ children }: any) => (

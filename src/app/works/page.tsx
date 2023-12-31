@@ -5,7 +5,6 @@ import { Metadata } from 'next'
 import Image from 'next/legacy/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -13,6 +12,8 @@ import { Title } from '@/components/organisms/Title'
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './style.module.scss'
 

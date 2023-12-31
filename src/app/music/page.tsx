@@ -1,9 +1,10 @@
-import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'

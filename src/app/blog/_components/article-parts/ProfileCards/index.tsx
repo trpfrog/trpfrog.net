@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Li, UnorderedList } from '@/components/wrappers'
 
@@ -11,6 +10,8 @@ import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './index.module.scss'
 

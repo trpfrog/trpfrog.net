@@ -3,12 +3,13 @@ import * as React from 'react'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { A } from '@/components/wrappers'
 
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
 import { BlogPost } from '@blog/_lib/blogPost'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { ShareSpan } from './ShareSpan'
 

@@ -7,11 +7,12 @@ import {
   useIconMakerRef,
 } from '@/app/icon-maker/iconMakerHooks'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Input } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './style.module.scss'
 

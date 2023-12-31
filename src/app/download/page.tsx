@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -13,6 +12,8 @@ import { Title } from '@/components/organisms/Title'
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export const metadata = {
   title: 'DLコンテンツ',

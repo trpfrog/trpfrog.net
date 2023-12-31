@@ -4,8 +4,9 @@ import styles from '@/app/(home)/page.module.scss'
 import { Balloon } from '@/app/balloon/_components/Balloon'
 import { useBalloonState } from '@/app/balloon/_components/BalloonArray'
 
-import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 type Props = {
   id?: string
