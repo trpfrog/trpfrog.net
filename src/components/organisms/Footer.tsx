@@ -23,7 +23,7 @@ export const Footer = memo(function Footer() {
   return (
     <footer className={styles.footer()}>
       <MainWrapper className={styles.inner()}>
-        <div className={styles.copyright()}>&copy; 2019-2023 つまみ</div>
+        <div className={styles.copyright()}>&copy; 2019-2024 つまみ</div>
         <div className={styles.links()}>
           <A
             openInNewTab
