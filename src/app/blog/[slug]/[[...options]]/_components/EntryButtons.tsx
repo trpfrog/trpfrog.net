@@ -3,7 +3,7 @@ import * as React from 'react'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { A } from '@/components/wrappers'
 
 import { EntryButton } from '@blog/_components/EntryButton'
@@ -52,16 +52,16 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       }}
       {...rest}
     >
-      <Button href={'/blog'}>記事一覧</Button>
+      <MagicButton href={'/blog'}>記事一覧</MagicButton>
       <ShareSpan slug={post.slug}>
-        <Button>ツイート</Button>
+        <MagicButton>ツイート</MagicButton>
       </ShareSpan>
-      <Button
+      <MagicButton
         externalLink={true}
         href={'https://github.com/TrpFrog/trpfrog.net/issues'}
       >
         訂正リクエスト
-      </Button>
+      </MagicButton>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import Image from 'next/legacy/image'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
 
@@ -33,7 +33,7 @@ export default function NotFound() {
             <IB>リンクが誤っている可能性があります。</IB>
           </p>
           <p>
-            <Button href={'/'}>トップページに戻る</Button>
+            <MagicButton href={'/'}>トップページに戻る</MagicButton>
           </p>
         </div>
       </Title>

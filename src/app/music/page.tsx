@@ -1,4 +1,4 @@
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
@@ -21,9 +21,9 @@ export default function Music() {
           ありがとうございます！！！
         </p>
         <p>
-          <Button externalLink={true} href="https://linkco.re/N4Z8hdvX">
+          <MagicButton externalLink={true} href="https://linkco.re/N4Z8hdvX">
             購入・ストリーミング
-          </Button>
+          </MagicButton>
         </p>
         <Image
           src={'musicbanner'}
@@ -45,14 +45,16 @@ export default function Music() {
           僕は歌いません。(？)
         </p>
         <div className={'link-area'}>
-          <Button href={'https://musicpost.joysound.com/music/musicId:107765'}>
+          <MagicButton
+            href={'https://musicpost.joysound.com/music/musicId:107765'}
+          >
             楽曲詳細
-          </Button>
-          <Button
+          </MagicButton>
+          <MagicButton
             href={'https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1'}
           >
             店舗検索
-          </Button>
+          </MagicButton>
         </div>
       </Block>
 
@@ -64,9 +66,9 @@ export default function Music() {
 
       <Block title={'フル音源'} h2icon={'robot'}>
         <p>各種音楽配信サイトで配信中！</p>
-        <Button externalLink={true} href="https://linkco.re/N4Z8hdvX">
+        <MagicButton externalLink={true} href="https://linkco.re/N4Z8hdvX">
           購入・ストリーミング
-        </Button>
+        </MagicButton>
         <p>YouTubeでも公開中！</p>
         <YouTube videoId="VO64Ih8c1yU" />
       </Block>

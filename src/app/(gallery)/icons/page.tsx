@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -28,12 +28,12 @@ export default function Index() {
         </p>
         <p>Hugging Face Datasets でも利用可能です！</p>
         <p>
-          <Button
+          <MagicButton
             externalLink={true}
             href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}
           >
             trpfrog-icons on 🤗Datasets
-          </Button>
+          </MagicButton>
         </p>
       </Title>
       <Block>
@@ -45,12 +45,12 @@ export default function Index() {
           にて使えるようになりました！🎉
         </p>
         <p>
-          <Button
+          <MagicButton
             externalLink={true}
             href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}
           >
             trpfrog-icons
-          </Button>
+          </MagicButton>
         </p>
         <pre
           style={{

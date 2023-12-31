@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { A } from '@/components/wrappers'
 
 import { calcMonospacedTextWidth } from '@/lib/utils'
@@ -25,9 +25,9 @@ export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
   return (
     <div className={styles.link_block}>
       <p style={{ textAlign: 'center' }}>
-        <Button externalLink={true} href={url} style={style}>
+        <MagicButton externalLink={true} href={url} style={style}>
           {siteName}
-        </Button>
+        </MagicButton>
       </p>
       <p>
         <A href={`https://twitter.com/${twitterId}/`}>

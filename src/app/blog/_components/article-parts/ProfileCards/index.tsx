@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Li, UnorderedList } from '@/components/wrappers'
 
@@ -109,9 +109,9 @@ export const profileCardParts = {
           secondaryButtonText={'カード表示に切り替え'}
         />
         {twitterSearchLink !== '' && (
-          <Button externalLink={true} href={twitterSearchLink}>
+          <MagicButton externalLink={true} href={twitterSearchLink}>
             当日の同行者のツイートを見る
-          </Button>
+          </MagicButton>
         )}
       </>
     )

@@ -1,4 +1,4 @@
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
 
@@ -41,7 +41,7 @@ export default async function Index({ params }: Props) {
         <Title>
           <h1>タグ「{tag}」の記事一覧</h1>
           <p>
-            <Button href={'/blog'}>記事一覧に戻る</Button>
+            <MagicButton href={'/blog'}>記事一覧に戻る</MagicButton>
           </p>
         </Title>
 

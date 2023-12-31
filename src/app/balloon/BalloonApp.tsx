@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { Input } from '@/components/wrappers'
@@ -41,12 +41,12 @@ export function BalloonApp() {
         description={'風船を割ることができます。(？)'}
       >
         <p>
-          <Button
+          <MagicButton
             onClick={() => setSoundEnabled(!isSoundEnabled)}
             style={{ marginRight: '10px' }}
           >
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
-          </Button>
+          </MagicButton>
           <label style={{ marginRight: '10px' }}>
             <Input
               type="number"

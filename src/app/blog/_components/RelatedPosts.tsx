@@ -2,7 +2,7 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { BlogPost } from '@blog/_lib/blogPost'
@@ -37,18 +37,18 @@ export const RelatedPosts = ({
         {/* PC */}
         {relatedPosts.length > 6 && (
           <div style={{ textAlign: 'center' }} className="sp:tw-hidden">
-            <Button href={'/blog/tags/' + tag}>
+            <MagicButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-            </Button>
+            </MagicButton>
           </div>
         )}
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
           <div style={{ textAlign: 'center' }} className="pc:tw-hidden">
-            <Button href={'/blog/tags/' + tag}>
+            <MagicButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-            </Button>
+            </MagicButton>
           </div>
         )}
       </>

@@ -1,6 +1,6 @@
 import styles from '@/app/(home)/page.module.scss'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 
 import { H2 } from 'src/components/wrappers/H2'
@@ -24,7 +24,7 @@ export async function Links({ id }: Props) {
         {(links as MyLinkRecord[]).map(({ url, siteName, description }) => (
           <div key={siteName} className={styles.link_block}>
             <p style={{ textAlign: 'center' }}>
-              <Button href={url}>{siteName}</Button>
+              <MagicButton href={url}>{siteName}</MagicButton>
             </p>
             <p>{description}</p>
           </div>
@@ -34,7 +34,7 @@ export async function Links({ id }: Props) {
       <H2 icon="hina">相互リンク</H2>
       <p>移動しました！</p>
       <p>
-        <Button href={'/links'}>相互リンク</Button>
+        <MagicButton href={'/links'}>相互リンク</MagicButton>
       </p>
     </Block>
   )

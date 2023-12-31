@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button a mode snapshot testing (external link) 1`] = `
+exports[`MagicButton a mode snapshot testing (external link) 1`] = `
 <DocumentFragment>
   <a
     class="button"
@@ -14,7 +14,7 @@ exports[`Button a mode snapshot testing (external link) 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Button a mode snapshot testing (internal link) 1`] = `
+exports[`MagicButton a mode snapshot testing (internal link) 1`] = `
 <DocumentFragment>
   <a
     class="button"
@@ -26,7 +26,7 @@ exports[`Button a mode snapshot testing (internal link) 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Button button mode snapshot testing 1`] = `
+exports[`MagicButton button mode snapshot testing 1`] = `
 <DocumentFragment>
   <button
     class="button"
@@ -37,7 +37,7 @@ exports[`Button button mode snapshot testing 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Button div mode snapshot testing 1`] = `
+exports[`MagicButton div mode snapshot testing 1`] = `
 <DocumentFragment>
   <div
     class="button"

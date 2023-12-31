@@ -7,7 +7,7 @@ import {
   useIconMakerRef,
 } from '@/app/icon-maker/iconMakerHooks'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Input } from '@/components/wrappers'
 
@@ -71,9 +71,9 @@ export function IconMakerApp() {
           />
         </p>
         <p>
-          <Button externalLink={true} href={tweetLink}>
+          <MagicButton externalLink={true} href={tweetLink}>
             Tweet
-          </Button>
+          </MagicButton>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

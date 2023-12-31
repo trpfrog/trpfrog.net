@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import dayjs from 'dayjs'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -42,7 +42,7 @@ export default async function Index({ searchParams }: any) {
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
-          <Button
+          <MagicButton
             href={
               '/tweets?q=' +
               encodeURIComponent('date:' + oneYearsAgo) +
@@ -50,7 +50,7 @@ export default async function Index({ searchParams }: any) {
             }
           >
             1年前のツイートを見る
-          </Button>
+          </MagicButton>
         </p>
         <br />
         <details>

@@ -1,16 +1,16 @@
 import { action } from '@storybook/addon-actions'
 
-import { Button } from '.'
+import { MagicButton } from '.'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<typeof Button> = {
-  component: Button,
+const meta: Meta<typeof MagicButton> = {
+  component: MagicButton,
 }
 
 export default meta
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof MagicButton>
 
 export const NextLink: Story = {
   parameters: {

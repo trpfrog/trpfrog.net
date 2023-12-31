@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import Image from 'next/legacy/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -95,13 +95,13 @@ export default async function Index() {
             >
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <Button
+                  <MagicButton
                     externalLink={true}
                     key={linkTxt}
                     href={url as string}
                   >
                     {linkTxt}
-                  </Button>
+                  </MagicButton>
                 )
               })}
             </p>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
@@ -34,10 +34,10 @@ export const TopPageMusic = ({ id }: Props) => {
         />
       </p>
       <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
-        <Button externalLink={true} href="https://linkco.re/N4Z8hdvX">
+        <MagicButton externalLink={true} href="https://linkco.re/N4Z8hdvX">
           購入/ストリーミング
-        </Button>
-        <Button href={'/music'}>歌詞</Button>
+        </MagicButton>
+        <MagicButton href={'/music'}>歌詞</MagicButton>
       </p>
     </Block>
   )

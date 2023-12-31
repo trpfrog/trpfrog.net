@@ -1,34 +1,36 @@
 import { render, screen } from '@testing-library/react'
 
-import { Button } from '.'
+import { MagicButton } from '.'
 
 describe('Button', () => {
   describe('div mode', () => {
     test('should render correctly', () => {
-      render(<Button>test</Button>)
+      render(<MagicButton>test</MagicButton>)
       expect(screen.getByTestId('button-component').tagName).toBe('DIV')
     })
 
     test('snapshot testing', () => {
-      const { asFragment } = render(<Button>test</Button>)
+      const { asFragment } = render(<MagicButton>test</MagicButton>)
       expect(asFragment()).toMatchSnapshot()
     })
   })
 
   describe('button mode', () => {
     test('should render correctly', () => {
-      render(<Button onClick={() => {}}>test</Button>)
+      render(<MagicButton onClick={() => {}}>test</MagicButton>)
       expect(screen.getByTestId('button-component').tagName).toBe('BUTTON')
     })
 
     test('snapshot testing', () => {
-      const { asFragment } = render(<Button onClick={() => {}}>test</Button>)
+      const { asFragment } = render(
+        <MagicButton onClick={() => {}}>test</MagicButton>,
+      )
       expect(asFragment()).toMatchSnapshot()
     })
 
     test('should call onClick', () => {
       const onClick = jest.fn()
-      render(<Button onClick={onClick}>test</Button>)
+      render(<MagicButton onClick={onClick}>test</MagicButton>)
       screen.getByTestId('button-component').click()
       expect(onClick).toBeCalledTimes(1)
     })
@@ -36,9 +38,9 @@ describe('Button', () => {
     test('should not call onClick when disabled', () => {
       const onClick = jest.fn()
       render(
-        <Button onClick={onClick} disabled>
+        <MagicButton onClick={onClick} disabled>
           test
-        </Button>,
+        </MagicButton>,
       )
       screen.getByTestId('button-component').click()
       expect(onClick).toBeCalledTimes(0)
@@ -47,18 +49,18 @@ describe('Button', () => {
 
   describe('a mode', () => {
     test('should render correctly', () => {
-      render(<Button href="/">test</Button>)
+      render(<MagicButton href="/">test</MagicButton>)
       expect(screen.getByTestId('button-component').tagName).toBe('A')
     })
 
     test('snapshot testing (internal link)', () => {
-      const { asFragment } = render(<Button href="/">test</Button>)
+      const { asFragment } = render(<MagicButton href="/">test</MagicButton>)
       expect(asFragment()).toMatchSnapshot()
     })
 
     test('snapshot testing (external link)', () => {
       const { asFragment } = render(
-        <Button href="https://github.com">test</Button>,
+        <MagicButton href="https://github.com">test</MagicButton>,
       )
       expect(asFragment()).toMatchSnapshot()
     })
@@ -73,7 +75,7 @@ describe('Button', () => {
     test.each(internalLinks)(
       'should open internal link in current tab (%s)',
       href => {
-        render(<Button href={href}>test</Button>)
+        render(<MagicButton href={href}>test</MagicButton>)
         expect(screen.getByTestId('button-component')).not.toHaveAttribute(
           'target',
           '_blank',
@@ -84,9 +86,9 @@ describe('Button', () => {
       'should open internal link in new tab if there is an externalLink attr (%s)',
       href => {
         render(
-          <Button externalLink href={href}>
+          <MagicButton externalLink href={href}>
             test
-          </Button>,
+          </MagicButton>,
         )
         expect(screen.getByTestId('button-component')).toHaveAttribute(
           'target',
@@ -103,7 +105,7 @@ describe('Button', () => {
     test.each(externalLinks)(
       'should open external link in new tab (%s)',
       href => {
-        render(<Button href={href}>test</Button>)
+        render(<MagicButton href={href}>test</MagicButton>)
         expect(screen.getByTestId('button-component')).toHaveAttribute(
           'target',
           '_blank',
@@ -114,16 +116,16 @@ describe('Button', () => {
 
   describe('disabled', () => {
     test('should render correctly', () => {
-      render(<Button disabled>test</Button>)
+      render(<MagicButton disabled>test</MagicButton>)
       expect(screen.getByTestId('button-component')).toHaveAttribute('disabled')
     })
 
     test('should not call onClick', () => {
       const onClick = jest.fn()
       render(
-        <Button onClick={onClick} disabled>
+        <MagicButton onClick={onClick} disabled>
           test
-        </Button>,
+        </MagicButton>,
       )
       screen.getByTestId('button-component').click()
       expect(onClick).not.toHaveBeenCalled()
@@ -131,9 +133,9 @@ describe('Button', () => {
 
     test('should not jump to /', () => {
       render(
-        <Button href="/" disabled>
+        <MagicButton href="/" disabled>
           test
-        </Button>,
+        </MagicButton>,
       )
       expect(screen.getByTestId('button-component')).toHaveAttribute(
         'href',

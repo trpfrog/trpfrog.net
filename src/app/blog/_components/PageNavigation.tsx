@@ -1,4 +1,4 @@
-import { Button } from '@/components/atoms/Button'
+import { MagicButton } from '@/components/atoms/Button'
 
 import { BlogPost } from '@blog/_lib/blogPost'
 
@@ -28,13 +28,13 @@ export const PageTransferButton = (props: PageTransferProps) => {
   return entry.isAll ? (
     <></>
   ) : (
-    <Button
+    <MagicButton
       href={href}
       disabled={props.disabled}
       data-page-transfer-to={nextPage}
     >
       {buttonText}
-    </Button>
+    </MagicButton>
   )
 }
 
