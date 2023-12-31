@@ -12,6 +12,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
   const [isDragging, setIsDragging] = useState(false)
   const [isTabOpen, setIsTabOpen] = useState(false)
   const [recentlyUploaded, setRecentlyUploaded] = useState('')
+  const [horizontalImages, setHorizontalImages] = useState(false)
   const uploadImage = useUploadFunction(props.slug)
 
   const onDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -71,8 +72,20 @@ export function ImageDragAndDrop(props: { slug: string }) {
           </div>
           {recentlyUploaded !== '' && (
             <div className={styles.code_block}>
+              <form>
+                <input
+                  type="checkbox"
+                  checked={horizontalImages}
+                  onChange={e => setHorizontalImages(e.target.checked)}
+                />
+                <label style={{ verticalAlign: '0.2em' }}>
+                  Horizontal Images
+                </label>
+              </form>
               <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
-                {recentlyUploaded}
+                {horizontalImages
+                  ? '```horizontal-images\n' + recentlyUploaded + '\n```'
+                  : recentlyUploaded}
               </CodeBlock>
             </div>
           )}
