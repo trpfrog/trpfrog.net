@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer id={styles.footer}>
       <MainWrapper id={styles.inner_footer}>
-        <div id={styles.copyright}>&copy; 2019-2023 つまみ</div>
+        <div id={styles.copyright}>&copy; 2019-2024 つまみ</div>
         <div style={{ display: 'flex', gap: 5 }}>
           <OpenInNewTab
             href={'https://github.com/trpfrog/trpfrog.net'}
