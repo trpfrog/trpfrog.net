@@ -1,15 +1,16 @@
 import Image from 'next/legacy/image'
 
-import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export default function NotFound() {
   const IB = ({ children }: any) => (
     <span style={{ display: 'inline-block' }}>{children}</span>
   )
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title
         title={'404 Not Found'}
         showDefaultText={false}
@@ -33,7 +34,7 @@ export default function NotFound() {
             <IB>リンクが誤っている可能性があります。</IB>
           </p>
           <p>
-            <Button href={'/'}>トップページに戻る</Button>
+            <MagicButton href={'/'}>トップページに戻る</MagicButton>
           </p>
         </div>
       </Title>

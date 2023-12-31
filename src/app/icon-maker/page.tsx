@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function Index() {
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title
         title={'アイコンメーカー.ts'}
         ribbonText={'BETA'}

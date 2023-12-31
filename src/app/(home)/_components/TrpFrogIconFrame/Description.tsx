@@ -1,5 +1,7 @@
 import { get } from '@vercel/edge-config'
 
+import { InlineLink } from '@/components/atoms/InlineLink'
+
 import {
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
@@ -20,9 +22,9 @@ export async function Description() {
       </div>
       <div>
         Powered by{' '}
-        <a href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>
+        <InlineLink href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>
           Prgckwb/trpfrog-diffusion
-        </a>
+        </InlineLink>
       </div>
     </small>
   )

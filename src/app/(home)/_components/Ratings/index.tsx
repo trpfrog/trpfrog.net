@@ -1,3 +1,4 @@
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 
 import styles from './index.module.scss'
@@ -11,7 +12,10 @@ export const Ratings = ({ id }: Props) => {
     <Block title={'競プロ'} h2icon={'car'} id={id}>
       <ul className={styles.rating_list}>
         <li>
-          <b>AtCoder</b> (<a href="https://atcoder.jp/users/TrpFrog">TrpFrog</a>
+          <b>AtCoder</b> (
+          <InlineLink href="https://atcoder.jp/users/TrpFrog">
+            TrpFrog
+          </InlineLink>
           ) <br />
           <span className={styles.water} style={{ fontSize: '1.5em' }}>
             highest
@@ -22,7 +26,10 @@ export const Ratings = ({ id }: Props) => {
         </li>
         <li>
           <b>Codeforces</b> (
-          <a href="https://codeforces.com/profile/TrpFrog">TrpFrog</a>) <br />
+          <InlineLink href="https://codeforces.com/profile/TrpFrog">
+            TrpFrog
+          </InlineLink>
+          ) <br />
           <span className={styles.blue} style={{ fontSize: '2em' }}>
             max
           </span>

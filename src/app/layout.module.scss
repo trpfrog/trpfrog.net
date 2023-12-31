@@ -1,6 +1,3 @@
-.body {
-}
-
 .layout {
   min-height: 100lvh;
   width: 100%;
@@ -8,8 +5,5 @@
   flex-direction: column;
   & > main {
     flex: 1;
-  }
-  & > * {
-    display: block;
   }
 }

@@ -17,7 +17,7 @@ export const metadata = {
 export default async function Index() {
   const mutualLinks: MutualLinkRecord[] = await loadMutualLinkRecords()
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>
           順番はハンドルネームをUTF-8でソートしたもの。

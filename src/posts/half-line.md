@@ -36,13 +36,9 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half
 
 $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
 このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
-        
-<p style="text-align:center">
-    <img 
-        class="rich_image" 
-        src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png"
-    >
-</p>
+
+![](/blog/half-line/thumbnail.png)
+
 </div>
 
 <div style="display: none">
@@ -188,9 +184,7 @@ $$
 $xy$ 平面上に点 $A$ から点 $B$ 方向に伸びる半直線 $L$ と、点 $P$ があります。
 このとき、点 $P$ から最も近い $L$ 上の点 $Q$ を求めてください。
         
-<p style="text-align:center">
-    <img class="rich_image" src="https://res.cloudinary.com/trpfrog/image/upload/v1642314369/blog/half-line/thumbnail.png">
-</p>
+![](/blog/half-line/thumbnail.png)
 
 </div>
 

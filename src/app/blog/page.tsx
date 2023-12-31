@@ -45,7 +45,7 @@ export default async function Index() {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper gridLayout>
         <Title title={'つまみログ'} description={metadata.description} />
 
         <div className={styles.hrule_block}>

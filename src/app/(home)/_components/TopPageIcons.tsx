@@ -2,8 +2,9 @@ import Image from 'next/legacy/image'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 type Props = {
   id?: string
@@ -28,7 +29,7 @@ export const TopPageIcons = ({ id }: Props) => {
             />
           ))}
       </div>
-      <Button href={'/icons'}>もっと見る</Button>
+      <MagicButton href={'/icons'}>もっと見る</MagicButton>
     </Block>
   )
 }

@@ -2,15 +2,18 @@ import path from 'path'
 
 import { Metadata } from 'next'
 
-import Image from 'next/legacy/image'
-import ReactMarkdown from 'react-markdown'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
 import { readMarkdowns } from '@/lib/mdLoader'
+
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export const metadata = {
   title: 'DLコンテンツ',
@@ -39,7 +42,7 @@ export default async function Index() {
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />
       {contents.map(({ metadata, content }) => {
         return (
@@ -51,20 +54,18 @@ export default async function Index() {
                   src={metadata.image.src}
                   width={metadata.image.width}
                   height={metadata.image.height}
-                  className={'rich_image'}
-                  layout={'intrinsic'}
                   alt={metadata.image.alt}
                 />
               </div>
             )}
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <MDXRemote source={content} {...getMarkdownOptions()} />
             <div
               style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
             >
               {metadata.links.map(({ href, text }) => (
-                <Button key={href} href={href}>
+                <MagicButton key={href} href={href}>
                   {text}
-                </Button>
+                </MagicButton>
               ))}
             </div>
           </Block>

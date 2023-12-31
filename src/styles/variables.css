@@ -1,0 +1,84 @@
+:root {
+  --h3-marker-color: #90e200;
+  --body-background: rgb(192, 225, 121);
+  --base-font-color: #151515;
+
+  @media screen and (prefers-color-scheme: dark) {
+    --h3-marker-color: #4e8018;
+    --body-background: #3d4d22;
+    --base-font-color: #e5e5e5;
+  }
+
+  --trpfrog-animation-start-degree: 0rad;
+  --anim-height: min(100vw, 400px);
+  --trpfrog-icon-size: min(400px, 90vw);
+
+  --main-font: -apple-system, BlinkMacSystemFont, Noto Sans JP, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  --footer-color: #163600;
+
+  /*--------------- from block.scss --------------*/
+
+  --window-padding-top-bottom: 40px;
+  --window-padding-left-right: 40px;
+  --window-bottom-color: #9cc535;
+  --window-border-radius: 33px;
+
+  @media screen and (max-width: 800px) {
+    --window-padding-top-bottom: 18px;
+    --window-padding-left-right: 12px;
+    --window-border-radius: 10px;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    --window-bottom-color: #35420e;
+  }
+
+  /*--------------- from grid.scss ---------------*/
+
+  --header-height: 4rem;
+  --navigation-height: 3em;
+  --footer-height: 3em;
+  --main-margin: 2em;
+  --window-bkg-color: white;
+
+  @media screen and (max-width: 800px) {
+    --header-height: 3rem;
+    --navigation-height: 0px;
+    --footer-height: 3em;
+    --main-margin: 8px;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    --window-bkg-color: #202020;
+  }
+
+  /*-------------- from colors.scss --------------*/
+
+  --link-button-color: #77bd36;
+  --link-button-color-bottom: #558d21;
+  --link-button-color-highlighted: #90e200;
+  --link-button-font-color: white;
+
+  @media screen and (prefers-color-scheme: dark) {
+    --link-button-color: #558d21;
+    --link-button-color-bottom: #406919;
+    --link-button-color-highlighted: #7fc900;
+  }
+
+  /*-------------- from header.scss --------------*/
+
+  --header-color: #66a928;
+  --header-filter: 0 0.2em 0 #5a9623;
+  --header-icon-size: 70px;
+
+  @media screen and (max-width: 800px) {
+    --header-icon-size: 58px;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    --header-color: #4f831f;
+    --header-filter: 0 0.2em 0 rgb(49, 80, 15);
+  }
+}

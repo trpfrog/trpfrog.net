@@ -2011,11 +2011,3 @@ Eys-lWXFnmo
 明日 (17日目) の記事はあずきバーさんの「日本語をうまく話したい」です。難しいですからね
 
 <br>
-
-````centering
-```dangerously-set-inner-html
-<a class="linkButton" href="https://adventar.org/calendars/7581">アドベントカレンダーに戻る</a>
-```
-````
-
-<br>

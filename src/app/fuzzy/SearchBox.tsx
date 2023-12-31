@@ -1,21 +1,31 @@
 'use client'
 
+import { Input } from '@/components/wrappers'
+
+import { tv } from '@/lib/tailwind/variants'
+
+const styles = tv({
+  slots: {
+    form: 'tw-flex tw-items-center tw-justify-center tw-gap-1',
+  },
+})()
+
 export function SearchBox() {
   return (
-    <div>
-      https://trpfrog.net/fuzzy/{' '}
-      <input type="text" name="url" placeholder="fuzzy-string" />
-      <input
-        type="submit"
-        value="Go"
-        onClick={() => {
-          // @ts-ignore
-          const url = document.querySelector('input[name="url"]').value
-          if (url) {
-            window.location.href = `https://trpfrog.net/fuzzy/${url}`
-          }
-        }}
-      />
-    </div>
+    <form
+      className={styles.form()}
+      onSubmit={e => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget)
+        const url = form.get('url')
+        if (typeof url === 'string' && url) {
+          window.location.href = `https://trpfrog.net/fuzzy/${url}`
+        }
+      }}
+    >
+      <div>https://trpfrog.net/fuzzy/</div>
+      <Input type="text" name="url" placeholder="fuzzy-string" pattern=".+" />
+      <Input type="submit" value="Go" />
+    </form>
   )
 }

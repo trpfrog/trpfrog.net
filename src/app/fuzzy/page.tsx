@@ -1,4 +1,6 @@
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
+import { Li, UnorderedList } from '@/components/wrappers'
 
 import { SearchBox } from './SearchBox'
 import styles from './style.module.scss'
@@ -18,26 +20,26 @@ export default function Fuzzy() {
       </Block>
 
       <Block title="入力例" h2icon="trpfrog">
-        <ul>
-          <li>
+        <UnorderedList>
+          <Li>
             enoshima {'=> '}
-            <a href={'https://trpfrog.net/blog/enoshima-walk'}>
+            <InlineLink href={'https://trpfrog.net/blog/enoshima-walk'}>
               https://trpfrog.net/blog/enoshima-walk
-            </a>
-          </li>
-          <li>
+            </InlineLink>
+          </Li>
+          <Li>
             balllloooon {'=> '}
-            <a href={'https://trpfrog.net/balloon'}>
+            <InlineLink href={'https://trpfrog.net/balloon'}>
               https://trpfrog.net/balloon
-            </a>
-          </li>
-          <li>
+            </InlineLink>
+          </Li>
+          <Li>
             山登り {'=> '}
-            <a href={'https://trpfrog.net/blog/takao-full-search'}>
+            <InlineLink href={'https://trpfrog.net/blog/takao-full-search'}>
               https://trpfrog.net/blog/takao-full-search
-            </a>
-          </li>
-        </ul>
+            </InlineLink>
+          </Li>
+        </UnorderedList>
       </Block>
 
       <Block title="仕組み" h2icon="robot">

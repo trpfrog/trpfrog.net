@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 import { z } from 'zod'
 
-import { Button } from '@/components/atoms/Button'
+import { InlineLink } from '@/components/atoms/InlineLink'
+import { Li, UnorderedList } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
 
@@ -9,6 +10,8 @@ import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './index.module.scss'
 
@@ -32,9 +35,9 @@ const CardFormat = ({
         <div className={styles.header}>
           <div className={styles.club}>{personalData.club}</div>
           <div className={styles.twitter_id}>
-            <a href={'https://twitter.com/' + personalData.twitter}>
+            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
               @{personalData.twitter}
-            </a>
+            </InlineLink>
           </div>
         </div>
         <div className={styles.name}>
@@ -56,25 +59,25 @@ const ListFormat = ({
 }: {
   personalDataList: ProfileData[]
 }) => (
-  <ul>
+  <UnorderedList>
     {personalDataList.map((personalData: any) => (
       <>
-        <li key={personalData.name + '-name'}>
+        <Li key={personalData.name + '-name'}>
           {personalData.name}
           {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
-        </li>
-        <ul key={personalData.name + '-info'}>
-          <li>{personalData.club}</li>
-          <li>
-            <a href={'https://twitter.com/' + personalData.twitter}>
+        </Li>
+        <UnorderedList key={personalData.name + '-info'}>
+          <Li>{personalData.club}</Li>
+          <Li>
+            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
               @{personalData.twitter}
-            </a>
-          </li>
-          <li>{parseInlineMarkdown(personalData.description)}</li>
-        </ul>
+            </InlineLink>
+          </Li>
+          <Li>{parseInlineMarkdown(personalData.description)}</Li>
+        </UnorderedList>
       </>
     ))}
-  </ul>
+  </UnorderedList>
 )
 
 export const profileCardParts = {
@@ -107,9 +110,9 @@ export const profileCardParts = {
           secondaryButtonText={'カード表示に切り替え'}
         />
         {twitterSearchLink !== '' && (
-          <Button externalLink={true} href={twitterSearchLink}>
+          <MagicButton externalLink={true} href={twitterSearchLink}>
             当日の同行者のツイートを見る
-          </Button>
+          </MagicButton>
         )}
       </>
     )

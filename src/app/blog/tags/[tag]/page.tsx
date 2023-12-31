@@ -1,4 +1,3 @@
-import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
 
@@ -8,6 +7,8 @@ import {
   retrieveSortedBlogPostList,
   retrieveExistingAllTags,
 } from '@blog/_lib/load'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 export async function generateStaticParams() {
   const tags = await retrieveExistingAllTags()
@@ -37,11 +38,11 @@ export default async function Index({ params }: Props) {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper gridLayout>
         <Title>
           <h1>タグ「{tag}」の記事一覧</h1>
           <p>
-            <Button href={'/blog'}>記事一覧に戻る</Button>
+            <MagicButton href={'/blog'}>記事一覧に戻る</MagicButton>
           </p>
         </Title>
 

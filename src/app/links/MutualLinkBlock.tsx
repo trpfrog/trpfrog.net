@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import styles from '@/app/(home)/page.module.scss'
 
-import { Button } from '@/components/atoms/Button'
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { A } from '@/components/wrappers'
 
 import { calcMonospacedTextWidth } from '@/lib/utils'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { MutualLinkRecord } from './loader'
 
@@ -25,14 +26,14 @@ export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
   return (
     <div className={styles.link_block}>
       <p style={{ textAlign: 'center' }}>
-        <Button externalLink={true} href={url} style={style}>
+        <MagicButton externalLink={true} href={url} style={style}>
           {siteName}
-        </Button>
+        </MagicButton>
       </p>
       <p>
-        <OpenInNewTab href={`https://twitter.com/${twitterId}/`}>
+        <A href={`https://twitter.com/${twitterId}/`}>
           <b>{ownerName}</b>
-        </OpenInNewTab>
+        </A>
         さんのHP
       </p>
       <p>{description}</p>

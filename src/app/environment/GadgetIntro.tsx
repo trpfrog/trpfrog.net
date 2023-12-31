@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import Image from 'next/legacy/image'
 
+import { H4 } from '@/components/wrappers'
+
 import styles from './style.module.scss'
 
 type Props = {
@@ -32,7 +34,7 @@ export const GadgetIntro: React.FunctionComponent<Props> = ({
   }
   return (
     <>
-      <h4 className={styles.name}>{name}</h4>
+      <H4 className={styles.name}>{name}</H4>
       {imageHtml}
       {children}
     </>

@@ -12,7 +12,7 @@ import { ArticleRenderer } from './ArticleRenderer'
 import { getMarkdownOptions } from './rendererProperties'
 
 export const parseInlineMarkdown = (markdown: string) => {
-  const options = getMarkdownOptions(undefined, true)
+  const options = getMarkdownOptions({ inline: true })
   return <MDXRemote source={markdown} {...options} />
 }
 

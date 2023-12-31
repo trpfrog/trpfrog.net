@@ -1,5 +1,5 @@
-@use '@/styles/mixins';
-@use '@/components/atoms/Button/index.module.scss' as btn;
+@use '../../../styles/mixins';
+@use '../../atoms/MagicButton/index.module.scss' as btn;
 
 $background-z-index: 150;
 $menu-z-index: 151;

@@ -1,7 +1,8 @@
 import * as React from 'react'
 
-import { H2Icon, H2 } from '@/components/atoms/H2'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
+
+import { type H2Icon, H2 } from 'src/components/wrappers/H2'
 
 import styles from './index.module.scss'
 
@@ -38,12 +39,12 @@ export const Block = React.forwardRef<HTMLDivElement, Props>(
         className={`${styles.main_window} ${className}`}
         {...otherProps}
       >
-        {ribbon}
         {title && (
-          <H2 style={{ margin: 0 }} icon={h2icon}>
+          <H2 icon={h2icon} className="tw-mt-0">
             {title}
           </H2>
         )}
+        {ribbon}
         {children}
       </PlainBlock>
     )

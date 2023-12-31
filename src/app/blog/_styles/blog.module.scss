@@ -1,6 +1,6 @@
 @use 'articles';
 
-@use '@/styles/mixins';
+@use '../../../styles/mixins';
 
 .article_block {
   padding: 17px;
@@ -213,10 +213,6 @@
   * + & {
     margin-top: 2em;
   }
-}
-
-.h3 {
-  margin-top: 2em;
 }
 
 .details {

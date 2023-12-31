@@ -20,7 +20,7 @@ export default function Index() {
   return (
     <>
       <TrpFrogAnimationFrame />
-      <MainWrapper>
+      <MainWrapper gridLayout>
         <TempTwitter />
         <div id={styles.top_page_grid}>
           <AboutMe id={styles.about_me_grid} />

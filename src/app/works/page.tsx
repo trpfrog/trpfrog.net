@@ -3,14 +3,17 @@ import path from 'path'
 import { Metadata } from 'next'
 
 import Image from 'next/legacy/image'
-import ReactMarkdown from 'react-markdown'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
 import { readMarkdowns } from '@/lib/mdLoader'
+
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './style.module.scss'
 
@@ -60,7 +63,7 @@ export default async function Index() {
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>最終更新: 2023/5/31</p>
       </Title>
@@ -87,19 +90,19 @@ export default async function Index() {
             <p>
               <b>Released:</b> {metadata.date}
             </p>
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <MDXRemote source={content} {...getMarkdownOptions()} />
             <p
               style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
             >
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <Button
+                  <MagicButton
                     externalLink={true}
                     key={linkTxt}
                     href={url as string}
                   >
                     {linkTxt}
-                  </Button>
+                  </MagicButton>
                 )
               })}
             </p>

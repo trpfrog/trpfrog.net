@@ -14,5 +14,5 @@ type Props = {
 }
 
 export default function RootLayout({ children }: Props) {
-  return <MainWrapper>{children}</MainWrapper>
+  return <MainWrapper gridLayout>{children}</MainWrapper>
 }

@@ -2,12 +2,13 @@ import fs from 'fs'
 import path from 'path'
 
 import dayjs from 'dayjs'
-import ReactMarkdown from 'react-markdown'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { HoverScrollBox } from '@/components/atoms/HoverScrollBox'
 import { Block } from '@/components/molecules/Block'
 
 import { retrieveSortedBlogPostList } from '@blog/_lib/load'
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 import styles from './index.module.scss'
 
@@ -44,6 +45,8 @@ const getWhatsNewRecords: () => Promise<WhatsNewRecord[]> = async () => {
 
 export async function WhatsNew({ id }: Props) {
   const whatsNewRecords: WhatsNewRecord[] = await getWhatsNewRecords()
+  const options = getMarkdownOptions({ inline: true, openInNewTab: 'always' })
+
   return (
     <Block title={'最新情報'} h2icon={'robot'} id={id} className={styles.block}>
       <div className={styles.table_wrapper}>
@@ -61,7 +64,7 @@ export async function WhatsNew({ id }: Props) {
                   {m}-{d}
                 </div>
                 <div>
-                  <ReactMarkdown>{text}</ReactMarkdown>
+                  <MDXRemote source={text} {...options} />
                 </div>
               </div>
             )
