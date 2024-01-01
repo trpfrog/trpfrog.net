@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import { tv } from 'tailwind-variants'
+
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
 import { MobileMenu } from '@/components/organisms/MobileMenu'
-
-import { tv } from '@/lib/tailwind/variants'
 
 import { HeaderNav } from './HeaderNav'
 

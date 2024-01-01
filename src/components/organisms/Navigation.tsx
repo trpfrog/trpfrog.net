@@ -1,9 +1,8 @@
 'use client'
 import { usePathname } from 'next/navigation'
+import { tv } from 'tailwind-variants'
 
 import { A } from '@/components/wrappers'
-
-import { tv } from '@/lib/tailwind/variants'
 
 type NavigationLinkRecord = {
   link: string

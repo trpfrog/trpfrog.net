@@ -1,9 +1,9 @@
 import { memo } from 'react'
 
+import { tv } from 'tailwind-variants'
+
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { A } from '@/components/wrappers'
-
-import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {

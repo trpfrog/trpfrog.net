@@ -3,8 +3,7 @@
 import { memo } from 'react'
 
 import Link from 'next/link'
-
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from 'tailwind-variants'
 
 import { SiteName } from './SiteName'
 import { useHeaderStatus } from './useHeaderStatus'

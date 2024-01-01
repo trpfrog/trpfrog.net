@@ -1,7 +1,8 @@
+const { withTV } = require('tailwind-variants/transformer')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withTV({
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
@@ -44,4 +45,4 @@ module.exports = {
   },
   plugins: [],
   prefix: 'tw-',
-}
+})

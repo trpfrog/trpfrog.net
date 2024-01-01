@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from 'tailwind-variants'
 
 export const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',

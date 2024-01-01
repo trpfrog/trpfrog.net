@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
+import { tv } from 'tailwind-variants'
 
 import { SITE_NAME } from '@/lib/constants'
-import { tv } from '@/lib/tailwind/variants'
 
 export type TitleWithPageNameProps = {
   siteTitle?: string

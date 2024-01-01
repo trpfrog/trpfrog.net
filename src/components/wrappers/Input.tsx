@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { HTMLInputTypeAttribute } from 'react'
 
+import { tv } from 'tailwind-variants'
+
 import { addTwModifier } from '@/lib/tailwind/helpers'
-import { tv } from '@/lib/tailwind/variants'
 
 interface Props extends React.ComponentPropsWithRef<'input'> {}
 

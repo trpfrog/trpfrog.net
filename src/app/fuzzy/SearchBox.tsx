@@ -1,8 +1,8 @@
 'use client'
 
-import { Input } from '@/components/wrappers'
+import { tv } from 'tailwind-variants'
 
-import { tv } from '@/lib/tailwind/variants'
+import { Input } from '@/components/wrappers'
 
 const styles = tv({
   slots: {

@@ -3,9 +3,9 @@
 import * as React from 'react'
 import { useState } from 'react'
 
-import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
+import { tv } from 'tailwind-variants'
 
-import { tv } from '@/lib/tailwind/variants'
+import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
 

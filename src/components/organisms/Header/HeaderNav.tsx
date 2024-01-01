@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import { A } from '@/components/wrappers'
+import { tv } from 'tailwind-variants'
 
-import { tv } from '@/lib/tailwind/variants'
+import { A } from '@/components/wrappers'
 
 const topLinks = [
   { href: '/', label: 'home' },
