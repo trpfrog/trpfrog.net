@@ -1,10 +1,10 @@
 'use client'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { BlogPost } from '@blog/_lib/blogPost'
-import styles from '@blog/_styles/blog.module.scss'
 
 import { MagicButton } from 'src/components/atoms/MagicButton'
 
@@ -22,10 +22,7 @@ export const RelatedPosts = ({
   } else {
     return (
       <>
-        <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar} /> タグ「{tag}」の新着記事{' '}
-          <FontAwesomeIcon icon={faStar} />
-        </div>
+        <OnBodyHeading icon={faStar}>タグ「{tag}」の新着記事</OnBodyHeading>
         <ArticleGrid>
           {relatedPosts.slice(0, 6).map((e, idx) => (
             <div key={e.slug} className={idx > 2 ? 'sp:tw-hidden' : ''}>

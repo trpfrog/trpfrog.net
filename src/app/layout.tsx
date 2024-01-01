@@ -60,7 +60,7 @@ export const viewport: Viewport = {
 
 const styles = tv({
   slots: {
-    body: 'tw-scroll-smooth tw-bg-body-color tw-text-text-color',
+    body: 'tw-scroll-smooth tw-bg-body-color tw-text-text-color print:tw-bg-white',
     layout: 'tw-flex tw-min-h-screen tw-flex-col',
     main: 'tw-flex-1',
   },
