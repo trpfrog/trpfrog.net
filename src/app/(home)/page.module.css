@@ -1,0 +1,36 @@
+.layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, 100px) repeat(7, 150px);
+  grid-template-areas:
+    'about-me about-me twitter'
+    'about-me about-me github'
+    'about-me about-me mail'
+    'univ     blog     blog'
+    'birth    blog     blog'
+    'favs     favs     walking'
+    'ai       skills   skills'
+    'ai       balloon  comp'
+    'env      env      music'
+    'stickers birds    store';
+
+  @media screen and (max-width: 799px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: 300px 80px 100px 300px repeat(11, 100px);
+    grid-template-areas:
+      'about-me about-me about-me about-me about-me about-me'
+      'twitter  twitter  github   github   mail     mail'
+      'univ     univ     univ     birth    birth    birth'
+      'blog     blog     blog     blog     blog     blog'
+      'favs     favs     favs     favs     favs     favs'
+      'walking  walking  walking  walking  walking  walking'
+      'skills   skills   skills   skills   skills   skills'
+      'comp     comp     comp     comp     comp     comp'
+      'ai       ai       ai       ai       ai       ai'
+      'balloon  balloon  balloon  balloon  balloon  balloon'
+      'env      env      env      env      env      env'
+      'music    music    music    music    music    music'
+      'stickers stickers stickers stickers stickers stickers'
+      'birds    birds    birds    birds    birds    birds'
+      'store    store    store    store    store    store';
+  }
+}

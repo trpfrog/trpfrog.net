@@ -1,86 +1,26 @@
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faAt, faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { tv } from 'tailwind-variants'
 
-import {
-  additionalAttributes,
-  attributes,
-} from '@/app/(home)/_components/AboutMe/attributes'
-import { KCommandBox } from '@/app/(home)/_components/AboutMe/KCommandBox'
-
-import { Block } from '@/components/molecules/Block'
-import { A } from '@/components/wrappers'
-
-import styles from './index.module.scss'
+const createStyles = tv({
+  slots: {
+    wrapper: 'tw-grid tw-grid-cols-subgrid sp:tw-grid-cols-3',
+    aboutMe:
+      'tw-bg-amber-300 sp:tw-col-span-3 pc:tw-col-span-2 pc:tw-row-span-3',
+    social: 'tw-bg-amber-300',
+  },
+})
 
 type Props = {
   id: string
 }
 
-export const AboutMe = ({ id }: Props) => {
+export function AboutMe() {
+  const styles = createStyles()
   return (
-    <Block id={id}>
-      <div className={styles.my_name}>
-        <p>
-          <span className={styles.my_name_jp}>つまみ</span>
-          <span className={styles.my_name_en}>TrpFrog</span>
-        </p>
-      </div>
-
-      <p className={styles.intro_text}>ふにゃ〜</p>
-
-      <ul className={styles.intro_attribute}>
-        {attributes.map(({ icon, iconName, text }) => (
-          <li key={text} className={styles.attr_item}>
-            <span>
-              <FontAwesomeIcon
-                icon={icon}
-                title={iconName}
-                style={{ width: '1.5em', display: 'inline-block' }}
-              />
-            </span>
-            <span style={{ display: 'inline-block' }}>{text}</span>
-          </li>
-        ))}
-      </ul>
-      <KCommandBox>
-        <h3>
-          <FontAwesomeIcon icon={faHeart} /> {"Otaku's favorite"}
-        </h3>
-        <ul className={styles.intro_attribute}>
-          {additionalAttributes.map(({ icon, text, iconName }) => (
-            <li key={text} className={styles.attr_item}>
-              <span>
-                <FontAwesomeIcon
-                  icon={icon}
-                  style={{ width: '1.5em', display: 'inline-block' }}
-                />
-              </span>
-              <span style={{ display: 'inline-block' }}>
-                <strong>{iconName}</strong>
-                <br />
-                {text}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </KCommandBox>
-
-      <div className={styles.social}>
-        <div>
-          <FontAwesomeIcon icon={faTwitter} />{' '}
-          <A href={'https://twitter.com/TrpFrog'}>TrpFrog</A>
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faGithub} />{' '}
-          <A href={'https://github.com/TrpFrog'}>TrpFrog</A>
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faEnvelope} /> dev
-          <FontAwesomeIcon icon={faAt} style={{ fontSize: '0.9em' }} />
-          trpfrog.net
-        </div>
-      </div>
-    </Block>
+    <div className={styles.wrapper()}>
+      <div className={styles.aboutMe()}>AboutMe</div>
+      <div className={styles.social()}>GitHub</div>
+      <div className={styles.social()}>Twitter</div>
+      <div className={styles.social()}>Mail</div>
+    </div>
   )
 }

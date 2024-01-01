@@ -21,7 +21,7 @@ export const NAVIGATION_LINKS: NavigationLinkRecord[] = [
   { link: '/stickers', name: 'Stickers' },
   { link: '/icons', name: 'Icons' },
   { link: '/links', name: 'Links', showOnNavBar: false },
-  { link: '/download', name: 'Downloads' },
+  { link: '/download', name: 'Downloads', shortName: 'DLC' },
   {
     link: '/icon-maker',
     name: 'Icon Maker',
