@@ -1,6 +1,7 @@
 import { tv } from 'tailwind-variants'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
+import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { A } from '@/components/wrappers'
 
@@ -22,8 +23,7 @@ const createArticleStyle = tv({
       'tw-h-full tw-p-4 tw-text-text-color tw-backdrop-blur-[2px]',
     ],
     info: 'tw-flex tw-w-2/3 tw-flex-col tw-text-white sp:tw-w-3/4',
-    button:
-      'tw-whitespace-nowrap tw-rounded-full tw-bg-window-color/80 tw-px-3 tw-py-1 tw-text-sm tw-font-bold',
+    button: cardButtonStyle(),
   },
   variants: {
     rightToLeft: {
