@@ -2,7 +2,7 @@ import { ComponentPropsWithRef } from 'react'
 
 import { tv } from 'tailwind-variants'
 
-import { PlainBlockProps, plainBlockStyle } from '@/components/atoms/PlainBlock'
+import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
 import { AProps } from '@/components/wrappers/A'
 
@@ -24,7 +24,7 @@ export interface TopCardProps extends ComponentPropsWithRef<'div'> {
   title?: string
 }
 
-export function TopCard(props: PlainBlockProps) {
+export function TopCard(props: TopCardProps) {
   const { className, children, title, ...rest } = props
   return (
     <div className={styles.base({ className })} {...rest}>
