@@ -16,7 +16,7 @@ const styles = tv({
   },
 })()
 
-export function GitHub() {
+export function GitHubCard() {
   return (
     <LinkTopCard className={styles.card()} href="https://github.com/trpfrog">
       <div className={styles.wrapper()}>

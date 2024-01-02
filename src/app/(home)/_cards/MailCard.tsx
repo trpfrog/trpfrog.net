@@ -17,7 +17,7 @@ const styles = tv({
   },
 })()
 
-export function Mail() {
+export function MailCard() {
   return (
     <LinkTopCard className={styles.card()} href="mailto:contact@trpfrog.net">
       <div className={styles.wrapper()}>

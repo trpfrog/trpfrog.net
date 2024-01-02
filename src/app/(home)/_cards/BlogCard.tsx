@@ -53,7 +53,7 @@ const createArticleStyle = tv({
   },
 })
 
-export async function Blog() {
+export async function BlogCard() {
   const articles = await retrieveSortedBlogPostList()
 
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)

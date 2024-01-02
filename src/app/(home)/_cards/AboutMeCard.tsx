@@ -16,7 +16,7 @@ const styles = tv({
   },
 })()
 
-export function AboutMe() {
+export function AboutMeCard() {
   return (
     <TopCard
       className={styles.bgImage()}

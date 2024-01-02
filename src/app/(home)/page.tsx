@@ -1,11 +1,7 @@
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { tv } from 'tailwind-variants'
 
-import { AboutMe } from '@/app/(home)/_cards/AboutMe'
-import { Blog } from '@/app/(home)/_cards/Blog'
-import { GitHub } from '@/app/(home)/_cards/GitHub'
-import { Mail } from '@/app/(home)/_cards/Mail'
-import { Twitter } from '@/app/(home)/_cards/Twitter'
+import * as cards from '@/app/(home)/_cards'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 
@@ -28,70 +24,58 @@ export default async function Index() {
         <TempTwitter />
         <div className={styles.grid({ className: css.layout })}>
           <div style={{ gridArea: 'about-me' }}>
-            <AboutMe />
+            <cards.AboutMeCard />
           </div>
           <div style={{ gridArea: 'twitter' }}>
-            <Twitter />
+            <cards.TwitterCard />
           </div>
           <div style={{ gridArea: 'github' }}>
-            <GitHub />
+            <cards.GitHubCard />
           </div>
           <div style={{ gridArea: 'mail' }}>
-            <Mail />
+            <cards.MailCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'univ' }}>
-            UEC
+          <div style={{ gridArea: 'univ' }}>
+            <cards.BelongingCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'birth' }}>
-            2000/10/17
+          <div style={{ gridArea: 'birth' }}>
+            <cards.BirthdayCard />
           </div>
           <div style={{ gridArea: 'blog' }}>
-            <Blog />
+            <cards.BlogCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'favs' }}>
-            Favorites
+          <div style={{ gridArea: 'favs' }}>
+            <cards.FavoritesCard />
           </div>
-          <div
-            className="tw-rounded tw-bg-white"
-            style={{ gridArea: 'walking' }}
-          >
-            Walking
+          <div style={{ gridArea: 'walking' }}>
+            <cards.WalkingCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'ai' }}>
-            AI
+          <div style={{ gridArea: 'ai' }}>
+            <cards.AICard />
           </div>
-          <div
-            className="tw-rounded tw-bg-white"
-            style={{ gridArea: 'skills' }}
-          >
-            Skills
+          <div style={{ gridArea: 'skills' }}>
+            <cards.SkillCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'comp' }}>
-            Competitive
+          <div style={{ gridArea: 'comp' }}>
+            <cards.CompetitiveCard />
           </div>
-          <div
-            className="tw-rounded tw-bg-white"
-            style={{ gridArea: 'balloon' }}
-          >
-            Balloon
+          <div style={{ gridArea: 'balloon' }}>
+            <cards.BalloonCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'env' }}>
-            Environment
+          <div style={{ gridArea: 'env' }}>
+            <cards.EnvironmentCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'music' }}>
-            Music
+          <div style={{ gridArea: 'music' }}>
+            <cards.MusicCard />
           </div>
-          <div
-            className="tw-rounded tw-bg-white"
-            style={{ gridArea: 'stickers' }}
-          >
-            Stickers
+          <div style={{ gridArea: 'stickers' }}>
+            <cards.StickersCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'store' }}>
-            Store
+          <div style={{ gridArea: 'store' }}>
+            <cards.StoreCard />
           </div>
-          <div className="tw-rounded tw-bg-white" style={{ gridArea: 'birds' }}>
-            Birds
+          <div style={{ gridArea: 'birds' }}>
+            <cards.BirdsCard />
           </div>
         </div>
       </MainWrapper>

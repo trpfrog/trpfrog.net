@@ -16,7 +16,7 @@ const styles = tv({
   },
 })()
 
-export function Twitter() {
+export function TwitterCard() {
   return (
     <LinkTopCard className={styles.card()} href="https://twitter.com/TrpFrog">
       <div className={styles.wrapper()}>

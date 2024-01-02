@@ -11,7 +11,7 @@
     'ai       skills   skills'
     'ai       balloon  comp'
     'env      env      music'
-    'stickers birds    store';
+    'stickers store    birds';
 
   @media screen and (max-width: 799px) {
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -30,7 +30,7 @@
       'env      env      env      env      env      env'
       'music    music    music    music    music    music'
       'stickers stickers stickers stickers stickers stickers'
-      'birds    birds    birds    birds    birds    birds'
-      'store    store    store    store    store    store';
+      'store    store    store    store    store    store'
+      'birds    birds    birds    birds    birds    birds';
   }
 }

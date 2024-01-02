@@ -9,7 +9,7 @@ import { AProps } from '@/components/wrappers/A'
 const styles = {
   base: tv({
     extend: plainBlockStyle,
-    base: 'tw-relative tw-h-full tw-w-full tw-rounded-xl tw-border-2 tw-border-window-color',
+    base: 'tw-relative tw-block tw-h-full tw-w-full tw-rounded-xl tw-border-2 tw-border-window-color',
   }),
 
   h2: tv({
