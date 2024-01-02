@@ -2,7 +2,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { tv } from 'tailwind-variants'
 
-import { TopCard } from '@/app/(home)/_components/TopCard'
+import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
 const styles = tv({
   slots: {
@@ -19,11 +19,11 @@ const styles = tv({
 
 export function Mail() {
   return (
-    <TopCard className={styles.card()}>
+    <LinkTopCard className={styles.card()} href="mailto:contact@trpfrog.net">
       <div className={styles.wrapper()}>
         <FontAwesomeIcon icon={faEnvelope} className={styles.logo()} />
         <span className={styles.id()}>contact★trpfrog.net</span>
       </div>
-    </TopCard>
+    </LinkTopCard>
   )
 }

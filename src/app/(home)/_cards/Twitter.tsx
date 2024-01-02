@@ -2,7 +2,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { tv } from 'tailwind-variants'
 
-import { TopCard } from '@/app/(home)/_components/TopCard'
+import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
 const styles = tv({
   slots: {
@@ -18,11 +18,11 @@ const styles = tv({
 
 export function Twitter() {
   return (
-    <TopCard className={styles.card()}>
+    <LinkTopCard className={styles.card()} href="https://twitter.com/TrpFrog">
       <div className={styles.wrapper()}>
         <FontAwesomeIcon icon={faTwitter} className={styles.logo()} />
         <span className={styles.id()}>@TrpFrog</span>
       </div>
-    </TopCard>
+    </LinkTopCard>
   )
 }

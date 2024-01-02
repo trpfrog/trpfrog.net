@@ -2,7 +2,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { tv } from 'tailwind-variants'
 
-import { TopCard } from '@/app/(home)/_components/TopCard'
+import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
 const styles = tv({
   slots: {
@@ -18,11 +18,11 @@ const styles = tv({
 
 export function GitHub() {
   return (
-    <TopCard className={styles.card()}>
+    <LinkTopCard className={styles.card()} href="https://github.com/trpfrog">
       <div className={styles.wrapper()}>
         <FontAwesomeIcon icon={faGithub} className={styles.logo()} />
         <span className={styles.id()}>trpfrog</span>
       </div>
-    </TopCard>
+    </LinkTopCard>
   )
 }
