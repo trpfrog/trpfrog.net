@@ -9,7 +9,6 @@ import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 const styles = tv({
   slots: {
     card: 'tw-relative',
-    h2: 'tw-absolute tw-right-0 tw-top-0 tw-z-10 tw-rounded-es-lg tw-bg-window-color tw-px-2 tw-pb-1 tw-font-bold tw-italic',
     blogList:
       'tw-grid tw-h-full tw-w-full tw-grid-rows-3 tw-place-items-center',
   },
@@ -60,8 +59,7 @@ export async function Blog() {
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)
 
   return (
-    <TopCard className={styles.card()}>
-      <h2 className={styles.h2()}>Blog</h2>
+    <TopCard className={styles.card()} title={'Blog'}>
       <div className={styles.blogList()}>
         {latestFeaturedArticles.map((article, i) => {
           const articleStyle = createArticleStyle({

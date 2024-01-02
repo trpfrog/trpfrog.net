@@ -21,6 +21,7 @@ export function AboutMe() {
     <TopCard
       className={styles.bgImage()}
       style={{ backgroundImage: `url('${image}')` }}
+      title="About Me"
     >
       <div className={styles.base()}>
         <h2 className={styles.nameWrapper()}>
