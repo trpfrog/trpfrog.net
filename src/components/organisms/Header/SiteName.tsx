@@ -18,13 +18,10 @@ const createStyles = tv({
       'tw-flex tw-flex-col tw-gap-0.5 tw-text-white hover:tw-text-trpfrog-50',
     ],
     title: 'tw-text-[1.7rem] tw-font-extrabold sp:tw-text-[1.4rem]',
-    subtitle: 'tw-text-base tw-font-semibold sp:tw-text-[11px]',
+    subtitle: 'tw-line-clamp-1 tw-text-base tw-font-semibold sp:tw-text-[11px]',
   },
   variants: {
     showPageTitle: {
-      true: {
-        subtitle: 'tw-block',
-      },
       false: {
         subtitle: 'tw-hidden',
       },
