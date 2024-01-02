@@ -15,7 +15,7 @@
 
   @media screen and (max-width: 799px) {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: 300px 80px 100px 300px repeat(11, 100px);
+    grid-template-rows: 300px 80px 100px 300px repeat(11, auto);
     grid-template-areas:
       'about-me about-me about-me about-me about-me about-me'
       'twitter  twitter  github   github   mail     mail'
