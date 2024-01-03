@@ -14,8 +14,10 @@ export function useResizableBalloonArray(
     const observer = new ResizeObserver(() => {
       if (!cardRef.current) return
 
-      const cardWidth = cardRef.current.clientWidth
-      const cardHeight = cardRef.current.clientHeight
+      // TODO: EPS なしでもレイアウトが崩れないようにする
+      const EPS = 10
+      const cardWidth = cardRef.current.clientWidth - EPS
+      const cardHeight = cardRef.current.clientHeight - EPS
 
       const horizontalBalloonAmount = Math.floor(cardWidth / balloonWidth)
       const verticalBalloonAmount = Math.floor(cardHeight / balloonHeight)
