@@ -1,6 +1,6 @@
 export { AboutMeCard } from './AboutMeCard'
 export { AICard } from './AICard'
-export { BalloonCard } from './BalloonCard'
+export { BalloonCard } from './BalloonCard/BalloonCard'
 export { BelongingCard } from './BelongingCard'
 export { BirdsCard } from './BirdsCard'
 export { BirthdayCard } from './BirthdayCard'
