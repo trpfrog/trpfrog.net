@@ -14,7 +14,7 @@ const styles = tv({
       'tw-bg-gradient-to-br tw-from-cyan-100 tw-via-cyan-500 tw-to-cyan-100 tw-bg-clip-text',
       'tw-font-bold tw-text-transparent',
     ],
-    rating: 'tw-text-7xl tw-font-bold ',
+    rating: 'tw-text-7xl tw-font-bold',
   },
 })()
 

@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-import { tv } from 'tailwind-variants'
+import { tv } from '@/lib/tailwind/variants'
 
 export const plainBlockStyle = tv({
   base: [
-    'tw-mb-[4px] tw-bg-window-color tw-shadow-[0_4px_0]',
+    'tw-mb-[3px] tw-bg-window-color tw-shadow-[0_3px_0]',
     'tw-shadow-trpfrog-400 dark:tw-shadow-trpfrog-900',
     'tw-overflow-clip tw-rounded-3xl',
     'print:tw-border-2 print:tw-border-black print:tw-shadow-gray-400',
@@ -13,7 +13,7 @@ export const plainBlockStyle = tv({
     clickable: {
       true: `
         tw-cursor-pointer hover:-tw-translate-y-1 hover:tw-shadow-[0_8px_0]
-        hover:tw-shadow-trpfrog-400 active:tw-translate-y-[4px]
+        hover:tw-shadow-trpfrog-400 active:tw-translate-y-[3px]
         active:tw-shadow-none hover:dark:tw-shadow-trpfrog-900
       `,
     },

@@ -1,7 +1,5 @@
-import { TopCard } from '@/app/(home)/_components/TopCard'
+import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-
-import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -10,7 +8,10 @@ const src =
 
 const styles = tv({
   slots: {
-    bg: 'tw-bg-cover tw-bg-left tw-bg-no-repeat tw-py-3 tw-pl-[140px] tw-pr-5 tw-text-right',
+    bg: [
+      'tw-bg-cover tw-bg-left tw-bg-no-repeat tw-py-3 tw-pl-[140px] tw-pr-5 tw-text-right',
+      'tw-flex tw-flex-col tw-items-end tw-justify-center',
+    ],
     h2: 'tw-text-2xl tw-font-bold tw-text-white',
     text: 'tw-my-2 tw-text-[12px] tw-leading-tight tw-text-white *:tw-inline-block',
     button: cardButtonStyle({
@@ -21,7 +22,8 @@ const styles = tv({
 
 export function MusicCard() {
   return (
-    <TopCard
+    <LinkTopCard
+      href="/music"
       className={styles.bg()}
       style={{
         backgroundImage: `url('${src}')`,
@@ -35,9 +37,6 @@ export function MusicCard() {
         <span>いただいた</span>
         <span>テーマソング (？)</span>
       </div>
-      <A href="/music" className={styles.button()}>
-        詳しく見る
-      </A>
-    </TopCard>
+    </LinkTopCard>
   )
 }
