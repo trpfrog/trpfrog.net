@@ -1,9 +1,8 @@
 import * as React from 'react'
 
 import Image from 'next/legacy/image'
-import Link from 'next/link'
 
-import styles from './index.module.scss'
+import { MagicButton } from '@/components/atoms/MagicButton'
 
 type ImageNavigationProps = {
   icons: {
@@ -17,10 +16,8 @@ type ImageNavigationProps = {
 
 export function ImageNavigation(props: ImageNavigationProps) {
   return (
-    <div className={styles.thumbnails}>
-      <Link href={props.prevHref} className={styles.prev_image}>
-        &larr;
-      </Link>
+    <div className="tw-flex tw-items-center tw-justify-center tw-gap-2">
+      <MagicButton href={props.prevHref}>&larr;</MagicButton>
       {props.icons.map(nav => {
         return (
           <Image
@@ -34,9 +31,7 @@ export function ImageNavigation(props: ImageNavigationProps) {
           />
         )
       })}
-      <Link href={props.nextHref} className={styles.next_image}>
-        &rarr;
-      </Link>
+      <MagicButton href={props.nextHref}>&rarr;</MagicButton>
     </div>
   )
 }

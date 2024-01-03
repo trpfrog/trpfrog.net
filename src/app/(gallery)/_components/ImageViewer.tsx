@@ -1,7 +1,5 @@
 import Image from 'next/legacy/image'
 
-import styles from './index.module.scss'
-
 type ImageViewerProps = {
   src: string
   alt: string
@@ -9,8 +7,8 @@ type ImageViewerProps = {
 
 export function ImageViewer(props: ImageViewerProps) {
   return (
-    <div className={styles.img_wrapper_outside}>
-      <div className={styles.img_wrapper_inside}>
+    <div className="tw-text-center">
+      <div className="tw-max-m-[500px] tw-inline-block tw-w-full">
         <Image
           src={props.src}
           width={100}
