@@ -56,7 +56,11 @@ export function LinkTopCard(props: TopLinkCardProps) {
   const readMore = typeof readMoreText === 'string' ? readMoreText : '→'
 
   return (
-    <A className={styles.base({ className, clickable: true })} {...rest}>
+    <A
+      className={styles.base({ className, clickable: true })}
+      openInNewTab={false}
+      {...rest}
+    >
       {title && <h2 className={styles.h2()}>{title}</h2>}
       {children}
       {showReadMore && <div className={styles.readMore()}>{readMore}</div>}
