@@ -2,9 +2,9 @@ import path from 'path'
 
 import { Metadata } from 'next'
 
-import Image from 'next/legacy/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
+import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -15,25 +15,7 @@ import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 import { MagicButton } from 'src/components/atoms/MagicButton'
 
-import styles from './style.module.scss'
-
-type KeywordsProps = {
-  keywords: string[]
-}
-
-function Keywords({ keywords }: KeywordsProps) {
-  return (
-    <p className={styles.keywords}>
-      <span className={styles.keyword_title}>TECHNOLOGIES</span>
-      <br />
-      {keywords.map(k => (
-        <span key={k} className={styles.keyword}>
-          {k}
-        </span>
-      ))}
-    </p>
-  )
-}
+import { Keywords } from './Keywords'
 
 type Frontmatter = {
   title: string
@@ -76,15 +58,13 @@ export default async function Index() {
             h2icon={metadata.h2icon ?? 'trpfrog'}
           >
             {metadata.image && (
-              <div className={styles.hero_image}>
-                <Image
-                  src={metadata.image?.path}
-                  width={metadata.image?.width}
-                  height={metadata.image?.height}
-                  objectFit={'cover'}
-                  alt={metadata.title + 'の画像'}
-                />
-              </div>
+              <Image
+                className="tw-mx-auto tw-my-4 tw-bg-transparent"
+                src={metadata.image?.path}
+                width={metadata.image?.width}
+                height={metadata.image?.height}
+                alt={metadata.title + 'の画像'}
+              />
             )}
             {metadata.keywords && <Keywords keywords={metadata.keywords} />}
             <p>
