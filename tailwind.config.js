@@ -43,6 +43,6 @@ module.exports = withTV({
       mono: ['var(--font-noto-sans-mono)', ...defaultTheme.fontFamily.mono],
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/container-queries')],
   prefix: 'tw-',
 })

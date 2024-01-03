@@ -1,5 +1,8 @@
 'use client'
 
+import * as React from 'react'
+
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { WaveText } from '@/components/atoms/WaveText'
 
 import { tv } from '@/lib/tailwind/variants'
@@ -12,18 +15,21 @@ import {
 
 const createStyles = tv({
   slots: {
+    wrapper: 'tw-@container',
+    layout: 'tw-flex tw-h-full tw-flex-col @sm:tw-flex-row',
     picture: [
-      'tw-aspect-square tw-w-full',
+      'tw-aspect-square tw-w-full @sm:tw-w-1/3 @sm:tw-scale-105',
       'tw-font-mplus-rounded tw-text-2xl tw-font-bold',
       'tw-flex tw-items-center tw-justify-center',
     ],
     caption: [
+      'tw-my-3 tw-flex-1 tw-gap-2 tw-px-2 tw-text-center',
       'tw-flex tw-flex-col tw-items-center tw-justify-center',
-      'tw-my-3 tw-gap-2 tw-text-center',
     ],
     english:
       'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
     japanese: 'tw-text-balance tw-text-xs',
+    poweredBy: 'tw-text-center tw-text-xs tw-text-gray-500',
   },
   variants: {
     status: {
@@ -55,14 +61,16 @@ export function IconFrame() {
   if (status === 'loading') {
     const styles = createStyles({ status })
     return (
-      <figure>
-        <div className={styles.picture()}>
-          <WaveText>Loading...</WaveText>
+      <figure className={styles.wrapper()}>
+        <div className={styles.layout()}>
+          <div className={styles.picture()}>
+            <WaveText>Loading...</WaveText>
+          </div>
+          <figcaption className={styles.caption()}>
+            <div className={styles.english()} />
+            <div className={styles.japanese()} />
+          </figcaption>
         </div>
-        <figcaption className={styles.caption()}>
-          <div className={styles.english()} />
-          <div className={styles.japanese()} />
-        </figcaption>
       </figure>
     )
   }
@@ -70,17 +78,19 @@ export function IconFrame() {
   if (status === 'error') {
     const styles = createStyles({ status })
     return (
-      <figure>
-        <div className={styles.picture()}>
-          <span>Error occurred</span>
+      <figure className={styles.wrapper()}>
+        <div className={styles.layout()}>
+          <div className={styles.picture()}>
+            <span>Error occurred</span>
+          </div>
+          <figcaption className={styles.caption()}>
+            <p>
+              エラーが発生しました。
+              <br />
+              時間をあけて再度お試しください。
+            </p>
+          </figcaption>
         </div>
-        <figcaption className={styles.caption()}>
-          <p>
-            エラーが発生しました。
-            <br />
-            時間をあけて再度お試しください。
-          </p>
-        </figcaption>
       </figure>
     )
   }
@@ -88,18 +98,28 @@ export function IconFrame() {
   const styles = createStyles()
   const { base64, prompt, translated } = data
   return (
-    <figure>
-      <img
-        className={styles.picture()}
-        src={`data:image/png;base64,${base64}`}
-        alt={`Auto generated image by AI: ${prompt}`}
-      />
-      <figcaption className={styles.caption()}>
-        <div className={styles.english()}>{prompt}</div>
-        <div className={styles.japanese()}>
-          <ParseWithBudouX str={translated} slug={'trpfrog-diffusion'} />
-        </div>
-      </figcaption>
+    <figure className={styles.wrapper()}>
+      <div className={styles.layout()}>
+        <img
+          className={styles.picture()}
+          src={`data:image/png;base64,${base64}`}
+          alt={`Auto generated image by AI: ${prompt}`}
+        />
+        <figcaption className={styles.caption()}>
+          <div className={styles.english()}>{prompt}</div>
+          <div className={styles.japanese()}>
+            <ParseWithBudouX str={translated} slug={'trpfrog-diffusion'} />
+          </div>
+          <div className={styles.poweredBy()}>
+            Powered by{' '}
+            <InlineLink
+              href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}
+            >
+              Prgckwb/trpfrog-diffusion
+            </InlineLink>
+          </div>
+        </figcaption>
+      </div>
     </figure>
   )
 }
