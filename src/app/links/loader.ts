@@ -2,14 +2,17 @@ import fs from 'fs/promises'
 import path from 'path'
 
 import yaml from 'js-yaml'
+import { z } from 'zod'
 
-export type MutualLinkRecord = {
-  url: string
-  siteName: string
-  ownerName: string
-  twitterId: string
-  description: string
-}
+const MutualLinkRecordSchema = z.object({
+  url: z.string(),
+  ownerName: z.string(),
+  twitter: z.string().optional(),
+  github: z.string().optional(),
+  description: z.string().optional(),
+})
+
+export type MutualLinkRecord = z.infer<typeof MutualLinkRecordSchema>
 
 export const loadMutualLinkRecords: () => Promise<
   MutualLinkRecord[]
@@ -22,7 +25,7 @@ export const loadMutualLinkRecords: () => Promise<
     'mutual_links.yaml',
   )
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
-  const links = yaml.load(yamlText) as MutualLinkRecord[]
+  const links = MutualLinkRecordSchema.array().parse(yaml.load(yamlText))
 
   return links.sort(({ ownerName: a }, { ownerName: b }) => {
     if (a < b) {
