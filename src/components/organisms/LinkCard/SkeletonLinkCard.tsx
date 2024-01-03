@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import classNames from 'classnames'
 import Skeleton from 'react-loading-skeleton'
 
-import styles from '@/components/organisms/LinkCard/LinkCard.module.scss'
+import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
+import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
 
 export type LinkCardProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,
@@ -11,22 +11,30 @@ export type LinkCardProps = Omit<
 >
 
 export function SkeletonLinkCard(props: LinkCardProps) {
+  const styles = createLinkCardStyles()
+  const hostnameStyles = createHostnameStyles()
+
   const { className, ...rest } = props
   return (
-    <div className={classNames(styles.main, className)} {...rest}>
-      <div className={styles.textArea} style={{ width: '70% ' }}>
-        <Skeleton className={styles.domainText} style={{ width: '50%' }} />
-        <div className={styles.titleDescription}>
-          <div className={styles.title}>
-            <Skeleton />
-          </div>
-          <div className={styles.description}>
-            <Skeleton count={2} style={{ width: '100%' }} />
+    <div className={styles.wrapper({ className })} {...rest}>
+      <div className={styles.layout()}>
+        <div className={styles.textArea()} style={{ width: '70% ' }}>
+          <Skeleton
+            className={hostnameStyles.wrapper()}
+            style={{ width: '50%' }}
+          />
+          <div className={styles.titles()}>
+            <div className={styles.title()}>
+              <Skeleton />
+            </div>
+            <div className={styles.description()}>
+              <Skeleton count={2} style={{ width: '100%' }} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.image} style={{ width: '30% ' }}>
-        <Skeleton style={{ width: '100%', height: '100%' }} />
+        <div className={styles.image()}>
+          <Skeleton style={{ width: '100%', height: '100%' }} />
+        </div>
       </div>
     </div>
   )
