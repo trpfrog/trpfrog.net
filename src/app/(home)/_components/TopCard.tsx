@@ -17,8 +17,8 @@ const styles = {
 
   h2: tv({
     base: [
-      'tw-absolute tw-right-0 tw-top-0 tw-z-10 tw-rounded-es-lg',
-      'tw-bg-window-color tw-px-2 tw-pb-1 tw-font-bold tw-italic',
+      'tw-absolute tw-right-0 tw-top-0 tw-z-10 tw-rounded-es-lg tw-px-2 tw-pb-0.5',
+      'tw-bg-window-color tw-text-sm tw-font-bold tw-italic tw-leading-tight',
     ],
   }),
 
