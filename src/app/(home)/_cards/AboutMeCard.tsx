@@ -24,7 +24,7 @@ export function AboutMeCard() {
       title="About Me"
     >
       <div className={styles.base()}>
-        <h2 className={styles.nameWrapper()}>
+        <h2 className={styles.nameWrapper()} translate="no">
           <span className={styles.name()}>つまみ</span>
           <span className={styles.name()}>(TrpFrog)</span>
         </h2>
