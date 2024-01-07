@@ -22,6 +22,7 @@ export function TwitterCard() {
     <LinkTopCard
       className={styles.card({ class: 'tw-from-blue-500 tw-to-blue-300' })}
       href="https://twitter.com/TrpFrog"
+      readMoreText={false}
     >
       <div className={styles.wrapper()}>
         <FontAwesomeIcon icon={faTwitter} className={styles.logo()} />
@@ -36,6 +37,7 @@ export function GitHubCard() {
     <LinkTopCard
       className={styles.card({ class: 'tw-from-purple-700 tw-to-violet-300' })}
       href="https://github.com/trpfrog"
+      readMoreText={false}
     >
       <div className={styles.wrapper()}>
         <FontAwesomeIcon icon={faGithub} className={styles.logo()} />
@@ -52,6 +54,7 @@ export function MailCard() {
         class: 'tw-from-trpfrog-700 tw-to-trpfrog-300',
       })}
       href="mailto:contact@trpfrog.net"
+      readMoreText={false}
     >
       <div className={styles.wrapper()}>
         <FontAwesomeIcon
