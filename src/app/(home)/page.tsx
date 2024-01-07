@@ -38,8 +38,8 @@ export default async function Index() {
           <div style={{ gridArea: 'univ' }}>
             <cards.BelongingCard />
           </div>
-          <div style={{ gridArea: 'birth' }}>
-            <cards.BirthdayCard />
+          <div style={{ gridArea: 'works' }}>
+            <cards.WorksCard />
           </div>
           <div style={{ gridArea: 'blog' }}>
             <cards.BlogCard />

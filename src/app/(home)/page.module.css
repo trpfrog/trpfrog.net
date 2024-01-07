@@ -6,7 +6,7 @@
     'about-me about-me github'
     'about-me about-me mail'
     'univ     blog     blog'
-    'birth    blog     blog'
+    'works    blog     blog'
     'favs     favs     walking'
     'ai       env      comp'
     'ai       skills   skills'
@@ -19,7 +19,7 @@
     grid-template-areas:
       'about-me about-me about-me about-me about-me about-me'
       'twitter  twitter  github   github   mail     mail'
-      'univ     univ     univ     birth    birth    birth'
+      'univ     univ     univ     works    works    works'
       'blog     blog     blog     blog     blog     blog'
       'favs     favs     favs     favs     favs     favs'
       'walking  walking  walking  walking  walking  walking'
