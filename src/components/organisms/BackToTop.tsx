@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CircleButton } from '@/components/atoms/CircleButton'
 
-import styles from './index.module.scss'
+import { tv } from '@/lib/tailwind/variants'
+
+const style = tv({
+  base: 'tw-fixed tw-bottom-7 tw-right-7 print:tw-hidden sp:tw-hidden',
+})()
 
 const backToTop = () => {
   window.scrollTo({
@@ -15,7 +19,7 @@ const backToTop = () => {
 
 export function BackToTop() {
   return (
-    <CircleButton id={styles.page_top} onClick={backToTop}>
+    <CircleButton className={style} onClick={backToTop}>
       <FontAwesomeIcon icon={faAngleDoubleUp} />
     </CircleButton>
   )
