@@ -28,6 +28,9 @@ module.exports = withTV({
       borderWidth: {
         1: '1px',
       },
+      height: {
+        header: 'var(--header-height)',
+      },
     },
     screens: {
       sp: { max: '799px' },
