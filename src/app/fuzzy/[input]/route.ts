@@ -1,5 +1,5 @@
-import { ChatOpenAI } from 'langchain/chat_models/openai'
-import { HumanMessage } from 'langchain/schema'
+import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages'
+import { ChatOpenAI } from '@langchain/openai'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
@@ -38,6 +38,22 @@ type GETProps = {
   }
 }
 
+function extractTextFromBaseMessageChunk(chunk: BaseMessageChunk) {
+  const content = chunk.content
+  if (typeof content === 'string') {
+    return content
+  } else {
+    const content = chunk.content[0]
+    if (typeof content === 'string') {
+      return content
+    }
+    if (content.type === 'text') {
+      return content.text
+    }
+  }
+  return ''
+}
+
 export async function GET(req: NextRequest, props: GETProps) {
   const res = NextResponse.next()
 
@@ -69,8 +85,8 @@ export async function GET(req: NextRequest, props: GETProps) {
 
   try {
     await limiter.check(res, 5, req.ip ?? 'ip_not_found')
-    const chatResponse = await chat.call([new HumanMessage(prompt)])
-    const output = chatResponse.content.trim()
+    const chatResponse = await chat.invoke([new HumanMessage(prompt)])
+    const output = extractTextFromBaseMessageChunk(chatResponse)
     const url = blogPaths.includes(output) ? '/blog/' + output : '/' + output
     return NextResponse.redirect(new URL(url, req.url))
   } catch {
