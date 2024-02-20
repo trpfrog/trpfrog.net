@@ -44,6 +44,7 @@ module.exports = withTV({
       ],
       comfortaa: ['var(--font-comfortaa)', ...defaultTheme.fontFamily.sans],
       mono: ['var(--font-noto-sans-mono)', ...defaultTheme.fontFamily.mono],
+      inter: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require('@tailwindcss/container-queries')],

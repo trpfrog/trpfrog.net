@@ -6,8 +6,7 @@ $brightness: 1.2;
 $code-block-border-radius: 10px;
 
 .code_block {
-  font-family: var(--font-inconsolata), var(--font-noto-sans-mono),
-    var(--font-noto-sans-jp), monospace !important;
+  font-family: var(--font-inconsolata), var(--font-noto-sans-mono), monospace !important;
 
   border: none !important;
   border-radius: $code-block-border-radius !important;

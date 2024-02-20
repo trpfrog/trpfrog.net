@@ -18,7 +18,7 @@ const workStyles = tv({
       'tw-line-clamp-2 tw-flex tw-flex-wrap tw-gap-x-0.5 tw-gap-y-1 tw-text-xs tw-leading-none ' +
       'tw-mt-1 tw-max-h-[2.5rem] tw-overflow-hidden tw-opacity-80',
     keyword:
-      'tw-size-fit tw-rounded-full tw-px-1 tw-py-0.5 ' +
+      'tw-size-fit tw-rounded-full tw-px-1 tw-py-0.5 tw-font-inter ' +
       'tw-bg-white tw-text-black tw-opacity-80',
   },
 })()
