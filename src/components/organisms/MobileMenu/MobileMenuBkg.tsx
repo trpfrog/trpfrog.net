@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { MainWrapper } from '@/components/atoms/MainWrapper'
 import {
   useMobileMenuState,
   useToggleMenuCallback,
@@ -9,13 +10,12 @@ import { tv } from '@/lib/tailwind/variants'
 
 const createStyles = tv({
   slots: {
-    wrapper: 'tw-fixed tw-inset-0 tw-z-[150]',
+    wrapper:
+      'tw-fixed tw-inset-0 tw-z-[150] tw-flex ' +
+      'tw-pt-[--header-height] tw-align-bottom',
     background: 'tw-absolute tw-inset-0 tw-z-[150] tw-bg-black tw-duration-300',
-    menuWrapper: `
-      tw-absolute 
-      tw-right-0 tw-top-[--header-height] tw-z-[151] 
-      tw-duration-300 sp:tw-w-full 
-    `,
+    menuWrapper:
+      'tw-z-[151] tw-my-0 tw-flex tw-flex-row-reverse tw-duration-300',
   },
   variants: {
     opened: {
@@ -48,7 +48,9 @@ export function MobileMenuBkg(props: MobileMenuBkgProps) {
         className={styles.background()}
         onClick={isOpened ? toggleMenu : doNothing}
       />
-      <div className={styles.menuWrapper()}>{props.children}</div>
+      <MainWrapper className={styles.menuWrapper()}>
+        {props.children}
+      </MainWrapper>
     </section>
   )
 }

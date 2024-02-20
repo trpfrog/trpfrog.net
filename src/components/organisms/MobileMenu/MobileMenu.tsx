@@ -14,12 +14,12 @@ import { Settings } from './Settings'
 const styles = tv({
   slots: {
     menu: `
-      tw-m-3 before:tw-absolute before:-tw-top-1
-      before:tw-right-[2.6rem] before:tw-z-[250] before:tw-ml-0
-      before:tw-border-[0.9rem] before:tw-border-b-[2rem] 
-      before:tw-border-transparent before:tw-border-b-window-color
-      before:tw-content-[''] sp:before:tw-hidden
-      pc:tw-mx-4 pc:tw-my-8
+      tw-relative tw-mt-8
+      tw-w-fit before:tw-absolute before:-tw-top-9 before:tw-right-5
+      before:tw-z-[250] before:tw-ml-0 before:tw-border-[0.9rem]
+      before:tw-border-b-[2rem] before:tw-border-transparent 
+      before:tw-border-b-window-color before:tw-content-['']
+      sp:tw-mt-2 sp:before:tw-hidden pc:-tw-right-[17.5px]
     `,
     window: plainBlockStyle({
       className:
