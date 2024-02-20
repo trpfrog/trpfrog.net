@@ -4,9 +4,10 @@ import Skeleton from 'react-loading-skeleton'
 
 import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
 import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
+import { A } from '@/components/wrappers'
 
 export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
+  React.ComponentPropsWithoutRef<'a'>,
   'children'
 >
 
@@ -16,7 +17,7 @@ export function SkeletonLinkCard(props: LinkCardProps) {
 
   const { className, ...rest } = props
   return (
-    <div className={styles.wrapper({ className })} {...rest}>
+    <A className={styles.wrapper({ className })} {...rest}>
       <div className={styles.layout()}>
         <div className={styles.textArea()} style={{ width: '70% ' }}>
           <Skeleton
@@ -36,6 +37,6 @@ export function SkeletonLinkCard(props: LinkCardProps) {
           <Skeleton style={{ width: '100%', height: '100%' }} />
         </div>
       </div>
-    </div>
+    </A>
   )
 }

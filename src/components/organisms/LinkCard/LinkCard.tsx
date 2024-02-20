@@ -8,7 +8,7 @@ import { createURL } from '@/lib/url'
 
 export const createLinkCardStyles = tv({
   slots: {
-    wrapper: 'tw-@container',
+    wrapper: 'tw-block tw-@container',
     layout: [
       'tw-flex tw-justify-between tw-leading-none',
       'tw-overflow-clip tw-rounded-xl tw-bg-window-color tw-text-sm',
@@ -39,7 +39,7 @@ export const createLinkCardStyles = tv({
 })
 
 export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
+  React.ComponentPropsWithoutRef<'a'>,
   'children'
 > & {
   title: string
@@ -71,7 +71,12 @@ export function LinkCard(props: LinkCardProps) {
   }
 
   return (
-    <A href={href} className={styles.wrapper({ className })} openInNewTab>
+    <A
+      href={href}
+      className={styles.wrapper({ className })}
+      {...rest}
+      openInNewTab
+    >
       <div className={styles.layout()}>
         <div className={styles.textArea()}>
           <Hostname href={href} favicon={favicon} />
