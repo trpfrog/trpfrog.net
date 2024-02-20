@@ -17,7 +17,7 @@ import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { Keywords } from './Keywords'
 
-type Frontmatter = {
+export type WorksFrontmatter = {
   title: string
   h2icon?: string
   image?: {
@@ -40,7 +40,7 @@ export const metadata = {
 
 export default async function Index() {
   // load all md files under /app/works/contents/*.md
-  const contents = await readMarkdowns<Frontmatter>(
+  const contents = await readMarkdowns<WorksFrontmatter>(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
   )
 

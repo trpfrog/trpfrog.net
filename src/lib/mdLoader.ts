@@ -7,7 +7,7 @@ import { sortWithDates } from './utils'
 
 type DateObject = { date: `${number}/${number}/${number}` }
 
-type MarkdownWithFrontmatter<T> = {
+export type MarkdownWithFrontmatter<T> = {
   filename: string
   metadata: T
   content: string
