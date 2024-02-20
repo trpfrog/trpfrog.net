@@ -47,7 +47,7 @@ const cache = new LRUCache<
 
 async function getCache() {
   const key = TRPFROG_DIFFUSION_KV_KEY
-  let record = await kv.get<TrpFrogImageGenerationResult>(key)
+  const record = await kv.get<TrpFrogImageGenerationResult>(key)
   if (process.env.NODE_ENV === 'development') {
     return record as unknown as TrpFrogImageGenerationResult
   }

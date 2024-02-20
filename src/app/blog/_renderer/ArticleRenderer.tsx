@@ -1,14 +1,13 @@
 import { memo } from 'react'
 
+import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-
-import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import { BlogPost } from '@blog/_lib/blogPost'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 export type MarkdownOptions = Omit<MDXRemoteProps, 'source' | 'components'> & {
-  components: IsomorphicMarkdownComponent
+  components: MDXComponents
 }
 
 export type ArticleRendererProps =

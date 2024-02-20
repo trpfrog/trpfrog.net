@@ -17,7 +17,6 @@ import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
 import * as Wrapper from '@/components/wrappers'
 
 import { twMerge } from '@/lib/tailwind/merge'
-import { IsomorphicMarkdownComponent } from '@/lib/types'
 
 import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
@@ -124,7 +123,7 @@ export function getMarkdownOptions(options?: {
   inline?: boolean
   openInNewTab?: 'always' | 'external' | 'never'
 }) {
-  const components: IsomorphicMarkdownComponent = {
+  const components: MDXComponents = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
     code: formatCodeComponentFactory(options?.entry),
 
