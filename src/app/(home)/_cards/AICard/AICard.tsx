@@ -26,7 +26,7 @@ export function AICard() {
   const { TooltipContent, TooltipButton } = useTooltip()
 
   return (
-    <TopCard title="AI Generated Icon" className={styles.card()}>
+    <TopCard className={styles.card()}>
       <IconFrame />
       <TooltipButton className={styles.button()}>?</TooltipButton>
       <TooltipContent className={styles.description()}>

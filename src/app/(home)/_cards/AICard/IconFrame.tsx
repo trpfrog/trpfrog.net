@@ -23,13 +23,14 @@ const createStyles = tv({
       'tw-flex tw-items-center tw-justify-center',
     ],
     caption: [
-      'tw-my-3 tw-flex-1 tw-gap-2 tw-px-2 tw-text-center',
+      'tw-flex-1 tw-gap-1.5 tw-px-2 tw-text-center',
       'tw-flex tw-flex-col tw-items-center tw-justify-center',
     ],
     english:
       'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
-    japanese: 'tw-text-balance tw-text-xs',
-    poweredBy: 'tw-text-center tw-text-xs tw-text-gray-500',
+    japanese: 'tw-text-balance tw-text-[11px]',
+    aiGeneratedMsg: 'tw-text-[9px] tw-leading-none tw-text-gray-500',
+    poweredBy: 'tw-text-center tw-text-[10px] tw-text-gray-500',
   },
   variants: {
     status: {
@@ -106,6 +107,7 @@ export function IconFrame() {
           alt={`Auto generated image by AI: ${prompt}`}
         />
         <figcaption className={styles.caption()}>
+          <div className={styles.aiGeneratedMsg()}>AI GENERATED ICON</div>
           <div className={styles.english()}>{prompt}</div>
           <div className={styles.japanese()}>
             <ParseWithBudouX str={translated} slug={'trpfrog-diffusion'} />

@@ -1,11 +1,13 @@
 import path from 'path'
 
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
+import { technologyIconMap } from '@/app/works/Keywords'
 import { WorksFrontmatter } from '@/app/works/page'
 
 import { MarkdownWithFrontmatter, readMarkdowns } from '@/lib/mdLoader'
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
+import 'devicon'
 
 const workStyles = tv({
   slots: {
@@ -13,13 +15,12 @@ const workStyles = tv({
     backdrop:
       'tw-size-full tw-p-2 tw-backdrop-blur-[1.5px] ' +
       'tw-flex tw-h-full tw-w-full tw-flex-col tw-justify-end tw-text-white',
-    title: 'tw-font-bold tw-leading-tight tw-text-white tw-drop-shadow',
+    title:
+      'tw-text-lg tw-font-bold tw-leading-tight tw-text-white tw-drop-shadow',
     keywords:
-      'tw-line-clamp-2 tw-flex tw-flex-wrap tw-gap-x-0.5 tw-gap-y-1 tw-text-xs tw-leading-none ' +
-      'tw-mt-1 tw-max-h-[2.5rem] tw-overflow-hidden tw-opacity-80',
-    keyword:
-      'tw-size-fit tw-rounded-full tw-px-1 tw-py-0.5 tw-font-inter ' +
-      'tw-bg-white tw-text-black tw-opacity-80',
+      'tw-flex tw-gap-1 tw-text-xs tw-leading-none ' +
+      'tw-mb-1 tw-w-fit tw-overflow-hidden',
+    keyword: 'tw-text-lg tw-drop-shadow',
   },
 })()
 
@@ -38,16 +39,21 @@ function Work(props: {
       }}
     >
       <div className={workStyles.backdrop()}>
+        <div className={workStyles.keywords()}>
+          {content.metadata.keywords
+            ?.filter(k => k in technologyIconMap)
+            .map(k => (
+              <span
+                key={k}
+                className={workStyles.keyword({
+                  className: `${technologyIconMap[k]}`,
+                })}
+              />
+            ))}
+        </div>
         <h3 className={workStyles.title()}>
           <ParseWithBudouX str={content.metadata.title} slug={''} />
         </h3>
-        <div className={workStyles.keywords()}>
-          {content.metadata.keywords?.map(t => (
-            <span className={workStyles.keyword()} key={t}>
-              {t}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   )
@@ -58,6 +64,7 @@ const styles = tv({
     wrapper: 'tw-grid tw-grid-cols-3 tw-gap-0.5 sp:tw-grid-cols-2',
   },
 })()
+
 export async function WorksCard() {
   const contents = await readMarkdowns<WorksFrontmatter>(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
