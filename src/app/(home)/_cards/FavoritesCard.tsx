@@ -66,7 +66,7 @@ export function FavoritesCard() {
       <Favorite
         title="散歩"
         icon={<FontAwesomeIcon icon={faWalking} />}
-        description="裏道探すのとか好き"
+        description="裏道探すのとか好き／地図もよく見る"
         className="tw-bg-gradient-to-br tw-from-pink-500 tw-to-pink-600 tw-text-white"
       />
       <Favorite

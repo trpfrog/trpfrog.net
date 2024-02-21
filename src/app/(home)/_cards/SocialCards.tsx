@@ -12,8 +12,9 @@ const styles = tv({
       'tw-bg-gradient-to-br tw-p-2 tw-text-2xl tw-text-white',
     ],
     wrapper: 'tw-flex tw-flex-col tw-items-center tw-gap-1',
-    logo: 'tw-text-4xl !tw-leading-none',
-    contact: 'tw-text-xl !tw-leading-none sp:tw-text-base',
+    logo: 'tw-text-4xl !tw-leading-none tw-drop-shadow',
+    contact:
+      'tw-text-lg tw-font-bold !tw-leading-none tw-drop-shadow-sm sp:tw-text-base',
   },
 })()
 
