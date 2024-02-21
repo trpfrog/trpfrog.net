@@ -44,6 +44,7 @@
     "classnames": "^2.5.1",
     "cloudinary": "^2.0.1",
     "dayjs": "^1.11.10",
+    "devicon": "^2.16.0",
     "easymde": "^2.18.0",
     "eslint-config-next": "^14.1.0",
     "framer-motion": "^11.0.5",
