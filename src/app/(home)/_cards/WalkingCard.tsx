@@ -4,7 +4,7 @@ import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 const backgroundImage =
-  'https://res.cloudinary.com/trpfrog/blog/tokyotower-walking/20210324231643'
+  'https://res.cloudinary.com/trpfrog/image/upload/w_600/blog/tokyotower-walking/20210324231643'
 
 const styles = tv({
   slots: {

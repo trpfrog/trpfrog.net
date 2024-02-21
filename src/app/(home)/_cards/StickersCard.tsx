@@ -17,7 +17,7 @@ const styles = tv({
     `,
     text: `
       tw-flex tw-h-full tw-w-full tw-flex-col
-      tw-items-center tw-justify-center tw-bg-black/70
+      tw-items-center tw-justify-center tw-bg-black/60
       tw-text-center tw-text-white
     `,
   },

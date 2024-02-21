@@ -52,18 +52,33 @@ const createArticleStyle = tv({
   },
 })
 
+function getCloudinaryResizedUrl(url: string, width = 600) {
+  if (/\/image\/upload\/.*\/blog/.test(url)) {
+    return url.replace(
+      /\/image\/upload\/.*\/blog/,
+      `/image/upload/w_${width}/blog`,
+    )
+  } else if (url.includes('/image/upload/')) {
+    return url.replace('/image/upload/', `/image/upload/w_${width}/`)
+  } else {
+    return url.replace('trpfrog/blog', `trpfrog/w_${width}/blog`)
+  }
+}
+
 function ArticleRow(props: {
   entry: BlogPost
   variant: Required<VariantProps<typeof createArticleStyle>>
 }) {
   const { entry, variant } = props
   const articleStyle = createArticleStyle(variant)
+  const resizedThumbnailUrl =
+    entry.thumbnail && getCloudinaryResizedUrl(entry.thumbnail, 700)
   return (
     <div
       key={entry.slug}
       className={articleStyle.bg()}
       style={{
-        backgroundImage: `url('${entry.thumbnail}')`,
+        backgroundImage: `url('${resizedThumbnailUrl}')`,
       }}
     >
       <div className={articleStyle.wrapper()}>
