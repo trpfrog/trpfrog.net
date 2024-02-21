@@ -23,14 +23,14 @@ const createStyles = tv({
       'tw-flex tw-items-center tw-justify-center',
     ],
     caption: [
-      'tw-flex-1 tw-gap-1.5 tw-px-2 tw-text-center',
+      'tw-flex-1 tw-gap-1 tw-px-2 tw-text-center',
       'tw-flex tw-flex-col tw-items-center tw-justify-center',
     ],
     english:
       'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
     japanese: 'tw-text-balance tw-text-[11px]',
     aiGeneratedMsg: 'tw-text-[9px] tw-leading-none tw-text-gray-500',
-    poweredBy: 'tw-text-center tw-text-[10px] tw-text-gray-500',
+    poweredBy: 'tw-text-center tw-text-[10px] tw-leading-none tw-text-gray-500',
   },
   variants: {
     status: {

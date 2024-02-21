@@ -8,25 +8,30 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const styles = tv({
   slots: {
-    grid: 'tw-grid tw-h-full tw-grid-cols-6 tw-gap-0.5',
+    grid: [
+      'tw-grid tw-h-full tw-gap-0.5 pc:tw-grid-cols-6',
+      'sp:tw-flex sp:tw-flex-col',
+    ],
     wrapper: [
       'tw-grid-rows tw-grid tw-grid-rows-subgrid',
       'tw-gap-1 tw-bg-zinc-200 tw-py-3',
       '*:tw-text-center',
+      'sp:tw-flex sp:tw-items-center sp:tw-gap-4 sp:tw-pl-6 sp:*:tw-text-left',
     ],
     icon: [
       'tw-grid tw-place-items-center tw-text-[2.8rem] tw-font-bold',
-      'tw-relative tw-top-1.5 tw-drop-shadow',
+      'tw-relative tw-top-1.5 tw-drop-shadow sp:tw-top-0',
     ],
     title: 'tw-text-sm tw-font-bold tw-drop-shadow-sm',
-    description: 'tw-text-balance tw-text-center tw-text-[10px]',
+    text: 'tw-grid-rows-subgrid',
+    description: 'tw-text-balance tw-text-[10px]',
   },
 })()
 
 type FavoriteProps = {
   icon: React.ReactNode
   title: string
-  description?: string | string[]
+  description: string | string[]
   className?: string
   style?: React.CSSProperties
 }
@@ -42,16 +47,16 @@ function Skill(props: FavoriteProps) {
       className={styles.wrapper({ className: props.className })}
     >
       <div className={styles.icon()}>{props.icon}</div>
-      <div className={styles.title()}>{props.title}</div>
-      {description && (
-        <div className={styles.description()}>
+      <div>
+        <div className={styles.title()}>{props.title}</div>
+        <div className={styles.description()} style={{ gridRow: '2 / -1' }}>
           {description
             .map(desc => <ParseWithBudouX str={desc} slug={''} key={desc} />)
             .flatMap((x, i) =>
               i !== description.length - 1 ? [x, <br key={i} />] : x,
             )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
@@ -62,6 +67,7 @@ export function SkillCard() {
       title="Skills"
       className={styles.grid()}
       style={{ gridTemplateRows: '1fr min-content min-content' }}
+      titlePosition={'top-right'}
     >
       <Skill
         title="TypeScript"
