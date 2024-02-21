@@ -28,7 +28,6 @@ function Work(props: {
   className?: string
 }) {
   const { content, className } = props
-  console.log(content.metadata)
   const imageUrl = `https://res.cloudinary.com/trpfrog/image/upload/w_150/${content.metadata.image?.path}`
 
   return (
