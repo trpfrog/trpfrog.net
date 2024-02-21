@@ -30,6 +30,7 @@ export function BelongingCard() {
         height: '100%',
       }}
       title={'Affiliation'}
+      titlePosition="top-right"
     >
       <div className={styles.wrapper()}>
         <div className={styles.text()}>

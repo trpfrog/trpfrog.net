@@ -109,7 +109,7 @@ export async function BlogCard() {
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)
 
   return (
-    <TopCard title="Blog">
+    <TopCard title="Blog" titlePosition="top-right">
       <div className="tw-grid tw-h-full tw-w-full tw-grid-rows-3 tw-place-items-center">
         {latestFeaturedArticles.map((article, i) => {
           const rightToLeft = i % 2 === 1

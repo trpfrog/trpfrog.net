@@ -22,6 +22,7 @@ export function AboutMeCard() {
       className={styles.bgImage()}
       style={{ backgroundImage: `url('${image}')` }}
       title="About Me"
+      titlePosition="top-right"
     >
       <div className={styles.base()}>
         <h2 className={styles.nameWrapper()} translate="no">
