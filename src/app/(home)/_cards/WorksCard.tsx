@@ -17,6 +17,8 @@ const workStyles = tv({
       'tw-flex tw-h-full tw-w-full tw-flex-col tw-justify-end tw-text-white',
     title:
       'tw-text-lg tw-font-bold tw-leading-tight tw-text-white tw-drop-shadow',
+    subtitle:
+      'tw-mt-1 tw-text-[11px] tw-leading-tight tw-text-white tw-drop-shadow',
     keywords:
       'tw-flex tw-gap-1 tw-text-xs tw-leading-none ' +
       'tw-mb-1 tw-w-fit tw-overflow-hidden',
@@ -54,6 +56,11 @@ function Work(props: {
         <h3 className={workStyles.title()}>
           <ParseWithBudouX str={content.metadata.title} slug={''} />
         </h3>
+        {content.metadata.subtitle && (
+          <div className={workStyles.subtitle()}>
+            {content.metadata.subtitle}
+          </div>
+        )}
       </div>
     </div>
   )
