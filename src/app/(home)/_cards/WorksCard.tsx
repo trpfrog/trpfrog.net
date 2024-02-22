@@ -1,14 +1,13 @@
 import path from 'path'
 
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
-import { technologyIconMap } from '@/app/works/Keywords'
 import { WorksFrontmatter, WorksFrontmatterSchema } from '@/app/works/schema'
+
+import { Devicon, hasDevicon } from '@/components/atoms/Devicon'
 
 import { MarkdownWithFrontmatter, readMarkdowns } from '@/lib/mdLoader'
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
-
-import 'devicon'
 
 const workStyles = tv({
   slots: {
@@ -44,14 +43,9 @@ function Work(props: {
       <div className={workStyles.backdrop()}>
         <div className={workStyles.keywords()}>
           {content.metadata.keywords
-            ?.filter(k => k in technologyIconMap)
+            ?.filter(hasDevicon)
             .map(k => (
-              <span
-                key={k}
-                className={workStyles.keyword({
-                  className: `${technologyIconMap[k]}`,
-                })}
-              />
+              <Devicon key={k} className={workStyles.keyword()} iconName={k} />
             ))}
         </div>
         <h3 className={workStyles.title()}>

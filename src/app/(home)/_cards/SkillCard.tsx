@@ -1,7 +1,8 @@
 import React from 'react'
-import 'devicon/devicon.min.css'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
+
+import { Devicon } from '@/components/atoms/Devicon'
 
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
@@ -72,37 +73,37 @@ export function SkillCard() {
       <Skill
         title="TypeScript"
         description={['メインで書く', '型パズルもやる']}
-        icon={<span className="devicon-typescript-plain" />}
+        icon={<Devicon iconName="TypeScript" />}
         className="tw-bg-gradient-to-br tw-from-blue-500 tw-to-blue-600 tw-text-white"
       />
       <Skill
         title="React"
         description={['頻繁に使う', 'Next.js とよく使う']}
-        icon={<span className="devicon-react-original" />}
+        icon={<Devicon iconName="React" />}
         className="tw-bg-gradient-to-br tw-from-cyan-500 tw-to-cyan-600 tw-text-white"
       />
       <Skill
         title="HTML/CSS"
         description="大学1年の頃からずっと書いている"
-        icon={<span className="devicon-html5-plain" />}
+        icon={<Devicon iconName="HTML" />}
         className="tw-bg-gradient-to-br tw-from-amber-500 tw-to-amber-600 tw-text-white"
       />
       <Skill
         title="Python"
         description={['研究でよく使う', 'PyTorch など']}
-        icon={<span className="devicon-python-plain" />}
+        icon={<Devicon iconName="Python" />}
         className="tw-bg-gradient-to-br tw-from-lime-600 tw-to-lime-700 tw-text-white"
       />
       <Skill
         title="C++"
         description={['競プロで使った', '業プロは厳しそう']}
-        icon={<span className="devicon-cplusplus-plain" />}
+        icon={<Devicon iconName="C++" />}
         className="tw-bg-gradient-to-br tw-from-violet-500 tw-to-violet-600 tw-text-white"
       />
       <Skill
         title="Java"
         description={['初めて触った言語', 'ゲーム作った']}
-        icon={<span className="devicon-java-plain" />}
+        icon={<Devicon iconName="Java" />}
         className="tw-bg-gradient-to-br tw-from-pink-500 tw-to-pink-600 tw-text-white"
       />
     </TopCard>
