@@ -40,7 +40,7 @@ const styles = tv({
     nameWrapper: 'tw-flex tw-items-baseline tw-gap-2 ',
     name: 'first:tw-text-4xl first:tw-font-bold last:tw-text-2xl',
     textWrapper: 'tw-text-justify tw-leading-7 sp:tw-text-sm sp:tw-leading-6',
-    text: 'tw-mr-1 tw-rounded-sm tw-bg-window-color/95 tw-leading-none dark:tw-bg-text-color/95',
+    text: 'tw-mr-1 tw-rounded-sm tw-bg-window-color/95 tw-leading-none',
     introAttribute:
       'tw-relative -tw-left-1 tw-w-fit tw-list-none tw-rounded tw-bg-window-color/90 tw-px-2 tw-py-1.5 tw-text-xs',
     attrItem: 'tw-flex tw-items-start tw-gap-2 tw-leading-relaxed',
