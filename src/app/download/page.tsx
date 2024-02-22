@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
+import { WorksFrontmatterSchema } from '@/app/download/schema'
+
 import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -20,25 +22,10 @@ export const metadata = {
   description: '壁紙などダウンロードできるコンテンツの提供ページです。',
 } satisfies Metadata
 
-type Frontmatter = {
-  title: string
-  description: string
-  image: {
-    src: string
-    alt?: string
-    width: number
-    height: number
-  }
-  links: {
-    href: string
-    text: string
-  }[]
-  date: `${number}/${number}/${number}`
-}
-
 export default async function Index() {
-  const contents = await readMarkdowns<Frontmatter>(
+  const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'download', 'contents'),
+    WorksFrontmatterSchema,
   )
 
   return (

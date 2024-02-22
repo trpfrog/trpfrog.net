@@ -2,6 +2,7 @@ import path from 'path'
 
 import { Metadata } from 'next'
 
+import dayjs from 'dayjs'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Image } from '@/components/atoms/Image'
@@ -16,22 +17,7 @@ import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { Keywords } from './Keywords'
-
-export type WorksFrontmatter = {
-  title: string
-  subtitle?: string
-  h2icon?: string
-  image?: {
-    path: string
-    width: number
-    height: number
-  }
-  keywords?: string[]
-  links?: {
-    [key: string]: string
-  }
-  date: `${number}/${number}/${number}`
-}
+import { WorksFrontmatterSchema } from './schema'
 
 export const metadata = {
   title: 'Works',
@@ -41,8 +27,9 @@ export const metadata = {
 
 export default async function Index() {
   // load all md files under /app/works/contents/*.md
-  const contents = await readMarkdowns<WorksFrontmatter>(
+  const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
+    WorksFrontmatterSchema,
   )
 
   return (
@@ -69,7 +56,7 @@ export default async function Index() {
             )}
             {metadata.keywords && <Keywords keywords={metadata.keywords} />}
             <p>
-              <b>Released:</b> {metadata.date}
+              <b>Released:</b> {dayjs(metadata.date).format('YYYY-MM-DD')}{' '}
             </p>
             <MDXRemote source={content} {...getMarkdownOptions()} />
             <p

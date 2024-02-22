@@ -2,11 +2,12 @@ import path from 'path'
 
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { technologyIconMap } from '@/app/works/Keywords'
-import { WorksFrontmatter } from '@/app/works/page'
+import { WorksFrontmatter, WorksFrontmatterSchema } from '@/app/works/schema'
 
 import { MarkdownWithFrontmatter, readMarkdowns } from '@/lib/mdLoader'
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
+
 import 'devicon'
 
 const workStyles = tv({
@@ -73,8 +74,9 @@ const styles = tv({
 })()
 
 export async function WorksCard() {
-  const contents = await readMarkdowns<WorksFrontmatter>(
+  const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
+    WorksFrontmatterSchema,
   ).then(mds => mds.slice(0, 3))
 
   return (
