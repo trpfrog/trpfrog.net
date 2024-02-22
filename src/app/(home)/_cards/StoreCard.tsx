@@ -26,7 +26,11 @@ const styles = tv({
 
 export function StoreCard() {
   return (
-    <LinkTopCard href="/stickers" className={styles.card()}>
+    <LinkTopCard
+      href="https://suzuri.jp/TrpFrog"
+      openInNewTab
+      className={styles.card()}
+    >
       <div
         className={twMerge(
           styles.text(),
