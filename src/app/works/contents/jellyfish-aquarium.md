@@ -7,7 +7,7 @@ image:
 keywords:
   - Processing
   - Computer Graphics
-date: 2021/8/23
+date: 2021-08-23
 links:
   GitHub: https://github.com/TrpFrog/jellyfish-aquarium
 ---

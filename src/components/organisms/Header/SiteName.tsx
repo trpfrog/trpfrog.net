@@ -1,46 +1,59 @@
-'use client'
+import { useEffect, useState } from 'react'
 
-import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { tv } from 'tailwind-variants'
 
 import { SITE_NAME } from '@/lib/constants'
 
-import { useShouldShowSubtitle } from './hooks/useShouldShowSubtitle'
-import { useShouldShowTrpFrog } from './hooks/useShouldShowTrpFrog'
-import styles from './index.module.scss'
-import { TitleWithPageName } from './TitleWithPageName'
-
-export type TitleProps = {
+export type TitleWithPageNameProps = {
   siteTitle?: string
   pageTitle?: string
+  showPageTitle?: boolean
 }
 
-export const SiteName = (props: TitleProps) => {
-  const shouldShowSubtitle = useShouldShowSubtitle()
-  const shouldShowTrpFrog = useShouldShowTrpFrog()
+const createStyles = tv({
+  slots: {
+    wrapper: [
+      'tw-items-left tw-translate-y-0.5 *:tw-leading-none',
+      'tw-flex tw-flex-col tw-gap-0.5 tw-text-white hover:tw-text-trpfrog-50',
+    ],
+    title: 'tw-text-[1.7rem] tw-font-extrabold sp:tw-text-[1.4rem]',
+    subtitle: 'tw-line-clamp-1 tw-text-base tw-font-semibold sp:tw-text-[11px]',
+  },
+  variants: {
+    showPageTitle: {
+      false: {
+        subtitle: 'tw-hidden',
+      },
+    },
+  },
+})
+
+function usePageTitle() {
+  const [pageTitle, setPageTitle] = useState('')
+  const pathname = usePathname()
+  useEffect(() => {
+    window.setTimeout(() => {
+      setPageTitle(document?.title.split(' - ')[0] ?? '')
+    }, 500)
+  }, [pathname])
+  return pageTitle
+}
+
+export function SiteName(props: TitleWithPageNameProps) {
+  const pathname = usePathname() ?? '/'
+  const siteTitle =
+    props.siteTitle ??
+    (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
+  const pageTitleFromHook = usePageTitle()
+  const pageTitle = props.pageTitle ?? pageTitleFromHook
+
+  const styles = createStyles({ showPageTitle: props.showPageTitle ?? false })
 
   return (
-    <div className={styles.site_logo} data-show-icon={shouldShowTrpFrog}>
-      <div className={styles.trpfrog_icon} />
-      <div className={styles.site_name_wrapper}>
-        <h1 className={styles.site_name}>
-          {shouldShowSubtitle ? (
-            <Link
-              href="/"
-              style={{ cursor: 'pointer' }}
-              className={styles.title_link}
-            >
-              <TitleWithPageName
-                siteTitle={props.siteTitle}
-                pageTitle={props.pageTitle}
-              />
-            </Link>
-          ) : (
-            <Link href="/" className={styles.title_link}>
-              {SITE_NAME}
-            </Link>
-          )}
-        </h1>
-      </div>
+    <div className={styles.wrapper()}>
+      <h1 className={styles.title()}>{siteTitle}</h1>
+      {pageTitle ? <h2 className={styles.subtitle()}>{pageTitle}</h2> : null}
     </div>
   )
 }

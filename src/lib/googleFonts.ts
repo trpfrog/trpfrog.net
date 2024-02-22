@@ -1,12 +1,10 @@
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font'
 import {
-  BIZ_UDPGothic,
   Comfortaa,
   Inconsolata,
   M_PLUS_Rounded_1c,
-  Noto_Sans_JP,
   Noto_Sans_Mono,
-  Roboto,
+  Inter,
 } from 'next/font/google'
 
 const mPlusRounded1c = M_PLUS_Rounded_1c({
@@ -25,28 +23,16 @@ const comfortaa = Comfortaa({
   variable: '--font-comfortaa',
 })
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-roboto',
-})
-
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-noto-sans-jp',
+  variable: '--font-inter',
 })
 
 const notoSansMono = Noto_Sans_Mono({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-noto-sans-mono',
-})
-
-const bizUdpGothic = BIZ_UDPGothic({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-biz-udp-gothic',
 })
 
 const inconsolata = Inconsolata({
@@ -59,10 +45,8 @@ const inconsolata = Inconsolata({
 const fonts: NextFontWithVariable[] = [
   mPlusRounded1c,
   comfortaa,
-  roboto,
-  notoSansJP,
+  inter,
   notoSansMono,
-  bizUdpGothic,
   inconsolata,
 ]
 

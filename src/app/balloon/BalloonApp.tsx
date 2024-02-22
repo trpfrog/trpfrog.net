@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 
-import { Button } from '@/components/atoms/Button'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
@@ -40,14 +42,14 @@ export function BalloonApp() {
         description={'風船を割ることができます。(？)'}
       >
         <p>
-          <Button
+          <MagicButton
             onClick={() => setSoundEnabled(!isSoundEnabled)}
             style={{ marginRight: '10px' }}
           >
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
-          </Button>
+          </MagicButton>
           <label style={{ marginRight: '10px' }}>
-            <input
+            <Input
               type="number"
               value={numberOfBalloons}
               onChange={e => changeAmount(e.target.value)}
@@ -57,7 +59,7 @@ export function BalloonApp() {
             balloons
           </label>{' '}
           <label>
-            <input
+            <Input
               type="number"
               value={balloonSize}
               onChange={e => changeSize(e.target.value)}

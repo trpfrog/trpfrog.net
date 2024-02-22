@@ -1,41 +1,56 @@
 import * as React from 'react'
 
-import styles from '@/app/(home)/page.module.scss'
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Button } from '@/components/atoms/Button'
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { PlainBlock } from '@/components/atoms/PlainBlock'
+import { ServerLinkCard } from '@/components/organisms/LinkCard/ServerLinkCard'
+import { A } from '@/components/wrappers'
 
-import { calcMonospacedTextWidth } from '@/lib/utils'
+import { tv } from '@/lib/tailwind/variants'
 
 import { MutualLinkRecord } from './loader'
 
-export function MutualLinkBlock(props: { record: MutualLinkRecord }) {
+const styles = tv({
+  slots: {
+    card: 'tw-rounded-lg tw-p-4',
+    h3Wrapper: 'tw-mb-2 tw-flex tw-justify-between',
+    h3: 'tw-text-lg tw-font-bold',
+    social: 'tw-flex tw-gap-2',
+    twitter: 'tw-text-xl tw-text-[#1DA1F2] hover:tw-brightness-125',
+    github: 'tw-text-xl tw-text-[#333] hover:tw-text-gray-400',
+  },
+})()
+
+export async function MutualLinkBlock(props: { record: MutualLinkRecord }) {
   const {
-    record: { url, siteName, ownerName, twitterId, description },
+    record: { url, ownerName, twitter, github },
   } = props
 
-  // Shrink siteName if its length too long
-  const style =
-    calcMonospacedTextWidth(siteName) < 20
-      ? {}
-      : ({
-          letterSpacing: -0.5,
-        } as React.CSSProperties)
-
   return (
-    <div className={styles.link_block}>
-      <p style={{ textAlign: 'center' }}>
-        <Button externalLink={true} href={url} style={style}>
-          {siteName}
-        </Button>
-      </p>
-      <p>
-        <OpenInNewTab href={`https://twitter.com/${twitterId}/`}>
-          <b>{ownerName}</b>
-        </OpenInNewTab>
-        さんのHP
-      </p>
-      <p>{description}</p>
-    </div>
+    <PlainBlock className={styles.card()}>
+      <div className={styles.h3Wrapper()}>
+        <h3 className={styles.h3()}>{ownerName} さんのHP</h3>
+        <div className={styles.social()}>
+          {github && (
+            <A
+              href={`https://github.com/${github}`}
+              className={styles.github()}
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </A>
+          )}
+          {twitter && (
+            <A
+              href={`https://twitter.com/${twitter}`}
+              className={styles.twitter()}
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+            </A>
+          )}
+        </div>
+      </div>
+      <ServerLinkCard href={url} />
+    </PlainBlock>
   )
 }

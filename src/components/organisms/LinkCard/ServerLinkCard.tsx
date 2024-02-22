@@ -1,18 +1,22 @@
 import * as React from 'react'
+import { memo } from 'react'
 
 import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
 import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
 export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
+  React.ComponentPropsWithoutRef<'a'>,
   'children'
 > & {
   href: string
   fallbackToClient?: boolean
+  overrideProps?: Partial<LinkCardProps>
 }
 
-export async function ServerLinkCard(props: LinkCardProps) {
+export const ServerLinkCard = memo(async function ServerLinkCard(
+  props: LinkCardProps,
+) {
   const { href, ...rest } = props
 
   try {
@@ -29,6 +33,7 @@ export async function ServerLinkCard(props: LinkCardProps) {
         favicon={result.favicon}
         themeColor={result.customMetaTags?.themeColor}
         {...rest}
+        {...(props.overrideProps ?? {})}
       />
     )
   } catch (e) {
@@ -46,4 +51,4 @@ export async function ServerLinkCard(props: LinkCardProps) {
       )
     }
   }
-}
+})

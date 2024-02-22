@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useLayoutEffect, useState } from 'react'
 
 import dynamic from 'next/dynamic'
 
@@ -25,7 +25,15 @@ const SSRSafeParseWithBudouX = dynamic(
 
 // due to this is not compatible with SSR, we need to use dynamic import
 export function ParseWithBudouX(props: ParseWithBudouXProps) {
-  return (
+  const [supportsWordBreakAutoPhrase, setSupportsWordBreakAutoPhrase] =
+    useState(false)
+  useLayoutEffect(() => {
+    setSupportsWordBreakAutoPhrase(CSS.supports('word-break', 'auto-phrase'))
+  }, [])
+  return supportsWordBreakAutoPhrase ? (
+    // @ts-ignore
+    <span style={{ wordBreak: 'auto-phrase' }}>{props.str}</span>
+  ) : (
     <LoadingPropsContext.Provider value={props}>
       <SSRSafeParseWithBudouX {...props} />
     </LoadingPropsContext.Provider>

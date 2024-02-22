@@ -3,10 +3,10 @@ import { Fragment } from 'react'
 import { Metadata } from 'next'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 import { Title } from '@/components/organisms/Title'
 
 import { getTypedEntries } from '@/lib/utils'
@@ -45,13 +45,10 @@ export default async function Index() {
 
   return (
     <>
-      <MainWrapper>
+      <MainWrapper gridLayout>
         <Title title={'つまみログ'} description={metadata.description} />
 
-        <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar} /> FEATURED ARTICLE{' '}
-          <FontAwesomeIcon icon={faStar} />
-        </div>
+        <OnBodyHeading icon={faStar}>FEATURED ARTICLE</OnBodyHeading>
 
         <div id={styles.hero_article}>
           <ArticleCard entry={latestFeaturedArticle} hero={true} />
@@ -61,10 +58,7 @@ export default async function Index() {
           .reverse()
           .map(([year, articles]) => (
             <Fragment key={year as string}>
-              <div className={styles.hrule_block}>
-                <FontAwesomeIcon icon={faStar} /> {year as string} 年{' '}
-                <FontAwesomeIcon icon={faStar} />
-              </div>
+              <OnBodyHeading icon={faStar}>{year as string} 年</OnBodyHeading>
 
               <div
                 style={{ display: 'flex', flexDirection: 'column', gap: 15 }}

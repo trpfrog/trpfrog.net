@@ -10,7 +10,8 @@ import styles from './index.module.scss'
 
 type BalloonArrayProps = {
   n: number
-  width: number
+  width?: number
+  onBurst?: (isBurst: boolean[]) => void
 }
 
 type BalloonColor = (typeof balloonColors)[number]
@@ -72,7 +73,11 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
   }
 }
 
-export function BalloonArray({ n, width = 80 }: BalloonArrayProps) {
+export function BalloonArray({
+  n,
+  width = 80,
+  onBurst: userOnBurst,
+}: BalloonArrayProps) {
   const height = width / 0.6
 
   const { updateAmount, isBurst, balloonColorArray, onBurst } = useBalloonState(
@@ -80,6 +85,10 @@ export function BalloonArray({ n, width = 80 }: BalloonArrayProps) {
     styles.reward_start_point,
   )
   updateAmount(n)
+
+  useEffect(() => {
+    userOnBurst?.(isBurst)
+  }, [isBurst, userOnBurst])
 
   return (
     <>

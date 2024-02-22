@@ -1,38 +1,82 @@
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-import { TrpFrogIconFrame } from '@/app/(home)/_components/TrpFrogIconFrame'
+import { tv } from 'tailwind-variants'
+
+import * as cards from '@/app/(home)/_cards'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 
-import { AboutMe } from './_components/AboutMe'
-import { Bird } from './_components/Bird'
-import { Links } from './_components/Links'
-import { Ratings } from './_components/Ratings'
-import { Store } from './_components/Store'
 import { TempTwitter } from './_components/TempTwitter'
-import { TopPageBalloons } from './_components/TopPageBalloons'
-import { TopPageIcons } from './_components/TopPageIcons'
-import { TopPageMusic } from './_components/TopPageMusic'
 import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrogAnimation'
-import { WhatsNew } from './_components/WhatsNew'
-import styles from './page.module.scss'
+import css from './page.module.css'
 
-export default function Index() {
+const styles = tv({
+  slots: {
+    grid: 'tw-grid tw-gap-3 sp:tw-gap-2',
+    subgrid: 'tw-col-span-full tw-grid tw-grid-cols-subgrid',
+  },
+})()
+
+export default async function Index() {
   return (
     <>
       <TrpFrogAnimationFrame />
       <MainWrapper>
         <TempTwitter />
-        <div id={styles.top_page_grid}>
-          <AboutMe id={styles.about_me_grid} />
-          <WhatsNew id={styles.whats_new} />
-          <Store id={styles.sticker} />
-          <TopPageIcons id={styles.icons} />
-          <TopPageMusic id={styles.music} />
-          <TopPageBalloons id={styles.balloon} />
-          <TrpFrogIconFrame id={styles.diffusion} />
-          <Links id={styles.link_grid} />
-          <Ratings id={styles.music_game} />
-          <Bird id={styles.bird} />
+        <div className={styles.grid({ className: css.layout })}>
+          <div style={{ gridArea: 'about-me' }}>
+            <cards.AboutMeCard />
+          </div>
+          <div style={{ gridArea: 'twitter' }}>
+            <cards.TwitterCard />
+          </div>
+          <div style={{ gridArea: 'github' }}>
+            <cards.GitHubCard />
+          </div>
+          <div style={{ gridArea: 'mail' }}>
+            <cards.MailCard />
+          </div>
+          <div style={{ gridArea: 'univ' }}>
+            <cards.BelongingCard />
+          </div>
+          <div style={{ gridArea: 'works' }}>
+            <cards.WorksCard />
+          </div>
+          <div style={{ gridArea: 'blog' }}>
+            <cards.BlogCard />
+          </div>
+          <div style={{ gridArea: 'favs' }}>
+            <cards.FavoritesCard />
+          </div>
+          <div style={{ gridArea: 'walking' }}>
+            <cards.WalkingCard />
+          </div>
+          <div style={{ gridArea: 'ai' }}>
+            <cards.AICard />
+          </div>
+          <div style={{ gridArea: 'skills' }}>
+            <cards.SkillCard />
+          </div>
+          <div style={{ gridArea: 'comp' }}>
+            <cards.CompetitiveCard />
+          </div>
+          <div style={{ gridArea: 'balloon' }}>
+            <cards.BalloonCard />
+          </div>
+          <div style={{ gridArea: 'env' }}>
+            <cards.EnvironmentCard />
+          </div>
+          <div style={{ gridArea: 'music' }}>
+            <cards.MusicCard />
+          </div>
+          <div style={{ gridArea: 'stickers' }}>
+            <cards.StickersCard />
+          </div>
+          <div style={{ gridArea: 'store' }}>
+            <cards.StoreCard />
+          </div>
+          <div style={{ gridArea: 'birds' }}>
+            <cards.BirdsCard />
+          </div>
         </div>
       </MainWrapper>
     </>

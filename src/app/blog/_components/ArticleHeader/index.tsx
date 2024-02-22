@@ -93,7 +93,6 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
               <EditButton slug={post.slug} />
             </p>
           )}
-          {/*<BadBlogButton/>*/}
         </div>
       </Title>
       {addEntryButtons && <EntryButtons post={post} style={{ margin: 0 }} />}

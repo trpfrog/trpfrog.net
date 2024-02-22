@@ -9,7 +9,7 @@ keywords:
   - CSS
   - JavaScript
   - Python
-date: 2020/2/28
+date: 2020-02-28
 links:
   GitHub: https://github.com/TrpFrog/old.trpfrog.net
   Webサイト: https://old.trpfrog.net

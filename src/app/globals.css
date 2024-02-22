@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *:focus {
+    outline-color: #90e200;
+  }
+
+  :root {
+    --color-body: 192 225 121;
+    --color-text: 21 21 21;
+    --color-window: 255 255 255;
+    --color-header: 102 169 40;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --color-body: 61 77 34;
+      --color-text: 229 229 229;
+      --color-window: 32 32 32;
+      --color-header: 79 131 31;
+    }
+  }
+
+  p {
+    @apply tw-my-4;
+  }
+
+  article {
+    @apply tw-leading-relaxed tw-tracking-wide;
+  }
+}
+
+@layer utilities {
+  .break-anywhere {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+}

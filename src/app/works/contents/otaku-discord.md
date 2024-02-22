@@ -9,7 +9,7 @@ keywords:
   - Python
   - Discord API
   - JavaScript
-date: 2021/12/16
+date: 2021-12-16
 links:
   GitHub: https://github.com/TrpFrog/otaku-channels
   Webサイト: https://otaku-discord.trpfrog.net

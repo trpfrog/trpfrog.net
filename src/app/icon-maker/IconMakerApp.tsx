@@ -1,81 +1,38 @@
 'use client'
 
-import Image from 'next/legacy/image'
+import { useRef } from 'react'
 
-import { Button } from '@/components/atoms/Button'
+import {
+  useIconMakerController,
+  useIconMakerRef,
+} from '@/app/icon-maker/iconMakerHooks'
+
 import { Block } from '@/components/molecules/Block'
+import { Input } from '@/components/wrappers'
 
-import { IconCanvas } from '@/lib/iconMaker'
 import { createURL } from '@/lib/url'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import styles from './style.module.scss'
 
 export function IconMakerApp() {
-  const state = new IconCanvas('canvas-result')
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const state = useIconMakerRef(canvasRef)
+  const controlButtons = useIconMakerController(state)
+
   const tweetLink = createURL('/intent/tweet', 'https://twitter.com', {
     text: '#つまみアイコンメーカー でアイコンを作成しました！',
     url: 'https://trpfrog.net/iconmaker/',
   })
 
-  const controlButtons = [
-    {
-      className: styles.plus_btn,
-      onClick: () => state.scaleImage(1.05),
-      text: '+',
-    },
-    {
-      className: styles.minus_btn,
-      onClick: () => state.scaleImage(1 / 1.05),
-      text: '-',
-    },
-    {
-      className: styles.left_btn,
-      onClick: () => state.moveImage(-5, 0),
-      text: '←',
-    },
-    {
-      className: styles.down_btn,
-      onClick: () => state.moveImage(0, 5),
-      text: '↓',
-    },
-    {
-      className: styles.up_btn,
-      onClick: () => state.moveImage(0, -5),
-      text: '↑',
-    },
-    {
-      className: styles.right_btn,
-      onClick: () => state.moveImage(0, 5),
-      text: '→',
-    },
-    {
-      className: styles.rotate_left_btn,
-      onClick: () => state.rotateImage(5),
-      text: '←R',
-    },
-    {
-      className: styles.rotate_right_btn,
-      onClick: () => state.rotateImage(5),
-      text: 'R→',
-    },
-    {
-      className: styles.apply_btn,
-      onClick: () => state.writeImage(),
-      text: '描画',
-    },
-  ] satisfies {
-    className: string
-    onClick: () => void
-    text: string
-  }[]
-
   return (
     <>
       <Block title={'画像の選択'}>
-        <input
+        <Input
           type="file"
           onChange={e => {
-            state.upload(e.target.files)
+            state.current?.upload(e.target.files)
             window.location.hash = 'preview'
           }}
         />
@@ -83,14 +40,11 @@ export function IconMakerApp() {
 
       <Block title={'プレビュー'}>
         <p>位置を調整していい感じのところで描画を押してください。</p>
-        <p>
-          <b>既知のバグ:</b> ボタン操作をしないとつまみフレームが現れない
-        </p>
         <div>
           <div className="content">
             <canvas
-              className="rich_image"
-              id="canvas-result"
+              ref={canvasRef}
+              className="tw-rounded-md tw-bg-trpfrog-50"
               style={{ width: '100%', maxWidth: '500px' }}
             />
           </div>
@@ -109,18 +63,18 @@ export function IconMakerApp() {
       <Block title={'生成した画像'}>
         <p>PCの方は右クリック、スマートフォンの方は長押しで保存できます。</p>
         <p>
-          <Image
-            src={'/icons_gallery/28'}
-            alt={'default image'}
+          <img
+            id="result-image"
+            src="https://res.cloudinary.com/trpfrog/icons_gallery/28"
+            alt="default image"
             width={500}
             height={500}
-            layout={'intrinsic'}
           />
         </p>
         <p>
-          <Button externalLink={true} href={tweetLink}>
+          <MagicButton externalLink={true} href={tweetLink}>
             Tweet
-          </Button>
+          </MagicButton>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

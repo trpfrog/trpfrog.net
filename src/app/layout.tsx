@@ -1,12 +1,14 @@
 import { Suspense } from 'react'
 import * as React from 'react'
 
-import '@/styles/globals.scss'
+import '@/styles/variables.css'
+import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 import type { Metadata } from 'next'
 import { Viewport } from 'next'
 
 import { Toaster } from 'react-hot-toast'
+import { tv } from 'tailwind-variants'
 
 import { Favicon } from '@/components/head/Favicon'
 import { BackToTop } from '@/components/organisms/BackToTop'
@@ -19,8 +21,6 @@ import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
-
-import styles from './layout.module.scss'
 
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'
@@ -58,6 +58,14 @@ export const viewport: Viewport = {
   colorScheme: 'light dark',
 }
 
+const styles = tv({
+  slots: {
+    body: 'tw-scroll-smooth tw-bg-body-color tw-text-text-color print:tw-bg-white',
+    layout: 'tw-flex tw-min-h-screen tw-flex-col',
+    main: 'tw-flex-1',
+  },
+})()
+
 type Props = {
   children: React.ReactNode
 }
@@ -69,13 +77,13 @@ export default function RootLayout({ children }: Props) {
         <Favicon />
         <FixTooLargeFontAwesomeIcons />
       </head>
-      <body className={`${fontVariables} ${styles.body}`}>
+      <body className={styles.body({ className: fontVariables })}>
         <JotaiProvider>
           <Toaster />
-          <div className={styles.layout}>
+          <div className={styles.layout()}>
             <Header />
             <Navigation />
-            <main>{children}</main>
+            <main className={styles.main()}>{children}</main>
             <Footer />
           </div>
           <BackToTop />

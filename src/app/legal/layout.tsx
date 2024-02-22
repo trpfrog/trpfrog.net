@@ -10,7 +10,7 @@ type Props = {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       {children}
       <ReturnButton />
     </MainWrapper>

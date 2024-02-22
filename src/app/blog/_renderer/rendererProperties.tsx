@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDXComponents } from 'mdx/types'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
 import 'katex/dist/katex.min.css'
@@ -13,12 +11,14 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
 import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
+import * as Wrapper from '@/components/wrappers'
 
-import { IsomorphicMarkdownComponent } from '@/lib/types'
+import { twMerge } from '@/lib/tailwind/merge'
 
+import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
 import {
   isValidExtraCodeBlockComponentName,
@@ -118,10 +118,14 @@ function styledTag(tag: React.ElementType, className: string) {
   }
 }
 
-export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
-  const components: IsomorphicMarkdownComponent = {
+export function getMarkdownOptions(options?: {
+  entry?: BlogPost
+  inline?: boolean
+  openInNewTab?: 'always' | 'external' | 'never'
+}) {
+  const components: MDXComponents = {
     pre: ({ children }: any) => <div className={''}>{children}</div>, // disable pre tag
-    code: formatCodeComponentFactory(entry),
+    code: formatCodeComponentFactory(options?.entry),
 
     img: (props: any) => {
       return (
@@ -137,24 +141,27 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
     },
 
     p: (props: React.ComponentProps<'p'>) => {
-      return React.createElement(isInline ? 'span' : 'p', props)
+      return React.createElement(options?.inline ? 'span' : 'p', props)
     },
 
-    h2: (props: any) => (
-      <h2 className={[styles.anchor, styles.h2].join(' ')} id={props.id}>
-        <a href={'#' + props.id}>
-          <FontAwesomeIcon icon={faPaperclip} />
-        </a>
-        {props.children}
-      </h2>
-    ),
+    h2: (props: any) => <BlogH2 {...props} />,
+    h3: (props: any) => <Wrapper.H3 {...props} className="tw-mt-8" />,
+    h4: (props: any) => <Wrapper.H4 {...props} />,
+    h5: (props: any) => <Wrapper.H5 {...props} />,
+
+    ul: (props: any) => <Wrapper.UnorderedList {...props} />,
+    ol: (props: any) => <Wrapper.OrderedList {...props} />,
+    li: (props: any) => <Wrapper.Li {...props} />,
+
     a: (props: any) => (
-      <OpenInNewTab href={props.href}>{props.children}</OpenInNewTab>
+      <InlineLink openInNewTab={options?.openInNewTab} href={props.href}>
+        {props.children}
+      </InlineLink>
     ),
+    kbd: (props: any) => <Wrapper.Kbd {...props} />,
     blockquote: styledTag('blockquote', styles.blockquote),
     details: styledTag('details', styles.details),
     summary: styledTag('summary', styles.summary),
-    h3: styledTag('h3', styles.h3),
     video: (props: any) => (
       <BlogImage
         src={props.src ?? ''}
@@ -163,6 +170,17 @@ export function getMarkdownOptions(entry?: BlogPost, isInline?: boolean) {
         isVideo
       />
     ),
+
+    hr: (props: any) => {
+      const { className = '', ...rest } = props
+      return <Wrapper.HorizontalRule className={className} {...rest} />
+    },
+
+    table: (props: any) => {
+      let { className, ...rest } = props
+      className = twMerge('tw-mx-auto', className)
+      return <Wrapper.Table className={className} {...rest} />
+    },
   }
 
   return {

@@ -3,9 +3,10 @@ import { Metadata } from 'next'
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
 import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 
-import { Button } from '@/components/atoms/Button'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 const NUMBER_OF_IMAGES = 80
 
@@ -29,7 +30,7 @@ export default function Index(context: PageProps) {
   const idInt = parseInt(id, 10)
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Block>
         <ImageViewer src={'stickers/' + id} alt={id + '番目のスタンプ画像'} />
       </Block>
@@ -51,7 +52,7 @@ export default function Index(context: PageProps) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <Button href={'/stickers'}>一覧に戻る</Button>
+          <MagicButton href={'/stickers'}>一覧に戻る</MagicButton>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

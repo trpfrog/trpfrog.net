@@ -10,6 +10,7 @@ import yaml from 'js-yaml'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { H3, Li, UnorderedList } from '@/components/wrappers'
 
 import { GadgetIntro } from './GadgetIntro'
 
@@ -45,23 +46,23 @@ function Itemize(props: {
     return <p>{props.children}</p>
   }
   return (
-    <ul>
+    <UnorderedList>
       {props.children.map((child, index) => {
         if (typeof child === 'string') {
-          return <li key={index}>{child}</li>
+          return <Li key={index}>{child}</Li>
         }
         return (
           <Fragment key={index}>
             {Object.entries(child).map(([key, value]) => (
               <Fragment key={key}>
-                <li>{key}</li>
+                <Li>{key}</Li>
                 <Itemize>{value}</Itemize>
               </Fragment>
             ))}
           </Fragment>
         )
       })}
-    </ul>
+    </UnorderedList>
   )
 }
 
@@ -84,7 +85,7 @@ export default async function Index() {
   const items = yaml.load(yamlText) as Items
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>Last updated: 2021/12/11</p>
         <GadgetIntro name="" imagePath="desk" />
@@ -94,7 +95,7 @@ export default async function Index() {
         <Block title={genre.categoryName} h2icon="think" key={key}>
           {genre.items.map(item => (
             <div key={item.name}>
-              <h3>{item.name}</h3>
+              <H3>{item.name}</H3>
               {item.items.map(gadget => (
                 <GadgetIntro
                   name={gadget.productName}

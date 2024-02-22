@@ -3,7 +3,7 @@ import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
 export default function Loading() {
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <LoadingBlock isFullHeight={true} />
     </MainWrapper>
   )

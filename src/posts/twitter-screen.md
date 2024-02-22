@@ -20,7 +20,7 @@ thumbnail: https://res.cloudinary.com/trpfrog/image/upload/v1641983536/blog/twit
 
 車輪の再発明はしたくありません。とりあえずググってみてもヒットしなかったので作ることにしました。完成品はこちらになります！
 
-<a href="https://github.com/TrpFrog/TwitterScreen" class="linkButton">View Twitter Screen on GitHub</a>
+- [GitHub で見る](https://github.com/TrpFrog/TwitterScreen)
 
 背景を透明化できるので、Twitterのコメントを流しながら配信イベントを見たり
 

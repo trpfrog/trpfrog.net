@@ -2,50 +2,22 @@ import path from 'path'
 
 import { Metadata } from 'next'
 
-import Image from 'next/legacy/image'
-import ReactMarkdown from 'react-markdown'
+import dayjs from 'dayjs'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import { Button } from '@/components/atoms/Button'
+import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
 import { readMarkdowns } from '@/lib/mdLoader'
 
-import styles from './style.module.scss'
+import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
-type KeywordsProps = {
-  keywords: string[]
-}
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
-function Keywords({ keywords }: KeywordsProps) {
-  return (
-    <p className={styles.keywords}>
-      <span className={styles.keyword_title}>TECHNOLOGIES</span>
-      <br />
-      {keywords.map(k => (
-        <span key={k} className={styles.keyword}>
-          {k}
-        </span>
-      ))}
-    </p>
-  )
-}
-
-type Frontmatter = {
-  title: string
-  h2icon?: string
-  image?: {
-    path: string
-    width: number
-    height: number
-  }
-  keywords?: string[]
-  links?: {
-    [key: string]: string
-  }
-  date: `${number}/${number}/${number}`
-}
+import { Keywords } from './Keywords'
+import { WorksFrontmatterSchema } from './schema'
 
 export const metadata = {
   title: 'Works',
@@ -55,12 +27,13 @@ export const metadata = {
 
 export default async function Index() {
   // load all md files under /app/works/contents/*.md
-  const contents = await readMarkdowns<Frontmatter>(
+  const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
+    WorksFrontmatterSchema,
   )
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description}>
         <p>最終更新: 2023/5/31</p>
       </Title>
@@ -73,33 +46,31 @@ export default async function Index() {
             h2icon={metadata.h2icon ?? 'trpfrog'}
           >
             {metadata.image && (
-              <div className={styles.hero_image}>
-                <Image
-                  src={metadata.image?.path}
-                  width={metadata.image?.width}
-                  height={metadata.image?.height}
-                  objectFit={'cover'}
-                  alt={metadata.title + 'の画像'}
-                />
-              </div>
+              <Image
+                className="tw-mx-auto tw-my-4 tw-bg-transparent"
+                src={metadata.image?.path}
+                width={metadata.image?.width}
+                height={metadata.image?.height}
+                alt={metadata.title + 'の画像'}
+              />
             )}
             {metadata.keywords && <Keywords keywords={metadata.keywords} />}
             <p>
-              <b>Released:</b> {metadata.date}
+              <b>Released:</b> {dayjs(metadata.date).format('YYYY-MM-DD')}{' '}
             </p>
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <MDXRemote source={content} {...getMarkdownOptions()} />
             <p
               style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
             >
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <Button
+                  <MagicButton
                     externalLink={true}
                     key={linkTxt}
                     href={url as string}
                   >
                     {linkTxt}
-                  </Button>
+                  </MagicButton>
                 )
               })}
             </p>

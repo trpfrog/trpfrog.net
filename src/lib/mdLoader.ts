@@ -2,19 +2,17 @@ import fs from 'fs/promises'
 import path from 'path'
 
 import matter from 'gray-matter'
+import { z } from 'zod'
 
-import { sortWithDates } from './utils'
-
-type DateObject = { date: `${number}/${number}/${number}` }
-
-type MarkdownWithFrontmatter<T> = {
+export type MarkdownWithFrontmatter<T> = {
   filename: string
   metadata: T
   content: string
 }
 
-export async function readMarkdowns<T extends DateObject>(
+export async function readMarkdowns<T extends { date: Date }>(
   dirpath: string,
+  schema: z.Schema<T>,
 ): Promise<MarkdownWithFrontmatter<T>[]> {
   const files = await fs.readdir(dirpath)
   const markdowns = files.filter(file => {
@@ -26,12 +24,12 @@ export async function readMarkdowns<T extends DateObject>(
       const matterResult = matter(file)
       return {
         filename,
-        metadata: matterResult.data,
+        metadata: schema.parse(matterResult.data),
         content: matterResult.content,
-      } as MarkdownWithFrontmatter<T>
+      } as const
     }),
   )
   return markdownsWithFrontmatter.sort((a, b) =>
-    sortWithDates(a.metadata.date, b.metadata.date),
+    a.metadata.date < b.metadata.date ? 1 : -1,
   )
 }

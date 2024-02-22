@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import dayjs from 'dayjs'
 import reactStringReplace from 'react-string-replace'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
+import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 
@@ -28,12 +29,12 @@ function ScreenNameLink(props: {
   children: React.ReactNode
 }) {
   return (
-    <OpenInNewTab
+    <InlineLink
       href={`https://twitter.com/${props.screenName}`}
       className={props.className}
     >
       {props.children}
-    </OpenInNewTab>
+    </InlineLink>
   )
 }
 
@@ -48,32 +49,32 @@ function TweetString({
     text,
     /(https?:\/\/[^\s\n　]+)/g,
     (match, i) => (
-      <OpenInNewTab key={`tweet-link-${i}`} href={match}>
+      <InlineLink key={`tweet-link-${i}`} href={match}>
         {match}
-      </OpenInNewTab>
+      </InlineLink>
     ),
   )
   replaced = reactStringReplace(replaced, /\B@([\w_]+)/g, (match, i) => (
-    <OpenInNewTab
+    <InlineLink
       key={`tweet-mention-${i}`}
       href={`https://twitter.com/${match}`}
       className={styles.mention_string}
     >
       @{match}
-    </OpenInNewTab>
+    </InlineLink>
   ))
 
   replaced = reactStringReplace(
     replaced,
     /\B#([^\s\n「」()#]+)/g,
     (match, i) => (
-      <OpenInNewTab
+      <InlineLink
         key={`tweet-hashtag-${i}`}
         href={`https://twitter.com/hashtag/${match}`}
         className={styles.hashtag_string}
       >
         #{match}
-      </OpenInNewTab>
+      </InlineLink>
     ),
   )
 
@@ -109,9 +110,9 @@ export function DateCard({ date }: { date: Date }) {
   return (
     <PlainBlock className={`${styles.window} ${styles.date}`}>
       <h3>
-        <a style={{ all: 'inherit' }} href={url}>
+        <A style={{ all: 'inherit' }} href={url}>
           {dayjs(date).format('YYYY年M月D日')}
-        </a>
+        </A>
       </h3>
     </PlainBlock>
   )
@@ -224,9 +225,9 @@ export function TweetCard({
               </div>
             ) : photos > 0 ? (
               <span style={{ opacity: 0.5 }}>
-                <span className={'only-on-pc'}>
+                <span className="sp:tw-hidden">
                   View pictures on{' '}
-                  <OpenInNewTab href={statusUrl}>twitter.com</OpenInNewTab>!
+                  <InlineLink href={statusUrl}>twitter.com</InlineLink>!
                 </span>
               </span>
             ) : (
@@ -235,10 +236,10 @@ export function TweetCard({
               </>
             )}
             <div className={styles.footer_date}>
-              <OpenInNewTab className={styles.footer_date} href={statusUrl}>
+              <A className={styles.footer_date} href={statusUrl}>
                 {tweet.isRetweet ? 'Retweeted at ' : ''}
                 {dayjs(tweet.createdAt).format('YYYY-MM-DD HH:mm')}
-              </OpenInNewTab>
+              </A>
             </div>
           </div>
         </div>

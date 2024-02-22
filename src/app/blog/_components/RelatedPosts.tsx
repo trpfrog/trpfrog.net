@@ -1,12 +1,12 @@
 'use client'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Button } from '@/components/atoms/Button'
+import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { BlogPost } from '@blog/_lib/blogPost'
-import styles from '@blog/_styles/blog.module.scss'
+
+import { MagicButton } from 'src/components/atoms/MagicButton'
 
 import { ArticleCard } from './ArticleCard'
 
@@ -22,13 +22,10 @@ export const RelatedPosts = ({
   } else {
     return (
       <>
-        <div className={styles.hrule_block}>
-          <FontAwesomeIcon icon={faStar} /> タグ「{tag}」の新着記事{' '}
-          <FontAwesomeIcon icon={faStar} />
-        </div>
+        <OnBodyHeading icon={faStar}>タグ「{tag}」の新着記事</OnBodyHeading>
         <ArticleGrid>
           {relatedPosts.slice(0, 6).map((e, idx) => (
-            <div key={e.slug} className={idx > 2 ? 'only-on-pc' : ''}>
+            <div key={e.slug} className={idx > 2 ? 'sp:tw-hidden' : ''}>
               <ArticleCard entry={e} />
             </div>
           ))}
@@ -36,19 +33,19 @@ export const RelatedPosts = ({
 
         {/* PC */}
         {relatedPosts.length > 6 && (
-          <div style={{ textAlign: 'center' }} className={'only-on-pc'}>
-            <Button href={'/blog/tags/' + tag}>
+          <div style={{ textAlign: 'center' }} className="sp:tw-hidden">
+            <MagicButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-            </Button>
+            </MagicButton>
           </div>
         )}
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
-          <div style={{ textAlign: 'center' }} className={'only-on-sp'}>
-            <Button href={'/blog/tags/' + tag}>
+          <div style={{ textAlign: 'center' }} className="pc:tw-hidden">
+            <MagicButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-            </Button>
+            </MagicButton>
           </div>
         )}
       </>

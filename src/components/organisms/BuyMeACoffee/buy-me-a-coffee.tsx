@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { Cookie } from 'next/font/google'
 
-import { OpenInNewTab } from '@/components/atoms/OpenInNewTab'
+import { A } from '@/components/wrappers'
 
 import styles from './buy-me-a-coffee.module.scss'
 import { CoffeeLogo } from './coffee-logo'
@@ -14,12 +14,12 @@ const cookieFont = Cookie({
 export function BuyMeACoffee() {
   return (
     <div className={styles.bmc_btn}>
-      <OpenInNewTab href="https://buymeacoffee.com/trpfrog">
+      <A href="https://buymeacoffee.com/trpfrog">
         <CoffeeLogo />
         <span className={classNames(styles.bmc_btn_text, cookieFont.className)}>
           Buy me a coffee
         </span>
-      </OpenInNewTab>
+      </A>
     </div>
   )
 }

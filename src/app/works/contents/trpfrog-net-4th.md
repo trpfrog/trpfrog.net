@@ -9,7 +9,7 @@ keywords:
   - Next.js
   - Node.js
   - SCSS
-date: 2022/1/3
+date: 2022-01-03
 links:
   GitHub: https://github.com/TrpFrog/trpfrog.net
   Webサイト (ここ): https://trpfrog.net

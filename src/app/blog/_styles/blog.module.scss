@@ -1,6 +1,6 @@
 @use 'articles';
 
-@use '@/styles/mixins';
+@use '../../../styles/mixins';
 
 .article_block {
   padding: 17px;
@@ -82,21 +82,6 @@
   }
 }
 
-.with_ud_font {
-  font-family: var(--font-roboto), var(--font-biz-udp-gothic), var(--main-font) !important;
-  letter-spacing: 1px;
-
-  * {
-    --main-font: var(--font-roboto), var(--font-biz-udp-gothic),
-      var(--main-font);
-  }
-
-  strong,
-  b {
-    -webkit-text-stroke: 0.5px var(--base-font-color);
-  }
-}
-
 .main_content > aside {
   display: none;
 }
@@ -130,7 +115,7 @@
 }
 
 .post code {
-  font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace !important;
+  font-family: var(--font-noto-sans-mono), monospace !important;
 }
 
 .inline_code_block {
@@ -142,7 +127,7 @@
     background-color: #313131 !important;
     color: white;
   }
-  font-family: var(--font-noto-sans-mono), var(--font-noto-sans-jp), monospace;
+  font-family: var(--font-noto-sans-mono), monospace;
   padding: 0 4px;
   font-size: 0.9em;
   border-radius: 5px;
@@ -183,7 +168,6 @@
   }
 
   &::after {
-    font-family: var(--font-noto-sans-jp);
     transition: 100ms;
     font-weight: bold;
     color: var(--base-font-color);
@@ -213,10 +197,6 @@
   * + & {
     margin-top: 2em;
   }
-}
-
-.h3 {
-  margin-top: 2em;
 }
 
 .details {

@@ -31,7 +31,7 @@ exports[`TwitterArchived snapshot test 1`] = `
           >
             <a
               href="https://twitter.com/TrpFrog"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
               target="_blank"
             >
               <div
@@ -100,6 +100,8 @@ exports[`TwitterArchived snapshot test 1`] = `
       >
         <a
           href="https://twitter.com/TrpFrog/status/1353937432136228864"
+          rel="noopener noreferrer"
+          target="_blank"
         >
           2000-10-17
         </a>

@@ -7,7 +7,7 @@ image:
 keywords:
   - Java
   - Swing
-date: 2020/12/3
+date: 2020-12-03
 links:
   Gist: https://gist.github.com/TrpFrog/bcdfcc015272ec71d38208be7829bf64
   動画: https://twitter.com/TrpFrog/status/1334487946150330369

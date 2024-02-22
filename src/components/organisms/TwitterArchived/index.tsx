@@ -6,6 +6,7 @@ import {
   TwitterImageData,
 } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
+import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 
@@ -56,7 +57,7 @@ export function TwitterArchived(props: TwitterArchivedProps) {
         {hasImage && <TwitterImage images={images} cite={tweetLink} />}
         {quote && <TwitterArchived {...quote} />}
         <div className={styles.date}>
-          {tweetLink ? <a href={tweetLink}>{date}</a> : date}
+          {tweetLink ? <A href={tweetLink}>{date}</A> : date}
         </div>
       </div>
     </div>

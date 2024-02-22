@@ -9,7 +9,7 @@ import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 import { SkeletonLinkCard } from '@/components/organisms/LinkCard/SkeletonLinkCard'
 
 export type ClientLinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
+  React.ComponentPropsWithoutRef<'a'>,
   'children'
 > & {
   href: string

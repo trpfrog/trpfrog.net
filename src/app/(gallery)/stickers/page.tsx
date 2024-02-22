@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
@@ -20,16 +21,18 @@ export default function Index() {
   })
 
   return (
-    <MainWrapper>
+    <MainWrapper gridLayout>
       <Title title={metadata.title}>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。
           <br />
           良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
         </p>
-        <a href={'https://store.line.me/stickershop/product/8879469/ja'}>
+        <InlineLink
+          href={'https://store.line.me/stickershop/product/8879469/ja'}
+        >
           LINEスタンプ発売中！
-        </a>
+        </InlineLink>
       </Title>
       <Block>
         <ImageList images={imagePaths} />

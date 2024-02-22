@@ -2,7 +2,7 @@
 title: "壁紙: 雨"
 description: 天気の子の陽菜ちゃんになりたくて作りました。天気の子は観た方が良いです。
 image: 
-  src: download/wallpapers/rainy/thumbnail
+  src: /download/wallpapers/rainy/thumbnail
   alt: 雨の壁紙
   width: 1000
   height: 625
@@ -23,7 +23,7 @@ links:
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/iphonex.png
   - text: 縦長 (1:2, 背景のみ)
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/iphonex_bkg.png
-date: 2019/6/23
+date: 2019-06-23
 ---
 
 PC用は右にかけて暗くなっていくグラデーションあり版があります。
