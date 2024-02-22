@@ -22,6 +22,7 @@ export function CompetitiveCard() {
   return (
     <LinkTopCard
       className={styles.wrapper()}
+      openInNewTab
       href="https://atcoder.jp/users/TrpFrog"
     >
       <div className={styles.textGradient()}>
