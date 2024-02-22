@@ -37,6 +37,10 @@ export const technologyIconMap: Record<string, string> = {
   Java: 'devicon-java-plain',
   'C programming': 'devicon-c-plain',
   SCSS: 'devicon-sass-original',
+  Rust: 'devicon-rust-plain',
+  Bun: 'devicon-bun-plain',
+  'GitHub Actions': 'devicon-githubactions-plain',
+  'GitHub Pages': 'devicon-github-plain',
 }
 
 export function Keywords({ keywords }: Props) {

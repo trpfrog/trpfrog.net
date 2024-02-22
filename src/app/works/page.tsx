@@ -19,6 +19,7 @@ import { Keywords } from './Keywords'
 
 export type WorksFrontmatter = {
   title: string
+  subtitle?: string
   h2icon?: string
   image?: {
     path: string
