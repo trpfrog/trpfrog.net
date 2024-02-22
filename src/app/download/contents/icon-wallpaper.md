@@ -15,7 +15,7 @@ links:
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/icons/smartphone.png
   - text: 縦長 (1:2)
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/icons/iphonex.png
-date: 2019/6/24
+date: 2019-06-24
 ---
 
 PC用は2560×1600pxです。

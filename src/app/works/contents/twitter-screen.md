@@ -8,7 +8,7 @@ keywords:
   - Java
   - Swing
   - Twitter API
-date: 2020/11/23
+date: 2020-11-23
 links:
   GitHub (現在非公開): https://github.com/TrpFrog/twitter-screen
   ブログ記事: https://trpfrog.hateblo.jp/entry/twitter-screen

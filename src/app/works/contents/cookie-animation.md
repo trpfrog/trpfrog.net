@@ -6,7 +6,7 @@ image:
   height: 300
 keywords:
   - C programming
-date: 2020/2/12
+date: 2020-02-12
 links:
   GitHub: https://github.com/TrpFrog/CookieAnimation
   アニメーション (10.7MB): https://github.com/TrpFrog/CookieAnimation/blob/master/anim.gif

@@ -12,7 +12,7 @@ keywords:
   - Bun
   - GitHub Pages
   - GitHub Actions
-date: 2024/02/20
+date: 2024-02-20
 links:
   GitHub: https://github.com/trpfrog/uec-fulfilled
 ---

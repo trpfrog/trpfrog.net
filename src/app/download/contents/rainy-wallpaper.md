@@ -23,7 +23,7 @@ links:
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/iphonex.png
   - text: 縦長 (1:2, 背景のみ)
     href: https://res.cloudinary.com/trpfrog/download/wallpapers/rainy/iphonex_bkg.png
-date: 2019/6/23
+date: 2019-06-23
 ---
 
 PC用は右にかけて暗くなっていくグラデーションあり版があります。

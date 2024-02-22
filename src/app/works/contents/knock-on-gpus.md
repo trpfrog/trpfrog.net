@@ -11,7 +11,7 @@ keywords:
   - NVML
   - Maturin
   - GitHub Actions
-date: 2024/02/19
+date: 2024-02-19
 links:
   GitHub: https://github.com/trpfrog/knock-on-gpus
   PyPI: https://pypi.org/project/knock-on-gpus/
