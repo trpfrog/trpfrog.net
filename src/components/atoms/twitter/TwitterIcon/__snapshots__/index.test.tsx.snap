@@ -1,10 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TwitterIcon snapshot test 1`] = `
+exports[`TwitterIcon > snapshot test 1`] = `
 <DocumentFragment>
   <div
+    center=""
     class="icon"
-    style="background: url(/twitter-icon.png) no-repeat; background-position: center;"
+    no-repeat=""
+    style="background: url("
+    twitter-icon.png=""
   />
 </DocumentFragment>
 `;

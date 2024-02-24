@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "vitest/globals"
+    ],
     "allowJs": true,
     "baseUrl": ".",
     "skipLibCheck": true,
@@ -25,7 +28,7 @@
       ],
       "@blog/*": [
         "src/app/blog/*"
-      ],
+      ]
     },
     "plugins": [
       {

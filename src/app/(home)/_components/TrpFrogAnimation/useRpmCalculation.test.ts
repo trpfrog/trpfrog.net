@@ -35,7 +35,7 @@ describe('degreeDifference', () => {
 
 describe('useRpmCalculation', () => {
   test('fixed rpm', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const { result } = renderHook(() => useRpmCalculation(100000))
 
     const data = [
@@ -54,14 +54,14 @@ describe('useRpmCalculation', () => {
       { unixTime: 13000, degree: 30 },
     ]
     data.forEach(({ unixTime, degree }) => {
-      jest.spyOn(Date, 'now').mockReturnValue(unixTime)
+      vi.spyOn(Date, 'now').mockReturnValue(unixTime)
       act(() => result.current.pushDegree(degree))
     })
     expect(result.current.rpm).toBe(5)
   })
 
   test('unstable rpm', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const { result } = renderHook(() => useRpmCalculation(100000))
 
     const data = [
@@ -80,7 +80,7 @@ describe('useRpmCalculation', () => {
       { unixTime: 13000, degree: 30 },
     ]
     data.forEach(({ unixTime, degree }) => {
-      jest.spyOn(Date, 'now').mockReturnValue(unixTime)
+      vi.spyOn(Date, 'now').mockReturnValue(unixTime)
       act(() => result.current.pushDegree(degree))
     })
     expect(result.current.rpm).toBe(5)
