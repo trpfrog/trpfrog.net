@@ -1,0 +1,48 @@
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+  .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+.shiki .highlighted:not(.error):not(.warning) {
+  background-color: rgba(200, 200, 0, 0.15);
+}
+
+.shiki .highlighted.error {
+  background-color: rgba(255, 0, 0, 0.12);
+  box-shadow: inset 4px 0 0 0 #962525;
+}
+
+.shiki .highlighted.warning {
+  background-color: rgba(255, 200, 0, 0.2);
+  box-shadow: inset 4px 0 0 0 #ffcc00;
+}
+
+.shiki .diff.add {
+  position: relative;
+  background-color: rgba(100, 200, 0, 0.15);
+}
+
+.shiki .diff.add:before {
+  position: absolute;
+  left: 3px;
+  content: '+';
+  color: #37961b;
+}
+
+.shiki .diff.remove {
+  position: relative;
+  background-color: rgba(255, 0, 0, 0.15);
+  user-select: none;
+}
+
+.shiki .diff.remove:before {
+  position: absolute;
+  left: 3px;
+  content: '-';
+  color: #961b1b;
+}

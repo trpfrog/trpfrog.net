@@ -1,20 +1,21 @@
-'use client'
-
 import * as React from 'react'
 
-import { faClone } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light'
+import {
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationHighlight,
+} from '@shikijs/transformers'
 
-import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
-import { customPrismTheme } from '@/components/molecules/CodeBlock/customPrismTheme'
-import { registerLanguages } from '@/components/molecules/CodeBlock/languages'
-import { normalizeLangName } from '@/components/molecules/CodeBlock/normalizeLangName'
-import { useLineHighlight } from '@/components/molecules/CodeBlock/useLineHighlight'
+import { getHighlighter } from '@/components/molecules/CodeBlock/getHighlighter'
 
-import styles from './index.module.scss'
+import { normalizeLangName } from './normalizeLangName'
 
-registerLanguages()
+import './shiki-style.css'
+import { CopyButton } from '@/components/atoms/CopyButton'
+
+import { tv } from '@/lib/tailwind/variants'
+
+import { addClassToHast } from 'shiki'
 
 export type CodeBlockProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,
@@ -30,45 +31,86 @@ export type CodeBlockProps = Omit<
   }
 }
 
-export function CodeBlock(props: CodeBlockProps) {
-  const { className = '', children, language = '', fileName, ...rest } = props
+const createStyles = tv({
+  slots: {
+    bar: [
+      'tw-flex tw-h-fit tw-w-full tw-items-center tw-justify-between',
+      'tw-rounded-t-lg tw-bg-trpfrog-500 tw-px-4 tw-py-1 dark:tw-bg-trpfrog-600',
+    ],
+    lang: ' tw-text-xs tw-font-bold tw-text-white',
+    codeWrapper: [
+      'tw-w-full tw-overflow-clip tw-overflow-x-scroll',
+      'tw-font-mono tw-text-sm sp:tw-text-xs',
+      'tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600',
+    ],
+    code: 'tw-w-full tw-min-w-max tw-py-4 sp:tw-py-3',
+    line: 'tw-inline-block tw-w-full tw-px-4 tw-leading-relaxed sp:tw-px-3',
+  },
+  variants: {
+    withBar: {
+      true: {
+        codeWrapper: 'tw-rounded-b-lg',
+        code: 'tw-py-3',
+      },
+      false: {
+        codeWrapper: 'tw-rounded-lg',
+      },
+    },
+  },
+})
 
-  const ref = useLineHighlight({
-    errorLines: props.highlightLines?.error,
-    warningLines: props.highlightLines?.warning,
-    infoLines: props.highlightLines?.info,
-  })
+export async function CodeBlock(props: CodeBlockProps) {
+  const {
+    className = '',
+    children,
+    language = 'plaintext',
+    fileName,
+    ...rest
+  } = props
+
+  const highlighter = await getHighlighter(language)
+  const withBar = language !== ''
+  const styles = createStyles({ withBar })
+
+  const codeHtml = highlighter.codeToHtml(
+    (props.children as string).trimEnd(),
+    {
+      lang: language,
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      cssVariablePrefix: '--shiki-',
+      transformers: [
+        transformerNotationDiff(),
+        transformerNotationHighlight(),
+        transformerNotationErrorLevel(),
+        {
+          line(hast) {
+            addClassToHast(hast, styles.line())
+          },
+          postprocess(html) {
+            return html.replace('class="shiki', `class="shiki ${styles.code()}`)
+          },
+        },
+      ],
+    },
+  )
 
   return (
     <div {...rest}>
-      {language != '' && (
-        <div className={styles.code_lang_wrapper}>
-          <span className={styles.code_lang}>
+      {withBar && (
+        <div className={styles.bar()}>
+          <span className={styles.lang()}>
             {fileName || normalizeLangName(language)}
           </span>
-          <ButtonWithTooltip
-            className={styles.copy_button}
-            onClick={() => {
-              navigator.clipboard
-                .writeText(children as string)
-                .catch(console.error)
-            }}
-            hoveredTooltipContent={'Copy'}
-            clickedTooltipContent={'Copied!'}
-          >
-            <FontAwesomeIcon icon={faClone} />
-          </ButtonWithTooltip>
+          <CopyButton copyContent={children as string} />
         </div>
       )}
-      <SyntaxHighlighter
-        language={language.toLowerCase()}
-        style={customPrismTheme}
-        className={styles.code_block}
-        codeTagProps={{ className: styles.lines, ref }}
-        wrapLines
-      >
-        {children as string}
-      </SyntaxHighlighter>
+      <div
+        dangerouslySetInnerHTML={{ __html: await codeHtml }}
+        className={styles.codeWrapper()}
+      />
     </div>
   )
 }

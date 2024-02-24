@@ -12,8 +12,7 @@ import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
-import { CodeBlock, CodeBlockProps } from '@/components/molecules/CodeBlock'
-import { parseDataLine } from '@/components/molecules/CodeBlock/parseDataLine'
+import { CodeBlock } from '@/components/molecules/CodeBlock'
 import * as Wrapper from '@/components/wrappers'
 
 import { twMerge } from '@/lib/tailwind/merge'
@@ -77,27 +76,8 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       ? className.replace('language-', '')
       : ''
 
-    const highlightLines: CodeBlockProps['highlightLines'] = {
-      error: [],
-      warning: [],
-      info: [],
-    }
-    if ('data-error' in props) {
-      highlightLines.error = parseDataLine(props['data-error'] as string)
-    }
-    if ('data-warning' in props) {
-      highlightLines.warning = parseDataLine(props['data-warning'] as string)
-    }
-    if ('data-info' in props) {
-      highlightLines.info = parseDataLine(props['data-info'] as string)
-    }
-
     return (
-      <CodeBlock
-        language={language}
-        fileName={fileName}
-        highlightLines={highlightLines}
-      >
+      <CodeBlock language={language} fileName={fileName}>
         {children as string}
       </CodeBlock>
     )
