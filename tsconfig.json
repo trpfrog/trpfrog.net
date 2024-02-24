@@ -6,9 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": [
-      "vitest/globals"
-    ],
     "allowJs": true,
     "baseUrl": ".",
     "skipLibCheck": true,
