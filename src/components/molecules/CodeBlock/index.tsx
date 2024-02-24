@@ -24,11 +24,6 @@ export type CodeBlockProps = Omit<
   children?: string
   language?: string
   fileName?: string
-  highlightLines?: {
-    error?: number[]
-    warning?: number[]
-    info?: number[]
-  }
 }
 
 const createStyles = tv({
@@ -60,13 +55,7 @@ const createStyles = tv({
 })
 
 export async function CodeBlock(props: CodeBlockProps) {
-  const {
-    className = '',
-    children,
-    language = 'plaintext',
-    fileName,
-    ...rest
-  } = props
+  const { children, language = 'plaintext', fileName, ...rest } = props
 
   const highlighter = await getHighlighter(language)
   const withBar = language !== ''
