@@ -33,7 +33,7 @@
     "@next/mdx": "^14.1.0",
     "@next/third-parties": "canary",
     "@prisma/client": "^5.9.1",
-    "@react-hookz/web": "^23.1.0",
+    "@react-hookz/web": "^24.0.4",
     "@tailwindcss/container-queries": "^0.1.1",
     "@vercel/edge-config": "^1.0.2",
     "@vercel/kv": "^1.0.1",
