@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TwitterHeader snapshot test 1`] = `
+exports[`TwitterHeader > snapshot test 1`] = `
 <DocumentFragment>
   <div
     class="header"
@@ -12,8 +12,18 @@ exports[`TwitterHeader snapshot test 1`] = `
         class="box "
       >
         <div
+          28=""
+          center=""
           class="icon"
-          style="background: url(https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28); background-position: center;"
+          https:=""
+          icons_gallery=""
+          image=""
+          q_auto=""
+          res.cloudinary.com=""
+          style="background: url("
+          trpfrog=""
+          upload=""
+          w_50=""
         />
         <a
           class="link"

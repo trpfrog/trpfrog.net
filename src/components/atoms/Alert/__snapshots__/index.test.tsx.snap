@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Alert snapshot test (caution) 1`] = `
+exports[`Alert > snapshot test (caution) 1`] = `
 <DocumentFragment>
   <div
     class="caution "
@@ -33,7 +33,7 @@ exports[`Alert snapshot test (caution) 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Alert snapshot test (frog) 1`] = `
+exports[`Alert > snapshot test (frog) 1`] = `
 <DocumentFragment>
   <div
     class="frog "
@@ -66,7 +66,7 @@ exports[`Alert snapshot test (frog) 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Alert snapshot test (info) 1`] = `
+exports[`Alert > snapshot test (info) 1`] = `
 <DocumentFragment>
   <div
     class="info "

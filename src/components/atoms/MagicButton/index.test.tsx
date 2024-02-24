@@ -29,14 +29,14 @@ describe('Button', () => {
     })
 
     test('should call onClick', () => {
-      const onClick = jest.fn()
+      const onClick = vi.fn()
       render(<MagicButton onClick={onClick}>test</MagicButton>)
       screen.getByTestId('button-component').click()
       expect(onClick).toBeCalledTimes(1)
     })
 
     test('should not call onClick when disabled', () => {
-      const onClick = jest.fn()
+      const onClick = vi.fn()
       render(
         <MagicButton onClick={onClick} disabled>
           test
@@ -121,7 +121,7 @@ describe('Button', () => {
     })
 
     test('should not call onClick', () => {
-      const onClick = jest.fn()
+      const onClick = vi.fn()
       render(
         <MagicButton onClick={onClick} disabled>
           test

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CodeBlock snapshot test 1`] = `
+exports[`CodeBlock > snapshot test 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -34,7 +34,7 @@ exports[`CodeBlock snapshot test 1`] = `
     </div>
     <pre
       class="code_block"
-      style="color: rgb(224, 224, 224); background: rgb(41, 41, 41); text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; margin: 0.5em 0px; overflow: auto; border-radius: 0.3em;"
+      style="color: #e0e0e0; background: #292929; text-align: left; white-space: pre; word-break: normal; word-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; margin: 0.5em 0px; overflow: auto; border-radius: 0.3em;"
     >
       <code
         class="lines"
@@ -52,7 +52,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             function
           </span>
@@ -61,13 +61,13 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(171, 218, 89);"
+            style="color: #abda59;"
           >
             fizzBuzz
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             (
           </span>
@@ -76,7 +76,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             :
           </span>
@@ -85,13 +85,13 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 213, 61);"
+            style="color: #ffd53d;"
           >
             number
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             )
           </span>
@@ -100,7 +100,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             {
           </span>
@@ -115,7 +115,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             if
           </span>
@@ -124,7 +124,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             (
           </span>
@@ -133,7 +133,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             %
           </span>
@@ -142,7 +142,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             15
           </span>
@@ -151,7 +151,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             ===
           </span>
@@ -160,13 +160,13 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             0
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             )
           </span>
@@ -175,7 +175,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             {
           </span>
@@ -190,7 +190,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             return
           </span>
@@ -199,7 +199,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 213, 61);"
+            style="color: #ffd53d;"
           >
             'FizzBuzz'
           </span>
@@ -214,7 +214,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             }
           </span>
@@ -223,7 +223,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             else
           </span>
@@ -232,7 +232,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             if
           </span>
@@ -241,7 +241,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             (
           </span>
@@ -250,7 +250,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             %
           </span>
@@ -259,7 +259,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             3
           </span>
@@ -268,7 +268,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             ===
           </span>
@@ -277,13 +277,13 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             0
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             )
           </span>
@@ -292,7 +292,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             {
           </span>
@@ -307,7 +307,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             return
           </span>
@@ -316,7 +316,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 213, 61);"
+            style="color: #ffd53d;"
           >
             'Fizz'
           </span>
@@ -331,7 +331,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             }
           </span>
@@ -340,7 +340,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             else
           </span>
@@ -349,7 +349,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             if
           </span>
@@ -358,7 +358,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             (
           </span>
@@ -367,7 +367,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             %
           </span>
@@ -376,7 +376,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             5
           </span>
@@ -385,7 +385,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             ===
           </span>
@@ -394,13 +394,13 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(168, 222, 255);"
+            style="color: #a8deff;"
           >
             0
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             )
           </span>
@@ -409,7 +409,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             {
           </span>
@@ -424,7 +424,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             return
           </span>
@@ -433,7 +433,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 213, 61);"
+            style="color: #ffd53d;"
           >
             'Buzz'
           </span>
@@ -448,7 +448,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             }
           </span>
@@ -457,7 +457,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             else
           </span>
@@ -466,7 +466,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             {
           </span>
@@ -481,7 +481,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(255, 107, 159);"
+            style="color: #ff6b9f;"
           >
             return
           </span>
@@ -490,25 +490,25 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             .
           </span>
           <span
             class="token token"
-            style="color: rgb(171, 218, 89);"
+            style="color: #abda59;"
           >
             toString
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             (
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             )
           </span>
@@ -523,7 +523,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             }
           </span>
@@ -538,7 +538,7 @@ exports[`CodeBlock snapshot test 1`] = `
           </span>
           <span
             class="token token"
-            style="color: rgb(153, 153, 153);"
+            style="color: #999999;"
           >
             }
           </span>

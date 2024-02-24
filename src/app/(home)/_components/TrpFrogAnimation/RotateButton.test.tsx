@@ -26,7 +26,7 @@ describe('RotateButton', () => {
   test.each(cases)(
     'onClick should be called when clicked (isRotated: %s, rotateDirection: %s)',
     ({ isRotated, rotateDirection }) => {
-      const onClick = jest.fn()
+      const onClick = vi.fn()
       render(
         <RotateButton
           isRotated={isRotated}
