@@ -2,9 +2,11 @@ import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const src =
-  'https://res.cloudinary.com/trpfrog/image/upload/w_1000/musicbanner-with-notext.png'
+const src = replaceWithLighterImageFormat(
+  'https://res.cloudinary.com/trpfrog/image/upload/w_1000/musicbanner-with-notext',
+)
 
 const styles = tv({
   slots: {

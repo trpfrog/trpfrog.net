@@ -1,8 +1,12 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
 
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const src = 'https://res.cloudinary.com/trpfrog/image/upload/w_500/IMG_6686.jpg'
+const src = replaceWithLighterImageFormat(
+  'https://res.cloudinary.com/trpfrog/image/upload/w_500/IMG_6686',
+)
+
 const styles = tv({
   slots: {
     wrapper: [

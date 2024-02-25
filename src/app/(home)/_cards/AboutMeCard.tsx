@@ -1,9 +1,11 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
 
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const image =
-  'https://res.cloudinary.com/trpfrog/image/upload/w_1000/blog/sugadaira-travel/42C94C5A-04C6-4DEC-9D41-2C87F87D79B7_1_105_c.jpg'
+const image = replaceWithLighterImageFormat(
+  'https://res.cloudinary.com/trpfrog/image/upload/w_1000/blog/sugadaira-travel/42C94C5A-04C6-4DEC-9D41-2C87F87D79B7_1_105_c.jpg',
+)
 
 export const attributes = [
   { icon: '🐸', iconName: '性別', text: '男性' },

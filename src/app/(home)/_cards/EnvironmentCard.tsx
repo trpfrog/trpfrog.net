@@ -1,9 +1,11 @@
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const src =
-  'https://res.cloudinary.com/trpfrog/image/upload/f_auto,c_limit,w_100,q_auto/environment/desk'
+const src = replaceWithLighterImageFormat(
+  'https://res.cloudinary.com/trpfrog/image/upload/f_auto,c_limit,w_100,q_auto/environment/desk',
+)
 
 const styles = tv({
   slots: {

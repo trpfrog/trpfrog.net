@@ -7,6 +7,7 @@ import { Devicon, hasDevicon } from '@/components/atoms/Devicon'
 
 import { MarkdownWithFrontmatter, readMarkdowns } from '@/lib/mdLoader'
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const workStyles = tv({
@@ -31,7 +32,9 @@ function Work(props: {
   className?: string
 }) {
   const { content, className } = props
-  const imageUrl = `https://res.cloudinary.com/trpfrog/image/upload/w_150/${content.metadata.image?.path}`
+  const imageUrl = replaceWithLighterImageFormat(
+    `https://res.cloudinary.com/trpfrog/image/upload/w_150/${content.metadata.image?.path}`,
+  )
 
   return (
     <div
