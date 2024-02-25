@@ -43,6 +43,7 @@
     "chokidar": "^3.6.0",
     "classnames": "^2.5.1",
     "cloudinary": "^2.0.1",
+    "consola": "^3.2.3",
     "dayjs": "^1.11.10",
     "devicon": "^2.16.0",
     "easymde": "^2.18.0",
