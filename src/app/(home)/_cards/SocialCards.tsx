@@ -1,9 +1,10 @@
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { tv } from 'tailwind-variants'
 
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
+
+import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {

@@ -11,6 +11,8 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
+import { env } from '@/env'
+
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 import * as Wrapper from '@/components/wrappers'
@@ -61,7 +63,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
 
     if (isValidExtraCodeBlockComponentName(language)) {
       const isDevClient =
-        process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
+        env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <OriginalMarkdownComponent
           componentName={language}

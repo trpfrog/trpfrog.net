@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants'
+import { tv } from '@/lib/tailwind/variants'
 
 export const cardButtonStyle = tv({
   base: [

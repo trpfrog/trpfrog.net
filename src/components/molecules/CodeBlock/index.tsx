@@ -5,17 +5,16 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
+import { addClassToHast } from 'shiki'
 
+import { CopyButton } from '@/components/atoms/CopyButton'
 import { getHighlighter } from '@/components/molecules/CodeBlock/getHighlighter'
+
+import { tv } from '@/lib/tailwind/variants'
 
 import { normalizeLangName } from './normalizeLangName'
 
 import './shiki-style.css'
-import { CopyButton } from '@/components/atoms/CopyButton'
-
-import { tv } from '@/lib/tailwind/variants'
-
-import { addClassToHast } from 'shiki'
 
 export type CodeBlockProps = Omit<
   React.ComponentPropsWithoutRef<'div'>,

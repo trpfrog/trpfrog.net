@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+import { env } from '@/env'
+
 import { createURL } from '@/lib/url'
 
 const FontInfoSchema = z.object({
@@ -15,6 +17,10 @@ export async function fetchFont(
   familyName: string,
   weight: string | number,
 ): Promise<ArrayBuffer> {
+  if (!env.GOOGLE_FONTS_API_KEY) {
+    throw new Error('GOOGLE_FONTS_API_KEY is not set')
+  }
+
   if (typeof weight === 'number') {
     weight = weight.toString()
   }
@@ -24,7 +30,7 @@ export async function fetchFont(
     'https://www.googleapis.com',
     {
       family: familyName,
-      key: process.env.GOOGLE_FONTS_API_KEY,
+      key: env.GOOGLE_FONTS_API_KEY,
     },
   )
 

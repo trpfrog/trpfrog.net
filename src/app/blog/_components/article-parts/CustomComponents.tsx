@@ -1,5 +1,7 @@
 import yaml from 'js-yaml'
 
+import { env } from '@/env'
+
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
@@ -35,7 +37,7 @@ export const useDefinedComponentParts = {
 
     const template = definedComponents[`${entry?.slug}/${name}`]
     if (!template) {
-      if (process.env.NODE_ENV === 'development') {
+      if (env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Component ${name} not found`} />
       } else {
         return <></>
@@ -46,7 +48,7 @@ export const useDefinedComponentParts = {
       return <ArticleRenderer toRender={rendered} entry={entry} />
     } catch (e) {
       console.error(e)
-      if (process.env.NODE_ENV === 'development') {
+      if (env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Something went wrong in "${name}"`} />
       } else {
         return <></>

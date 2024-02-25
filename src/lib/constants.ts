@@ -1,3 +1,5 @@
+import { env } from '@/env'
+
 export const LOREM_IPSUM = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
   'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -20,10 +22,10 @@ export const WALKING_FARTHEST = '70.5km'
 export const PRODUCTION_HOST = 'https://trpfrog.net'
 export const DEVELOPMENT_HOST = 'http://localhost:3000'
 export const CURRENT_HOST =
-  process.env.NODE_ENV === 'production' ? PRODUCTION_HOST : DEVELOPMENT_HOST
+  env.NODE_ENV === 'production' ? PRODUCTION_HOST : DEVELOPMENT_HOST
 export const HOST_URL =
-  process.env.NODE_ENV === 'production'
-    ? `https://${process.env.VERCEL_URL || 'trpfrog.net'}`
+  env.NODE_ENV === 'production'
+    ? `https://${env.VERCEL_URL || 'trpfrog.net'}`
     : DEVELOPMENT_HOST
 
 export const DEFAULT_BLOG_THUMBNAIL =

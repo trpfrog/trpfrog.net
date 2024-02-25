@@ -4,6 +4,8 @@ import { LRUCache } from 'lru-cache'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
+import { env } from '@/env'
+
 import {
   HOST_URL,
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
@@ -25,7 +27,7 @@ export type TrpFrogImageGenerationResult = z.infer<
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
 const POST_CALLBACK_URL = createURL('/api/trpfrog-diffusion', HOST_URL, {
-  token: process.env.TRPFROG_ADMIN_KEY!,
+  token: env.TRPFROG_ADMIN_KEY,
 })
 
 const IMAGE_GENERATION_ENDPOINT =
@@ -37,7 +39,7 @@ const cache = new LRUCache<
 >({
   max: 1,
   // local TTL 3 minutes (KV's TTL is TRPFROG_DIFFUSION_UPDATE_HOURS)
-  ttl: process.env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
+  ttl: env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
 
   allowStale: true,
   noDeleteOnFetchRejection: true,
@@ -48,7 +50,7 @@ const cache = new LRUCache<
 async function getCache() {
   const key = TRPFROG_DIFFUSION_KV_KEY
   const record = await kv.get<TrpFrogImageGenerationResult>(key)
-  if (process.env.NODE_ENV === 'development') {
+  if (env.NODE_ENV === 'development') {
     return record as unknown as TrpFrogImageGenerationResult
   }
 
@@ -66,7 +68,7 @@ async function getCache() {
 
     await fetch(IMAGE_GENERATION_ENDPOINT, {
       headers: {
-        'X-Api-Token': process.env.TRPFROG_FUNCTIONS_SECRET!,
+        'X-Api-Token': env.TRPFROG_FUNCTIONS_SECRET!,
         'X-Callback-Url': POST_CALLBACK_URL,
       },
     }).catch(console.error)
@@ -116,7 +118,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const query = new URL(request.url).searchParams
-  if (query.get('token') !== process.env.TRPFROG_ADMIN_KEY) {
+  if (query.get('token') !== env.TRPFROG_ADMIN_KEY) {
     return NextResponse.json(
       {
         success: false,

@@ -1,10 +1,10 @@
 import { ComponentPropsWithRef } from 'react'
 
-import { tv, VariantProps } from 'tailwind-variants'
-
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
 import { AProps } from '@/components/wrappers/A'
+
+import { tv, VariantProps } from '@/lib/tailwind/variants'
 
 const styles = {
   base: tv({

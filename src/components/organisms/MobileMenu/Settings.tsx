@@ -1,7 +1,7 @@
 'use client'
-import { tv } from 'tailwind-variants'
-
 import { Input } from '@/components/wrappers'
+
+import { tv } from '@/lib/tailwind/variants'
 
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'

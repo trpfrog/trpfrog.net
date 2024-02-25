@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { tv } from 'tailwind-variants'
 
 import { A } from '@/components/wrappers'
 import { H2 } from '@/components/wrappers/H2'
+
+import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {

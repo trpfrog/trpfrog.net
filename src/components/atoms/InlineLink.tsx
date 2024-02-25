@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants'
-
 import { A, AProps } from '@/components/wrappers/A'
+
+import { tv } from '@/lib/tailwind/variants'
 
 export const inlineLinkStyle = tv({
   base: [

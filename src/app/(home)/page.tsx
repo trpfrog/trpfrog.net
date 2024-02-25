@@ -1,11 +1,11 @@
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-import { tv } from 'tailwind-variants'
 
 import * as cards from '@/app/(home)/_cards'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 
-import { TempTwitter } from './_components/TempTwitter'
+import { tv } from '@/lib/tailwind/variants'
+
 import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrogAnimation'
 import css from './page.module.css'
 
@@ -21,7 +21,6 @@ export default async function Index() {
     <>
       <TrpFrogAnimationFrame />
       <MainWrapper>
-        <TempTwitter />
         <div className={styles.grid({ className: css.layout })}>
           <div style={{ gridArea: 'about-me' }}>
             <cards.AboutMeCard />

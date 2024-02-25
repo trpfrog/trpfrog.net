@@ -7,7 +7,7 @@
   "ignorePatterns": [
     "./*"
   ],
-  "plugins": ["import", "unused-imports", "@typescript-eslint"],
+  "plugins": ["import", "unused-imports", "@typescript-eslint", "n"],
   "rules": {
     "@next/next/no-img-element": "off",
     "eol-last": [
@@ -32,6 +32,10 @@
           {
             "name": "tailwind-merge",
             "message": "Please import from @/lib/tailwind/merge instead."
+          },
+          {
+            "name": "tailwind-variants",
+            "message": "Please import from @/lib/tailwind/variants instead."
           }
         ]
       }
@@ -67,6 +71,7 @@
             "group": "external",
             "position": "before"
           },
+          { "pattern": "@/env", "group": "internal", "position": "before" },
           { "pattern": "@/app/**", "group": "internal", "position": "before" },
           { "pattern": "@/components/**", "group": "internal", "position": "before" },
           { "pattern": "@/data/**", "group": "internal", "position": "before" },
@@ -76,7 +81,8 @@
           { "pattern": "@blog/**", "group": "internal", "position": "before" }
         ]
       }
-    ]
+    ],
+    "n/no-process-env": "error"
   },
   "overrides": [
     {
