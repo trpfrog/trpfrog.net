@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 
-import { tv } from 'tailwind-variants'
-
 import { twMerge } from '@/lib/tailwind/merge'
+import { tv } from '@/lib/tailwind/variants'
 
 export const gridLayoutStyle = tv({
   base: [

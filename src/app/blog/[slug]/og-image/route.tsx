@@ -1,3 +1,4 @@
+import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
@@ -28,18 +29,17 @@ async function createImageResponseOptions() {
   }
 
   // load fonts
-  try {
-    for (const font of Object.values(ogFonts)) {
+  for (const font of Object.values(ogFonts)) {
+    try {
       const fontData = await fetchFont(font.name, font.weight)
       imageResponseOptions.fonts?.push({
         name: font.name,
         data: fontData,
         style: 'normal',
       })
+    } catch (e) {
+      consola.error('Failed to fetch font', e)
     }
-  } catch (e) {
-    console.error('Failed to fetch font')
-    console.error(e)
   }
 
   return imageResponseOptions

@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants'
+import { tv } from '@/lib/tailwind/variants'
 
 const createStyles = tv({
   slots: {

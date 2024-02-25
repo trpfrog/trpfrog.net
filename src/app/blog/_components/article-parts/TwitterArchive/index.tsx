@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import { z } from 'zod'
 
+import { env } from '@/env'
+
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import {
   TwitterArchived,
@@ -14,7 +16,7 @@ import { parseColonSeparatedDict } from '@blog/_lib/rawTextParser'
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
 function Fallback(props: { content: string; error: z.ZodError }) {
-  if (process.env.NODE_ENV === 'development') {
+  if (env.NODE_ENV === 'development') {
     return (
       <ErrorFallback title={'TwitterArchive: Error Occurred'}>
         {props.error.message}

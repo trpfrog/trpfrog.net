@@ -1,6 +1,8 @@
-import { BlogPost } from '@blog/_lib/blogPost'
+import { env } from '@/env'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { MagicButton } from '@/components/atoms/MagicButton'
+
+import { BlogPost } from '@blog/_lib/blogPost'
 
 type Props = {
   entry: BlogPost
@@ -21,7 +23,7 @@ export const PageTransferButton = (props: PageTransferProps) => {
     ? `/blog/preview/${entry.previewContentId}/${nextPage}`
     : `/blog/${entry.slug}/${nextPage}`
 
-  if (process.env.NODE_ENV === 'production') {
+  if (env.NODE_ENV === 'production') {
     href += '#article'
   }
 
@@ -45,7 +47,7 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
     entry.numberOfPages === 1 ||
     (doNotShowOnFirst &&
       entry.currentPage <= 1 &&
-      process.env.NODE_ENV === 'production')
+      env.NODE_ENV === 'production')
 
   return isHidden ? (
     <></>

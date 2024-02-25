@@ -8,7 +8,6 @@ import type { Metadata } from 'next'
 import { Viewport } from 'next'
 
 import { Toaster } from 'react-hot-toast'
-import { tv } from 'tailwind-variants'
 
 import { Favicon } from '@/components/head/Favicon'
 import { BackToTop } from '@/components/organisms/BackToTop'
@@ -21,6 +20,7 @@ import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
+import { tv } from '@/lib/tailwind/variants'
 
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'

@@ -4,8 +4,10 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 
+import { env } from '@/env'
+
 export async function openInCotEditor(slug: string) {
-  if (process.env.NODE_ENV !== 'development') {
+  if (env.NODE_ENV !== 'development') {
     throw new Error('Forbidden')
   }
 

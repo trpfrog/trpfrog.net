@@ -2,7 +2,8 @@ import { ComponentPropsWithoutRef } from 'react'
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { tv } from 'tailwind-variants'
+
+import { tv } from '@/lib/tailwind/variants'
 
 const style = tv({
   base: [

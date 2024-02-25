@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { tv } from 'tailwind-variants'
+import { tv } from '@/lib/tailwind/variants'
 
 const listStyles = tv({
   base: [

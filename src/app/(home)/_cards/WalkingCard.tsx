@@ -1,7 +1,7 @@
-import { tv } from 'tailwind-variants'
-
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
+
+import { tv } from '@/lib/tailwind/variants'
 
 const backgroundImage =
   'https://res.cloudinary.com/trpfrog/image/upload/w_600/blog/tokyotower-walking/20210324231643'

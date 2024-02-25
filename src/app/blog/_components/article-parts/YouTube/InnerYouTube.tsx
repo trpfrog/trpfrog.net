@@ -3,9 +3,10 @@
 import { memo } from 'react'
 
 import ReactPlayer from 'react-player/youtube'
-import { tv } from 'tailwind-variants'
 
 import { YouTube } from '@/components/organisms/YouTube'
+
+import { tv } from '@/lib/tailwind/variants'
 
 const youtubeStyles = tv({
   slots: {

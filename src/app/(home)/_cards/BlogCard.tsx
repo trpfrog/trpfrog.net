@@ -1,9 +1,9 @@
-import { tv, VariantProps } from 'tailwind-variants'
-
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { A } from '@/components/wrappers'
+
+import { tv, VariantProps } from '@/lib/tailwind/variants'
 
 import { BlogPost } from '@blog/_lib/blogPost'
 import { retrieveSortedBlogPostList } from '@blog/_lib/load'

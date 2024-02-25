@@ -1,10 +1,12 @@
 'use client'
+import { env } from '@/env'
+
+import { MagicButton } from '@/components/atoms/MagicButton'
+
 import { openInCotEditor } from '@blog/actions/openInCotEditor'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
-
 export function EditButton({ slug }: { slug: string }) {
-  return process.env.NODE_ENV === 'development' ? (
+  return env.NODE_ENV === 'development' ? (
     <MagicButton onClick={() => openInCotEditor(slug)}>編集する</MagicButton>
   ) : (
     <></>
