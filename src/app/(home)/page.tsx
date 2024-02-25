@@ -1,5 +1,3 @@
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
-
 import * as cards from '@/app/(home)/_cards'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'

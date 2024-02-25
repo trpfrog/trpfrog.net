@@ -4,6 +4,7 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 import { A } from '@/components/wrappers'
 
 import { tv, VariantProps } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 import { BlogPost } from '@blog/_lib/blogPost'
 import { retrieveSortedBlogPostList } from '@blog/_lib/load'
@@ -53,6 +54,7 @@ const createArticleStyle = tv({
 })
 
 function getCloudinaryResizedUrl(url: string, width = 600) {
+  url = replaceWithLighterImageFormat(url)
   if (/\/image\/upload\/.*\/blog/.test(url)) {
     return url.replace(
       /\/image\/upload\/.*\/blog/,

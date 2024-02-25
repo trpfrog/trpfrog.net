@@ -39,3 +39,9 @@ export function getTypedEntries<T extends Record<PropertyKey, unknown>>(
 ): [keyof T, T[keyof T]][] {
   return Object.entries(obj) as [keyof T, T[keyof T]][]
 }
+
+export function replaceWithLighterImageFormat(srcUrl: string) {
+  const expectedImageExt = /\.(png|jpe?g|webp|gif|avif)$/
+  srcUrl = srcUrl.replace(expectedImageExt, '')
+  return srcUrl + '.avif'
+}

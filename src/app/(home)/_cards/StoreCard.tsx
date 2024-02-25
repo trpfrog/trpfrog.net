@@ -2,9 +2,11 @@ import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
 import { twMerge } from '@/lib/tailwind/merge'
 import { tv } from '@/lib/tailwind/variants'
+import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const src =
-  'https://res.cloudinary.com/trpfrog/image/upload/w_300/trpfrog-store.jpg'
+const src = replaceWithLighterImageFormat(
+  'https://res.cloudinary.com/trpfrog/image/upload/w_300/trpfrog-store',
+)
 
 const styles = tv({
   slots: {
