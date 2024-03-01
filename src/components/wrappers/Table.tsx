@@ -16,6 +16,7 @@ const style = tv({
     '[&_th]:tw-px-2 [&_th]:tw-py-1 [&_th]:tw-font-bold',
     '[&_td]:tw-px-2 [&_td]:tw-py-1',
     '[&_td]:tw-bg-trpfrog-50 [&_th]:tw-bg-trpfrog-200',
+    'dark:[&_td]:tw-bg-trpfrog-800 dark:[&_th]:tw-bg-trpfrog-700',
   ],
 })
 
