@@ -53,6 +53,9 @@ const createStyles = tv({
       true: {
         code: 'tw-whitespace-pre-wrap',
       },
+      false: {
+        code: 'tw-w-full tw-min-w-max',
+      },
     },
   },
   defaultVariants: {
