@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import Balancer from 'react-wrap-balancer'
 
+import { env } from '@/env'
+
 import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
@@ -88,7 +90,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
           {/*<div id={styles.entry_top_buttons}>*/}
           {/*  <RichEntryButtons post={post} extended={true}/>*/}
           {/*</div>*/}
-          {addEditButtonOnDevMode && (
+          {addEditButtonOnDevMode && env.NODE_ENV === 'development' && (
             <p>
               <EditButton slug={post.slug} />
             </p>
