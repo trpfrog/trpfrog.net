@@ -24,12 +24,12 @@
 
 .shiki .diff.add {
   position: relative;
-  background-color: rgba(100, 200, 0, 0.15);
+  background-color: rgba(27, 200, 0, 0.15);
 }
 
 .shiki .diff.add:before {
   position: absolute;
-  left: 3px;
+  left: 4px;
   content: '+';
   color: #37961b;
 }
@@ -40,9 +40,13 @@
   user-select: none;
 }
 
+.shiki .diff.remove > * {
+  opacity: 0.5;
+}
+
 .shiki .diff.remove:before {
   position: absolute;
-  left: 3px;
+  left: 4px;
   content: '-';
-  color: #961b1b;
+  color: #c52323;
 }

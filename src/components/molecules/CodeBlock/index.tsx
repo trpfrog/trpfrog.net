@@ -5,10 +5,9 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast } from 'shiki'
+import { addClassToHast, bundledLanguages, codeToHtml } from 'shiki'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
-import { getHighlighter } from '@/components/molecules/CodeBlock/getHighlighter'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -37,7 +36,7 @@ const createStyles = tv({
       'tw-font-mono tw-text-sm sp:tw-text-xs',
       'tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600',
     ],
-    code: 'tw-w-full tw-min-w-max tw-py-4 sp:tw-py-3',
+    code: 'tw-py-4 sp:tw-py-3',
     line: 'tw-inline-block tw-w-full tw-px-4 tw-leading-relaxed sp:tw-px-3',
   },
   variants: {
@@ -50,40 +49,55 @@ const createStyles = tv({
         codeWrapper: 'tw-rounded-lg',
       },
     },
+    wrap: {
+      true: {
+        code: 'tw-whitespace-pre-wrap',
+      },
+    },
+  },
+  defaultVariants: {
+    withBar: true,
+    wrap: false,
   },
 })
 
 export async function CodeBlock(props: CodeBlockProps) {
-  const { children, language = 'plaintext', fileName, ...rest } = props
+  let { children, language = 'plaintext', fileName, ...rest } = props
 
-  const highlighter = await getHighlighter(language)
-  const withBar = language !== ''
-  const styles = createStyles({ withBar })
+  const wrap = language.startsWith('wrap:')
+  if (wrap) {
+    language = language.replace('wrap:', '')
+  }
 
-  const codeHtml = highlighter.codeToHtml(
-    (props.children as string).trimEnd(),
-    {
-      lang: language,
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
-      cssVariablePrefix: '--shiki-',
-      transformers: [
-        transformerNotationDiff(),
-        transformerNotationHighlight(),
-        transformerNotationErrorLevel(),
-        {
-          line(hast) {
-            addClassToHast(hast, styles.line())
-          },
-          postprocess(html) {
-            return html.replace('class="shiki', `class="shiki ${styles.code()}`)
-          },
-        },
-      ],
+  const withBar = !language.startsWith('no-header:') && language !== ''
+  language = language.replace('no-header:', '')
+
+  if (!Object.keys(bundledLanguages).includes(language)) {
+    language = 'plaintext'
+  }
+  const styles = createStyles({ withBar, wrap })
+
+  const codeHtml = codeToHtml((props.children as string).trimEnd(), {
+    lang: language,
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
     },
-  )
+    cssVariablePrefix: '--shiki-',
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationErrorLevel(),
+      {
+        line(hast) {
+          addClassToHast(hast, styles.line())
+        },
+        postprocess(html) {
+          return html.replace('class="shiki', `class="shiki ${styles.code()}`)
+        },
+      },
+    ],
+  })
 
   return (
     <div {...rest}>

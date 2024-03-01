@@ -136,7 +136,12 @@ export function getMarkdownOptions(options?: {
     li: (props: any) => <Wrapper.Li {...props} />,
 
     a: (props: any) => (
-      <InlineLink openInNewTab={options?.openInNewTab} href={props.href}>
+      <InlineLink
+        openInNewTab={
+          props.href?.startsWith('javascript:') ? false : options?.openInNewTab
+        }
+        href={props.href}
+      >
         {props.children}
       </InlineLink>
     ),
