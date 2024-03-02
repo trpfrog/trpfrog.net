@@ -36,7 +36,7 @@ exports[`CodeBlock > snapshot test 1`] = `
       class="tw-w-full tw-overflow-clip tw-overflow-x-scroll tw-font-mono tw-text-sm sp:tw-text-xs tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600 tw-rounded-b-lg"
     >
       <pre
-        class="shiki sp:tw-py-3 tw-py-3 shiki-themes github-light github-dark"
+        class="shiki sp:tw-py-3 tw-py-3 tw-w-full tw-min-w-max shiki-themes github-light github-dark"
         style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8"
         tabindex="0"
       >
