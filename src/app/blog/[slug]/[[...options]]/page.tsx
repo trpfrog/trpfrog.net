@@ -11,6 +11,7 @@ import { BlogPost } from '@blog/_lib/blogPost'
 import { fetchBlogPost, retrieveSortedBlogPostList } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
+import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
@@ -87,28 +88,31 @@ const processSlug = async (slug: string, page?: string) => {
 export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
-  const { entry: post, relatedPosts } = await processSlug(slug, page)
+  const { entry, relatedPosts } = await processSlug(slug, page)
+
+  // TODO: コメントアウトするとなぜかビルドできなくなるので調査
+  await renderBlog(slug, page)
 
   return (
     <MainWrapper gridLayout className={styles.layout}>
-      <ArticleHeader post={post} />
+      <ArticleHeader post={entry} />
       <div className={styles.main_content}>
         <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
           {env.NODE_ENV === 'production' ? (
-            <BlogMarkdown entry={post} />
+            <BlogMarkdown entry={entry} />
           ) : (
             <DevBlogMarkdown slug={slug} page={page} />
           )}
         </div>
         <aside>
-          <ArticleSidebar post={post} />
+          <ArticleSidebar post={entry} />
         </aside>
       </div>
 
       <Block id={styles.entry_bottom_buttons}>
-        <EntryButtons post={post} />
+        <EntryButtons post={entry} />
       </Block>
-      <RelatedPosts tag={post.tags[0]} relatedPosts={relatedPosts} />
+      <RelatedPosts tag={entry.tags[0]} relatedPosts={relatedPosts} />
     </MainWrapper>
   )
 }
