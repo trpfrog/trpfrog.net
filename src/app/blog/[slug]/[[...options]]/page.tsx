@@ -11,7 +11,6 @@ import { BlogPost } from '@blog/_lib/blogPost'
 import { fetchBlogPost, retrieveSortedBlogPostList } from '@blog/_lib/load'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
-import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
@@ -42,7 +41,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
+  const { title, description } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -52,7 +51,7 @@ export async function generateMetadata({ params }: PageProps) {
       siteName: title,
       description,
       type: 'website',
-      images: [{ url: `/blog/${params.slug}/og-image` }],
+      images: [{ url: `/blog/${params.slug}/opengraph-image` }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -89,7 +88,6 @@ export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
   const { entry: post, relatedPosts } = await processSlug(slug, page)
-  const initialNode = await renderBlog(slug, page)
 
   return (
     <MainWrapper gridLayout className={styles.layout}>

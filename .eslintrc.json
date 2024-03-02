@@ -91,7 +91,7 @@
     },
     {
       "files": [
-        "src/app/**/{page,layout,route,loading,not-found}.{js,jsx,ts,tsx}", // Next.js
+        "src/app/**/{page,layout,route,loading,not-found,opengraph-image}.{js,jsx,ts,tsx}", // Next.js
         "*.stories.{js,jsx,ts,tsx}" // Storybook
       ],
       "rules": {
