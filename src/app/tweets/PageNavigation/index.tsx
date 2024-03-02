@@ -8,7 +8,7 @@ import styles from './index.module.scss'
 
 function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams ?? {})
+  const params = new URLSearchParams(Object.fromEntries(searchParams.entries()))
   params.set('p', props.pageNo + '')
   return (
     <button
