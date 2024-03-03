@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import { z } from 'zod'
 
-import { env } from '@/env'
-
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import {
   TwitterArchived,
@@ -12,6 +10,8 @@ import {
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseColonSeparatedDict } from '@blog/_lib/rawTextParser'
+
+import { env } from '@/env/server'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 

@@ -1,8 +1,8 @@
-import { env } from '@/env'
-
 import { MagicButton } from '@/components/atoms/MagicButton'
 
 import { BlogPost } from '@blog/_lib/blogPost'
+
+import { env } from '@/env/server'
 
 type Props = {
   entry: BlogPost

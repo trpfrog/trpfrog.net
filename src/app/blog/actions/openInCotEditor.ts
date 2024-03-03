@@ -4,7 +4,7 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 
-import { env } from '@/env'
+import { env } from '@/env/server'
 
 export async function openInCotEditor(slug: string) {
   if (env.NODE_ENV !== 'development') {

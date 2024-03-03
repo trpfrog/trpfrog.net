@@ -2,9 +2,9 @@
 
 import { UploadApiOptions, UploadApiResponse } from 'cloudinary'
 
-import { env } from '@/env'
-
 import { cloudinary } from '@/lib/cloudinary'
+
+import { env } from '@/env/server'
 
 // Promise wrapper for cloudinary.uploader.upload_stream
 function cloudinaryUploaderPromise(

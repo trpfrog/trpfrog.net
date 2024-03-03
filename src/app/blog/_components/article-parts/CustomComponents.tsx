@@ -1,11 +1,11 @@
 import yaml from 'js-yaml'
 
-import { env } from '@/env'
-
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
+
+import { env } from '@/env/server'
 
 const definedComponents: Record<string, Function> = {}
 

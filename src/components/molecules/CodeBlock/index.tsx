@@ -5,7 +5,12 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast, bundledLanguages, codeToHtml } from 'shiki'
+import {
+  addClassToHast,
+  bundledLanguages,
+  bundledThemes,
+  getHighlighter,
+} from 'shiki'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
 
@@ -64,43 +69,73 @@ const createStyles = tv({
   },
 })
 
-export async function CodeBlock(props: CodeBlockProps) {
-  let { children, language = 'plaintext', fileName, ...rest } = props
+const langAlias = {
+  txt: 'text',
+}
 
-  const wrap = language.startsWith('wrap:')
-  if (wrap) {
-    language = language.replace('wrap:', '')
-  }
+const getCustomHighlighter = React.cache(() =>
+  getHighlighter({
+    themes: Object.keys(bundledThemes),
+    langs: Object.keys(bundledLanguages),
+    langAlias,
+  }),
+)
 
-  const withBar = !language.startsWith('no-header:') && language !== ''
-  language = language.replace('no-header:', '')
-
-  if (!Object.keys(bundledLanguages).includes(language)) {
-    language = 'plaintext'
-  }
-  const styles = createStyles({ withBar, wrap })
-
-  const codeHtml = codeToHtml((props.children as string).trimEnd(), {
-    lang: language,
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-    cssVariablePrefix: '--shiki-',
-    transformers: [
-      transformerNotationDiff(),
-      transformerNotationHighlight(),
-      transformerNotationErrorLevel(),
-      {
-        line(hast) {
-          addClassToHast(hast, styles.line())
-        },
-        postprocess(html) {
-          return html.replace('class="shiki', `class="shiki ${styles.code()}`)
-        },
-      },
-    ],
+export function extractPrefixes(language: string) {
+  const prefixes = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
+    language = language.replace(prefix, '')
+    return prefix.replace(':', '')
   })
+  return { prefixes, language }
+}
+
+export function isValidLanguage(language: string): boolean {
+  // text and ansi are special languages
+  return [
+    ...Object.keys(bundledLanguages),
+    ...Object.keys(langAlias),
+    'text',
+    'ansi',
+  ].includes(language?.split(':').slice(-1)[0])
+}
+
+export async function CodeBlock(props: CodeBlockProps) {
+  let { children, language: rawLanguage = '', fileName, ...rest } = props
+
+  const { prefixes, language } = extractPrefixes(
+    isValidLanguage(rawLanguage) ? rawLanguage : 'text',
+  )
+
+  const withBar =
+    !prefixes.includes('no-header') && isValidLanguage(rawLanguage)
+
+  const styles = createStyles({ withBar, wrap: prefixes.includes('wrap') })
+
+  const highlighter = await getCustomHighlighter()
+  const codeHtml = highlighter.codeToHtml(
+    (props.children as string).trimEnd(),
+    {
+      lang: language,
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      cssVariablePrefix: '--shiki-',
+      transformers: [
+        transformerNotationDiff(),
+        transformerNotationHighlight(),
+        transformerNotationErrorLevel(),
+        {
+          line(hast) {
+            addClassToHast(hast, styles.line())
+          },
+          postprocess(html) {
+            return html.replace('class="shiki', `class="shiki ${styles.code()}`)
+          },
+        },
+      ],
+    },
+  )
 
   return (
     <div {...rest}>
@@ -113,7 +148,7 @@ export async function CodeBlock(props: CodeBlockProps) {
         </div>
       )}
       <div
-        dangerouslySetInnerHTML={{ __html: await codeHtml }}
+        dangerouslySetInnerHTML={{ __html: codeHtml }}
         className={styles.codeWrapper()}
       />
     </div>

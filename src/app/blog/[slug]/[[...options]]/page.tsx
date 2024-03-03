@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
 
-import { env } from '@/env'
-
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
@@ -13,6 +11,8 @@ import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
+
+import { env } from '@/env/server'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
@@ -42,7 +42,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
+  const { title, description } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -88,29 +88,31 @@ const processSlug = async (slug: string, page?: string) => {
 export default async function Index({ params: { slug, options } }: PageProps) {
   const page = options?.[0]
 
-  const { entry: post, relatedPosts } = await processSlug(slug, page)
-  const initialNode = await renderBlog(slug, page)
+  const { entry, relatedPosts } = await processSlug(slug, page)
+
+  // TODO: コメントアウトするとなぜかビルドできなくなるので調査
+  await renderBlog(slug, page)
 
   return (
     <MainWrapper gridLayout className={styles.layout}>
-      <ArticleHeader post={post} />
+      <ArticleHeader post={entry} />
       <div className={styles.main_content}>
         <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
           {env.NODE_ENV === 'production' ? (
-            <BlogMarkdown entry={post} />
+            <BlogMarkdown entry={entry} />
           ) : (
             <DevBlogMarkdown slug={slug} page={page} />
           )}
         </div>
         <aside>
-          <ArticleSidebar post={post} />
+          <ArticleSidebar post={entry} />
         </aside>
       </div>
 
       <Block id={styles.entry_bottom_buttons}>
-        <EntryButtons post={post} />
+        <EntryButtons post={entry} />
       </Block>
-      <RelatedPosts tag={post.tags[0]} relatedPosts={relatedPosts} />
+      <RelatedPosts tag={entry.tags[0]} relatedPosts={relatedPosts} />
     </MainWrapper>
   )
 }
