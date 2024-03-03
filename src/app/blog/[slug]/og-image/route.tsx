@@ -4,8 +4,8 @@ import { ImageResponseOptions, NextRequest } from 'next/server'
 
 import { fetchFont } from '@/lib/fetchFont'
 
-import { fetchArticle } from '@blog/[slug]/og-image/fetchArticle'
 import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
+import { fetchBlogPost, retrieveAllPostSlugs } from '@blog/_lib/load'
 
 import {
   OgAttribute,
@@ -20,7 +20,11 @@ import {
   OgWindow,
 } from './components'
 
-export const runtime = 'edge'
+export const dynamicParams = false
+export async function generateStaticParams() {
+  const slugs = await retrieveAllPostSlugs()
+  return slugs.map(slug => ({ slug }))
+}
 
 async function createImageResponseOptions() {
   const imageResponseOptions: ImageResponseOptions = {
@@ -53,11 +57,14 @@ type Context = {
 
 export async function GET(req: NextRequest, context: Context) {
   const slug = context.params.slug
-  const res = await fetchArticle(slug)
-  if (!res.success) {
-    return res.response
-  }
-  const { title, subtitle, thumbnail, tags, date } = res.data
+  const {
+    title,
+    subtitle,
+    thumbnail: _thumbnail,
+    tags,
+    date,
+  } = await fetchBlogPost(slug)
+  const thumbnail = _thumbnail && _thumbnail.replace(/\.webp$/, '.jpg')
 
   const imageResponseOptions = await createImageResponseOptions()
 
