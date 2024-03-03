@@ -1,9 +1,11 @@
+import consola from 'consola'
 import { ImageResponse } from 'next/og'
-import { ImageResponseOptions } from 'next/server'
+import { ImageResponseOptions, NextRequest } from 'next/server'
 
 import { fetchFont } from '@/lib/fetchFont'
 
-import { ogFonts } from '@blog/[slug]/og-image/variables'
+import { fetchArticle } from '@blog/[slug]/og-image/fetchArticle'
+import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
 
 import {
   OgAttribute,
@@ -16,27 +18,28 @@ import {
   OgTrpFrogIcon,
   OgWhiteBackground,
   OgWindow,
-} from './og-image/components'
-import { fetchArticle } from './og-image/fetchArticle'
-export { ogpImageSize as size } from './og-image/variables'
+} from './components'
 
 export const runtime = 'edge'
 
-export const contentType = 'image/png'
-
 async function createImageResponseOptions() {
   const imageResponseOptions: ImageResponseOptions = {
+    ...ogpImageSize,
     fonts: [],
   }
 
   // load fonts
   for (const font of Object.values(ogFonts)) {
-    const fontData = await fetchFont(font.name, font.weight)
-    imageResponseOptions.fonts?.push({
-      name: font.name,
-      data: fontData,
-      style: 'normal',
-    })
+    try {
+      const fontData = await fetchFont(font.name, font.weight)
+      imageResponseOptions.fonts?.push({
+        name: font.name,
+        data: fontData,
+        style: 'normal',
+      })
+    } catch (e) {
+      consola.error('Failed to fetch font', e)
+    }
   }
 
   return imageResponseOptions
@@ -48,7 +51,7 @@ type Context = {
   }
 }
 
-export default async function Image(context: Context) {
+export async function GET(req: NextRequest, context: Context) {
   const slug = context.params.slug
   const res = await fetchArticle(slug)
   if (!res.success) {

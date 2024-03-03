@@ -42,7 +42,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description } = await fetchBlogPost(params.slug)
+  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps) {
       siteName: title,
       description,
       type: 'website',
-      images: [{ url: `/blog/${params.slug}/opengraph-image` }],
+      images: [{ url: `/blog/${params.slug}/og-image` }],
     },
     twitter: {
       card: 'summary_large_image',
