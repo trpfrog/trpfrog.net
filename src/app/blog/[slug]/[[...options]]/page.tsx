@@ -42,7 +42,7 @@ export async function generateStaticParams({
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description, thumbnail } = await fetchBlogPost(params.slug)
+  const { title, description } = await fetchBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
