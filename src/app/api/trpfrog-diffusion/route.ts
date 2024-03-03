@@ -4,14 +4,14 @@ import { LRUCache } from 'lru-cache'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
-import { env } from '@/env'
-
 import {
   HOST_URL,
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
 import { createURL } from '@/lib/url'
+
+import { env } from '@/env/server'
 
 const TrpFrogImageGenerationResultSchema = z.object({
   generatedTime: z.number(),

@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-import { env } from '@/env'
-
 import { createURL } from '@/lib/url'
+
+import { env } from '@/env/server'
 
 const FontInfoSchema = z.object({
   items: z

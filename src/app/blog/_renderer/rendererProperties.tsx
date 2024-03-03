@@ -11,8 +11,6 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
-import { env } from '@/env'
-
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 import * as Wrapper from '@/components/wrappers'
@@ -28,6 +26,8 @@ import {
 import { BlogPost } from '@blog/_lib/blogPost'
 import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
 import styles from '@blog/_styles/blog.module.scss'
+
+import { env } from '@/env/server'
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return (props => {

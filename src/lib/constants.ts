@@ -1,4 +1,4 @@
-import { env } from '@/env'
+import { clientEnv } from '@/env/client'
 
 export const LOREM_IPSUM = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
@@ -23,8 +23,8 @@ export const PRODUCTION_ORIGIN = 'https://trpfrog.net'
 export const DEVELOPMENT_ORIGIN = 'http://localhost:3000'
 
 export const HOST_URL =
-  env.NODE_ENV === 'production'
-    ? `https://${env.VERCEL_URL || 'trpfrog.net'}`
+  clientEnv.NODE_ENV === 'production'
+    ? `https://${clientEnv.VERCEL_URL || 'trpfrog.net'}`
     : DEVELOPMENT_ORIGIN
 
 export const DEFAULT_BLOG_THUMBNAIL =

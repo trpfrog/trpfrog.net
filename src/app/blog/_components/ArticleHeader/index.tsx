@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import Balancer from 'react-wrap-balancer'
 
-import { env } from '@/env'
-
 import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
@@ -13,6 +11,8 @@ import { EntryButtons } from '@blog/[slug]/[[...options]]/_components/EntryButto
 import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
 import { BlogPost } from '@blog/_lib/blogPost'
+
+import { env } from '@/env/server'
 
 import styles from './index.module.scss'
 

@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
 
-import { env } from '@/env'
-
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
@@ -13,6 +11,8 @@ import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
+
+import { env } from '@/env/server'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'

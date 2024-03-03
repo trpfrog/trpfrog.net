@@ -1,6 +1,6 @@
 import { createClient } from 'microcms-js-sdk'
 
-import { env } from '@/env'
+import { env } from '@/env/server'
 
 const client = createClient({
   serviceDomain: 'trpfrog',
