@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 import { A } from '@/components/wrappers'
 
@@ -9,7 +10,7 @@ import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
 import { BlogPost } from '@blog/_lib/blogPost'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import { ShareSpan } from './ShareSpan'
 
@@ -53,16 +54,15 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       }}
       {...rest}
     >
-      <MagicButton href={'/blog'}>記事一覧</MagicButton>
+      <RichButton as={Link} href={'/blog'}>
+        記事一覧
+      </RichButton>
       <ShareSpan slug={post.slug}>
-        <MagicButton>ツイート</MagicButton>
+        <RichButton as="span">ツイート</RichButton>
       </ShareSpan>
-      <MagicButton
-        externalLink={true}
-        href={'https://github.com/TrpFrog/trpfrog.net/issues'}
-      >
+      <RichButton as={A} href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         訂正リクエスト
-      </MagicButton>
+      </RichButton>
     </div>
   )
 }

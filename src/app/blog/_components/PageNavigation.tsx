@@ -1,8 +1,7 @@
-import { MagicButton } from '@/components/atoms/MagicButton'
-
 import { BlogPost } from '@blog/_lib/blogPost'
 
 import { env } from '@/env/server'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 type Props = {
   entry: BlogPost
@@ -29,14 +28,14 @@ export const PageTransferButton = (props: PageTransferProps) => {
 
   return entry.isAll ? (
     <></>
-  ) : (
-    <MagicButton
-      href={href}
-      disabled={props.disabled}
-      data-page-transfer-to={nextPage}
-    >
+  ) : props.disabled ? (
+    <RichButton as="div" aria-disabled data-page-transfer-to={nextPage}>
       {buttonText}
-    </MagicButton>
+    </RichButton>
+  ) : (
+    <RichButton as="a" href={href} data-page-transfer-to={nextPage}>
+      {buttonText}
+    </RichButton>
   )
 }
 

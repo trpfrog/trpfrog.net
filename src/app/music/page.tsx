@@ -3,8 +3,9 @@ import { InlineLink } from '@/components/atoms/InlineLink'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
+import { A } from '@/components/wrappers'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'
@@ -22,9 +23,9 @@ export default function Music() {
           ありがとうございます！！！
         </p>
         <p>
-          <MagicButton externalLink={true} href="https://linkco.re/N4Z8hdvX">
+          <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
             購入・ストリーミング
-          </MagicButton>
+          </RichButton>
         </p>
         <Image
           src={'musicbanner'}
@@ -46,16 +47,18 @@ export default function Music() {
           僕は歌いません。(？)
         </p>
         <div>
-          <MagicButton
-            href={'https://musicpost.joysound.com/music/musicId:107765'}
+          <RichButton
+            as={A}
+            href="https://musicpost.joysound.com/music/musicId:107765"
           >
             楽曲詳細
-          </MagicButton>
-          <MagicButton
-            href={'https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1'}
+          </RichButton>
+          <RichButton
+            as={A}
+            href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1"
           >
             店舗検索
-          </MagicButton>
+          </RichButton>
         </div>
       </Block>
 
@@ -67,9 +70,9 @@ export default function Music() {
 
       <Block title={'フル音源'} h2icon={'robot'}>
         <p>各種音楽配信サイトで配信中！</p>
-        <MagicButton externalLink={true} href="https://linkco.re/N4Z8hdvX">
+        <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
           購入・ストリーミング
-        </MagicButton>
+        </RichButton>
         <p>YouTubeでも公開中！</p>
         <YouTube videoId="VO64Ih8c1yU" />
       </Block>

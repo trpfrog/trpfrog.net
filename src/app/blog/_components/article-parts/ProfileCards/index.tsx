@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { z } from 'zod'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
-import { Li, UnorderedList } from '@/components/wrappers'
+import { A, Li, UnorderedList } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
 
@@ -11,7 +11,7 @@ import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import styles from './index.module.scss'
 
@@ -110,9 +110,9 @@ export const profileCardParts = {
           secondaryButtonText={'カード表示に切り替え'}
         />
         {twitterSearchLink !== '' && (
-          <MagicButton externalLink={true} href={twitterSearchLink}>
+          <RichButton as={A} openInNewTab href={twitterSearchLink}>
             当日の同行者のツイートを見る
-          </MagicButton>
+          </RichButton>
         )}
       </>
     )

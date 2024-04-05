@@ -2,9 +2,10 @@
 
 import path from 'path'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 export function ReturnButton() {
   const pathname = usePathname()
@@ -13,6 +14,10 @@ export function ReturnButton() {
   if (basename.startsWith('legal')) {
     return <></>
   } else {
-    return <MagicButton href={'/legal'}>戻る</MagicButton>
+    return (
+      <RichButton as={Link} href={'/legal'}>
+        戻る
+      </RichButton>
+    )
   }
 }

@@ -1,14 +1,15 @@
 'use client'
 
-import { MagicButton } from '@/components/atoms/MagicButton'
-
 import { openInCotEditor } from '@blog/actions/openInCotEditor'
 
 import { clientEnv } from '@/env/client'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 export function EditButton({ slug }: { slug: string }) {
   return clientEnv.NODE_ENV === 'development' ? (
-    <MagicButton onClick={() => openInCotEditor(slug)}>編集する</MagicButton>
+    <RichButton as="button" onClick={() => openInCotEditor(slug)}>
+      編集する
+    </RichButton>
   ) : (
     <></>
   )

@@ -1,12 +1,15 @@
 import { memo } from 'react'
 
+import Link from 'next/link'
+
 import { Details } from '@/components/atoms/Details'
-import { MagicButton } from '@/components/atoms/MagicButton'
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { MobileMenuBkg } from '@/components/organisms/MobileMenu/MobileMenuBkg'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
 import { tv } from '@/lib/tailwind/variants'
+
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import { useToggleMenuCallback } from './hooks'
 import { Settings } from './Settings'
@@ -38,9 +41,9 @@ export const MobileMenu = memo(function MobileMenu() {
         <div className={styles.window()}>
           <div className={styles.links()} onClick={toggleMenu}>
             {NAVIGATION_LINKS.map(({ link, name }) => (
-              <MagicButton href={link} key={link}>
+              <RichButton as={Link} href={link} key={link}>
                 {name}
-              </MagicButton>
+              </RichButton>
             ))}
           </div>
           <Details summary="高度な設定" className="">

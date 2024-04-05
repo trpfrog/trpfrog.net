@@ -1,12 +1,14 @@
 import { Metadata } from 'next'
 
+import Link from 'next/link'
+
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
 import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 const NUMBER_OF_IMAGES = 33
 
@@ -51,7 +53,9 @@ export default function Index(context: PageProps) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <MagicButton href={'/icons'}>一覧に戻る</MagicButton>
+          <RichButton as={Link} href={'/icons'}>
+            一覧に戻る
+          </RichButton>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

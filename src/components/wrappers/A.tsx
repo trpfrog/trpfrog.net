@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useMemo } from 'react'
 
 import Link from 'next/link'
+import { match, P } from 'ts-pattern'
 
 import { isInternalLink } from '@/lib/isInternalLink'
 
@@ -14,16 +15,13 @@ export const A = React.forwardRef<HTMLAnchorElement, AProps>(
     const { openInNewTab: _openInNewTab, href = '', ...rest } = props
     const isInternal = isInternalLink(href)
 
-    let openInNewTab: boolean
-    if (_openInNewTab === 'external' || _openInNewTab == null) {
-      openInNewTab = !isInternal
-    } else if (_openInNewTab === 'always') {
-      openInNewTab = true
-    } else if (_openInNewTab === 'never') {
-      openInNewTab = false
-    } else {
-      openInNewTab = _openInNewTab
-    }
+    const openInNewTab = match(_openInNewTab)
+      .with(undefined, () => !isInternal)
+      .with('external', () => !isInternal)
+      .with('always', () => true)
+      .with('never', () => false)
+      .with(P.boolean, value => value)
+      .exhaustive()
 
     const openInNewTabProps = useMemo(
       () =>

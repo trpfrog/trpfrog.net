@@ -1,14 +1,16 @@
 import Image from 'next/legacy/image'
+import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
+
+const IB = ({ children }: any) => (
+  <span className="tw-inline-block">{children}</span>
+)
 
 export default function NotFound() {
-  const IB = ({ children }: any) => (
-    <span style={{ display: 'inline-block' }}>{children}</span>
-  )
   return (
     <MainWrapper gridLayout>
       <Title
@@ -34,7 +36,9 @@ export default function NotFound() {
             <IB>リンクが誤っている可能性があります。</IB>
           </p>
           <p>
-            <MagicButton href={'/'}>トップページに戻る</MagicButton>
+            <RichButton as={Link} href={'/'}>
+              トップページに戻る
+            </RichButton>
           </p>
         </div>
       </Title>

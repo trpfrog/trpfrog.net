@@ -1,12 +1,13 @@
 'use client'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { BlogPost } from '@blog/_lib/blogPost'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import { ArticleCard } from './ArticleCard'
 
@@ -34,18 +35,18 @@ export const RelatedPosts = ({
         {/* PC */}
         {relatedPosts.length > 6 && (
           <div style={{ textAlign: 'center' }} className="sp:tw-hidden">
-            <MagicButton href={'/blog/tags/' + tag}>
+            <RichButton as={Link} href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
-            </MagicButton>
+            </RichButton>
           </div>
         )}
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
           <div style={{ textAlign: 'center' }} className="pc:tw-hidden">
-            <MagicButton href={'/blog/tags/' + tag}>
+            <RichButton as={Link} href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
-            </MagicButton>
+            </RichButton>
           </div>
         )}
       </>

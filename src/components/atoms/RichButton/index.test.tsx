@@ -1,66 +1,78 @@
 import { render, screen } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 
-import { MagicButton } from '.'
+import { A } from '@/components/wrappers'
+
+import { RichButton } from '.'
 
 describe('Button', () => {
   describe('div mode', () => {
     test('should render correctly', () => {
-      render(<MagicButton>test</MagicButton>)
+      render(<RichButton as="div">test</RichButton>)
       expect(screen.getByTestId('button-component').tagName).toBe('DIV')
     })
 
     test('snapshot testing', () => {
-      const { asFragment } = render(<MagicButton>test</MagicButton>)
+      const { asFragment } = render(<RichButton as="div">test</RichButton>)
       expect(asFragment()).toMatchSnapshot()
     })
   })
 
   describe('button mode', () => {
     test('should render correctly', () => {
-      render(<MagicButton onClick={() => {}}>test</MagicButton>)
+      render(
+        <RichButton as="button" onClick={() => {}}>
+          test
+        </RichButton>,
+      )
       expect(screen.getByTestId('button-component').tagName).toBe('BUTTON')
     })
 
     test('snapshot testing', () => {
       const { asFragment } = render(
-        <MagicButton onClick={() => {}}>test</MagicButton>,
+        <RichButton as="button" onClick={() => {}}>
+          test
+        </RichButton>,
       )
       expect(asFragment()).toMatchSnapshot()
     })
 
     test('should call onClick', () => {
       const onClick = vi.fn()
-      render(<MagicButton onClick={onClick}>test</MagicButton>)
-      screen.getByTestId('button-component').click()
-      expect(onClick).toBeCalledTimes(1)
-    })
-
-    test('should not call onClick when disabled', () => {
-      const onClick = vi.fn()
       render(
-        <MagicButton onClick={onClick} disabled>
+        <RichButton as="button" onClick={onClick}>
           test
-        </MagicButton>,
+        </RichButton>,
       )
       screen.getByTestId('button-component').click()
-      expect(onClick).toBeCalledTimes(0)
+      expect(onClick).toBeCalledTimes(1)
     })
   })
 
   describe('a mode', () => {
     test('should render correctly', () => {
-      render(<MagicButton href="/">test</MagicButton>)
+      render(
+        <RichButton as={A} href="/">
+          test
+        </RichButton>,
+      )
       expect(screen.getByTestId('button-component').tagName).toBe('A')
     })
 
     test('snapshot testing (internal link)', () => {
-      const { asFragment } = render(<MagicButton href="/">test</MagicButton>)
+      const { asFragment } = render(
+        <RichButton as={A} href="/">
+          test
+        </RichButton>,
+      )
       expect(asFragment()).toMatchSnapshot()
     })
 
     test('snapshot testing (external link)', () => {
       const { asFragment } = render(
-        <MagicButton href="https://github.com">test</MagicButton>,
+        <RichButton as={A} href="https://github.com">
+          test
+        </RichButton>,
       )
       expect(asFragment()).toMatchSnapshot()
     })
@@ -75,7 +87,11 @@ describe('Button', () => {
     test.each(internalLinks)(
       'should open internal link in current tab (%s)',
       href => {
-        render(<MagicButton href={href}>test</MagicButton>)
+        render(
+          <RichButton as={A} href={href}>
+            test
+          </RichButton>,
+        )
         expect(screen.getByTestId('button-component')).not.toHaveAttribute(
           'target',
           '_blank',
@@ -86,9 +102,9 @@ describe('Button', () => {
       'should open internal link in new tab if there is an externalLink attr (%s)',
       href => {
         render(
-          <MagicButton externalLink href={href}>
+          <RichButton as={A} openInNewTab href={href}>
             test
-          </MagicButton>,
+          </RichButton>,
         )
         expect(screen.getByTestId('button-component')).toHaveAttribute(
           'target',
@@ -105,42 +121,16 @@ describe('Button', () => {
     test.each(externalLinks)(
       'should open external link in new tab (%s)',
       href => {
-        render(<MagicButton href={href}>test</MagicButton>)
+        render(
+          <RichButton as={A} href={href}>
+            test
+          </RichButton>,
+        )
         expect(screen.getByTestId('button-component')).toHaveAttribute(
           'target',
           '_blank',
         )
       },
     )
-  })
-
-  describe('disabled', () => {
-    test('should render correctly', () => {
-      render(<MagicButton disabled>test</MagicButton>)
-      expect(screen.getByTestId('button-component')).toHaveAttribute('disabled')
-    })
-
-    test('should not call onClick', () => {
-      const onClick = vi.fn()
-      render(
-        <MagicButton onClick={onClick} disabled>
-          test
-        </MagicButton>,
-      )
-      screen.getByTestId('button-component').click()
-      expect(onClick).not.toHaveBeenCalled()
-    })
-
-    test('should not jump to /', () => {
-      render(
-        <MagicButton href="/" disabled>
-          test
-        </MagicButton>,
-      )
-      expect(screen.getByTestId('button-component')).toHaveAttribute(
-        'href',
-        '/',
-      )
-    })
   })
 })

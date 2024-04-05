@@ -10,12 +10,13 @@ import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { A } from '@/components/wrappers'
 
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 export const metadata = {
   title: 'DLコンテンツ',
@@ -50,9 +51,9 @@ export default async function Index() {
               style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
             >
               {metadata.links.map(({ href, text }) => (
-                <MagicButton key={href} href={href}>
+                <RichButton as={A} key={href} href={href}>
                   {text}
-                </MagicButton>
+                </RichButton>
               ))}
             </div>
           </Block>

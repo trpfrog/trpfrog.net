@@ -8,11 +8,11 @@ import {
 } from '@/app/icon-maker/iconMakerHooks'
 
 import { Block } from '@/components/molecules/Block'
-import { Input } from '@/components/wrappers'
+import { A, Input } from '@/components/wrappers'
 
 import { createURL } from '@/lib/url'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import styles from './style.module.scss'
 
@@ -72,9 +72,9 @@ export function IconMakerApp() {
           />
         </p>
         <p>
-          <MagicButton externalLink={true} href={tweetLink}>
+          <RichButton as={A} href={tweetLink}>
             Tweet
-          </MagicButton>
+          </RichButton>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

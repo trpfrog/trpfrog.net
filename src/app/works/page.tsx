@@ -9,12 +9,13 @@ import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { A } from '@/components/wrappers'
 
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
@@ -64,13 +65,14 @@ export default async function Index() {
             >
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <MagicButton
-                    externalLink={true}
+                  <RichButton
+                    as={A}
+                    openInNewTab
                     key={linkTxt}
                     href={url as string}
                   >
                     {linkTxt}
-                  </MagicButton>
+                  </RichButton>
                 )
               })}
             </p>

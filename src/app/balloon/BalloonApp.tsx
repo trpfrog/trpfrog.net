@@ -8,7 +8,7 @@ import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
 
-import { MagicButton } from 'src/components/atoms/MagicButton'
+import { RichButton } from 'src/components/atoms/RichButton'
 
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
@@ -42,12 +42,13 @@ export function BalloonApp() {
         description={'風船を割ることができます。(？)'}
       >
         <p>
-          <MagicButton
+          <RichButton
+            as="button"
             onClick={() => setSoundEnabled(!isSoundEnabled)}
             style={{ marginRight: '10px' }}
           >
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
-          </MagicButton>
+          </RichButton>
           <label style={{ marginRight: '10px' }}>
             <Input
               type="number"
