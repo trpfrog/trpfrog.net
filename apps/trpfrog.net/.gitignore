@@ -1,0 +1,5 @@
+# blog draft
+posts/_*
+
+# prisma
+/src/prisma/migrations/

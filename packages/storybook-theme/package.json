@@ -1,0 +1,13 @@
+{
+  "name": "@trpfrog.net/storybook-theme",
+  "private": true,
+  "exports": {
+    ".": "./theme.ts"
+  },
+  "dependencies": {
+    "@storybook/theming": "^7.6.16"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@trpfrog.net/config-tailwind",
+  "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}

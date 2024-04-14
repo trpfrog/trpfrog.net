@@ -1,19 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules/
+.pnp/
 .pnp.js
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
@@ -39,17 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# blog draft
-/src/posts/_*
-
-# prisma
-/src/prisma/migrations/
-
 # eslint
 .eslintcache
 
 # storybook
-/storybook-static
+storybook-static/
 .env*.local
 
 # unused lock files
@@ -58,7 +52,9 @@ pnpm-lock.yaml
 yarn.lock
 
 # toolversions
-/.tool-versions
+.tool-versions
 
-
-/src/posts-backup
+# turborepo
+.turbo
+build/**
+dist/**

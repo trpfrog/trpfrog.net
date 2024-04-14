@@ -91,11 +91,18 @@
     },
     {
       "files": [
-        "src/app/**/{page,layout,route,loading,not-found,opengraph-image}.{js,jsx,ts,tsx}", // Next.js
-        "*.stories.{js,jsx,ts,tsx}" // Storybook
+        "apps/trpfrog.net/src/app/**/{page,layout,route,loading,not-found,opengraph-image}.{js,jsx,ts,tsx}", // Next.js
+        "*.stories.{js,jsx,ts,tsx}", // Storybook
+        "*.config.{js,ts}" // Config files
       ],
       "rules": {
         "no-restricted-exports": "off"
+      }
+    },
+    {
+      "files": ["*.config.{js,ts}"],
+      "rules": {
+        "n/no-process-env": "off"
       }
     }
   ]

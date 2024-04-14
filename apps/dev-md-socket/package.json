@@ -1,0 +1,21 @@
+{
+  "name": "@trpfrog.net/dev-md-socket",
+  "private": true,
+  "scripts": {
+    "dev": "bun run dev-server.ts",
+    "build": "tsc"
+  },
+  "module": "const.ts",
+  "type": "module",
+  "dependencies": {
+    "socket.io": "^4.7.4",
+    "socket.io-client": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@trpfrog.net/config-typescript": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
