@@ -1,0 +1,14 @@
+{
+  "name": "@trpfrog.net/constants",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*"
+  }
+}
