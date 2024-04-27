@@ -10,8 +10,7 @@ import { promises as fs } from 'fs'
 import * as path from 'path'
 
 import { cloudinary } from '@/lib/cloudinary'
-
-import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
+import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils.ts'
 
 const postsDir = path.join(process.cwd(), 'src/posts')
 

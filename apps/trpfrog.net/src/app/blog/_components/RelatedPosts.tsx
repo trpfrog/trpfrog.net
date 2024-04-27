@@ -1,23 +1,16 @@
 'use client'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { BlogPost } from '@trpfrog.net/posts'
 import Link from 'next/link'
 import { RichButton } from 'src/components/atoms/RichButton'
 
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
-import { BlogPost } from '@blog/_lib/blogPost'
-
 
 import { ArticleCard } from './ArticleCard'
 
-export const RelatedPosts = ({
-  tag,
-  relatedPosts,
-}: {
-  tag: string
-  relatedPosts: BlogPost[]
-}) => {
+export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts: BlogPost[] }) => {
   if (relatedPosts.length <= 0) {
     return <></>
   } else {

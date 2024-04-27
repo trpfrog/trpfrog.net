@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { BlogPost } from '@blog/_lib/blogPost'
+import { BlogPost } from '@trpfrog.net/posts'
 
 export type IsomorphicArticlePartsProps = {
   content: string

@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { BlogPost } from '@trpfrog.net/posts'
 import Balancer from 'react-wrap-balancer'
 
 import { Title } from '@/components/organisms/Title'
@@ -10,12 +11,10 @@ import { EditButton } from '@blog/[slug]/[[...options]]/_components/EditButton'
 import { EntryButtons } from '@blog/[slug]/[[...options]]/_components/EntryButtons'
 import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
-import { BlogPost } from '@blog/_lib/blogPost'
 
 import styles from './index.module.scss'
 
 import { env } from '@/env/server'
-
 
 type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
@@ -40,17 +39,12 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
       <Title
         className={`${styles.article_title_block} ${className}`}
         style={{
-          backgroundImage: post.thumbnail
-            ? `url(${post.thumbnail})`
-            : undefined,
+          backgroundImage: post.thumbnail ? `url(${post.thumbnail})` : undefined,
           ...style,
         }}
         {...rest}
       >
-        <div
-          className={styles.inner_title_block}
-          data-parent-has-thumbnail={!!post.thumbnail}
-        >
+        <div className={styles.inner_title_block} data-parent-has-thumbnail={!!post.thumbnail}>
           <h1>
             <Balancer>
               <ParseWithBudouX

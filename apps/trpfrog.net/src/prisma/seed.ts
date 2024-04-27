@@ -2,34 +2,50 @@ import fs from 'node:fs'
 import { homedir } from 'node:os'
 
 import { PrismaClient, Tweet, Media } from '@prisma/client'
+import { z } from 'zod'
 
-type NumberString = string
-type OriginalTweet = {
-  tweet: {
-    edit_info: any
-    retweeted: boolean
-    source: string
-    entities: {
-      user_mentions: {
-        name: string
-        screen_name: string
-        id_str: NumberString
-      }[]
-      media: OriginalMedia[]
-    }
-    display_text_range: NumberString[]
-    favorite_count: NumberString
-    id_str: NumberString
-    truncated: NumberString
-    retweet_count: NumberString
-    id: NumberString
-    possibly_sensitive: boolean
-    created_at: string
-    favorited: boolean
-    full_text: string
-    lang: string
-  }
-}
+const OriginalTweetSchema = z.object({
+  tweet: z.object({
+    edit_info: z.unknown(),
+    retweeted: z.boolean(),
+    source: z.string(),
+    entities: z.object({
+      user_mentions: z.array(
+        z.object({
+          name: z.string(),
+          screen_name: z.string(),
+          id_str: z.string(),
+        }),
+      ),
+      media: z.array(
+        z.object({
+          media_url_https: z.string(),
+          sizes: z.object({
+            large: z.object({
+              w: z.number(),
+              h: z.number(),
+            }),
+          }),
+          type: z.string(),
+          id_str: z.string(),
+        }),
+      ),
+    }),
+    display_text_range: z.array(z.string()),
+    favorite_count: z.string(),
+    id_str: z.string(),
+    truncated: z.string(),
+    retweet_count: z.string(),
+    id: z.string(),
+    possibly_sensitive: z.boolean(),
+    created_at: z.string(),
+    favorited: z.boolean(),
+    full_text: z.string(),
+    lang: z.string(),
+  }),
+})
+
+type OriginalTweet = z.infer<typeof OriginalTweetSchema>
 
 type OriginalMedia = {
   media_url_https: string
@@ -70,10 +86,7 @@ function simplifyTweet(tweet: OriginalTweet): [Tweet, Media[]] {
         screenName: 'TrpFrog',
       }
 
-  const source = sourceHTML.replace(
-    /<a href="(.+)" rel="nofollow">(.+)<\/a>/,
-    '$2',
-  )
+  const source = sourceHTML.replace(/<a href="(.+)" rel="nofollow">(.+)<\/a>/, '$2')
 
   const tweetRecord: Tweet = {
     id: id_str,
@@ -103,11 +116,9 @@ function fetchSimplifiedTweetsFromLocal(files: string[]): [Tweet[], Media[]] {
   let tweets: Tweet[] = []
   let medias: Media[] = []
   for (const fname of files) {
-    const jsLines = fs
-      .readFileSync(fname.replace('~', homedir()), 'utf8')
-      .split('\n')
+    const jsLines = fs.readFileSync(fname.replace('~', homedir()), 'utf8').split('\n')
     // REPLACE first line with '['
-    const jsons: OriginalTweet[] = JSON.parse('[' + jsLines.slice(1).join('\n'))
+    const jsons = OriginalTweetSchema.array().parse(JSON.parse('[' + jsLines.slice(1).join('\n')))
     for (const json of jsons) {
       const [tweet, media] = simplifyTweet(json)
       tweets.push(tweet)
@@ -154,10 +165,7 @@ async function main() {
 
   for (let i = 0; i < tweets.length; i += LIMIT_ROWS_PER_QUERY) {
     console.log(
-      `inserting ${i} - ${Math.min(
-        i + LIMIT_ROWS_PER_QUERY,
-        tweets.length,
-      )} / ${tweets.length}`,
+      `inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, tweets.length)} / ${tweets.length}`,
     )
     const tweetsChunk = tweets.slice(i, i + LIMIT_ROWS_PER_QUERY)
     await prisma.tweet.createMany({ data: tweetsChunk })
@@ -165,10 +173,7 @@ async function main() {
 
   for (let i = 0; i < medias.length; i += LIMIT_ROWS_PER_QUERY) {
     console.log(
-      `inserting ${i} - ${Math.min(
-        i + LIMIT_ROWS_PER_QUERY,
-        medias.length,
-      )} / ${medias.length}`,
+      `inserting ${i} - ${Math.min(i + LIMIT_ROWS_PER_QUERY, medias.length)} / ${medias.length}`,
     )
     const mediasChunk = medias.slice(i, i + LIMIT_ROWS_PER_QUERY)
     await prisma.media.createMany({ data: mediasChunk })

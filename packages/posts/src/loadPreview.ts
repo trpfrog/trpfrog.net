@@ -1,10 +1,8 @@
 import { z } from 'zod'
 
-import { microCMS } from '@/lib/microCMS'
-
-import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
-
-import { BlogPost } from './blogPost'
+import { BlogPost } from './blogPost.ts'
+import { BlogPostBuildOption, buildBlogPost } from './buildBlogPost.ts'
+import { microCMS } from './utils/microCMS.ts'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean
@@ -40,10 +38,7 @@ const MicroCMSBlogPostSchema = z.object({
  * @param contentId
  * @param option
  */
-export async function fetchPreviewBlogPost(
-  contentId: string,
-  option?: BlogPostBuildOption,
-) {
+export async function fetchPreviewBlogPost(contentId: string, option?: BlogPostBuildOption) {
   const data = await microCMS
     .get({
       endpoint: 'blog-preview',

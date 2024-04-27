@@ -1,4 +1,4 @@
-import { parseColonSeparatedList } from '@blog/_lib/rawTextParser'
+import { parseColonSeparatedList } from '@trpfrog.net/posts/parser'
 
 export type ConversationRecord = {
   speaker: string

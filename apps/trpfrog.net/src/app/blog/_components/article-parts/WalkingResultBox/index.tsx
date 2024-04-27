@@ -1,5 +1,6 @@
+import { parseColonSeparatedList } from '@trpfrog.net/posts/parser'
+
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseColonSeparatedList } from '@blog/_lib/rawTextParser'
 
 import styles from './index.module.scss'
 

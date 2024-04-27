@@ -10,7 +10,7 @@ export const horizontalImagesParts = {
     type ImageSource = { src: string; alt: string; title?: string }
     const imageSources: ImageSource[] = content
       .split('\n')
-      .filter(line => line.match(regex))
+      .filter(line => !!line.match(regex))
       .map(line => {
         const match = line.match(regex)!
         return {

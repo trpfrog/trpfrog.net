@@ -1,27 +1,21 @@
 import * as React from 'react'
 
+import { parseColonSeparatedDict } from '@trpfrog.net/posts/parser'
 import { z } from 'zod'
 
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
-import {
-  TwitterArchived,
-  TwitterArchivedProps,
-} from '@/components/organisms/TwitterArchived'
+import { TwitterArchived, TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseColonSeparatedDict } from '@blog/_lib/rawTextParser'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
 import { env } from '@/env/server'
 
-
 function Fallback(props: { content: string; error: z.ZodError }) {
   if (env.NODE_ENV === 'development') {
     return (
-      <ErrorFallback title={'TwitterArchive: Error Occurred'}>
-        {props.error.message}
-      </ErrorFallback>
+      <ErrorFallback title={'TwitterArchive: Error Occurred'}>{props.error.message}</ErrorFallback>
     )
   } else {
     console.error('\n```twitter-archived')

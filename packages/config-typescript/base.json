@@ -19,6 +19,7 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
+    "target": "ESNext",
     "lib": ["ESNext"],
     "types": ["vitest/globals"]
   },

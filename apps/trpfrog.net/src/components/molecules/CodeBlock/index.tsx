@@ -5,12 +5,7 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import {
-  addClassToHast,
-  bundledLanguages,
-  bundledThemes,
-  getHighlighter,
-} from 'shiki'
+import { addClassToHast, bundledLanguages, bundledThemes, getHighlighter } from 'shiki'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
 
@@ -20,10 +15,7 @@ import { normalizeLangName } from './normalizeLangName'
 
 import './shiki-style.css'
 
-export type CodeBlockProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
-  'children'
-> & {
+export type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string
   language?: string
   fileName?: string
@@ -82,7 +74,7 @@ const getCustomHighlighter = React.cache(() =>
 )
 
 export function extractPrefixes(language: string) {
-  const prefixes = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
+  const prefixes: string[] = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
     language = language.replace(prefix, '')
     return prefix.replace(':', '')
   })
@@ -91,12 +83,9 @@ export function extractPrefixes(language: string) {
 
 export function isValidLanguage(language: string): boolean {
   // text and ansi are special languages
-  return [
-    ...Object.keys(bundledLanguages),
-    ...Object.keys(langAlias),
-    'text',
-    'ansi',
-  ].includes(language?.split(':').slice(-1)[0])
+  return [...Object.keys(bundledLanguages), ...Object.keys(langAlias), 'text', 'ansi'].includes(
+    language?.split(':').slice(-1)[0],
+  )
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
@@ -106,51 +95,42 @@ export async function CodeBlock(props: CodeBlockProps) {
     isValidLanguage(rawLanguage) ? rawLanguage : 'text',
   )
 
-  const withBar =
-    !prefixes.includes('no-header') && isValidLanguage(rawLanguage)
+  const withBar = !prefixes.includes('no-header') && isValidLanguage(rawLanguage)
 
   const styles = createStyles({ withBar, wrap: prefixes.includes('wrap') })
 
   const highlighter = await getCustomHighlighter()
-  const codeHtml = highlighter.codeToHtml(
-    (props.children as string).trimEnd(),
-    {
-      lang: language,
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
-      cssVariablePrefix: '--shiki-',
-      transformers: [
-        transformerNotationDiff(),
-        transformerNotationHighlight(),
-        transformerNotationErrorLevel(),
-        {
-          line(hast) {
-            addClassToHast(hast, styles.line())
-          },
-          postprocess(html) {
-            return html.replace('class="shiki', `class="shiki ${styles.code()}`)
-          },
-        },
-      ],
+  const codeHtml = highlighter.codeToHtml((props.children as string).trimEnd(), {
+    lang: language,
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
     },
-  )
+    cssVariablePrefix: '--shiki-',
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationErrorLevel(),
+      {
+        line(hast) {
+          addClassToHast(hast, styles.line())
+        },
+        postprocess(html) {
+          return html.replace('class="shiki', `class="shiki ${styles.code()}`)
+        },
+      },
+    ],
+  })
 
   return (
     <div {...rest}>
       {withBar && (
         <div className={styles.bar()}>
-          <span className={styles.lang()}>
-            {fileName || normalizeLangName(language)}
-          </span>
+          <span className={styles.lang()}>{fileName || normalizeLangName(language)}</span>
           <CopyButton copyContent={children as string} />
         </div>
       )}
-      <div
-        dangerouslySetInnerHTML={{ __html: codeHtml }}
-        className={styles.codeWrapper()}
-      />
+      <div dangerouslySetInnerHTML={{ __html: codeHtml }} className={styles.codeWrapper()} />
     </div>
   )
 }

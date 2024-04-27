@@ -18,10 +18,7 @@ type BalloonColor = (typeof balloonColors)[number]
 
 export function useBalloonState(initialAmount: number, rewardId: string) {
   const createRandomColorArray = (n: number) => {
-    return Array.from(
-      Array(n),
-      () => balloonColors[Math.floor(Math.random() * 3)],
-    )
+    return Array.from(Array(n), () => balloonColors[Math.floor(Math.random() * 3)])
   }
 
   const { reward } = useReward(rewardId, 'confetti', {
@@ -35,7 +32,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
   })
 
   const [isBurstArray, setIsBurstArray] = useState<boolean[]>(
-    Array(initialAmount).fill(false),
+    Array.from({ length: initialAmount }, () => false),
   )
 
   const [balloonColorArray, setBalloonColorArray] = useState<BalloonColor[]>([])
@@ -51,10 +48,8 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
 
     updateAmount: (newAmount: number) => {
       if (newAmount > isBurstArray.length) {
-        isBurstArray.push(...Array(newAmount - isBurstArray.length).fill(false))
-        balloonColorArray.push(
-          ...createRandomColorArray(newAmount - balloonColorArray.length),
-        )
+        isBurstArray.push(...Array.from({ length: newAmount - isBurstArray.length }, () => false))
+        balloonColorArray.push(...createRandomColorArray(newAmount - balloonColorArray.length))
         setIsBurstArray([...isBurstArray])
         setBalloonColorArray([...balloonColorArray])
       }
@@ -63,9 +58,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
     onBurst: (onBurstProps: { index: number; currentAmount: number }) => {
       isBurstArray[onBurstProps.index] = true
       setIsBurstArray([...isBurstArray])
-      const isAllBalloonBurst = isBurstArray
-        .slice(0, onBurstProps.currentAmount)
-        .every(Boolean)
+      const isAllBalloonBurst = isBurstArray.slice(0, onBurstProps.currentAmount).every(Boolean)
       if (isAllBalloonBurst) {
         reward()
       }
@@ -73,11 +66,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
   }
 }
 
-export function BalloonArray({
-  n,
-  width = 80,
-  onBurst: userOnBurst,
-}: BalloonArrayProps) {
+export function BalloonArray({ n, width = 80, onBurst: userOnBurst }: BalloonArrayProps) {
   const height = width / 0.6
 
   const { updateAmount, isBurst, balloonColorArray, onBurst } = useBalloonState(

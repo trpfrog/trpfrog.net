@@ -1,3 +1,4 @@
+import { searchBlogPost, retrieveExistingAllTags } from '@trpfrog.net/posts'
 import Link from 'next/link'
 import { RichButton } from 'src/components/atoms/RichButton'
 
@@ -6,11 +7,6 @@ import { Title } from '@/components/organisms/Title'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
-import {
-  retrieveSortedBlogPostList,
-  retrieveExistingAllTags,
-} from '@blog/_lib/load'
-
 
 export async function generateStaticParams() {
   const tags = await retrieveExistingAllTags()
@@ -36,7 +32,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Index({ params }: Props) {
   const tag = decodeURIComponent(params!.tag)
-  const articles = await retrieveSortedBlogPostList(tag)
+  const articles = await searchBlogPost(tag)
 
   return (
     <>

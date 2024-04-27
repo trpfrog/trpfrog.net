@@ -1,5 +1,3 @@
-import process from 'node:process'
-
 import { z } from 'zod'
 
 const EndpointRecordSchema = z.object({
@@ -11,9 +9,7 @@ const EndpointRecordSchema = z.object({
 
 type EndpointRecord = z.infer<typeof EndpointRecordSchema>
 
-function createEndpointRecord<
-  const T extends Omit<EndpointRecord, 'development'>,
->(record: T) {
+function createEndpointRecord<const T extends Omit<EndpointRecord, 'development'>>(record: T) {
   const ret = {
     ...record,
     development: record.port ? `http://localhost:${record.port}` : null,
@@ -45,7 +41,7 @@ export const endpoints = Object.fromEntries(
   internalEndpoints.map(endpoint => [
     endpoint.name,
     // eslint-disable-next-line n/no-process-env
-    process.env.NODE_ENV === 'development' && endpoint.development
+    process?.env.NODE_ENV === 'development' && endpoint.development
       ? endpoint.development
       : endpoint.production,
   ]),

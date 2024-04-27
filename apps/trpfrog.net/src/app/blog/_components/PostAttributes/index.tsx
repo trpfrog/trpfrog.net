@@ -9,9 +9,8 @@ import {
   faWalking,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { BlogPost } from '@trpfrog.net/posts'
 import dayjs from 'dayjs'
-
-import { BlogPost } from '@blog/_lib/blogPost'
 
 import styles from './index.module.scss'
 
@@ -44,18 +43,8 @@ export const PostAttributes = ({ post }: Props) => {
     return (
       <time dateTime={d}>
         {Y}年<br />
-        <span
-          style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}
-        >
-          {M}
-        </span>
-        月
-        <span
-          style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}
-        >
-          {D}
-        </span>
-        日
+        <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{M}</span>月
+        <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{D}</span>日
       </time>
     )
   }
@@ -79,13 +68,10 @@ export const PostAttributes = ({ post }: Props) => {
       )}
 
       <Content icon={faClock} title={'読了予想時間'}>
-        <span className={styles.attr_num}>{Math.ceil(post.readTime / 60)}</span>{' '}
-        分
+        <span className={styles.attr_num}>{Math.ceil(post.readTime / 60)}</span> 分
       </Content>
 
-      {['徒歩', '登山', '旅行', 'ドライブ', '自転車'].some(e =>
-        post.tags.includes(e),
-      ) && (
+      {['徒歩', '登山', '旅行', 'ドライブ', '自転車'].some(e => post.tags.includes(e)) && (
         <Content icon={faImages} title={'写真の枚数'}>
           <span className={styles.attr_num}>{post.numberOfPhotos}</span> 枚
         </Content>

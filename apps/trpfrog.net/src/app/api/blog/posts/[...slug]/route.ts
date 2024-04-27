@@ -1,7 +1,6 @@
+import { fetchBlogPost } from '@trpfrog.net/posts'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { NextResponse } from 'next/server'
-
-import { fetchBlogPost } from '@blog/_lib/load'
 
 type GETProps = {
   params: {

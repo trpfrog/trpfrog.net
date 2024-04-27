@@ -1,9 +1,11 @@
-import { fetchBlogPost } from '@trpfrog.net/posts'
+import { fetchBlogPost, retrieveAllPostSlugs } from '@trpfrog.net/posts'
 import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
 import { fetchFont } from '@/lib/fetchFont'
+
+import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
 
 import {
   OgAttribute,
@@ -17,9 +19,12 @@ import {
   OgWhiteBackground,
   OgWindow,
 } from './components'
-import { ogFonts, ogpImageSize } from './variables'
 
-export const runtime = 'edge'
+export const dynamicParams = false
+export async function generateStaticParams() {
+  const slugs = await retrieveAllPostSlugs()
+  return slugs.map(slug => ({ slug }))
+}
 
 async function createImageResponseOptions() {
   const imageResponseOptions: ImageResponseOptions = {

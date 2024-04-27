@@ -1,17 +1,15 @@
-import type { ExtraCodeBlockComponentName } from '@blog/_components/OriginalMarkdownComponent'
+import { z } from 'zod'
 
-function isUtilityCodeBlock(name: string): boolean {
-  const ignoreTarget: string[] = [
-    'twitter',
-    'ignore-read-count',
-    'define-component',
-    'use-defined-component',
-    'use-effect',
-  ] satisfies ExtraCodeBlockComponentName[]
-  return !ignoreTarget.includes(name)
-}
+export const ReadTimeOptionSchema = z.object({
+  countingTargetCodeBlockNames: z.array(z.string()).default([]),
+})
 
-export function computeReadTimeSecondFrom(markdown: string) {
+export function computeReadTimeSecondFrom(
+  markdown: string,
+  _options?: z.input<typeof ReadTimeOptionSchema>,
+) {
+  const options = ReadTimeOptionSchema.parse(_options ?? {})
+
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
   const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')
   const linkRemoved = markdown.replace(linkRegex, '$1')
@@ -37,7 +35,7 @@ export function computeReadTimeSecondFrom(markdown: string) {
     if (line.startsWith('```')) {
       const cmd = line.replaceAll('`', '').trim()
       if (cmd.length > 0) {
-        if (isUtilityCodeBlock(cmd)) {
+        if (!options.countingTargetCodeBlockNames.includes(cmd)) {
           codeBlockStack.push(cmd)
         } else {
           codeBlockStack.push('code-block')
@@ -61,9 +59,7 @@ export function computeReadTimeSecondFrom(markdown: string) {
       } else if (content.includes('enable read-count')) {
         manualEnableWordCounting = true
       } else if (content.includes('add-read-time-seconds')) {
-        const sec = parseFloat(
-          content.replace('add-read-time-seconds', '').trim(),
-        )
+        const sec = parseFloat(content.replace('add-read-time-seconds', '').trim())
         addtionalSeconds += Number.isNaN(sec) ? 0 : sec
       }
       continue

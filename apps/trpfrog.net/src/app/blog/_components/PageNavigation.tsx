@@ -1,6 +1,5 @@
+import { BlogPost } from '@trpfrog.net/posts'
 import { RichButton } from 'src/components/atoms/RichButton'
-
-import { BlogPost } from '@blog/_lib/blogPost'
 
 import { env } from '@/env/server'
 
@@ -45,9 +44,7 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
 
   const isHidden =
     entry.numberOfPages === 1 ||
-    (doNotShowOnFirst &&
-      entry.currentPage <= 1 &&
-      env.NODE_ENV === 'production')
+    (doNotShowOnFirst && entry.currentPage <= 1 && env.NODE_ENV === 'production')
 
   return isHidden ? (
     <></>

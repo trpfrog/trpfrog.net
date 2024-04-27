@@ -1,11 +1,11 @@
 import { memo, CSSProperties } from 'react'
 
+import { BlogPost } from '@trpfrog.net/posts'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Block } from '@/components/molecules/Block'
 
 import { PageNavigation } from '@blog/_components/PageNavigation'
-import { BlogPost } from '@blog/_lib/blogPost'
 import styles from '@blog/_styles/blog.module.scss'
 
 import { ArticleRenderer } from './ArticleRenderer'

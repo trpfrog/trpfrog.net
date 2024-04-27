@@ -16,9 +16,7 @@ export function parseTitleAndBody(rawText: string): {
  * Parse a list of key-value pairs separated by colons (allow duplicate keys)
  * @param rawText
  */
-export function parseColonSeparatedList(
-  rawText: string,
-): { key: string; value: string }[] {
+export function parseColonSeparatedList(rawText: string): { key: string; value: string }[] {
   const lines = rawText.trim().split('\n')
   const list: { key: string; value: string }[] = []
 
@@ -41,9 +39,7 @@ export function parseColonSeparatedList(
  * Parse a list of key-value pairs separated by colons (disallow duplicate keys)
  * @param rawText
  */
-export function parseColonSeparatedDict(
-  rawText: string,
-): Record<string, string> {
+export function parseColonSeparatedDict(rawText: string): Record<string, string> {
   const list = parseColonSeparatedList(rawText)
 
   // remove duplicate keys

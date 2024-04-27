@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { retrieveAllPostSlugs } from '@blog/_lib/load'
+import { retrieveAllPostSlugs } from '@trpfrog.net/posts'
 
 export const dynamicParams = false
 

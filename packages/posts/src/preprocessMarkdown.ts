@@ -15,10 +15,7 @@ const parseFootnote = (content: string) => {
   content += tmp[tmp.length - 1]
 
   for (const i in footnotes) {
-    content += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(
-      2,
-      footnotes[i].length - 2,
-    )}`
+    content += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
   }
 
   return content
@@ -70,10 +67,7 @@ type PreprocessOption = {
  * @param markdown
  * @param options
  */
-export const preprocessMarkdown = (
-  markdown: string,
-  options: PreprocessOption,
-): string[] => {
+export const preprocessMarkdown = (markdown: string, options: PreprocessOption): string[] => {
   const pageBreakRegex = /<!--+ page break --+>/g
   const windowBreakRegex = /<!--+ window break --+>/g
   const beginHeadRegex = /<!--+ begin head --+>/g
@@ -88,24 +82,18 @@ export const preprocessMarkdown = (
   }
 
   if (!options.pageIdx1Indexed && !options.concatenateAllPages) {
-    throw new Error(
-      'Either pageIdx1Indexed or concatenateAllPages must be specified',
-    )
+    throw new Error('Either pageIdx1Indexed or concatenateAllPages must be specified')
   }
 
   // Replace <!-- page break --> with <!-- window break --> to concatenate all pages
   if (options.concatenateAllPages) {
     markdown = markdown
       .split(pageBreakRegex)
-      .map(
-        (content, idx) => `<span id="original-page-${idx + 1}"/>\n${content}`,
-      )
+      .map((content, idx) => `<span id="original-page-${idx + 1}"/>\n${content}`)
       .join('<!-- window break -->')
   }
 
-  const targetPageIdx = options.concatenateAllPages
-    ? 0
-    : (options.pageIdx1Indexed ?? 1) - 1
+  const targetPageIdx = options.concatenateAllPages ? 0 : (options.pageIdx1Indexed ?? 1) - 1
 
   const page = head + markdown.split(pageBreakRegex)[targetPageIdx]
 

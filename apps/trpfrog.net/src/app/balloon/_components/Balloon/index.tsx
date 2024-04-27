@@ -3,9 +3,10 @@
 import { Dispatch, useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
-import useSound from 'use-sound'
 
 import styles from './index.module.scss'
+
+import useSound from '@/../node_modules/use-sound'
 
 export const balloonColors = ['blue', 'green', 'orange'] as const
 

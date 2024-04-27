@@ -1,11 +1,14 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-import { BlogPostBuildOption, buildBlogPost } from '@blog/_lib/buildBlogPost'
+import { compareAsc, compareDesc } from 'date-fns'
+import { match } from 'ts-pattern'
+import { z } from 'zod'
 
-import { BlogPost } from './blogPost'
+import { BlogPost } from './blogPost.ts'
+import { BlogPostBuildOption, buildBlogPost } from './buildBlogPost.ts'
 
-const postsDirectory = path.join(process.cwd(), 'src', 'posts')
+const postsDirectory = path.join(process.cwd(), '..', '..', '..', 'posts')
 
 /**
  * Read markdown from slug (without extension)
@@ -33,37 +36,45 @@ function readAllMarkdownFileNames() {
   })
 }
 
-export async function fetchBlogPost(
-  slug: string,
-  option?: BlogPostBuildOption,
-): Promise<BlogPost> {
+/**
+ * Fetch blog post from slug
+ * @param slug
+ * @param option
+ */
+export async function fetchBlogPost(slug: string, option?: BlogPostBuildOption): Promise<BlogPost> {
   const fileContents = readMarkdownFromSlug(slug)
   return buildBlogPost(slug, fileContents, option)
 }
 
-export const retrieveSortedBlogPostList = async (tag: string = '') => {
+const SearchOptionSchema = z
+  .object({
+    tag: z.string().optional(),
+    order: z.enum(['asc', 'desc', 'none']).default('desc'),
+  })
+  .default({})
+
+/**
+ * Search blog post
+ * @param searchOptions
+ */
+export const searchBlogPost = async (
+  searchOptions?: z.input<typeof SearchOptionSchema>,
+): Promise<BlogPost[]> => {
+  const options = SearchOptionSchema.parse(searchOptions)
   const fileNames = readAllMarkdownFileNames()
   const allPostsData = fileNames
     .map(fileName => {
       const slug = fileName.replace(/\.mdx$/, '').replace(/\.md$/, '')
       const fileContents = readMarkdownFromSlug(slug)
-      return buildBlogPost(slug, fileContents, { noContentNeeded: true })
+      return buildBlogPost(slug, fileContents, { metadataOnly: true })
     })
-    .filter(blogPost => tag === '' || blogPost.tags.includes(tag))
+    .filter(blogPost => !options.tag || blogPost.tags.includes(options.tag))
 
-  const sorted: BlogPost[] = allPostsData.sort(({ date: _a }, { date: _b }) => {
-    const a = new Date(_a)
-    const b = new Date(_b)
-    if (a < b) {
-      return 1
-    } else if (a > b) {
-      return -1
-    } else {
-      return 0
-    }
-  })
-
-  return JSON.parse(JSON.stringify(sorted)) as BlogPost[]
+  return match(options.order)
+    .with('asc', () => allPostsData.toSorted((a, b) => compareAsc(a.date, b.date)))
+    .with('desc', () => allPostsData.toSorted((a, b) => compareDesc(a.date, b.date)))
+    .with('none', () => allPostsData)
+    .exhaustive()
 }
 
 export const retrieveAllPostSlugs = async (): Promise<string[]> => {
@@ -76,9 +87,8 @@ export async function retrieveExistingAllTags() {
   const nested = await Promise.all(
     fileNames
       .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
-      .map(slug =>
-        fetchBlogPost(slug, { noContentNeeded: true }).then(e => e.tags),
-      ),
+      .map(slug => fetchBlogPost(slug, { metadataOnly: true }).then(e => e.tags)),
   )
-  return [...new Set(nested.flat())]
+  const set = new Set(nested.flat())
+  return [...set]
 }

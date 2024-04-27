@@ -1,10 +1,9 @@
 import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages'
 import { ChatOpenAI } from '@langchain/openai'
+import { retrieveAllPostSlugs } from '@trpfrog.net/posts'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
-
-import { retrieveAllPostSlugs } from '@blog/_lib/load'
 
 const limiter = createRateLimit({
   interval: 60 * 1000 * 60, // 1 hour

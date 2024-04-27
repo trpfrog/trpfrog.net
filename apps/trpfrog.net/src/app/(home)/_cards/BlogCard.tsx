@@ -1,3 +1,6 @@
+import { BlogPost } from '@trpfrog.net/posts'
+import { searchBlogPost } from '@trpfrog.net/posts'
+
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
@@ -5,9 +8,6 @@ import { A } from '@/components/wrappers'
 
 import { tv, VariantProps } from '@/lib/tailwind/variants'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
-
-import { BlogPost } from '@blog/_lib/blogPost'
-import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 
 const createArticleStyle = tv({
   slots: {
@@ -56,10 +56,7 @@ const createArticleStyle = tv({
 function getCloudinaryResizedUrl(url: string, width = 600) {
   url = replaceWithLighterImageFormat(url)
   if (/\/image\/upload\/.*\/blog/.test(url)) {
-    return url.replace(
-      /\/image\/upload\/.*\/blog/,
-      `/image/upload/w_${width}/blog`,
-    )
+    return url.replace(/\/image\/upload\/.*\/blog/, `/image/upload/w_${width}/blog`)
   } else if (url.includes('/image/upload/')) {
     return url.replace('/image/upload/', `/image/upload/w_${width}/`)
   } else {
@@ -73,8 +70,7 @@ function ArticleRow(props: {
 }) {
   const { entry, variant } = props
   const articleStyle = createArticleStyle(variant)
-  const resizedThumbnailUrl =
-    entry.thumbnail && getCloudinaryResizedUrl(entry.thumbnail, 700)
+  const resizedThumbnailUrl = entry.thumbnail && getCloudinaryResizedUrl(entry.thumbnail, 700)
   return (
     <div
       key={entry.slug}
@@ -106,7 +102,7 @@ function ArticleRow(props: {
 }
 
 export async function BlogCard() {
-  const articles = await retrieveSortedBlogPostList()
+  const articles = await searchBlogPost({})
 
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)
 
@@ -116,13 +112,7 @@ export async function BlogCard() {
         {latestFeaturedArticles.map((article, i) => {
           const rightToLeft = i % 2 === 1
           const index = (i % 3) as 0 | 1 | 2
-          return (
-            <ArticleRow
-              key={article.slug}
-              entry={article}
-              variant={{ rightToLeft, index }}
-            />
-          )
+          return <ArticleRow key={article.slug} entry={article} variant={{ rightToLeft, index }} />
         })}
       </div>
     </TopCard>

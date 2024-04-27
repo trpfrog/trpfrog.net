@@ -3,6 +3,8 @@ import { Fragment } from 'react'
 import { Metadata } from 'next'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { BlogPost } from '@trpfrog.net/posts'
+import { searchBlogPost } from '@trpfrog.net/posts'
 import dayjs from 'dayjs'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
@@ -13,17 +15,14 @@ import { getTypedEntries } from '@/lib/utils'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
-import { BlogPost } from '@blog/_lib/blogPost'
-import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 import styles from '@blog/_styles/blog.module.scss'
 
 export const metadata = {
-  description:
-    'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。',
+  description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。',
 } satisfies Metadata
 
 export default async function Index() {
-  const articles = await retrieveSortedBlogPostList()
+  const articles = await searchBlogPost()
 
   // Get latest featured article
   const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {
@@ -60,9 +59,7 @@ export default async function Index() {
             <Fragment key={year as string}>
               <OnBodyHeading icon={faStar}>{year as string} 年</OnBodyHeading>
 
-              <div
-                style={{ display: 'flex', flexDirection: 'column', gap: 15 }}
-              >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                 {articles.map((entry: BlogPost) => (
                   <LiteArticleCard entry={entry} key={entry.slug} />
                 ))}

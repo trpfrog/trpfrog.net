@@ -1,11 +1,10 @@
 'use client'
 
-import { useRef, useDeferredValue, useEffect, useState } from 'react'
+import { useRef, useDeferredValue, useEffect, useState, ReactNode } from 'react'
 
 import { createClient as createMdWatchClient } from '@trpfrog.net/dev-md-socket'
 
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
-
 
 import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop'
 import { renderBlog } from '@blog/_renderer/renderBlog'
@@ -16,9 +15,7 @@ export type DevBlogMarkdownProps = {
 }
 
 export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
-  const [articleJSX, setArticleJSX] = useState<React.ReactNode>(
-    <LoadingBlock isFullHeight />,
-  )
+  const [articleJSX, setArticleJSX] = useState<ReactNode>(<LoadingBlock isFullHeight />)
 
   useEffect(() => {
     // initial render
@@ -26,24 +23,23 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
 
     const socket = createMdWatchClient()
 
-    socket.on('connect', () => {
-      console.log('Markdown server connected')
-    })
-
-    socket.on('disconnect', () => {
-      console.log('Markdown server disconnected')
-    })
-
-    // re-render on update
-    socket.on('update', (slug: string) => {
-      if (slug === props.slug) {
-        renderBlog(props.slug, props.page).then(setArticleJSX)
-      }
-    })
+    socket
+      ?.on('connect', () => {
+        console.log('Markdown server connected')
+      })
+      .on('disconnect', () => {
+        console.log('Markdown server disconnected')
+      })
+      // re-render on update
+      .on('update', (slug: string) => {
+        if (slug === props.slug) {
+          renderBlog(props.slug, props.page).then(setArticleJSX)
+        }
+      })
 
     // cleanup
     return () => {
-      socket.disconnect()
+      socket?.disconnect()
     }
   }, [props.page, props.slug])
 

@@ -58,3 +58,6 @@ bun.lockb
 .turbo
 build/**
 dist/**
+
+# posts
+posts/_*.md

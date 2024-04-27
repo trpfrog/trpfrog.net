@@ -1,13 +1,12 @@
 import { memo } from 'react'
 
-import { MDXComponents } from 'mdx/types'
+import { BlogPost } from '@trpfrog.net/posts'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 
-import { BlogPost } from '@blog/_lib/blogPost'
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
 export type MarkdownOptions = Omit<MDXRemoteProps, 'source' | 'components'> & {
-  components: MDXComponents
+  components: MDXRemoteProps['components']
 }
 
 export type ArticleRendererProps =
@@ -20,9 +19,7 @@ export type ArticleRendererProps =
       entry?: BlogPost
     }
 
-export const ArticleRenderer = memo(function ArticleRenderer(
-  props: ArticleRendererProps,
-) {
+export const ArticleRenderer = memo(function ArticleRenderer(props: ArticleRendererProps) {
   let options: MarkdownOptions
   if ('markdownOptions' in props) {
     options = props.markdownOptions

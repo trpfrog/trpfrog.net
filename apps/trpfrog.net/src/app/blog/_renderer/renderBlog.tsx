@@ -1,7 +1,7 @@
 'use server'
 
-import { BlogPost } from '@blog/_lib/blogPost'
-import { fetchBlogPost } from '@blog/_lib/load'
+import { BlogPost, fetchBlogPost } from '@trpfrog.net/posts'
+
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 export async function renderBlog(slug: string, page?: string) {

@@ -1,14 +1,13 @@
 import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { BlogPost } from '@trpfrog.net/posts'
+import { formatReadTime } from '@trpfrog.net/posts'
 import dayjs from 'dayjs'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { BlockLink } from '@/components/molecules/BlockLink'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
-
-import { BlogPost } from '@blog/_lib/blogPost'
-import { formatReadTime } from '@blog/_lib/formatReadTime'
 
 import styles from './index.module.scss'
 
@@ -23,11 +22,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
 
   return (
     <PlainBlock className={styles.wrapper}>
-      <BlockLink
-        href={'/blog/' + entry.slug}
-        prefetch={false}
-        className={styles.layout}
-      >
+      <BlockLink href={'/blog/' + entry.slug} prefetch={false} className={styles.layout}>
         {hasThumbnail ? (
           <img
             className={styles.image}
@@ -63,8 +58,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
               {[
                 `${readTimeMinutes} 分`,
                 entry.numberOfPhotos && `${entry.numberOfPhotos} 枚の写真`,
-                entry.updated &&
-                  `${dayjs(entry.updated).format('YYYY-MM-DD')} 更新`,
+                entry.updated && `${dayjs(entry.updated).format('YYYY-MM-DD')} 更新`,
               ]
                 .filter(Boolean)
                 .join(' ・ ')}

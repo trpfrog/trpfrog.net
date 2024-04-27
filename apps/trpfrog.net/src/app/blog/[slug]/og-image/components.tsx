@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { ogFonts, ogpImageSize } from '@blog/[slug]/og-image/variables'
+import { ogFonts, ogpImageSize } from './variables.ts'
 
 function styledDiv(style: React.CSSProperties) {
   return function Div({ children }: { children: React.ReactNode }) {
@@ -113,15 +113,8 @@ export function OgThumbnail({ src }: { src?: string }) {
   )
 }
 
-export function OgTrpFrogIcon({
-  size,
-  pos,
-}: {
-  size: number
-  pos: { x: number; y: number }
-}) {
-  const logoPath =
-    'https:/res.cloudinary.com/trpfrog/image/upload/v1666882672/trpfrogblog.png'
+export function OgTrpFrogIcon({ size, pos }: { size: number; pos: { x: number; y: number } }) {
+  const logoPath = 'https:/res.cloudinary.com/trpfrog/image/upload/v1666882672/trpfrogblog.png'
   const originalSize = { width: 3342, height: 778 }
   const width = (size / originalSize.height) * originalSize.width
 

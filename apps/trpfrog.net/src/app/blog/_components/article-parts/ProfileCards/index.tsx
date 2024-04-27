@@ -1,3 +1,4 @@
+import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
 import dayjs from 'dayjs'
 import { RichButton } from 'src/components/atoms/RichButton'
@@ -8,7 +9,6 @@ import { A, Li, UnorderedList } from '@/components/wrappers'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import styles from './index.module.scss'
@@ -22,11 +22,7 @@ const ProfileDataSchema = z.object({
 
 export type ProfileData = z.infer<typeof ProfileDataSchema>
 
-const CardFormat = ({
-  personalDataList,
-}: {
-  personalDataList: ProfileData[]
-}) => (
+const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <div className={styles.profile_card_grid}>
     {personalDataList.map((personalData: any) => (
       <div className={styles.profile_card} key={personalData.name}>
@@ -44,19 +40,13 @@ const CardFormat = ({
             {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
           </span>
         </div>
-        <div className={styles.description}>
-          {parseInlineMarkdown(personalData.description)}
-        </div>
+        <div className={styles.description}>{parseInlineMarkdown(personalData.description)}</div>
       </div>
     ))}
   </div>
 )
 
-const ListFormat = ({
-  personalDataList,
-}: {
-  personalDataList: ProfileData[]
-}) => (
+const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <UnorderedList>
     {personalDataList.map((personalData: any) => (
       <>
@@ -83,7 +73,7 @@ export const profileCardParts = {
   Component: ({ content, held }: { content: string; held?: string }) => {
     const personalDataList = parseObjectList(content)
       .map(e => ProfileDataSchema.safeParse(e))
-      .filter(e => e.success && e.data)
+      .filter(e => e.success)
       .map(e => {
         if (e.success) {
           return e.data

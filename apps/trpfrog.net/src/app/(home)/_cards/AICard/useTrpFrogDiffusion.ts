@@ -1,40 +1,43 @@
 import { useCallback, useMemo } from 'react'
 
 import useSWR from 'swr'
+import { match } from 'ts-pattern'
 
-import type { TrpFrogImageGenerationResult } from '@/app/api/trpfrog-diffusion/route'
+import {
+  TrpFrogImageGenerationResult,
+  TrpFrogImageGenerationResultSchema,
+} from '@/app/api/trpfrog-diffusion/route'
 
 export type TrpFrogDiffusionResult =
   | {
-      data: undefined
       status: 'loading' | 'error'
+      data: undefined
     }
   | {
-      data: TrpFrogImageGenerationResult
       status: 'ok'
+      data: TrpFrogImageGenerationResult
     }
 
-export function useTrpFrogDiffusion() {
+export function useTrpFrogDiffusion(): TrpFrogDiffusionResult {
   const fetcher = useCallback(
-    (url: string) => fetch(url).then(r => r.json()),
+    (url: string) =>
+      fetch(url)
+        .then(r => r.json())
+        .then(data => TrpFrogImageGenerationResultSchema.parse(data)),
     [],
   )
-  const { data, error, isLoading } = useSWR('/api/trpfrog-diffusion', fetcher)
+  const swrResult = useSWR('/api/trpfrog-diffusion', fetcher)
 
-  let status: TrpFrogDiffusionResult['status']
-  if (isLoading) {
-    status = 'loading'
-  } else if (error || !data || !data.base64) {
-    status = 'error'
-  } else {
-    status = 'ok'
-  }
+  const status: TrpFrogDiffusionResult['status'] = match(swrResult)
+    .with({ isLoading: true }, () => 'loading' as const)
+    .with({ data: undefined }, () => 'error' as const)
+    .otherwise(() => 'ok' as const)
 
-  return useMemo(
-    () => ({
-      status,
-      data,
-    }),
-    [status, data],
-  )
+  return useMemo(() => {
+    if (status === 'ok') {
+      return { data: swrResult.data!, status }
+    } else {
+      return { data: undefined, status }
+    }
+  }, [status, swrResult])
 }

@@ -2,11 +2,10 @@
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
+import { BlogPost } from '@trpfrog.net/posts'
 import { usePathname } from 'next/navigation'
 
 import { A } from '@/components/wrappers'
-
-import { BlogPost } from '@blog/_lib/blogPost'
 
 import { EntryButton } from './EntryButton'
 
@@ -29,8 +28,7 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
     text = '分割表示'
     icon = faFileLines
   } else {
-    url +=
-      post.currentPage === 1 ? '/all' : '/all#original-page-' + post.currentPage
+    url += post.currentPage === 1 ? '/all' : '/all#original-page-' + post.currentPage
     icon = faToiletPaper
     text = '全文表示'
   }

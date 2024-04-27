@@ -13,16 +13,14 @@ import {
 
 import { env } from '@/env/server'
 
-const TrpFrogImageGenerationResultSchema = z.object({
+export const TrpFrogImageGenerationResultSchema = z.object({
   generatedTime: z.number(),
   prompt: z.string(),
   translated: z.string(),
   base64: z.string(),
 })
 
-export type TrpFrogImageGenerationResult = z.infer<
-  typeof TrpFrogImageGenerationResultSchema
->
+export type TrpFrogImageGenerationResult = z.infer<typeof TrpFrogImageGenerationResultSchema>
 
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
@@ -33,10 +31,7 @@ const POST_CALLBACK_URL = createURL('/api/trpfrog-diffusion', HOST_URL, {
 const IMAGE_GENERATION_ENDPOINT =
   'https://asia-northeast1-trpfrog-net.cloudfunctions.net/update-trpfrog-diffusion'
 
-const cache = new LRUCache<
-  typeof TRPFROG_DIFFUSION_KV_KEY,
-  TrpFrogImageGenerationResult
->({
+const cache = new LRUCache<typeof TRPFROG_DIFFUSION_KV_KEY, TrpFrogImageGenerationResult>({
   max: 1,
   // local TTL 3 minutes (KV's TTL is TRPFROG_DIFFUSION_UPDATE_HOURS)
   ttl: env.NODE_ENV === 'development' ? undefined : 1000 * 60 * 3,
@@ -71,7 +66,7 @@ async function getCache() {
         'X-Api-Token': env.TRPFROG_FUNCTIONS_SECRET!,
         'X-Callback-Url': POST_CALLBACK_URL,
       },
-    }).catch(console.error)
+    })
   }
 
   // ignore type error because it happens only first time
@@ -130,9 +125,7 @@ export async function POST(request: Request) {
     )
   }
 
-  const result = TrpFrogImageGenerationResultSchema.safeParse(
-    await request.json(),
-  )
+  const result = TrpFrogImageGenerationResultSchema.safeParse(await request.json())
   if (!result.success) {
     return NextResponse.json(
       {

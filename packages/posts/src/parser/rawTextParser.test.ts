@@ -3,7 +3,7 @@ import {
   parseColonSeparatedList,
   parseColonSeparatedDict,
   parseObjectList,
-} from './rawTextParser'
+} from './rawTextParser.ts'
 
 describe('parseTitleAndBody', () => {
   it('should parse title and body', () => {
@@ -13,33 +13,25 @@ describe('parseTitleAndBody', () => {
   })
 
   it('should parse title and body with multiple lines', () => {
-    const { title, body } = parseTitleAndBody(
-      ['title', 'body', 'body', 'body'].join('\n'),
-    )
+    const { title, body } = parseTitleAndBody(['title', 'body', 'body', 'body'].join('\n'))
     expect(title).toBe('title')
     expect(body).toBe('body\nbody\nbody')
   })
 
   it('should parse title and body with empty lines', () => {
-    const { title, body } = parseTitleAndBody(
-      ['title', '', '', 'body', '', ''].join('\n'),
-    )
+    const { title, body } = parseTitleAndBody(['title', '', '', 'body', '', ''].join('\n'))
     expect(title).toBe('title')
     expect(body).toBe('body')
   })
 
   it('should parse title and body with leading and trailing empty lines', () => {
-    const { title, body } = parseTitleAndBody(
-      ['', '', 'title', '', '', 'body', '', ''].join('\n'),
-    )
+    const { title, body } = parseTitleAndBody(['', '', 'title', '', '', 'body', '', ''].join('\n'))
     expect(title).toBe('title')
     expect(body).toBe('body')
   })
 
   it('should not remove line breaks between body', () => {
-    const { title, body } = parseTitleAndBody(
-      ['title', '', 'body', '', '', 'body', ''].join('\n'),
-    )
+    const { title, body } = parseTitleAndBody(['title', '', 'body', '', '', 'body', ''].join('\n'))
     expect(title).toBe('title')
     expect(body).toBe('body\n\n\nbody')
   })
@@ -49,9 +41,7 @@ describe('parseTitleAndBody', () => {
 
 describe('parseColonSeparatedList', () => {
   it('should parse a list of key-value pairs', () => {
-    const parsedList = parseColonSeparatedList(
-      ['key1: value1', 'key2: value2'].join('\n'),
-    )
+    const parsedList = parseColonSeparatedList(['key1: value1', 'key2: value2'].join('\n'))
     expect(parsedList).toEqual([
       { key: 'key1', value: 'value1' },
       { key: 'key2', value: 'value2' },
@@ -93,9 +83,7 @@ describe('parseColonSeparatedList', () => {
 
   it('should parse a list with line breaks in value', () => {
     const parsedList = parseColonSeparatedList(
-      ['key1: value1', 'key2: value2 line1', '  line2  ', 'key3: value3'].join(
-        '\n',
-      ),
+      ['key1: value1', 'key2: value2 line1', '  line2  ', 'key3: value3'].join('\n'),
     )
     expect(parsedList).toEqual([
       { key: 'key1', value: 'value1' },
@@ -117,9 +105,7 @@ describe('parseColonSeparatedDict', () => {
   })
 
   it('should parse a list with duplicate keys and overwrite the values', () => {
-    const parsedDict = parseColonSeparatedDict(
-      'key1: value1\nkey1: value2\nkey2: value3',
-    )
+    const parsedDict = parseColonSeparatedDict('key1: value1\nkey1: value2\nkey2: value3')
     expect(parsedDict).toEqual({
       key1: 'value2',
       key2: 'value3',
@@ -127,9 +113,7 @@ describe('parseColonSeparatedDict', () => {
   })
 
   it('should parse a list with empty lines', () => {
-    const parsedDict = parseColonSeparatedDict(
-      '  \nkey1: value1\n  \nkey2: value2\n  \n',
-    )
+    const parsedDict = parseColonSeparatedDict('  \nkey1: value1\n  \nkey2: value2\n  \n')
     expect(parsedDict).toEqual({
       key1: 'value1',
       key2: 'value2',

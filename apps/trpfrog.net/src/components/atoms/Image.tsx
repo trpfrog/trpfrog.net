@@ -5,12 +5,10 @@ import { useState } from 'react'
 
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
+import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
 import { tv } from '@/lib/tailwind/variants'
 
-import { getPureCloudinaryPath } from '@blog/_lib/cloudinaryUtils'
-
-interface ImageProps
-  extends Omit<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
+interface ImageProps extends Omit<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
   src: string
   width: number
   height: number
@@ -19,10 +17,7 @@ interface ImageProps
 
 const createSpoilerStyles = tv({
   slots: {
-    blur: [
-      'tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full',
-      'tw-rounded-md tw-duration-500',
-    ],
+    blur: ['tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full', 'tw-rounded-md tw-duration-500'],
     button: [
       'tw-absolute tw-px-4 tw-py-2 tw-text-black',
       'tw-cursor-pointer tw-font-bold tw-backdrop-blur',
@@ -55,10 +50,7 @@ function ImageSpoiler() {
   const styles = createSpoilerStyles({ blur: spoilerState })
   return (
     <div className={styles.blur()}>
-      <button
-        className={styles.button()}
-        onClick={() => setSpoilerState(prv => !prv)}
-      >
+      <button className={styles.button()} onClick={() => setSpoilerState(prv => !prv)}>
         {spoilerState ? '画像を表示する' : '画像を隠す'}
       </button>
     </div>

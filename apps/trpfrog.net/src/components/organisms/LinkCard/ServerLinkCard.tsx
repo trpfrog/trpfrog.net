@@ -5,22 +5,17 @@ import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
 import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
-export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'a'>,
-  'children'
-> & {
+export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   href: string
   fallbackToClient?: boolean
   overrideProps?: Partial<LinkCardProps>
 }
 
-export const ServerLinkCard = memo(async function ServerLinkCard(
-  props: LinkCardProps,
-) {
+export const ServerLinkCard = memo(async function ServerLinkCard(props: LinkCardProps) {
   const { href, ...rest } = props
 
   try {
-    const result = await fetchOGP(href).catch(() => null)
+    const result = await fetchOGP(href).catch(() => undefined)
     if (!result) {
       throw new Error('OGP not found')
     }
@@ -40,15 +35,7 @@ export const ServerLinkCard = memo(async function ServerLinkCard(
     if (props.fallbackToClient) {
       return <ClientLinkCard href={href} {...rest} />
     } else {
-      return (
-        <LinkCard
-          title={href}
-          href={href}
-          description={href}
-          {...rest}
-          skeleton={false}
-        />
-      )
+      return <LinkCard title={href} href={href} description={href} {...rest} skeleton={false} />
     }
   }
 })

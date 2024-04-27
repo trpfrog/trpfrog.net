@@ -9,9 +9,7 @@ export function cloudinaryLoader({ src, width, quality }: any) {
   if (src.startsWith('/')) {
     src = src.substring(1)
   }
-  return `https://res.cloudinary.com/trpfrog/image/upload/${params.join(
-    ',',
-  )}/${src}`
+  return `https://res.cloudinary.com/trpfrog/image/upload/${params.join(',')}/${src}`
 }
 
 /**

@@ -1,12 +1,16 @@
 import { Metadata } from 'next'
 
+import {
+  formatReadTime,
+  fetchPreviewBlogPost,
+  createErrorArticle,
+  ErrorablePost,
+} from '@trpfrog.net/posts'
+
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
-import { formatReadTime } from '@blog/_lib/formatReadTime'
-import { fetchPreviewBlogPost } from '@blog/_lib/loadPreview'
-import { createErrorArticle, ErrorablePost } from '@blog/_lib/loadPreview'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 type Props = {

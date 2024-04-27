@@ -8,10 +8,7 @@ import { WaveText } from '@/components/atoms/WaveText'
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import {
-  TrpFrogDiffusionResult,
-  useTrpFrogDiffusion,
-} from './useTrpFrogDiffusion'
+import { TrpFrogDiffusionResult, useTrpFrogDiffusion } from './useTrpFrogDiffusion'
 
 const createStyles = tv({
   slots: {
@@ -26,8 +23,7 @@ const createStyles = tv({
       'tw-flex-1 tw-gap-1 tw-px-2 tw-text-center',
       'tw-flex tw-flex-col tw-items-center tw-justify-center',
     ],
-    english:
-      'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
+    english: 'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
     japanese: 'tw-text-balance tw-text-[11px]',
     aiGeneratedMsg: 'tw-text-[9px] tw-leading-none tw-text-gray-500',
     poweredBy: 'tw-text-center tw-text-[10px] tw-leading-none tw-text-gray-500',
@@ -76,7 +72,7 @@ export function IconFrame() {
     )
   }
 
-  if (status === 'error') {
+  if (status !== 'ok') {
     const styles = createStyles({ status })
     return (
       <figure className={styles.wrapper()}>
@@ -114,9 +110,7 @@ export function IconFrame() {
           </div>
           <div className={styles.poweredBy()}>
             Powered by{' '}
-            <InlineLink
-              href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}
-            >
+            <InlineLink href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>
               Prgckwb/trpfrog-diffusion
             </InlineLink>
           </div>

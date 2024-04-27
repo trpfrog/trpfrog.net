@@ -1,10 +1,8 @@
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
 import { z } from 'zod'
 
 // YYYY-MM-DD
-const BlogDateSchema = z.coerce.date().transform(date => {
-  return dayjs(date).format('YYYY-MM-DD')
-})
+const BlogDateSchema = z.coerce.date().transform(date => format(date, 'YYYY-MM-DD'))
 
 const BlogTagSchema = z
   .string()
@@ -30,16 +28,16 @@ export const blogFrontMatterSchema = z.object({
   thumbnail: z.string().url().optional(),
 })
 
-export type BlogFrontMatter = z.infer<typeof blogFrontMatterSchema>
+export const BlogPostSchema = blogFrontMatterSchema.extend({
+  content: z.array(z.string()),
+  slug: z.string(),
+  readTime: z.number(),
+  numberOfPhotos: z.number().optional(),
+  previewContentId: z.string().optional(),
+  isAll: z.boolean(),
+  currentPage: z.number(),
+  numberOfPages: z.number(),
+})
 
-export interface BlogPost extends BlogFrontMatter {
-  slug: string
-  readTime: number
-  numberOfPhotos?: number
-  held?: string
-  previewContentId?: string
-  isAll: boolean
-  currentPage: number
-  numberOfPages: number
-  content: string[]
-}
+export type BlogFrontMatter = z.infer<typeof blogFrontMatterSchema>
+export type BlogPost = z.infer<typeof BlogPostSchema>

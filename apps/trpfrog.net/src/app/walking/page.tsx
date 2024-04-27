@@ -1,13 +1,14 @@
 import { Metadata } from 'next'
 
+import { BlogPost } from '@trpfrog.net/posts'
+import { searchBlogPost } from '@trpfrog.net/posts'
+
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
-import { BlogPost } from '@blog/_lib/blogPost'
-import { retrieveSortedBlogPostList } from '@blog/_lib/load'
 
 import Belongings from './Belongings.mdx'
 
@@ -18,7 +19,7 @@ export const metadata = {
 
 export default async function Index() {
   const tag = '徒歩'
-  const articles = await retrieveSortedBlogPostList(tag)
+  const articles = await searchBlogPost(tag)
 
   return (
     <MainWrapper gridLayout>
