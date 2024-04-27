@@ -19,7 +19,8 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-    "lib": ["ESNext"]
+    "lib": ["ESNext"],
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules"]
 }
