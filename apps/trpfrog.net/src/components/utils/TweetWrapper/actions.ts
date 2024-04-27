@@ -1,6 +1,6 @@
 'use server'
 
-import { createURL } from '@/lib/url'
+import { createURL } from '@trpfrog.net/utils'
 
 export async function isTweetAvailable(id: string) {
   // any screenName is ok, so we use 'trpfrog' as a dummy

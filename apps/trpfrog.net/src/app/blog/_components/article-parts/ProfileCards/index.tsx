@@ -1,3 +1,4 @@
+import { createURL } from '@trpfrog.net/utils'
 import dayjs from 'dayjs'
 import { RichButton } from 'src/components/atoms/RichButton'
 import { z } from 'zod'
@@ -5,13 +6,10 @@ import { z } from 'zod'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { A, Li, UnorderedList } from '@/components/wrappers'
 
-import { createURL } from '@/lib/url'
-
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseObjectList } from '@blog/_lib/rawTextParser'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
-
 
 import styles from './index.module.scss'
 

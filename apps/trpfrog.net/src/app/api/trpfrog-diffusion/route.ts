@@ -1,3 +1,4 @@
+import { createURL } from '@trpfrog.net/utils'
 import { get } from '@vercel/edge-config'
 import { kv } from '@vercel/kv'
 import { LRUCache } from 'lru-cache'
@@ -9,7 +10,6 @@ import {
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
 } from '@/lib/constants'
-import { createURL } from '@/lib/url'
 
 import { env } from '@/env/server'
 

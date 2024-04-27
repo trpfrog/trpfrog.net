@@ -1,4 +1,4 @@
-import { createURL } from '@/lib/url'
+import { createURL } from './url.ts'
 
 describe('createURL', () => {
   test('with no params', () => {
@@ -23,5 +23,15 @@ describe('createURL', () => {
   test('with undefined params', () => {
     const url = createURL('/foo', 'https://example.com', { bar: undefined })
     expect(url).toBe('https://example.com/foo')
+  })
+
+  test('with hash', () => {
+    const url = createURL('/foo', 'https://example.com', null, 'hash')
+    expect(url).toBe('https://example.com/foo#hash')
+  })
+
+  test('with hash and params', () => {
+    const url = createURL('/foo', 'https://example.com', { bar: 'baz' }, 'hash')
+    expect(url).toBe('https://example.com/foo?bar=baz#hash')
   })
 })

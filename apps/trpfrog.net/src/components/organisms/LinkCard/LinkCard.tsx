@@ -1,10 +1,11 @@
 import * as React from 'react'
 
+import { createURL } from '@trpfrog.net/utils'
+
 import { Hostname } from '@/components/organisms/LinkCard/Hostname'
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
-import { createURL } from '@/lib/url'
 
 export const createLinkCardStyles = tv({
   slots: {

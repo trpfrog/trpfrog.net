@@ -1,6 +1,6 @@
 'use client'
 
-import { createURL } from '@/lib/url'
+import { createURL } from '@trpfrog.net/utils'
 
 const share = (slug: string) => {
   if (typeof window === 'undefined') return

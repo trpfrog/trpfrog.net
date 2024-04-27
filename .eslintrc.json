@@ -94,7 +94,7 @@
         "apps/trpfrog.net/src/app/**/{page,layout,route,loading,not-found,opengraph-image}.{js,jsx,ts,tsx}", // Next.js
         "*.stories.{js,jsx,ts,tsx}", // Storybook
         "*.config.{js,ts}", // Config files
-        "vitest.workspace.ts"
+        "vitest.*.ts"
       ],
       "rules": {
         "no-restricted-exports": "off"
