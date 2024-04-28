@@ -21,9 +21,14 @@ function createEndpointRecord<const T extends Omit<EndpointRecord, 'development'
 
 const internalEndpoints = [
   createEndpointRecord({
+    name: 'website',
+    port: 3000,
+    production: 'https://trpfrog.net',
+  }),
+  createEndpointRecord({
     name: 'backend',
     port: 8001,
-    production: 'https://api.trpfrog.net/',
+    production: null,
   }),
   createEndpointRecord({
     name: 'mdServer',
