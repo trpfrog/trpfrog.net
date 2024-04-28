@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { InlineLink } from '@/components/atoms/InlineLink'
+import { InlineLink } from '@/components/atoms/InlineLink.tsx'
 import * as Wrapper from '@/components/wrappers'
 
 import type { MDXComponents } from 'mdx/types'
