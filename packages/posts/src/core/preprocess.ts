@@ -67,7 +67,7 @@ type PreprocessOption = {
  * @param markdown
  * @param options
  */
-export const preprocessMarkdown = (markdown: string, options: PreprocessOption): string[] => {
+export const preprocess = (markdown: string, options: PreprocessOption): string[] => {
   const pageBreakRegex = /<!--+ page break --+>/g
   const windowBreakRegex = /<!--+ window break --+>/g
   const beginHeadRegex = /<!--+ begin head --+>/g

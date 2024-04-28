@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-import { BlogPost } from './blogPost.ts'
-import { BlogPostBuildOption, buildBlogPost } from './buildBlogPost.ts'
-import { microCMS } from './utils/microCMS.ts'
+import { BlogPost } from '../core'
+import { BlogPostBuildOption, buildBlogPost } from '../core/buildBlogPost.ts'
+import { microCMS } from '../utils/microCMS.ts'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean

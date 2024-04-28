@@ -1,7 +1,7 @@
 import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
-import { formatReadTime } from '@trpfrog.net/posts'
+import { formatReadTime } from '@trpfrog.net/posts/time'
 import dayjs from 'dayjs'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'

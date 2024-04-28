@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
-import { searchBlogPost } from '@trpfrog.net/posts'
+import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 import dayjs from 'dayjs'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
@@ -22,7 +22,7 @@ export const metadata = {
 } satisfies Metadata
 
 export default async function Index() {
-  const articles = await searchBlogPost()
+  const articles = await readAllBlogPosts()
 
   // Get latest featured article
   const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {

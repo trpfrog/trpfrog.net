@@ -1,6 +1,6 @@
 import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages'
 import { ChatOpenAI } from '@langchain/openai'
-import { retrieveAllPostSlugs } from '@trpfrog.net/posts'
+import { readAllSlugs } from '@trpfrog.net/posts/fs'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
@@ -59,7 +59,7 @@ export async function GET(req: NextRequest, props: GETProps) {
   const input = props.params.input.slice(0, 100)
 
   if (blogPaths.length === 0) {
-    blogPaths = await retrieveAllPostSlugs()
+    blogPaths = await readAllSlugs()
   }
 
   const prompt =

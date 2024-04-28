@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import { z } from 'zod'
 
 // YYYY-MM-DD
-const BlogDateSchema = z.coerce.date().transform(date => format(date, 'YYYY-MM-DD'))
+const BlogDateSchema = z.coerce.date().transform(date => format(date, 'yyyy-MM-dd'))
 
 const BlogTagSchema = z
   .string()

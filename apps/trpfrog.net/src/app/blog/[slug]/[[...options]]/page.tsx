@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 
 import { BlogPost } from '@trpfrog.net/posts'
-import { fetchBlogPost, searchBlogPost } from '@trpfrog.net/posts'
+import { readBlogPost, readAllBlogPosts } from '@trpfrog.net/posts/fs'
+import { match } from 'ts-pattern'
 
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -28,7 +29,7 @@ type PageProps = {
 }
 
 export async function generateStaticParams({ params: { slug } }: { params: { slug: string } }) {
-  const entry = await fetchBlogPost(slug)
+  const entry = await readBlogPost(slug)
   const paths = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
     paths.push({ options: [i + ''] })
@@ -39,7 +40,7 @@ export async function generateStaticParams({ params: { slug } }: { params: { slu
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { title, description } = await fetchBlogPost(params.slug)
+  const { title, description } = await readBlogPost(params.slug)
 
   const metadata: Metadata = {
     title,
@@ -64,15 +65,14 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 const processSlug = async (slug: string, page?: string) => {
-  const entry: BlogPost = await fetchBlogPost(slug, {
-    pagePos1Indexed: page ? parseInt(page, 10) : 1,
-    all: page === 'all',
-  })
+  const entry: BlogPost = await match(page)
+    .with('all', () => readBlogPost(slug, { all: true }))
+    .otherwise(() => readBlogPost(slug, { pagePos1Indexed: parseInt(page || '1', 10) }))
 
   const tags = entry.tags
   const relatedPosts: BlogPost[] = tags[0]
     ? []
-    : (await searchBlogPost(tags[0])).filter((e: BlogPost) => e.slug !== entry.slug)
+    : (await readAllBlogPosts({ tag: tags[0] })).filter((e: BlogPost) => e.slug !== entry.slug)
 
   return {
     entry: JSON.parse(JSON.stringify(entry)) as BlogPost,

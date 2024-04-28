@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { retrieveAllPostSlugs } from '@trpfrog.net/posts'
+import { readAllSlugs } from '@trpfrog.net/posts/fs'
 
 export const dynamicParams = false
 
@@ -12,7 +12,7 @@ type PageProps = {
 }
 
 export async function generateStaticParams() {
-  const slugs = await retrieveAllPostSlugs()
+  const slugs = await readAllSlugs()
   return slugs.map(slug => ({ slug }))
 }
 

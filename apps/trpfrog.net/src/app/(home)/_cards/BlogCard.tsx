@@ -1,5 +1,5 @@
 import { BlogPost } from '@trpfrog.net/posts'
-import { searchBlogPost } from '@trpfrog.net/posts'
+import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
@@ -102,7 +102,7 @@ function ArticleRow(props: {
 }
 
 export async function BlogCard() {
-  const articles = await searchBlogPost({})
+  const articles = await readAllBlogPosts({})
 
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)
 

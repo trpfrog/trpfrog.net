@@ -1,4 +1,4 @@
-import { searchBlogPost, retrieveExistingAllTags } from '@trpfrog.net/posts'
+import { readAllBlogPosts, retrieveExistingAllTags } from '@trpfrog.net/posts/fs'
 import Link from 'next/link'
 import { RichButton } from 'src/components/atoms/RichButton'
 
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Index({ params }: Props) {
   const tag = decodeURIComponent(params!.tag)
-  const articles = await searchBlogPost(tag)
+  const articles = await readAllBlogPosts({ tag })
 
   return (
     <>

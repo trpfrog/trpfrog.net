@@ -1,12 +1,13 @@
 import matter from 'gray-matter'
 import { z } from 'zod'
 
-import { blogFrontMatterSchema, BlogPost } from './blogPost.ts'
-import { preprocessMarkdown } from './preprocessMarkdown.ts'
 import {
   computeReadTimeSecondFrom,
   ReadTimeOptionSchema,
-} from './time/computeReadTimeSecondFrom.ts'
+} from '../time/computeReadTimeSecondFrom.ts'
+
+import { blogFrontMatterSchema, BlogPost } from './blogPost.ts'
+import { preprocess } from './preprocess.ts'
 
 const BlogPostBuildOptionSchema = z.object({
   pagePos1Indexed: z.number().int().min(1).optional(),
@@ -36,7 +37,7 @@ export function buildBlogPost(
 
   const pageContent = options?.metadataOnly
     ? []
-    : preprocessMarkdown(matterResult.content, {
+    : preprocess(matterResult.content, {
         concatenateAllPages: options?.all,
         pageIdx1Indexed: pagePosition,
       })

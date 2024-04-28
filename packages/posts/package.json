@@ -2,9 +2,11 @@
   "name": "@trpfrog.net/posts",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
+    ".": "./src/core/index.ts",
+    "./preview": "./src/preview/index.ts",
     "./parser": "./src/parser/rawTextParser.ts",
-    "./time": "./src/time/index.ts"
+    "./time": "./src/time/index.ts",
+    "./fs": "./src/fs/index.ts"
   },
   "scripts": {
     "build": "tsc",

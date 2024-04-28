@@ -1,11 +1,6 @@
 import { Metadata } from 'next'
 
-import {
-  formatReadTime,
-  fetchPreviewBlogPost,
-  createErrorArticle,
-  ErrorablePost,
-} from '@trpfrog.net/posts'
+import { fetchPreviewBlogPost, createErrorArticle, ErrorablePost } from '@trpfrog.net/posts/preview'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -48,14 +43,12 @@ const processSlug = async (slug: [string, string | undefined]) => {
     : createErrorArticle('ID is missing!')
 
   return {
-    entry: JSON.parse(JSON.stringify(entry)),
+    entry,
   }
 }
 
 export default async function Index(props: Props) {
   const { entry: post } = await processSlug(props.params.slug)
-
-  const { minutes: readMin, seconds: readSec } = formatReadTime(post.readTime)
 
   return (
     <MainWrapper gridLayout>

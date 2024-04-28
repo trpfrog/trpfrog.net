@@ -1,13 +1,14 @@
 'use server'
 
-import { BlogPost, fetchBlogPost } from '@trpfrog.net/posts'
+import { BlogPost } from '@trpfrog.net/posts'
+import { match } from 'ts-pattern'
 
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 export async function renderBlog(slug: string, page?: string) {
-  const entry: BlogPost = await fetchBlogPost(slug, {
-    pagePos1Indexed: page ? parseInt(page, 10) : 1,
-    all: page === 'all',
-  })
+  const { readBlogPost } = await import('@trpfrog.net/posts/fs')
+  const entry: BlogPost = await match(page)
+    .with('all', () => readBlogPost(slug, { all: true }))
+    .otherwise(() => readBlogPost(slug, { pagePos1Indexed: parseInt(page || '1', 10) }))
   return <BlogMarkdown entry={entry} />
 }

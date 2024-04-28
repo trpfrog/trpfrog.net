@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { BlogPost } from '@trpfrog.net/posts'
-import { searchBlogPost } from '@trpfrog.net/posts'
+import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -19,7 +19,7 @@ export const metadata = {
 
 export default async function Index() {
   const tag = '徒歩'
-  const articles = await searchBlogPost(tag)
+  const articles = await readAllBlogPosts({ tag })
 
   return (
     <MainWrapper gridLayout>
