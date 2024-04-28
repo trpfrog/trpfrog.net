@@ -1,26 +1,21 @@
+import { zValidator } from '@hono/zod-validator'
 import { createURL } from '@trpfrog.net/utils'
 import { get } from '@vercel/edge-config'
 import { kv } from '@vercel/kv'
+import { Hono } from 'hono'
 import { LRUCache } from 'lru-cache'
-import { NextResponse } from 'next/server'
 import { z } from 'zod'
 
 import {
   HOST_URL,
   TRPFROG_DIFFUSION_DEFAULT_UPDATE_HOURS,
   TRPFROG_DIFFUSION_UPDATE_HOURS_EDGE_CONFIG_KEY,
-} from '@/lib/constants'
+} from '@/lib/constants.ts'
 
-import { env } from '@/env/server'
+import { TrpFrogImageGenerationResult, TrpFrogImageGenerationResultSchema } from './schema'
 
-export const TrpFrogImageGenerationResultSchema = z.object({
-  generatedTime: z.number(),
-  prompt: z.string(),
-  translated: z.string(),
-  base64: z.string(),
-})
 
-export type TrpFrogImageGenerationResult = z.infer<typeof TrpFrogImageGenerationResultSchema>
+import { env } from '@/env/server.ts'
 
 const TRPFROG_DIFFUSION_KV_KEY = 'trpfrog-diffusion'
 
@@ -74,88 +69,74 @@ async function getCache() {
   return record as unknown as TrpFrogImageGenerationResult
 }
 
-export async function GET() {
-  const cached = await getCache()
-  if (!cached) {
-    return NextResponse.json(
-      {
-        error: 'Internal Server Error, please try again later.',
-      },
-      {
-        status: 500,
-      },
-    )
-  }
-  if (!cached.base64) {
-    if (cached.generatedTime) {
-      return NextResponse.json(
-        {
-          info: 'Image generation is in progress, please try again later.',
-        },
-        {
-          status: 202,
-        },
-      )
-    } else {
-      return NextResponse.json(
+export const app = new Hono()
+  .get('/', async c => {
+    const cached = await getCache()
+    if (!cached) {
+      return c.json(
         {
           error: 'Internal Server Error, please try again later.',
         },
-        {
-          status: 500,
-        },
+        500,
       )
     }
-  }
-
-  return NextResponse.json(cached)
-}
-
-export async function POST(request: Request) {
-  const query = new URL(request.url).searchParams
-  if (query.get('token') !== env.TRPFROG_ADMIN_KEY) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Unauthorized',
-      },
-      {
-        status: 401,
-      },
-    )
-  }
-
-  const result = TrpFrogImageGenerationResultSchema.safeParse(await request.json())
-  if (!result.success) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Bad Request',
-      },
-      {
-        status: 400,
-      },
-    )
-  }
-
-  try {
-    const newRecord = result.data
-    cache.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
-    await kv.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
-  } catch (e) {
-    console.error(e)
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Internal Server Error, please try again later.',
-      },
-      {
-        status: 500,
-      },
-    )
-  }
-
-  return NextResponse.json({
-    success: true,
+    if (!cached.base64) {
+      if (cached.generatedTime) {
+        return c.json(
+          {
+            info: 'Image generation is in progress, please try again later.',
+          },
+          202,
+        )
+      } else {
+        return c.json(
+          {
+            error: 'Internal Server Error, please try again later.',
+          },
+          500,
+        )
+      }
+    }
+    return c.json(cached)
   })
-}
+  .post(
+    '/',
+    zValidator(
+      'query',
+      z.object({
+        token: z.string(),
+      }),
+    ),
+    zValidator('json', TrpFrogImageGenerationResultSchema),
+    async c => {
+      const { token } = c.req.valid('query')
+      if (token !== env.TRPFROG_ADMIN_KEY) {
+        return c.json(
+          {
+            success: false,
+            error: 'Unauthorized',
+          },
+          401,
+        )
+      }
+
+      const newRecord = c.req.valid('json')
+      try {
+        cache.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
+        await kv.set(TRPFROG_DIFFUSION_KV_KEY, newRecord)
+      } catch (e) {
+        console.error(e)
+        return c.json(
+          {
+            success: false,
+            error: 'Internal Server Error, please try again later.',
+          },
+          500,
+        )
+      }
+
+      return c.json({
+        success: true,
+      })
+    },
+  )

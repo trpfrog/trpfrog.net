@@ -2,6 +2,8 @@ import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
+import { bffClient } from '@/app/api/client.ts'
+
 import { fetchFont } from '@/lib/fetchFont'
 
 import {
@@ -51,7 +53,17 @@ type Context = {
 
 export async function GET(req: NextRequest, context: Context) {
   const slug = context.params.slug
-  const { title, subtitle, thumbnail: _thumbnail, tags, date } = await fetchBlogPost(slug)
+
+  const res = await bffClient.blog.posts[':slug']
+    .$get({
+      param: {
+        slug,
+      },
+    })
+    .then(res => res.json())
+
+  const { title, subtitle, thumbnail: _thumbnail, tags, date } = BlogPostSchema.parse(res)
+
   const thumbnail = _thumbnail && _thumbnail.replace(/\.webp$/, '.jpg')
 
   const imageResponseOptions = await createImageResponseOptions()

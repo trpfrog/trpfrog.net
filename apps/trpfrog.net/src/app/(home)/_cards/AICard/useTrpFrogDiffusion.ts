@@ -6,7 +6,7 @@ import { match } from 'ts-pattern'
 import {
   TrpFrogImageGenerationResult,
   TrpFrogImageGenerationResultSchema,
-} from '@/app/api/trpfrog-diffusion/route'
+} from '@/app/api/[[...route]]/_routes/trpfrog-diffusion/schema'
 
 export type TrpFrogDiffusionResult =
   | {
