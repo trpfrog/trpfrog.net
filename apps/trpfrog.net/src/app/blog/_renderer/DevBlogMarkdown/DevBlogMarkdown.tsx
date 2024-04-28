@@ -2,12 +2,13 @@
 
 import { useRef, useDeferredValue, useEffect, useState, ReactNode } from 'react'
 
-import { createClient as createMdWatchClient } from '@trpfrog.net/dev-md-socket'
+import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-server'
 
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
 import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop'
 import { renderBlog } from '@blog/_renderer/renderBlog'
+
 
 export type DevBlogMarkdownProps = {
   slug: string

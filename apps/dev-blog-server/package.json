@@ -1,5 +1,5 @@
 {
-  "name": "@trpfrog.net/dev-md-socket",
+  "name": "@trpfrog.net/dev-blog-server",
   "private": true,
   "scripts": {
     "dev": "bun run dev-server.ts",

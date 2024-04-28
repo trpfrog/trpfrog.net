@@ -1,4 +1,4 @@
-# @trpfrog.net/dev-md-socket
+# @trpfrog.net/dev-blog-server
 
 To install dependencies:
 
