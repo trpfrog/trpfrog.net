@@ -16,7 +16,6 @@ export const NAVIGATION_LINKS: NavigationLinkRecord[] = [
   { link: '/', name: 'Home' },
   { link: '/works', name: 'Works' },
   { link: '/blog', name: 'Blog' },
-  { link: '/tweets', name: 'Tweets' },
   { link: '/balloon', name: 'Balloons' },
   { link: '/environment', name: 'Environment', shortName: 'Env' },
   { link: '/stickers', name: 'Stickers' },
