@@ -37,16 +37,10 @@ const styles = {
     base: 'tw-w-full tw-bg-[#81bd4a] tw-py-2 sp:tw-hidden dark:tw-bg-trpfrog-700',
   }),
   nav: tv({
-    base: [
-      'tw-m-auto tw-w-full tw-max-w-[980px]',
-      'tw-flex tw-items-center tw-justify-between',
-    ],
+    base: ['tw-m-auto tw-w-full tw-max-w-[980px]', 'tw-flex tw-items-center tw-justify-between'],
   }),
   link: tv({
-    base: [
-      'tw-inline-block tw-rounded-full tw-px-4 tw-pt-1',
-      'tw-duration-1200 tw-font-comfortaa',
-    ],
+    base: ['tw-inline-block tw-rounded-full tw-px-4 tw-pt-1', 'tw-duration-1200 tw-font-comfortaa'],
     variants: {
       current: {
         true: `
@@ -70,11 +64,7 @@ export function Navigation() {
       <nav className={styles.nav()}>
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
           ({ link, name, shortName }) => (
-            <A
-              href={link}
-              key={link}
-              className={styles.link({ current: currentLink === link })}
-            >
+            <A href={link} key={link} className={styles.link({ current: currentLink === link })}>
               {shortName ?? name}
             </A>
           ),

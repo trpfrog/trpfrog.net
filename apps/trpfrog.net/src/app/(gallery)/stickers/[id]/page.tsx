@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import Link from 'next/link'
 import { RichButton } from 'src/components/atoms/RichButton'
 
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
@@ -7,7 +8,6 @@ import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-
 
 const NUMBER_OF_IMAGES = 80
 
@@ -22,7 +22,7 @@ export const metadata = {
 } satisfies Metadata
 
 export async function generateStaticParams() {
-  const ids = Array.from(Array(NUMBER_OF_IMAGES), (v, k) => k)
+  const ids = Array.from(Array(NUMBER_OF_IMAGES), (_, k) => k)
   return ids.map(id => ({ id: id.toString() }))
 }
 
@@ -37,7 +37,7 @@ export default function Index(context: PageProps) {
       </Block>
       <Block>
         <ImageNavigation
-          icons={Array.from(Array(5), (v, k) => k)
+          icons={Array.from(Array(5), (_, k) => k)
             .map(k => (idInt + k - 2 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES)
             .map(k => ({
               key: k,
@@ -45,15 +45,14 @@ export default function Index(context: PageProps) {
               alt: k + '番目のスタンプ画像',
             }))}
           nextHref={'/stickers/' + ((idInt + 1) % NUMBER_OF_IMAGES).toString()}
-          prevHref={
-            '/stickers/' +
-            ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()
-          }
+          prevHref={'/stickers/' + ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()}
         />
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <RichButton href={'/stickers'}>一覧に戻る</RichButton>
+          <RichButton as={Link} href={'/stickers'}>
+            一覧に戻る
+          </RichButton>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

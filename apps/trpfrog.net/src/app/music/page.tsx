@@ -7,7 +7,6 @@ import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
 import { A } from '@/components/wrappers'
 
-
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'
 
@@ -17,9 +16,7 @@ export default function Music() {
       <Title title={'つまみのうた'}>
         <p>
           ねぎ一世(
-          <InlineLink href="https://twitter.com/negiissei">
-            @negiissei
-          </InlineLink>
+          <InlineLink href="https://twitter.com/negiissei">@negiissei</InlineLink>
           )さんに 「<b>つまみのうた</b>」を作っていただきました！(？？？？)
           ありがとうございます！！！
         </p>
@@ -48,16 +45,10 @@ export default function Music() {
           僕は歌いません。(？)
         </p>
         <div>
-          <RichButton
-            as={A}
-            href="https://musicpost.joysound.com/music/musicId:107765"
-          >
+          <RichButton as={A} href="https://musicpost.joysound.com/music/musicId:107765">
             楽曲詳細
           </RichButton>
-          <RichButton
-            as={A}
-            href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1"
-          >
+          <RichButton as={A} href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1">
             店舗検索
           </RichButton>
         </div>
