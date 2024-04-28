@@ -1,3 +1,4 @@
+import 'server-only'
 import * as React from 'react'
 import { memo } from 'react'
 
@@ -15,10 +16,7 @@ export const ServerLinkCard = memo(async function ServerLinkCard(props: LinkCard
   const { href, ...rest } = props
 
   try {
-    const result = await fetchOGP(href).catch(() => undefined)
-    if (!result) {
-      throw new Error('OGP not found')
-    }
+    const result = await fetchOGP(href)
     return (
       <LinkCard
         title={result.ogTitle ?? ''}

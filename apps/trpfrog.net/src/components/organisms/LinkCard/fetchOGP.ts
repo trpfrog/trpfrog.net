@@ -1,23 +1,22 @@
 'use server'
 
 import { LRUCache } from 'lru-cache'
-import ogs from 'open-graph-scraper'
-import { OgObject } from 'open-graph-scraper/dist/lib/types'
+import ogs from 'open-graph-scraper-lite'
+import { OgObject } from 'open-graph-scraper-lite/dist/lib/types'
 
 const cache = new LRUCache<string, OgObject>({
   max: 100,
   ttl: 1000 * 60 * 60 * 24,
 })
 
-export async function fetchOGP(url: string) {
+export async function fetchOGP(url: string): Promise<OgObject> {
   if (cache.has(url)) {
-    return cache.get(url)
+    return cache.get(url)!
   }
+  const html = await fetch(url).then(res => res.text())
   const { result } = await ogs({
-    url,
-    customMetaTags: [
-      { property: 'theme-color', multiple: false, fieldName: 'themeColor' },
-    ],
+    html,
+    customMetaTags: [{ property: 'theme-color', multiple: false, fieldName: 'themeColor' }],
   })
   cache.set(url, result)
   return result
