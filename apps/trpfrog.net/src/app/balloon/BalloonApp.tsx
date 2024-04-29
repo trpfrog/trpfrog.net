@@ -38,10 +38,7 @@ export function BalloonApp() {
 
   return (
     <>
-      <Title
-        title={'風船コーナー'}
-        description={'風船を割ることができます。(？)'}
-      >
+      <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
         <p>
           <RichButton
             as="button"

@@ -14,40 +14,34 @@ type Props = React.ComponentPropsWithRef<'div'> & {
   ribbonText?: string
 }
 
-export const Block = React.forwardRef<HTMLDivElement, Props>(
-  function Block(props, ref) {
-    const {
-      newRibbon,
-      ribbonText: initialRibbonText = '',
-      h2icon,
-      title,
-      className,
-      children,
-      ...otherProps
-    } = props
+export const Block = React.forwardRef<HTMLDivElement, Props>(function Block(props, ref) {
+  const {
+    newRibbon,
+    ribbonText: initialRibbonText = '',
+    h2icon,
+    title,
+    className,
+    children,
+    ...otherProps
+  } = props
 
-    let ribbonText = initialRibbonText
+  let ribbonText = initialRibbonText
 
-    let ribbon = <></>
-    if (newRibbon) ribbonText = 'NEW!'
-    if (ribbonText != '') {
-      ribbon = <span className={styles.new_ribbon}>{ribbonText}</span>
-    }
+  let ribbon = <></>
+  if (newRibbon) ribbonText = 'NEW!'
+  if (ribbonText != '') {
+    ribbon = <span className={styles.new_ribbon}>{ribbonText}</span>
+  }
 
-    return (
-      <PlainBlock
-        ref={ref}
-        className={`${styles.main_window} ${className}`}
-        {...otherProps}
-      >
-        {title && (
-          <H2 icon={h2icon} className="tw-mt-0">
-            {title}
-          </H2>
-        )}
-        {ribbon}
-        {children}
-      </PlainBlock>
-    )
-  },
-)
+  return (
+    <PlainBlock ref={ref} className={`${styles.main_window} ${className}`} {...otherProps}>
+      {title && (
+        <H2 icon={h2icon} className="tw-mt-0">
+          {title}
+        </H2>
+      )}
+      {ribbon}
+      {children}
+    </PlainBlock>
+  )
+})

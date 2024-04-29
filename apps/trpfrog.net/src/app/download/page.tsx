@@ -17,6 +17,7 @@ import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
+
 export const metadata = {
   title: 'DLコンテンツ',
   description: '壁紙などダウンロードできるコンテンツの提供ページです。',
@@ -46,9 +47,7 @@ export default async function Index() {
               </div>
             )}
             <MDXRemote source={content} {...getMarkdownOptions()} />
-            <div
-              style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
-            >
+            <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {metadata.links.map(({ href, text }) => (
                 <RichButton as={A} key={href} href={href}>
                   {text}

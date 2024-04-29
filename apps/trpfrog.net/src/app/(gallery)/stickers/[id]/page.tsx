@@ -9,6 +9,7 @@ import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
+
 const NUMBER_OF_IMAGES = 80
 
 type PageProps = {

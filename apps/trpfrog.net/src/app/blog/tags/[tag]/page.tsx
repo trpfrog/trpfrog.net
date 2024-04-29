@@ -8,6 +8,7 @@ import { Title } from '@/components/organisms/Title'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 
+
 export async function generateStaticParams() {
   const tags = await retrieveExistingAllTags()
   return tags.map(tag => ({

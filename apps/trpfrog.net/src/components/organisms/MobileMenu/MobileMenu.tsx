@@ -25,8 +25,7 @@ const styles = tv({
       sp:tw-mt-2 sp:before:tw-hidden pc:-tw-right-[17.5px]
     `,
     window: plainBlockStyle({
-      className:
-        'tw-flex tw-flex-col tw-gap-3 tw-rounded-lg tw-p-4 sp:tw-w-full',
+      className: 'tw-flex tw-flex-col tw-gap-3 tw-rounded-lg tw-p-4 sp:tw-w-full',
     }),
     links: 'tw-grid tw-grid-cols-2 tw-gap-x-2 tw-gap-y-2.5',
   },

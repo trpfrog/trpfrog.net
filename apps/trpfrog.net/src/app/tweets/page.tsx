@@ -38,19 +38,14 @@ export default async function Index({ searchParams }: any) {
           <strong>2023 年 4 月 22 日版</strong>
         </p>
         <p>
-          <strong>注意:</strong>{' '}
-          過去のツイートにはなかなか厳しいものも含まれます。
+          <strong>注意:</strong> 過去のツイートにはなかなか厳しいものも含まれます。
           現在のつまみさんとは意見がだいぶ異なる場合があります。
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
           <RichButton
             as={Link}
-            href={
-              '/tweets?q=' +
-              encodeURIComponent('date:' + oneYearsAgo) +
-              '#tweets'
-            }
+            href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}
           >
             1年前のツイートを見る
           </RichButton>
@@ -75,8 +70,7 @@ export default async function Index({ searchParams }: any) {
       <TweetArea searchParams={searchParams} />
 
       <Block>
-        RT の削除依頼はお手数ですが contact ⭐︎ trpfrog.net または、@TrpFrog
-        までお願いします。
+        RT の削除依頼はお手数ですが contact ⭐︎ trpfrog.net または、@TrpFrog までお願いします。
       </Block>
     </MainWrapper>
   )

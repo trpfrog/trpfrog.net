@@ -5,6 +5,7 @@ import { RichButton } from 'src/components/atoms/RichButton'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Title } from '@/components/organisms/Title'
 
+
 const IB = ({ children }: any) => <span className="tw-inline-block">{children}</span>
 
 export default function NotFound() {

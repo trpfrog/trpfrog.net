@@ -16,13 +16,13 @@ import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
+
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
 
 export const metadata = {
   title: 'Works',
-  description:
-    'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。',
+  description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。',
 } satisfies Metadata
 
 export default async function Index() {
@@ -59,17 +59,10 @@ export default async function Index() {
               <b>Released:</b> {dayjs(metadata.date).format('YYYY-MM-DD')}{' '}
             </p>
             <MDXRemote source={content} {...getMarkdownOptions()} />
-            <p
-              style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}
-            >
+            <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <RichButton
-                    as={A}
-                    openInNewTab
-                    key={linkTxt}
-                    href={url as string}
-                  >
+                  <RichButton as={A} openInNewTab key={linkTxt} href={url as string}>
                     {linkTxt}
                   </RichButton>
                 )

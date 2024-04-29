@@ -7,6 +7,7 @@ import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
 import { A } from '@/components/wrappers'
 
+
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'
 

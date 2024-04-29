@@ -1,19 +1,10 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "prettier",
-    "plugin:storybook/recommended"
-  ],
-  "ignorePatterns": [
-    "./*"
-  ],
+  "extends": ["next/core-web-vitals", "prettier", "plugin:storybook/recommended"],
+  "ignorePatterns": ["./*", "node_modules", ".next", "storybook-static"],
   "plugins": ["import", "unused-imports", "@typescript-eslint", "n"],
   "rules": {
     "@next/next/no-img-element": "off",
-    "eol-last": [
-      "error",
-      "always"
-    ],
+    "eol-last": ["error", "always"],
     "react-hooks/exhaustive-deps": [
       "warn",
       {
@@ -23,10 +14,7 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": [
-          "@/app/blog/*",
-          "**/*.stories"
-        ],
+        "patterns": ["@/app/blog/*", "**/*.stories"],
         "paths": [
           {
             "name": "tailwind-merge",
@@ -39,7 +27,7 @@
         ]
       }
     ],
-    "no-restricted-exports":  [
+    "no-restricted-exports": [
       "error",
       {
         "restrictDefaultExports": {
@@ -55,7 +43,16 @@
     "import/order": [
       "warn",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "object", "index", "type"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "object",
+          "index",
+          "type"
+        ],
         "newlines-between": "always",
         "pathGroupsExcludedImportTypes": ["builtin"],
         "alphabetize": { "order": "asc", "caseInsensitive": true },

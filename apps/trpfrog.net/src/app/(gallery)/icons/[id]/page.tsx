@@ -45,10 +45,7 @@ export default function Index(context: PageProps) {
               alt: k + '番目のアイコン',
             }))}
           nextHref={'/icons/' + ((idInt + 1) % NUMBER_OF_IMAGES).toString()}
-          prevHref={
-            '/icons/' +
-            ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()
-          }
+          prevHref={'/icons/' + ((idInt - 1 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES).toString()}
         />
       </Block>
       <Block>

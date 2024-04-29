@@ -1,3 +1,4 @@
+import { BlogPostSchema } from '@trpfrog.net/posts'
 import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
