@@ -40,7 +40,7 @@ const app = new Hono<{ Bindings: Bindings }>()
 
     if (c.req.query('force') !== 'true') {
       const metadata = await c.env.DIFFUSION_KV.get('current-metadata', { type: 'json' }).then(
-        data => MetadataSchema.parse(data),
+        (data: unknown) => MetadataSchema.parse(data),
       )
       const diffMinutes = differenceInMinutes(new Date(), metadata.generatedTime)
       const minUpdateMinutes = 180
