@@ -26,9 +26,9 @@ const internalEndpoints = [
     production: 'https://trpfrog.net',
   }),
   createEndpointRecord({
-    name: 'backend',
+    name: 'imageGeneration',
     port: 8001,
-    production: null,
+    production: 'https://production.trpfrog-diffusion.trpfrog.workers.dev',
   }),
   createEndpointRecord({
     name: 'mdServer',

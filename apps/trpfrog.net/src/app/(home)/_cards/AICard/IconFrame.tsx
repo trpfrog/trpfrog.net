@@ -1,14 +1,16 @@
 'use client'
 
 import * as React from 'react'
+import { useCallback } from 'react'
+
+import { trpfrogDiffusionClient } from '@trpfrog.net/image-generation'
+import useSWR from 'swr'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { WaveText } from '@/components/atoms/WaveText'
 
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
-
-import { TrpFrogDiffusionResult, useTrpFrogDiffusion } from './useTrpFrogDiffusion'
 
 const createStyles = tv({
   slots: {
@@ -45,7 +47,7 @@ const createStyles = tv({
       error: {
         picture: 'tw-bg-red-800 tw-text-white',
       },
-    } satisfies Record<TrpFrogDiffusionResult['status'], unknown>,
+    },
   },
   defaultVariants: {
     status: 'ok',
@@ -53,10 +55,14 @@ const createStyles = tv({
 })
 
 export function IconFrame() {
-  const { status, data } = useTrpFrogDiffusion()
+  const fetcher = useCallback(
+    () => trpfrogDiffusionClient.current.metadata.$get().then(res => res.json()),
+    [],
+  )
+  const { isLoading, data, error } = useSWR('/', fetcher)
 
-  if (status === 'loading') {
-    const styles = createStyles({ status })
+  if (isLoading) {
+    const styles = createStyles({ status: 'loading' })
     return (
       <figure className={styles.wrapper()}>
         <div className={styles.layout()}>
@@ -72,8 +78,8 @@ export function IconFrame() {
     )
   }
 
-  if (status !== 'ok') {
-    const styles = createStyles({ status })
+  if (error || !data) {
+    const styles = createStyles({ status: 'error' })
     return (
       <figure className={styles.wrapper()}>
         <div className={styles.layout()}>
@@ -93,20 +99,20 @@ export function IconFrame() {
   }
 
   const styles = createStyles()
-  const { base64, prompt, translated } = data
+  const imageSrcUrl = trpfrogDiffusionClient.current.$url().toString()
   return (
     <figure className={styles.wrapper()}>
       <div className={styles.layout()}>
         <img
           className={styles.picture()}
-          src={`data:image/png;base64,${base64}`}
-          alt={`Auto generated image by AI: ${prompt}`}
+          src={imageSrcUrl}
+          alt={`Auto generated image by AI: ${data.prompt}`}
         />
         <figcaption className={styles.caption()}>
           <div className={styles.aiGeneratedMsg()}>AI GENERATED ICON</div>
-          <div className={styles.english()}>{prompt}</div>
+          <div className={styles.english()}>{data.prompt}</div>
           <div className={styles.japanese()}>
-            <ParseWithBudouX str={translated} slug={'trpfrog-diffusion'} />
+            <ParseWithBudouX str={data.translated} slug={'trpfrog-diffusion'} />
           </div>
           <div className={styles.poweredBy()}>
             Powered by{' '}

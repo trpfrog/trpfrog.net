@@ -34,6 +34,7 @@
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "@trpfrog.net/constants": "workspace:*",
+    "@trpfrog.net/image-generation": "workspace:*",
     "@vercel/edge-config": "^1.0.2",
     "@vercel/kv": "^1.0.1",
     "better-react-mathjax": "^2.0.3",

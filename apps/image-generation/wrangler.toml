@@ -1,0 +1,6 @@
+name = "trpfrog-diffusion"
+compatibility_date = "2023-12-01"
+
+[[kv_namespaces]]
+binding = "DIFFUSION_KV"
+id = "17627d198edc43588fcd79b65b239e55"

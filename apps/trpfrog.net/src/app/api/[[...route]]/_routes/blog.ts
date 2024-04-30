@@ -4,7 +4,6 @@ import { Hono } from 'hono'
 import { z } from 'zod'
 
 export const app = new Hono()
-  .get('/', c => c.json({ message: 'Hello from the blog API!' }))
   .get(
     'posts/:slug',
     zValidator(
