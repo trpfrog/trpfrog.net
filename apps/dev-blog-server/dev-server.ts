@@ -5,7 +5,7 @@ import { endpoints, ports } from '@trpfrog.net/constants'
 import chokidar from 'chokidar'
 import { Server } from 'socket.io'
 
-const posts = path.join(__dirname, '..', 'src', 'posts', '*.md')
+const posts = path.join(__dirname, '..', '..', 'posts', '*.md')
 
 const httpServer = createServer()
 const io = new Server(httpServer, {
