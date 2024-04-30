@@ -1,10 +1,12 @@
 'use client'
 
 import * as React from 'react'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { trpfrogDiffusionClient } from '@trpfrog.net/image-generation'
 import useSWR from 'swr'
+
+import { bffClient } from '@/app/api/client'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { WaveText } from '@/components/atoms/WaveText'
@@ -60,6 +62,11 @@ export function IconFrame() {
     [],
   )
   const { isLoading, data, error } = useSWR('/', fetcher)
+
+  // Trigger update request on mount
+  useEffect(() => {
+    bffClient.diffusion.update.$post()
+  }, [])
 
   if (isLoading) {
     const styles = createStyles({ status: 'loading' })

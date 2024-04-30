@@ -3,7 +3,18 @@ import { createMiddleware } from 'hono/factory'
 import { HTTPException } from 'hono/http-exception'
 
 export function requiresApiKey() {
-  return createMiddleware(async (c, next) => {
+  return createMiddleware<
+    any,
+    any,
+    {
+      in: {
+        header: {
+          'x-api-key': string
+        }
+      }
+      out: {}
+    }
+  >(async (c, next) => {
     const requestedApiKey = c.req.header('x-api-key')
     const { TRPFROG_FUNCTIONS_SECRET } = env(c)
 

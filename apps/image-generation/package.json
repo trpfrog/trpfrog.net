@@ -4,7 +4,7 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "wrangler dev --port 8001 src/index.ts",
+    "dev": "wrangler dev --port 8001 --show-interactive-dev-session false src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
