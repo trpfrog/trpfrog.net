@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "test": "vitest",
+    "test": "vitest run",
     "build-storybook": "storybook build"
   },
   "prisma": {
@@ -107,6 +107,7 @@
     "@testing-library/react": "^14.2.1",
     "@trpfrog.net/config-tailwind": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/config-vitest": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
     "@trpfrog.net/storybook-theme": "workspace:*",
     "@types/js-yaml": "^4.0.9",

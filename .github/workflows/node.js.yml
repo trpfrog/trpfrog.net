@@ -19,11 +19,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: bun install --frozen-lockfile
-      - run: bun x vitest run
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run tests
+        run: pnpm test
