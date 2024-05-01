@@ -10,6 +10,7 @@ const config = {
   jsxSingleQuote: false,
   arrowParens: 'avoid',
   tailwindFunctions: ['tv'],
+  printWidth: 100,
 }
 
 module.exports = config

@@ -1,0 +1,25 @@
+{
+  "name": "@trpfrog.net/image-generation",
+  "exports": {
+    ".": "./src/client.ts"
+  },
+  "scripts": {
+    "dev": "wrangler dev --port 8001 --show-interactive-dev-session false src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.2.1",
+    "@huggingface/inference": "^2.6.7",
+    "@langchain/core": "^0.1.61",
+    "@langchain/openai": "^0.0.28",
+    "date-fns": "^3.6.0",
+    "hono": "^4.2.9",
+    "zod": "^3.23.5",
+    "@trpfrog.net/constants": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240403.0",
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "wrangler": "^3.47.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@trpfrog.net/dev-blog-server",
+  "private": true,
+  "scripts": {
+    "dev": "bun run dev-server.ts",
+    "build": "tsc"
+  },
+  "main": "client.ts",
+  "type": "module",
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "socket.io": "^4.7.4",
+    "socket.io-client": "^4.7.4"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/constants": "workspace:*",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

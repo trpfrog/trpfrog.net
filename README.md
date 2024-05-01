@@ -5,7 +5,7 @@
   My personal website built with Next.js App Router and TypeScript
 </p>
 
-![](./public/images/screenshot.png)
+![](./apps/trpfrog.net/public/images/screenshot.png)
 
 ## 🧩 Built with
 

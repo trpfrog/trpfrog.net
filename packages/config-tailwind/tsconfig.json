@@ -1,0 +1,5 @@
+{
+  "extends": "@trpfrog.net/config-typescript/base.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@trpfrog.net/utils",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/config-vitest": "workspace:*"
+  }
+}

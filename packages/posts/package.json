@@ -1,0 +1,27 @@
+{
+  "name": "@trpfrog.net/posts",
+  "private": true,
+  "exports": {
+    ".": "./src/core/index.ts",
+    "./preview": "./src/preview/index.ts",
+    "./parser": "./src/parser/rawTextParser.ts",
+    "./time": "./src/time/index.ts",
+    "./fs": "./src/fs/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "ts-pattern": "^5.0.8",
+    "zod": "^3.23.4",
+    "microcms-js-sdk": "^3.1.1"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/config-vitest": "workspace:*"
+  }
+}
