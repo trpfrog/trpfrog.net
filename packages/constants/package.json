@@ -9,7 +9,7 @@
     ".": "./index.ts"
   },
   "dependencies": {
-    "zod": "^3.23.4"
+    "zod": "^3.23.6"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*"
