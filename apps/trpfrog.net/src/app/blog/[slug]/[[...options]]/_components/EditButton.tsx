@@ -10,7 +10,6 @@ import { env } from '@/env/server.ts'
 export function EditButton({ slug }: { slug: string }) {
   const openInCotEditor = async () => {
     'use server'
-    console.log('openInCotEditor')
     if (env.NODE_ENV !== 'development') {
       throw new Error('Forbidden')
     }
