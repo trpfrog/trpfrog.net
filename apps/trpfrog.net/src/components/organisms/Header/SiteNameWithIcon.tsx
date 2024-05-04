@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, ReactNode } from 'react'
 
 import Link from 'next/link'
 
@@ -41,12 +41,11 @@ const createStyles = tv({
   },
 })
 
-export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps) {
-  const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
-  const styles = createStyles({
-    showTrpFrog: visibleTrpFrog,
-  })
-
+// TODO:
+// useIsKawaiiLogo は Suspense で wrap する必要があるのでコンポーネントを分けたが、
+// 正直この方法で良いのかわからないので調査する
+export function KawaiiLogoOrNot(props: { children: ReactNode }) {
+  const styles = createStyles()
   const isKawaii = useIsKawaiiLogo()
   if (isKawaii) {
     return (
@@ -60,7 +59,16 @@ export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps
         </div>
       </Link>
     )
+  } else {
+    return props.children
   }
+}
+
+export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps) {
+  const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
+  const styles = createStyles({
+    showTrpFrog: visibleTrpFrog,
+  })
 
   return (
     <div className={styles.logo()}>

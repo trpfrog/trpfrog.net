@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useMemo } from 'react'
+import { Suspense, useMemo } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
-import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
+import { KawaiiLogoOrNot, SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
 import { MobileMenu } from '@/components/organisms/MobileMenu'
 
@@ -73,12 +73,14 @@ export const Header = React.memo(function Header(props: Props) {
     <>
       <div className={styles.wrapper()}>
         <header className={styles.header()}>
-          <MainWrapper
-            className={styles.inside()}
-            style={{ marginTop: 0, marginBottom: 0 }}
-          >
+          <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
             <div className="tw-w-fit">
-              <SiteNameWithIcon />
+              {/* TODO: あまり賢い方法ではないのでどうにかする */}
+              <Suspense fallback={<SiteNameWithIcon />}>
+                <KawaiiLogoOrNot>
+                  <SiteNameWithIcon />
+                </KawaiiLogoOrNot>
+              </Suspense>
             </div>
             <div className={styles.nav_wrapper()}>
               <HeaderNav />
