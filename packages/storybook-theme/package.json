@@ -5,7 +5,7 @@
     ".": "./theme.ts"
   },
   "dependencies": {
-    "@storybook/theming": "^7.6.16"
+    "@storybook/theming": "^7.6.19"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*"

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, ReactNode } from 'react'
 
 import Link from 'next/link'
 
@@ -8,6 +8,8 @@ import { tv } from '@/lib/tailwind/variants'
 
 import { SiteName } from './SiteName'
 import { useHeaderStatus } from './useHeaderStatus'
+
+import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom.ts'
 
 export type TitleProps = {
   siteTitle?: string
@@ -39,9 +41,30 @@ const createStyles = tv({
   },
 })
 
-export const SiteNameWithIcon = memo(function SiteNameWithIcon(
-  props: TitleProps,
-) {
+// TODO:
+// useIsKawaiiLogo は Suspense で wrap する必要があるのでコンポーネントを分けたが、
+// 正直この方法で良いのかわからないので調査する
+export function KawaiiLogoOrNot(props: { children: ReactNode }) {
+  const styles = createStyles()
+  const isKawaii = useIsKawaiiLogo()
+  if (isKawaii) {
+    return (
+      <Link href="/">
+        <div className={styles.logo()}>
+          <img
+            src="/images/kawaii.svg"
+            alt="つまみネット"
+            className="tw-h-[69px] sp:tw-h-[52px] -tw-translate-y-[0.1em]"
+          />
+        </div>
+      </Link>
+    )
+  } else {
+    return props.children
+  }
+}
+
+export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps) {
   const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
   const styles = createStyles({
     showTrpFrog: visibleTrpFrog,
