@@ -9,6 +9,8 @@ import { tv } from '@/lib/tailwind/variants'
 import { SiteName } from './SiteName'
 import { useHeaderStatus } from './useHeaderStatus'
 
+import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom.ts'
+
 export type TitleProps = {
   siteTitle?: string
   pageTitle?: string
@@ -39,13 +41,26 @@ const createStyles = tv({
   },
 })
 
-export const SiteNameWithIcon = memo(function SiteNameWithIcon(
-  props: TitleProps,
-) {
+export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps) {
   const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
   const styles = createStyles({
     showTrpFrog: visibleTrpFrog,
   })
+
+  const isKawaii = useIsKawaiiLogo()
+  if (isKawaii) {
+    return (
+      <Link href="/">
+        <div className={styles.logo()}>
+          <img
+            src="/images/kawaii.svg"
+            alt="つまみネット"
+            className="tw-h-[69px] sp:tw-h-[52px] -tw-translate-y-[0.1em]"
+          />
+        </div>
+      </Link>
+    )
+  }
 
   return (
     <div className={styles.logo()}>

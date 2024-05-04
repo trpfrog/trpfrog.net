@@ -3,6 +3,7 @@ import { Input } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
+import { useKawaiiLogoAtom } from '@/states/kawaiiLogoAtom.ts'
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
 import { useShowSiteCommentsAtom } from '@/states/showSiteCommentsAtom'
@@ -15,8 +16,7 @@ const styles = tv({
 })()
 
 function FeedbackServiceCheckbox() {
-  const [shouldShowSiteComments, setShouldShowSiteComments] =
-    useShowSiteCommentsAtom()
+  const [shouldShowSiteComments, setShouldShowSiteComments] = useShowSiteCommentsAtom()
   return (
     <div>
       <label className={styles.label()}>
@@ -35,11 +35,29 @@ function FeedbackServiceCheckbox() {
   )
 }
 
+function KawaiiCheckbox() {
+  const [showKawaiiLogo, setShowKawaiiLogo] = useKawaiiLogoAtom()
+  return (
+    <div>
+      <label className={styles.label()}>
+        <Input
+          type="checkbox"
+          checked={showKawaiiLogo}
+          onChange={e => setShowKawaiiLogo(e.target.checked)}
+        />
+        <div className="tw-leading-[1]">
+          かわいいロゴモード
+          <br />
+          <small>(Logo by @TrpFrog)</small>
+        </div>
+      </label>
+    </div>
+  )
+}
+
 function HeaderCheckbox() {
-  const [shouldFollowHeader, setShouldFollowHeader] =
-    useUserSettingStickyHeader()
-  const [shouldHideHeader, setShouldHideHeader] =
-    useUserSettingAlwaysVisibleHeader()
+  const [shouldFollowHeader, setShouldFollowHeader] = useUserSettingStickyHeader()
+  const [shouldHideHeader, setShouldHideHeader] = useUserSettingAlwaysVisibleHeader()
 
   return (
     <>
@@ -73,6 +91,7 @@ export function Settings() {
     <div className={styles.settings()}>
       <HeaderCheckbox />
       <FeedbackServiceCheckbox />
+      <KawaiiCheckbox />
     </div>
   )
 }

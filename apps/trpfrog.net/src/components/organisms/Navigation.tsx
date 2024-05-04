@@ -33,7 +33,7 @@ export const NAVIGATION_LINKS: NavigationLinkRecord[] = [
 
 const styles = {
   wrapper: tv({
-    base: 'tw-w-full tw-bg-[#81bd4a] tw-py-2 sp:tw-hidden dark:tw-bg-trpfrog-700',
+    base: 'tw-w-full tw-bg-[#81bd4a] tw-p-2 sp:tw-hidden dark:tw-bg-trpfrog-700',
   }),
   nav: tv({
     base: ['tw-m-auto tw-w-full tw-max-w-[980px]', 'tw-flex tw-items-center tw-justify-between'],
