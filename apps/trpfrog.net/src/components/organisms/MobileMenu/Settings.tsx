@@ -6,7 +6,6 @@ import { tv } from '@/lib/tailwind/variants'
 import { useKawaiiLogoAtom } from '@/states/kawaiiLogoAtom.ts'
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
-import { useShowSiteCommentsAtom } from '@/states/showSiteCommentsAtom'
 
 const styles = tv({
   slots: {
@@ -14,26 +13,6 @@ const styles = tv({
     label: 'tw-flex tw-items-center tw-gap-1',
   },
 })()
-
-function FeedbackServiceCheckbox() {
-  const [shouldShowSiteComments, setShouldShowSiteComments] = useShowSiteCommentsAtom()
-  return (
-    <div>
-      <label className={styles.label()}>
-        <Input
-          type="checkbox"
-          checked={shouldShowSiteComments}
-          onChange={e => setShouldShowSiteComments(e.target.checked)}
-        />
-        <div className="tw-leading-[1]">
-          フィードバックを送信する
-          <br />
-          <small>(Vercel のコメント機能が使えます)</small>
-        </div>
-      </label>
-    </div>
-  )
-}
 
 function KawaiiCheckbox() {
   const [showKawaiiLogo, setShowKawaiiLogo] = useKawaiiLogoAtom()
@@ -90,7 +69,6 @@ export function Settings() {
   return (
     <div className={styles.settings()}>
       <HeaderCheckbox />
-      <FeedbackServiceCheckbox />
       <KawaiiCheckbox />
     </div>
   )
