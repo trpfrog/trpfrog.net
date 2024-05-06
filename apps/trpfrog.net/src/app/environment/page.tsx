@@ -36,9 +36,7 @@ type Items = Record<
 >
 
 // recursive function
-function Itemize(props: {
-  children: StringItemizeRecord | string | undefined
-}) {
+function Itemize(props: { children: StringItemizeRecord | string | undefined }) {
   if (props.children === undefined) {
     return <></>
   }
@@ -67,19 +65,13 @@ function Itemize(props: {
 }
 
 export const metadata = {
-  title: '作業環境',
+  title: 'Environment',
   description: 'つまみさんのデスク周りとか所持デバイスとか',
 } satisfies Metadata
 
 export default async function Index() {
   // read yaml
-  const yamlPath = path.join(
-    process.cwd(),
-    'src',
-    'app',
-    'environment',
-    'items.yaml',
-  )
+  const yamlPath = path.join(process.cwd(), 'src', 'app', 'environment', 'items.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
 
   const items = yaml.load(yamlText) as Items

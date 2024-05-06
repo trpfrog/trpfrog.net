@@ -10,7 +10,6 @@ import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
 
-
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
 
@@ -38,7 +37,7 @@ export function BalloonApp() {
 
   return (
     <>
-      <Title title={'風船コーナー'} description={'風船を割ることができます。(？)'}>
+      <Title title="Balloons" description={'風船を割ることができます。(？)'}>
         <p>
           <RichButton
             as="button"

@@ -5,6 +5,8 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
+import { DominoText } from '../atoms/DominoText'
+
 type NavigationLinkRecord = {
   link: string
   name: string
@@ -39,7 +41,7 @@ const styles = {
     base: ['tw-m-auto tw-w-full tw-max-w-[980px]', 'tw-flex tw-items-center tw-justify-between'],
   }),
   link: tv({
-    base: ['tw-inline-block tw-rounded-full tw-px-4 tw-pt-1', 'tw-duration-1200 tw-font-comfortaa'],
+    base: ['tw-inline-block tw-rounded-full tw-px-4 tw-duration-1200 tw-font-palanquin-dark'],
     variants: {
       current: {
         true: `
@@ -64,7 +66,7 @@ export function Navigation() {
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
           ({ link, name, shortName }) => (
             <A href={link} key={link} className={styles.link({ current: currentLink === link })}>
-              {shortName ?? name}
+              <DominoText text={shortName ?? name} />
             </A>
           ),
         )}

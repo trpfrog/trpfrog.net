@@ -17,9 +17,8 @@ import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
-
 export const metadata = {
-  title: 'DLコンテンツ',
+  title: 'Download',
   description: '壁紙などダウンロードできるコンテンツの提供ページです。',
 } satisfies Metadata
 

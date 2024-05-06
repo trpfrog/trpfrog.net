@@ -7,14 +7,13 @@ import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
 import { A } from '@/components/wrappers'
 
-
 import Lyrics from './Lyrics.mdx'
 import styles from './style.module.scss'
 
 export default function Music() {
   return (
     <>
-      <Title title={'つまみのうた'}>
+      <Title title="Music">
         <p>
           ねぎ一世(
           <InlineLink href="https://twitter.com/negiissei">@negiissei</InlineLink>

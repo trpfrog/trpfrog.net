@@ -7,7 +7,7 @@ import { loadMutualLinkRecords, MutualLinkRecord } from './loader'
 import { MutualLinkBlock } from './MutualLinkBlock'
 
 export const metadata = {
-  title: '相互リンク',
+  title: 'Links',
   description: '知人の個人サイト紹介',
 } satisfies Metadata
 

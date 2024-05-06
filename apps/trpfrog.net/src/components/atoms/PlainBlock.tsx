@@ -4,9 +4,9 @@ import { tv } from '@/lib/tailwind/variants'
 
 export const plainBlockStyle = tv({
   base: [
-    'tw-bg-window-color tw-shadow-[0_3px_0]',
+    'tw-bg-window-color',
     'tw-shadow-trpfrog-400 dark:tw-shadow-trpfrog-900',
-    'tw-overflow-clip tw-rounded-3xl',
+    'tw-overflow-clip tw-rounded-[--window-border-radius]',
     'print:tw-border-2 print:tw-border-black print:tw-shadow-gray-400',
   ],
   variants: {
@@ -28,8 +28,6 @@ export type PlainBlockProps = React.ComponentPropsWithRef<'div'>
 export const PlainBlock = React.forwardRef<HTMLDivElement, PlainBlockProps>(
   function PlainBlock(props, ref) {
     const { className, ...rest } = props
-    return (
-      <div ref={ref} className={plainBlockStyle({ className })} {...rest} />
-    )
+    return <div ref={ref} className={plainBlockStyle({ className })} {...rest} />
   },
 )

@@ -17,7 +17,7 @@ export default function Index() {
   return (
     <MainWrapper gridLayout>
       <Title
-        title={'アイコンメーカー.ts'}
+        title="icon-maker.ts"
         ribbonText={'BETA'}
         description={'TypeScriptで書き直したアイコンメーカーです。'}
         cardImageUrl={'/images/icon_maker/TwitterCardIconmaker.png'}

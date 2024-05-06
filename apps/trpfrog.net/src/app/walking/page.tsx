@@ -13,7 +13,7 @@ import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import Belongings from './Belongings.mdx'
 
 export const metadata = {
-  title: '徒歩情報',
+  title: 'Walking',
   description: '長距離を歩いて移動することは面白いと言われています。',
 } satisfies Metadata
 

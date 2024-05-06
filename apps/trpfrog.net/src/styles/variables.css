@@ -13,8 +13,8 @@
   --anim-height: min(100vw, 400px);
   --trpfrog-icon-size: min(400px, 90vw);
 
-  --main-font: -apple-system, BlinkMacSystemFont, Noto Sans JP, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --main-font: -apple-system, BlinkMacSystemFont, Noto Sans JP, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   --footer-color: #163600;
 
@@ -23,7 +23,7 @@
   --window-padding-top-bottom: 40px;
   --window-padding-left-right: 40px;
   --window-bottom-color: #9cc535;
-  --window-border-radius: 33px;
+  --window-border-radius: 15px;
 
   @media screen and (max-width: 800px) {
     --window-padding-top-bottom: 18px;

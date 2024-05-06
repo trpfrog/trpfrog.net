@@ -45,7 +45,7 @@ export default async function Index() {
   return (
     <>
       <MainWrapper gridLayout>
-        <Title title={'つまみログ'} description={metadata.description} />
+        <Title title="Blog" description={metadata.description} />
 
         <OnBodyHeading icon={faStar}>FEATURED ARTICLE</OnBodyHeading>
 

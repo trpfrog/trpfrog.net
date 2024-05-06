@@ -1,5 +1,4 @@
 import containerQuery from '@tailwindcss/container-queries'
-import * as defaultTheme from 'tailwindcss/defaultTheme'
 
 import type { Config } from 'tailwindcss'
 
@@ -38,12 +37,6 @@ const config: Omit<Config, 'content'> = {
       sp: { max: '799px' },
       pc: { min: '800px' },
       wide: { min: '1000px' },
-    },
-    fontFamily: {
-      'mplus-rounded': ['var(--font-m-plus-rounded-1c)', ...defaultTheme.fontFamily.sans],
-      comfortaa: ['var(--font-comfortaa)', ...defaultTheme.fontFamily.sans],
-      mono: ['var(--font-noto-sans-mono)', ...defaultTheme.fontFamily.mono],
-      inter: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [containerQuery],

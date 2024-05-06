@@ -9,7 +9,6 @@ import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
 
-
 export const metadata = {
   title: 'つまみアイコン集',
   description: 'つまみちゃんの作ったアイコンです。',
@@ -25,7 +24,7 @@ export default function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={'アイコン集'}>
+      <Title title="Icons">
         <p>つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。</p>
         <p>Hugging Face Datasets でも利用可能です！</p>
         <p>

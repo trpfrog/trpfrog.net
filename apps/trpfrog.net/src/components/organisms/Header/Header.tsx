@@ -3,7 +3,8 @@ import { Suspense, useMemo } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
-import { KawaiiLogoOrNot, SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
+import { KawaiiLogoOrNot } from '@/components/organisms/Header/KawaiiLogo.tsx'
+import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
 import { MobileMenu } from '@/components/organisms/MobileMenu'
 

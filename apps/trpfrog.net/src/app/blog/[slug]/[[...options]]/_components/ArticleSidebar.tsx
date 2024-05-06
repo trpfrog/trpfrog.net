@@ -20,7 +20,6 @@ export function ArticleSidebar({ post }: Props) {
         entry={post}
         style={{
           pointerEvents: 'none',
-          borderRadius: 30,
           marginBottom: '1em',
         }}
       />

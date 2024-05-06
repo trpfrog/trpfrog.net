@@ -8,7 +8,7 @@ import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
 export const metadata = {
-  title: 'スタンプ素材集',
+  title: 'Stickers',
   description: 'つまみスタンプの素材集です',
 } satisfies Metadata
 
@@ -28,9 +28,7 @@ export default function Index() {
           <br />
           良識の範囲内でご自由にどうぞ。(Twitterの会話とか)
         </p>
-        <InlineLink
-          href={'https://store.line.me/stickershop/product/8879469/ja'}
-        >
+        <InlineLink href={'https://store.line.me/stickershop/product/8879469/ja'}>
           LINEスタンプ発売中！
         </InlineLink>
       </Title>
