@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 
-import { RichButton } from 'src/components/atoms/RichButton'
-
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { Input } from '@/components/wrappers'
@@ -14,7 +13,7 @@ import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
 
 export function BalloonApp() {
-  const [isSoundEnabled, setSoundEnabled] = useBalloonSound()
+  const { isSoundEnabled, setSoundEnabled } = useBalloonSound()
 
   const getValidInteger = (s: string) => {
     let n = parseInt(s, 10)

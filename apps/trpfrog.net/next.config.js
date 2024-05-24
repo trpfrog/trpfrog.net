@@ -13,6 +13,7 @@ const nextConfig = {
 
   experimental: {
     mdxRs: true,
+    reactCompiler: true,
   },
 
   webpack: config => {

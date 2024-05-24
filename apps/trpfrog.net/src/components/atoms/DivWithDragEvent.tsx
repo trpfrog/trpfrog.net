@@ -6,49 +6,54 @@ type Props = React.ComponentPropsWithRef<'div'> & {
   onDragging: (e: MouseEvent) => void
 }
 
-export const DivWithDragEvent = React.forwardRef<HTMLDivElement, Props>(
-  function DivWithDragEvent(props, ref) {
-    const { onDragging, onMouseDown, onClick, ...rest } = props
+export function DivWithDragEvent(props: Props) {
+  const { onDragging, onMouseDown, onClick, ...rest } = props
 
-    const [isDragging, setIsDragging] = useState(false)
-    const handleDrag = useCallback(
-      (e: MouseEvent) => {
-        if (!isDragging) return // div 外のドラッグにも反応してしまうため、これより上には処理を書かない
-        e.preventDefault()
-        document.body.style.touchAction = 'none'
-        onDragging(e)
-      },
-      [isDragging, onDragging],
-    )
+  const [isDragging, setIsDragging] = useState(false)
 
-    const mouseUpHandler = useCallback(() => {
-      document.body.style.touchAction = ''
-      setIsDragging(false)
-    }, [setIsDragging])
+  useEffect(() => {
+    const defaultStyle = document.body.style.touchAction
+    document.body.style.touchAction = isDragging ? 'none' : defaultStyle
+    return () => {
+      document.body.style.touchAction = defaultStyle
+    }
+  }, [isDragging])
 
-    // 要素外でもドラッグと mouse up を検知するため document にイベントを登録する
-    useEffect(() => {
-      document.addEventListener('pointerup', mouseUpHandler)
-      document.addEventListener('pointermove', handleDrag)
-      return () => {
-        document.removeEventListener('pointerup', mouseUpHandler)
-        document.removeEventListener('pointermove', handleDrag)
-      }
-    }, [handleDrag, mouseUpHandler])
+  const handleDrag = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) return // div 外のドラッグにも反応してしまうため、これより上には処理を書かない
+      e.preventDefault()
+      onDragging(e)
+    },
+    [isDragging, onDragging],
+  )
 
-    return (
-      <div
-        ref={ref}
-        onPointerDown={e => {
-          setIsDragging(true)
-          onDragging?.(e.nativeEvent)
-        }}
-        onClick={e => {
-          onDragging?.(e.nativeEvent)
-          onClick?.(e)
-        }}
-        {...rest}
-      />
-    )
-  },
-)
+  const mouseUpHandler = useCallback(() => {
+    setIsDragging(false)
+  }, [setIsDragging])
+
+  // 要素外でもドラッグと mouse up を検知するため document にイベントを登録する
+  useEffect(() => {
+    document.addEventListener('pointerup', mouseUpHandler)
+    document.addEventListener('pointermove', handleDrag)
+    return () => {
+      document.removeEventListener('pointerup', mouseUpHandler)
+      document.removeEventListener('pointermove', handleDrag)
+    }
+  }, [handleDrag, mouseUpHandler])
+
+  return (
+    <div
+      ref={props.ref}
+      onPointerDown={e => {
+        setIsDragging(true)
+        onDragging?.(e.nativeEvent)
+      }}
+      onClick={e => {
+        onDragging?.(e.nativeEvent)
+        onClick?.(e)
+      }}
+      {...rest}
+    />
+  )
+}

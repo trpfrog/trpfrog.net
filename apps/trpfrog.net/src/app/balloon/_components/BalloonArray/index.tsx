@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import { useReward } from 'react-rewards'
+import { useImmer } from 'use-immer'
 
 import { balloonColors, Balloon } from '@/app/balloon/_components/Balloon'
 
@@ -31,7 +32,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
     lifetime: 600,
   })
 
-  const [isBurstArray, setIsBurstArray] = useState<boolean[]>(
+  const [isBurstArray, updateIsBurstArray] = useImmer<boolean[]>(
     Array.from({ length: initialAmount }, () => false),
   )
 
@@ -42,7 +43,7 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
 
   return {
     isBurst: isBurstArray,
-    setBurst: setIsBurstArray,
+    setBurst: updateIsBurstArray,
     balloonColorArray,
     setBalloonColorArray,
 
@@ -50,14 +51,15 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
       if (newAmount > isBurstArray.length) {
         isBurstArray.push(...Array.from({ length: newAmount - isBurstArray.length }, () => false))
         balloonColorArray.push(...createRandomColorArray(newAmount - balloonColorArray.length))
-        setIsBurstArray([...isBurstArray])
+        updateIsBurstArray([...isBurstArray])
         setBalloonColorArray([...balloonColorArray])
       }
     },
 
     onBurst: (onBurstProps: { index: number; currentAmount: number }) => {
-      isBurstArray[onBurstProps.index] = true
-      setIsBurstArray([...isBurstArray])
+      updateIsBurstArray(draft => {
+        draft[onBurstProps.index] = true
+      })
       const isAllBalloonBurst = isBurstArray.slice(0, onBurstProps.currentAmount).every(Boolean)
       if (isAllBalloonBurst) {
         reward()

@@ -2,7 +2,10 @@
 
 import { Fragment } from 'react'
 
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 import styles from './index.module.scss'
 
@@ -11,15 +14,9 @@ function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   const params = new URLSearchParams(Object.fromEntries(searchParams.entries()))
   params.set('p', props.pageNo + '')
   return (
-    <button
-      onClick={() => {
-        location.href = `/tweets?${params.toString()}#tweets`
-      }}
-      className={styles.button}
-      data-current={props.current}
-    >
+    <RichButton as={Link} href={`/tweets?${params.toString()}#tweets`} data-current={props.current}>
       {props.text ?? props.pageNo}
-    </button>
+    </RichButton>
   )
 }
 
@@ -63,8 +60,7 @@ export function PageNavigation(props: {
     buttons = [...new Set(buttons)].sort((a, b) => a - b)
   }
 
-  const tweetRemains =
-    props.currentPage === props.lastPage ? props.numTweets % 50 : 50
+  const tweetRemains = props.currentPage === props.lastPage ? props.numTweets % 50 : 50
 
   return (
     <div className={styles.navigation}>
