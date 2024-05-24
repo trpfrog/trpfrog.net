@@ -1,15 +1,14 @@
 import { memo } from 'react'
 
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { Details } from '@/components/atoms/Details'
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
+import { RichButton } from '@/components/atoms/RichButton'
 import { MobileMenuBkg } from '@/components/organisms/MobileMenu/MobileMenuBkg'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
 import { tv } from '@/lib/tailwind/variants'
-
 
 import { useToggleMenuCallback } from './hooks'
 import { Settings } from './Settings'
@@ -20,7 +19,7 @@ const styles = tv({
       tw-relative tw-mt-8
       tw-w-fit before:tw-absolute before:-tw-top-9 before:tw-right-5
       before:tw-z-[250] before:tw-ml-0 before:tw-border-[0.9rem]
-      before:tw-border-b-[2rem] before:tw-border-transparent 
+      before:tw-border-b-[2rem] before:tw-border-transparent
       before:tw-border-b-window-color before:tw-content-['']
       sp:tw-mt-2 sp:before:tw-hidden pc:-tw-right-[17.5px]
     `,

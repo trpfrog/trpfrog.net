@@ -1,5 +1,6 @@
 import { BlogPost } from '@trpfrog.net/posts'
-import { RichButton } from 'src/components/atoms/RichButton'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 import { env } from '@/env/server'
 

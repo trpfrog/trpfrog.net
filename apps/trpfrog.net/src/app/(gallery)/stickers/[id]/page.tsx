@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
 
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
 import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-
 
 const NUMBER_OF_IMAGES = 80
 

@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 
-import { RichButton } from 'src/components/atoms/RichButton'
-
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'

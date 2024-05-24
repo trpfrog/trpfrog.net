@@ -1,9 +1,7 @@
 import * as React from 'react'
 
-import { type H2Icon, H2 } from 'src/components/wrappers/H2'
-
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-
+import { type H2Icon, H2 } from '@/components/wrappers/H2'
 
 import styles from './index.module.scss'
 

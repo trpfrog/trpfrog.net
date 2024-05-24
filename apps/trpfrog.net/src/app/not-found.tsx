@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
-
 
 const IB = ({ children }: any) => <span className="tw-inline-block">{children}</span>
 

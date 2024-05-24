@@ -1,16 +1,15 @@
 import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
 import dayjs from 'dayjs'
-import { RichButton } from 'src/components/atoms/RichButton'
 import { z } from 'zod'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
+import { RichButton } from '@/components/atoms/RichButton'
 import { A, Li, UnorderedList } from '@/components/wrappers'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
-
 
 import styles from './index.module.scss'
 

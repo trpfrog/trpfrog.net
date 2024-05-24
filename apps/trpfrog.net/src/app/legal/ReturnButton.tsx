@@ -4,7 +4,8 @@ import * as path from 'path'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { RichButton } from 'src/components/atoms/RichButton'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 export function ReturnButton() {
   const pathname = usePathname()

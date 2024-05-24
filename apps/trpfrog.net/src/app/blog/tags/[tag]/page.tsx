@@ -1,13 +1,12 @@
 import { readAllBlogPosts, retrieveExistingAllTags } from '@trpfrog.net/posts/fs'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
-
 
 export async function generateStaticParams() {
   const tags = await retrieveExistingAllTags()
