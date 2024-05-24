@@ -29,6 +29,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^17.3.1",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-testing-library": "^6.2.2",
     "eslint-plugin-unused-imports": "^3.1.0",
