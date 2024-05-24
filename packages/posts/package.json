@@ -16,8 +16,8 @@
   "dependencies": {
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
-    "ts-pattern": "^5.1.1",
-    "zod": "^3.23.6",
+    "ts-pattern": "^5.1.2",
+    "zod": "^3.23.8",
     "microcms-js-sdk": "^3.1.1"
   },
   "devDependencies": {
