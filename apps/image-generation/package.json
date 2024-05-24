@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.1",
-    "@huggingface/inference": "^2.6.7",
-    "@langchain/core": "^0.1.63",
+    "@huggingface/inference": "^2.7.0",
+    "@langchain/core": "^0.2.0",
     "@langchain/openai": "^0.0.33",
     "date-fns": "^3.6.0",
     "hono": "^4.3.11",
@@ -18,8 +18,8 @@
     "@trpfrog.net/constants": "workspace:*"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240502.0",
+    "@cloudflare/workers-types": "^4.20240512.0",
     "@trpfrog.net/config-typescript": "workspace:*",
-    "wrangler": "^3.53.1"
+    "wrangler": "^3.57.1"
   }
 }
