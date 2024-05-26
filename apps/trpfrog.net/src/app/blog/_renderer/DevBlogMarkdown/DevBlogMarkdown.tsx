@@ -6,16 +6,16 @@ import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-serve
 
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
-import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop'
+import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop.tsx'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 
 export type DevBlogMarkdownProps = {
   slug: string
-  page?: string
+  page?: number | 'all'
 }
 
 export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
-  const [articleJSX, setArticleJSX] = useState<ReactNode>(<LoadingBlock isFullHeight />)
+  const [articleJSX, setArticleJSX] = useState<ReactNode>(<LoadingBlock isFullHeight={true} />)
 
   useEffect(() => {
     // initial render
