@@ -73,8 +73,12 @@ const withMdx = require('@next/mdx')({
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
+const withVanillaExtract = createVanillaExtractPlugin({
+  identifiers: ({ hash, filePath }) => `vanilla-extract_${hash}`,
+})
 
 const composeFunctions = (...fns) => {
   return x => fns.reverse().reduce((v, f) => f(v), x)
 }
-module.exports = composeFunctions(withBundleAnalyzer, withMdx)(nextConfig)
+module.exports = composeFunctions(withBundleAnalyzer, withMdx, withVanillaExtract)(nextConfig)
