@@ -4,7 +4,7 @@ import { useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
 
-import styles from './index.module.scss'
+import * as styles from './index.css.ts'
 
 import useSound from '@/../node_modules/use-sound'
 
@@ -85,7 +85,7 @@ export const Balloon = (props: BalloonProps) => {
         }
       }}
     >
-      <span className={styles.starting_point_of_effect} id={balloonId} />
+      <span className="tw-inline-block" id={balloonId} />
     </span>
   )
 }
