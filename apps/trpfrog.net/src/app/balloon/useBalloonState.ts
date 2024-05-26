@@ -1,0 +1,72 @@
+import { useEffect } from 'react'
+
+import { useReward } from 'react-rewards'
+import { useImmer } from 'use-immer'
+
+import { balloonColors } from '@/app/balloon/_components/Balloon'
+
+type BalloonColor = (typeof balloonColors)[number]
+
+interface BalloonState {
+  isBurst: boolean
+  color: BalloonColor
+}
+
+function createRandomBalloonState(): BalloonState {
+  return {
+    isBurst: false,
+    color: balloonColors[Math.floor(Math.random() * balloonColors.length)],
+  }
+}
+
+export function useBalloonState(
+  initialAmount: number,
+  options?: {
+    rewardId?: string
+    onBurst?: (isBurst: boolean[]) => void
+  },
+) {
+  const [balloons, updateBalloons] = useImmer<BalloonState[]>([])
+  const { reward } = useReward(options?.rewardId ?? '__reward_id', 'confetti', {
+    zIndex: 1000,
+    elementCount: 500,
+    startVelocity: 30,
+    spread: 160,
+    decay: 0.965,
+    elementSize: 12,
+    lifetime: 600,
+  })
+
+  useEffect(() => {
+    updateBalloons(draft => {
+      for (let i = draft.length; i < initialAmount; i++) {
+        draft.push(createRandomBalloonState())
+      }
+    })
+  }, [initialAmount, updateBalloons])
+
+  return {
+    balloons,
+    updateAmount: (newAmount: number) => {
+      if (newAmount === balloons.length) return
+      updateBalloons(draft => {
+        while (draft.length < newAmount) {
+          draft.push(createRandomBalloonState())
+        }
+        while (draft.length > newAmount) {
+          draft.pop()
+        }
+      })
+    },
+    burst: (idx: number) => {
+      updateBalloons(draft => {
+        draft[idx].isBurst = true
+        options?.onBurst?.(draft.map(balloon => balloon.isBurst))
+        const isAllBalloonBurst = draft.every(balloon => balloon.isBurst)
+        if (isAllBalloonBurst) {
+          reward()
+        }
+      })
+    },
+  }
+}

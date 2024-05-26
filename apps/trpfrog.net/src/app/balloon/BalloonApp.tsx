@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 import { z } from 'zod'
 
@@ -13,20 +13,24 @@ import { clamp } from '@/lib/utils'
 
 import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
+import { useBalloonState } from './useBalloonState.ts'
 
 export function BalloonApp() {
   const { isSoundEnabled, setSoundEnabled } = useBalloonSound()
-
-  const [balloonAmount, _setBalloonAmount] = useState(96)
-  const setBalloonAmount = (s: number | string) => {
-    const n = z.coerce.number().int().safeParse(s)
-    _setBalloonAmount(clamp(n.data ?? 96, 1, 10000))
-  }
 
   const [balloonSize, _setBalloonSize] = useState(57)
   const setBalloonSize = (s: number | string) => {
     const n = z.coerce.number().int().safeParse(s)
     _setBalloonSize(clamp(n.data ?? 57, 1, 1000))
+  }
+
+  const rewardStartPositionId = useId()
+  const balloonState = useBalloonState(96, {
+    rewardId: rewardStartPositionId,
+  })
+  const setBalloonAmount = (s: number | string) => {
+    const n = z.coerce.number().int().safeParse(s)
+    balloonState.updateAmount(clamp(n.data ?? 96, 1, 10000))
   }
 
   return (
@@ -43,7 +47,7 @@ export function BalloonApp() {
           <label style={{ marginRight: '10px' }}>
             <Input
               type="number"
-              value={balloonAmount}
+              value={balloonState.balloons.length}
               onChange={e => setBalloonAmount(e.target.value)}
               max={10000}
               min={1}
@@ -63,7 +67,8 @@ export function BalloonApp() {
         </p>
       </Title>
       <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
-        <BalloonArray n={balloonAmount} width={balloonSize} />
+        <BalloonArray states={balloonState} width={balloonSize} />
+        <div id={rewardStartPositionId} className="tw-fixed tw-top-0 tw-left-1/2" />
       </Block>
     </>
   )

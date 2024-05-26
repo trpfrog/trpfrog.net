@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState, useTransition } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 
 import { BalloonArray } from '@/app/balloon/_components/BalloonArray'
+import { useBalloonState } from '@/app/balloon/useBalloonState.ts'
 
 export function useResizableBalloonArray(
   cardRef: React.RefObject<HTMLDivElement>,
@@ -31,25 +32,22 @@ export function useResizableBalloonArray(
     return () => observer.disconnect()
   }, [balloonHeight, balloonWidth, cardRef])
 
-  // 全ての風船が割れたかどうか
-  const [isBurstAll, setIsBurstAll] = useState(false)
-  const [_, startTransition] = useTransition()
+  const rewardStartPositionId = useId()
+  const balloonState = useBalloonState(5, {
+    rewardId: rewardStartPositionId,
+  })
 
-  return useMemo(
-    () => ({
-      balloonComponent: (
+  return {
+    balloonComponent: (
+      <>
         <BalloonArray
-          n={balloonAmount}
+          states={balloonState}
           width={balloonWidth}
-          onBurst={isBurst =>
-            // 割れてすぐに画面に反映させる必要はないので遅延させる
-            startTransition(() => setIsBurstAll(isBurst.every(v => v)))
-          }
           key={balloonAmount} // 風船の数が変わったら state をリセット
         />
-      ),
-      isBurstAll,
-    }),
-    [balloonAmount, isBurstAll, balloonWidth],
-  )
+        <div id={rewardStartPositionId} className="tw-fixed tw-top-0 tw-left-1/2" />
+      </>
+    ),
+    isBurstAll: balloonState.balloons.every(balloon => balloon.isBurst),
+  }
 }
