@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 import { useReward } from 'react-rewards'
 import { useImmer } from 'use-immer'
 
@@ -26,7 +24,13 @@ export function useBalloonState(
     onBurst?: (isBurst: boolean[]) => void
   },
 ) {
-  const [balloons, updateBalloons] = useImmer<BalloonState[]>([])
+  const [balloons, updateBalloons] = useImmer<BalloonState[]>(() => {
+    const balloons: BalloonState[] = []
+    for (let i = 0; i < initialAmount; i++) {
+      balloons.push(createRandomBalloonState())
+    }
+    return balloons
+  })
   const { reward } = useReward(options?.rewardId ?? '__reward_id', 'confetti', {
     zIndex: 1000,
     elementCount: 500,
@@ -36,14 +40,6 @@ export function useBalloonState(
     elementSize: 12,
     lifetime: 600,
   })
-
-  useEffect(() => {
-    updateBalloons(draft => {
-      for (let i = draft.length; i < initialAmount; i++) {
-        draft.push(createRandomBalloonState())
-      }
-    })
-  }, [initialAmount, updateBalloons])
 
   return {
     balloons,
