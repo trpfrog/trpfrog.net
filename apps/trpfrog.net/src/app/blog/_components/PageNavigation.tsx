@@ -1,8 +1,8 @@
 import { BlogPost } from '@trpfrog.net/posts'
 
-import { RichButton } from '@/components/atoms/RichButton'
-
 import { env } from '@/env/server'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 type Props = {
   entry: BlogPost

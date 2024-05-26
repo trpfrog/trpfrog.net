@@ -9,7 +9,6 @@ import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 
-
 export type DevBlogMarkdownProps = {
   slug: string
   page?: string

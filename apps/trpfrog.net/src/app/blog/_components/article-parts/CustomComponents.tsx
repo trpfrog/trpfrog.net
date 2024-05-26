@@ -1,11 +1,11 @@
 import yaml from 'js-yaml'
 
+import { env } from '@/env/server'
+
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
-
-import { env } from '@/env/server'
 
 const definedComponents: Record<string, Function> = {}
 
@@ -14,10 +14,7 @@ export const defineComponentParts = {
   Component: ({ content, entry }) => {
     const [name, ...templateLines] = content.split('\n')
     try {
-      definedComponents[`${entry?.slug}/${name}`] = Function(
-        'props',
-        templateLines.join('\n'),
-      )
+      definedComponents[`${entry?.slug}/${name}`] = Function('props', templateLines.join('\n'))
     } catch (e) {
       console.error(e)
       definedComponents[`${entry?.slug}/${name}`] = () => {

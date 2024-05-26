@@ -4,21 +4,20 @@ import { BlogPost } from '@trpfrog.net/posts'
 import { readBlogPost, readAllBlogPosts } from '@trpfrog.net/posts/fs'
 import { match } from 'ts-pattern'
 
+import { env } from '@/env/server.ts'
+
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
-import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
+import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
 
-
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
-
-import { env } from '@/env/server'
 
 export const dynamicParams = false
 

@@ -13,6 +13,8 @@ import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
+import { env } from '@/env/server'
+
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 import * as Wrapper from '@/components/wrappers'
@@ -29,9 +31,6 @@ import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
 import styles from '@blog/_styles/blog.module.scss'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'
-
-import { env } from '@/env/server'
-
 
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return function MarkdownCode(props: ComponentProps<'code'>): ReactNode {

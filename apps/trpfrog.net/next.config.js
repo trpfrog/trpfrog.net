@@ -12,7 +12,6 @@ const nextConfig = {
   },
 
   experimental: {
-    mdxRs: true,
     reactCompiler: true,
   },
 

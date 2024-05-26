@@ -3,6 +3,8 @@ import * as React from 'react'
 import { BlogPost } from '@trpfrog.net/posts'
 import Balancer from 'react-wrap-balancer'
 
+import { env } from '@/env/server'
+
 import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
@@ -13,9 +15,6 @@ import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
 
 import styles from './index.module.scss'
-
-import { env } from '@/env/server'
-
 
 type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
