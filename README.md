@@ -55,7 +55,7 @@ pnpm install
 Next, run the development server:
 
 ```sh
-pnpm dev
+pnpm run -w dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -63,7 +63,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To build this project, just run below:
 
 ```sh
-pnpm build
+pnpm run -w build
 ```
 
 ## 🚗 Requirements
@@ -73,13 +73,13 @@ pnpm build
 
 ## 📦 Project Structure
 
-We are using a monorepo. The package structure is as follows.  
+We are using a monorepo. The package structure is as follows.
 
 ```
 .
 ├── apps                    # Applications
 │   ├── trpfrog.net           # Main project, trpfrog.net
-│   ├── dev-blog-server       # Socket.io server for editing blog posts 
+│   ├── dev-blog-server       # Socket.io server for editing blog posts
 │   └── image-generation      # API Endpoints for trpfrog-diffusion
 ├── packages                # Libraries
 │   ├── config-tailwind       # Shared Tailwind CSS config
