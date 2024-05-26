@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 
 import { useReward } from 'react-rewards'
 import { useImmer } from 'use-immer'
@@ -12,16 +12,23 @@ import styles from './index.module.scss'
 type BalloonArrayProps = {
   n: number
   width?: number
-  onBurst?: (isBurst: boolean[]) => void
+  onBurst?: (isBurst: boolean[]) => undefined | (() => void)
 }
 
 type BalloonColor = (typeof balloonColors)[number]
 
-export function useBalloonState(initialAmount: number, rewardId: string) {
-  const createRandomColorArray = (n: number) => {
-    return Array.from(Array(n), () => balloonColors[Math.floor(Math.random() * 3)])
-  }
+interface BalloonState {
+  isBurst: boolean
+  color: BalloonColor
+}
 
+const createNewBalloon = (): BalloonState => ({
+  isBurst: false,
+  color: balloonColors[Math.floor(Math.random() * balloonColors.length)],
+})
+
+export function useBalloonState(initialAmount: number, rewardId: string) {
+  const [balloons, updateBalloons] = useImmer<BalloonState[]>([])
   const { reward } = useReward(rewardId, 'confetti', {
     zIndex: 1000,
     elementCount: 500,
@@ -32,35 +39,32 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
     lifetime: 600,
   })
 
-  const [isBurstArray, updateIsBurstArray] = useImmer<boolean[]>(
-    Array.from({ length: initialAmount }, () => false),
-  )
-
-  const [balloonColorArray, setBalloonColorArray] = useState<BalloonColor[]>([])
   useEffect(() => {
-    setBalloonColorArray(createRandomColorArray(initialAmount))
-  }, [initialAmount])
+    updateBalloons(draft => {
+      for (let i = draft.length; i < initialAmount; i++) {
+        draft.push(createNewBalloon())
+      }
+    })
+  }, [initialAmount, updateBalloons])
 
   return {
-    isBurst: isBurstArray,
-    setBurst: updateIsBurstArray,
-    balloonColorArray,
-    setBalloonColorArray,
-
+    balloons,
     updateAmount: (newAmount: number) => {
-      if (newAmount > isBurstArray.length) {
-        isBurstArray.push(...Array.from({ length: newAmount - isBurstArray.length }, () => false))
-        balloonColorArray.push(...createRandomColorArray(newAmount - balloonColorArray.length))
-        updateIsBurstArray([...isBurstArray])
-        setBalloonColorArray([...balloonColorArray])
-      }
-    },
-
-    onBurst: (onBurstProps: { index: number; currentAmount: number }) => {
-      updateIsBurstArray(draft => {
-        draft[onBurstProps.index] = true
+      if (newAmount === balloons.length) return
+      updateBalloons(draft => {
+        while (draft.length < newAmount) {
+          draft.push(createNewBalloon())
+        }
+        while (draft.length > newAmount) {
+          draft.pop()
+        }
       })
-      const isAllBalloonBurst = isBurstArray.slice(0, onBurstProps.currentAmount).every(Boolean)
+    },
+    burst: (idx: number) => {
+      updateBalloons(draft => {
+        draft[idx].isBurst = true
+      })
+      const isAllBalloonBurst = balloons.slice(0, balloons.length).every(balloon => balloon.isBurst)
       if (isAllBalloonBurst) {
         reward()
       }
@@ -68,36 +72,39 @@ export function useBalloonState(initialAmount: number, rewardId: string) {
   }
 }
 
+// TODO: useBalloonState を外に逃す (useEffect で毎度 setter を呼ぶのはアンチパターン)
 export function BalloonArray({ n, width = 80, onBurst: userOnBurst }: BalloonArrayProps) {
   const height = width / 0.6
 
-  const { updateAmount, isBurst, balloonColorArray, onBurst } = useBalloonState(
-    n,
-    styles.reward_start_point,
-  )
-  updateAmount(n)
+  const { updateAmount, balloons, burst } = useBalloonState(n, styles.reward_start_point)
+  useLayoutEffect(() => {
+    const currentAmount = balloons.length
+    updateAmount(n)
+    return () => {
+      updateAmount(currentAmount)
+    }
+  }, [balloons.length, n, updateAmount])
 
+  const isBurstArray = balloons.map(balloon => balloon.isBurst)
   useEffect(() => {
-    userOnBurst?.(isBurst)
-  }, [isBurst, userOnBurst])
+    const cleanup = userOnBurst?.(isBurstArray)
+    return () => {
+      cleanup?.()
+    }
+  }, [isBurstArray, userOnBurst])
 
   return (
     <>
       <div id={styles.balloon_grid}>
-        {Array.from(Array(n), (v, k) => (
+        {balloons.map((balloon, idx) => (
           <Balloon
             className={styles.balloon}
-            key={k}
+            key={idx}
             width={`${width}px`}
             height={`${height}px`}
-            isBurst={isBurst[k]}
-            color={balloonColorArray[k]}
-            onBurst={() =>
-              onBurst({
-                index: k,
-                currentAmount: n,
-              })
-            }
+            isBurst={balloon.isBurst}
+            color={balloon.color}
+            onBurst={() => burst(idx)}
           />
         ))}
       </div>
