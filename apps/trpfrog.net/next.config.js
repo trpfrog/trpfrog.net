@@ -12,6 +12,7 @@ const nextConfig = {
   },
 
   experimental: {
+    mdxRs: true,
     reactCompiler: true,
   },
 
@@ -81,4 +82,4 @@ const withVanillaExtract = createVanillaExtractPlugin({
 const composeFunctions = (...fns) => {
   return x => fns.reverse().reduce((v, f) => f(v), x)
 }
-module.exports = composeFunctions(withBundleAnalyzer, withMdx, withVanillaExtract)(nextConfig)
+module.exports = composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
