@@ -1,6 +1,10 @@
-<h1 align="center">
-  🎺 <a href="https://trpfrog.net">trpfrog.net</a> 🐸
-</h1>
+<p align="center">
+  <a href="https://trpfrog.net">
+    <img alt="" src="https://res.cloudinary.com/trpfrog/image/upload/v1717325153/kawaii-with-outline.png" height="180px">
+  </a>
+</p>
+
+<h1 align="center">trpfrog.net</h1>
 <p align="center">
   A monorepo for my personal website, <a href="https://trpfrog.net">trpfrog.net</a>, built with Next.js and TypeScript.
 </p>
