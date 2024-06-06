@@ -4,14 +4,14 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "wrangler dev --port 8001 --show-interactive-dev-session false src/index.ts",
+    "dev": "wrangler dev --port 8001 src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "@hono/zod-validator": "^0.2.1",
+    "@hono/zod-validator": "^0.2.2",
     "@huggingface/inference": "^2.7.0",
-    "@langchain/core": "^0.2.0",
-    "@langchain/openai": "^0.0.33",
+    "@langchain/core": "^0.2.5",
+    "@langchain/openai": "^0.0.34",
     "date-fns": "^3.6.0",
     "hono": "^4.3.11",
     "zod": "^3.23.8",
@@ -20,6 +20,6 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
     "@trpfrog.net/config-typescript": "workspace:*",
-    "wrangler": "^3.57.1"
+    "wrangler": "^3.57.2"
   }
 }
