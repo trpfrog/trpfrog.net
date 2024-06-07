@@ -11,16 +11,22 @@
 
 - **Node.js**
 - **TypeScript** with `better-typescript-lib`
+- **Vitest**
+- **Tailwind CSS**
+- **React** (with React Compiler)
 - **pnpm**
 - **ESLint**
 - **Prettier**
 - **Turborepo** for monorepo management
+- **Zod** for schema validation
+- **ts-pattern** for pattern matching
 
 ### trpfrog.net
 
 - **Next.js** for building the website
 - **Vercel** for website hosting
-- **Tailwind CSS** for styling
+- **CSS Modules** for *complex* styling
+- **Vanilla Extract** for *more complex* styling
 - **Hono** for BFF (`hono/vercel`) and middlewares
 - **Cloudinary** for image CDN
 - **next-mdx-remote** for rendering blog articles from Markdown
