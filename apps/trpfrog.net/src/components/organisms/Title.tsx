@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react'
 import * as React from 'react'
 
-import { DominoText } from '@/components/atoms/DominoText'
+import { WavyTitle } from '@/components/atoms/WavyTitle'
 import { Block } from '@/components/molecules/Block'
 
-import styles from './index.module.scss'
+import { twMerge } from '@/lib/tailwind/merge'
 
 type Props = {
   title?: string
@@ -23,16 +23,12 @@ export const Title: React.FunctionComponent<Props> = props => {
   return (
     <>
       <Block
-        className={`${styles.title} ${props.className}`}
+        className={twMerge('&_p:tw-mb-0', props.className)}
         ribbonText={props.ribbonText ?? ''}
         style={props.style}
       >
         <div>
-          {showDefaultText && title && (
-            <h1 className="tw-text-lime-600 dark:tw-text-lime-100">
-              <DominoText className="tw-font-palanquin-dark tw-tracking-[-0.01em]" text={title} />
-            </h1>
-          )}
+          {showDefaultText && title && <WavyTitle text={title} />}
           {showDefaultText && description && <p>{description}</p>}
           {children}
         </div>
