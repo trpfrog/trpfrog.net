@@ -3,5 +3,15 @@
     "**/app/**/page.tsx": "${dirname} - Page",
     "**/app/**/layout.tsx": "${dirname} - Layout",
     "**/app/**/route.{ts,tsx}": "${dirname} - Route",
+  },
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "eslint.workingDirectories": [
+    { "mode": "auto" }
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
   }
 }
