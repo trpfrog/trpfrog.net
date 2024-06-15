@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { DominoText } from '@/components/atoms/DominoText'
+import { WavyText } from '@/components/atoms/WavyText'
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
@@ -27,7 +27,7 @@ export const HeaderNav = React.memo(function HeaderNav() {
     <nav className={styles.navigation()}>
       {topLinks.map(({ href, label }) => (
         <A key={href} href={href} className={styles.link()}>
-          <DominoText text={label} />
+          <WavyText text={label} />
         </A>
       ))}
     </nav>
