@@ -5,13 +5,12 @@
  * $ bun tools/createTweetBlock.ts
  */
 
+import { BlogTwitterArchiveSchema } from '@blog/_components/article-parts/TwitterArchive/generateTwitterArchiveProps'
 import { createURL } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
 import dayjs from 'dayjs'
 import { JSDOM } from 'jsdom'
 import { z } from 'zod'
-
-import { BlogTwitterArchiveSchema } from '@blog/_components/article-parts/TwitterArchive/generateTwitterArchiveProps'
 
 /**
  * Beautify the tweet HTML.
@@ -90,9 +89,7 @@ async function fetchTweet(tweetUrl: string) {
 
   const dom = new JSDOM(content.html)
   const document = dom.window.document
-  const dateElement = document
-    .querySelectorAll('a')
-    .item(document.querySelectorAll('a').length - 1)
+  const dateElement = document.querySelectorAll('a').item(document.querySelectorAll('a').length - 1)
 
   const rawTweet = document.querySelector('p')?.innerHTML ?? ''
   const images = countImages(rawTweet)

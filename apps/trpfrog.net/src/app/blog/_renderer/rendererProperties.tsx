@@ -1,9 +1,7 @@
 import React, { ReactNode, ComponentProps, ComponentPropsWithoutRef } from 'react'
 
-import { BlogPost } from '@trpfrog.net/posts'
-
 import 'katex/dist/katex.min.css'
-
+import { BlogPost } from '@trpfrog.net/posts'
 import { MDXComponents } from 'mdx/types'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'

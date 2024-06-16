@@ -4,11 +4,11 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
+    "lint": "eslint --fix .",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
-    "prepare": "husky install",
+    "prepare": "lefthook install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "engines": {

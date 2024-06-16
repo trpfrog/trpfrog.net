@@ -1,3 +1,6 @@
+const bundleAnalyer = require('@next/bundle-analyzer')
+const mdx = require('@next/mdx')
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
 const webpack = require('webpack')
 
 /** @type {import('next').NextConfig} */
@@ -61,7 +64,7 @@ const nextConfig = {
   },
 }
 
-const withMdx = require('@next/mdx')({
+const withMdx = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [import('remark-gfm')],
@@ -71,10 +74,10 @@ const withMdx = require('@next/mdx')({
     mdxRs: true,
   },
 })
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyer({
   enabled: process.env.ANALYZE === 'true',
 })
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
+
 const withVanillaExtract = createVanillaExtractPlugin({
   identifiers: ({ hash, filePath }) => `vanilla-extract_${hash}`,
 })

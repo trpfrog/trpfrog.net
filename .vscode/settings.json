@@ -5,12 +5,15 @@
     "**/app/**/route.{ts,tsx}": "${dirname} - Route",
   },
 
+  // Prettier
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  "eslint.workingDirectories": [
-    { "mode": "auto" }
-  ],
+  // ESLint
+  // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
+  // "eslint.workingDirectories": [
+  //   { "mode": "auto" }
+  // ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   }

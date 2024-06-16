@@ -6,7 +6,6 @@
     "analyze": "ANALYZE=true next build",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "test": "vitest run",
     "build-storybook": "storybook build"
