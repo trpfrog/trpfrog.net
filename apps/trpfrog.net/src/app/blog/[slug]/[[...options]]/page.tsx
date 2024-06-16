@@ -91,12 +91,6 @@ export default async function Index(props: PageProps) {
     },
   } = pagePropsSchema.parse(props)
 
-  console.log(pagePropsSchema.parse(props))
-  console.log({
-    slug,
-    page,
-  })
-
   const { entry, relatedPosts } = await processSlug(slug, page)
 
   // TODO: コメントアウトするとなぜかビルドできなくなるので調査
