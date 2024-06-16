@@ -3,6 +3,8 @@ import { ChatOpenAI } from '@langchain/openai'
 import { readAllSlugs } from '@trpfrog.net/posts/fs'
 import { NextRequest, NextResponse } from 'next/server'
 
+import { env } from '@/env/server'
+
 import { createRateLimit } from '@/lib/rateLimit'
 
 const limiter = createRateLimit({
@@ -29,7 +31,10 @@ const pagePaths = [
 
 let blogPaths = [] as string[]
 
-const chat = new ChatOpenAI({ temperature: 0 })
+const chat = new ChatOpenAI({
+  temperature: 0.3,
+  openAIApiKey: env.OPENAI_API_KEY,
+})
 
 type GETProps = {
   params: {
