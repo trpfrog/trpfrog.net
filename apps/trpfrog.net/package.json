@@ -15,13 +15,12 @@
     "schema": "src/prisma/schema.prisma"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.29",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@hono/zod-validator": "^0.2.2",
-    "@langchain/core": "^0.2.6",
-    "@langchain/openai": "^0.1.3",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/bundle-analyzer": "^14.2.4",
@@ -37,6 +36,7 @@
     "@vanilla-extract/css": "^1.15.2",
     "@vercel/edge-config": "^1.1.1",
     "@vercel/kv": "^1.0.1",
+    "ai": "^3.1.36",
     "better-react-mathjax": "^2.0.3",
     "budoux": "^0.6.2",
     "bufferutil": "^4.0.8",

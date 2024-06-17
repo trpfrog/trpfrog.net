@@ -1,9 +1,7 @@
-import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages'
-import { ChatOpenAI } from '@langchain/openai'
+import { openai } from '@ai-sdk/openai'
 import { readAllSlugs } from '@trpfrog.net/posts/fs'
+import { generateText } from 'ai'
 import { NextRequest, NextResponse } from 'next/server'
-
-import { env } from '@/env/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
 
@@ -31,31 +29,10 @@ const pagePaths = [
 
 let blogPaths = [] as string[]
 
-const chat = new ChatOpenAI({
-  temperature: 0.3,
-  openAIApiKey: env.OPENAI_API_KEY,
-})
-
 type GETProps = {
   params: {
     input: string
   }
-}
-
-function extractTextFromBaseMessageChunk(chunk: BaseMessageChunk) {
-  const content = chunk.content
-  if (typeof content === 'string') {
-    return content
-  } else {
-    const content = chunk.content[0]
-    if (typeof content === 'string') {
-      return content
-    }
-    if (content.type === 'text') {
-      return content.text
-    }
-  }
-  return ''
 }
 
 export async function GET(req: NextRequest, props: GETProps) {
@@ -77,22 +54,39 @@ export async function GET(req: NextRequest, props: GETProps) {
     '\n' +
     '### search target list ###\n' +
     '\n' +
-    pagePaths.map(s => '- ' + s + '\n').join('') +
-    blogPaths.map(s => '- ' + s + '\n').join('') +
-    '\n' +
-    '### input ###\n' +
-    '\n' +
-    input +
-    '\n' +
-    '\n' +
-    '### output ###\n'
+    pagePaths.map(s => '- /' + s + '\n').join('') +
+    blogPaths.map(s => '- /blog/' + s + '\n').join('')
 
   try {
     await limiter.check(res, 5, req.ip ?? 'ip_not_found')
-    const chatResponse = await chat.invoke([new HumanMessage(prompt)])
-    const output = extractTextFromBaseMessageChunk(chatResponse)
-    const url = blogPaths.includes(output) ? '/blog/' + output : '/' + output
-    return NextResponse.redirect(new URL(url, req.url))
+    const { text: output } = await generateText({
+      model: openai('gpt-3.5-turbo'),
+      messages: [
+        {
+          role: 'system',
+          content: prompt,
+        },
+        {
+          role: 'user',
+          content: 'weblog',
+        },
+        {
+          role: 'assistant',
+          content: '/blog',
+        },
+        {
+          role: 'user',
+          content: input,
+        },
+      ],
+    })
+
+    console.log({
+      prompt,
+      output,
+    })
+
+    return NextResponse.redirect(new URL(output, req.url))
   } catch {
     return NextResponse.redirect(new URL('/', req.url))
   }
