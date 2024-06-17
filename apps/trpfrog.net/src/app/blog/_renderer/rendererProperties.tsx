@@ -122,14 +122,14 @@ export function getMarkdownOptions(options?: {
       return <Tag {...props} />
     },
 
-    h2: props => <BlogH2 {...props} />,
-    h3: props => <Wrapper.H3 {...props} className="tw-mt-8" />,
-    h4: props => <Wrapper.H4 {...props} />,
-    h5: props => <Wrapper.H5 {...props} />,
+    h2: ({ ref, ...props }) => <BlogH2 {...props} />,
+    h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw-mt-8" />,
+    h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
+    h5: ({ ref, ...props }) => <Wrapper.H5 {...props} />,
 
-    ul: props => <Wrapper.UnorderedList {...props} />,
-    ol: props => <Wrapper.OrderedList {...props} />,
-    li: props => <Wrapper.Li {...props} />,
+    ul: ({ ref, ...props }) => <Wrapper.UnorderedList {...props} />,
+    ol: ({ ref, ...props }) => <Wrapper.OrderedList {...props} />,
+    li: ({ ref, ...props }) => <Wrapper.Li {...props} />,
 
     a: props => (
       <InlineLink
@@ -149,12 +149,12 @@ export function getMarkdownOptions(options?: {
     video: props => <BlogImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
 
     hr: props => {
-      const { className = '', ...rest } = props
+      const { ref, className = '', ...rest } = props
       return <Wrapper.HorizontalRule className={className} {...rest} />
     },
 
     table: props => {
-      let { className, ...rest } = props
+      let { ref, className, ...rest } = props
       className = twMerge('tw-mx-auto', className)
       return <Wrapper.Table className={className} {...rest} />
     },

@@ -32,7 +32,7 @@ export function OrderedList(props: React.ComponentPropsWithRef<'ol'>) {
   return <ol className={listStyles({ className, type: 'ol' })} ref={ref} {...rest} />
 }
 
-export function ListItem(props: React.ComponentPropsWithRef<'li'>) {
+export function Li(props: React.ComponentPropsWithRef<'li'>) {
   const { className, ref, ...rest } = props
   return <li className={itemStyle({ className })} ref={ref} {...rest} />
 }
