@@ -12,8 +12,9 @@ type Props = React.ComponentPropsWithRef<'div'> & {
   ribbonText?: string
 }
 
-export const Block = React.forwardRef<HTMLDivElement, Props>(function Block(props, ref) {
+export function Block(props: Props) {
   const {
+    ref,
     newRibbon,
     ribbonText: initialRibbonText = '',
     h2icon,
@@ -42,4 +43,4 @@ export const Block = React.forwardRef<HTMLDivElement, Props>(function Block(prop
       {children}
     </PlainBlock>
   )
-})
+}

@@ -23,29 +23,17 @@ const style = tv({
   },
 })
 
-export const H3 = React.forwardRef<HTMLHeadingElement, Props>(
-  function H3(props, ref) {
-    const { className, ...rest } = props
-    return (
-      <h3 ref={ref} className={style({ className, type: 'h3' })} {...rest} />
-    )
-  },
-)
+export function H3(props: Props) {
+  const { className, ref, ...rest } = props
+  return <h3 ref={ref} className={style({ className, type: 'h3' })} {...rest} />
+}
 
-export const H4 = React.forwardRef<HTMLHeadingElement, Props>(
-  function H4(props, ref) {
-    const { className, ...rest } = props
-    return (
-      <h4 ref={ref} className={style({ className, type: 'h4' })} {...rest} />
-    )
-  },
-)
+export function H4(props: Props) {
+  const { className, ref, ...rest } = props
+  return <h4 ref={ref} className={style({ className, type: 'h4' })} {...rest} />
+}
 
-export const H5 = React.forwardRef<HTMLHeadingElement, Props>(
-  function H5(props, ref) {
-    const { className, ...rest } = props
-    return (
-      <h5 ref={ref} className={style({ className, type: 'h5' })} {...rest} />
-    )
-  },
-)
+export function H5(props: Props) {
+  const { className, ref, ...rest } = props
+  return <h5 ref={ref} className={style({ className, type: 'h5' })} {...rest} />
+}

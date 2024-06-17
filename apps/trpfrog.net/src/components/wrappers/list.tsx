@@ -22,29 +22,17 @@ const itemStyle = tv({
   base: 'tw-my-1',
 })
 
-export const UnorderedList = React.forwardRef<
-  HTMLUListElement,
-  React.ComponentProps<'ul'>
->(function UnorderedList(props, ref) {
-  const { className, ...rest } = props
-  return (
-    <ul className={listStyles({ className, type: 'ul' })} ref={ref} {...rest} />
-  )
-})
+export function UnorderedList(props: React.ComponentPropsWithRef<'ul'>) {
+  const { className, ref, ...rest } = props
+  return <ul className={listStyles({ className, type: 'ul' })} ref={ref} {...rest} />
+}
 
-export const OrderedList = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentProps<'ol'>
->(function OrderedList(props, ref) {
-  const { className, ...rest } = props
-  return (
-    <ol className={listStyles({ className, type: 'ol' })} ref={ref} {...rest} />
-  )
-})
+export function OrderedList(props: React.ComponentPropsWithRef<'ol'>) {
+  const { className, ref, ...rest } = props
+  return <ol className={listStyles({ className, type: 'ol' })} ref={ref} {...rest} />
+}
 
-export const Li = React.forwardRef<HTMLLIElement, React.ComponentProps<'li'>>(
-  function ListItem(props, ref) {
-    const { className, ...rest } = props
-    return <li className={itemStyle({ className })} ref={ref} {...rest} />
-  },
-)
+export function ListItem(props: React.ComponentPropsWithRef<'li'>) {
+  const { className, ref, ...rest } = props
+  return <li className={itemStyle({ className })} ref={ref} {...rest} />
+}

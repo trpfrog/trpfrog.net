@@ -25,9 +25,7 @@ export const plainBlockStyle = tv({
 
 export type PlainBlockProps = React.ComponentPropsWithRef<'div'>
 
-export const PlainBlock = React.forwardRef<HTMLDivElement, PlainBlockProps>(
-  function PlainBlock(props, ref) {
-    const { className, ...rest } = props
-    return <div ref={ref} className={plainBlockStyle({ className })} {...rest} />
-  },
-)
+export function PlainBlock(props: PlainBlockProps) {
+  const { className, ref, ...rest } = props
+  return <div ref={ref} className={plainBlockStyle({ className })} {...rest} />
+}

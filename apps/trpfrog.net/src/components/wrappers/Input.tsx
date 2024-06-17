@@ -28,17 +28,13 @@ const style = tv({
   },
 })
 
-function hasVariant(
-  type: string | undefined,
-): type is keyof typeof style.variants.type {
+function hasVariant(type: string | undefined): type is keyof typeof style.variants.type {
   return type !== undefined && type in style.variants.type
 }
 
-export const Input = React.forwardRef<HTMLInputElement, Props>(
-  function Input(props, ref) {
-    const { className, ...rest } = props
-    const type = hasVariant(props.type) ? props.type : undefined
+export function Input(props: Props) {
+  const { className, ref, ...rest } = props
+  const type = hasVariant(props.type) ? props.type : undefined
 
-    return <input ref={ref} className={style({ className, type })} {...rest} />
-  },
-)
+  return <input ref={ref} className={style({ className, type })} {...rest} />
+}

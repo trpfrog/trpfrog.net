@@ -20,10 +20,7 @@ const style = tv({
   ],
 })
 
-export const Table = React.forwardRef<HTMLTableElement, Props>(
-  function Table(props, ref) {
-    const { className, ...rest } = props
-
-    return <table ref={ref} className={style({ className })} {...rest} />
-  },
-)
+export function Table(props: Props) {
+  const { className, ref, ...rest } = props
+  return <table ref={ref} className={style({ className })} {...rest} />
+}
