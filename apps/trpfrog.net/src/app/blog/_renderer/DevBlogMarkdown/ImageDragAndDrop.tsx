@@ -31,9 +31,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
       setIsDragging(false)
       if (e.dataTransfer.files !== null && e.dataTransfer.files.length > 0) {
         setRecentlyUploaded('Uploading...')
-        const paths = await Promise.all(
-          Array.from(e.dataTransfer.files).map(uploadImage),
-        )
+        const paths = await Promise.all(Array.from(e.dataTransfer.files).map(uploadImage))
         const imageMarkdown = paths.map(e => `![](${e})` as const).join('\n')
         setRecentlyUploaded(imageMarkdown)
         e.dataTransfer.clearData()
@@ -43,7 +41,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
   )
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} print:tw-invisible`}>
       <div className={styles.tab} onClick={() => setIsTabOpen(prv => !prv)}>
         Image Uploader
       </div>
@@ -60,9 +58,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
             <div
               className={styles.drag_and_drop_text}
               style={{
-                borderColor: isDragging
-                  ? 'var(--header-color)'
-                  : 'var(--window-bkg-color)',
+                borderColor: isDragging ? 'var(--header-color)' : 'var(--window-bkg-color)',
               }}
             >
               Drag and drop
@@ -78,9 +74,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
                   checked={horizontalImages}
                   onChange={e => setHorizontalImages(e.target.checked)}
                 />
-                <label style={{ verticalAlign: '0.2em' }}>
-                  Horizontal Images
-                </label>
+                <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
               <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
                 {horizontalImages

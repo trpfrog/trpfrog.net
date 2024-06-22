@@ -22,7 +22,7 @@ const createStyles = tv({
   variants: {
     sticky: {
       true: {
-        wrapper: 'tw-sticky tw-top-0',
+        wrapper: 'tw-sticky tw-top-0 print:tw-static',
       },
     },
     visible: { true: '' },
