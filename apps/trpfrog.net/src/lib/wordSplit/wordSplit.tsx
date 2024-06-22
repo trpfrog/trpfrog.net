@@ -24,8 +24,15 @@ const parseWithBudouX = (str: string) => {
     ))
 }
 
-export type ParseWithBudouXProps = { str: string; slug: string }
+/**
+ * @deprecated
+ */
+export type ParseWithBudouXProps = { str: string; slug?: string }
 // TODO: slug を消す
+
+/**
+ * @deprecated
+ */
 export function _ParseWithBudouX(props: ParseWithBudouXProps) {
   return <>{parseWithBudouX(props.str)}</>
 }

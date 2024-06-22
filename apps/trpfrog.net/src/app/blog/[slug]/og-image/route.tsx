@@ -21,6 +21,8 @@ import {
 } from './components'
 import { ogFonts, ogpImageSize } from './variables'
 
+import { env } from '@/env/server'
+
 export const runtime = 'edge'
 
 async function createImageResponseOptions() {
@@ -71,6 +73,17 @@ export async function GET(req: NextRequest, context: Context) {
 
   const Background = thumbnail ? OgGradientBackground : OgWhiteBackground
 
+  const budouxTitle = await bffClient.budoux
+    .$post({
+      header: {
+        'x-api-key': env.TRPFROG_ADMIN_KEY,
+      },
+      json: {
+        text: title,
+      },
+    })
+    .then(res => res.json())
+
   return new ImageResponse(
     (
       <OgBody>
@@ -78,7 +91,11 @@ export async function GET(req: NextRequest, context: Context) {
           <OgThumbnail src={thumbnail} />
           <Background>
             <OgTitleWrapper>
-              {title}
+              <span style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {budouxTitle.map((str, i) => (
+                  <span key={i}>{str}</span>
+                ))}
+              </span>
               {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
             </OgTitleWrapper>
             <OgAttributesWrapper>
