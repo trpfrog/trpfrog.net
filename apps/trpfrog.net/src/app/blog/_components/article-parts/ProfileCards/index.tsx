@@ -74,13 +74,7 @@ export const profileCardParts = {
     const personalDataList = parseObjectList(content)
       .map(e => ProfileDataSchema.safeParse(e))
       .filter(e => e.success)
-      .map(e => {
-        if (e.success) {
-          return e.data
-        } else {
-          throw e.error
-        }
-      })
+      .map(e => e.data)
 
     const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
       q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),

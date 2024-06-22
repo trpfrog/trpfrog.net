@@ -58,5 +58,5 @@ export const endpoints = Object.fromEntries(
 export const ports = Object.fromEntries(
   internalEndpoints
     .filter(endpoint => typeof endpoint.port === 'number')
-    .map(endpoint => [endpoint.name, endpoint.port!]),
+    .map(endpoint => [endpoint.name, endpoint.port]),
 )
