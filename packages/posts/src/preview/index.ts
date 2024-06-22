@@ -1,8 +1,8 @@
+import { createClient } from 'microcms-js-sdk'
 import { z } from 'zod'
 
 import { BlogPost } from '../core'
 import { BlogPostBuildOption, buildBlogPost } from '../core/buildBlogPost.ts'
-import { microCMS } from '../utils/microCMS.ts'
 
 export type ErrorablePost = BlogPost & {
   isError: boolean
@@ -33,21 +33,40 @@ const MicroCMSBlogPostSchema = z.object({
   slug: z.string(),
 })
 
+export type PreviewPostClient = (
+  contentId: string,
+) => Promise<z.output<typeof MicroCMSBlogPostSchema>>
+
+export function createPreviewClient(args: {
+  apiKey: string
+  serviceDomain: string
+  endpoint: string
+}): PreviewPostClient {
+  const client = createClient({
+    apiKey: args.apiKey,
+    serviceDomain: args.serviceDomain,
+  })
+  return async (contentId: string) => {
+    const data = await client.get({
+      endpoint: args.endpoint,
+      contentId,
+    })
+    return MicroCMSBlogPostSchema.parse(data)
+  }
+}
+
 /**
  * Fetch blog post from microCMS
  * @param contentId
  * @param option
  */
-export async function fetchPreviewBlogPost(contentId: string, option?: BlogPostBuildOption) {
-  const data = await microCMS
-    .get({
-      endpoint: 'blog-preview',
-      contentId,
-    })
-    .catch(() => ({}))
-
+export async function fetchPreviewBlogPost(
+  client: PreviewPostClient,
+  contentId: string,
+  option?: BlogPostBuildOption,
+) {
   try {
-    const { md, slug } = MicroCMSBlogPostSchema.parse(data)
+    const { md, slug } = await client(contentId)
     return buildBlogPost(slug, md, {
       ...option,
       previewContentId: contentId,

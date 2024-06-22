@@ -1,6 +1,13 @@
 import { Metadata } from 'next'
 
-import { fetchPreviewBlogPost, createErrorArticle, ErrorablePost } from '@trpfrog.net/posts/preview'
+import {
+  fetchPreviewBlogPost,
+  createErrorArticle,
+  ErrorablePost,
+  createPreviewClient,
+} from '@trpfrog.net/posts/preview'
+
+import { env } from '@/env/server'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -14,8 +21,20 @@ type Props = {
   }
 }
 
-export async function generateMetadata({ params }: Props) {
-  const entry = await fetchPreviewBlogPost(params.slug[0])
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  if (!env.MICRO_CMS_API_KEY) {
+    return {
+      title: '記事プレビュー',
+      robots: 'noindex, nofollow',
+    }
+  }
+  const client = createPreviewClient({
+    apiKey: env.MICRO_CMS_API_KEY,
+    serviceDomain: 'trpfrog',
+    endpoint: 'blog-preview',
+  })
+
+  const entry = await fetchPreviewBlogPost(client, params.slug[0])
   const metadata: Metadata = {
     title: '[記事プレビュー] ' + entry.title,
     robots: 'noindex, nofollow',
@@ -29,7 +48,13 @@ export async function generateMetadata({ params }: Props) {
   return metadata
 }
 
-const processSlug = async (slug: [string, string | undefined]) => {
+async function fetchPreviewArticle(slug: [string, string | undefined]) {
+  if (!env.MICRO_CMS_API_KEY) {
+    return {
+      entry: createErrorArticle('API Key is missing!'),
+    }
+  }
+
   let [id, page] = slug
   page = page ?? '1'
 
@@ -38,8 +63,13 @@ const processSlug = async (slug: [string, string | undefined]) => {
     all: page === 'all',
   }
 
+  const client = createPreviewClient({
+    apiKey: env.MICRO_CMS_API_KEY,
+    serviceDomain: 'trpfrog',
+    endpoint: 'blog-preview',
+  })
   const entry = id
-    ? ((await fetchPreviewBlogPost(id, option)) as ErrorablePost)
+    ? ((await fetchPreviewBlogPost(client, id, option)) as ErrorablePost)
     : createErrorArticle('ID is missing!')
 
   return {
@@ -48,7 +78,7 @@ const processSlug = async (slug: [string, string | undefined]) => {
 }
 
 export default async function Index(props: Props) {
-  const { entry: post } = await processSlug(props.params.slug)
+  const { entry: post } = await fetchPreviewArticle(props.params.slug)
 
   return (
     <MainWrapper gridLayout>
