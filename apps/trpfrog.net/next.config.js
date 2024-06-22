@@ -15,8 +15,7 @@ const nextConfig = {
   },
 
   experimental: {
-    mdxRs: true,
-    reactCompiler: true,
+    reactCompiler: false,
   },
 
   webpack: config => {
