@@ -1,0 +1,25 @@
+{
+  "name": "@trpfrog.net/config-eslint",
+  "private": true,
+  "main": "index.mjs",
+  "devDependencies": {
+    "@eslint/compat": "^1.1.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
+    "@next/eslint-plugin-next": "^14.2.4",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint-config-next": "^14.2.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.9.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-testing-library": "^6.2.2",
+    "eslint-plugin-unused-imports": "^4.0.0",
+    "typescript-eslint": "8.0.0-alpha.30"
+  }
+}

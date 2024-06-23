@@ -11,7 +11,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint-fix": "eslint . --fix"
   },
   "dependencies": {
     "date-fns": "^3.6.0",

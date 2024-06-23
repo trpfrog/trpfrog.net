@@ -8,7 +8,8 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "test": "vitest run",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint-fix": "eslint . --fix"
   },
   "prisma": {
     "seed": "dotenv -e .env.local -- ts-node --compiler-options {\"module\":\"CommonJS\"} ./src/prisma/seed.ts",

@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "lint-fix": "eslint . --fix"
   },
   "exports": {
     ".": "./index.ts"
