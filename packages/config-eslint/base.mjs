@@ -4,10 +4,11 @@ import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
 import unusedImports from 'eslint-plugin-unused-imports'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import n from 'eslint-plugin-n'
 
 const importPlugin = await import('eslint-plugin-import')
+
+const namePrefix = '@trpfrog.net/config-eslint/base'
 
 /**
  * ESLint config for TypeScript projects.
@@ -18,16 +19,15 @@ export const createESLintConfig = (...userConfig) =>
     eslint.configs.recommended,
     ...tseslint.configs.strict,
     {
-      ignores: ['node_modules', 'storybook-static'],
+      name: `${namePrefix}/ignores`,
+      ignores: ['storybook-static'],
     },
     {
+      name: `${namePrefix}/import-rules`,
       plugins: {
         import: importPlugin,
         'unused-imports': unusedImports,
-        n,
       },
-    },
-    {
       rules: {
         'unused-imports/no-unused-imports': 'error',
         'import/order': [
@@ -55,11 +55,21 @@ export const createESLintConfig = (...userConfig) =>
             ],
           },
         ],
+      },
+    },
+    {
+      name: `${namePrefix}/env-rules`,
+      plugins: {
+        n,
+      },
+      rules: {
         'n/no-process-env': 'error',
       },
     },
     {
-      ignores: ['*.config.{js,ts,mjs,cjs}'],
+      name: `${namePrefix}/restrict-default-exports`,
+      files: ['**/*.{js,ts,mjs,cjs,jsx,tsx}'],
+      ignores: ['*.config.{js,ts,mjs,cjs,jsx,tsx}'],
       rules: {
         'no-restricted-exports': [
           'error',
@@ -76,11 +86,16 @@ export const createESLintConfig = (...userConfig) =>
       },
     },
     {
-      files: ['*.config.{js,ts,mjs,cjs}'],
+      name: `${namePrefix}/allow-process-env-for-config-files`,
+      files: ['*.config.{js,ts,mjs,cjs,jsx,tsx}'],
       rules: {
         'n/no-process-env': 'off',
       },
     },
     ...userConfig,
-    prettier, // prettier must be last
+    // @ts-ignore
+    {
+      name: 'prettier',
+      ...prettier,
+    },
   )
