@@ -2,6 +2,7 @@
 import { createESLintConfigNext } from '@trpfrog.net/config-eslint'
 
 export default createESLintConfigNext({
+  name: 'trpfrog.net',
   rules: {
     '@next/next/no-img-element': 'off',
     'no-restricted-imports': [
