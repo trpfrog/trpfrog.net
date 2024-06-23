@@ -24,11 +24,11 @@
   }
 
   p {
-    @apply tw-my-4;
+    @apply tw-my-5;
   }
 
   article {
-    @apply tw-leading-relaxed tw-tracking-wide;
+    @apply tw-leading-[1.8] tw-tracking-wide;
   }
 }
 

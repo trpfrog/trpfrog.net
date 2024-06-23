@@ -1,10 +1,12 @@
 import * as React from 'react'
 
 import { BlogPost } from '@trpfrog.net/posts'
+import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
 
 import { env } from '@/env/server'
 
+import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
@@ -33,6 +35,9 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
   } = props
 
   const tags = post.tags
+  const title = post.title?.endsWith('！')
+    ? post.title.slice(0, post.title.length - 1) + ' !'
+    : post.title
 
   return (
     <>
@@ -47,20 +52,11 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
         <div className={styles.inner_title_block} data-parent-has-thumbnail={!!post.thumbnail}>
           <h1>
             <Balancer>
-              <ParseWithBudouX
-                str={(() => {
-                  if (post.title?.endsWith('！')) {
-                    return post.title.slice(0, post.title.length - 1) + ' !'
-                  } else {
-                    return post.title
-                  }
-                })()}
-                slug={post.slug}
-              />
+              <ParseWithBudouX str={title} slug={post.slug} />
             </Balancer>
           </h1>
           {post.description && (
-            <p style={{ margin: '0.5em', fontSize: '1rem', lineHeight: 1.5 }}>
+            <p className="tw-text-center tw-text-lg tw-m-2 tw-leading-normal">
               <Balancer>
                 <ParseWithBudouX str={post.description} slug={post.slug} />
               </Balancer>
@@ -69,26 +65,18 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
           <PostAttributes post={post} />
 
           {/* Tags */}
-          <p>
+          <div className="tw-flex tw-flex-wrap tw-gap-2 tw-justify-center tw-m-4">
             {tags.map((tag: string) => (
-              <span
-                style={{
-                  margin: '3px 3px 0 0',
-                  display: 'inline-block',
-                }}
-                key={tag}
-              >
-                <Tag tag={tag} />
-              </span>
+              <Tag tag={tag} key={tag} />
             ))}
-          </p>
-          {/*<div id={styles.entry_top_buttons}>*/}
-          {/*  <RichEntryButtons post={post} extended={true}/>*/}
-          {/*</div>*/}
+          </div>
           {addEditButtonOnDevMode && env.NODE_ENV === 'development' && (
-            <p>
+            <div className="tw-my-4 tw-flex tw-justify-center tw-gap-2">
               <EditButton slug={post.slug} />
-            </p>
+              <RichButton as={Link} href={`/blog/${post.slug}/og-image`}>
+                OG Image
+              </RichButton>
+            </div>
           )}
         </div>
       </Title>

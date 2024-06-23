@@ -107,7 +107,7 @@ importers:
     dependencies:
       '@hono/zod-validator':
         specifier: ^0.2.2
-        version: 0.2.2(hono@4.3.11)(zod@3.23.8)
+        version: 0.2.2(hono@4.4.7)(zod@3.23.8)
       '@huggingface/inference':
         specifier: ^2.7.0
         version: 2.7.0
@@ -124,8 +124,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       hono:
-        specifier: ^4.3.11
-        version: 4.3.11
+        specifier: ^4.4.7
+        version: 4.4.7
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -159,7 +159,7 @@ importers:
         version: 0.2.2(@fortawesome/fontawesome-svg-core@6.5.2)(react@19.0.0-rc-107a2f8c3e-20240617)
       '@hono/zod-validator':
         specifier: ^0.2.2
-        version: 0.2.2(hono@4.3.11)(zod@3.23.8)
+        version: 0.2.2(hono@4.4.7)(zod@3.23.8)
       '@mdx-js/loader':
         specifier: ^3.0.1
         version: 3.0.1(webpack@5.91.0(@swc/core@1.5.0(@swc/helpers@0.5.11))(esbuild@0.18.20))
@@ -245,8 +245,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       hono:
-        specifier: ^4.3.11
-        version: 4.3.11
+        specifier: ^4.4.7
+        version: 4.4.7
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -5894,8 +5894,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.3.11:
-    resolution: {integrity: sha512-Hle1uNqJJKkebFkFEEWr3UAElJP922Xy0STfl8c+1PH1q+l6WrmhwAJFS6YH8ZWJY4z46qJtssbyVwwPm3dP5w==}
+  hono@4.4.7:
+    resolution: {integrity: sha512-WoQWFQyVFEVRtIzP5sHPv7nvIw+RYL/HRnvnOCDxj6A+BtrwuC9S0vryZbV4IyFcNgOJ87r/phDiC1x2eEo4Gg==}
     engines: {node: '>=16.0.0'}
 
   hosted-git-info@2.8.9:
@@ -11161,9 +11161,9 @@ snapshots:
       prop-types: 15.8.1
       react: 19.0.0-rc-107a2f8c3e-20240617
 
-  '@hono/zod-validator@0.2.2(hono@4.3.11)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.4.7)(zod@3.23.8)':
     dependencies:
-      hono: 4.3.11
+      hono: 4.4.7
       zod: 3.23.8
 
   '@huggingface/inference@2.7.0':
@@ -16458,7 +16458,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.3.11: {}
+  hono@4.4.7: {}
 
   hosted-git-info@2.8.9: {}
 

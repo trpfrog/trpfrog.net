@@ -39,7 +39,7 @@ export function ImageDragAndDrop(props: { slug: string }) {
   )
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} print:tw-invisible`}>
       <div className={styles.tab} onClick={() => setisTabOpened(prv => !prv)}>
         Image Uploader
       </div>

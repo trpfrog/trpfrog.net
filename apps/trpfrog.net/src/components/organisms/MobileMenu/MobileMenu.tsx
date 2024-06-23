@@ -22,6 +22,7 @@ const styles = tv({
       before:tw-border-b-[2rem] before:tw-border-transparent
       before:tw-border-b-window-color before:tw-content-['']
       sp:tw-mt-2 sp:before:tw-hidden pc:-tw-right-[17.5px]
+      print:tw-hidden
     `,
     window: plainBlockStyle({
       className: 'tw-flex tw-flex-col tw-gap-3 tw-rounded-lg tw-p-4 sp:tw-w-full',
