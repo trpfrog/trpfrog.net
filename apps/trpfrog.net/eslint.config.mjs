@@ -30,7 +30,7 @@ export default createESLintConfigNext({
         alphabetize: { order: 'asc', caseInsensitive: true },
         pathGroups: [
           {
-            pattern: '{react,react-node}',
+            pattern: '{react,react-dom}',
             group: 'external',
             position: 'before',
           },
