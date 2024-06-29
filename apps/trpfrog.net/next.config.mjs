@@ -1,7 +1,9 @@
-const bundleAnalyer = require('@next/bundle-analyzer')
-const mdx = require('@next/mdx')
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
-const webpack = require('webpack')
+// @ts-check
+import bundleAnalyer from '@next/bundle-analyzer'
+import mdx from '@next/mdx'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import remarkGfm from 'remark-gfm'
+import webpack from 'webpack'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -67,22 +69,20 @@ const nextConfig = {
 const withMdx = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [import('remark-gfm')],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
-  },
-  experimental: {
-    mdxRs: true,
   },
 })
 const withBundleAnalyzer = bundleAnalyer({
+  // eslint-disable-next-line no-undef -- next.config.js can use process.env
   enabled: process.env.ANALYZE === 'true',
 })
 
 const withVanillaExtract = createVanillaExtractPlugin({
-  identifiers: ({ hash, filePath }) => `vanilla-extract_${hash}`,
+  identifiers: ({ hash }) => `vanilla-extract_${hash}`,
 })
 
 const composeFunctions = (...fns) => {
   return x => fns.reverse().reduce((v, f) => f(v), x)
 }
-module.exports = composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
+export default composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
