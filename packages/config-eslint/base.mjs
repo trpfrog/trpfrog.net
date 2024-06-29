@@ -20,7 +20,7 @@ export const createESLintConfig = (...userConfig) =>
     ...tseslint.configs.strict,
     {
       name: `${namePrefix}/ignores`,
-      ignores: ['storybook-static'],
+      ignores: ['storybook-static', 'out', 'dist', 'build', 'coverage'],
     },
     {
       name: `${namePrefix}/import-rules`,
@@ -81,6 +81,23 @@ export const createESLintConfig = (...userConfig) =>
               namedFrom: true,
               namespaceFrom: true,
             },
+          },
+        ],
+      },
+    },
+    {
+      name: `${namePrefix}/allow-underscore-for-unused-vars`,
+      rules: {
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            args: 'all',
+            argsIgnorePattern: '^_',
+            caughtErrors: 'all',
+            caughtErrorsIgnorePattern: '^_',
+            destructuredArrayIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            ignoreRestSiblings: true,
           },
         ],
       },
