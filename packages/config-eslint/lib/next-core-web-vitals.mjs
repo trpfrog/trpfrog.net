@@ -22,5 +22,10 @@ export const nextCoreWebVitals = tseslint.config({
     ...nextPlugin.configs.recommended.rules,
     ...nextPlugin.configs['core-web-vitals'].rules,
     '@next/next/no-img-element': 'error',
+
+    // These rule are not compatible with eslint v9
+    // TODO: Remove this rule when eslint v9 is supported
+    '@next/next/no-duplicate-head': 'off',
+    '@next/next/no-page-custom-font': 'off',
   },
 })
