@@ -29,7 +29,6 @@ export function IconMakerApp() {
           type="file"
           onChange={e => {
             state.current?.upload(e.target.files)
-            // eslint-disable-next-line react-compiler/react-compiler
             window.location.hash = 'preview'
           }}
         />

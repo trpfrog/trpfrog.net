@@ -4,7 +4,7 @@ import { HTMLInputTypeAttribute } from 'react'
 import { addTwModifier } from '@/lib/tailwind/helpers'
 import { tv } from '@/lib/tailwind/variants'
 
-interface Props extends React.ComponentPropsWithRef<'input'> {}
+type Props = React.ComponentPropsWithRef<'input'>
 
 export const inputBoxStyle = tv({
   base: 'tw-rounded-md tw-bg-gray-200 tw-p-1 dark:tw-bg-gray-700',

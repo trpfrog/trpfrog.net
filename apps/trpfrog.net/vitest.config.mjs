@@ -10,8 +10,8 @@ export default mergeConfig(
     test: {
       setupFiles: './vitest.setup.mjs',
       alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@blog': path.resolve(__dirname, './src/app/blog'),
+        '@': path.resolve(import.meta.dirname, './src'),
+        '@blog': path.resolve(import.meta.dirname, './src/app/blog'),
       },
     },
   }),

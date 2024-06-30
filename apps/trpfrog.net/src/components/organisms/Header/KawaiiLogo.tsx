@@ -44,8 +44,7 @@ export function KawaiiLogoOrNot(props: { children: ReactNode }) {
             href={pageInfo.link}
             className={styles.subtitle()}
             style={{
-              // @ts-expect-error
-              '-webkit-text-stroke': '5px white',
+              WebkitTextStroke: '5px white',
               paintOrder: 'stroke fill',
             }}
           >

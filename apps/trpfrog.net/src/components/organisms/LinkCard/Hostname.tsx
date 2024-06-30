@@ -22,15 +22,11 @@ export const createHostnameStyles = tv({
 })
 
 export function Hostname(props: { href: string; favicon?: string }) {
-  let { href, favicon } = props
-
-  const url = new URL(href)
+  const url = new URL(props.href)
   const hostname = url.hostname
   const origin = url.origin
 
-  if (favicon && favicon.startsWith('/')) {
-    favicon = createURL(favicon, origin)
-  }
+  const favicon = props.favicon?.startsWith('/') ? createURL(props.favicon, origin) : props.favicon
 
   const styles = createHostnameStyles({
     defaultFavicon: !favicon,

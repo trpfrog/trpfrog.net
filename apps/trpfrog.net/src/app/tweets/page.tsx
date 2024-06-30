@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, NextPage } from 'next'
 
 import dayjs from 'dayjs'
 import Link from 'next/link'
@@ -26,7 +26,7 @@ export const metadata = {
   },
 } satisfies Metadata
 
-export default async function Index({ searchParams }: any) {
+export default async function Index({ searchParams }: NextPage) {
   const oneYearsAgo = dayjs(new Date()).subtract(1, 'year').format('YYYY-MM-DD')
 
   return (

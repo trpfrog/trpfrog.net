@@ -38,12 +38,7 @@ export default async function Index() {
       </Title>
       {contents.map(({ metadata, content }) => {
         return (
-          <Block
-            key={metadata.title}
-            title={metadata.title}
-            // @ts-ignore
-            h2icon={metadata.h2icon ?? 'trpfrog'}
-          >
+          <Block key={metadata.title} title={metadata.title} h2icon={metadata.h2icon}>
             {metadata.image && (
               <Image
                 className="tw-mx-auto tw-my-4 tw-bg-transparent"

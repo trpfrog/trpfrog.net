@@ -64,7 +64,7 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
         buttonText={'← Prev'}
         disabled={entry.currentPage <= 1}
       />
-      {Array.from(Array(entry.numberOfPages), (v, k) => (
+      {Array.from(Array(entry.numberOfPages), (_e, k) => (
         <PageTransferButton
           entry={entry}
           nextPage={k + 1}

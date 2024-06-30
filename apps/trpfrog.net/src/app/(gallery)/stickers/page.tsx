@@ -13,7 +13,7 @@ export const metadata = {
 } satisfies Metadata
 
 export default function Index() {
-  const imagePaths: ImagePaths[] = Array.from(Array(80), (v, k) => k).map(i => {
+  const imagePaths: ImagePaths[] = Array.from(Array(80), (_, k) => k).map(i => {
     return {
       src: 'stickers/' + i,
       url: '/stickers/' + i,

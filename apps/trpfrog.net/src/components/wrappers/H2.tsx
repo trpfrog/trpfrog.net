@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { tv } from '@/lib/tailwind/variants'
+import { zodEnumFromObjKeys } from '@/lib/zod'
 
 export const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',
@@ -18,6 +19,7 @@ export const iconURLs = {
   hina: '/images/icons/hina.webp',
 } as const
 
+export const H2IconSchema = zodEnumFromObjKeys(iconURLs)
 export type H2Icon = keyof typeof iconURLs
 
 type Props = React.ComponentPropsWithRef<'h2'> & {

@@ -47,17 +47,17 @@ const OriginalTweetSchema = z.object({
 
 type OriginalTweet = z.infer<typeof OriginalTweetSchema>
 
-type OriginalMedia = {
-  media_url_https: string
-  sizes: {
-    large: {
-      w: number
-      h: number
-    }
-  }
-  type: string
-  id_str: string
-}
+// type OriginalMedia = {
+//   media_url_https: string
+//   sizes: {
+//     large: {
+//       w: number
+//       h: number
+//     }
+//   }
+//   type: string
+//   id_str: string
+// }
 
 const prisma = new PrismaClient()
 

@@ -23,9 +23,7 @@ export const Primary: Story = {
   args: {
     showAllByDefault: false,
     height: 100,
-    children: Array.from(Array(20)).map((e, i) => (
-      <Fragment key={i}>{LOREM_IPSUM}</Fragment>
-    )),
+    children: Array.from(Array(20)).map((_e, i) => <Fragment key={i}>{LOREM_IPSUM}</Fragment>),
   },
 }
 

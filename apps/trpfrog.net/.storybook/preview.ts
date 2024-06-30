@@ -1,7 +1,9 @@
-import type { Preview } from '@storybook/react'
-import '../src/styles/globals.scss'
 import { themes } from '@storybook/theming'
-import * as trpFrogTheme from '@trpfrog.net/storybook-theme/theme'
+import * as trpFrogTheme from '@trpfrog.net/storybook-theme'
+
+import type { Preview } from '@storybook/react'
+
+import '../src/styles/globals.scss'
 
 const preview: Preview = {
   parameters: {

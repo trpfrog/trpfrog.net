@@ -14,7 +14,7 @@ export const metadata = {
 } satisfies Metadata
 
 export default function Index() {
-  const imagePaths: ImagePaths[] = Array.from(Array(33), (v, k) => k).map(i => {
+  const imagePaths: ImagePaths[] = Array.from(Array(33), (_, k) => k).map(i => {
     return {
       src: 'icons_gallery/' + i,
       url: '/icons/' + i,

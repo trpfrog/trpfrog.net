@@ -27,10 +27,10 @@ export function ParseWithBudouX(props: ParseWithBudouXProps) {
     setSupportsWordBreakAutoPhrase(CSS.supports('word-break', 'auto-phrase'))
   }, [])
   return supportsWordBreakAutoPhrase ? (
-    // @ts-ignore
+    // @ts-expect-error - auto-phrase is not supported by most browsers
     <span style={{ wordBreak: 'auto-phrase' }}>{props.str}</span>
   ) : (
-    // @ts-expect-error - You can omit .Provider in React 19
+    // @ts-expect-error - You can omit. Provider in React 19
     <LoadingPropsContext value={props}>
       <SSRSafeParseWithBudouX {...props} />
     </LoadingPropsContext>

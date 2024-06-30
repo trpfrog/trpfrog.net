@@ -1,10 +1,12 @@
+import type { ImageLoaderProps } from 'next/image'
+
 /**
  * Cloudinary loader for Next.js Image component
  * @param src
  * @param width
  * @param quality
  */
-export function cloudinaryLoader({ src, width, quality }: any) {
+export function cloudinaryLoader({ src, width, quality }: ImageLoaderProps) {
   const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]
   if (src.startsWith('/')) {
     src = src.substring(1)

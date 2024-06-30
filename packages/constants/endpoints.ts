@@ -42,14 +42,22 @@ const internalEndpoints = [
 /**
  * The endpoints of the application.
  */
+export const devEndpoints = Object.fromEntries(
+  internalEndpoints
+    .filter(endpoint => endpoint.production == null)
+    .map(endpoint => [
+      endpoint.name,
+      // eslint-disable-next-line n/no-process-env
+      process?.env.NODE_ENV === 'development' && endpoint.development
+        ? endpoint.development
+        : endpoint.production,
+    ]),
+)
+
 export const endpoints = Object.fromEntries(
-  internalEndpoints.map(endpoint => [
-    endpoint.name,
-    // eslint-disable-next-line n/no-process-env
-    process?.env.NODE_ENV === 'development' && endpoint.development
-      ? endpoint.development
-      : endpoint.production,
-  ]),
+  internalEndpoints
+    .filter(endpoint => endpoint.production != null)
+    .map(endpoint => [endpoint.name, endpoint.production]),
 )
 
 /**

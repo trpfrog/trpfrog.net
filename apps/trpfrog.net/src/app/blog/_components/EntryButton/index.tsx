@@ -3,11 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './index.module.scss'
 
-export function EntryButton(props: {
-  text: string
-  icon: IconProp
-  onClick?: any
-}) {
+export function EntryButton(props: { text: string; icon: IconProp; onClick?: () => void }) {
   return (
     <div className={styles.entry_button} onClick={props.onClick}>
       <div className={styles.entry_button_icon}>

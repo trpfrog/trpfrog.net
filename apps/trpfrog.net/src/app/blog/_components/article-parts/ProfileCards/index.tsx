@@ -24,7 +24,7 @@ export type ProfileData = z.infer<typeof ProfileDataSchema>
 
 const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <div className={styles.profile_card_grid}>
-    {personalDataList.map((personalData: any) => (
+    {personalDataList.map(personalData => (
       <div className={styles.profile_card} key={personalData.name}>
         <div className={styles.header}>
           <div className={styles.club}>{personalData.club}</div>
@@ -48,7 +48,7 @@ const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) =
 
 const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <UnorderedList>
-    {personalDataList.map((personalData: any) => (
+    {personalDataList.map(personalData => (
       <>
         <Li key={personalData.name + '-name'}>
           {personalData.name}

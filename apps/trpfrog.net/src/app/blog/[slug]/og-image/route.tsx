@@ -23,7 +23,6 @@ import {
 } from './components'
 import { ogFonts, ogpImageSize } from './variables'
 
-
 export const runtime = 'edge'
 
 async function createImageResponseOptions() {
@@ -55,7 +54,7 @@ type Context = {
   }
 }
 
-export async function GET(req: NextRequest, context: Context) {
+export async function GET(_req: NextRequest, context: Context) {
   const slug = context.params.slug
 
   const res = await bffClient.blog.posts[':slug']

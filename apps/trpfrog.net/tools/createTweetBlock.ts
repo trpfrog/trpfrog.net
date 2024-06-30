@@ -5,12 +5,13 @@
  * $ bun tools/createTweetBlock.ts
  */
 
-import { BlogTwitterArchiveSchema } from '@blog/_components/article-parts/TwitterArchive/generateTwitterArchiveProps'
 import { createURL } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
 import dayjs from 'dayjs'
 import { JSDOM } from 'jsdom'
 import { z } from 'zod'
+
+import { BlogTwitterArchiveSchema } from '@blog/_components/article-parts/TwitterArchive/generateTwitterArchiveProps'
 
 /**
  * Beautify the tweet HTML.

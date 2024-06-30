@@ -24,14 +24,14 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const tag = decodeURIComponent(params!.tag)
+  const tag = decodeURIComponent(params.tag)
   return {
     title: `タグ「${tag}」の記事一覧 - つまみログ`,
   }
 }
 
 export default async function Index({ params }: Props) {
-  const tag = decodeURIComponent(params!.tag)
+  const tag = decodeURIComponent(params.tag)
   const articles = await readAllBlogPosts({ tag })
 
   return (

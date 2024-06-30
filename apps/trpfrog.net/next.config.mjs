@@ -74,7 +74,6 @@ const withMdx = mdx({
   },
 })
 const withBundleAnalyzer = bundleAnalyer({
-  // eslint-disable-next-line no-undef -- next.config.js can use process.env
   enabled: process.env.ANALYZE === 'true',
 })
 
