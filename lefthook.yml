@@ -20,7 +20,7 @@ pre-commit:
       run: npx prettier --ignore-unknown --write {staged_files} && git update-index --again
     2_eslint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: npx eslint -c .eslintrc.json --max-warnings=0  --fix {staged_files} && git update-index --again
+      run: npx eslint --max-warnings=0 --fix {staged_files} && git update-index --again
 #     rubocop:
 #       tags: backend style
 #       glob: "*.rb"
