@@ -5,6 +5,7 @@ import tseslint from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
 import unusedImports from 'eslint-plugin-unused-imports'
 import n from 'eslint-plugin-n'
+import globals from 'globals'
 
 const importPlugin = await import('eslint-plugin-import')
 
@@ -69,7 +70,7 @@ export const createESLintConfig = (...userConfig) =>
     {
       name: `${namePrefix}/restrict-default-exports`,
       files: ['**/*.{js,ts,mjs,cjs,jsx,tsx}'],
-      ignores: ['*.config.{js,ts,mjs,cjs,jsx,tsx}'],
+      ignores: ['*.config.{js,ts,mjs,cjs,jsx,tsx}', '.storybook/**/*'],
       rules: {
         'no-restricted-exports': [
           'error',
@@ -107,6 +108,11 @@ export const createESLintConfig = (...userConfig) =>
       files: ['*.config.{js,ts,mjs,cjs,jsx,tsx}'],
       rules: {
         'n/no-process-env': 'off',
+      },
+      languageOptions: {
+        globals: {
+          ...globals.node,
+        },
       },
     },
     ...userConfig,
