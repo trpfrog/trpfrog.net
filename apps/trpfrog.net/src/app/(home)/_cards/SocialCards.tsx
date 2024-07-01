@@ -14,8 +14,7 @@ const styles = tv({
     ],
     wrapper: 'tw-flex tw-flex-col tw-items-center tw-gap-1',
     logo: 'tw-text-4xl !tw-leading-none tw-drop-shadow',
-    contact:
-      'tw-text-lg tw-font-bold !tw-leading-none tw-drop-shadow-sm sp:tw-text-base',
+    contact: 'tw-text-lg tw-font-bold !tw-leading-none tw-drop-shadow-sm sp:tw-text-base',
   },
 })()
 
@@ -59,14 +58,10 @@ export function MailCard() {
       readMoreText={false}
     >
       <div className={styles.wrapper()}>
-        <FontAwesomeIcon
-          icon={faEnvelope}
-          className={styles.logo({ class: 'sp:tw-text-3xl' })}
-        />
+        <FontAwesomeIcon icon={faEnvelope} className={styles.logo({ class: 'sp:tw-text-3xl' })} />
         <div
           className={styles.contact({
-            class:
-              'tw-flex tw-flex-wrap tw-justify-center *:tw-inline-block sp:tw-text-[13px]',
+            class: 'tw-flex tw-flex-wrap tw-justify-center *:tw-inline-block sp:tw-text-[13px]',
           })}
         >
           <span>contact</span>

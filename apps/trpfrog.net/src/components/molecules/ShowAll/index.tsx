@@ -12,14 +12,7 @@ export type ShowAllProps = FoggedDivProps & {
 }
 
 export function ShowAll(props: ShowAllProps) {
-  const {
-    className = '',
-    height,
-    fogHeight,
-    showAllByDefault,
-    children,
-    ...rest
-  } = props
+  const { className = '', height, fogHeight, showAllByDefault, children, ...rest } = props
   const [isShowAll, setIsShowAll] = useState(showAllByDefault ?? false)
   const [needsFog, setNeedsFog] = useState(true) // コンテンツが少なすぎるときは Fog を表示しない
 
@@ -41,11 +34,7 @@ export function ShowAll(props: ShowAllProps) {
           <div ref={ref}>{children}</div>
         </div>
       ) : (
-        <FoggedDiv
-          height={height}
-          fogHeight={fogHeight}
-          data-testid="hidden-contents"
-        >
+        <FoggedDiv height={height} fogHeight={fogHeight} data-testid="hidden-contents">
           <div ref={ref}>{children}</div>
         </FoggedDiv>
       )}

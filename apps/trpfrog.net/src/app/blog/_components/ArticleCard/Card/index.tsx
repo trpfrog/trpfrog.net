@@ -9,11 +9,7 @@ type Props = React.ComponentPropsWithoutRef<'div'> & {
 export function Card(props: Props) {
   const { className, isHero, children, ...rest } = props
   return (
-    <div
-      className={`${styles.window} ${className}`}
-      {...rest}
-      data-hero-article={!!isHero}
-    >
+    <div className={`${styles.window} ${className}`} {...rest} data-hero-article={!!isHero}>
       {children}
     </div>
   )

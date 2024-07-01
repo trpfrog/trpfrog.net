@@ -8,4 +8,4 @@ export {
 
 import type { AppType } from '.'
 
-export const trpfrogDiffusionClient = hc<AppType>(endpoints.imageGeneration!)
+export const trpfrogDiffusionClient = hc<AppType>(endpoints.imageGeneration)

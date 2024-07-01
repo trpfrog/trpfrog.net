@@ -26,8 +26,7 @@ export const mainWrapperStyle = tv({
   },
 })
 
-export interface MainWrapperProps
-  extends React.ComponentPropsWithoutRef<'div'> {
+export interface MainWrapperProps extends React.ComponentPropsWithoutRef<'div'> {
   gridLayout?: boolean
 }
 

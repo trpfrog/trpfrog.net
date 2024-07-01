@@ -25,8 +25,7 @@ export const ImageCaption = ({ children }: { children: React.ReactNode }) => (
 const TakenBy = (props: { photographer: string }) => (
   <div className={styles.taken_by}>
     <small>
-      <FontAwesomeIcon icon={faCamera} /> 撮影:{' '}
-      {parseInlineMarkdown(props.photographer)}
+      <FontAwesomeIcon icon={faCamera} /> 撮影: {parseInlineMarkdown(props.photographer)}
     </small>
   </div>
 )

@@ -14,16 +14,8 @@ const MutualLinkRecordSchema = z.object({
 
 export type MutualLinkRecord = z.infer<typeof MutualLinkRecordSchema>
 
-export const loadMutualLinkRecords: () => Promise<
-  MutualLinkRecord[]
-> = async () => {
-  const yamlPath = path.join(
-    process.cwd(),
-    'src',
-    'app',
-    'links',
-    'mutual_links.yaml',
-  )
+export const loadMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
+  const yamlPath = path.join(process.cwd(), 'src', 'app', 'links', 'mutual_links.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
   const links = MutualLinkRecordSchema.array().parse(yaml.load(yamlText))
 

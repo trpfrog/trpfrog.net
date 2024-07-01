@@ -1,4 +1,4 @@
-import { endpoints } from '@trpfrog.net/constants'
+import { devEndpoints } from '@trpfrog.net/constants'
 import { io, Socket } from 'socket.io-client'
 
 export function createClient(): Socket | null {
@@ -7,7 +7,7 @@ export function createClient(): Socket | null {
     return null
   }
 
-  const endpoint = endpoints.mdServer
+  const endpoint = devEndpoints.mdServer
   if (endpoint) {
     return io(endpoint)
   } else {

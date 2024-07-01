@@ -89,7 +89,7 @@ export function isValidLanguage(language: string): boolean {
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
-  let { children, language: rawLanguage = '', fileName, ...rest } = props
+  const { children, language: rawLanguage = '', fileName, ...rest } = props
 
   const { prefixes, language } = extractPrefixes(
     isValidLanguage(rawLanguage) ? rawLanguage : 'text',

@@ -6,10 +6,7 @@ import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
 import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
 import { A } from '@/components/wrappers'
 
-export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'a'>,
-  'children'
->
+export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'>
 
 export function SkeletonLinkCard(props: LinkCardProps) {
   const styles = createLinkCardStyles()
@@ -20,10 +17,7 @@ export function SkeletonLinkCard(props: LinkCardProps) {
     <A className={styles.wrapper({ className })} {...rest}>
       <div className={styles.layout()}>
         <div className={styles.textArea()} style={{ width: '70% ' }}>
-          <Skeleton
-            className={hostnameStyles.wrapper()}
-            style={{ width: '50%' }}
-          />
+          <Skeleton className={hostnameStyles.wrapper()} style={{ width: '50%' }} />
           <div className={styles.titles()}>
             <div className={styles.title()}>
               <Skeleton />

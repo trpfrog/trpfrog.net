@@ -55,8 +55,7 @@ async function fetchPreviewArticle(slug: [string, string | undefined]) {
     }
   }
 
-  let [id, page] = slug
-  page = page ?? '1'
+  const [id, page = '1'] = slug
 
   const option = {
     pagePos1Indexed: parseInt(page),

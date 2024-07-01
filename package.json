@@ -4,10 +4,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "eslint --fix .",
+    "lint-fix": "turbo lint-fix && prettier . --write",
     "test": "turbo test",
     "type-check": "turbo type-check",
-    "clean": "turbo clean",
+    "reinstall-all-deps": "rm -rf node_modules ./*/*/node_modules && pnpm install",
     "prepare": "lefthook install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
@@ -17,20 +17,10 @@
   "devDependencies": {
     "@eslint/config-inspector": "^0.4.1",
     "@evilmartians/lefthook": "^1.6.16",
+    "@trpfrog.net/config-eslint": "workspace:*",
     "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
     "@vitejs/plugin-react": "^4.2.1",
     "better-typescript-lib": "^2.7.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^17.3.1",
-    "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
-    "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-testing-library": "^6.2.2",
-    "eslint-plugin-unused-imports": "^3.1.0",
     "happy-dom": "^13.5.0",
     "husky": "^9.0.11",
     "prettier": "3.2.5",
@@ -39,5 +29,8 @@
     "typescript": "^5.5.2",
     "vitest": "^1.6.0"
   },
-  "packageManager": "pnpm@9.1.4"
+  "packageManager": "pnpm@9.1.4",
+  "dependencies": {
+    "eslint": "^9.6.0"
+  }
 }

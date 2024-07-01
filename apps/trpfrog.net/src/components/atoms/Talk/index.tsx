@@ -29,9 +29,7 @@ Talk.Item = React.memo(function Item(props: ConversationItemProps) {
         <div className={`${styles.value} ${className}`} {...rest}>
           {children ?? <>&nbsp;</>}
         </div>
-        {outOfComment && (
-          <span className={styles.out_of_comment}>{outOfComment}</span>
-        )}
+        {outOfComment && <span className={styles.out_of_comment}>{outOfComment}</span>}
       </div>
     </>
   )

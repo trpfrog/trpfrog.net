@@ -5,7 +5,8 @@
   },
   "scripts": {
     "dev": "wrangler dev --port 8001 src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "lint-fix": "eslint . --fix"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.2",

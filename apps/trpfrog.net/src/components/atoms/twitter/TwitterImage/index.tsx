@@ -19,19 +19,9 @@ export function TwitterImage(props: TwitterImageProps) {
         .filter(Boolean)
         .map((image, index) =>
           isVideoFormat(image.src) ? (
-            <video
-              className={styles.image}
-              key={index}
-              src={image.src}
-              controls
-            />
+            <video className={styles.image} key={index} src={image.src} controls />
           ) : (
-            <img
-              className={styles.image}
-              key={index}
-              src={image.src}
-              alt={image.alt ?? ''}
-            />
+            <img className={styles.image} key={index} src={image.src} alt={image.alt ?? ''} />
           ),
         )}
     </blockquote>

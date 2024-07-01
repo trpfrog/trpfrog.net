@@ -8,8 +8,7 @@ export const light = create({
 
   brandTitle: 'My custom Storybook',
   brandUrl: 'https://trpfrog.net',
-  brandImage:
-    'https://res.cloudinary.com/trpfrog/image/upload/storybook-logo.svg',
+  brandImage: 'https://res.cloudinary.com/trpfrog/image/upload/storybook-logo.svg',
   brandTarget: '_self',
 
   //

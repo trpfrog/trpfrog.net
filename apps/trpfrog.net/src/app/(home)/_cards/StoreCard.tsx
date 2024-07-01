@@ -28,17 +28,8 @@ const styles = tv({
 
 export function StoreCard() {
   return (
-    <LinkTopCard
-      href="https://suzuri.jp/TrpFrog"
-      openInNewTab
-      className={styles.card()}
-    >
-      <div
-        className={twMerge(
-          styles.text(),
-          styles.absolute({ class: 'tw-z-10' }),
-        )}
-      >
+    <LinkTopCard href="https://suzuri.jp/TrpFrog" openInNewTab className={styles.card()}>
+      <div className={twMerge(styles.text(), styles.absolute({ class: 'tw-z-10' }))}>
         <h2 className="tw-text-4xl tw-font-bold">Goods</h2>
         <span className="tw-text-sm">
           つまみアイコン関連グッズ

@@ -9,10 +9,7 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const styles = tv({
   slots: {
-    grid: [
-      'tw-grid tw-h-full tw-gap-0.5 pc:tw-grid-cols-6',
-      'sp:tw-flex sp:tw-flex-col',
-    ],
+    grid: ['tw-grid tw-h-full tw-gap-0.5 pc:tw-grid-cols-6', 'sp:tw-flex sp:tw-flex-col'],
     wrapper: [
       'tw-grid-rows tw-grid tw-grid-rows-subgrid',
       'tw-gap-1 tw-bg-zinc-200 tw-py-3',
@@ -39,9 +36,7 @@ type FavoriteProps = {
 
 function Skill(props: FavoriteProps) {
   const description =
-    typeof props.description === 'string'
-      ? [props.description]
-      : props.description
+    typeof props.description === 'string' ? [props.description] : props.description
   return (
     <div
       style={{ gridRow: '1 / -1', ...(props.style ?? {}) }}
@@ -53,9 +48,7 @@ function Skill(props: FavoriteProps) {
         <div className={styles.description()} style={{ gridRow: '2 / -1' }}>
           {description
             .map(desc => <ParseWithBudouX str={desc} slug={''} key={desc} />)
-            .flatMap((x, i) =>
-              i !== description.length - 1 ? [x, <br key={i} />] : x,
-            )}
+            .flatMap((x, i) => (i !== description.length - 1 ? [x, <br key={i} />] : x))}
         </div>
       </div>
     </div>

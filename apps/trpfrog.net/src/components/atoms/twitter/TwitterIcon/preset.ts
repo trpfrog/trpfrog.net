@@ -1,7 +1,6 @@
 import * as React from 'react'
 
-const trpfrogUrl =
-  'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
+const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
 
 const palette = {
   azukibarStick: '248, 218, 192',

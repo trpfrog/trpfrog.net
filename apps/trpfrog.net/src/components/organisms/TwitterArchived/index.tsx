@@ -1,10 +1,7 @@
 import * as React from 'react'
 
 import { TweetTextarea } from '@/components/atoms/twitter/TweetTextarea'
-import {
-  TwitterImage,
-  TwitterImageData,
-} from '@/components/atoms/twitter/TwitterImage'
+import { TwitterImage, TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 import { A } from '@/components/wrappers'
 
@@ -20,10 +17,7 @@ type TwitterData = {
   iconStyle?: React.CSSProperties['background']
 }
 
-export type TwitterArchivedProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
-  'children'
-> &
+export type TwitterArchivedProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> &
   TwitterData & {
     quote?: TwitterData
   }
@@ -48,17 +42,11 @@ export function TwitterArchived(props: TwitterArchivedProps) {
   return (
     <div className={`${styles.wrapper} ${className}`} {...rest}>
       <div className={styles.box}>
-        <TwitterHeader
-          name={author}
-          screenName={screenName}
-          iconStyle={iconStyle}
-        />
+        <TwitterHeader name={author} screenName={screenName} iconStyle={iconStyle} />
         {tweet && <TweetTextarea tweet={tweet} cite={tweetLink} />}
         {hasImage && <TwitterImage images={images} cite={tweetLink} />}
         {quote && <TwitterArchived {...quote} />}
-        <div className={styles.date}>
-          {tweetLink ? <A href={tweetLink}>{date}</A> : date}
-        </div>
+        <div className={styles.date}>{tweetLink ? <A href={tweetLink}>{date}</A> : date}</div>
       </div>
     </div>
   )

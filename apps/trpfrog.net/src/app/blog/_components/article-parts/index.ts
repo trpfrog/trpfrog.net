@@ -8,13 +8,6 @@ export { twitterArchiveParts } from './TwitterArchive'
 export { markdownUseEffectParts } from './UseEffect'
 export { walkingResultBoxParts } from './WalkingResultBox'
 export { conversationParts } from './Conversation'
-export {
-  cautionParts,
-  infoboxParts,
-  titledFrameParts,
-} from './HighlightedBoxes'
+export { cautionParts, infoboxParts, titledFrameParts } from './HighlightedBoxes'
 export { autoYouTubeParts, youTubeParts } from './YouTube'
-export {
-  defineComponentParts,
-  useDefinedComponentParts,
-} from './CustomComponents'
+export { defineComponentParts, useDefinedComponentParts } from './CustomComponents'

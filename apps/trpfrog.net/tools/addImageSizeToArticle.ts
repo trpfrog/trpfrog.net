@@ -9,10 +9,22 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
+import { z } from 'zod'
+
 import { cloudinary } from '@/lib/cloudinary'
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils.ts'
 
 const postsDir = path.join(process.cwd(), 'src/posts')
+
+const CloudinaryResponseSchema = z.object({
+  resources: z.array(
+    z.object({
+      public_id: z.string(),
+      width: z.number(),
+      height: z.number(),
+    }),
+  ),
+})
 
 const main = async () => {
   const files: `${string}.md`[] = ['_sugadaira-travel.md']
@@ -35,8 +47,9 @@ const main = async () => {
       .expression(`folder=blog/${slug}`)
       .max_results(500)
       .execute()
+      .then(res => CloudinaryResponseSchema.parse(res))
 
-    searchResult.resources.forEach((image: any) => {
+    searchResult.resources.forEach(image => {
       const src = '/' + image.public_id
       sizeDict[src] = {
         size: {

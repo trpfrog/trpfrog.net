@@ -16,8 +16,7 @@ export const createLinkCardStyles = tv({
       'tw-border tw-border-zinc-300 hover:tw-brightness-95',
       'tw-flex-col-reverse @md:tw-h-32 @md:tw-flex-row',
     ],
-    textArea:
-      'tw-relative tw-grid tw-flex-auto tw-grid-rows-[1rem_auto] tw-gap-3 tw-p-4',
+    textArea: 'tw-relative tw-grid tw-flex-auto tw-grid-rows-[1rem_auto] tw-gap-3 tw-p-4',
     image: [
       'tw-aspect-video tw-h-full tw-object-cover',
       'tw-border-b tw-border-b-zinc-300',
@@ -31,7 +30,7 @@ export const createLinkCardStyles = tv({
     noImage: {
       true: {
         image: `
-          tw-flex tw-items-center tw-justify-center 
+          tw-flex tw-items-center tw-justify-center
           tw-bg-trpfrog-50 tw-text-2xl tw-font-bold tw-text-trpfrog-400
         `,
       },
@@ -39,10 +38,7 @@ export const createLinkCardStyles = tv({
   },
 })
 
-export type LinkCardProps = Omit<
-  React.ComponentPropsWithoutRef<'a'>,
-  'children'
-> & {
+export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   title: string
   description?: string
   imageUrl?: string
@@ -53,48 +49,33 @@ export type LinkCardProps = Omit<
 }
 
 export function LinkCard(props: LinkCardProps) {
-  let {
+  const {
     className,
     favicon,
     title,
     description = '',
-    imageUrl,
+    imageUrl: rawImageUrl,
     href,
     themeColor,
     ...rest
   } = props
 
+  const origin = new URL(href).origin
+  const imageUrl = rawImageUrl?.startsWith('http') ? createURL(rawImageUrl, origin) : undefined
   const styles = createLinkCardStyles({ noImage: !imageUrl })
 
-  const origin = new URL(href).origin
-  if (imageUrl && !imageUrl.startsWith('http')) {
-    imageUrl = createURL(imageUrl, origin)
-  }
-
   return (
-    <A
-      href={href}
-      className={styles.wrapper({ className })}
-      {...rest}
-      openInNewTab
-    >
+    <A href={href} className={styles.wrapper({ className })} {...rest} openInNewTab>
       <div className={styles.layout()}>
         <div className={styles.textArea()}>
           <Hostname href={href} favicon={favicon} />
           <div className={styles.titles()}>
             <div className={styles.title()}>{title}</div>
-            {description && (
-              <div className={styles.description()}>{description}</div>
-            )}
+            {description && <div className={styles.description()}>{description}</div>}
           </div>
         </div>
         {imageUrl ? (
-          <img
-            className={styles.image()}
-            alt=""
-            src={imageUrl}
-            loading="lazy"
-          />
+          <img className={styles.image()} alt="" src={imageUrl} loading="lazy" />
         ) : (
           <div className={styles.image()}>NO IMAGE</div>
         )}

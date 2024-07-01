@@ -14,9 +14,7 @@ export function StickToTop(props: StickToTopProps) {
     <div
       className="tw-sticky tw-duration-100"
       style={{
-        top: headerVisible
-          ? `calc(var(--header-height) + ${props.top})`
-          : `${props.top}`,
+        top: headerVisible ? `calc(var(--header-height) + ${props.top})` : `${props.top}`,
       }}
     >
       {props.children}

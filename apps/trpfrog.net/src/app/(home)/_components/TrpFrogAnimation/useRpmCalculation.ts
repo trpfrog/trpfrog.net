@@ -25,10 +25,7 @@ export type RpmCalculationOptions = Partial<{
   minQueueSize: number
 }>
 
-export function useRpmCalculation(
-  queueTTLMillis: number,
-  options?: RpmCalculationOptions,
-) {
+export function useRpmCalculation(queueTTLMillis: number, options?: RpmCalculationOptions) {
   if (queueTTLMillis < 1) throw new Error('heapSize must be greater than 0')
 
   const q = useRef<Queue<RpmRecord> | null>(null)
@@ -52,9 +49,7 @@ export function useRpmCalculation(
         const removed = q.current?.pop()
         const newFirst = q.current?.first
         if (newFirst && removed) {
-          setDiffSum(
-            prev => prev - degreeDifference(removed.degree, newFirst.degree),
-          )
+          setDiffSum(prev => prev - degreeDifference(removed.degree, newFirst.degree))
         } else {
           setDiffSum(0)
         }

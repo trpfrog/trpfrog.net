@@ -1,8 +1,6 @@
 import * as React from 'react'
 
-export function useHoverScrollBoxEvent(
-  scrollAreaRef: React.RefObject<HTMLElement>,
-) {
+export function useHoverScrollBoxEvent(scrollAreaRef: React.RefObject<HTMLElement>) {
   const [intervalId, setIntervalId] = React.useState<number | null>(null)
 
   const handleMouseEnter = React.useCallback(
@@ -12,7 +10,11 @@ export function useHoverScrollBoxEvent(
       // 自動スクロール
       const scrollSpeed = 10
       const newIntervalId = window.setInterval(() => {
-        scrollAreaRef.current!.scrollBy(dx * scrollSpeed, dy * scrollSpeed)
+        if (scrollAreaRef.current == null) {
+          window.clearInterval(newIntervalId)
+          return
+        }
+        scrollAreaRef.current.scrollBy(dx * scrollSpeed, dy * scrollSpeed)
       }, 25)
 
       // 別の自動スクロールが動いていたらキャンセルしておく

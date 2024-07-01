@@ -5,20 +5,13 @@ import { useCallback, useId, useState } from 'react'
 
 import { Tooltip } from 'react-tooltip'
 
-export interface ButtonWithTooltipProps
-  extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonWithTooltipProps extends React.ComponentPropsWithoutRef<'button'> {
   hoveredTooltipContent: React.ReactNode
   clickedTooltipContent: React.ReactNode
 }
 
 export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
-  const {
-    children,
-    onClick,
-    hoveredTooltipContent,
-    clickedTooltipContent,
-    ...rest
-  } = props
+  const { children, onClick, hoveredTooltipContent, clickedTooltipContent, ...rest } = props
 
   const [isClicked, setIsClicked] = useState(false)
   const [tooltipTimeoutId, setTooltipTimeoutId] = useState<number>(0)
@@ -56,11 +49,7 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
       >
         {children}
       </button>
-      <Tooltip
-        id={tooltipId}
-        place={'top'}
-        style={{ padding: '0.5em', lineHeight: 1 }}
-      >
+      <Tooltip id={tooltipId} place={'top'} style={{ padding: '0.5em', lineHeight: 1 }}>
         {isClicked ? clickedTooltipContent : hoveredTooltipContent}
       </Tooltip>
     </>

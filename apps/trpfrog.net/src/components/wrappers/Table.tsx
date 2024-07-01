@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { tv } from '@/lib/tailwind/variants'
 
-interface Props extends React.ComponentPropsWithRef<'table'> {}
+type Props = React.ComponentPropsWithRef<'table'>
 
 const style = tv({
   base: [

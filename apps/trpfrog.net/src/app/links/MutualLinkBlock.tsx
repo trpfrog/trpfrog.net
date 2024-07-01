@@ -33,18 +33,12 @@ export async function MutualLinkBlock(props: { record: MutualLinkRecord }) {
         <h3 className={styles.h3()}>{ownerName} さんのHP</h3>
         <div className={styles.social()}>
           {github && (
-            <A
-              href={`https://github.com/${github}`}
-              className={styles.github()}
-            >
+            <A href={`https://github.com/${github}`} className={styles.github()}>
               <FontAwesomeIcon icon={faGithub} />
             </A>
           )}
           {twitter && (
-            <A
-              href={`https://twitter.com/${twitter}`}
-              className={styles.twitter()}
-            >
+            <A href={`https://twitter.com/${twitter}`} className={styles.twitter()}>
               <FontAwesomeIcon icon={faTwitter} />
             </A>
           )}

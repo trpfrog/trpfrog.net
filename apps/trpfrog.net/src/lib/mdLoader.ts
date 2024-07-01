@@ -10,10 +10,14 @@ export type MarkdownWithFrontmatter<T> = {
   content: string
 }
 
-export async function readMarkdowns<T extends { date: Date }>(
+const DataObjectSchema = z.object({
+  date: z.date(),
+})
+
+export async function readMarkdowns<Schema extends typeof DataObjectSchema>(
   dirpath: string,
-  schema: z.Schema<T>,
-): Promise<MarkdownWithFrontmatter<T>[]> {
+  schema: Schema,
+): Promise<MarkdownWithFrontmatter<z.output<Schema>>[]> {
   const files = await fs.readdir(dirpath)
   const markdowns = files.filter(file => {
     return path.extname(file) === '.md'
@@ -29,7 +33,5 @@ export async function readMarkdowns<T extends { date: Date }>(
       } as const
     }),
   )
-  return markdownsWithFrontmatter.sort((a, b) =>
-    a.metadata.date < b.metadata.date ? 1 : -1,
-  )
+  return markdownsWithFrontmatter.sort((a, b) => (a.metadata.date < b.metadata.date ? 1 : -1))
 }

@@ -4,7 +4,6 @@ import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-
 export const metadata = {
   title: 'Legal Information',
 }

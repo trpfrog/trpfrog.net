@@ -2,10 +2,7 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-type Props<T extends string> = Omit<
-  React.ComponentPropsWithoutRef<'span'>,
-  'children'
-> & {
+type Props<T extends string> = Omit<React.ComponentPropsWithoutRef<'span'>, 'children'> & {
   children: T
   durationPerPeriodMs?: number
   intervalMs?: number

@@ -23,7 +23,7 @@ const errorArticle = {
 } satisfies ErrorablePost
 
 export function createErrorArticle(errTitle: string): ErrorablePost {
-  let ret = { ...errorArticle }
+  const ret = { ...errorArticle }
   ret.title = 'ERR: ' + errTitle
   return ret
 }

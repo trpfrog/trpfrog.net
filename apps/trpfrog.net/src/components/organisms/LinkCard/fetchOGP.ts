@@ -10,8 +10,9 @@ const cache = new LRUCache<string, OgObject>({
 })
 
 export async function fetchOGP(url: string): Promise<OgObject> {
-  if (cache.has(url)) {
-    return cache.get(url)!
+  const cached = cache.get(url)
+  if (cached) {
+    return cached
   }
   const html = await fetch(url).then(res => res.text())
   const { result } = await ogs({
