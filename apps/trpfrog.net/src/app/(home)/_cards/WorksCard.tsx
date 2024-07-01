@@ -16,21 +16,15 @@ const workStyles = tv({
     backdrop:
       'tw-size-full tw-p-2 tw-backdrop-blur-[1.5px] ' +
       'tw-flex tw-h-full tw-w-full tw-flex-col tw-justify-end tw-text-white',
-    title:
-      'tw-text-lg tw-font-bold tw-leading-tight tw-text-white tw-drop-shadow',
-    subtitle:
-      'tw-mt-1 tw-text-[11px] tw-leading-tight tw-text-white tw-drop-shadow',
+    title: 'tw-text-lg tw-font-bold tw-leading-tight tw-text-white tw-drop-shadow',
+    subtitle: 'tw-mt-1 tw-text-[11px] tw-leading-tight tw-text-white tw-drop-shadow',
     keywords:
-      'tw-flex tw-gap-1 tw-text-xs tw-leading-none ' +
-      'tw-mb-1 tw-w-fit tw-overflow-hidden',
+      'tw-flex tw-gap-1 tw-text-xs tw-leading-none ' + 'tw-mb-1 tw-w-fit tw-overflow-hidden',
     keyword: 'tw-text-lg tw-drop-shadow',
   },
 })()
 
-function Work(props: {
-  content: MarkdownWithFrontmatter<WorksFrontmatter>
-  className?: string
-}) {
+function Work(props: { content: MarkdownWithFrontmatter<WorksFrontmatter>; className?: string }) {
   const { content, className } = props
   const imageUrl = replaceWithLighterImageFormat(
     `https://res.cloudinary.com/trpfrog/image/upload/w_150/${content.metadata.image?.path}`,
@@ -47,17 +41,13 @@ function Work(props: {
         <div className={workStyles.keywords()}>
           {content.metadata.keywords
             ?.filter(hasDevicon)
-            .map(k => (
-              <Devicon key={k} className={workStyles.keyword()} iconName={k} />
-            ))}
+            .map(k => <Devicon key={k} className={workStyles.keyword()} iconName={k} />)}
         </div>
         <h3 className={workStyles.title()}>
           <ParseWithBudouX str={content.metadata.title} slug={''} />
         </h3>
         {content.metadata.subtitle && (
-          <div className={workStyles.subtitle()}>
-            {content.metadata.subtitle}
-          </div>
+          <div className={workStyles.subtitle()}>{content.metadata.subtitle}</div>
         )}
       </div>
     </div>

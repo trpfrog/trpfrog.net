@@ -6,7 +6,6 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
-
 type NavigationLinkRecord = {
   link: string
   name: string

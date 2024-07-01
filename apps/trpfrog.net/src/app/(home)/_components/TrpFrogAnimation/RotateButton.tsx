@@ -15,9 +15,7 @@ export const RotateButton = memo(function RotateButton(props: Props) {
   return (
     <>
       <button
-        data-rotate-direction={
-          props.isRotated ? undefined : props.rotateDirection
-        }
+        data-rotate-direction={props.isRotated ? undefined : props.rotateDirection}
         className={styles.angle_picker_button}
         onClick={props.onClick}
         data-testid="rotate-button"

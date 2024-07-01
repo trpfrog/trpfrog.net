@@ -10,10 +10,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {
-    h2: [
-      'tw-relative tw-mt-10 tw-w-full',
-      'tw-border-b-2 tw-border-solid tw-border-b-trpfrog-300',
-    ],
+    h2: ['tw-relative tw-mt-10 tw-w-full', 'tw-border-b-2 tw-border-solid tw-border-b-trpfrog-300'],
     text: 'tw-peer tw-w-full',
     anchor: [
       'tw-absolute -tw-left-7 tw-top-0 tw-pr-2 tw-opacity-0 sp:tw-hidden',

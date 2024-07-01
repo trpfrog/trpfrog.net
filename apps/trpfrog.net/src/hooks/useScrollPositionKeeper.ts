@@ -5,30 +5,18 @@ export function useScrollPositionKeeper(ref?: React.RefObject<HTMLElement>) {
 
   // restore scroll position
   React.useEffect(() => {
-    const element = ref
-      ? ref.current
-      : typeof window !== 'undefined'
-        ? window
-        : undefined
+    const element = ref ? ref.current : typeof window !== 'undefined' ? window : undefined
     element?.scrollTo(0, scrollPosition.current)
   })
 
   // register scroll event
   React.useEffect(() => {
-    const element = ref
-      ? ref.current
-      : typeof window !== 'undefined'
-        ? window
-        : undefined
+    const element = ref ? ref.current : typeof window !== 'undefined' ? window : undefined
     if (!element) return
 
     const handleScroll = () => {
       scrollPosition.current =
-        'scrollTop' in element
-          ? element.scrollTop
-          : element
-            ? window.scrollY
-            : 0
+        'scrollTop' in element ? element.scrollTop : element ? window.scrollY : 0
     }
 
     element.addEventListener('scroll', handleScroll)

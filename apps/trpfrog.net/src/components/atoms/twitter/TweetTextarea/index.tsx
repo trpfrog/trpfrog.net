@@ -2,10 +2,7 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-export type TweetTextareaProps = Omit<
-  React.ComponentPropsWithoutRef<'div'>,
-  'children'
-> & {
+export type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tweet: string
   cite?: string
 }
@@ -17,10 +14,7 @@ export function parseTweet(tweet: string) {
   const sep = sepFigures.join('|')
   const urlRegex = new RegExp(`(${sep})(https?:\\/\\/[^${sep}]+)(${sep})`, 'g')
   const mentionRegex = new RegExp(`(${sep})@([a-zA-Z0-9_]+)(${sep})`, 'g')
-  const hashtagRegex = new RegExp(
-    `(${sep})#([^${sepFigures.join('')}]+)(${sep})`,
-    'g',
-  )
+  const hashtagRegex = new RegExp(`(${sep})#([^${sepFigures.join('')}]+)(${sep})`, 'g')
 
   tweet = tweet.replace(
     urlRegex,

@@ -1,21 +1,15 @@
 import { ReactNode } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-import {
-  useMobileMenuState,
-  useToggleMenuCallback,
-} from '@/components/organisms/MobileMenu/hooks'
+import { useMobileMenuState, useToggleMenuCallback } from '@/components/organisms/MobileMenu/hooks'
 
 import { tv } from '@/lib/tailwind/variants'
 
 const createStyles = tv({
   slots: {
-    wrapper:
-      'tw-fixed tw-inset-0 tw-z-[150] tw-flex ' +
-      'tw-pt-[--header-height] tw-align-bottom',
+    wrapper: 'tw-fixed tw-inset-0 tw-z-[150] tw-flex ' + 'tw-pt-[--header-height] tw-align-bottom',
     background: 'tw-absolute tw-inset-0 tw-z-[150] tw-bg-black tw-duration-300',
-    menuWrapper:
-      'tw-z-[151] tw-my-0 tw-flex tw-flex-row-reverse tw-duration-300',
+    menuWrapper: 'tw-z-[151] tw-my-0 tw-flex tw-flex-row-reverse tw-duration-300',
   },
   variants: {
     opened: {
@@ -44,13 +38,8 @@ export function MobileMenuBkg(props: MobileMenuBkgProps) {
 
   return (
     <section className={styles.wrapper()}>
-      <aside
-        className={styles.background()}
-        onClick={isOpened ? toggleMenu : doNothing}
-      />
-      <MainWrapper className={styles.menuWrapper()}>
-        {props.children}
-      </MainWrapper>
+      <aside className={styles.background()} onClick={isOpened ? toggleMenu : doNothing} />
+      <MainWrapper className={styles.menuWrapper()}>{props.children}</MainWrapper>
     </section>
   )
 }

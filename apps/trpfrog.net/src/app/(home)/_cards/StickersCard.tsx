@@ -4,9 +4,7 @@ import { twMerge } from '@/lib/tailwind/merge'
 import { tv } from '@/lib/tailwind/variants'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
-const src = replaceWithLighterImageFormat(
-  'https://res.cloudinary.com/trpfrog/w_300/stickers',
-)
+const src = replaceWithLighterImageFormat('https://res.cloudinary.com/trpfrog/w_300/stickers')
 
 const styles = tv({
   slots: {
@@ -29,12 +27,7 @@ const styles = tv({
 export function StickersCard() {
   return (
     <LinkTopCard href="/stickers" className={styles.card()}>
-      <div
-        className={twMerge(
-          styles.text(),
-          styles.absolute({ class: 'tw-z-10' }),
-        )}
-      >
+      <div className={twMerge(styles.text(), styles.absolute({ class: 'tw-z-10' }))}>
         <h2 className="tw-text-4xl tw-font-bold">Stickers</h2>
         <span className="tw-text-sm">LINE スタンプ 全2種 販売中 !</span>
       </div>

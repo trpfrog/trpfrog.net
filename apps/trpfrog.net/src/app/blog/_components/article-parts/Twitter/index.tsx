@@ -18,10 +18,7 @@ export const twitterParts = {
             <b>Tweet not found</b>
             <br />
             <small>
-              id ={' '}
-              <InlineLink href={`https://twitter.com/trpfrog/status/${id}`}>
-                {id}
-              </InlineLink>
+              id = <InlineLink href={`https://twitter.com/trpfrog/status/${id}`}>{id}</InlineLink>
             </small>
           </p>
         }

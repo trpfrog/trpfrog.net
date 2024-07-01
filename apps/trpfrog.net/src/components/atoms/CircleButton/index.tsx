@@ -7,17 +7,9 @@ type Props = React.ComponentPropsWithoutRef<'button'> & {
 }
 
 export function CircleButton(props: Props) {
-  const {
-    className = '',
-    backgroundColor = 'var(--header-color)',
-    ...rest
-  } = props
+  const { className = '', backgroundColor = 'var(--header-color)', ...rest } = props
   return (
-    <button
-      {...rest}
-      className={`${styles.button} ${className}`}
-      style={{ backgroundColor }}
-    >
+    <button {...rest} className={`${styles.button} ${className}`} style={{ backgroundColor }}>
       {props.children}
     </button>
   )

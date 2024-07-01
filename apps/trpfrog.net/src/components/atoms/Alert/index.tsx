@@ -40,10 +40,7 @@ export function Alert(props: Props) {
   }
 
   return (
-    <div
-      className={`${alertAppearance[type].className} ${className}`}
-      {...rest}
-    >
+    <div className={`${alertAppearance[type].className} ${className}`} {...rest}>
       <div className={styles.text_box_icon}>
         <FontAwesomeIcon icon={alertAppearance[type].icon} />
       </div>

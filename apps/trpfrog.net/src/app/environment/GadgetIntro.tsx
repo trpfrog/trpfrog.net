@@ -12,11 +12,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-export const GadgetIntro: React.FunctionComponent<Props> = ({
-  children,
-  name,
-  imagePath,
-}) => {
+export const GadgetIntro: React.FunctionComponent<Props> = ({ children, name, imagePath }) => {
   let imageHtml: JSX.Element = <></>
   if (imagePath !== undefined) {
     imageHtml = (

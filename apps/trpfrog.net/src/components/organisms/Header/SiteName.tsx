@@ -42,9 +42,7 @@ function usePageTitle() {
 
 export function SiteName(props: TitleWithPageNameProps) {
   const pathname = usePathname() ?? '/'
-  const siteTitle =
-    props.siteTitle ??
-    (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
+  const siteTitle = props.siteTitle ?? (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
   const pageTitleFromHook = usePageTitle()
   const pageTitle = props.pageTitle ?? pageTitleFromHook
 

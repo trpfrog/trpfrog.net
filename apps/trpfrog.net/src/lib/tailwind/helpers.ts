@@ -1,7 +1,4 @@
-export function addTwModifier(
-  modifier: `${string}:`,
-  className: string | string[],
-): string {
+export function addTwModifier(modifier: `${string}:`, className: string | string[]): string {
   if (Array.isArray(className)) {
     className = className.join(' ')
   }

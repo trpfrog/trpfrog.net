@@ -10,8 +10,7 @@ export type TwitterIconProps = {
 
 export function TwitterIcon(props: TwitterIconProps) {
   const { preset, iconStyle } = props
-  const background =
-    preset && preset in iconPreset ? iconPreset[preset] : iconStyle
+  const background = preset && preset in iconPreset ? iconPreset[preset] : iconStyle
   return (
     <div
       className={styles.icon}

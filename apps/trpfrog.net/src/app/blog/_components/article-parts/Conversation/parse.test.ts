@@ -9,9 +9,7 @@ describe('Conversation parse', () => {
 
   test('single with outOfComment', () => {
     const input = ['speaker: comment  ← outOfComment'].join('\n')
-    const output = [
-      { speaker: 'speaker', comment: 'comment', outOfComment: 'outOfComment' },
-    ]
+    const output = [{ speaker: 'speaker', comment: 'comment', outOfComment: 'outOfComment' }]
     expect(parseConversation(input)).toEqual(output)
   })
 
@@ -29,19 +27,13 @@ describe('Conversation parse', () => {
 
   test('comment can be broken line', () => {
     const input = ['speaker:', 'comment1', 'comment2', 'comment3']
-    const output = [
-      { speaker: 'speaker', comment: 'comment1\ncomment2\ncomment3' },
-    ]
+    const output = [{ speaker: 'speaker', comment: 'comment1\ncomment2\ncomment3' }]
     expect(parseConversation(input.join('\n'))).toEqual(output)
   })
 
   test('should trim input', () => {
-    const input = ['', '  speaker:  comment  ←  outOfComment  ', '', ''].join(
-      '\n',
-    )
-    const output = [
-      { speaker: 'speaker', comment: 'comment', outOfComment: 'outOfComment' },
-    ]
+    const input = ['', '  speaker:  comment  ←  outOfComment  ', '', ''].join('\n')
+    const output = [{ speaker: 'speaker', comment: 'comment', outOfComment: 'outOfComment' }]
     expect(parseConversation(input)).toEqual(output)
   })
 

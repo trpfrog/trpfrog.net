@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint-fix": "turbo lint-fix && prettier --write",
+    "lint-fix": "turbo lint-fix && prettier . --write",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "reinstall-all-deps": "rm -rf node_modules ./*/*/node_modules && pnpm install",

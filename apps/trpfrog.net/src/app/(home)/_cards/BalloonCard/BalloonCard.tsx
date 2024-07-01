@@ -13,8 +13,7 @@ import { useResizableBalloonArray } from './useResizableBalloonArray'
 
 const createStyles = tv({
   slots: {
-    wrapper:
-      'tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center sp:tw-h-32',
+    wrapper: 'tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center sp:tw-h-32',
     dialog: [
       'tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full',
       'tw-flex tw-flex-col tw-items-center tw-justify-center',

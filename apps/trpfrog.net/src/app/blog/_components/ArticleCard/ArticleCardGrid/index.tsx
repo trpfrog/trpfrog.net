@@ -15,11 +15,5 @@ export const gridArea = {
 
 export function ArticleCardGrid(props: Props) {
   const { className, isHero, ...rest } = props
-  return (
-    <div
-      className={`${styles.grid} ${className}`}
-      {...rest}
-      data-hero-article={!!isHero}
-    />
-  )
+  return <div className={`${styles.grid} ${className}`} {...rest} data-hero-article={!!isHero} />
 }

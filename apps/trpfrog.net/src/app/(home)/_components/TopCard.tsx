@@ -43,13 +43,7 @@ export interface TopCardProps extends ComponentPropsWithRef<'div'> {
 }
 
 export function TopCard(props: TopCardProps) {
-  const {
-    className,
-    children,
-    title,
-    titlePosition = 'top-left',
-    ...rest
-  } = props
+  const { className, children, title, titlePosition = 'top-left', ...rest } = props
   return (
     <div className={styles.base({ className })} {...rest}>
       {title && (
@@ -73,23 +67,12 @@ export interface TopLinkCardProps extends AProps {
 }
 
 export function LinkTopCard(props: TopLinkCardProps) {
-  const {
-    className,
-    children,
-    title,
-    readMoreText,
-    titlePosition = 'top-left',
-    ...rest
-  } = props
+  const { className, children, title, readMoreText, titlePosition = 'top-left', ...rest } = props
   const showReadMore = readMoreText !== false
   const readMore = typeof readMoreText === 'string' ? readMoreText : '→'
 
   return (
-    <A
-      className={styles.base({ className, clickable: true })}
-      openInNewTab={false}
-      {...rest}
-    >
+    <A className={styles.base({ className, clickable: true })} openInNewTab={false} {...rest}>
       {title && (
         <h2
           className={styles.h2({

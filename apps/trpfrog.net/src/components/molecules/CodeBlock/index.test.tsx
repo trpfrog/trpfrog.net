@@ -32,19 +32,13 @@ describe('extractPrefixes', () => {
   test.each([
     ['typescript', { prefixes: [], language: 'typescript' }],
     ['wrap:ts', { prefixes: ['wrap'], language: 'ts' }],
-    [
-      'no-header:javascript',
-      { prefixes: ['no-header'], language: 'javascript' },
-    ],
+    ['no-header:javascript', { prefixes: ['no-header'], language: 'javascript' }],
   ])('With single prefix (%s)', (input, expected) => {
     expect(extractPrefixes(input)).toEqual(expected)
   })
 
   test.each([
-    [
-      'no-header:wrap:rust',
-      { prefixes: ['no-header', 'wrap'], language: 'rust' },
-    ],
+    ['no-header:wrap:rust', { prefixes: ['no-header', 'wrap'], language: 'rust' }],
     ['no-header:wrap:', { prefixes: ['no-header', 'wrap'], language: '' }],
   ])('With multiple prefixes (%s)', (input, expected) => {
     expect(extractPrefixes(input)).toEqual(expected)
@@ -70,14 +64,7 @@ describe('extractPrefixes', () => {
 })
 
 describe('isValidLanguage', () => {
-  const validLanguages = [
-    'typescript',
-    'javascript',
-    'rust',
-    'text',
-    'shell',
-    'ansi',
-  ]
+  const validLanguages = ['typescript', 'javascript', 'rust', 'text', 'shell', 'ansi']
   const shorthandLanguages = ['ts', 'js', 'rs', 'txt', 'sh']
   const invalidLanguages = ['typescriptt', 'javascirpt', 'uouo']
 
