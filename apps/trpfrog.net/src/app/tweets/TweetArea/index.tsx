@@ -6,7 +6,11 @@ import { search } from '@/app/tweets/tweetSearcher'
 
 import { Block } from '@/components/molecules/Block'
 
-export async function TweetArea({ searchParams }: NextServerPageProps) {
+export async function TweetArea({
+  searchParams,
+}: {
+  searchParams: Record<string, string | undefined>
+}) {
   const { results, maxPage, keywords, tweetCount } = await search(searchParams)
 
   const tweetCards: React.ReactNode[] = []
