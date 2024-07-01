@@ -1,5 +1,5 @@
 import { Media, PrismaClient, Tweet } from '@prisma/client'
-import dayjs from 'dayjs'
+import { parseISO, addDays } from 'date-fns'
 
 const prisma = new PrismaClient()
 
@@ -15,23 +15,16 @@ export async function search(searchParams: Record<string, string | undefined> | 
 
   const spacesRegex = /[\s\u3000]+/g // \u3000 is full-width space
   for (const queryStr of params.query.split(spacesRegex)) {
-    if (queryStr.startsWith('-')) {
+    if (/^order:(asc|desc)$/.test(queryStr)) {
+      params.asc = queryStr === 'order:asc'
+    } else if (queryStr.startsWith('-')) {
       // negative query
       const query = buildUnaryQueryFromStr(queryStr.slice(1))
-      if (query.order) {
-        // reverse order because it's a negative query
-        params.asc = query.order !== 'asc'
-      } else {
-        whereNotQuery.push(query)
-      }
+      whereNotQuery.push(query)
     } else {
       // positive query
       const query = buildUnaryQueryFromStr(queryStr)
-      if (query.order) {
-        params.asc = query.order === 'asc'
-      } else {
-        whereAndQuery.push(query)
-      }
+      whereAndQuery.push(query)
     }
   }
 
@@ -45,7 +38,7 @@ export async function search(searchParams: Record<string, string | undefined> | 
       AND: whereAndQuery,
       NOT: whereNotQuery,
     },
-  }
+  } as const satisfies Parameters<typeof prisma.tweet.count>[0]
 
   const count = await prisma.tweet.count(countQuery)
 
@@ -78,28 +71,26 @@ export async function search(searchParams: Record<string, string | undefined> | 
 }
 
 function buildUnaryQueryFromStr(queryStr: string) {
-  if (/^order:(asc|desc)$/.test(queryStr)) {
-    return {
-      order: queryStr.slice(6) === 'asc' ? 'asc' : 'desc',
-    }
-  }
-
   if (/^until:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
     return {
-      createdAt: { lt: dayjs(queryStr.slice(6)).add(1, 'day').toDate() },
+      createdAt: {
+        lt: addDays(parseISO(queryStr.slice(6)), 1),
+      },
     }
   }
   if (/^since:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
     return {
-      createdAt: { gte: dayjs(queryStr.slice(6)).toDate() },
+      createdAt: {
+        gte: parseISO(queryStr.slice(6)),
+      },
     }
   }
   if (/^date:\d{4}-\d{2}-\d{2}$/.test(queryStr)) {
-    const date = dayjs(queryStr.slice(5))
+    const date = parseISO(queryStr.slice(5))
     return {
       createdAt: {
-        gte: date.toDate(),
-        lt: date.add(1, 'day').toDate(),
+        gte: date,
+        lt: addDays(date, 1),
       },
     }
   }

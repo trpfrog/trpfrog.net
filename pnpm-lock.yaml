@@ -200,6 +200,9 @@ importers:
       consola:
         specifier: ^3.2.3
         version: 3.2.3
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
