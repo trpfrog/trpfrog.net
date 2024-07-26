@@ -1,18 +1,8 @@
-import { z } from 'zod'
-
 import { fetchRandomWords } from './fetchRandomWords'
 import { generateRandomTrpFrogPrompt } from './generateRandomPrompt'
 import { generateTrpFrogImage } from './generateTrpFrogImage'
 
-export const TrpFrogImageGenerationResultSchema = z.object({
-  generatedTime: z.number().int().min(0),
-  prompt: z.string(),
-  translated: z.string(),
-  base64: z.string(),
-  arrayBuffer: z.instanceof(ArrayBuffer),
-})
-
-export type TrpFrogImageGenerationResult = z.infer<typeof TrpFrogImageGenerationResultSchema>
+import type { TrpFrogImageGenerationResult } from './schema'
 
 export async function generateNew(options: {
   numberOfRetries?: number

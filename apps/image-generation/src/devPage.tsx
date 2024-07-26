@@ -44,7 +44,6 @@ adminApp.post('/force-update', c => {
 
 // Admin page
 adminApp.get('/', async c => {
-  // const { TRPFROG_FUNCTIONS_SECRET } = env(c)
   return c.html(
     <html>
       <head>
