@@ -32,7 +32,7 @@ async function createImageResponseOptions() {
   }
 
   // load fonts
-  for (const font of Object.values(ogFonts)) {
+  for (const font of Object.values(ogFonts as Record<string, { name: string; weight: number }>)) {
     try {
       const fontData = await fetchFont(font.name, font.weight)
       imageResponseOptions.fonts?.push({

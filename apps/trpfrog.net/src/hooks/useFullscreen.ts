@@ -5,7 +5,7 @@ export function useFullscreen() {
     if (typeof document === 'undefined') {
       return
     }
-    const selectors = {
+    const selectors: Record<string, string> = {
       header: 'body > div:has(header)',
       nav: 'body > nav',
       footer: 'body > footer',

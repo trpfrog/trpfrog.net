@@ -9,7 +9,7 @@ import { ArticleParts, IsomorphicArticleParts, IsomorphicArticlePartsProps } fro
 import { PageTransferButton } from './PageNavigation'
 
 const extraCodeBlockComponents = [
-  ...Object.values(parts),
+  ...Object.values(parts as Record<string, ArticleParts>),
   {
     name: 'next-page',
     Component: ({ content, entry }) => {
