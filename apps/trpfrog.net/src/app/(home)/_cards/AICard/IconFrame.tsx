@@ -3,8 +3,10 @@
 import * as React from 'react'
 import { useCallback, useEffect } from 'react'
 
-import { trpfrogDiffusionClient } from '@trpfrog.net/image-generation'
+import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import useSWR from 'swr'
+
+import { clientEnv } from '@/env/client'
 
 import { bffClient } from '@/app/api/client'
 
@@ -35,11 +37,7 @@ const createStyles = tv({
   variants: {
     status: {
       ok: {
-        english: `
-          tw-bg-gradient-to-br 
-          tw-from-blue-400 tw-to-pink-400 
-          tw-bg-clip-text tw-text-transparent
-        `,
+        english: `tw-bg-gradient-to-br tw-from-blue-400 tw-to-pink-400 tw-bg-clip-text tw-text-transparent`,
       },
       loading: {
         picture: 'tw-bg-gray-200 tw-text-black',
@@ -56,16 +54,18 @@ const createStyles = tv({
   },
 })
 
+const imgGenClient = createTrpFrogImageGenerationClient(clientEnv.NODE_ENV)
+
 export function IconFrame() {
   const fetcher = useCallback(
-    () => trpfrogDiffusionClient.current.metadata.$get().then(res => res.json()),
+    () => imgGenClient.current.metadata.$get().then(res => res.json()),
     [],
   )
   const { isLoading, data, error } = useSWR('/', fetcher)
 
   // Trigger update request on mount
   useEffect(() => {
-    bffClient.diffusion.update.$post()
+    void bffClient.diffusion.update.$post()
   }, [])
 
   if (isLoading) {
@@ -106,7 +106,7 @@ export function IconFrame() {
   }
 
   const styles = createStyles()
-  const imageSrcUrl = trpfrogDiffusionClient.current.$url().toString()
+  const imageSrcUrl = imgGenClient.current.$url().toString()
   return (
     <figure className={styles.wrapper()}>
       <div className={styles.layout()}>

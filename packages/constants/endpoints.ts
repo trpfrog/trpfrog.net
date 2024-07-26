@@ -54,11 +54,16 @@ export const devEndpoints = Object.fromEntries(
     ]),
 )
 
-export const endpoints = Object.fromEntries(
-  internalEndpoints
-    .filter(endpoint => endpoint.production != null)
-    .map(endpoint => [endpoint.name, endpoint.production]),
-)
+export function endpoints(env: 'development' | 'production' | 'test') {
+  return Object.fromEntries(
+    internalEndpoints
+      .filter(endpoint => endpoint.production != null)
+      .map(endpoint => [
+        endpoint.name,
+        env === 'production' ? endpoint.production : `http://localhost:${endpoint.port}`,
+      ]),
+  )
+}
 
 /**
  * The ports of the backend services.
