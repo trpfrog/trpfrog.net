@@ -4,7 +4,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "types": [
-      "vitest/global",
       "@cloudflare/workers-types"
     ],
     "jsx": "react-jsx",
