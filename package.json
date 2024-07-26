@@ -22,7 +22,6 @@
     "@vitejs/plugin-react": "^4.2.1",
     "better-typescript-lib": "^2.7.0",
     "happy-dom": "^13.5.3",
-    "husky": "^9.0.11",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "turbo": "^2.0.6",
