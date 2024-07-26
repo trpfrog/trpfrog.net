@@ -60,7 +60,7 @@ export async function GET(req: NextRequest, props: GETProps) {
   try {
     await limiter.check(res, 5, req.ip ?? 'ip_not_found')
     const { text: output } = await generateText({
-      model: openai('gpt-3.5-turbo'),
+      model: openai('gpt-4o-mini'),
       messages: [
         {
           role: 'system',
