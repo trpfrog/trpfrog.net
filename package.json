@@ -15,21 +15,19 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "^0.4.12",
-    "@evilmartians/lefthook": "^1.6.22",
+    "@eslint/config-inspector": "^0.5.2",
+    "@evilmartians/lefthook": "^1.7.9",
     "@trpfrog.net/config-eslint": "workspace:*",
-    "@types/node": "^20.11.30",
-    "@vitejs/plugin-react": "^4.2.1",
-    "better-typescript-lib": "^2.7.0",
-    "happy-dom": "^13.5.3",
-    "prettier": "3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "^2.0.6",
-    "typescript": "^5.5.3",
-    "vitest": "^1.6.0"
+    "@types/node": "^20.14.12",
+    "@vitejs/plugin-react": "^4.3.1",
+    "better-typescript-lib": "^2.8.0",
+    "eslint": "^9.7.0",
+    "happy-dom": "^14.12.3",
+    "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "turbo": "^2.0.9",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
-  "packageManager": "pnpm@9.1.4",
-  "dependencies": {
-    "eslint": "^9.6.0"
-  }
+  "packageManager": "pnpm@9.1.4"
 }
