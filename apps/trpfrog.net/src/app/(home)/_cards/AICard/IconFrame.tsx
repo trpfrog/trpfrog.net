@@ -6,7 +6,7 @@ import { useCallback, useEffect } from 'react'
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import useSWR from 'swr'
 
-import { clientEnv } from '@/env/client'
+import { NODE_ENV } from '@/env/client'
 
 import { bffClient } from '@/app/api/client'
 
@@ -54,7 +54,7 @@ const createStyles = tv({
   },
 })
 
-const imgGenClient = createTrpFrogImageGenerationClient(clientEnv.NODE_ENV)
+const imgGenClient = createTrpFrogImageGenerationClient(NODE_ENV)
 
 export function IconFrame() {
   const fetcher = useCallback(

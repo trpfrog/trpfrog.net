@@ -1,4 +1,4 @@
-import { clientEnv } from '@/env/client'
+import { NODE_ENV } from '@/env/client'
 
 export const LOREM_IPSUM = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
@@ -22,8 +22,9 @@ export const PRODUCTION_ORIGIN = 'https://trpfrog.net'
 export const DEVELOPMENT_ORIGIN = 'http://localhost:3000'
 
 export const HOST_URL =
-  clientEnv.NODE_ENV === 'production'
-    ? `https://${clientEnv.VERCEL_URL || 'trpfrog.net'}`
+  NODE_ENV === 'production'
+    ? // eslint-disable-next-line n/no-process-env
+      `https://${process.env.VERCEL_URL || 'trpfrog.net'}`
     : DEVELOPMENT_ORIGIN
 
 export const DEFAULT_BLOG_THUMBNAIL = 'https://res.cloudinary.com/trpfrog/TwitterCard'
