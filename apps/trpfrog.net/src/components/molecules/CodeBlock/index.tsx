@@ -5,7 +5,7 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast, bundledLanguages, bundledThemes, getHighlighter } from 'shiki'
+import { addClassToHast, bundledLanguages, bundledThemes, getSingletonHighlighter } from 'shiki'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
 
@@ -27,7 +27,7 @@ const createStyles = tv({
       'tw-flex tw-h-fit tw-w-full tw-items-center tw-justify-between',
       'tw-rounded-t-lg tw-bg-trpfrog-500 tw-px-4 tw-py-1 dark:tw-bg-trpfrog-600',
     ],
-    lang: ' tw-text-xs tw-font-bold tw-text-white',
+    lang: 'tw-text-xs tw-font-bold tw-text-white',
     codeWrapper: [
       'tw-w-full tw-overflow-clip tw-overflow-x-scroll',
       'tw-font-mono tw-text-sm sp:tw-text-xs',
@@ -65,14 +65,6 @@ const langAlias = {
   txt: 'text',
 }
 
-const getCustomHighlighter = React.cache(() =>
-  getHighlighter({
-    themes: Object.keys(bundledThemes),
-    langs: Object.keys(bundledLanguages),
-    langAlias,
-  }),
-)
-
 export function extractPrefixes(language: string) {
   const prefixes: string[] = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
     language = language.replace(prefix, '')
@@ -99,7 +91,11 @@ export async function CodeBlock(props: CodeBlockProps) {
 
   const styles = createStyles({ withBar, wrap: prefixes.includes('wrap') })
 
-  const highlighter = await getCustomHighlighter()
+  const highlighter = await getSingletonHighlighter({
+    themes: Object.keys(bundledThemes),
+    langs: Object.keys(bundledLanguages),
+    langAlias,
+  })
   const codeHtml = highlighter.codeToHtml((props.children as string).trimEnd(), {
     lang: language,
     themes: {
