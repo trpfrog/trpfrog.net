@@ -19,6 +19,12 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
     reactCompiler: true,
+
+    // Opt into the previous Client Router Cache behavior
+    // https://nextjs.org/blog/next-15-rc#client-router-cache-no-longer-caches-page-components-by-default
+    staleTimes: {
+      dynamic: 30,
+    },
   },
 
   webpack: config => {
@@ -82,6 +88,7 @@ const withVanillaExtract = createVanillaExtractPlugin({
 })
 
 const composeFunctions = (...fns) => {
+  // fns: [f1, f2, f3, ...] => f1(f2(f3(x)))
   return x => fns.reverse().reduce((v, f) => f(v), x)
 }
 export default composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
