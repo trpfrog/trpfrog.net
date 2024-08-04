@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://trpfrog.net">
-    <img alt="" src="https://res.cloudinary.com/trpfrog/image/upload/v1717325153/kawaii-with-outline.png" height="180px">
+    <img alt="" src="https://res.cloudinary.com/trpfrog/image/upload/v1717325153/kawaii-with-outline.png" width="500" height="auto">
   </a>
 </p>
 
