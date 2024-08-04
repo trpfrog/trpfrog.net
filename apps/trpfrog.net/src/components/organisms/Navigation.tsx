@@ -1,11 +1,10 @@
 'use client'
 import { usePathname } from 'next/navigation'
 
+import { WavyText } from '@/components/atoms/WavyText'
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
-
-import { DominoText } from '../atoms/DominoText'
 
 type NavigationLinkRecord = {
   link: string
@@ -66,7 +65,7 @@ export function Navigation() {
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
           ({ link, name, shortName }) => (
             <A href={link} key={link} className={styles.link({ current: currentLink === link })}>
-              <DominoText text={shortName ?? name} />
+              <WavyText text={shortName ?? name} />
             </A>
           ),
         )}

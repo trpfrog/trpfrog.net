@@ -10,8 +10,7 @@ export const cardButtonStyle = tv({
   variants: {
     invertColor: {
       true: 'tw-bg-text-color/80 tw-text-window-color hover:tw-bg-text-color',
-      false:
-        'tw-bg-window-color/80 tw-text-text-color hover:tw-bg-window-color',
+      false: 'tw-bg-window-color/80 tw-text-text-color hover:tw-bg-window-color',
     },
   },
   defaultVariants: {

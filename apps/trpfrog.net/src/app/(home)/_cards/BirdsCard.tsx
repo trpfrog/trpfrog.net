@@ -5,6 +5,7 @@ import { useTooltip } from '@/hooks/useTooltip'
 
 import { tv } from '@/lib/tailwind/variants'
 
+/* eslint-disable no-irregular-whitespace */
 const leftBird = `
 
 　　 ／￣￣＼　ﾑｼｬﾑｼｬ
@@ -30,6 +31,7 @@ const rightBird = `
 　　　 　 | 　　　| |
 　　　　　　　　Ｕ
 `.trimEnd()
+/* eslint-enable no-irregular-whitespace */
 
 const styles = tv({
   slots: {

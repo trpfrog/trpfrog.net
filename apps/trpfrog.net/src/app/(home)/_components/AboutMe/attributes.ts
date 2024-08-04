@@ -1,4 +1,5 @@
 import {
+  IconDefinition,
   faBirthdayCake,
   faCode,
   faFlask,
@@ -15,7 +16,7 @@ import { faMusic } from '@fortawesome/free-solid-svg-icons/faMusic'
 
 import { ATCODER_HIGHEST, WALKING_FARTHEST } from '@/lib/constants'
 
-type Attribute = { icon: any; iconName: string; text: string }
+type Attribute = { icon: IconDefinition; iconName: string; text: string }
 
 export const attributes: Attribute[] = [
   { icon: faMapMarkerAlt, iconName: '住まい', text: '東京都 (多摩地域)' },

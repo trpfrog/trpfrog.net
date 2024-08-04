@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "ui": "tui",
+  "tasks": {
     "build": {
       // A package's `build` script depends on that package's
       // dependencies and devDependencies
@@ -38,7 +39,7 @@
     },
     // A package's `lint` script has no dependencies and
     // can be run whenever. It also has no filesystem outputs.
-    "lint": {},
+    "lint-fix": {},
     "dev": {
       "cache": false,
       "persistent": true

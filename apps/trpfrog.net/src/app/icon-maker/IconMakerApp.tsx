@@ -3,13 +3,12 @@
 import { useRef } from 'react'
 
 import { createURL } from '@trpfrog.net/utils'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
 
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { A, Input } from '@/components/wrappers'
-
 
 import styles from './style.module.scss'
 

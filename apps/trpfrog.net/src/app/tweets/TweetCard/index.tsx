@@ -29,25 +29,16 @@ function ScreenNameLink(props: {
   children: React.ReactNode
 }) {
   return (
-    <InlineLink
-      href={`https://twitter.com/${props.screenName}`}
-      className={props.className}
-    >
+    <InlineLink href={`https://twitter.com/${props.screenName}`} className={props.className}>
       {props.children}
     </InlineLink>
   )
 }
 
-function TweetString({
-  text,
-  keywords,
-}: {
-  text: string
-  keywords?: string[]
-}) {
+function TweetString({ text, keywords }: { text: string; keywords?: string[] }) {
   let replaced = reactStringReplace(
     text,
-    /(https?:\/\/[^\s\n　]+)/g,
+    /(https?:\/\/[^\s\n\u3000]+)/g, // \u3000 is full-width space
     (match, i) => (
       <InlineLink key={`tweet-link-${i}`} href={match}>
         {match}
@@ -64,19 +55,15 @@ function TweetString({
     </InlineLink>
   ))
 
-  replaced = reactStringReplace(
-    replaced,
-    /\B#([^\s\n「」()#]+)/g,
-    (match, i) => (
-      <InlineLink
-        key={`tweet-hashtag-${i}`}
-        href={`https://twitter.com/hashtag/${match}`}
-        className={styles.hashtag_string}
-      >
-        #{match}
-      </InlineLink>
-    ),
-  )
+  replaced = reactStringReplace(replaced, /\B#([^\s\n「」()#]+)/g, (match, i) => (
+    <InlineLink
+      key={`tweet-hashtag-${i}`}
+      href={`https://twitter.com/hashtag/${match}`}
+      className={styles.hashtag_string}
+    >
+      #{match}
+    </InlineLink>
+  ))
 
   // unique keywords
   keywords = [...new Set(keywords)]
@@ -125,8 +112,7 @@ export function TweetCard({
   tweet: Tweet & { media: Media[] }
   keywords?: string[]
 }) {
-  const trpfrogUrl =
-    'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
+  const trpfrogUrl = 'https://res.cloudinary.com/trpfrog/image/upload/w_50,q_auto/icons_gallery/28'
   const statusUrl = `https://twitter.com/${tweet.screenName}/status/${tweet.id}`
   const isMyTweet = tweet.screenName === 'TrpFrog'
   const photos = tweet.media.filter(e => e.type === 'photo').length
@@ -148,16 +134,10 @@ export function TweetCard({
         <div className={styles.user_names_and_tweets}>
           <div className={styles.header}>
             <div className={styles.header_left}>
-              <ScreenNameLink
-                screenName={tweet.screenName}
-                className={styles.name}
-              >
+              <ScreenNameLink screenName={tweet.screenName} className={styles.name}>
                 {tweet.name}
               </ScreenNameLink>{' '}
-              <ScreenNameLink
-                screenName={tweet.screenName}
-                className={styles.screen_name}
-              >
+              <ScreenNameLink screenName={tweet.screenName} className={styles.screen_name}>
                 @{tweet.screenName}
               </ScreenNameLink>
             </div>
@@ -165,10 +145,7 @@ export function TweetCard({
           </div>
           <div className={styles.tweet}>
             <blockquote>
-              <TweetString
-                text={decodeHTMLEntities(tweet.text)}
-                keywords={keywords}
-              />
+              <TweetString text={decodeHTMLEntities(tweet.text)} keywords={keywords} />
             </blockquote>
             {photos > 0 && (
               <div className={styles.media}>
@@ -194,9 +171,7 @@ export function TweetCard({
                       style={{
                         aspectRatio: `${tweet.media[0].width}/${tweet.media[0].height}`,
                         maxHeight: 200,
-                        backgroundColor: createColorFromScreenName(
-                          tweet.screenName,
-                        ),
+                        backgroundColor: createColorFromScreenName(tweet.screenName),
                         filter: 'brightness(0.4)',
                       }}
                     />
@@ -213,21 +188,16 @@ export function TweetCard({
                   data-use-star={applyStarFavs}
                   data-no-reaction={tweet.favs === 0}
                 >
-                  <FontAwesomeIcon icon={applyStarFavs ? faStar : faHeart} />{' '}
-                  {tweet.favs}
+                  <FontAwesomeIcon icon={applyStarFavs ? faStar : faHeart} /> {tweet.favs}
                 </span>
-                <span
-                  className={styles.retweets}
-                  data-no-reaction={tweet.retweets === 0}
-                >
+                <span className={styles.retweets} data-no-reaction={tweet.retweets === 0}>
                   <FontAwesomeIcon icon={faRetweet} /> {tweet.retweets}
                 </span>
               </div>
             ) : photos > 0 ? (
               <span style={{ opacity: 0.5 }}>
                 <span className="sp:tw-hidden">
-                  View pictures on{' '}
-                  <InlineLink href={statusUrl}>twitter.com</InlineLink>!
+                  View pictures on <InlineLink href={statusUrl}>twitter.com</InlineLink>!
                 </span>
               </span>
             ) : (

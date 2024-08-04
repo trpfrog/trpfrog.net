@@ -1,16 +1,15 @@
 import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
 import dayjs from 'dayjs'
-import { RichButton } from 'src/components/atoms/RichButton'
 import { z } from 'zod'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
+import { RichButton } from '@/components/atoms/RichButton'
 import { A, Li, UnorderedList } from '@/components/wrappers'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
-
 
 import styles from './index.module.scss'
 
@@ -25,7 +24,7 @@ export type ProfileData = z.infer<typeof ProfileDataSchema>
 
 const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <div className={styles.profile_card_grid}>
-    {personalDataList.map((personalData: any) => (
+    {personalDataList.map(personalData => (
       <div className={styles.profile_card} key={personalData.name}>
         <div className={styles.header}>
           <div className={styles.club}>{personalData.club}</div>
@@ -49,7 +48,7 @@ const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) =
 
 const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <UnorderedList>
-    {personalDataList.map((personalData: any) => (
+    {personalDataList.map(personalData => (
       <>
         <Li key={personalData.name + '-name'}>
           {personalData.name}
@@ -75,13 +74,7 @@ export const profileCardParts = {
     const personalDataList = parseObjectList(content)
       .map(e => ProfileDataSchema.safeParse(e))
       .filter(e => e.success)
-      .map(e => {
-        if (e.success) {
-          return e.data
-        } else {
-          throw e.error
-        }
-      })
+      .map(e => e.data)
 
     const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
       q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),

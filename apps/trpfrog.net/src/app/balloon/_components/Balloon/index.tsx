@@ -1,10 +1,10 @@
 'use client'
 
-import { Dispatch, useId, useState } from 'react'
+import { useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
 
-import styles from './index.module.scss'
+import * as styles from './index.css.ts'
 
 import useSound from '@/../node_modules/use-sound'
 
@@ -19,14 +19,13 @@ type BalloonProps = {
   onBurst?: () => void
 }
 
-let playSound = () => {}
-export const useBalloonSound = (): [boolean, Dispatch<boolean>] => {
+export function useBalloonSound() {
   const [isSoundEnabled, setSoundEnabled] = useState(false)
   const soundURL =
     'https://res.cloudinary.com/trpfrog/video/upload/v1652447772/balloon/break-immeditary.mp3'
   const [playFunction] = useSound(soundURL, { interrupt: false })
-  playSound = isSoundEnabled ? playFunction : () => {}
-  return [isSoundEnabled, setSoundEnabled]
+  const playSound = isSoundEnabled ? playFunction : () => {}
+  return { isSoundEnabled, setSoundEnabled, playSound }
 }
 
 const colors: Record<(typeof balloonColors)[number], string[]> = {
@@ -56,6 +55,7 @@ const colors: Record<(typeof balloonColors)[number], string[]> = {
 
 export const Balloon = (props: BalloonProps) => {
   const balloonId = useId()
+  const { playSound } = useBalloonSound()
   const { reward } = useReward(balloonId, 'confetti', {
     zIndex: 100,
     startVelocity: 8,
@@ -85,7 +85,7 @@ export const Balloon = (props: BalloonProps) => {
         }
       }}
     >
-      <span className={styles.starting_point_of_effect} id={balloonId} />
+      <span className="tw-inline-block" id={balloonId} />
     </span>
   )
 }

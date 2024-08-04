@@ -4,10 +4,10 @@ import { Metadata } from 'next'
 
 import dayjs from 'dayjs'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
@@ -15,7 +15,6 @@ import { A } from '@/components/wrappers'
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
-
 
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
@@ -39,12 +38,7 @@ export default async function Index() {
       </Title>
       {contents.map(({ metadata, content }) => {
         return (
-          <Block
-            key={metadata.title}
-            title={metadata.title}
-            // @ts-ignore
-            h2icon={metadata.h2icon ?? 'trpfrog'}
-          >
+          <Block key={metadata.title} title={metadata.title} h2icon={metadata.h2icon}>
             {metadata.image && (
               <Image
                 className="tw-mx-auto tw-my-4 tw-bg-transparent"

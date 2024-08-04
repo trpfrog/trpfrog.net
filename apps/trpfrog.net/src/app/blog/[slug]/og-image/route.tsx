@@ -3,6 +3,8 @@ import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
+import { env } from '@/env/server'
+
 import { bffClient } from '@/app/api/client.ts'
 
 import { fetchFont } from '@/lib/fetchFont'
@@ -21,8 +23,6 @@ import {
 } from './components'
 import { ogFonts, ogpImageSize } from './variables'
 
-import { env } from '@/env/server'
-
 export const runtime = 'edge'
 
 async function createImageResponseOptions() {
@@ -32,7 +32,7 @@ async function createImageResponseOptions() {
   }
 
   // load fonts
-  for (const font of Object.values(ogFonts)) {
+  for (const font of Object.values(ogFonts as Record<string, { name: string; weight: number }>)) {
     try {
       const fontData = await fetchFont(font.name, font.weight)
       imageResponseOptions.fonts?.push({
@@ -54,7 +54,7 @@ type Context = {
   }
 }
 
-export async function GET(req: NextRequest, context: Context) {
+export async function GET(_req: NextRequest, context: Context) {
   const slug = context.params.slug
 
   const res = await bffClient.blog.posts[':slug']

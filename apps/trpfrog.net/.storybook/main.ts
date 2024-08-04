@@ -1,7 +1,9 @@
-import type { StorybookConfig } from '@storybook/nextjs'
-import * as path from 'path'
-import { getGoogleFontsUrl } from '../src/components/head/GoogleFonts'
 import * as fs from 'fs'
+import * as path from 'path'
+
+import { getGoogleFontsUrl } from '../src/components/head/GoogleFonts'
+
+import type { StorybookConfig } from '@storybook/nextjs'
 
 const googleFontsLoaderHtml = `
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +15,7 @@ const googleFontsLoaderHtml = `
   <link href="${getGoogleFontsUrl()}" rel="stylesheet">
   <style>
      ${fs.readFileSync(
-       path.resolve(
-         __dirname,
-         '../src/components/head/GoogleFonts/index.module.scss',
-       ),
+       path.resolve(__dirname, '../src/components/head/GoogleFonts/index.module.scss'),
        'utf8',
      )}
   </style>
@@ -49,10 +48,7 @@ const config: StorybookConfig = {
     if (!config.resolve) {
       return config
     }
-    config.resolve.modules = [
-      ...(config.resolve.modules || []),
-      path.resolve(__dirname, '../src'),
-    ]
+    config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../src')]
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),

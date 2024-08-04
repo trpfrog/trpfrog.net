@@ -4,13 +4,12 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
+import { RichButton } from '@/components/atoms/RichButton'
 import { A } from '@/components/wrappers'
 
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
-
 
 import { ShareSpan } from './ShareSpan'
 

@@ -2,15 +2,13 @@
 import { useCallback, useState } from 'react'
 import * as React from 'react'
 
-import { CodeBlock } from '@/components/molecules/CodeBlock'
-
 import { useUploadFunction } from '@blog/_renderer/DevBlogMarkdown/useUploadFunction'
 
 import styles from './ImageDragAndDrop.module.scss'
 
 export function ImageDragAndDrop(props: { slug: string }) {
   const [isDragging, setIsDragging] = useState(false)
-  const [isTabOpen, setIsTabOpen] = useState(false)
+  const [isTabOpened, setisTabOpened] = useState(false)
   const [recentlyUploaded, setRecentlyUploaded] = useState('')
   const [horizontalImages, setHorizontalImages] = useState(false)
   const uploadImage = useUploadFunction(props.slug)
@@ -42,10 +40,10 @@ export function ImageDragAndDrop(props: { slug: string }) {
 
   return (
     <div className={`${styles.wrapper} print:tw-invisible`}>
-      <div className={styles.tab} onClick={() => setIsTabOpen(prv => !prv)}>
+      <div className={styles.tab} onClick={() => setisTabOpened(prv => !prv)}>
         Image Uploader
       </div>
-      {isTabOpen && (
+      {isTabOpened && (
         <>
           <div
             className={styles.drag_and_drop}
@@ -76,11 +74,13 @@ export function ImageDragAndDrop(props: { slug: string }) {
                 />
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
-              <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
+              {/* TODO: React Compiler 側がエラーを吐かなくなったら戻す */}
+              {/*<CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>*/}
+              <pre>
                 {horizontalImages
                   ? '```horizontal-images\n' + recentlyUploaded + '\n```'
                   : recentlyUploaded}
-              </CodeBlock>
+              </pre>
             </div>
           )}
         </>

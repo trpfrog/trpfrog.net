@@ -2,9 +2,9 @@
 
 import { UploadApiOptions, UploadApiResponse } from 'cloudinary'
 
-import { cloudinary } from '@/lib/cloudinary'
-
 import { env } from '@/env/server'
+
+import { cloudinary } from '@/lib/cloudinary'
 
 // Promise wrapper for cloudinary.uploader.upload_stream
 function cloudinaryUploaderPromise(
@@ -15,16 +15,13 @@ function cloudinaryUploaderPromise(
   // we need to wrap it in a promise
   return new Promise<UploadApiResponse>((resolve, reject) => {
     // create upload stream
-    const uploadStream = cloudinary.uploader.upload_stream(
-      options,
-      (error, result) => {
-        if (result) {
-          resolve(result)
-        } else {
-          reject(error)
-        }
-      },
-    )
+    const uploadStream = cloudinary.uploader.upload_stream(options, (error, result) => {
+      if (result) {
+        resolve(result)
+      } else {
+        reject(error)
+      }
+    })
 
     // pipe file stream to upload stream
     const sendImage = async () => {
@@ -60,11 +57,7 @@ export async function uploadToCloudinaryOnServer(
     throw new Error('Bad Request')
   }
 
-  const publicId = file.name
-    .split('.')
-    .slice(0, -1)
-    .join('-')
-    .replaceAll(' ', '_')
+  const publicId = file.name.split('.').slice(0, -1).join('-').replaceAll(' ', '_')
 
   if (slug.startsWith('_')) {
     slug = slug.slice(1)

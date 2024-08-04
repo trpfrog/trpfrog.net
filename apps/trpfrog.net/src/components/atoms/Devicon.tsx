@@ -46,11 +46,7 @@ export function Devicon(props: DeviconProps) {
   return (
     <span
       style={props.style}
-      className={twMerge(
-        deviconMap[props.iconName],
-        props.colored && 'colored',
-        props.className,
-      )}
+      className={twMerge(deviconMap[props.iconName], props.colored && 'colored', props.className)}
     />
   )
 }

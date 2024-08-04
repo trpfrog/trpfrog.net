@@ -5,15 +5,11 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 import * as parts from '@blog/_components/article-parts'
 import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
-import {
-  ArticleParts,
-  IsomorphicArticleParts,
-  IsomorphicArticlePartsProps,
-} from './ArticleParts'
+import { ArticleParts, IsomorphicArticleParts, IsomorphicArticlePartsProps } from './ArticleParts'
 import { PageTransferButton } from './PageNavigation'
 
 const extraCodeBlockComponents = [
-  ...Object.values(parts),
+  ...Object.values(parts as Record<string, ArticleParts>),
   {
     name: 'next-page',
     Component: ({ content, entry }) => {
@@ -81,20 +77,17 @@ const extraCodeBlockComponents = [
   },
 ] as const satisfies readonly ArticleParts[]
 
-export type ExtraCodeBlockComponentName =
-  (typeof extraCodeBlockComponents)[number]['name']
+export type ExtraCodeBlockComponentName = (typeof extraCodeBlockComponents)[number]['name']
 
 // TODO: ArticleParts の DevComponent の扱いを考える
 const extraCodeBlockComponentRecord = Object.fromEntries(
-  (extraCodeBlockComponents as readonly ArticleParts[]).map(
-    ({ name, Component, DevComponent }) => [
-      name,
-      {
-        Component,
-        DevComponent: DevComponent ?? Component,
-      },
-    ],
-  ),
+  (extraCodeBlockComponents as readonly ArticleParts[]).map(({ name, Component, DevComponent }) => [
+    name,
+    {
+      Component,
+      DevComponent: DevComponent ?? Component,
+    },
+  ]),
 ) as Record<
   ExtraCodeBlockComponentName,
   {
@@ -125,11 +118,9 @@ export function OriginalMarkdownComponent(
   const { componentName, useDevComponent = false, ...rest } = props
   let TargetComponent: IsomorphicArticleParts
   if (useDevComponent) {
-    TargetComponent =
-      extraCodeBlockComponentRecord[props.componentName].DevComponent
+    TargetComponent = extraCodeBlockComponentRecord[props.componentName].DevComponent
   } else {
-    TargetComponent =
-      extraCodeBlockComponentRecord[props.componentName].Component
+    TargetComponent = extraCodeBlockComponentRecord[props.componentName].Component
   }
   return <TargetComponent {...rest} />
 }

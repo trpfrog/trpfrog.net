@@ -7,9 +7,7 @@ export const showAllParts = {
   Component: ({ content, entry }) => {
     const [first, second] = content.split(/\n---+\n/)
     return (
-      <ShowAllComponent
-        preview={<ArticleRenderer toRender={first} entry={entry} />}
-      >
+      <ShowAllComponent preview={<ArticleRenderer toRender={first} entry={entry} />}>
         <ArticleRenderer toRender={second} entry={entry} />
       </ShowAllComponent>
     )

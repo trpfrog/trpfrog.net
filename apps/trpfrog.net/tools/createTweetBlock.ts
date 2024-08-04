@@ -90,9 +90,7 @@ async function fetchTweet(tweetUrl: string) {
 
   const dom = new JSDOM(content.html)
   const document = dom.window.document
-  const dateElement = document
-    .querySelectorAll('a')
-    .item(document.querySelectorAll('a').length - 1)
+  const dateElement = document.querySelectorAll('a').item(document.querySelectorAll('a').length - 1)
 
   const rawTweet = document.querySelector('p')?.innerHTML ?? ''
   const images = countImages(rawTweet)

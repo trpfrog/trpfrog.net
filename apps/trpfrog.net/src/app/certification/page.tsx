@@ -23,19 +23,11 @@ export const metadata = {
 } satisfies Metadata
 
 export default async function Index() {
-  const yamlPath = path.join(
-    process.cwd(),
-    'src',
-    'app',
-    'certification',
-    'certification.yaml',
-  )
+  const yamlPath = path.join(process.cwd(), 'src', 'app', 'certification', 'certification.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
 
   const f = (x: Cert) => x.year * 100 + x.month
-  const certs: Cert[] = (yaml.load(yamlText) as Cert[]).sort(
-    (a: Cert, b: Cert) => f(b) - f(a),
-  )
+  const certs: Cert[] = (yaml.load(yamlText) as Cert[]).sort((a: Cert, b: Cert) => f(b) - f(a))
 
   return (
     <MainWrapper gridLayout>
@@ -54,9 +46,7 @@ export default async function Index() {
               </div>
               <div
                 className={styles.value}
-                style={
-                  name === '東京タワー昇り階段認定証' ? { color: 'gray' } : {}
-                }
+                style={name === '東京タワー昇り階段認定証' ? { color: 'gray' } : {}}
               >
                 {name}
               </div>

@@ -1,9 +1,7 @@
 import * as React from 'react'
 
-import { type H2Icon, H2 } from 'src/components/wrappers/H2'
-
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-
+import { type H2Icon, H2 } from '@/components/wrappers/H2'
 
 import styles from './index.module.scss'
 
@@ -14,8 +12,9 @@ type Props = React.ComponentPropsWithRef<'div'> & {
   ribbonText?: string
 }
 
-export const Block = React.forwardRef<HTMLDivElement, Props>(function Block(props, ref) {
+export function Block(props: Props) {
   const {
+    ref,
     newRibbon,
     ribbonText: initialRibbonText = '',
     h2icon,
@@ -44,4 +43,4 @@ export const Block = React.forwardRef<HTMLDivElement, Props>(function Block(prop
       {children}
     </PlainBlock>
   )
-})
+}

@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint-fix": "eslint . --fix"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",

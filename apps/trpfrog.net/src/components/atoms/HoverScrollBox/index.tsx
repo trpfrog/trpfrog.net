@@ -13,8 +13,7 @@ export function HoverScrollBox(props: Props) {
   const { className = '', children, ...rest } = props
 
   const scrollAreaRef = useRef<HTMLDivElement>(null)
-  const { handleMouseEnter, handleMouseLeave } =
-    useHoverScrollBoxEvent(scrollAreaRef)
+  const { handleMouseEnter, handleMouseLeave } = useHoverScrollBoxEvent(scrollAreaRef)
   const { scrollPosition, handleScroll } = useScrollPosition()
 
   return (
@@ -42,11 +41,7 @@ export function HoverScrollBox(props: Props) {
         ▼
       </div>
       <div className={styles.scroll_box_wrapper}>
-        <div
-          className={styles.scroll_box}
-          ref={scrollAreaRef}
-          onScroll={handleScroll}
-        >
+        <div className={styles.scroll_box} ref={scrollAreaRef} onScroll={handleScroll}>
           {children}
         </div>
       </div>

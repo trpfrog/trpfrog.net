@@ -2,7 +2,8 @@ import * as React from 'react'
 
 import Image from 'next/legacy/image'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 type ImageNavigationProps = {
   icons: {

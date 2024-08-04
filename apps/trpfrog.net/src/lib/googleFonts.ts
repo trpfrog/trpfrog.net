@@ -1,4 +1,3 @@
-import { NextFontWithVariable } from 'next/dist/compiled/@next/font'
 import {
   Inconsolata,
   M_PLUS_Rounded_1c,
@@ -42,12 +41,6 @@ const palanquinDark = Palanquin_Dark({
 })
 
 // Font loaders must be called and assigned to a const in the module scope
-const fonts: NextFontWithVariable[] = [
-  mPlusRounded1c,
-  inter,
-  notoSansMono,
-  inconsolata,
-  palanquinDark,
-]
+const fonts = [mPlusRounded1c, inter, notoSansMono, inconsolata, palanquinDark]
 
 export const fontVariables = fonts.map(font => font.variable).join(' ')

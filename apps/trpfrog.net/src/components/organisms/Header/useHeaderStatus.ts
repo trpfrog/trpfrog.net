@@ -54,11 +54,7 @@ function useHeaderVisibleStatus(): boolean {
   const [isMobileMenuOpened] = useMobileMenuState()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  if (
-    userSettingAlwaysVisible ||
-    systemSideSettingAlwaysVisible ||
-    isMobileMenuOpened
-  ) {
+  if (userSettingAlwaysVisible || systemSideSettingAlwaysVisible || isMobileMenuOpened) {
     return true
   }
 

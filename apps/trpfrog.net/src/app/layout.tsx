@@ -3,8 +3,8 @@ import * as React from 'react'
 import '@/styles/variables.css'
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
-import type { Metadata } from 'next'
 import { Viewport } from 'next'
+import type { Metadata } from 'next'
 
 import { Toaster } from 'react-hot-toast'
 

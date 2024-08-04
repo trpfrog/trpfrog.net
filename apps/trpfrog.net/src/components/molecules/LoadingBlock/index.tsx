@@ -12,10 +12,7 @@ type Props = {
 
 export function LoadingBlock({ isFullHeight = false, ...props }: Props) {
   return (
-    <Block
-      className={isFullHeight ? styles.fullscreen_block : ''}
-      style={props.style}
-    >
+    <Block className={isFullHeight ? styles.fullscreen_block : ''} style={props.style}>
       <div className={styles.wrapper}>
         <WaveText className={styles.text}>Loading...</WaveText>
       </div>

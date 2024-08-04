@@ -51,9 +51,8 @@ export function computeReadTimeSecondFrom(
     }
 
     const commentRegex = /^<!--+ ?(.*) ?--+>/
-    if (commentRegex.test(line)) {
-      const content = commentRegex.exec(line)![1].trim()
-
+    const content = commentRegex.exec(line)?.[1]?.trim()
+    if (content) {
       if (content.includes('disable read-count')) {
         manualEnableWordCounting = false
       } else if (content.includes('enable read-count')) {
@@ -101,8 +100,8 @@ export function computeReadTimeSecondFrom(
       .replace(/\*(.+?)\*/g, '$1')
       .replace(/<(.+?)>/g, '')
       .replace(/https?:\/\/.*?(\s|$)/g, '')
-      .replace(/|\-+/g, '')
-      .replace(/[\.…,。、:~〜！？!?\-\(\)「」]/g, '')
+      .replace(/|-+/g, '')
+      .replace(/[.…,。、:~〜！？!?\-()「」]/g, '')
       .replace(/^#+/, '')
       .replace(/\s/g, '')
       .trim()

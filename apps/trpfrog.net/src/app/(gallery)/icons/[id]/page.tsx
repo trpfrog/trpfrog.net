@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
 
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
 import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-
 
 const NUMBER_OF_IMAGES = 33
 
@@ -23,7 +22,7 @@ export const metadata = {
 } satisfies Metadata
 
 export async function generateStaticParams() {
-  const ids = Array.from(Array(NUMBER_OF_IMAGES), (v, k) => k)
+  const ids = Array.from(Array(NUMBER_OF_IMAGES), (_, k) => k)
   return ids.map(id => ({ id: id.toString() }))
 }
 
@@ -37,7 +36,7 @@ export default function Index(context: PageProps) {
       </Block>
       <Block>
         <ImageNavigation
-          icons={Array.from(Array(5), (v, k) => k)
+          icons={Array.from(Array(5), (_, k) => k)
             .map(k => (idInt + k - 2 + NUMBER_OF_IMAGES) % NUMBER_OF_IMAGES)
             .map(k => ({
               key: k,

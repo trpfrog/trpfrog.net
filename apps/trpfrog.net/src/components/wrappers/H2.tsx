@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { tv } from '@/lib/tailwind/variants'
+import { zodEnumFromObjKeys } from '@/lib/zod'
 
 export const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',
@@ -18,6 +19,7 @@ export const iconURLs = {
   hina: '/images/icons/hina.webp',
 } as const
 
+export const H2IconSchema = zodEnumFromObjKeys(iconURLs)
 export type H2Icon = keyof typeof iconURLs
 
 type Props = React.ComponentPropsWithRef<'h2'> & {
@@ -26,25 +28,18 @@ type Props = React.ComponentPropsWithRef<'h2'> & {
 
 const styles = tv({
   slots: {
-    h2: [
-      'tw-font-mplus-rounded tw-text-2xl tw-font-extrabold',
-      'tw-my-3 tw-flex tw-align-middle',
-    ],
+    h2: ['tw-font-mplus-rounded tw-text-2xl tw-font-extrabold', 'tw-my-3 tw-flex tw-align-middle'],
     icon: 'tw-mr-2 tw-h-8 tw-align-baseline',
   },
 })()
 
-export const H2 = React.forwardRef<HTMLHeadingElement, Props>(
-  function H2(props, ref) {
-    const { icon, className, children, ...rest } = props
+export function H2(props: Props) {
+  const { icon, className, children, ref, ...rest } = props
 
-    return (
-      <h2 className={styles.h2({ className })} ref={ref} {...rest}>
-        {icon && icon in iconURLs && (
-          <img className={styles.icon()} src={iconURLs[icon]} alt="" />
-        )}
-        {children}
-      </h2>
-    )
-  },
-)
+  return (
+    <h2 className={styles.h2({ className })} ref={ref} {...rest}>
+      {icon && icon in iconURLs && <img className={styles.icon()} src={iconURLs[icon]} alt="" />}
+      {children}
+    </h2>
+  )
+}

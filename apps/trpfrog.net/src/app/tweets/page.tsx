@@ -2,13 +2,12 @@ import { Metadata } from 'next'
 
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { Li, UnorderedList } from '@/components/wrappers'
-
 
 import { SearchForm } from './SearchForm'
 import { TweetArea } from './TweetArea'
@@ -27,7 +26,7 @@ export const metadata = {
   },
 } satisfies Metadata
 
-export default async function Index({ searchParams }: any) {
+export default async function Index({ searchParams }: NextServerPageProps) {
   const oneYearsAgo = dayjs(new Date()).subtract(1, 'year').format('YYYY-MM-DD')
 
   return (

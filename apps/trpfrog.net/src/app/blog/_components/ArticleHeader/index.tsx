@@ -4,6 +4,8 @@ import { BlogPost } from '@trpfrog.net/posts'
 import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
 
+import { env } from '@/env/server'
+
 import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
 
@@ -15,8 +17,6 @@ import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
 
 import styles from './index.module.scss'
-
-import { env } from '@/env/server'
 
 type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
@@ -50,7 +50,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
         {...rest}
       >
         <div className={styles.inner_title_block} data-parent-has-thumbnail={!!post.thumbnail}>
-          <h1>
+          <h1 className="tw-font-mplus-rounded tw-font-black">
             <Balancer>
               <ParseWithBudouX str={title} slug={post.slug} />
             </Balancer>

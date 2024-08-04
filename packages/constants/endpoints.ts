@@ -42,15 +42,28 @@ const internalEndpoints = [
 /**
  * The endpoints of the application.
  */
-export const endpoints = Object.fromEntries(
-  internalEndpoints.map(endpoint => [
-    endpoint.name,
-    // eslint-disable-next-line n/no-process-env
-    process?.env.NODE_ENV === 'development' && endpoint.development
-      ? endpoint.development
-      : endpoint.production,
-  ]),
+export const devEndpoints = Object.fromEntries(
+  internalEndpoints
+    .filter(endpoint => endpoint.production == null)
+    .map(endpoint => [
+      endpoint.name,
+      // eslint-disable-next-line n/no-process-env
+      process?.env.NODE_ENV === 'development' && endpoint.development
+        ? endpoint.development
+        : endpoint.production,
+    ]),
 )
+
+export function endpoints(env: 'development' | 'production' | 'test') {
+  return Object.fromEntries(
+    internalEndpoints
+      .filter(endpoint => endpoint.production != null)
+      .map(endpoint => [
+        endpoint.name,
+        env === 'production' ? endpoint.production : `http://localhost:${endpoint.port}`,
+      ]),
+  )
+}
 
 /**
  * The ports of the backend services.
@@ -58,5 +71,5 @@ export const endpoints = Object.fromEntries(
 export const ports = Object.fromEntries(
   internalEndpoints
     .filter(endpoint => typeof endpoint.port === 'number')
-    .map(endpoint => [endpoint.name, endpoint.port!]),
+    .map(endpoint => [endpoint.name, endpoint.port]),
 )

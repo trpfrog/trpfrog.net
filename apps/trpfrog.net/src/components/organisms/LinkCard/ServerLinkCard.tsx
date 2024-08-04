@@ -29,7 +29,7 @@ export const ServerLinkCard = memo(async function ServerLinkCard(props: LinkCard
         {...(props.overrideProps ?? {})}
       />
     )
-  } catch (e) {
+  } catch (_e) {
     if (props.fallbackToClient) {
       return <ClientLinkCard href={href} {...rest} />
     } else {

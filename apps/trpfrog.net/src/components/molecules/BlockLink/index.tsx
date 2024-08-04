@@ -14,24 +14,12 @@ type Props = LinkProps & {
 }
 
 export function BlockLink(props: Props) {
-  const {
-    className = '',
-    id,
-    key,
-    children,
-    openInNewTab,
-    ...linkProps
-  } = props
+  const { className = '', id, key, children, openInNewTab, ...linkProps } = props
   return (
     <div className={`${styles.box} ${className}`} id={id} key={key}>
       {children}
       {openInNewTab ? (
-        <Link
-          {...linkProps}
-          className={styles.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        />
+        <Link {...linkProps} className={styles.link} target="_blank" rel="noopener noreferrer" />
       ) : (
         <Link {...linkProps} className={styles.link} />
       )}

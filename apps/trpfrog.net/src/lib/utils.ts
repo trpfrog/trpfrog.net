@@ -28,9 +28,7 @@ export function sortWithDates(
   return bDate[2] - aDate[2]
 }
 
-export function getTypedKeys<T extends Record<PropertyKey, unknown>>(
-  obj: T,
-): (keyof T)[] {
+export function getTypedKeys<T extends Record<PropertyKey, unknown>>(obj: T): (keyof T)[] {
   return Object.keys(obj)
 }
 

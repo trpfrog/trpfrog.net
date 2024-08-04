@@ -4,8 +4,10 @@ import { hc } from 'hono/client'
 export {
   TrpFrogImageGenerationResultSchema,
   type TrpFrogImageGenerationResult,
-} from './trpfrog-diffusion/generateNew'
+} from './trpfrog-diffusion/schema'
 
-import type { AppType } from '.'
+import type { AppType } from './app'
 
-export const trpfrogDiffusionClient = hc<AppType>(endpoints.imageGeneration!)
+export function createTrpFrogImageGenerationClient(env: 'development' | 'production' | 'test') {
+  return hc<AppType>(endpoints(env).imageGeneration)
+}

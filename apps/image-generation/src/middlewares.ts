@@ -4,7 +4,9 @@ import { HTTPException } from 'hono/http-exception'
 
 export function requiresApiKey() {
   return createMiddleware<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- 元の実装が any を使っているため
     any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- 元の実装が any を使っているため
     any,
     {
       in: {
@@ -12,7 +14,7 @@ export function requiresApiKey() {
           'x-api-key': string
         }
       }
-      out: {}
+      out: Record<string, never>
     }
   >(async (c, next) => {
     const requestedApiKey = c.req.header('x-api-key')

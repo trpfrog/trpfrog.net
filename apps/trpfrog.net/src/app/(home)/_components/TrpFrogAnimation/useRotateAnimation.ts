@@ -7,18 +7,14 @@ export function useRotateAnimation() {
   const anglePickerRef = useRef<AnglePickerHandle>(null)
 
   const [intervalId, setIntervalId] = useState<number | null>(null)
-  const [rotateDirection, setRotateDirection] = useState<'left' | 'right'>(
-    'right',
-  )
+  const [rotateDirection, setRotateDirection] = useState<'left' | 'right'>('right')
 
   const startAnimation = useCallback(() => {
     if (intervalId !== null) {
       return
     }
     const id = window.setInterval(() => {
-      anglePickerRef.current?.setDegree(
-        prev => prev + (rotateDirection === 'left' ? -1 : 1),
-      )
+      anglePickerRef.current?.setDegree(prev => prev + (rotateDirection === 'left' ? -1 : 1))
     }, 25)
     setIntervalId(id)
   }, [intervalId, rotateDirection])

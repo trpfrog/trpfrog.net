@@ -16,8 +16,7 @@ const styles = tv({
       class: 'tw-absolute tw-bottom-2 tw-right-2 tw-size-8 tw-rounded-full',
       invertColor: true,
     }),
-    description:
-      '!tw-text-center !tw-text-xs dark:!tw-bg-text-color dark:!tw-text-window-color',
+    description: '!tw-text-center !tw-text-xs dark:!tw-bg-text-color dark:!tw-text-window-color',
     poweredBy: 'tw-text-center tw-text-xs tw-text-gray-500',
   },
 })()

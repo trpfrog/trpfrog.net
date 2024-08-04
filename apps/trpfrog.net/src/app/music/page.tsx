@@ -1,7 +1,6 @@
-import { RichButton } from 'src/components/atoms/RichButton'
-
 import { Image } from '@/components/atoms/Image'
 import { InlineLink } from '@/components/atoms/InlineLink'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'

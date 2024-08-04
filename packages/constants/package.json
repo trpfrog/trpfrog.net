@@ -3,13 +3,14 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "lint-fix": "eslint . --fix"
   },
   "exports": {
     ".": "./index.ts"
   },
   "dependencies": {
-    "zod": "^3.23.6"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*"

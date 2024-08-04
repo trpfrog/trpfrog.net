@@ -1,12 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
-
-
-const IB = ({ children }: any) => <span className="tw-inline-block">{children}</span>
 
 export default function NotFound() {
   return (
@@ -25,11 +22,11 @@ export default function NotFound() {
         </div>
         <div style={{ padding: '0 1em' }}>
           <p>
-            <IB>このページは</IB>
-            <IB>存在しません。</IB>
+            <span className="tw-inline-block">このページは</span>
+            <span className="tw-inline-block">存在しません。</span>
             <br />
-            <IB>サイトの工事中または</IB>
-            <IB>リンクが誤っている可能性があります。</IB>
+            <span className="tw-inline-block">サイトの工事中または</span>
+            <span className="tw-inline-block">リンクが誤っている可能性があります。</span>
           </p>
           <p>
             <RichButton as={Link} href={'/'}>

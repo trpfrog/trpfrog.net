@@ -2,6 +2,8 @@ import { Hono } from 'hono'
 
 import { createNextMiddleware } from '@/lib/hono-middleware.ts'
 
+export const runtime = 'nodejs'
+
 const app = new Hono()
 
 // keep kawaii query parameter

@@ -1,11 +1,14 @@
 {
   "name": "@trpfrog.net/storybook-theme",
   "private": true,
+  "scripts": {
+    "lint-fix": "eslint . --fix"
+  },
   "exports": {
     ".": "./theme.ts"
   },
   "dependencies": {
-    "@storybook/theming": "^7.6.19"
+    "@storybook/theming": "^7.6.20"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*"

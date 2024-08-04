@@ -11,33 +11,38 @@ export class IconCanvas {
   h: number = 0
   angle: number = 0
 
-  // @ts-ignore
-  faceImage: HTMLImageElement
-  // @ts-ignore
-  mask: HTMLImageElement
+  images?: {
+    face: HTMLImageElement
+    mask: HTMLImageElement
+  }
 
   constructor(canvasRef: RefObject<HTMLCanvasElement>) {
     this.canvasRef = canvasRef
     if (typeof window !== 'undefined') {
-      this.faceImage = new Image()
-      this.mask = new Image()
+      this.images = {
+        face: new Image(),
+        mask: new Image(),
+      }
     }
   }
 
   async upload(files: FileList | null) {
+    if (!this.images) {
+      throw new Error('images is not initialized')
+    }
+
     if (files == null) return
     if (this.canvasRef.current == null) return
 
     const canvas = this.canvasRef.current
-    let context = canvas.getContext('2d') as CanvasRenderingContext2D
-    let reader = new FileReader()
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D
+    const reader = new FileReader()
 
-    //initialize
+    // initialize
     this.x = 35
     this.y = 10
     this.w = this.h = this.angle = 0
 
-    // @ts-ignore
     reader.readAsDataURL(files[0])
     const event = await new Promise<ProgressEvent<FileReader>>(resolve => {
       reader.onload = e => resolve(e)
@@ -46,21 +51,25 @@ export class IconCanvas {
     // wait for loading
     await Promise.all([
       new Promise(resolve => {
-        this.faceImage.src = event.target!.result as string
-        this.faceImage.addEventListener('load', resolve)
+        if (this.images && typeof event.target?.result === 'string') {
+          this.images.face.src = event.target?.result
+          this.images.face.addEventListener('load', resolve)
+        }
       }),
       new Promise(resolve => {
-        this.mask.src = '/images/icon_maker/mask.png'
-        this.mask.addEventListener('load', resolve)
+        if (this.images) {
+          this.images.mask.src = '/images/icon_maker/mask.png'
+          this.images.mask.addEventListener('load', resolve)
+        }
       }),
     ])
 
-    if (this.faceImage.width < this.faceImage.height) {
-      let ratio = this.faceImage.height / this.faceImage.width
+    if (this.images.face.width < this.images.face.height) {
+      const ratio = this.images.face.height / this.images.face.width
       this.w = CIRCLE_SIZE
       this.h = CIRCLE_SIZE * ratio
     } else {
-      let ratio = this.faceImage.width / this.faceImage.height
+      const ratio = this.images.face.width / this.images.face.height
       this.w = CIRCLE_SIZE * ratio
       this.h = CIRCLE_SIZE
     }
@@ -69,11 +78,11 @@ export class IconCanvas {
     canvas.height = ICON_SIZE
 
     context.save()
-    context.drawImage(this.faceImage, 35, 10, this.w, this.h)
+    context.drawImage(this.images.face, 35, 10, this.w, this.h)
     context.restore()
 
     context.save()
-    context.drawImage(this.mask, 0, 0, ICON_SIZE, ICON_SIZE)
+    context.drawImage(this.images.mask, 0, 0, ICON_SIZE, ICON_SIZE)
     context.restore()
   }
 
@@ -99,10 +108,10 @@ export class IconCanvas {
   }
 
   applyCanvas() {
-    if (this.canvasRef.current == null) return
+    if (this.canvasRef.current == null || !this.images) return
 
     const canvas = this.canvasRef.current
-    let context = canvas.getContext('2d') as CanvasRenderingContext2D
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
     context.beginPath()
 
@@ -113,11 +122,11 @@ export class IconCanvas {
     context.translate(ICON_SIZE / 2.0, ICON_SIZE / 2.0)
     context.rotate((this.angle * Math.PI) / 180)
     context.translate(-ICON_SIZE / 2.0, -ICON_SIZE / 2.0)
-    context.drawImage(this.faceImage, this.x, this.y, this.w, this.h)
+    context.drawImage(this.images.face, this.x, this.y, this.w, this.h)
     context.restore()
 
     context.save()
-    context.drawImage(this.mask, 0, 0, ICON_SIZE, ICON_SIZE)
+    context.drawImage(this.images.mask, 0, 0, ICON_SIZE, ICON_SIZE)
     context.restore()
   }
 

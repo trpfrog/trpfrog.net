@@ -57,7 +57,8 @@ type Props = {
   title?: React.ReactNode
 }
 
-export const Header = React.memo(function Header(props: Props) {
+// TODO: props を握りつぶさない
+export const Header = React.memo(function Header(_props: Props) {
   const { sticky, visible, visibleShadow } = useHeaderStatus()
 
   const styles = useMemo(

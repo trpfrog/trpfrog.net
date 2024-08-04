@@ -1,9 +1,7 @@
-import React, { ReactNode, ComponentProps, ComponentPropsWithoutRef } from 'react'
-
-import { BlogPost } from '@trpfrog.net/posts'
+import React, { ReactNode, ComponentProps } from 'react'
 
 import 'katex/dist/katex.min.css'
-
+import { BlogPost } from '@trpfrog.net/posts'
 import { MDXComponents } from 'mdx/types'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
@@ -12,6 +10,8 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
+
+import { env } from '@/env/server'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { CodeBlock } from '@/components/molecules/CodeBlock'
@@ -30,12 +30,9 @@ import styles from '@blog/_styles/blog.module.scss'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'
 
-import { env } from '@/env/server'
-
-
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return function MarkdownCode(props: ComponentProps<'code'>): ReactNode {
-    let { className, children } = props
+    let children = props.children
 
     // unwrap children if it's an array
     if (Array.isArray(children) && children.length > 0 && typeof children[0] === 'string') {
@@ -46,13 +43,13 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     if (
       typeof children !== 'string' || // content is not string
       ('inline' in props && props.inline) || // inline code
-      (!className && !children.includes('\n')) // no language and single line
+      (!props.className && !children.includes('\n')) // no language and single line
     ) {
       return <code className={styles.inline_code_block}>{children}</code>
     }
 
     // prettier-ignore
-    const language = className
+    const language = props.className
       ?.replace('language-', '') // remove 'language-' prefix
       .split('.').slice(-1)[0] // get last part after splitting by '.'
       ?? ''
@@ -70,7 +67,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     }
 
     // get file name from className (e.g. 'language-index.ts' -> 'index.ts')
-    const fileName = className?.includes('.') ? className.replace('language-', '') : ''
+    const fileName = props.className?.includes('.') ? props.className.replace('language-', '') : ''
 
     return (
       <CodeBlock language={language} fileName={fileName}>
@@ -80,8 +77,8 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
   }
 }
 
-function styledTag(tag: React.ElementType, className: string) {
-  return function StyledTag(props: any) {
+function styledTag<T extends React.ElementType>(tag: T, className: string) {
+  return function StyledTag(props: React.ComponentProps<T>) {
     const { children, className: originalClassName = '', ...rest } = props
     return React.createElement(
       tag,
@@ -92,10 +89,6 @@ function styledTag(tag: React.ElementType, className: string) {
       children,
     )
   }
-}
-
-type Components = {
-  [key in keyof React.JSX.IntrinsicElements]: (props: ComponentPropsWithoutRef<key>) => ReactNode
 }
 
 export function getMarkdownOptions(options?: {
@@ -125,14 +118,14 @@ export function getMarkdownOptions(options?: {
       return <Tag {...props} />
     },
 
-    h2: props => <BlogH2 {...props} />,
-    h3: props => <Wrapper.H3 {...props} className="tw-mt-8" />,
-    h4: props => <Wrapper.H4 {...props} />,
-    h5: props => <Wrapper.H5 {...props} />,
+    h2: ({ ref, ...props }) => <BlogH2 {...props} />,
+    h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw-mt-8" />,
+    h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
+    h5: ({ ref, ...props }) => <Wrapper.H5 {...props} />,
 
-    ul: props => <Wrapper.UnorderedList {...props} />,
-    ol: props => <Wrapper.OrderedList {...props} />,
-    li: props => <Wrapper.Li {...props} />,
+    ul: ({ ref, ...props }) => <Wrapper.UnorderedList {...props} />,
+    ol: ({ ref, ...props }) => <Wrapper.OrderedList {...props} />,
+    li: ({ ref, ...props }) => <Wrapper.Li {...props} />,
 
     a: props => (
       <InlineLink
@@ -152,14 +145,13 @@ export function getMarkdownOptions(options?: {
     video: props => <BlogImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
 
     hr: props => {
-      const { className = '', ...rest } = props
+      const { ref, className = '', ...rest } = props
       return <Wrapper.HorizontalRule className={className} {...rest} />
     },
 
     table: props => {
-      let { className, ...rest } = props
-      className = twMerge('tw-mx-auto', className)
-      return <Wrapper.Table className={className} {...rest} />
+      const { ref, className, ...rest } = props
+      return <Wrapper.Table className={twMerge('tw-mx-auto', className)} {...rest} />
     },
   }
 

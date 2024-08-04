@@ -1,7 +1,10 @@
 import { endpoints } from '@trpfrog.net/constants'
 import { hc } from 'hono/client'
 
+import { NODE_ENV } from '@/env/client.ts'
+
 import type { AppType } from './[[...route]]/route.ts'
 
-// eslint-disable-next-line n/no-process-env
-export const bffClient = hc<AppType>(process.env.NEXT_PUBLIC_APP_URL || endpoints.website!).api
+const baseUrl = typeof window === 'undefined' ? endpoints(NODE_ENV).website : window.location.origin
+
+export const bffClient = hc<AppType>(baseUrl).api

@@ -30,9 +30,7 @@ const exampleIcons = {
   twitter: faTwitter,
   close: faXTwitter,
 }
-function WithFontAwesomeComponent(props: {
-  fontAwesomeIcon: keyof typeof exampleIcons
-}) {
+function WithFontAwesomeComponent(props: { fontAwesomeIcon: keyof typeof exampleIcons }) {
   return (
     <CircleButton>
       <FontAwesomeIcon icon={exampleIcons[props.fontAwesomeIcon]} />

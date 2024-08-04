@@ -4,7 +4,7 @@ import { HTMLInputTypeAttribute } from 'react'
 import { addTwModifier } from '@/lib/tailwind/helpers'
 import { tv } from '@/lib/tailwind/variants'
 
-interface Props extends React.ComponentPropsWithRef<'input'> {}
+type Props = React.ComponentPropsWithRef<'input'>
 
 export const inputBoxStyle = tv({
   base: 'tw-rounded-md tw-bg-gray-200 tw-p-1 dark:tw-bg-gray-700',
@@ -28,17 +28,13 @@ const style = tv({
   },
 })
 
-function hasVariant(
-  type: string | undefined,
-): type is keyof typeof style.variants.type {
+function hasVariant(type: string | undefined): type is keyof typeof style.variants.type {
   return type !== undefined && type in style.variants.type
 }
 
-export const Input = React.forwardRef<HTMLInputElement, Props>(
-  function Input(props, ref) {
-    const { className, ...rest } = props
-    const type = hasVariant(props.type) ? props.type : undefined
+export function Input(props: Props) {
+  const { className, ref, ...rest } = props
+  const type = hasVariant(props.type) ? props.type : undefined
 
-    return <input ref={ref} className={style({ className, type })} {...rest} />
-  },
-)
+  return <input ref={ref} className={style({ className, type })} {...rest} />
+}

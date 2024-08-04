@@ -1,4 +1,24 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.tsx": "${dirname} - Page",
+    "**/app/**/layout.tsx": "${dirname} - Layout",
+    "**/app/**/route.{ts,tsx}": "${dirname} - Route",
+  },
+
+  // Prettier
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ESLint
+  // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
+  // "eslint.workingDirectories": [
+  //   { "mode": "auto" }
+  // ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+
+  "files.associations": {
+    "turbo.json": "jsonc"
+  }
 }

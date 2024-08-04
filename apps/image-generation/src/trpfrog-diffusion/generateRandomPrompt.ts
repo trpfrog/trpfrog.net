@@ -1,5 +1,6 @@
 import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
 import { ChatOpenAI } from '@langchain/openai'
+import dedent from 'ts-dedent'
 import { z } from 'zod'
 
 import { getShuffledArray } from '../lib/arrayHelpers'
@@ -18,21 +19,21 @@ export async function generateRandomTrpFrogPrompt(
   // Few-shot learning
   const chatInput = [
     new SystemMessage(
-      [
-        'The user will provide some words.',
-        'Currently, there is an image-generation AI based on diffusion models named `trpfrog-diffusion`.',
-        'One of your tasks is to generate a prompt for the AI to create an image based on the provided words.\n',
-        "  - You don't need to use all the words, but you can't use any additional words.\n",
-        '  - You must avoid using sensitive (e.g. sexual, violent) words. This is a crucial rule.\n',
-        '  - The prompt should begin with "a photo of" and include "trpfrog". ("trpfrog" is the subject of the photo) \n',
-        '  - You must not create a sensitive prompt. This is also a crucial rule.\n',
-        '\n',
-        'Your task is to complete the following tasks in order and provide the answer in JSON format:\n',
-        '  "prompt": Generate a prompt for the AI to create an image based on the provided words in English.\n',
-        '  "translated": Translate this prompt into simple Japanese. ',
-        '("trpfrog" translates to "つまみさん" in Japanese,',
-        ' and you should attempt to translate English-specific words into Japanese using カタカナ.)\n',
-      ].join(''),
+      dedent`
+        The user will provide some words.
+        Currently, there is an image-generation AI based on diffusion models named \`trpfrog-diffusion\`.
+        One of your tasks is to generate a prompt for the AI to create an image based on the provided words.
+
+          - You don't need to use all the words, but you can't use any additional words.
+          - You must avoid using sensitive (e.g. sexual, violent) words. This is a crucial rule.
+          - The prompt should begin with "a photo of" and include "trpfrog". ("trpfrog" is the subject of the photo)
+          - You must not create a sensitive prompt. This is also a crucial rule.
+
+        Your task is to complete the following tasks in order and provide the answer in JSON format:
+          "prompt": Generate a prompt for the AI to create an image based on the provided words in English.
+          "translated": Translate this prompt into simple Japanese.
+        ("trpfrog" translates to "つまみさん" in Japanese, and you should attempt to translate English-specific words into Japanese using カタカナ.)
+      `,
     ),
     new HumanMessage(getShuffledArray([...sourceWords.slice(1), 'running']).join(', ')),
     new AIMessage(
@@ -52,15 +53,11 @@ export async function generateRandomTrpFrogPrompt(
   ]
 
   const chat = new ChatOpenAI({
+    model: 'gpt-4o-mini',
     temperature: 0.7,
     apiKey,
   })
   const reply = await chat.generate([chatInput])
   const json = JSON.parse(reply.generations[0][0].text)
-  return z
-    .object({
-      prompt: z.string().transform(s => s.trim().toLowerCase()),
-      translated: z.string(),
-    })
-    .parse(json)
+  return PromptSchema.parse(json)
 }

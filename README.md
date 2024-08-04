@@ -15,16 +15,22 @@
 
 - **Node.js**
 - **TypeScript** with `better-typescript-lib`
+- **Vitest**
+- **Tailwind CSS**
+- **React** (with React Compiler)
 - **pnpm**
 - **ESLint**
 - **Prettier**
 - **Turborepo** for monorepo management
+- **Zod** for schema validation
+- **ts-pattern** for pattern matching
 
 ### trpfrog.net
 
 - **Next.js** for building the website
 - **Vercel** for website hosting
-- **Tailwind CSS** for styling
+- **CSS Modules** for *complex* styling
+- **Vanilla Extract** for *more complex* styling
 - **Hono** for BFF (`hono/vercel`) and middlewares
 - **Cloudinary** for image CDN
 - **next-mdx-remote** for rendering blog articles from Markdown
@@ -59,7 +65,7 @@ pnpm install
 Next, run the development server:
 
 ```sh
-pnpm dev
+pnpm run -w dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -67,7 +73,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To build this project, just run below:
 
 ```sh
-pnpm build
+pnpm run -w build
 ```
 
 ## 🚗 Requirements
@@ -77,13 +83,13 @@ pnpm build
 
 ## 📦 Project Structure
 
-We are using a monorepo. The package structure is as follows.  
+We are using a monorepo. The package structure is as follows.
 
 ```
 .
 ├── apps                    # Applications
 │   ├── trpfrog.net           # Main project, trpfrog.net
-│   ├── dev-blog-server       # Socket.io server for editing blog posts 
+│   ├── dev-blog-server       # Socket.io server for editing blog posts
 │   └── image-generation      # API Endpoints for trpfrog-diffusion
 ├── packages                # Libraries
 │   ├── config-tailwind       # Shared Tailwind CSS config

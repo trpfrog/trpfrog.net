@@ -14,11 +14,7 @@ type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
 export function ArticleTitle(props: Props) {
   const { title, className, isHero, ...rest } = props
   return (
-    <div
-      className={`${styles.wrapper} ${className}`}
-      {...rest}
-      data-hero-article={!!isHero}
-    >
+    <div className={`${styles.wrapper} ${className}`} {...rest} data-hero-article={!!isHero}>
       <h3 data-hero-article={!!isHero} className={styles.title}>
         <Balancer>
           <ParseWithBudouX str={title} slug={`${props.key ?? title}`} />

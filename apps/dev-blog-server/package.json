@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "bun run dev-server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint-fix": "eslint . --fix"
   },
   "main": "client.ts",
   "type": "module",
@@ -16,8 +17,5 @@
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/constants": "workspace:*",
     "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
   }
 }

@@ -2,10 +2,10 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 
-import { RichButton } from '@/components/atoms/RichButton'
-
-import { clientEnv } from '@/env/client'
+import { NODE_ENV } from '@/env/client'
 import { env } from '@/env/server.ts'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 export function EditButton({ slug }: { slug: string }) {
   const openInCotEditor = async () => {
@@ -25,7 +25,7 @@ export function EditButton({ slug }: { slug: string }) {
     }
   }
 
-  return clientEnv.NODE_ENV === 'development' ? (
+  return NODE_ENV === 'development' ? (
     <form action={openInCotEditor}>
       <RichButton as="button">編集する</RichButton>
     </form>

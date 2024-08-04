@@ -12,11 +12,7 @@ export const conversationParts = {
     return (
       <Talk style={{ margin: '1rem' }}>
         {conversation.map(({ speaker, comment, outOfComment }, idx) => (
-          <Talk.Item
-            key={speaker + '-' + idx}
-            speaker={speaker}
-            outOfComment={outOfComment}
-          >
+          <Talk.Item key={speaker + '-' + idx} speaker={speaker} outOfComment={outOfComment}>
             {comment ? parseInlineMarkdown(comment) : <>&nbsp;</>}
           </Talk.Item>
         ))}

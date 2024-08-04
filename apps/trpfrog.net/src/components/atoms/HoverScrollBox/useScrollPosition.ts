@@ -9,13 +9,11 @@ type ScrollPosition = 'top' | 'middle' | 'bottom'
  * `handleScroll` は `onScroll` に渡すこと
  */
 export function useScrollPosition() {
-  const [scrollPosition, setScrollPosition] =
-    React.useState<ScrollPosition>('top')
+  const [scrollPosition, setScrollPosition] = React.useState<ScrollPosition>('top')
 
   const handleScroll = useThrottledCallback(
     (e: React.UIEvent<HTMLElement>) => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        e.target as HTMLDivElement
+      const { scrollTop, scrollHeight, clientHeight } = e.target as HTMLDivElement
       const scrollBottom = scrollHeight - scrollTop - clientHeight
 
       if (scrollTop === 0) {
@@ -30,8 +28,5 @@ export function useScrollPosition() {
     100,
   )
 
-  return React.useMemo(
-    () => ({ scrollPosition, handleScroll }),
-    [handleScroll, scrollPosition],
-  )
+  return React.useMemo(() => ({ scrollPosition, handleScroll }), [handleScroll, scrollPosition])
 }

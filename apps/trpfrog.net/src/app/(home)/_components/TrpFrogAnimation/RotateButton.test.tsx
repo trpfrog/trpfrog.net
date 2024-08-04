@@ -13,12 +13,7 @@ describe('RotateButton', () => {
   test.each(cases)(
     'snapshot testing (isRotated: %s, rotateDirection: %s)',
     ({ isRotated, rotateDirection }) => {
-      const view = render(
-        <RotateButton
-          isRotated={isRotated}
-          rotateDirection={rotateDirection}
-        />,
-      )
+      const view = render(<RotateButton isRotated={isRotated} rotateDirection={rotateDirection} />)
       expect(view.asFragment()).toMatchSnapshot()
     },
   )
@@ -28,11 +23,7 @@ describe('RotateButton', () => {
     ({ isRotated, rotateDirection }) => {
       const onClick = vi.fn()
       render(
-        <RotateButton
-          isRotated={isRotated}
-          rotateDirection={rotateDirection}
-          onClick={onClick}
-        />,
+        <RotateButton isRotated={isRotated} rotateDirection={rotateDirection} onClick={onClick} />,
       )
       expect(onClick).toBeCalledTimes(0)
       screen.getByTestId('rotate-button').click()

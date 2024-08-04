@@ -1,9 +1,11 @@
 import { z } from 'zod'
 
+import { H2IconSchema } from '@/components/wrappers/H2'
+
 export const WorksFrontmatterSchema = z.object({
   title: z.string(),
   subtitle: z.string().optional(),
-  h2icon: z.string().optional(),
+  h2icon: H2IconSchema.default('trpfrog'),
   image: z
     .object({
       path: z.string(),

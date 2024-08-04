@@ -1,10 +1,10 @@
 import { memo } from 'react'
 
 import Link from 'next/link'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { Details } from '@/components/atoms/Details'
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
+import { RichButton } from '@/components/atoms/RichButton'
 import { MobileMenuBkg } from '@/components/organisms/MobileMenu/MobileMenuBkg'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 

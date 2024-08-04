@@ -19,8 +19,7 @@
   --center-y: calc(var(--anim-height) - var(--trpfrog-icon-size) * 0.35);
 
   background: repeating-conic-gradient(
-    from var(--trpfrog-animation-start-degree) at var(--center-x)
-      var(--center-y),
+    from var(--trpfrog-animation-start-degree) at var(--center-x) var(--center-y),
     transparent,
     transparent 12.5deg,
     rgba(255, 255, 255, 0.75) 12.5deg 30deg

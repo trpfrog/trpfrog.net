@@ -22,9 +22,7 @@ export function CopyButton(props: CopyButtonProps) {
     <ButtonWithTooltip
       className={style({ className: props.className })}
       onClick={() => {
-        navigator.clipboard
-          .writeText(props.copyContent)
-          .catch(props.onError || console.error)
+        navigator.clipboard.writeText(props.copyContent).catch(props.onError || console.error)
       }}
       hoveredTooltipContent={'Copy'}
       clickedTooltipContent={'Copied!'}

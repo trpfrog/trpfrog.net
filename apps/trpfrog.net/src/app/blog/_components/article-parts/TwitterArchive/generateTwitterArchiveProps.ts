@@ -18,9 +18,7 @@ export const BlogTwitterArchiveSchema = z.object({
   image4: z.string().optional(),
 })
 
-export function generateTwitterArchiveProps(
-  rawTweetData: unknown,
-): TwitterArchivedProps {
+export function generateTwitterArchiveProps(rawTweetData: unknown): TwitterArchivedProps {
   const parsed = BlogTwitterArchiveSchema.passthrough().safeParse(rawTweetData)
   if (!parsed.success) {
     throw parsed.error
@@ -39,9 +37,7 @@ export function generateTwitterArchiveProps(
       alt: 'ツイートの画像',
     }))
 
-  const tweet = tweetData.reply
-    ? tweetData.reply + ' ' + tweetData.tweet
-    : tweetData.tweet
+  const tweet = tweetData.reply ? tweetData.reply + ' ' + tweetData.tweet : tweetData.tweet
 
   const rawQuoteTweetData = Object.fromEntries(
     Object.entries(tweetData)

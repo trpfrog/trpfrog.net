@@ -20,11 +20,7 @@ const styles = tv({
 
 export function CompetitiveCard() {
   return (
-    <LinkTopCard
-      className={styles.wrapper()}
-      openInNewTab
-      href="https://atcoder.jp/users/TrpFrog"
-    >
+    <LinkTopCard className={styles.wrapper()} openInNewTab href="https://atcoder.jp/users/TrpFrog">
       <div className={styles.textGradient()}>
         <div className={styles.rating()}>
           <span className="-tw-mr-1 tw-text-3xl">max</span>

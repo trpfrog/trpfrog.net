@@ -35,12 +35,15 @@ export default async function Index() {
     articles.splice(latestFeaturedArticleIdx, 1)
   }
 
-  const articlesGroupedByYear = articles.reduce((acc: any, cur: BlogPost) => {
-    const year = dayjs(cur.date).format('YYYY')
-    if (acc[year] === undefined) acc[year] = []
-    acc[year].push(cur)
-    return acc
-  }, {})
+  const articlesGroupedByYear = articles.reduce(
+    (acc, cur) => {
+      const year = dayjs(cur.date).format('YYYY')
+      if (acc[year] === undefined) acc[year] = []
+      acc[year].push(cur)
+      return acc
+    },
+    {} as Record<string, BlogPost[]>,
+  )
 
   return (
     <>

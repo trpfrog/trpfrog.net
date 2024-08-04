@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { tv } from '@/lib/tailwind/variants'
 
-interface Props extends React.ComponentPropsWithRef<'table'> {}
+type Props = React.ComponentPropsWithRef<'table'>
 
 const style = tv({
   base: [
@@ -20,10 +20,7 @@ const style = tv({
   ],
 })
 
-export const Table = React.forwardRef<HTMLTableElement, Props>(
-  function Table(props, ref) {
-    const { className, ...rest } = props
-
-    return <table ref={ref} className={style({ className })} {...rest} />
-  },
-)
+export function Table(props: Props) {
+  const { className, ref, ...rest } = props
+  return <table ref={ref} className={style({ className })} {...rest} />
+}

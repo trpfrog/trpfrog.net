@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 import { BlogPost } from '@trpfrog.net/posts'
 import { readBlogPost, readAllBlogPosts } from '@trpfrog.net/posts/fs'
 import { match } from 'ts-pattern'
+import { z } from 'zod'
+
+import { env } from '@/env/server.ts'
 
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -10,38 +13,40 @@ import { Block } from '@/components/molecules/Block'
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
-import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown/DevBlogMarkdown'
+import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
-
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
 
-import { env } from '@/env/server'
-
 export const dynamicParams = false
 
-type PageProps = {
-  params: {
-    slug: string
-    options?: string[]
-  }
-}
+// 1, 2, 3, ... or 'all'
+const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
+
+const pagePropsSchema = z.object({
+  params: z.object({
+    slug: z.string(),
+    options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
+  }),
+})
+type PageProps = z.input<typeof pagePropsSchema>
 
 export async function generateStaticParams({ params: { slug } }: { params: { slug: string } }) {
   const entry = await readBlogPost(slug)
-  const paths = []
+  const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
-    paths.push({ options: [i + ''] })
+    paths.push({ options: [i.toString()] })
   }
   paths.push({ options: ['all'] })
   paths.push({ options: undefined })
+
   return paths
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { title, description } = await readBlogPost(params.slug)
+export async function generateMetadata({ params: { slug } }: PageProps) {
+  const { title, description } = await readBlogPost(slug)
 
   const metadata: Metadata = {
     title,
@@ -51,7 +56,7 @@ export async function generateMetadata({ params }: PageProps) {
       siteName: title,
       description,
       type: 'website',
-      images: [{ url: `/blog/${params.slug}/og-image` }],
+      images: [{ url: `/blog/${slug}/og-image` }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -65,24 +70,26 @@ export async function generateMetadata({ params }: PageProps) {
   return metadata
 }
 
-const processSlug = async (slug: string, page?: string) => {
+const processSlug = async (slug: string, page: number | 'all') => {
   const entry: BlogPost = await match(page)
     .with('all', () => readBlogPost(slug, { all: true }))
-    .otherwise(() => readBlogPost(slug, { pagePos1Indexed: parseInt(page || '1', 10) }))
+    .otherwise(page => readBlogPost(slug, { pagePos1Indexed: page }))
 
   const tags = entry.tags
   const relatedPosts: BlogPost[] = tags[0]
     ? []
-    : (await readAllBlogPosts({ tag: tags[0] })).filter((e: BlogPost) => e.slug !== entry.slug)
+    : (await readAllBlogPosts({ tag: tags[0] })).filter(e => e.slug !== entry.slug)
 
-  return {
-    entry: JSON.parse(JSON.stringify(entry)) as BlogPost,
-    relatedPosts,
-  }
+  return { entry, relatedPosts }
 }
 
-export default async function Index({ params: { slug, options } }: PageProps) {
-  const page = options?.[0]
+export default async function Index(props: PageProps) {
+  const {
+    params: {
+      slug,
+      options: [page],
+    },
+  } = pagePropsSchema.parse(props)
 
   const { entry, relatedPosts } = await processSlug(slug, page)
 

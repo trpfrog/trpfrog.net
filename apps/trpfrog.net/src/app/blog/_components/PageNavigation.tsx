@@ -1,7 +1,8 @@
 import { BlogPost } from '@trpfrog.net/posts'
-import { RichButton } from 'src/components/atoms/RichButton'
 
 import { env } from '@/env/server'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 type Props = {
   entry: BlogPost
@@ -63,7 +64,7 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
         buttonText={'← Prev'}
         disabled={entry.currentPage <= 1}
       />
-      {Array.from(Array(entry.numberOfPages), (v, k) => (
+      {Array.from(Array(entry.numberOfPages), (_e, k) => (
         <PageTransferButton
           entry={entry}
           nextPage={k + 1}

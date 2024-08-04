@@ -11,19 +11,12 @@ export function useUploadFunction(slug: string) {
       formData.append('image', file)
       const uploadPromise = uploadToCloudinaryOnServer(formData, slug)
 
-      try {
-        const { public_id, format, width, height } = await toast.promise(
-          uploadPromise,
-          {
-            loading: 'Uploading...',
-            success: <b>Uploaded!</b>,
-            error: <b>Something went wrong...</b>,
-          },
-        )
-        return `/${public_id}.${format}?w=${width}&h=${height}` as const
-      } catch (err) {
-        throw err
-      }
+      const { public_id, format, width, height } = await toast.promise(uploadPromise, {
+        loading: 'Uploading...',
+        success: <b>Uploaded!</b>,
+        error: <b>Something went wrong...</b>,
+      })
+      return `/${public_id}.${format}?w=${width}&h=${height}` as const
     },
     [slug],
   )

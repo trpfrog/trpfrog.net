@@ -1,4 +1,9 @@
-const webpack = require('webpack')
+// @ts-check
+import bundleAnalyer from '@next/bundle-analyzer'
+import mdx from '@next/mdx'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import remarkGfm from 'remark-gfm'
+import webpack from 'webpack'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,6 +18,13 @@ const nextConfig = {
 
   experimental: {
     mdxRs: true,
+    reactCompiler: true,
+
+    // Opt into the previous Client Router Cache behavior
+    // https://nextjs.org/blog/next-15-rc#client-router-cache-no-longer-caches-page-components-by-default
+    staleTimes: {
+      dynamic: 30,
+    },
   },
 
   webpack: config => {
@@ -60,21 +72,23 @@ const nextConfig = {
   },
 }
 
-const withMdx = require('@next/mdx')({
+const withMdx = mdx({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [import('remark-gfm')],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
   },
-  experimental: {
-    mdxRs: true,
-  },
 })
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const withVanillaExtract = createVanillaExtractPlugin({
+  identifiers: ({ hash }) => `vanilla-extract_${hash}`,
+})
+
 const composeFunctions = (...fns) => {
+  // fns: [f1, f2, f3, ...] => f1(f2(f3(x)))
   return x => fns.reverse().reduce((v, f) => f(v), x)
 }
-module.exports = composeFunctions(withBundleAnalyzer, withMdx)(nextConfig)
+export default composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)

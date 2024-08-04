@@ -1,8 +1,7 @@
 import { z } from 'zod'
 
 export async function fetchRandomWords(amount: number): Promise<string[]> {
-  const apiUrl = 'https://random-word-api.herokuapp.com'
-  const response = await fetch(`${apiUrl}/word?number=${amount}&lang=en`)
+  const response = await fetch(`https://random-word-api.vercel.app/api?words=${amount}`)
   return z
     .string()
     .array()
