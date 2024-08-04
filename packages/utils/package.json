@@ -1,6 +1,7 @@
 {
   "name": "@trpfrog.net/utils",
   "private": true,
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",

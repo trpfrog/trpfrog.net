@@ -1,6 +1,7 @@
 {
   "name": "@trpfrog.net/posts",
   "private": true,
+  "type": "module",
   "exports": {
     ".": "./src/core/index.ts",
     "./preview": "./src/preview/index.ts",

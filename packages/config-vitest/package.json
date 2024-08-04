@@ -1,5 +1,6 @@
 {
   "name": "@trpfrog.net/config-vitest",
+  "type": "module",
   "private": true,
   "main": "./vitest.shared.mjs",
   "peerDependencies": {

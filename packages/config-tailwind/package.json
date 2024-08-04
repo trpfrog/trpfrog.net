@@ -1,5 +1,6 @@
 {
   "name": "@trpfrog.net/config-tailwind",
+  "type": "module",
   "private": true,
   "exports": {
     ".": "./tailwind.config.ts"

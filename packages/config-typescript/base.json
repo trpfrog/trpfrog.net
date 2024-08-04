@@ -20,8 +20,15 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ESNext",
-    "lib": ["ESNext"],
-    "types": ["vitest/globals"]
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta"
+    ]
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
