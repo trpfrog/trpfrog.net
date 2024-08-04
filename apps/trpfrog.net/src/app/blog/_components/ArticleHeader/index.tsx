@@ -50,7 +50,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
         {...rest}
       >
         <div className={styles.inner_title_block} data-parent-has-thumbnail={!!post.thumbnail}>
-          <h1>
+          <h1 className="tw-font-mplus-rounded tw-font-black">
             <Balancer>
               <ParseWithBudouX str={title} slug={post.slug} />
             </Balancer>
