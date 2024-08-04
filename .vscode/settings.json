@@ -9,6 +9,10 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
   // ESLint
   // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
   // "eslint.workingDirectories": [

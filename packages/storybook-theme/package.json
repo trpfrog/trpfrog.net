@@ -1,6 +1,7 @@
 {
   "name": "@trpfrog.net/storybook-theme",
   "private": true,
+  "type": "module",
   "scripts": {
     "lint-fix": "eslint . --fix"
   },

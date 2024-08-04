@@ -1,6 +1,7 @@
 {
   "name": "@trpfrog.net/constants",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",

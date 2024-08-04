@@ -1,5 +1,6 @@
 {
   "name": "@trpfrog.net/image-generation",
+  "type": "module",
   "exports": {
     ".": "./src/client.ts"
   },
