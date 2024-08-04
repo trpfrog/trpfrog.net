@@ -29,7 +29,7 @@ const getTagEmoji = (tag: string) => {
 
 export const getEmojiUrlFromTagName = (tag: string) => {
   const codePoint = getTagEmoji(tag).codePointAt(0)?.toString(16)
-  return `https://twemoji.maxcdn.com/v/latest/svg/${codePoint}.svg`
+  return `https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/${codePoint}.svg`
 }
 
 type Props = {
