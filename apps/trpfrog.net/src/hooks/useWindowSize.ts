@@ -1,21 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
-export function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
+type WindowSize = {
+  width: number
+  height: number
+}
+
+function subscribe(listener: () => void) {
+  window.addEventListener('resize', listener)
+  return () => {
+    window.removeEventListener('resize', listener)
+  }
+}
+
+function getSnapshot() {
+  return JSON.stringify({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+}
+
+function getServerSnapshot() {
+  return JSON.stringify({
     width: 0,
     height: 0,
   })
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const onResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
-    window.addEventListener('resize', onResize)
-    onResize()
-    return () => window.removeEventListener('resize', onResize)
-  }, [])
-  return windowSize
+}
+
+export function useWindowSize(): WindowSize {
+  const json = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
+  // useSyncExternalStore は Object.is で比較するため文字列を返すようにしている => JSON.parse でパースする
+  return JSON.parse(json) as WindowSize
 }
