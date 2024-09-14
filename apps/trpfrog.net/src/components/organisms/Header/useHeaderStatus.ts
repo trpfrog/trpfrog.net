@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import { useScroll } from 'framer-motion'
 import { atom, useAtomValue, useSetAtom } from 'jotai/index'
@@ -6,27 +6,16 @@ import { usePathname } from 'next/navigation'
 
 import { useMobileMenuState } from '@/components/organisms/MobileMenu'
 
+import { useScrollPosition } from '@/hooks/useScrollPosition'
+import { useWindowSize } from '@/hooks/useWindowSize'
+
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
 
 const alwaysShowHeaderAtom = atom(false)
 
-export function useAlwaysShownHeader() {
-  const set = useSetAtom(alwaysShowHeaderAtom)
-  useEffect(() => {
-    set(true)
-    return () => set(false)
-  }, [set])
-}
-
 export function useSetAlwaysShownHeader() {
   return useSetAtom(alwaysShowHeaderAtom)
-}
-
-function useShouldUseStickyStatus(): boolean {
-  const [isMobileMenuOpened] = useMobileMenuState()
-  const [userSettingFollowSticky] = useUserSettingStickyHeader()
-  return isMobileMenuOpened || userSettingFollowSticky
 }
 
 /**
@@ -61,74 +50,6 @@ function useHeaderVisibleStatus(): boolean {
   return userSettingFollowSticky && showHeader
 }
 
-/**
- * ヘッダーのサブタイトルを表示するかどうかを返す
- */
-function useSubtitleVisibleStatus(): boolean {
-  const [showPageTitle, setShowPageTitle] = useState(false)
-  const isTopPage = usePathname() === '/'
-  const [heightToChangeTitle, setHeightToChangeTitle] = useState(250)
-
-  useEffect(() => {
-    if (isTopPage) {
-      return
-    }
-    const isMobile = window.innerWidth <= 800
-    setHeightToChangeTitle(isMobile ? 120 : 250)
-  }, [isTopPage])
-
-  const { scrollY } = useScroll()
-
-  if (isTopPage) {
-    return false
-  }
-
-  scrollY.on('change', (y: number) => {
-    setShowPageTitle(y > heightToChangeTitle)
-  })
-
-  return showPageTitle
-}
-
-/**
- * ヘッダーのつまみアイコンを表示するかどうかを返す
- */
-function useTrpFrogVisibleStatus(): boolean {
-  const [visible, setVisible] = useState(false)
-  const isTopPage = usePathname() === '/'
-  const animationHeight = 250
-
-  const { scrollY } = useScroll()
-  useEffect(() => {
-    if (!isTopPage) {
-      return
-    }
-    setVisible(window.scrollY >= animationHeight)
-  }, [isTopPage])
-
-  if (!isTopPage) {
-    return true
-  }
-
-  scrollY.on('change', () => {
-    setVisible(window.scrollY >= animationHeight)
-  })
-
-  return visible
-}
-
-function useShadowVisibleStatus(): boolean {
-  const [visible, setVisible] = useState(false)
-  useEffect(() => {
-    const handler = () => {
-      setVisible(window.scrollY > 0)
-    }
-    window.addEventListener('scroll', handler)
-    return () => window.removeEventListener('scroll', handler)
-  }, [])
-  return visible
-}
-
 interface HeaderStatus {
   sticky: boolean
   visible: boolean
@@ -138,13 +59,31 @@ interface HeaderStatus {
 }
 
 export function useHeaderStatus(): HeaderStatus {
-  const sticky = useShouldUseStickyStatus()
+  const { y: scrollY } = useScrollPosition()
+  const { width: innerWidth } = useWindowSize()
+  const isTopPage = usePathname() === '/'
+
   const visible = useHeaderVisibleStatus()
-  const visibleSubtitle = useSubtitleVisibleStatus()
-  const visibleTrpFrog = useTrpFrogVisibleStatus()
-  const visibleShadow = useShadowVisibleStatus()
-  return useMemo(
-    () => ({ sticky, visible, visibleSubtitle, visibleTrpFrog, visibleShadow }),
-    [sticky, visible, visibleSubtitle, visibleTrpFrog, visibleShadow],
-  )
+
+  const [isMobileMenuOpened] = useMobileMenuState()
+  const [userSettingFollowSticky] = useUserSettingStickyHeader()
+
+  const isMobile = innerWidth <= 800
+
+  return {
+    // ヘッダーを表示するかどうか
+    visible,
+
+    // ヘッダーを viewport 上部に固定するかどうか
+    sticky: isMobileMenuOpened || userSettingFollowSticky,
+
+    // ヘッダーのサブタイトルを表示するかどうか
+    visibleSubtitle: scrollY > (isMobile ? 120 : 250),
+
+    // ヘッダーのつまみアイコンを表示するかどうか
+    visibleTrpFrog: isTopPage ? scrollY >= 250 : true,
+
+    // ヘッダーの影を表示するかどうか
+    visibleShadow: scrollY > 0,
+  }
 }
