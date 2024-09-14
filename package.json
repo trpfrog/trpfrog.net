@@ -15,13 +15,13 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "^0.5.2",
+    "@eslint/config-inspector": "^0.5.4",
     "@evilmartians/lefthook": "^1.7.11",
     "@trpfrog.net/config-eslint": "workspace:*",
     "@types/node": "^20.14.12",
     "@vitejs/plugin-react": "^4.3.1",
     "better-typescript-lib": "^2.8.0",
-    "eslint": "^9.8.0",
+    "eslint": "^9.10.0",
     "happy-dom": "^14.12.3",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
