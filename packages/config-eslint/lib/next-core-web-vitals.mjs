@@ -3,6 +3,7 @@ import tseslint from 'typescript-eslint'
 import nextPlugin from '@next/eslint-plugin-next'
 import reactPlugin from 'eslint-plugin-react'
 import hooksPlugin from 'eslint-plugin-react-hooks'
+import { fixupPluginRules } from '@eslint/compat'
 
 const namePrefix = '@trpfrog.net/config-eslint/next-core-web-vitals'
 
@@ -12,7 +13,8 @@ export const nextCoreWebVitals = tseslint.config({
   files: ['**/*.ts', '**/*.tsx'],
   plugins: {
     react: reactPlugin,
-    'react-hooks': hooksPlugin,
+    // @ts-expect-error
+    'react-hooks': fixupPluginRules(hooksPlugin),
     '@next/next': nextPlugin,
   },
   // @ts-ignore

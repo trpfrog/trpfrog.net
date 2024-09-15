@@ -1,10 +1,5 @@
 import { useSyncExternalStoreForObject } from './useSyncExternalStoreForObject'
 
-type WindowSize = {
-  width: number
-  height: number
-}
-
 function subscribe(listener: () => void) {
   window.addEventListener('resize', listener)
   return () => {
@@ -12,20 +7,25 @@ function subscribe(listener: () => void) {
   }
 }
 
+type ScrollPosition = {
+  x: number
+  y: number
+}
+
 function getSnapshot() {
   return {
-    width: window.innerWidth,
-    height: window.innerHeight,
+    x: window.scrollX,
+    y: window.scrollY,
   }
 }
 
 function getServerSnapshot() {
   return {
-    width: 0,
-    height: 0,
+    x: 0,
+    y: 0,
   }
 }
 
-export function useWindowSize(): WindowSize {
+export function useScrollPosition(): ScrollPosition {
   return useSyncExternalStoreForObject(subscribe, getSnapshot, getServerSnapshot)
 }

@@ -1,8 +1,8 @@
 'use client'
 import * as React from 'react'
-import { useCallback, useImperativeHandle, useRef, useState } from 'react'
+import { useImperativeHandle, useRef, useState } from 'react'
 
-import { DivWithDragEvent } from '@/components/atoms/DivWithDragEvent'
+import { useDragEvent } from '@/hooks/useDragEvent'
 
 import styles from './index.module.scss'
 
@@ -44,29 +44,25 @@ export function AnglePicker(props: Props) {
     },
   }))
 
-  const setAngleFromMouseEvent = useCallback(
-    (e: MouseEvent) => {
-      const rect = innerRef.current?.getBoundingClientRect()
-      if (!e || !rect) {
-        return
-      }
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      const normalizedX = x / (rect.width / 2) - 1
-      const normalizedY = y / (rect.height / 2) - 1
-      const radian = Math.atan2(normalizedY, normalizedX) + Math.PI / 2
-      const newDegree = radian * (180 / Math.PI)
-      setDegree(newDegree)
-      onAngleChange?.(newDegree)
-    },
-    [onAngleChange],
-  )
+  useDragEvent(innerRef, e => {
+    const rect = innerRef.current?.getBoundingClientRect()
+    if (!e || !rect) {
+      return
+    }
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const normalizedX = x / (rect.width / 2) - 1
+    const normalizedY = y / (rect.height / 2) - 1
+    const radian = Math.atan2(normalizedY, normalizedX) + Math.PI / 2
+    const newDegree = radian * (180 / Math.PI)
+    setDegree(newDegree)
+    onAngleChange?.(newDegree)
+  })
 
   return (
-    <DivWithDragEvent
+    <div
       ref={innerRef}
       className={`${styles.frame} ${className}`}
-      onDragging={setAngleFromMouseEvent}
       style={{ width: size, height: size, ...style }}
       {...rest}
     >
@@ -79,6 +75,6 @@ export function AnglePicker(props: Props) {
         <div className={styles.hand} />
         <div className={styles.clock_center} />
       </div>
-    </DivWithDragEvent>
+    </div>
   )
 }
