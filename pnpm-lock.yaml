@@ -208,9 +208,6 @@ importers:
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
-      dayjs:
-        specifier: ^1.11.11
-        version: 1.11.11
       devicon:
         specifier: ^2.16.0
         version: 2.16.0
@@ -5324,9 +5321,6 @@ packages:
 
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
-
-  dayjs@1.11.11:
-    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -16018,8 +16012,6 @@ snapshots:
       is-data-view: 1.0.1
 
   date-fns@3.6.0: {}
-
-  dayjs@1.11.11: {}
 
   debounce@1.2.1: {}
 

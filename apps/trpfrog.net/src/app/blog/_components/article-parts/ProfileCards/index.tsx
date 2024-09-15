@@ -1,6 +1,6 @@
 import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
-import dayjs from 'dayjs'
+import { addDays, format } from 'date-fns'
 import { z } from 'zod'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
@@ -78,7 +78,7 @@ export const profileCardParts = {
 
     const twitterSearchLink = createURL('/search', 'https://twitter.com/', {
       q: personalDataList.map(e => 'from:' + e.twitter).join(' OR '),
-      until: dayjs(held).add(1, 'd').format('YYYY-MM-DD') + '_04:00:00_JST',
+      until: held ? format(addDays(held, 1), 'yyyy-MM-dd') + '_04:00:00_JST' : '',
       f: 'live',
       pf: 'on',
     })

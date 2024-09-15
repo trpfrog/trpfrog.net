@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
 
 import styles from './index.module.scss'
 
@@ -37,9 +37,7 @@ export const PostAttributes = ({ post }: Props) => {
   }
 
   const AttrDay = ({ d }: { d: string }) => {
-    const Y = dayjs(d).format('YYYY')
-    const M = dayjs(d).format('M')
-    const D = dayjs(d).format('D')
+    const [Y, M, D] = format(new Date(d), 'yyyy-M-d').split('-')
     return (
       <time dateTime={d}>
         {Y}年<br />

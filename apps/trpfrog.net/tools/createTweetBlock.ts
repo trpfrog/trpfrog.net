@@ -7,9 +7,10 @@
 
 import { createURL } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
-import dayjs from 'dayjs'
 import { JSDOM } from 'jsdom'
 import { z } from 'zod'
+
+import { formatDateToDisplay } from '@/lib/date'
 
 import { BlogTwitterArchiveSchema } from '@blog/_components/article-parts/TwitterArchive/generateTwitterArchiveProps'
 
@@ -98,7 +99,7 @@ async function fetchTweet(tweetUrl: string) {
 
   return {
     id: content.url.split('/').pop() ?? '',
-    date: dayjs(dateElement.textContent ?? '').format('YYYY-MM-DD'),
+    date: formatDateToDisplay(dateElement.textContent ?? ''),
     tweet: beautifyTweet(rawTweet),
     name: content.author_name,
     userid: content.author_url.split('/').pop() ?? '',
