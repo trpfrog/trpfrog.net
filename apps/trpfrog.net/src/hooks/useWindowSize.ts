@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useSyncExternalStoreForObject } from './useSyncExternalStoreForObject'
 
 type WindowSize = {
   width: number
@@ -13,22 +13,19 @@ function subscribe(listener: () => void) {
 }
 
 function getSnapshot() {
-  return JSON.stringify({
+  return {
     width: window.innerWidth,
     height: window.innerHeight,
-  })
+  }
 }
 
 function getServerSnapshot() {
-  return JSON.stringify({
+  return {
     width: 0,
     height: 0,
-  })
+  }
 }
 
 export function useWindowSize(): WindowSize {
-  const json = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
-
-  // useSyncExternalStore は Object.is で比較するため文字列を返すようにしている => JSON.parse でパースする
-  return JSON.parse(json) as WindowSize
+  return useSyncExternalStoreForObject(subscribe, getSnapshot, getServerSnapshot)
 }

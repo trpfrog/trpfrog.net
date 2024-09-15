@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useSyncExternalStoreForObject } from './useSyncExternalStoreForObject'
 
 function subscribe(listener: () => void) {
   window.addEventListener('resize', listener)
@@ -13,20 +13,18 @@ type ScrollPosition = {
 }
 
 function getSnapshot() {
-  return JSON.stringify({
+  return {
     x: window.scrollX,
     y: window.scrollY,
-  })
+  }
 }
 
 function getServerSnapshot() {
-  return JSON.stringify({
+  return {
     x: 0,
     y: 0,
-  })
+  }
 }
-export function useScrollPosition() {
-  const json = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
-  // useSyncExternalStore は Object.is で比較するため文字列を返すようにしている => JSON.parse でパースする
-  return JSON.parse(json) as ScrollPosition
+export function useScrollPosition(): ScrollPosition {
+  return useSyncExternalStoreForObject(subscribe, getSnapshot, getServerSnapshot)
 }
