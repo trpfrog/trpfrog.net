@@ -3,12 +3,12 @@ import * as React from 'react'
 import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
-import dayjs from 'dayjs'
 
 import { BlockLink } from '@/components/molecules/BlockLink'
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
+import { formatDateToDisplay } from '@/lib/date'
 
 import { gridArea, ArticleCardGrid } from '@blog/_components/ArticleCard/ArticleCardGrid'
 import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
@@ -50,7 +50,7 @@ export const ArticleCard = ({ entry, hero = false, style }: Props) => {
           <ArticleTitle title={entry.title} isHero={hero} style={{ gridArea: gridArea.title }} />
           <div className={styles.information} style={{ gridArea: gridArea.info }}>
             <FontAwesomeIcon icon={faCalendarDay} style={{ margin: 'auto' }} />{' '}
-            {dayjs(entry.date).format('YYYY-MM-DD')} <br />
+            {formatDateToDisplay(entry.date)} <br />
             <FontAwesomeIcon icon={faClock} style={{ margin: 'auto' }} />{' '}
             {Math.ceil(entry.readTime / 60)} min to read
           </div>

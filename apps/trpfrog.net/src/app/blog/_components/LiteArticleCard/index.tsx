@@ -2,12 +2,12 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
 import { formatReadTime } from '@trpfrog.net/posts/time'
-import dayjs from 'dayjs'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { BlockLink } from '@/components/molecules/BlockLink'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
+import { formatDateToDisplay } from '@/lib/date'
 
 import styles from './index.module.scss'
 
@@ -49,7 +49,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
             </div>
           )}
           <div className={styles.description}>
-            <strong>{dayjs(entry.date).format('YYYY-MM-DD')}</strong>
+            <strong>{formatDateToDisplay(entry.date)}</strong>
             {'・'}
             {entry.description}
           </div>
@@ -58,7 +58,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
               {[
                 `${readTimeMinutes} 分`,
                 entry.numberOfPhotos && `${entry.numberOfPhotos} 枚の写真`,
-                entry.updated && `${dayjs(entry.updated).format('YYYY-MM-DD')} 更新`,
+                entry.updated && `${formatDateToDisplay(entry.updated)} 更新`,
               ]
                 .filter(Boolean)
                 .join(' ・ ')}

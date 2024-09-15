@@ -16,18 +16,18 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.4",
-    "@evilmartians/lefthook": "^1.7.11",
+    "@evilmartians/lefthook": "^1.7.15",
     "@trpfrog.net/config-eslint": "workspace:*",
     "@types/node": "^20.14.12",
     "@vitejs/plugin-react": "^4.3.1",
     "better-typescript-lib": "^2.8.0",
     "eslint": "^9.10.0",
-    "happy-dom": "^14.12.3",
+    "happy-dom": "^15.7.4",
     "prettier": "3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "turbo": "^2.0.11",
-    "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "turbo": "^2.1.2",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   },
   "packageManager": "pnpm@9.1.4"
 }

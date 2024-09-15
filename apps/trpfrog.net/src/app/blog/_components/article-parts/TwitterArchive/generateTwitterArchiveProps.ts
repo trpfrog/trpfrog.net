@@ -1,8 +1,9 @@
-import dayjs from 'dayjs'
 import { z } from 'zod'
 
 import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
+
+import { formatDateToDisplay } from '@/lib/date'
 
 export const BlogTwitterArchiveSchema = z.object({
   name: z.string().default('つまみ'),
@@ -11,7 +12,7 @@ export const BlogTwitterArchiveSchema = z.object({
   tweet: z.string().optional(),
   reply: z.string().optional(),
   id: z.string(),
-  date: z.coerce.date().transform(date => dayjs(date).format('YYYY-MM-DD')),
+  date: z.coerce.date().transform(date => formatDateToDisplay(date)),
   image: z.string().optional(),
   image2: z.string().optional(),
   image3: z.string().optional(),
