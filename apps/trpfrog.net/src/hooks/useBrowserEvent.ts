@@ -1,49 +1,52 @@
 import { useEffect } from 'react'
 
-// window
-export function useBrowserEvent<T extends 'window', E extends keyof WindowEventMap>(
-  target: 'window',
-  eventName: E,
-  handler: (this: T, ev: WindowEventMap[E]) => unknown,
-  options?: AddEventListenerOptions,
-): void
+export type BrowserTarget = 'window' | 'document' | React.RefObject<HTMLElement>
 
-// document
-export function useBrowserEvent<T extends 'document', E extends keyof DocumentEventMap>(
-  target: 'document',
-  eventName: E,
-  handler: (this: T, ev: DocumentEventMap[E]) => unknown,
-  options?: AddEventListenerOptions,
-): void
+type EventMapFor<T extends BrowserTarget> = T extends 'window'
+  ? WindowEventMap
+  : T extends 'document'
+    ? DocumentEventMap
+    : T extends React.RefObject<unknown>
+      ? HTMLElementEventMap
+      : never
 
-// ref
-export function useBrowserEvent<T extends HTMLElement, E extends keyof HTMLElementEventMap>(
-  target: React.RefObject<T>,
-  eventName: E,
-  handler: (this: T, ev: HTMLElementEventMap[E]) => unknown,
-  options?: AddEventListenerOptions,
-): void
+type ThisFor<T extends BrowserTarget> = T extends 'window'
+  ? Window
+  : T extends 'document'
+    ? Document
+    : T extends React.RefObject<infer U>
+      ? U
+      : never
 
-export function useBrowserEvent<T extends HTMLElement>(
-  target: 'window' | 'document' | React.RefObject<T>,
-  eventName: string,
-  handler: (this: Window | Document | HTMLElement, ev: Event) => unknown,
+export function useBrowserEvent<T extends BrowserTarget, E extends keyof EventMapFor<T> & string>(
+  target: T,
+  eventName: E | (keyof WindowEventMap & keyof DocumentEventMap & keyof HTMLElementEventMap),
+  handler: (this: ThisFor<T>, ev: EventMapFor<T>[E]) => unknown,
   options?: AddEventListenerOptions,
 ): void {
   useEffect(() => {
-    let t
-    if (target === 'window') {
-      t = window
-    } else if (target === 'document') {
-      t = document
-    } else {
-      t = target.current
-    }
-    if (!t) return
+    let currentTarget: Window | Document | HTMLElement | null = null
 
-    t.addEventListener(eventName, handler, options)
+    if (target === 'window') {
+      currentTarget = window
+    } else if (target === 'document') {
+      currentTarget = document
+    } else {
+      currentTarget = target.current
+    }
+
+    if (!currentTarget) return
+
+    // Define a properly typed event listener
+    const eventListener = (event: Event) => {
+      handler.call(currentTarget as ThisFor<T>, event as EventMapFor<T>[E])
+    }
+
+    currentTarget.addEventListener(eventName, eventListener, options)
+
+    // Cleanup the event listener on unmount or when dependencies change
     return () => {
-      t.removeEventListener(eventName, handler)
+      currentTarget?.removeEventListener(eventName, eventListener, options)
     }
   }, [eventName, handler, options, target])
 }

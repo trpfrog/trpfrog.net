@@ -25,6 +25,7 @@ function getServerSnapshot() {
     y: 0,
   }
 }
+
 export function useScrollPosition(): ScrollPosition {
   return useSyncExternalStoreForObject(subscribe, getSnapshot, getServerSnapshot)
 }
