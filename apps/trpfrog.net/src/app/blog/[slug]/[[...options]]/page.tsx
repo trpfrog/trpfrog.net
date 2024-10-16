@@ -25,13 +25,13 @@ export const dynamicParams = false
 // 1, 2, 3, ... or 'all'
 const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
 
-const pagePropsSchema = z.object({
-  params: z.object({
-    slug: z.string(),
-    options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
-  }),
+const paramsSchema = z.object({
+  slug: z.string(),
+  options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
 })
-type PageProps = z.input<typeof pagePropsSchema>
+type PageProps = {
+  params: z.input<typeof paramsSchema>
+}
 
 export async function generateStaticParams({ params: { slug } }: { params: { slug: string } }) {
   const entry = await readBlogPost(slug)
@@ -89,14 +89,9 @@ const processSlug = async (slug: string, page: number | 'all') => {
 
 export default async function Index(props: PageProps) {
   const {
-    params: {
-      slug,
-      options: [page],
-    },
-  } = pagePropsSchema.parse(
-    /* @next-codemod-error 'props' is passed as an argument. Any asynchronous properties of 'props' must be awaited when accessed. */
-    props,
-  )
+    slug,
+    options: [page],
+  } = await paramsSchema.parseAsync(props.params)
 
   const { entry, relatedPosts } = await processSlug(slug, page)
 
