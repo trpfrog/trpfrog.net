@@ -11,7 +11,7 @@ interface Props extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children' |
   size: string | number
   faceClassName?: string
   initialDegree?: number
-  ref?: React.RefObject<AnglePickerHandle>
+  ref?: React.RefObject<AnglePickerHandle | null>
 }
 
 export interface AnglePickerHandle {

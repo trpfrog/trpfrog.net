@@ -21,7 +21,8 @@ type Props = {
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params
   if (!env.MICRO_CMS_API_KEY) {
     return {
       title: '記事プレビュー',
@@ -77,7 +78,7 @@ async function fetchPreviewArticle(slug: [string, string | undefined]) {
 }
 
 export default async function Index(props: Props) {
-  const { entry: post } = await fetchPreviewArticle(props.params.slug)
+  const { entry: post } = await fetchPreviewArticle((await props.params).slug)
 
   return (
     <MainWrapper gridLayout>

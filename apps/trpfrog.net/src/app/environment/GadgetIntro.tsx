@@ -1,10 +1,12 @@
 import * as React from 'react'
+import type { JSX } from 'react'
 
 import Image from 'next/legacy/image'
 
 import { H4 } from '@/components/wrappers'
 
 import styles from './style.module.scss'
+
 
 type Props = {
   name: string

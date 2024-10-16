@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 
-export type BrowserTarget = 'window' | 'document' | React.RefObject<HTMLElement>
+export type BrowserTarget = 'window' | 'document' | React.RefObject<HTMLElement | null>
 
 type EventMapFor<T extends BrowserTarget> = T extends 'window'
   ? WindowEventMap
   : T extends 'document'
     ? DocumentEventMap
-    : T extends React.RefObject<unknown>
+    : T extends React.RefObject<unknown | null>
       ? HTMLElementEventMap
       : never
 
@@ -14,7 +14,7 @@ type ThisFor<T extends BrowserTarget> = T extends 'window'
   ? Window
   : T extends 'document'
     ? Document
-    : T extends React.RefObject<infer U>
+    : T extends React.RefObject<infer U | null>
       ? U
       : never
 

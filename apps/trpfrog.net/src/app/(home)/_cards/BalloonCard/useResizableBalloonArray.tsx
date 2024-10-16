@@ -4,7 +4,7 @@ import { BalloonArray } from '@/app/balloon/_components/BalloonArray'
 import { useBalloonState } from '@/app/balloon/useBalloonState.ts'
 
 export function useResizableBalloonArray(
-  cardRef: React.RefObject<HTMLDivElement>,
+  cardRef: React.RefObject<HTMLDivElement | null>,
   balloonWidth: number,
 ) {
   const [balloonAmount, setBalloonAmount] = useState(0)

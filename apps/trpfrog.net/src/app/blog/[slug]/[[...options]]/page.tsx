@@ -45,7 +45,11 @@ export async function generateStaticParams({ params: { slug } }: { params: { slu
   return paths
 }
 
-export async function generateMetadata({ params: { slug } }: PageProps) {
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params
+
+  const { slug } = params
+
   const { title, description } = await readBlogPost(slug)
 
   const metadata: Metadata = {
@@ -89,7 +93,10 @@ export default async function Index(props: PageProps) {
       slug,
       options: [page],
     },
-  } = pagePropsSchema.parse(props)
+  } = pagePropsSchema.parse(
+    /* @next-codemod-error 'props' is passed as an argument. Any asynchronous properties of 'props' must be awaited when accessed. */
+    props,
+  )
 
   const { entry, relatedPosts } = await processSlug(slug, page)
 

@@ -55,7 +55,7 @@ type Context = {
 }
 
 export async function GET(_req: NextRequest, context: Context) {
-  const slug = context.params.slug
+  const slug = (await context.params).slug
 
   const res = await bffClient.blog.posts[':slug']
     .$get({

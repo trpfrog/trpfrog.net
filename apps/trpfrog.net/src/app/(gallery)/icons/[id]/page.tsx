@@ -26,8 +26,8 @@ export async function generateStaticParams() {
   return ids.map(id => ({ id: id.toString() }))
 }
 
-export default function Index(context: PageProps) {
-  const id = context.params.id
+export default async function Index(context: PageProps) {
+  const id = (await context.params).id
   const idInt = parseInt(id)
   return (
     <MainWrapper gridLayout>
