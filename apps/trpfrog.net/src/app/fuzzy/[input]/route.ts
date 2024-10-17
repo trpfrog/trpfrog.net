@@ -31,9 +31,9 @@ const pagePaths = [
 let blogPaths = [] as string[]
 
 type GETProps = {
-  params: {
+  params: Promise<{
     input: string
-  }
+  }>
 }
 
 export async function GET(req: NextRequest, props: GETProps) {

@@ -12,9 +12,9 @@ import { Block } from '@/components/molecules/Block'
 const NUMBER_OF_IMAGES = 80
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const metadata = {

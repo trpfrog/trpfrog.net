@@ -49,9 +49,9 @@ async function createImageResponseOptions() {
 }
 
 type Context = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function GET(_req: NextRequest, context: Context) {

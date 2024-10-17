@@ -16,9 +16,9 @@ import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: [string, string | undefined]
-  }
+  }>
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

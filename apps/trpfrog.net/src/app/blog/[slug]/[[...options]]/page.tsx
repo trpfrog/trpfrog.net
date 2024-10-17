@@ -30,10 +30,11 @@ const paramsSchema = z.object({
   options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
 })
 type PageProps = {
-  params: z.input<typeof paramsSchema>
+  params: Promise<z.input<typeof paramsSchema>>
 }
 
-export async function generateStaticParams({ params: { slug } }: { params: { slug: string } }) {
+export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params
   const entry = await readBlogPost(slug)
   const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {

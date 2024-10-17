@@ -18,9 +18,9 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     tag: string
-  }
+  }>
 }
 
 export async function generateMetadata(props: Props) {
