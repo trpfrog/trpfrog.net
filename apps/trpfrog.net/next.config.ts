@@ -8,7 +8,6 @@ import remarkGfm from 'remark-gfm'
 import webpack from 'webpack'
 
 const nextConfig: NextConfig = {
-  swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 
