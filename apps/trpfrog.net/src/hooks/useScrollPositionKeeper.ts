@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export function useScrollPositionKeeper(ref?: React.RefObject<HTMLElement>) {
+export function useScrollPositionKeeper(ref?: React.RefObject<HTMLElement | null>) {
   const scrollPosition = React.useRef(0)
 
   // restore scroll position

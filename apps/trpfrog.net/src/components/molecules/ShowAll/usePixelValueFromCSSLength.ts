@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useRerender } from '@react-hookz/web'
 
 export const usePixelValueFromCSSLength = (
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLDivElement | null>,
   cssValue: string | number,
 ) => {
   // rerender component once to activate ref

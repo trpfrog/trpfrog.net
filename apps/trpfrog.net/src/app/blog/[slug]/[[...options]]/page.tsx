@@ -25,15 +25,16 @@ export const dynamicParams = false
 // 1, 2, 3, ... or 'all'
 const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
 
-const pagePropsSchema = z.object({
-  params: z.object({
-    slug: z.string(),
-    options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
-  }),
+const paramsSchema = z.object({
+  slug: z.string(),
+  options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
 })
-type PageProps = z.input<typeof pagePropsSchema>
+type PageProps = {
+  params: Promise<z.input<typeof paramsSchema>>
+}
 
-export async function generateStaticParams({ params: { slug } }: { params: { slug: string } }) {
+export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params
   const entry = await readBlogPost(slug)
   const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
@@ -45,7 +46,11 @@ export async function generateStaticParams({ params: { slug } }: { params: { slu
   return paths
 }
 
-export async function generateMetadata({ params: { slug } }: PageProps) {
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params
+
+  const { slug } = params
+
   const { title, description } = await readBlogPost(slug)
 
   const metadata: Metadata = {
@@ -84,12 +89,11 @@ const processSlug = async (slug: string, page: number | 'all') => {
 }
 
 export default async function Index(props: PageProps) {
+  const rawParams = await props.params
   const {
-    params: {
-      slug,
-      options: [page],
-    },
-  } = pagePropsSchema.parse(props)
+    slug,
+    options: [page],
+  } = paramsSchema.parse(rawParams)
 
   const { entry, relatedPosts } = await processSlug(slug, page)
 

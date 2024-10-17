@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export function useHoverScrollBoxEvent(scrollAreaRef: React.RefObject<HTMLElement>) {
+export function useHoverScrollBoxEvent(scrollAreaRef: React.RefObject<HTMLElement | null>) {
   const [intervalId, setIntervalId] = React.useState<number | null>(null)
 
   const handleMouseEnter = React.useCallback(

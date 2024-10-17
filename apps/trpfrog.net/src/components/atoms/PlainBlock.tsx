@@ -11,11 +11,7 @@ export const plainBlockStyle = tv({
   ],
   variants: {
     clickable: {
-      true: `
-        tw-cursor-pointer hover:-tw-translate-y-1 hover:tw-shadow-[0_8px_0]
-        hover:tw-shadow-trpfrog-400 active:tw-translate-y-[3px]
-        active:tw-shadow-none hover:dark:tw-shadow-trpfrog-900
-      `,
+      true: `tw-cursor-pointer hover:-tw-translate-y-1 hover:tw-shadow-[0_8px_0] hover:tw-shadow-trpfrog-400 active:tw-translate-y-[3px] active:tw-shadow-none hover:dark:tw-shadow-trpfrog-900`,
     },
   },
   defaultVariants: {

@@ -29,10 +29,7 @@ export const createLinkCardStyles = tv({
   variants: {
     noImage: {
       true: {
-        image: `
-          tw-flex tw-items-center tw-justify-center
-          tw-bg-trpfrog-50 tw-text-2xl tw-font-bold tw-text-trpfrog-400
-        `,
+        image: `tw-flex tw-items-center tw-justify-center tw-bg-trpfrog-50 tw-text-2xl tw-font-bold tw-text-trpfrog-400`,
       },
     },
   },

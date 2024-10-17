@@ -3,8 +3,8 @@ import { MutableRefObject, RefObject, useMemo, useRef } from 'react'
 import { IconCanvas } from '@/app/icon-maker/iconMaker'
 import styles from '@/app/icon-maker/style.module.scss'
 
-export function useIconMakerRef(imgRef: RefObject<HTMLCanvasElement>) {
-  const state = useRef<IconCanvas>()
+export function useIconMakerRef(imgRef: RefObject<HTMLCanvasElement | null>) {
+  const state = useRef<IconCanvas>(undefined)
   if (!state.current) {
     state.current = new IconCanvas(imgRef)
   }
