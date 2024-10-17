@@ -10,11 +10,13 @@ export type MarkdownWithFrontmatter<T> = {
   content: string
 }
 
-const DataObjectSchema = z.object({
+// Zod スキーマの型が欲しいだけ
+const _DataObjectSchema = z.object({
   date: z.date(),
 })
+type DataObjectSchemaType = typeof _DataObjectSchema
 
-export async function readMarkdowns<Schema extends typeof DataObjectSchema>(
+export async function readMarkdowns<Schema extends DataObjectSchemaType>(
   dirpath: string,
   schema: Schema,
 ): Promise<MarkdownWithFrontmatter<z.output<Schema>>[]> {
