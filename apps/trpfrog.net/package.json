@@ -120,6 +120,7 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.12.14",
     "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@types/react-modal": "^3.16.3",
     "@types/webpack": "^5.28.5",
     "@vanilla-extract/next-plugin": "^2.4.3",
@@ -135,10 +136,5 @@
     "storybook-dark-mode": "^3.0.3",
     "tailwindcss": "^3.4.4",
     "webpack": "^5.92.1"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "npm:types-react@19.0.0-rc.1"
-    }
   }
 }
