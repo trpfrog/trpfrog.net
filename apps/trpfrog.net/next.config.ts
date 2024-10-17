@@ -1,12 +1,13 @@
-// @ts-check
+import type { NextConfig } from 'next'
+
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
+import { composeFunctions } from '@trpfrog.net/utils'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 import remarkGfm from 'remark-gfm'
 import webpack from 'webpack'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
@@ -87,8 +88,4 @@ const withVanillaExtract = createVanillaExtractPlugin({
   identifiers: ({ hash }) => `vanilla-extract_${hash}`,
 })
 
-const composeFunctions = (...fns) => {
-  // fns: [f1, f2, f3, ...] => f1(f2(f3(x)))
-  return x => fns.reverse().reduce((v, f) => f(v), x)
-}
 export default composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
