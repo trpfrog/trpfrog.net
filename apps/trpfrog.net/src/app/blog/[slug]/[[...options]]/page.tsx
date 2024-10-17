@@ -89,10 +89,11 @@ const processSlug = async (slug: string, page: number | 'all') => {
 }
 
 export default async function Index(props: PageProps) {
+  const rawParams = await props.params
   const {
     slug,
     options: [page],
-  } = await paramsSchema.parseAsync(props.params)
+  } = paramsSchema.parse(rawParams)
 
   const { entry, relatedPosts } = await processSlug(slug, page)
 
