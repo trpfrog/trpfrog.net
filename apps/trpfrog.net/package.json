@@ -125,7 +125,7 @@
     "@vanilla-extract/next-plugin": "^2.4.3",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
-    "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
+    "babel-plugin-react-compiler": "0.0.0-experimental-fa06e2c-20241016",
     "clipboardy": "^4.0.0",
     "cssnano": "^6.1.2",
     "postcss": "^8.4.39",
