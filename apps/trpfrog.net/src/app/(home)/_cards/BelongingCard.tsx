@@ -11,7 +11,7 @@ const styles = tv({
   slots: {
     wrapper: ['tw-size-full tw-bg-gradient-to-r tw-from-yellow-800/20 tw-to-zinc-800/60'],
     text: [
-      'tw-flex tw-size-full tw-flex-col tw-items-end tw-justify-center ',
+      'tw-flex tw-size-full tw-flex-col tw-items-end tw-justify-center',
       'tw-relative tw-top-1 tw-p-3 tw-text-right tw-text-white tw-drop-shadow-lg',
     ],
     name: 'tw-text-lg tw-font-bold',

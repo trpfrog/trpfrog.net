@@ -25,11 +25,7 @@ const createStyles = tv({
     showTrpFrog: {
       false: {
         trpfrog: 'tw-translate-y-[90%] tw-duration-300',
-        siteNameWrapper: `
-          tw-translate-x-[-70px]
-          tw-duration-[320ms]
-          sp:tw-translate-x-[-58px]
-        `,
+        siteNameWrapper: `tw-translate-x-[-70px] tw-duration-[320ms] sp:tw-translate-x-[-58px]`,
       },
       true: {
         trpfrog: 'tw-duration-[320ms]',

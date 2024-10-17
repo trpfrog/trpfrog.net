@@ -28,18 +28,11 @@ const createSpoilerStyles = tv({
     blur: {
       true: {
         blur: 'tw-backdrop-blur-2xl has-[:hover]:tw-backdrop-blur-md',
-        button: `
-          tw-left-1/2 tw-top-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2
-          tw-rounded-full
-        `,
+        button: `tw-left-1/2 tw-top-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2 tw-rounded-full`,
       },
       false: {
         blur: 'tw-pointer-events-none tw-block tw-backdrop-blur-none',
-        button: `
-          tw-pointer-events-auto
-          tw-left-0 tw-top-0 tw-rounded-ee-md tw-rounded-ss-md
-          tw-px-3 tw-py-1 tw-text-sm
-        `,
+        button: `tw-pointer-events-auto tw-left-0 tw-top-0 tw-rounded-ee-md tw-rounded-ss-md tw-px-3 tw-py-1 tw-text-sm`,
       },
     },
   },

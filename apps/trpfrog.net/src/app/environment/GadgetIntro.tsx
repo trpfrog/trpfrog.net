@@ -7,7 +7,6 @@ import { H4 } from '@/components/wrappers'
 
 import styles from './style.module.scss'
 
-
 type Props = {
   name: string
   imagePath?: string

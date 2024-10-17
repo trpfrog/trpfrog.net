@@ -43,10 +43,7 @@ const styles = {
     base: ['tw-inline-block tw-rounded-full tw-px-4 tw-duration-1200 tw-font-palanquin-dark'],
     variants: {
       current: {
-        true: `
-          tw-bg-white tw-text-[#81bd4a] hover:tw-bg-white/80
-          dark:tw-text-trpfrog-700
-        `,
+        true: `tw-bg-white tw-text-[#81bd4a] hover:tw-bg-white/80 dark:tw-text-trpfrog-700`,
         false: 'tw-text-white hover:tw-bg-white/20',
       },
     },

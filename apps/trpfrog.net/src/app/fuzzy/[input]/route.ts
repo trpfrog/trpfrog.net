@@ -4,7 +4,6 @@ import { ipAddress } from '@vercel/functions'
 import { generateText } from 'ai'
 import { NextRequest, NextResponse } from 'next/server'
 
-
 import { createRateLimit } from '@/lib/rateLimit'
 
 const limiter = createRateLimit({
