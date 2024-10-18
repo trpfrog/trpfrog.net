@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import dayjs from 'dayjs'
+import { format, subYears } from 'date-fns'
 import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
@@ -28,7 +28,7 @@ export const metadata = {
 
 export default async function Index(props: NextServerPageProps) {
   const searchParams = await props.searchParams
-  const oneYearsAgo = dayjs(new Date()).subtract(1, 'year').format('YYYY-MM-DD')
+  const oneYearsAgo = format(subYears(new Date(), 1), 'yyyy-MM-dd')
 
   return (
     <MainWrapper gridLayout>

@@ -2,7 +2,6 @@ import * as path from 'path'
 
 import { Metadata } from 'next'
 
-import dayjs from 'dayjs'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Image } from '@/components/atoms/Image'
@@ -12,6 +11,7 @@ import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
 
+import { formatDateToDisplay } from '@/lib/date'
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
@@ -50,7 +50,7 @@ export default async function Index() {
             )}
             {metadata.keywords && <Keywords keywords={metadata.keywords} />}
             <p>
-              <b>Released:</b> {dayjs(metadata.date).format('YYYY-MM-DD')}{' '}
+              <b>Released:</b> {formatDateToDisplay(metadata.date)}{' '}
             </p>
             <MDXRemote source={content} {...getMarkdownOptions()} />
             <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>

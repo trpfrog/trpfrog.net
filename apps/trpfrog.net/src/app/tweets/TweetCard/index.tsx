@@ -2,12 +2,14 @@ import * as React from 'react'
 
 import { faStar, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
 import reactStringReplace from 'react-string-replace'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
+
+import { formatDateToDisplay, formatDateTimeToDisplay } from '@/lib/date'
 
 import styles from './index.module.scss'
 
@@ -92,13 +94,13 @@ const decodeHTMLEntities = (text: string) => {
 }
 
 export function DateCard({ date }: { date: Date }) {
-  const query = 'date:' + dayjs(date).format('YYYY-MM-DD')
+  const query = 'date:' + format(date, 'yyyy-MM-dd')
   const url = '/tweets?q=' + encodeURIComponent(query) + '#tweets'
   return (
     <PlainBlock className={`${styles.window} ${styles.date}`}>
       <h3>
         <A style={{ all: 'inherit' }} href={url}>
-          {dayjs(date).format('YYYY年M月D日')}
+          {formatDateToDisplay(date)}
         </A>
       </h3>
     </PlainBlock>
@@ -208,7 +210,7 @@ export function TweetCard({
             <div className={styles.footer_date}>
               <A className={styles.footer_date} href={statusUrl}>
                 {tweet.isRetweet ? 'Retweeted at ' : ''}
-                {dayjs(tweet.createdAt).format('YYYY-MM-DD HH:mm')}
+                {formatDateTimeToDisplay(tweet.createdAt)}
               </A>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
 import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
-import dayjs from 'dayjs'
+import { getYear } from 'date-fns'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
@@ -37,7 +37,7 @@ export default async function Index() {
 
   const articlesGroupedByYear = articles.reduce(
     (acc, cur) => {
-      const year = dayjs(cur.date).format('YYYY')
+      const year = getYear(cur.date).toString()
       if (acc[year] === undefined) acc[year] = []
       acc[year].push(cur)
       return acc
