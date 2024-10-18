@@ -10,6 +10,8 @@ import { Title } from '@/components/organisms/Title'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 
+// FIXME: Cannot find module 'Belongings.mdx'
+// @ts-expect-error - Error: Cannot find module 'Belongings.mdx''
 import Belongings from './Belongings.mdx'
 
 export const metadata = {

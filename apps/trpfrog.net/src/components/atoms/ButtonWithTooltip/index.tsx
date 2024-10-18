@@ -5,7 +5,7 @@ import { useCallback, useId, useState } from 'react'
 
 import { Tooltip } from 'react-tooltip'
 
-export interface ButtonWithTooltipProps extends React.ComponentPropsWithoutRef<'button'> {
+interface ButtonWithTooltipProps extends React.ComponentPropsWithoutRef<'button'> {
   hoveredTooltipContent: React.ReactNode
   clickedTooltipContent: React.ReactNode
 }

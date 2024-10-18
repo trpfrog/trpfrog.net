@@ -9,7 +9,7 @@ import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop.tsx'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 
-export type DevBlogMarkdownProps = {
+type DevBlogMarkdownProps = {
   slug: string
   page?: number | 'all'
 }

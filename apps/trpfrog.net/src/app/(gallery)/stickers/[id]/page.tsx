@@ -12,9 +12,9 @@ import { Block } from '@/components/molecules/Block'
 const NUMBER_OF_IMAGES = 80
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const metadata = {
@@ -26,8 +26,8 @@ export async function generateStaticParams() {
   return ids.map(id => ({ id: id.toString() }))
 }
 
-export default function Index(context: PageProps) {
-  const id = context.params.id
+export default async function Index(context: PageProps) {
+  const id = (await context.params).id
   const idInt = parseInt(id, 10)
 
   return (

@@ -13,7 +13,7 @@ function degreeMod(n: number) {
 }
 
 // returns [-180, 180)
-export function degreeDifference(prev: number, cur: number) {
+function degreeDifference(prev: number, cur: number) {
   const diff = degreeMod(cur - prev)
   if (diff >= 180) {
     return diff - 360
@@ -21,7 +21,7 @@ export function degreeDifference(prev: number, cur: number) {
   return diff
 }
 
-export type RpmCalculationOptions = Partial<{
+type RpmCalculationOptions = Partial<{
   minQueueSize: number
 }>
 

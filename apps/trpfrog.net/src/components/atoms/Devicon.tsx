@@ -3,7 +3,7 @@ import React from 'react'
 import 'devicon'
 import { twMerge } from '@/lib/tailwind/merge'
 
-export const deviconMap = {
+const deviconMap = {
   Python: 'devicon-python-plain',
   PyTorch: 'devicon-pytorch-original',
   TypeScript: 'devicon-typescript-plain',
@@ -29,13 +29,13 @@ export const deviconMap = {
   'GitHub Pages': 'devicon-github-plain',
 }
 
-export type DeviconKey = keyof typeof deviconMap
+type DeviconKey = keyof typeof deviconMap
 
 export function hasDevicon(iconName: string): iconName is DeviconKey {
   return iconName in deviconMap
 }
 
-export type DeviconProps = {
+type DeviconProps = {
   iconName: DeviconKey
   colored?: boolean
   className?: string

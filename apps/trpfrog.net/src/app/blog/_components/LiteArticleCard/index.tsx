@@ -11,7 +11,7 @@ import { formatDateToDisplay } from '@/lib/date'
 
 import styles from './index.module.scss'
 
-export type LiteArticleCardProps = {
+type LiteArticleCardProps = {
   entry: BlogPost
 }
 

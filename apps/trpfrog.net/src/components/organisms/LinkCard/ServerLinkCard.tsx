@@ -2,13 +2,17 @@ import 'server-only'
 import * as React from 'react'
 import { memo } from 'react'
 
+import { withTimeout } from '@trpfrog.net/utils'
+
 import { ClientLinkCard } from '@/components/organisms/LinkCard/ClientLinkCard'
-import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
-export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+import { fetchOGP } from './fetchOGP'
+
+type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   href: string
   fallbackToClient?: boolean
+  fallbackToClientMillis?: number
   overrideProps?: Partial<LinkCardProps>
 }
 
@@ -16,7 +20,7 @@ export const ServerLinkCard = memo(async function ServerLinkCard(props: LinkCard
   const { href, ...rest } = props
 
   try {
-    const result = await fetchOGP(href)
+    const result = await withTimeout(fetchOGP(href), props.fallbackToClientMillis ?? 5000)
     return (
       <LinkCard
         title={result.ogTitle ?? ''}

@@ -1,5 +1,6 @@
 import { openai } from '@ai-sdk/openai'
 import { readAllSlugs } from '@trpfrog.net/posts/fs'
+import { ipAddress } from '@vercel/functions'
 import { generateText } from 'ai'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -30,15 +31,15 @@ const pagePaths = [
 let blogPaths = [] as string[]
 
 type GETProps = {
-  params: {
+  params: Promise<{
     input: string
-  }
+  }>
 }
 
 export async function GET(req: NextRequest, props: GETProps) {
   const res = NextResponse.next()
 
-  const input = props.params.input.slice(0, 100)
+  const input = (await props.params).input.slice(0, 100)
 
   if (blogPaths.length === 0) {
     blogPaths = await readAllSlugs()
@@ -58,7 +59,7 @@ export async function GET(req: NextRequest, props: GETProps) {
     blogPaths.map(s => '- /blog/' + s + '\n').join('')
 
   try {
-    await limiter.check(res, 5, req.ip ?? 'ip_not_found')
+    await limiter.check(res, 5, ipAddress(req) ?? 'ip_not_found')
     const { text: output } = await generateText({
       model: openai('gpt-4o-mini'),
       messages: [

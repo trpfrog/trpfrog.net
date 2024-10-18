@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image'
 import Link from 'next/link'
 
-export type ImageListProps = {
+type ImageListProps = {
   images: ImagePaths[]
   imageWidth?: number
   imageHeight?: number

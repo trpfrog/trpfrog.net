@@ -21,7 +21,7 @@ export const createESLintConfig = (...userConfig) =>
     ...tseslint.configs.strict,
     {
       name: `${namePrefix}/ignores`,
-      ignores: ['storybook-static', 'out', 'dist', 'build', 'coverage'],
+      ignores: ['storybook-static', 'out', 'dist', 'build', 'coverage', '.wrangler'],
     },
     {
       name: `${namePrefix}/import-rules`,

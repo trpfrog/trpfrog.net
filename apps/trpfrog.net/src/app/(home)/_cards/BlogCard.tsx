@@ -31,23 +31,14 @@ const createArticleStyle = tv({
     },
     index: {
       0: {
-        wrapper: `
-          tw-from-pink-500 tw-to-pink-500/40 
-          dark:tw-from-pink-900 dark:tw-to-pink-900/40
-        `,
+        wrapper: `tw-from-pink-500 tw-to-pink-500/40 dark:tw-from-pink-900 dark:tw-to-pink-900/40`,
         button: 'tw-translate-y-3',
       },
       1: {
-        wrapper: `
-          tw-from-amber-500 tw-to-amber-500/40
-          dark:tw-from-amber-900 dark:tw-to-amber-900/40
-        `,
+        wrapper: `tw-from-amber-500 tw-to-amber-500/40 dark:tw-from-amber-900 dark:tw-to-amber-900/40`,
       },
       2: {
-        wrapper: `
-          tw-from-lime-600 tw-to-lime-600/40
-          dark:tw-from-lime-900 dark:tw-to-lime-900/40
-        `,
+        wrapper: `tw-from-lime-600 tw-to-lime-600/40 dark:tw-from-lime-900 dark:tw-to-lime-900/40`,
       },
     },
   },

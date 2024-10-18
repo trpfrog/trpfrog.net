@@ -26,7 +26,8 @@ export const metadata = {
   },
 } satisfies Metadata
 
-export default async function Index({ searchParams }: NextServerPageProps) {
+export default async function Index(props: NextServerPageProps) {
+  const searchParams = await props.searchParams
   const oneYearsAgo = format(subYears(new Date(), 1), 'yyyy-MM-dd')
 
   return (

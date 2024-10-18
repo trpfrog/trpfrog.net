@@ -16,7 +16,7 @@ const styles = tv({
       'tw-flex tw-flex-col tw-items-center tw-justify-center',
       'tw-text-center tw-text-4xl tw-font-bold tw-text-white tw-text-opacity-80',
     ],
-    nameWrapper: 'tw-flex tw-items-baseline tw-gap-2 ',
+    nameWrapper: 'tw-flex tw-items-baseline tw-gap-2',
     name: 'first:tw-text-4xl first:tw-font-bold last:tw-text-2xl',
   },
 })()

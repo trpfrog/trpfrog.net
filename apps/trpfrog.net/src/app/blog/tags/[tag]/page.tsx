@@ -18,19 +18,21 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     tag: string
-  }
+  }>
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params
   const tag = decodeURIComponent(params.tag)
   return {
     title: `タグ「${tag}」の記事一覧 - つまみログ`,
   }
 }
 
-export default async function Index({ params }: Props) {
+export default async function Index(props: Props) {
+  const params = await props.params
   const tag = decodeURIComponent(params.tag)
   const articles = await readAllBlogPosts({ tag })
 

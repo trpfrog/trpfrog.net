@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-export type ErrorFallbackProps = React.ComponentPropsWithoutRef<'div'> & {
+type ErrorFallbackProps = React.ComponentPropsWithoutRef<'div'> & {
   title?: string
 }
 

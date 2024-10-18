@@ -17,5 +17,3 @@ export const WorksFrontmatterSchema = z.object({
   ),
   date: z.coerce.date(),
 })
-
-export type WorksFrontmatter = z.infer<typeof WorksFrontmatterSchema>

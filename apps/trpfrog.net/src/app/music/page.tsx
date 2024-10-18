@@ -6,8 +6,9 @@ import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
 import { A } from '@/components/wrappers'
 
+// FIXME: Cannot find module 'Lyrics'
+// @ts-expect-error - Error: Cannot find module 'Lyrics'
 import Lyrics from './Lyrics.mdx'
-import styles from './style.module.scss'
 
 export default function Music() {
   return (
@@ -54,7 +55,7 @@ export default function Music() {
       </Block>
 
       <Block title={'歌詞'}>
-        <div id={styles.lyrics}>
+        <div className="tw-text-center tw-text-lg &_span:tw-inline-block">
           <Lyrics />
         </div>
       </Block>

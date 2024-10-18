@@ -1,10 +1,10 @@
 import { RefObject } from 'react'
 
-export const ICON_SIZE = 500,
+const ICON_SIZE = 500,
   CIRCLE_SIZE = 430
 
 export class IconCanvas {
-  canvasRef: RefObject<HTMLCanvasElement>
+  canvasRef: RefObject<HTMLCanvasElement | null>
   x: number = 35
   y: number = 0
   w: number = 0
@@ -16,7 +16,7 @@ export class IconCanvas {
     mask: HTMLImageElement
   }
 
-  constructor(canvasRef: RefObject<HTMLCanvasElement>) {
+  constructor(canvasRef: RefObject<HTMLCanvasElement | null>) {
     this.canvasRef = canvasRef
     if (typeof window !== 'undefined') {
       this.images = {

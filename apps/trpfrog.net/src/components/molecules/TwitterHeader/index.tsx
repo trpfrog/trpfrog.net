@@ -11,7 +11,7 @@ import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
 
-export type TwitterHeaderProps = {
+type TwitterHeaderProps = {
   iconStyle?: React.CSSProperties['background']
   preset?: keyof typeof iconPreset
   name: string

@@ -7,7 +7,7 @@ const image = replaceWithLighterImageFormat(
   'https://res.cloudinary.com/trpfrog/image/upload/w_1000/blog/sugadaira-travel/42C94C5A-04C6-4DEC-9D41-2C87F87D79B7_1_105_c.jpg',
 )
 
-export const attributes = [
+const attributes = [
   { icon: '🐸', iconName: '性別', text: '男性' },
   { icon: '🎂', iconName: '誕生日', text: '2000年10月17日 (23歳)' },
   {
@@ -39,7 +39,7 @@ const styles = tv({
       'tw-h-full tw-w-full tw-bg-gradient-to-br tw-from-window-color tw-to-transparent tw-p-8 sp:tw-p-5',
       'tw-flex tw-flex-col tw-justify-between',
     ],
-    nameWrapper: 'tw-flex tw-items-baseline tw-gap-2 ',
+    nameWrapper: 'tw-flex tw-items-baseline tw-gap-2',
     name: 'first:tw-text-4xl first:tw-font-bold last:tw-text-2xl',
     textWrapper: 'tw-text-justify tw-leading-7 sp:tw-text-sm sp:tw-leading-6',
     text: 'tw-mr-1 tw-rounded-sm tw-bg-window-color/95 tw-leading-none',

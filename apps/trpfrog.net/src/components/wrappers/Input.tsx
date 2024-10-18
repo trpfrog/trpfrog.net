@@ -6,7 +6,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 type Props = React.ComponentPropsWithRef<'input'>
 
-export const inputBoxStyle = tv({
+const inputBoxStyle = tv({
   base: 'tw-rounded-md tw-bg-gray-200 tw-p-1 dark:tw-bg-gray-700',
 })
 

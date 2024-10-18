@@ -10,13 +10,13 @@
     "lint-fix": "eslint . --fix"
   },
   "dependencies": {
-    "@hono/zod-validator": "^0.2.2",
+    "@hono/zod-validator": "^0.4.1",
     "@huggingface/inference": "^2.8.0",
     "@langchain/core": "^0.2.17",
     "@langchain/openai": "^0.2.4",
     "@trpfrog.net/constants": "workspace:*",
     "date-fns": "^3.6.0",
-    "hono": "^4.5.0",
+    "hono": "^4.6.5",
     "ts-dedent": "^2.2.0",
     "zod": "^3.23.8"
   },

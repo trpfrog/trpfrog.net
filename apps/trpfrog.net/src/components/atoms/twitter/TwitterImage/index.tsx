@@ -5,7 +5,7 @@ export type TwitterImageData = {
   alt?: string
 }
 
-export type TwitterImageProps = {
+type TwitterImageProps = {
   images: TwitterImageData[]
   cite?: string
 }
