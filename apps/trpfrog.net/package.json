@@ -11,7 +11,7 @@
     "test": "vitest run",
     "build-storybook": "storybook build",
     "lint-fix": "eslint . --fix",
-    "check-unused": "ts-remove-unused --skip '.*\\.(test|spec|stories)\\.tsx?' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?'"
+    "check-unused": "ts-remove-unused --skip '.*\\.(test|spec|stories)\\.tsx?' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?' --check"
   },
   "prisma": {
     "seed": "dotenv -e .env.local -- ts-node --compiler-options {\"module\":\"CommonJS\"} ./src/prisma/seed.ts",
