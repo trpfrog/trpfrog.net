@@ -9,6 +9,9 @@
     "test": "vitest run",
     "lint-fix": "eslint . --fix"
   },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*"

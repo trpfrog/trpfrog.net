@@ -1,4 +1,4 @@
-import { defineEndpoints } from './defineEndpoints'
+import { defineEndpoints } from '@trpfrog.net/utils'
 
 export const services = defineEndpoints({
   website: {

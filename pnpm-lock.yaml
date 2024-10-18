@@ -556,9 +556,15 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@trpfrog.net/config-eslint':
+        specifier: workspace:*
+        version: link:../config-eslint
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
+      '@trpfrog.net/utils':
+        specifier: workspace:*
+        version: link:../utils
 
   packages/posts:
     dependencies:
@@ -596,6 +602,10 @@ importers:
         version: link:../config-typescript
 
   packages/utils:
+    dependencies:
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@trpfrog.net/config-typescript':
         specifier: workspace:*

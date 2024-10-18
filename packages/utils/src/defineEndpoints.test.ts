@@ -1,6 +1,6 @@
 import { describe, test, expect, expectTypeOf } from 'vitest'
 
-import { defineEndpoints } from './defineEndpoints'
+import { defineEndpoints } from './defineEndpoints.ts'
 
 describe('defineEndpoints', () => {
   describe('should correctly parse and return endpoints with all fields provided', () => {
@@ -154,12 +154,13 @@ describe('defineEndpoints', () => {
       ).toThrow()
     })
 
-    test('should throw when production is missing', () => {
+    test('should throw when production is not a valid URL', () => {
       expect(() =>
         defineEndpoints({
           api: {
             port: 3000,
             development: 'http://dev.api.local',
+            production: 'invalid-url',
           },
         }),
       ).toThrow()
