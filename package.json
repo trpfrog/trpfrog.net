@@ -17,6 +17,7 @@
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.4",
     "@evilmartians/lefthook": "^1.7.11",
+    "@line/ts-remove-unused": "^0.5.2",
     "@trpfrog.net/config-eslint": "workspace:*",
     "@types/node": "^20.14.12",
     "@vitejs/plugin-react": "^4.3.1",
