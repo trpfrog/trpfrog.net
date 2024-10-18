@@ -37,7 +37,7 @@ const styles = {
   }),
 }
 
-export interface TopCardProps extends ComponentPropsWithRef<'div'> {
+interface TopCardProps extends ComponentPropsWithRef<'div'> {
   title?: string
   titlePosition?: VariantProps<typeof styles.h2>['position']
 }
@@ -60,7 +60,7 @@ export function TopCard(props: TopCardProps) {
   )
 }
 
-export interface TopLinkCardProps extends AProps {
+interface TopLinkCardProps extends AProps {
   title?: string
   readMoreText?: string | boolean
   titlePosition?: VariantProps<typeof styles.h2>['position']

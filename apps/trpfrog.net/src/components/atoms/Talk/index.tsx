@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-export type ConversationProps = React.ComponentPropsWithoutRef<'div'>
+type ConversationProps = React.ComponentPropsWithoutRef<'div'>
 
 export function Talk(props: ConversationProps) {
   const { className = '', children, ...rest } = props
@@ -13,7 +13,7 @@ export function Talk(props: ConversationProps) {
   )
 }
 
-export type ConversationItemProps = React.ComponentPropsWithoutRef<'div'> & {
+type ConversationItemProps = React.ComponentPropsWithoutRef<'div'> & {
   speaker: string
   outOfComment?: React.ReactNode
 }

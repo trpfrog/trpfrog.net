@@ -9,7 +9,7 @@ export type MarkdownOptions = Omit<MDXRemoteProps, 'source' | 'components'> & {
   components: MDXRemoteProps['components']
 }
 
-export type ArticleRendererProps =
+type ArticleRendererProps =
   | {
       toRender: string
       markdownOptions: MarkdownOptions

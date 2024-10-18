@@ -166,7 +166,7 @@ export function getMarkdownOptions(options?: {
   } satisfies MarkdownOptions
 }
 
-export function getMarkdownPlugins() {
+function getMarkdownPlugins() {
   return {
     remarkPlugins: [
       remarkGfm,

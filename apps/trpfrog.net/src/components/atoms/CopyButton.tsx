@@ -7,7 +7,7 @@ import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
 
 import { tv } from '@/lib/tailwind/variants'
 
-export type CopyButtonProps = {
+type CopyButtonProps = {
   copyContent: string
   className?: string
   onError?: (error: Error) => void

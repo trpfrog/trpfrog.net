@@ -7,7 +7,7 @@ const image = replaceWithLighterImageFormat(
   'https://res.cloudinary.com/trpfrog/image/upload/w_1000/blog/sugadaira-travel/42C94C5A-04C6-4DEC-9D41-2C87F87D79B7_1_105_c.jpg',
 )
 
-export const attributes = [
+const attributes = [
   { icon: '🐸', iconName: '性別', text: '男性' },
   { icon: '🎂', iconName: '誕生日', text: '2000年10月17日 (23歳)' },
   {

@@ -1,6 +1,6 @@
 import { RefObject } from 'react'
 
-export const ICON_SIZE = 500,
+const ICON_SIZE = 500,
   CIRCLE_SIZE = 430
 
 export class IconCanvas {

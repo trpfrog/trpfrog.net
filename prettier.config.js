@@ -2,7 +2,7 @@
 
 /** @type {import("prettier").Config} */
 const config = {
-  plugins: ['prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
   trailingComma: 'all',
   tabWidth: 2,
   semi: false,

@@ -2,12 +2,12 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-export type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tweet: string
   cite?: string
 }
 
-export function parseTweet(tweet: string) {
+function parseTweet(tweet: string) {
   tweet = ' ' + tweet + ' '
 
   const sepFigures = ['\\s', '\\n', '\\(', '\\)', '、', '。', '！', '？']

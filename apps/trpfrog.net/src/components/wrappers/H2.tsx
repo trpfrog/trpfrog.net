@@ -3,7 +3,7 @@ import * as React from 'react'
 import { tv } from '@/lib/tailwind/variants'
 import { zodEnumFromObjKeys } from '@/lib/zod'
 
-export const iconURLs = {
+const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',
   ice: '/images/icons/ice.webp',
   think: '/images/icons/thinking.webp',

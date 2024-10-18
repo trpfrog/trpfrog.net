@@ -9,7 +9,7 @@ import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
 import { fetchOGP } from './fetchOGP'
 
-export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   href: string
   fallbackToClient?: boolean
   fallbackToClientMillis?: number
