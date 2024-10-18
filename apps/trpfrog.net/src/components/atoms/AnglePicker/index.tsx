@@ -4,7 +4,7 @@ import { useImperativeHandle, useRef, useState } from 'react'
 
 import { useDragEvent } from '@/hooks/useDragEvent'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onDrag'> {
   onAngleChange: (degree: number) => void
