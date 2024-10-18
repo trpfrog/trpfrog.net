@@ -11,6 +11,22 @@ const EndpointRecordSchema = z.record(
 
 export type EndpointRecord = z.infer<typeof EndpointRecordSchema>
 
+type ReturnRecord<
+  Port extends number | null | undefined,
+  Development extends string | null | undefined,
+  Production extends string | null | undefined,
+  DevelopmentFinally = Development extends string
+    ? Development
+    : Port extends number
+      ? `http://localhost:${Port}`
+      : Production,
+> = {
+  port: Port
+  development: DevelopmentFinally
+  production: Production
+  endpoint: (env: 'development' | 'production' | 'test') => DevelopmentFinally | Production
+}
+
 export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
   const parsedEndpoints = EndpointRecordSchema.parse(endpoints)
 
@@ -29,15 +45,6 @@ export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
   }
 
   return parsedEndpoints as {
-    [K in keyof T]: {
-      port: T[K]['port'] extends number ? T[K]['port'] : undefined
-      development: T[K]['development'] extends string
-        ? T[K]['development']
-        : T[K]['port'] extends number
-          ? `http://localhost:${T[K]['port']}`
-          : T[K]['production']
-      production: T[K]['production']
-      endpoint: (env: 'development' | 'production' | 'test') => string | null
-    }
+    [K in keyof T]: ReturnRecord<T[K]['port'], T[K]['development'], T[K]['production']>
   }
 }
