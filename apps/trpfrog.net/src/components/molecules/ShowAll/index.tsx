@@ -7,7 +7,7 @@ import { usePixelValueFromCSSLength } from '@/components/molecules/ShowAll/usePi
 
 import styles from './index.module.scss'
 
-export type ShowAllProps = FoggedDivProps & {
+type ShowAllProps = FoggedDivProps & {
   showAllByDefault?: boolean
 }
 

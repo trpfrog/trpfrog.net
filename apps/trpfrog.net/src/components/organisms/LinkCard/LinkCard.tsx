@@ -35,7 +35,7 @@ export const createLinkCardStyles = tv({
   },
 })
 
-export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   title: string
   description?: string
   imageUrl?: string

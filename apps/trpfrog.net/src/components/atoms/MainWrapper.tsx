@@ -11,7 +11,7 @@ export const gridLayoutStyle = tv({
   ],
 })
 
-export const mainWrapperStyle = tv({
+const mainWrapperStyle = tv({
   base: [
     'tw-mx-auto tw-my-[var(--main-margin)]',
     'tw-w-[calc(100%-2*var(--main-margin))] tw-max-w-[1000px]',
@@ -26,7 +26,7 @@ export const mainWrapperStyle = tv({
   },
 })
 
-export interface MainWrapperProps extends React.ComponentPropsWithoutRef<'div'> {
+interface MainWrapperProps extends React.ComponentPropsWithoutRef<'div'> {
   gridLayout?: boolean
 }
 

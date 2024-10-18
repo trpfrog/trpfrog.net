@@ -3,7 +3,7 @@ import * as React from 'react'
 import styles from './index.module.scss'
 import { iconPreset } from './preset'
 
-export type TwitterIconProps = {
+type TwitterIconProps = {
   preset?: keyof typeof iconPreset
   iconStyle?: React.CSSProperties['background']
 }

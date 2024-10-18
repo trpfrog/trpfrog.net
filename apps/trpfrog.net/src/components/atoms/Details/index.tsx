@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styles from './index.module.scss'
 
-export type DetailsProps = React.ComponentPropsWithoutRef<'details'> & {
+type DetailsProps = React.ComponentPropsWithoutRef<'details'> & {
   summary: string
   innerProps?: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>
 }

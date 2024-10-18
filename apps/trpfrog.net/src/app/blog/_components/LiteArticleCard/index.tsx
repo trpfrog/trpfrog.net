@@ -11,7 +11,7 @@ import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 
 import styles from './index.module.scss'
 
-export type LiteArticleCardProps = {
+type LiteArticleCardProps = {
   entry: BlogPost
 }
 

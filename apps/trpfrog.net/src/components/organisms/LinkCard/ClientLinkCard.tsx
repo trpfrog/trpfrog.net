@@ -8,7 +8,7 @@ import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 import { SkeletonLinkCard } from '@/components/organisms/LinkCard/SkeletonLinkCard'
 
-export type ClientLinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+type ClientLinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   href: string
 }
 

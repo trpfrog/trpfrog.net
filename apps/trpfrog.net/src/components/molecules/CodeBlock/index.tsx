@@ -15,7 +15,7 @@ import { normalizeLangName } from './normalizeLangName'
 
 import './shiki-style.css'
 
-export type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string
   language?: string
   fileName?: string
@@ -65,7 +65,7 @@ const langAlias = {
   txt: 'text',
 }
 
-export function extractPrefixes(language: string) {
+function extractPrefixes(language: string) {
   const prefixes: string[] = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
     language = language.replace(prefix, '')
     return prefix.replace(':', '')
@@ -73,7 +73,7 @@ export function extractPrefixes(language: string) {
   return { prefixes, language }
 }
 
-export function isValidLanguage(language: string): boolean {
+function isValidLanguage(language: string): boolean {
   // text and ansi are special languages
   return [...Object.keys(bundledLanguages), ...Object.keys(langAlias), 'text', 'ansi'].includes(
     language?.split(':').slice(-1)[0],

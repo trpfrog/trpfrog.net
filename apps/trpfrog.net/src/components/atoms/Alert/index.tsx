@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './index.module.scss'
 
-export type AlertTypes = 'caution' | 'frog' | 'info'
+type AlertTypes = 'caution' | 'frog' | 'info'
 
 type AlertAppearance = {
   icon: IconDefinition

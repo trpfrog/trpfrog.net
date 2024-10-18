@@ -2,7 +2,7 @@ import { A, AProps } from '@/components/wrappers/A'
 
 import { tv } from '@/lib/tailwind/variants'
 
-export const inlineLinkStyle = tv({
+const inlineLinkStyle = tv({
   base: [
     'tw-inline tw-underline',
     'tw-text-[forestgreen] visited:tw-text-[olive]',

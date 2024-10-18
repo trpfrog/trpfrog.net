@@ -9,7 +9,7 @@ import { tv } from '@/lib/tailwind/variants'
 import { SiteName } from './SiteName'
 import { useHeaderStatus } from './useHeaderStatus'
 
-export type TitleProps = {
+type TitleProps = {
   siteTitle?: string
   pageTitle?: string
 }

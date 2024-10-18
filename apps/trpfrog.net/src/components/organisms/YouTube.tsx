@@ -2,7 +2,7 @@ import { memo } from 'react'
 
 import { YouTubeEmbed } from '@next/third-parties/google'
 
-export interface YouTubeProps {
+interface YouTubeProps {
   videoId: string
 }
 

@@ -77,7 +77,7 @@ const extraCodeBlockComponents = [
   },
 ] as const satisfies readonly ArticleParts[]
 
-export type ExtraCodeBlockComponentName = (typeof extraCodeBlockComponents)[number]['name']
+type ExtraCodeBlockComponentName = (typeof extraCodeBlockComponents)[number]['name']
 
 // TODO: ArticleParts の DevComponent の扱いを考える
 const extraCodeBlockComponentRecord = Object.fromEntries(
