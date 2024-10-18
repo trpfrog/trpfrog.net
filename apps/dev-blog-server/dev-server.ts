@@ -1,8 +1,7 @@
 import { createServer } from 'http'
 import path from 'path'
 
-import { ports } from '@trpfrog.net/constants'
-import { devEndpoints } from '@trpfrog.net/constants'
+import { services } from '@trpfrog.net/constants'
 import chokidar from 'chokidar'
 import { Server } from 'socket.io'
 
@@ -32,6 +31,7 @@ watcher.on('change', markdownPath => {
   io.emit('update', slug)
 })
 
-httpServer.listen(ports.mdServer, () => {
-  console.log(`Markdown Watcher is now listening on ${devEndpoints.mdServer}`)
+const { port, development: devEndpoint } = services.mdServer
+httpServer.listen(port, () => {
+  console.log(`Markdown Watcher is now listening on ${devEndpoint}`)
 })

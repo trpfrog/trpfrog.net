@@ -1,1 +1,1 @@
-export { devEndpoints, endpoints, ports } from './endpoints'
+export { services } from './endpoints'

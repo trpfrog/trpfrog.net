@@ -1,4 +1,4 @@
-import { endpoints } from '@trpfrog.net/constants'
+import { services } from '@trpfrog.net/constants'
 import { hc } from 'hono/client'
 
 export {
@@ -9,5 +9,9 @@ export {
 import type { AppType } from './app'
 
 export function createTrpFrogImageGenerationClient(env: 'development' | 'production' | 'test') {
-  return hc<AppType>(endpoints(env).imageGeneration)
+  const endpoint = services.imageGeneration.endpoint(env)
+  if (endpoint == null) {
+    throw new Error('Image generation service is not available in this environment')
+  }
+  return hc<AppType>(endpoint)
 }
