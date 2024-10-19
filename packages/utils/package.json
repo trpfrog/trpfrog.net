@@ -6,8 +6,11 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "vitest run",
+    "test": "vitest",
     "lint-fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",
