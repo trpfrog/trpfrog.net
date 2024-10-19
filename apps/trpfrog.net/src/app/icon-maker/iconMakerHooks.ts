@@ -47,7 +47,7 @@ export function useIconMakerController(state: MutableRefObject<IconCanvas>) {
         },
         {
           className: styles.rotate_left_btn,
-          onClick: () => state.current?.rotateImage(5),
+          onClick: () => state.current?.rotateImage(-5),
           text: '←R',
         },
         {
