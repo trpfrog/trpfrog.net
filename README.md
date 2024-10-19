@@ -110,3 +110,18 @@ We are using a monorepo. The package structure is as follows.
 └── vitest.workspace.ts
 ```
 
+## 💚 Contribution
+
+**Welcome!** and thank you for your interest in contributing! Please keep the following in mind:
+
+1. **No Major \*Content\* Changes or Additions**  
+   This is a personal site by @trpfrog. Major content changes or new additions that might alter the original intent of the website are not accepted.
+
+2. **License Notice**  
+   This project may switch to the **MIT License** in the future. Contributions will follow the same license at that time.
+
+3. **Improvements and Suggestions Welcome**  
+   Improvements, such as refactoring or typo fixes, are welcome through Pull Requests.  
+   We also welcome new content ideas and suggestions via Issues.
+
+Thank you for your understanding and support!
