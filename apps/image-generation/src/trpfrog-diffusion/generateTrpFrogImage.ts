@@ -15,7 +15,7 @@ export async function generateTrpFrogImage(
   const hf = new HfInference(hfToken)
   const responseBlob = await hf.textToImage(
     {
-      model: 'Prgckwb/trpfrog-diffusion',
+      model: 'Prgckwb/trpfrog-sd3.5-large-lora',
       inputs: prompt,
     },
     {

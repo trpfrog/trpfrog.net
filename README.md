@@ -43,7 +43,7 @@
 
 - **Hono** for API endpoints
 - **Cloudflare Workers** for hosting the API
-- **HuggingFace** for image generation using *Prgckwb/trpfrog-diffusion*
+- **HuggingFace** for image generation using *Prgckwb/trpfrog-sd3.5-large-lora*
 - **OpenAI API** for generating prompt
 - **Cloudflare Workers KV** for caching generated images
 
@@ -114,14 +114,14 @@ We are using a monorepo. The package structure is as follows.
 
 **Welcome!** and thank you for your interest in contributing! Please keep the following in mind:
 
-1. **No Major \*Content\* Changes or Additions**  
+1. **No Major \*Content\* Changes or Additions**
    This is a personal site by @trpfrog. Major content changes or new additions that might alter the original intent of the website are not accepted.
 
-2. **License Notice**  
+2. **License Notice**
    This project may switch to the **MIT License** in the future. Contributions will follow the same license at that time.
 
-3. **Improvements and Suggestions Welcome**  
-   Improvements, such as refactoring or typo fixes, are welcome through Pull Requests.  
+3. **Improvements and Suggestions Welcome**
+   Improvements, such as refactoring or typo fixes, are welcome through Pull Requests.
    We also welcome new content ideas and suggestions via Issues.
 
 Thank you for your understanding and support!
