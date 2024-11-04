@@ -123,8 +123,8 @@ export function IconFrame() {
           </div>
           <div className={styles.poweredBy()}>
             Powered by{' '}
-            <InlineLink href={'https://huggingface.co/Prgckwb/trpfrog-diffusion'}>
-              Prgckwb/trpfrog-diffusion
+            <InlineLink href={'https://huggingface.co/Prgckwb/trpfrog-sd3.5-large-lora'}>
+              Prgckwb/trpfrog-sd3.5-large-lora
             </InlineLink>
           </div>
         </figcaption>
