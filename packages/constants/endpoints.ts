@@ -7,7 +7,7 @@ export const services = defineEndpoints({
   },
   imageGeneration: {
     port: 8001,
-    production: 'https://production.trpfrog-diffusion.trpfrog.workers.dev',
+    production: 'https://trpfrog-diffusion.trpfrog.workers.dev',
   },
   mdServer: {
     port: 8002,
