@@ -1,3 +1,5 @@
+import { services } from '@trpfrog.net/constants'
+import { createURL } from '@trpfrog.net/utils'
 import { Env, Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { basicAuth } from 'hono/basic-auth'
@@ -32,8 +34,12 @@ adminApp.post('/playground/prompt', async c => {
 
 // Update image
 adminApp.post('/force-update', c => {
-  const { TRPFROG_FUNCTIONS_SECRET } = env(c)
-  return fetch('/update?force', {
+  const { TRPFROG_FUNCTIONS_SECRET, NODE_ENV } = env(c)
+  const node_env = z.enum(['development', 'production', 'test']).catch('production').parse(NODE_ENV)
+  const endpoint = createURL('/update', services.imageGeneration.origin(node_env), {
+    force: 'true',
+  })
+  return fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -66,9 +72,20 @@ adminApp.get('/', async c => {
         </pre>
 
         <h2>Operations</h2>
-        <form action="/generate" method="post">
-          <button type="submit">Request Update</button>
-        </form>
+        <button
+          hx-post="/update"
+          hx-trigger="click"
+          hx-on="alert('Update Request has been triggered')"
+        >
+          Request Update
+        </button>
+        <button
+          hx-post="/admin/force-update"
+          hx-trigger="click"
+          hx-on="alert('Force Update has been triggered')"
+        >
+          Force Update
+        </button>
 
         <h2>Playground</h2>
         <h3>Generate prompt</h3>
