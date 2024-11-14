@@ -9,9 +9,9 @@ export {
 import type { AppType } from './app'
 
 export function createTrpFrogImageGenerationClient(env: 'development' | 'production' | 'test') {
-  const endpoint = services.imageGeneration.endpoint(env)
-  if (endpoint == null) {
+  const origin = services.imageGeneration.origin(env)
+  if (origin == null) {
     throw new Error('Image generation service is not available in this environment')
   }
-  return hc<AppType>(endpoint)
+  return hc<AppType>(origin).icongen
 }

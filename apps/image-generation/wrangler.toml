@@ -1,5 +1,12 @@
 name = "trpfrog-diffusion"
 compatibility_date = "2023-12-01"
+routes = [
+  { pattern = "api.trpfrog.net/icongen", zone_name = "trpfrog.net" },
+  { pattern = "api.trpfrog.net/icongen/*", zone_name = "trpfrog.net" }
+]
+
+[observability]
+enabled = true
 
 [[kv_namespaces]]
 binding = "DIFFUSION_KV"

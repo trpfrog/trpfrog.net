@@ -15,6 +15,7 @@
     "@langchain/core": "^0.2.17",
     "@langchain/openai": "^0.2.4",
     "@trpfrog.net/constants": "workspace:*",
+    "@trpfrog.net/utils": "workspace:*",
     "date-fns": "^4.1.0",
     "hono": "^4.6.5",
     "ts-dedent": "^2.2.0",

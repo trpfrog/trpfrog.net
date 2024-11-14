@@ -1,8 +1,9 @@
+import { services } from '@trpfrog.net/constants'
+import { corsWithNodeEnv } from '@trpfrog.net/utils/hono'
 import { differenceInMinutes } from 'date-fns'
 import { Context, Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { cache } from 'hono/cache'
-import { cors } from 'hono/cors'
 import { HTTPException } from 'hono/http-exception'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
@@ -39,9 +40,14 @@ async function fetchCacheStatus(c: Context<Env>) {
 }
 
 export const app = new Hono<Env>()
+  .basePath(services.imageGeneration.basePath)
   .use(prettyJSON())
   .use(trimTrailingSlash())
-  .use(cors())
+  .use(
+    corsWithNodeEnv({
+      origin: nodeEnv => services.website.origin(nodeEnv),
+    }),
+  )
   .get('/current', cache({ cacheName: 'current-image', cacheControl: 'max-age-3600' }), async c => {
     const arrayBuffer = await c.env.DIFFUSION_KV.get('current-image', {
       type: 'arrayBuffer',
