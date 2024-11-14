@@ -60,10 +60,6 @@ export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
         ? parsedEndpoints[name].production
         : parsedEndpoints[name].development
     }
-
-    if (currentEndpoint.production && /^https?:\/\/[^/]+/.test(currentEndpoint.production)) {
-      parsedEndpoints[name].basePath = currentEndpoint.production.replace(/^https?:\/\/[^/]+/, '')
-    }
   }
 
   return parsedEndpoints as {
