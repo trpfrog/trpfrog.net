@@ -1,9 +1,9 @@
 import { services } from '@trpfrog.net/constants'
-import { corsWithNodeEnv } from '@trpfrog.net/utils/hono'
 import { differenceInMinutes } from 'date-fns'
 import { Context, Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { cache } from 'hono/cache'
+import { cors } from 'hono/cors'
 import { HTTPException } from 'hono/http-exception'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
@@ -43,12 +43,8 @@ export const app = new Hono<Env>()
   .basePath(services.imageGeneration.basePath)
   .use(prettyJSON())
   .use(trimTrailingSlash())
-  .use(
-    corsWithNodeEnv({
-      origin: nodeEnv => services.website.origin(nodeEnv),
-    }),
-  )
-  .get('/current', cache({ cacheName: 'current-image', cacheControl: 'max-age-3600' }), async c => {
+  .use(cors())
+  .get('/current', cache({ cacheName: 'current-image', cacheControl: 'max-age=3600' }), async c => {
     const arrayBuffer = await c.env.DIFFUSION_KV.get('current-image', {
       type: 'arrayBuffer',
     })
@@ -56,7 +52,7 @@ export const app = new Hono<Env>()
   })
   .get(
     '/current/metadata',
-    cache({ cacheName: 'current-metadata', cacheControl: 'max-age-3600' }),
+    cache({ cacheName: 'current-metadata', cacheControl: 'max-age=3600' }),
     async c => {
       const data = await c.env.DIFFUSION_KV.get('current-metadata', { type: 'json' })
       return c.json(MetadataSchema.parse(data))
@@ -66,12 +62,18 @@ export const app = new Hono<Env>()
     const data = await fetchCacheStatus(c)
     return c.json(data)
   })
-  .post('/update', requiresApiKey(), async c => {
+  .post('/update', async c => {
     const { OPENAI_API_KEY, HUGGINGFACE_TOKEN } = env(c)
     const { shouldCache, waitMinutes } = await fetchCacheStatus(c)
+    const isForceUpdate = c.req.query('force') === 'true'
+
+    // Check if the request is authorized
+    if (isForceUpdate) {
+      await requiresApiKey()(c, async () => {})
+    }
 
     // Skip update if the last update was within 180 minutes
-    if (c.req.query('force') !== 'true' && shouldCache) {
+    if (!isForceUpdate && shouldCache) {
       return c.json({
         status: 'skipped',
         message: `Minimum update interval is 180 minutes, please wait ${waitMinutes} minutes.`,
