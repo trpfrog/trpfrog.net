@@ -2,7 +2,10 @@
   "name": "@trpfrog.net/utils",
   "private": true,
   "type": "module",
-  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./hono": "./src/hono.ts"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
@@ -10,6 +13,7 @@
     "lint-fix": "eslint . --fix"
   },
   "dependencies": {
+    "hono": "^4.6.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {

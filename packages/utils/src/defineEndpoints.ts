@@ -4,8 +4,24 @@ const EndpointRecordSchema = z.record(
   z.string(),
   z.object({
     port: z.number().nullish(),
-    development: z.string().url().nullish(),
-    production: z.string().url().nullish(),
+    development: z
+      .string()
+      .url()
+      .refine(value => new URL(value).origin === value, {
+        message: '`development` must be a valid origin URL or null',
+      })
+      .nullish(),
+    production: z
+      .string()
+      .url()
+      .refine(value => new URL(value).origin === value, {
+        message: '`production` must be a valid origin URL or null',
+      })
+      .nullish(),
+    basePath: z
+      .string()
+      .refine(value => value.startsWith('/'))
+      .nullish(),
   }),
 )
 
@@ -15,6 +31,7 @@ type ReturnRecord<
   Port extends number | null | undefined,
   Development extends string | null | undefined,
   Production extends string | null | undefined,
+  BasePath extends string | null | undefined,
   DevelopmentFinally = Development extends string
     ? Development
     : Port extends number
@@ -24,7 +41,8 @@ type ReturnRecord<
   port: Port
   development: DevelopmentFinally
   production: Production
-  endpoint: (env: 'development' | 'production' | 'test') => DevelopmentFinally | Production
+  basePath: BasePath
+  origin: (env: 'development' | 'production' | 'test') => DevelopmentFinally | Production
 }
 
 export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
@@ -36,8 +54,8 @@ export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
       ? `http://localhost:${currentEndpoint.port}`
       : currentEndpoint.production
 
-    // @ts-expect-error - endpoint is not typed
-    parsedEndpoints[name].endpoint = (env: 'development' | 'production' | 'test') => {
+    // @ts-expect-error - origin is not typed
+    parsedEndpoints[name].origin = (env: 'development' | 'production' | 'test') => {
       return env === 'production'
         ? parsedEndpoints[name].production
         : parsedEndpoints[name].development
@@ -45,6 +63,11 @@ export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
   }
 
   return parsedEndpoints as {
-    [K in keyof T]: ReturnRecord<T[K]['port'], T[K]['development'], T[K]['production']>
+    [K in keyof T]: ReturnRecord<
+      T[K]['port'],
+      T[K]['development'],
+      T[K]['production'],
+      T[K]['basePath']
+    >
   }
 }

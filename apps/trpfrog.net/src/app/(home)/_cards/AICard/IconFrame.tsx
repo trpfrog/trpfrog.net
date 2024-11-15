@@ -8,8 +8,6 @@ import useSWR from 'swr'
 
 import { NODE_ENV } from '@/env/client'
 
-import { bffClient } from '@/app/api/client'
-
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { WaveText } from '@/components/atoms/WaveText'
 
@@ -65,7 +63,7 @@ export function IconFrame() {
 
   // Trigger update request on mount
   useEffect(() => {
-    void bffClient.diffusion.update.$post()
+    void imgGenClient.update.$post()
   }, [])
 
   if (isLoading) {

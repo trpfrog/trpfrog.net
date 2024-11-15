@@ -1,3 +1,5 @@
+import { services } from '@trpfrog.net/constants'
+import { createURL } from '@trpfrog.net/utils'
 import { Env, Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { basicAuth } from 'hono/basic-auth'
@@ -10,12 +12,16 @@ export const adminApp = new Hono<Env>()
 
 // Basic auth middleware
 adminApp.use(async (c, next) => {
-  const { TRPFROG_FUNCTIONS_SECRET } = env(c)
-  const handler = basicAuth({
-    username: 'admin',
-    password: z.string().parse(TRPFROG_FUNCTIONS_SECRET),
-  })
-  await handler(c, next)
+  if (env(c).NODE_ENV === 'development') {
+    await next()
+  } else {
+    const { TRPFROG_FUNCTIONS_SECRET } = env(c)
+    const handler = basicAuth({
+      username: 'admin',
+      password: z.string().parse(TRPFROG_FUNCTIONS_SECRET),
+    })
+    await handler(c, next)
+  }
 })
 
 // Playground
@@ -25,15 +31,18 @@ adminApp.post('/playground/prompt', async c => {
   const promptRes = await generateRandomTrpFrogPrompt(randomWords, z.string().parse(OPENAI_API_KEY))
   return c.json({
     usedWords: randomWords.join(','),
-    prompt: promptRes.prompt,
-    translated: promptRes.translated,
+    ...promptRes,
   })
 })
 
 // Update image
 adminApp.post('/force-update', c => {
-  const { TRPFROG_FUNCTIONS_SECRET } = env(c)
-  return fetch('/update?force', {
+  const { TRPFROG_FUNCTIONS_SECRET, NODE_ENV } = env(c)
+  const node_env = z.enum(['development', 'production', 'test']).catch('production').parse(NODE_ENV)
+  const endpoint = createURL('/update', services.imageGeneration.origin(node_env), {
+    force: 'true',
+  })
+  return fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,22 +67,33 @@ adminApp.get('/', async c => {
         <h1>image-generation admin page</h1>
 
         <h2>Current Image</h2>
-        <img id="current-image" src="/current" />
+        <img id="current-image" src="/icongen/current" />
 
         <h2>Metadata</h2>
-        <pre id="current-metadata" hx-get="/current/metadata?pretty" hx-trigger="load">
+        <pre id="current-metadata" hx-get="/icongen/current/metadata?pretty" hx-trigger="load">
           loading...
         </pre>
 
         <h2>Operations</h2>
-        <form action="/generate" method="post">
-          <button type="submit">Request Update</button>
-        </form>
+        <button
+          hx-post="/icongen/update"
+          hx-trigger="click"
+          hx-on="alert('Update Request has been triggered')"
+        >
+          Request Update
+        </button>
+        <button
+          hx-post="/icongen/admin/force-update"
+          hx-trigger="click"
+          hx-on="alert('Force Update has been triggered')"
+        >
+          Force Update
+        </button>
 
         <h2>Playground</h2>
         <h3>Generate prompt</h3>
         <button
-          hx-post="/admin/playground/prompt?pretty"
+          hx-post="/icongen/admin/playground/prompt?pretty"
           hx-trigger="click"
           hx-target="#playground-generate-prompt-result"
         >

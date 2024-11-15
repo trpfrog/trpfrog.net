@@ -1,4 +1,5 @@
 import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
+import { StringOutputParser } from '@langchain/core/output_parsers'
 import { ChatOpenAI } from '@langchain/openai'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
@@ -6,58 +7,208 @@ import { z } from 'zod'
 import { getShuffledArray } from '../lib/arrayHelpers'
 
 const PromptSchema = z.object({
-  prompt: z.string().transform(s => s.trim().toLowerCase()),
+  basic: z.object({
+    reasoning: z.string(),
+    prompt: z.string(),
+  }),
+  creative: z.object({
+    reasoning: z.string(),
+    prompt: z.string(),
+  }),
+  polished: z.object({
+    reasoning: z.string(),
+    prompt: z.string(),
+  }),
+  final: z.object({
+    reasoning: z.string(),
+    prompt: z.string(),
+  }),
   translated: z.string(),
 })
 
-export type GeneratedPrompt = z.infer<typeof PromptSchema>
+export type GeneratedPrompt = z.infer<typeof PromptSchema> & { prompt: string }
 
 export async function generateRandomTrpFrogPrompt(
   sourceWords: string[],
   apiKey: string,
 ): Promise<GeneratedPrompt> {
+  const promptPrefix = 'an icon of trpfrog'
+
   // Few-shot learning
   const chatInput = [
     new SystemMessage(
       dedent`
-        The user will provide some words.
-        Currently, there is an image-generation AI based on diffusion models named \`trpfrog-diffusion\`.
-        One of your tasks is to generate a prompt for the AI to create an image based on the provided words.
+        ### Your Task: Create an Engaging and Effective Image-Generation Prompt
 
-          - You don't need to use all the words, but you can't use any additional words.
-          - You must avoid using sensitive (e.g. sexual, violent) words. This is a crucial rule.
-          - The prompt should begin with "a photo of" and include "trpfrog". ("trpfrog" is the subject of the photo)
-          - You must not create a sensitive prompt. This is also a crucial rule.
+        Your primary responsibility is to generate a visually engaging, creative, and coherent image-generation prompt for Stable Diffusion. Follow the step-by-step process below:
 
-        Your task is to complete the following tasks in order and provide the answer in JSON format:
-          "prompt": Generate a prompt for the AI to create an image based on the provided words in English.
-          "translated": Translate this prompt into simple Japanese.
-        ("trpfrog" translates to "つまみさん" in Japanese, and you should attempt to translate English-specific words into Japanese using カタカナ.)
+        #### Phase 1: Understand the Input Words
+        - Carefully review the provided input words.
+        - **You are not required to use all words.** Focus on selecting words that create the most compelling and coherent scene.
+        - Adhere to content guidelines (e.g., SFW, inclusivity) while maintaining the potential for humor or visual appeal.
+
+        #### Phase 2: Develop the "Basic" Prompt
+        - **Purpose**: Build a simple, straightforward description based on the input words.
+        - **Guideline**: Start the prompt with "${promptPrefix}" and incorporate some input words.
+        - **Brainstorming**: Longer prompts are acceptable at this stage to explore ideas and establish a foundation for creativity.
+
+        #### Phase 3: Expand with the "Creative" Prompt
+        - **Purpose**: Introduce unique, funny, or unexpected elements to make the scene visually or conceptually engaging.
+        - **Guideline**: Start the prompt with "${promptPrefix}" and feel free to create a longer description for brainstorming purposes.
+        - **Focus**: Experiment with styles, modifiers, and additional details that enhance the scene while ensuring appropriateness and coherence.
+
+        #### Phase 4: Refine into the "Polished" Prompt
+        - **Purpose**: Streamline the creative draft into a concise, visually coherent description with approximately 20 words.
+        - **Guideline**: Start the prompt with "${promptPrefix}".
+        - **Refinement**: Reduce unnecessary details, ensure clarity, and maintain humor or visual intrigue. Explain how your edits improve the scene.
+
+        #### Phase 5: Write the "Final" Prompt
+        - **Purpose**: Condense the "polished" description into a prompt of **15 words or fewer.**
+        - **Guideline**: The final prompt must start with "${promptPrefix}".
+        - **Focus**: Prioritize clarity, visual impact, and simplicity. Explain why this version is the most effective.
+
+        #### Phase 6: Translate the Prompt into Japanese
+        - Translate the final prompt into Japanese prompt.
+        - Ensure that **"trpfrog" is translated as "つまみさん".**
+        - Maintain the same tone, humor, and visual intent in the translation.
+
+        ### Tips for Writing Image Generation Prompts
+        - **Be Descriptive**: Stable Diffusion performs best with specific, detailed descriptions of objects, environments, and styles.
+        - **Highlight Key Elements**: Focus on the most critical aspects of the scene to guide the model effectively.
+        - **Experiment with Modifiers**: Use words like "photorealistic", "vivid colors", "dramatic lighting", or "fantasy style" to influence the output.
+        - **Balance Detail and Simplicity**: Avoid overloading the prompt with excessive details; prioritize coherence and clarity.
+        - **Leverage Lighting and Mood**: Words like "soft lighting", "golden hour", or "ethereal glow" can add depth and atmosphere.
+        - **Add Context for Realism**: Include plausible actions, interactions, or environments to make the scene feel grounded.
+
+        ### Additional Notes
+        - **Flexibility**: You are not required to use every input word. Instead, focus on selecting words that contribute to the best visual output.
+        - **Brainstorming**: Longer prompts are encouraged in the "basic" and "creative" phases to allow for idea exploration.
+        - **Critical Reasoning**:
+          - Highlight what worked well or poorly in each phase.
+          - Clearly explain your rationale for decisions and edits.
+          - Keep the prompt visually striking, engaging, and humorous.
+
+        ### Output Format:
+        Provide your answer in JSON format:
+        {
+          "basic": {
+            "reasoning": "Explanation for the phase",
+            "prompt": "A longer brainstorming prompt starting with '${promptPrefix}'."
+          },
+          "creative": {
+            "reasoning": "Explanation for the phase",
+            "prompt": "A longer and more creative version starting with '${promptPrefix}'."
+          },
+          "polished": {
+            "reasoning": "Explanation for the phase",
+            "prompt": "A refined version starting with '${promptPrefix}' and about 15 words."
+          },
+          "final": {
+            "reasoning": "Explanation for why this is the best version",
+            "prompt": "A concise and engaging version with 10 words or fewer starting with '${promptPrefix}'."
+          },
+          "translated": "The Japanese translation of the final prompt, ensuring '${promptPrefix}' is 'つまみさんの画像'."
+        }
       `,
     ),
-    new HumanMessage(getShuffledArray([...sourceWords.slice(1), 'running']).join(', ')),
+    new HumanMessage(getShuffledArray([...sourceWords.slice(3), 'wizard', 'castle']).join(', ')),
     new AIMessage(
       JSON.stringify({
-        prompt: 'a photo of running trpfrog',
-        translated: '走るつまみさんの画像',
+        basic: {
+          reasoning:
+            'A simple prompt introducing trpfrog in a castle setting with a wizard, establishing the base scene.',
+          prompt: `${promptPrefix} near a castle with a wizard`,
+        },
+        creative: {
+          reasoning:
+            "Adding glowing spells and ambient effects builds a magical atmosphere, enhancing the scene's visual appeal.",
+          prompt: `${promptPrefix} near an ancient castle as a wizard casts glowing spells under moonlight`,
+        },
+        polished: {
+          reasoning:
+            'Focusing on the glowing spells and moonlight creates an immersive and visually compelling atmosphere.',
+          prompt: `${promptPrefix} by a castle, a wizard casting glowing spells under moonlight`,
+        },
+        final: {
+          reasoning:
+            'This concise version retains key elements while ensuring clarity and a magical theme.',
+          prompt: `${promptPrefix} by a castle, wizard casting glowing spells under moonlight`,
+        },
+        translated: `古城のそばで月光の下、魔法を使う魔術師と一緒のつまみさんの画像`,
       }),
     ),
-    new HumanMessage(getShuffledArray([...sourceWords.slice(2), 'hat', 'sword']).join(', ')),
+    new HumanMessage(
+      getShuffledArray([...sourceWords.slice(2), 'floating', 'geometric shapes']).join(', '),
+    ),
     new AIMessage(
       JSON.stringify({
-        prompt: 'a photo of trpfrog with a hat and a sword and a shield',
-        translated: '帽子と剣と盾を持ったつまみさんの画像',
+        basic: {
+          reasoning:
+            'A straightforward depiction of trpfrog among geometric shapes, setting the foundation for a surreal scene.',
+          prompt: `${promptPrefix} floating among geometric shapes`,
+        },
+        creative: {
+          reasoning:
+            'Glowing effects on the shapes and a surreal background make the scene more dynamic and engaging.',
+          prompt: `${promptPrefix} floating weightlessly among glowing geometric shapes in a surreal, ethereal space`,
+        },
+        polished: {
+          reasoning:
+            'Soft lighting and color effects refine the surreal feel, balancing vibrancy with visual cohesion.',
+          prompt: `${promptPrefix} floating in surreal space with glowing shapes and soft colorful light`,
+        },
+        final: {
+          reasoning:
+            'This version simplifies the surreal elements while maintaining clarity and atmosphere.',
+          prompt: `${promptPrefix} floating in surreal space with glowing shapes`,
+        },
+        translated: `超現実的な空間で光る幾何学的な形に囲まれるつまみさんの画像`,
       }),
     ),
-    new HumanMessage(sourceWords.join(', ')),
+    new HumanMessage(getShuffledArray([...sourceWords.slice(2), 'market', 'fruit']).join(', ')),
+    new AIMessage(
+      JSON.stringify({
+        basic: {
+          reasoning:
+            'A simple prompt placing trpfrog in a market with fruit, building the scene concept.',
+          prompt: `${promptPrefix} in a market with fruit`,
+        },
+        creative: {
+          reasoning:
+            'Adding vendors and activity creates a lively and colorful market environment.',
+          prompt: `${promptPrefix} walking through a bustling market surrounded by fruit and chatting vendors`,
+        },
+        polished: {
+          reasoning:
+            'Refining with bustling streets and vibrant energy makes the market feel more immersive.',
+          prompt: `${promptPrefix} in a lively market with fruit, vendors, and bustling streets`,
+        },
+        final: {
+          reasoning: 'This version highlights key elements of the vibrant market scene succinctly.',
+          prompt: `${promptPrefix} in a market with fruit and busy vendors`,
+        },
+        translated: `市場で果物と忙しい屋台に囲まれるつまみさんの画像`,
+      }),
+    ),
+    new HumanMessage(getShuffledArray(sourceWords).join(', ')),
   ]
 
-  const chat = new ChatOpenAI({
+  const model = new ChatOpenAI({
     model: 'gpt-4o-mini',
     temperature: 0.7,
     apiKey,
+  }).bind({
+    response_format: {
+      type: 'json_object',
+    },
   })
-  const reply = await chat.generate([chatInput])
-  const json = JSON.parse(reply.generations[0][0].text)
-  return PromptSchema.parse(json)
+  const parser = new StringOutputParser()
+  const reply = await model.pipe(parser).invoke(chatInput)
+  const json = JSON.parse(reply)
+  const parsedResponse = PromptSchema.parse(json)
+
+  return {
+    ...parsedResponse,
+    prompt: parsedResponse.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
+  }
 }
