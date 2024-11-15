@@ -12,12 +12,16 @@ export const adminApp = new Hono<Env>()
 
 // Basic auth middleware
 adminApp.use(async (c, next) => {
-  const { TRPFROG_FUNCTIONS_SECRET } = env(c)
-  const handler = basicAuth({
-    username: 'admin',
-    password: z.string().parse(TRPFROG_FUNCTIONS_SECRET),
-  })
-  await handler(c, next)
+  if (env(c).NODE_ENV === 'development') {
+    await next()
+  } else {
+    const { TRPFROG_FUNCTIONS_SECRET } = env(c)
+    const handler = basicAuth({
+      username: 'admin',
+      password: z.string().parse(TRPFROG_FUNCTIONS_SECRET),
+    })
+    await handler(c, next)
+  }
 })
 
 // Playground
@@ -27,8 +31,7 @@ adminApp.post('/playground/prompt', async c => {
   const promptRes = await generateRandomTrpFrogPrompt(randomWords, z.string().parse(OPENAI_API_KEY))
   return c.json({
     usedWords: randomWords.join(','),
-    prompt: promptRes.prompt,
-    translated: promptRes.translated,
+    ...promptRes,
   })
 })
 
@@ -64,23 +67,23 @@ adminApp.get('/', async c => {
         <h1>image-generation admin page</h1>
 
         <h2>Current Image</h2>
-        <img id="current-image" src="/current" />
+        <img id="current-image" src="/icongen/current" />
 
         <h2>Metadata</h2>
-        <pre id="current-metadata" hx-get="/current/metadata?pretty" hx-trigger="load">
+        <pre id="current-metadata" hx-get="/icongen/current/metadata?pretty" hx-trigger="load">
           loading...
         </pre>
 
         <h2>Operations</h2>
         <button
-          hx-post="/update"
+          hx-post="/icongen/update"
           hx-trigger="click"
           hx-on="alert('Update Request has been triggered')"
         >
           Request Update
         </button>
         <button
-          hx-post="/admin/force-update"
+          hx-post="/icongen/admin/force-update"
           hx-trigger="click"
           hx-on="alert('Force Update has been triggered')"
         >
@@ -90,7 +93,7 @@ adminApp.get('/', async c => {
         <h2>Playground</h2>
         <h3>Generate prompt</h3>
         <button
-          hx-post="/admin/playground/prompt?pretty"
+          hx-post="/icongen/admin/playground/prompt?pretty"
           hx-trigger="click"
           hx-target="#playground-generate-prompt-result"
         >
