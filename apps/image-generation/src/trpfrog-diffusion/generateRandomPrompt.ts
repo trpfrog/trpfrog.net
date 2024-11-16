@@ -1,5 +1,5 @@
 import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
-import { StringOutputParser } from '@langchain/core/output_parsers'
+import { JsonOutputParser } from '@langchain/core/output_parsers'
 import { ChatOpenAI } from '@langchain/openai'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
@@ -35,7 +35,7 @@ export async function generateRandomTrpFrogPrompt(
   const promptPrefix = 'an icon of trpfrog'
 
   // Few-shot learning
-  const chatInput = [
+  const chat = [
     new SystemMessage(
       dedent`
         ### Your Task: Create an Engaging and Effective Image-Generation Prompt
@@ -202,10 +202,9 @@ export async function generateRandomTrpFrogPrompt(
       type: 'json_object',
     },
   })
-  const parser = new StringOutputParser()
-  const reply = await model.pipe(parser).invoke(chatInput)
-  const json = JSON.parse(reply)
-  const parsedResponse = PromptSchema.parse(json)
+  const parser = new JsonOutputParser()
+  const rawJson = await model.pipe(parser).invoke(chat)
+  const parsedResponse = PromptSchema.parse(rawJson)
 
   return {
     ...parsedResponse,
