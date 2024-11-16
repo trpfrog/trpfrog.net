@@ -2,7 +2,6 @@ import { services } from '@trpfrog.net/constants'
 import { differenceInMinutes } from 'date-fns'
 import { Context, Hono } from 'hono'
 import { env } from 'hono/adapter'
-import { cache } from 'hono/cache'
 import { cors } from 'hono/cors'
 import { HTTPException } from 'hono/http-exception'
 import { prettyJSON } from 'hono/pretty-json'
@@ -44,20 +43,16 @@ export const app = new Hono<Env>()
   .use(prettyJSON())
   .use(trimTrailingSlash())
   .use(cors())
-  .get('/current', cache({ cacheName: 'current-image', cacheControl: 'max-age=3600' }), async c => {
+  .get('/current', async c => {
     const arrayBuffer = await c.env.DIFFUSION_KV.get('current-image', {
       type: 'arrayBuffer',
     })
     return c.newResponse(arrayBuffer)
   })
-  .get(
-    '/current/metadata',
-    cache({ cacheName: 'current-metadata', cacheControl: 'max-age=3600' }),
-    async c => {
-      const data = await c.env.DIFFUSION_KV.get('current-metadata', { type: 'json' })
-      return c.json(MetadataSchema.parse(data))
-    },
-  )
+  .get('/current/metadata', async c => {
+    const data = await c.env.DIFFUSION_KV.get('current-metadata', { type: 'json' })
+    return c.json(MetadataSchema.parse(data))
+  })
   .post('/status', requiresApiKey(), async c => {
     const data = await fetchCacheStatus(c)
     return c.json(data)
