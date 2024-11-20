@@ -6,6 +6,7 @@
   },
   "scripts": {
     "dev": "wrangler dev --port 8001 src/index.ts",
+    "generate-types": "wrangler types --env-interface Bindings",
     "deploy": "wrangler deploy --minify src/index.ts",
     "lint-fix": "eslint . --fix"
   },
@@ -19,10 +20,12 @@
     "date-fns": "^4.1.0",
     "hono": "^4.6.5",
     "ts-dedent": "^2.2.0",
+    "ts-pattern": "^5.1.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240718.0",
-    "@trpfrog.net/config-typescript": "workspace:*"
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@types/node": "20"
   }
 }

@@ -116,6 +116,9 @@ importers:
       ts-dedent:
         specifier: ^2.2.0
         version: 2.2.0
+      ts-pattern:
+        specifier: ^5.1.2
+        version: 5.1.2
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -126,6 +129,9 @@ importers:
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
+      '@types/node':
+        specifier: '20'
+        version: 20.14.12
 
   apps/trpfrog.net:
     dependencies:
@@ -164,7 +170,7 @@ importers:
         version: 14.2.15(@mdx-js/loader@3.0.1(webpack@5.92.1(@swc/core@1.6.13(@swc/helpers@0.5.13))(esbuild@0.18.20)))(@mdx-js/react@3.0.1(react@19.0.0-rc-cd22717c-20241013)(types-react@19.0.0-rc.1))
       '@next/third-parties':
         specifier: canary
-        version: 15.0.4-canary.13(next@15.0.0-rc.1(@babel/core@7.24.8)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-fa06e2c-20241016)(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)(sass@1.77.8))(react@19.0.0-rc-cd22717c-20241013)
+        version: 15.0.4-canary.20(next@15.0.0-rc.1(@babel/core@7.24.8)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-fa06e2c-20241016)(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)(sass@1.77.8))(react@19.0.0-rc-cd22717c-20241013)
       '@prisma/client':
         specifier: ^5.14.0
         version: 5.14.0(prisma@5.14.0)
@@ -2404,6 +2410,7 @@ packages:
 
   '@evilmartians/lefthook@1.8.2':
     resolution: {integrity: sha512-SZdQk3W9q7tcJwnSwEMUubQqVIK7SHxv52hEAnV7o3nPI+xKcmd+rN0hZIJg07wjBaJRAjzdvoQySKQQYPW5Qw==}
+    cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -2777,8 +2784,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@15.0.4-canary.13':
-    resolution: {integrity: sha512-CzwNecQ4pM20OIpuglyTP/LJyT6uLgxOtRZNor8XkfwSyBqvmLdA3DaIOZ4oKKx9n/U3NE4J+Jb8Pozz1gRyHg==}
+  '@next/third-parties@15.0.4-canary.20':
+    resolution: {integrity: sha512-nNszS4QZENfgeUW25LWDKGCPrtMtTOIeJgPTPQUm1JP7odlEpLcmBsHd9e9URWHfNlJs4mj0vEuGAJeYfbkowg==}
     peerDependencies:
       next: ^13.0.0 || ^14.0.0 || ^15.0.0
       react: ^18.2.0 || 19.0.0-rc-380f5d67-20241113
@@ -12729,7 +12736,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@15.0.0-rc.1':
     optional: true
 
-  '@next/third-parties@15.0.4-canary.13(next@15.0.0-rc.1(@babel/core@7.24.8)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-fa06e2c-20241016)(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)(sass@1.77.8))(react@19.0.0-rc-cd22717c-20241013)':
+  '@next/third-parties@15.0.4-canary.20(next@15.0.0-rc.1(@babel/core@7.24.8)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-fa06e2c-20241016)(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)(sass@1.77.8))(react@19.0.0-rc-cd22717c-20241013)':
     dependencies:
       next: 15.0.0-rc.1(@babel/core@7.24.8)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@0.0.0-experimental-fa06e2c-20241016)(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)(sass@1.77.8)
       react: 19.0.0-rc-cd22717c-20241013
@@ -14618,7 +14625,7 @@ snapshots:
 
   '@types/jsdom@21.1.7':
     dependencies:
-      '@types/node': 20.13.0
+      '@types/node': 20.14.12
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
 
@@ -14715,7 +14722,7 @@ snapshots:
 
   '@types/webpack@5.28.5(@swc/core@1.6.13(@swc/helpers@0.5.13))(esbuild@0.18.20)':
     dependencies:
-      '@types/node': 20.13.0
+      '@types/node': 20.14.12
       tapable: 2.2.1
       webpack: 5.92.1(@swc/core@1.6.13(@swc/helpers@0.5.13))(esbuild@0.18.20)
     transitivePeerDependencies:

@@ -1,10 +1,9 @@
-import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
-import { JsonOutputParser } from '@langchain/core/output_parsers'
-import { ChatOpenAI } from '@langchain/openai'
+import { toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
 
-import { getShuffledArray } from '../lib/arrayHelpers'
+import { Deps } from '@/domain/deps'
+import { ChatUtterance } from '@/domain/llm'
 
 const PromptSchema = z.object({
   basic: z.object({
@@ -30,14 +29,15 @@ export type GeneratedPrompt = z.infer<typeof PromptSchema> & { prompt: string }
 
 export async function generateRandomTrpFrogPrompt(
   sourceWords: string[],
-  apiKey: string,
+  deps: Deps<'jsonChatbot'>,
 ): Promise<GeneratedPrompt> {
   const promptPrefix = 'an icon of trpfrog'
 
   // Few-shot learning
-  const chat = [
-    new SystemMessage(
-      dedent`
+  const chat: ChatUtterance[] = [
+    {
+      role: 'system',
+      text: dedent`
         ### Your Task: Create an Engaging and Effective Image-Generation Prompt
 
         Your primary responsibility is to generate a visually engaging, creative, and coherent image-generation prompt for Stable Diffusion. Follow the step-by-step process below:
@@ -110,10 +110,14 @@ export async function generateRandomTrpFrogPrompt(
           "translated": "The Japanese translation of the final prompt, ensuring '${promptPrefix}' is 'つまみさんの画像'."
         }
       `,
-    ),
-    new HumanMessage(getShuffledArray([...sourceWords.slice(3), 'wizard', 'castle']).join(', ')),
-    new AIMessage(
-      JSON.stringify({
+    },
+    {
+      role: 'user',
+      text: toShuffledArray([...sourceWords.slice(3), 'wizard', 'castle']).join(', '),
+    },
+    {
+      role: 'assistant',
+      text: JSON.stringify({
         basic: {
           reasoning:
             'A simple prompt introducing trpfrog in a castle setting with a wizard, establishing the base scene.',
@@ -136,12 +140,14 @@ export async function generateRandomTrpFrogPrompt(
         },
         translated: `古城のそばで月光の下、魔法を使う魔術師と一緒のつまみさんの画像`,
       }),
-    ),
-    new HumanMessage(
-      getShuffledArray([...sourceWords.slice(2), 'floating', 'geometric shapes']).join(', '),
-    ),
-    new AIMessage(
-      JSON.stringify({
+    },
+    {
+      role: 'user',
+      text: toShuffledArray([...sourceWords.slice(2), 'floating', 'geometric shapes']).join(', '),
+    },
+    {
+      role: 'assistant',
+      text: JSON.stringify({
         basic: {
           reasoning:
             'A straightforward depiction of trpfrog among geometric shapes, setting the foundation for a surreal scene.',
@@ -164,10 +170,14 @@ export async function generateRandomTrpFrogPrompt(
         },
         translated: `超現実的な空間で光る幾何学的な形に囲まれるつまみさんの画像`,
       }),
-    ),
-    new HumanMessage(getShuffledArray([...sourceWords.slice(2), 'market', 'fruit']).join(', ')),
-    new AIMessage(
-      JSON.stringify({
+    },
+    {
+      role: 'user',
+      text: toShuffledArray([...sourceWords.slice(2), 'market', 'fruit']).join(', '),
+    },
+    {
+      role: 'assistant',
+      text: JSON.stringify({
         basic: {
           reasoning:
             'A simple prompt placing trpfrog in a market with fruit, building the scene concept.',
@@ -189,21 +199,14 @@ export async function generateRandomTrpFrogPrompt(
         },
         translated: `市場で果物と忙しい屋台に囲まれるつまみさんの画像`,
       }),
-    ),
-    new HumanMessage(getShuffledArray(sourceWords).join(', ')),
+    },
+    {
+      role: 'user',
+      text: toShuffledArray(sourceWords).join(', '),
+    },
   ]
 
-  const model = new ChatOpenAI({
-    model: 'gpt-4o-mini',
-    temperature: 0.7,
-    apiKey,
-  }).bind({
-    response_format: {
-      type: 'json_object',
-    },
-  })
-  const parser = new JsonOutputParser()
-  const rawJson = await model.pipe(parser).invoke(chat)
+  const rawJson = await deps.jsonChatbot(chat)
   const parsedResponse = PromptSchema.parse(rawJson)
 
   return {

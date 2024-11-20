@@ -1,3 +1,12 @@
 {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": [
+      "@cloudflare/workers-types"
+    ],
+  },
   "extends": "@trpfrog.net/config-typescript/hono.json"
 }

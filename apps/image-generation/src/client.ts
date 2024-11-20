@@ -4,7 +4,7 @@ import { hc } from 'hono/client'
 export {
   TrpFrogImageGenerationResultSchema,
   type TrpFrogImageGenerationResult,
-} from './trpfrog-diffusion/schema'
+} from '@/domain/generation-result'
 
 import type { AppType } from './app'
 
