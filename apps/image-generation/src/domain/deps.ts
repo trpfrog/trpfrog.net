@@ -1,7 +1,7 @@
-import { AITrpFrogImageRepo } from './image-repo'
-import { ChatLLMJson } from './llm'
-import { RandomWordGenerator } from './random-words'
-import { TextToImage } from './text-to-image'
+import { AITrpFrogImageRepo } from './repos/image-repo'
+import { ChatLLMJson } from './services/llm'
+import { RandomWordGenerator } from './services/random-words'
+import { TextToImage } from './services/text-to-image'
 
 export interface RequiredDependencies {
   fetchRandomWords: RandomWordGenerator

@@ -1,7 +1,7 @@
 import { generateNewImage } from './ai/generateNewImage'
 
 import { Deps } from '@/domain/deps'
-import { isImageStale } from '@/domain/stale'
+import { isImageStale } from '@/domain/services/stale'
 
 type UpdateImageResult =
   | {

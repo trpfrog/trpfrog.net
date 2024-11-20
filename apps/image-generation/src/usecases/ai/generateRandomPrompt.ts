@@ -3,7 +3,7 @@ import dedent from 'ts-dedent'
 import { z } from 'zod'
 
 import { Deps } from '@/domain/deps'
-import { ChatUtterance } from '@/domain/llm'
+import { ChatUtterance } from '@/domain/services/llm'
 
 const PromptSchema = z.object({
   basic: z.object({

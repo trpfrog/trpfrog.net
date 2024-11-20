@@ -1,9 +1,9 @@
 import { createApp } from '@/app'
 import { adminApp } from '@/app/devPage'
-import { workersTrpFrogImageRepo } from '@/infra/image-repo'
-import { createOpenAIChatLLMJson } from '@/infra/llm'
-import { randomWordApi } from '@/infra/random-words'
-import { createHfImageGenerator } from '@/infra/text-to-image'
+import { workersTrpFrogImageRepo } from '@/infra/repos/image-repo'
+import { createOpenAIChatLLMJson } from '@/infra/services/llm'
+import { randomWordApi } from '@/infra/services/random-words'
+import { createHfImageGenerator } from '@/infra/services/text-to-image'
 
 const app = createApp(env => ({
   fetchRandomWords: randomWordApi,

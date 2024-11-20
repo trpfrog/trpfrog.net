@@ -1,7 +1,7 @@
 import { generateRandomTrpFrogPrompt } from './generateRandomPrompt'
 
 import type { Deps } from '@/domain/deps'
-import type { TrpFrogImageGenerationResult } from '@/domain/generation-result'
+import type { TrpFrogImageGenerationResult } from '@/domain/entities/generation-result'
 
 export async function generateNewImage(
   deps: Deps<'fetchRandomWords' | 'generateImage' | 'jsonChatbot'>,

@@ -1,7 +1,7 @@
 import type {
   TrpFrogImageGenerationMetadata,
   TrpFrogImageGenerationResult,
-} from './generation-result'
+} from '../entities/generation-result'
 
 export interface AITrpFrogImageRepo {
   read: {
