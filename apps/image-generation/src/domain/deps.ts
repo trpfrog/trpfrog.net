@@ -1,4 +1,4 @@
-import { PickDependencies, PickDependenciesKey } from '@trpfrog.net/utils'
+import { DependencyRef, PickDependencies } from '@trpfrog.net/utils'
 
 import { AITrpFrogImageRepo } from './repos/image-repo'
 import { ChatLLMJson } from './services/llm'
@@ -16,7 +16,7 @@ export interface RequiredDependencies {
  * Pick the dependencies from RequiredDependencies
  * You can use keys from RequiredDependencies or provide a function that takes RequiredDependencies as the first argument.
  */
-export type Deps<T extends PickDependenciesKey<RequiredDependencies>> = PickDependencies<
+export type Deps<T extends DependencyRef<RequiredDependencies>> = PickDependencies<
   RequiredDependencies,
   T
 >
