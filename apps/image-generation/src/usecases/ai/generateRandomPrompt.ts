@@ -2,35 +2,48 @@ import { toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
 
-import { Deps } from '@/domain/deps'
-import { ChatUtterance } from '@/domain/services/llm'
+import type { TrpFrogImagePrompt } from '@/domain/entities/generation-result'
+import type { ChatUtterance } from '@/domain/services/llm'
 
-const PromptSchema = z.object({
-  basic: z.object({
-    reasoning: z.string(),
-    prompt: z.string(),
-  }),
-  creative: z.object({
-    reasoning: z.string(),
-    prompt: z.string(),
-  }),
-  polished: z.object({
-    reasoning: z.string(),
-    prompt: z.string(),
-  }),
+import { Deps } from '@/domain/deps'
+
+type OutputWithReasoning = {
+  basic: {
+    reasoning: string
+    prompt: string
+  }
+  creative: {
+    reasoning: string
+    prompt: string
+  }
+  polished: {
+    reasoning: string
+    prompt: string
+  }
+  final: {
+    reasoning: string
+    prompt: string
+  }
+  translated: string
+}
+
+export type { OutputWithReasoning as __internal_OutputWithReasoning }
+
+const FinalPromptSchema = z.object({
   final: z.object({
-    reasoning: z.string(),
     prompt: z.string(),
   }),
   translated: z.string(),
 })
 
-export type GeneratedPrompt = z.infer<typeof PromptSchema> & { prompt: string }
-
 export async function generateRandomTrpFrogPrompt(
   deps: Deps<'jsonChatbot'>,
   sourceWords: string[],
-): Promise<GeneratedPrompt> {
+): Promise<TrpFrogImagePrompt> {
+  if (sourceWords.length <= 0) {
+    throw new Error('Invalid input words')
+  }
+
   const promptPrefix = 'an icon of trpfrog'
 
   // Few-shot learning
@@ -139,7 +152,7 @@ export async function generateRandomTrpFrogPrompt(
           prompt: `${promptPrefix} by a castle, wizard casting glowing spells under moonlight`,
         },
         translated: `古城のそばで月光の下、魔法を使う魔術師と一緒のつまみさんの画像`,
-      }),
+      } satisfies OutputWithReasoning),
     },
     {
       role: 'user',
@@ -169,7 +182,7 @@ export async function generateRandomTrpFrogPrompt(
           prompt: `${promptPrefix} floating in surreal space with glowing shapes`,
         },
         translated: `超現実的な空間で光る幾何学的な形に囲まれるつまみさんの画像`,
-      }),
+      } satisfies OutputWithReasoning),
     },
     {
       role: 'user',
@@ -198,7 +211,7 @@ export async function generateRandomTrpFrogPrompt(
           prompt: `${promptPrefix} in a market with fruit and busy vendors`,
         },
         translated: `市場で果物と忙しい屋台に囲まれるつまみさんの画像`,
-      }),
+      } satisfies OutputWithReasoning),
     },
     {
       role: 'user',
@@ -207,7 +220,7 @@ export async function generateRandomTrpFrogPrompt(
   ]
 
   const rawJson = await deps.jsonChatbot(chat)
-  const parsedResponse = PromptSchema.parse(rawJson)
+  const parsedResponse = FinalPromptSchema.passthrough().parse(rawJson)
 
   return {
     ...parsedResponse,
