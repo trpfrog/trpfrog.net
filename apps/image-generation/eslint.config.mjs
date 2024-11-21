@@ -18,6 +18,8 @@ export default createBaseConfig(
     .map(([dir, prohibitedDirs]) => ({
       name: `image-generation/${dir}`,
       files: [`src/${dir}/**/*.{ts,tsx}`],
+      ignores: ['src/**/*.{test,spec,mock}.{ts,tsx}'],
+
       rules: {
         'no-restricted-imports': [
           'error',
