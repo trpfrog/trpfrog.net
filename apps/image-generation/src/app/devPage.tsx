@@ -26,7 +26,7 @@ adminApp.use(async (c, next) => {
 // Playground
 adminApp.post('/playground/prompt', async c => {
   const randomWords = await c.var.DEPS.fetchRandomWords(10)
-  const promptRes = await generateRandomTrpFrogPrompt(randomWords, c.var.DEPS)
+  const promptRes = await generateRandomTrpFrogPrompt(c.var.DEPS, randomWords)
   return c.json({
     usedWords: randomWords.join(','),
     ...promptRes,

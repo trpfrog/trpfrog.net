@@ -14,7 +14,7 @@ type UpdateImageResult =
     }
 
 export async function refreshImage(
-  deps: Deps<'imageRepo' | 'fetchRandomWords' | 'generateImage' | 'jsonChatbot'>,
+  deps: Deps<'imageRepo' | typeof generateNewImage>,
 ): Promise<void> {
   const data = await generateNewImage(deps, {
     numberOfRetries: 3,
@@ -26,7 +26,7 @@ export async function refreshImage(
 }
 
 export async function refreshImageIfStale(
-  deps: Deps<'imageRepo' | 'fetchRandomWords' | 'generateImage' | 'jsonChatbot'>,
+  deps: Deps<'imageRepo' | typeof refreshImage>,
 ): Promise<UpdateImageResult> {
   const metadata = await deps.imageRepo.read.currentMetadata()
   const { shouldCache, waitMinutes } = isImageStale(metadata.generatedTime)

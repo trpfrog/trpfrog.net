@@ -28,8 +28,8 @@ const PromptSchema = z.object({
 export type GeneratedPrompt = z.infer<typeof PromptSchema> & { prompt: string }
 
 export async function generateRandomTrpFrogPrompt(
-  sourceWords: string[],
   deps: Deps<'jsonChatbot'>,
+  sourceWords: string[],
 ): Promise<GeneratedPrompt> {
   const promptPrefix = 'an icon of trpfrog'
 

@@ -3,7 +3,7 @@ import { JsonOutputParser, StringOutputParser } from '@langchain/core/output_par
 import { ChatOpenAI } from '@langchain/openai'
 import { match } from 'ts-pattern'
 
-import { ChatLLM, ChatLLMJson, ChatUtterance } from '@/domain/llm'
+import { ChatLLM, ChatLLMJson, ChatUtterance } from '@/domain/services/llm'
 
 function toLangChainMessage(rawChat: ChatUtterance[]) {
   return rawChat.map(uttr =>
