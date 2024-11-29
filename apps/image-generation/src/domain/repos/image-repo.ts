@@ -1,6 +1,6 @@
 import type {
   TrpFrogImageGenerationMetadata,
-  TrpFrogImageGenerationResult,
+  ImageGenerationResult,
 } from '../entities/generation-result'
 
 export interface AITrpFrogImageRepo {
@@ -8,5 +8,5 @@ export interface AITrpFrogImageRepo {
     currentImage: () => Promise<ArrayBuffer>
     currentMetadata: () => Promise<TrpFrogImageGenerationMetadata>
   }
-  update: (result: TrpFrogImageGenerationResult) => Promise<void>
+  update: (result: ImageGenerationResult) => Promise<void>
 }

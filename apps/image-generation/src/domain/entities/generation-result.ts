@@ -15,4 +15,10 @@ export const TrpFrogImageGenerationResultSchema = TrpFrogImageGenerationMetadata
 
 export type TrpFrogImagePrompt = z.infer<typeof TrpFrogImagePromptSchema>
 export type TrpFrogImageGenerationMetadata = z.infer<typeof TrpFrogImageGenerationMetadataSchema>
-export type TrpFrogImageGenerationResult = z.infer<typeof TrpFrogImageGenerationResultSchema>
+
+export type ImageGenerationResult = {
+  generatedTime: number
+  arrayBuffer: ArrayBuffer
+}
+
+export type RandomImageGenerationResult = ImageGenerationResult & TrpFrogImagePrompt
