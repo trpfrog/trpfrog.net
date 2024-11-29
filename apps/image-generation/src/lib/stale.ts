@@ -1,9 +1,9 @@
 import { differenceInMinutes } from 'date-fns'
 
-export function isImageStale(
+export function isStale(
+  minUpdateMinutes: number,
   lastGenerated: number | Date,
   now: number | Date = new Date(),
-  minUpdateMinutes: number = 180, // default to 3 hours
 ): {
   shouldCache: boolean
   waitMinutes: number

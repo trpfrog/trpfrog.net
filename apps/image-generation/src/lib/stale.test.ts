@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
 
-import { isImageStale } from './stale'
+import { isStale } from './stale'
 
 describe('isImageStale', () => {
   const fixedNow = new Date('2023-01-01T00:00:00Z')
@@ -44,7 +44,7 @@ describe('isImageStale', () => {
 
   testCases.forEach(({ description, lastGenerated, minUpdateMinutes, expected }) => {
     it(`should return correct values for ${description}`, () => {
-      const result = isImageStale(lastGenerated, fixedNow, minUpdateMinutes)
+      const result = isStale(minUpdateMinutes, lastGenerated, fixedNow)
       expect(result).toEqual(expected)
     })
   })
