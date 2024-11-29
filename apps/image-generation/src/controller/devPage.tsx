@@ -4,8 +4,6 @@ import { basicAuth } from 'hono/basic-auth'
 import { z } from 'zod'
 
 import { Env } from '@/env'
-import { generateRandomTrpFrogPrompt } from '@/usecases/ai/generateRandomPrompt'
-import { refreshImage } from '@/usecases/updateImage'
 
 export const adminApp = new Hono<Env>()
 
@@ -25,8 +23,7 @@ adminApp.use(async (c, next) => {
 
 // Playground
 adminApp.post('/playground/prompt', async c => {
-  const randomWords = await c.var.DEPS.fetchRandomWords(10)
-  const promptRes = await generateRandomTrpFrogPrompt(c.var.DEPS, randomWords)
+  const promptRes = await c.var.UCS.generateRandomPrompt()
   return c.json({
     usedWords: randomWords.join(','),
     ...promptRes,
@@ -35,7 +32,7 @@ adminApp.post('/playground/prompt', async c => {
 
 // Update image
 adminApp.post('/force-update', async c => {
-  await refreshImage(c.var.DEPS)
+  await c.var.UCS.refreshImageIfStale({ forceUpdate: true })
   return c.json({
     success: true,
   })

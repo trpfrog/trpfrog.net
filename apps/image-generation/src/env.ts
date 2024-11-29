@@ -1,7 +1,7 @@
-import { RequiredDependencies } from '@/domain/deps'
+import { Usecases } from './usecases'
 
 export type Variables = {
-  DEPS: RequiredDependencies
+  UCS: Usecases
 }
 
 export type Env = { Bindings: Bindings; Variables: Record<string, string> & Variables }

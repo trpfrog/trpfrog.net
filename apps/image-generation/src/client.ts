@@ -3,10 +3,10 @@ import { hc } from 'hono/client'
 
 export {
   TrpFrogImageGenerationResultSchema,
-  type TrpFrogImageGenerationResult,
+  type ImageGenerationResult as TrpFrogImageGenerationResult,
 } from '@/domain/entities/generation-result'
 
-import type { AppType } from './app'
+import type { AppType } from './controller'
 
 export function createTrpFrogImageGenerationClient(env: 'development' | 'production' | 'test') {
   const origin = services.imageGeneration.origin(env)

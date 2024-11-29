@@ -5,13 +5,10 @@ import { cors } from 'hono/cors'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 
-import { requiresApiKey } from './middlewares'
-
-import { RequiredDependencies } from '@/domain/deps'
 import { Env } from '@/env'
-import { refreshImage, refreshImageIfStale } from '@/usecases/updateImage'
+import { Usecases } from '@/usecases'
 
-export function createApp(initDeps: (b: Bindings) => RequiredDependencies) {
+export function createApp(initUseCases: (b: Bindings) => Usecases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
     .use(contextStorage())
@@ -19,29 +16,21 @@ export function createApp(initDeps: (b: Bindings) => RequiredDependencies) {
     .use(trimTrailingSlash())
     .use(cors())
     .use(async (c, next) => {
-      c.set('DEPS', initDeps(c.env))
+      c.set('UCS', initUseCases(c.env))
       await next()
     })
     .get('/current', async c => {
-      const arrayBuffer = await c.var.DEPS.imageRepo.read.currentImage()
+      const arrayBuffer = await c.var.UCS.currentImage()
       return c.newResponse(arrayBuffer)
     })
     .get('/current/metadata', async c => {
-      const data = await c.var.DEPS.imageRepo.read.currentMetadata()
+      const data = await c.var.UCS.currentMetadata()
       return c.json(data)
     })
     .post('/update', async c => {
-      const isForceUpdate = c.req.query('force') === 'true'
-
-      let result: Awaited<ReturnType<typeof refreshImageIfStale>>
-      if (isForceUpdate) {
-        // Force update requires API key
-        await requiresApiKey()(c, async () => {})
-        await refreshImage(c.var.DEPS)
-        result = { updated: true }
-      } else {
-        result = await refreshImageIfStale(c.var.DEPS)
-      }
+      const result = await c.var.UCS.refreshImageIfStale({
+        forceUpdate: c.req.query('force') === 'true',
+      })
 
       return result.updated
         ? c.json(
