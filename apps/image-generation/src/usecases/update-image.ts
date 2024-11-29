@@ -13,7 +13,7 @@ type UpdateImageResult =
       waitMinutes: number
     }
 
-export function usecase_refreshImageIfStale(deps: {
+export function refreshImageIfStaleUsecase(deps: {
   imageRepo: AITrpFrogImageRepo
   imageGenerator: () => Promise<RandomImageGenerationResult>
 }) {

@@ -2,7 +2,7 @@ import type { ImageGenerationResult } from '@/domain/entities/generation-result'
 
 import { TextToImage } from '@/domain/services/text-to-image'
 
-export function usecase_generateImage(deps: { textToImage: TextToImage }) {
+export function generateImageUsecase(deps: { textToImage: TextToImage }) {
   return async (
     prompt: string,
     options: { numberOfRetries: number },

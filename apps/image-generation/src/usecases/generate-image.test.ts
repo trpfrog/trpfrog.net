@@ -1,7 +1,7 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 
-import { usecase_generateImage } from './generate-image'
+import { generateImageUsecase } from './generate-image'
 
 import { ImageGenerationResult } from '@/domain/entities/generation-result'
 
@@ -11,7 +11,7 @@ describe('generateImage', () => {
     arrayBuffer: expect.any(ArrayBuffer),
   }
 
-  const { resolve } = createSingleDepsResolver(usecase_generateImage)
+  const { resolve } = createSingleDepsResolver(generateImageUsecase)
 
   afterEach(() => {
     vi.clearAllMocks()

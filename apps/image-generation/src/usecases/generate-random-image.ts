@@ -4,7 +4,7 @@ import {
   TrpFrogImagePrompt,
 } from '@/domain/entities/generation-result'
 
-export function usecase_generateRandomImage(deps: {
+export function generateRandomImageUsecase(deps: {
   generateSeedWords: () => Promise<string[]>
   generatePromptFromSeedWords: (seedWords: string[]) => Promise<TrpFrogImagePrompt>
   generateImage: (prompt: string) => Promise<ImageGenerationResult>

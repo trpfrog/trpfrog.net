@@ -2,7 +2,7 @@ import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
 import {
-  usecase_generatePromptFromWords,
+  generatePromptFromWordsUsecase,
   __internal_OutputWithReasoning as OutputWithReasoning,
 } from './generate-prompt-from-words'
 
@@ -14,7 +14,7 @@ describe('generateRandomTrpFrogPrompt', () => {
     translated: '関数のテストをするつまみさんの画像',
   }
 
-  const { resolve } = createSingleDepsResolver(usecase_generatePromptFromWords, {
+  const { resolve } = createSingleDepsResolver(generatePromptFromWordsUsecase, {
     jsonChatbot: async () =>
       ({
         basic: { reasoning: 'reasoning', prompt: 'prompt' },

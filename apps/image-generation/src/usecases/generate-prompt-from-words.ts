@@ -34,7 +34,7 @@ const FinalPromptSchema = z.object({
   translated: z.string(),
 })
 
-export function usecase_generatePromptFromWords(deps: { jsonChatbot: ChatLLMJson }) {
+export function generatePromptFromWordsUsecase(deps: { jsonChatbot: ChatLLMJson }) {
   return async (sourceWords: string[]): Promise<TrpFrogImagePrompt> => {
     if (sourceWords.length <= 0) {
       throw new Error('Invalid input words')

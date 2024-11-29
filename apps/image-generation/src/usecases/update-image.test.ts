@@ -1,7 +1,7 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
-import { usecase_refreshImageIfStale } from './update-image'
+import { refreshImageIfStaleUsecase } from './update-image'
 
 describe('refreshImageIfStale', () => {
   const exampleMetadata = {
@@ -9,7 +9,7 @@ describe('refreshImageIfStale', () => {
     prompt: 'prompt',
     translated: 'translated',
   }
-  const { resolve, defaultDeps } = createSingleDepsResolver(usecase_refreshImageIfStale, {
+  const { resolve, defaultDeps } = createSingleDepsResolver(refreshImageIfStaleUsecase, {
     imageRepo: {
       read: {
         currentMetadata: async () => exampleMetadata,
