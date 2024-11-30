@@ -1,8 +1,7 @@
 import { workersTrpFrogImageRepo } from './infra/repos/image-repo'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
-import { randomWordApi } from './infra/services/random-words'
 import { createHfImageGenerator } from './infra/services/text-to-image'
-import { prepareUsecases } from './usecases'
+import { prepareUsecasesBuilder } from './usecases'
 
 import { createApp } from '@/controller'
 import { adminApp } from '@/controller/devPage'
@@ -19,31 +18,14 @@ const app = createApp(env => {
     apiKey: env.OPENAI_API_KEY,
   })
 
-  const ucs = prepareUsecases({
-    currentImage: {
-      imageRepo,
-    },
-    currentMetadata: {
-      imageRepo,
-    },
-    generateImage: {
-      textToImage: textToImage,
-    },
-    generatePromptFromWords: {
-      jsonChatbot,
-    },
-    generateRandomImage: {
-      generateSeedWords: () => randomWordApi(10),
-      generatePromptFromSeedWords: seedWords => ucs.generatePromptFromWords(seedWords),
-      generateImage: prompt => ucs.generateImage(prompt, { numberOfRetries: 3 }),
-    },
-    refreshImageIfStale: {
-      imageRepo,
-      imageGenerator: () => ucs.generateRandomImage(),
-    },
+  const builder = prepareUsecasesBuilder({
+    imageRepo,
+    textToImage,
+    jsonChatbot,
+    generateSeedWords: async () => ['a'],
   })
 
-  return ucs
+  return builder.build()
 })
 
 // adminApp を AppType に含めないようにするための対応
