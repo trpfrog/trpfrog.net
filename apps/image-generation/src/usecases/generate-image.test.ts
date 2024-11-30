@@ -1,9 +1,9 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 
-import { generateImageUsecase } from './generate-image'
+import { ImageGenerationResult } from '../domain/entities/generation-result'
 
-import { ImageGenerationResult } from '@/domain/entities/generation-result'
+import { generateImageUsecase } from './generate-image'
 
 describe('generateImage', () => {
   const defaultResponse: ImageGenerationResult = {

@@ -1,7 +1,7 @@
 import { createURL } from '@trpfrog.net/utils'
 import { z } from 'zod'
 
-import { RandomWordGenerator } from '@/domain/services/random-words'
+import { RandomWordGenerator } from '../../domain/services/random-words'
 
 export const randomWordApi: RandomWordGenerator = async amount => {
   const url = createURL('/api', 'https://random-word-api.vercel.app', {

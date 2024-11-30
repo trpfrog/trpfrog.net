@@ -1,6 +1,6 @@
-import type { ImageGenerationResult } from '@/domain/entities/generation-result'
+import { TextToImage } from '../domain/services/text-to-image'
 
-import { TextToImage } from '@/domain/services/text-to-image'
+import type { ImageGenerationResult } from '../domain/entities/generation-result'
 
 export function generateImageUsecase(deps: { textToImage: TextToImage }) {
   return async (

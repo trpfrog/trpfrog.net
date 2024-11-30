@@ -5,8 +5,8 @@ import { cors } from 'hono/cors'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 
-import { Env } from '@/env'
-import { Usecases } from '@/wire'
+import { Env } from '../env'
+import { Usecases } from '../wire'
 
 export function createApp(initUseCases: (b: Bindings) => Usecases) {
   return new Hono<Env>()

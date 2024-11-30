@@ -1,10 +1,9 @@
+import { createApp } from './controller'
+import { adminApp } from './controller/devPage'
 import { workersTrpFrogImageRepo } from './infra/repos/image-repo'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { createHfImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
-
-import { createApp } from '@/controller'
-import { adminApp } from '@/controller/devPage'
 
 const app = createApp(env => {
   const imageRepo = workersTrpFrogImageRepo

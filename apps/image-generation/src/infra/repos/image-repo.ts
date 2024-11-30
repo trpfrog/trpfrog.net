@@ -1,8 +1,8 @@
 import { getContext } from 'hono/context-storage'
 
-import { TrpFrogImageGenerationMetadataSchema } from '@/domain/entities/generation-result'
-import { AITrpFrogImageRepo } from '@/domain/repos/image-repo'
-import { Env } from '@/env'
+import { TrpFrogImageGenerationMetadataSchema } from '../../domain/entities/generation-result'
+import { AITrpFrogImageRepo } from '../../domain/repos/image-repo'
+import { Env } from '../../env'
 
 const CURRENT_IMAGE_KEY = 'current-image'
 const CURRENT_METADATA_KEY = 'current-metadata'

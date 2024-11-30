@@ -2,8 +2,8 @@ import { toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
 
-import type { TrpFrogImagePrompt } from '@/domain/entities/generation-result'
-import type { ChatLLMJson, ChatUtterance } from '@/domain/services/llm'
+import type { TrpFrogImagePrompt } from '../domain/entities/generation-result'
+import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
 
 type OutputWithReasoning = {
   basic: {

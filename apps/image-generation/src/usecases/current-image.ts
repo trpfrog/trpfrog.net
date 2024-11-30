@@ -1,5 +1,5 @@
-import { ImageGenerationResult } from '@/domain/entities/generation-result'
-import { AITrpFrogImageRepo } from '@/domain/repos/image-repo'
+import { ImageGenerationResult } from '../domain/entities/generation-result'
+import { AITrpFrogImageRepo } from '../domain/repos/image-repo'
 
 export function currentImageUsecase(deps: { imageRepo: AITrpFrogImageRepo }) {
   return deps.imageRepo.read.currentImage

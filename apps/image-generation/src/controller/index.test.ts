@@ -1,9 +1,9 @@
 import { testClient } from 'hono/testing'
 import { describe, it, expect, vi } from 'vitest'
 
-import { createApp } from '.'
+import { prepareUsecasesBuilder } from '../wire'
 
-import { prepareUsecasesBuilder } from '@/wire'
+import { createApp } from '.'
 
 const defaultDeps = {
   imageRepo: {

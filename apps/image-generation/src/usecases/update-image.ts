@@ -1,7 +1,7 @@
-import { RandomImageGenerationResult } from '@/domain/entities/generation-result'
-import { IMAGE_STALE_MINUTES } from '@/domain/entities/stale'
-import { AITrpFrogImageRepo } from '@/domain/repos/image-repo'
-import { isStale } from '@/lib/stale'
+import { RandomImageGenerationResult } from '../domain/entities/generation-result'
+import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
+import { AITrpFrogImageRepo } from '../domain/repos/image-repo'
+import { isStale } from '../lib/stale'
 
 type UpdateImageResult =
   | {

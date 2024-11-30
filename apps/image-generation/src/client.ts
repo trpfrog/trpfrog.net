@@ -4,7 +4,7 @@ import { hc } from 'hono/client'
 export {
   TrpFrogImageGenerationResultSchema,
   type ImageGenerationResult as TrpFrogImageGenerationResult,
-} from '@/domain/entities/generation-result'
+} from './domain/entities/generation-result'
 
 import type { AppType } from './controller'
 

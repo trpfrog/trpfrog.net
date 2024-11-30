@@ -1,10 +1,10 @@
 import { removeSuffixFromKeys } from '@trpfrog.net/utils'
 import { wire } from '@trpfrog.net/utils/wire'
 
-import { AITrpFrogImageRepo } from '@/domain/repos/image-repo'
-import { ChatLLMJson } from '@/domain/services/llm'
-import { TextToImage } from '@/domain/services/text-to-image'
-import * as rawUsecases from '@/usecases'
+import { AITrpFrogImageRepo } from './domain/repos/image-repo'
+import { ChatLLMJson } from './domain/services/llm'
+import { TextToImage } from './domain/services/text-to-image'
+import * as rawUsecases from './usecases'
 
 export const usecases = removeSuffixFromKeys('Usecase', rawUsecases)
 

@@ -1,12 +1,12 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
+import { TrpFrogImagePrompt } from '../domain/entities/generation-result'
+
 import {
   generatePromptFromWordsUsecase,
   __internal_OutputWithReasoning as OutputWithReasoning,
 } from './generate-prompt-from-words'
-
-import { TrpFrogImagePrompt } from '@/domain/entities/generation-result'
 
 describe('generateRandomTrpFrogPrompt', () => {
   const defaultResponse: TrpFrogImagePrompt = {

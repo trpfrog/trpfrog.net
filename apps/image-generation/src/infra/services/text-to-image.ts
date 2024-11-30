@@ -1,6 +1,6 @@
 import { HfInference } from '@huggingface/inference'
 
-import { base64ArrayBuffer } from '@/lib/base64'
+import { base64ArrayBuffer } from '../../lib/base64'
 
 export function createHfImageGenerator(params: { modelName: string; hfToken: string }) {
   return async (text: string) => {

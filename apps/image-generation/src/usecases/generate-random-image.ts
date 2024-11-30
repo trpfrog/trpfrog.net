@@ -2,7 +2,7 @@ import {
   ImageGenerationResult,
   RandomImageGenerationResult,
   TrpFrogImagePrompt,
-} from '@/domain/entities/generation-result'
+} from '../domain/entities/generation-result'
 
 export function generateRandomImageUsecase(deps: {
   generateSeedWords: () => Promise<string[]>

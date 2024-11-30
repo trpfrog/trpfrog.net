@@ -1,4 +1,4 @@
-import { Usecases } from '@/wire'
+import { Usecases } from './wire'
 
 export type Variables = {
   UCS: Usecases
