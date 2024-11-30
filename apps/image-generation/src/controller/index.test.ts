@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest'
 
 import { createApp } from '.'
 
-import { prepareUsecasesBuilder } from '@/usecases'
+import { prepareUsecasesBuilder } from '@/wire'
 
 const defaultDeps = {
   imageRepo: {

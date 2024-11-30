@@ -6,7 +6,7 @@ import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 
 import { Env } from '@/env'
-import { Usecases } from '@/usecases'
+import { Usecases } from '@/wire'
 
 export function createApp(initUseCases: (b: Bindings) => Usecases) {
   return new Hono<Env>()

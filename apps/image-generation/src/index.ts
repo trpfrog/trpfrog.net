@@ -1,7 +1,7 @@
 import { workersTrpFrogImageRepo } from './infra/repos/image-repo'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { createHfImageGenerator } from './infra/services/text-to-image'
-import { prepareUsecasesBuilder } from './usecases'
+import { prepareUsecasesBuilder } from './wire'
 
 import { createApp } from '@/controller'
 import { adminApp } from '@/controller/devPage'
