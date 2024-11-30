@@ -5,6 +5,7 @@ import { cors } from 'hono/cors'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 
+import { Bindings } from '../../worker-configuration'
 import { Env } from '../env'
 import { Usecases } from '../wire'
 

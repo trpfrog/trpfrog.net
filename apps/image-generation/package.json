@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "wrangler dev --port 8001 src/index.ts",
-    "generate-types": "wrangler types --env-interface Bindings",
+    "generate-types": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
     "deploy": "wrangler deploy --minify src/index.ts",
     "lint-fix": "eslint . --fix",
     "test": "vitest"

@@ -1,5 +1,6 @@
-import { Usecases } from './wire'
+import { Bindings } from '../worker-configuration'
 
+import { Usecases } from './wire'
 export type Variables = {
   UCS: Usecases
 }
