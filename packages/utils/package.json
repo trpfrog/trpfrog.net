@@ -4,7 +4,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./hono": "./src/hono.ts"
+    "./hono": "./src/hono.ts",
+    "./wire": "./src/wire.ts"
   },
   "scripts": {
     "build": "tsc",
