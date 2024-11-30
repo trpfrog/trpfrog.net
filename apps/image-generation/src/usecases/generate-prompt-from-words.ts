@@ -218,7 +218,6 @@ export function generatePromptFromWordsUsecase(deps: { jsonChatbot: ChatLLMJson 
 
     const rawJson = await deps.jsonChatbot(chat)
 
-    console.log('rawJson', rawJson)
     const parsedResponse = FinalPromptSchema.passthrough().safeParse(rawJson)
 
     if (!parsedResponse.success) {
