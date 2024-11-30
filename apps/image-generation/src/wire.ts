@@ -33,12 +33,15 @@ export function prepareUsecasesBuilder(common: {
       generatePromptFromWords: {
         jsonChatbot,
       },
+      generateRandomWords: {
+        generateSeedWords,
+      },
     })
     .inject(ucs => ({
       generateRandomImage: {
         generatePromptFromSeedWords: seedWords => ucs.generatePromptFromWords(seedWords),
         generateImage: prompt => ucs.generateImage(prompt, { numberOfRetries: 3 }),
-        generateSeedWords,
+        generateSeedWords: ucs.generateRandomWords,
       },
     }))
     .inject(ucs => ({

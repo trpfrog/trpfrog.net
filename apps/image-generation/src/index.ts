@@ -2,6 +2,7 @@ import { createApp } from './controller'
 import { adminApp } from './controller/devPage'
 import { workersTrpFrogImageRepo } from './infra/repos/image-repo'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
+import { randomWordApi } from './infra/services/random-words'
 import { createHfImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
 
@@ -17,14 +18,14 @@ const app = createApp(env => {
     apiKey: env.OPENAI_API_KEY,
   })
 
-  const builder = prepareUsecasesBuilder({
+  const ucs = prepareUsecasesBuilder({
     imageRepo,
     textToImage,
     jsonChatbot,
-    generateSeedWords: async () => ['a'],
-  })
+    generateSeedWords: () => randomWordApi(10),
+  }).build()
 
-  return builder.build()
+  return ucs
 })
 
 // adminApp を AppType に含めないようにするための対応

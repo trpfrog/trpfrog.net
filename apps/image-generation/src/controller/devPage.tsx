@@ -3,7 +3,7 @@ import { env } from 'hono/adapter'
 import { basicAuth } from 'hono/basic-auth'
 import { z } from 'zod'
 
-import { Env } from '@/env'
+import { Env } from '../env'
 
 export const adminApp = new Hono<Env>()
 
@@ -23,7 +23,8 @@ adminApp.use(async (c, next) => {
 
 // Playground
 adminApp.post('/playground/prompt', async c => {
-  const promptRes = await c.var.UCS.generateRandomPrompt()
+  const randomWords = await c.var.UCS.generateRandomWords()
+  const promptRes = await c.var.UCS.generatePromptFromWords(randomWords)
   return c.json({
     usedWords: randomWords.join(','),
     ...promptRes,
