@@ -1,12 +1,9 @@
-import { services } from '@trpfrog.net/constants'
-import { createURL } from '@trpfrog.net/utils'
-import { Env, Hono } from 'hono'
+import { Hono } from 'hono'
 import { env } from 'hono/adapter'
 import { basicAuth } from 'hono/basic-auth'
 import { z } from 'zod'
 
-import { fetchRandomWords } from './trpfrog-diffusion/fetchRandomWords'
-import { generateRandomTrpFrogPrompt } from './trpfrog-diffusion/generateRandomPrompt'
+import { Env } from '../env'
 
 export const adminApp = new Hono<Env>()
 
@@ -26,9 +23,8 @@ adminApp.use(async (c, next) => {
 
 // Playground
 adminApp.post('/playground/prompt', async c => {
-  const { OPENAI_API_KEY } = env(c)
-  const randomWords = await fetchRandomWords(10)
-  const promptRes = await generateRandomTrpFrogPrompt(randomWords, z.string().parse(OPENAI_API_KEY))
+  const randomWords = await c.var.UCS.generateRandomWords()
+  const promptRes = await c.var.UCS.generatePromptFromWords(randomWords)
   return c.json({
     usedWords: randomWords.join(','),
     ...promptRes,
@@ -36,18 +32,10 @@ adminApp.post('/playground/prompt', async c => {
 })
 
 // Update image
-adminApp.post('/force-update', c => {
-  const { TRPFROG_FUNCTIONS_SECRET, NODE_ENV } = env(c)
-  const node_env = z.enum(['development', 'production', 'test']).catch('production').parse(NODE_ENV)
-  const endpoint = createURL('/update', services.imageGeneration.origin(node_env), {
-    force: 'true',
-  })
-  return fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': z.string().parse(TRPFROG_FUNCTIONS_SECRET),
-    },
+adminApp.post('/force-update', async c => {
+  await c.var.UCS.refreshImageIfStale({ forceUpdate: true })
+  return c.json({
+    success: true,
   })
 })
 

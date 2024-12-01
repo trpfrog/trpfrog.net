@@ -1,0 +1,1 @@
+export const IMAGE_STALE_MINUTES = 180
