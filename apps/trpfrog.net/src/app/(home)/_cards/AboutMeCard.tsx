@@ -9,7 +9,7 @@ const image = replaceWithLighterImageFormat(
 
 const attributes = [
   { icon: '🐸', iconName: '性別', text: '男性' },
-  { icon: '🎂', iconName: '誕生日', text: '2000年10月17日 (23歳)' },
+  { icon: '🎂', iconName: '誕生日', text: '2000年10月17日 (24歳)' },
   {
     icon: '🏠',
     iconName: '出身',
