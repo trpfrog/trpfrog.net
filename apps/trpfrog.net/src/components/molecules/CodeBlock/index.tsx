@@ -80,7 +80,13 @@ function isValidLanguage(language: string): boolean {
   )
 }
 
-export async function CodeBlock(props: CodeBlockProps) {
+const highlighter = await getSingletonHighlighter({
+  themes: Object.keys(bundledThemes),
+  langs: Object.keys(bundledLanguages),
+  langAlias,
+})
+
+export function CodeBlock(props: CodeBlockProps) {
   const { children, language: rawLanguage = '', fileName, ...rest } = props
 
   const { prefixes, language } = extractPrefixes(
@@ -91,11 +97,6 @@ export async function CodeBlock(props: CodeBlockProps) {
 
   const styles = createStyles({ withBar, wrap: prefixes.includes('wrap') })
 
-  const highlighter = await getSingletonHighlighter({
-    themes: Object.keys(bundledThemes),
-    langs: Object.keys(bundledLanguages),
-    langAlias,
-  })
   const codeHtml = highlighter.codeToHtml((props.children as string).trimEnd(), {
     lang: language,
     themes: {

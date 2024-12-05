@@ -18,7 +18,7 @@
     "schema": "src/prisma/schema.prisma"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.37",
+    "@ai-sdk/openai": "^1.0.7",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
@@ -42,7 +42,7 @@
     "@vercel/edge-config": "^1.1.1",
     "@vercel/functions": "^1.4.2",
     "@vercel/kv": "^1.0.1",
-    "ai": "^3.1.37",
+    "ai": "^4.0.12",
     "better-react-mathjax": "^2.0.3",
     "budoux": "^0.6.2",
     "bufferutil": "^4.0.8",
@@ -90,6 +90,7 @@
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
+    "ts-dedent": "^2.2.0",
     "ts-pattern": "^5.1.2",
     "use-immer": "^0.9.0",
     "use-sound": "^4.0.3",

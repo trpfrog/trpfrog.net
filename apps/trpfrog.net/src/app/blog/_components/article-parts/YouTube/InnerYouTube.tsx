@@ -8,9 +8,15 @@ import { YouTube } from '@/components/organisms/YouTube'
 
 export const InnerYouTube = memo(function InnerYouTube({ content }: { content: string }) {
   const lines = content.split('\n')
-  const id = lines[0].trim()
-  // const title = lines[1]?.trim()
-  return <YouTube videoId={id} />
+  const [id, rawParams] = lines[0].trim().split('?')
+  const params = new URLSearchParams(rawParams)
+
+  // if playlist parameter is not set, youtube will not loop the video
+  if (params.has('loop') && !params.has('playlist')) {
+    params.set('playlist', id)
+  }
+
+  return <YouTube videoId={id} params={params.toString()} />
 })
 
 export const InnerAutoYouTube = memo(function InnerAutoYouTube({ content }: { content: string }) {
