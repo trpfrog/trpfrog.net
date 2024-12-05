@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
     staleTimes: {
       dynamic: 30,
     },
+
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
   },
 
   webpack: config => {

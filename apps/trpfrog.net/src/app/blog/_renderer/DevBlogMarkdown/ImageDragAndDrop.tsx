@@ -2,16 +2,14 @@
 import { useCallback, useState } from 'react'
 import * as React from 'react'
 
+import { CodeBlock } from '@/components/molecules/CodeBlock'
+
 import { useUploadFunction } from '@blog/_renderer/DevBlogMarkdown/useUploadFunction'
 
 import styles from './ImageDragAndDrop.module.scss'
 
-export function ImageDragAndDrop(props: { slug: string }) {
+function useImageDragAndDrop(onDroppedImage: (files: FileList) => Promise<void>) {
   const [isDragging, setIsDragging] = useState(false)
-  const [isTabOpened, setisTabOpened] = useState(false)
-  const [recentlyUploaded, setRecentlyUploaded] = useState('')
-  const [horizontalImages, setHorizontalImages] = useState(false)
-  const uploadImage = useUploadFunction(props.slug)
 
   const onDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
     if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
@@ -28,15 +26,40 @@ export function ImageDragAndDrop(props: { slug: string }) {
       e.preventDefault()
       setIsDragging(false)
       if (e.dataTransfer.files !== null && e.dataTransfer.files.length > 0) {
-        setRecentlyUploaded('Uploading...')
-        const paths = await Promise.all(Array.from(e.dataTransfer.files).map(uploadImage))
-        const imageMarkdown = paths.map(e => `![](${e})` as const).join('\n')
-        setRecentlyUploaded(imageMarkdown)
+        await onDroppedImage(e.dataTransfer.files)
         e.dataTransfer.clearData()
       }
     },
+    [onDroppedImage],
+  )
+
+  const onDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+  }, [])
+
+  return {
+    isDragging,
+    dropTargetProps: { onDragEnter, onDragLeave, onDrop, onDragOver },
+  }
+}
+
+export function ImageDragAndDropUploader(props: { slug: string }) {
+  const [isTabOpened, setisTabOpened] = useState(false)
+  const [recentlyUploaded, setRecentlyUploaded] = useState('')
+  const [horizontalImages, setHorizontalImages] = useState(false)
+  const uploadImage = useUploadFunction(props.slug)
+
+  const onDroppedImage = useCallback(
+    async (files: FileList) => {
+      setRecentlyUploaded('Uploading...')
+      const paths = await Promise.all(Array.from(files).map(uploadImage))
+      const imageMarkdown = paths.map(e => `![](${e})` as const).join('\n')
+      setRecentlyUploaded(imageMarkdown)
+    },
     [uploadImage],
   )
+
+  const { isDragging, dropTargetProps } = useImageDragAndDrop(onDroppedImage)
 
   return (
     <div className={`${styles.wrapper} print:tw-invisible`}>
@@ -47,11 +70,8 @@ export function ImageDragAndDrop(props: { slug: string }) {
         <>
           <div
             className={styles.drag_and_drop}
-            onDragEnter={onDragEnter}
-            onDragLeave={onDragLeave}
-            onDragOver={e => e.preventDefault()}
-            onDrop={onDrop}
             style={{ color: isDragging ? 'inherit' : 'lightgray' }}
+            {...dropTargetProps}
           >
             <div
               className={styles.drag_and_drop_text}
@@ -74,13 +94,11 @@ export function ImageDragAndDrop(props: { slug: string }) {
                 />
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
-              {/* TODO: React Compiler 側がエラーを吐かなくなったら戻す */}
-              {/*<CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>*/}
-              <pre>
+              <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
                 {horizontalImages
                   ? '```horizontal-images\n' + recentlyUploaded + '\n```'
                   : recentlyUploaded}
-              </pre>
+              </CodeBlock>
             </div>
           )}
         </>

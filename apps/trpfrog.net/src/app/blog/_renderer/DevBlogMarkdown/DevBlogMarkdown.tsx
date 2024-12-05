@@ -6,7 +6,7 @@ import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-serve
 
 import { LoadingBlock } from '@/components/molecules/LoadingBlock'
 
-import { ImageDragAndDrop } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop.tsx'
+import { ImageDragAndDropUploader } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop.tsx'
 import { renderBlog } from '@blog/_renderer/renderBlog'
 
 type DevBlogMarkdownProps = {
@@ -74,7 +74,7 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
   return (
     <>
       {useDeferredValue(articleJSX)}
-      <ImageDragAndDrop slug={props.slug} />
+      <ImageDragAndDropUploader slug={props.slug} />
     </>
   )
 }
