@@ -4,11 +4,12 @@ import * as React from 'react'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 
-import { useUploadFunction } from '@blog/_renderer/DevBlogMarkdown/useUploadFunction'
-
+import { generateAltTextOnServer } from './generateAltTextOnServer'
 import styles from './ImageDragAndDrop.module.scss'
+import { useImageUploadUsecase } from './useImageUploadUsecase'
+import { useUploadFunction } from './useUploadFunction'
 
-function useImageDragAndDrop(onDroppedImage: (files: FileList) => Promise<void>) {
+function useImageDragAndDrop(onDroppedImage: (files: File[]) => Promise<void>) {
   const [isDragging, setIsDragging] = useState(false)
 
   const onDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -26,7 +27,7 @@ function useImageDragAndDrop(onDroppedImage: (files: FileList) => Promise<void>)
       e.preventDefault()
       setIsDragging(false)
       if (e.dataTransfer.files !== null && e.dataTransfer.files.length > 0) {
-        await onDroppedImage(e.dataTransfer.files)
+        await onDroppedImage(Array.from(e.dataTransfer.files))
         e.dataTransfer.clearData()
       }
     },
@@ -47,16 +48,18 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
   const [isTabOpened, setisTabOpened] = useState(false)
   const [recentlyUploaded, setRecentlyUploaded] = useState('')
   const [horizontalImages, setHorizontalImages] = useState(false)
-  const uploadImage = useUploadFunction(props.slug)
+
+  const { upload, uploadingStatusText } = useImageUploadUsecase({
+    generateAltText: generateAltTextOnServer,
+    uploadImage: useUploadFunction(props.slug),
+  })
 
   const onDroppedImage = useCallback(
-    async (files: FileList) => {
-      setRecentlyUploaded('Uploading...')
-      const paths = await Promise.all(Array.from(files).map(uploadImage))
-      const imageMarkdown = paths.map(e => `![](${e})` as const).join('\n')
-      setRecentlyUploaded(imageMarkdown)
+    async (files: File[]) => {
+      const uploaded = await upload(files)
+      setRecentlyUploaded(uploaded.map(e => e.markdown).join('\n'))
     },
-    [uploadImage],
+    [upload],
   )
 
   const { isDragging, dropTargetProps } = useImageDragAndDrop(onDroppedImage)
@@ -95,9 +98,10 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
               <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
-                {horizontalImages
-                  ? '```horizontal-images\n' + recentlyUploaded + '\n```'
-                  : recentlyUploaded}
+                {uploadingStatusText ??
+                  (horizontalImages
+                    ? '```horizontal-images\n' + recentlyUploaded + '\n```'
+                    : recentlyUploaded)}
               </CodeBlock>
             </div>
           )}
