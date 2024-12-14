@@ -6,4 +6,6 @@ export interface Bindings {
   TRPFROG_FUNCTIONS_SECRET: string
   HUGGINGFACE_TOKEN: string
   NODE_ENV: string
+  BUCKET: R2Bucket
+  DATABASE: D1Database
 }
