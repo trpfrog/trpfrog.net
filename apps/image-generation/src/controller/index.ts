@@ -26,6 +26,9 @@ export function createApp(initUseCases: (b: Bindings) => Usecases) {
     })
     .get('/current/metadata', async c => {
       const data = await c.var.UCS.currentMetadata()
+      if (data == null) {
+        return c.json({ error: 'No metadata found' }, 404)
+      }
       return c.json(data)
     })
     .post('/update', async c => {
