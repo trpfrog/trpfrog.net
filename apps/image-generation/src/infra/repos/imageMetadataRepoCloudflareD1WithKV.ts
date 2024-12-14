@@ -8,7 +8,7 @@ import {
   imageMetadataRepoQuerySchema,
 } from '../../domain/repos/image-metadata-repo'
 import { Env } from '../../env'
-import { imageMetadataTable as images } from '../db/image-db'
+import { imageMetadataTable as images } from '../db/schema'
 
 const CURRENT_KEY = 'latest'
 

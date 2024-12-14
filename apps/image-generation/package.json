@@ -9,7 +9,10 @@
     "generate-types": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
     "deploy": "wrangler deploy --minify src/index.ts",
     "lint-fix": "eslint . --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "generate": "drizzle-kit generate",
+    "migrate:local": "wrangler d1 migrations apply ai-trpfrog-icon-db --local",
+    "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.4.1",
