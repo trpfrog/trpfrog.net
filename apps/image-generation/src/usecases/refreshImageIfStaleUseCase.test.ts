@@ -1,10 +1,10 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
-import { refreshImageIfStaleUsecase } from './update-image'
+import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
 
 describe('refreshImageIfStale', () => {
-  const { resolve, defaultDeps } = createSingleDepsResolver(refreshImageIfStaleUsecase, {
+  const { resolve, defaultDeps } = createSingleDepsResolver(refreshImageIfStaleUseCase, {
     uploadImage: async () => {},
     imageGenerator: async () => ({
       image: {

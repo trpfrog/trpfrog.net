@@ -1,8 +1,8 @@
 import { Bindings } from '../worker-configuration'
 
-import { Usecases } from './wire'
+import { UseCases } from './wire'
 export type Variables = {
-  UCS: Usecases
+  UCS: UseCases
 }
 
 export type Env = { Bindings: Bindings; Variables: Record<string, string> & Variables }

@@ -3,7 +3,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 
 import { GeneratedImage } from '../domain/entities/generation-result'
 
-import { generateImageUsecase } from './generate-image'
+import { generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {
   const defaultResponse: GeneratedImage = {
@@ -12,7 +12,7 @@ describe('generateImage', () => {
     modelName: 'trpfrog-diffusion',
   }
 
-  const { resolve } = createSingleDepsResolver(generateImageUsecase)
+  const { resolve } = createSingleDepsResolver(generateImageUseCase)
 
   afterEach(() => {
     vi.clearAllMocks()

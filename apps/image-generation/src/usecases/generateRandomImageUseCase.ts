@@ -1,6 +1,6 @@
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
 
-export function generateRandomImageUsecase(deps: {
+export function generateRandomImageUseCase(deps: {
   generateSeedWords: () => Promise<string[]>
   generatePromptFromSeedWords: (seedWords: string[]) => Promise<ImagePrompt>
   generateImage: (prompt: string) => Promise<GeneratedImage>

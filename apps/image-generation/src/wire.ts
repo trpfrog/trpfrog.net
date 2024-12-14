@@ -7,9 +7,9 @@ import { ChatLLMJson } from './domain/services/llm'
 import { TextToImage } from './domain/services/text-to-image'
 import * as rawUsecases from './usecases'
 
-export const usecases = removeSuffixFromKeys('Usecase', rawUsecases)
+export const usecases = removeSuffixFromKeys('UseCase', rawUsecases)
 
-export type Usecases = {
+export type UseCases = {
   [K in keyof typeof usecases]: ReturnType<(typeof usecases)[K]>
 }
 

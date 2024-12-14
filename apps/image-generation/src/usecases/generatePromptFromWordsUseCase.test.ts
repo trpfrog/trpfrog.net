@@ -4,7 +4,7 @@ import { describe, it, expect } from 'vitest'
 import { ImagePrompt } from '../domain/entities/generation-result'
 import { ChatLLMJson } from '../domain/services/llm'
 
-import { generatePromptFromWordsUsecase } from './generate-prompt-from-words'
+import { generatePromptFromWordsUseCase } from './generatePromptFromWordsUseCase'
 
 describe('generateRandomTrpFrogPrompt', () => {
   const defaultResponse: ImagePrompt = {
@@ -13,7 +13,7 @@ describe('generateRandomTrpFrogPrompt', () => {
     translated: '関数のテストをするつまみさんの画像',
   }
 
-  const { resolve } = createSingleDepsResolver(generatePromptFromWordsUsecase, {
+  const { resolve } = createSingleDepsResolver(generatePromptFromWordsUseCase, {
     jsonChatbot: async () => ({
       response: {
         basic: { reasoning: 'reasoning', prompt: 'prompt' },

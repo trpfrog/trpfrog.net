@@ -5,7 +5,7 @@ import { ImagePrompt } from '../domain/entities/generation-result'
 import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from '../domain/repos/image-store-repo'
 
-export function uploadNewImageUsecase(deps: {
+export function uploadNewImageUseCase(deps: {
   imageStoreRepo: ImageStoreRepo
   imageMetadataRepo: ImageMetadataRepo
 }) {

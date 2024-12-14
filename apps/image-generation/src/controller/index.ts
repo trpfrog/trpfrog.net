@@ -7,9 +7,9 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 
 import { Bindings } from '../../worker-configuration'
 import { Env } from '../env'
-import { Usecases } from '../wire'
+import { UseCases } from '../wire'
 
-export function createApp(initUseCases: (b: Bindings) => Usecases) {
+export function createApp(initUseCases: (b: Bindings) => UseCases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
     .use(contextStorage())

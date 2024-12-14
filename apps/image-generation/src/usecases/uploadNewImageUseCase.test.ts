@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 
-import { uploadNewImageUsecase } from './upload-new-image'
+import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 
 const deps = {
   imageStoreRepo: {
@@ -15,10 +15,10 @@ const deps = {
     amount: vi.fn(async () => 0),
     remove: vi.fn(async () => {}),
   },
-} satisfies Parameters<typeof uploadNewImageUsecase>[0]
+} satisfies Parameters<typeof uploadNewImageUseCase>[0]
 
 const imageData = new ArrayBuffer(8)
-const metadata: Parameters<ReturnType<typeof uploadNewImageUsecase>>[1] = {
+const metadata: Parameters<ReturnType<typeof uploadNewImageUseCase>>[1] = {
   prompt: {
     text: 'Test prompt',
     translated: 'テストプロンプト',
@@ -34,7 +34,7 @@ const expectedImageUri = 'https://example.com/2024-12-14-12-34-56.png'
 
 describe('uploadNewImageUsecase', () => {
   it('should upload an image, save metadata, and return successfully', async () => {
-    const usecase = uploadNewImageUsecase(deps)
+    const usecase = uploadNewImageUseCase(deps)
 
     // Act
     await usecase(imageData, metadata)
@@ -54,7 +54,7 @@ describe('uploadNewImageUsecase', () => {
     deps.imageStoreRepo.upload.mockResolvedValueOnce(expectedImageUri)
     deps.imageMetadataRepo.add.mockRejectedValueOnce(new Error('Metadata save failed'))
 
-    const usecase = uploadNewImageUsecase(deps)
+    const usecase = uploadNewImageUseCase(deps)
 
     // Act & Assert
     await expect(usecase(imageData, metadata)).rejects.toThrow('Metadata save failed')

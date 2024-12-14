@@ -1,7 +1,7 @@
 import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from '../domain/repos/image-store-repo'
 
-export function currentImageUsecase(deps: {
+export function currentImageUseCase(deps: {
   imageMetadataRepo: ImageMetadataRepo
   imageStoreRepo: ImageStoreRepo
 }) {
@@ -14,7 +14,7 @@ export function currentImageUsecase(deps: {
   }
 }
 
-export function currentMetadataUsecase(deps: { imageMetadataRepo: ImageMetadataRepo }) {
+export function currentMetadataUseCase(deps: { imageMetadataRepo: ImageMetadataRepo }) {
   return async () => {
     return await deps.imageMetadataRepo.getLatest()
   }
