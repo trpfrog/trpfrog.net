@@ -1,14 +1,15 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 
-import { ImageGenerationResult } from '../domain/entities/generation-result'
+import { GeneratedImage } from '../domain/entities/generation-result'
 
 import { generateImageUsecase } from './generate-image'
 
 describe('generateImage', () => {
-  const defaultResponse: ImageGenerationResult = {
-    generatedTime: expect.any(Number),
-    arrayBuffer: expect.any(ArrayBuffer),
+  const defaultResponse: GeneratedImage = {
+    image: expect.any(ArrayBuffer),
+    extension: '.png',
+    modelName: 'trpfrog-diffusion',
   }
 
   const { resolve } = createSingleDepsResolver(generateImageUsecase)
@@ -19,7 +20,11 @@ describe('generateImage', () => {
 
   it('should generate a new image successfully', async () => {
     const textToImage = resolve({
-      textToImage: async () => new ArrayBuffer(0),
+      textToImage: async () => ({
+        extension: '.png',
+        modelName: 'trpfrog-diffusion',
+        image: new ArrayBuffer(0),
+      }),
     })
     const result = await textToImage('prompt', { numberOfRetries: 1 })
     expect(result).toMatchObject(defaultResponse)
@@ -42,7 +47,11 @@ describe('generateImage', () => {
     const mock = vi
       .fn()
       .mockRejectedValueOnce(new Error('Failed to generate image'))
-      .mockResolvedValueOnce(new ArrayBuffer(0))
+      .mockResolvedValueOnce({
+        extension: '.png',
+        modelName: 'trpfrog-diffusion',
+        image: new ArrayBuffer(0),
+      })
     const textToImage = resolve({
       textToImage: mock,
     })

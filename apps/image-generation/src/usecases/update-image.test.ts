@@ -4,28 +4,42 @@ import { describe, it, expect } from 'vitest'
 import { refreshImageIfStaleUsecase } from './update-image'
 
 describe('refreshImageIfStale', () => {
-  const exampleMetadata = {
-    generatedTime: Date.now(),
-    prompt: 'prompt',
-    translated: 'translated',
-  }
   const { resolve, defaultDeps } = createSingleDepsResolver(refreshImageIfStaleUsecase, {
-    imageRepo: {
-      read: {
-        currentMetadata: async () => exampleMetadata,
-        currentImage: async () => new ArrayBuffer(0),
-      },
-      update: async () => {},
-    },
+    uploadImage: async () => {},
     imageGenerator: async () => ({
-      ...exampleMetadata,
-      arrayBuffer: new ArrayBuffer(0),
+      image: {
+        modelName: 'model',
+        extension: 'png',
+        image: new ArrayBuffer(0),
+      },
+      prompt: {
+        author: 'author',
+        text: 'text',
+        translated: 'translated',
+      },
     }),
+    imageMetadataRepo: {
+      getLatest: async () => ({
+        id: '1',
+        prompt: {
+          author: 'author',
+          text: 'text',
+          translated: 'translated',
+        },
+        modelName: 'model',
+        createdAt: new Date(),
+        imageUri: 'http://example.com/image.png',
+      }),
+      query: async () => [],
+      amount: async () => 0,
+      add: async () => {},
+      remove: async () => {},
+    },
   })
 
   const testCases: {
     description: string
-    deps: Parameters<typeof resolve>[0]
+    deps: Partial<Parameters<typeof resolve>[0]>
     isForceUpdate?: boolean
     expected: { updated: boolean; message?: string; waitMinutes?: number }
   }[] = [
@@ -44,15 +58,19 @@ describe('refreshImageIfStale', () => {
       description:
         'should return updated: false if image is stale and waitMinutes is greater than 0',
       deps: {
-        imageRepo: {
-          ...defaultDeps.imageRepo,
-          read: {
-            ...defaultDeps.imageRepo.read,
-            currentMetadata: async () => ({
-              ...exampleMetadata,
-              generatedTime: Date.now() - 160 * 60 * 1000, // 160 minutes ago
-            }),
-          },
+        imageMetadataRepo: {
+          ...defaultDeps.imageMetadataRepo,
+          getLatest: async () => ({
+            id: '1',
+            prompt: {
+              author: 'author',
+              text: 'text',
+              translated: 'translated',
+            },
+            modelName: 'model',
+            createdAt: new Date(Date.now() - 160 * 60 * 1000), // 160 minutes ago
+            imageUri: 'http://example.com/image.png',
+          }),
         },
       },
       expected: {
@@ -64,15 +82,19 @@ describe('refreshImageIfStale', () => {
     {
       description: 'should return updated: true if image is stale and waitMinutes is 0',
       deps: {
-        imageRepo: {
-          ...defaultDeps.imageRepo,
-          read: {
-            ...defaultDeps.imageRepo.read,
-            currentMetadata: async () => ({
-              ...exampleMetadata,
-              generatedTime: Date.now() - 181 * 60 * 1000, // 181 minutes ago
-            }),
-          },
+        imageMetadataRepo: {
+          ...defaultDeps.imageMetadataRepo,
+          getLatest: async () => ({
+            id: '1',
+            prompt: {
+              author: 'author',
+              text: 'text',
+              translated: 'translated',
+            },
+            modelName: 'model',
+            createdAt: new Date(Date.now() - 181 * 60 * 1000), // 181 minutes ago
+            imageUri: 'http://example.com/image.png',
+          }),
         },
       },
       expected: { updated: true },
