@@ -228,7 +228,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       ...parsedResponse.data,
       translated: parsedResponse.data.translated,
       text: parsedResponse.data.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
-      author: modelName.trim() + ' + trpfrog.net Prompt Generator 2024-11-16',
+      author: modelName.trim(),
     }
   }
 }
