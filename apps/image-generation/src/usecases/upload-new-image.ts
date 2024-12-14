@@ -5,10 +5,10 @@ import { ImagePrompt } from '../domain/entities/generation-result'
 import { GeneratedImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from '../domain/repos/image-store-repo'
 
-export function uploadNewImageUsecase(
-  imageStoreRepo: ImageStoreRepo,
-  imageMetadataRepo: GeneratedImageMetadataRepo,
-) {
+export function uploadNewImageUsecase(deps: {
+  imageStoreRepo: ImageStoreRepo
+  imageMetadataRepo: GeneratedImageMetadataRepo
+}) {
   return async (
     imageData: ArrayBuffer,
     metadata: {
@@ -21,9 +21,9 @@ export function uploadNewImageUsecase(
     const { prompt, modelName, createdAt = new Date(), imageExtension: ext } = metadata
     const filename = `${format(createdAt, 'yyyy-MM-dd-HH-mm-ss')}${ext}`
 
-    const imageUri = await imageStoreRepo.upload(filename, imageData)
+    const imageUri = await deps.imageStoreRepo.upload(filename, imageData)
     try {
-      await imageMetadataRepo.add({
+      await deps.imageMetadataRepo.add({
         id: uuidv7(),
         prompt,
         modelName,
@@ -32,7 +32,7 @@ export function uploadNewImageUsecase(
       })
     } catch (e) {
       console.error(e)
-      await imageStoreRepo.delete(filename)
+      await deps.imageStoreRepo.delete(filename)
       throw e
     }
   }

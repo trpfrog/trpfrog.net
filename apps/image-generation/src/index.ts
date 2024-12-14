@@ -1,13 +1,13 @@
 import { createApp } from './controller'
 import { adminApp } from './controller/devPage'
-import { workersTrpFrogImageRepo } from './infra/repos/image-repo'
+import { generatedImageRepoCloudflareD1WithKV } from './infra/repos/image-metadata-cf-d1-kv'
+import { imageStoreRepoCloudflareR2 } from './infra/repos/image-store-cf-r2'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { randomWordApi } from './infra/services/random-words'
 import { createHfImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
 
 const app = createApp(env => {
-  const imageRepo = workersTrpFrogImageRepo
   const textToImage = createHfImageGenerator({
     modelName: 'Prgckwb/trpfrog-sd3.5-large-lora',
     hfToken: env.HUGGINGFACE_TOKEN,
@@ -19,7 +19,8 @@ const app = createApp(env => {
   })
 
   const ucs = prepareUsecasesBuilder({
-    imageRepo,
+    imageStoreRepo: imageStoreRepoCloudflareR2,
+    imageMetadataRepo: generatedImageRepoCloudflareD1WithKV,
     textToImage,
     jsonChatbot,
     generateSeedWords: () => randomWordApi(10),

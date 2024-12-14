@@ -1,7 +1,8 @@
 import { removeSuffixFromKeys } from '@trpfrog.net/utils'
 import { wire } from '@trpfrog.net/utils/wire'
 
-import { AITrpFrogImageRepo } from './domain/repos/image-repo'
+import { GeneratedImageMetadataRepo } from './domain/repos/image-metadata-repo'
+import { ImageStoreRepo } from './domain/repos/image-store-repo'
 import { ChatLLMJson } from './domain/services/llm'
 import { TextToImage } from './domain/services/text-to-image'
 import * as rawUsecases from './usecases'
@@ -13,19 +14,21 @@ export type Usecases = {
 }
 
 export function prepareUsecasesBuilder(common: {
-  imageRepo: AITrpFrogImageRepo
+  imageStoreRepo: ImageStoreRepo
+  imageMetadataRepo: GeneratedImageMetadataRepo
   textToImage: TextToImage
   jsonChatbot: ChatLLMJson
   generateSeedWords: () => Promise<string[]>
 }) {
-  const { imageRepo, textToImage, jsonChatbot, generateSeedWords } = common
+  const { imageStoreRepo, imageMetadataRepo, textToImage, jsonChatbot, generateSeedWords } = common
   return wire(usecases)
     .inject({
       currentImage: {
-        imageRepo,
+        imageMetadataRepo,
+        imageStoreRepo,
       },
       currentMetadata: {
-        imageRepo,
+        imageMetadataRepo,
       },
       generateImage: {
         textToImage,
@@ -36,18 +39,23 @@ export function prepareUsecasesBuilder(common: {
       generateRandomWords: {
         generateSeedWords,
       },
+      uploadNewImage: {
+        imageMetadataRepo,
+        imageStoreRepo,
+      },
     })
     .inject(ucs => ({
       generateRandomImage: {
-        generatePromptFromSeedWords: seedWords => ucs.generatePromptFromWords(seedWords),
         generateImage: prompt => ucs.generateImage(prompt, { numberOfRetries: 3 }),
+        generatePromptFromSeedWords: seedWords => ucs.generatePromptFromWords(seedWords),
         generateSeedWords: ucs.generateRandomWords,
       },
     }))
     .inject(ucs => ({
       refreshImageIfStale: {
-        imageRepo,
-        imageGenerator: () => ucs.generateRandomImage(),
+        imageMetadataRepo,
+        uploadImage: ucs.uploadNewImage,
+        imageGenerator: ucs.generateRandomImage,
       },
     }))
 }

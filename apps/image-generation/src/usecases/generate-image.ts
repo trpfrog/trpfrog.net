@@ -5,11 +5,7 @@ export function generateImageUsecase(deps: { textToImage: TextToImage }) {
     const numberOfRetries = options?.numberOfRetries ?? 1
     for (const _ of Array.from(Array(numberOfRetries))) {
       try {
-        const arrayBuffer = await deps.textToImage(prompt)
-        return {
-          created: Date.now(),
-          arrayBuffer,
-        }
+        return await deps.textToImage(prompt)
       } catch (e) {
         console.error(e)
         continue
