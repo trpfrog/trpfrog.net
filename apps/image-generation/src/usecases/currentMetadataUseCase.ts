@@ -7,10 +7,11 @@ export function currentImageUseCase(deps: {
 }) {
   return async () => {
     const metadata = await deps.imageMetadataRepo.getLatest()
-    if (!metadata) {
+    const filename = metadata?.imageUri.split('/').pop()
+    if (!filename) {
       return null
     }
-    return await deps.imageStoreRepo.download(metadata.imageUri)
+    return await deps.imageStoreRepo.download(filename)
   }
 }
 
