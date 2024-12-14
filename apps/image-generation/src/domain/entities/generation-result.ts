@@ -10,7 +10,7 @@ export const generatedImageSchema = z.object({
   id: z.string(),
   prompt: imageGenerationPromptSchema,
   modelName: z.string(),
-  createdAtMillis: z.number().int().min(0),
+  createdAt: z.date(),
   imageUri: z.string().url(),
 })
 
