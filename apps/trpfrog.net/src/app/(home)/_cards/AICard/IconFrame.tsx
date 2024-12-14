@@ -56,7 +56,13 @@ const imgGenClient = createTrpFrogImageGenerationClient(NODE_ENV)
 
 export function IconFrame() {
   const fetcher = useCallback(
-    () => imgGenClient.current.metadata.$get().then(res => res.json()),
+    () =>
+      imgGenClient.current.metadata.$get().then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch metadata')
+        }
+        return res.json()
+      }),
     [],
   )
   const { isLoading, data, error } = useSWR('/', fetcher)
@@ -108,21 +114,17 @@ export function IconFrame() {
   return (
     <figure className={styles.wrapper()}>
       <div className={styles.layout()}>
-        <img
-          className={styles.picture()}
-          src={imageSrcUrl}
-          alt={`Auto generated image by AI: ${data.prompt}`}
-        />
+        <img className={styles.picture()} src={imageSrcUrl} alt="Auto generated image by AI" />
         <figcaption className={styles.caption()}>
           <div className={styles.aiGeneratedMsg()}>AI GENERATED ICON</div>
-          <div className={styles.english()}>{data.prompt}</div>
+          <div className={styles.english()}>{data.prompt.text}</div>
           <div className={styles.japanese()}>
-            <ParseWithBudouX str={data.translated} slug={'trpfrog-diffusion'} />
+            <ParseWithBudouX str={data.prompt.translated} slug={'trpfrog-diffusion'} />
           </div>
           <div className={styles.poweredBy()}>
             Powered by{' '}
-            <InlineLink href={'https://huggingface.co/Prgckwb/trpfrog-sd3.5-large-lora'}>
-              Prgckwb/trpfrog-sd3.5-large-lora
+            <InlineLink href={'https://huggingface.co/' + data.modelName}>
+              {data.modelName}
             </InlineLink>
           </div>
         </figcaption>

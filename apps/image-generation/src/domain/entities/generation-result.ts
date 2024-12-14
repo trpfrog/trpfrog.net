@@ -1,24 +1,33 @@
 import { z } from 'zod'
 
-export const TrpFrogImagePromptSchema = z.object({
-  prompt: z.string(),
+export const imageGenerationPromptSchema = z.object({
+  author: z.string(),
+  text: z.string(),
   translated: z.string(),
 })
 
-export const TrpFrogImageGenerationMetadataSchema = TrpFrogImagePromptSchema.extend({
-  generatedTime: z.number().int().min(0),
+export const generatedImageSchema = z.object({
+  modelName: z.string(),
+  extension: z.string(),
+  image: z.instanceof(ArrayBuffer),
 })
 
-export const TrpFrogImageGenerationResultSchema = TrpFrogImageGenerationMetadataSchema.extend({
-  arrayBuffer: z.instanceof(ArrayBuffer),
+export const imageMetadataSchema = z.object({
+  id: z.string(),
+  prompt: imageGenerationPromptSchema,
+  modelName: z.string(),
+  createdAt: z.date(),
+  imageUri: z.string().url(),
 })
 
-export type TrpFrogImagePrompt = z.infer<typeof TrpFrogImagePromptSchema>
-export type TrpFrogImageGenerationMetadata = z.infer<typeof TrpFrogImageGenerationMetadataSchema>
+export type ImagePrompt = z.infer<typeof imageGenerationPromptSchema>
+export type ImageMetadata = z.infer<typeof imageMetadataSchema>
+export type GeneratedImage = z.infer<typeof generatedImageSchema>
 
-export type ImageGenerationResult = {
-  generatedTime: number
-  arrayBuffer: ArrayBuffer
+export function parseImageMetadata(record: ImageMetadata | string): ImageMetadata {
+  if (typeof record === 'string') {
+    return imageMetadataSchema.parse(JSON.parse(record))
+  } else {
+    return imageMetadataSchema.parse(record)
+  }
 }
-
-export type RandomImageGenerationResult = ImageGenerationResult & TrpFrogImagePrompt

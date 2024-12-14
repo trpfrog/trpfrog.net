@@ -2,7 +2,7 @@ import { toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
 import { z } from 'zod'
 
-import type { TrpFrogImagePrompt } from '../domain/entities/generation-result'
+import type { ImagePrompt } from '../domain/entities/generation-result'
 import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
 
 type OutputWithReasoning = {
@@ -34,8 +34,8 @@ const FinalPromptSchema = z.object({
   translated: z.string(),
 })
 
-export function generatePromptFromWordsUsecase(deps: { jsonChatbot: ChatLLMJson }) {
-  return async (sourceWords: string[]): Promise<TrpFrogImagePrompt> => {
+export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson }) {
+  return async (sourceWords: string[]): Promise<ImagePrompt> => {
     if (sourceWords.length <= 0) {
       throw new Error('Invalid input words')
     }
@@ -216,7 +216,7 @@ export function generatePromptFromWordsUsecase(deps: { jsonChatbot: ChatLLMJson 
       },
     ]
 
-    const rawJson = await deps.jsonChatbot(chat)
+    const { response: rawJson, modelName } = await deps.jsonChatbot(chat)
 
     const parsedResponse = FinalPromptSchema.passthrough().safeParse(rawJson)
 
@@ -226,7 +226,9 @@ export function generatePromptFromWordsUsecase(deps: { jsonChatbot: ChatLLMJson 
 
     return {
       ...parsedResponse.data,
-      prompt: parsedResponse.data.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
+      translated: parsedResponse.data.translated,
+      text: parsedResponse.data.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
+      author: modelName.trim(),
     }
   }
 }

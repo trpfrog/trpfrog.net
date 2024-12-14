@@ -1,9 +1,10 @@
 import { HfInference } from '@huggingface/inference'
 
+import { GeneratedImage } from '../../domain/entities/generation-result'
 import { base64ArrayBuffer } from '../../lib/base64'
 
 export function createHfImageGenerator(params: { modelName: string; hfToken: string }) {
-  return async (text: string) => {
+  return async (text: string): Promise<GeneratedImage> => {
     const hf = new HfInference(params.hfToken)
     const responseBlob = await hf.textToImage(
       {
@@ -16,7 +17,6 @@ export function createHfImageGenerator(params: { modelName: string; hfToken: str
         retry_on_error: true,
       },
     )
-
     const arrayBuffer = await responseBlob.arrayBuffer()
     const base64 = base64ArrayBuffer(arrayBuffer)
 
@@ -27,6 +27,10 @@ export function createHfImageGenerator(params: { modelName: string; hfToken: str
       return Promise.reject('Failed to generate image')
     }
 
-    return arrayBuffer
+    return {
+      image: arrayBuffer,
+      modelName: params.modelName,
+      extension: '.' + responseBlob.type.split('/')[1],
+    }
   }
 }

@@ -20,14 +20,18 @@ export function createOpenAIChatLLM(params: ConstructorParameters<typeof ChatOpe
   return async rawChat => {
     const chat = toLangChainMessage(rawChat)
     const parser = new StringOutputParser()
-    return await model.pipe(parser).invoke(chat)
+    return {
+      response: await model.pipe(parser).invoke(chat),
+      modelName: model.modelName,
+    }
   }
 }
 
 export function createOpenAIChatLLMJson(
   params: ConstructorParameters<typeof ChatOpenAI>[0],
 ): ChatLLMJson {
-  const model = new ChatOpenAI(params).bind({
+  const rawModel = new ChatOpenAI(params)
+  const model = rawModel.bind({
     response_format: {
       type: 'json_object',
     },
@@ -35,6 +39,9 @@ export function createOpenAIChatLLMJson(
   return async rawChat => {
     const chat = toLangChainMessage(rawChat)
     const parser = new JsonOutputParser()
-    return await model.pipe(parser).invoke(chat)
+    return {
+      response: await model.pipe(parser).invoke(chat),
+      modelName: rawModel.modelName,
+    }
   }
 }

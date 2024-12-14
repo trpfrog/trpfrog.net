@@ -7,9 +7,9 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 
 import { Bindings } from '../../worker-configuration'
 import { Env } from '../env'
-import { Usecases } from '../wire'
+import { UseCases } from '../wire'
 
-export function createApp(initUseCases: (b: Bindings) => Usecases) {
+export function createApp(initUseCases: (b: Bindings) => UseCases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
     .use(contextStorage())
@@ -26,6 +26,9 @@ export function createApp(initUseCases: (b: Bindings) => Usecases) {
     })
     .get('/current/metadata', async c => {
       const data = await c.var.UCS.currentMetadata()
+      if (data == null) {
+        return c.json({ error: 'No metadata found' }, 404)
+      }
       return c.json(data)
     })
     .post('/update', async c => {
