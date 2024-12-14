@@ -1,7 +1,9 @@
-import { RandomImageGenerationResult } from '../domain/entities/generation-result'
+import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
 import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
-import { AITrpFrogImageRepo } from '../domain/repos/image-repo'
+import { GeneratedImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { isStale } from '../lib/stale'
+
+import { uploadNewImageUsecase } from './upload-new-image'
 
 type UpdateImageResult =
   | {
@@ -14,17 +16,22 @@ type UpdateImageResult =
     }
 
 export function refreshImageIfStaleUsecase(deps: {
-  imageRepo: AITrpFrogImageRepo
-  imageGenerator: () => Promise<RandomImageGenerationResult>
+  imageMetadataRepo: GeneratedImageMetadataRepo
+  uploadImage: ReturnType<typeof uploadNewImageUsecase>
+  imageGenerator: () => Promise<{
+    image: GeneratedImage
+    prompt: ImagePrompt
+  }>
 }) {
   return async (options?: { forceUpdate?: boolean }): Promise<UpdateImageResult> => {
-    const metadata = await deps.imageRepo.read.currentMetadata()
-    const { shouldCache, waitMinutes } = options?.forceUpdate
-      ? {
-          shouldCache: false,
-          waitMinutes: 0,
-        }
-      : isStale(IMAGE_STALE_MINUTES, metadata.generatedTime)
+    const metadata = await deps.imageMetadataRepo.getLatest()
+    const { shouldCache, waitMinutes } =
+      options?.forceUpdate || !metadata // if no metadata, force update
+        ? {
+            shouldCache: false,
+            waitMinutes: 0,
+          }
+        : isStale(IMAGE_STALE_MINUTES, metadata.createdAt)
 
     if (shouldCache) {
       return {
@@ -33,8 +40,13 @@ export function refreshImageIfStaleUsecase(deps: {
         waitMinutes,
       }
     }
+
     const result = await deps.imageGenerator()
-    await deps.imageRepo.update(result)
+    await deps.uploadImage(result.image.image, {
+      modelName: result.image.modelName,
+      imageExtension: result.image.extension,
+      prompt: result.prompt,
+    })
     return {
       updated: true,
     }

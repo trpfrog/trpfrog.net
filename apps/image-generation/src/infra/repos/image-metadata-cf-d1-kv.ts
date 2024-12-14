@@ -2,10 +2,7 @@ import { desc, eq, or, and, like, count } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/d1'
 import { getContext } from 'hono/context-storage'
 
-import {
-  GeneratedImageMetadata,
-  parseGeneratedImage,
-} from '../../domain/entities/generation-result'
+import { GeneratedImageMetadata, parseImageMetadata } from '../../domain/entities/generation-result'
 import {
   GeneratedImageMetadataRepo,
   generatedImageMetadataRepoQuerySchema,
@@ -16,7 +13,7 @@ import { imageMetadataTable as images } from '../db/image-db'
 const CURRENT_KEY = 'latest'
 
 function convertToDomain(r: typeof images.$inferSelect): GeneratedImageMetadata {
-  return parseGeneratedImage({
+  return parseImageMetadata({
     id: r.id,
     imageUri: r.imageUri,
     modelName: r.modelName,

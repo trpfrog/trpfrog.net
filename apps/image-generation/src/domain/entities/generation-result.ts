@@ -7,6 +7,12 @@ export const imageGenerationPromptSchema = z.object({
 })
 
 export const generatedImageSchema = z.object({
+  modelName: z.string(),
+  extension: z.string(),
+  image: z.instanceof(ArrayBuffer),
+})
+
+export const imageMetadataSchema = z.object({
   id: z.string(),
   prompt: imageGenerationPromptSchema,
   modelName: z.string(),
@@ -15,14 +21,15 @@ export const generatedImageSchema = z.object({
 })
 
 export type ImagePrompt = z.infer<typeof imageGenerationPromptSchema>
-export type GeneratedImageMetadata = z.infer<typeof generatedImageSchema>
+export type GeneratedImageMetadata = z.infer<typeof imageMetadataSchema>
+export type GeneratedImage = z.infer<typeof generatedImageSchema>
 
-export function parseGeneratedImage(
+export function parseImageMetadata(
   record: GeneratedImageMetadata | string,
 ): GeneratedImageMetadata {
   if (typeof record === 'string') {
-    return generatedImageSchema.parse(JSON.parse(record))
+    return imageMetadataSchema.parse(JSON.parse(record))
   } else {
-    return generatedImageSchema.parse(record)
+    return imageMetadataSchema.parse(record)
   }
 }

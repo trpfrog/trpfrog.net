@@ -5,6 +5,8 @@ export type ChatUtterance = {
   text: string
 }
 
-export type ChatLLM = (chat: ChatUtterance[]) => Promise<string>
+type WithMetadata<T> = { response: T; modelName: string }
 
-export type ChatLLMJson = (chat: ChatUtterance[]) => Promise<Record<string, unknown>>
+export type ChatLLM = (chat: ChatUtterance[]) => Promise<WithMetadata<string>>
+
+export type ChatLLMJson = (chat: ChatUtterance[]) => Promise<WithMetadata<Record<string, unknown>>>
