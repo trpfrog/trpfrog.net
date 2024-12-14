@@ -2,17 +2,17 @@ import { desc, eq, or, and, like, count } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/d1'
 import { getContext } from 'hono/context-storage'
 
-import { GeneratedImageMetadata, parseImageMetadata } from '../../domain/entities/generation-result'
+import { ImageMetadata, parseImageMetadata } from '../../domain/entities/generation-result'
 import {
-  GeneratedImageMetadataRepo,
-  generatedImageMetadataRepoQuerySchema,
+  ImageMetadataRepo,
+  imageMetadataRepoQuerySchema,
 } from '../../domain/repos/image-metadata-repo'
 import { Env } from '../../env'
 import { imageMetadataTable as images } from '../db/image-db'
 
 const CURRENT_KEY = 'latest'
 
-function convertToDomain(r: typeof images.$inferSelect): GeneratedImageMetadata {
+function convertToDomain(r: typeof images.$inferSelect): ImageMetadata {
   return parseImageMetadata({
     id: r.id,
     imageUri: r.imageUri,
@@ -26,7 +26,7 @@ function convertToDomain(r: typeof images.$inferSelect): GeneratedImageMetadata 
   })
 }
 
-function convertToDB(image: GeneratedImageMetadata): typeof images.$inferInsert {
+function convertToDB(image: ImageMetadata): typeof images.$inferInsert {
   return {
     id: image.id,
     imageUri: image.imageUri,
@@ -38,9 +38,9 @@ function convertToDB(image: GeneratedImageMetadata): typeof images.$inferInsert 
   }
 }
 
-export const generatedImageRepoCloudflareD1WithKV: GeneratedImageMetadataRepo = {
+export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
   async query(query) {
-    const { prompt, limit, offset } = generatedImageMetadataRepoQuerySchema.parse(query)
+    const { prompt, limit, offset } = imageMetadataRepoQuerySchema.parse(query)
     const tokens = prompt ? prompt.split(/\s+/) : []
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)

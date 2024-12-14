@@ -21,12 +21,10 @@ export const imageMetadataSchema = z.object({
 })
 
 export type ImagePrompt = z.infer<typeof imageGenerationPromptSchema>
-export type GeneratedImageMetadata = z.infer<typeof imageMetadataSchema>
+export type ImageMetadata = z.infer<typeof imageMetadataSchema>
 export type GeneratedImage = z.infer<typeof generatedImageSchema>
 
-export function parseImageMetadata(
-  record: GeneratedImageMetadata | string,
-): GeneratedImageMetadata {
+export function parseImageMetadata(record: ImageMetadata | string): ImageMetadata {
   if (typeof record === 'string') {
     return imageMetadataSchema.parse(JSON.parse(record))
   } else {

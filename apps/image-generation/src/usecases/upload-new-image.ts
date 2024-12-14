@@ -2,12 +2,12 @@ import { format } from 'date-fns'
 import { uuidv7 } from 'uuidv7'
 
 import { ImagePrompt } from '../domain/entities/generation-result'
-import { GeneratedImageMetadataRepo } from '../domain/repos/image-metadata-repo'
+import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from '../domain/repos/image-store-repo'
 
 export function uploadNewImageUsecase(deps: {
   imageStoreRepo: ImageStoreRepo
-  imageMetadataRepo: GeneratedImageMetadataRepo
+  imageMetadataRepo: ImageMetadataRepo
 }) {
   return async (
     imageData: ArrayBuffer,

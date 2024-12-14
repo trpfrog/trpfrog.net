@@ -1,7 +1,7 @@
 import { removeSuffixFromKeys } from '@trpfrog.net/utils'
 import { wire } from '@trpfrog.net/utils/wire'
 
-import { GeneratedImageMetadataRepo } from './domain/repos/image-metadata-repo'
+import { ImageMetadataRepo } from './domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from './domain/repos/image-store-repo'
 import { ChatLLMJson } from './domain/services/llm'
 import { TextToImage } from './domain/services/text-to-image'
@@ -15,7 +15,7 @@ export type Usecases = {
 
 export function prepareUsecasesBuilder(common: {
   imageStoreRepo: ImageStoreRepo
-  imageMetadataRepo: GeneratedImageMetadataRepo
+  imageMetadataRepo: ImageMetadataRepo
   textToImage: TextToImage
   jsonChatbot: ChatLLMJson
   generateSeedWords: () => Promise<string[]>

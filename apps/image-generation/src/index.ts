@@ -1,6 +1,6 @@
 import { createApp } from './controller'
 import { adminApp } from './controller/devPage'
-import { generatedImageRepoCloudflareD1WithKV } from './infra/repos/image-metadata-cf-d1-kv'
+import { imageMetadataRepoCloudflareD1WithKV } from './infra/repos/image-metadata-cf-d1-kv'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/image-store-cf-r2'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { randomWordApi } from './infra/services/random-words'
@@ -20,7 +20,7 @@ const app = createApp(env => {
 
   const ucs = prepareUsecasesBuilder({
     imageStoreRepo: imageStoreRepoCloudflareR2,
-    imageMetadataRepo: generatedImageRepoCloudflareD1WithKV,
+    imageMetadataRepo: imageMetadataRepoCloudflareD1WithKV,
     textToImage,
     jsonChatbot,
     generateSeedWords: () => randomWordApi(10),

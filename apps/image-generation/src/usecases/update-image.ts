@@ -1,6 +1,6 @@
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
 import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
-import { GeneratedImageMetadataRepo } from '../domain/repos/image-metadata-repo'
+import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { isStale } from '../lib/stale'
 
 import { uploadNewImageUsecase } from './upload-new-image'
@@ -16,7 +16,7 @@ type UpdateImageResult =
     }
 
 export function refreshImageIfStaleUsecase(deps: {
-  imageMetadataRepo: GeneratedImageMetadataRepo
+  imageMetadataRepo: ImageMetadataRepo
   uploadImage: ReturnType<typeof uploadNewImageUsecase>
   imageGenerator: () => Promise<{
     image: GeneratedImage
