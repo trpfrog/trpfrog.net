@@ -21,6 +21,7 @@ export const NAVIGATION_LINKS: NavigationLinkRecord[] = [
   { link: '/environment', name: 'Environment', shortName: 'Env' },
   { link: '/stickers', name: 'Stickers' },
   { link: '/icons', name: 'Icons' },
+  { link: '/ai-icons', name: 'AI Generated Icons', shortName: 'AI Icons' },
   { link: '/links', name: 'Links', showOnNavBar: false },
   { link: '/download', name: 'Downloads', shortName: 'DLC' },
   {

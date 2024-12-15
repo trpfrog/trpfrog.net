@@ -130,6 +130,7 @@
     "babel-plugin-react-compiler": "0.0.0-experimental-fa06e2c-20241016",
     "clipboardy": "^4.0.0",
     "cssnano": "^6.1.2",
+    "jsdom": "^25.0.1",
     "postcss": "^8.4.39",
     "sass": "^1.77.8",
     "shiki": "^1.6.5",

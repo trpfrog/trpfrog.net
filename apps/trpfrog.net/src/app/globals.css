@@ -28,7 +28,7 @@
   }
 
   article {
-    @apply tw-leading-[1.8] tw-tracking-wide;
+    @apply tw-leading-[1.8];
   }
 }
 

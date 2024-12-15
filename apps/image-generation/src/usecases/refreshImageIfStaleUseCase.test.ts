@@ -31,7 +31,7 @@ describe('refreshImageIfStale', () => {
         imageUri: 'http://example.com/image.png',
       }),
       query: async () => [],
-      amount: async () => 0,
+      count: async () => 0,
       add: async () => {},
       remove: async () => {},
     },

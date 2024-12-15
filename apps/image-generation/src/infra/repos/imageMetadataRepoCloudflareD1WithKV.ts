@@ -3,10 +3,7 @@ import { drizzle } from 'drizzle-orm/d1'
 import { getContext } from 'hono/context-storage'
 
 import { ImageMetadata, parseImageMetadata } from '../../domain/entities/generation-result'
-import {
-  ImageMetadataRepo,
-  imageMetadataRepoQuerySchema,
-} from '../../domain/repos/image-metadata-repo'
+import { ImageMetadataQuery, ImageMetadataRepo } from '../../domain/repos/image-metadata-repo'
 import { Env } from '../../env'
 import { imageMetadataTable as images } from '../db/schema'
 
@@ -38,24 +35,27 @@ function convertToDB(image: ImageMetadata): typeof images.$inferInsert {
   }
 }
 
+function createWhereQuery(query: ImageMetadataQuery['where']) {
+  const { prompt } = query
+  const tokens = prompt ? prompt.split(/\s+/) : []
+  return and(
+    ...tokens.map(token =>
+      or(like(images.promptText, `%${token}%`), like(images.promptTranslated, `%${token}%`)),
+    ),
+  )
+}
+
 export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
   async query(query) {
-    const { prompt, limit, offset } = imageMetadataRepoQuerySchema.parse(query)
-    const tokens = prompt ? prompt.split(/\s+/) : []
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
     const res = await db
       .select()
       .from(images)
-      .where(
-        and(
-          ...tokens.map(token =>
-            or(like(images.promptText, `%${token}%`), like(images.promptTranslated, `%${token}%`)),
-          ),
-        ),
-      )
-      .offset(offset)
-      .limit(limit)
+      .where(createWhereQuery(query.where))
+      .orderBy(desc(images.createdAtMillis))
+      .offset(query.offset)
+      .limit(query.limit)
     return res.map(convertToDomain)
   },
 
@@ -86,10 +86,10 @@ export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
     return record ? convertToDomain(record) : undefined
   },
 
-  async amount() {
+  async count(query = {}) {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
-    const res = await db.select({ count: count() }).from(images)
+    const res = await db.select({ count: count() }).from(images).where(createWhereQuery(query))
     return res[0].count
   },
 

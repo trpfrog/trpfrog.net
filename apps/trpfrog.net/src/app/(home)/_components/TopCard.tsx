@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from 'react'
+import { ComponentPropsWithRef, ReactNode } from 'react'
 
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
@@ -62,14 +62,14 @@ export function TopCard(props: TopCardProps) {
 
 interface TopLinkCardProps extends AProps {
   title?: string
-  readMoreText?: string | boolean
+  readMoreText?: ReactNode | boolean
   titlePosition?: VariantProps<typeof styles.h2>['position']
 }
 
 export function LinkTopCard(props: TopLinkCardProps) {
   const { className, children, title, readMoreText, titlePosition = 'top-left', ...rest } = props
   const showReadMore = readMoreText !== false
-  const readMore = typeof readMoreText === 'string' ? readMoreText : '→'
+  const readMore = typeof readMoreText === 'boolean' ? '→' : readMoreText
 
   return (
     <A className={styles.base({ className, clickable: true })} openInNewTab={false} {...rest}>

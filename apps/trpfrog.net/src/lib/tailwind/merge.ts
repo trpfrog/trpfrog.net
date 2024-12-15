@@ -1,4 +1,5 @@
-// eslint-disable-next-line
+/* eslint-disable no-restricted-imports */
+
 import { extendTailwindMerge } from 'tailwind-merge'
 
 export const twMergeConfig: Parameters<typeof extendTailwindMerge>[0] = {
@@ -6,3 +7,5 @@ export const twMergeConfig: Parameters<typeof extendTailwindMerge>[0] = {
 }
 
 export const twMerge = extendTailwindMerge(twMergeConfig)
+
+export { twJoin } from 'tailwind-merge'

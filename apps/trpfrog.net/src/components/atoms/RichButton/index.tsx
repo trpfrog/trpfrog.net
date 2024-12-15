@@ -6,7 +6,7 @@ import styles from './index.module.scss'
 
 type Props<T extends React.ElementType> = {
   as: T
-} & Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'disabled'>
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 export function RichButton<T extends React.ElementType>(props: Props<T>) {
   const { as, className, ...rest } = props
