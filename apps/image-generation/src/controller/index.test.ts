@@ -15,7 +15,7 @@ const defaultDeps = {
       modelName: 'test',
     })),
     query: vi.fn(async () => []),
-    amount: vi.fn(async () => 0),
+    count: vi.fn(async () => 0),
     add: vi.fn(async () => {}),
     remove: vi.fn(async () => {}),
   },
