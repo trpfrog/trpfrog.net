@@ -11,11 +11,11 @@
     ".": "./index.ts"
   },
   "dependencies": {
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-eslint": "workspace:*",
+    "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/utils": "workspace:*"
   }
 }

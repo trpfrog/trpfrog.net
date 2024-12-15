@@ -15,11 +15,5 @@ const app = new Hono()
 
 export type AppType = typeof app
 
-function patchedHandle(app: AppType) {
-  const handler = handle(app)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (req: Request, context: any) => handler(req, context)
-}
-
-export const GET = patchedHandle(app)
-export const POST = patchedHandle(app)
+export const GET = handle(app)
+export const POST = handle(app)
