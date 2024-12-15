@@ -2,6 +2,7 @@ import { faClock, faImage, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { format } from 'date-fns'
 
+import { InlineLink } from '@/components/atoms/InlineLink'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 
 import { twJoin, twMerge } from '@/lib/tailwind/merge'
@@ -67,7 +68,9 @@ export function IconRecord(props: {
               {props.promptAuthor}
             </MetadataRecord>
             <MetadataRecord icon={<FontAwesomeIcon icon={faImage} />}>
-              {props.imageModelName}
+              <InlineLink href={`https://huggingface.com/${props.imageModelName}`}>
+                {props.imageModelName}
+              </InlineLink>
             </MetadataRecord>
           </MetadataWrapper>
         </div>
