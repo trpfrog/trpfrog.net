@@ -8,7 +8,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 import { z } from 'zod'
 
 import { Bindings } from '../../worker-configuration'
-import { creaeteImageMetadataQuery } from '../domain/repos/image-metadata-repo'
+import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
 import { UseCases } from '../wire'
 
@@ -57,20 +57,25 @@ export function createApp(initUseCases: (b: Bindings) => UseCases) {
         'query',
         z.object({
           q: z.string().optional(),
-          limit: z.number().int().positive().max(100).optional(),
-          offset: z.number().optional(),
+          limit: z.coerce.number().int().positive().max(100).optional(),
+          offset: z.coerce.number().optional(),
         }),
       ),
       async c => {
         const rawQuery = c.req.valid('query')
-        const query = creaeteImageMetadataQuery({
+
+        const res = imageMetadataRepoQuerySchema.safeParse({
           where: {
             prompt: rawQuery.q,
           },
           limit: rawQuery.limit,
           offset: rawQuery.offset,
-        })
-        const data = await c.var.UCS.queryImageMetadata(query)
+        } satisfies z.input<typeof imageMetadataRepoQuerySchema>)
+
+        if (!res.success) {
+          return c.json({ error: res.error }, 400)
+        }
+        const data = await c.var.UCS.queryImageMetadata(res.data)
         return c.json({
           result: data.result,
           total: data.count,

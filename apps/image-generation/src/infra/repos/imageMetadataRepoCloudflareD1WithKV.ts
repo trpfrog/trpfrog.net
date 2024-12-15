@@ -53,6 +53,7 @@ export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
       .select()
       .from(images)
       .where(createWhereQuery(query.where))
+      .orderBy(desc(images.createdAtMillis))
       .offset(query.offset)
       .limit(query.limit)
     return res.map(convertToDomain)
