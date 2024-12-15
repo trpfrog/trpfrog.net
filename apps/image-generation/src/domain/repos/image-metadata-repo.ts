@@ -8,11 +8,17 @@ export const imageMetadataRepoQuerySchema = z.object({
       prompt: z.string().optional(),
     })
     .default({}),
-  limit: z.number().int().positive().max(100).default(20),
+  limit: z.number().int().positive().default(20),
   offset: z.number().int().positive().default(0),
 })
 
 export type ImageMetadataQuery = z.output<typeof imageMetadataRepoQuerySchema>
+
+export function creaeteImageMetadataQuery(
+  query: z.input<typeof imageMetadataRepoQuerySchema>,
+): ImageMetadataQuery {
+  return imageMetadataRepoQuerySchema.parse(query)
+}
 
 export interface ImageMetadataRepo {
   query: (query: ImageMetadataQuery) => Promise<ImageMetadata[]>
