@@ -13,7 +13,7 @@ const app = createApp(env => {
     hfToken: env.HUGGINGFACE_TOKEN,
   })
   const jsonChatbot = createOpenAIChatLLMJson({
-    model: 'gpt-4o-mini',
+    model: 'gpt-4o-mini-2024-07-18',
     temperature: 0.9,
     apiKey: env.OPENAI_API_KEY,
   })
