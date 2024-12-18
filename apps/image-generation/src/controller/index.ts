@@ -12,6 +12,8 @@ import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-rep
 import { Env } from '../env'
 import { UseCases } from '../wire'
 
+import { requiresApiKey } from './middlewares'
+
 export function createApp(initUseCases: (b: Bindings) => UseCases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
@@ -53,13 +55,16 @@ export function createApp(initUseCases: (b: Bindings) => UseCases) {
     })
     .get(
       '/query',
+      requiresApiKey(),
       zValidator(
         'query',
-        z.object({
-          q: z.string().optional(),
-          limit: z.coerce.number().int().positive().max(100).optional(),
-          offset: z.coerce.number().optional(),
-        }),
+        z
+          .object({
+            q: z.string().optional(),
+            limit: z.coerce.number().int().positive().max(100).optional(),
+            offset: z.coerce.number().optional(),
+          })
+          .strict(),
       ),
       async c => {
         const rawQuery = c.req.valid('query')
