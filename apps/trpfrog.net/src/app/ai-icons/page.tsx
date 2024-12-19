@@ -15,7 +15,7 @@ export default async function Index() {
     <MainWrapper>
       <Title title={metadata.title} description={metadata.description} />
       <div className="tw-mt-4">
-        <Icons limit={20} />
+        <Icons />
       </div>
     </MainWrapper>
   )
