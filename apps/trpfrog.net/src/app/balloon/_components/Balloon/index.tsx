@@ -3,6 +3,7 @@
 import { useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
+import { match } from 'ts-pattern'
 
 import * as styles from './index.css.ts'
 
@@ -67,13 +68,22 @@ export const Balloon = (props: BalloonProps) => {
     colors: colors[props.color],
   })
 
+  const ariaLabel = match(props)
+    .with({ isBurst: true }, () => '割れた風船')
+    .with({ color: 'blue' }, () => '青い風船')
+    .with({ color: 'green' }, () => '緑の風船')
+    .with({ color: 'orange' }, () => 'オレンジの風船')
+    .exhaustive()
+
   return (
-    <span
+    <button
       style={{
         width: props.width,
         height: props.height,
         backgroundSize: `${props.width} ${props.height}`,
       }}
+      disabled={props.isBurst}
+      aria-label={ariaLabel}
       className={`${styles.balloon} ${props.className}`}
       data-broken-balloon={props.isBurst}
       data-balloon-color={props.color}
@@ -86,6 +96,6 @@ export const Balloon = (props: BalloonProps) => {
       }}
     >
       <span className="tw-inline-block" id={balloonId} />
-    </span>
+    </button>
   )
 }
