@@ -35,7 +35,11 @@ export function Hamburger() {
   const hamburgerStyles = createHamburgerStyles({ isOpened })
   return (
     <div className="tw-inline-grid tw-place-items-center tw-transition-all tw-duration-500">
-      <button className={hamburgerStyles.button()} onClick={toggleMenuCallback}>
+      <button
+        className={hamburgerStyles.button()}
+        onClick={toggleMenuCallback}
+        aria-label={isOpened ? 'メニューを閉じる' : 'メニューを開く'}
+      >
         <span className={hamburgerStyles.span1()} />
         <span className={hamburgerStyles.span2()} />
         <span className={hamburgerStyles.span3()} />
