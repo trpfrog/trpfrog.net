@@ -1,21 +1,45 @@
-'use client'
-import { memo } from 'react'
-
+// tailwind-variants definition
 import { useMobileMenuState, useToggleMenuCallback } from '@/components/organisms/MobileMenu'
 
-import styles from './index.module.scss'
+import { tv } from '@/lib/tailwind/variants'
 
-export const Hamburger = memo(function Hamburger() {
+const createHamburgerStyles = tv({
+  slots: {
+    button: [
+      'tw-relative tw-w-7 tw-h-6 tw-z-[199] tw-cursor-pointer',
+      '*:tw-transition-all *:tw-duration-500',
+    ],
+    span1: 'tw-absolute tw-left-0 tw-w-full tw-h-1 tw-bg-white tw-rounded',
+    span2: 'tw-absolute tw-left-0 tw-w-full tw-h-1 tw-bg-white tw-rounded',
+    span3: 'tw-absolute tw-left-0 tw-w-full tw-h-1 tw-bg-white tw-rounded',
+  },
+  variants: {
+    isOpened: {
+      false: {
+        span1: 'tw-top-0 tw-w-full',
+        span2: 'tw-top-[calc(50%-2px)] tw-w-full',
+        span3: 'tw-bottom-0 tw-w-full',
+      },
+      true: {
+        span1: 'tw-top-0 tw-w-[43%] tw-translate-x-[1.5px] tw-translate-y-[3.6px] tw-rotate-45',
+        span2: 'tw-top-[10px] tw-w-[105%] tw-translate-x-[-1px] tw-rotate-[-45deg]',
+        span3: 'tw-bottom-0 tw-w-[43%] tw-translate-x-[14px] tw-translate-y-[-3.5px] tw-rotate-45',
+      },
+    },
+  },
+})
+
+export function Hamburger() {
   const [isOpened] = useMobileMenuState()
   const toggleMenuCallback = useToggleMenuCallback()
-
+  const hamburgerStyles = createHamburgerStyles({ isOpened })
   return (
-    <div id={styles.hamburger_menu}>
-      <a id={styles.menu_trigger} onClick={toggleMenuCallback} data-menu-opened={isOpened}>
-        <span />
-        <span />
-        <span /> {/* Hamburger Icon in CSS */}
-      </a>
+    <div className="tw-inline-grid tw-place-items-center tw-transition-all tw-duration-500">
+      <button className={hamburgerStyles.button()} onClick={toggleMenuCallback}>
+        <span className={hamburgerStyles.span1()} />
+        <span className={hamburgerStyles.span2()} />
+        <span className={hamburgerStyles.span3()} />
+      </button>
     </div>
   )
-})
+}
