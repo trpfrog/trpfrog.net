@@ -1,12 +1,13 @@
-import * as React from 'react'
-import { Suspense, useMemo } from 'react'
+import { Suspense, useMemo, useRef } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
 import { KawaiiLogoOrNot } from '@/components/organisms/Header/KawaiiLogo.tsx'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
-import { MobileMenu } from '@/components/organisms/MobileMenu'
+import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMenu'
+
+import { useFocusTrap } from '@/hooks/useFocusTrap'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -58,8 +59,15 @@ type Props = {
 }
 
 // TODO: props を握りつぶさない
-export const Header = React.memo(function Header(_props: Props) {
+export function Header(_props: Props) {
   const { sticky, visible, visibleShadow } = useHeaderStatus()
+
+  const refHeader = useRef<HTMLDivElement>(null)
+  const refMobileMenu = useRef<HTMLDivElement>(null)
+  const [isOpened, setIsOpened] = useMobileMenuState()
+
+  const focusableRefs = [refHeader, refMobileMenu]
+  useFocusTrap(focusableRefs, isOpened, () => setIsOpened(false))
 
   const styles = useMemo(
     () =>
@@ -72,26 +80,24 @@ export const Header = React.memo(function Header(_props: Props) {
   )
 
   return (
-    <>
-      <div className={styles.wrapper()}>
-        <header className={styles.header()}>
-          <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
-            <div className="tw-w-fit">
-              {/* TODO: あまり賢い方法ではないのでどうにかする */}
-              <Suspense fallback={<SiteNameWithIcon />}>
-                <KawaiiLogoOrNot>
-                  <SiteNameWithIcon />
-                </KawaiiLogoOrNot>
-              </Suspense>
-            </div>
-            <div className={styles.nav_wrapper()}>
-              <HeaderNav />
-              <Hamburger />
-            </div>
-          </MainWrapper>
-        </header>
-      </div>
-      <MobileMenu />
-    </>
+    <div className={styles.wrapper()} ref={refHeader}>
+      <header className={styles.header()}>
+        <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
+          <div className="tw-w-fit">
+            {/* TODO: あまり賢い方法ではないのでどうにかする */}
+            <Suspense fallback={<SiteNameWithIcon />}>
+              <KawaiiLogoOrNot>
+                <SiteNameWithIcon />
+              </KawaiiLogoOrNot>
+            </Suspense>
+          </div>
+          <div className={styles.nav_wrapper()}>
+            <HeaderNav />
+            <Hamburger />
+          </div>
+        </MainWrapper>
+        <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
+      </header>
+    </div>
   )
-})
+}
