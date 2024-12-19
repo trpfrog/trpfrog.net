@@ -2,9 +2,9 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
 import { formatReadTime } from '@trpfrog.net/posts/time'
+import Link from 'next/link'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-import { BlockLink } from '@/components/molecules/BlockLink'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 import { formatDateToDisplay } from '@/lib/date'
@@ -21,8 +21,8 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
   const { minutes: readTimeMinutes } = formatReadTime(entry.readTime)
 
   return (
-    <PlainBlock className={styles.wrapper}>
-      <BlockLink href={'/blog/' + entry.slug} prefetch={false} className={styles.layout}>
+    <Link href={'/blog/' + entry.slug} prefetch={false} className={styles.wrapper}>
+      <PlainBlock className={styles.layout}>
         {hasThumbnail ? (
           <img
             className={styles.image}
@@ -65,7 +65,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
             </div>
           )}
         </div>
-      </BlockLink>
-    </PlainBlock>
+      </PlainBlock>
+    </Link>
   )
 }

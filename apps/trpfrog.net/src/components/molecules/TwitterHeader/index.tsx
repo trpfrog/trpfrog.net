@@ -6,7 +6,6 @@ import { createURL } from '@trpfrog.net/utils'
 
 import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
 import { iconPreset } from '@/components/atoms/twitter/TwitterIcon/preset'
-import { BlockLink } from '@/components/molecules/BlockLink'
 import { A } from '@/components/wrappers'
 
 import styles from './index.module.scss'
@@ -23,12 +22,12 @@ export function TwitterHeader(props: TwitterHeaderProps) {
   return (
     <div className={styles.header}>
       <div className={styles.header_left}>
-        <BlockLink href={userLink}>
+        <A openInNewTab href={userLink}>
           <TwitterIcon
             iconStyle={props.iconStyle}
             preset={props.preset ?? props.screenName.toLowerCase()}
           />
-        </BlockLink>
+        </A>
         <div className={styles.name_box}>
           <A openInNewTab href={userLink}>
             <div className={styles.name}>{props.name}</div>
