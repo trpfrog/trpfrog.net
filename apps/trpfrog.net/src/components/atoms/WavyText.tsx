@@ -10,7 +10,7 @@ export function WavyText(props: { text: string; className?: string; style?: CSSP
       style={props.style}
     >
       {props.text.split('').map((char, i) => (
-        <span key={i} className={i % 2 !== 0 ? 'tw-rotate-3' : '-tw-rotate-3'}>
+        <span key={i} className={i % 2 !== 0 ? 'tw-rotate-3' : '-tw-rotate-3'} aria-hidden="true">
           {char === ' ' ? '\u00A0' : char}
         </span>
       ))}
