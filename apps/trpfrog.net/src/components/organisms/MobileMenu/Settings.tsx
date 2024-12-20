@@ -1,5 +1,6 @@
 'use client'
-import { Input } from '@/components/wrappers'
+
+import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -17,20 +18,11 @@ const styles = tv({
 function KawaiiCheckbox() {
   const [showKawaiiLogo, setShowKawaiiLogo] = useKawaiiLogoAtom()
   return (
-    <div>
-      <label className={styles.label()}>
-        <Input
-          type="checkbox"
-          checked={showKawaiiLogo}
-          onChange={e => setShowKawaiiLogo(e.target.checked)}
-        />
-        <div className="tw-leading-[1]">
-          かわいいロゴモード
-          <br />
-          <small>(Logo by @TrpFrog)</small>
-        </div>
-      </label>
-    </div>
+    <LabelledCheckbox checked={showKawaiiLogo} onChange={setShowKawaiiLogo}>
+      かわいいロゴモード
+      <br />
+      <small>(Logo by @TrpFrog)</small>
+    </LabelledCheckbox>
   )
 }
 
@@ -40,27 +32,16 @@ function HeaderCheckbox() {
 
   return (
     <>
-      <div>
-        <label className={styles.label()}>
-          <Input
-            type="checkbox"
-            checked={shouldFollowHeader}
-            onChange={e => setShouldFollowHeader(e.target.checked)}
-          />
-          ヘッダを追従させる
-        </label>
-      </div>
-      <div>
-        <label className={styles.label()}>
-          <Input
-            type="checkbox"
-            checked={!shouldHideHeader}
-            disabled={!shouldFollowHeader}
-            onChange={e => setShouldHideHeader(!e.target.checked)}
-          />
-          スクロール時ヘッダを隠す
-        </label>
-      </div>
+      <LabelledCheckbox checked={shouldFollowHeader} onChange={setShouldFollowHeader}>
+        ヘッダを追従させる
+      </LabelledCheckbox>
+      <LabelledCheckbox
+        checked={!shouldHideHeader}
+        disabled={!shouldFollowHeader}
+        onChange={value => setShouldHideHeader(!value)}
+      >
+        スクロール時ヘッダを隠す
+      </LabelledCheckbox>
     </>
   )
 }

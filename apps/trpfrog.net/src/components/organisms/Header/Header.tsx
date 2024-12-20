@@ -1,12 +1,13 @@
-import * as React from 'react'
-import { Suspense, useMemo } from 'react'
+import { Suspense, useMemo, useRef } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
 import { KawaiiLogoOrNot } from '@/components/organisms/Header/KawaiiLogo.tsx'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
-import { MobileMenu } from '@/components/organisms/MobileMenu'
+import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMenu'
+
+import { useFocusTrap } from '@/hooks/useFocusTrap'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -58,8 +59,15 @@ type Props = {
 }
 
 // TODO: props を握りつぶさない
-export const Header = React.memo(function Header(_props: Props) {
+export function Header(_props: Props) {
   const { sticky, visible, visibleShadow } = useHeaderStatus()
+
+  const refCloseButton = useRef<HTMLDivElement>(null)
+  const refMobileMenu = useRef<HTMLDivElement>(null)
+  const [isOpened, setIsOpened] = useMobileMenuState()
+
+  const focusableRefs = [refCloseButton, refMobileMenu]
+  useFocusTrap(focusableRefs, isOpened, () => setIsOpened(false))
 
   const styles = useMemo(
     () =>
@@ -86,12 +94,12 @@ export const Header = React.memo(function Header(_props: Props) {
             </div>
             <div className={styles.nav_wrapper()}>
               <HeaderNav />
-              <Hamburger />
+              <Hamburger ref={refCloseButton} />
             </div>
           </MainWrapper>
         </header>
       </div>
-      <MobileMenu />
+      <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
     </>
   )
-})
+}

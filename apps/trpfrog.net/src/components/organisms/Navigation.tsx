@@ -40,7 +40,10 @@ const styles = {
     base: ['tw-m-auto tw-w-full tw-max-w-[980px]', 'tw-flex tw-items-center tw-justify-between'],
   }),
   link: tv({
-    base: ['tw-inline-block tw-rounded-full tw-px-4 tw-duration-1200 tw-font-palanquin-dark'],
+    base: [
+      'tw-inline-block tw-rounded-full tw-px-4 tw-duration-1200 tw-font-palanquin-dark',
+      'focus-visible:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-white',
+    ],
     variants: {
       current: {
         true: `tw-bg-white tw-text-[#81bd4a] hover:tw-bg-white/80 dark:tw-text-trpfrog-700`,
@@ -58,7 +61,7 @@ export function Navigation() {
   const currentLink = pathname?.split('/').slice(0, 2).join('/')
   return (
     <div className={styles.wrapper()}>
-      <nav className={styles.nav()}>
+      <nav className={styles.nav()} aria-label="簡易ナビゲーション">
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
           ({ link, name, shortName }) => (
             <A href={link} key={link} className={styles.link({ current: currentLink === link })}>
