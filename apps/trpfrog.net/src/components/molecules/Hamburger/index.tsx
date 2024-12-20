@@ -29,12 +29,15 @@ const createHamburgerStyles = tv({
   },
 })
 
-export function Hamburger() {
+export function Hamburger(props: { ref: React.RefObject<HTMLDivElement | null> }) {
   const [isOpened] = useMobileMenuState()
   const toggleMenuCallback = useToggleMenuCallback()
   const hamburgerStyles = createHamburgerStyles({ isOpened })
   return (
-    <div className="tw-inline-grid tw-place-items-center tw-transition-all tw-duration-500">
+    <div
+      className="tw-inline-grid tw-place-items-center tw-transition-all tw-duration-500"
+      ref={props.ref}
+    >
       <button
         className={hamburgerStyles.button()}
         onClick={toggleMenuCallback}

@@ -62,11 +62,11 @@ type Props = {
 export function Header(_props: Props) {
   const { sticky, visible, visibleShadow } = useHeaderStatus()
 
-  const refHeader = useRef<HTMLDivElement>(null)
+  const refCloseButton = useRef<HTMLButtonElement>(null)
   const refMobileMenu = useRef<HTMLDivElement>(null)
   const [isOpened, setIsOpened] = useMobileMenuState()
 
-  const focusableRefs = [refHeader, refMobileMenu]
+  const focusableRefs = [refCloseButton, refMobileMenu]
   useFocusTrap(focusableRefs, isOpened, () => setIsOpened(false))
 
   const styles = useMemo(
@@ -80,7 +80,7 @@ export function Header(_props: Props) {
   )
 
   return (
-    <div className={styles.wrapper()} ref={refHeader}>
+    <div className={styles.wrapper()}>
       <header className={styles.header()}>
         <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
           <div className="tw-w-fit">
@@ -93,7 +93,7 @@ export function Header(_props: Props) {
           </div>
           <div className={styles.nav_wrapper()}>
             <HeaderNav />
-            <Hamburger />
+            <Hamburger ref={refCloseButton} />
           </div>
         </MainWrapper>
         <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
