@@ -62,7 +62,7 @@ type Props = {
 export function Header(_props: Props) {
   const { sticky, visible, visibleShadow } = useHeaderStatus()
 
-  const refCloseButton = useRef<HTMLButtonElement>(null)
+  const refCloseButton = useRef<HTMLDivElement>(null)
   const refMobileMenu = useRef<HTMLDivElement>(null)
   const [isOpened, setIsOpened] = useMobileMenuState()
 
@@ -80,24 +80,26 @@ export function Header(_props: Props) {
   )
 
   return (
-    <div className={styles.wrapper()}>
-      <header className={styles.header()}>
-        <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
-          <div className="tw-w-fit">
-            {/* TODO: あまり賢い方法ではないのでどうにかする */}
-            <Suspense fallback={<SiteNameWithIcon />}>
-              <KawaiiLogoOrNot>
-                <SiteNameWithIcon />
-              </KawaiiLogoOrNot>
-            </Suspense>
-          </div>
-          <div className={styles.nav_wrapper()}>
-            <HeaderNav />
-            <Hamburger ref={refCloseButton} />
-          </div>
-        </MainWrapper>
-        <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
-      </header>
-    </div>
+    <>
+      <div className={styles.wrapper()}>
+        <header className={styles.header()}>
+          <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
+            <div className="tw-w-fit">
+              {/* TODO: あまり賢い方法ではないのでどうにかする */}
+              <Suspense fallback={<SiteNameWithIcon />}>
+                <KawaiiLogoOrNot>
+                  <SiteNameWithIcon />
+                </KawaiiLogoOrNot>
+              </Suspense>
+            </div>
+            <div className={styles.nav_wrapper()}>
+              <HeaderNav />
+              <Hamburger ref={refCloseButton} />
+            </div>
+          </MainWrapper>
+        </header>
+      </div>
+      <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
+    </>
   )
 }

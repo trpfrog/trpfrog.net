@@ -1,5 +1,3 @@
-import { createPortal } from 'react-dom'
-
 import classNames from 'classnames'
 import Link from 'next/link'
 
@@ -38,7 +36,7 @@ export function MobileMenu(props: {
   ref?: React.RefObject<HTMLDivElement | null>
   isMenuOpened: boolean
 }) {
-  return createPortal(
+  return (
     <div inert={!props.isMenuOpened}>
       <MobileMenuBkg isOpened={props.isMenuOpened}>
         <SpeechBubbleContainer isOpened={props.isMenuOpened} ref={props.ref}>
@@ -54,7 +52,6 @@ export function MobileMenu(props: {
           </Details>
         </SpeechBubbleContainer>
       </MobileMenuBkg>
-    </div>,
-    document.body,
+    </div>
   )
 }
