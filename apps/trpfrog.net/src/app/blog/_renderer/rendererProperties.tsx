@@ -166,7 +166,7 @@ export function getMarkdownOptions(options?: {
   } satisfies MarkdownOptions
 }
 
-function getMarkdownPlugins() {
+function getMarkdownPlugins(): Partial<SerializeOptions['mdxOptions']> {
   return {
     remarkPlugins: [
       remarkGfm,
@@ -175,5 +175,5 @@ function getMarkdownPlugins() {
       () => remarkToc({ heading: '目次' }),
     ],
     rehypePlugins: [rehypeKatex, rehypeRaw, rehypeSlug],
-  } satisfies Partial<SerializeOptions['mdxOptions']>
+  }
 }

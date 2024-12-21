@@ -61,6 +61,7 @@
     "jotai": "^2.10.4",
     "js-yaml": "^4.1.0",
     "lru-cache": "^10.4.3",
+    "mermaid": "^11.4.1",
     "next": "^15.1.0",
     "next-mdx-remote": "^5.0.0",
     "nookies": "^2.5.2",
