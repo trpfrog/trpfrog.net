@@ -1,5 +1,8 @@
 import * as React from 'react'
 
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   transformerNotationDiff,
   transformerNotationErrorLevel,
@@ -7,7 +10,9 @@ import {
 } from '@shikijs/transformers'
 import { addClassToHast, bundledLanguages, bundledThemes, getSingletonHighlighter } from 'shiki'
 
+import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { CopyButton } from '@/components/atoms/CopyButton'
+import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
@@ -19,6 +24,7 @@ type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & 
   children?: string
   language?: string
   fileName?: string
+  url?: string
 }
 
 const createStyles = tv({
@@ -86,6 +92,21 @@ const highlighter = await getSingletonHighlighter({
   langAlias,
 })
 
+export function CodeLinkButton(props: { url: string }) {
+  const isGitHub = /https?:\/\/github.com/.test(props.url)
+  return (
+    <WithTooltip hoveredTooltipContent={isGitHub ? 'Open on GitHub' : 'View Code'}>
+      <A
+        openInNewTab
+        href={props.url}
+        className="tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100"
+      >
+        <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
+      </A>
+    </WithTooltip>
+  )
+}
+
 export function CodeBlock(props: CodeBlockProps) {
   const { children, language: rawLanguage = '', fileName, ...rest } = props
 
@@ -124,7 +145,10 @@ export function CodeBlock(props: CodeBlockProps) {
       {withBar && (
         <div className={styles.bar()}>
           <span className={styles.lang()}>{fileName || normalizeLangName(language)}</span>
-          <CopyButton copyContent={children as string} />
+          <div className="tw-flex tw-gap-2">
+            {props.url && <CodeLinkButton url={props.url} />}
+            <CopyButton copyContent={children as string} />
+          </div>
         </div>
       )}
       <div dangerouslySetInnerHTML={{ __html: codeHtml }} className={styles.codeWrapper()} />
