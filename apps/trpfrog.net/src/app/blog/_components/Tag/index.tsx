@@ -34,15 +34,26 @@ const getEmojiUrlFromTagName = (tag: string) => {
 
 type Props = {
   tag: string
+  wrappedWithLink?: boolean
 }
 
-export const Tag = ({ tag }: Props) => {
-  return (
-    <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
+export const Tag = ({ tag, wrappedWithLink }: Props) => {
+  const content = (
+    <>
       <span className={styles.emoji}>
         <img src={getEmojiUrlFromTagName(tag)} width={20} height={20} alt={'tag emoji'} />
       </span>
       <span className={styles.name}>{tag}</span>
+    </>
+  )
+
+  return wrappedWithLink ? (
+    <Link href={'/blog/tags/' + tag} key={tag} className={styles.block}>
+      {content}
     </Link>
+  ) : (
+    <div key={tag} className={styles.block}>
+      {content}
+    </div>
   )
 }
