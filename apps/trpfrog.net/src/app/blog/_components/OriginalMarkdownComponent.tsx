@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import { StyledMermaid } from '@/components/utils/Mermaid'
+
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import * as parts from '@blog/_components/article-parts'
@@ -73,6 +75,12 @@ const extraCodeBlockComponents = [
     name: 'dangerously-set-inner-html',
     Component: React.memo(function DangerouslySetInnerHtmlDiv({ content }) {
       return <div dangerouslySetInnerHTML={{ __html: content }} />
+    }),
+  },
+  {
+    name: 'mermaid',
+    Component: React.memo(function MarkdownMermaid({ content }) {
+      return <StyledMermaid chart={content} />
     }),
   },
 ] as const satisfies readonly ArticleParts[]

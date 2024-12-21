@@ -4,7 +4,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 type Props<T extends React.ElementType> = {
   as: T
-} & Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'disabled'>
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 const style = tv({
   base: [

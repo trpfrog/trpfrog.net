@@ -3,17 +3,21 @@ import { z } from 'zod'
 import { ImageMetadata } from '../entities/generation-result'
 
 export const imageMetadataRepoQuerySchema = z.object({
-  prompt: z.string().optional(),
-  limit: z.number().int().positive().default(50),
-  offset: z.number().int().positive().default(0),
+  where: z
+    .object({
+      prompt: z.string().optional(),
+    })
+    .default({}),
+  limit: z.number().int().positive().default(20),
+  offset: z.number().int().nonnegative().default(0),
 })
 
-type Query = z.infer<typeof imageMetadataRepoQuerySchema>
+export type ImageMetadataQuery = z.output<typeof imageMetadataRepoQuerySchema>
 
 export interface ImageMetadataRepo {
-  query: (query: Query) => Promise<ImageMetadata[]>
+  query: (query: ImageMetadataQuery) => Promise<ImageMetadata[]>
   getLatest: () => Promise<ImageMetadata | undefined>
-  amount: () => Promise<number>
+  count: (query?: ImageMetadataQuery['where']) => Promise<number>
   add: (image: ImageMetadata) => Promise<void>
   remove: (id: string) => Promise<void>
 }

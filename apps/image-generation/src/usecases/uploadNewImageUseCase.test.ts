@@ -12,7 +12,7 @@ const deps = {
     add: vi.fn(async () => {}),
     query: vi.fn(async () => []),
     getLatest: vi.fn(async () => undefined),
-    amount: vi.fn(async () => 0),
+    count: vi.fn(async () => 0),
     remove: vi.fn(async () => {}),
   },
 } satisfies Parameters<typeof uploadNewImageUseCase>[0]

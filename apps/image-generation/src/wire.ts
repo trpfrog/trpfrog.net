@@ -43,6 +43,9 @@ export function prepareUsecasesBuilder(common: {
         imageMetadataRepo,
         imageStoreRepo,
       },
+      queryImageMetadata: {
+        imageMetadataRepo,
+      },
     })
     .inject(ucs => ({
       generateRandomImage: {

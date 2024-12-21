@@ -30,6 +30,27 @@ import styles from '@blog/_styles/blog.module.scss'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'
 
+function parseLanguageName(className: string) {
+  const rawLanguage = className.replace('language-', '')
+  if (rawLanguage.includes(':')) {
+    return {
+      lang: rawLanguage.split(':')[0],
+      fileName: rawLanguage.split(':')[1],
+      url: rawLanguage.split(':').slice(2).join(':'),
+    }
+  } else if (rawLanguage.includes('.')) {
+    return {
+      lang: rawLanguage.split('.').slice(-1)[0],
+      fileName: rawLanguage,
+    }
+  } else {
+    return {
+      lang: rawLanguage,
+      fileName: '',
+    }
+  }
+}
+
 const formatCodeComponentFactory = (entry?: BlogPost) => {
   return function MarkdownCode(props: ComponentProps<'code'>): ReactNode {
     let children = props.children
@@ -49,16 +70,13 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     }
 
     // prettier-ignore
-    const language = props.className
-      ?.replace('language-', '') // remove 'language-' prefix
-      .split('.').slice(-1)[0] // get last part after splitting by '.'
-      ?? ''
+    const { lang, fileName, url } = parseLanguageName(props.className ?? '')
 
-    if (isValidExtraCodeBlockComponentName(language)) {
+    if (isValidExtraCodeBlockComponentName(lang)) {
       const isDevClient = env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <OriginalMarkdownComponent
-          componentName={language}
+          componentName={lang}
           content={children as string}
           entry={entry}
           useDevComponent={isDevClient}
@@ -66,11 +84,8 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
       )
     }
 
-    // get file name from className (e.g. 'language-index.ts' -> 'index.ts')
-    const fileName = props.className?.includes('.') ? props.className.replace('language-', '') : ''
-
     return (
-      <CodeBlock language={language} fileName={fileName}>
+      <CodeBlock language={lang} fileName={fileName} url={url} className="tw-my-4">
         {children as string}
       </CodeBlock>
     )
@@ -166,7 +181,7 @@ export function getMarkdownOptions(options?: {
   } satisfies MarkdownOptions
 }
 
-function getMarkdownPlugins() {
+function getMarkdownPlugins(): Partial<SerializeOptions['mdxOptions']> {
   return {
     remarkPlugins: [
       remarkGfm,
@@ -175,5 +190,5 @@ function getMarkdownPlugins() {
       () => remarkToc({ heading: '目次' }),
     ],
     rehypePlugins: [rehypeKatex, rehypeRaw, rehypeSlug],
-  } satisfies Partial<SerializeOptions['mdxOptions']>
+  }
 }

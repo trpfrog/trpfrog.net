@@ -6,13 +6,12 @@ import { useCallback, useEffect } from 'react'
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import useSWR from 'swr'
 
-import { NODE_ENV } from '@/env/client'
-
-import { InlineLink } from '@/components/atoms/InlineLink'
 import { WaveText } from '@/components/atoms/WaveText'
 
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
+
+import { requestUpdateIcon } from './actions'
 
 const createStyles = tv({
   slots: {
@@ -52,7 +51,7 @@ const createStyles = tv({
   },
 })
 
-const imgGenClient = createTrpFrogImageGenerationClient(NODE_ENV)
+const imgGenClient = createTrpFrogImageGenerationClient('production')
 
 export function IconFrame() {
   const fetcher = useCallback(
@@ -69,7 +68,7 @@ export function IconFrame() {
 
   // Trigger update request on mount
   useEffect(() => {
-    void imgGenClient.update.$post()
+    requestUpdateIcon().catch(console.error)
   }, [])
 
   if (isLoading) {
@@ -121,12 +120,7 @@ export function IconFrame() {
           <div className={styles.japanese()}>
             <ParseWithBudouX str={data.prompt.translated} slug={'trpfrog-diffusion'} />
           </div>
-          <div className={styles.poweredBy()}>
-            Powered by{' '}
-            <InlineLink href={'https://huggingface.co/' + data.modelName}>
-              {data.modelName}
-            </InlineLink>
-          </div>
+          <div className={styles.poweredBy()}>Powered by {data.modelName}</div>
         </figcaption>
       </div>
     </figure>

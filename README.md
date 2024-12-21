@@ -46,6 +46,9 @@
 - **HuggingFace** for image generation using *Prgckwb/trpfrog-sd3.5-large-lora*
 - **OpenAI API** for generating prompt
 - **Cloudflare Workers KV** for caching generated images
+- **Cloudflare D1** for storing metadata of generated images
+- **Drizzle ORM** for interacting with Cloudflare D1
+- **Cloudflare R2** for storing generated images
 
 ### dev-blog-server
 
