@@ -11,6 +11,8 @@ import { WaveText } from '@/components/atoms/WaveText'
 import { tv } from '@/lib/tailwind/variants'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
+import { requestUpdateIcon } from './actions'
+
 const createStyles = tv({
   slots: {
     wrapper: 'tw-@container',
@@ -49,7 +51,7 @@ const createStyles = tv({
   },
 })
 
-const imgGenClient = createTrpFrogImageGenerationClient(NODE_ENV)
+const imgGenClient = createTrpFrogImageGenerationClient('production')
 
 export function IconFrame() {
   const fetcher = useCallback(
@@ -66,7 +68,7 @@ export function IconFrame() {
 
   // Trigger update request on mount
   useEffect(() => {
-    void imgGenClient.update.$post()
+    void requestUpdateIcon()
   }, [])
 
   if (isLoading) {

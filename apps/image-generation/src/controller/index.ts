@@ -36,7 +36,7 @@ export function createApp(initUseCases: (b: Bindings) => UseCases) {
       }
       return c.json(data)
     })
-    .post('/update', async c => {
+    .post('/update', requiresApiKey(), async c => {
       const result = await c.var.UCS.refreshImageIfStale({
         forceUpdate: c.req.query('force') === 'true',
       })
