@@ -8,21 +8,18 @@ import { PageNavigation } from '@/components/organisms/PageNavigation'
 import { useImageRecords, usePageNumber } from './hooks'
 import { IconRecord } from './IconRecord'
 
-const NUM_ICONS_PER_PAGE = 20
-
 export function Icons() {
   const oneIndexedPages = usePageNumber()
   const res = useImageRecords({
-    limit: NUM_ICONS_PER_PAGE,
-    offset: (oneIndexedPages - 1) * NUM_ICONS_PER_PAGE,
+    page: oneIndexedPages,
   })
 
   if (res.isLoading && !res.data) return <LoadingBlock isFullHeight />
   if (res.error || !res.data) return <div>Error: {res.error.message}</div>
 
   const images = res.data
+  const lastPage = res.data.numPages
 
-  const lastPage = Math.ceil(images.total / NUM_ICONS_PER_PAGE)
   if (oneIndexedPages > lastPage) {
     notFound()
   }

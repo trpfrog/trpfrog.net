@@ -1,13 +1,16 @@
 'use server'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
+import { z } from 'zod'
 
 import { env } from '@/env/server'
 
-export type FetchImageRecordsQuery = {
-  limit: number
-  offset: number
-}
+const fetchImageRecordsQuerySchema = z.object({
+  page: z.number().int().positive(),
+  iconsPerPage: z.number().int().positive().max(20).default(20),
+})
+
+export type FetchImageRecordsQuery = z.input<typeof fetchImageRecordsQuerySchema>
 
 /**
  * Cloudflare R2 のリンクは現状 production のものしか使えないことと
@@ -15,12 +18,13 @@ export type FetchImageRecordsQuery = {
  */
 const prodImageGenClient = createTrpFrogImageGenerationClient('production')
 
-export async function fetchImageRecords(query: FetchImageRecordsQuery) {
-  return prodImageGenClient.query
+export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
+  const query = fetchImageRecordsQuerySchema.parse(rawQuery)
+  const { result, total } = await prodImageGenClient.query
     .$get({
       query: {
-        limit: query.limit.toString(),
-        offset: query.offset.toString(),
+        limit: query.iconsPerPage.toString(),
+        offset: ((query.page - 1) * query.iconsPerPage).toString(),
       },
       header: {
         'x-api-key': env.TRPFROG_FUNCTIONS_SECRET ?? '',
@@ -33,4 +37,6 @@ export async function fetchImageRecords(query: FetchImageRecordsQuery) {
         throw new Error('Failed to fetch images')
       }
     })
+
+  return { result, total, numPages: Math.ceil(total / query.iconsPerPage) }
 }

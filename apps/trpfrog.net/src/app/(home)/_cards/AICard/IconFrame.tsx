@@ -68,7 +68,7 @@ export function IconFrame() {
 
   // Trigger update request on mount
   useEffect(() => {
-    void requestUpdateIcon()
+    requestUpdateIcon().catch(console.error)
   }, [])
 
   if (isLoading) {
