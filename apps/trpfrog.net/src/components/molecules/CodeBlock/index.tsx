@@ -40,7 +40,7 @@ const createStyles = tv({
       'tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600',
     ],
     code: 'tw-py-4 sp:tw-py-3',
-    line: 'tw-inline-block tw-w-full tw-px-4 tw-leading-relaxed sp:tw-px-3',
+    line: 'tw-inline-block tw-w-full tw-px-4 sp:tw-px-3',
   },
   variants: {
     withBar: {
