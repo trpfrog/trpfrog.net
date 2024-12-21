@@ -1,3 +1,5 @@
+import { useId } from 'react'
+
 import { faClock, faImage, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { format } from 'date-fns'
@@ -7,9 +9,9 @@ import { PlainBlock } from '@/components/atoms/PlainBlock'
 
 import { twJoin, twMerge } from '@/lib/tailwind/merge'
 
-function Prompt(props: { prompt: string; translated: string }) {
+function Prompt(props: { prompt: string; translated: string; id: string }) {
   return (
-    <div className="tw-flex tw-flex-col tw-justify-center pc:tw-gap-2">
+    <div className="tw-flex tw-flex-col tw-justify-center pc:tw-gap-2" id={props.id}>
       <div
         className={twJoin(
           'tw-bg-gradient-to-br tw-from-blue-400 tw-to-pink-400 tw-bg-clip-text tw-text-transparent',
@@ -48,12 +50,15 @@ export function IconRecord(props: {
   imageModelName: string
   createdAt: string
 }) {
+  const promptAreaId = useId()
+
   return (
     <PlainBlock className="tw-p-[5px]">
       <div className="tw-flex tw-gap-[5px]">
         <img
           src={props.src}
-          alt={props.prompt}
+          alt="AI生成されたつまみさんのアイコン"
+          aria-describedby={promptAreaId}
           className="tw-size-[300px] sp:tw-size-[30vw] tw-rounded-[calc(var(--window-border-radius)-5px)]"
         />
         <div className="tw-flex tw-flex-col tw-justify-between pc:tw-px-4 pc:tw-py-2">
@@ -62,7 +67,7 @@ export function IconRecord(props: {
               {format(props.createdAt, 'yyyy-MM-dd HH:mm:ss')}
             </MetadataRecord>
           </MetadataWrapper>
-          <Prompt prompt={props.prompt} translated={props.translated} />
+          <Prompt prompt={props.prompt} translated={props.translated} id={promptAreaId} />
           <MetadataWrapper className="sp:tw-hidden">
             <MetadataRecord icon={<FontAwesomeIcon icon={faPencil} />}>
               {props.promptAuthor}
