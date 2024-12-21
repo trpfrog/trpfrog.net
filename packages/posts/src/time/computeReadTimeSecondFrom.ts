@@ -1,7 +1,20 @@
 import { z } from 'zod'
 
+const COUNTING_TARGET_CODE_BLOCK_NAMES = [
+  'centering',
+  'twitter-archived',
+  'infobox',
+  'caution',
+  'titled-frame',
+  'centering-with-size',
+  'centering-with-size-bold',
+  'horizontal-scroll',
+  'show-all',
+  'conversation',
+]
+
 export const ReadTimeOptionSchema = z.object({
-  countingTargetCodeBlockNames: z.array(z.string()).default([]),
+  countingTargetCodeBlockNames: z.array(z.string()).default(COUNTING_TARGET_CODE_BLOCK_NAMES),
 })
 
 export function computeReadTimeSecondFrom(
@@ -14,7 +27,8 @@ export function computeReadTimeSecondFrom(
   const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')
   const linkRemoved = markdown.replace(linkRegex, '$1')
 
-  const codeBlockStack: string[] = []
+  const wordCountingPreventer = Symbol('word-counting-preventer')
+  const codeBlockStack: (string | typeof wordCountingPreventer)[] = []
   const getStackTop = () => {
     if (codeBlockStack.length > 0) {
       return codeBlockStack[codeBlockStack.length - 1]
@@ -30,15 +44,19 @@ export function computeReadTimeSecondFrom(
 
   const isEnabledWordCounting = () => manualEnableWordCounting && !inStyleTag
 
+  /**
+   * コードブロックのスタックを記録しながら、各行の文字数を記録する
+   * スタックに wordCountingPreventer が含まれている場合は、文字数をカウントしない
+   */
   for (let line of linkRemoved.split('\n')) {
     // code block
     if (line.startsWith('```')) {
       const cmd = line.replaceAll('`', '').trim()
       if (cmd.length > 0) {
-        if (!options.countingTargetCodeBlockNames.includes(cmd)) {
+        if (options.countingTargetCodeBlockNames.includes(cmd)) {
           codeBlockStack.push(cmd)
         } else {
-          codeBlockStack.push('code-block')
+          codeBlockStack.push(wordCountingPreventer)
         }
       } else if (codeBlockStack.length > 0) {
         codeBlockStack.pop()
@@ -46,7 +64,7 @@ export function computeReadTimeSecondFrom(
       continue
     }
 
-    if (codeBlockStack.includes('code-block')) {
+    if (codeBlockStack.includes(wordCountingPreventer)) {
       continue
     }
 
