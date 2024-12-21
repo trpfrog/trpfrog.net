@@ -3,50 +3,48 @@ import React, { useEffect, useId, useState } from 'react'
 
 import mermaid from 'mermaid'
 
+import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
+
 type MermaidProps = {
   chart: string
 }
 
-export function Mermaid(props: MermaidProps) {
-  const { chart } = props
-  const [svg, setSvg] = useState<string | null>(null) // State for the rendered SVG
+export function useMermaid(chart: string) {
+  const [svg, setSvg] = useState<string | null>(null)
   const id = 'mermaid-diagram' + useId().replaceAll(':', '')
+  const colorScheme = usePrefersColorScheme()
 
   useEffect(() => {
-    // Initialize mermaid
     mermaid.initialize({
       startOnLoad: false,
+      theme: colorScheme === 'dark' ? 'dark' : 'forest',
     })
 
-    // Generate diagram
     const renderDiagram = async () => {
       try {
         const { svg: renderedSvg } = await mermaid.render(id, chart)
         setSvg(renderedSvg)
       } catch (error) {
         console.error('Error rendering Mermaid diagram:', error)
-        setSvg('<p>Error rendering diagram. Check the syntax.</p>') // Store error message as fallback
+        setSvg('<p>Error rendering diagram. Check the syntax.</p>')
       }
     }
 
     renderDiagram().catch(console.error)
-  }, [id, chart])
+  }, [chart, id, colorScheme])
 
-  return svg ? (
-    <div
-      // key={chart}
-      dangerouslySetInnerHTML={{
-        __html: svg,
-      }}
-    />
-  ) : (
-    <p>Loading diagram...</p>
-  )
+  return svg
+}
+
+export function Mermaid(props: MermaidProps) {
+  const { chart } = props
+  const svg = useMermaid(chart)
+  return svg ? <div dangerouslySetInnerHTML={{ __html: svg }} /> : <p>Loading diagram...</p>
 }
 
 export function StyledMermaid(props: MermaidProps) {
   return (
-    <div className="tw-my-4 tw-p-2 tw-rounded-md tw-bg-gray-50 dark:tw-bg-gray-800">
+    <div className="tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50 dark:tw-bg-zinc-800">
       <Mermaid {...props} />
     </div>
   )
