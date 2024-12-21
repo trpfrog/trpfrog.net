@@ -30,7 +30,7 @@ const createStyles = tv({
     lang: 'tw-text-xs tw-font-bold tw-text-white',
     codeWrapper: [
       'tw-w-full tw-overflow-clip tw-overflow-x-scroll',
-      'tw-font-mono tw-text-sm sp:tw-text-xs',
+      'tw-font-mono tw-text-[0.8em] sp:tw-text-xs',
       'tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600',
     ],
     code: 'tw-py-4 sp:tw-py-3',
