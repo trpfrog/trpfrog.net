@@ -20,19 +20,23 @@ export function createApp(ucs: UseCases) {
     .use(prettyJSON())
     .use(trimTrailingSlash())
     .use(cors())
+    .use(async (c, next) => {
+      c.set('UCS', ucs)
+      await next()
+    })
     .get('/current', async c => {
-      const arrayBuffer = await ucs.currentImage()
+      const arrayBuffer = await c.var.UCS.currentImage()
       return c.newResponse(arrayBuffer)
     })
     .get('/current/metadata', async c => {
-      const data = await ucs.currentMetadata()
+      const data = await c.var.UCS.currentMetadata()
       if (data == null) {
         return c.json({ error: 'No metadata found' }, 404)
       }
       return c.json(data)
     })
     .post('/update', requiresApiKey(), async c => {
-      const result = await ucs.refreshImageIfStale({
+      const result = await c.var.UCS.refreshImageIfStale({
         forceUpdate: c.req.query('force') === 'true',
       })
 
@@ -75,7 +79,7 @@ export function createApp(ucs: UseCases) {
         if (!res.success) {
           return c.json({ error: res.error }, 400)
         }
-        const data = await ucs.queryImageMetadata(res.data)
+        const data = await c.var.UCS.queryImageMetadata(res.data)
         return c.json({
           result: data.result,
           total: data.count,

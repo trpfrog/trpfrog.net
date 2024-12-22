@@ -1,11 +1,14 @@
 import { HfInference } from '@huggingface/inference'
+import { getContext } from 'hono/context-storage'
 
 import { GeneratedImage } from '../../domain/entities/generation-result'
+import { Env } from '../../env'
 import { base64ArrayBuffer } from '../../lib/base64'
 
-export function createHfImageGenerator(params: { modelName: string; hfToken: string }) {
+export function createHfImageGenerator(params: { modelName: string; hfToken?: string }) {
   return async (text: string): Promise<GeneratedImage> => {
-    const hf = new HfInference(params.hfToken)
+    const c = getContext<Env>()
+    const hf = new HfInference(params.hfToken ?? c.env.HUGGINGFACE_TOKEN)
     const responseBlob = await hf.textToImage(
       {
         model: params.modelName,

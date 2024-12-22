@@ -1,5 +1,3 @@
-import { z } from 'zod'
-
 import { createApp } from './controller'
 import { adminApp } from './controller/devPage'
 import { imageMetadataRepoCloudflareD1WithKV } from './infra/repos/imageMetadataRepoCloudflareD1WithKV'
@@ -9,26 +7,16 @@ import { randomWordApi } from './infra/services/random-words'
 import { createHfImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
 
-const env = z
-  .object({
-    HUGGINGFACE_TOKEN: z.string(),
-    OPENAI_API_KEY: z.string(),
-  })
-  // eslint-disable-next-line n/no-process-env
-  .parse(process.env)
-
 const app = createApp(
   prepareUsecasesBuilder({
     imageStoreRepo: imageStoreRepoCloudflareR2,
     imageMetadataRepo: imageMetadataRepoCloudflareD1WithKV,
     textToImage: createHfImageGenerator({
       modelName: 'Prgckwb/trpfrog-sd3.5-large-lora',
-      hfToken: env.HUGGINGFACE_TOKEN,
     }),
     jsonChatbot: createOpenAIChatLLMJson({
       model: 'gpt-4o-2024-11-20',
       temperature: 0.9,
-      apiKey: env.OPENAI_API_KEY,
     }),
     generateSeedWords: () => randomWordApi(10),
   }).build(),

@@ -1,9 +1,11 @@
 import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
 import { JsonOutputParser, StringOutputParser } from '@langchain/core/output_parsers'
 import { ChatOpenAI } from '@langchain/openai'
+import { getContext } from 'hono/context-storage'
 import { match } from 'ts-pattern'
 
 import { ChatLLM, ChatLLMJson, ChatUtterance } from '../../domain/services/llm'
+import { Env } from '../../env'
 
 function toLangChainMessage(rawChat: ChatUtterance[]) {
   return rawChat.map(uttr =>
@@ -30,13 +32,17 @@ export function createOpenAIChatLLM(params: ConstructorParameters<typeof ChatOpe
 export function createOpenAIChatLLMJson(
   params: ConstructorParameters<typeof ChatOpenAI>[0],
 ): ChatLLMJson {
-  const rawModel = new ChatOpenAI(params)
-  const model = rawModel.bind({
-    response_format: {
-      type: 'json_object',
-    },
-  })
   return async rawChat => {
+    const c = getContext<Env>()
+    const rawModel = new ChatOpenAI({
+      ...params,
+      apiKey: params?.apiKey ?? c.env.OPENAI_API_KEY,
+    })
+    const model = rawModel.bind({
+      response_format: {
+        type: 'json_object',
+      },
+    })
     const chat = toLangChainMessage(rawChat)
     const parser = new JsonOutputParser()
     return {
