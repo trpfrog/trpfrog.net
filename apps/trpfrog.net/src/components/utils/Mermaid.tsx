@@ -5,12 +5,15 @@ import mermaid from 'mermaid'
 
 import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
 
+import { CodeBlock } from '../molecules/CodeBlock'
+
 type MermaidProps = {
   chart: string
 }
 
 export function useMermaid(chart: string) {
   const [svg, setSvg] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const id = 'mermaid-diagram' + useId().replaceAll(':', '')
   const colorScheme = usePrefersColorScheme()
 
@@ -24,22 +27,36 @@ export function useMermaid(chart: string) {
       try {
         const { svg: renderedSvg } = await mermaid.render(id, chart)
         setSvg(renderedSvg)
+        setError(null)
       } catch (error) {
-        console.error('Error rendering Mermaid diagram:', error)
-        setSvg('<p>Error rendering diagram. Check the syntax.</p>')
+        setError('' + error)
       }
     }
 
     renderDiagram().catch(console.error)
   }, [chart, id, colorScheme])
 
-  return svg
+  return [svg, error]
 }
 
 export function Mermaid(props: MermaidProps) {
   const { chart } = props
-  const svg = useMermaid(chart)
-  return svg ? <div dangerouslySetInnerHTML={{ __html: svg }} /> : <p>Loading diagram...</p>
+  const [svg, error] = useMermaid(chart)
+  return (
+    <>
+      {svg ? <div dangerouslySetInnerHTML={{ __html: svg }} /> : <p>Loading diagram...</p>}
+      {error && (
+        <div className="tw-bg-red-700 tw-rounded tw-p-2">
+          <div className="tw-text-lg tw-text-white tw-font-bold">
+            Failed to render Mermaid diagram:
+          </div>
+          <CodeBlock language="text" fileName="Mermaid Error">
+            {error}
+          </CodeBlock>
+        </div>
+      )}
+    </>
+  )
 }
 
 export function StyledMermaid(props: MermaidProps) {
