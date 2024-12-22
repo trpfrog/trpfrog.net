@@ -4,7 +4,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 type Props<T extends React.ElementType> = {
   as: T
-} & Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'disabled'>
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 const style = tv({
   base: [
@@ -15,12 +15,13 @@ const style = tv({
     'tw-shadow-[0_4px_0_var(--link-button-color-bottom)]',
     'tw-font-mplus-rounded tw-font-bold tw-text-center',
     'tw-no-underline tw-select-none',
+    'tw-my-1', // ボタンの可動域分のマージン
   ],
   variants: {
     disabled: {
       true: [
-        'tw-bg-darkgray',
-        'tw-transform tw-translate-y-0.5',
+        'tw-bg-gray-400',
+        'tw-transform tw-translate-y-1 tw-shadow-none',
         'tw-pointer-events-none',
         'tw-cursor-default',
       ],

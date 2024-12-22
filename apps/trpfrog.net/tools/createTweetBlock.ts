@@ -55,7 +55,7 @@ function preprocessURL(url: string): string {
     url = 'https://twitter.com/trpfrog/status/' + url
   }
 
-  if (url === '' || !url.startsWith('https://twitter.com')) {
+  if (url === '' || !(url.startsWith('https://twitter.com') || url.startsWith('https://x.com'))) {
     console.log('Invalid URL')
     process.exit(1)
   }

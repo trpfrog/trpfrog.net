@@ -20,6 +20,12 @@ function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   )
 }
 
+/**
+ *
+ * @deprecated - use PageNavigation in components
+ * @param props
+ * @returns
+ */
 export function PageNavigation(props: {
   currentPage: number
   lastPage: number
