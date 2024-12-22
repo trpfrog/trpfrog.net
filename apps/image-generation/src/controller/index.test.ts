@@ -51,7 +51,7 @@ function createMockedClient(
     ...defaultDeps,
     ...overrides,
   })
-  const app = createApp(() => inject(ucsBuilder).build())
+  const app = createApp(inject(ucsBuilder).build())
   return testClient(app).icongen
 }
 
@@ -95,8 +95,7 @@ describe('Image Generation App', () => {
   it('should update the image when force is true', async () => {
     const app = createMockedClient()
     const res = await app.update.$post({
-      query: { force: 'true' },
-      headers: { 'x-api-key': 'valid-api-key' },
+      header: { 'x-api-key': 'valid-api-key' },
     })
     expect(res.status).toBe(201)
     const json = await res.json()
@@ -105,7 +104,9 @@ describe('Image Generation App', () => {
 
   it('should skip updating the image when force is false and image is not stale', async () => {
     const app = createMockedClient()
-    const res = await app.update.$post({ query: { force: 'false' } })
+    const res = await app.update.$post({
+      header: { 'x-api-key': 'valid-api-key' },
+    })
     expect(res.status).toBe(200)
     const json = await res.json()
     expect(json).toEqual({

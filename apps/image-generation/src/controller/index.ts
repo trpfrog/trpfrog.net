@@ -7,37 +7,32 @@ import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 import { z } from 'zod'
 
-import { Bindings } from '../../worker-configuration'
 import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
 import { UseCases } from '../wire'
 
 import { requiresApiKey } from './middlewares'
 
-export function createApp(initUseCases: (b: Bindings) => UseCases) {
+export function createApp(ucs: UseCases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
     .use(contextStorage())
     .use(prettyJSON())
     .use(trimTrailingSlash())
     .use(cors())
-    .use(async (c, next) => {
-      c.set('UCS', initUseCases(c.env))
-      await next()
-    })
     .get('/current', async c => {
-      const arrayBuffer = await c.var.UCS.currentImage()
+      const arrayBuffer = await ucs.currentImage()
       return c.newResponse(arrayBuffer)
     })
     .get('/current/metadata', async c => {
-      const data = await c.var.UCS.currentMetadata()
+      const data = await ucs.currentMetadata()
       if (data == null) {
         return c.json({ error: 'No metadata found' }, 404)
       }
       return c.json(data)
     })
     .post('/update', requiresApiKey(), async c => {
-      const result = await c.var.UCS.refreshImageIfStale({
+      const result = await ucs.refreshImageIfStale({
         forceUpdate: c.req.query('force') === 'true',
       })
 
@@ -80,7 +75,7 @@ export function createApp(initUseCases: (b: Bindings) => UseCases) {
         if (!res.success) {
           return c.json({ error: res.error }, 400)
         }
-        const data = await c.var.UCS.queryImageMetadata(res.data)
+        const data = await ucs.queryImageMetadata(res.data)
         return c.json({
           result: data.result,
           total: data.count,
