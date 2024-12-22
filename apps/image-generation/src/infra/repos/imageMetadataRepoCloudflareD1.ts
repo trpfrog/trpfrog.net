@@ -7,8 +7,6 @@ import { ImageMetadataQuery, ImageMetadataRepo } from '../../domain/repos/image-
 import { Env } from '../../env'
 import { imageMetadataTable as images } from '../db/schema'
 
-const CURRENT_KEY = 'latest'
-
 function convertToDomain(r: typeof images.$inferSelect): ImageMetadata {
   return parseImageMetadata({
     id: r.id,
@@ -45,7 +43,7 @@ function createWhereQuery(query: ImageMetadataQuery['where']) {
   )
 }
 
-export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
+export const imageMetadataRepoCloudflareD1: ImageMetadataRepo = {
   async query(query) {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
@@ -61,28 +59,8 @@ export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
 
   async getLatest() {
     const c = getContext<Env>()
-    try {
-      // Try to fetch the latest image from the KV store
-      const rawJson = await c.env.DIFFUSION_KV.get(CURRENT_KEY)
-      if (rawJson) {
-        const dbRecord = JSON.parse(rawJson) as typeof images.$inferSelect
-        return convertToDomain(dbRecord)
-      }
-    } catch (error) {
-      console.error('Error fetching or parsing latest image', error)
-    }
-
-    // Fallback to database if KV store fetch fails or no data found
     const db = drizzle(c.env.DATABASE)
     const [record] = await db.select().from(images).orderBy(desc(images.createdAtMillis)).limit(1)
-
-    // Update the KV store with the latest image
-    if (record) {
-      c.env.DIFFUSION_KV.put(CURRENT_KEY, JSON.stringify(record)).catch(error => {
-        console.error('Error updating latest image in KV store', error)
-      })
-    }
-
     return record ? convertToDomain(record) : undefined
   },
 
@@ -96,23 +74,13 @@ export const imageMetadataRepoCloudflareD1WithKV: ImageMetadataRepo = {
   async add(imageMetadata) {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
-
     const record = convertToDB(imageMetadata)
-    await Promise.all([
-      db.insert(images).values(record),
-      c.env.DIFFUSION_KV.put(CURRENT_KEY, JSON.stringify(record)),
-    ])
+    await db.insert(images).values(record)
   },
 
   async remove(id) {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
-
-    await Promise.all([
-      db.delete(images).where(eq(images.id, id)),
-      // Anyways, remove the latest image from the KV store.
-      // The cache is restored on the next `getLatest` call.
-      c.env.DIFFUSION_KV.delete(CURRENT_KEY),
-    ])
+    await db.delete(images).where(eq(images.id, id))
   },
 }

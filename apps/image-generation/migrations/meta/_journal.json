@@ -8,6 +8,13 @@
       "when": 1734199222201,
       "tag": "0000_flawless_randall",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1734882771222,
+      "tag": "0001_illegal_hydra",
+      "breakpoints": true
     }
   ]
 }
