@@ -1,0 +1,1 @@
+CREATE INDEX `created_at_millis_idx` ON `images_metadata` (`created_at_millis`);
