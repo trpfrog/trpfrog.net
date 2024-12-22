@@ -521,7 +521,7 @@ sequenceDiagram
 ~トップページを開くたびに `SELECT * FROM images ORDER BY created_at DESC LIMIT 1` とやると DB に負荷がかかるはずなので、Cloudflare Workers KV (高速にデータの読み書きができる一時保存場所) にキャッシュしています。まあ負荷がかかるほどのアクセス数はないのですが……。~
 
 **2024-12-23 EDIT:** あずきバーさんからツッコまれたのですが、インデックス効くので高速で動くらしいです。キャッシュ要らなかった。
-→ このPRで削除しました！: https://github.com/trpfrog/trpfrog.net/pull/94
+→ このPRで削除しました！: https://github.com/trpfrog/trpfrog.net/pull/97
 
 ```ts
 // キャッシュから取得
