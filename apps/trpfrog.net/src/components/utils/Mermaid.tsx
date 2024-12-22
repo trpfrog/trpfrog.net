@@ -9,6 +9,7 @@ import { CodeBlock } from '../molecules/CodeBlock'
 
 type MermaidProps = {
   chart: string
+  className?: string
 }
 
 export function useMermaid(chart: string) {
@@ -29,6 +30,10 @@ export function useMermaid(chart: string) {
         setSvg(renderedSvg)
         setError(null)
       } catch (error) {
+        // eslint-disable-next-line n/no-process-env
+        if (process.env.NODE_ENV === 'production' && error) {
+          throw error
+        }
         setError('' + error)
       }
     }
@@ -42,9 +47,14 @@ export function useMermaid(chart: string) {
 export function Mermaid(props: MermaidProps) {
   const { chart } = props
   const [svg, error] = useMermaid(chart)
+
   return (
     <>
-      {svg ? <div dangerouslySetInnerHTML={{ __html: svg }} /> : <p>Loading diagram...</p>}
+      {svg ? (
+        <div className={props.className} dangerouslySetInnerHTML={{ __html: svg }} />
+      ) : (
+        <p>Loading diagram...</p>
+      )}
       {error && (
         <div className="tw-bg-red-700 tw-rounded tw-p-2">
           <div className="tw-text-lg tw-text-white tw-font-bold">
@@ -61,8 +71,9 @@ export function Mermaid(props: MermaidProps) {
 
 export function StyledMermaid(props: MermaidProps) {
   return (
-    <div className="tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50 dark:tw-bg-zinc-800">
-      <Mermaid {...props} />
-    </div>
+    <Mermaid
+      {...props}
+      className="tw-flex tw-justify-center tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50 dark:tw-bg-zinc-800"
+    />
   )
 }
