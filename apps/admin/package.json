@@ -1,0 +1,34 @@
+{
+  "name": "@trpfrog.net/admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "4.0.0-beta.8",
+    "@trpfrog.net/constants": "workspace:*",
+    "@trpfrog.net/image-generation": "workspace:*",
+    "@trpfrog.net/posts": "workspace:*",
+    "@trpfrog.net/utils": "workspace:*",
+    "next": "15.1.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/config-vitest": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "postcss": "^8",
+    "tailwindcss": "4.0.0-beta.8",
+    "typescript": "^5"
+  }
+}
