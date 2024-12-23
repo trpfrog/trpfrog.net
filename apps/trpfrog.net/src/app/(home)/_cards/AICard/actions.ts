@@ -14,6 +14,7 @@ export async function requestUpdateIcon() {
   }
 
   await client.update.$post({
+    query: {},
     header: {
       'x-api-key': apiKey,
     },

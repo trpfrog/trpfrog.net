@@ -35,23 +35,33 @@ export function createApp(ucs: UseCases) {
       }
       return c.json(data)
     })
-    .post('/update', requiresApiKey(), async c => {
-      const result = await c.var.UCS.refreshImageIfStale({
-        forceUpdate: c.req.query('force') === 'true',
-      })
+    .post(
+      '/update',
+      requiresApiKey(),
+      zValidator(
+        'query',
+        z.object({
+          force: z.coerce.boolean().default(false),
+        }),
+      ),
+      async c => {
+        const result = await c.var.UCS.refreshImageIfStale({
+          forceUpdate: c.req.valid('query').force,
+        })
 
-      return result.updated
-        ? c.json(
-            {
-              status: 'updated',
-            },
-            201, // 201 Created
-          )
-        : c.json({
-            status: 'skipped',
-            message: result.message,
-          })
-    })
+        return result.updated
+          ? c.json(
+              {
+                status: 'updated',
+              },
+              201, // 201 Created
+            )
+          : c.json({
+              status: 'skipped',
+              message: result.message,
+            })
+      },
+    )
     .get(
       '/query',
       requiresApiKey(),
