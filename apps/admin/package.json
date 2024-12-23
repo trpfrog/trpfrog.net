@@ -3,20 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/charts": "^7.15.1",
+    "@mantine/core": "^7.15.1",
+    "@mantine/dates": "^7.15.1",
+    "@mantine/form": "^7.15.1",
+    "@mantine/hooks": "^7.15.1",
     "@tailwindcss/postcss": "4.0.0-beta.8",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/image-generation": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
+    "dayjs": "^1.11.13",
     "next": "15.1.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -28,6 +35,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "postcss": "^8",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
     "tailwindcss": "4.0.0-beta.8",
     "typescript": "^5"
   }

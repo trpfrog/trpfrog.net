@@ -6,9 +6,6 @@
       "@/*": [
         "src/*"
       ],
-      "@blog/*": [
-        "src/app/blog/*"
-      ]
     }
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
