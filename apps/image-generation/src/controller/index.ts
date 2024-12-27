@@ -9,9 +9,15 @@ import { z } from 'zod'
 
 import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
+import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
 import { UseCases } from '../wire'
 
 import { requiresApiKey } from './middlewares'
+
+const stringifiedBooleanSchema = z
+  .enum(['true', 'false'])
+  .default('false')
+  .transform(v => v === 'true')
 
 export function createApp(ucs: UseCases) {
   return new Hono<Env>()
@@ -35,23 +41,37 @@ export function createApp(ucs: UseCases) {
       }
       return c.json(data)
     })
-    .post('/update', requiresApiKey(), async c => {
-      const result = await c.var.UCS.refreshImageIfStale({
-        forceUpdate: c.req.query('force') === 'true',
-      })
-
-      return result.updated
-        ? c.json(
+    .post(
+      '/update',
+      requiresApiKey(),
+      zValidator(
+        'query',
+        z.object({
+          force: stringifiedBooleanSchema,
+        }),
+      ),
+      async c => {
+        const forceUpdate = c.req.valid('query').force
+        const shouldUpdate = await c.var.UCS.shouldUpdate({ forceUpdate })
+        if (!shouldUpdate.shouldUpdate) {
+          return c.json(
             {
-              status: 'updated',
+              status: 'skipped',
+              message: shouldUpdate.message,
             },
-            201, // 201 Created
+            200,
           )
-        : c.json({
-            status: 'skipped',
-            message: result.message,
-          })
-    })
+        }
+
+        waitUntilIfSupported(c.var.UCS.refreshImageIfStale({ forceUpdate: true }))
+        return c.json(
+          {
+            status: 'accepted',
+          },
+          202, // Accepted
+        )
+      },
+    )
     .get(
       '/query',
       requiresApiKey(),

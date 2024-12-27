@@ -18,3 +18,7 @@ binding = "DATABASE"
 database_name = "ai-trpfrog-icon-db"
 database_id = "66534e4a-091f-4bd3-be8e-07cbf7e70842"
 migrations_dir = "./migrations"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "17627d198edc43588fcd79b65b239e55"

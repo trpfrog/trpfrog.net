@@ -1,54 +1,65 @@
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
-import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
-import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
-import { isStale } from '../lib/stale'
+import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
 
+import { shouldUpdateUseCase } from './shouldUpdateUseCase'
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 
-type UpdateImageResult =
-  | {
-      updated: true
-    }
-  | {
-      updated: false
-      message: string
-      waitMinutes: number
-    }
-
 export function refreshImageIfStaleUseCase(deps: {
-  imageMetadataRepo: ImageMetadataRepo
+  imageUpdateStatusRepo: ImageUpdateStatusRepo
+  shouldUpdate: ReturnType<typeof shouldUpdateUseCase>
   uploadImage: ReturnType<typeof uploadNewImageUseCase>
   imageGenerator: () => Promise<{
     image: GeneratedImage
     prompt: ImagePrompt
   }>
 }) {
-  return async (options?: { forceUpdate?: boolean }): Promise<UpdateImageResult> => {
-    const metadata = await deps.imageMetadataRepo.getLatest()
-    const { shouldCache, waitMinutes } =
-      options?.forceUpdate || !metadata // if no metadata, force update
-        ? {
-            shouldCache: false,
-            waitMinutes: 0,
-          }
-        : isStale(IMAGE_STALE_MINUTES, metadata.createdAt)
+  return async (options?: { forceUpdate?: boolean }) => {
+    const shouldUpdateResult = await deps.shouldUpdate(options)
 
-    if (shouldCache) {
+    if (!shouldUpdateResult.shouldUpdate) {
       return {
         updated: false,
-        message: `Minimum update interval is 180 minutes, please wait ${waitMinutes} minutes.`,
-        waitMinutes,
+        message: shouldUpdateResult.message,
+        waitMinutes: shouldUpdateResult.waitMinutes,
       }
     }
 
-    const result = await deps.imageGenerator()
-    await deps.uploadImage(result.image.image, {
-      modelName: result.image.modelName,
-      imageExtension: result.image.extension,
-      prompt: result.prompt,
-    })
-    return {
-      updated: true,
+    try {
+      // 更新中ステータスをセット
+      await deps.imageUpdateStatusRepo.set({
+        status: 'updating',
+        startedAt: new Date(),
+      })
+
+      const result = await deps.imageGenerator()
+      await deps.uploadImage(result.image.image, {
+        modelName: result.image.modelName,
+        imageExtension: result.image.extension,
+        prompt: result.prompt,
+      })
+
+      console.log('Image updated successfully with new prompt:', result.prompt.text)
+
+      // 更新完了ステータスをセット
+      await deps.imageUpdateStatusRepo.set({
+        status: 'idle',
+      })
+      return {
+        updated: true,
+      }
+    } catch (e) {
+      // 更新に失敗した場合はエラーステータスをセット
+      console.error(e)
+      await deps.imageUpdateStatusRepo.set({
+        status: 'error',
+        occurredAt: new Date(),
+      })
+
+      return {
+        updated: false,
+        message: 'Failed to update image, please try again later.',
+        waitMinutes: 0,
+      }
     }
   }
 }

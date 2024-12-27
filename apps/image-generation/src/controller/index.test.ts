@@ -24,6 +24,10 @@ const defaultDeps = {
     upload: vi.fn(async () => 'http://example.com'),
     download: vi.fn(async () => new ArrayBuffer(0)),
   },
+  imageUpdateStatusRepo: {
+    get: vi.fn(async () => ({ status: 'idle' }) as const),
+    set: vi.fn(async () => {}),
+  },
   textToImage: async () => ({
     image: new ArrayBuffer(0),
     extension: '.png',
@@ -95,16 +99,18 @@ describe('Image Generation App', () => {
   it('should update the image when force is true', async () => {
     const app = createMockedClient()
     const res = await app.update.$post({
+      query: { force: 'true' },
       header: { 'x-api-key': 'valid-api-key' },
     })
-    expect(res.status).toBe(201)
+    expect(res.status).toBe(202)
     const json = await res.json()
-    expect(json).toEqual({ status: 'updated' })
+    expect(json).toEqual({ status: 'accepted' })
   })
 
   it('should skip updating the image when force is false and image is not stale', async () => {
     const app = createMockedClient()
     const res = await app.update.$post({
+      query: {},
       header: { 'x-api-key': 'valid-api-key' },
     })
     expect(res.status).toBe(200)
