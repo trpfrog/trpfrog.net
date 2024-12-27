@@ -13,6 +13,11 @@ import { UseCases } from '../wire'
 
 import { requiresApiKey } from './middlewares'
 
+const stringifiedBooleanSchema = z
+  .enum(['true', 'false'])
+  .default('false')
+  .transform(v => v === 'true')
+
 export function createApp(ucs: UseCases) {
   return new Hono<Env>()
     .basePath(services.imageGeneration.basePath)
@@ -41,7 +46,7 @@ export function createApp(ucs: UseCases) {
       zValidator(
         'query',
         z.object({
-          force: z.coerce.boolean().default(false),
+          force: stringifiedBooleanSchema,
         }),
       ),
       async c => {
