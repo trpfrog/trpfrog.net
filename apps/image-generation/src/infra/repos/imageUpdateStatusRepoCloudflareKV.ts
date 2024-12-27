@@ -1,9 +1,7 @@
 import { getContext } from 'hono/context-storage'
 
-import {
-  ImageUpdateStatusRepo,
-  imageUpdateStatusSchema,
-} from '../../domain/repos/image-update-status-repo'
+import { imageUpdateStatusSchema } from '../../domain/entities/image-update-status'
+import { ImageUpdateStatusRepo } from '../../domain/repos/image-update-status-repo'
 import { Env } from '../../env'
 
 const key = 'image-update-status'

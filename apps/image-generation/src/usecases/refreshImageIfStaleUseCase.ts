@@ -1,12 +1,10 @@
-import { differenceInMinutes } from 'date-fns'
+import hash from 'stable-hash'
 
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
-import {
-  IMAGE_STALE_MINUTES,
-  MINIMUM_UPDATE_INTERVAL_IF_ERROR_OCCURS,
-} from '../domain/entities/stale'
+import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
 import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
+import { getRefreshedImageUpdateStatus } from '../domain/services/getRefreshedImageUpdateStatus'
 import { isStale } from '../lib/stale'
 
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
@@ -31,27 +29,29 @@ export function refreshImageIfStaleUseCase(deps: {
   }>
 }) {
   return async (options?: { forceUpdate?: boolean }): Promise<UpdateImageResult> => {
-    const status = await deps.imageUpdateStatusRepo.get()
+    const oldStatus = await deps.imageUpdateStatusRepo.get()
+    const status = getRefreshedImageUpdateStatus(oldStatus)
+
+    if (hash(oldStatus) !== hash(status)) {
+      await deps.imageUpdateStatusRepo.set(status)
+      console.log('Image update status has refreshed!:', oldStatus, '->', status)
+    }
 
     // 二重に更新が走らないようにする
     if (status.status === 'updating') {
       return {
         updated: false,
         message: 'Image is currently updating, please wait.',
-        waitMinutes: 0,
+        waitMinutes: 10,
       }
     }
 
     // 前回エラーが発生していた場合は 30 分間隔をあける
-    if (status.status === 'error' && !options?.forceUpdate) {
-      const diff = differenceInMinutes(new Date(), status.occurredAt)
-      const waitMinutes = MINIMUM_UPDATE_INTERVAL_IF_ERROR_OCCURS - diff
-      if (waitMinutes > 0) {
-        return {
-          updated: false,
-          message: 'Recent update failed, please wait before trying again.',
-          waitMinutes,
-        }
+    if (status.status === 'error') {
+      return {
+        updated: false,
+        message: 'Recent update failed, please wait before trying again.',
+        waitMinutes: 30,
       }
     }
 
