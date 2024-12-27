@@ -2,6 +2,10 @@ import { differenceInMinutes } from 'date-fns'
 import { match } from 'ts-pattern'
 
 import { ImageUpdateStatus } from '../entities/image-update-status'
+import {
+  MINIMUM_UPDATE_INTERVAL_IF_ERROR_OCCURS,
+  MINIMUM_UPDATE_INTERVAL_IF_UPDATING,
+} from '../entities/stale'
 
 /**
  * Refreshes the image update status.
@@ -14,10 +18,14 @@ export function getRefreshedImageUpdateStatus(
 ): ImageUpdateStatus {
   return match(status)
     .with({ status: 'updating' }, s =>
-      differenceInMinutes(currentDate, s.startedAt) > 10 ? { status: 'idle' as const } : s,
+      differenceInMinutes(currentDate, s.startedAt) > MINIMUM_UPDATE_INTERVAL_IF_UPDATING
+        ? { status: 'idle' as const }
+        : s,
     )
     .with({ status: 'error' }, s =>
-      differenceInMinutes(currentDate, s.occurredAt) > 60 ? { status: 'idle' as const } : s,
+      differenceInMinutes(currentDate, s.occurredAt) > MINIMUM_UPDATE_INTERVAL_IF_ERROR_OCCURS
+        ? { status: 'idle' as const }
+        : s,
     )
     .otherwise(() => status)
 }

@@ -1,7 +1,7 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
-import { ImageUpdateStatus } from '../domain/repos/image-update-status-repo'
+import { ImageUpdateStatus } from '../domain/entities/image-update-status'
 
 import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
 
@@ -58,95 +58,22 @@ describe('refreshImageIfStale', () => {
       get: async () => ({ status: 'idle' }),
       set: async () => {},
     },
+    shouldUpdate: async () => ({
+      shouldUpdate: true,
+    }),
   })
 
-  const TOO_OLD_DATE = new Date(0)
-
-  const testCases: {
-    description: string
-    deps?: Partial<Parameters<typeof resolve>[0]>
-    isForceUpdate?: boolean
-    latestImageCreatedAt: Date
-    imageUpdateStatus?: ImageUpdateStatus
-    expected: { updated: boolean; message?: string; waitMinutes?: number }
-  }[] = [
-    {
-      description: '画像が古くない場合、更新をスキップするべき',
-      latestImageCreatedAt: new Date(),
-      expected: { updated: false },
-    },
-    {
-      description: 'forceUpdate が true の場合、画像が新しくても更新するべき',
-      latestImageCreatedAt: new Date(),
-      isForceUpdate: true,
-      expected: { updated: true },
-    },
-    {
-      description: 'forceUpdate が true の場合、エラー発生直後でも更新するべき',
-      latestImageCreatedAt: new Date(),
-      imageUpdateStatus: { status: 'error', occurredAt: new Date() },
-      isForceUpdate: true,
-      expected: { updated: true },
-    },
-    {
-      description: '画像が160分前に更新されていた場合、更新をスキップするべき',
-      latestImageCreatedAt: new Date(new Date().getTime() - 160 * 60 * 1000), // 160 minutes ago
-      expected: {
-        updated: false,
-        message: 'Minimum update interval is 180 minutes, please wait 20 minutes.',
-        waitMinutes: 20,
-      },
-    },
-    {
-      description: '画像が古く、waitMinutes が 0 の場合、更新するべき',
-      latestImageCreatedAt: TOO_OLD_DATE,
-      expected: { updated: true },
-    },
-    {
-      description: '画像が現在更新中の場合、更新をスキップするべき',
-      latestImageCreatedAt: TOO_OLD_DATE,
-      imageUpdateStatus: { status: 'updating', startedAt: new Date() },
-      expected: {
-        updated: false,
-        message: 'Image is currently updating, please wait.',
+  it('画像が新しい場合、更新をスキップする', async () => {
+    const refreshImageIfStale = resolve({
+      shouldUpdate: async () => ({
+        shouldUpdate: false,
+        message: 'Image is fresh',
         waitMinutes: 0,
-      },
-    },
-    {
-      description: '最近の更新が失敗し、waitMinutes が 0 より大きい場合、更新をスキップするべき',
-      latestImageCreatedAt: TOO_OLD_DATE,
-      imageUpdateStatus: {
-        status: 'error',
-        occurredAt: new Date(Date.now() - 10 * 60 * 1000), // 10 minutes ago
-      },
-      expected: {
-        updated: false,
-        message: 'Recent update failed, please wait before trying again.',
-        waitMinutes: 20,
-      },
-    },
-  ]
-
-  testCases.forEach(props => {
-    it(props.description, async () => {
-      const refreshImageIfStale = resolve({
-        imageMetadataRepo: {
-          ...defaultDeps.imageMetadataRepo,
-          getLatest: async () => ({
-            ...latestRecord,
-            createdAt: props.latestImageCreatedAt ?? new Date(),
-          }),
-        },
-        imageUpdateStatusRepo: createInMemoryImageUpdateStatusRepo(
-          props.imageUpdateStatus ?? { status: 'idle' },
-        ),
-        ...(props.deps ?? {}),
-      })
-      const result = await refreshImageIfStale({
-        forceUpdate: props.isForceUpdate ?? false,
-      })
-      expect(result).toMatchObject(props.expected)
+      }),
     })
+
+    const result = await refreshImageIfStale()
+    expect(result).toMatchObject({ updated: false })
   })
 
   it('画像生成時は updating になり、生成終了後は idle に戻る', async () => {

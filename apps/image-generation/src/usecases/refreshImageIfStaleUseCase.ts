@@ -1,74 +1,26 @@
-import hash from 'stable-hash'
-
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
-import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
-import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
-import { getRefreshedImageUpdateStatus } from '../domain/services/getRefreshedImageUpdateStatus'
-import { isStale } from '../lib/stale'
 
+import { shouldUpdateUseCase } from './shouldUpdateUseCase'
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 
-type UpdateImageResult =
-  | {
-      updated: true
-    }
-  | {
-      updated: false
-      message: string
-      waitMinutes: number
-    }
-
 export function refreshImageIfStaleUseCase(deps: {
-  imageMetadataRepo: ImageMetadataRepo
   imageUpdateStatusRepo: ImageUpdateStatusRepo
+  shouldUpdate: ReturnType<typeof shouldUpdateUseCase>
   uploadImage: ReturnType<typeof uploadNewImageUseCase>
   imageGenerator: () => Promise<{
     image: GeneratedImage
     prompt: ImagePrompt
   }>
 }) {
-  return async (options?: { forceUpdate?: boolean }): Promise<UpdateImageResult> => {
-    const oldStatus = await deps.imageUpdateStatusRepo.get()
-    const status = getRefreshedImageUpdateStatus(oldStatus)
+  return async (options?: { forceUpdate?: boolean }) => {
+    const shouldUpdateResult = await deps.shouldUpdate(options)
 
-    if (hash(oldStatus) !== hash(status)) {
-      await deps.imageUpdateStatusRepo.set(status)
-      console.log('Image update status has refreshed!:', oldStatus, '->', status)
-    }
-
-    // 二重に更新が走らないようにする
-    if (status.status === 'updating') {
+    if (!shouldUpdateResult.shouldUpdate) {
       return {
         updated: false,
-        message: 'Image is currently updating, please wait.',
-        waitMinutes: 10,
-      }
-    }
-
-    // 前回エラーが発生していた場合は 30 分間隔をあける
-    if (status.status === 'error') {
-      return {
-        updated: false,
-        message: 'Recent update failed, please wait before trying again.',
-        waitMinutes: 30,
-      }
-    }
-
-    const metadata = await deps.imageMetadataRepo.getLatest()
-    const { shouldCache, waitMinutes } =
-      options?.forceUpdate || !metadata // if no metadata, force update
-        ? {
-            shouldCache: false,
-            waitMinutes: 0,
-          }
-        : isStale(IMAGE_STALE_MINUTES, metadata.createdAt)
-
-    if (shouldCache) {
-      return {
-        updated: false,
-        message: `Minimum update interval is ${IMAGE_STALE_MINUTES} minutes, please wait ${waitMinutes} minutes.`,
-        waitMinutes,
+        message: shouldUpdateResult.message,
+        waitMinutes: shouldUpdateResult.waitMinutes,
       }
     }
 
