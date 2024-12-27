@@ -1,13 +1,21 @@
 'use client'
 
-import { Button, Image, JsonInput, Table, Title } from '@mantine/core'
-import { format } from 'date-fns'
-import useSWR from 'swr'
+import { Badge, Button, Image, JsonInput, Table, Title } from '@mantine/core'
+import { differenceInMinutes, format } from 'date-fns'
+import useSWRImmutable from 'swr/immutable'
 
-import { getCurrent, updateCurrent } from './actions'
+import { fetchCurrentStatus, getCurrent, updateCurrent } from './actions'
 
 export function CurrentImage() {
-  const { data: currentImageMetadata } = useSWR('ai-icons', getCurrent)
+  const { data: currentImageMetadata, mutate: mutateImageMetadata } = useSWRImmutable(
+    'ai-icons',
+    getCurrent,
+  )
+
+  const { data: currentStatus, mutate: mutateCurrentStatus } = useSWRImmutable(
+    'ai-icons-status',
+    fetchCurrentStatus,
+  )
 
   if (!currentImageMetadata) {
     return <div>Loading...</div>
@@ -18,9 +26,15 @@ export function CurrentImage() {
     { key: 'Translated Prompt', value: currentImageMetadata.prompt.translated },
     { key: 'Image URI', value: currentImageMetadata.imageUri },
     { key: 'Image ID', value: currentImageMetadata.id },
-    { key: 'Created At', value: format(currentImageMetadata.createdAt, 'yyyy-MM-dd HH:mm:ss') },
+    {
+      key: 'Created At',
+      value:
+        format(currentImageMetadata.createdAt, 'yyyy-MM-dd HH:mm:ss') +
+        ` (${differenceInMinutes(new Date(), currentImageMetadata.createdAt)} minutes ago)`,
+    },
     { key: 'Model', value: currentImageMetadata.modelName },
     { key: 'Author', value: currentImageMetadata.prompt.author },
+    { key: 'Resource URI', value: currentImageMetadata.imageUri },
   ]
 
   return (
@@ -32,7 +46,10 @@ export function CurrentImage() {
         src={currentImageMetadata.imageUri}
         alt="Generated AI icon"
       />
-      <Table striped className="my-4 w-full table-fixed">
+      <Badge color={currentStatus?.shouldUpdate ? 'red' : 'green'} my="sm">
+        {currentStatus?.shouldUpdate ? 'Stale' : 'Up to Date'}
+      </Badge>
+      <Table striped my="sm" className="w-full table-fixed">
         <Table.Tbody>
           {tableContents.map(({ key, value }) => (
             <Table.Tr key={key}>
@@ -59,6 +76,15 @@ export function CurrentImage() {
       </Title>
       <div>
         <div className="flex gap-2">
+          <Button
+            color="blue"
+            onClick={() => {
+              mutateImageMetadata()
+              mutateCurrentStatus()
+            }}
+          >
+            Reload
+          </Button>
           <Button
             color="blue"
             onClick={() => {

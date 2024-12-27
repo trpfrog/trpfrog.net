@@ -72,6 +72,10 @@ export function createApp(ucs: UseCases) {
         )
       },
     )
+    .get('/status', async c => {
+      const status = await c.var.UCS.shouldUpdate()
+      return c.json(status)
+    })
     .get(
       '/query',
       requiresApiKey(),

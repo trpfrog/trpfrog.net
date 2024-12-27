@@ -1,5 +1,4 @@
 import { createApp } from './controller'
-import { adminApp } from './controller/devPage'
 import { imageMetadataRepoCloudflareD1 } from './infra/repos/imageMetadataRepoCloudflareD1'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudflareR2'
 import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
@@ -23,10 +22,6 @@ const app = createApp(
     generateSeedWords: () => randomWordApi(10),
   }).build(),
 )
-
-// adminApp を AppType に含めないようにするための対応
-// (adminAppではhono/jsxを使用しているため、他のアプリケーションからクライアントを読み込む際に型チェックでエラーが発生する)
-app.route('/admin', adminApp)
 
 // eslint-disable-next-line no-restricted-exports
 export default app
