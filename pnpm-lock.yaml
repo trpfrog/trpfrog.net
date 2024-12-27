@@ -36,7 +36,7 @@ importers:
         version: 2.1.8(vitest@2.1.8)
       better-typescript-lib:
         specifier: ^2.10.0
-        version: 2.10.0(typescript@5.7.2)
+        version: 2.10.0(typescript@5.6.3)
       eslint:
         specifier: npm:eslint@9.14.0
         version: 9.14.0(jiti@2.4.2)
@@ -57,13 +57,13 @@ importers:
         version: 0.6.9(prettier@3.3.3)
       tsr:
         specifier: ^1.3.3
-        version: 1.3.3(typescript@5.7.2)
+        version: 1.3.3(typescript@5.6.3)
       turbo:
         specifier: ^2.3.3
         version: 2.3.3
       typescript:
-        specifier: ^5.7.2
-        version: 5.7.2
+        specifier: ^5.6.3
+        version: 5.6.3
       vitest:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@20.17.10)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
@@ -103,6 +103,9 @@ importers:
       '@trpfrog.net/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -118,6 +121,9 @@ importers:
       recharts:
         specifier: '2'
         version: 2.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      swr:
+        specifier: ^2.2.5
+        version: 2.2.5(react@19.0.0)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -155,9 +161,6 @@ importers:
       tailwindcss:
         specifier: 4.0.0-beta.8
         version: 4.0.0-beta.8
-      typescript:
-        specifier: ^5
-        version: 5.7.2
 
   apps/dev-blog-server:
     dependencies:
@@ -11185,6 +11188,11 @@ packages:
       typescript:
         optional: true
 
+  typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   typescript@5.7.2:
     resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
@@ -13678,73 +13686,73 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@better-typescript-lib/decorators@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/decorators@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/dom@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/dom@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2015@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2015@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2016@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2016@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2017@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2017@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2018@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2018@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2019@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2019@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2020@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2020@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2021@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2021@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2022@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2022@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2023@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2023@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es2024@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es2024@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es5@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es5@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/es6@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/es6@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/esnext@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/esnext@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/scripthost@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/scripthost@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
-  '@better-typescript-lib/webworker@2.10.0(typescript@5.7.2)':
+  '@better-typescript-lib/webworker@2.10.0(typescript@5.6.3)':
     dependencies:
-      typescript: 5.7.2
+      typescript: 5.6.3
 
   '@braintree/sanitize-url@7.1.1': {}
 
@@ -17996,26 +18004,26 @@ snapshots:
       mathjax-full: 3.2.2
       react: 19.0.0
 
-  better-typescript-lib@2.10.0(typescript@5.7.2):
+  better-typescript-lib@2.10.0(typescript@5.6.3):
     dependencies:
-      '@typescript/lib-decorators': '@better-typescript-lib/decorators@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-dom': '@better-typescript-lib/dom@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2015': '@better-typescript-lib/es2015@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2016': '@better-typescript-lib/es2016@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2017': '@better-typescript-lib/es2017@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2018': '@better-typescript-lib/es2018@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2019': '@better-typescript-lib/es2019@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2020': '@better-typescript-lib/es2020@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2021': '@better-typescript-lib/es2021@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2022': '@better-typescript-lib/es2022@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2023': '@better-typescript-lib/es2023@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es2024': '@better-typescript-lib/es2024@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es5': '@better-typescript-lib/es5@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-es6': '@better-typescript-lib/es6@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-esnext': '@better-typescript-lib/esnext@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-scripthost': '@better-typescript-lib/scripthost@2.10.0(typescript@5.7.2)'
-      '@typescript/lib-webworker': '@better-typescript-lib/webworker@2.10.0(typescript@5.7.2)'
-      typescript: 5.7.2
+      '@typescript/lib-decorators': '@better-typescript-lib/decorators@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-dom': '@better-typescript-lib/dom@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2015': '@better-typescript-lib/es2015@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2016': '@better-typescript-lib/es2016@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2017': '@better-typescript-lib/es2017@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2018': '@better-typescript-lib/es2018@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2019': '@better-typescript-lib/es2019@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2020': '@better-typescript-lib/es2020@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2021': '@better-typescript-lib/es2021@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2022': '@better-typescript-lib/es2022@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2023': '@better-typescript-lib/es2023@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es2024': '@better-typescript-lib/es2024@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es5': '@better-typescript-lib/es5@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-es6': '@better-typescript-lib/es6@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-esnext': '@better-typescript-lib/esnext@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-scripthost': '@better-typescript-lib/scripthost@2.10.0(typescript@5.6.3)'
+      '@typescript/lib-webworker': '@better-typescript-lib/webworker@2.10.0(typescript@5.6.3)'
+      typescript: 5.6.3
 
   big-integer@1.6.52: {}
 
@@ -24688,11 +24696,11 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsr@1.3.3(typescript@5.7.2):
+  tsr@1.3.3(typescript@5.6.3):
     dependencies:
       mri: 1.2.0
       picocolors: 1.1.1
-      typescript: 5.7.2
+      typescript: 5.6.3
 
   tsutils@3.21.0(typescript@5.7.2):
     dependencies:
@@ -24799,6 +24807,8 @@ snapshots:
     transitivePeerDependencies:
       - eslint
       - supports-color
+
+  typescript@5.6.3: {}
 
   typescript@5.7.2: {}
 
