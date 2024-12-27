@@ -9,6 +9,7 @@ import { z } from 'zod'
 
 import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
+import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
 import { UseCases } from '../wire'
 
 import { requiresApiKey } from './middlewares'
@@ -50,21 +51,25 @@ export function createApp(ucs: UseCases) {
         }),
       ),
       async c => {
-        const result = await c.var.UCS.refreshImageIfStale({
-          forceUpdate: c.req.valid('query').force,
-        })
-
-        return result.updated
-          ? c.json(
-              {
-                status: 'updated',
-              },
-              201, // 201 Created
-            )
-          : c.json({
+        const forceUpdate = c.req.valid('query').force
+        const shouldUpdate = await c.var.UCS.shouldUpdate({ forceUpdate })
+        if (!shouldUpdate.shouldUpdate) {
+          return c.json(
+            {
               status: 'skipped',
-              message: result.message,
-            })
+              message: shouldUpdate.message,
+            },
+            200,
+          )
+        }
+
+        waitUntilIfSupported(c.var.UCS.refreshImageIfStale({ forceUpdate: true }))
+        return c.json(
+          {
+            status: 'accepted',
+          },
+          202, // Accepted
+        )
       },
     )
     .get(

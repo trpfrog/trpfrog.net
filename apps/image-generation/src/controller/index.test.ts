@@ -102,9 +102,9 @@ describe('Image Generation App', () => {
       query: { force: 'true' },
       header: { 'x-api-key': 'valid-api-key' },
     })
-    expect(res.status).toBe(201)
+    expect(res.status).toBe(202)
     const json = await res.json()
-    expect(json).toEqual({ status: 'updated' })
+    expect(json).toEqual({ status: 'accepted' })
   })
 
   it('should skip updating the image when force is false and image is not stale', async () => {
