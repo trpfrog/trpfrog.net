@@ -3,6 +3,7 @@ import { wire } from '@trpfrog.net/utils/wire'
 
 import { ImageMetadataRepo } from './domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from './domain/repos/image-store-repo'
+import { ImageUpdateStatusRepo } from './domain/repos/image-update-status-repo'
 import { ChatLLMJson } from './domain/services/llm'
 import { TextToImage } from './domain/services/text-to-image'
 import * as rawUsecases from './usecases'
@@ -16,11 +17,20 @@ export type UseCases = {
 export function prepareUsecasesBuilder(common: {
   imageStoreRepo: ImageStoreRepo
   imageMetadataRepo: ImageMetadataRepo
+  imageUpdateStatusRepo: ImageUpdateStatusRepo
   textToImage: TextToImage
   jsonChatbot: ChatLLMJson
   generateSeedWords: () => Promise<string[]>
 }) {
-  const { imageStoreRepo, imageMetadataRepo, textToImage, jsonChatbot, generateSeedWords } = common
+  const {
+    imageStoreRepo,
+    imageMetadataRepo,
+    imageUpdateStatusRepo,
+    textToImage,
+    jsonChatbot,
+    generateSeedWords,
+  } = common
+
   return wire(usecases)
     .inject({
       currentImage: {
@@ -46,6 +56,10 @@ export function prepareUsecasesBuilder(common: {
       queryImageMetadata: {
         imageMetadataRepo,
       },
+      shouldUpdate: {
+        imageMetadataRepo,
+        imageUpdateStatusRepo,
+      },
     })
     .inject(ucs => ({
       generateRandomImage: {
@@ -59,6 +73,8 @@ export function prepareUsecasesBuilder(common: {
         imageMetadataRepo,
         uploadImage: ucs.uploadNewImage,
         imageGenerator: ucs.generateRandomImage,
+        imageUpdateStatusRepo: imageUpdateStatusRepo,
+        shouldUpdate: ucs.shouldUpdate,
       },
     }))
 }

@@ -2,6 +2,7 @@ import { createApp } from './controller'
 import { adminApp } from './controller/devPage'
 import { imageMetadataRepoCloudflareD1 } from './infra/repos/imageMetadataRepoCloudflareD1'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudflareR2'
+import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { randomWordApi } from './infra/services/random-words'
 import { createHfImageGenerator } from './infra/services/text-to-image'
@@ -11,6 +12,7 @@ const app = createApp(
   prepareUsecasesBuilder({
     imageStoreRepo: imageStoreRepoCloudflareR2,
     imageMetadataRepo: imageMetadataRepoCloudflareD1,
+    imageUpdateStatusRepo: imageUpdateStatusCloudflareKV,
     textToImage: createHfImageGenerator({
       modelName: 'Prgckwb/trpfrog-sd3.5-large-lora',
     }),

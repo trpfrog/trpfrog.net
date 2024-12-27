@@ -1,7 +1,33 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
 
+import { ImageUpdateStatus } from '../domain/entities/image-update-status'
+
 import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
+
+const latestRecord = {
+  id: '1',
+  prompt: {
+    author: 'author',
+    text: 'text',
+    translated: 'translated',
+  },
+  modelName: 'model',
+  createdAt: new Date(),
+  imageUri: 'http://example.com/image.png',
+}
+
+function createInMemoryImageUpdateStatusRepo(initialStatus: ImageUpdateStatus) {
+  let status: ImageUpdateStatus = initialStatus
+  return {
+    get: async () => {
+      return status
+    },
+    set: async (newStatus: ImageUpdateStatus) => {
+      status = newStatus
+    },
+  }
+}
 
 describe('refreshImageIfStale', () => {
   const { resolve, defaultDeps } = createSingleDepsResolver(refreshImageIfStaleUseCase, {
@@ -20,94 +46,109 @@ describe('refreshImageIfStale', () => {
     }),
     imageMetadataRepo: {
       getLatest: async () => ({
-        id: '1',
-        prompt: {
-          author: 'author',
-          text: 'text',
-          translated: 'translated',
-        },
-        modelName: 'model',
+        ...latestRecord,
         createdAt: new Date(),
-        imageUri: 'http://example.com/image.png',
       }),
       query: async () => [],
       count: async () => 0,
       add: async () => {},
       remove: async () => {},
     },
+    imageUpdateStatusRepo: {
+      get: async () => ({ status: 'idle' }),
+      set: async () => {},
+    },
+    shouldUpdate: async () => ({
+      shouldUpdate: true,
+    }),
   })
 
-  const testCases: {
-    description: string
-    deps: Partial<Parameters<typeof resolve>[0]>
-    isForceUpdate?: boolean
-    expected: { updated: boolean; message?: string; waitMinutes?: number }
-  }[] = [
-    {
-      description: 'should return updated: false if image is not stale',
-      deps: {},
-      expected: { updated: false },
-    },
-    {
-      description: 'should return updated: true if forceUpdate is true',
-      deps: {},
-      isForceUpdate: true,
-      expected: { updated: true },
-    },
-    {
-      description:
-        'should return updated: false if image is stale and waitMinutes is greater than 0',
-      deps: {
-        imageMetadataRepo: {
-          ...defaultDeps.imageMetadataRepo,
-          getLatest: async () => ({
-            id: '1',
-            prompt: {
-              author: 'author',
-              text: 'text',
-              translated: 'translated',
-            },
-            modelName: 'model',
-            createdAt: new Date(Date.now() - 160 * 60 * 1000), // 160 minutes ago
-            imageUri: 'http://example.com/image.png',
-          }),
-        },
-      },
-      expected: {
-        updated: false,
-        message: 'Minimum update interval is 180 minutes, please wait 20 minutes.',
-        waitMinutes: 20,
-      },
-    },
-    {
-      description: 'should return updated: true if image is stale and waitMinutes is 0',
-      deps: {
-        imageMetadataRepo: {
-          ...defaultDeps.imageMetadataRepo,
-          getLatest: async () => ({
-            id: '1',
-            prompt: {
-              author: 'author',
-              text: 'text',
-              translated: 'translated',
-            },
-            modelName: 'model',
-            createdAt: new Date(Date.now() - 181 * 60 * 1000), // 181 minutes ago
-            imageUri: 'http://example.com/image.png',
-          }),
-        },
-      },
-      expected: { updated: true },
-    },
-  ]
-
-  testCases.forEach(({ description, deps, isForceUpdate, expected }) => {
-    it(description, async () => {
-      const refreshImageIfStale = resolve(deps)
-      const result = await refreshImageIfStale({
-        forceUpdate: isForceUpdate ?? false,
-      })
-      expect(result).toMatchObject(expected)
+  it('画像が新しい場合、更新をスキップする', async () => {
+    const refreshImageIfStale = resolve({
+      shouldUpdate: async () => ({
+        shouldUpdate: false,
+        message: 'Image is fresh',
+        waitMinutes: 0,
+      }),
     })
+
+    const result = await refreshImageIfStale()
+    expect(result).toMatchObject({ updated: false })
+  })
+
+  it('画像生成時は updating になり、生成終了後は idle に戻る', async () => {
+    const imageUpdateStatusRepo = createInMemoryImageUpdateStatusRepo({
+      status: 'idle',
+    })
+
+    let statusDuringUpdate: ImageUpdateStatus | undefined
+    const refreshImageIfStale = resolve({
+      imageMetadataRepo: {
+        ...defaultDeps.imageMetadataRepo,
+        getLatest: async () => ({
+          ...latestRecord,
+          createdAt: new Date(0), // 十分に古い
+        }),
+      },
+      imageUpdateStatusRepo,
+      imageGenerator: async () => {
+        // 生成中に status を取得するために一時的に status を取得
+        statusDuringUpdate = await imageUpdateStatusRepo.get()
+        return await defaultDeps.imageGenerator()
+      },
+    })
+
+    // 生成前は status が idle になっているはず
+    const statusBeforeUpdate = await imageUpdateStatusRepo.get()
+    expect(statusBeforeUpdate).toMatchObject({ status: 'idle' })
+
+    // 画像生成を実行
+    const result = await refreshImageIfStale({ forceUpdate: true })
+    expect(result).toMatchObject({ updated: true })
+
+    // 更新中は status が updating になる
+    expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
+
+    // 生成完了後は status が idle に戻っている
+    const status = await imageUpdateStatusRepo.get()
+    expect(status).toMatchObject({ status: 'idle' })
+  })
+
+  it('画像生成時にエラーが発生した場合、status が error になる', async () => {
+    const imageUpdateStatusRepo = createInMemoryImageUpdateStatusRepo({
+      status: 'idle',
+    })
+
+    let statusDuringUpdate: ImageUpdateStatus | undefined
+    const refreshImageIfStale = resolve({
+      imageMetadataRepo: {
+        ...defaultDeps.imageMetadataRepo,
+        getLatest: async () => ({
+          ...latestRecord,
+          createdAt: new Date(0), // 十分に古い
+        }),
+      },
+      imageUpdateStatusRepo,
+      imageGenerator: async () => {
+        // 生成中に status を取得するために一時的に status を取得
+        statusDuringUpdate = await imageUpdateStatusRepo.get()
+        throw new Error('Failed to generate image')
+      },
+    })
+
+    // 生成前は status が idle になっているはず
+    const statusBeforeUpdate = await imageUpdateStatusRepo.get()
+    expect(statusBeforeUpdate).toMatchObject({ status: 'idle' })
+
+    // 画像生成を実行
+    const result = await refreshImageIfStale({ forceUpdate: true })
+    expect(result).toMatchObject({ updated: false })
+
+    // 更新中は status が updating になる
+    expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
+
+    // 生成エラー後は status が error になる
+    const statusAfterrUpdate = await imageUpdateStatusRepo.get()
+    expect(statusAfterrUpdate).toMatchObject({ status: 'error' })
   })
 })
