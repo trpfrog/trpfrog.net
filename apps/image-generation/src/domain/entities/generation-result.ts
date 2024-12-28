@@ -17,6 +17,7 @@ export const imageMetadataSchema = z.object({
   prompt: imageGenerationPromptSchema,
   modelName: z.string(),
   createdAt: z.date(),
+  deletedAt: z.date().optional(),
   imageUri: z.string().url(),
 })
 

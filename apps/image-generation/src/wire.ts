@@ -60,6 +60,12 @@ export function prepareUsecasesBuilder(common: {
         imageMetadataRepo,
         imageUpdateStatusRepo,
       },
+      softDelete: {
+        imageMetadataRepo,
+      },
+      undelete: {
+        imageMetadataRepo,
+      },
     })
     .inject(ucs => ({
       generateRandomImage: {

@@ -1,4 +1,7 @@
+import { cacheTags } from '@trpfrog.net/constants'
+
 import { TopCard } from '@/app/(home)/_components/TopCard'
+import { bffClient } from '@/app/api/client'
 
 import { tv } from '@/lib/tailwind/variants'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
@@ -6,31 +9,6 @@ import { replaceWithLighterImageFormat } from '@/lib/utils'
 const image = replaceWithLighterImageFormat(
   'https://res.cloudinary.com/trpfrog/image/upload/w_1000/blog/sugadaira-travel/42C94C5A-04C6-4DEC-9D41-2C87F87D79B7_1_105_c.jpg',
 )
-
-const attributes = [
-  { icon: '🐸', iconName: '性別', text: '男性' },
-  { icon: '🎂', iconName: '誕生日', text: '2000年10月17日 (24歳)' },
-  {
-    icon: '🏠',
-    iconName: '出身',
-    text: '東京都 (23区外) 出身',
-  },
-  {
-    icon: '🍎',
-    iconName: 'Apple',
-    text: 'Apple ユーザー',
-  },
-  // {
-  //   icon: '⌨️',
-  //   iconName: 'キー配列',
-  //   text: 'US 配列 (テンキーレス)',
-  // },
-  // {
-  //   icon: '🎓',
-  //   iconName: '最終学歴',
-  //   text: '電気通信大学',
-  // },
-]
 
 const styles = tv({
   slots: {
@@ -49,7 +27,33 @@ const styles = tv({
   },
 })()
 
-export function AboutMeCard() {
+// TODO: dynamicIO が stable になったら消す
+async function fetchCurrentAge() {
+  return await fetch(bffClient.tmp_cache.age.$url().toString(), {
+    cache: 'force-cache',
+    next: {
+      tags: [cacheTags.date.tag],
+    },
+  }).then(res => res.text())
+}
+
+export async function AboutMeCard() {
+  const age = await fetchCurrentAge()
+  const attributes = [
+    { icon: '🐸', iconName: '性別', text: '男性' },
+    { icon: '🎂', iconName: '誕生日', text: `2000年10月17日 (${age}歳)` },
+    {
+      icon: '🏠',
+      iconName: '出身',
+      text: '東京都 (23区外) 出身',
+    },
+    {
+      icon: '🍎',
+      iconName: 'Apple',
+      text: 'Apple ユーザー',
+    },
+  ]
+
   return (
     <TopCard
       className={styles.bgImage()}

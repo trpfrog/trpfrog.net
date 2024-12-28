@@ -5,6 +5,10 @@ export const services = defineEndpoints({
     port: 3000,
     production: 'https://trpfrog.net',
   },
+  admin: {
+    port: 3001,
+    production: 'https://admin.trpfrog.net',
+  },
   imageGeneration: {
     port: 8001,
     production: 'https://api.trpfrog.net',

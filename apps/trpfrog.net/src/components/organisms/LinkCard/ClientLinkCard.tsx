@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 
 import { fetchOGP } from '@/components/organisms/LinkCard/fetchOGP'
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
@@ -14,7 +14,7 @@ type ClientLinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'>
 
 export function ClientLinkCard(props: ClientLinkCardProps) {
   const { href, ...rest } = props
-  const { data, error, isLoading } = useSWR(href, fetchOGP)
+  const { data, error, isLoading } = useSWRImmutable(href, fetchOGP)
 
   if (isLoading) {
     return <SkeletonLinkCard {...rest} />

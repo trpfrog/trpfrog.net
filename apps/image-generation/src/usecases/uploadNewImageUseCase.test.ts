@@ -1,20 +1,13 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
+
+import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
+import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'
 
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 
 const deps = {
-  imageStoreRepo: {
-    upload: vi.fn(async filename => `https://example.com/${filename}`),
-    delete: vi.fn(async () => {}),
-    download: vi.fn(async () => new ArrayBuffer(8)),
-  },
-  imageMetadataRepo: {
-    add: vi.fn(async () => {}),
-    query: vi.fn(async () => []),
-    getLatest: vi.fn(async () => undefined),
-    count: vi.fn(async () => 0),
-    remove: vi.fn(async () => {}),
-  },
+  imageStoreRepo: createImageStoreRepoMock(),
+  imageMetadataRepo: createImageMetadataRepoMock(),
 } satisfies Parameters<typeof uploadNewImageUseCase>[0]
 
 const imageData = new ArrayBuffer(8)
@@ -67,6 +60,6 @@ describe('uploadNewImageUsecase', () => {
       createdAt: metadata.createdAt,
       imageUri: expectedImageUri,
     })
-    expect(deps.imageStoreRepo.delete).toHaveBeenCalledWith(expectedFilename)
+    expect(deps.imageStoreRepo.hardDelete).toHaveBeenCalledWith(expectedFilename)
   })
 })

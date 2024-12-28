@@ -1,23 +1,16 @@
-import { zValidator } from '@hono/zod-validator'
 import { services } from '@trpfrog.net/constants'
 import { Hono } from 'hono'
 import { contextStorage } from 'hono/context-storage'
 import { cors } from 'hono/cors'
 import { prettyJSON } from 'hono/pretty-json'
 import { trimTrailingSlash } from 'hono/trailing-slash'
-import { z } from 'zod'
 
-import { imageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
-import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
 import { UseCases } from '../wire'
 
-import { requiresApiKey } from './middlewares'
-
-const stringifiedBooleanSchema = z
-  .enum(['true', 'false'])
-  .default('false')
-  .transform(v => v === 'true')
+import { queryApp } from './query'
+import { resourceApp } from './resource'
+import { updateApp } from './update'
 
 export function createApp(ucs: UseCases) {
   return new Hono<Env>()
@@ -41,71 +34,13 @@ export function createApp(ucs: UseCases) {
       }
       return c.json(data)
     })
-    .post(
-      '/update',
-      requiresApiKey(),
-      zValidator(
-        'query',
-        z.object({
-          force: stringifiedBooleanSchema,
-        }),
-      ),
-      async c => {
-        const forceUpdate = c.req.valid('query').force
-        const shouldUpdate = await c.var.UCS.shouldUpdate({ forceUpdate })
-        if (!shouldUpdate.shouldUpdate) {
-          return c.json(
-            {
-              status: 'skipped',
-              message: shouldUpdate.message,
-            },
-            200,
-          )
-        }
-
-        waitUntilIfSupported(c.var.UCS.refreshImageIfStale({ forceUpdate: true }))
-        return c.json(
-          {
-            status: 'accepted',
-          },
-          202, // Accepted
-        )
-      },
-    )
-    .get(
-      '/query',
-      requiresApiKey(),
-      zValidator(
-        'query',
-        z
-          .object({
-            q: z.string().optional(),
-            limit: z.coerce.number().int().positive().max(100).optional(),
-            offset: z.coerce.number().optional(),
-          })
-          .strict(),
-      ),
-      async c => {
-        const rawQuery = c.req.valid('query')
-
-        const res = imageMetadataRepoQuerySchema.safeParse({
-          where: {
-            prompt: rawQuery.q,
-          },
-          limit: rawQuery.limit,
-          offset: rawQuery.offset,
-        } satisfies z.input<typeof imageMetadataRepoQuerySchema>)
-
-        if (!res.success) {
-          return c.json({ error: res.error }, 400)
-        }
-        const data = await c.var.UCS.queryImageMetadata(res.data)
-        return c.json({
-          result: data.result,
-          total: data.count,
-        })
-      },
-    )
+    .get('/status', async c => {
+      const status = await c.var.UCS.shouldUpdate()
+      return c.json(status)
+    })
+    .route('/update', updateApp)
+    .route('/query', queryApp)
+    .route('/resource', resourceApp)
 }
 
 export type AppType = ReturnType<typeof createApp>

@@ -25,7 +25,7 @@ export const imageStoreRepoCloudflareR2: ImageStoreRepo = {
     return await res.arrayBuffer()
   },
 
-  delete: async (filename: string) => {
+  hardDelete: async (filename: string) => {
     const c = getContext<Env>()
     const filePath = toR2Key(filename)
     await c.env.BUCKET.delete(filePath)

@@ -3,31 +3,10 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { ImageUpdateStatus } from '../domain/entities/image-update-status'
 import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
 import * as getRefreshedImageUpdateStatus from '../domain/services/getRefreshedImageUpdateStatus'
+import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
+import { createImageUpdateStatusRepoMock } from '../infra/repos/mocks/imageUpdateStatusRepoMock'
 
 import { shouldUpdateUseCase } from './shouldUpdateUseCase'
-
-const latestRecord = {
-  id: '1',
-  prompt: {
-    author: 'author',
-    text: 'text',
-    translated: 'translated',
-  },
-  modelName: 'model',
-  imageUri: 'http://example.com/image.png',
-}
-
-function createInMemoryImageUpdateStatusRepo(initialStatus: ImageUpdateStatus) {
-  let status: ImageUpdateStatus = initialStatus
-  return {
-    get: async () => {
-      return status
-    },
-    set: async (newStatus: ImageUpdateStatus) => {
-      status = newStatus
-    },
-  }
-}
 
 describe('shouldUpdateUseCase', () => {
   const currentDate = new Date('2024-12-14T12:34:56+09:00')
@@ -99,19 +78,16 @@ describe('shouldUpdateUseCase', () => {
         .mockImplementation(status => status)
 
       const shouldUpdate = shouldUpdateUseCase({
-        imageMetadataRepo: {
-          getLatest: async () => ({
-            ...latestRecord,
-            createdAt: props.latestImageCreatedAt ?? currentDate,
-          }),
-          add: async () => {},
-          remove: async () => {},
-          count: async () => 0,
-          query: async () => [],
-        },
-        imageUpdateStatusRepo: createInMemoryImageUpdateStatusRepo(
-          props.imageUpdateStatus ?? { status: 'idle' },
-        ),
+        imageMetadataRepo: createImageMetadataRepoMock([
+          {
+            id: '1',
+            createdAt: props.latestImageCreatedAt,
+            imageUri: 'http://example.com',
+            prompt: { author: 'test', text: 'test', translated: 'test' },
+            modelName: 'test',
+          },
+        ]),
+        imageUpdateStatusRepo: createImageUpdateStatusRepoMock(props.imageUpdateStatus),
         ...(props.deps ?? {}),
       })
 

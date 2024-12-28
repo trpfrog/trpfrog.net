@@ -6,6 +6,7 @@ export const imageMetadataRepoQuerySchema = z.object({
   where: z
     .object({
       prompt: z.string().optional(),
+      includeDeleted: z.boolean().optional(),
     })
     .default({}),
   limit: z.number().int().positive().default(20),
@@ -19,5 +20,7 @@ export interface ImageMetadataRepo {
   getLatest: () => Promise<ImageMetadata | undefined>
   count: (query?: ImageMetadataQuery['where']) => Promise<number>
   add: (image: ImageMetadata) => Promise<void>
-  remove: (id: string) => Promise<void>
+  hardDelete: (id: string) => Promise<void>
+  softDelete: (id: string) => Promise<void>
+  undelete: (id: string) => Promise<void>
 }

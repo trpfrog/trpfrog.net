@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useCallback, useEffect } from 'react'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 
 import { WaveText } from '@/components/atoms/WaveText'
 
@@ -64,7 +64,7 @@ export function IconFrame() {
       }),
     [],
   )
-  const { isLoading, data, error } = useSWR('/', fetcher)
+  const { isLoading, data, error } = useSWRImmutable('/', fetcher)
 
   // Trigger update request on mount
   useEffect(() => {

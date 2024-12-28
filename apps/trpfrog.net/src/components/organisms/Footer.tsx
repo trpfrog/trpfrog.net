@@ -1,4 +1,6 @@
-import { memo } from 'react'
+import { cacheTags } from '@trpfrog.net/constants'
+
+import { bffClient } from '@/app/api/client'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { A } from '@/components/wrappers'
@@ -18,11 +20,22 @@ const styles = tv({
   },
 })()
 
-export const Footer = memo(function Footer() {
+// TODO: dynamicIO が stable になったら消す
+async function fetchCurrentYear() {
+  return await fetch(bffClient.tmp_cache.year.$url().toString(), {
+    cache: 'force-cache',
+    next: {
+      tags: [cacheTags.date.tag],
+    },
+  }).then(res => res.text())
+}
+
+export async function Footer() {
+  const year = await fetchCurrentYear()
   return (
     <footer className={styles.footer()}>
       <MainWrapper className={styles.inner()}>
-        <div className={styles.copyright()}>&copy; 2019-2024 つまみ</div>
+        <div className={styles.copyright()}>&copy; 2019-{year} つまみ</div>
         <div className={styles.links()}>
           <A openInNewTab href="https://github.com/trpfrog/trpfrog.net" className={styles.link()}>
             GitHub
@@ -34,4 +47,4 @@ export const Footer = memo(function Footer() {
       </MainWrapper>
     </footer>
   )
-})
+}
