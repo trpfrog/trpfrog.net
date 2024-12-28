@@ -1,33 +1,25 @@
 import { testClient } from 'hono/testing'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
+import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
+import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'
+import { createImageUpdateStatusRepoMock } from '../infra/repos/mocks/imageUpdateStatusRepoMock'
 import { prepareUsecasesBuilder } from '../wire'
 
 import { createApp } from '.'
 
 const defaultDeps = {
-  imageMetadataRepo: {
-    getLatest: vi.fn(async () => ({
+  imageMetadataRepo: createImageMetadataRepoMock([
+    {
       id: '1',
-      createdAt: new Date(),
+      createdAt: new Date('2000-10-17'),
       imageUri: 'http://example.com',
       prompt: { author: 'test', text: 'test', translated: 'test' },
       modelName: 'test',
-    })),
-    query: vi.fn(async () => []),
-    count: vi.fn(async () => 0),
-    add: vi.fn(async () => {}),
-    remove: vi.fn(async () => {}),
-  },
-  imageStoreRepo: {
-    delete: vi.fn(async () => {}),
-    upload: vi.fn(async () => 'http://example.com'),
-    download: vi.fn(async () => new ArrayBuffer(0)),
-  },
-  imageUpdateStatusRepo: {
-    get: vi.fn(async () => ({ status: 'idle' }) as const),
-    set: vi.fn(async () => {}),
-  },
+    },
+  ]),
+  imageStoreRepo: createImageStoreRepoMock(),
+  imageUpdateStatusRepo: createImageUpdateStatusRepoMock(),
   textToImage: async () => ({
     image: new ArrayBuffer(0),
     extension: '.png',
