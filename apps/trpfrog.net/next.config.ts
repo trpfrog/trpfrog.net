@@ -19,13 +19,6 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
     reactCompiler: true,
-
-    // Opt into the previous Client Router Cache behavior
-    // https://nextjs.org/blog/next-15-rc#client-router-cache-no-longer-caches-page-components-by-default
-    staleTimes: {
-      dynamic: 30,
-    },
-
     serverActions: {
       bodySizeLimit: '10mb',
     },
