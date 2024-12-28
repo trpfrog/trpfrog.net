@@ -21,3 +21,7 @@ export function removeSuffixFromKeys<S extends string, T extends Record<`${strin
     [K in keyof T as K extends `${string}${S}` ? (K extends `${infer U}${S}` ? U : K) : K]: T[K]
   }
 }
+
+export function typedObjectEntries<T extends object>(obj: T): Array<[keyof T, T[keyof T]]> {
+  return Object.entries(obj) as Array<[keyof T, T[keyof T]]>
+}
