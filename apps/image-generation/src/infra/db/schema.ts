@@ -11,6 +11,7 @@ export const imageMetadataTable = sqliteTable(
     modelName: text('model_name').notNull(), // モデル名
     createdAtMillis: integer('created_at_millis').notNull(), // タイムスタンプ（ミリ秒）
     imageUri: text('image_uri').notNull(), // 画像のURI
+    deletedAt: integer('deleted_at'), // 削除された日時 (UNIX タイムスタンプ)
   },
   table => ({
     createdAtMillisIdx: index('created_at_millis_idx').on(table.createdAtMillis),

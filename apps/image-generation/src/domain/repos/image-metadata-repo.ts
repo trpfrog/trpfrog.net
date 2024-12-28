@@ -19,5 +19,7 @@ export interface ImageMetadataRepo {
   getLatest: () => Promise<ImageMetadata | undefined>
   count: (query?: ImageMetadataQuery['where']) => Promise<number>
   add: (image: ImageMetadata) => Promise<void>
-  remove: (id: string) => Promise<void>
+  hardDelete: (id: string) => Promise<void>
+  softDelete: (id: string) => Promise<void>
+  undelete: (id: string) => Promise<void>
 }

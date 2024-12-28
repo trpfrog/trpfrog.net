@@ -78,9 +78,21 @@ export const imageMetadataRepoCloudflareD1: ImageMetadataRepo = {
     await db.insert(images).values(record)
   },
 
-  async remove(id) {
+  async hardDelete(id) {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
     await db.delete(images).where(eq(images.id, id))
+  },
+
+  async softDelete(id) {
+    const c = getContext<Env>()
+    const db = drizzle(c.env.DATABASE)
+    await db.update(images).set({ deletedAt: Date.now() }).where(eq(images.id, id))
+  },
+
+  async undelete(id) {
+    const c = getContext<Env>()
+    const db = drizzle(c.env.DATABASE)
+    await db.update(images).set({ deletedAt: null }).where(eq(images.id, id))
   },
 }
