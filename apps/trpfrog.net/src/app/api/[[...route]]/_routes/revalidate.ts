@@ -23,9 +23,10 @@ export const app = new Hono().post(
     }
 
     const { tag, path } = c.req.valid('query')
-    if (!!tag !== !!path) {
+    if (!!tag === !!path) {
       return c.text('Either tag or path must be provided', 400)
     }
+
     if (tag) {
       revalidateTag(tag)
     } else if (path) {
