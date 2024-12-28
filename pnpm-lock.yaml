@@ -109,6 +109,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      hono:
+        specifier: ^4.6.14
+        version: 4.6.14
       next:
         specifier: 15.1.2
         version: 15.1.2(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.83.0)
