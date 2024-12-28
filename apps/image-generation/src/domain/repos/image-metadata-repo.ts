@@ -6,6 +6,7 @@ export const imageMetadataRepoQuerySchema = z.object({
   where: z
     .object({
       prompt: z.string().optional(),
+      includeDeleted: z.boolean().optional(),
     })
     .default({}),
   limit: z.number().int().positive().default(20),

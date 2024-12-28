@@ -1,4 +1,4 @@
-import { desc, eq, or, and, like, count } from 'drizzle-orm'
+import { desc, eq, or, and, like, count, isNull } from 'drizzle-orm'
 import { drizzle } from 'drizzle-orm/d1'
 import { getContext } from 'hono/context-storage'
 
@@ -18,6 +18,7 @@ function convertToDomain(r: typeof images.$inferSelect): ImageMetadata {
       author: r.author,
     },
     createdAt: new Date(r.createdAtMillis),
+    deletedAt: r.deletedAt ? new Date(r.deletedAt) : undefined,
   })
 }
 
@@ -40,6 +41,7 @@ function createWhereQuery(query: ImageMetadataQuery['where']) {
     ...tokens.map(token =>
       or(like(images.promptText, `%${token}%`), like(images.promptTranslated, `%${token}%`)),
     ),
+    query.includeDeleted ? undefined : isNull(images.deletedAt),
   )
 }
 
@@ -60,7 +62,12 @@ export const imageMetadataRepoCloudflareD1: ImageMetadataRepo = {
   async getLatest() {
     const c = getContext<Env>()
     const db = drizzle(c.env.DATABASE)
-    const [record] = await db.select().from(images).orderBy(desc(images.createdAtMillis)).limit(1)
+    const [record] = await db
+      .select()
+      .from(images)
+      .where(isNull(images.deletedAt))
+      .orderBy(desc(images.createdAtMillis))
+      .limit(1)
     return record ? convertToDomain(record) : undefined
   },
 

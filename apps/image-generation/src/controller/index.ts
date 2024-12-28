@@ -86,6 +86,7 @@ export function createApp(ucs: UseCases) {
             q: z.string().optional(),
             limit: z.coerce.number().int().positive().max(100).optional(),
             offset: z.coerce.number().optional(),
+            includeDeleted: stringifiedBooleanSchema.optional(),
           })
           .strict(),
       ),
@@ -95,6 +96,7 @@ export function createApp(ucs: UseCases) {
         const res = imageMetadataRepoQuerySchema.safeParse({
           where: {
             prompt: rawQuery.q,
+            includeDeleted: rawQuery.includeDeleted,
           },
           limit: rawQuery.limit,
           offset: rawQuery.offset,
