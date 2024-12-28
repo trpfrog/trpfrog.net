@@ -36,7 +36,12 @@ export function IconDetail(props: IconDetailProps) {
 
   return (
     <>
-      <Image radius="md" h={500} w={500} src={props.imageUri} alt="Generated AI icon" />
+      <Image
+        radius="md"
+        src={props.imageUri}
+        alt="Generated AI icon"
+        className="aspect-square w-full max-w-[500px]"
+      />
       <Table striped my="sm" className="w-full table-fixed">
         <Table.Tbody>
           {tableContents.map(({ key, value }) => (

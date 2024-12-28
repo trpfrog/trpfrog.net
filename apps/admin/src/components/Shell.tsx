@@ -23,7 +23,7 @@ export function Shell(props: { children: React.ReactNode }) {
       padding="md"
     >
       <AppShell.Header className="flex items-center justify-between gap-2 px-2 md:px-4">
-        <div>
+        <div className="flex items-center gap-2">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <div className="text-2xl font-bold">admin.trpfrog.net</div>
         </div>
