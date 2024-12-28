@@ -40,6 +40,7 @@ export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
       query: {
         limit: query.iconsPerPage.toString(),
         offset: ((query.page - 1) * query.iconsPerPage).toString(),
+        includeDeleted: 'true',
       },
       header: {
         'x-api-key': env.TRPFROG_FUNCTIONS_SECRET ?? '',
@@ -62,5 +63,23 @@ export async function fetchCurrentStatus() {
       return res.json()
     }
     throw new Error('Failed to get current status')
+  })
+}
+
+export async function deleteImage(id: string) {
+  await client.resource[':id'].$delete({
+    param: { id },
+    header: {
+      'x-api-key': env.TRPFROG_FUNCTIONS_SECRET,
+    },
+  })
+}
+
+export async function undeleteImage(id: string) {
+  await client.resource[':id'].undelete.$post({
+    param: { id },
+    header: {
+      'x-api-key': env.TRPFROG_FUNCTIONS_SECRET,
+    },
   })
 }

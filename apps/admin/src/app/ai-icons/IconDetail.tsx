@@ -8,6 +8,8 @@ interface IconDetailProps {
   imageId: string
   createdAt: Date
   modelName: string
+  llmModelName: string
+  deletedAt: Date | null
   rawMetadata: Record<string, unknown> | null
 }
 
@@ -23,8 +25,12 @@ export function IconDetail(props: IconDetailProps) {
         format(props.createdAt, 'yyyy-MM-dd HH:mm:ss') +
         ` (${differenceInMinutes(new Date(), props.createdAt)} minutes ago)`,
     },
-    { key: 'Model', value: props.modelName },
-    { key: 'Author', value: 'Unknown' },
+    {
+      key: 'Deleted At',
+      value: props.deletedAt ? format(props.deletedAt, 'yyyy-MM-dd HH:mm:ss') : 'N/A',
+    },
+    { key: 'Image Generator', value: props.modelName },
+    { key: 'Language Model', value: props.llmModelName },
     { key: 'Resource URI', value: props.imageUri },
   ]
 

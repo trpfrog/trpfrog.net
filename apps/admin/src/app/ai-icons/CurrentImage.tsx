@@ -1,18 +1,15 @@
 'use client'
 
 import { Badge, Button, Title } from '@mantine/core'
-import useSWRImmutable from 'swr/immutable'
+import useSWR from 'swr'
 
 import { fetchCurrentStatus, getCurrent, updateCurrent } from './actions'
 import { IconDetail } from './IconDetail'
 
 export function CurrentImage() {
-  const { data: currentImageMetadata, mutate: mutateImageMetadata } = useSWRImmutable(
-    'ai-icons',
-    getCurrent,
-  )
+  const { data: currentImageMetadata, mutate: mutateImageMetadata } = useSWR('ai-icons', getCurrent)
 
-  const { data: currentStatus, mutate: mutateCurrentStatus } = useSWRImmutable(
+  const { data: currentStatus, mutate: mutateCurrentStatus } = useSWR(
     'ai-icons-status',
     fetchCurrentStatus,
   )
@@ -33,6 +30,8 @@ export function CurrentImage() {
         imageId={currentImageMetadata.id}
         createdAt={new Date(currentImageMetadata.createdAt)}
         modelName={currentImageMetadata.modelName}
+        llmModelName={currentImageMetadata.prompt.author}
+        deletedAt={currentImageMetadata.deletedAt ? new Date(currentImageMetadata.deletedAt) : null}
         rawMetadata={currentImageMetadata}
       />
 

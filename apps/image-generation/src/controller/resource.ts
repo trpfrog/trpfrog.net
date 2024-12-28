@@ -7,7 +7,7 @@ import { requiresApiKey } from './middlewares'
 
 export const resourceApp = new Hono<Env>()
   .use(requiresApiKey())
-  .delete('/:id', async c => {
+  .delete('/:id', requiresApiKey(), async c => {
     const id = c.req.param('id')
     try {
       await c.var.UCS.softDelete(id)
@@ -17,7 +17,7 @@ export const resourceApp = new Hono<Env>()
       throw new HTTPException(500)
     }
   })
-  .post('/:id/undelete', async c => {
+  .post('/:id/undelete', requiresApiKey(), async c => {
     const id = c.req.param('id')
     try {
       await c.var.UCS.undelete(id)
