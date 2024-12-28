@@ -32,7 +32,7 @@ export function uploadNewImageUseCase(deps: {
       })
     } catch (e) {
       console.error(e)
-      await deps.imageStoreRepo.delete(filename)
+      await deps.imageStoreRepo.hardDelete(filename)
       throw e
     }
   }
