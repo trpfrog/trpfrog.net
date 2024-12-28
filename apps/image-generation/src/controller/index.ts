@@ -9,6 +9,7 @@ import { Env } from '../env'
 import { UseCases } from '../wire'
 
 import { queryApp } from './query'
+import { resourceApp } from './resource'
 import { updateApp } from './update'
 
 export function createApp(ucs: UseCases) {
@@ -39,6 +40,7 @@ export function createApp(ucs: UseCases) {
     })
     .route('/update', updateApp)
     .route('/query', queryApp)
+    .route('/resource', resourceApp)
 }
 
 export type AppType = ReturnType<typeof createApp>
