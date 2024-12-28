@@ -1,3 +1,5 @@
+import type { Route } from 'next'
+
 export const navigations = [
   {
     path: '/',
@@ -7,7 +9,11 @@ export const navigations = [
     path: '/ai-icons',
     displayName: 'AI Icons',
   },
+  {
+    path: '/revalidate',
+    displayName: 'Revalidate',
+  },
 ] satisfies {
-  path: string
+  path: Route
   displayName: string
 }[]
