@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: 'admin.trpfrog.net',
 }
 
-export const theme = createTheme({
+const theme = createTheme({
   colors: {
     main: [
       '#f5fcea',
