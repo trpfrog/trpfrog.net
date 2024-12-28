@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useSearchParams } from 'next/navigation'
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 import { z } from 'zod'
 
 import { fetchImageRecords, FetchImageRecordsQuery } from './actions'
@@ -9,7 +9,7 @@ import { fetchImageRecords, FetchImageRecordsQuery } from './actions'
 export function useImageRecords(query: FetchImageRecordsQuery) {
   const fetcher = useCallback(() => fetchImageRecords(query), [query])
   const key = `useImageRecords-${JSON.stringify(query)}`
-  const res = useSWR(key, fetcher, {
+  const res = useSWRImmutable(key, fetcher, {
     keepPreviousData: true,
   })
   return res
