@@ -8,7 +8,7 @@ import { env } from '@/env/server'
 export const app = new Hono().post(
   '/',
   zValidator(
-    'query',
+    'json',
     z
       .object({
         tag: z.string().optional(),
@@ -22,7 +22,7 @@ export const app = new Hono().post(
       return c.text('Unauthorized', 401)
     }
 
-    const { tag, path } = c.req.valid('query')
+    const { tag, path } = c.req.valid('json')
     if (!!tag === !!path) {
       return c.text('Either tag or path must be provided', 400)
     }
