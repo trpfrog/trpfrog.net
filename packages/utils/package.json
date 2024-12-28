@@ -5,7 +5,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./hono": "./src/hono.ts",
-    "./wire": "./src/wire.ts"
+    "./wire": "./src/wire.ts",
+    "./zod": "./src/zod.ts"
   },
   "scripts": {
     "build": "tsc",
