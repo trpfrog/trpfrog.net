@@ -1,5 +1,14 @@
 'use client'
 
+import { Text, Title } from '@mantine/core'
+
 export default function Home() {
-  return <p>Welcome to admin.trpfrog.net! This is the admin page for trpfrog.net.</p>
+  return (
+    <>
+      <Title order={2} my="lg">
+        Home
+      </Title>
+      <Text>ここはつまみネットの admin 画面です。</Text>
+    </>
+  )
 }
