@@ -2,7 +2,7 @@
 import { useCallback, useState } from 'react'
 import * as React from 'react'
 
-import { CodeBlock } from '@/components/molecules/CodeBlock'
+import { PlainCodeBlock } from '@/components/molecules/CodeBlock/PlainCodeBlock'
 
 import { generateAltTextOnServer } from './generateAltTextOnServer'
 import styles from './ImageDragAndDrop.module.scss'
@@ -97,12 +97,12 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
                 />
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
-              <CodeBlock language={'markdown'} fileName={'Recently Uploaded'}>
+              <PlainCodeBlock fileName={'Recently Uploaded'}>
                 {uploadingStatusText ??
                   (horizontalImages
                     ? '```horizontal-images\n' + recentlyUploaded + '\n```'
                     : recentlyUploaded)}
-              </CodeBlock>
+              </PlainCodeBlock>
             </div>
           )}
         </>
