@@ -1,0 +1,28 @@
+name = "content-server"
+compatibility_date = "2024-12-28"
+pages_build_output_dir = "./dist/content"
+compatibility_flags = [ "nodejs_compat" ]
+
+# routes = [
+#   { pattern = "api.trpfrog.net/content", zone_name = "trpfrog.net" },
+#   { pattern = "api.trpfrog.net/content/*", zone_name = "trpfrog.net" }
+# ]
+
+# [vars]
+# MY_VAR = "my-variable"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "my-database"
+# database_id = ""
+
+# [ai]
+# binding = "AI"

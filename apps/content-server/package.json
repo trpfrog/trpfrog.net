@@ -1,0 +1,35 @@
+{
+  "name": "@trpfrog.net/content-server",
+  "type": "module",
+  "exports": {
+    ".": "./src/client.ts"
+  },
+  "scripts": {
+    "dev": "wrangler dev --port 8001 src/index.ts",
+    "generate-types": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
+    "deploy": "vite build && wrangler pages deploy ./dist/content",
+    "lint-fix": "eslint . --fix",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@hono/vite-build": "^1.2.0",
+    "@hono/vite-dev-server": "^0.17.0",
+    "@hono/zod-validator": "^0.4.2",
+    "@trpfrog.net/constants": "workspace:*",
+    "@trpfrog.net/posts": "workspace:*",
+    "@trpfrog.net/utils": "workspace:*",
+    "date-fns": "^4.1.0",
+    "hono": "^4.6.14",
+    "ts-dedent": "^2.2.0",
+    "ts-pattern": "^5.6.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "@hono/vite-ssg": "^0.1.0",
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "@trpfrog.net/config-vitest": "workspace:*",
+    "@types/node": "^20.17.10",
+    "vite": "^6.0.6"
+  }
+}
