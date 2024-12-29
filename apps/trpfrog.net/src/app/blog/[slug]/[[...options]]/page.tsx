@@ -1,8 +1,6 @@
 import { Metadata } from 'next'
 
 import { BlogPost } from '@trpfrog.net/posts'
-import { readBlogPost, readAllBlogPosts } from '@trpfrog.net/posts/fs'
-import { match } from 'ts-pattern'
 import { z } from 'zod'
 
 import { env } from '@/env/server.ts'
@@ -14,8 +12,8 @@ import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
-import { renderBlog } from '@blog/_renderer/renderBlog'
 import styles from '@blog/_styles/blog.module.scss'
+import { fetchPost, fetchPostList } from '@blog/rpc'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'
@@ -33,25 +31,12 @@ type PageProps = {
   params: Promise<z.input<typeof paramsSchema>>
 }
 
-export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
-  const { slug } = await props.params
-  const entry = await readBlogPost(slug)
-  const paths: { options?: string[] }[] = []
-  for (let i = 1; i <= entry.numberOfPages; i++) {
-    paths.push({ options: [i.toString()] })
-  }
-  paths.push({ options: ['all'] })
-  paths.push({ options: undefined })
-
-  return paths
-}
-
 export async function generateMetadata(props: PageProps) {
   const params = await props.params
 
   const { slug } = params
 
-  const { title, description } = await readBlogPost(slug)
+  const { title, description } = await fetchPost(slug)
 
   const metadata: Metadata = {
     title,
@@ -76,14 +61,11 @@ export async function generateMetadata(props: PageProps) {
 }
 
 const processSlug = async (slug: string, page: number | 'all') => {
-  const entry: BlogPost = await match(page)
-    .with('all', () => readBlogPost(slug, { all: true }))
-    .otherwise(page => readBlogPost(slug, { pagePos1Indexed: page }))
-
+  const entry = await fetchPost(slug, page)
   const tags = entry.tags
   const relatedPosts: BlogPost[] = tags[0]
-    ? []
-    : (await readAllBlogPosts({ tag: tags[0] })).filter(e => e.slug !== entry.slug)
+    ? await fetchPostList(tags[0]).then(posts => posts.filter(post => post.slug !== slug))
+    : []
 
   return { entry, relatedPosts }
 }
@@ -96,9 +78,6 @@ export default async function Index(props: PageProps) {
   } = paramsSchema.parse(rawParams)
 
   const { entry, relatedPosts } = await processSlug(slug, page)
-
-  // TODO: コメントアウトするとなぜかビルドできなくなるので調査
-  await renderBlog(slug, page)
 
   return (
     <MainWrapper gridLayout className={styles.layout}>

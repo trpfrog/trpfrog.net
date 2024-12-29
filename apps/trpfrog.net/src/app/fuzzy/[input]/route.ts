@@ -1,10 +1,11 @@
 import { openai } from '@ai-sdk/openai'
-import { readAllSlugs } from '@trpfrog.net/posts/fs'
 import { ipAddress } from '@vercel/functions'
 import { generateText } from 'ai'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
+
+import { fetchSlugs } from '@blog/rpc'
 
 const limiter = createRateLimit({
   interval: 60 * 1000 * 60, // 1 hour
@@ -42,7 +43,7 @@ export async function GET(req: NextRequest, props: GETProps) {
   const input = (await props.params).input.slice(0, 100)
 
   if (blogPaths.length === 0) {
-    blogPaths = await readAllSlugs()
+    blogPaths = await fetchSlugs()
   }
 
   const prompt =

@@ -1,5 +1,5 @@
 interface CacheTag {
-  tag: string
+  tag: string | ((s: string) => string)
   description: string
 }
 
@@ -7,6 +7,18 @@ export const cacheTags = {
   date: {
     tag: 'date',
     description: '誕生日・Copyright の年など、日付関連のキャッシュ',
+  },
+  entireBlog: {
+    tag: 'entire-blog',
+    description: 'ブログ記事全部',
+  },
+  blogList: {
+    tag: 'blog-list',
+    description: 'ブログ記事一覧',
+  },
+  blogSlug: {
+    tag: (slug: string) => `blog-slug:${slug}`,
+    description: '特定のブログ記事',
   },
 } as const satisfies Record<string, CacheTag>
 

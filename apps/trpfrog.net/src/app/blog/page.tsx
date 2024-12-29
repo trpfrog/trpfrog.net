@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
-import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 import { getYear } from 'date-fns'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
@@ -16,13 +15,14 @@ import { getTypedEntries } from '@/lib/utils'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
 import styles from '@blog/_styles/blog.module.scss'
+import { fetchPostList } from '@blog/rpc'
 
 export const metadata = {
   description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。',
 } satisfies Metadata
 
 export default async function Index() {
-  const articles = await readAllBlogPosts()
+  const articles = await fetchPostList()
 
   // Get latest featured article
   const latestFeaturedArticleIdx = articles.findIndex((e: BlogPost) => {
