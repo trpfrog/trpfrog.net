@@ -13,6 +13,10 @@ export const navigations = [
     path: '/revalidate',
     displayName: 'Revalidate',
   },
+  {
+    path: '/blog',
+    displayName: 'Blog',
+  },
 ] satisfies {
   path: Route
   displayName: string

@@ -17,6 +17,7 @@
     "@mantine/modals": "^7.15.2",
     "@tailwindcss/postcss": "4.0.0-beta.8",
     "@trpfrog.net/constants": "workspace:*",
+    "@trpfrog.net/content-server": "workspace:*",
     "@trpfrog.net/image-generation": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",

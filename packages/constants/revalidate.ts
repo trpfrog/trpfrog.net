@@ -17,7 +17,7 @@ export const cacheTags = {
     description: 'ブログ記事一覧',
   },
   blogSlug: {
-    tag: (slug: string) => `blog-slug:${slug}`,
+    tag: (slug: string) => `blog-slug:${slug}` as const,
     description: '特定のブログ記事',
   },
 } as const satisfies Record<string, CacheTag>
