@@ -9,7 +9,7 @@ import { match } from 'ts-pattern'
 
 import { revalidate } from '../revalidate/actions'
 
-export function RevalidateButton(props: { slug: string }) {
+export function RevalidatePostButton(props: { slug: string }) {
   const [status, setStatus] = useState<'idle' | 'revalidating' | 'revalidated' | 'error'>('idle')
 
   const handleClick = useCallback(() => {

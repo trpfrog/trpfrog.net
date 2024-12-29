@@ -1,10 +1,13 @@
 'use client'
 import { Table, Title } from '@mantine/core'
+import { cacheTags } from '@trpfrog.net/constants'
 import useSWR from 'swr'
+
+import { RevalidateButton } from '../revalidate/RevalidateButton'
 
 import { fetchPostList } from './actions'
 import { JSONModal } from './JSONModal'
-import { RevalidateButton } from './RevalidateButton'
+import { RevalidatePostButton } from './RevalidatePostButton'
 
 export default function BlogPage() {
   // const posts = await fetchPostList()
@@ -32,13 +35,19 @@ export default function BlogPage() {
               <Table.Td>{post.slug}</Table.Td>
               <Table.Td>{post.date}</Table.Td>
               <Table.Td className="flex flex-wrap gap-2">
-                <RevalidateButton slug={post.slug} />
+                <RevalidatePostButton slug={post.slug} />
                 <JSONModal slug={post.slug} />
               </Table.Td>
             </Table.Tr>
           ))}
         </Table.Tbody>
       </Table>
+      <Title order={2} my="md">
+        Operations
+      </Title>
+      <RevalidateButton tag={cacheTags.entireBlog.tag} color="red">
+        Revalidate All
+      </RevalidateButton>
     </>
   )
 }
