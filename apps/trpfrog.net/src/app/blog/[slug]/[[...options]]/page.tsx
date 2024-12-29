@@ -84,7 +84,7 @@ export default async function Index(props: PageProps) {
       <ArticleHeader post={entry} />
       <div className={styles.main_content}>
         <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
-          {env.NODE_ENV === 'production' ? (
+          {env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
             <BlogMarkdown entry={entry} />
           ) : (
             <DevBlogMarkdown slug={slug} page={page} />

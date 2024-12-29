@@ -64,6 +64,11 @@ export const env = CommonEnvSchema.extend({
    * Used for protecting the admin API.
    */
   TRPFROG_ADMIN_KEY: z.string().default('default'),
+
+  /**
+   * Dev flag for enabling the realtime blog preview.
+   */
+  USE_DEV_REALTIME_BLOG_PREVIEW: z.string().toLowerCase().trim().default('true'),
 })
   // eslint-disable-next-line n/no-process-env -- This is a rule to use validated env instead of process.env
   .parse(process.env)
