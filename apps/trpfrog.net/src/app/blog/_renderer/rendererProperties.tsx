@@ -25,7 +25,7 @@ import {
   isValidExtraCodeBlockComponentName,
   OriginalMarkdownComponent,
 } from '@blog/_components/OriginalMarkdownComponent'
-import { MarkdownOptions } from '@blog/_renderer/ArticleRenderer'
+import type { MarkdownOptions } from '@blog/_renderer/MarkdownOptions'
 import styles from '@blog/_styles/blog.module.scss'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'

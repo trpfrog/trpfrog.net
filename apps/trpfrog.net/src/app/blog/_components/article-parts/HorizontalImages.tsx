@@ -1,10 +1,10 @@
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ImageCaption, BlogImage } from '@blog/_components/BlogImage'
-import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 export const horizontalImagesParts = {
   name: 'horizontal-images',
-  Component: ({ content }) => {
+  Component: async ({ content }) => {
+    const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
     const regex = /^!\[(.*)]\((.*?)( "(.*)")?\)/
 
     type ImageSource = { src: string; alt: string; title?: string }
@@ -46,7 +46,9 @@ export const horizontalImagesParts = {
         </div>
         {caption != '' && (
           <div style={{ marginTop: 3 }}>
-            <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>
+            <ImageCaption>
+              <RenderInlineMarkdown markdown={caption} />
+            </ImageCaption>
           </div>
         )}
       </div>

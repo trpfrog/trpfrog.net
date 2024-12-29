@@ -6,7 +6,6 @@ import { env } from '@/env/server'
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 const UserFunctionSchema = z.function().args(z.unknown()).returns(z.string())
 const definedComponents: Record<string, z.output<typeof UserFunctionSchema>> = {}
@@ -62,7 +61,8 @@ export const defineComponentParts = {
  */
 export const useDefinedComponentParts = {
   name: 'use-defined-component',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     const { use: name, ...props } = yaml.load(content) as {
       use?: string
     } & Record<string, string>

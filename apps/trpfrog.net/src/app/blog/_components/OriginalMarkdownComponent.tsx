@@ -5,7 +5,6 @@ import { StyledMermaid } from '@/components/utils/Mermaid'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import * as parts from '@blog/_components/article-parts'
-import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 import { ArticleParts, IsomorphicArticleParts, IsomorphicArticlePartsProps } from './ArticleParts'
 import { PageTransferButton } from './PageNavigation'
@@ -31,15 +30,19 @@ const extraCodeBlockComponents = [
   },
   {
     name: 'centering',
-    Component: ({ content, entry }) => (
-      <div style={{ textAlign: 'center' }}>
-        <ArticleRenderer toRender={content} entry={entry} />
-      </div>
-    ),
+    Component: async ({ content, entry }) => {
+      const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <ArticleRenderer toRender={content} entry={entry} />
+        </div>
+      )
+    },
   },
   {
     name: 'centering-with-size',
-    Component: ({ content, entry }) => {
+    Component: async ({ content, entry }) => {
+      const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
       const [size, ...lines] = content.split('\n')
       content = lines.join('\n')
       return (
@@ -65,11 +68,12 @@ const extraCodeBlockComponents = [
   },
   {
     name: 'ignore-read-count',
-    Component: ({ content, entry }) => (
+    Component: async ({ content, entry }) => {
+      const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
       // This is a hack to make the read count not increase
       // using "read counter does not count inside of code blocks"
-      <ArticleRenderer toRender={content} entry={entry} />
-    ),
+      return <ArticleRenderer toRender={content} entry={entry} />
+    },
   },
   {
     name: 'dangerously-set-inner-html',

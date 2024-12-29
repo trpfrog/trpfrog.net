@@ -1,10 +1,10 @@
 import { ShowAllComponent } from '@blog/_components/article-parts/ShowAll/ShowAllComponent'
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const showAllParts = {
   name: 'show-all',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     const [first, second] = content.split(/\n---+\n/)
     return (
       <ShowAllComponent preview={<ArticleRenderer toRender={first} entry={entry} />}>

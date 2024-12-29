@@ -1,9 +1,9 @@
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const horizontalScrollParts = {
   name: 'horizontal-scroll',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     const contents = content.split('\n\n').filter(e => e.trim() !== '')
     return (
       <div

@@ -3,12 +3,12 @@ import { parseTitleAndBody } from '@trpfrog.net/posts/parser'
 import { Alert } from '@/components/atoms/Alert'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { ArticleRenderer } from '@blog/_renderer/ArticleRenderer'
 
 export const cautionParts = {
   name: 'caution',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
     const { title, body } = parseTitleAndBody(content)
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     return (
       <Alert type={'caution'}>
         <h4>{title}</h4>
@@ -20,7 +20,8 @@ export const cautionParts = {
 
 export const infoboxParts = {
   name: 'infobox',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     const { title, body } = parseTitleAndBody(content)
     return (
       <Alert type={'frog'}>
@@ -33,7 +34,8 @@ export const infoboxParts = {
 
 export const titledFrameParts = {
   name: 'titled-frame',
-  Component: ({ content, entry }) => {
+  Component: async ({ content, entry }) => {
+    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
     const { title, body } = parseTitleAndBody(content)
     return (
       <div style={{ transform: 'translateY(calc(-1 * (1em + 5px) / 2))' }}>
