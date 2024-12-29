@@ -1,5 +1,6 @@
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
 import { createTheme } from '@mantine/core'
+import { ModalsProvider } from '@mantine/modals'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import type { Metadata } from 'next'
@@ -52,7 +53,9 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} tw:antialiased`}>
         <MantineProvider theme={theme}>
-          <Shell>{children}</Shell>
+          <ModalsProvider modalProps={{ centered: true }}>
+            <Shell>{children}</Shell>
+          </ModalsProvider>
         </MantineProvider>
       </body>
     </html>
