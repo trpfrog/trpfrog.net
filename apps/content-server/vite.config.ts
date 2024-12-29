@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     ssg({
-      entry: './src/index.ts',
+      entry: './src/ssg.ts',
     }),
   ],
 })

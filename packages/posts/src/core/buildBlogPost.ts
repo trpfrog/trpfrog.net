@@ -18,6 +18,12 @@ const BlogPostBuildOptionSchema = z.object({
   readTimeOption: ReadTimeOptionSchema.optional(),
 })
 
+export class InvalidPagePositionError extends Error {
+  constructor(pagePosition: number) {
+    super(`Invalid page position: ${pagePosition}`)
+  }
+}
+
 export type BlogPostBuildOption = z.input<typeof BlogPostBuildOptionSchema>
 
 export function buildBlogPost(
@@ -44,6 +50,10 @@ export function buildBlogPost(
 
   const pageBreakRegex = /<!--+ page break --+>/g
   const numberOfPages = matterResult.content.split(pageBreakRegex).length
+
+  if (pagePosition > numberOfPages) {
+    throw new InvalidPagePositionError(pagePosition)
+  }
 
   return {
     slug,

@@ -11,7 +11,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
     "test": "vitest",
     "lint-fix": "eslint . --fix"
   },
