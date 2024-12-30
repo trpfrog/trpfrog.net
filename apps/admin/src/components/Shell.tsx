@@ -1,12 +1,46 @@
 'use client'
 
 import { AppShell, Burger, NavLink } from '@mantine/core'
+import { Flex, TextInput } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { PrimitiveAtom, useAtom } from 'jotai'
 import { usePathname } from 'next/navigation'
 
 import { Logout } from './Logout'
 
+import {
+  contentServerOriginAtom,
+  imageGenerationOriginAtom,
+  websiteOriginAtom,
+  initialValues,
+} from '@/atom/origin'
 import { navigations } from '@/navigations'
+
+function EndpointInput(props: {
+  label: string
+  initialValue: string
+  atom: PrimitiveAtom<string>
+}) {
+  const [value, setValue] = useAtom(props.atom)
+  return (
+    <TextInput
+      label={props.label}
+      value={value}
+      onChange={e => setValue(e.currentTarget.value)}
+      ref={ref => {
+        const handleFocusOut = () => {
+          if (ref?.value === '') {
+            setValue(props.initialValue)
+          }
+        }
+        ref?.addEventListener('focusout', handleFocusOut)
+        return () => {
+          ref?.removeEventListener('focusout', handleFocusOut)
+        }
+      }}
+    />
+  )
+}
 
 export function Shell(props: { children: React.ReactNode }) {
   const [opened, { toggle }] = useDisclosure()
@@ -16,7 +50,7 @@ export function Shell(props: { children: React.ReactNode }) {
     <AppShell
       header={{ height: 50 }}
       navbar={{
-        width: 150,
+        width: 250,
         breakpoint: 'sm',
         collapsed: { mobile: !opened },
       }}
@@ -31,14 +65,33 @@ export function Shell(props: { children: React.ReactNode }) {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
-        {navigations.map(nav => (
-          <NavLink
-            key={nav.path}
-            href={nav.path}
-            active={nav.path === currentPath}
-            label={nav.displayName}
+        <div>
+          {navigations.map(nav => (
+            <NavLink
+              key={nav.path}
+              href={nav.path}
+              active={nav.path === currentPath}
+              label={nav.displayName}
+            />
+          ))}
+        </div>
+        <Flex my="lg" px="xs" direction="column" gap="sm">
+          <EndpointInput
+            label="trpfrog.net BFF"
+            atom={websiteOriginAtom}
+            initialValue={initialValues.websiteOrigin}
           />
-        ))}
+          <EndpointInput
+            label="Image Generation Service"
+            atom={imageGenerationOriginAtom}
+            initialValue={initialValues.imageGenerationOrigin}
+          />
+          <EndpointInput
+            label="Content Server"
+            atom={contentServerOriginAtom}
+            initialValue={initialValues.contentServerOrigin}
+          />
+        </Flex>
       </AppShell.Navbar>
 
       <AppShell.Main>{props.children}</AppShell.Main>

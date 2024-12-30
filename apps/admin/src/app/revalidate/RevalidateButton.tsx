@@ -2,11 +2,14 @@
 
 import { ReactNode, useCallback, useDeferredValue, useState } from 'react'
 
-import { Button, TextInput } from '@mantine/core'
+import { Button, Text, TextInput } from '@mantine/core'
 import { modals } from '@mantine/modals'
+import { useAtomValue } from 'jotai'
 import { match } from 'ts-pattern'
 
 import { revalidate } from './actions'
+
+import { websiteOriginAtom } from '@/atom/origin'
 
 export function RevalidateButton(
   props: (
@@ -20,6 +23,7 @@ export function RevalidateButton(
   const [status, setStatus] = useState<'idle' | 'revalidating' | 'revalidated' | 'error'>('idle')
   const [userInput, setUserInput] = useState('')
   const defaultUserInput = useDeferredValue(userInput)
+  const origin = useAtomValue(websiteOriginAtom)
 
   const handleClick = useCallback(() => {
     const targetFn = props.path ?? props.tag
@@ -28,11 +32,12 @@ export function RevalidateButton(
       title: props.path
         ? `パス "${target}" を revalidate しますか？`
         : `タグ "${target}" を revalidate しますか？`,
+      children: <Text size="xs">向き先: {origin}</Text>,
       labels: { confirm: 'Revalidate', cancel: 'Cancel' },
       confirmProps: { color: 'red' },
       onConfirm: () => {
         setStatus('revalidating')
-        revalidate(props.path ? 'path' : 'tag', target)
+        revalidate(origin, props.path ? 'path' : 'tag', target)
           .then(ok => {
             setStatus(ok ? 'revalidated' : 'error')
           })
@@ -47,7 +52,7 @@ export function RevalidateButton(
           })
       },
     })
-  }, [props.path, props.tag, userInput])
+  }, [props.path, props.tag, userInput, origin])
 
   return (
     <div className="flex flex-wrap gap-2">
