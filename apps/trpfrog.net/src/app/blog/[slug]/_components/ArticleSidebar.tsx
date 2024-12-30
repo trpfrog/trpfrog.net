@@ -1,4 +1,7 @@
+'use client'
+
 import { BlogPost } from '@trpfrog.net/posts'
+import { usePathname } from 'next/navigation'
 
 import { Block } from '@/components/molecules/Block'
 import { StickToTop } from '@/components/organisms/Header'
@@ -13,7 +16,20 @@ type Props = {
   post: BlogPost
 }
 
+function usePageNumberFromPathname() {
+  const p = usePathname()
+  return p.split('/').pop()
+}
+
 export function ArticleSidebar({ post }: Props) {
+  // ページ番号を反映させるためだけに fetch すると時間がかかるのでパスから取得する
+  const page = usePageNumberFromPathname()
+  const postForPageNavigation = {
+    ...post,
+    currentPage: parseInt(page ?? '1', 10) || 1,
+    isAll: page === 'all',
+  }
+
   return (
     <StickToTop top={'1em'}>
       <ArticleCard
@@ -27,7 +43,7 @@ export function ArticleSidebar({ post }: Props) {
         <div style={{ transform: 'scale(0.9)', transformOrigin: 'top' }}>
           <RichEntryButtons post={post} extended={false} />
           <div style={{ height: '1em' }} />
-          <PageNavigation entry={post} />
+          <PageNavigation entry={postForPageNavigation} />
         </div>
       </Block>
     </StickToTop>

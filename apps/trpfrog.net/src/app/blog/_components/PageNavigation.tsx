@@ -1,6 +1,6 @@
 import { BlogPost } from '@trpfrog.net/posts'
 
-import { env } from '@/env/server'
+import { NODE_ENV } from '@/env/client'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
@@ -23,7 +23,7 @@ export const PageTransferButton = (props: PageTransferProps) => {
     ? `/blog/preview/${entry.previewContentId}/${nextPage}`
     : `/blog/${entry.slug}/${nextPage}`
 
-  if (env.NODE_ENV === 'production') {
+  if (NODE_ENV === 'production') {
     href += '#article'
   }
 
@@ -45,7 +45,7 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
 
   const isHidden =
     entry.numberOfPages === 1 ||
-    (doNotShowOnFirst && entry.currentPage <= 1 && env.NODE_ENV === 'production')
+    (doNotShowOnFirst && entry.currentPage <= 1 && NODE_ENV === 'production')
 
   return isHidden ? (
     <></>
