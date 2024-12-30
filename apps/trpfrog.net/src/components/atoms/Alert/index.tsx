@@ -7,6 +7,7 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import classNames from 'classnames'
 
 import styles from './index.module.scss'
 
@@ -27,15 +28,15 @@ export function Alert(props: Props) {
   const alertAppearance: Record<AlertTypes, AlertAppearance> = {
     caution: {
       icon: faTriangleExclamation,
-      className: styles.caution,
+      className: classNames(styles.caution, styles.text_box),
     },
     frog: {
       icon: faFrog,
-      className: styles.frog,
+      className: classNames(styles.frog, styles.text_box),
     },
     info: {
       icon: faCircleInfo,
-      className: styles.info,
+      className: classNames(styles.info, styles.text_box),
     },
   }
 

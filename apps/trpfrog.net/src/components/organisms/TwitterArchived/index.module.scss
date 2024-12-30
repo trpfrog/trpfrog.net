@@ -14,17 +14,17 @@
   background: white;
   border: solid 1px lightgray;
 
-  @media screen and (prefers-color-scheme: dark) {
-    background: black;
-    border-color: rgb(52, 54, 58);
-  }
-
   border-radius: 10px;
   box-sizing: border-box;
   padding: 1em;
   margin: 0.5em 0;
 
   transition: 0.2s;
+
+  @media screen and (prefers-color-scheme: dark) {
+    background: black;
+    border-color: rgb(52, 54, 58);
+  }
 
   & a {
     text-decoration: none;

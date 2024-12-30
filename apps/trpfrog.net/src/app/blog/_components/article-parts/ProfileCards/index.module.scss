@@ -18,14 +18,13 @@
   display: inline-block;
   border-radius: 10px;
   overflow: hidden;
+  padding: 1em;
+  white-space: normal;
   background: rgb(207, 241, 166);
 
   @media (prefers-color-scheme: dark) {
     background: var(--body-background);
   }
-
-  padding: 1em;
-  white-space: normal;
 }
 
 .name {

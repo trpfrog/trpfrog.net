@@ -1,6 +1,42 @@
-@use 'articles';
+.hrule_block {
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: bold;
+  padding: 3px;
+  margin-top: calc(-1 * var(--main-margin) * 0.2);
+  margin-bottom: calc(-1 * var(--main-margin) * 0.8);
+  text-align: center;
 
-@use '../../../styles/mixins';
+  background: none;
+  box-shadow: none;
+  color: #3c7709;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 0;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    color: #ffffffbb;
+  }
+}
+
+#hero_article {
+  @media screen and (max-width: 800px) {
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
+
+#past_article_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 17px;
+
+  @media screen and (max-width: 800px) {
+    margin: 0 8px;
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
 
 .article_block {
   padding: 17px;
@@ -19,6 +55,7 @@
   padding: 0;
 }
 
+.details,
 .pretty_details {
   border-radius: 10px;
   border: 2px solid var(--body-background);
@@ -71,12 +108,14 @@
 }
 
 .post {
-  @include mixins.mq(pc) {
+  margin: 0 auto;
+
+  @media screen and (min-width: 800px) {
     --max-w: 800px;
     max-width: var(--max-w);
     padding: calc((100% - var(--max-w)) / 2) 0;
   }
-  margin: 0 auto;
+
   main {
     word-break: break-word;
   }
@@ -123,16 +162,14 @@
   word-break: break-all;
   background-color: #0001 !important;
 
-  @include mixins.mq(dark) {
-    background-color: #313131 !important;
-    color: white;
-  }
   font-family: var(--font-noto-sans-mono), monospace;
   padding: 0 4px;
   font-size: 0.9em;
   border-radius: 5px;
 
-  @include mixins.mq(dark) {
+  @media (prefers-color-scheme: dark) {
+    background-color: #313131 !important;
+    color: white;
     border: solid 1px gray;
   }
 
@@ -149,7 +186,7 @@
   font-style: italic;
   opacity: 0.75;
 
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     padding: 5px 1em;
     margin: 0.5em auto;
   }
@@ -197,10 +234,6 @@
   * + & {
     margin-top: 2em;
   }
-}
-
-.details {
-  @extend .pretty_details;
 }
 
 .img {

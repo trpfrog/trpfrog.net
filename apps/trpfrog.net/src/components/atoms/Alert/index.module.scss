@@ -1,8 +1,8 @@
-@mixin text_box($border, $bkg) {
+.text_box {
   padding: 0.5em 1em 0.5em 0;
   margin: 2em 0;
-  border-left: solid 10px $border;
-  background: $bkg;
+  border-left: solid 10px var(--trpfrog-net-blog-text-box-border-color);
+  background: var(--trpfrog-net-blog-text-box-background-color);
   border-radius: 3px;
   display: grid;
   grid-template-columns: 3em auto;
@@ -22,19 +22,21 @@
     justify-content: center;
     padding-top: 0.1em;
     font-size: 1.5em;
-    color: $border;
+    color: var(--trpfrog-net-blog-text-box-border-color);
   }
 }
 
 .caution {
-  @include text_box(#ffc06e, rgba(255, 216, 129, 0.22));
+  --trpfrog-net-blog-text-box-border-color: #ffc06e;
+  --trpfrog-net-blog-text-box-background-color: rgba(255, 216, 129, 0.22);
 }
 
 .frog {
-  @include text_box(var(--header-color), rgba(120, 189, 0, 0.09));
+  --trpfrog-net-blog-text-box-border-color: var(--header-color);
+  --trpfrog-net-blog-text-box-background-color: rgba(120, 189, 0, 0.09);
 }
 
 .info {
-  // blue like
-  @include text_box(#6e9fff, rgba(110, 159, 255, 0.22));
+  --trpfrog-net-blog-text-box-border-color: #6e9fff;
+  --trpfrog-net-blog-text-box-background-color: rgba(110, 159, 255, 0.22);
 }
