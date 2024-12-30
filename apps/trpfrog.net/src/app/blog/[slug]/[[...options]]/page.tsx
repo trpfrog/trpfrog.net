@@ -1,22 +1,12 @@
 import { Metadata } from 'next'
 
-import { BlogPost } from '@trpfrog.net/posts'
 import { z } from 'zod'
 
 import { env } from '@/env/server.ts'
 
-import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
-import { Block } from '@/components/molecules/Block'
-
-import { ArticleHeader } from '@blog/_components/ArticleHeader'
-import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
-import styles from '@blog/_styles/blog.module.scss'
-import { fetchPost, fetchPostList } from '@blog/rpc'
-
-import { ArticleSidebar } from './_components/ArticleSidebar'
-import { EntryButtons } from './_components/EntryButtons'
+import { fetchPost } from '@blog/rpc'
 
 export const dynamicParams = true
 
@@ -64,16 +54,6 @@ export async function generateMetadata(props: PageProps) {
   return metadata
 }
 
-const processSlug = async (slug: string, page: number | 'all') => {
-  const entry = await fetchPost(slug, page)
-  const tags = entry.tags
-  const relatedPosts: BlogPost[] = tags[0]
-    ? await fetchPostList(tags[0]).then(posts => posts.filter(post => post.slug !== slug))
-    : []
-
-  return { entry, relatedPosts }
-}
-
 export default async function Index(props: PageProps) {
   const rawParams = await props.params
   const {
@@ -81,28 +61,10 @@ export default async function Index(props: PageProps) {
     options: [page],
   } = paramsSchema.parse(rawParams)
 
-  const { entry, relatedPosts } = await processSlug(slug, page)
-
-  return (
-    <MainWrapper gridLayout className={styles.layout}>
-      <ArticleHeader post={entry} />
-      <div className={styles.main_content}>
-        <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
-          {env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
-            <BlogMarkdown entry={entry} />
-          ) : (
-            <DevBlogMarkdown slug={slug} page={page} />
-          )}
-        </div>
-        <aside>
-          <ArticleSidebar post={entry} />
-        </aside>
-      </div>
-
-      <Block id={styles.entry_bottom_buttons}>
-        <EntryButtons post={entry} />
-      </Block>
-      <RelatedPosts tag={entry.tags[0]} relatedPosts={relatedPosts} />
-    </MainWrapper>
+  const entry = await fetchPost(slug, page)
+  return env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
+    <BlogMarkdown entry={entry} />
+  ) : (
+    <DevBlogMarkdown slug={slug} page={page} />
   )
 }
