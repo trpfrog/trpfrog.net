@@ -7,13 +7,13 @@
   display: grid;
   grid-template-columns: 3em auto;
 
-  h4 {
+  & h4 {
     margin: 0;
     font-size: 1.1em;
     font-weight: bold;
   }
 
-  p {
+  & p {
     margin: 1rem 0;
   }
 

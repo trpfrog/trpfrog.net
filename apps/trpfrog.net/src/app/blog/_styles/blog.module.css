@@ -44,7 +44,7 @@
   height: 100%;
   margin: 0;
 
-  h2 {
+  & h2 {
     font-size: 1.2em;
   }
 }
@@ -95,7 +95,7 @@
     margin: 1rem;
   }
 
-  details {
+  & details {
     margin: 1rem;
   }
 }
@@ -116,7 +116,7 @@
     padding: calc((100% - var(--max-w)) / 2) 0;
   }
 
-  main {
+  & main {
     word-break: break-word;
   }
 }

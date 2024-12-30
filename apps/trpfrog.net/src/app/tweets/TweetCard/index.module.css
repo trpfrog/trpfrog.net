@@ -47,7 +47,7 @@
   line-height: 1;
   margin-bottom: 0.5rem;
 
-  * > a {
+  & * > a {
     text-decoration: none;
     color: inherit;
 

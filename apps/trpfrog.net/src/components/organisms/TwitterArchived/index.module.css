@@ -39,7 +39,7 @@
   color: gray !important;
   line-height: 1;
 
-  > a:hover {
+  & > a:hover {
     color: gray !important;
     text-decoration: underline;
   }
