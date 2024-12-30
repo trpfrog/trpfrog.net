@@ -605,9 +605,6 @@ importers:
       postcss:
         specifier: ^8.4.49
         version: 8.4.49
-      sass:
-        specifier: ^1.83.0
-        version: 1.83.0
       shiki:
         specifier: ^1.24.2
         version: 1.24.2
@@ -697,7 +694,7 @@ importers:
     dependencies:
       vitest:
         specifier: ^1.5.2
-        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
+        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
 
   packages/constants:
     dependencies:
@@ -2715,7 +2712,6 @@ packages:
 
   '@evilmartians/lefthook@1.9.3':
     resolution: {integrity: sha512-Ux+sUlEGGDNEawBnJrIwa5i984BcYOjy0t9HOZW7UgKZML5zBlSxfWF0ZQUZLY9Qx6QMJe/fVjT6aCG2JS8qrQ==}
-    cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -10556,10 +10552,6 @@ packages:
   socket.io@4.8.1:
     resolution: {integrity: sha512-oZ7iUCxph8WYRHHcjBEc9unw3adt5CmSNlppj/5Q4k2RIrhl8Z5yY2Xr4j9zj0+wzVZ0bxmYoGSzKJnRl6A4yg==}
     engines: {node: '>=10.2.0'}
-
-  source-map-js@1.2.0:
-    resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
-    engines: {node: '>=0.10.0'}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -20873,7 +20865,8 @@ snapshots:
 
   immer@10.1.1: {}
 
-  immutable@5.0.3: {}
+  immutable@5.0.3:
+    optional: true
 
   import-fresh@3.3.0:
     dependencies:
@@ -23903,9 +23896,10 @@ snapshots:
     dependencies:
       chokidar: 4.0.1
       immutable: 5.0.3
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.0
+    optional: true
 
   saxes@6.0.0:
     dependencies:
@@ -24146,8 +24140,6 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
-
-  source-map-js@1.2.0: {}
 
   source-map-js@1.2.1: {}
 
@@ -25237,7 +25229,7 @@ snapshots:
       sugarss: 4.0.1(postcss@8.4.49)
       terser: 5.31.2
 
-  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
+  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0

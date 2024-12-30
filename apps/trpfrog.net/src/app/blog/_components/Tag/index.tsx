@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 const getTagEmoji = (tag: string) => {
   const tags = {

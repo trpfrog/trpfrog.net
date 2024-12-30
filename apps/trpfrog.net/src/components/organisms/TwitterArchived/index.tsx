@@ -5,7 +5,7 @@ import { TwitterImage, TwitterImageData } from '@/components/atoms/twitter/Twitt
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 import { A } from '@/components/wrappers'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type TwitterData = {
   author: string

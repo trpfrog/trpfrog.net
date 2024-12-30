@@ -1,0 +1,52 @@
+/* https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js */
+
+.bmc_btn svg {
+  height: 32px !important;
+  margin-bottom: 0px !important;
+  box-shadow: none !important;
+  border: none !important;
+  vertical-align: middle !important;
+  transform: scale(0.9);
+  flex-shrink: 0;
+}
+
+.bmc_btn {
+  min-width: 210px;
+  color: #000000 !important;
+  background-color: #ffdd00 !important;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: Normal;
+  border: 3px solid white;
+  padding: 5px 24px;
+  line-height: 27px;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  font-family: 'Cookie', cursive !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+.bmc_btn:hover,
+.bmc_btn:active,
+.bmc_btn:focus {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.bmc_btn_text {
+  margin-left: 8px;
+  display: inline-block;
+  line-height: 0;
+  flex-shrink: 0;
+  color: black !important;
+}
+
+.logo_outline {
+  fill: #000000;
+}
+
+.logo_coffee {
+  fill: #ffffff;
+}

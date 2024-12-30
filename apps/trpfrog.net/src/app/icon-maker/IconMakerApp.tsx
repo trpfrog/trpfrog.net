@@ -10,7 +10,7 @@ import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { A, Input } from '@/components/wrappers'
 
-import styles from './style.module.scss'
+import styles from './style.module.css'
 
 export function IconMakerApp() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

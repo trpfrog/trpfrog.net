@@ -1,0 +1,9 @@
+.title {
+  font-size: 4rem;
+  font-weight: initial;
+  color: var(--base-font-color);
+
+  @media screen and (max-width: 800px) {
+    font-size: 2rem;
+  }
+}

@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 export type FoggedDivProps = React.ComponentPropsWithoutRef<'div'> & {
   height: number | string

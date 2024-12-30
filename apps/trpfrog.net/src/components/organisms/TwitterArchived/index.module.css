@@ -1,0 +1,46 @@
+.wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.box {
+  display: inline-block;
+  text-align: left;
+  position: relative;
+
+  max-width: 600px;
+  width: 100%;
+
+  background: white;
+  border: solid 1px lightgray;
+
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0.5em 0;
+
+  transition: 0.2s;
+
+  @media screen and (prefers-color-scheme: dark) {
+    background: black;
+    border-color: rgb(52, 54, 58);
+  }
+
+  & a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.date {
+  color: gray !important;
+  line-height: 1;
+
+  & > a:hover {
+    color: gray !important;
+    text-decoration: underline;
+  }
+}

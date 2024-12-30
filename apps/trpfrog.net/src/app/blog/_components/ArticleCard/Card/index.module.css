@@ -1,0 +1,25 @@
+.window {
+  display: block;
+  background: var(--window-bkg-color);
+  width: 100%;
+  border-radius: var(--window-border-radius);
+  overflow: hidden;
+
+  cursor: pointer;
+
+  color: var(--base-font-color) !important;
+  text-decoration: none;
+
+  --shadow-height: 6px;
+  transition: 100ms;
+
+  &:hover {
+    box-shadow: 0 calc(var(--shadow-height) * 1.5) 0 var(--window-bottom-color);
+    transform: translateY(calc(-1 * var(--shadow-height) / 2));
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(calc(var(--shadow-height) / 2));
+  }
+}

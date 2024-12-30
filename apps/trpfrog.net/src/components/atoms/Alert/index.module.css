@@ -1,0 +1,42 @@
+.text_box {
+  padding: 0.5em 1em 0.5em 0;
+  margin: 2em 0;
+  border-left: solid 10px var(--trpfrog-net-blog-text-box-border-color);
+  background: var(--trpfrog-net-blog-text-box-background-color);
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 3em auto;
+
+  & h4 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  & p {
+    margin: 1rem 0;
+  }
+
+  .text_box_icon {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.1em;
+    font-size: 1.5em;
+    color: var(--trpfrog-net-blog-text-box-border-color);
+  }
+}
+
+.caution {
+  --trpfrog-net-blog-text-box-border-color: #ffc06e;
+  --trpfrog-net-blog-text-box-background-color: rgba(255, 216, 129, 0.22);
+}
+
+.frog {
+  --trpfrog-net-blog-text-box-border-color: var(--header-color);
+  --trpfrog-net-blog-text-box-background-color: rgba(120, 189, 0, 0.09);
+}
+
+.info {
+  --trpfrog-net-blog-text-box-border-color: #6e9fff;
+  --trpfrog-net-blog-text-box-background-color: rgba(110, 159, 255, 0.22);
+}

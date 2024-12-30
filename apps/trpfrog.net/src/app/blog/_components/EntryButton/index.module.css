@@ -1,0 +1,27 @@
+.entry_button {
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+
+  margin: 4px;
+  font-size: 0.9em;
+  min-width: 5rem;
+  padding: 12px 10px 10px;
+
+  @media screen and (max-width: 800px) {
+    min-width: 3.8rem;
+    padding: 10px 7px 8px;
+    font-size: 0.7em;
+    margin: 2px;
+  }
+}
+
+.entry_button_icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 1.5rem;
+  }
+}

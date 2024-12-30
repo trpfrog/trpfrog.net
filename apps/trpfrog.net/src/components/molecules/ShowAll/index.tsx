@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import { FoggedDiv, FoggedDivProps } from '@/components/atoms/FoggedDiv'
 import { usePixelValueFromCSSLength } from '@/components/molecules/ShowAll/usePixelValueFromCSSLength'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type ShowAllProps = FoggedDivProps & {
   showAllByDefault?: boolean

@@ -9,7 +9,7 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 
-import styles from './style.module.scss'
+import styles from './style.module.css'
 
 type Cert = {
   name: string

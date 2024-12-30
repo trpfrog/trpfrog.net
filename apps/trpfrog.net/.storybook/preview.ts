@@ -3,7 +3,7 @@ import * as trpFrogTheme from '@trpfrog.net/storybook-theme'
 
 import type { Preview } from '@storybook/react'
 
-import '../src/styles/globals.scss'
+import '../src/styles/globals.css'
 
 const preview: Preview = {
   parameters: {

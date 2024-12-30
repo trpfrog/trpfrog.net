@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.header_left {
+  display: flex;
+  gap: 0.5em;
+}
+
+.name_box {
+  display: flex;
+  align-items: center;
+
+  & * {
+    line-height: 1.3em;
+    text-decoration: none;
+  }
+
+  .name {
+    color: var(--base-font-color);
+    font-weight: bold;
+  }
+
+  .userid {
+    font-size: 0.9em;
+    color: gray;
+  }
+}
+
+.logo {
+  line-height: 1em;
+
+  @media screen and (prefers-color-scheme: light) {
+    color: dodgerblue;
+  }
+}

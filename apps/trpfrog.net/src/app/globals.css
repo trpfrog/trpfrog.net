@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  *:focus {
+  & *:focus {
     outline-color: #90e200;
   }
 
@@ -23,11 +23,11 @@
     }
   }
 
-  p {
+  & p {
     @apply tw-my-5;
   }
 
-  article {
+  & article {
     @apply tw-leading-[1.8];
   }
 }
