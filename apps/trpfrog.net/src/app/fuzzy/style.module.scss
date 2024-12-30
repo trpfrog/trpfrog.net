@@ -1,10 +1,9 @@
-@use '../../styles/mixins';
-
 .title {
   font-size: 4rem;
   font-weight: initial;
   color: var(--base-font-color);
-  @include mixins.mq(sp) {
+
+  @media screen and (max-width: 800px) {
     font-size: 2rem;
   }
 }

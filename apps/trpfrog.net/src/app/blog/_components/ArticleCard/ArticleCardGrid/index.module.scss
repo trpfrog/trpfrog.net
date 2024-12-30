@@ -1,5 +1,3 @@
-@use '../../../../../styles/mixins';
-
 .grid {
   display: grid;
   grid-template-areas:
@@ -8,7 +6,7 @@
     'title'
     'info';
 
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     &[data-hero-article='false'] {
       height: initial;
       grid-template-areas:

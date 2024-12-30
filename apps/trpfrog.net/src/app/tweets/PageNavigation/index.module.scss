@@ -1,5 +1,3 @@
-@use '../../../styles/mixins';
-
 .button {
   background-color: #fff;
   border: none;
@@ -16,7 +14,7 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  a {
+  & a {
     color: inherit !important;
     text-decoration: none;
   }

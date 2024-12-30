@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
 import { addDays, format } from 'date-fns'
@@ -49,7 +51,7 @@ const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) =
 const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
   <UnorderedList>
     {personalDataList.map(personalData => (
-      <>
+      <Fragment key={personalData.name}>
         <Li key={personalData.name + '-name'}>
           {personalData.name}
           {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
@@ -63,7 +65,7 @@ const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) =
           </Li>
           <Li>{parseInlineMarkdown(personalData.description)}</Li>
         </UnorderedList>
-      </>
+      </Fragment>
     ))}
   </UnorderedList>
 )

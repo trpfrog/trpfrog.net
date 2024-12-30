@@ -1,6 +1,6 @@
-@use '../../../styles/mixins';
-
 .wave_text {
+  --amplitude: -0.3em;
+
   .char {
     display: inline-block;
     animation-name: dots;
@@ -8,7 +8,6 @@
     animation-iteration-count: infinite;
   }
 
-  --amplitude: -0.3em;
   @keyframes dots {
     0% {
       transform: translateY(0);

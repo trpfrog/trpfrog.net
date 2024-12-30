@@ -1,5 +1,3 @@
-@use '../../../styles/mixins';
-
 .fullscreen_block {
   display: block;
   box-sizing: border-box;
@@ -22,7 +20,8 @@
   font-family: var(--font-m-plus-rounded-1c);
   font-weight: 800;
   color: var(--footer-color);
-  @include mixins.mq(dark) {
+
+  @media screen and (prefers-color-scheme: dark) {
     color: white;
   }
 }

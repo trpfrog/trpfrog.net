@@ -34,15 +34,14 @@
   width: var(--trpfrog-icon-size);
   height: var(--trpfrog-icon-size);
   background: no-repeat url('/images/flat-trpfrog.svg');
-
-  &[data-turn-eyes='true'] {
-    background-image: url('/images/flat-trpfrog-turn.svg');
-  }
-
   background-size: var(--trpfrog-icon-size) var(--trpfrog-icon-size);
   position: absolute;
   left: calc(50% - (var(--trpfrog-icon-size) / 2));
   bottom: -50px;
+
+  &[data-turn-eyes='true'] {
+    background-image: url('/images/flat-trpfrog-turn.svg');
+  }
 }
 
 #trpfrog_name {
@@ -70,8 +69,8 @@
   gap: 10px;
   opacity: 0.9;
 
-  .angle_picker {
-    box-shadow: 0 0 5px 2px rgba(black, 0.2);
+  & .angle_picker {
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -86,11 +85,11 @@
   color: white;
   font-size: 1.5em;
   line-height: 1;
-  text-shadow: 0 0 5px rgba(black, 0.4);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
 .current_rpm {
   z-index: 10 !important;
   opacity: 0.8;
-  text-shadow: 0 0 20px rgba(black, 0.2);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }

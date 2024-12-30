@@ -1,5 +1,3 @@
-@use '../../../styles/mixins';
-
 .hrule_block {
   font-family: var(--font-m-plus-rounded-1c);
   font-weight: bold;
@@ -12,17 +10,17 @@
   box-shadow: none;
   color: #3c7709;
 
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     margin-top: 0;
   }
 
-  @include mixins.mq(dark) {
+  @media screen and (prefers-color-scheme: dark) {
     color: #ffffffbb;
   }
 }
 
 #hero_article {
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     column-gap: 8px;
     row-gap: 12px;
   }
@@ -33,7 +31,7 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 17px;
 
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     margin: 0 8px;
     column-gap: 8px;
     row-gap: 12px;

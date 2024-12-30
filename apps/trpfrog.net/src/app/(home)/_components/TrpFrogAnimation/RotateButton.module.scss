@@ -6,7 +6,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   border: lightgray 1px solid;
-  box-shadow: 0 0 5px 1px rgba(black, 0.1);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
   color: var(--header-color);
   opacity: 0.3;
   user-select: none;
@@ -21,25 +21,27 @@
 
   &[data-rotate-direction='left']:hover {
     animation-name: rotate-left;
-    @keyframes rotate-left {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(-360deg);
-      }
-    }
   }
 
   &[data-rotate-direction='right']:hover {
     animation-name: rotate-right;
-    @keyframes rotate-right {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+  }
+}
+
+@keyframes rotate-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -1,5 +1,3 @@
-@use '../../../../../styles/mixins';
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -19,7 +17,7 @@
   background: none;
 }
 
-@include mixins.mq(sp) {
+@media screen and (max-width: 800px) {
   .wrapper[data-hero-article='false'] {
     grid-area: title;
     height: initial;
@@ -33,7 +31,7 @@
   }
 }
 
-@include mixins.mq(pc) {
+@media screen and (min-width: 800px) {
   .title[data-hero-article='true'] {
     font-size: 1.4em;
   }

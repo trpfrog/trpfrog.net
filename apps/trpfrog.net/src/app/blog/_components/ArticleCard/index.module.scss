@@ -1,5 +1,3 @@
-@use '../../../../styles/mixins';
-
 .img_wrapper {
   overflow: hidden;
 }
@@ -8,7 +6,7 @@
   width: 100%;
   height: 200px;
 
-  @include mixins.mq(sp) {
+  @media screen and (max-width: 800px) {
     &[data-hero-article='false'] {
       height: 100%;
     }
@@ -18,19 +16,22 @@
 .information {
   margin: 1em;
   text-align: center;
-  * {
+
+  & * {
     margin: 0.2em;
   }
 }
 
-@include mixins.mq(sp) {
+@media screen and (max-width: 800px) {
   .thumbnail_wrapper {
     grid-area: thumbnail;
+
     & > span {
       height: 100% !important;
       width: var(--image-width) !important;
     }
   }
+
   .information {
     grid-area: info;
     margin: 0 0 5px;

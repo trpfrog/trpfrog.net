@@ -1,5 +1,3 @@
-@use '../../../../styles/mixins';
-
 #post_attributes {
   display: flex;
   justify-content: center;
@@ -14,12 +12,13 @@
   line-height: 1.2;
 
   backdrop-filter: blur(3px) brightness(1.2);
-  @include mixins.mq(dark) {
-    backdrop-filter: blur(3px) brightness(0.7);
-  }
-  background-color: rgba(gray, 0.2);
+  background-color: rgba(128, 128, 128, 0.2); /* rgba(gray, 0.2) を具体的な値に変換 */
   padding: 12px 0 0;
   border-radius: 5px;
+
+  @media (prefers-color-scheme: dark) {
+    backdrop-filter: blur(3px) brightness(0.7);
+  }
 }
 
 .attr_key {

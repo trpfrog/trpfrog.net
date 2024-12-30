@@ -1,5 +1,3 @@
-@use '../../../styles/mixins';
-
 .box {
   position: relative;
   width: 100%;
@@ -37,22 +35,13 @@
 .scroll_up,
 .scroll_down {
   --button-color: black;
-  @include mixins.mq(dark) {
-    --button-color: white;
-  }
 
   width: min(50%, 2em);
   aspect-ratio: 1;
   border-radius: 50%;
-
   font-size: 2em;
-
   color: white;
-  background: rgba(black, 0.5);
-  @include mixins.mq(dark) {
-    color: black;
-    background: rgba(white, 0.5);
-  }
+  background: rgba(0, 0, 0, 0.5);
 
   user-select: none;
   display: flex;
@@ -68,7 +57,15 @@
 
   &:hover {
     background: black;
-    @include mixins.mq(dark) {
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --button-color: white;
+
+    color: black;
+    background: rgba(255, 255, 255, 0.5);
+
+    &:hover {
       background: white;
     }
   }
@@ -76,8 +73,8 @@
 
 .scroll_up {
   top: 10px;
-
   opacity: 0.5;
+
   &[data-scroll-position='top'] {
     opacity: 0;
     pointer-events: none;
@@ -86,8 +83,8 @@
 
 .scroll_down {
   bottom: 10px;
-
   opacity: 0.5;
+
   &[data-scroll-position='bottom'] {
     opacity: 0;
     pointer-events: none;

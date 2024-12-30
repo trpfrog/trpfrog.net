@@ -1,5 +1,3 @@
-@use '../../../styles/mixins';
-
 .wrapper {
   width: 100%;
   text-align: center;
@@ -15,7 +13,8 @@
 
   background: white;
   border: solid 1px lightgray;
-  @include mixins.mq(dark) {
+
+  @media screen and (prefers-color-scheme: dark) {
     background: black;
     border-color: rgb(52, 54, 58);
   }
@@ -27,8 +26,9 @@
 
   transition: 0.2s;
 
-  a {
+  & a {
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
@@ -38,6 +38,7 @@
 .date {
   color: gray !important;
   line-height: 1;
+
   > a:hover {
     color: gray !important;
     text-decoration: underline;

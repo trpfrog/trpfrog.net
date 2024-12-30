@@ -1,12 +1,13 @@
-@use '../../../../../styles/mixins';
-
 .result_box_title {
 }
 
 .result_box_value {
   font-weight: bold;
   font-size: 2em;
-  @include mixins.mq(sp) {
+}
+
+@media screen and (max-width: 800px) {
+  .result_box_value {
     font-size: 1.2em;
   }
 }
@@ -17,8 +18,10 @@
   background: var(--header-color);
   color: white;
   padding: 10px 20px;
+}
 
-  @include mixins.mq(sp) {
+@media screen and (max-width: 800px) {
+  .result_box {
     padding: 12px;
   }
 }
@@ -29,9 +32,11 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
   gap: 0.8em;
-  @include mixins.mq(sp) {
+}
+
+@media screen and (max-width: 800px) {
+  .result_box_grid {
     gap: 0.3em;
   }
 }
