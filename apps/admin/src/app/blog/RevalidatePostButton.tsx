@@ -56,7 +56,9 @@ export function RevalidatePostButton(props: { slug: string }) {
     <Button
       w={120}
       onClick={handleClick}
-      disabled={status === 'revalidating' || status === 'revalidated'}
+      // TODO: revalidate できるようになったら戻す
+      // disabled={status === 'revalidating' || status === 'revalidated'}
+      disabled={true}
       color={status === 'revalidated' ? 'teal' : undefined}
     >
       {match(status)

@@ -1,9 +1,6 @@
 'use client'
 import { Table, Title } from '@mantine/core'
-import { cacheTags } from '@trpfrog.net/constants'
 import useSWR from 'swr'
-
-import { RevalidateButton } from '../revalidate/RevalidateButton'
 
 import { fetchPostList } from './actions'
 import { JSONModal } from './JSONModal'
@@ -45,9 +42,12 @@ export default function BlogPage() {
       <Title order={2} my="md">
         Operations
       </Title>
-      <RevalidateButton tag={cacheTags.entireBlog.tag} color="red">
+      {
+        // TODO: revalidate できるようになったら戻す
+        /* <RevalidateButton tag={cacheTags.entireBlog.tag} color="red">
         Revalidate All
-      </RevalidateButton>
+      </RevalidateButton> */
+      }
     </>
   )
 }

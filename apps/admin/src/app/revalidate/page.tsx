@@ -19,6 +19,10 @@ function CacheTagsTable() {
       <Table.Tbody>
         {typedObjectEntries(cacheTags).map(([key, value]) => {
           const titleTag = typeof value.tag === 'function' ? value.tag('<slug>') : value.tag
+          // TODO: revalidate できるようになったら消す
+          if (titleTag.includes('blog')) {
+            return null
+          }
           return (
             <Table.Tr key={key}>
               <Table.Td>{titleTag}</Table.Td>
