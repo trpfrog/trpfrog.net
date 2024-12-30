@@ -14,7 +14,7 @@ export async function fetchPost(slug: string, page?: number | 'all'): Promise<Bl
   const post = await client.alpha.posts[':slug']
     .$get(
       { param: { slug }, query: { page: page?.toString() ?? '1' } },
-      { init: { cache: 'force-cache', next: { tags } } },
+      { fetch, init: { next: { tags, revalidate: 2592000 } } },
     )
     .then(async e => e.json())
 
@@ -27,7 +27,7 @@ export async function fetchPost(slug: string, page?: number | 'all'): Promise<Bl
 export async function fetchPostList(tag?: string): Promise<BlogPost[]> {
   const tags = [cacheTags.entireBlog.tag, cacheTags.blogList.tag]
   return await client.alpha.posts
-    .$get({ query: tag ? { tag } : {} }, { init: { cache: 'force-cache', next: { tags } } })
+    .$get({ query: tag ? { tag } : {} }, { init: { next: { tags, revalidate: 2592000 } } })
     .then(e => e.json())
 }
 
@@ -35,7 +35,7 @@ export async function fetchSlugs(): Promise<string[]> {
   const tags = [cacheTags.entireBlog.tag, cacheTags.blogList.tag]
   return await client.alpha.slugs
     .$get({
-      init: { cache: 'force-cache', next: { tags } },
+      init: { next: { tags, revalidate: 2592000 } },
     })
     .then(e => e.json())
 }
