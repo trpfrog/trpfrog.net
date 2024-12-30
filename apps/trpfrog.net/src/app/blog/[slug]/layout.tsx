@@ -7,7 +7,7 @@ import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
-import styles from '@blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.css'
 import { fetchPost, fetchPostList, fetchSlugs } from '@blog/rpc'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
