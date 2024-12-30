@@ -5,7 +5,7 @@ type Props = React.ComponentPropsWithoutRef<'div'>
 import * as React from 'react'
 import { useRef } from 'react'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 import { useHoverScrollBoxEvent } from './useHoverScrollBoxEvent'
 import { useScrollPosition } from './useScrollPosition'
 

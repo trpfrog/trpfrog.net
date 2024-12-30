@@ -26,7 +26,7 @@ import {
   OriginalMarkdownComponent,
 } from '@blog/_components/OriginalMarkdownComponent'
 import type { MarkdownOptions } from '@blog/_renderer/MarkdownOptions'
-import styles from '@blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.css'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'
 

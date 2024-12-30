@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   const searchParams = useSearchParams()

@@ -1,7 +1,7 @@
 'use client'
 import { Input } from '@/components/wrappers'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 export function SearchForm(props: { defaultValue?: string }) {
   return (

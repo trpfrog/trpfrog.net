@@ -5,7 +5,7 @@ import * as React from 'react'
 import { PlainCodeBlock } from '@/components/molecules/CodeBlock/PlainCodeBlock'
 
 import { generateAltTextOnServer } from './generateAltTextOnServer'
-import styles from './ImageDragAndDrop.module.scss'
+import styles from './ImageDragAndDrop.module.css'
 import { useImageUploadUsecase } from './useImageUploadUsecase'
 import { useUploadFunction } from './useUploadFunction'
 

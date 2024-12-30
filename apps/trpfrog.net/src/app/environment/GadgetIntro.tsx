@@ -5,7 +5,7 @@ import Image from 'next/legacy/image'
 
 import { H4 } from '@/components/wrappers'
 
-import styles from './style.module.scss'
+import styles from './style.module.css'
 
 type Props = {
   name: string

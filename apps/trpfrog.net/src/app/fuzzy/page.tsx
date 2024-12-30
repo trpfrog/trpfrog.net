@@ -3,7 +3,7 @@ import { Block } from '@/components/molecules/Block'
 import { Li, UnorderedList } from '@/components/wrappers'
 
 import { SearchBox } from './SearchBox'
-import styles from './style.module.scss'
+import styles from './style.module.css'
 
 export default function Fuzzy() {
   return (

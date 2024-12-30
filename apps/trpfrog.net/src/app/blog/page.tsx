@@ -14,7 +14,7 @@ import { getTypedEntries } from '@/lib/utils'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
-import styles from '@blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.css'
 import { fetchPostList } from '@blog/rpc'
 
 export const metadata = {

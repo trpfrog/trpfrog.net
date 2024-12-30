@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0.2em;
+  text-align: center;
+  line-height: 1.5;
+  height: 5em;
+}
+
+.title {
+  font-size: 1.1em;
+  color: var(--base-font-color);
+  font-weight: bolder;
+  font-family: var(--font-m-plus-rounded-1c);
+  border: none;
+  background: none;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper[data-hero-article='false'] {
+    grid-area: title;
+    height: initial;
+  }
+
+  .title {
+    font-size: 1em;
+    & [data-hero-article='false'] {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .title[data-hero-article='true'] {
+    font-size: 1.4em;
+  }
+}

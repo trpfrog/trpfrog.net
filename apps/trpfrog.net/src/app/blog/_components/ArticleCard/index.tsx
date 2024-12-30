@@ -16,7 +16,7 @@ import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
 import { Card } from '@blog/_components/ArticleCard/Card'
 import { TagBar } from '@blog/_components/ArticleCard/TagBar'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = {
   entry: BlogPost

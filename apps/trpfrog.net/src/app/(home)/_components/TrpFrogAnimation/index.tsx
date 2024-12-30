@@ -9,7 +9,7 @@ import { useRpmCalculation } from '@/app/(home)/_components/TrpFrogAnimation/use
 
 import { AnglePicker } from '@/components/atoms/AnglePicker'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = {
   children?: React.ReactNode

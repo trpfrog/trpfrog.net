@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ImageWithModal } from '@blog/_components/BlogImage/ImageWithModal'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type BlogImageProps = {
   src: string

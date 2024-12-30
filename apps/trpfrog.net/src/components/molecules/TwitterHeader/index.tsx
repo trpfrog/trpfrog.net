@@ -8,7 +8,7 @@ import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'
 import { iconPreset } from '@/components/atoms/twitter/TwitterIcon/preset'
 import { A } from '@/components/wrappers'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type TwitterHeaderProps = {
   iconStyle?: React.CSSProperties['background']

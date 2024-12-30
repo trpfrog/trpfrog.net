@@ -1,0 +1,12 @@
+.article_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 17px;
+}
+
+@media screen and (max-width: 800px) {
+  .article_grid {
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}

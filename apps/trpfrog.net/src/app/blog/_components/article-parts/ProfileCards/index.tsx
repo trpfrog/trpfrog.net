@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { createURL } from '@trpfrog.net/utils'
 import { addDays, format } from 'date-fns'
@@ -10,7 +12,7 @@ import { A, Li, UnorderedList } from '@/components/wrappers'
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 const ProfileDataSchema = z.object({
   name: z.string(),
@@ -54,8 +56,8 @@ async function ListFormat({ personalDataList }: { personalDataList: ProfileData[
   return (
     <UnorderedList>
       {personalDataList.map(personalData => (
-        <>
-          <Li key={personalData.name + '-name'}>
+        <Fragment key={personalData.name}>
+          <Li>
             {personalData.name}
             {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
           </Li>
@@ -70,7 +72,7 @@ async function ListFormat({ personalDataList }: { personalDataList: ProfileData[
               <RenderInlineMarkdown markdown={personalData.description} />
             </Li>
           </UnorderedList>
-        </>
+        </Fragment>
       ))}
     </UnorderedList>
   )

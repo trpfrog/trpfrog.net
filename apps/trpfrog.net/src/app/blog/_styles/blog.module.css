@@ -1,0 +1,244 @@
+.hrule_block {
+  font-family: var(--font-m-plus-rounded-1c);
+  font-weight: bold;
+  padding: 3px;
+  margin-top: calc(-1 * var(--main-margin) * 0.2);
+  margin-bottom: calc(-1 * var(--main-margin) * 0.8);
+  text-align: center;
+
+  background: none;
+  box-shadow: none;
+  color: #3c7709;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 0;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    color: #ffffffbb;
+  }
+}
+
+#hero_article {
+  @media screen and (max-width: 800px) {
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
+
+#past_article_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 17px;
+
+  @media screen and (max-width: 800px) {
+    margin: 0 8px;
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
+
+.article_block {
+  padding: 17px;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+
+  & h2 {
+    font-size: 1.2em;
+  }
+}
+
+#entry_bottom_buttons {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.details,
+.pretty_details {
+  border-radius: 10px;
+  border: 2px solid var(--body-background);
+  box-shadow: 0 3px 0 0 var(--window-bottom-color);
+
+  margin: 2em 0;
+
+  transition: 100ms;
+  overflow: hidden;
+
+  &:not([open]) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 0 var(--window-bottom-color);
+    }
+
+    &:active {
+      transform: translateY(3px);
+      box-shadow: none;
+    }
+  }
+
+  &[open] {
+    box-shadow: none;
+    & > summary {
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  & > *:not(summary):not(ul):not(details):not(hr) {
+    padding: 0.3rem 1rem;
+  }
+
+  & > hr {
+    margin: 1rem;
+  }
+
+  & details {
+    margin: 1rem;
+  }
+}
+
+@media print {
+  #entry_top_buttons,
+  #entry_bottom_buttons {
+    display: none;
+  }
+}
+
+.post {
+  margin: 0 auto;
+
+  @media screen and (min-width: 800px) {
+    --max-w: 800px;
+    max-width: var(--max-w);
+    padding: calc((100% - var(--max-w)) / 2) 0;
+  }
+
+  & main {
+    word-break: break-word;
+  }
+}
+
+.main_content > aside {
+  display: none;
+}
+
+@media screen and (min-width: 1300px) {
+  .layout {
+    max-width: 1200px !important;
+  }
+  .main_content {
+    display: grid;
+    grid-template-areas: 'article aside';
+    grid-template-columns: 900px auto;
+    grid-template-rows: minmax(0, 1fr);
+    grid-gap: calc(var(--main-margin) / 2);
+
+    & > .article_wrapper {
+      grid-area: article;
+    }
+
+    & > aside {
+      grid-area: aside;
+      display: block;
+      position: relative;
+      .blog_side_bar {
+        height: fit-content;
+        position: sticky;
+        top: 1em;
+      }
+    }
+  }
+}
+
+.post code {
+  font-family: var(--font-noto-sans-mono), monospace !important;
+}
+
+.inline_code_block {
+  display: inline;
+  word-break: break-all;
+  background-color: #0001 !important;
+
+  font-family: var(--font-noto-sans-mono), monospace;
+  padding: 0 4px;
+  font-size: 0.9em;
+  border-radius: 5px;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #313131 !important;
+    color: white;
+    border: solid 1px gray;
+  }
+
+  @media print {
+    border: solid 1px gray;
+    background: #eee !important;
+    color: black;
+  }
+}
+
+.blockquote {
+  border-left: lightgray 5px solid;
+  padding: 0 1em;
+  font-style: italic;
+  opacity: 0.75;
+
+  @media screen and (max-width: 800px) {
+    padding: 5px 1em;
+    margin: 0.5em auto;
+  }
+}
+
+.summary {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 15px;
+  background: var(--body-background);
+  list-style: none;
+  overflow: hidden;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    transition: 100ms;
+    font-weight: bold;
+    color: var(--base-font-color);
+    -webkit-text-stroke: 2px var(--base-font-color);
+    float: right;
+    content: '＋';
+    border-radius: 100px;
+  }
+}
+
+.h2 {
+  display: block;
+  margin-top: 0;
+
+  &::before {
+    background-image: none !important;
+    width: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  &.trpfrog::before {
+    background-image: none;
+    width: 0;
+    margin-right: 0;
+  }
+
+  * + & {
+    margin-top: 2em;
+  }
+}
+
+.img {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin: 2rem 0;
+}

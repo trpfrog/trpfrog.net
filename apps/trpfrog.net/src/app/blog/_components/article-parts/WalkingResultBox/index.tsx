@@ -2,7 +2,7 @@ import { parseColonSeparatedList } from '@trpfrog.net/posts/parser'
 
 import { ArticleParts } from '@blog/_components/ArticleParts'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 export const walkingResultBoxParts = {
   name: 'result-box',

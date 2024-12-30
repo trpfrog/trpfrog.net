@@ -1,0 +1,18 @@
+.name {
+  font-weight: bold;
+}
+
+.gadget_image_wrapper {
+  overflow: hidden;
+  text-align: center;
+
+  @media screen and (max-width: 800px) {
+    max-width: 100%;
+  }
+}
+
+.image {
+  display: inline;
+  border-radius: 10px;
+  object-fit: cover;
+}

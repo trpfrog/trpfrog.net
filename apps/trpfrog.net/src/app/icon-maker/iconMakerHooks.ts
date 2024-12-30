@@ -1,7 +1,7 @@
 import { MutableRefObject, RefObject, useMemo, useRef } from 'react'
 
 import { IconCanvas } from '@/app/icon-maker/iconMaker'
-import styles from '@/app/icon-maker/style.module.scss'
+import styles from '@/app/icon-maker/style.module.css'
 
 export function useIconMakerRef(imgRef: RefObject<HTMLCanvasElement | null>) {
   const state = useRef<IconCanvas>(undefined)
