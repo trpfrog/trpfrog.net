@@ -1,26 +1,14 @@
 import { Metadata } from 'next'
 
-import { BlogPost } from '@trpfrog.net/posts'
-import { readBlogPost, readAllBlogPosts } from '@trpfrog.net/posts/fs'
-import { match } from 'ts-pattern'
 import { z } from 'zod'
 
 import { env } from '@/env/server.ts'
 
-import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
-import { Block } from '@/components/molecules/Block'
-
-import { ArticleHeader } from '@blog/_components/ArticleHeader'
-import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
-import { renderBlog } from '@blog/_renderer/renderBlog'
-import styles from '@blog/_styles/blog.module.css'
+import { fetchPost } from '@blog/rpc'
 
-import { ArticleSidebar } from './_components/ArticleSidebar'
-import { EntryButtons } from './_components/EntryButtons'
-
-export const dynamicParams = false
+export const dynamicParams = true
 
 // 1, 2, 3, ... or 'all'
 const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
@@ -35,7 +23,7 @@ type PageProps = {
 
 export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params
-  const entry = await readBlogPost(slug)
+  const entry = await fetchPost(slug)
   const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
     paths.push({ options: [i.toString()] })
@@ -51,7 +39,7 @@ export async function generateMetadata(props: PageProps) {
 
   const { slug } = params
 
-  const { title, description } = await readBlogPost(slug)
+  const { title, description } = await fetchPost(slug)
 
   const metadata: Metadata = {
     title,
@@ -75,19 +63,6 @@ export async function generateMetadata(props: PageProps) {
   return metadata
 }
 
-const processSlug = async (slug: string, page: number | 'all') => {
-  const entry: BlogPost = await match(page)
-    .with('all', () => readBlogPost(slug, { all: true }))
-    .otherwise(page => readBlogPost(slug, { pagePos1Indexed: page }))
-
-  const tags = entry.tags
-  const relatedPosts: BlogPost[] = tags[0]
-    ? []
-    : (await readAllBlogPosts({ tag: tags[0] })).filter(e => e.slug !== entry.slug)
-
-  return { entry, relatedPosts }
-}
-
 export default async function Index(props: PageProps) {
   const rawParams = await props.params
   const {
@@ -95,31 +70,10 @@ export default async function Index(props: PageProps) {
     options: [page],
   } = paramsSchema.parse(rawParams)
 
-  const { entry, relatedPosts } = await processSlug(slug, page)
-
-  // TODO: コメントアウトするとなぜかビルドできなくなるので調査
-  await renderBlog(slug, page)
-
-  return (
-    <MainWrapper gridLayout className={styles.layout}>
-      <ArticleHeader post={entry} />
-      <div className={styles.main_content}>
-        <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
-          {env.NODE_ENV === 'production' ? (
-            <BlogMarkdown entry={entry} />
-          ) : (
-            <DevBlogMarkdown slug={slug} page={page} />
-          )}
-        </div>
-        <aside>
-          <ArticleSidebar post={entry} />
-        </aside>
-      </div>
-
-      <Block id={styles.entry_bottom_buttons}>
-        <EntryButtons post={entry} />
-      </Block>
-      <RelatedPosts tag={entry.tags[0]} relatedPosts={relatedPosts} />
-    </MainWrapper>
+  const entry = await fetchPost(slug, page)
+  return env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
+    <BlogMarkdown entry={entry} />
+  ) : (
+    <DevBlogMarkdown slug={slug} page={page} />
   )
 }

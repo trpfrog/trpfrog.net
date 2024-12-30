@@ -5,7 +5,7 @@ import mermaid from 'mermaid'
 
 import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
 
-import { CodeBlock } from '../molecules/CodeBlock'
+import { PlainCodeBlock } from '../molecules/CodeBlock/PlainCodeBlock'
 
 type MermaidProps = {
   chart: string
@@ -60,9 +60,7 @@ export function Mermaid(props: MermaidProps) {
           <div className="tw-text-lg tw-text-white tw-font-bold">
             Failed to render Mermaid diagram:
           </div>
-          <CodeBlock language="text" fileName="Mermaid Error">
-            {error}
-          </CodeBlock>
+          <PlainCodeBlock fileName="Mermaid Error">{error}</PlainCodeBlock>
         </div>
       )}
     </>

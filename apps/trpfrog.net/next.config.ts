@@ -18,10 +18,15 @@ const nextConfig: NextConfig = {
 
   experimental: {
     mdxRs: true,
-    reactCompiler: true,
     serverActions: {
       bodySizeLimit: '10mb',
     },
+    optimizePackageImports: [
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-brands-svg-icons',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/react-fontawesome',
+    ],
   },
 
   webpack: config => {

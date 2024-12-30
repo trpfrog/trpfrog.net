@@ -12,8 +12,8 @@ import { Block } from '@/components/molecules/Block'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import { EditButton } from '@blog/[slug]/[[...options]]/_components/EditButton'
-import { EntryButtons } from '@blog/[slug]/[[...options]]/_components/EntryButtons'
+import { EditButton } from '@blog/[slug]/_components/EditButton'
+import { EntryButtons } from '@blog/[slug]/_components/EntryButtons'
 import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
 

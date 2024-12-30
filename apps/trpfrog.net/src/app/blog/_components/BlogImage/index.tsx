@@ -5,7 +5,6 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ImageWithModal } from '@blog/_components/BlogImage/ImageWithModal'
-import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import styles from './index.module.css'
 
@@ -22,22 +21,20 @@ export const ImageCaption = ({ children }: { children: React.ReactNode }) => (
   <figcaption className={styles.caption}>{children}</figcaption>
 )
 
-const TakenBy = (props: { photographer: string }) => (
-  <div className={styles.taken_by}>
-    <small>
-      <FontAwesomeIcon icon={faCamera} /> 撮影: {parseInlineMarkdown(props.photographer)}
-    </small>
-  </div>
-)
+async function TakenBy(props: { photographer: string }) {
+  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+  return (
+    <div className={styles.taken_by}>
+      <small>
+        <FontAwesomeIcon icon={faCamera} /> 撮影:{' '}
+        <RenderInlineMarkdown markdown={props.photographer} />
+      </small>
+    </div>
+  )
+}
 
-export const BlogImage = React.memo(function BlogImage({
-  src,
-  alt,
-  style,
-  spoiler,
-  isVideo,
-  ...props
-}: BlogImageProps) {
+export async function BlogImage({ src, alt, style, spoiler, isVideo, ...props }: BlogImageProps) {
+  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
   let caption = props.caption ?? ''
   let takenBy: string | undefined
 
@@ -59,8 +56,12 @@ export const BlogImage = React.memo(function BlogImage({
         ) : (
           <ImageWithModal src={src} alt={alt} spoiler={spoiler} />
         )}
-        {caption && <ImageCaption>{parseInlineMarkdown(caption)}</ImageCaption>}
+        {caption && (
+          <ImageCaption>
+            <RenderInlineMarkdown markdown={caption} />
+          </ImageCaption>
+        )}
       </figure>
     </>
   )
-})
+}

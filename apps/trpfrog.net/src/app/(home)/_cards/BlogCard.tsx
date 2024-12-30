@@ -1,5 +1,4 @@
 import { BlogPost } from '@trpfrog.net/posts'
-import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
@@ -8,6 +7,8 @@ import { A } from '@/components/wrappers'
 
 import { tv, VariantProps } from '@/lib/tailwind/variants'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
+
+import { fetchPostList } from '@blog/rpc'
 
 const createArticleStyle = tv({
   slots: {
@@ -93,7 +94,7 @@ function ArticleRow(props: {
 }
 
 export async function BlogCard() {
-  const articles = await readAllBlogPosts({})
+  const articles = await fetchPostList()
 
   const latestFeaturedArticles = articles.filter(e => !!e.thumbnail).slice(0, 3)
 

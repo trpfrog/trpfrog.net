@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 
 import { BlogPost } from '@trpfrog.net/posts'
-import { readAllBlogPosts } from '@trpfrog.net/posts/fs'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -9,6 +8,7 @@ import { Title } from '@/components/organisms/Title'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
+import { fetchPostList } from '@blog/rpc'
 
 // FIXME: Cannot find module 'Belongings.mdx'
 // @ts-expect-error - Error: Cannot find module 'Belongings.mdx''
@@ -20,9 +20,7 @@ export const metadata = {
 } satisfies Metadata
 
 export default async function Index() {
-  const tag = '徒歩'
-  const articles = await readAllBlogPosts({ tag })
-
+  const articles = await fetchPostList('徒歩')
   return (
     <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />

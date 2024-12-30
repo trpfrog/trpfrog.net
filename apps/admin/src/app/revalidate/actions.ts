@@ -1,14 +1,11 @@
 'use server'
 
-import { services } from '@trpfrog.net/constants'
 import { createURL } from '@trpfrog.net/utils'
 
-import { clientEnv } from '@/clientEnv'
 import { env } from '@/env'
 
-const url = createURL('/api/revalidate', services.website.origin(clientEnv.NODE_ENV))
-
-export async function revalidate(type: 'path' | 'tag', key: string) {
+export async function revalidate(origin: string, type: 'path' | 'tag', key: string) {
+  const url = createURL('/api/revalidate', origin)
   return await fetch(url, {
     method: 'POST',
     headers: {

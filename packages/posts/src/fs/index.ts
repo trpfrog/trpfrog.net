@@ -69,7 +69,7 @@ export async function readAllBlogPosts(options?: SearchOption): Promise<BlogPost
 /**
  * Retrieve existing all tags
  */
-export async function retrieveExistingAllTags() {
+export async function retrieveExistingAllTags(): Promise<string[]> {
   const fileNames = readAllMarkdownFileNames()
   const nested = await Promise.all(
     fileNames

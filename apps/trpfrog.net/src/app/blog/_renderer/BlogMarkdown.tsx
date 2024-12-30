@@ -1,7 +1,6 @@
 import { memo, CSSProperties } from 'react'
 
 import { BlogPost } from '@trpfrog.net/posts'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Block } from '@/components/molecules/Block'
 
@@ -9,12 +8,6 @@ import { PageNavigation } from '@blog/_components/PageNavigation'
 import styles from '@blog/_styles/blog.module.css'
 
 import { ArticleRenderer } from './ArticleRenderer'
-import { getMarkdownOptions } from './rendererProperties'
-
-export const parseInlineMarkdown = (markdown: string) => {
-  const options = getMarkdownOptions({ inline: true })
-  return <MDXRemote source={markdown} {...options} />
-}
 
 type Props = {
   entry: BlogPost

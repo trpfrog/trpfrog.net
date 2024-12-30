@@ -11,7 +11,6 @@ import { A, Li, UnorderedList } from '@/components/wrappers'
 
 import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
-import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
 import styles from './index.module.css'
 
@@ -24,51 +23,60 @@ const ProfileDataSchema = z.object({
 
 export type ProfileData = z.infer<typeof ProfileDataSchema>
 
-const CardFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
-  <div className={styles.profile_card_grid}>
-    {personalDataList.map(personalData => (
-      <div className={styles.profile_card} key={personalData.name}>
-        <div className={styles.header}>
-          <div className={styles.club}>{personalData.club}</div>
-          <div className={styles.twitter_id}>
-            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
-              @{personalData.twitter}
-            </InlineLink>
+async function CardFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
+  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+  return (
+    <div className={styles.profile_card_grid}>
+      {personalDataList.map(personalData => (
+        <div className={styles.profile_card} key={personalData.name}>
+          <div className={styles.header}>
+            <div className={styles.club}>{personalData.club}</div>
+            <div className={styles.twitter_id}>
+              <InlineLink href={'https://twitter.com/' + personalData.twitter}>
+                @{personalData.twitter}
+              </InlineLink>
+            </div>
+          </div>
+          <div className={styles.name}>
+            {personalData.name}
+            <span style={{ fontSize: '0.8em' }}>
+              {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
+            </span>
+          </div>
+          <div className={styles.description}>
+            <RenderInlineMarkdown markdown={personalData.description} />
           </div>
         </div>
-        <div className={styles.name}>
-          {personalData.name}
-          <span style={{ fontSize: '0.8em' }}>
-            {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
-          </span>
-        </div>
-        <div className={styles.description}>{parseInlineMarkdown(personalData.description)}</div>
-      </div>
-    ))}
-  </div>
-)
-
-const ListFormat = ({ personalDataList }: { personalDataList: ProfileData[] }) => (
-  <UnorderedList>
-    {personalDataList.map(personalData => (
-      <Fragment key={personalData.name}>
-        <Li key={personalData.name + '-name'}>
-          {personalData.name}
-          {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
-        </Li>
-        <UnorderedList key={personalData.name + '-info'}>
-          <Li>{personalData.club}</Li>
+      ))}
+    </div>
+  )
+}
+async function ListFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
+  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+  return (
+    <UnorderedList>
+      {personalDataList.map(personalData => (
+        <Fragment key={personalData.name}>
           <Li>
-            <InlineLink href={'https://twitter.com/' + personalData.twitter}>
-              @{personalData.twitter}
-            </InlineLink>
+            {personalData.name}
+            {personalData.name === 'つまみ' ? ' (筆者)' : 'さん'}
           </Li>
-          <Li>{parseInlineMarkdown(personalData.description)}</Li>
-        </UnorderedList>
-      </Fragment>
-    ))}
-  </UnorderedList>
-)
+          <UnorderedList key={personalData.name + '-info'}>
+            <Li>{personalData.club}</Li>
+            <Li>
+              <InlineLink href={'https://twitter.com/' + personalData.twitter}>
+                @{personalData.twitter}
+              </InlineLink>
+            </Li>
+            <Li>
+              <RenderInlineMarkdown markdown={personalData.description} />
+            </Li>
+          </UnorderedList>
+        </Fragment>
+      ))}
+    </UnorderedList>
+  )
+}
 
 export const profileCardParts = {
   name: 'profile-cards',

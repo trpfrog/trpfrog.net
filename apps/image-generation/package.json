@@ -23,7 +23,7 @@
     "@trpfrog.net/utils": "workspace:*",
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.36.4",
-    "hono": "^4.6.14",
+    "hono": "^4.6.15",
     "nanoid": "^5.0.9",
     "stable-hash": "^0.0.4",
     "ts-dedent": "^2.2.0",
@@ -32,7 +32,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241218.0",
+    "@cloudflare/workers-types": "^4.20241224.0",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
     "@types/node": "^20.17.10",

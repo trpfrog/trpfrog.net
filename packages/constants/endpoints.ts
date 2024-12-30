@@ -18,4 +18,8 @@ export const services = defineEndpoints({
     port: 8002,
     production: null,
   },
+  contentServer: {
+    port: 8003,
+    production: 'https://content.trpfrog.net',
+  },
 })
