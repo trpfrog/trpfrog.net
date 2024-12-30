@@ -14,12 +14,12 @@ import { ArticleSidebar } from './_components/ArticleSidebar'
 import { ArticleSkeleton } from './_components/ArticleSkeleton'
 import { EntryButtons } from './_components/EntryButtons'
 
+export const revalidate = 2592000
+
 interface PageProps {
   params: Promise<{ slug: string }>
   children: React.ReactNode
 }
-
-export const dynamicParams = false
 
 export async function generateStaticParams() {
   const slugs = await fetchSlugs()

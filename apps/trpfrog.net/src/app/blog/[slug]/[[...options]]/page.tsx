@@ -8,7 +8,7 @@ import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
 import { fetchPost } from '@blog/rpc'
 
-export const dynamicParams = false
+export const dynamicParams = true
 
 // 1, 2, 3, ... or 'all'
 const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
