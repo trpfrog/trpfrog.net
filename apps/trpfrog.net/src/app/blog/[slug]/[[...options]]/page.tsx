@@ -21,10 +21,6 @@ type PageProps = {
   params: Promise<z.input<typeof paramsSchema>>
 }
 
-export async function generateStaticParams() {
-  return [{ options: undefined }, { options: ['all'] }]
-}
-
 export async function generateMetadata(props: PageProps) {
   const params = await props.params
 
