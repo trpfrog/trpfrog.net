@@ -19,6 +19,8 @@ interface PageProps {
   children: React.ReactNode
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const slugs = await fetchSlugs()
   return slugs.map(slug => ({ slug }))

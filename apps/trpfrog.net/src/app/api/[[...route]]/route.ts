@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { trimTrailingSlash } from 'hono/trailing-slash'
 import { handle } from 'hono/vercel'
 
+import { app as blogRouter } from './_routes/blog'
 import { app as budouxRouter } from './_routes/budoux'
 import { app as revalidateRouter } from './_routes/revalidate'
 import { app as tmpCacheRouter } from './_routes/tmpCache'
@@ -11,6 +12,7 @@ export const runtime = 'nodejs'
 const app = new Hono()
   .use(trimTrailingSlash())
   .basePath('/api')
+  .route('/blog', blogRouter)
   .route('/budoux', budouxRouter)
   .route('/revalidate', revalidateRouter)
   // cache tag は fetch にしか付けられないため一時的にこれを使う
