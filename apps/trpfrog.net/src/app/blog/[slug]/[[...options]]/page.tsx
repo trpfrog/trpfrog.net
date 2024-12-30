@@ -21,6 +21,19 @@ type PageProps = {
   params: Promise<z.input<typeof paramsSchema>>
 }
 
+export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params
+  const entry = await fetchPost(slug)
+  const paths: { options?: string[] }[] = []
+  for (let i = 1; i <= entry.numberOfPages; i++) {
+    paths.push({ options: [i.toString()] })
+  }
+  paths.push({ options: ['all'] })
+  paths.push({ options: undefined })
+
+  return paths
+}
+
 export async function generateMetadata(props: PageProps) {
   const params = await props.params
 
