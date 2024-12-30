@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 export function EntryButton(props: { text: string; icon: IconProp; onClick?: () => void }) {
   return (

@@ -13,7 +13,7 @@ import { SwitchUI } from '@blog/_components/article-parts/ProfileCards/SwitchUI'
 import { ArticleParts } from '@blog/_components/ArticleParts'
 import { parseInlineMarkdown } from '@blog/_renderer/BlogMarkdown'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 const ProfileDataSchema = z.object({
   name: z.string(),

@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
 import { format } from 'date-fns'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = {
   post: BlogPost

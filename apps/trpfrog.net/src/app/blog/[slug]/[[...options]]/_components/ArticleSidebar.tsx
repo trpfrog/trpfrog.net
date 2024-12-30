@@ -5,7 +5,7 @@ import { StickToTop } from '@/components/organisms/Header'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { PageNavigation } from '@blog/_components/PageNavigation'
-import styles from '@blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.css'
 
 import { RichEntryButtons } from './EntryButtons'
 

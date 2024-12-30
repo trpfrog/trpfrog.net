@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Tag } from '@blog/_components/Tag'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tags: string[]

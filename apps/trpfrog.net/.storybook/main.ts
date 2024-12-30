@@ -15,7 +15,7 @@ const googleFontsLoaderHtml = `
   <link href="${getGoogleFontsUrl()}" rel="stylesheet">
   <style>
      ${fs.readFileSync(
-       path.resolve(__dirname, '../src/components/head/GoogleFonts/index.module.scss'),
+       path.resolve(__dirname, '../src/components/head/GoogleFonts/index.module.css'),
        'utf8',
      )}
   </style>

@@ -4,7 +4,7 @@ import Balancer from 'react-wrap-balancer'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   title: string

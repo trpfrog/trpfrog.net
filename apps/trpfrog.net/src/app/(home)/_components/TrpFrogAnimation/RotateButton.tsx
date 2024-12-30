@@ -3,7 +3,7 @@ import { memo } from 'react'
 import { faRotate, faStop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import styles from './RotateButton.module.scss'
+import styles from './RotateButton.module.css'
 
 interface Props {
   isRotated: boolean

@@ -108,10 +108,10 @@
   margin: 0.3rem 0 0 0.3rem;
 
   &:before {
-    content: '\02190'; // ←
+    content: '\02190'; /* ← */
     margin-right: 0.1em;
     @media screen and (max-width: 800px) {
-      content: '\02191'; // ↑
+      content: '\02191'; /* ↑ */
     }
   }
 

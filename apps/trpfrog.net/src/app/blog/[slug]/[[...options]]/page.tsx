@@ -15,7 +15,7 @@ import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_renderer/DevBlogMarkdown'
 import { renderBlog } from '@blog/_renderer/renderBlog'
-import styles from '@blog/_styles/blog.module.scss'
+import styles from '@blog/_styles/blog.module.css'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { EntryButtons } from './_components/EntryButtons'

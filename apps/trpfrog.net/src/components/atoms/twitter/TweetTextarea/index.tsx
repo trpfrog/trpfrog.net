@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tweet: string

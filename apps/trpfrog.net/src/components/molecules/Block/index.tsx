@@ -3,7 +3,7 @@ import * as React from 'react'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { type H2Icon, H2 } from '@/components/wrappers/H2'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type Props = React.ComponentPropsWithRef<'div'> & {
   title?: string

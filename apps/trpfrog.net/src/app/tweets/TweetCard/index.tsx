@@ -11,7 +11,7 @@ import { A } from '@/components/wrappers'
 
 import { formatDateToDisplay, formatDateTimeToDisplay } from '@/lib/date'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 import type { Tweet, Media } from '@prisma/client'
 

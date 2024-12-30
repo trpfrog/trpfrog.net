@@ -3,7 +3,7 @@
 import { Balloon } from '@/app/balloon/_components/Balloon'
 import { useBalloonState } from '@/app/balloon/useBalloonState.ts'
 
-import styles from './index.module.scss'
+import styles from './index.module.css'
 
 type BalloonArrayProps = {
   states: ReturnType<typeof useBalloonState>
