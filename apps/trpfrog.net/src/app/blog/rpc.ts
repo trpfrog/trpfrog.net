@@ -9,7 +9,8 @@ import type { BlogPost } from '@trpfrog.net/posts'
 const client = createContentServerClient(env.NODE_ENV)
 
 export async function fetchPost(slug: string, page?: number | 'all'): Promise<BlogPost> {
-  if (env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
+  // eslint-disable-next-line n/no-process-env -- Use process.env.NODE_ENV for tree shaking
+  if (process.env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
     const { readBlogPost } = await import('@trpfrog.net/posts/fs')
     return page === 'all'
       ? readBlogPost(slug, { all: true })
@@ -32,7 +33,8 @@ export async function fetchPost(slug: string, page?: number | 'all'): Promise<Bl
 }
 
 export async function fetchPostList(tag?: string): Promise<BlogPost[]> {
-  if (env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
+  // eslint-disable-next-line n/no-process-env -- Use process.env.NODE_ENV for tree shaking
+  if (process.env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
     const { readAllBlogPosts } = await import('@trpfrog.net/posts/fs')
     return readAllBlogPosts({ tag })
   }
@@ -44,7 +46,8 @@ export async function fetchPostList(tag?: string): Promise<BlogPost[]> {
 }
 
 export async function fetchSlugs(): Promise<string[]> {
-  if (env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
+  // eslint-disable-next-line n/no-process-env -- Use process.env.NODE_ENV for tree shaking
+  if (process.env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
     const { readAllSlugs } = await import('@trpfrog.net/posts/fs')
     return readAllSlugs()
   }
