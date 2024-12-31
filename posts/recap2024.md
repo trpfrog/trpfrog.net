@@ -1,6 +1,7 @@
 ---
 title: A Recap of 2024
 date: 2024-12-31
+updated: 2025-01-01
 tags: 日記
 description: 本当に研究やってた？みたいな記事になった、本当なんだって！
 ---
@@ -185,7 +186,7 @@ https://comic-action.com/episode/4856001361584756651
 
 ### 人妻教師が教え子の女子高生にドはまりする話
 
-![手に持った漫画の表紙、女性キャラクターが描かれている。](/blog/recap2024/DEA3E051-E56F-401C-9854-D89FC42D7FB0_1_105_c.jpg?w=1024&h=768)
+![手に持った小説『人妻教師が教え子の女子高生にドはまりする話』の表紙](/blog/recap2024/DEA3E051-E56F-401C-9854-D89FC42D7FB0_1_105_c.jpg?w=1024&h=768)
 
 ```link-embed
 https://kakuyomu.jp/works/16818093073465768496
@@ -233,7 +234,7 @@ tweet: 人妻教師〜、<b>責任感のある既婚の先生が犯罪・不倫�
 ### ななどなどなど (再読)
 
 
-![漫画の表紙、キャラクターが手を伸ばす姿が描かれている。](/blog/recap2024/24BF81F2-80E2-46FD-AE1B-7F73AFBE855B_1_105_c.jpg?w=1024&h=768)
+![ななどなどなど4巻の表紙](/blog/recap2024/24BF81F2-80E2-46FD-AE1B-7F73AFBE855B_1_105_c.jpg?w=1024&h=768)
 
 ```link-embed
 https://manga.nicovideo.jp/comic/46608
@@ -245,7 +246,7 @@ https://manga.nicovideo.jp/comic/46608
 これもすごいです。
 基本はめちゃテンポ良いギャグで最高です。**こいつギャグ好きすぎだろ**
 
-![アニメ風のキャラクターがレモネードを飲みながら自撮りをしているイラスト。](/blog/recap2024/47741348-D2BE-4460-9358-A3530D581BB5_1_105_c.jpg?w=1024&h=768 "るる萌 神……")
+![高山萌と吉岡るるがレモネードを飲みながら自撮りをしているイラストのタペストリー](/blog/recap2024/47741348-D2BE-4460-9358-A3530D581BB5_1_105_c.jpg?w=1024&h=768 "るる萌 神……")
 
 ここで出てくるヤバい女**高山萌**が素晴らしいです。好きな女 (吉岡るる) に対して犯罪紛い……いや犯罪の ***LOVE*** を見せつけてきて恐ろしいのにも関わらず、行動原理がめちゃくちゃ乙女なところがギャップあって好きです。
 めっちゃ応援したくなる……犯罪なんだけど、こわいよ。重い女が好きな人におすすめです。
@@ -441,7 +442,9 @@ ISElkx8YzxY
 - [ROOLER ALL NIGHT LONG @ BOOTSHAUS (TRAILER)](https://www.youtube.com/watch?v=qA9fsgRrI9Y)
   - これはイベントの告知動画なんですけどひたすら Rooler が断られる流れかわいそうで好き
   - Vertile の断り方ひどすぎてバカウケた
-  - 本編の配信アーカイブはまだ聴けてない、5時間全部聴くのは流石に勇気いる
+  - ~~本編の配信アーカイブはまだ聴けてない、5時間全部聴くのは流石に勇気いる~~
+    - 聴いた、良かった、これ5時間も！？
+    - 今度は All Day Long も聴くぞ (8時間)
 
 ## Apple Music の Recap を見てみよう
 
@@ -473,7 +476,7 @@ ISElkx8YzxY
 良かったやつが全部網羅されているわけではないのですが、いいねボタン押すくらいなのでどれも良かった曲です。
 
 
-<!-- <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/tsmamis-favorites-in-2024/pl.u-r2yBJG4sJX3jz4?l=en"></iframe> -->
+<iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/tsmamis-favorites-in-2024/pl.u-r2yBJG4sJX3jz4?l=en"></iframe>
 
 <!-- page break -->
 
@@ -794,6 +797,10 @@ https://github.com/trpfrog/trpfrog.net/pull/96
 https://github.com/trpfrog/trpfrog.net/pull/101
 ```
 
+![AIつまみアイコンの過去ログ詳細画面。モーダルウィンドウとして表示されており、生成されたアイコン画像が中央に配置されています。その下には、プロンプト、作成日時、使用された生成モデル、画像URLなどの詳細情報が一覧形式で表示されています。また、画面下部には「Delete Image」ボタンが配置されており、画像を削除する操作が可能です。このモーダルは、生成されたアイコンに関するメタデータを確認し、管理するためのものです。](/blog/recap2024/スクリーンショット_2025-01-01_0-20-11.png?w=2528&h=2406)
+
+![ブログ管理画面、記事一覧と操作ボタンが表示。](/blog/recap2024/スクリーンショット_2025-01-01_0-19-32.png?w=2522&h=1510)
+
 もともと AI つまみアイコンの強制再生成などの処理を行うための Admin 画面に `api.trpfrog.net/icongen/admin` を使っていたのですが、
 Hono JSX + HTMX で作っていたのでまあまあメンテが辛く、きちんとした Admin が欲しいねえと思っていました。
 
@@ -978,10 +985,6 @@ FUZ のサブスクは
 
 
 ### 3月
-
-#### ぼざろシーパラコラボ行った
-
-燃え尽き症候群感があった気がする
 
 #### 宇都宮ドライブ行った
 
@@ -1176,7 +1179,7 @@ Defqon.1 配信見てから完全にハマって今に至る
 
 #### LIVE STAGE ぼっち・ざ・ろっく 秀華祭
 
-![エスカレーター上で手に持つキャラクターキーホルダー。](/blog/recap2024/B6563C67-F44C-4B70-8CFC-4C37C09573BE_1_105_c.jpg?w=1024&h=768)
+![LIVE STAGE ぼっち・ざ・ろっくでもらった演者4人の写真のアクリルキーホルダー](/blog/recap2024/B6563C67-F44C-4B70-8CFC-4C37C09573BE_1_105_c.jpg?w=1024&h=768)
 
 ぼ 舞台、すごいぜ
 
@@ -1215,7 +1218,7 @@ https://note.com/shikamatsu/n/nd217dc0617db
 
 #### 研の計算サーバの名前が tsumami になったし、謎の起動画面が出るようになったぞ
 
-![ターミナル画面にサーバーログイン情報とエラー表示](/blog/recap2024/スクリーンショット_2024-12-31_22-01-32.png?w=1600&h=936)
+![ターミナル画面のスクリーンショット。ssh tsumami コマンドで接続されたリモートサーバーのウェルカムメッセージが表示されています。ASCIIアートで描かれたつまみアイコンとともに、「Welcome to tsumami server」というメッセージが出ています](/blog/recap2024/スクリーンショット_2024-12-31_22-01-32.png?w=1600&h=936)
 
 なんだこの研究室
 
@@ -1262,3 +1265,5 @@ https://note.com/shikamatsu/n/nd217dc0617db
 つまみ / tsmami ([@trpfrog](https://twitter.com/TrpFrog))
 
 </div>
+
+追記: ビルドがコケたので公開が2025年になってしまいました。悔しすぎ、皆様明けましておめでとうございます。
