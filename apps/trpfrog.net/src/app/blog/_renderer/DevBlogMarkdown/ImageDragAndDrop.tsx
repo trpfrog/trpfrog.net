@@ -49,6 +49,10 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
   const [recentlyUploaded, setRecentlyUploaded] = useState('')
   const [horizontalImages, setHorizontalImages] = useState(false)
 
+  const markdownCode = horizontalImages
+    ? '```horizontal-images\n' + recentlyUploaded + '\n```'
+    : recentlyUploaded
+
   const { upload, uploadingStatusText } = useImageUploadUsecase({
     generateAltText: generateAltTextOnServer,
     uploadImage: useUploadFunction(props.slug),
@@ -97,11 +101,8 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
                 />
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
-              <PlainCodeBlock fileName={'Recently Uploaded'}>
-                {uploadingStatusText ??
-                  (horizontalImages
-                    ? '```horizontal-images\n' + recentlyUploaded + '\n```'
-                    : recentlyUploaded)}
+              <PlainCodeBlock fileName={'Recently Uploaded'} copyContent={markdownCode}>
+                {uploadingStatusText ?? markdownCode}
               </PlainCodeBlock>
             </div>
           )}

@@ -1,7 +1,4 @@
-'use client'
-
-import { Tweet as ReactTweet, TweetProps, TweetSkeleton } from 'react-tweet'
-import useSWRImmutable from 'swr/immutable'
+import { Tweet as ReactTweet, TweetProps } from 'react-tweet'
 
 import { isTweetAvailable } from './actions'
 
@@ -11,10 +8,7 @@ import { isTweetAvailable } from './actions'
  * @param props TweetProps
  * @constructor
  */
-export function Tweet(props: TweetProps) {
-  const { data: isAvailable, isLoading } = useSWRImmutable(props.id, isTweetAvailable)
-  if (isLoading) {
-    return <TweetSkeleton />
-  }
+export async function Tweet(props: TweetProps) {
+  const isAvailable = props.id ? await isTweetAvailable(props.id) : false
   return isAvailable ? <ReactTweet {...props} /> : props.fallback
 }
