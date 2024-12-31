@@ -131,7 +131,6 @@
     "@vanilla-extract/next-plugin": "^2.4.7",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
-    "babel-plugin-react-compiler": "19.0.0-beta-55955c9-20241229",
     "clipboardy": "^4.0.0",
     "cssnano": "^6.1.2",
     "jsdom": "^25.0.1",
