@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
 
   experimental: {
     mdxRs: true,
+    reactCompiler: true,
     serverActions: {
       bodySizeLimit: '10mb',
     },
