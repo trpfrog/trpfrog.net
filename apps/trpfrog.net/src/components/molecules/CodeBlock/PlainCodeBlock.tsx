@@ -75,7 +75,7 @@ export function CodeLinkButton(props: { url: string }) {
   )
 }
 
-export async function PlainCodeBlock(props: PlainCodeBlockProps) {
+export function PlainCodeBlock(props: PlainCodeBlockProps) {
   const {
     children,
     fileName,
@@ -102,7 +102,7 @@ export async function PlainCodeBlock(props: PlainCodeBlockProps) {
         </div>
       )}
       <div dangerouslySetInnerHTML={dangerouslySetInnerHTML} className={styles.codeWrapper()}>
-        {children && <pre>{children}</pre>}
+        {children && <pre className="tw-p-1">{children}</pre>}
       </div>
     </div>
   )
