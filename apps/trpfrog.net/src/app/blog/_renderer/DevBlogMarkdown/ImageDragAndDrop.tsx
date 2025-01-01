@@ -4,10 +4,10 @@ import * as React from 'react'
 
 import { PlainCodeBlock } from '@/components/molecules/CodeBlock/PlainCodeBlock'
 
-import { generateAltTextOnServer } from './generateAltTextOnServer'
+import { generateAltTextOnServer } from './actions/generateAltTextOnServer'
+import { useImageUploadUsecase } from './hooks/useImageUploadUsecase'
+import { useUploadFunction } from './hooks/useUploadFunction'
 import styles from './ImageDragAndDrop.module.css'
-import { useImageUploadUsecase } from './useImageUploadUsecase'
-import { useUploadFunction } from './useUploadFunction'
 
 function useImageDragAndDrop(onDroppedImage: (files: File[]) => Promise<void>) {
   const [isDragging, setIsDragging] = useState(false)
