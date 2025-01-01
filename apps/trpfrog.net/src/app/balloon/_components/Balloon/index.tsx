@@ -3,6 +3,7 @@
 import { useId, useState } from 'react'
 
 import { useReward } from 'react-rewards'
+import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
 
 import * as styles from './index.css.ts'
@@ -16,7 +17,7 @@ type BalloonProps = {
   width: string
   height: string
   isBurst: boolean
-  color: (typeof balloonColors)[number]
+  color: (typeof balloonColors)[number] | 'random'
   onBurst?: () => void
 }
 
@@ -57,6 +58,13 @@ const colors: Record<(typeof balloonColors)[number], string[]> = {
 export const Balloon = (props: BalloonProps) => {
   const balloonId = useId()
   const { playSound } = useBalloonSound()
+  const [seed] = useState(balloonId + Date.now().toString())
+
+  const color =
+    props.color === 'random'
+      ? balloonColors[Math.floor(seedrandom(seed)() * balloonColors.length)]
+      : props.color
+
   const { reward } = useReward(balloonId, 'confetti', {
     zIndex: 100,
     startVelocity: 8,
@@ -65,10 +73,10 @@ export const Balloon = (props: BalloonProps) => {
     elementSize: 6,
     spread: 50,
     position: 'absolute',
-    colors: colors[props.color],
+    colors: colors[color],
   })
 
-  const ariaLabel = match(props)
+  const ariaLabel = match({ isBurst: props.isBurst, color })
     .with({ isBurst: true }, () => '割れた風船')
     .with({ color: 'blue' }, () => '青い風船')
     .with({ color: 'green' }, () => '緑の風船')
@@ -77,6 +85,7 @@ export const Balloon = (props: BalloonProps) => {
 
   return (
     <button
+      suppressHydrationWarning={props.color === 'random'}
       style={{
         width: props.width,
         height: props.height,
@@ -86,7 +95,7 @@ export const Balloon = (props: BalloonProps) => {
       aria-label={ariaLabel}
       className={`${styles.balloon} ${props.className}`}
       data-broken-balloon={props.isBurst}
-      data-balloon-color={props.color}
+      data-balloon-color={color}
       onClick={() => {
         if (!props.isBurst) {
           playSound()
