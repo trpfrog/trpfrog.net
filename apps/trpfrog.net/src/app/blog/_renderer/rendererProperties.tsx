@@ -79,7 +79,7 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
         <RenderCustomCodeBlockComponent
           name={lang}
           markdown={children as string}
-          context={entry}
+          context={{ blog: entry }}
           useDevComponent={isDevClient}
         />
       )

@@ -15,7 +15,9 @@ export function isValidCustomCodeBlockComponentName(name: string): name is Compo
 export async function RenderCustomCodeBlockComponent(props: {
   name: ComponentKeys
   markdown: string
-  context?: BlogPost
+  context: {
+    blog?: BlogPost
+  }
   useDevComponent?: boolean
 }) {
   async function Render(rendererProps: { markdown: string; mode?: 'block' | 'inline' }) {
@@ -23,7 +25,7 @@ export async function RenderCustomCodeBlockComponent(props: {
     switch (mode) {
       case 'block': {
         const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
-        return <ArticleRenderer toRender={markdown} entry={props.context} />
+        return <ArticleRenderer toRender={markdown} entry={props.context.blog} />
       }
       case 'inline': {
         const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')

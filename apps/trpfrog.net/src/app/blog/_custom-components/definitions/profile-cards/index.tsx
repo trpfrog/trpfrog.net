@@ -11,6 +11,6 @@ export const profileCardsCCBC: CustomCodeBlockComponent = {
       .filter(e => e.success)
       .map(e => e.data)
 
-    return <ProfileCards profileDataList={profileDataList} held={context?.held} />
+    return <ProfileCards profileDataList={profileDataList} held={context.blog?.held} />
   },
 }

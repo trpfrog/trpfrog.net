@@ -28,12 +28,12 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
     const [name, ...templateLines] = markdown.split('\n')
     try {
-      definedComponents[`${context?.slug}/${name}`] = UserFunctionSchema.parse(
+      definedComponents[`${context.blog?.slug}/${name}`] = UserFunctionSchema.parse(
         Function('props', templateLines.join('\n')),
       )
     } catch (e) {
       console.error(e)
-      definedComponents[`${context?.slug}/${name}`] = () => {
+      definedComponents[`${context.blog?.slug}/${name}`] = () => {
         throw e
       }
     }
@@ -64,7 +64,7 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
       use?: string
     } & Record<string, string>
 
-    const template = definedComponents[`${context?.slug}/${name}`]
+    const template = definedComponents[`${context.blog?.slug}/${name}`]
     if (!template) {
       if (env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Component ${name} not found`} />

@@ -4,13 +4,13 @@ import { CustomCodeBlockComponent } from '../types'
 
 export const nextPageCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
-    if (!context) return <></>
+    if (!context.blog) return <></>
     return (
       <div style={{ textAlign: 'center' }}>
         <div style={{ margin: '1em 0' }}>
           <PageTransferButton
-            entry={context}
-            nextPage={context.currentPage + 1}
+            entry={context.blog}
+            nextPage={context.blog.currentPage + 1}
             buttonText={`Next: ${markdown} →`}
           />
         </div>

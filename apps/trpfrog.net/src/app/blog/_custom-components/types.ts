@@ -4,7 +4,7 @@ import { BlogPost } from '@trpfrog.net/posts'
 
 type CustomCodeBlockComponentProps = {
   markdown: string
-  context?: BlogPost
+  context: { blog?: BlogPost }
   Render: (props: { markdown: string; mode?: 'block' | 'inline' }) => ReactNode
 }
 
