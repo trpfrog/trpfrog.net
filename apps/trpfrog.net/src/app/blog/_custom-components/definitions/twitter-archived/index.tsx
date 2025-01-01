@@ -8,7 +8,7 @@ import { env } from '@/env/server'
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import { TwitterArchived, TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 
-import { ArticleParts } from '@blog/_components/ArticleParts'
+import { CustomCodeBlockComponent } from '../../types'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
@@ -25,16 +25,15 @@ function Fallback(props: { content: string; error: z.ZodError }) {
   }
 }
 
-export const twitterArchiveParts = {
-  name: 'twitter-archived',
-  Component: React.memo(function TwitterArchive({ content }) {
-    const rawTweetData = parseColonSeparatedDict(content)
+export const twitterArchivedCCBC: CustomCodeBlockComponent = {
+  Component: ({ markdown }) => {
+    const rawTweetData = parseColonSeparatedDict(markdown)
     let props: TwitterArchivedProps
     try {
       props = generateTwitterArchiveProps(rawTweetData)
     } catch (error) {
-      return <Fallback content={content} error={error as z.ZodError} />
+      return <Fallback content={markdown} error={error as z.ZodError} />
     }
     return <TwitterArchived {...props} />
-  }),
-} as const satisfies ArticleParts
+  },
+}

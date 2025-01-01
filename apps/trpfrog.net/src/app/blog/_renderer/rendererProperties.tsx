@@ -21,12 +21,13 @@ import { twMerge } from '@/lib/tailwind/merge'
 
 import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
-import {
-  isValidExtraCodeBlockComponentName,
-  OriginalMarkdownComponent,
-} from '@blog/_components/OriginalMarkdownComponent'
 import type { MarkdownOptions } from '@blog/_renderer/MarkdownOptions'
 import styles from '@blog/_styles/blog.module.css'
+
+import {
+  isValidCustomCodeBlockComponentName,
+  RenderCustomCodeBlockComponent,
+} from '../_custom-components/RenderCustomComponent'
 
 import type { SerializeOptions } from '@/../node_modules/next-mdx-remote/dist/types'
 
@@ -72,13 +73,13 @@ const formatCodeComponentFactory = (entry?: BlogPost) => {
     // prettier-ignore
     const { lang, fileName, url } = parseLanguageName(props.className ?? '')
 
-    if (isValidExtraCodeBlockComponentName(lang)) {
+    if (isValidCustomCodeBlockComponentName(lang)) {
       const isDevClient = env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
-        <OriginalMarkdownComponent
-          componentName={lang}
-          content={children as string}
-          entry={entry}
+        <RenderCustomCodeBlockComponent
+          name={lang}
+          markdown={children as string}
+          context={entry}
           useDevComponent={isDevClient}
         />
       )

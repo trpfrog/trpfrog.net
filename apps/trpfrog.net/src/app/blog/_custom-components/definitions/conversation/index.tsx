@@ -1,20 +1,18 @@
 import { Talk } from '@/components/atoms/Talk'
 
-import { ArticleParts } from '@blog/_components/ArticleParts'
+import { CustomCodeBlockComponent } from '../../types'
 
 import { parseConversation } from './parse'
 
-export const conversationParts = {
-  name: 'conversation',
-  Component: async ({ content }) => {
-    const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
-    const conversation = parseConversation(content)
+export const conversationCCBC: CustomCodeBlockComponent = {
+  Component: async ({ markdown, Render }) => {
+    const conversation = parseConversation(markdown)
     return (
       <Talk style={{ margin: '1rem' }}>
         {conversation.map(({ speaker, comment, outOfComment }, idx) => (
           <Talk.Item key={speaker + '-' + idx} speaker={speaker} outOfComment={outOfComment}>
             {comment ? (
-              <RenderInlineMarkdown markdown={comment} />
+              <Render markdown={comment} mode="inline" />
             ) : (
               // スペースが入っていないとスタイルが崩れるので、&nbsp;を入れる
               <>&nbsp;</>
@@ -24,4 +22,4 @@ export const conversationParts = {
       </Talk>
     )
   },
-} as const satisfies ArticleParts
+}

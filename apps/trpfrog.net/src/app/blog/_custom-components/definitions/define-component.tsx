@@ -5,7 +5,7 @@ import { env } from '@/env/server'
 
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
-import { ArticleParts } from '@blog/_components/ArticleParts'
+import { CustomCodeBlockComponent } from '../types'
 
 const UserFunctionSchema = z.function().args(z.unknown()).returns(z.string())
 const definedComponents: Record<string, z.output<typeof UserFunctionSchema>> = {}
@@ -24,23 +24,22 @@ const definedComponents: Record<string, z.output<typeof UserFunctionSchema>> = {
  * ```
  * ````
  */
-export const defineComponentParts = {
-  name: 'define-component',
-  Component: ({ content, entry }) => {
-    const [name, ...templateLines] = content.split('\n')
+export const defineComponentCCBC: CustomCodeBlockComponent = {
+  Component: ({ markdown, context }) => {
+    const [name, ...templateLines] = markdown.split('\n')
     try {
-      definedComponents[`${entry?.slug}/${name}`] = UserFunctionSchema.parse(
+      definedComponents[`${context?.slug}/${name}`] = UserFunctionSchema.parse(
         Function('props', templateLines.join('\n')),
       )
     } catch (e) {
       console.error(e)
-      definedComponents[`${entry?.slug}/${name}`] = () => {
+      definedComponents[`${context?.slug}/${name}`] = () => {
         throw e
       }
     }
     return <></>
   },
-} as const satisfies ArticleParts
+}
 
 /**
  * Component parts that use a defined component.
@@ -59,15 +58,13 @@ export const defineComponentParts = {
  * ```
  * ````
  */
-export const useDefinedComponentParts = {
-  name: 'use-defined-component',
-  Component: async ({ content, entry }) => {
-    const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
-    const { use: name, ...props } = yaml.load(content) as {
+export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
+  Component: async ({ markdown, context, Render }) => {
+    const { use: name, ...props } = yaml.load(markdown) as {
       use?: string
     } & Record<string, string>
 
-    const template = definedComponents[`${entry?.slug}/${name}`]
+    const template = definedComponents[`${context?.slug}/${name}`]
     if (!template) {
       if (env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Component ${name} not found`} />
@@ -77,7 +74,7 @@ export const useDefinedComponentParts = {
     }
     try {
       const rendered = template(props)
-      return <ArticleRenderer toRender={rendered} entry={entry} />
+      return <Render markdown={rendered} />
     } catch (e) {
       console.error(e)
       if (env.NODE_ENV === 'development') {
@@ -87,4 +84,4 @@ export const useDefinedComponentParts = {
       }
     }
   },
-} as const satisfies ArticleParts
+}

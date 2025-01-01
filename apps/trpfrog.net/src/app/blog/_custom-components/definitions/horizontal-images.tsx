@@ -1,14 +1,13 @@
-import { ArticleParts } from '@blog/_components/ArticleParts'
 import { ImageCaption, BlogImage } from '@blog/_components/BlogImage'
 
-export const horizontalImagesParts = {
-  name: 'horizontal-images',
-  Component: async ({ content }) => {
-    const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+import { CustomCodeBlockComponent } from '../types'
+
+export const horizontalImagesCCBC: CustomCodeBlockComponent = {
+  Component: async ({ markdown, Render }) => {
     const regex = /^!\[(.*)]\((.*?)( "(.*)")?\)/
 
     type ImageSource = { src: string; alt: string; title?: string }
-    const imageSources: ImageSource[] = content
+    const imageSources: ImageSource[] = markdown
       .split('\n')
       .map(line => line.match(regex))
       .filter(match => match !== null)
@@ -18,7 +17,7 @@ export const horizontalImagesParts = {
         title: match[4],
       }))
 
-    const caption = content
+    const caption = markdown
       .split('\n')
       .filter(line => !line.match(regex))
       .map(line => line.trim())
@@ -47,11 +46,11 @@ export const horizontalImagesParts = {
         {caption != '' && (
           <div style={{ marginTop: 3 }}>
             <ImageCaption>
-              <RenderInlineMarkdown markdown={caption} />
+              <Render markdown={caption} mode="inline" />
             </ImageCaption>
           </div>
         )}
       </div>
     )
   },
-} as const satisfies ArticleParts
+}
