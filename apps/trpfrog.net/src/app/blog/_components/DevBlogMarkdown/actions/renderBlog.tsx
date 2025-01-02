@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { match } from 'ts-pattern'
 import { z } from 'zod'
 
-import { BlogMarkdown } from '@blog/_renderer/BlogMarkdown'
+import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 
 const pageNumberSchema = z.number().int().positive().or(z.literal('all')).catch(1)
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { ImageDragAndDropUploader } from '@blog/_renderer/DevBlogMarkdown/ImageDragAndDrop.tsx'
+import { ImageDragAndDropUploader } from '@blog/_components/DevBlogMarkdown/ImageDragAndDrop.tsx'
 
 import { ArticleSkeleton } from '../../[slug]/_components/ArticleSkeleton'
 
