@@ -7,7 +7,7 @@ import { Block } from '@/components/molecules/Block'
 import { PageNavigation } from '@blog/_components/PageNavigation'
 import styles from '@blog/_styles/blog.module.css'
 
-import { ArticleRenderer } from './ArticleRenderer'
+import { RenderMarkdown } from './RenderMarkdown'
 
 type Props = {
   entry: BlogPost
@@ -30,7 +30,7 @@ export const BlogMarkdown = memo(function InnerBlogMarkdown(props: Props) {
             </div>
           )}
           <article className={styles.post} style={{ wordBreak: 'break-word' }}>
-            <ArticleRenderer toRender={content} entry={entry} />
+            <RenderMarkdown markdown={content} mode="block" context={{ blog: entry }} />
           </article>
           {idx === markdown.length - 1 && (
             <div style={{ marginTop: '1rem' }}>

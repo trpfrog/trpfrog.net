@@ -1,4 +1,4 @@
-import { BlogPost } from '@trpfrog.net/posts'
+import type { MarkdownContext } from '@blog/_renderer/RenderMarkdown'
 
 import { components } from './components'
 
@@ -15,23 +15,13 @@ export function isValidCustomCodeBlockComponentName(name: string): name is Compo
 export async function RenderCustomCodeBlockComponent(props: {
   name: ComponentKeys
   markdown: string
-  context: {
-    blog?: BlogPost
-  }
+  context: MarkdownContext
   useDevComponent?: boolean
 }) {
   async function Render(rendererProps: { markdown: string; mode?: 'block' | 'inline' }) {
+    const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
     const { markdown, mode = 'block' } = rendererProps
-    switch (mode) {
-      case 'block': {
-        const { ArticleRenderer } = await import('@blog/_renderer/ArticleRenderer')
-        return <ArticleRenderer toRender={markdown} entry={props.context.blog} />
-      }
-      case 'inline': {
-        const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
-        return <RenderInlineMarkdown markdown={markdown} />
-      }
-    }
+    return <RenderMarkdown markdown={markdown} mode={mode} context={props.context} />
   }
 
   const comp = components[props.name]

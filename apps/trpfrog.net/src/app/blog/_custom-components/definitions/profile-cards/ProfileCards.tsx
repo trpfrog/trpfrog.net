@@ -21,7 +21,7 @@ export const profileDataSchema = z.object({
 export type ProfileData = z.infer<typeof profileDataSchema>
 
 async function CardFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
-  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+  const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
   return (
     <div className={styles.profile_card_grid}>
       {personalDataList.map(personalData => (
@@ -41,7 +41,7 @@ async function CardFormat({ personalDataList }: { personalDataList: ProfileData[
             </span>
           </div>
           <div className={styles.description}>
-            <RenderInlineMarkdown markdown={personalData.description} />
+            <RenderMarkdown markdown={personalData.description} mode="inline" />
           </div>
         </div>
       ))}
@@ -50,7 +50,7 @@ async function CardFormat({ personalDataList }: { personalDataList: ProfileData[
 }
 
 async function ListFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
-  const { RenderInlineMarkdown } = await import('@blog/_renderer/RenderInlineMarkdown')
+  const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
   return (
     <UnorderedList>
       {personalDataList.map(personalData => (
@@ -67,7 +67,7 @@ async function ListFormat({ personalDataList }: { personalDataList: ProfileData[
               </InlineLink>
             </Li>
             <Li>
-              <RenderInlineMarkdown markdown={personalData.description} />
+              <RenderMarkdown markdown={personalData.description} mode="inline" />
             </Li>
           </UnorderedList>
         </Fragment>
