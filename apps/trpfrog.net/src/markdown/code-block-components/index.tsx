@@ -1,6 +1,6 @@
-import type { MarkdownContext } from '@blog/_renderer/RenderMarkdown'
-
 import { components } from './components'
+
+import type { MarkdownContext } from '@/markdown/types'
 
 type ComponentKeys = keyof typeof components
 
@@ -19,7 +19,7 @@ export async function RenderCustomCodeBlockComponent(props: {
   useDevComponent?: boolean
 }) {
   async function Render(rendererProps: { markdown: string; mode?: 'block' | 'inline' }) {
-    const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
+    const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')
     const { markdown, mode = 'block' } = rendererProps
     return <RenderMarkdown markdown={markdown} mode={mode} context={props.context} />
   }

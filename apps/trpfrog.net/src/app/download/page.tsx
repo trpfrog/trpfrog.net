@@ -13,7 +13,7 @@ import { A } from '@/components/wrappers'
 
 import { readMarkdowns } from '@/lib/mdLoader'
 
-import { RenderMarkdown } from '../blog/_renderer/RenderMarkdown'
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 export const metadata = {
   title: 'Download',

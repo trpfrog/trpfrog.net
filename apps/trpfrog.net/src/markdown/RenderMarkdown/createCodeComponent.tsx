@@ -6,13 +6,14 @@ import { env } from '@/env/server'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 
+import styles from '@blog/_styles/blog.module.css'
+
+import type { MarkdownContext } from '@/markdown/types'
+
 import {
   isValidCustomCodeBlockComponentName,
   RenderCustomCodeBlockComponent,
-} from '@blog/_custom-components/RenderCustomComponent'
-import styles from '@blog/_styles/blog.module.css'
-
-import { MarkdownContext } from './types'
+} from '@/markdown/code-block-components'
 
 function parseLanguageName(className: string) {
   const rawLanguage = className.replace('language-', '')

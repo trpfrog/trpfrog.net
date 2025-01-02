@@ -12,10 +12,10 @@ import { A } from '@/components/wrappers'
 import { formatDateToDisplay } from '@/lib/date'
 import { readMarkdowns } from '@/lib/mdLoader'
 
-import { RenderMarkdown } from '../blog/_renderer/RenderMarkdown'
-
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
+
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 export const metadata = {
   title: 'Works',

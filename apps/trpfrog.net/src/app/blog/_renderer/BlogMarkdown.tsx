@@ -7,7 +7,7 @@ import { Block } from '@/components/molecules/Block'
 import { PageNavigation } from '@blog/_components/PageNavigation'
 import styles from '@blog/_styles/blog.module.css'
 
-import { RenderMarkdown } from './RenderMarkdown'
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 type Props = {
   entry: BlogPost

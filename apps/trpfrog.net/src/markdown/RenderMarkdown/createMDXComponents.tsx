@@ -13,7 +13,8 @@ import { BlogImage } from '@blog/_components/BlogImage'
 import styles from '@blog/_styles/blog.module.css'
 
 import { createCodeComponent } from './createCodeComponent'
-import { MarkdownContext } from './types'
+
+import { MarkdownContext } from '@/markdown/types'
 
 export function createMDXComponents(options?: {
   inline?: boolean

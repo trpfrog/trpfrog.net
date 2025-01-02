@@ -22,7 +22,7 @@ export const ImageCaption = ({ children }: { children: React.ReactNode }) => (
 )
 
 async function TakenBy(props: { photographer: string }) {
-  const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
+  const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')
   return (
     <div className={styles.taken_by}>
       <small>
@@ -34,7 +34,7 @@ async function TakenBy(props: { photographer: string }) {
 }
 
 export async function BlogImage({ src, alt, style, spoiler, isVideo, ...props }: BlogImageProps) {
-  const { RenderMarkdown } = await import('@blog/_renderer/RenderMarkdown')
+  const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')
   let caption = props.caption ?? ''
   let takenBy: string | undefined
 

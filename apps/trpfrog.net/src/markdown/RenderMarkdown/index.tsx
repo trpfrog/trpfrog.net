@@ -9,9 +9,8 @@ import remarkToc from 'remark-toc'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { createMDXComponents } from './createMDXComponents'
-import { MarkdownContext } from './types'
 
-export { type MarkdownContext } from './types'
+import { type MarkdownContext } from '@/markdown/types'
 
 export function RenderMarkdown(props: {
   markdown: string

@@ -1,8 +1,8 @@
 import { Talk } from '@/components/atoms/Talk'
 
-import { CustomCodeBlockComponent } from '../../types'
-
 import { parseConversation } from './parse'
+
+import { CustomCodeBlockComponent } from '@/markdown/code-block-components/types'
 
 export const conversationCCBC: CustomCodeBlockComponent = {
   Component: async ({ markdown, Render }) => {
