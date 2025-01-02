@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -8,10 +10,10 @@ import Link from 'next/link'
 import { RichButton } from '@/components/atoms/RichButton'
 import { A } from '@/components/wrappers'
 
+import { useShareTweetURL } from '@/hooks/useShareTweetURL'
+
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
-
-import { ShareSpan } from './ShareSpan'
 
 type EntryButtonProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
@@ -20,14 +22,15 @@ type EntryButtonProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> 
 
 export function RichEntryButtons(props: EntryButtonProps) {
   const { post, extended, ...rest } = props
+  const tweetURL = useShareTweetURL(`/blog/${post.slug}`)
   return (
     <div {...rest} style={{ display: 'flex' }}>
       <A href={'/blog'}>
         <EntryButton icon={faArrowLeft} text={'記事一覧'} />
       </A>
-      <ShareSpan slug={post.slug}>
+      <A href={tweetURL} openInNewTab>
         <EntryButton icon={faTwitter} text={'ツイート'} />
-      </ShareSpan>
+      </A>
       <A href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         <EntryButton icon={faPencil} text={'訂正依頼'} />
       </A>
@@ -37,6 +40,7 @@ export function RichEntryButtons(props: EntryButtonProps) {
 }
 
 export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
+  const tweetURL = useShareTweetURL(`/blog/${post.slug}`)
   return (
     <div
       style={{
@@ -51,9 +55,9 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       <RichButton as={Link} href={'/blog'}>
         記事一覧
       </RichButton>
-      <ShareSpan slug={post.slug}>
+      <A href={tweetURL} openInNewTab>
         <RichButton as="span">ツイート</RichButton>
-      </ShareSpan>
+      </A>
       <RichButton as={A} href={'https://github.com/TrpFrog/trpfrog.net/issues'}>
         訂正リクエスト
       </RichButton>
