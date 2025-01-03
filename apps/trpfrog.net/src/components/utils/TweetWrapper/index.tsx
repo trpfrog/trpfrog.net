@@ -15,7 +15,7 @@ export async function Tweet(props: TweetProps) {
   const isAvailable = props.id ? await isTweetAvailable(props.id) : false
   const id = props.id
 
-  props.fallback ??= (
+  const fallback = props.fallback ?? (
     <p className="tw-italic tw-text-center">
       <b>Tweet not found</b>
       <br />
@@ -26,14 +26,14 @@ export async function Tweet(props: TweetProps) {
   )
 
   if (!isAvailable) {
-    return props.fallback
+    return fallback
   }
 
   return (
     <div className="tw-grid tw-place-items-center">
       <div style={{ width: 'min(550px, 100%)' }}>
         <TweetThemeDataWrapper>
-          <ReactTweet {...props} />
+          <ReactTweet {...props} fallback={fallback} />
         </TweetThemeDataWrapper>
       </div>
     </div>
