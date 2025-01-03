@@ -1,12 +1,14 @@
 import { CSSProperties } from 'react'
 import * as React from 'react'
 
+import { Metadata } from 'next'
+
 import { WavyTitle } from '@/components/atoms/WavyTitle'
 import { Block } from '@/components/molecules/Block'
 
 import { twMerge } from '@/lib/tailwind/merge'
 
-type Props = {
+interface TitleProps {
   title?: string
   description?: string
   ribbonText?: string
@@ -17,7 +19,7 @@ type Props = {
   className?: string
 }
 
-export const Title: React.FunctionComponent<Props> = props => {
+export const Title: React.FunctionComponent<TitleProps> = props => {
   const { children, title, description, showDefaultText = true } = props
 
   return (
@@ -35,4 +37,17 @@ export const Title: React.FunctionComponent<Props> = props => {
       </Block>
     </>
   )
+}
+
+export function createMetadataWithTitle(metadata: Metadata) {
+  return {
+    ...metadata,
+    Title: (props: TitleProps) => (
+      <Title
+        title={(metadata.title as string) ?? undefined}
+        description={(metadata.description as string) ?? undefined}
+        {...props}
+      />
+    ),
+  }
 }

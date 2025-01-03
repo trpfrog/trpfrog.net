@@ -1,13 +1,11 @@
 import fs from 'fs/promises'
 import * as path from 'path'
 
-import { Metadata } from 'next'
-
 import yaml from 'js-yaml'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import { Title } from '@/components/organisms/Title'
+import { createMetadataWithTitle } from '@/components/organisms/Title'
 
 import styles from './style.module.css'
 
@@ -17,10 +15,10 @@ type Cert = {
   month: number
 }
 
-export const metadata = {
+export const metadata = createMetadataWithTitle({
   title: '免許・資格',
   description: 'つまみさんの解除した実績を自慢するところです。',
-} satisfies Metadata
+})
 
 export default async function Index() {
   const yamlPath = path.join(process.cwd(), 'src', 'app', 'certification', 'certification.yaml')
@@ -31,7 +29,7 @@ export default async function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={metadata.title} description={metadata.description} />
+      <metadata.Title />
       <Block>
         <div id={styles.cert_grid}>
           {certs.map(({ name, year, month }, index) => (

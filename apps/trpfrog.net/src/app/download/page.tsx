@@ -1,7 +1,5 @@
 import * as path from 'path'
 
-import { Metadata } from 'next'
-
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { WorksFrontmatterSchema } from '@/app/download/schema'
@@ -10,17 +8,17 @@ import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-import { Title } from '@/components/organisms/Title'
+import { createMetadataWithTitle } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
 
 import { readMarkdowns } from '@/lib/mdLoader'
 
 import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 
-export const metadata = {
+export const metadata = createMetadataWithTitle({
   title: 'Download',
   description: '壁紙などダウンロードできるコンテンツの提供ページです。',
-} satisfies Metadata
+})
 
 export default async function Index() {
   const contents = await readMarkdowns(
@@ -30,7 +28,7 @@ export default async function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={metadata.title} description={metadata.description} />
+      <metadata.Title />
       {contents.map(({ metadata, content }) => {
         return (
           <Block key={metadata.title} title={metadata.title}>

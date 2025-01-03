@@ -1,16 +1,14 @@
-import type { Metadata } from 'next'
-
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import { Title } from '@/components/organisms/Title'
+import { createMetadataWithTitle } from '@/components/organisms/Title'
 
-export const metadata = {
+export const metadata = createMetadataWithTitle({
   title: 'Stickers',
   description: 'つまみスタンプの素材集です',
-} satisfies Metadata
+})
 
 export default function Index() {
   const imagePaths: ImagePaths[] = Array.from(Array(80), (_, k) => k).map(i => {
@@ -22,7 +20,7 @@ export default function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={metadata.title}>
+      <metadata.Title>
         <p>
           つまみスタンプの元画像の5倍に拡大したやつです。
           <br />
@@ -31,7 +29,7 @@ export default function Index() {
         <InlineLink href={'https://store.line.me/stickershop/product/8879469/ja'}>
           LINEスタンプ発売中！
         </InlineLink>
-      </Title>
+      </metadata.Title>
       <Block>
         <ImageList images={imagePaths} />
       </Block>

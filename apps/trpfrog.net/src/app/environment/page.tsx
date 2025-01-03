@@ -3,13 +3,11 @@ import * as path from 'path'
 
 import { Fragment } from 'react'
 
-import { Metadata } from 'next'
-
 import yaml from 'js-yaml'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-import { Title } from '@/components/organisms/Title'
+import { createMetadataWithTitle } from '@/components/organisms/Title'
 import { H3, Li, UnorderedList } from '@/components/wrappers'
 
 import { GadgetIntro } from './GadgetIntro'
@@ -64,10 +62,10 @@ function Itemize(props: { children: StringItemizeRecord | string | undefined }) 
   )
 }
 
-export const metadata = {
+export const metadata = createMetadataWithTitle({
   title: 'Environment',
   description: 'つまみさんのデスク周りとか所持デバイスとか',
-} satisfies Metadata
+})
 
 export default async function Index() {
   // read yaml
@@ -78,10 +76,10 @@ export default async function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={metadata.title} description={metadata.description}>
+      <metadata.Title>
         <p>Last updated: 2021/12/11</p>
         <GadgetIntro name="" imagePath="desk" />
-      </Title>
+      </metadata.Title>
 
       {Object.entries(items).map(([key, genre]) => (
         <Block title={genre.categoryName} h2icon="think" key={key}>

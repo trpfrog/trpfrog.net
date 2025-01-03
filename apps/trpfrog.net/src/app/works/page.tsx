@@ -1,14 +1,12 @@
 import * as path from 'path'
 
-import { Metadata } from 'next'
-
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-import { Title } from '@/components/organisms/Title'
+import { createMetadataWithTitle } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
 
 import { formatDateToDisplay } from '@/lib/date'
@@ -19,10 +17,10 @@ import { getMarkdownOptions } from '@blog/_renderer/rendererProperties'
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
 
-export const metadata = {
+export const metadata = createMetadataWithTitle({
   title: 'Works',
   description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。',
-} satisfies Metadata
+})
 
 export default async function Index() {
   // load all md files under /app/works/contents/*.md
@@ -33,9 +31,9 @@ export default async function Index() {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={metadata.title} description={metadata.description}>
+      <metadata.Title>
         <p>最終更新: 2023/5/31</p>
-      </Title>
+      </metadata.Title>
       {contents.map(({ metadata, content }) => {
         return (
           <Block key={metadata.title} title={metadata.title} h2icon={metadata.h2icon}>
