@@ -3,6 +3,7 @@ import React from 'react'
 import { MDXComponents } from 'mdx/types'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
+import { RichButton } from '@/components/atoms/RichButton'
 import * as Wrapper from '@/components/wrappers'
 
 import { twJoin, twMerge } from '@/lib/tailwind/merge'
@@ -92,6 +93,10 @@ export function createMDXComponents(options?: {
     table: props => {
       const { ref, className, ...rest } = props
       return <Wrapper.Table className={twMerge('tw-mx-auto', className)} {...rest} />
+    },
+
+    button: props => {
+      return <RichButton as="button" {...props} />
     },
   }
 }
