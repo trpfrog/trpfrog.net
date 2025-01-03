@@ -12,6 +12,23 @@ export function parseTitleAndBody(rawText: string): {
   return { title, body }
 }
 
+// Find the number of colons used as separators
+function extractSeparator(line: string, sepChar = ':') {
+  const firstColonPos = line.indexOf(sepChar)
+  if (firstColonPos < 0) {
+    throw new Error('No separator found')
+  }
+
+  let separator = sepChar
+  for (let pos = firstColonPos + 1; pos < line.length; pos++) {
+    if (line[pos] !== sepChar) {
+      break
+    }
+    separator += sepChar
+  }
+  return separator
+}
+
 /**
  * Parse a list of key-value pairs separated by colons (allow duplicate keys)
  * @param rawText
@@ -19,15 +36,16 @@ export function parseTitleAndBody(rawText: string): {
 export function parseColonSeparatedList(rawText: string): { key: string; value: string }[] {
   const lines = rawText.trim().split('\n')
   const list: { key: string; value: string }[] = []
+  const separator = extractSeparator(lines[0])
 
   for (const line of lines) {
-    if (line.includes(':')) {
-      // if line has colon, split it into key and value
-      const [key, ...values] = line.split(':')
-      const value = values.join(':').trim() // trim both sides
+    if (line.includes(separator)) {
+      // if line has separator, split it into key and value
+      const [key, ...values] = line.split(separator)
+      const value = values.join(separator).trim() // trim both sides
       list.push({ key: key.trim(), value })
     } else if (list.length > 0) {
-      // if line has no colon, append it to the last value
+      // if line has no separator, append it to the last value
       list[list.length - 1].value += '\n' + line.trimEnd() // trim right side
     }
   }
