@@ -11,6 +11,7 @@ import { horizontalImagesCCBC } from './definitions/horizontal-images'
 import { horizontalScrollCCBC } from './definitions/horizontal-scroll'
 import { ignoreReadCountCCBC } from './definitions/ignore-read-count'
 import { linkEmbedCCBC } from './definitions/link-embed'
+import { markdownExampleCCBC } from './definitions/markdown-example'
 import { mermaidCCBC } from './definitions/mermaid'
 import { nextPageCCBC } from './definitions/next-page'
 import { profileCardsCCBC } from './definitions/profile-cards'
@@ -49,4 +50,5 @@ export const components = {
   'use-effect': markdownUseEffectCCBC,
   'define-component': defineComponentCCBC,
   'use-defined-component': useDefinedComponentCCBC,
+  'markdown-example': markdownExampleCCBC,
 } as const satisfies Record<string, CustomCodeBlockComponent>
