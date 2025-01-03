@@ -43,6 +43,7 @@ export function createMDXComponents(options?: {
       return <Tag {...props} />
     },
 
+    h1: () => null, // disable h1 tag
     h2: ({ ref, ...props }) => <BlogH2 {...props} />,
     h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw-mt-8" />,
     h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
