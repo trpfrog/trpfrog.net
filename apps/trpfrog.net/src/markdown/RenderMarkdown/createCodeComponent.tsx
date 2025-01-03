@@ -1,7 +1,5 @@
 import React, { ReactNode, ComponentProps } from 'react'
 
-import 'katex/dist/katex.min.css'
-
 import { env } from '@/env/server'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'

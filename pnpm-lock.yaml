@@ -389,6 +389,9 @@ importers:
       '@twemoji/api':
         specifier: ^15.1.0
         version: 15.1.0
+      '@types/katex':
+        specifier: ^0.16.7
+        version: 0.16.7
       '@vanilla-extract/css':
         specifier: ^1.16.1
         version: 1.16.1
@@ -455,6 +458,9 @@ importers:
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
+      katex:
+        specifier: ^0.16.19
+        version: 0.16.19
       lru-cache:
         specifier: ^10.4.3
         version: 10.4.3
@@ -758,7 +764,7 @@ importers:
     dependencies:
       vitest:
         specifier: ^1.5.2
-        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
+        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
 
   packages/constants:
     dependencies:
@@ -2930,6 +2936,7 @@ packages:
 
   '@evilmartians/lefthook@1.10.1':
     resolution: {integrity: sha512-G1NPLB4yLYYEyz8oH7yWgHsxUiF546aS1ChSRPNFPSosLxZFM8wqDxek/J9sT447v83gJbKdrnstxeQW/9CIRA==}
+    cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -8548,8 +8555,8 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  katex@0.16.10:
-    resolution: {integrity: sha512-ZiqaC04tp2O5utMsl2TEZTXxa6WSC4yo0fv5ML++D3QZv/vx2Mct0mTlRx3O+uUkjfuAgOkzsCmq5MiUEsDDdA==}
+  katex@0.16.19:
+    resolution: {integrity: sha512-3IA6DYVhxhBabjSLTNO9S4+OliA3Qvb8pBQXMfC4WxXJgLwZgnfDl0BmB4z6nBMdznBsZ+CGM8DrGZ5hcguDZg==}
     hasBin: true
 
   keyv@4.5.4:
@@ -22051,7 +22058,7 @@ snapshots:
       object.assign: 4.1.5
       object.values: 1.2.1
 
-  katex@0.16.10:
+  katex@0.16.19:
     dependencies:
       commander: 8.3.0
 
@@ -22544,7 +22551,7 @@ snapshots:
       dagre-d3-es: 7.0.11
       dayjs: 1.11.13
       dompurify: 3.2.3
-      katex: 0.16.10
+      katex: 0.16.19
       khroma: 2.1.0
       lodash-es: 4.17.21
       marked: 13.0.3
@@ -22644,7 +22651,7 @@ snapshots:
     dependencies:
       '@types/katex': 0.16.7
       devlop: 1.1.0
-      katex: 0.16.10
+      katex: 0.16.19
       micromark-factory-space: 2.0.0
       micromark-util-character: 2.1.0
       micromark-util-symbol: 2.0.0
@@ -24380,7 +24387,7 @@ snapshots:
       '@types/katex': 0.16.7
       hast-util-from-html-isomorphic: 2.0.0
       hast-util-to-text: 4.0.2
-      katex: 0.16.10
+      katex: 0.16.19
       unist-util-visit-parents: 6.0.1
       vfile: 6.0.1
 
@@ -26070,7 +26077,7 @@ snapshots:
       sugarss: 4.0.1(postcss@8.4.49)
       terser: 5.31.2
 
-  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
+  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0

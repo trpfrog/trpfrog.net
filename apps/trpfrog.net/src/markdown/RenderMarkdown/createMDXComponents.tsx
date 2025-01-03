@@ -1,6 +1,5 @@
 import React from 'react'
 
-import 'katex/dist/katex.min.css'
 import { MDXComponents } from 'mdx/types'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
