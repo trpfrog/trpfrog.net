@@ -1,9 +1,10 @@
 'use client'
 
-import * as React from 'react'
 import { useCallback, useId, useState } from 'react'
 
-import { Tooltip } from 'react-tooltip'
+import dynamic from 'next/dynamic'
+
+const Tooltip = dynamic(() => import('react-tooltip').then(m => m.Tooltip))
 
 interface WithTooltipProps {
   wrapperAs?: 'div' | 'span'

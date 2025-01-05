@@ -1,9 +1,13 @@
-import { Tweet as ReactTweet, TweetProps } from 'react-tweet'
+import dynamic from 'next/dynamic'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 
 import { isTweetAvailable } from './actions'
 import { TweetThemeDataWrapper } from './DataWrapper'
+
+import type { TweetProps } from 'react-tweet'
+
+const ReactTweet = dynamic(() => import('react-tweet').then(m => m.Tweet))
 
 /**
  * Temporary fix for react-tweet

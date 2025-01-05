@@ -2,9 +2,10 @@
 
 import { memo } from 'react'
 
-import ReactPlayer from 'react-player/youtube'
+import dynamic from 'next/dynamic'
 
 import { YouTube } from '@/components/organisms/YouTube'
+const ReactPlayer = dynamic(() => import('react-player/youtube'))
 
 function parseIdAndParams(content: string): { id: string; params: URLSearchParams } {
   const lines = content.split('\n')
