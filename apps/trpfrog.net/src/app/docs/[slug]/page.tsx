@@ -23,7 +23,7 @@ export function generateStaticParams() {
   }))
 }
 
-export const metadataSchema = z.object({
+const metadataSchema = z.object({
   title: z.string().optional(),
   description: z.string().optional(),
 })
