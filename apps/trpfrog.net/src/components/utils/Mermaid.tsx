@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useId, useState } from 'react'
 
-import mermaid from 'mermaid'
-
 import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
 
 import { PlainCodeBlock } from '../molecules/CodeBlock/PlainCodeBlock'
@@ -19,12 +17,13 @@ export function useMermaid(chart: string) {
   const colorScheme = usePrefersColorScheme()
 
   useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: colorScheme === 'dark' ? 'dark' : 'forest',
-    })
-
     const renderDiagram = async () => {
+      const { default: mermaid } = await import('mermaid')
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: colorScheme === 'dark' ? 'dark' : 'forest',
+      })
+
       try {
         const { svg: renderedSvg } = await mermaid.render(id, chart)
         setSvg(renderedSvg)
