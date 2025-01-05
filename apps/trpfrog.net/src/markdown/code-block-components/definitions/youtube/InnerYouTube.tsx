@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, Suspense } from 'react'
 
 import dynamic from 'next/dynamic'
 
@@ -42,18 +42,20 @@ export const InnerAutoYouTube = memo(function InnerAutoYouTube({ content }: { co
   // const title = lines[1]?.trim()
   return (
     <div className="tw-flex tw-items-center tw-justify-center">
-      <ReactPlayer
-        url={'https://www.youtube.com/watch?v=' + id}
-        playing={true}
-        volume={0}
-        config={{
-          playerVars: {
-            modestbranding: 1,
-            loop: 1,
-            playlist: id, // it is needed to loop video
-          },
-        }}
-      />
+      <Suspense fallback={<div className="tw-bg-gray-200 tw-aspect-video tw-w-2/3" />}>
+        <ReactPlayer
+          url={'https://www.youtube.com/watch?v=' + id}
+          playing={true}
+          volume={0}
+          config={{
+            playerVars: {
+              modestbranding: 1,
+              loop: 1,
+              playlist: id, // it is needed to loop video
+            },
+          }}
+        />
+      </Suspense>
     </div>
   )
 })

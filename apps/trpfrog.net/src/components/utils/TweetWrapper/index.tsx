@@ -1,11 +1,12 @@
+import { Suspense } from 'react'
+
 import dynamic from 'next/dynamic'
+import { TweetSkeleton, type TweetProps } from 'react-tweet'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 
 import { isTweetAvailable } from './actions'
 import { TweetThemeDataWrapper } from './DataWrapper'
-
-import type { TweetProps } from 'react-tweet'
 
 const ReactTweet = dynamic(() => import('react-tweet').then(m => m.Tweet))
 
@@ -37,7 +38,9 @@ export async function Tweet(props: TweetProps) {
     <div className="tw-grid tw-place-items-center">
       <div style={{ width: 'min(550px, 100%)' }}>
         <TweetThemeDataWrapper>
-          <ReactTweet {...props} fallback={fallback} />
+          <Suspense fallback={<TweetSkeleton />}>
+            <ReactTweet {...props} fallback={fallback} />
+          </Suspense>
         </TweetThemeDataWrapper>
       </div>
     </div>
