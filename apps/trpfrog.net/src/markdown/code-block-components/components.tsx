@@ -7,6 +7,7 @@ import {
 import { conversationCCBC } from './definitions/conversation'
 import { dangerouslySetInnerHtmlCCBC } from './definitions/dangerously-set-inner-html'
 import { defineComponentCCBC, useDefinedComponentCCBC } from './definitions/define-component'
+import { detailsCCBC } from './definitions/details'
 import { horizontalImagesCCBC } from './definitions/horizontal-images'
 import { horizontalScrollCCBC } from './definitions/horizontal-scroll'
 import { ignoreReadCountCCBC } from './definitions/ignore-read-count'
@@ -47,6 +48,7 @@ export const components = {
   'profile-cards': profileCardsCCBC,
   'result-box': resultBoxCCBC,
   'show-all': deprecatedShowAllCCBC,
+  'details': detailsCCBC,
   'use-effect': markdownUseEffectCCBC,
   'define-component': defineComponentCCBC,
   'use-defined-component': useDefinedComponentCCBC,
