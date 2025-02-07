@@ -2,48 +2,50 @@ import 'server-only'
 
 import { Suspense } from 'react'
 
-import { withTimeout } from '@trpfrog.net/utils'
+import { cacheTags } from '@trpfrog.net/constants'
+import { parsePageInfo } from '@trpfrog.net/utils/dom'
+import dynamic from 'next/dynamic'
 
-import { fetchOGP } from './fetchOGP'
-import { LinkCardProps } from './LinkCard'
-import { ServerStreamedLinkCard_Client } from './ServerStreamLinkCardClientSide'
 import { SkeletonLinkCard } from './SkeletonLinkCard'
+
+const ServerStreamedLinkCard_Client = dynamic(() =>
+  import('./ServerStreamLinkCardClientSide').then(m => m.ServerStreamedLinkCard_Client),
+)
 
 export type ServerStreamedLinkCard = {
   href: string
   timeoutMillis?: number
 }
 
+type OgpResult = ReturnType<typeof parsePageInfo>
+
 export type LinkCardResult =
-  | {
+  | (OgpResult & {
       success: true
-      linkCardProps: LinkCardProps
-    }
+    })
   | {
       success: false
     }
 
 export function StreamingLinkCard(props: ServerStreamedLinkCard) {
-  const resultPromise = withTimeout(
-    fetchOGP(props.href).then<LinkCardResult>(result => ({
+  const htmlTextPromise = fetch(props.href, {
+    next: {
+      revalidate: 60 * 60 * 24 * 7,
+      tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(props.href)],
+    },
+  })
+    .then(res => res.text())
+    .then<LinkCardResult>(htmlText => ({
       success: true,
-      linkCardProps: {
-        title: result.ogTitle ?? '',
-        description: result.ogDescription,
-        href: props.href,
-        imageUrl: result.ogImage?.[0]?.url,
-        themeColor: result.customMetaTags?.themeColor,
-        favicon: result.favicon,
-      },
-    })),
-    props.timeoutMillis ?? 5000,
-  ).catch(_e => ({
-    success: false,
-  }))
+      ...parsePageInfo(htmlText),
+    }))
+    .catch(_e => ({
+      success: false,
+    }))
 
   return (
     <Suspense fallback={<SkeletonLinkCard />}>
-      <ServerStreamedLinkCard_Client promise={resultPromise} href={props.href} />
+      <ServerStreamedLinkCard_Client promise={htmlTextPromise} href={props.href} />
     </Suspense>
   )
 }

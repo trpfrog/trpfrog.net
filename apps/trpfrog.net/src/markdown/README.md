@@ -244,14 +244,31 @@ https://www.youtube.com/watch?v=qWjgAh21iio
 ## auto-youtube
 
 YouTube の動画を自動再生するためのコンポーネントです。
-自動再生は鬱陶しいので基本使わない方が良いです。ここでもコード例を表示するのに留めておきます。
+自動再生は鬱陶しいので基本使わない方が良いです。
 
-````markdown
+`````details
+クリックして自動再生を試す (遅延ロードされます)
+
+````markdown-example
 ```auto-youtube
 ll8bo-A-_wc
 ```
 ````
+`````
 
+## details
+
+`details`, `summary` タグを使って、クリックして詳細を表示するためのコンポーネントです。
+
+通常の details とは異なり、内部が遅延ロードされるので、この中で重ためのコンポーネント呼び出しをすると若干ページの読み込みが速くなります。
+
+````markdown-example
+```details
+クリックして詳細を見る
+
+ここに内容
+```
+````
 
 ## use-effect
 
@@ -260,7 +277,6 @@ useEffect するためのコンポーネントです。ちゃんとクリーン�
 <button id="use-effect-button" style="margin-bottom: 1em;">
   アラートを出す (id="use-effect-button")
 </button>
-
 
 `````markdown-example
 ````use-effect
