@@ -10,9 +10,9 @@ import { twJoin, twMerge } from '@/lib/tailwind/merge'
 
 import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
-import styles from '@blog/_styles/blog.module.css'
 
 import { createCodeComponent } from './createCodeComponent'
+import styles from './createMDXComponents.module.css'
 
 import { MarkdownContext } from '@/markdown/types'
 

@@ -14,8 +14,9 @@ import { getTypedEntries } from '@/lib/utils'
 
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
-import styles from '@blog/_styles/blog.module.css'
 import { fetchPostList } from '@blog/rpc'
+
+import styles from './page.module.css'
 
 export const metadata = {
   description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。',

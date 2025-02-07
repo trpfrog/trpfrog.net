@@ -5,7 +5,8 @@ import { BlogPost } from '@trpfrog.net/posts'
 import { Block } from '@/components/molecules/Block'
 
 import { PageNavigation } from '@blog/_components/PageNavigation'
-import styles from '@blog/_styles/blog.module.css'
+
+import styles from './BlogMarkdown.module.css'
 
 import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 

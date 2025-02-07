@@ -4,7 +4,7 @@ import { env } from '@/env/server'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 
-import styles from '@blog/_styles/blog.module.css'
+import styles from './createCodeComponent.module.css'
 
 import type { MarkdownContext } from '@/markdown/types'
 

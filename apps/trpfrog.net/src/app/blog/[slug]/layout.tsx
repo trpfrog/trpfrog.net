@@ -7,12 +7,12 @@ import { Block } from '@/components/molecules/Block'
 
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
-import styles from '@blog/_styles/blog.module.css'
 import { fetchPost, fetchPostList, fetchSlugs } from '@blog/rpc'
 
 import { ArticleSidebar } from './_components/ArticleSidebar'
 import { ArticleSkeleton } from './_components/ArticleSkeleton'
 import { EntryButtons } from './_components/EntryButtons'
+import styles from './layout.module.css'
 
 export const revalidate = 2592000
 

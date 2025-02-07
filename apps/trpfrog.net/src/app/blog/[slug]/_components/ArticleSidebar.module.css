@@ -1,0 +1,5 @@
+.blog_side_bar {
+  height: fit-content;
+  position: sticky;
+  top: 1em;
+}

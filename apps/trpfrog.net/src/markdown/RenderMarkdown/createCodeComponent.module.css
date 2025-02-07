@@ -1,0 +1,22 @@
+.inline_code_block {
+  display: inline;
+  word-break: break-all;
+  background-color: #0001 !important;
+
+  font-family: var(--font-noto-sans-mono), monospace;
+  padding: 0 4px;
+  font-size: 0.9em;
+  border-radius: 5px;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #313131 !important;
+    color: white;
+    border: solid 1px gray;
+  }
+
+  @media print {
+    border: solid 1px gray;
+    background: #eee !important;
+    color: black;
+  }
+}
