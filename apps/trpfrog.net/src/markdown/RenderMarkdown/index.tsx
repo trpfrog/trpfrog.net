@@ -3,10 +3,10 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
+import rehypeUnwrapImage from 'rehype-unwrap-images'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
-import remarkUnwrapImages from 'remark-unwrap-images'
 
 import { createMDXComponents } from './createMDXComponents'
 
@@ -26,13 +26,8 @@ export function RenderMarkdown(props: {
       })}
       options={{
         mdxOptions: {
-          remarkPlugins: [
-            remarkGfm,
-            remarkMath,
-            remarkUnwrapImages,
-            () => remarkToc({ heading: '目次' }),
-          ],
-          rehypePlugins: [rehypeKatex, rehypeRaw, rehypeSlug],
+          remarkPlugins: [remarkGfm, remarkMath, () => remarkToc({ heading: '目次' })],
+          rehypePlugins: [rehypeKatex, rehypeRaw, rehypeSlug, rehypeUnwrapImage],
           format: 'md',
         },
       }}
