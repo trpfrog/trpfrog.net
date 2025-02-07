@@ -8,7 +8,6 @@ import * as Wrapper from '@/components/wrappers'
 
 import { twJoin, twMerge } from '@/lib/tailwind/merge'
 
-import { BlogH2 } from '@blog/_components/BlogH2'
 import { BlogImage } from '@blog/_components/BlogImage'
 
 import { createCodeComponent } from './createCodeComponent'
@@ -45,7 +44,7 @@ export function createMDXComponents(options?: {
     },
 
     h1: () => null, // disable h1 tag
-    h2: ({ ref, ...props }) => <BlogH2 {...props} />,
+    h2: ({ ref, ...props }) => <Wrapper.H2 variant="blog" {...props} />,
     h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw-mt-8" />,
     h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
     h5: ({ ref, ...props }) => <Wrapper.H5 {...props} />,
