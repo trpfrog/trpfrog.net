@@ -9,6 +9,7 @@
 }
 
 @media print {
+  #entry_top_buttons,
   #entry_bottom_buttons {
     display: none;
   }
