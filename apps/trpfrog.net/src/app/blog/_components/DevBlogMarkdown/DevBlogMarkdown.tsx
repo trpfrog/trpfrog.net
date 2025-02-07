@@ -1,8 +1,7 @@
 'use client'
 
+import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { ImageDragAndDropUploader } from '@blog/_components/DevBlogMarkdown/ImageDragAndDrop.tsx'
-
-import { ArticleSkeleton } from '../../[slug]/_components/ArticleSkeleton'
 
 import { useDevServerRenderedBlog } from './hooks/useDevServerRenderedBlog'
 import { useHeightAdjustedScrollOnResize } from './hooks/useHeightAdjustedScrollOnResize'

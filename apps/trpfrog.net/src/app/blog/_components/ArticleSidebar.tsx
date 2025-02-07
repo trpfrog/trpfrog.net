@@ -10,9 +10,8 @@ import { StickToTop } from '@/components/organisms/Header'
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { PageNavigation } from '@blog/_components/PageNavigation'
 
-import styles from '../layout.module.css'
-
 import { RichEntryButtons } from './EntryButtons'
+import styles from './layout.module.css'
 
 type Props = {
   post: BlogPost

@@ -2,7 +2,7 @@ import { ReactNode, use, useDeferredValue, useEffect, useState } from 'react'
 
 import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-server'
 
-import { ArticleSkeleton } from '@blog/[slug]/_components/ArticleSkeleton'
+import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { renderBlog } from '@blog/_components/DevBlogMarkdown/actions/renderBlog'
 
 const initializing = Symbol('trpfrog.net/blog-renderer:initializing')
