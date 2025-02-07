@@ -1,4 +1,6 @@
-import { PageTransferButton } from '@blog/_components/PageNavigation'
+import Link from 'next/link'
+
+import { RichButton } from '@/components/atoms/RichButton'
 
 import { CustomCodeBlockComponent } from '../types'
 
@@ -8,11 +10,9 @@ export const nextPageCCBC: CustomCodeBlockComponent = {
     return (
       <div style={{ textAlign: 'center' }}>
         <div style={{ margin: '1em 0' }}>
-          <PageTransferButton
-            entry={context.blog}
-            nextPage={context.blog.currentPage + 1}
-            buttonText={`Next: ${markdown} →`}
-          />
+          <RichButton as={Link} href={`/blog/${context.blog.slug}/${context.blog.currentPage + 1}`}>
+            Next: {markdown} →
+          </RichButton>
         </div>
       </div>
     )
