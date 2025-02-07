@@ -4,13 +4,15 @@ import * as React from 'react'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { ImageWithModal } from '@blog/_components/BlogImage/ImageWithModal'
+import { Image } from '@/components/atoms/Image'
 
 import styles from './index.module.css'
 
 type BlogImageProps = {
   src: string
   alt: string
+  width?: number
+  height?: number
   caption?: string
   spoiler?: boolean
   isVideo?: boolean
@@ -33,7 +35,16 @@ async function TakenBy(props: { photographer: string }) {
   )
 }
 
-export async function BlogImage({ src, alt, style, spoiler, isVideo, ...props }: BlogImageProps) {
+export async function RichImage({
+  src,
+  alt,
+  style,
+  spoiler,
+  isVideo,
+  width,
+  height,
+  ...props
+}: BlogImageProps) {
   const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')
   let caption = props.caption ?? ''
   let takenBy: string | undefined
@@ -47,6 +58,10 @@ export async function BlogImage({ src, alt, style, spoiler, isVideo, ...props }:
     throw new Error('Video with spoiler is not supported.')
   }
 
+  const searchParams = new URLSearchParams(src.split('?')[1])
+  width ??= parseInt(searchParams.get('w') ?? '', 10) || 1000
+  height ??= parseInt(searchParams.get('h') ?? '', 10) || 750
+
   return (
     <>
       <figure className={styles.img_wrapper} style={style}>
@@ -54,7 +69,7 @@ export async function BlogImage({ src, alt, style, spoiler, isVideo, ...props }:
         {isVideo ? (
           <video src={src} controls className={styles.video} />
         ) : (
-          <ImageWithModal src={src} alt={alt} spoiler={spoiler} />
+          <Image src={src} alt={alt} width={width} height={height} withSpoiler={spoiler} />
         )}
         {caption && (
           <ImageCaption>

@@ -1,4 +1,4 @@
-import { ImageCaption, BlogImage } from '@blog/_components/BlogImage'
+import { ImageCaption, RichImage } from '@/components/organisms/RichImage'
 
 import { CustomCodeBlockComponent } from '../types'
 
@@ -34,7 +34,7 @@ export const horizontalImagesCCBC: CustomCodeBlockComponent = {
           }}
         >
           {imageSources.map(({ src, alt, title }, index) => (
-            <BlogImage
+            <RichImage
               src={src}
               alt={alt}
               caption={title}

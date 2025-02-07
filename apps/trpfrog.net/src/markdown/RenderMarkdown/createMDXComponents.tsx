@@ -4,11 +4,10 @@ import { MDXComponents } from 'mdx/types'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { RichButton } from '@/components/atoms/RichButton'
+import { RichImage } from '@/components/organisms/RichImage'
 import * as Wrapper from '@/components/wrappers'
 
 import { twJoin, twMerge } from '@/lib/tailwind/merge'
-
-import { BlogImage } from '@blog/_components/BlogImage'
 
 import { createCodeComponent } from './createCodeComponent'
 import styles from './createMDXComponents.module.css'
@@ -28,7 +27,7 @@ export function createMDXComponents(options?: {
     img: props => {
       return (
         <div className={styles.img}>
-          <BlogImage
+          <RichImage
             src={props.src ?? ''}
             alt={props.alt ?? ''}
             caption={props.title}
@@ -82,7 +81,7 @@ export function createMDXComponents(options?: {
       return <summary className={twJoin(styles.summary, className)} {...rest} />
     },
 
-    video: props => <BlogImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
+    video: props => <RichImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
 
     hr: props => {
       const { ref, className = '', ...rest } = props
