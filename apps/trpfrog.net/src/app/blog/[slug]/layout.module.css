@@ -35,11 +35,6 @@
       grid-area: aside;
       display: block;
       position: relative;
-      .blog_side_bar {
-        height: fit-content;
-        position: sticky;
-        top: 1em;
-      }
     }
   }
 }

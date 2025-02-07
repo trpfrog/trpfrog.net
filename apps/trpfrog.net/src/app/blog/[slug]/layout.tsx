@@ -9,9 +9,10 @@ import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { ArticleSidebar } from '@blog/_components/ArticleSidebar'
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { EntryButtons } from '@blog/_components/EntryButtons'
-import styles from '@blog/_components/layout.module.css'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
 import { fetchPost, fetchPostList, fetchSlugs } from '@blog/rpc'
+
+import styles from './layout.module.css'
 
 export const revalidate = 2592000
 
