@@ -14,7 +14,6 @@ const ServerStreamedLinkCard_Client = dynamic(() =>
 
 export type ServerStreamedLinkCard = {
   href: string
-  timeoutMillis?: number
 }
 
 type OgpResult = ReturnType<typeof parsePageInfo>
@@ -27,12 +26,14 @@ export type LinkCardResult =
       success: false
     }
 
-export function StreamingLinkCard(props: ServerStreamedLinkCard) {
-  const htmlTextPromise = fetch(props.href, {
+async function fetcher(url: string) {
+  'use server'
+  return fetch(url, {
     next: {
       revalidate: 60 * 60 * 24 * 7,
-      tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(props.href)],
+      tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(url)],
     },
+    signal: AbortSignal.timeout(5000),
   })
     .then(res => res.text())
     .then<LinkCardResult>(htmlText => ({
@@ -42,10 +43,12 @@ export function StreamingLinkCard(props: ServerStreamedLinkCard) {
     .catch(_e => ({
       success: false,
     }))
+}
 
+export function StreamingLinkCard(props: ServerStreamedLinkCard) {
   return (
     <Suspense fallback={<SkeletonLinkCard />}>
-      <ServerStreamedLinkCard_Client promise={htmlTextPromise} href={props.href} />
+      <ServerStreamedLinkCard_Client fetcher={fetcher} href={props.href} />
     </Suspense>
   )
 }
