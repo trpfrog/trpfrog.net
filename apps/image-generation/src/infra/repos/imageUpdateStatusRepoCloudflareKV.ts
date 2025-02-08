@@ -1,6 +1,7 @@
 import { getContext } from 'hono/context-storage'
+import * as v from 'valibot'
 
-import { imageUpdateStatusSchema } from '../../domain/entities/image-update-status'
+import { ImageUpdateStatusSchema } from '../../domain/entities/image-update-status'
 import { ImageUpdateStatusRepo } from '../../domain/repos/image-update-status-repo'
 import { Env } from '../../env'
 
@@ -19,11 +20,12 @@ export const imageUpdateStatusCloudflareKV: ImageUpdateStatusRepo = {
       return { status: 'idle' }
     }
 
-    const status = imageUpdateStatusSchema
-      .catch({
+    const status = v.parse(
+      v.fallback(ImageUpdateStatusSchema, {
         status: 'idle',
-      })
-      .parse(parsedStatus)
+      }),
+      parsedStatus,
+    )
 
     return status
   },

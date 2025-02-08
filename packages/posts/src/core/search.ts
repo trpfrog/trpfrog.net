@@ -12,7 +12,7 @@ const SearchOptionSchema = v.optional(
   {},
 )
 
-export type SearchOption = v.InferOutput<typeof SearchOptionSchema>
+export type SearchOption = v.InferInput<typeof SearchOptionSchema>
 
 /**
  * Search blog post

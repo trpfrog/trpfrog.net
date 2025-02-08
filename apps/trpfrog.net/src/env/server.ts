@@ -19,7 +19,10 @@ export const ServerEnvSchema = v.object({
    * MicroCMS API Key.
    * Used for fetching DRAFT blog posts.
    */
-  MICRO_CMS_API_KEY: v.optional(v.string()),
+  MICRO_CMS_API_KEY: v.optional(v.string(), () => {
+    console.warn('MICRO_CMS_API_KEY is not set, this causes preview of draft blog posts to fail')
+    return undefined
+  }),
 
   /**
    * Vercel KV Environment Variables.
@@ -34,25 +37,37 @@ export const ServerEnvSchema = v.object({
    * Google Fonts API Key. Used for fetching font files.
    * Used for rendering blog OG images.
    */
-  GOOGLE_FONTS_API_KEY: v.optional(v.string()),
+  GOOGLE_FONTS_API_KEY: v.optional(v.string(), () => {
+    console.warn('GOOGLE_FONTS_API_KEY is not set, this may cause some functions to fail')
+    return undefined
+  }),
 
   /**
    * OpenAI API Key.
    * Used for /fuzzy routing and AI icon generation.
    */
-  OPENAI_API_KEY: v.optional(v.string()),
+  OPENAI_API_KEY: v.optional(v.string(), () => {
+    console.warn('OPENAI_API_KEY is not set, this may cause some functions to fail')
+    return undefined
+  }),
 
   /**
    * Huggingface API Key.
    * Used for AI icon generation.
    */
-  HUGGINGFACE_TOKEN: v.optional(v.string()),
+  HUGGINGFACE_TOKEN: v.optional(v.string(), () => {
+    console.warn('HUGGINGFACE_TOKEN is not set, this may cause some functions to fail')
+    return undefined
+  }),
 
   /**
    * Server-side secret key for the functions API (Cloud Functions)
    * Used for generating AI icons.
    */
-  TRPFROG_FUNCTIONS_SECRET: v.optional(v.string()),
+  TRPFROG_FUNCTIONS_SECRET: v.optional(v.string(), () => {
+    console.warn('TRPFROG_FUNCTIONS_SECRET is not set, using default value')
+    return 'trpfrog-functions-secret'
+  }),
 
   /**
    * Content ID for the temporary Twitter content in microCMS.
@@ -64,7 +79,10 @@ export const ServerEnvSchema = v.object({
    * You can set any string here.
    * Used for protecting the admin API.
    */
-  TRPFROG_ADMIN_KEY: v.optional(v.string(), 'default'),
+  TRPFROG_ADMIN_KEY: v.optional(v.string(), () => {
+    console.warn('TRPFROG_ADMIN_KEY is not set, using default value')
+    return 'default'
+  }),
 
   /**
    * Dev flag for enabling the realtime blog preview.

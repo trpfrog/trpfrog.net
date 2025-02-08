@@ -40,7 +40,10 @@ export const alphaApp = new Hono<Env>()
     vValidator(
       'query',
       v.object({
-        page: v.union([v.pipe(vCoerceNumber, v.integer(), v.minValue(1)), v.literal('all')]),
+        page: v.optional(
+          v.union([v.pipe(vCoerceNumber, v.integer(), v.minValue(1)), v.literal('all')]),
+          'all',
+        ),
       }),
     ),
     async c => {
@@ -53,7 +56,7 @@ export const alphaApp = new Hono<Env>()
         if ('error' in post) {
           return c.json(post, { status: 404 })
         }
-        const page = c.req.valid('query').page ?? 'all'
+        const page = c.req.valid('query').page
         if (page === 'all') {
           return c.json(buildBlogPost(slug, post.content, { all: true }))
         } else {
