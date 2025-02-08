@@ -12,6 +12,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@hono/valibot-validator": "^0.5.2",
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.17.0",
     "@hono/zod-validator": "^0.4.2",

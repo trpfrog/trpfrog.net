@@ -1,9 +1,10 @@
 // alpha-router.ts -- 仮の機能を提供するためのルーター あとでなんとかする
 
-import { zValidator } from '@hono/zod-validator'
+import { vValidator } from '@hono/valibot-validator'
 import { buildBlogPost, InvalidPagePositionError } from '@trpfrog.net/posts'
+import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { Env } from './env'
 import { createAssetsClient } from './ssg'
@@ -21,10 +22,10 @@ export const alphaApp = new Hono<Env>()
   })
   .get(
     '/posts',
-    zValidator(
+    vValidator(
       'query',
-      z.object({
-        tag: z.string().optional(),
+      v.object({
+        tag: v.optional(v.string()),
       }),
     ),
     async c => {
@@ -36,10 +37,10 @@ export const alphaApp = new Hono<Env>()
   )
   .get(
     '/posts/:slug',
-    zValidator(
+    vValidator(
       'query',
-      z.object({
-        page: z.union([z.coerce.number().positive().optional(), z.literal('all')]),
+      v.object({
+        page: v.union([v.pipe(vCoerceNumber, v.integer(), v.minValue(1)), v.literal('all')]),
       }),
     ),
     async c => {
