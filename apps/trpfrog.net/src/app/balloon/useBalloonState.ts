@@ -7,14 +7,7 @@ type BalloonColor = (typeof balloonColors)[number]
 
 interface BalloonState {
   isBurst: boolean
-  color: BalloonColor
-}
-
-function createRandomBalloonState(): BalloonState {
-  return {
-    isBurst: false,
-    color: balloonColors[Math.floor(Math.random() * balloonColors.length)],
-  }
+  color: BalloonColor | 'random'
 }
 
 export function useBalloonState(
@@ -27,7 +20,10 @@ export function useBalloonState(
   const [balloons, updateBalloons] = useImmer<BalloonState[]>(() => {
     const balloons: BalloonState[] = []
     for (let i = 0; i < initialAmount; i++) {
-      balloons.push(createRandomBalloonState())
+      balloons.push({
+        isBurst: false,
+        color: 'random',
+      })
     }
     return balloons
   })
@@ -47,7 +43,10 @@ export function useBalloonState(
       if (newAmount === balloons.length) return
       updateBalloons(draft => {
         while (draft.length < newAmount) {
-          draft.push(createRandomBalloonState())
+          draft.push({
+            isBurst: false,
+            color: 'random',
+          })
         }
         while (draft.length > newAmount) {
           draft.pop()
