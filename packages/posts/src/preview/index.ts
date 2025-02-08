@@ -1,5 +1,5 @@
 import { createClient } from 'microcms-js-sdk'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { BlogPost } from '../core'
 import { BlogPostBuildOption, buildBlogPost } from '../core/buildBlogPost.ts'
@@ -28,14 +28,14 @@ export function createErrorArticle(errTitle: string): ErrorablePost {
   return ret
 }
 
-const MicroCMSBlogPostSchema = z.object({
-  md: z.string(),
-  slug: z.string(),
+const MicroCMSBlogPostSchema = v.object({
+  md: v.string(),
+  slug: v.string(),
 })
 
 export type PreviewPostClient = (
   contentId: string,
-) => Promise<z.output<typeof MicroCMSBlogPostSchema>>
+) => Promise<v.InferOutput<typeof MicroCMSBlogPostSchema>>
 
 export function createPreviewClient(args: {
   apiKey: string
@@ -51,7 +51,7 @@ export function createPreviewClient(args: {
       endpoint: args.endpoint,
       contentId,
     })
-    return MicroCMSBlogPostSchema.parse(data)
+    return v.parse(MicroCMSBlogPostSchema, data)
   }
 }
 

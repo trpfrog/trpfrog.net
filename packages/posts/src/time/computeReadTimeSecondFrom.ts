@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
 const COUNTING_TARGET_CODE_BLOCK_NAMES = [
   'centering',
@@ -13,15 +13,15 @@ const COUNTING_TARGET_CODE_BLOCK_NAMES = [
   'conversation',
 ]
 
-export const ReadTimeOptionSchema = z.object({
-  countingTargetCodeBlockNames: z.array(z.string()).default(COUNTING_TARGET_CODE_BLOCK_NAMES),
+export const ReadTimeOptionSchema = v.object({
+  countingTargetCodeBlockNames: v.optional(v.array(v.string()), COUNTING_TARGET_CODE_BLOCK_NAMES),
 })
 
 export function computeReadTimeSecondFrom(
   markdown: string,
-  _options?: z.input<typeof ReadTimeOptionSchema>,
+  _options?: v.InferInput<typeof ReadTimeOptionSchema>,
 ) {
-  const options = ReadTimeOptionSchema.parse(_options ?? {})
+  const options = v.parse(ReadTimeOptionSchema, _options ?? {})
 
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
   const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')
