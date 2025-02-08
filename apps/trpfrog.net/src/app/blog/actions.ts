@@ -3,7 +3,7 @@
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import * as v from 'valibot'
 
-import { env } from '@/env'
+import { env } from '@/env/server'
 const client = createTrpFrogImageGenerationClient('production')
 
 export async function getCurrent() {
@@ -26,15 +26,15 @@ export async function updateCurrent(forceUpdate: boolean) {
   })
 }
 
-const fetchImageRecordsQuerySchema = v.object({
+const FetchImageRecordsQuerySchema = v.object({
   page: v.pipe(v.number(), v.integer(), v.minValue(1)),
   iconsPerPage: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1), v.maxValue(20)), 20),
 })
 
-export type FetchImageRecordsQuery = v.InferInput<typeof fetchImageRecordsQuerySchema>
+export type FetchImageRecordsQuery = v.InferInput<typeof FetchImageRecordsQuerySchema>
 
 export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
-  const query = v.parse(fetchImageRecordsQuerySchema, rawQuery)
+  const query = v.parse(FetchImageRecordsQuerySchema, rawQuery)
   const { result, total } = await client.query
     .$get({
       query: {
@@ -43,7 +43,7 @@ export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
         includeDeleted: 'true',
       },
       header: {
-        'x-api-key': env.TRPFROG_FUNCTIONS_SECRET ?? '',
+        'x-api-key': env.TRPFROG_FUNCTIONS_SECRET,
       },
     })
     .then(res => {

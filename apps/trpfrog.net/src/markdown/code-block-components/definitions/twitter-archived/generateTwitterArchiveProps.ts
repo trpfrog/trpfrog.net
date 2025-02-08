@@ -1,30 +1,35 @@
-import { z } from 'zod'
+import { vCoerceDate } from '@trpfrog.net/utils/valibot'
+import * as v from 'valibot'
 
 import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 
 import { formatDateToDisplay } from '@/lib/date'
 
-export const BlogTwitterArchiveSchema = z.object({
-  name: z.string().default('つまみ'),
-  userid: z.string().default('TrpFrog'),
-  color: z.string().optional(),
-  tweet: z.string().optional(),
-  reply: z.string().optional(),
-  id: z.string(),
-  date: z.coerce.date().transform(date => formatDateToDisplay(date)),
-  image: z.string().optional(),
-  image2: z.string().optional(),
-  image3: z.string().optional(),
-  image4: z.string().optional(),
+// quote- prefix のキーを残すために looseObject を使用
+export const BlogTwitterArchiveSchema = v.looseObject({
+  name: v.optional(v.string(), 'つまみ'),
+  userid: v.optional(v.string(), 'TrpFrog'),
+  color: v.optional(v.string()),
+  tweet: v.optional(v.string()),
+  reply: v.optional(v.string()),
+  id: v.string(),
+  date: v.pipe(
+    vCoerceDate,
+    v.transform(date => formatDateToDisplay(date)),
+  ),
+  image: v.optional(v.string()),
+  image2: v.optional(v.string()),
+  image3: v.optional(v.string()),
+  image4: v.optional(v.string()),
 })
 
 export function generateTwitterArchiveProps(rawTweetData: unknown): TwitterArchivedProps {
-  const parsed = BlogTwitterArchiveSchema.passthrough().safeParse(rawTweetData)
+  const parsed = v.safeParse(BlogTwitterArchiveSchema, rawTweetData)
   if (!parsed.success) {
-    throw parsed.error
+    throw parsed.issues
   }
-  const tweetData = parsed.data
+  const tweetData = parsed.output
 
   const images: TwitterImageData[] = [
     tweetData.image ?? '',

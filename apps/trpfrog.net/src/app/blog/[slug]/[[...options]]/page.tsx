@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
-import { z } from 'zod'
+import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
+import * as v from 'valibot'
 
 import { env } from '@/env/server.ts'
 
@@ -11,14 +12,18 @@ import { fetchPost } from '@blog/rpc'
 export const dynamicParams = true
 
 // 1, 2, 3, ... or 'all'
-const pageNumberSchema = z.coerce.number().int().positive().or(z.literal('all'))
+const PageNumberSchema = v.union([
+  v.pipe(vCoerceNumber, v.integer(), v.minValue(1)),
+  v.literal('all'),
+])
 
-const paramsSchema = z.object({
-  slug: z.string(),
-  options: z.tuple([z.string().pipe(pageNumberSchema)]).default(['1']),
+const ParamsSchema = v.object({
+  slug: v.string(),
+  options: v.optional(v.tuple([PageNumberSchema]), ['1']),
 })
+
 type PageProps = {
-  params: Promise<z.input<typeof paramsSchema>>
+  params: Promise<v.InferOutput<typeof ParamsSchema>>
 }
 
 export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
@@ -68,7 +73,7 @@ export default async function Index(props: PageProps) {
   const {
     slug,
     options: [page],
-  } = paramsSchema.parse(rawParams)
+  } = v.parse(ParamsSchema, rawParams)
 
   const entry = await fetchPost(slug, page)
   return env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (

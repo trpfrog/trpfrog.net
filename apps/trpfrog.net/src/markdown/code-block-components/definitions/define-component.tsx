@@ -1,5 +1,5 @@
 import yaml from 'js-yaml'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { env } from '@/env/server'
 
@@ -7,8 +7,10 @@ import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { CustomCodeBlockComponent } from '../types'
 
-const UserFunctionSchema = z.function().args(z.unknown()).returns(z.string())
-const definedComponents: Record<string, z.output<typeof UserFunctionSchema>> = {}
+// TODO: Valibot で args/returns を指定できるようになったら (object) => string にする
+const UserFunctionSchema = v.function()
+
+const definedComponents: Record<string, v.InferOutput<typeof UserFunctionSchema>> = {}
 
 /**
  * Component parts that define a custom component.
@@ -28,7 +30,8 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
     const [name, ...templateLines] = markdown.split('\n')
     try {
-      definedComponents[`${context.blog?.slug}/${name}`] = UserFunctionSchema.parse(
+      definedComponents[`${context.blog?.slug}/${name}`] = v.parse(
+        UserFunctionSchema,
         Function('props', templateLines.join('\n')),
       )
     } catch (e) {
@@ -73,7 +76,7 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
       }
     }
     try {
-      const rendered = template(props)
+      const rendered = v.parse(v.string(), template(props))
       return <Render markdown={rendered} />
     } catch (e) {
       console.error(e)

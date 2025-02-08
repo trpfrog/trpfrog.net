@@ -1,15 +1,15 @@
 import { createURL } from '@trpfrog.net/utils'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { env } from '@/env/server'
 
-const FontInfoSchema = z.object({
-  items: z
-    .object({
-      family: z.string(),
-      files: z.record(z.string(), z.string().url()),
-    })
-    .array(),
+const FontInfoSchema = v.object({
+  items: v.array(
+    v.object({
+      family: v.string(),
+      files: v.record(v.string(), v.pipe(v.string(), v.url())),
+    }),
+  ),
 })
 
 export async function fetchFont(familyName: string, weight: string | number): Promise<ArrayBuffer> {
@@ -28,7 +28,7 @@ export async function fetchFont(familyName: string, weight: string | number): Pr
 
   const rawGoogleFontsInfo = await fetch(endpoint).then(res => res.json())
 
-  const googleFontsInfo = await FontInfoSchema.parseAsync(rawGoogleFontsInfo).catch(e => {
+  const googleFontsInfo = await v.parseAsync(FontInfoSchema, rawGoogleFontsInfo).catch(e => {
     console.error(`Endpoint: ${endpoint}`)
     console.error(`Response: ${JSON.stringify(rawGoogleFontsInfo, null, 2)}`)
     console.error(e)

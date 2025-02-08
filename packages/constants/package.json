@@ -10,9 +10,6 @@
   "exports": {
     ".": "./index.ts"
   },
-  "dependencies": {
-    "zod": "^3.24.1"
-  },
   "devDependencies": {
     "@trpfrog.net/config-eslint": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",

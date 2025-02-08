@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 
 import { createURL } from '@trpfrog.net/utils'
 import { addDays, format } from 'date-fns'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { RichButton } from '@/components/atoms/RichButton'
@@ -11,14 +11,14 @@ import { A, Li, UnorderedList } from '@/components/wrappers'
 import styles from './ProfileCards.module.css'
 import { SwitchUI } from './SwitchUI'
 
-export const profileDataSchema = z.object({
-  name: z.string(),
-  club: z.string().optional(),
-  twitter: z.string().optional(),
-  description: z.string(),
+export const ProfileDataSchema = v.object({
+  name: v.string(),
+  club: v.optional(v.string()),
+  twitter: v.optional(v.string()),
+  description: v.string(),
 })
 
-export type ProfileData = z.infer<typeof profileDataSchema>
+export type ProfileData = v.InferOutput<typeof ProfileDataSchema>
 
 async function CardFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
   const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')

@@ -1,21 +1,21 @@
 import matter from 'gray-matter'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import {
   computeReadTimeSecondFrom,
   ReadTimeOptionSchema,
 } from '../time/computeReadTimeSecondFrom.ts'
 
-import { blogFrontMatterSchema, BlogPost } from './blogPost.ts'
+import { BlogFrontMatterSchema, BlogPost } from './blogPost.ts'
 import { preprocess } from './preprocess.ts'
 
-const BlogPostBuildOptionSchema = z.object({
-  pagePos1Indexed: z.number().int().min(1).optional(),
-  all: z.boolean().default(false),
-  showPreviewCheckpoint: z.boolean().default(false),
-  previewContentId: z.string().optional(),
-  metadataOnly: z.boolean().default(false),
-  readTimeOption: ReadTimeOptionSchema.optional(),
+const BlogPostBuildOptionSchema = v.object({
+  pagePos1Indexed: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1))),
+  all: v.optional(v.boolean(), false),
+  showPreviewCheckpoint: v.optional(v.boolean(), false),
+  previewContentId: v.optional(v.string()),
+  metadataOnly: v.optional(v.boolean(), false),
+  readTimeOption: v.optional(ReadTimeOptionSchema),
 })
 
 export class InvalidPagePositionError extends Error {
@@ -24,18 +24,18 @@ export class InvalidPagePositionError extends Error {
   }
 }
 
-export type BlogPostBuildOption = z.input<typeof BlogPostBuildOptionSchema>
+export type BlogPostBuildOption = v.InferInput<typeof BlogPostBuildOptionSchema>
 
 export function buildBlogPost(
   slug: string,
   markdownString: string,
   options?: BlogPostBuildOption,
 ): BlogPost {
-  options = BlogPostBuildOptionSchema.parse(options ?? {})
+  options = v.parse(BlogPostBuildOptionSchema, options ?? {})
 
   const matterResult = matter(markdownString)
   const pagePosition = options.pagePos1Indexed ?? 1
-  const frontMatter = blogFrontMatterSchema.parse(matterResult.data)
+  const frontMatter = v.parse(BlogFrontMatterSchema, matterResult.data)
 
   const numberOfPhotos = matterResult.content
     .split('\n')
@@ -70,6 +70,6 @@ export function buildBlogPost(
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
   const { content, ...rest } = blogPost
-  const frontMatter = blogFrontMatterSchema.parse(rest)
+  const frontMatter = v.parse(BlogFrontMatterSchema, rest)
   return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
 }

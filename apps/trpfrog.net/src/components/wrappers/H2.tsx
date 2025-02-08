@@ -2,11 +2,12 @@ import * as React from 'react'
 
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as R from 'remeda'
+import * as v from 'valibot'
 
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
-import { zodEnumFromObjKeys } from '@/lib/zod'
 
 const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',
@@ -24,7 +25,7 @@ const iconURLs = {
   hina: '/images/icons/hina.webp',
 } as const
 
-export const H2IconSchema = zodEnumFromObjKeys(iconURLs)
+export const H2IconSchema = v.picklist(R.keys(iconURLs))
 export type H2Icon = keyof typeof iconURLs
 
 // Props 定義を統一して、どの組み合わせでも受け付けるようにする

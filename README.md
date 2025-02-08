@@ -22,7 +22,7 @@
 - **ESLint**
 - **Prettier**
 - **Turborepo** for monorepo management
-- **Zod** for schema validation
+- **Valibot** for schema validation
 - **ts-pattern** for pattern matching
 
 ### trpfrog.net

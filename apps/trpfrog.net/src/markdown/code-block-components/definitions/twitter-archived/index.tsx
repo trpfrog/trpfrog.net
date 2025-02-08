@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { parseColonSeparatedDict } from '@trpfrog.net/posts/parser'
-import { z } from 'zod'
 
 import { env } from '@/env/server'
 
@@ -12,7 +11,7 @@ import { CustomCodeBlockComponent } from '../../types'
 
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
-function Fallback(props: { content: string; error: z.ZodError }) {
+function Fallback(props: { content: string; error: Error }) {
   if (env.NODE_ENV === 'development') {
     return (
       <ErrorFallback title={'TwitterArchive: Error Occurred'}>{props.error.message}</ErrorFallback>
@@ -32,7 +31,7 @@ export const twitterArchivedCCBC: CustomCodeBlockComponent = {
     try {
       props = generateTwitterArchiveProps(rawTweetData)
     } catch (error) {
-      return <Fallback content={markdown} error={error as z.ZodError} />
+      return <Fallback content={markdown} error={error as Error} />
     }
     return <TwitterArchived {...props} />
   },

@@ -12,17 +12,16 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@hono/valibot-validator": "^0.5.2",
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.17.0",
-    "@hono/zod-validator": "^0.4.2",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "date-fns": "^4.1.0",
     "hono": "^4.6.14",
     "ts-dedent": "^2.2.0",
-    "ts-pattern": "^5.6.0",
-    "zod": "^3.24.1"
+    "ts-pattern": "^5.6.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241224.0",

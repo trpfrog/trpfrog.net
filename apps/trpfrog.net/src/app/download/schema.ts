@@ -1,19 +1,20 @@
-import { z } from 'zod'
+import { vCoerceDate } from '@trpfrog.net/utils/valibot'
+import * as v from 'valibot'
 
-export const WorksFrontmatterSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  image: z.object({
-    src: z.string(),
-    alt: z.string().optional(),
-    width: z.number(),
-    height: z.number(),
+export const WorksFrontmatterSchema = v.object({
+  title: v.string(),
+  description: v.string(),
+  image: v.object({
+    src: v.string(),
+    alt: v.optional(v.string()),
+    width: v.number(),
+    height: v.number(),
   }),
-  links: z.array(
-    z.object({
-      href: z.string(),
-      text: z.string(),
+  links: v.array(
+    v.object({
+      href: v.string(),
+      text: v.string(),
     }),
   ),
-  date: z.coerce.date(),
+  date: vCoerceDate,
 })

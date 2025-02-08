@@ -1,17 +1,18 @@
 import { compareAsc, compareDesc } from 'date-fns'
 import { match } from 'ts-pattern'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { BlogPost } from './blogPost.ts'
 
-const SearchOptionSchema = z
-  .object({
-    tag: z.string().optional(),
-    order: z.enum(['asc', 'desc', 'none']).default('desc'),
-  })
-  .default({})
+const SearchOptionSchema = v.optional(
+  v.object({
+    tag: v.optional(v.string()),
+    order: v.optional(v.picklist(['asc', 'desc', 'none']), 'desc'),
+  }),
+  {},
+)
 
-export type SearchOption = z.input<typeof SearchOptionSchema>
+export type SearchOption = v.InferInput<typeof SearchOptionSchema>
 
 /**
  * Search blog post
@@ -22,7 +23,7 @@ export const searchBlogPost = async (
   posts: BlogPost[],
   searchOptions?: SearchOption,
 ): Promise<BlogPost[]> => {
-  const options = SearchOptionSchema.parse(searchOptions)
+  const options = v.parse(SearchOptionSchema, searchOptions)
   posts = posts.filter(blogPost => !options.tag || blogPost.tags.includes(options.tag))
   return match(options.order)
     .with('asc', () => posts.toSorted((a, b) => compareAsc(a.date, b.date)))

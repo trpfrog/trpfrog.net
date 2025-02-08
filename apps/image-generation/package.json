@@ -15,7 +15,7 @@
     "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
   },
   "dependencies": {
-    "@hono/zod-validator": "^0.4.2",
+    "@hono/valibot-validator": "^0.5.2",
     "@huggingface/inference": "^2.8.1",
     "@langchain/core": "^0.2.17",
     "@langchain/openai": "^0.2.4",
@@ -28,8 +28,7 @@
     "stable-hash": "^0.0.4",
     "ts-dedent": "^2.2.0",
     "ts-pattern": "^5.6.0",
-    "uuidv7": "^1.0.2",
-    "zod": "^3.24.1"
+    "uuidv7": "^1.0.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241224.0",

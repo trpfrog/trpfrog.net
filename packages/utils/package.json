@@ -6,7 +6,7 @@
     ".": "./src/index.ts",
     "./hono": "./src/hono.ts",
     "./wire": "./src/wire.ts",
-    "./zod": "./src/zod.ts",
+    "./valibot": "./src/valibot.ts",
     "./dom": "./src/dom/index.ts"
   },
   "scripts": {
@@ -17,8 +17,7 @@
   },
   "dependencies": {
     "hono": "^4.6.15",
-    "node-html-parser": "^7.0.1",
-    "zod": "^3.24.1"
+    "node-html-parser": "^7.0.1"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",

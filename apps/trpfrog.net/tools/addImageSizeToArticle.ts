@@ -9,19 +9,19 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { cloudinary } from '@/lib/cloudinary'
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils.ts'
 
 const postsDir = path.join(process.cwd(), 'src/posts')
 
-const CloudinaryResponseSchema = z.object({
-  resources: z.array(
-    z.object({
-      public_id: z.string(),
-      width: z.number(),
-      height: z.number(),
+const CloudinaryResponseSchema = v.object({
+  resources: v.array(
+    v.object({
+      public_id: v.string(),
+      width: v.number(),
+      height: v.number(),
     }),
   ),
 })
@@ -43,11 +43,11 @@ const main = async () => {
     > = {}
 
     // fetch image size
-    const searchResult = await cloudinary.search
+    const searchResult: v.InferOutput<typeof CloudinaryResponseSchema> = await cloudinary.search
       .expression(`folder=blog/${slug}`)
       .max_results(500)
       .execute()
-      .then(res => CloudinaryResponseSchema.parse(res))
+      .then((res: unknown) => v.parse(CloudinaryResponseSchema, res))
 
     searchResult.resources.forEach(image => {
       const src = '/' + image.public_id
@@ -63,7 +63,7 @@ const main = async () => {
     const filePath = path.join(postsDir, file)
     const content = await fs.readFile(filePath, 'utf-8')
     const lines = content.split('\n')
-    const newLines = []
+    const newLines: string[] = []
     for (const line of lines) {
       if (line.startsWith('![')) {
         const regex = /!\[(.*?)\]\((.*?)\s*(?:"(.*?)")?\)/

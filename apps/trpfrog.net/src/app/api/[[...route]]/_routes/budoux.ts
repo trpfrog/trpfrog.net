@@ -1,7 +1,7 @@
-import { zValidator } from '@hono/zod-validator'
+import { vValidator } from '@hono/valibot-validator'
 import { loadDefaultJapaneseParser } from 'budoux/dist'
 import { Hono } from 'hono'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 const budouXParser = loadDefaultJapaneseParser()
 
@@ -24,16 +24,16 @@ function parse(text: string) {
 
 export const app = new Hono().post(
   '/',
-  zValidator(
+  vValidator(
     'header',
-    z.object({
-      'x-api-key': z.string(),
+    v.object({
+      'x-api-key': v.string(),
     }),
   ),
-  zValidator(
+  vValidator(
     'json',
-    z.object({
-      text: z.string(),
+    v.object({
+      text: v.string(),
     }),
   ),
   async c => {
