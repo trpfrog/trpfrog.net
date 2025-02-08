@@ -1,7 +1,7 @@
 'use server'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { env } from '@/env'
 const client = createTrpFrogImageGenerationClient('production')
@@ -26,15 +26,15 @@ export async function updateCurrent(forceUpdate: boolean) {
   })
 }
 
-const fetchImageRecordsQuerySchema = z.object({
-  page: z.number().int().positive(),
-  iconsPerPage: z.number().int().positive().max(20).default(20),
+const fetchImageRecordsQuerySchema = v.object({
+  page: v.pipe(v.number(), v.integer(), v.minValue(1)),
+  iconsPerPage: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1), v.maxValue(20)), 20),
 })
 
-export type FetchImageRecordsQuery = z.input<typeof fetchImageRecordsQuerySchema>
+export type FetchImageRecordsQuery = v.InferInput<typeof fetchImageRecordsQuerySchema>
 
 export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
-  const query = fetchImageRecordsQuerySchema.parse(rawQuery)
+  const query = v.parse(fetchImageRecordsQuerySchema, rawQuery)
   const { result, total } = await client.query
     .$get({
       query: {
