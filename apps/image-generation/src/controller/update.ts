@@ -1,7 +1,7 @@
-import { zValidator } from '@hono/zod-validator'
-import { stringifiedBooleanSchema } from '@trpfrog.net/utils/zod'
+import { vValidator } from '@hono/valibot-validator'
+import { StringifiedBooleanSchema } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { Env } from '../env'
 import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
@@ -11,10 +11,10 @@ import { requiresApiKey } from './middlewares'
 export const updateApp = new Hono<Env>().post(
   '/',
   requiresApiKey(),
-  zValidator(
+  vValidator(
     'query',
-    z.object({
-      force: stringifiedBooleanSchema,
+    v.object({
+      force: StringifiedBooleanSchema,
     }),
   ),
   async c => {

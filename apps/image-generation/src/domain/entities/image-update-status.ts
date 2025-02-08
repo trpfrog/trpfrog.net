@@ -1,17 +1,17 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
-export const imageUpdateStatusSchema = z.union([
-  z.object({
-    status: z.literal('idle'),
+export const ImageUpdateStatusSchema = v.variant('status', [
+  v.object({
+    status: v.literal('idle'),
   }),
-  z.object({
-    status: z.literal('updating'),
-    startedAt: z.date(),
+  v.object({
+    status: v.literal('updating'),
+    startedAt: v.date(),
   }),
-  z.object({
-    status: z.literal('error'),
-    occurredAt: z.date(),
+  v.object({
+    status: v.literal('error'),
+    occurredAt: v.date(),
   }),
 ])
 
-export type ImageUpdateStatus = z.infer<typeof imageUpdateStatusSchema>
+export type ImageUpdateStatus = v.InferOutput<typeof ImageUpdateStatusSchema>

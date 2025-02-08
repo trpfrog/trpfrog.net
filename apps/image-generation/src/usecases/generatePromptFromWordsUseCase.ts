@@ -1,6 +1,6 @@
 import { toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import type { ImagePrompt } from '../domain/entities/generation-result'
 import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
@@ -27,11 +27,11 @@ type OutputWithReasoning = {
 
 export type { OutputWithReasoning as __internal_OutputWithReasoning }
 
-const FinalPromptSchema = z.object({
-  final: z.object({
-    prompt: z.string(),
+const FinalPromptSchema = v.looseObject({
+  final: v.object({
+    prompt: v.string(),
   }),
-  translated: z.string(),
+  translated: v.string(),
 })
 
 export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson }) {
@@ -116,7 +116,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
               "reasoning": "Explanation for why this is the best version",
               "prompt": "A concise and engaging version with 10 words or fewer starting with '${promptPrefix}'."
             },
-            "translated": "The Japanese translation of the final prompt, ensuring '${promptPrefix}' is 'つまみさ��の画像'."
+            "translated": "The Japanese translation of the final prompt, ensuring '${promptPrefix}' is 'つまみさんの画像'."
           }
         `,
       },
@@ -218,16 +218,16 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
 
     const { response: rawJson, modelName } = await deps.jsonChatbot(chat)
 
-    const parsedResponse = FinalPromptSchema.passthrough().safeParse(rawJson)
+    const parsedResponse = v.safeParse(FinalPromptSchema, rawJson)
 
     if (!parsedResponse.success) {
       throw new Error('Failed to parse chatbot response JSON')
     }
 
     return {
-      ...parsedResponse.data,
-      translated: parsedResponse.data.translated,
-      text: parsedResponse.data.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
+      ...parsedResponse.output,
+      translated: parsedResponse.output.translated,
+      text: parsedResponse.output.final.prompt.trim().toLowerCase().replace(/\.+$/, ''),
       author: modelName.trim(),
     }
   }

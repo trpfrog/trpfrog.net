@@ -1,19 +1,20 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { ImageMetadata } from '../entities/generation-result'
 
-export const imageMetadataRepoQuerySchema = z.object({
-  where: z
-    .object({
-      prompt: z.string().optional(),
-      includeDeleted: z.boolean().optional(),
-    })
-    .default({}),
-  limit: z.number().int().positive().default(20),
-  offset: z.number().int().nonnegative().default(0),
+export const ImageMetadataRepoQuerySchema = v.object({
+  where: v.optional(
+    v.object({
+      prompt: v.optional(v.string()),
+      includeDeleted: v.optional(v.boolean()),
+    }),
+    {},
+  ),
+  limit: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1)), 20),
+  offset: v.optional(v.pipe(v.number(), v.integer(), v.minValue(0)), 0),
 })
 
-export type ImageMetadataQuery = z.output<typeof imageMetadataRepoQuerySchema>
+export type ImageMetadataQuery = v.InferOutput<typeof ImageMetadataRepoQuerySchema>
 
 export interface ImageMetadataRepo {
   query: (query: ImageMetadataQuery) => Promise<ImageMetadata[]>
