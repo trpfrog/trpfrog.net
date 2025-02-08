@@ -9,7 +9,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 export const createLinkCardStyles = tv({
   slots: {
-    wrapper: 'tw-block tw-@container',
+    wrapper: 'tw-block tw-@container tw-w-full',
     layout: [
       'tw-flex tw-justify-between tw-leading-none',
       'tw-overflow-clip tw-rounded-xl tw-bg-window-color tw-text-sm',
@@ -35,7 +35,7 @@ export const createLinkCardStyles = tv({
   },
 })
 
-type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   title: string
   description?: string
   imageUrl?: string
@@ -54,6 +54,7 @@ export function LinkCard(props: LinkCardProps) {
     imageUrl: rawImageUrl,
     href,
     themeColor,
+    skeleton,
     ...rest
   } = props
 

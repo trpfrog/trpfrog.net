@@ -1,0 +1,29 @@
+#hero_article {
+  @media screen and (max-width: 800px) {
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
+
+#past_article_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 17px;
+
+  @media screen and (max-width: 800px) {
+    margin: 0 8px;
+    column-gap: 8px;
+    row-gap: 12px;
+  }
+}
+
+.article_block {
+  padding: 17px;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+
+  & h2 {
+    font-size: 1.2em;
+  }
+}

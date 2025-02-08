@@ -20,6 +20,14 @@ export const cacheTags = {
     tag: (slug: string) => `blog-slug:${slug}` as const,
     description: '特定のブログ記事',
   },
+  allOgp: {
+    tag: 'all-ogp',
+    description: '全ての OGP',
+  },
+  ogp: {
+    tag: (url: string) => `ogp:${url}` as const,
+    description: '特定の OGP',
+  },
 } as const satisfies Record<string, CacheTag>
 
 interface CachedPath {

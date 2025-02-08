@@ -40,11 +40,12 @@ function Button(props: {
   text?: string
   createPath: (pageNo: number) => string
   current: boolean
+  disabled?: boolean
 }) {
   const { pageNo, createPath } = props
   const href = useMemo(() => createPath(pageNo), [pageNo, createPath])
-  return props.current ? (
-    <RichButton as="button" disabled>
+  return props.current || props.disabled ? (
+    <RichButton as="button" disabled={props.disabled} data-current={props.current}>
       {props.text ?? props.pageNo}
     </RichButton>
   ) : (
@@ -58,8 +59,9 @@ export function PageNavigation(props: {
   currentPage: number
   lastPage: number
   createPath: (pageNo: number) => string
+  showNextPrevButtons?: boolean
 }) {
-  const { currentPage, lastPage } = props
+  const { currentPage, lastPage, showNextPrevButtons = false } = props
   // create array like [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, ..., lastPage]
   const buttonLabels = useMemo(
     () => createButtonLables(currentPage, lastPage),
@@ -68,14 +70,33 @@ export function PageNavigation(props: {
 
   return (
     <div className="tw-flex tw-gap-1 tw-flex-wrap tw-justify-center">
+      {showNextPrevButtons && (
+        <Button
+          pageNo={currentPage - 1}
+          createPath={props.createPath}
+          current={false}
+          disabled={currentPage === 1}
+          text="←"
+        />
+      )}
       {buttonLabels.map(pageNo => (
         <Button
           key={pageNo}
           pageNo={pageNo}
           current={pageNo === props.currentPage}
           createPath={props.createPath}
+          disabled={pageNo === props.currentPage}
         />
       ))}
+      {showNextPrevButtons && (
+        <Button
+          pageNo={currentPage + 1}
+          createPath={props.createPath}
+          current={false}
+          disabled={currentPage === lastPage}
+          text="→"
+        />
+      )}
     </div>
   )
 }

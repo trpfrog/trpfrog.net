@@ -9,7 +9,7 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast, bundledLanguages, bundledThemes, getSingletonHighlighter } from 'shiki'
+import { addClassToHast, bundledLanguages, getSingletonHighlighter } from 'shiki'
 
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { A } from '@/components/wrappers'
@@ -48,7 +48,7 @@ const createStyles = tv({
   },
 })
 
-const langAlias = {
+const langAlias: Record<string, string> = {
   txt: 'text',
 }
 
@@ -60,18 +60,32 @@ function extractPrefixes(language: string) {
   return { prefixes, language }
 }
 
-function isValidLanguage(language: string): boolean {
-  // text and ansi are special languages
-  return [...Object.keys(bundledLanguages), ...Object.keys(langAlias), 'text', 'ansi'].includes(
-    language?.split(':').slice(-1)[0],
-  )
-}
-
 const highlighter = await getSingletonHighlighter({
-  themes: Object.keys(bundledThemes),
-  langs: Object.keys(bundledLanguages),
+  themes: ['github-light', 'github-dark'],
+  langs: [], // no languages are loaded initially
   langAlias,
 })
+
+async function loadLanguage(language: string): Promise<boolean> {
+  language = language?.split(':').slice(-1)[0]
+  language = langAlias[language] ?? language
+
+  // built-in languages
+  if (['ansi', 'text'].includes(language)) {
+    return true
+  }
+
+  if (!highlighter.getLoadedLanguages().includes(language)) {
+    // check if the language is bundled
+    if (!(language in bundledLanguages)) {
+      return false
+    }
+    // lazy load the language
+    const langModule = await bundledLanguages[language as keyof typeof bundledLanguages]()
+    await highlighter.loadLanguage(langModule)
+  }
+  return true
+}
 
 export function CodeLinkButton(props: { url: string }) {
   const isGitHub = /https?:\/\/github.com/.test(props.url)
@@ -91,11 +105,11 @@ export function CodeLinkButton(props: { url: string }) {
 export async function CodeBlock(props: CodeBlockProps) {
   const { children, language: rawLanguage = '', fileName, url, ...rest } = props
 
-  const { prefixes, language } = extractPrefixes(
-    isValidLanguage(rawLanguage) ? rawLanguage : 'text',
-  )
+  const isValidLanguage = await loadLanguage(rawLanguage)
 
-  const showBar = !prefixes.includes('no-header') && isValidLanguage(rawLanguage)
+  const { prefixes, language } = extractPrefixes(isValidLanguage ? rawLanguage : 'text')
+
+  const showBar = !prefixes.includes('no-header') && isValidLanguage
   const styles = createStyles({ showBar, wrap: prefixes.includes('wrap') })
 
   const codeHtml = highlighter.codeToHtml((props.children as string).trimEnd(), {

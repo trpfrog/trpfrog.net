@@ -1,0 +1,17 @@
+.post {
+  margin: 0 auto;
+
+  @media screen and (min-width: 800px) {
+    --max-w: 800px;
+    max-width: var(--max-w);
+    padding: calc((100% - var(--max-w)) / 2) 0;
+  }
+
+  & main {
+    word-break: break-word;
+  }
+}
+
+.post code {
+  font-family: var(--font-noto-sans-mono), monospace !important;
+}

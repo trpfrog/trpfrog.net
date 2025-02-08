@@ -4,7 +4,7 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-import { ServerLinkCard } from '@/components/organisms/LinkCard/ServerLinkCard'
+import { StreamingLinkCard } from '@/components/organisms/LinkCard/ServerStreamLinkCard'
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
@@ -44,7 +44,7 @@ export async function MutualLinkBlock(props: { record: MutualLinkRecord }) {
           )}
         </div>
       </div>
-      <ServerLinkCard href={url} />
+      <StreamingLinkCard href={url} />
     </PlainBlock>
   )
 }
