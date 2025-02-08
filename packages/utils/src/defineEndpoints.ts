@@ -1,31 +1,39 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const EndpointRecordSchema = z.record(
-  z.string(),
-  z.object({
-    port: z.number().nullish(),
-    development: z
-      .string()
-      .url()
-      .refine(value => new URL(value).origin === value, {
-        message: '`development` must be a valid origin URL or null',
-      })
-      .nullish(),
-    production: z
-      .string()
-      .url()
-      .refine(value => new URL(value).origin === value, {
-        message: '`production` must be a valid origin URL or null',
-      })
-      .nullish(),
-    basePath: z
-      .string()
-      .refine(value => value.startsWith('/'))
-      .nullish(),
+const EndpointRecordSchema = v.record(
+  v.string(),
+  v.object({
+    port: v.nullish(v.number()),
+    development: v.nullish(
+      v.pipe(
+        v.string(),
+        v.url(),
+        v.check(
+          value => new URL(value).origin === value,
+          '`development` must be a valid origin URL or null',
+        ),
+      ),
+    ),
+    production: v.nullish(
+      v.pipe(
+        v.string(),
+        v.url(),
+        v.check(
+          value => new URL(value).origin === value,
+          '`production` must be a valid origin URL or null',
+        ),
+      ),
+    ),
+    basePath: v.nullish(
+      v.pipe(
+        v.string(),
+        v.check(value => value.startsWith('/')),
+      ),
+    ),
   }),
 )
 
-export type EndpointRecord = z.infer<typeof EndpointRecordSchema>
+export type EndpointRecord = v.InferOutput<typeof EndpointRecordSchema>
 
 type ReturnRecord<
   Port extends number | null | undefined,
@@ -46,7 +54,7 @@ type ReturnRecord<
 }
 
 export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
-  const parsedEndpoints = EndpointRecordSchema.parse(endpoints)
+  const parsedEndpoints = v.parse(EndpointRecordSchema, endpoints)
 
   for (const name in parsedEndpoints) {
     const currentEndpoint = parsedEndpoints[name]
