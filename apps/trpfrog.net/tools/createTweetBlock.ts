@@ -8,7 +8,7 @@
 import { createURL } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
 import { JSDOM } from 'jsdom'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { formatDateToDisplay } from '@/lib/date'
 
@@ -63,7 +63,7 @@ function preprocessURL(url: string): string {
   return url
 }
 
-type FetchedTweet = z.infer<typeof BlogTwitterArchiveSchema>
+type FetchedTweet = v.InferOutput<typeof BlogTwitterArchiveSchema>
 
 /**
  * Fetch the tweet.
@@ -72,11 +72,11 @@ type FetchedTweet = z.infer<typeof BlogTwitterArchiveSchema>
 async function fetchTweet(tweetUrl: string) {
   tweetUrl = preprocessURL(tweetUrl)
 
-  const FetchedTweetSchema = z.object({
-    url: z.string().url(),
-    author_name: z.string(),
-    html: z.string(),
-    author_url: z.string().url(),
+  const FetchedTweetSchema = v.object({
+    url: v.string(),
+    author_name: v.string(),
+    html: v.string(),
+    author_url: v.string(),
   })
 
   const endpoint = createURL('/oembed', 'https://publish.twitter.com', {
@@ -87,11 +87,14 @@ async function fetchTweet(tweetUrl: string) {
 
   const response = await fetch(endpoint)
   const rawContent = await response.json()
-  const content = FetchedTweetSchema.parse(rawContent)
+  const content = v.parse(FetchedTweetSchema, rawContent)
 
   const dom = new JSDOM(content.html)
   const document = dom.window.document
   const dateElement = document.querySelectorAll('a').item(document.querySelectorAll('a').length - 1)
+  if (!dateElement) {
+    throw new Error('Failed to parse tweet date')
+  }
 
   const rawTweet = document.querySelector('p')?.innerHTML ?? ''
   const images = countImages(rawTweet)

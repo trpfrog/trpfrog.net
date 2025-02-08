@@ -1,5 +1,7 @@
 import * as path from 'path'
 
+import * as v from 'valibot'
+
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { WorksFrontmatter, WorksFrontmatterSchema } from '@/app/works/schema'
 
@@ -63,7 +65,7 @@ const styles = tv({
 export async function WorksCard() {
   const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
-    WorksFrontmatterSchema,
+    v.parser(WorksFrontmatterSchema),
   ).then(mds => mds.slice(0, 3))
 
   return (

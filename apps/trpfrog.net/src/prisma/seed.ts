@@ -2,62 +2,50 @@ import fs from 'node:fs'
 import { homedir } from 'node:os'
 
 import { PrismaClient, Tweet, Media } from '@prisma/client'
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const OriginalTweetSchema = z.object({
-  tweet: z.object({
-    edit_info: z.unknown(),
-    retweeted: z.boolean(),
-    source: z.string(),
-    entities: z.object({
-      user_mentions: z.array(
-        z.object({
-          name: z.string(),
-          screen_name: z.string(),
-          id_str: z.string(),
+const OriginalTweetSchema = v.object({
+  tweet: v.object({
+    edit_info: v.unknown(),
+    retweeted: v.boolean(),
+    source: v.string(),
+    entities: v.object({
+      user_mentions: v.array(
+        v.object({
+          name: v.string(),
+          screen_name: v.string(),
+          id_str: v.string(),
         }),
       ),
-      media: z.array(
-        z.object({
-          media_url_https: z.string(),
-          sizes: z.object({
-            large: z.object({
-              w: z.number(),
-              h: z.number(),
+      media: v.array(
+        v.object({
+          media_url_https: v.string(),
+          sizes: v.object({
+            large: v.object({
+              w: v.number(),
+              h: v.number(),
             }),
           }),
-          type: z.string(),
-          id_str: z.string(),
+          type: v.string(),
+          id_str: v.string(),
         }),
       ),
     }),
-    display_text_range: z.array(z.string()),
-    favorite_count: z.string(),
-    id_str: z.string(),
-    truncated: z.string(),
-    retweet_count: z.string(),
-    id: z.string(),
-    possibly_sensitive: z.boolean(),
-    created_at: z.string(),
-    favorited: z.boolean(),
-    full_text: z.string(),
-    lang: z.string(),
+    display_text_range: v.array(v.string()),
+    favorite_count: v.string(),
+    id_str: v.string(),
+    truncated: v.string(),
+    retweet_count: v.string(),
+    id: v.string(),
+    possibly_sensitive: v.boolean(),
+    created_at: v.string(),
+    favorited: v.boolean(),
+    full_text: v.string(),
+    lang: v.string(),
   }),
 })
 
-type OriginalTweet = z.infer<typeof OriginalTweetSchema>
-
-// type OriginalMedia = {
-//   media_url_https: string
-//   sizes: {
-//     large: {
-//       w: number
-//       h: number
-//     }
-//   }
-//   type: string
-//   id_str: string
-// }
+type OriginalTweet = v.InferOutput<typeof OriginalTweetSchema>
 
 const prisma = new PrismaClient()
 
@@ -118,7 +106,10 @@ function fetchSimplifiedTweetsFromLocal(files: string[]): [Tweet[], Media[]] {
   for (const fname of files) {
     const jsLines = fs.readFileSync(fname.replace('~', homedir()), 'utf8').split('\n')
     // REPLACE first line with '['
-    const jsons = OriginalTweetSchema.array().parse(JSON.parse('[' + jsLines.slice(1).join('\n')))
+    const jsons = v.parse(
+      v.array(OriginalTweetSchema),
+      JSON.parse('[' + jsLines.slice(1).join('\n')),
+    )
     for (const json of jsons) {
       const [tweet, media] = simplifyTweet(json)
       tweets.push(tweet)

@@ -3,14 +3,17 @@
 import { BlogPost, InvalidPagePositionError } from '@trpfrog.net/posts'
 import { notFound } from 'next/navigation'
 import { match } from 'ts-pattern'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 
-const pageNumberSchema = z.number().int().positive().or(z.literal('all')).catch(1)
+const pageNumberSchema = v.fallback(
+  v.union([v.pipe(v.number(), v.integer(), v.minValue(1)), v.literal('all')]),
+  1,
+)
 
 export async function renderBlog(slug: string, page?: number | 'all') {
-  page = pageNumberSchema.parse(page)
+  page = v.parse(pageNumberSchema, page)
   try {
     const { readBlogPost } = await import('@trpfrog.net/posts/fs')
     const entry: BlogPost = await match(page)

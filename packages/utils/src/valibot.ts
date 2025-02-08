@@ -13,3 +13,11 @@ export const vCoerceNumber = v.union([
     v.number(),
   ),
 ])
+
+export const vCoerceDate = v.union([
+  v.date(),
+  v.pipe(
+    v.union([v.string(), v.number()]),
+    v.transform(str => new Date(str)),
+  ),
+])

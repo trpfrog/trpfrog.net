@@ -2,7 +2,8 @@
 
 import { useId, useState } from 'react'
 
-import { z } from 'zod'
+import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
+import * as v from 'valibot'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
@@ -15,13 +16,23 @@ import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
 import { useBalloonState } from './useBalloonState.ts'
 
+const FormNumberSchema = (max: number, defaultValue: number) =>
+  v.fallback(
+    v.pipe(
+      vCoerceNumber,
+      v.integer(),
+      v.transform(n => clamp(n, 1, max)),
+    ),
+    defaultValue,
+  )
+
 export function BalloonApp() {
   const { isSoundEnabled, setSoundEnabled } = useBalloonSound()
 
   const [balloonSize, _setBalloonSize] = useState(57)
   const setBalloonSize = (s: number | string) => {
-    const n = z.coerce.number().int().safeParse(s)
-    _setBalloonSize(clamp(n.data ?? 57, 1, 1000))
+    const n = v.parse(FormNumberSchema(1000, 57), s)
+    _setBalloonSize(n)
   }
 
   const rewardStartPositionId = useId()
@@ -29,8 +40,8 @@ export function BalloonApp() {
     rewardId: rewardStartPositionId,
   })
   const setBalloonAmount = (s: number | string) => {
-    const n = z.coerce.number().int().safeParse(s)
-    balloonState.updateAmount(clamp(n.data ?? 96, 1, 10000))
+    const value = v.parse(FormNumberSchema(10000, 96), s)
+    balloonState.updateAmount(value)
   }
 
   return (

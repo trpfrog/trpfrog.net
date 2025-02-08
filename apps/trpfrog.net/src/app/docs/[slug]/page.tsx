@@ -4,7 +4,7 @@ import path from 'node:path'
 import { preprocess } from '@trpfrog.net/posts'
 import matter from 'gray-matter'
 import Link from 'next/link'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
@@ -23,9 +23,9 @@ export function generateStaticParams() {
   }))
 }
 
-const metadataSchema = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
+const MetadataSchema = v.object({
+  title: v.optional(v.string()),
+  description: v.optional(v.string()),
 })
 
 interface PageProps {
@@ -37,7 +37,7 @@ export default async function DocsMarkdown(props: PageProps) {
   const filePath = docsPaths[slug]
   const content = await readFile(path.join(process.cwd(), filePath), 'utf-8')
   const { content: rawMarkdown, data: rawData } = matter(content)
-  const { title, description } = metadataSchema.parse(rawData)
+  const { title, description } = v.parse(MetadataSchema, rawData)
   const markdownList = preprocess(rawMarkdown, {
     concatenateAllPages: true,
   })

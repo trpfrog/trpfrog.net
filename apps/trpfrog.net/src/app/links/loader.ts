@@ -2,22 +2,22 @@ import fs from 'fs/promises'
 import * as path from 'path'
 
 import yaml from 'js-yaml'
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const MutualLinkRecordSchema = z.object({
-  url: z.string(),
-  ownerName: z.string(),
-  twitter: z.string().optional(),
-  github: z.string().optional(),
-  description: z.string().optional(),
+const MutualLinkRecordSchema = v.object({
+  url: v.string(),
+  ownerName: v.string(),
+  twitter: v.optional(v.string()),
+  github: v.optional(v.string()),
+  description: v.optional(v.string()),
 })
 
-export type MutualLinkRecord = z.infer<typeof MutualLinkRecordSchema>
+export type MutualLinkRecord = v.InferOutput<typeof MutualLinkRecordSchema>
 
 export const loadMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
   const yamlPath = path.join(process.cwd(), 'src', 'app', 'links', 'mutual_links.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
-  const links = MutualLinkRecordSchema.array().parse(yaml.load(yamlText))
+  const links = v.parse(v.array(MutualLinkRecordSchema), yaml.load(yamlText))
 
   return links.sort(({ ownerName: a }, { ownerName: b }) => {
     if (a < b) {

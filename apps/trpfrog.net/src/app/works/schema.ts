@@ -1,21 +1,22 @@
-import { z } from 'zod'
+import { vCoerceDate } from '@trpfrog.net/utils/valibot'
+import * as v from 'valibot'
 
 import { H2IconSchema } from '@/components/wrappers/H2'
 
-export const WorksFrontmatterSchema = z.object({
-  title: z.string(),
-  subtitle: z.string().optional(),
-  h2icon: H2IconSchema.default('trpfrog'),
-  image: z
-    .object({
-      path: z.string(),
-      width: z.number(),
-      height: z.number(),
-    })
-    .optional(),
-  keywords: z.array(z.string()).optional(),
-  links: z.record(z.string()).optional(),
-  date: z.coerce.date(),
+export const WorksFrontmatterSchema = v.object({
+  title: v.string(),
+  subtitle: v.optional(v.string()),
+  h2icon: v.optional(H2IconSchema, 'trpfrog'),
+  image: v.optional(
+    v.object({
+      path: v.string(),
+      width: v.number(),
+      height: v.number(),
+    }),
+  ),
+  keywords: v.optional(v.array(v.string())),
+  links: v.optional(v.record(v.string(), v.string())),
+  date: vCoerceDate,
 })
 
-export type WorksFrontmatter = z.infer<typeof WorksFrontmatterSchema>
+export type WorksFrontmatter = v.InferOutput<typeof WorksFrontmatterSchema>

@@ -1,22 +1,20 @@
-import { zValidator } from '@hono/zod-validator'
+import { vValidator } from '@hono/valibot-validator'
 import { Hono } from 'hono'
 import { revalidatePath, revalidateTag } from 'next/cache'
-import { z } from 'zod'
+import * as v from 'valibot'
 
 import { env } from '@/env/server'
 
 export const app = new Hono().post(
   '/',
-  zValidator(
+  vValidator(
     'json',
-    z
-      .object({
-        tag: z.string().optional(),
-        path: z.string().optional(),
-      })
-      .strict(),
+    v.strictObject({
+      tag: v.optional(v.string()),
+      path: v.optional(v.string()),
+    }),
   ),
-  zValidator('header', z.object({ 'x-api-key': z.string() })),
+  vValidator('header', v.object({ 'x-api-key': v.string() })),
   c => {
     if (c.req.valid('header')['x-api-key'] !== env.TRPFROG_ADMIN_KEY) {
       return c.text('Unauthorized', 401)
