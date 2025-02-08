@@ -4,11 +4,13 @@ import { useEffect } from 'react'
 
 export function MarkdownUseEffect({ code }: { code: string }) {
   useEffect(() => {
-    const userFunction = Function(code)
-    const cleanup = userFunction()
-    if (cleanup instanceof Function) {
-      return cleanup
+    if (typeof window !== 'undefined') {
+      const userFunction = Function(code)
+      const cleanup = userFunction()
+      if (typeof cleanup === 'function') {
+        return cleanup
+      }
     }
   }, [code])
-  return <></>
+  return null
 }

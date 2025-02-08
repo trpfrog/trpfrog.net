@@ -178,12 +178,13 @@ https://salty-angelfish-229.notion.site/1-1741eafe621148b5a14753e7c61162e9
 
 ```use-effect
 const div = document.getElementById('edit-me-impression')
+if (!div) return;
 let flag = false;
 const defaultText = div.innerText;
 
 let timeoutId = null;
 const observer = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
+  if (entries[0].isIntersecting && !timeoutId) {
     timeoutId = setTimeout(handler, 1000);
   }
 });
@@ -193,12 +194,15 @@ const handler = async () => {
     flag = true;
     const asyncSleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    const l = div.innerText.length;
-    for (let i = 0; i < l; i++) {
-      div.innerHTML = div.innerText.slice(0, -1) || '&nbsp;';
+    // テキストが少しずつ削られていく処理
+    let text = div.innerText;
+    while (text.length > 0) {
+      text = text.slice(0, -1);
+      div.innerHTML = text || '&nbsp;';
       await asyncSleep(20);
     }
-    div.style = 'font-weight: bold; min-height: 50px';
+    div.style.fontWeight = 'bold';
+    div.style.minHeight = '50px';
     const msg = '読者の皆さんも是非体験に行かれてはいかがでしょうか？';
     for (let i = 0; i < msg.length; i++) {
       div.innerText = msg.slice(0, i + 1);
@@ -211,9 +215,9 @@ observer.observe(div);
 
 return () => {
   observer.disconnect();
-  clearTimeout(timeoutId);
+  if (timeoutId) clearTimeout(timeoutId);
   div.innerText = defaultText;
-}
+};
 ```
 
 <div id="edit-me-impression" style="opacity: 0.5; font-style: italic; font-weight: bold; width: 100%; min-height: 50px">
