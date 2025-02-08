@@ -143,9 +143,6 @@ importers:
       ts-pattern:
         specifier: ^5.6.0
         version: 5.6.0
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -186,15 +183,15 @@ importers:
 
   apps/content-server:
     dependencies:
+      '@hono/valibot-validator':
+        specifier: ^0.5.2
+        version: 0.5.2(hono@4.6.15)(valibot@0.42.1(typescript@5.7.2))
       '@hono/vite-build':
         specifier: ^1.2.0
         version: 1.2.0(hono@4.6.15)
       '@hono/vite-dev-server':
         specifier: ^0.17.0
         version: 0.17.0(hono@4.6.15)(miniflare@3.20241218.0(bufferutil@4.0.8))(wrangler@3.99.0(@cloudflare/workers-types@4.20241224.0)(bufferutil@4.0.8))
-      '@hono/zod-validator':
-        specifier: ^0.4.2
-        version: 0.4.2(hono@4.6.15)(zod@3.24.1)
       '@trpfrog.net/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -216,9 +213,6 @@ importers:
       ts-pattern:
         specifier: ^5.6.0
         version: 5.6.0
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241224.0
@@ -263,9 +257,9 @@ importers:
 
   apps/image-generation:
     dependencies:
-      '@hono/zod-validator':
-        specifier: ^0.4.2
-        version: 0.4.2(hono@4.6.15)(zod@3.24.1)
+      '@hono/valibot-validator':
+        specifier: ^0.5.2
+        version: 0.5.2(hono@4.6.15)(valibot@0.42.1(typescript@5.7.2))
       '@huggingface/inference':
         specifier: ^2.8.1
         version: 2.8.1
@@ -305,9 +299,6 @@ importers:
       uuidv7:
         specifier: ^1.0.2
         version: 1.0.2
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241224.0
@@ -351,9 +342,6 @@ importers:
       '@hono/valibot-validator':
         specifier: ^0.5.2
         version: 0.5.2(hono@4.6.15)(valibot@0.42.1(typescript@5.7.2))
-      '@hono/zod-validator':
-        specifier: ^0.4.2
-        version: 0.4.2(hono@4.6.15)(zod@3.24.1)
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.0(webpack@5.97.1(@swc/core@1.6.13(@swc/helpers@0.5.15))(esbuild@0.18.20))
@@ -402,6 +390,9 @@ importers:
       '@types/seedrandom':
         specifier: ^3.0.8
         version: 3.0.8
+      '@valibot/to-json-schema':
+        specifier: 1.0.0-beta.5
+        version: 1.0.0-beta.5(valibot@0.42.1(typescript@5.7.2))
       '@vanilla-extract/css':
         specifier: ^1.16.1
         version: 1.16.1
@@ -585,9 +576,6 @@ importers:
       use-sound:
         specifier: ^4.0.3
         version: 4.0.3(react@19.0.0)
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@shikijs/transformers':
         specifier: ^1.24.2
@@ -780,13 +768,9 @@ importers:
     dependencies:
       vitest:
         specifier: ^1.5.2
-        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
+        version: 1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2)
 
   packages/constants:
-    dependencies:
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@trpfrog.net/config-eslint':
         specifier: workspace:*
@@ -812,9 +796,6 @@ importers:
       ts-pattern:
         specifier: ^5.6.0
         version: 5.6.0
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
@@ -841,9 +822,6 @@ importers:
       node-html-parser:
         specifier: ^7.0.1
         version: 7.0.1
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
     devDependencies:
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
@@ -3071,12 +3049,6 @@ packages:
     peerDependencies:
       hono: '>=4.0.0'
 
-  '@hono/zod-validator@0.4.2':
-    resolution: {integrity: sha512-1rrlBg+EpDPhzOV4hT9pxr5+xDVmKuz6YJl+la7VCwK6ass5ldyKm5fD+umJdV2zhHD6jROoCCv8NbTwyfhT0g==}
-    peerDependencies:
-      hono: '>=3.9.0'
-      zod: ^3.19.1
-
   '@huggingface/inference@2.8.1':
     resolution: {integrity: sha512-EfsNtY9OR6JCNaUa5bZu2mrs48iqeTz0Gutwf+fU0Kypx33xFQB4DKMhp8u4Ee6qVbLbNWvTHuWwlppLQl4p4Q==}
     engines: {node: '>=18'}
@@ -5269,6 +5241,11 @@ packages:
 
   '@upstash/redis@1.25.1':
     resolution: {integrity: sha512-ACj0GhJ4qrQyBshwFgPod6XufVEfKX2wcaihsEvSdLYnY+m+pa13kGt1RXm/yTHKf4TQi/Dy2A8z/y6WUEOmlg==}
+
+  '@valibot/to-json-schema@1.0.0-beta.5':
+    resolution: {integrity: sha512-8aI2sG98gWS+6YuIL3OMkg60sImhICPdZIFCV1XDyX8k6UOCX+MgXaeR3f2fDShuNXYHV46vcjWRpov8ojzDNw==}
+    peerDependencies:
+      valibot: ^1.0.0 || ^1.0.0-beta.5 || ^1.0.0-rc
 
   '@vanilla-extract/babel-plugin-debug-ids@1.1.0':
     resolution: {integrity: sha512-Zy9bKjaL2P5zsrFYQJ8IjWGlFODmZrpvFmjFE0Zv8om55Pz1JtpJtL6DvlxlWUxbVaP1HKCqsmEfFOZN8fX/ZQ==}
@@ -14957,11 +14934,6 @@ snapshots:
     dependencies:
       hono: 4.6.15
 
-  '@hono/zod-validator@0.4.2(hono@4.6.15)(zod@3.24.1)':
-    dependencies:
-      hono: 4.6.15
-      zod: 3.24.1
-
   '@huggingface/inference@2.8.1':
     dependencies:
       '@huggingface/tasks': 0.12.30
@@ -17811,6 +17783,10 @@ snapshots:
   '@upstash/redis@1.25.1':
     dependencies:
       crypto-js: 4.2.0
+
+  '@valibot/to-json-schema@1.0.0-beta.5(valibot@0.42.1(typescript@5.7.2))':
+    dependencies:
+      valibot: 0.42.1(typescript@5.7.2)
 
   '@vanilla-extract/babel-plugin-debug-ids@1.1.0':
     dependencies:
@@ -26094,7 +26070,7 @@ snapshots:
       sugarss: 4.0.1(postcss@8.4.49)
       terser: 5.31.2
 
-  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8)(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
+  vitest@1.6.0(@types/node@22.10.2)(@vitest/ui@2.1.8(vitest@2.1.8))(happy-dom@15.11.7)(jsdom@25.0.1(bufferutil@4.0.8))(lightningcss@1.28.2)(sass@1.83.0)(sugarss@4.0.1(postcss@8.4.49))(terser@5.31.2):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
