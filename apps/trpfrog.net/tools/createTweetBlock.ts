@@ -5,7 +5,7 @@
  * $ bun tools/createTweetBlock.ts
  */
 
-import { createURL, validateUnknown } from '@trpfrog.net/utils'
+import { createURL, InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
 import { JSDOM } from 'jsdom'
 import * as v from 'valibot'
@@ -63,7 +63,7 @@ function preprocessURL(url: string): string {
   return url
 }
 
-type FetchedTweet = v.InferOutput<typeof BlogTwitterArchiveSchema>
+type FetchedTweet = InferSchemaOutput<typeof BlogTwitterArchiveSchema>
 
 /**
  * Fetch the tweet.

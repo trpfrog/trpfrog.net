@@ -1,7 +1,7 @@
 'use server'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
-import { validate } from '@trpfrog.net/utils'
+import { InferSchemaInput, validate } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { env } from '@/env/server'
@@ -11,7 +11,7 @@ const fetchImageRecordsQuerySchema = v.object({
   iconsPerPage: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1), v.maxValue(20)), 20),
 })
 
-export type FetchImageRecordsQuery = v.InferInput<typeof fetchImageRecordsQuerySchema>
+export type FetchImageRecordsQuery = InferSchemaInput<typeof fetchImageRecordsQuerySchema>
 
 /**
  * Cloudflare R2 のリンクは現状 production のものしか使えないことと

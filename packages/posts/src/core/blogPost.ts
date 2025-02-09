@@ -1,3 +1,4 @@
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { format } from 'date-fns'
 import * as v from 'valibot'
 
@@ -43,5 +44,5 @@ export const BlogPostSchema = v.object({
   numberOfPages: v.number(),
 })
 
-export type BlogFrontMatter = v.InferOutput<typeof BlogFrontMatterSchema>
-export type BlogPost = v.InferOutput<typeof BlogPostSchema>
+export type BlogFrontMatter = InferSchemaOutput<typeof BlogFrontMatterSchema>
+export type BlogPost = InferSchemaOutput<typeof BlogPostSchema>

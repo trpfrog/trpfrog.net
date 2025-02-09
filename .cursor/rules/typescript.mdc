@@ -24,6 +24,7 @@ globs: *.{ts,tsx}
 - `v.parse`, `v.safeParse` は使わず、`@trpfrog.net/utils` から export されている関数を使うようにしてください。
   - `validate(schema, data)`, `safeValidate(schema, data)`: 基本はこれらを使用してください。
   - `validateUnknown`, `safeValidateUnknown`: 上記の関数で type error が発生した場合はこちらを使用してください。
+- `v.InferInput`, `v.InferOutput` は使わず、`@trpfrog.net/utils` から export されている `InferSchemaInput`, `InferSchemaOutput` を使うようにしてください。
 
 ## Tips
 

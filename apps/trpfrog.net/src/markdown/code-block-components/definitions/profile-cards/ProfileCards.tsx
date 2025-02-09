@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { createURL } from '@trpfrog.net/utils'
+import { createURL, InferSchemaOutput } from '@trpfrog.net/utils'
 import { addDays, format } from 'date-fns'
 import * as v from 'valibot'
 
@@ -18,7 +18,7 @@ export const ProfileDataSchema = v.object({
   description: v.string(),
 })
 
-export type ProfileData = v.InferOutput<typeof ProfileDataSchema>
+export type ProfileData = InferSchemaOutput<typeof ProfileDataSchema>
 
 async function CardFormat({ personalDataList }: { personalDataList: ProfileData[] }) {
   const { RenderMarkdown } = await import('@/markdown/RenderMarkdown')

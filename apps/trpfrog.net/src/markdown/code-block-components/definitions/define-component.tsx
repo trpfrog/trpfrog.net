@@ -1,4 +1,4 @@
-import { validateUnknown } from '@trpfrog.net/utils'
+import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 import yaml from 'js-yaml'
 import * as v from 'valibot'
 
@@ -9,7 +9,7 @@ import { CustomCodeBlockComponent } from '../types'
 // TODO: Valibot で args/returns を指定できるようになったら (object) => string にする
 const UserFunctionSchema = v.function()
 
-const definedComponents: Record<string, v.InferOutput<typeof UserFunctionSchema>> = {}
+const definedComponents: Record<string, InferSchemaOutput<typeof UserFunctionSchema>> = {}
 
 /**
  * Component parts that define a custom component.

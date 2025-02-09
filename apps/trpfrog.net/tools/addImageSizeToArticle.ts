@@ -9,7 +9,7 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import { validateUnknown } from '@trpfrog.net/utils'
+import { InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { cloudinary } from '@/lib/cloudinary'
@@ -44,7 +44,7 @@ const main = async () => {
     > = {}
 
     // fetch image size
-    const searchResult: v.InferOutput<typeof CloudinaryResponseSchema> = await cloudinary.search
+    const searchResult: InferSchemaOutput<typeof CloudinaryResponseSchema> = await cloudinary.search
       .expression(`folder=blog/${slug}`)
       .max_results(500)
       .execute()

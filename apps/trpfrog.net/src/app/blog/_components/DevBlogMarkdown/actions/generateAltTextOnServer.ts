@@ -1,6 +1,7 @@
 'use server'
 
 import { openai } from '@ai-sdk/openai'
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { toJsonSchema } from '@valibot/to-json-schema'
 import { generateObject, jsonSchema } from 'ai'
 import dedent from 'ts-dedent'
@@ -23,7 +24,7 @@ export async function generateAltTextOnServer(image: ArrayBuffer): Promise<strin
 
   const { object: output } = await generateObject({
     model: openai('gpt-4o-2024-11-20'),
-    schema: jsonSchema<v.InferOutput<typeof AltTextObjectSchema>>(
+    schema: jsonSchema<InferSchemaOutput<typeof AltTextObjectSchema>>(
       toJsonSchema(AltTextObjectSchema),
     ),
     messages: [

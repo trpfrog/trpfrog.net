@@ -1,4 +1,4 @@
-import { validate } from '@trpfrog.net/utils'
+import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 const EndpointRecordSchema = v.record(
@@ -34,7 +34,7 @@ const EndpointRecordSchema = v.record(
   }),
 )
 
-export type EndpointRecord = v.InferOutput<typeof EndpointRecordSchema>
+export type EndpointRecord = InferSchemaOutput<typeof EndpointRecordSchema>
 
 type ReturnRecord<
   Port extends number | null | undefined,

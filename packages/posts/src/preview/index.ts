@@ -1,4 +1,4 @@
-import { validateUnknown } from '@trpfrog.net/utils'
+import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 import { createClient } from 'microcms-js-sdk'
 import * as v from 'valibot'
 
@@ -36,7 +36,7 @@ const MicroCMSBlogPostSchema = v.object({
 
 export type PreviewPostClient = (
   contentId: string,
-) => Promise<v.InferOutput<typeof MicroCMSBlogPostSchema>>
+) => Promise<InferSchemaOutput<typeof MicroCMSBlogPostSchema>>
 
 export function createPreviewClient(args: {
   apiKey: string

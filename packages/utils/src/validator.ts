@@ -81,16 +81,12 @@ export function validateUnknown<T extends StandardSchemaV1>(
   return result.output
 }
 
-export function validate<T extends StandardSchemaV1>(
-  schema: T,
-  input: StandardSchemaV1.InferInput<T>,
-): StandardSchemaV1.InferOutput<T> {
-  return validateUnknown(schema, input)
-}
+/**
+ * Infer the input type of the schema.
+ */
+export type InferSchemaInput<T extends StandardSchemaV1> = StandardSchemaV1.InferInput<T>
 
-export function safeValidate<T extends StandardSchemaV1>(
-  schema: T,
-  input: StandardSchemaV1.InferInput<T>,
-): SafeValidateResult<T> {
-  return safeValidateUnknown(schema, input)
-}
+/**
+ * Infer the output type of the schema.
+ */
+export type InferSchemaOutput<T extends StandardSchemaV1> = StandardSchemaV1.InferOutput<T>

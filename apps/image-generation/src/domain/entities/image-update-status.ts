@@ -1,3 +1,4 @@
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 export const ImageUpdateStatusSchema = v.variant('status', [
@@ -14,4 +15,4 @@ export const ImageUpdateStatusSchema = v.variant('status', [
   }),
 ])
 
-export type ImageUpdateStatus = v.InferOutput<typeof ImageUpdateStatusSchema>
+export type ImageUpdateStatus = InferSchemaOutput<typeof ImageUpdateStatusSchema>

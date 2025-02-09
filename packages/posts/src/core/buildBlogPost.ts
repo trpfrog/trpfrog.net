@@ -1,4 +1,4 @@
-import { validate } from '@trpfrog.net/utils'
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -25,7 +25,7 @@ export class InvalidPagePositionError extends Error {
   }
 }
 
-export type BlogPostBuildOption = v.InferInput<typeof BlogPostBuildOptionSchema>
+export type BlogPostBuildOption = InferSchemaInput<typeof BlogPostBuildOptionSchema>
 
 export function buildBlogPost(
   slug: string,

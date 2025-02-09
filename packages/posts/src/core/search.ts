@@ -1,4 +1,4 @@
-import { validate } from '@trpfrog.net/utils'
+import { InferSchemaInput, validate } from '@trpfrog.net/utils'
 import { compareAsc, compareDesc } from 'date-fns'
 import { match } from 'ts-pattern'
 import * as v from 'valibot'
@@ -13,7 +13,7 @@ const SearchOptionSchema = v.optional(
   {},
 )
 
-export type SearchOption = v.InferInput<typeof SearchOptionSchema>
+export type SearchOption = InferSchemaInput<typeof SearchOptionSchema>
 
 /**
  * Search blog post

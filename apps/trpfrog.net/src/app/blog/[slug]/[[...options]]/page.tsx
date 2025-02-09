@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { validate } from '@trpfrog.net/utils'
+import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -24,7 +24,7 @@ const ParamsSchema = v.object({
 })
 
 type PageProps = {
-  params: Promise<v.InferOutput<typeof ParamsSchema>>
+  params: Promise<InferSchemaOutput<typeof ParamsSchema>>
 }
 
 export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
