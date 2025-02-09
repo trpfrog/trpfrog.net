@@ -2,8 +2,6 @@ import * as path from 'path'
 
 import { Metadata } from 'next'
 
-import * as v from 'valibot'
-
 import { Image } from '@/components/atoms/Image'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
@@ -28,7 +26,7 @@ export default async function Index() {
   // load all md files under /app/works/contents/*.md
   const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'works', 'contents'),
-    v.parser(WorksFrontmatterSchema),
+    WorksFrontmatterSchema,
   )
 
   return (

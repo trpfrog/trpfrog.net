@@ -1,3 +1,4 @@
+import { validateUnknown } from '@trpfrog.net/utils'
 import yaml from 'js-yaml'
 import * as v from 'valibot'
 
@@ -28,7 +29,7 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
     const [name, ...templateLines] = markdown.split('\n')
     try {
-      definedComponents[`${context.blog?.slug}/${name}`] = v.parse(
+      definedComponents[`${context.blog?.slug}/${name}`] = validateUnknown(
         UserFunctionSchema,
         Function('props', templateLines.join('\n')),
       )
@@ -74,7 +75,7 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
       }
     }
     try {
-      const rendered = v.parse(v.string(), template(props))
+      const rendered = validateUnknown(v.string(), template(props))
       return <Render markdown={rendered} />
     } catch (e) {
       console.error(e)

@@ -5,7 +5,7 @@
  * $ bun tools/createTweetBlock.ts
  */
 
-import { createURL } from '@trpfrog.net/utils'
+import { createURL, validateUnknown } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
 import { JSDOM } from 'jsdom'
 import * as v from 'valibot'
@@ -87,7 +87,7 @@ async function fetchTweet(tweetUrl: string) {
 
   const response = await fetch(endpoint)
   const rawContent = await response.json()
-  const content = v.parse(FetchedTweetSchema, rawContent)
+  const content = validateUnknown(FetchedTweetSchema, rawContent)
 
   const dom = new JSDOM(content.html)
   const document = dom.window.document

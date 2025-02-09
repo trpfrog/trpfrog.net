@@ -2,6 +2,7 @@
 
 import { useId, useState } from 'react'
 
+import { validateUnknown } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -31,7 +32,7 @@ export function BalloonApp() {
 
   const [balloonSize, _setBalloonSize] = useState(57)
   const setBalloonSize = (s: number | string) => {
-    const n = v.parse(FormNumberSchema(1000, 57), s)
+    const n = validateUnknown(FormNumberSchema(1000, 57), s)
     _setBalloonSize(n)
   }
 
@@ -40,7 +41,7 @@ export function BalloonApp() {
     rewardId: rewardStartPositionId,
   })
   const setBalloonAmount = (s: number | string) => {
-    const value = v.parse(FormNumberSchema(10000, 96), s)
+    const value = validateUnknown(FormNumberSchema(10000, 96), s)
     balloonState.updateAmount(value)
   }
 

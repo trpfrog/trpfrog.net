@@ -1,3 +1,4 @@
+import { validate } from '@trpfrog.net/utils'
 import { compareAsc, compareDesc } from 'date-fns'
 import { match } from 'ts-pattern'
 import * as v from 'valibot'
@@ -23,7 +24,7 @@ export const searchBlogPost = async (
   posts: BlogPost[],
   searchOptions?: SearchOption,
 ): Promise<BlogPost[]> => {
-  const options = v.parse(SearchOptionSchema, searchOptions)
+  const options = validate(SearchOptionSchema, searchOptions)
   posts = posts.filter(blogPost => !options.tag || blogPost.tags.includes(options.tag))
   return match(options.order)
     .with('asc', () => posts.toSorted((a, b) => compareAsc(a.date, b.date)))

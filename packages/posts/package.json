@@ -18,7 +18,8 @@
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "microcms-js-sdk": "^3.1.2",
-    "ts-pattern": "^5.6.0"
+    "ts-pattern": "^5.6.0",
+    "@trpfrog.net/utils": "workspace:*"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",

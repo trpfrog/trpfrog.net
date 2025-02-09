@@ -1,6 +1,7 @@
 'use server'
 
 import { BlogPost, InvalidPagePositionError } from '@trpfrog.net/posts'
+import { validateUnknown } from '@trpfrog.net/utils'
 import { notFound } from 'next/navigation'
 import { match } from 'ts-pattern'
 import * as v from 'valibot'
@@ -13,7 +14,7 @@ const pageNumberSchema = v.fallback(
 )
 
 export async function renderBlog(slug: string, page?: number | 'all') {
-  page = v.parse(pageNumberSchema, page)
+  page = validateUnknown(pageNumberSchema, page)
   try {
     const { readBlogPost } = await import('@trpfrog.net/posts/fs')
     const entry: BlogPost = await match(page)

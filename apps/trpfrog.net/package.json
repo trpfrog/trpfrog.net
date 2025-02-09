@@ -33,6 +33,7 @@
     "@next/third-parties": "^15.1.1",
     "@prisma/client": "^5.22.0",
     "@react-hookz/web": "^24.0.4",
+    "@standard-schema/spec": "^1.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/content-server": "workspace:*",

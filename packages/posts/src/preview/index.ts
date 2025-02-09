@@ -1,3 +1,4 @@
+import { validateUnknown } from '@trpfrog.net/utils'
 import { createClient } from 'microcms-js-sdk'
 import * as v from 'valibot'
 
@@ -51,7 +52,7 @@ export function createPreviewClient(args: {
       endpoint: args.endpoint,
       contentId,
     })
-    return v.parse(MicroCMSBlogPostSchema, data)
+    return validateUnknown(MicroCMSBlogPostSchema, data)
   }
 }
 

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { validate } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -73,7 +74,7 @@ export default async function Index(props: PageProps) {
   const {
     slug,
     options: [page],
-  } = v.parse(ParamsSchema, rawParams)
+  } = validate(ParamsSchema, rawParams)
 
   const entry = await fetchPost(slug, page)
   return process.env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (

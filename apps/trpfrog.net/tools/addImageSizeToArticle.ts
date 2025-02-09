@@ -9,6 +9,7 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
+import { validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { cloudinary } from '@/lib/cloudinary'
@@ -47,7 +48,7 @@ const main = async () => {
       .expression(`folder=blog/${slug}`)
       .max_results(500)
       .execute()
-      .then((res: unknown) => v.parse(CloudinaryResponseSchema, res))
+      .then((res: unknown) => validateUnknown(CloudinaryResponseSchema, res))
 
     searchResult.resources.forEach(image => {
       const src = '/' + image.public_id

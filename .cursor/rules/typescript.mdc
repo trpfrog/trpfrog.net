@@ -21,7 +21,9 @@ globs: *.{ts,tsx}
 
 - Schema validation のためのライブラリとして valibot を使ってください。
 - valibot を使用する際は `import * as v from 'valibot'` とインポートしてください。
-
+- `v.parse`, `v.safeParse` は使わず、`@trpfrog.net/utils` から export されている関数を使うようにしてください。
+  - `validate(schema, data)`, `safeValidate(schema, data)`: 基本はこれらを使用してください。
+  - `validateUnknown`, `safeValidateUnknown`: 上記の関数で type error が発生した場合はこちらを使用してください。
 
 ## Tips
 

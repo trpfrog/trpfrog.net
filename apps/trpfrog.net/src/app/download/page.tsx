@@ -2,8 +2,6 @@ import * as path from 'path'
 
 import { Metadata } from 'next'
 
-import * as v from 'valibot'
-
 import { WorksFrontmatterSchema } from '@/app/download/schema'
 
 import { Image } from '@/components/atoms/Image'
@@ -25,7 +23,7 @@ export const metadata = {
 export default async function Index() {
   const contents = await readMarkdowns(
     path.join(process.cwd(), 'src', 'app', 'download', 'contents'),
-    v.parser(WorksFrontmatterSchema),
+    WorksFrontmatterSchema,
   )
 
   return (

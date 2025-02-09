@@ -1,3 +1,4 @@
+import { validateUnknown, validate } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 export const ImageGenerationPromptSchema = v.object({
@@ -27,8 +28,8 @@ export type GeneratedImage = v.InferOutput<typeof GeneratedImageSchema>
 
 export function parseImageMetadata(record: ImageMetadata | string): ImageMetadata {
   if (typeof record === 'string') {
-    return v.parse(ImageMetadataSchema, JSON.parse(record))
+    return validateUnknown(ImageMetadataSchema, JSON.parse(record))
   } else {
-    return v.parse(ImageMetadataSchema, record)
+    return validate(ImageMetadataSchema, record)
   }
 }

@@ -1,4 +1,4 @@
-import { createURL } from '@trpfrog.net/utils'
+import { createURL, validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { RandomWordGenerator } from '../../domain/services/random-words'
@@ -10,7 +10,7 @@ export const randomWordApi: RandomWordGenerator = async amount => {
   const response = await fetch(url).then(res => res.json())
 
   // prettier-ignore
-  return v.parse(
+  return validateUnknown(
     v.pipe(
       v.array(v.string()), 
       v.length(amount)

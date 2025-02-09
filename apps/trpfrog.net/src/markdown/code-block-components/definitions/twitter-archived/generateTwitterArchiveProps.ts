@@ -1,3 +1,4 @@
+import { safeValidateUnknown } from '@trpfrog.net/utils'
 import { vCoerceDate } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -25,7 +26,7 @@ export const BlogTwitterArchiveSchema = v.looseObject({
 })
 
 export function generateTwitterArchiveProps(rawTweetData: unknown): TwitterArchivedProps {
-  const parsed = v.safeParse(BlogTwitterArchiveSchema, rawTweetData)
+  const parsed = safeValidateUnknown(BlogTwitterArchiveSchema, rawTweetData)
   if (!parsed.success) {
     throw parsed.issues
   }
