@@ -1,4 +1,4 @@
-import { vValidator } from '@hono/valibot-validator'
+import { sValidator } from '@hono/standard-validator'
 import { StringifiedBooleanSchema, vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
 import * as v from 'valibot'
@@ -11,7 +11,7 @@ import { requiresApiKey } from './middlewares'
 export const queryApp = new Hono<Env>().get(
   '/',
   requiresApiKey(),
-  vValidator(
+  sValidator(
     'query',
     v.strictObject({
       q: v.optional(v.string()),

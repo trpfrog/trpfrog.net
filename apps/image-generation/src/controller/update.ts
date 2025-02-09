@@ -1,4 +1,4 @@
-import { vValidator } from '@hono/valibot-validator'
+import { sValidator } from '@hono/standard-validator'
 import { StringifiedBooleanSchema } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
 import * as v from 'valibot'
@@ -11,7 +11,7 @@ import { requiresApiKey } from './middlewares'
 export const updateApp = new Hono<Env>().post(
   '/',
   requiresApiKey(),
-  vValidator(
+  sValidator(
     'query',
     v.object({
       force: StringifiedBooleanSchema,
