@@ -1,18 +1,19 @@
 import fs from 'fs/promises'
 import * as path from 'path'
 
+import { StandardSchemaV1 } from '@standard-schema/spec'
+import { validateUnknown } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
-
 export type MarkdownWithFrontmatter<T> = {
   filename: string
   metadata: T
   content: string
 }
 
-export async function readMarkdowns<V extends (obj: unknown) => { date: Date }>(
+export async function readMarkdowns<S extends StandardSchemaV1<unknown, { date: Date }>>(
   dirpath: string,
-  validator: V,
-): Promise<MarkdownWithFrontmatter<ReturnType<V>>[]> {
+  schema: S,
+): Promise<MarkdownWithFrontmatter<StandardSchemaV1.InferOutput<S>>[]> {
   const files = await fs.readdir(dirpath)
   const markdowns = files.filter(file => path.extname(file) === '.md')
   const markdownsWithFrontmatter = await Promise.all(
@@ -21,7 +22,7 @@ export async function readMarkdowns<V extends (obj: unknown) => { date: Date }>(
       const matterResult = matter(fileContent)
       return {
         filename,
-        metadata: validator(matterResult.data) as ReturnType<V>,
+        metadata: validateUnknown(schema, matterResult.data),
         content: matterResult.content,
       }
     }),

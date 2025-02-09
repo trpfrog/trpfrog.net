@@ -1,4 +1,4 @@
-import { toShuffledArray } from '@trpfrog.net/utils'
+import { safeValidateUnknown, toShuffledArray } from '@trpfrog.net/utils'
 import dedent from 'ts-dedent'
 import * as v from 'valibot'
 
@@ -218,7 +218,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
 
     const { response: rawJson, modelName } = await deps.jsonChatbot(chat)
 
-    const parsedResponse = v.safeParse(FinalPromptSchema, rawJson)
+    const parsedResponse = safeValidateUnknown(FinalPromptSchema, rawJson)
 
     if (!parsedResponse.success) {
       throw new Error('Failed to parse chatbot response JSON')

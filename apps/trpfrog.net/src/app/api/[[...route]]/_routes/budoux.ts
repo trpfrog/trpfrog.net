@@ -1,4 +1,4 @@
-import { vValidator } from '@hono/valibot-validator'
+import { sValidator } from '@hono/standard-validator'
 import { loadDefaultJapaneseParser } from 'budoux/dist'
 import { Hono } from 'hono'
 import * as v from 'valibot'
@@ -24,13 +24,13 @@ function parse(text: string) {
 
 export const app = new Hono().post(
   '/',
-  vValidator(
+  sValidator(
     'header',
     v.object({
       'x-api-key': v.string(),
     }),
   ),
-  vValidator(
+  sValidator(
     'json',
     v.object({
       text: v.string(),

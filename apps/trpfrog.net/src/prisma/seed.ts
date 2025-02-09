@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import { homedir } from 'node:os'
 
 import { PrismaClient, Tweet, Media } from '@prisma/client'
+import { InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 const OriginalTweetSchema = v.object({
@@ -45,7 +46,7 @@ const OriginalTweetSchema = v.object({
   }),
 })
 
-type OriginalTweet = v.InferOutput<typeof OriginalTweetSchema>
+type OriginalTweet = InferSchemaOutput<typeof OriginalTweetSchema>
 
 const prisma = new PrismaClient()
 
@@ -106,7 +107,7 @@ function fetchSimplifiedTweetsFromLocal(files: string[]): [Tweet[], Media[]] {
   for (const fname of files) {
     const jsLines = fs.readFileSync(fname.replace('~', homedir()), 'utf8').split('\n')
     // REPLACE first line with '['
-    const jsons = v.parse(
+    const jsons = validateUnknown(
       v.array(OriginalTweetSchema),
       JSON.parse('[' + jsLines.slice(1).join('\n')),
     )

@@ -1,6 +1,7 @@
 'use server'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
+import { InferSchemaInput, validate } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { env } from '@/env/server'
@@ -31,10 +32,10 @@ const FetchImageRecordsQuerySchema = v.object({
   iconsPerPage: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1), v.maxValue(20)), 20),
 })
 
-export type FetchImageRecordsQuery = v.InferInput<typeof FetchImageRecordsQuerySchema>
+export type FetchImageRecordsQuery = InferSchemaInput<typeof FetchImageRecordsQuerySchema>
 
 export async function fetchImageRecords(rawQuery: FetchImageRecordsQuery) {
-  const query = v.parse(FetchImageRecordsQuerySchema, rawQuery)
+  const query = validate(FetchImageRecordsQuerySchema, rawQuery)
   const { result, total } = await client.query
     .$get({
       query: {

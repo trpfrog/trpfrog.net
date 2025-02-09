@@ -5,8 +5,6 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
 
-import { env } from '@/env/server'
-
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 
@@ -37,7 +35,9 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
       {post.description && <ArticleDescription description={post.description} />}
       <PostAttributes post={post} />
       <ArticleTags tags={tags} />
-      {addEditButtonOnDevMode && env.NODE_ENV === 'development' && <DevButtons slug={post.slug} />}
+      {addEditButtonOnDevMode && process.env.NODE_ENV === 'development' && (
+        <DevButtons slug={post.slug} />
+      )}
       {addEntryButtons && <EntryButtons post={post} style={{ margin: 0 }} />}
     </PhotoBgTitleBlock>
   )

@@ -1,3 +1,4 @@
+import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 const EndpointRecordSchema = v.record(
@@ -33,7 +34,7 @@ const EndpointRecordSchema = v.record(
   }),
 )
 
-export type EndpointRecord = v.InferOutput<typeof EndpointRecordSchema>
+export type EndpointRecord = InferSchemaOutput<typeof EndpointRecordSchema>
 
 type ReturnRecord<
   Port extends number | null | undefined,
@@ -54,7 +55,7 @@ type ReturnRecord<
 }
 
 export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
-  const parsedEndpoints = v.parse(EndpointRecordSchema, endpoints)
+  const parsedEndpoints = validate(EndpointRecordSchema, endpoints)
 
   for (const name in parsedEndpoints) {
     const currentEndpoint = parsedEndpoints[name]

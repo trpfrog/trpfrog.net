@@ -1,0 +1,8 @@
+---
+description: 
+globs: apps/*/**
+---
+## Rules
+
+- src/env.ts には環境変数に関する定義が入っています。環境変数を利用する場合は、ここから利用してください。
+  - ただし、NODE_ENV を利用する場合に限り、`process.env.NODE_ENV` を直接利用するようにしてください。(tree-shaking のため)

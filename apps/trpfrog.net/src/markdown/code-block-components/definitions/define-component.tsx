@@ -1,7 +1,6 @@
+import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 import yaml from 'js-yaml'
 import * as v from 'valibot'
-
-import { env } from '@/env/server'
 
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
@@ -10,7 +9,7 @@ import { CustomCodeBlockComponent } from '../types'
 // TODO: Valibot で args/returns を指定できるようになったら (object) => string にする
 const UserFunctionSchema = v.function()
 
-const definedComponents: Record<string, v.InferOutput<typeof UserFunctionSchema>> = {}
+const definedComponents: Record<string, InferSchemaOutput<typeof UserFunctionSchema>> = {}
 
 /**
  * Component parts that define a custom component.
@@ -30,7 +29,7 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
     const [name, ...templateLines] = markdown.split('\n')
     try {
-      definedComponents[`${context.blog?.slug}/${name}`] = v.parse(
+      definedComponents[`${context.blog?.slug}/${name}`] = validateUnknown(
         UserFunctionSchema,
         Function('props', templateLines.join('\n')),
       )
@@ -69,18 +68,18 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
 
     const template = definedComponents[`${context.blog?.slug}/${name}`]
     if (!template) {
-      if (env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Component ${name} not found`} />
       } else {
         return <></>
       }
     }
     try {
-      const rendered = v.parse(v.string(), template(props))
+      const rendered = validateUnknown(v.string(), template(props))
       return <Render markdown={rendered} />
     } catch (e) {
       console.error(e)
-      if (env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Something went wrong in "${name}"`} />
       } else {
         return <></>

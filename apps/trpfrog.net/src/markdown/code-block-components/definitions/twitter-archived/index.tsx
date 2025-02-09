@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { parseColonSeparatedDict } from '@trpfrog.net/posts/parser'
 
-import { env } from '@/env/server'
 
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import { TwitterArchived, TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
@@ -12,7 +11,7 @@ import { CustomCodeBlockComponent } from '../../types'
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
 function Fallback(props: { content: string; error: Error }) {
-  if (env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     return (
       <ErrorFallback title={'TwitterArchive: Error Occurred'}>{props.error.message}</ErrorFallback>
     )

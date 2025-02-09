@@ -1,3 +1,4 @@
+import { validateUnknown } from '@trpfrog.net/utils'
 import { getContext } from 'hono/context-storage'
 import * as v from 'valibot'
 
@@ -20,7 +21,7 @@ export const imageUpdateStatusCloudflareKV: ImageUpdateStatusRepo = {
       return { status: 'idle' }
     }
 
-    const status = v.parse(
+    const status = validateUnknown(
       v.fallback(ImageUpdateStatusSchema, {
         status: 'idle',
       }),

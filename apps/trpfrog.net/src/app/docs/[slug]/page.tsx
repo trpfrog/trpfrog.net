@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import { preprocess } from '@trpfrog.net/posts'
+import { validate } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
 import Link from 'next/link'
 import * as v from 'valibot'
@@ -37,7 +38,7 @@ export default async function DocsMarkdown(props: PageProps) {
   const filePath = docsPaths[slug]
   const content = await readFile(path.join(process.cwd(), filePath), 'utf-8')
   const { content: rawMarkdown, data: rawData } = matter(content)
-  const { title, description } = v.parse(MetadataSchema, rawData)
+  const { title, description } = validate(MetadataSchema, rawData)
   const markdownList = preprocess(rawMarkdown, {
     concatenateAllPages: true,
   })

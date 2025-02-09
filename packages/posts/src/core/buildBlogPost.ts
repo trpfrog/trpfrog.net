@@ -1,3 +1,4 @@
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -24,18 +25,18 @@ export class InvalidPagePositionError extends Error {
   }
 }
 
-export type BlogPostBuildOption = v.InferInput<typeof BlogPostBuildOptionSchema>
+export type BlogPostBuildOption = InferSchemaInput<typeof BlogPostBuildOptionSchema>
 
 export function buildBlogPost(
   slug: string,
   markdownString: string,
   options?: BlogPostBuildOption,
 ): BlogPost {
-  options = v.parse(BlogPostBuildOptionSchema, options ?? {})
+  options = validate(BlogPostBuildOptionSchema, options ?? {})
 
   const matterResult = matter(markdownString)
   const pagePosition = options.pagePos1Indexed ?? 1
-  const frontMatter = v.parse(BlogFrontMatterSchema, matterResult.data)
+  const frontMatter = validate(BlogFrontMatterSchema, matterResult.data)
 
   const numberOfPhotos = matterResult.content
     .split('\n')
@@ -70,6 +71,6 @@ export function buildBlogPost(
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
   const { content, ...rest } = blogPost
-  const frontMatter = v.parse(BlogFrontMatterSchema, rest)
+  const frontMatter = validate(BlogFrontMatterSchema, rest)
   return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
 }

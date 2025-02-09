@@ -64,7 +64,12 @@ export const createESLintConfig = (...userConfig) =>
         n,
       },
       rules: {
-        'n/no-process-env': 'error',
+        'n/no-process-env': [
+          'error',
+          {
+            allowedVariables: ['NODE_ENV'],
+          },
+        ],
       },
     },
     {
@@ -113,6 +118,38 @@ export const createESLintConfig = (...userConfig) =>
         globals: {
           ...globals.node,
         },
+      },
+    },
+    {
+      name: `${namePrefix}/restrict-valibot-parsers`,
+      rules: {
+        'no-restricted-properties': [
+          'error',
+          ...[
+            { valibot: 'parse', ours: '`validate` or `validateUnknown`' },
+            { valibot: 'safeParse', ours: '`safeValidate` or `safeValidateUnknown`' },
+          ].map(rule => ({
+            object: 'v',
+            property: rule.valibot,
+            message: `Use @trpfrog.net/utils's ${rule.ours} instead.`,
+          })),
+        ],
+        '@typescript-eslint/no-restricted-types': [
+          'error',
+          {
+            types: Object.fromEntries(
+              [
+                { valibot: 'v.InferInput', ours: 'InferSchemaInput' },
+                { valibot: 'v.InferOutput', ours: 'InferSchemaOutput' },
+              ].map(({ valibot, ours }) => [
+                valibot,
+                {
+                  message: `Use \`@trpfrog.net/utils\`'s \`${ours}\` instead.`,
+                },
+              ]),
+            ),
+          },
+        ],
       },
     },
     ...userConfig,

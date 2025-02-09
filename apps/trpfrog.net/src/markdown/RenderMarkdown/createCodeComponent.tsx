@@ -1,6 +1,5 @@
 import React, { ReactNode, ComponentProps } from 'react'
 
-import { env } from '@/env/server'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'
 
@@ -56,7 +55,7 @@ export function createCodeComponent(context: MarkdownContext = {}) {
     const { lang, fileName, url } = parseLanguageName(props.className ?? '')
 
     if (isValidCustomCodeBlockComponentName(lang)) {
-      const isDevClient = env.NODE_ENV === 'development' && typeof window !== 'undefined'
+      const isDevClient = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <RenderCustomCodeBlockComponent
           name={lang}

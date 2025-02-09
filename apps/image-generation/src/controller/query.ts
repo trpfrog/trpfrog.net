@@ -1,4 +1,5 @@
-import { vValidator } from '@hono/valibot-validator'
+import { sValidator } from '@hono/standard-validator'
+import { safeValidate } from '@trpfrog.net/utils'
 import { StringifiedBooleanSchema, vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
 import * as v from 'valibot'
@@ -11,7 +12,7 @@ import { requiresApiKey } from './middlewares'
 export const queryApp = new Hono<Env>().get(
   '/',
   requiresApiKey(),
-  vValidator(
+  sValidator(
     'query',
     v.strictObject({
       q: v.optional(v.string()),
@@ -23,14 +24,14 @@ export const queryApp = new Hono<Env>().get(
   async c => {
     const rawQuery = c.req.valid('query')
 
-    const res = v.safeParse(ImageMetadataRepoQuerySchema, {
+    const res = safeValidate(ImageMetadataRepoQuerySchema, {
       where: {
         prompt: rawQuery.q,
         includeDeleted: rawQuery.includeDeleted,
       },
       limit: rawQuery.limit,
       offset: rawQuery.offset,
-    } satisfies v.InferInput<typeof ImageMetadataRepoQuerySchema>)
+    })
 
     if (!res.success) {
       return c.json({ error: res.issues }, 400)

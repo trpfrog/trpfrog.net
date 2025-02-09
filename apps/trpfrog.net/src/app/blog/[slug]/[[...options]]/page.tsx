@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -23,7 +24,7 @@ const ParamsSchema = v.object({
 })
 
 type PageProps = {
-  params: Promise<v.InferOutput<typeof ParamsSchema>>
+  params: Promise<InferSchemaOutput<typeof ParamsSchema>>
 }
 
 export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
@@ -73,10 +74,10 @@ export default async function Index(props: PageProps) {
   const {
     slug,
     options: [page],
-  } = v.parse(ParamsSchema, rawParams)
+  } = validate(ParamsSchema, rawParams)
 
   const entry = await fetchPost(slug, page)
-  return env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
+  return process.env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
     <BlogMarkdown entry={entry} />
   ) : (
     <DevBlogMarkdown slug={slug} page={page} />

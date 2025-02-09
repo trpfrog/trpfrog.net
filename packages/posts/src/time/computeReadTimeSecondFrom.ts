@@ -1,3 +1,4 @@
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 const COUNTING_TARGET_CODE_BLOCK_NAMES = [
@@ -19,9 +20,9 @@ export const ReadTimeOptionSchema = v.object({
 
 export function computeReadTimeSecondFrom(
   markdown: string,
-  _options?: v.InferInput<typeof ReadTimeOptionSchema>,
+  _options?: InferSchemaInput<typeof ReadTimeOptionSchema>,
 ) {
-  const options = v.parse(ReadTimeOptionSchema, _options ?? {})
+  const options = validate(ReadTimeOptionSchema, _options ?? {})
 
   const imageRegex = new RegExp('!\\[(.*?)]\\(.*?\\)', 'g')
   const linkRegex = new RegExp('[^!]\\[(.*?)]\\(.*?\\)', 'g')

@@ -2,7 +2,6 @@
 
 import { UploadApiOptions, UploadApiResponse } from 'cloudinary'
 
-import { env } from '@/env/server'
 
 import { cloudinary } from '@/lib/cloudinary'
 
@@ -47,7 +46,7 @@ export async function uploadToCloudinaryOnServer(
   formData: FormData,
   slug: string,
 ): Promise<UploadApiResponse> {
-  if (env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     throw new Error('Forbidden')
   }
 

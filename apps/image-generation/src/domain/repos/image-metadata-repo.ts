@@ -1,3 +1,4 @@
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { ImageMetadata } from '../entities/generation-result'
@@ -14,7 +15,7 @@ export const ImageMetadataRepoQuerySchema = v.object({
   offset: v.optional(v.pipe(v.number(), v.integer(), v.minValue(0)), 0),
 })
 
-export type ImageMetadataQuery = v.InferOutput<typeof ImageMetadataRepoQuerySchema>
+export type ImageMetadataQuery = InferSchemaOutput<typeof ImageMetadataRepoQuerySchema>
 
 export interface ImageMetadataRepo {
   query: (query: ImageMetadataQuery) => Promise<ImageMetadata[]>

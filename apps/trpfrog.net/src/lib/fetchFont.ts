@@ -1,4 +1,4 @@
-import { createURL } from '@trpfrog.net/utils'
+import { createURL, safeValidateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
 
 import { env } from '@/env/server'
@@ -28,12 +28,14 @@ export async function fetchFont(familyName: string, weight: string | number): Pr
 
   const rawGoogleFontsInfo = await fetch(endpoint).then(res => res.json())
 
-  const googleFontsInfo = await v.parseAsync(FontInfoSchema, rawGoogleFontsInfo).catch(e => {
+  const googleFontsInfoResult = safeValidateUnknown(FontInfoSchema, rawGoogleFontsInfo)
+  if (!googleFontsInfoResult.success) {
     console.error(`Endpoint: ${endpoint}`)
     console.error(`Response: ${JSON.stringify(rawGoogleFontsInfo, null, 2)}`)
-    console.error(e)
-    throw e
-  })
+    console.error(googleFontsInfoResult.issues)
+    throw new Error('Failed to validate Google Fonts API response')
+  }
+  const googleFontsInfo = googleFontsInfoResult.output
   const url = googleFontsInfo.items[0].files[weight]
 
   return fetch(url, {

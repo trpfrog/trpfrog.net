@@ -3,14 +3,13 @@ import fs from 'fs'
 import path from 'path'
 
 import { NODE_ENV } from '@/env/client'
-import { env } from '@/env/server.ts'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
 export function EditButton({ slug }: { slug: string }) {
   const openInCotEditor = async () => {
     'use server'
-    if (env.NODE_ENV !== 'development') {
+    if (process.env.NODE_ENV !== 'development') {
       throw new Error('Forbidden')
     }
 

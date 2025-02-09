@@ -1,3 +1,4 @@
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { vCoerceDate } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
@@ -19,4 +20,4 @@ export const WorksFrontmatterSchema = v.object({
   date: vCoerceDate,
 })
 
-export type WorksFrontmatter = v.InferOutput<typeof WorksFrontmatterSchema>
+export type WorksFrontmatter = InferSchemaOutput<typeof WorksFrontmatterSchema>

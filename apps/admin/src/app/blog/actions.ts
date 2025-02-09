@@ -3,9 +3,7 @@ import { createContentServerClient } from '@trpfrog.net/content-server'
 
 import type { BlogPost } from '@trpfrog.net/posts'
 
-import { clientEnv } from '@/clientEnv'
-
-const client = createContentServerClient(clientEnv.NODE_ENV)
+const client = createContentServerClient(process.env.NODE_ENV)
 
 export async function fetchPostList(tag?: string): Promise<BlogPost[]> {
   const tags = [cacheTags.entireBlog.tag, cacheTags.blogList.tag]
