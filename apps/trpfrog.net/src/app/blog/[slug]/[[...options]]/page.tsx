@@ -76,7 +76,7 @@ export default async function Index(props: PageProps) {
   } = v.parse(ParamsSchema, rawParams)
 
   const entry = await fetchPost(slug, page)
-  return env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
+  return process.env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
     <BlogMarkdown entry={entry} />
   ) : (
     <DevBlogMarkdown slug={slug} page={page} />

@@ -13,7 +13,7 @@ const AltTextObjectSchema = v.object({
 })
 
 export async function generateAltTextOnServer(image: ArrayBuffer): Promise<string> {
-  if (env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     throw new Error('Forbidden')
   }
 

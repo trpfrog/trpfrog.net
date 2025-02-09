@@ -1,11 +1,9 @@
 import { services } from '@trpfrog.net/constants'
 import { atomWithStorage } from 'jotai/utils'
 
-import { clientEnv } from '@/clientEnv'
-
 export const initialValues = {
-  websiteOrigin: services.website.origin(clientEnv.NODE_ENV),
-  contentServerOrigin: services.contentServer.origin(clientEnv.NODE_ENV),
+  websiteOrigin: services.website.origin(process.env.NODE_ENV),
+  contentServerOrigin: services.contentServer.origin(process.env.NODE_ENV),
   imageGenerationOrigin: services.imageGeneration.production,
 }
 

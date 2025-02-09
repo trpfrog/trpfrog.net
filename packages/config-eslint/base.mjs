@@ -64,7 +64,12 @@ export const createESLintConfig = (...userConfig) =>
         n,
       },
       rules: {
-        'n/no-process-env': 'error',
+        'n/no-process-env': [
+          'error',
+          {
+            allowedVariables: ['NODE_ENV'],
+          },
+        ],
       },
     },
     {

@@ -22,7 +22,7 @@ const parseFootnote = (content: string) => {
 }
 
 // const applyTextlint = async (content: string) => {
-//   if (env.NODE_ENV === 'production' || true) {
+//   if (process.env.NODE_ENV === 'production' || true) {
 //     return content
 //   }
 //

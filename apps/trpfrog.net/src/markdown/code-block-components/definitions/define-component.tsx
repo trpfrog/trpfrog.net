@@ -1,8 +1,6 @@
 import yaml from 'js-yaml'
 import * as v from 'valibot'
 
-import { env } from '@/env/server'
-
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { CustomCodeBlockComponent } from '../types'
@@ -69,7 +67,7 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
 
     const template = definedComponents[`${context.blog?.slug}/${name}`]
     if (!template) {
-      if (env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Component ${name} not found`} />
       } else {
         return <></>
@@ -80,7 +78,7 @@ export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
       return <Render markdown={rendered} />
     } catch (e) {
       console.error(e)
-      if (env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development') {
         return <ErrorFallback title={`Something went wrong in "${name}"`} />
       } else {
         return <></>
