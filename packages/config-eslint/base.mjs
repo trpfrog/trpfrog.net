@@ -120,6 +120,38 @@ export const createESLintConfig = (...userConfig) =>
         },
       },
     },
+    {
+      name: `${namePrefix}/restrict-valibot-parsers`,
+      rules: {
+        'no-restricted-properties': [
+          'error',
+          ...[
+            { valibot: 'parse', ours: '`validate` or `validateUnknown`' },
+            { valibot: 'safeParse', ours: '`safeValidate` or `safeValidateUnknown`' },
+          ].map(rule => ({
+            object: 'v',
+            property: rule.valibot,
+            message: `Use @trpfrog.net/utils's ${rule.ours} instead.`,
+          })),
+        ],
+        '@typescript-eslint/no-restricted-types': [
+          'error',
+          {
+            types: Object.fromEntries(
+              [
+                { valibot: 'v.InferInput', ours: 'InferSchemaInput' },
+                { valibot: 'v.InferOutput', ours: 'InferSchemaOutput' },
+              ].map(({ valibot, ours }) => [
+                valibot,
+                {
+                  message: `Use \`@trpfrog.net/utils\`'s \`${ours}\` instead.`,
+                },
+              ]),
+            ),
+          },
+        ],
+      },
+    },
     ...userConfig,
     // @ts-ignore
     {
