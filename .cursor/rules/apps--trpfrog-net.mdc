@@ -1,0 +1,11 @@
+---
+description: 
+globs: apps/trpfrog.net/**
+---
+## Rules
+
+- このプロジェクトでは主に Tailwind CSS を利用しています。
+  - Tailwind CSS には `tw-` prefix を使用しています。
+- 新しくコンポーネントを作るとき Headless UI + TailwindCSS + tailwind-variants で構築してください。
+  - CSS が非常に大規模になる場合は CSS Modules を使用しても良いですが、それほど大きくなる場合はまずコンポーネント分割を検討してください。
+- React コンポーネントを定義するときも `function` 記法によりコンポーネントを定義してください。

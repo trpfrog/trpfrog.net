@@ -1,0 +1,28 @@
+---
+description: TypeScript を書く上で必要となる情報
+globs: *.{ts,tsx}
+---
+## Naming Conventions
+
+- Use descriptive names with auxiliary verbs (isLoading, hasError)
+- Prefix event handlers with "handle" (handleClick, handleSubmit)
+
+## Rules
+
+- 基本的にすべてのコードで TypeScript を使ってください。
+- default export ではなく named export を行ってください。
+- 型定義を行うときは、まずは interface を使うことを心がけ、無理そうなら type を使ってください。
+- enum は使わないでください。string literal の union を使うことを検討してください。
+- 関数の定義を行うときは基本的に `const myFunction = () => { ... }` よりも `function myFunction() { ... }` を使うようにしてください。
+- 型の validation には `satisfies` 演算子を使ってください。
+- Data fetching には SWR を使ってください。
+
+## Schema Validations
+
+- Schema validation のためのライブラリとして valibot を使ってください。
+- valibot を使用する際は `import * as v from 'valibot'` とインポートしてください。
+
+
+## Tips
+
+- ESLint のルールは packages/config-eslint にあります。基本は lint エラーが自動的に発生するので気にする必要はありませんが、必要になったら見ると良いでしょう。
