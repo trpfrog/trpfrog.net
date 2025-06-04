@@ -15,26 +15,26 @@
     "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
   },
   "dependencies": {
-    "@hono/standard-validator": "^0.1.1",
+    "@hono/standard-validator": "^0.1.2",
     "@huggingface/inference": "^2.8.1",
     "@langchain/core": "^0.2.17",
     "@langchain/openai": "^0.2.4",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "date-fns": "^4.1.0",
-    "drizzle-orm": "^0.36.4",
-    "hono": "^4.6.15",
-    "nanoid": "^5.0.9",
-    "stable-hash": "^0.0.4",
+    "drizzle-orm": "^0.44.1",
+    "hono": "^4.7.11",
+    "nanoid": "^5.1.5",
+    "stable-hash": "^0.0.6",
     "ts-dedent": "^2.2.0",
-    "ts-pattern": "^5.6.0",
+    "ts-pattern": "^5.7.1",
     "uuidv7": "^1.0.2"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241224.0",
+    "@cloudflare/workers-types": "^4.20250603.0",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
-    "@types/node": "^20.17.10",
-    "drizzle-kit": "^0.28.1"
+    "@types/node": "^22.15.29",
+    "drizzle-kit": "^0.31.1"
   }
 }

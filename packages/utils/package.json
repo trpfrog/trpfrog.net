@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@standard-schema/spec": "^1.0.0",
-    "hono": "^4.6.15",
+    "hono": "^4.7.11",
     "node-html-parser": "^7.0.1"
   },
   "devDependencies": {
