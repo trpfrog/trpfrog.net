@@ -9,7 +9,7 @@
     ".": "./theme.ts"
   },
   "dependencies": {
-    "@storybook/theming": "^7.6.20"
+    "@storybook/theming": "catalog:"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*"

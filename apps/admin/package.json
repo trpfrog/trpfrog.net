@@ -9,28 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/charts": "^7.15.2",
-    "@mantine/core": "^7.15.2",
-    "@mantine/dates": "^7.15.2",
-    "@mantine/form": "^7.15.2",
-    "@mantine/hooks": "^7.15.2",
-    "@mantine/modals": "^7.15.2",
-    "@tailwindcss/postcss": "4.0.0-beta.8",
+    "@mantine/charts": "catalog:",
+    "@mantine/core": "catalog:",
+    "@mantine/dates": "catalog:",
+    "@mantine/form": "catalog:",
+    "@mantine/hooks": "catalog:",
+    "@mantine/modals": "catalog:",
+    "@tailwindcss/postcss": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/content-server": "workspace:*",
     "@trpfrog.net/image-generation": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
-    "date-fns": "^4.1.0",
-    "dayjs": "^1.11.13",
+    "date-fns": "catalog:",
+    "dayjs": "catalog:",
     "hono": "^4.6.15",
-    "jotai": "^2.10.4",
+    "jotai": "catalog:",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "2",
+    "recharts": "catalog:",
     "swr": "^2.3.0",
-    "ts-pattern": "^5.6.0"
+    "ts-pattern": "catalog:"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -42,8 +42,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "postcss": "^8",
-    "postcss-preset-mantine": "^1.17.0",
-    "postcss-simple-vars": "^7.0.1",
+    "postcss-preset-mantine": "catalog:",
+    "postcss-simple-vars": "catalog:",
     "tailwindcss": "4.0.0-beta.8"
   }
 }
