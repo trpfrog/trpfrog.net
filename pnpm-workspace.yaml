@@ -3,65 +3,65 @@ packages:
   - apps/*
 
 catalog:
-  '@ai-sdk/openai': ^2.0.7
+  '@ai-sdk/openai': ^1.0.10  # latest: ^2.0.7
   '@cloudflare/workers-types': ^4.20250809.0
   '@date-fns/tz': ^1.3.1
   '@eslint/compat': ^1.3.2
-  '@eslint/config-inspector': ^1.1.0
+  '@eslint/config-inspector': ^0.5.6  # latest: ^1.1.0
   '@eslint/eslintrc': ^3.3.1
   '@eslint/js': ^9.33.0
   '@evilmartians/lefthook': ^1.12.2
-  '@fortawesome/fontawesome-svg-core': ^7.0.0
-  '@fortawesome/free-brands-svg-icons': ^7.0.0
-  '@fortawesome/free-solid-svg-icons': ^7.0.0
+  '@fortawesome/fontawesome-svg-core': ^6.7.2  # latest: ^7.0.0
+  '@fortawesome/free-brands-svg-icons': ^6.7.2  # latest: ^7.0.0
+  '@fortawesome/free-solid-svg-icons': ^6.7.2  # latest: ^7.0.0
   '@fortawesome/react-fontawesome': ^0.2.3
   '@headlessui/react': ^2.2.7
   '@hono/standard-validator': ^0.1.4
   '@hono/vite-build': ^1.7.0
   '@hono/vite-dev-server': ^0.20.1
   '@hono/vite-ssg': ^0.1.2
-  '@huggingface/inference': ^4.6.1
+  '@huggingface/inference': ^2.8.1  # latest: ^4.6.1
   '@langchain/core': ^0.3.68
   '@langchain/openai': ^0.6.7
-  '@mantine/charts': ^8.2.4
-  '@mantine/core': ^8.2.4
-  '@mantine/dates': ^8.2.4
-  '@mantine/form': ^8.2.4
-  '@mantine/hooks': ^8.2.4
-  '@mantine/modals': ^8.2.4
+  '@mantine/charts': ^7.15.2  # latest: ^8.2.4
+  '@mantine/core': ^7.15.2  # latest: ^8.2.4
+  '@mantine/dates': ^7.15.2  # latest: ^8.2.4
+  '@mantine/form': ^7.15.2  # latest: ^8.2.4
+  '@mantine/hooks': ^7.15.2  # latest: ^8.2.4
+  '@mantine/modals': ^7.15.2  # latest: ^8.2.4
   '@mdx-js/loader': ^3.1.0
   '@mdx-js/react': ^3.1.0
   '@next/bundle-analyzer': ^15.4.6
   '@next/eslint-plugin-next': ^15.4.6
   '@next/mdx': ^15.4.6
   '@next/third-parties': ^15.4.6
-  '@prisma/client': ^6.13.0
-  '@react-hookz/web': ^25.1.1
-  '@shikijs/transformers': ^3.9.2
+  '@prisma/client': ^5.22.0  # latest: ^6.13.0
+  '@react-hookz/web': ^24.0.4  # latest: ^25.1.1
+  '@shikijs/transformers': ^1.24.2  # latest: ^3.9.2
   '@standard-schema/spec': ^1.0.0
-  '@storybook/addon-actions': ^9.0.8
-  '@storybook/addon-essentials': ^8.6.14
-  '@storybook/addon-interactions': ^8.6.14
-  '@storybook/addon-links': ^9.1.1
-  '@storybook/addon-onboarding': ^9.1.1
-  '@storybook/blocks': ^8.6.14
-  '@storybook/manager-api': ^8.6.14
-  '@storybook/nextjs': ^9.1.1
-  '@storybook/react': ^9.1.1
+  '@storybook/addon-actions': ^8.4.7  # latest: ^9.0.8
+  '@storybook/addon-essentials': ^7.6.20  # latest: ^8.6.14
+  '@storybook/addon-interactions': ^7.6.20  # latest: ^8.6.14
+  '@storybook/addon-links': ^7.6.20  # latest: ^9.1.1
+  '@storybook/addon-onboarding': ^1.0.11  # latest: ^9.1.1
+  '@storybook/blocks': ^7.6.20  # latest: ^8.6.14
+  '@storybook/manager-api': ^7.6.20  # latest: ^8.6.14
+  '@storybook/nextjs': ^7.6.20  # latest: ^9.1.1
+  '@storybook/react': ^7.6.20  # latest: ^9.1.1
   '@storybook/testing-library': ^0.2.2
-  '@storybook/theming': ^8.6.14
+  '@storybook/theming': ^7.6.20  # latest: ^8.6.14
   '@tailwindcss/container-queries': ^0.1.1
   '@tailwindcss/postcss': 4.1.11
   '@testing-library/jest-dom': ^6.6.4
-  '@testing-library/react': ^16.3.0
-  '@twemoji/api': ^16.0.1
+  '@testing-library/react': ^14.3.1  # latest: ^16.3.0
+  '@twemoji/api': ^15.1.0  # latest: ^16.0.1
   '@types/bun': ^1.2.19
-  '@types/eslint__js': ^9.14.0
+  '@types/eslint__js': ^8.42.3  # latest: ^9.14.0
   '@types/js-yaml': ^4.0.9
   '@types/jsdom': ^21.1.7
   '@types/katex': ^0.16.7
   '@types/mdx': ^2.0.13
-  '@types/node': ^24.2.1
+  '@types/node': ^20.17.10  # latest: ^24.2.1
   '@types/react': ^19.0.1
   '@types/react-dom': ^19.0.2
   '@types/react-modal': ^3.16.3
@@ -71,23 +71,23 @@ catalog:
   '@vanilla-extract/css': ^1.17.4
   '@vanilla-extract/next-plugin': ^2.4.14
   '@vercel/edge-config': ^1.4.0
-  '@vercel/functions': ^2.2.8
-  '@vercel/kv': ^3.0.0
-  '@vitejs/plugin-react': ^5.0.0
-  '@vitest/coverage-v8': 3.2.4
-  '@vitest/ui': ^3.2.4
-  ai: ^5.0.8
+  '@vercel/functions': ^1.5.2  # latest: ^2.2.8
+  '@vercel/kv': ^1.0.1  # latest: ^3.0.0
+  '@vitejs/plugin-react': ^4.3.4  # latest: ^5.0.0
+  '@vitest/coverage-v8': 2.1.5  # latest: 3.2.4
+  '@vitest/ui': ^2.1.8  # latest: ^3.2.4
+  ai: ^4.0.20  # latest: ^5.0.8
   autoprefixer: ^10.4.21
   better-react-mathjax: ^2.3.0
   better-typescript-lib: ^2.11.0
   budoux: ^0.7.0
   bufferutil: ^4.0.9
-  chokidar: ^4.0.3
+  chokidar: ^3.6.0  # latest: ^4.0.3
   classnames: ^2.5.1
   clipboardy: ^4.0.0
   cloudinary: ^2.7.0
   consola: ^3.4.2
-  cssnano: ^7.1.0
+  cssnano: ^6.1.2  # latest: ^7.1.0
   date-fns: ^4.1.0
   dayjs: ^1.11.13
   devicon: ^2.17.0
@@ -95,28 +95,28 @@ catalog:
   drizzle-orm: ^0.44.4
   eslint: ^9.33.0
   eslint-config-next: ^15.4.6
-  eslint-config-prettier: ^10.1.8
+  eslint-config-prettier: ^9.1.0  # latest: ^10.1.8
   eslint-plugin-import: ^2.32.0
   eslint-plugin-n: ^17.21.3
   eslint-plugin-react: ^7.37.5
   eslint-plugin-react-compiler: 19.1.0-rc.2
   eslint-plugin-react-hooks: ^5.2.0
-  eslint-plugin-storybook: ^9.1.1
-  eslint-plugin-testing-library: ^7.6.3
+  eslint-plugin-storybook: ^0.11.1  # latest: ^9.1.1
+  eslint-plugin-testing-library: ^6.5.0  # latest: ^7.6.3
   eslint-plugin-unused-imports: ^4.1.4
   focus-trap: ^7.6.5
-  framer-motion: ^12.23.12
-  globals: ^16.3.0
+  framer-motion: ^11.15.0  # latest: ^12.23.12
+  globals: ^15.14.0  # latest: ^16.3.0
   gray-matter: ^4.0.3
-  happy-dom: ^18.0.1
+  happy-dom: ^15.11.7  # latest: ^18.0.1
   hono: ^4.9.0
   http-status-codes: ^2.3.0
   immer: ^10.1.1
   jotai: ^2.13.0
   js-yaml: ^4.1.0
-  jsdom: ^26.1.0
+  jsdom: ^25.0.1  # latest: ^26.1.0
   katex: ^0.16.22
-  lru-cache: ^11.1.0
+  lru-cache: ^10.4.3  # latest: ^11.1.0
   mermaid: ^11.9.0
   microcms-js-sdk: ^3.2.0
   nanoid: ^5.1.5
@@ -131,14 +131,14 @@ catalog:
   prettier-plugin-classnames: ^0.8.2
   prettier-plugin-merge: ^0.8.0
   prettier-plugin-tailwindcss: ^0.6.14
-  prisma: ^6.13.0
+  prisma: ^5.22.0  # latest: ^6.13.0
   react: ^19.1.1
   react-dom: ^19.1.1
   react-hook-form: ^7.62.0
   react-hot-toast: ^2.5.2
   react-loading-skeleton: ^3.5.0
   react-modal: ^3.16.3
-  react-player: ^3.3.1
+  react-player: ^2.16.0  # latest: ^3.3.1
   react-rewards: ^2.1.0
   react-string-replace: ^1.1.1
   react-tooltip: ^5.29.1
@@ -156,16 +156,16 @@ catalog:
   remeda: ^2.30.0
   seedrandom: ^3.0.5
   server-only: ^0.0.1
-  shiki: ^3.9.2
+  shiki: ^1.24.2  # latest: ^3.9.2
   socket.io: ^4.8.1
   socket.io-client: ^4.8.1
   stable-hash: ^0.0.6
-  storybook: ^9.1.1
-  storybook-dark-mode: ^4.0.2
+  storybook: ^7.6.20  # latest: ^9.1.1
+  storybook-dark-mode: ^3.0.3  # latest: ^4.0.2
   swr: ^2.3.5
-  tailwind-merge: ^3.3.1
-  tailwind-variants: ^2.1.0
-  tailwindcss: ^3.4.17
+  tailwind-merge: ^2.5.5  # latest: ^3.3.1
+  tailwind-variants: ^0.2.1  # latest: ^2.1.0
+  tailwindcss: ^3.4.17  # latest: ^4.1.11
   ts-dedent: ^2.2.0
   ts-pattern: ^5.8.0
   tsr: ^1.3.4
@@ -173,10 +173,10 @@ catalog:
   typescript: ^5.9.2
   typescript-eslint: 8.39.0
   use-immer: ^0.11.0
-  use-sound: ^5.0.0
+  use-sound: ^4.0.3  # latest: ^5.0.0
   uuidv7: ^1.0.2
   valibot: 1.1.0
-  vite: ^7.1.1
-  vitest: ^3.2.4
+  vite: ^6.0.6  # latest: ^7.1.1
+  vitest: ^2.1.8  # latest: ^3.2.4
   webpack: ^5.101.0
-  wrangler: ^4.28.1
+  wrangler: ^3.99.0  # latest: ^4.28.1
