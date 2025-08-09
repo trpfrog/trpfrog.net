@@ -9,13 +9,13 @@
   "main": "client.ts",
   "type": "module",
   "dependencies": {
-    "chokidar": "^3.6.0",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "chokidar": "catalog:",
+    "socket.io": "catalog:",
+    "socket.io-client": "catalog:"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/constants": "workspace:*",
-    "@types/bun": "latest"
+    "@types/bun": "catalog:"
   }
 }

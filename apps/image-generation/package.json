@@ -15,26 +15,26 @@
     "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
   },
   "dependencies": {
-    "@hono/standard-validator": "^0.1.1",
-    "@huggingface/inference": "^2.8.1",
-    "@langchain/core": "^0.2.17",
-    "@langchain/openai": "^0.2.4",
+    "@hono/standard-validator": "catalog:",
+    "@huggingface/inference": "catalog:",
+    "@langchain/core": "catalog:",
+    "@langchain/openai": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
-    "date-fns": "^4.1.0",
-    "drizzle-orm": "^0.36.4",
-    "hono": "^4.6.15",
-    "nanoid": "^5.0.9",
-    "stable-hash": "^0.0.4",
-    "ts-dedent": "^2.2.0",
-    "ts-pattern": "^5.6.0",
-    "uuidv7": "^1.0.2"
+    "date-fns": "catalog:",
+    "drizzle-orm": "catalog:",
+    "hono": "catalog:",
+    "nanoid": "catalog:",
+    "stable-hash": "catalog:",
+    "ts-dedent": "catalog:",
+    "ts-pattern": "catalog:",
+    "uuidv7": "catalog:"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241224.0",
+    "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
-    "@types/node": "^20.17.10",
-    "drizzle-kit": "^0.28.1"
+    "@types/node": "catalog:",
+    "drizzle-kit": "catalog:"
   }
 }
