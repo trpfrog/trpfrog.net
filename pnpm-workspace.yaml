@@ -1,6 +1,6 @@
 packages:
-  - packages/*
-  - apps/*
+  - 'packages/*'
+  - 'apps/*'
 catalog:
   "@types/node": ^20.17.10
   "@types/react": ^19.0.1
