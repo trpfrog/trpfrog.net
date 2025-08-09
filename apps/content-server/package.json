@@ -19,7 +19,7 @@
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "date-fns": "catalog:",
-    "hono": "^4.6.14",
+    "hono": "catalog:",
     "ts-dedent": "catalog:",
     "ts-pattern": "catalog:"
   },
@@ -28,7 +28,7 @@
     "@hono/vite-ssg": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
-    "@types/node": "^20.17.10",
+    "@types/node": "catalog:",
     "vite": "catalog:"
   }
 }

@@ -23,7 +23,7 @@
     "@trpfrog.net/utils": "workspace:*",
     "date-fns": "catalog:",
     "drizzle-orm": "catalog:",
-    "hono": "^4.6.15",
+    "hono": "catalog:",
     "nanoid": "catalog:",
     "stable-hash": "catalog:",
     "ts-dedent": "catalog:",
@@ -34,7 +34,7 @@
     "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
-    "@types/node": "^20.17.10",
+    "@types/node": "catalog:",
     "drizzle-kit": "catalog:"
   }
 }

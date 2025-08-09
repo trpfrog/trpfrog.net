@@ -10,6 +10,6 @@
     "@trpfrog.net/config-typescript": "workspace:*"
   },
   "peerDependencies": {
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "catalog:"
   }
 }

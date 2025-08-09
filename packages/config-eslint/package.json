@@ -5,11 +5,11 @@
   "main": "index.mjs",
   "devDependencies": {
     "@eslint/compat": "catalog:",
-    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/eslintrc": "catalog:",
     "@eslint/js": "catalog:",
     "@next/eslint-plugin-next": "catalog:",
     "@types/eslint__js": "catalog:",
-    "eslint-config-next": "^15.1.3",
+    "eslint-config-next": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-n": "catalog:",

@@ -18,12 +18,12 @@
     "@eslint/config-inspector": "catalog:",
     "@evilmartians/lefthook": "catalog:",
     "@trpfrog.net/config-eslint": "workspace:*",
-    "@types/node": "^20.17.10",
+    "@types/node": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
-    "eslint": "^9.14.0",
+    "eslint": "catalog:",
     "happy-dom": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-classnames": "catalog:",
@@ -42,7 +42,7 @@
       "eslint": "npm:eslint@9.14.0"
     }
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "valibot": "catalog:"
   }

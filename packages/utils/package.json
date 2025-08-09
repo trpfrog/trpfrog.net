@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@standard-schema/spec": "catalog:",
-    "hono": "^4.6.15",
+    "hono": "catalog:",
     "node-html-parser": "catalog:"
   },
   "devDependencies": {

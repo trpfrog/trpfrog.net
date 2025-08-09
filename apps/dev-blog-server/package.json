@@ -16,6 +16,6 @@
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/constants": "workspace:*",
-    "@types/bun": "latest"
+    "@types/bun": "catalog:"
   }
 }
