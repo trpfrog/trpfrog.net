@@ -138,7 +138,7 @@ catalog:
   react-hot-toast: ^2.5.2
   react-loading-skeleton: ^3.5.0
   react-modal: ^3.16.3
-  react-player: ^2.16.0  # latest: ^3.3.1
+  react-player: ^3.3.1
   react-rewards: ^2.1.0
   react-string-replace: ^1.1.1
   react-tooltip: ^5.29.1
