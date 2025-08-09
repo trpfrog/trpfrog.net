@@ -78,6 +78,7 @@ catalog:
   '@vitest/ui': ^2.1.8  # latest: ^3.2.4
   ai: ^4.0.20  # latest: ^5.0.8
   autoprefixer: ^10.4.21
+  babel-plugin-react-compiler: 19.1.0-rc.2
   better-react-mathjax: ^2.3.0
   better-typescript-lib: ^2.11.0
   budoux: ^0.7.0
@@ -180,3 +181,5 @@ catalog:
   vitest: ^2.1.8  # latest: ^3.2.4
   webpack: ^5.101.0
   wrangler: ^3.99.0  # latest: ^4.28.1
+
+catalogMode: prefer

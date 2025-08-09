@@ -21,6 +21,7 @@
     "@trpfrog.net/image-generation": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
+    "babel-plugin-react-compiler": "catalog:",
     "date-fns": "catalog:",
     "dayjs": "catalog:",
     "hono": "catalog:",

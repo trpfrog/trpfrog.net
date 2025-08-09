@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
       '@fortawesome/free-solid-svg-icons',
       '@fortawesome/react-fontawesome',
     ],
+    reactCompiler: true,
   },
 
   webpack: config => {

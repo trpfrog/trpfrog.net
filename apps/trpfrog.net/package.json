@@ -49,6 +49,7 @@
     "@vercel/functions": "catalog:",
     "@vercel/kv": "catalog:",
     "ai": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
     "better-react-mathjax": "catalog:",
     "budoux": "catalog:",
     "bufferutil": "catalog:",
