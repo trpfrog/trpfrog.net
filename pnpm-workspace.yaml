@@ -83,7 +83,7 @@ catalog:
   better-typescript-lib: ^2.11.0
   budoux: ^0.7.0
   bufferutil: ^4.0.9
-  chokidar: ^3.6.0  # latest: ^4.0.3
+  chokidar: ^4.0.3
   classnames: ^2.5.1
   clipboardy: ^4.0.0
   cloudinary: ^2.7.0

@@ -5,7 +5,7 @@ import { services } from '@trpfrog.net/constants'
 import chokidar from 'chokidar'
 import { Server } from 'socket.io'
 
-const posts = path.join(__dirname, '..', '..', 'posts', '*.md')
+const postsDir = path.join(__dirname, '..', '..', 'posts')
 
 const httpServer = createServer()
 const io = new Server(httpServer, {
@@ -23,9 +23,10 @@ io.on('connection', socket => {
   })
 })
 
-const watcher = chokidar.watch(posts)
+const watcher = chokidar.watch(postsDir)
 
 watcher.on('change', markdownPath => {
+  if (path.extname(markdownPath) !== '.md') return
   const slug = path.basename(markdownPath).replace('.md', '')
   console.log('changed', slug)
   io.emit('update', slug)
