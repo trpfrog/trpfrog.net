@@ -8,6 +8,7 @@ import styles from './index.module.css'
 type BalloonArrayProps = {
   states: ReturnType<typeof useBalloonState>
   width: number
+  enableSound?: boolean
 }
 
 export function BalloonArray(props: BalloonArrayProps) {
@@ -23,6 +24,7 @@ export function BalloonArray(props: BalloonArrayProps) {
           isBurst={balloon.isBurst}
           color={balloon.color}
           onBurst={() => props.states.burst(idx)}
+          enableSound={props.enableSound}
         />
       ))}
     </div>
