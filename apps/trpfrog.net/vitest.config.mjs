@@ -8,6 +8,7 @@ export default mergeConfig(
   configShared,
   defineConfig({
     test: {
+      includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
       setupFiles: './vitest.setup.mjs',
       alias: {
         '@': path.resolve(import.meta.dirname, './src'),
