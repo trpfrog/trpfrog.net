@@ -164,7 +164,7 @@ catalog:
   typescript: ^5.7.2
   typescript-eslint: 8.14.0
   use-immer: ^0.9.0
-  use-sound: ^4.0.3
+  use-sound: ^5.0.0
   uuidv7: ^1.0.2
   valibot: 1.0.0-beta.15
   vite: ^6.0.6
