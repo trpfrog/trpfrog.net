@@ -83,11 +83,6 @@ export async function GET(req: NextRequest, props: GETProps) {
       ],
     })
 
-    console.log({
-      prompt,
-      output,
-    })
-
     return NextResponse.redirect(new URL(output, req.url))
   } catch {
     return NextResponse.redirect(new URL('/', req.url))
