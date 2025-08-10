@@ -337,8 +337,8 @@ catalogs:
       specifier: ^0.16.22
       version: 0.16.22
     lru-cache:
-      specifier: ^10.4.3
-      version: 10.4.3
+      specifier: ^11.1.0
+      version: 11.1.0
     mermaid:
       specifier: ^11.9.0
       version: 11.9.0
@@ -995,7 +995,7 @@ importers:
         version: 0.16.22
       lru-cache:
         specifier: 'catalog:'
-        version: 10.4.3
+        version: 11.1.0
       mermaid:
         specifier: 'catalog:'
         version: 11.9.0
@@ -9006,6 +9006,10 @@ packages:
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+
+  lru-cache@11.1.0:
+    resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
+    engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -21368,6 +21372,8 @@ snapshots:
       tslib: 2.8.1
 
   lru-cache@10.4.3: {}
+
+  lru-cache@11.1.0: {}
 
   lru-cache@5.1.1:
     dependencies:

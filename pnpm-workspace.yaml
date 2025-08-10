@@ -116,7 +116,7 @@ catalog:
   jotai: ^2.13.0
   js-yaml: ^4.1.0
   katex: ^0.16.22
-  lru-cache: ^10.4.3  # latest: ^11.1.0
+  lru-cache: ^11.1.0
   mermaid: ^11.9.0
   microcms-js-sdk: ^3.2.0
   nanoid: ^5.1.5
