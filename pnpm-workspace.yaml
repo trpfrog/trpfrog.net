@@ -59,7 +59,6 @@ catalog:
   '@types/bun': ^1.2.19
   '@types/eslint__js': ^8.42.3  # latest: ^9.14.0
   '@types/js-yaml': ^4.0.9
-  '@types/jsdom': ^21.1.7
   '@types/katex': ^0.16.7
   '@types/mdx': ^2.0.13
   '@types/node': ^20.17.10  # latest: ^24.2.1
@@ -116,7 +115,6 @@ catalog:
   immer: ^10.1.1
   jotai: ^2.13.0
   js-yaml: ^4.1.0
-  jsdom: ^25.0.1  # latest: ^26.1.0
   katex: ^0.16.22
   lru-cache: ^10.4.3  # latest: ^11.1.0
   mermaid: ^11.9.0

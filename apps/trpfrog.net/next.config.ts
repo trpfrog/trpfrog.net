@@ -35,7 +35,6 @@ const nextConfig: NextConfig = {
       ...config.plugins,
       new webpack.IgnorePlugin({
         resourceRegExp: /canvas/,
-        contextRegExp: /jsdom$/,
       }),
       new webpack.IgnorePlugin({
         resourceRegExp: /\.stor(ies|y).[tj]sx$/,
