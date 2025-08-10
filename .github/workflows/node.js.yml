@@ -9,32 +9,65 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
 
+env:
+  PNPM_STORE_PATH: ~/.pnpm-store
+  TZ: Asia/Tokyo
+
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [20.x]
-
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v3
         with:
           version: 10.14.0
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_STORE_PATH }}
+          key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
+
+      - name: Pre-fetch deps
+        run: pnpm fetch
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --offline
+
+      - name: Run lint-fix (auto-fix)
+        run: pnpm -w run lint-fix
+
+      - name: Fail if changes were made
+        run: |
+          if ! git diff --quiet; then
+            echo ""
+            echo "❌ Linting failed. Please fix the issues above."
+            git --no-pager diff --name-only
+            exit 1
+          fi
+
       - name: Test (Vitest with coverage)
-        env:
-          TZ: Asia/Tokyo
         run: pnpm exec vitest --coverage.enabled --coverage.provider=v8 --coverage.reporter=json-summary --coverage.reporter=json --coverage.reportOnFailure=true --run
       - name: Report coverage (Vitest)
         if: always()
