@@ -31,8 +31,12 @@ export function createCodeComponent(context: MarkdownContext = {}) {
     }
 
     const rawLanguage = (props.className ?? '').replace('language-', '')
-    const { languageCode, languageDisplayName, fileName } =
-      parseMdCodeBlockLanguageName(rawLanguage)
+
+    // TODO: ここに prefix の処理を書かない
+    const hasNoHeaderPrefix = rawLanguage.startsWith('no-header:')
+    const { languageCode, languageDisplayName, fileName } = parseMdCodeBlockLanguageName(
+      rawLanguage.replace('no-header:', ''),
+    )
 
     if (isValidCustomCodeBlockComponentName(rawLanguage)) {
       const isDevClient = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
@@ -51,6 +55,7 @@ export function createCodeComponent(context: MarkdownContext = {}) {
         language={languageCode ?? 'text'}
         fileName={fileName ?? languageDisplayName ?? undefined}
         className="tw-my-4"
+        showBar={!hasNoHeaderPrefix}
       >
         {children as string}
       </CodeBlock>
