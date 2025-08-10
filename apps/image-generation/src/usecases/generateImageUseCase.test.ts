@@ -31,6 +31,7 @@ describe('generateImage', () => {
   })
 
   it('should retry if image generation fails', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     const mock = vi.fn(() => {
       throw new Error('Failed to generate image')
     })
@@ -39,11 +40,13 @@ describe('generateImage', () => {
     })
 
     const promise = textToImage('prompt', { numberOfRetries: 10 })
-    expect(promise).rejects.toThrow('Failed to generate image')
+    await expect(promise).rejects.toThrow('Failed to generate image')
     expect(mock).toHaveBeenCalledTimes(10)
+    errorSpy.mockRestore()
   })
 
   it('should retry if image generation fails and succeed', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     const mock = vi
       .fn()
       .mockRejectedValueOnce(new Error('Failed to generate image'))
@@ -59,5 +62,6 @@ describe('generateImage', () => {
     const result = await textToImage('prompt', { numberOfRetries: 2 })
     expect(result).toMatchObject(defaultResponse)
     expect(mock).toHaveBeenCalledTimes(2)
+    errorSpy.mockRestore()
   })
 })
