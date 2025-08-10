@@ -1,5 +1,5 @@
 import { sValidator } from '@hono/standard-validator'
-import { loadDefaultJapaneseParser } from 'budoux/dist'
+import { loadDefaultJapaneseParser } from 'budoux'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
