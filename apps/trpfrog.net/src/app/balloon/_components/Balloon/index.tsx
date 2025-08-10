@@ -19,15 +19,14 @@ type BalloonProps = {
   isBurst: boolean
   color: (typeof balloonColors)[number] | 'random'
   onBurst?: () => void
+  enableSound?: boolean
 }
 
 export function useBalloonSound() {
-  const [isSoundEnabled, setSoundEnabled] = useState(false)
   const soundURL =
     'https://res.cloudinary.com/trpfrog/video/upload/v1652447772/balloon/break-immeditary.mp3'
   const [playFunction] = useSound(soundURL, { interrupt: false })
-  const playSound = isSoundEnabled ? playFunction : () => {}
-  return { isSoundEnabled, setSoundEnabled, playSound }
+  return { playSound: playFunction }
 }
 
 const colors: Record<(typeof balloonColors)[number], string[]> = {
@@ -98,7 +97,9 @@ export const Balloon = (props: BalloonProps) => {
       data-balloon-color={color}
       onClick={() => {
         if (!props.isBurst) {
-          playSound()
+          if (props.enableSound) {
+            playSound()
+          }
           reward()
           props.onBurst?.()
         }

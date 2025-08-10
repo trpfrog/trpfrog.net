@@ -13,7 +13,6 @@ import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
 
-import { useBalloonSound } from './_components/Balloon'
 import { BalloonArray } from './_components/BalloonArray'
 import { useBalloonState } from './useBalloonState.ts'
 
@@ -28,7 +27,7 @@ const FormNumberSchema = (max: number, defaultValue: number) =>
   )
 
 export function BalloonApp() {
-  const { isSoundEnabled, setSoundEnabled } = useBalloonSound()
+  const [isSoundEnabled, setSoundEnabled] = useState(false)
 
   const [balloonSize, _setBalloonSize] = useState(57)
   const setBalloonSize = (s: number | string) => {
@@ -79,7 +78,7 @@ export function BalloonApp() {
         </p>
       </Title>
       <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
-        <BalloonArray states={balloonState} width={balloonSize} />
+        <BalloonArray states={balloonState} width={balloonSize} enableSound={isSoundEnabled} />
         <div id={rewardStartPositionId} className="tw-fixed tw-top-0 tw-left-1/2" />
       </Block>
     </>
