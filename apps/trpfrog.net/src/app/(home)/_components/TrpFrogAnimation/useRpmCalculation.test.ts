@@ -1,34 +1,20 @@
 import { renderHook, act } from '@testing-library/react'
+import { describe, expect, test, vi } from 'vitest'
 
 import { degreeDifference, useRpmCalculation } from './useRpmCalculation'
 
 describe('degreeDifference', () => {
-  test('0, 0', () => {
-    expect(degreeDifference(0, 0)).toBe(0)
-  })
-
-  test('0, 1', () => {
-    expect(degreeDifference(0, 1)).toBe(1)
-  })
-
-  test('0, 359', () => {
-    expect(degreeDifference(0, 359)).toBe(-1)
-  })
-
-  test('30, 270', () => {
-    expect(degreeDifference(30, 330)).toBe(-60)
-  })
-
-  test('270, 30', () => {
-    expect(degreeDifference(330, 30)).toBe(60)
-  })
-
-  test('300, 320', () => {
-    expect(degreeDifference(300, 320)).toBe(20)
-  })
-
-  test('320, 300', () => {
-    expect(degreeDifference(320, 300)).toBe(-20)
+  const cases: { prev: number; cur: number; expected: number }[] = [
+    { prev: 0, cur: 0, expected: 0 },
+    { prev: 0, cur: 1, expected: 1 },
+    { prev: 0, cur: 359, expected: -1 },
+    { prev: 30, cur: 330, expected: -60 },
+    { prev: 330, cur: 30, expected: 60 },
+    { prev: 300, cur: 320, expected: 20 },
+    { prev: 320, cur: 300, expected: -20 },
+  ]
+  test.each(cases)('degreeDifference($prev, $cur) = $expected', ({ prev, cur, expected }) => {
+    expect(degreeDifference(prev, cur)).toBe(expected)
   })
 })
 
