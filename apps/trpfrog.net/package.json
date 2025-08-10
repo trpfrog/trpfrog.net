@@ -47,7 +47,6 @@
     "@vanilla-extract/css": "catalog:",
     "@vercel/edge-config": "catalog:",
     "@vercel/functions": "catalog:",
-    "@vercel/kv": "catalog:",
     "ai": "catalog:",
     "babel-plugin-react-compiler": "catalog:",
     "better-react-mathjax": "catalog:",

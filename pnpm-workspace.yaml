@@ -36,7 +36,7 @@ catalog:
   '@next/mdx': ^15.4.6
   '@next/third-parties': ^15.4.6
   '@prisma/client': ^5.22.0  # latest: ^6.13.0
-  '@react-hookz/web': ^24.0.4  # latest: ^25.1.1
+  '@react-hookz/web': ^25.1.1
   '@shikijs/transformers': ^3.9.2
   '@standard-schema/spec': ^1.0.0
   '@storybook/addon-actions': ^8.4.7
@@ -61,7 +61,7 @@ catalog:
   '@types/js-yaml': ^4.0.9
   '@types/katex': ^0.16.7
   '@types/mdx': ^2.0.13
-  '@types/node': ^20.17.10  # latest: ^24.2.1
+  '@types/node': ^22.17.1
   '@types/react': ^19.0.1
   '@types/react-dom': ^19.0.2
   '@types/react-modal': ^3.16.3
@@ -71,9 +71,8 @@ catalog:
   '@vanilla-extract/css': ^1.17.4
   '@vanilla-extract/next-plugin': ^2.4.14
   '@vercel/edge-config': ^1.4.0
-  '@vercel/functions': ^1.5.2  # latest: ^2.2.8
-  '@vercel/kv': ^1.0.1  # latest: ^3.0.0
-  '@vitejs/plugin-react': ^4.3.4  # latest: ^5.0.0
+  '@vercel/functions': ^2.2.8
+  '@vitejs/plugin-react': ^5.0.0
   '@vitest/coverage-v8': ^3.2.4
   '@vitest/ui': ^3.2.4
   ai: ^5.0.8
@@ -88,7 +87,7 @@ catalog:
   clipboardy: ^4.0.0
   cloudinary: ^2.7.0
   consola: ^3.4.2
-  cssnano: ^6.1.2  # latest: ^7.1.0
+  cssnano: ^7.1.0
   date-fns: ^4.1.0
   dayjs: ^1.11.13
   devicon: ^2.17.0
@@ -106,9 +105,9 @@ catalog:
   eslint-plugin-testing-library: ^7.6.3
   eslint-plugin-unused-imports: ^4.1.4
   focus-trap: ^7.6.5
-  globals: ^15.14.0  # latest: ^16.3.0
+  globals: ^16.3.0
   gray-matter: ^4.0.3
-  happy-dom: ^15.11.7  # latest: ^18.0.1
+  happy-dom: ^18.0.1
   hono: ^4.9.0
   http-status-codes: ^2.3.0
   immer: ^10.1.1
