@@ -15,6 +15,11 @@ export default defineConfig({
         singleThread: true,
       },
     },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json-summary', 'json', 'lcov', 'html'],
+      reportOnFailure: true,
+    },
     css: {
       modules: {
         classNameStrategy: 'non-scoped',
