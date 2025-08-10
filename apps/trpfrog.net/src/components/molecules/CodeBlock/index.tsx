@@ -9,7 +9,7 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast, bundledLanguages, createHighlighter, type BundledLanguage } from 'shiki'
+import { addClassToHast, bundledLanguages, createHighlighter } from 'shiki'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
@@ -17,10 +17,10 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
-import { PlainCodeBlock } from './PlainCodeBlock'
 import './shiki-style.css'
 import { LanguageCode } from './language-code'
 import { languageDisplayNames } from './language-display-names'
+import { PlainCodeBlock } from './PlainCodeBlock'
 
 export type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string
@@ -66,14 +66,6 @@ function getHighlighter() {
     })
   }
   return highlighterPromise
-}
-
-function extractPrefixes(language: string) {
-  const prefixes: string[] = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
-    language = language.replace(prefix, '')
-    return prefix.replace(':', '')
-  })
-  return { prefixes, language }
 }
 
 async function loadLanguage(languageCode: LanguageCode): Promise<void> {

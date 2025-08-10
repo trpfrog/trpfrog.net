@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
+import { describe, expect, test } from 'vitest'
 
 import { CodeBlock, CodeBlockProps } from '.'
-import { describe, expect, test } from 'vitest'
 
 describe('CodeBlock', () => {
   test('snapshot test', async () => {

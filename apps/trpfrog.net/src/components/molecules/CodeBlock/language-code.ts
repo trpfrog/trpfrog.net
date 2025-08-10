@@ -1,4 +1,4 @@
-import { BuiltinLanguage, type BundledLanguage } from 'shiki'
+import { type BundledLanguage } from 'shiki'
 
 const languageCode = [
   'js',

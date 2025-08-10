@@ -1,6 +1,7 @@
 'use client'
 
-import { memo, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
+import { memo, Suspense } from 'react'
+
 import dynamic from 'next/dynamic'
 
 import { YouTube } from '@/components/organisms/YouTube'

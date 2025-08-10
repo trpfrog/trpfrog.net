@@ -29,7 +29,6 @@ export function useMermaid(chart: string) {
         setSvg(renderedSvg)
         setError(null)
       } catch (error) {
-        // eslint-disable-next-line n/no-process-env
         if (process.env.NODE_ENV === 'production' && error) {
           throw error
         }
@@ -70,7 +69,8 @@ export function StyledMermaid(props: MermaidProps) {
   return (
     <Mermaid
       {...props}
-      className="tw-flex tw-justify-center tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50 dark:tw-bg-zinc-800"
+      className="tw-flex tw-justify-center tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50
+        dark:tw-bg-zinc-800"
     />
   )
 }

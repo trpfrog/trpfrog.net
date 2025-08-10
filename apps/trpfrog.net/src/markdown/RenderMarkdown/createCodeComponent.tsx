@@ -1,6 +1,7 @@
 import React, { ReactNode, ComponentProps } from 'react'
 
 import { CodeBlock } from '@/components/molecules/CodeBlock'
+import { parseMdCodeBlockLanguageName } from '@/components/molecules/CodeBlock/parse-lang-and-filename'
 
 import styles from './createCodeComponent.module.css'
 
@@ -10,7 +11,6 @@ import {
   isValidCustomCodeBlockComponentName,
   RenderCustomCodeBlockComponent,
 } from '@/markdown/code-block-components'
-import { parseMdCodeBlockLanguageName } from '@/components/molecules/CodeBlock/parse-lang-and-filename'
 
 export function createCodeComponent(context: MarkdownContext = {}) {
   return function MarkdownCode(props: ComponentProps<'code'>): ReactNode {

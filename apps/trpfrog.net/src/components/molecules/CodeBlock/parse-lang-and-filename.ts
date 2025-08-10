@@ -1,5 +1,5 @@
-import { languageDisplayNames } from './language-display-names'
 import { toLanguageCode, type LanguageCode } from './language-code'
+import { languageDisplayNames } from './language-display-names'
 
 /**
  * `parseMdCodeBlockLanguageName` の戻り値型。
