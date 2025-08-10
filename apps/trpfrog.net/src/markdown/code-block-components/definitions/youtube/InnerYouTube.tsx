@@ -49,6 +49,7 @@ export const InnerAutoYouTube = function InnerAutoYouTube({ content }: { content
             playsInline
             volume={0}
             loop
+            muted
             config={{
               youtube: {
                 playlist: id, // it is needed to loop video
