@@ -7,7 +7,7 @@ type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'
   cite?: string
 }
 
-function parseTweet(tweet: string) {
+export function parseTweet(tweet: string) {
   tweet = ' ' + tweet + ' '
 
   const sepFigures = ['\\s', '\\n', '\\(', '\\)', '、', '。', '！', '？']

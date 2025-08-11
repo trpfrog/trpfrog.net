@@ -9,22 +9,25 @@ import {
   transformerNotationErrorLevel,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { addClassToHast, bundledLanguages, getSingletonHighlighter } from 'shiki'
+import { addClassToHast, bundledLanguages, createHighlighter } from 'shiki'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
-import { normalizeLangName } from './normalizeLangName'
-import { PlainCodeBlock } from './PlainCodeBlock'
 import './shiki-style.css'
+import { LanguageCode } from './language-code'
+import { languageDisplayNames } from './language-display-names'
+import { PlainCodeBlock } from './PlainCodeBlock'
 
 export type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string
-  language?: string
+  language?: LanguageCode
   fileName?: string
   url?: string
+  showBar?: boolean
 }
 
 const createStyles = tv({
@@ -48,43 +51,33 @@ const createStyles = tv({
   },
 })
 
-const langAlias: Record<string, string> = {
-  txt: 'text',
+/**
+ * v3: getSingletonHighlighter は使わず、モジュールスコープのシングルトンを自前で確保。
+ * Oniguruma エンジンを明示し、WASM を遅延 import。
+ */
+let highlighterPromise: Promise<import('shiki').Highlighter> | undefined
+
+function getHighlighter() {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: ['github-light', 'github-dark'],
+      langs: [], // 言語は後から lazy load
+      engine: createOnigurumaEngine(() => import('shiki/wasm')),
+    })
+  }
+  return highlighterPromise
 }
 
-function extractPrefixes(language: string) {
-  const prefixes: string[] = (language?.match(/([^:]+):/g) ?? []).map(prefix => {
-    language = language.replace(prefix, '')
-    return prefix.replace(':', '')
-  })
-  return { prefixes, language }
-}
-
-const highlighter = await getSingletonHighlighter({
-  themes: ['github-light', 'github-dark'],
-  langs: [], // no languages are loaded initially
-  langAlias,
-})
-
-async function loadLanguage(language: string): Promise<boolean> {
-  language = language?.split(':').slice(-1)[0]
-  language = langAlias[language] ?? language
+async function loadLanguage(languageCode: LanguageCode): Promise<void> {
+  const highlighter = await getHighlighter()
 
   // built-in languages
-  if (['ansi', 'text'].includes(language)) {
-    return true
+  if (languageCode === 'text' || languageCode === 'ansi') {
+    return
   }
-
-  if (!highlighter.getLoadedLanguages().includes(language)) {
-    // check if the language is bundled
-    if (!(language in bundledLanguages)) {
-      return false
-    }
-    // lazy load the language
-    const langModule = await bundledLanguages[language as keyof typeof bundledLanguages]()
-    await highlighter.loadLanguage(langModule)
-  }
-  return true
+  // lazy load the language
+  const langModule = await bundledLanguages[languageCode]()
+  await highlighter.loadLanguage(langModule)
 }
 
 export function CodeLinkButton(props: { url: string }) {
@@ -103,24 +96,24 @@ export function CodeLinkButton(props: { url: string }) {
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
-  const { children, language: rawLanguage = '', fileName, url, ...rest } = props
+  const { children, language, showBar, fileName, url, ...rest } = props
 
-  const isValidLanguage = await loadLanguage(rawLanguage)
+  if (language) {
+    await loadLanguage(language)
+  }
 
-  const { prefixes, language } = extractPrefixes(isValidLanguage ? rawLanguage : 'text')
+  const styles = createStyles({ showBar }) // TODO: `wrap: prefixes.includes('wrap')` が何に使われていたのか調べる
 
-  const showBar = !prefixes.includes('no-header') && isValidLanguage
-  const styles = createStyles({ showBar, wrap: prefixes.includes('wrap') })
-
+  const highlighter = await getHighlighter()
   const codeHtml = highlighter.codeToHtml((props.children as string).trimEnd(), {
-    lang: language,
+    lang: language ?? 'text',
     themes: {
       light: 'github-light',
       dark: 'github-dark',
     },
     cssVariablePrefix: '--shiki-',
     transformers: [
-      transformerNotationDiff(),
+      transformerNotationDiff({ matchAlgorithm: 'v3' }),
       transformerNotationHighlight(),
       transformerNotationErrorLevel(),
       {
@@ -136,10 +129,9 @@ export async function CodeBlock(props: CodeBlockProps) {
 
   return (
     <PlainCodeBlock
-      fileName={fileName || normalizeLangName(language)}
+      fileName={fileName ?? (language ? languageDisplayNames[language] : undefined)}
       url={url}
       showBar={showBar}
-      wrap={prefixes.includes('wrap')}
       copyContent={children as string}
       dangerouslySetInnerHTML={{ __html: codeHtml }}
       {...rest}

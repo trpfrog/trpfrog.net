@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { useScroll } from 'framer-motion'
 import { atom, useAtomValue, useSetAtom } from 'jotai/index'
+import { useScroll } from 'motion/react'
 import { usePathname } from 'next/navigation'
 
 import { useMobileMenuState } from '@/components/organisms/MobileMenu'

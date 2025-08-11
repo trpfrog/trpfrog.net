@@ -5,7 +5,7 @@ import { memo, Suspense } from 'react'
 import dynamic from 'next/dynamic'
 
 import { YouTube } from '@/components/organisms/YouTube'
-const ReactPlayer = dynamic(() => import('react-player/youtube'))
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false })
 
 function parseIdAndParams(content: string): { id: string; params: URLSearchParams } {
   const lines = content.split('\n')
@@ -36,26 +36,33 @@ export const InnerYouTube = memo(function InnerYouTube({ content }: { content: s
   return <YouTube videoId={id} params={params.toString()} />
 })
 
-export const InnerAutoYouTube = memo(function InnerAutoYouTube({ content }: { content: string }) {
+export const InnerAutoYouTube = function InnerAutoYouTube({ content }: { content: string }) {
   const lines = content.split('\n')
   const { id } = parseIdAndParams(lines[0].trim())
-  // const title = lines[1]?.trim()
+
   return (
     <div className="tw-flex tw-items-center tw-justify-center">
       <Suspense fallback={<div className="tw-bg-gray-200 tw-aspect-video tw-w-2/3" />}>
-        <ReactPlayer
-          url={'https://www.youtube.com/watch?v=' + id}
-          playing={true}
-          volume={0}
-          config={{
-            playerVars: {
-              modestbranding: 1,
-              loop: 1,
-              playlist: id, // it is needed to loop video
-            },
-          }}
-        />
+        <div className="tw-w-full tw-aspect-video">
+          <ReactPlayer
+            src={`https://www.youtube.com/watch?v=${id}`}
+            playing
+            playsInline
+            volume={0}
+            loop
+            muted
+            config={{
+              youtube: {
+                playlist: id, // it is needed to loop video
+              },
+            }}
+            // レスポンシブ気味のサイズ指定（必要なら調整）
+            width="100%"
+            height="auto"
+            style={{ aspectRatio: '16 / 9' }}
+          />
+        </div>
       </Suspense>
     </div>
   )
-})
+}

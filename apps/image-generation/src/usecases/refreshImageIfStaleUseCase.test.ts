@@ -1,5 +1,5 @@
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 
 import { ImageUpdateStatus } from '../domain/entities/image-update-status'
 
@@ -115,6 +115,7 @@ describe('refreshImageIfStale', () => {
   })
 
   it('画像生成時にエラーが発生した場合、status が error になる', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     const imageUpdateStatusRepo = createInMemoryImageUpdateStatusRepo({
       status: 'idle',
     })
@@ -150,5 +151,7 @@ describe('refreshImageIfStale', () => {
     // 生成エラー後は status が error になる
     const statusAfterrUpdate = await imageUpdateStatusRepo.get()
     expect(statusAfterrUpdate).toMatchObject({ status: 'error' })
+
+    errorSpy.mockRestore()
   })
 })

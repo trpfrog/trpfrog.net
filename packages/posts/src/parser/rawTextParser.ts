@@ -71,12 +71,26 @@ export function parseColonSeparatedDict(rawText: string): Record<string, string>
 /**
  * Parse a list of objects separated by three or more dashes
  * @param rawText
+ * @example
+ * ```
+ * key1: value1
+ * key2: value2
+ * ---
+ * key3: value3
+ * key4: value4
+ * ```
+ * returns
+ * ```
+ * [
+ *   { key1: 'value1', key2: 'value2' },
+ *   { key3: 'value3', key4: 'value4' }
+ * ]
+ * ```
  */
 export function parseObjectList(rawText: string): Record<string, string>[] {
-  const rawObjects = `\n${rawText.trim()}\n`.split(/\n-{3,}\n/)
-  const objects = rawObjects
-    .map(rawObject => rawObject.trim())
-    .filter(Boolean) // remove object
-    .map(parseColonSeparatedDict)
-  return objects
+  const rawObjects = rawText
+    .split(/^\s*-{3,}\s*$/m)
+    .map(s => s.trim())
+    .filter(Boolean)
+  return rawObjects.map(parseColonSeparatedDict)
 }

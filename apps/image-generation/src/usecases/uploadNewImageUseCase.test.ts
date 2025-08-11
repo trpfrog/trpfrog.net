@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
 import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'
@@ -44,6 +44,7 @@ describe('uploadNewImageUsecase', () => {
   })
 
   it('should delete the image if metadata saving fails', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     deps.imageStoreRepo.upload.mockResolvedValueOnce(expectedImageUri)
     deps.imageMetadataRepo.add.mockRejectedValueOnce(new Error('Metadata save failed'))
 
@@ -61,5 +62,6 @@ describe('uploadNewImageUsecase', () => {
       imageUri: expectedImageUri,
     })
     expect(deps.imageStoreRepo.hardDelete).toHaveBeenCalledWith(expectedFilename)
+    errorSpy.mockRestore()
   })
 })

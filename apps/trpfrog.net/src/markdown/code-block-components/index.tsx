@@ -30,7 +30,6 @@ export async function RenderCustomCodeBlockComponent(props: {
   }
 
   const TargetComponent =
-    // eslint-disable-next-line n/no-process-env
     process.env.NODE_ENV === 'development' && props.useDevComponent && comp.DevComponent
       ? comp.DevComponent
       : comp.Component

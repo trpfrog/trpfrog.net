@@ -39,9 +39,9 @@ function Work(props: { content: MarkdownWithFrontmatter<WorksFrontmatter>; class
     >
       <div className={workStyles.backdrop()}>
         <div className={workStyles.keywords()}>
-          {content.metadata.keywords
-            ?.filter(hasDevicon)
-            .map(k => <Devicon key={k} className={workStyles.keyword()} iconName={k} />)}
+          {content.metadata.keywords?.filter(hasDevicon).map(k => (
+            <Devicon key={k} className={workStyles.keyword()} iconName={k} />
+          ))}
         </div>
         <h3 className={workStyles.title()}>
           <ParseWithBudouX str={content.metadata.title} slug={''} />

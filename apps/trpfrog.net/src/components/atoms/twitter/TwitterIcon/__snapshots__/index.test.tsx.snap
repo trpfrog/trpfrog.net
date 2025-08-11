@@ -3,11 +3,8 @@
 exports[`TwitterIcon > snapshot test 1`] = `
 <DocumentFragment>
   <div
-    center=""
     class="icon"
-    no-repeat=""
-    style="background: url("
-    twitter-icon.png=""
+    style="background: url("/twitter-icon.png") center center no-repeat;"
   />
 </DocumentFragment>
 `;

@@ -13,7 +13,7 @@ function degreeMod(n: number) {
 }
 
 // returns [-180, 180)
-function degreeDifference(prev: number, cur: number) {
+export function degreeDifference(prev: number, cur: number) {
   const diff = degreeMod(cur - prev)
   if (diff >= 180) {
     return diff - 360

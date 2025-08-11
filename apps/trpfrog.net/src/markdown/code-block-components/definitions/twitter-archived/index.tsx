@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { parseColonSeparatedDict } from '@trpfrog.net/posts/parser'
 
-
 import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import { TwitterArchived, TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 

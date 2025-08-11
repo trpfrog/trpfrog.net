@@ -7,7 +7,7 @@
 
 import { createURL, InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 import clipboardy from 'clipboardy'
-import { JSDOM } from 'jsdom'
+import { Window } from 'happy-dom'
 import * as v from 'valibot'
 
 import { formatDateToDisplay } from '@/lib/date'
@@ -19,8 +19,9 @@ import { BlogTwitterArchiveSchema } from '@/markdown/code-block-components/defin
  * @param tweetHTML
  */
 function beautifyTweet(tweetHTML: string): string {
-  const dom = new JSDOM(tweetHTML)
-  const document = dom.window.document.body
+  const window = new Window()
+  const document = window.document
+  document.body.innerHTML = tweetHTML
 
   const anchorTags = document.querySelectorAll('a')
   for (const anchorTag of anchorTags) {
@@ -33,7 +34,7 @@ function beautifyTweet(tweetHTML: string): string {
     }
   }
 
-  return document.innerHTML?.trim() ?? ''
+  return document.body.innerHTML?.trim() ?? ''
 }
 
 /**
@@ -89,9 +90,13 @@ async function fetchTweet(tweetUrl: string) {
   const rawContent = await response.json()
   const content = validateUnknown(FetchedTweetSchema, rawContent)
 
-  const dom = new JSDOM(content.html)
-  const document = dom.window.document
-  const dateElement = document.querySelectorAll('a').item(document.querySelectorAll('a').length - 1)
+  // oEmbed の HTML を happy-dom でパース
+  const window = new Window()
+  const document = window.document
+  document.body.innerHTML = content.html
+
+  const links = document.querySelectorAll('a')
+  const dateElement = links.item(links.length - 1)
   if (!dateElement) {
     throw new Error('Failed to parse tweet date')
   }
@@ -123,7 +128,7 @@ async function createTweetBlock(url: string): Promise<void> {
 
   const createLine = (key: keyof typeof result) => {
     const value = result[key]
-    return value ? `${String(key)}: ${result[key]}` : undefined
+    return value ? `${String(key)}: ${value as string}` : undefined
   }
 
   const resultCodeBlock = [

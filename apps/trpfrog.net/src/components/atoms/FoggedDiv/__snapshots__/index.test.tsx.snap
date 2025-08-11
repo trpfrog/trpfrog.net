@@ -10,7 +10,6 @@ exports[`FoggedDiv > snapshot test 1`] = `
     <div
       class="fog"
       data-testid="fogged-div-fog"
-      style=""
     />
   </div>
 </DocumentFragment>

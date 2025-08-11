@@ -1,7 +1,7 @@
 import React, { ReactNode, ComponentProps } from 'react'
 
-
 import { CodeBlock } from '@/components/molecules/CodeBlock'
+import { parseMdCodeBlockLanguageName } from '@/components/molecules/CodeBlock/parse-lang-and-filename'
 
 import styles from './createCodeComponent.module.css'
 
@@ -11,27 +11,6 @@ import {
   isValidCustomCodeBlockComponentName,
   RenderCustomCodeBlockComponent,
 } from '@/markdown/code-block-components'
-
-function parseLanguageName(className: string) {
-  const rawLanguage = className.replace('language-', '')
-  if (rawLanguage.includes(':')) {
-    return {
-      lang: rawLanguage.split(':')[0],
-      fileName: rawLanguage.split(':')[1],
-      url: rawLanguage.split(':').slice(2).join(':'),
-    }
-  } else if (rawLanguage.includes('.')) {
-    return {
-      lang: rawLanguage.split('.').slice(-1)[0],
-      fileName: rawLanguage,
-    }
-  } else {
-    return {
-      lang: rawLanguage,
-      fileName: '',
-    }
-  }
-}
 
 export function createCodeComponent(context: MarkdownContext = {}) {
   return function MarkdownCode(props: ComponentProps<'code'>): ReactNode {
@@ -51,14 +30,19 @@ export function createCodeComponent(context: MarkdownContext = {}) {
       return <code className={styles.inline_code_block}>{children}</code>
     }
 
-    // prettier-ignore
-    const { lang, fileName, url } = parseLanguageName(props.className ?? '')
+    const rawLanguage = (props.className ?? '').replace('language-', '')
 
-    if (isValidCustomCodeBlockComponentName(lang)) {
+    // TODO: ここに prefix の処理を書かない
+    const hasNoHeaderPrefix = rawLanguage.startsWith('no-header:')
+    const { languageCode, languageDisplayName, fileName } = parseMdCodeBlockLanguageName(
+      rawLanguage.replace('no-header:', ''),
+    )
+
+    if (isValidCustomCodeBlockComponentName(rawLanguage)) {
       const isDevClient = process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
       return (
         <RenderCustomCodeBlockComponent
-          name={lang}
+          name={rawLanguage}
           markdown={children as string}
           context={context}
           useDevComponent={isDevClient}
@@ -67,7 +51,12 @@ export function createCodeComponent(context: MarkdownContext = {}) {
     }
 
     return (
-      <CodeBlock language={lang} fileName={fileName} url={url} className="tw-my-4">
+      <CodeBlock
+        language={languageCode ?? 'text'}
+        fileName={fileName ?? languageDisplayName ?? undefined}
+        className="tw-my-4"
+        showBar={!hasNoHeaderPrefix}
+      >
         {children as string}
       </CodeBlock>
     )

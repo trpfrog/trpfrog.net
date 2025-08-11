@@ -1,9 +1,9 @@
 import { sValidator } from '@hono/standard-validator'
-import { loadDefaultJapaneseParser } from 'budoux/dist'
+import { Parser, jaModel } from 'budoux'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
-const budouXParser = loadDefaultJapaneseParser()
+const budouXParser = new Parser(jaModel)
 
 import { env } from '@/env/server'
 
