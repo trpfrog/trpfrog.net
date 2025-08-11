@@ -26,23 +26,24 @@ export type LinkCardResult =
       success: false
     }
 
-async function fetcher(url: string) {
+async function fetcher(url: string): Promise<LinkCardResult> {
   'use server'
-  return fetch(url, {
-    next: {
-      revalidate: 60 * 60 * 24 * 7,
-      tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(url)],
-    },
-    signal: AbortSignal.timeout(5000),
-  })
-    .then(res => res.text())
-    .then<LinkCardResult>(htmlText => ({
+  try {
+    const res = await fetch(url, {
+      next: {
+        revalidate: 60 * 60 * 24 * 7,
+        tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(url)],
+      },
+      signal: AbortSignal.timeout(5000),
+    })
+    const htmlText = await res.text()
+    return {
       success: true,
       ...parsePageInfo(htmlText),
-    }))
-    .catch(_e => ({
-      success: false,
-    }))
+    }
+  } catch (_e) {
+    return { success: false } as const
+  }
 }
 
 export function StreamingLinkCard(props: ServerStreamedLinkCard) {
