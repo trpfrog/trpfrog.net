@@ -20,7 +20,7 @@ catalog:
   '@hono/vite-build': ^1.7.0
   '@hono/vite-dev-server': ^0.20.1
   '@hono/vite-ssg': ^0.1.2
-  '@huggingface/inference': ^2.8.1  # latest: ^4.6.1
+  '@huggingface/inference': ^2.8.1
   '@langchain/core': ^0.3.68
   '@langchain/openai': ^0.6.7
   '@mantine/charts': ^7.15.2  # latest: ^8.2.4
