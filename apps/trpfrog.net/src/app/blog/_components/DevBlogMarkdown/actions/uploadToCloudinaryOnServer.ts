@@ -2,7 +2,6 @@
 
 import { UploadApiOptions, UploadApiResponse } from 'cloudinary'
 
-
 import { cloudinary } from '@/lib/cloudinary'
 
 // Promise wrapper for cloudinary.uploader.upload_stream

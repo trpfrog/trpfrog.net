@@ -41,7 +41,8 @@ function TagList({ tags }: { tags: string[] }) {
     <div className="tw-flex tw-flex-row tw-gap-1 tw-items-end">
       {tags.map(tag => (
         <span
-          className="tw-text-sm tw-px-2 tw-py-1 tw-rounded-full tw-border-2 tw-border-[--body-background]"
+          className="tw-text-sm tw-px-2 tw-py-1 tw-rounded-full tw-border-2
+            tw-border-[--body-background]"
           key={tag}
         >
           {tag}
