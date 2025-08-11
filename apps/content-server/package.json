@@ -5,8 +5,8 @@
     ".": "./src/client.ts"
   },
   "scripts": {
+    "postinstall": "wrangler types --env-interface Bindings",
     "dev": "wrangler dev --port 8003 --inspector-port 8103 src/index.ts",
-    "generate-types": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
     "deploy": "vite build && wrangler deploy --minify src/index.ts",
     "lint-fix": "eslint . --fix",
     "test": "vitest"
