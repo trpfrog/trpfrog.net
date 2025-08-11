@@ -38,5 +38,10 @@
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "valibot": "catalog:"
+  },
+  "pnpm": {
+    "overrides": {
+      "wrangler": "catalog:"
+    }
   }
 }
