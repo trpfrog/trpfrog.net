@@ -17,8 +17,9 @@
   --anim-height: min(100vw, 400px);
   --trpfrog-icon-size: min(400px, 90vw);
 
-  --main-font: -apple-system, BlinkMacSystemFont, Noto Sans JP, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --main-font:
+    -apple-system, BlinkMacSystemFont, Noto Sans JP, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   --footer-color: #163600;
 }

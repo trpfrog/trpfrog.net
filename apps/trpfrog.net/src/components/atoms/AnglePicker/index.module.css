@@ -19,7 +19,8 @@
   --scales: 8;
   --length: 45%;
 
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 50% 50%,
       white 0%,
       white calc(100% - var(--length)),
