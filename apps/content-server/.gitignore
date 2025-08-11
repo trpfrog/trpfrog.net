@@ -20,9 +20,6 @@ node_modules/
 .env.production
 .dev.vars
 
-# generated
-worker-configuration.d.ts
-
 # logs
 logs/
 *.log
