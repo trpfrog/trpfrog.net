@@ -55,8 +55,7 @@ export const BlogPostSchema = v.object({
   readTime: v.number(),
   numberOfPhotos: v.optional(v.number()),
   previewContentId: v.optional(v.string()),
-  isAll: v.boolean(),
-  currentPage: v.number(),
+  currentPage: BlogPageNumberSchema,
   numberOfPages: v.number(),
 })
 

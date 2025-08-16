@@ -7,6 +7,7 @@ import { CustomCodeBlockComponent } from '../types'
 export const nextPageCCBC: CustomCodeBlockComponent = {
   Component: ({ markdown, context }) => {
     if (!context.blog) return <></>
+    if (context.blog.currentPage === 'all') return <></>
     return (
       <div style={{ textAlign: 'center' }}>
         <div style={{ margin: '1em 0' }}>

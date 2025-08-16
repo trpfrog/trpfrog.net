@@ -1,4 +1,4 @@
-import { validate, InferSchemaInput } from '@trpfrog.net/utils'
+import { validate, InferSchemaInput, tryOrElse } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -7,7 +7,12 @@ import {
   ReadTimeOptionSchema,
 } from '../time/computeReadTimeSecondFrom.ts'
 
-import { BlogFrontMatterSchema, BlogPost } from './blogPost.ts'
+import {
+  BlogFrontMatterSchema,
+  BlogPageNumber,
+  BlogPageNumberSchema,
+  BlogPost,
+} from './blogPost.ts'
 import { preprocess } from './preprocess.ts'
 
 const BlogPostBuildOptionSchema = v.object({
@@ -20,7 +25,7 @@ const BlogPostBuildOptionSchema = v.object({
 })
 
 export class InvalidPagePositionError extends Error {
-  constructor(pagePosition: number) {
+  constructor(pagePosition: unknown) {
     super(`Invalid page position: ${pagePosition}`)
   }
 }
@@ -35,24 +40,24 @@ export function buildBlogPost(
   options = validate(BlogPostBuildOptionSchema, options ?? {})
 
   const matterResult = matter(markdownString)
-  const pagePosition = options.pagePos1Indexed ?? 1
+  const pagePosition = tryOrElse(
+    () => validate(BlogPageNumberSchema, options.pagePos1Indexed ?? 1),
+    () => {
+      throw new InvalidPagePositionError(pagePosition)
+    },
+  )
   const frontMatter = validate(BlogFrontMatterSchema, matterResult.data)
 
   const numberOfPhotos = matterResult.content
     .split('\n')
     .filter(e => /^(!\[)|(<img)|(image[234]?:)/.test(e)).length
 
-  const pageContent = options?.metadataOnly
-    ? []
-    : preprocess(matterResult.content, {
-        concatenateAllPages: options?.all,
-        pageIdx1Indexed: pagePosition,
-      })
+  const pageContent = options?.metadataOnly ? [] : preprocess(matterResult.content, pagePosition)
 
   const pageBreakRegex = /<!--+ page break --+>/g
   const numberOfPages = matterResult.content.split(pageBreakRegex).length
 
-  if (pagePosition > numberOfPages) {
+  if (typeof pagePosition === 'number' && pagePosition > numberOfPages) {
     throw new InvalidPagePositionError(pagePosition)
   }
 
@@ -60,7 +65,6 @@ export function buildBlogPost(
     slug,
     ...frontMatter,
     content: pageContent,
-    isAll: options?.all ?? false,
     numberOfPages,
     currentPage: pagePosition,
     readTime: computeReadTimeSecondFrom(matterResult.content, options.readTimeOption),
@@ -71,6 +75,12 @@ export function buildBlogPost(
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
   const { content, ...rest } = blogPost
-  const frontMatter = validate(BlogFrontMatterSchema, rest)
+  const frontMatter = {
+    ...validate(BlogFrontMatterSchema, rest),
+    page: blogPost.currentPage as BlogPageNumber | undefined,
+  }
+  if (blogPost.currentPage === 'all') {
+    delete frontMatter.page
+  }
   return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
 }
