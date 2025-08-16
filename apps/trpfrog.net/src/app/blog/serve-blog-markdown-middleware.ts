@@ -1,9 +1,15 @@
 // This middleware is imported from the main middleware file `@/middleware.ts`
 import { createContentServerClient } from '@trpfrog.net/content-server'
-import { BLOG_PAGE_NUMBER__ALL, BlogPageNumberSchema } from '@trpfrog.net/posts'
 import { safeValidate } from '@trpfrog.net/utils'
 import { createMiddleware } from 'hono/factory'
 import { HTTPException } from 'hono/http-exception'
+
+// FIXME: gray-matter を import すると edge 環境ではビルドできない
+// ここではファイルを指定して読み込み、gray-matter の import を回避している
+import {
+  BLOG_PAGE_NUMBER__ALL,
+  BlogPageNumberSchema,
+} from '../../../../../packages/posts/src/core/blogPost.ts'
 
 const MARKDOWN_EXT = '.md'
 
