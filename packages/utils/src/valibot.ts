@@ -24,3 +24,13 @@ export const vCoerceDate = v.union([
     v.transform(str => new Date(str)),
   ),
 ])
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function vNarrowInputType<T>(schema: v.BaseSchema<any, any, any>) {
+  return v.pipe(
+    v.custom<T>(() => true),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    v.transform<any, any>(s => s),
+    schema,
+  )
+}

@@ -1,4 +1,5 @@
-import { validate, InferSchemaInput, tryOrElse } from '@trpfrog.net/utils'
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
+import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -8,6 +9,7 @@ import {
 } from '../time/computeReadTimeSecondFrom.ts'
 
 import {
+  BLOG_PAGE_NUMBER__1,
   BlogFrontMatterSchema,
   BlogPageNumber,
   BlogPageNumberSchema,
@@ -16,8 +18,10 @@ import {
 import { preprocess } from './preprocess.ts'
 
 const BlogPostBuildOptionSchema = v.object({
-  pagePos1Indexed: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1))),
-  all: v.optional(v.boolean(), false),
+  pagePos1Indexed: v.optional(
+    vNarrowInputType<BlogPageNumber>(BlogPageNumberSchema),
+    BLOG_PAGE_NUMBER__1,
+  ),
   showPreviewCheckpoint: v.optional(v.boolean(), false),
   previewContentId: v.optional(v.string()),
   metadataOnly: v.optional(v.boolean(), false),
@@ -35,30 +39,27 @@ export type BlogPostBuildOption = InferSchemaInput<typeof BlogPostBuildOptionSch
 export function buildBlogPost(
   slug: string,
   markdownString: string,
-  options?: BlogPostBuildOption,
+  _options?: BlogPostBuildOption,
 ): BlogPost {
-  options = validate(BlogPostBuildOptionSchema, options ?? {})
+  const options = validate(BlogPostBuildOptionSchema, _options ?? {})
 
   const matterResult = matter(markdownString)
-  const pagePosition = tryOrElse(
-    () => validate(BlogPageNumberSchema, options.pagePos1Indexed ?? 1),
-    () => {
-      throw new InvalidPagePositionError(pagePosition)
-    },
-  )
+
   const frontMatter = validate(BlogFrontMatterSchema, matterResult.data)
 
   const numberOfPhotos = matterResult.content
     .split('\n')
     .filter(e => /^(!\[)|(<img)|(image[234]?:)/.test(e)).length
 
-  const pageContent = options?.metadataOnly ? [] : preprocess(matterResult.content, pagePosition)
+  const pageContent = options?.metadataOnly
+    ? []
+    : preprocess(matterResult.content, options.pagePos1Indexed)
 
   const pageBreakRegex = /<!--+ page break --+>/g
   const numberOfPages = matterResult.content.split(pageBreakRegex).length
 
-  if (typeof pagePosition === 'number' && pagePosition > numberOfPages) {
-    throw new InvalidPagePositionError(pagePosition)
+  if (typeof options.pagePos1Indexed === 'number' && options.pagePos1Indexed > numberOfPages) {
+    throw new InvalidPagePositionError(options.pagePos1Indexed)
   }
 
   return {
@@ -66,7 +67,7 @@ export function buildBlogPost(
     ...frontMatter,
     content: pageContent,
     numberOfPages,
-    currentPage: pagePosition,
+    currentPage: options.pagePos1Indexed,
     readTime: computeReadTimeSecondFrom(matterResult.content, options.readTimeOption),
     numberOfPhotos,
     previewContentId: options?.previewContentId,

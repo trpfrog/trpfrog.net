@@ -53,11 +53,7 @@ export const alphaApp = new Hono<Env>()
           return c.json(post, { status: 404 })
         }
         const page = c.req.valid('query').page
-        if (page === 'all') {
-          return c.json(buildBlogPost(slug, post.content, { all: true }))
-        } else {
-          return c.json(buildBlogPost(slug, post.content, { pagePos1Indexed: page }))
-        }
+        return c.json(buildBlogPost(slug, post.content, { pagePos1Indexed: page }))
       } catch (e) {
         if (e instanceof InvalidPagePositionError) {
           return c.json({ error: e.message }, { status: 400 })
