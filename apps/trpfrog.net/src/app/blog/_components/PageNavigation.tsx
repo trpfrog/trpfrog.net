@@ -31,9 +31,11 @@ export const PageNavigation = ({ entry, doNotShowOnFirst = false }: Props) => {
 
   const isHidden =
     entry.numberOfPages === 1 ||
-    (doNotShowOnFirst && entry.currentPage <= 1 && NODE_ENV === 'production')
+    entry.currentPage === 'all' ||
+    (doNotShowOnFirst && entry.currentPage <= 1 && process.env.NODE_ENV === 'production')
 
-  if (isHidden) {
+  // The check for 'all' is necessary for type narrowing
+  if (isHidden || entry.currentPage === 'all') {
     return null
   }
 

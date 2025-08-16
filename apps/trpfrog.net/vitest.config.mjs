@@ -14,6 +14,11 @@ export default mergeConfig(
         '@': path.resolve(import.meta.dirname, './src'),
         '@blog': path.resolve(import.meta.dirname, './src/app/blog'),
       },
+      server: {
+        deps: {
+          inline: ['react-tweet'],
+        },
+      },
     },
   }),
 )

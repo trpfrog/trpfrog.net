@@ -1,26 +1,26 @@
 import { cacheTags } from '@trpfrog.net/constants'
 import { createContentServerClient } from '@trpfrog.net/content-server'
+import { type BlogPost, BLOG_PAGE_NUMBER__1, BlogPageNumber } from '@trpfrog.net/posts'
 import { notFound } from 'next/navigation'
 
 import { env } from '@/env/server.ts'
 
-import type { BlogPost } from '@trpfrog.net/posts'
-
 const client = createContentServerClient(process.env.NODE_ENV)
 
-export async function fetchPost(slug: string, page?: number | 'all'): Promise<BlogPost> {
+export async function fetchPost(
+  slug: string,
+  page: BlogPageNumber = BLOG_PAGE_NUMBER__1,
+): Promise<BlogPost> {
   if (process.env.NODE_ENV === 'development' && env.USE_DEV_REALTIME_BLOG_PREVIEW) {
     const { readBlogPost } = await import('@trpfrog.net/posts/fs')
-    return page === 'all'
-      ? readBlogPost(slug, { all: true })
-      : readBlogPost(slug, { pagePos1Indexed: page ?? 1 })
+    return readBlogPost(slug, { pagePos1Indexed: page })
   }
 
   const tags = [cacheTags.entireBlog.tag, cacheTags.blogSlug.tag(slug)]
 
   const post = await client.alpha.posts[':slug']
     .$get(
-      { param: { slug }, query: { page: page?.toString() ?? '1' } },
+      { param: { slug }, query: { page: page.toString() } },
       { fetch, init: { next: { tags, revalidate: 2592000 } } },
     )
     .then(async e => e.json())

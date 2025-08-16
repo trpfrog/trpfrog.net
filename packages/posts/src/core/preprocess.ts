@@ -1,6 +1,8 @@
 // convert ((footnote)) to [^i]: footnote
 // import {TextLintEngine} from "textlint";
 
+import { BLOG_PAGE_NUMBER__ALL, BlogPageNumber } from './blogPost'
+
 const parseFootnote = (content: string) => {
   const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
   const footnotes = content.match(regex) ?? []
@@ -57,17 +59,15 @@ const parseFootnote = (content: string) => {
 //   return content
 // }
 
-type PreprocessOption = {
-  pageIdx1Indexed?: number
-  concatenateAllPages?: boolean
-}
-
 /**
  * Split markdown using <!-- page break --> and <!-- window break -->
  * @param markdown
  * @param options
  */
-export const preprocess = (markdown: string, options: PreprocessOption): string[] => {
+export const preprocess = (
+  markdown: string,
+  pageIdx1Indexed: BlogPageNumber = BLOG_PAGE_NUMBER__ALL,
+): string[] => {
   const pageBreakRegex = /<!--+ page break --+>/g
   const windowBreakRegex = /<!--+ window break --+>/g
   const beginHeadRegex = /<!--+ begin head --+>/g
@@ -81,19 +81,15 @@ export const preprocess = (markdown: string, options: PreprocessOption): string[
     markdown = beforeHead + afterHead
   }
 
-  if (!options.pageIdx1Indexed && !options.concatenateAllPages) {
-    throw new Error('Either pageIdx1Indexed or concatenateAllPages must be specified')
-  }
-
   // Replace <!-- page break --> with <!-- window break --> to concatenate all pages
-  if (options.concatenateAllPages) {
+  if (pageIdx1Indexed === 'all') {
     markdown = markdown
       .split(pageBreakRegex)
       .map((content, idx) => `<span id="original-page-${idx + 1}"/>\n${content}`)
       .join('<!-- window break -->')
   }
 
-  const targetPageIdx = options.concatenateAllPages ? 0 : (options.pageIdx1Indexed ?? 1) - 1
+  const targetPageIdx = pageIdx1Indexed === 'all' ? 0 : (pageIdx1Indexed ?? 1) - 1
 
   const page = head + markdown.split(pageBreakRegex)[targetPageIdx]
 

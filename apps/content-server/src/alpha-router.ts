@@ -1,8 +1,7 @@
 // alpha-router.ts -- 仮の機能を提供するためのルーター あとでなんとかする
 
 import { sValidator } from '@hono/standard-validator'
-import { buildBlogPost, InvalidPagePositionError } from '@trpfrog.net/posts'
-import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
+import { BlogPageNumberSchema, buildBlogPost, InvalidPagePositionError } from '@trpfrog.net/posts'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
@@ -40,10 +39,7 @@ export const alphaApp = new Hono<Env>()
     sValidator(
       'query',
       v.object({
-        page: v.optional(
-          v.union([v.pipe(vCoerceNumber, v.integer(), v.minValue(1)), v.literal('all')]),
-          'all',
-        ),
+        page: v.optional(BlogPageNumberSchema, 'all'),
       }),
     ),
     async c => {
@@ -57,11 +53,7 @@ export const alphaApp = new Hono<Env>()
           return c.json(post, { status: 404 })
         }
         const page = c.req.valid('query').page
-        if (page === 'all') {
-          return c.json(buildBlogPost(slug, post.content, { all: true }))
-        } else {
-          return c.json(buildBlogPost(slug, post.content, { pagePos1Indexed: page }))
-        }
+        return c.json(buildBlogPost(slug, post.content, { pagePos1Indexed: page }))
       } catch (e) {
         if (e instanceof InvalidPagePositionError) {
           return c.json({ error: e.message }, { status: 400 })

@@ -2,7 +2,7 @@ import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 import { createClient } from 'microcms-js-sdk'
 import * as v from 'valibot'
 
-import { BlogPost } from '../core'
+import { BlogPageNumber, BlogPost } from '../core'
 import { BlogPostBuildOption, buildBlogPost } from '../core/buildBlogPost.ts'
 
 export type ErrorablePost = BlogPost & {
@@ -16,9 +16,8 @@ const errorArticle = {
   date: '2000-10-17',
   updated: '2020-10-17',
   tags: ['test'],
-  isAll: false,
   readTime: 100,
-  currentPage: 1,
+  currentPage: 1 as BlogPageNumber,
   numberOfPages: 1,
   content: ['Error has occurred'],
 } satisfies ErrorablePost

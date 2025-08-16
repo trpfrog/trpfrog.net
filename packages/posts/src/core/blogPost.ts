@@ -1,4 +1,4 @@
-import { InferSchemaOutput } from '@trpfrog.net/utils'
+import { InferSchemaOutput, validate } from '@trpfrog.net/utils'
 import { format } from 'date-fns'
 import * as v from 'valibot'
 
@@ -21,6 +21,24 @@ const BlogTagSchema = v.union([
   ),
 ])
 
+// 1以上の整数または 'all' であることを検証する
+export const BlogPageNumberSchema = v.pipe(
+  v.union([
+    v.pipe(v.number(), v.integer(), v.minValue(1)),
+    v.pipe(
+      v.string(),
+      // 小数点の入った文字列等は許可しない
+      v.check(str => /^[1-9][0-9]*$/.test(str), 'Must be an integer string'),
+      v.transform(str => parseInt(str, 10)),
+    ),
+    v.literal('all'),
+  ]),
+  v.brand('@trpfrog.net/utils/BlogPageNumber'),
+)
+export const BLOG_PAGE_NUMBER__1 = validate(BlogPageNumberSchema, 1)
+export const BLOG_PAGE_NUMBER__ALL = validate(BlogPageNumberSchema, 'all')
+export type BlogPageNumber = InferSchemaOutput<typeof BlogPageNumberSchema>
+
 export const BlogFrontMatterSchema = v.object({
   title: v.optional(v.string(), ''),
   subtitle: v.optional(v.string()),
@@ -39,8 +57,7 @@ export const BlogPostSchema = v.object({
   readTime: v.number(),
   numberOfPhotos: v.optional(v.number()),
   previewContentId: v.optional(v.string()),
-  isAll: v.boolean(),
-  currentPage: v.number(),
+  currentPage: BlogPageNumberSchema,
   numberOfPages: v.number(),
 })
 

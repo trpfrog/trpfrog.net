@@ -1,5 +1,7 @@
 'use client'
 
+import { BlogPageNumber } from '@trpfrog.net/posts'
+
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { ImageDragAndDropUploader } from '@blog/_components/DevBlogMarkdown/ImageDragAndDrop.tsx'
 
@@ -8,7 +10,7 @@ import { useHeightAdjustedScrollOnResize } from './hooks/useHeightAdjustedScroll
 
 type DevBlogMarkdownProps = {
   slug: string
-  page?: number | 'all'
+  page?: BlogPageNumber
 }
 
 export function DevBlogMarkdown(props: DevBlogMarkdownProps) {

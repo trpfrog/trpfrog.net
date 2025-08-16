@@ -1,4 +1,5 @@
 import { validate, InferSchemaInput } from '@trpfrog.net/utils'
+import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -7,12 +8,20 @@ import {
   ReadTimeOptionSchema,
 } from '../time/computeReadTimeSecondFrom.ts'
 
-import { BlogFrontMatterSchema, BlogPost } from './blogPost.ts'
+import {
+  BLOG_PAGE_NUMBER__1,
+  BlogFrontMatterSchema,
+  BlogPageNumber,
+  BlogPageNumberSchema,
+  BlogPost,
+} from './blogPost.ts'
 import { preprocess } from './preprocess.ts'
 
 const BlogPostBuildOptionSchema = v.object({
-  pagePos1Indexed: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1))),
-  all: v.optional(v.boolean(), false),
+  pagePos1Indexed: v.optional(
+    vNarrowInputType<BlogPageNumber>(BlogPageNumberSchema),
+    BLOG_PAGE_NUMBER__1,
+  ),
   showPreviewCheckpoint: v.optional(v.boolean(), false),
   previewContentId: v.optional(v.string()),
   metadataOnly: v.optional(v.boolean(), false),
@@ -20,7 +29,7 @@ const BlogPostBuildOptionSchema = v.object({
 })
 
 export class InvalidPagePositionError extends Error {
-  constructor(pagePosition: number) {
+  constructor(pagePosition: unknown) {
     super(`Invalid page position: ${pagePosition}`)
   }
 }
@@ -30,12 +39,12 @@ export type BlogPostBuildOption = InferSchemaInput<typeof BlogPostBuildOptionSch
 export function buildBlogPost(
   slug: string,
   markdownString: string,
-  options?: BlogPostBuildOption,
+  _options?: BlogPostBuildOption,
 ): BlogPost {
-  options = validate(BlogPostBuildOptionSchema, options ?? {})
+  const options = validate(BlogPostBuildOptionSchema, _options ?? {})
 
   const matterResult = matter(markdownString)
-  const pagePosition = options.pagePos1Indexed ?? 1
+
   const frontMatter = validate(BlogFrontMatterSchema, matterResult.data)
 
   const numberOfPhotos = matterResult.content
@@ -44,25 +53,21 @@ export function buildBlogPost(
 
   const pageContent = options?.metadataOnly
     ? []
-    : preprocess(matterResult.content, {
-        concatenateAllPages: options?.all,
-        pageIdx1Indexed: pagePosition,
-      })
+    : preprocess(matterResult.content, options.pagePos1Indexed)
 
   const pageBreakRegex = /<!--+ page break --+>/g
   const numberOfPages = matterResult.content.split(pageBreakRegex).length
 
-  if (pagePosition > numberOfPages) {
-    throw new InvalidPagePositionError(pagePosition)
+  if (typeof options.pagePos1Indexed === 'number' && options.pagePos1Indexed > numberOfPages) {
+    throw new InvalidPagePositionError(options.pagePos1Indexed)
   }
 
   return {
     slug,
     ...frontMatter,
     content: pageContent,
-    isAll: options?.all ?? false,
     numberOfPages,
-    currentPage: pagePosition,
+    currentPage: options.pagePos1Indexed,
     readTime: computeReadTimeSecondFrom(matterResult.content, options.readTimeOption),
     numberOfPhotos,
     previewContentId: options?.previewContentId,
@@ -71,6 +76,12 @@ export function buildBlogPost(
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
   const { content, ...rest } = blogPost
-  const frontMatter = validate(BlogFrontMatterSchema, rest)
+  const frontMatter = {
+    ...validate(BlogFrontMatterSchema, rest),
+    page: blogPost.currentPage as BlogPageNumber | undefined,
+  }
+  if (blogPost.currentPage === 'all') {
+    delete frontMatter.page
+  }
   return matter.stringify(content.join('\n\n<!-- page break -->\n\n'), frontMatter)
 }

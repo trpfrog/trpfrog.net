@@ -23,7 +23,7 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
   let text: string
   let icon: IconProp | string
 
-  if (post.isAll) {
+  if (post.currentPage === 'all') {
     url += '/' + (previousArticlePage || '')
     text = '分割表示'
     icon = faFileLines
