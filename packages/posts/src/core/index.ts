@@ -4,6 +4,8 @@ export {
   type BlogPageNumber,
   BlogPostSchema,
   BlogPageNumberSchema,
+  BLOG_PAGE_NUMBER__1,
+  BLOG_PAGE_NUMBER__ALL,
 } from './blogPost.ts'
 export { searchBlogPost } from './search.ts'
 export { buildBlogPost, InvalidPagePositionError } from './buildBlogPost.ts'

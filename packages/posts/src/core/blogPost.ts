@@ -1,4 +1,4 @@
-import { InferSchemaOutput } from '@trpfrog.net/utils'
+import { InferSchemaOutput, validate } from '@trpfrog.net/utils'
 import { format } from 'date-fns'
 import * as v from 'valibot'
 
@@ -35,6 +35,8 @@ export const BlogPageNumberSchema = v.pipe(
   ]),
   v.brand('@trpfrog.net/utils/BlogPageNumber'),
 )
+export const BLOG_PAGE_NUMBER__1 = validate(BlogPageNumberSchema, 1)
+export const BLOG_PAGE_NUMBER__ALL = validate(BlogPageNumberSchema, 'all')
 export type BlogPageNumber = InferSchemaOutput<typeof BlogPageNumberSchema>
 
 export const BlogFrontMatterSchema = v.object({
