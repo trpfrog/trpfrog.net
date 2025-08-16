@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 
 import { BlogPageNumberSchema } from '@trpfrog.net/posts'
-import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
+import { InferSchemaOutput, safeValidate } from '@trpfrog.net/utils'
+import { notFound } from 'next/navigation'
 import * as v from 'valibot'
 
 import { env } from '@/env/server.ts'
@@ -65,10 +66,15 @@ export async function generateMetadata(props: PageProps) {
 
 export default async function Index(props: PageProps) {
   const rawParams = await props.params
+  const validatedParams = safeValidate(ParamsSchema, rawParams)
+  if (!validatedParams.success) {
+    notFound()
+  }
+
   const {
     slug,
     options: [page],
-  } = validate(ParamsSchema, rawParams)
+  } = validatedParams.output
 
   const entry = await fetchPost(slug, page)
   return process.env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
