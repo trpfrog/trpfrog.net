@@ -55,34 +55,3 @@ export function useDevServerRenderedBlog(
     rendered: isLoading ? undefined : deferredArticleJSX,
   }
 }
-
-export function DevServerBlogRenderer(props: { slug: string; page?: number | 'all' }) {
-  const [articleJSX, setArticleJSX] = useState<Promise<ReactNode>>(
-    Promise.resolve(<ArticleSkeleton />),
-  )
-
-  useEffect(() => {
-    const socket = createMdWatchClient()
-    setArticleJSX(renderBlog(props.slug, props.page))
-    socket
-      ?.on('connect', () => {
-        console.log('Markdown server connected')
-      })
-      .on('disconnect', () => {
-        console.log('Markdown server disconnected')
-      })
-      // re-render on update
-      .on('update', (slug: string) => {
-        if (slug === props.slug) {
-          setArticleJSX(renderBlog(props.slug, props.page))
-        }
-      })
-
-    // cleanup
-    return () => {
-      socket?.disconnect()
-    }
-  }, [props.page, props.slug])
-
-  return use(articleJSX)
-}
