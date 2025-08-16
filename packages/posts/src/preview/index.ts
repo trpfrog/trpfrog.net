@@ -19,6 +19,7 @@ const errorArticle = {
   readTime: 100,
   currentPage: 1 as BlogPageNumber,
   numberOfPages: 1,
+  markdown: '',
   content: ['Error has occurred'],
 } satisfies ErrorablePost
 

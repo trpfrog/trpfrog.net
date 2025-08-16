@@ -59,6 +59,7 @@ export const BlogPostSchema = v.object({
   previewContentId: v.optional(v.string()),
   currentPage: BlogPageNumberSchema,
   numberOfPages: v.number(),
+  markdown: v.string(),
 })
 
 export type BlogFrontMatter = InferSchemaOutput<typeof BlogFrontMatterSchema>
