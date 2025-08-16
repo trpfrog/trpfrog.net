@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
 
+import { BlogPageNumberSchema } from '@trpfrog.net/posts'
 import {
   fetchPreviewBlogPost,
   createErrorArticle,
   ErrorablePost,
   createPreviewClient,
 } from '@trpfrog.net/posts/preview'
+import { safeValidate } from '@trpfrog.net/utils'
+import { notFound } from 'next/navigation'
 
 import { env } from '@/env/server'
 
@@ -58,10 +61,11 @@ async function fetchPreviewArticle(slug: [string, string | undefined]) {
 
   const [id, page = '1'] = slug
 
-  const option = {
-    pagePos1Indexed: parseInt(page),
-    all: page === 'all',
+  const pageNumber = safeValidate(BlogPageNumberSchema, page)
+  if (!pageNumber.success) {
+    notFound()
   }
+  const option = { pagePos1Indexed: pageNumber.output }
 
   const client = createPreviewClient({
     apiKey: env.MICRO_CMS_API_KEY,

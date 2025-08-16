@@ -1,7 +1,7 @@
 'use client'
 
-import { BlogPageNumberSchema, BlogPost } from '@trpfrog.net/posts'
-import { tryOr, validate, validateUnknown } from '@trpfrog.net/utils'
+import { BLOG_PAGE_NUMBER__1, BlogPageNumberSchema, BlogPost } from '@trpfrog.net/posts'
+import { tryOr, validateUnknown } from '@trpfrog.net/utils'
 import { usePathname } from 'next/navigation'
 
 import { Block } from '@/components/molecules/Block'
@@ -21,14 +21,12 @@ function usePageNumberFromPathname() {
   return p.split('/').pop()
 }
 
-const DEFAULT_PAGE_NUMBER = validate(BlogPageNumberSchema, 1)
-
 export function ArticleSidebar({ post }: Props) {
   // ページ番号を反映させるためだけに fetch すると時間がかかるのでパスから取得する
   const rawPageNumber = usePageNumberFromPathname()
   const currentPage = tryOr(
     () => validateUnknown(BlogPageNumberSchema, rawPageNumber),
-    DEFAULT_PAGE_NUMBER,
+    BLOG_PAGE_NUMBER__1,
   )
 
   const postForPageNavigation = {

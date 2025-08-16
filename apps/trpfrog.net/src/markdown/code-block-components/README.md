@@ -25,7 +25,7 @@ export const myComponentCCBC: CustomCodeBlockComponent = {
     const [md, mdInline] = markdown.split('\n\n')
     return (
       <div>
-        {context.blog && <p>現在のページ番号: {context.blog.pagePos1Indexed}</p>}
+        {context.blog && <p>現在のページ番号: {context.blog.currentPage.toString()}</p>}
         <div>
           <Render markdown={md} />
         </div>

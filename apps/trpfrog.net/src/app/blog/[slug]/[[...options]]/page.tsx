@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
+import { BlogPageNumberSchema } from '@trpfrog.net/posts'
 import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
-import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
 
 import { env } from '@/env/server.ts'
@@ -12,15 +12,9 @@ import { fetchPost } from '@blog/rpc'
 
 export const dynamicParams = true
 
-// 1, 2, 3, ... or 'all'
-const PageNumberSchema = v.union([
-  v.pipe(vCoerceNumber, v.integer(), v.minValue(1)),
-  v.literal('all'),
-])
-
 const ParamsSchema = v.object({
   slug: v.string(),
-  options: v.optional(v.tuple([PageNumberSchema]), ['1']),
+  options: v.optional(v.tuple([BlogPageNumberSchema]), ['1']),
 })
 
 type PageProps = {

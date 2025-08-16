@@ -1,8 +1,8 @@
-import { ReactNode, use, useDeferredValue, useEffect, useState } from 'react'
+import { ReactNode, useDeferredValue, useEffect, useState } from 'react'
 
 import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-server'
+import { BlogPageNumber } from '@trpfrog.net/posts'
 
-import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { renderBlog } from '@blog/_components/DevBlogMarkdown/actions/renderBlog'
 
 const initializing = Symbol('trpfrog.net/blog-renderer:initializing')
@@ -18,7 +18,7 @@ type DevServerRenderedBlogResult =
 
 export function useDevServerRenderedBlog(
   slug: string,
-  page?: number | 'all',
+  page?: BlogPageNumber,
 ): DevServerRenderedBlogResult {
   const [articleJSX, setArticleJSX] = useState<ReactNode | typeof initializing>(initializing)
   const deferredArticleJSX = useDeferredValue(articleJSX)

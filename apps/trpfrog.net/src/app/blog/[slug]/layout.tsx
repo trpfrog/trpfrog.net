@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 export default async function Layout(props: PageProps) {
   const { slug } = await props.params
 
-  const entry = await fetchPost(slug, 1)
+  const entry = await fetchPost(slug)
   const tags = entry.tags
   const relatedPosts: BlogPost[] = tags[0]
     ? await fetchPostList(tags[0]).then(posts => posts.filter(post => post.slug !== slug))

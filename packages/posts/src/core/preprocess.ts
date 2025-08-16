@@ -1,9 +1,7 @@
 // convert ((footnote)) to [^i]: footnote
 // import {TextLintEngine} from "textlint";
 
-import { validate } from '@trpfrog.net/utils'
-
-import { BlogPageNumber, BlogPageNumberSchema } from './blogPost'
+import { BLOG_PAGE_NUMBER__ALL, BlogPageNumber } from './blogPost'
 
 const parseFootnote = (content: string) => {
   const regex = new RegExp('\\(\\(.*\\)\\)', 'g')
@@ -61,8 +59,6 @@ const parseFootnote = (content: string) => {
 //   return content
 // }
 
-const DEFAULT_PAGE_INDEX = validate(BlogPageNumberSchema, 'all')
-
 /**
  * Split markdown using <!-- page break --> and <!-- window break -->
  * @param markdown
@@ -70,7 +66,7 @@ const DEFAULT_PAGE_INDEX = validate(BlogPageNumberSchema, 'all')
  */
 export const preprocess = (
   markdown: string,
-  pageIdx1Indexed: BlogPageNumber = DEFAULT_PAGE_INDEX,
+  pageIdx1Indexed: BlogPageNumber = BLOG_PAGE_NUMBER__ALL,
 ): string[] => {
   const pageBreakRegex = /<!--+ page break --+>/g
   const windowBreakRegex = /<!--+ window break --+>/g
