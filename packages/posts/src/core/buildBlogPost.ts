@@ -62,7 +62,7 @@ export function buildBlogPost(
     throw new InvalidPagePositionError(options.pagePos1Indexed)
   }
 
-  return {
+  const post = {
     slug,
     ...frontMatter,
     content: pageContent,
@@ -71,7 +71,13 @@ export function buildBlogPost(
     readTime: computeReadTimeSecondFrom(matterResult.content, options.readTimeOption),
     numberOfPhotos,
     previewContentId: options?.previewContentId,
+    // temporary, will be overwritten below
+    markdown: '',
   }
+  // Compose markdown from front matter + current content
+  post.markdown = blogPostToMarkdown(post)
+
+  return post
 }
 
 export const blogPostToMarkdown = (blogPost: BlogPost) => {
