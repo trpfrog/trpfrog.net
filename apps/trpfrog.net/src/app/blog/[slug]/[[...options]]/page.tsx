@@ -11,8 +11,8 @@ import { validateBlogPath } from '../../validate-path'
 export const dynamicParams = true
 
 // TODO: Use more appropriate types for props
-export async function generateStaticParams(props: { params: { slug: string } }) {
-  const { slug } = props.params
+export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params
   const entry = await fetchPost(slug)
   const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
