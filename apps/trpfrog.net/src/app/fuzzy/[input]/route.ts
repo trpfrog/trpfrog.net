@@ -31,13 +31,7 @@ const pagePaths = [
 
 let blogPaths = [] as string[]
 
-type GETProps = {
-  params: Promise<{
-    input: string
-  }>
-}
-
-export async function GET(req: NextRequest, props: GETProps) {
+export async function GET(req: NextRequest, props: RouteContext<'/fuzzy/[input]'>) {
   const res = NextResponse.next()
 
   const input = (await props.params).input.slice(0, 100)

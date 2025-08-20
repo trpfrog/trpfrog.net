@@ -11,12 +11,6 @@ import { Block } from '@/components/molecules/Block'
 
 const NUMBER_OF_IMAGES = 80
 
-type PageProps = {
-  params: Promise<{
-    id: string
-  }>
-}
-
 export const metadata = {
   title: 'スタンプビューア',
 } satisfies Metadata
@@ -26,7 +20,7 @@ export async function generateStaticParams() {
   return ids.map(id => ({ id: id.toString() }))
 }
 
-export default async function Index(context: PageProps) {
+export default async function Index(context: PageProps<'/stickers/[id]'>) {
   const id = (await context.params).id
   const idInt = parseInt(id, 10)
 

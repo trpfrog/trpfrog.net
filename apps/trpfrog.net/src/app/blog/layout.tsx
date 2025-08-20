@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -9,10 +7,6 @@ export const metadata: Metadata = {
   },
 }
 
-type Props = {
-  children: React.ReactNode
-}
-
-export default function BlogLayout({ children }: Props) {
+export default function BlogLayout({ children }: LayoutProps<'/blog'>) {
   return children
 }

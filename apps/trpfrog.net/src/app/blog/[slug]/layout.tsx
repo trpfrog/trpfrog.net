@@ -16,17 +16,12 @@ import styles from './layout.module.css'
 
 export const revalidate = 2592000
 
-interface PageProps {
-  params: Promise<{ slug: string }>
-  children: React.ReactNode
-}
-
 export async function generateStaticParams() {
   const slugs = await fetchSlugs()
   return slugs.map(slug => ({ slug }))
 }
 
-export default async function Layout(props: PageProps) {
+export default async function Layout(props: LayoutProps<'/blog/[slug]'>) {
   const { slug } = await props.params
 
   const entry = await fetchPost(slug)
