@@ -6,6 +6,10 @@ import { serveBlogMarkdownMiddleware } from './app/blog/serve-blog-markdown-midd
 
 const app = new Hono()
 
+export const config = {
+  runtime: 'nodejs',
+}
+
 // keep kawaii query parameter
 const KAWAII_QUERY_PARAM = 'kawaii'
 app.use(async (c, next) => {
@@ -35,4 +39,4 @@ app.get('/tweets/*', c => {
   return c.text('Under construction...')
 })
 
-export const { middleware, config } = createNextMiddleware(app)
+export const { middleware } = createNextMiddleware(app)

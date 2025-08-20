@@ -10,8 +10,6 @@ export function createNextMiddleware(app: Hono) {
 
   return {
     middleware: handle(middlewareApp),
-    config: {
-      matcher: inspectRoutes(app).map(route => route.path),
-    },
+    matcher: inspectRoutes(app).map(route => route.path),
   }
 }
