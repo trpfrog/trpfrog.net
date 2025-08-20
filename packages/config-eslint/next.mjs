@@ -13,7 +13,7 @@ export const createESLintConfigNext = (...userConfig) =>
   createESLintConfig(
     {
       name: `${namePrefix}/ignores`,
-      ignores: ['.next'],
+      ignores: ['.next', 'next-env.d.ts'],
     },
     ...nextCoreWebVitals,
     {

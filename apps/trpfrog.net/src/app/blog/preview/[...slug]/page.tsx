@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { BlogPageNumberSchema } from '@trpfrog.net/posts'
+import { BlogPageNumber, BlogPageNumberSchema } from '@trpfrog.net/posts'
 import {
   fetchPreviewBlogPost,
   createErrorArticle,
@@ -18,13 +18,11 @@ import { Block } from '@/components/molecules/Block'
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 
-type Props = {
-  params: Promise<{
-    slug: [string, string | undefined]
-  }>
-}
+import { validateBlogPath } from '../../validate-path'
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
+export async function generateMetadata(
+  props: PageProps<'/blog/preview/[...slug]'>,
+): Promise<Metadata> {
   const params = await props.params
   if (!env.MICRO_CMS_API_KEY) {
     return {
@@ -52,14 +50,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return metadata
 }
 
-async function fetchPreviewArticle(slug: [string, string | undefined]) {
+async function fetchPreviewArticle(previewId: string, page: BlogPageNumber) {
   if (!env.MICRO_CMS_API_KEY) {
     return {
       entry: createErrorArticle('API Key is missing!'),
     }
   }
-
-  const [id, page = '1'] = slug
 
   const pageNumber = safeValidate(BlogPageNumberSchema, page)
   if (!pageNumber.success) {
@@ -72,8 +68,8 @@ async function fetchPreviewArticle(slug: [string, string | undefined]) {
     serviceDomain: 'trpfrog',
     endpoint: 'blog-preview',
   })
-  const entry = id
-    ? ((await fetchPreviewBlogPost(client, id, option)) as ErrorablePost)
+  const entry = previewId
+    ? ((await fetchPreviewBlogPost(client, previewId, option)) as ErrorablePost)
     : createErrorArticle('ID is missing!')
 
   return {
@@ -81,8 +77,11 @@ async function fetchPreviewArticle(slug: [string, string | undefined]) {
   }
 }
 
-export default async function Index(props: Props) {
-  const { entry: post } = await fetchPreviewArticle((await props.params).slug)
+export default async function Index(props: PageProps<'/blog/preview/[...slug]'>) {
+  const params = await props.params
+  const { slug: previewId, page } = validateBlogPath(params.slug[0], params.slug[1])
+
+  const { entry: post } = await fetchPreviewArticle(previewId, page)
 
   return (
     <MainWrapper gridLayout>

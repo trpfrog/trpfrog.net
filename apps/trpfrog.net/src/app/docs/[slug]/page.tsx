@@ -29,11 +29,7 @@ const MetadataSchema = v.object({
   description: v.optional(v.string()),
 })
 
-interface PageProps {
-  params: Promise<{ slug: string }>
-}
-
-export default async function DocsMarkdown(props: PageProps) {
+export default async function DocsMarkdown(props: PageProps<'/docs/[slug]'>) {
   const slug = (await props.params).slug
   const filePath = docsPaths[slug]
   const content = await readFile(path.join(process.cwd(), filePath), 'utf-8')

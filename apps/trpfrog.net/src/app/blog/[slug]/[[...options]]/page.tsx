@@ -1,29 +1,18 @@
 import { Metadata } from 'next'
 
-import { BlogPageNumberSchema } from '@trpfrog.net/posts'
-import { InferSchemaOutput, safeValidate } from '@trpfrog.net/utils'
-import { notFound } from 'next/navigation'
-import * as v from 'valibot'
-
 import { env } from '@/env/server.ts'
 
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_components/DevBlogMarkdown'
 import { fetchPost } from '@blog/rpc'
 
+import { validateBlogPath } from '../../validate-path'
+
 export const dynamicParams = true
 
-const ParamsSchema = v.object({
-  slug: v.string(),
-  options: v.optional(v.tuple([BlogPageNumberSchema]), ['1']),
-})
-
-type PageProps = {
-  params: Promise<InferSchemaOutput<typeof ParamsSchema>>
-}
-
-export async function generateStaticParams(props: { params: Promise<{ slug: string }> }) {
-  const { slug } = await props.params
+// TODO: Use more appropriate types for props
+export async function generateStaticParams(props: { params: { slug: string } }) {
+  const { slug } = props.params
   const entry = await fetchPost(slug)
   const paths: { options?: string[] }[] = []
   for (let i = 1; i <= entry.numberOfPages; i++) {
@@ -35,10 +24,9 @@ export async function generateStaticParams(props: { params: Promise<{ slug: stri
   return paths
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: PageProps<'/blog/[slug]/[[...options]]'>) {
   const params = await props.params
-
-  const { slug } = params
+  const { slug } = validateBlogPath(params.slug, params.options?.[0])
 
   const { title, description } = await fetchPost(slug)
 
@@ -64,18 +52,9 @@ export async function generateMetadata(props: PageProps) {
   return metadata
 }
 
-export default async function Index(props: PageProps) {
-  const rawParams = await props.params
-  const validatedParams = safeValidate(ParamsSchema, rawParams)
-  if (!validatedParams.success) {
-    notFound()
-  }
-
-  const {
-    slug,
-    options: [page],
-  } = validatedParams.output
-
+export default async function Index(props: PageProps<'/blog/[slug]/[[...options]]'>) {
+  const params = await props.params
+  const { slug, page } = validateBlogPath(params.slug, params.options?.[0])
   const entry = await fetchPost(slug, page)
   return process.env.NODE_ENV === 'production' || env.USE_DEV_REALTIME_BLOG_PREVIEW !== 'true' ? (
     <BlogMarkdown entry={entry} />

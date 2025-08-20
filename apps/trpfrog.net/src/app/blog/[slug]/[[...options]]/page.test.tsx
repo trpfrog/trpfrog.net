@@ -39,7 +39,7 @@ describe('generateStaticParams', () => {
 
       const { generateStaticParams } = await import('./page')
       const params = await generateStaticParams({
-        params: Promise.resolve({ slug }),
+        params: { slug },
       })
 
       expect(spy).toHaveBeenCalledWith(slug)

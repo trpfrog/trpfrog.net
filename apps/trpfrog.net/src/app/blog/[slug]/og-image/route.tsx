@@ -49,13 +49,7 @@ async function createImageResponseOptions() {
   return imageResponseOptions
 }
 
-type Context = {
-  params: Promise<{
-    slug: string
-  }>
-}
-
-export async function GET(_req: NextRequest, context: Context) {
+export async function GET(_req: NextRequest, context: RouteContext<'/blog/[slug]/og-image'>) {
   const slug = (await context.params).slug
 
   const { title, subtitle, thumbnail: _thumbnail, tags, date } = await fetchPost(slug)

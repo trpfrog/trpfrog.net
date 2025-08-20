@@ -9,10 +9,6 @@ export const metadata: Metadata = {
   description: 'あいまい URL リダイレクト',
 }
 
-type Props = {
-  children: React.ReactNode
-}
-
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: LayoutProps<'/fuzzy'>) {
   return <MainWrapper gridLayout>{children}</MainWrapper>
 }
