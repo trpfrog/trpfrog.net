@@ -3,7 +3,6 @@ import type { NextConfig } from 'next'
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
 import { composeFunctions } from '@trpfrog.net/utils'
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 import remarkGfm from 'remark-gfm'
 import webpack from 'webpack'
 
@@ -85,8 +84,4 @@ const withBundleAnalyzer = bundleAnalyer({
   enabled: process.env.ANALYZE === 'true',
 })
 
-const withVanillaExtract = createVanillaExtractPlugin({
-  identifiers: ({ hash }) => `vanilla-extract_${hash}`,
-})
-
-export default composeFunctions(withBundleAnalyzer, withVanillaExtract, withMdx)(nextConfig)
+export default composeFunctions(withBundleAnalyzer, withMdx)(nextConfig)

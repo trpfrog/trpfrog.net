@@ -6,10 +6,9 @@ import { useReward } from 'react-rewards'
 import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
 import { ArrayValues } from 'type-fest'
+import useSound from 'use-sound'
 
-import * as styles from './index.css.ts'
-
-import useSound from '@/../node_modules/use-sound'
+import styles from './index.module.css'
 
 export const balloonColors = ['blue', 'green', 'orange'] as const
 
