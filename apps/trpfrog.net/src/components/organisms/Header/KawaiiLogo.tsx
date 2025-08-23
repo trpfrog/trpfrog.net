@@ -2,6 +2,7 @@ import { ReactNode, useMemo } from 'react'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ArrayValues } from 'type-fest'
 
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation.tsx'
 
@@ -20,7 +21,7 @@ const createKawaiiLogoStyles = tv({
   },
 })
 
-function usePageInfo(): (typeof NAVIGATION_LINKS)[number] | undefined {
+function usePageInfo(): ArrayValues<typeof NAVIGATION_LINKS> | undefined {
   const pathname = usePathname()
   const firstPath = '/' + (pathname.split('/')[1] ?? '')
   return useMemo(() => NAVIGATION_LINKS.find(link => link.link === firstPath), [firstPath])
