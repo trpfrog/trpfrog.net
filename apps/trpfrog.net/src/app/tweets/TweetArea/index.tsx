@@ -6,12 +6,8 @@ import { search } from '@/app/tweets/tweetSearcher'
 
 import { Block } from '@/components/molecules/Block'
 
-export async function TweetArea({
-  searchParams,
-}: {
-  searchParams: Record<string, string | undefined>
-}) {
-  const { results, maxPage, keywords, tweetCount } = await search(searchParams)
+export async function TweetArea({ query, page }: { query: string; page: string }) {
+  const { results, maxPage, keywords, tweetCount } = await search({ q: query, p: page })
 
   const tweetCards: React.ReactNode[] = []
 
@@ -31,7 +27,7 @@ export async function TweetArea({
   return (
     <>
       <PageNavigation
-        currentPage={parseInt(searchParams.p ?? '1', 10) ?? 1}
+        currentPage={parseInt(page ?? '1', 10) ?? 1}
         lastPage={maxPage}
         numTweets={tweetCount}
         key={'top'}
@@ -43,7 +39,7 @@ export async function TweetArea({
         ) : (
           <Block style={{ textAlign: 'center', fontSize: '1.2em' }}>
             <p>
-              「<strong>{searchParams.q}</strong>
+              「<strong>{query}</strong>
               」に一致するツイートは見つかりませんでした。
             </p>
           </Block>
@@ -51,7 +47,7 @@ export async function TweetArea({
       </div>
 
       <PageNavigation
-        currentPage={parseInt(searchParams.p ?? '1', 10) ?? 1}
+        currentPage={parseInt(page ?? '1', 10) ?? 1}
         lastPage={maxPage}
         numTweets={tweetCount}
         key={'bottom'}
