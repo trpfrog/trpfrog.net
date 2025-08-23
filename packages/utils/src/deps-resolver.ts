@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any -- Allow `any` for creating utility types */
 
+import type { Except } from 'type-fest'
+
 // Prettify type to make the type more readable
 type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
 
-type PartialSelectedKeys<T, K extends keyof T> = Prettify<Omit<T, K> & Partial<Pick<T, K>>>
+type PartialSelectedKeys<T, K extends keyof T> = Prettify<Except<T, K> & Partial<Pick<T, K>>>
 
 type PartialIfAllChildrenAreOptional<T extends Record<string, Record<string, unknown>>> =
   PartialSelectedKeys<
@@ -34,7 +36,7 @@ export function createDepsResolver<
     PartialIfAllChildrenAreOptional<{
       [K in keyof DepsDict]:
         // Requires all keys from Fns[K] except those in DefaultDeps[K]
-        Omit<DepsDict[K], keyof DefaultDeps[K]> &
+        Except<DepsDict[K], keyof DefaultDeps[K]> &
         // Allows all keys from DefaultDeps[K] to be optional
         Partial<Pick<DepsDict[K], keyof DefaultDeps[K]>>
     }>

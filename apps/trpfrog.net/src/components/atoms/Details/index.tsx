@@ -2,9 +2,11 @@ import * as React from 'react'
 
 import styles from './index.module.css'
 
+import type { Except } from 'type-fest'
+
 export type DetailsProps = React.ComponentPropsWithoutRef<'details'> & {
   summary: string
-  innerProps?: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>
+  innerProps?: Except<React.ComponentPropsWithoutRef<'div'>, 'children'>
   onClick?: (event: React.MouseEvent<HTMLDetailsElement, MouseEvent>) => void
 }
 

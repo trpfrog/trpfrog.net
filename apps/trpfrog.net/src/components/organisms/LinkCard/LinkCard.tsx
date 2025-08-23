@@ -7,6 +7,8 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
+import type { Except } from 'type-fest'
+
 export const createLinkCardStyles = tv({
   slots: {
     wrapper: 'tw-block tw-@container tw-w-full',
@@ -35,7 +37,7 @@ export const createLinkCardStyles = tv({
   },
 })
 
-export type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
+export type LinkCardProps = Except<React.ComponentPropsWithoutRef<'a'>, 'children'> & {
   title: string
   description?: string
   imageUrl?: string

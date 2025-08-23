@@ -22,7 +22,9 @@ import { LanguageCode } from './language-code'
 import { languageDisplayNames } from './language-display-names'
 import { PlainCodeBlock } from './PlainCodeBlock'
 
-export type CodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+export type CodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string
   language?: LanguageCode
   fileName?: string

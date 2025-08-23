@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import styles from './index.module.css'
 
-type TweetTextareaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type TweetTextareaProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tweet: string
   cite?: string
 }

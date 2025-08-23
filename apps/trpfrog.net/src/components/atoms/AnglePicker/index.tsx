@@ -6,7 +6,9 @@ import { useDragEvent } from '@/hooks/useDragEvent'
 
 import styles from './index.module.css'
 
-interface Props extends Omit<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onDrag'> {
+import type { Except } from 'type-fest'
+
+interface Props extends Except<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onDrag'> {
   onAngleChange: (degree: number) => void
   size: string | number
   faceClassName?: string

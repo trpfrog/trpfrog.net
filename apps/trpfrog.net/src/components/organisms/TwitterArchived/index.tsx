@@ -7,6 +7,8 @@ import { A } from '@/components/wrappers'
 
 import styles from './index.module.css'
 
+import type { Except } from 'type-fest'
+
 type TwitterData = {
   author: string
   screenName: string
@@ -17,7 +19,7 @@ type TwitterData = {
   iconStyle?: React.CSSProperties['background']
 }
 
-export type TwitterArchivedProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> &
+export type TwitterArchivedProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> &
   TwitterData & {
     quote?: TwitterData
   }

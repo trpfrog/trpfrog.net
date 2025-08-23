@@ -2,10 +2,12 @@ import { env } from 'hono/adapter'
 import { cors } from 'hono/cors'
 import { createMiddleware } from 'hono/factory'
 
-type CORSOptions = Parameters<typeof cors>[0]
+import type { Except } from 'type-fest'
+
+type CORSOptions = NonNullable<Parameters<typeof cors>[0]>
 
 export const corsWithNodeEnv = (
-  options?: Omit<CORSOptions, 'origin'> & {
+  options?: Except<CORSOptions, 'origin'> & {
     origin: (nodeEnv: 'development' | 'production' | 'test') => string | string[]
   },
 ) => {

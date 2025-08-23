@@ -10,7 +10,9 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
-export type PlainCodeBlockProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   showBar?: boolean
   wrap?: boolean
   children?: string
