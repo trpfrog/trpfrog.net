@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/**
- * Represents an empty object type.
- */
-export type EmptyObject = Partial<Record<'', never>>
+import type { EmptyObject } from 'type-fest'
 
 /**
  * A builder for resolving dependencies using provided functions.
