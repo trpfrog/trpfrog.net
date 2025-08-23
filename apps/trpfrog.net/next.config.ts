@@ -3,7 +3,6 @@ import type { NextConfig } from 'next'
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
 import { composeFunctions } from '@trpfrog.net/utils'
-import remarkGfm from 'remark-gfm'
 import webpack from 'webpack'
 
 const nextConfig: NextConfig = {
@@ -16,7 +15,9 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    mdxRs: true,
+    mdxRs: {
+      mdxType: 'gfm',
+    },
     serverActions: {
       bodySizeLimit: '10mb',
     },
@@ -75,10 +76,6 @@ const nextConfig: NextConfig = {
 
 const withMdx = mdx({
   extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
-  },
 })
 const withBundleAnalyzer = bundleAnalyer({
   enabled: process.env.ANALYZE === 'true',
