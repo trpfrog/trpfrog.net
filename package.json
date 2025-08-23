@@ -31,6 +31,7 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "tsr": "catalog:",
     "turbo": "catalog:",
+    "type-fest": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",
     "wrangler": "3.105.0"
