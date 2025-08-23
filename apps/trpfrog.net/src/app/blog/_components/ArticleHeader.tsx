@@ -15,7 +15,9 @@ import { EntryButtons } from '@blog/_components/EntryButtons'
 import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
   addEntryButtons?: boolean
   addEditButtonOnDevMode?: boolean

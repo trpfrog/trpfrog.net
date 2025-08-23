@@ -6,7 +6,9 @@ import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
 import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
 import { A } from '@/components/wrappers'
 
-type LinkCardProps = Omit<React.ComponentPropsWithoutRef<'a'>, 'children'>
+import type { Except } from 'type-fest'
+
+type LinkCardProps = Except<React.ComponentPropsWithoutRef<'a'>, 'children'>
 
 export function SkeletonLinkCard(props: LinkCardProps) {
   const styles = createLinkCardStyles()

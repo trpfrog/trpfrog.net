@@ -1,9 +1,10 @@
 import containerQuery from '@tailwindcss/container-queries'
 
 import type { Config } from 'tailwindcss'
+import type { Except } from 'type-fest'
 
 // We want each package to be responsible for its own content.
-const config: Omit<Config, 'content'> = {
+const config: Except<Config, 'content'> = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {

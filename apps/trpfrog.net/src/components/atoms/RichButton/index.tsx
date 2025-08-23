@@ -2,9 +2,11 @@ import * as React from 'react'
 
 import { tv } from '@/lib/tailwind/variants'
 
+import type { Except } from 'type-fest'
+
 type Props<T extends React.ElementType> = {
   as: T
-} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
+} & Except<React.ComponentPropsWithoutRef<T>, 'as'>
 
 const style = tv({
   base: [

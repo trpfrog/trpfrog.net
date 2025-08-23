@@ -15,7 +15,9 @@ import { useShareTweetURL } from '@/hooks/useShareTweetURL'
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
 
-type EntryButtonProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type EntryButtonProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost
   extended?: boolean
 }

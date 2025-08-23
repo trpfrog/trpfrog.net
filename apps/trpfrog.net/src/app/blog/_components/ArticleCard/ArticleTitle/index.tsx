@@ -6,7 +6,9 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import styles from './index.module.css'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   title: string
   isHero?: boolean
 }

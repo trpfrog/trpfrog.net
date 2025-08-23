@@ -1,3 +1,7 @@
+import type { Entries } from 'type-fest'
+
+// TODO: Switch to type-fest's RemovePrefix once released in stable.
+// Current mapped type mimics key renaming for `${P}${infer U}`.
 export function removePrefixFromKeys<P extends string, T extends Record<`${P}${string}`, unknown>>(
   prefix: P,
   obj: T,
@@ -10,6 +14,8 @@ export function removePrefixFromKeys<P extends string, T extends Record<`${P}${s
   }
 }
 
+// TODO: Switch to type-fest's RemoveSuffix once released in stable.
+// Current mapped type mimics key renaming for `${infer U}${S}`.
 export function removeSuffixFromKeys<S extends string, T extends Record<`${string}${S}`, unknown>>(
   suffix: S,
   obj: T,
@@ -22,6 +28,6 @@ export function removeSuffixFromKeys<S extends string, T extends Record<`${strin
   }
 }
 
-export function typedObjectEntries<T extends object>(obj: T): Array<[keyof T, T[keyof T]]> {
-  return Object.entries(obj) as Array<[keyof T, T[keyof T]]>
+export function typedObjectEntries<T extends object>(obj: T): Entries<T> {
+  return Object.entries(obj) as Entries<T>
 }

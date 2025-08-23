@@ -26,9 +26,11 @@ export const metadata = {
   },
 } satisfies Metadata
 
-export default async function Index(props: NextServerPageProps) {
+export default async function Index(props: PageProps<'/tweets'>) {
   const searchParams = await props.searchParams
   const oneYearsAgo = format(subYears(new Date(), 1), 'yyyy-MM-dd')
+  const query = Array.isArray(searchParams.q) ? searchParams.q[0] : searchParams.q || ''
+  const page = Array.isArray(searchParams.p) ? searchParams.p[0] : searchParams.p || ''
 
   return (
     <MainWrapper gridLayout>
@@ -64,10 +66,10 @@ export default async function Index(props: NextServerPageProps) {
             <Li>マイナス検索 (上記のいずれにも使用可)</Li>
           </UnorderedList>
         </details>
-        <SearchForm defaultValue={searchParams.q} />
+        <SearchForm defaultValue={query} />
       </Title>
 
-      <TweetArea searchParams={searchParams} />
+      <TweetArea query={query} page={page} />
 
       <Block>
         RT の削除依頼はお手数ですが contact ⭐︎ trpfrog.net または、@TrpFrog までお願いします。

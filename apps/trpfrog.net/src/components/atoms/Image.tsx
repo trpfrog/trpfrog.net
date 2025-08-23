@@ -8,7 +8,10 @@ import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
 import { tv } from '@/lib/tailwind/variants'
 
-interface ImageProps extends Omit<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
+import type { Except } from 'type-fest'
+
+interface ImageProps
+  extends Except<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
   src: string
   width: number
   height: number

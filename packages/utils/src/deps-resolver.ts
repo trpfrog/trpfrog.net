@@ -1,21 +1,32 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any -- Allow `any` for creating utility types */
 
-// Prettify type to make the type more readable
-type Prettify<T> = {
-  [K in keyof T]: T[K]
-} & {}
+import type { SetOptional, Simplify, IsEqual, UnknownRecord } from 'type-fest'
 
-type PartialSelectedKeys<T, K extends keyof T> = Prettify<Omit<T, K> & Partial<Pick<T, K>>>
+// `T[K]` が `Partial<T[K]>` であれば `T[K]` 自体を optional にする
+type PartialIfAllChildrenAreOptional<T extends Record<string, UnknownRecord>> = SetOptional<
+  T,
+  {
+    // "Partial<T[K]> = T[K]" means "T[K] can be assigned {}"
+    [K in keyof T]-?: {} extends T[K] ? K : never
+  }[keyof T]
+>
 
-type PartialIfAllChildrenAreOptional<T extends Record<string, Record<string, unknown>>> =
-  PartialSelectedKeys<
-    T,
-    keyof {
-      // FIXME: なんか条件式に T[K] が含まれているとエラーになる
-      [K in keyof T as Partial<T[K]> extends T[K] ? K : never]: null
-    }
-  >
+// test
+true satisfies IsEqual<
+  PartialIfAllChildrenAreOptional<{
+    a: {}
+    b: { b1: string; b2: number }
+    c: { c1?: string; c2: number }
+    d: { d1?: string; d2?: number }
+  }>,
+  {
+    a?: {} | undefined
+    b: { b1: string; b2: number }
+    c: { c1?: string; c2: number }
+    d?: { d1?: string; d2?: number } | undefined
+  }
+>
 
 type Internal_OptionalValueIsNotSet = '__internal_optionalValueIsNotSet__'
 
@@ -30,23 +41,21 @@ export function createDepsResolver<
   DepsDict extends { [K in keyof Fns]: Parameters<Fns[K]>[0] },
   DefaultDeps extends Partial<{ [K in keyof DepsDict]: Partial<DepsDict[K]> }>,
   // prettier-ignore
-  Args extends Prettify<
+  Args extends Simplify<
     PartialIfAllChildrenAreOptional<{
       [K in keyof DepsDict]:
-        // Requires all keys from Fns[K] except those in DefaultDeps[K]
-        Omit<DepsDict[K], keyof DefaultDeps[K]> &
         // Allows all keys from DefaultDeps[K] to be optional
-        Partial<Pick<DepsDict[K], keyof DefaultDeps[K]>>
+        SetOptional<DepsDict[K], keyof DefaultDeps[K]>
     }>
   >,
-  Returns extends Prettify<{ [K in keyof Fns]: ReturnType<Fns[K]> }>,
+  Returns extends Simplify<{ [K in keyof Fns]: ReturnType<Fns[K]> }>,
 >(fns: Fns, defaultDeps?: DefaultDeps) {
   defaultDeps = defaultDeps ?? ({} as DefaultDeps)
 
   return {
     defaultDeps,
     // TODO: Consider using Proxy to improve performance by lazily resolving the dependencies
-    resolve: (deps: Args): Prettify<Returns> =>
+    resolve: (deps: Args): Simplify<Returns> =>
       Object.fromEntries(
         Object.entries(fns).map(([key, fn]) => [
           key,

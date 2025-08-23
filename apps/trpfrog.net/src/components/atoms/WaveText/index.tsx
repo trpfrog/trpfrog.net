@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import styles from './index.module.css'
 
-type Props<T extends string> = Omit<React.ComponentPropsWithoutRef<'span'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type Props<T extends string> = Except<React.ComponentPropsWithoutRef<'span'>, 'children'> & {
   children: T
   durationPerPeriodMs?: number
   intervalMs?: number

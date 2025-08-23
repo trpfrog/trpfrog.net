@@ -4,7 +4,9 @@ import { Tag } from '@blog/_components/Tag'
 
 import styles from './index.module.css'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+import type { Except } from 'type-fest'
+
+type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tags: string[]
   wrappedWithLink?: boolean
 }

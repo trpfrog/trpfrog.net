@@ -1,5 +1,7 @@
 import { type BundledLanguage } from 'shiki'
 
+import type { ArrayValues } from 'type-fest'
+
 const languageCode = [
   'js',
   'ts',
@@ -18,7 +20,7 @@ const languageCode = [
   'ansi',
 ] as const satisfies (BundledLanguage | 'text' | 'ansi')[]
 
-export type LanguageCode = (typeof languageCode)[number]
+export type LanguageCode = ArrayValues<typeof languageCode>
 
 const languageCodeMap: Record<Lowercase<string>, LanguageCode> = {
   ...Object.fromEntries(languageCode.map(lang => [lang, lang])),

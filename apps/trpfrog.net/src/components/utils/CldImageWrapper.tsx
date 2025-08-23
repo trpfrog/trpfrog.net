@@ -3,6 +3,8 @@ import Image, { ImageProps } from 'next/image'
 
 import { cloudinaryLoader } from '@/lib/cloudinaryUtils'
 
-export function CldImageWrapper(props: Omit<ImageProps, 'loader'>) {
+import type { Except } from 'type-fest'
+
+export function CldImageWrapper(props: Except<ImageProps, 'loader'>) {
   return <Image {...props} loader={cloudinaryLoader} />
 }

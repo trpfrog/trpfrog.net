@@ -1,9 +1,10 @@
 import { useReward } from 'react-rewards'
+import { ArrayValues } from 'type-fest'
 import { useImmer } from 'use-immer'
 
 import { balloonColors } from '@/app/balloon/_components/Balloon'
 
-type BalloonColor = (typeof balloonColors)[number]
+type BalloonColor = ArrayValues<typeof balloonColors>
 
 interface BalloonState {
   isBurst: boolean

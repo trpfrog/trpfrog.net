@@ -1,5 +1,7 @@
 import assert from 'assert'
 
+import type { Entries } from 'type-fest'
+
 export function clamp(x: number, min: number, max: number): number {
   assert(min <= max)
   if (x < min) return min
@@ -7,10 +9,8 @@ export function clamp(x: number, min: number, max: number): number {
   return x
 }
 
-export function getTypedEntries<T extends Record<PropertyKey, unknown>>(
-  obj: T,
-): [keyof T, T[keyof T]][] {
-  return Object.entries(obj) as [keyof T, T[keyof T]][]
+export function getTypedEntries<T extends Record<PropertyKey, unknown>>(obj: T): Entries<T> {
+  return Object.entries(obj) as Entries<T>
 }
 
 export function replaceWithLighterImageFormat(srcUrl: string) {
