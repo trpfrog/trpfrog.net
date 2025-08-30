@@ -4,7 +4,7 @@ import { tv } from '@/lib/tailwind/variants'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const src = replaceWithLighterImageFormat(
-  'https://res.cloudinary.com/trpfrog/image/upload/w_500/IMG_6686',
+  'https://res.cloudinary.com/trpfrog/image/upload/w_500/working-tsmami-half.webp',
 )
 
 const styles = tv({
@@ -31,15 +31,15 @@ export function BelongingCard() {
         width: '100%',
         height: '100%',
       }}
-      title={'Affiliation'}
+      title="Job"
       titlePosition="top-right"
     >
       <div className={styles.wrapper()}>
         <div className={styles.text()}>
-          <h3 className={styles.name()}>電気通信大学大学院</h3>
-          <div className={styles.details()}>情報理工学研究科 情報学専攻</div>
-          <div className={styles.date()}>Since 2023.04</div>
-          <div className={styles.theme()}>研究分野: 自然言語生成</div>
+          <h3 className={styles.name()}>Webエンジニア</h3>
+          {/* <div className={styles.details()}></div> */}
+          <div className={styles.date()}>Since 2025.04</div>
+          <div className={styles.theme()}>今はバックエンドが中心</div>
         </div>
       </div>
     </TopCard>

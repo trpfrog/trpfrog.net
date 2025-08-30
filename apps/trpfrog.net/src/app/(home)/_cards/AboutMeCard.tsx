@@ -29,6 +29,7 @@ const styles = tv({
 
 // TODO: dynamicIO が stable になったら消す
 async function fetchCurrentAge() {
+  // 実行環境によって年齢が変わるとややこしいので SSR する
   return await fetch(bffClient.tmp_cache.age.$url().toString(), {
     cache: 'force-cache',
     next: {
@@ -43,14 +44,14 @@ export async function AboutMeCard() {
     { icon: '🐸', iconName: '性別', text: '男性' },
     { icon: '🎂', iconName: '誕生日', text: `2000年10月17日 (${age}歳)` },
     {
-      icon: '🏠',
+      icon: '🌇',
       iconName: '出身',
-      text: '東京都 (23区外) 出身',
+      text: '東京都八王子市出身',
     },
     {
-      icon: '🍎',
-      iconName: 'Apple',
-      text: 'Apple ユーザー',
+      icon: '🏠',
+      iconName: '居住地',
+      text: '東京都在住',
     },
   ]
 
@@ -65,13 +66,13 @@ export async function AboutMeCard() {
         <div>
           <h2 className={styles.nameWrapper()} translate="no">
             <span className={styles.name()}>つまみ</span>
-            <span className={styles.name()}>(TrpFrog)</span>
+            <span className={styles.name()}>tsmami / trpfrog</span>
           </h2>
           <p className={styles.textWrapper()}>
             <span className={styles.text()}>
-              自然言語生成の研究をしている大学院生
-              ……のはずだが、Web開発に興味がありすぎてそういう職業になりそうになっている。
-              面白いものが好き、面白ければなんでもやりたい。 みんなそう？そうかも
+              新卒Webっぽいエンジニア。大学時代、学業そっちのけでWebサイト作りにばかり没頭していたら本当にインターネットになってしまった。
+              わくわくする技術、かわいいデザイン、変なキックの鳴る音楽、美しい感情、遊び心のある道具、初めて歩く道が好き。
+              心躍ることはなんでもやりたい！やるぞ〜
             </span>
           </p>
         </div>
