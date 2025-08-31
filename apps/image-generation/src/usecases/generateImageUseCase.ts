@@ -5,10 +5,8 @@ import { TextToImage } from '../domain/services/text-to-image'
 import { base64ArrayBuffer } from '../lib/base64'
 
 export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRepo: AssetsRepo }) {
-  return async (prompt: string, options: { numberOfRetries: number }) => {
-    const numberOfRetries = options?.numberOfRetries ?? 1
-    for (const _ of Array.from(Array(numberOfRetries))) {
-      const tsmamiImagePrompt = dedent`
+  return async (prompt: string) => {
+    const tsmamiImagePrompt = dedent`
         このキャラクターは「つまみ」「つまみさん」「tsmami」と呼ばれています。
 
         ## つまみさんの特徴
@@ -32,7 +30,8 @@ export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRep
 
         - 今から画像生成をしてもらいます。
         - 画像は必ず生成してください。Hallucination しないでください。
-        - 画風はタスクにあった内容を自動で選択してください。この際、キャラクターの質感も画風に合うようにしてください。
+        - 画風はタスクにあった内容を自動で選択してください。この際、**キャラクターの質感も画風に合うようにしてください**。
+        - 生成する画像 aspect ratio は 1:1 です。
 
         ## タスク
 
@@ -40,16 +39,16 @@ export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRep
         ${prompt}
       `
 
-      try {
-        const tsmamiImageBase64 = await deps.assetsRepo
-          .fetch('/tsmami.png')
-          .then(res => res.arrayBuffer())
-          .then(ab => base64ArrayBuffer(ab))
-        return await deps.textToImage(tsmamiImagePrompt, [tsmamiImageBase64])
-      } catch (e) {
-        console.error(e)
-      }
+    try {
+      const tsmamiImageBase64 = await deps.assetsRepo
+        .fetch('/tsmami.png')
+        .then(res => res.arrayBuffer())
+        .then(ab => base64ArrayBuffer(ab))
+
+      return await deps.textToImage(tsmamiImagePrompt, [tsmamiImageBase64])
+    } catch (e) {
+      console.error(e)
+      throw new Error('Failed to generate image')
     }
-    throw new Error('Failed to generate image')
   }
 }
