@@ -8,6 +8,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 import { Env } from '../env'
 import { UseCases } from '../wire'
 
+import { adminSandboxApp } from './admin-sandbox'
 import { queryApp } from './query'
 import { resourceApp } from './resource'
 import { updateApp } from './update'
@@ -39,6 +40,7 @@ export function createApp(ucs: UseCases) {
       return c.json(status)
     })
     .route('/update', updateApp)
+    .route('/generate', adminSandboxApp)
     .route('/query', queryApp)
     .route('/resource', resourceApp)
 }

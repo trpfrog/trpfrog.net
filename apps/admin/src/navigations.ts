@@ -17,6 +17,14 @@ export const navigations = [
     path: '/blog',
     displayName: 'Blog',
   },
+  {
+    path: '/ai-demos/prompt',
+    displayName: 'AI Prompt Demo',
+  },
+  {
+    path: '/ai-demos/image',
+    displayName: 'Text-to-Image Demo',
+  },
 ] satisfies {
   path: Route
   displayName: string
