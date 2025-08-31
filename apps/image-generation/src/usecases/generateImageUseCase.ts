@@ -46,6 +46,8 @@ export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRep
       const tsmamiImageBase64 = await fetch(
         'https://res.cloudinary.com/trpfrog/image/upload/f_auto,c_limit,w_1024,q_auto/icons_gallery/22.png',
         {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore -- Workers では cf を使えるが、client ビルド時に巻き込まれて TypeError が発生するので ignore する
           cf: {
             cacheTtl: 60 * 60 * 24 * 7,
           },
