@@ -44,6 +44,7 @@
 - **Hono** for API endpoints
 - **Cloudflare Workers** for hosting the API
 - **OpenAI API** for generating prompt
+- **Gemini API** for image generation (nano-banana)
 - **Cloudflare Workers KV** for caching generated images
 - **Cloudflare D1** for storing metadata of generated images
 - **Drizzle ORM** for interacting with Cloudflare D1
