@@ -1,3 +1,4 @@
+import { services } from '@trpfrog.net/constants'
 import { getContext } from 'hono/context-storage'
 
 import { AssetsRepo } from '../../domain/repos/assets-repo'
@@ -10,6 +11,9 @@ export const assetsRepoWorkersAssets: AssetsRepo = {
     // assetUrl = origin of c.req.url + path
     const assetUrl = new URL(c.req.url)
     assetUrl.pathname = path
+    if (assetUrl.origin === services.imageGeneration.origin('production')) {
+      assetUrl.pathname = services.imageGeneration.basePath + path
+    }
 
     const res = await c.env.ASSETS.fetch(assetUrl)
     if (!res.ok) {

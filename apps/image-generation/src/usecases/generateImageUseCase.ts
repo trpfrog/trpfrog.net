@@ -42,8 +42,15 @@ export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRep
       `
 
     try {
-      const tsmamiImageBase64 = await deps.assetsRepo
-        .fetch('/tsmami.png')
+      // FIXME: なぜか Workers Assets が取れないので一時的に Cloudinary から取ってくる。あとで deps.assetsRepo.fetch('/tsmami.png') にする
+      const tsmamiImageBase64 = await fetch(
+        'https://res.cloudinary.com/trpfrog/image/upload/f_auto,c_limit,w_1024,q_auto/icons_gallery/22.png',
+        {
+          cf: {
+            cacheTtl: 60 * 60 * 24 * 7,
+          },
+        },
+      )
         .then(res => res.arrayBuffer())
         .then(ab => base64ArrayBuffer(ab))
 
