@@ -1,11 +1,11 @@
 import { createApp } from './controller'
-import { assetsRepoWorkersAssets } from './infra/repos/assetsRepoCloudflareAssets'
+import { assetsRepoWorkersAssets } from './infra/repos/assets-repo-workers-assets'
 import { imageMetadataRepoCloudflareD1 } from './infra/repos/imageMetadataRepoCloudflareD1'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudflareR2'
 import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { randomWordApi } from './infra/services/random-words'
-import { createHfImageGenerator } from './infra/services/text-to-image'
+import { createGeminiImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
 
 const app = createApp(
@@ -13,8 +13,8 @@ const app = createApp(
     imageStoreRepo: imageStoreRepoCloudflareR2,
     imageMetadataRepo: imageMetadataRepoCloudflareD1,
     imageUpdateStatusRepo: imageUpdateStatusCloudflareKV,
-    textToImage: createHfImageGenerator({
-      modelName: 'Prgckwb/trpfrog-sd3.5-large-lora',
+    textToImage: createGeminiImageGenerator({
+      modelName: 'gemini-2.5-flash-image-preview',
     }),
     jsonChatbot: createOpenAIChatLLMJson({
       model: 'gpt-4o-2024-11-20',

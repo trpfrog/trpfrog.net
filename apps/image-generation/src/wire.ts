@@ -45,6 +45,7 @@ export function prepareUsecasesBuilder(common: {
       },
       generateImage: {
         textToImage,
+        assetsRepo,
       },
       generatePromptFromWords: {
         jsonChatbot,

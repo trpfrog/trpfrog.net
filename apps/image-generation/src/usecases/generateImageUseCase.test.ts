@@ -25,6 +25,9 @@ describe('generateImage', () => {
         modelName: 'trpfrog-diffusion',
         image: new ArrayBuffer(0),
       }),
+      assetsRepo: {
+        fetch: async () => new Response(new ArrayBuffer(0)),
+      },
     })
     const result = await textToImage('prompt', { numberOfRetries: 1 })
     expect(result).toMatchObject(defaultResponse)
@@ -37,6 +40,9 @@ describe('generateImage', () => {
     })
     const textToImage = resolve({
       textToImage: mock,
+      assetsRepo: {
+        fetch: async () => new Response(new ArrayBuffer(0)),
+      },
     })
 
     const promise = textToImage('prompt', { numberOfRetries: 10 })
@@ -57,6 +63,9 @@ describe('generateImage', () => {
       })
     const textToImage = resolve({
       textToImage: mock,
+      assetsRepo: {
+        fetch: async () => new Response(new ArrayBuffer(0)),
+      },
     })
 
     const result = await textToImage('prompt', { numberOfRetries: 2 })

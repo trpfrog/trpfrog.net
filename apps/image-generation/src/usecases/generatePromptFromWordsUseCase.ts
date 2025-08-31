@@ -40,7 +40,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       throw new Error('Invalid input words')
     }
 
-    const promptPrefix = 'an icon of trpfrog'
+    const promptPrefix = 'tsmami'
 
     // Few-shot learning
     const chat: ChatUtterance[] = [

@@ -26,6 +26,7 @@
     "drizzle-orm": "catalog:",
     "hono": "catalog:",
     "nanoid": "catalog:",
+    "p-retry": "catalog:",
     "stable-hash": "catalog:",
     "ts-dedent": "catalog:",
     "ts-pattern": "catalog:",

@@ -9,7 +9,7 @@ import { generatePromptFromWordsUseCase } from './generatePromptFromWordsUseCase
 describe('generateRandomTrpFrogPrompt', () => {
   const defaultResponse: ImagePrompt = {
     author: 'test-model',
-    text: 'an icon of trpfrog testing the function',
+    text: 'tsmami testing the function',
     translated: '関数のテストをするつまみさんの画像',
   }
 
