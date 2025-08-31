@@ -4,7 +4,6 @@ export interface Bindings {
   KV: KVNamespace
   OPENAI_API_KEY: string
   TRPFROG_FUNCTIONS_SECRET: string
-  HUGGINGFACE_TOKEN: string
   NODE_ENV: string
   GEMINI_API_KEY: string
   BUCKET: R2Bucket

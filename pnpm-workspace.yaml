@@ -21,7 +21,6 @@ catalog:
   '@hono/vite-build': ^1.7.0
   '@hono/vite-dev-server': ^0.20.1
   '@hono/vite-ssg': ^0.2.0
-  '@huggingface/inference': ^2.8.1
   '@mantine/charts': ^8.2.5
   '@mantine/core': ^8.2.5
   '@mantine/dates': ^8.2.5
