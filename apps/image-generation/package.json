@@ -15,12 +15,12 @@
     "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
   },
   "dependencies": {
+    "@ai-sdk/openai": "catalog:",
     "@hono/standard-validator": "catalog:",
     "@huggingface/inference": "catalog:",
-    "@langchain/core": "catalog:",
-    "@langchain/openai": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
+    "ai": "catalog:",
     "date-fns": "catalog:",
     "drizzle-orm": "catalog:",
     "hono": "catalog:",
