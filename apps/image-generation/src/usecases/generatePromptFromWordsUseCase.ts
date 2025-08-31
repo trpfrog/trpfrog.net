@@ -16,7 +16,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
     options?: { includeRaw?: boolean },
   ): Promise<ImagePrompt & { raw?: unknown }> => {
     if (!Array.isArray(sourceWords) || sourceWords.length === 0) {
-      throw new Error('Invalid input words')
+      throw new Error('sourceWords must be a non-empty array of strings')
     }
 
     const system = dedent`
