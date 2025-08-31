@@ -4,9 +4,10 @@ import {
   GenerateContentResponse,
   GoogleGenAI,
   PartUnion,
+  ApiError,
 } from '@google/genai'
 import { getContext } from 'hono/context-storage'
-import pRetry from 'p-retry'
+import pRetry, { AbortError } from 'p-retry'
 
 import { GeneratedImage } from '../../domain/entities/generation-result'
 import { Env } from '../../env'
@@ -30,7 +31,7 @@ function getImagePartFromResponse(
 export function createGeminiImageGenerator(params: { modelName: string; apiKey?: string }) {
   return async (text: string, inputImageBase64?: string[]): Promise<GeneratedImage> => {
     const c = getContext<Env>()
-    const apiKey = params.apiKey ?? c.env.HUGGINGFACE_TOKEN
+    const apiKey = params.apiKey ?? c.env.GEMINI_API_KEY
     const ai = new GoogleGenAI({ apiKey })
 
     // Embed text and images into the prompt
@@ -47,11 +48,18 @@ export function createGeminiImageGenerator(params: { modelName: string; apiKey?:
         .generateContent({
           model: params.modelName,
           contents: [createUserContent(userContents)],
-          config: {
-            responseMimeType: 'image/png',
-          },
         })
         .catch(e => {
+          // こちら起因のエラーならばリトライしない
+          if (e instanceof ApiError && e.status >= 400 && e.status < 500) {
+            console.error(
+              `Gemini client error (${e.status}). Abort without retry.\nRequest:`,
+              text,
+              '\nError:',
+              e,
+            )
+            throw new AbortError(e as Error)
+          }
           console.error('Internal Error in Gemini:', e, '\nRequest:', text)
           throw e
         })
