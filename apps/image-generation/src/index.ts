@@ -1,4 +1,5 @@
 import { createApp } from './controller'
+import { assetsRepoWorkersAssets } from './infra/repos/assetsRepoCloudflareAssets'
 import { imageMetadataRepoCloudflareD1 } from './infra/repos/imageMetadataRepoCloudflareD1'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudflareR2'
 import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
@@ -20,6 +21,7 @@ const app = createApp(
       temperature: 0.9,
     }),
     generateSeedWords: () => randomWordApi(10),
+    assetsRepo: assetsRepoWorkersAssets,
   }).build(),
 )
 

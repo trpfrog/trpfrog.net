@@ -8,4 +8,5 @@ export interface Bindings {
   NODE_ENV: string
   BUCKET: R2Bucket
   DATABASE: D1Database
+  ASSETS: Fetcher
 }

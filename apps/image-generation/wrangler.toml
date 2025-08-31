@@ -22,3 +22,7 @@ migrations_dir = "./migrations"
 [[kv_namespaces]]
 binding = "KV"
 id = "17627d198edc43588fcd79b65b239e55"
+
+[assets]
+directory = "./assets"
+binding = "ASSETS"
