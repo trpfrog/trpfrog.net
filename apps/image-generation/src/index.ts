@@ -17,7 +17,7 @@ const app = createApp(
       modelName: 'gemini-2.5-flash-image-preview',
     }),
     jsonChatbot: createOpenAIChatLLMJson({
-      model: 'gpt-4o-2024-11-20',
+      model: 'gpt-5-mini-2025-08-07',
       temperature: 0.9,
     }),
     generateSeedWords: () => randomWordApi(10),

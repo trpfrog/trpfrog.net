@@ -28,7 +28,7 @@ export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
     const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
     const openai = createOpenAI({ apiKey })
 
-    const { text } = await generateText({
+    const { text, response } = await generateText({
       model: openai(params.model),
       temperature: params.temperature,
       messages: toModelMessages(rawChat),
@@ -37,6 +37,7 @@ export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
     return {
       response: text,
       modelName: params.model,
+      raw: response,
     }
   }
 }
@@ -47,13 +48,14 @@ export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
     const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
     const openai = createOpenAI({ apiKey })
 
-    const { text } = await generateText({
+    const { text, response } = await generateText({
       model: openai(params.model),
       temperature: params.temperature,
       messages: toModelMessages(rawChat),
       providerOptions: {
         openai: {
-          response_format: { type: 'json_object' },
+          strictJsonSchema: true,
+          reasoningEffort: 'medium',
         },
       },
     })
@@ -68,6 +70,7 @@ export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
     return {
       response: json,
       modelName: params.model,
+      raw: response,
     }
   }
 }
