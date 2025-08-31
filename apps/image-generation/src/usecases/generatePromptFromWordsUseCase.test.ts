@@ -16,10 +16,7 @@ describe('generateRandomTrpFrogPrompt', () => {
   const { resolve } = createSingleDepsResolver(generatePromptFromWordsUseCase, {
     jsonChatbot: async () => ({
       response: {
-        basic: { reasoning: 'reasoning', prompt: 'prompt' },
-        creative: { reasoning: 'reasoning', prompt: 'prompt' },
-        polished: { reasoning: 'reasoning', prompt: 'prompt' },
-        final: { reasoning: 'reasoning', prompt: defaultResponse.text },
+        prompt: defaultResponse.text,
         translated: defaultResponse.translated,
       },
       modelName: 'test-model',
@@ -46,7 +43,7 @@ describe('generateRandomTrpFrogPrompt', () => {
       deps: {
         jsonChatbot: async (): ReturnType<ChatLLMJson> => ({
           response: {
-            final: { prompt: defaultResponse.text },
+            prompt: defaultResponse.text,
             translated: defaultResponse.translated,
           },
           modelName: 'test-model',

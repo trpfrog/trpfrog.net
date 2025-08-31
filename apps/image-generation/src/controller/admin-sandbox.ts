@@ -17,12 +17,10 @@ const ImageFromTextSchema = v.object({
 })
 
 export const adminSandboxApp = new Hono<Env>()
-  // ランダム種語の取得
   .get('/seed-words', requiresApiKey(), async c => {
     const words = await c.var.UCS.generateRandomWords()
     return c.json({ words })
   })
-  // 語群からのプロンプト生成
   .post('/prompt', requiresApiKey(), sValidator('json', PromptFromWordsSchema), async c => {
     const { words } = c.req.valid('json')
     if (words.length === 0) {
@@ -31,7 +29,6 @@ export const adminSandboxApp = new Hono<Env>()
     const prompt = await c.var.UCS.generatePromptFromWords(words, { includeRaw: true })
     return c.json(prompt)
   })
-  // テキストからの画像生成（base64 で返却）
   .post('/image', requiresApiKey(), sValidator('json', ImageFromTextSchema), async c => {
     const { text } = c.req.valid('json')
     const generated = await c.var.UCS.generateImage(text)
