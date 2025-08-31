@@ -1,53 +1,76 @@
-import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
-import { JsonOutputParser, StringOutputParser } from '@langchain/core/output_parsers'
-import { ChatOpenAI } from '@langchain/openai'
+import { createOpenAI } from '@ai-sdk/openai'
+import { generateText, type ModelMessage } from 'ai'
 import { getContext } from 'hono/context-storage'
 import { match } from 'ts-pattern'
 
 import { ChatLLM, ChatLLMJson, ChatUtterance } from '../../domain/services/llm'
 import { Env } from '../../env'
 
-function toLangChainMessage(rawChat: ChatUtterance[]) {
+function toModelMessages(rawChat: ChatUtterance[]): ModelMessage[] {
   return rawChat.map(uttr =>
-    match(uttr)
-      .with({ role: 'system' }, ({ text }) => new SystemMessage(text))
-      .with({ role: 'user' }, ({ text }) => new HumanMessage(text))
-      .with({ role: 'assistant' }, ({ text }) => new AIMessage(text))
+    match<ChatUtterance, ModelMessage>(uttr)
+      .with({ role: 'system' }, ({ text }) => ({ role: 'system', content: text }) as const)
+      .with({ role: 'user' }, ({ text }) => ({ role: 'user', content: text }) as const)
+      .with({ role: 'assistant' }, ({ text }) => ({ role: 'assistant', content: text }) as const)
       .exhaustive(),
   )
 }
 
-export function createOpenAIChatLLM(params: ConstructorParameters<typeof ChatOpenAI>[0]): ChatLLM {
-  const model = new ChatOpenAI(params)
+type OpenAIChatParams = {
+  model: string
+  temperature?: number
+  apiKey?: string
+}
+
+export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
   return async rawChat => {
-    const chat = toLangChainMessage(rawChat)
-    const parser = new StringOutputParser()
+    const c = getContext<Env>()
+    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
+    const openai = createOpenAI({ apiKey })
+
+    const { text, response } = await generateText({
+      model: openai(params.model),
+      temperature: params.temperature,
+      messages: toModelMessages(rawChat),
+    })
+
     return {
-      response: await model.pipe(parser).invoke(chat),
-      modelName: model.modelName,
+      response: text,
+      modelName: params.model,
+      raw: response,
     }
   }
 }
 
-export function createOpenAIChatLLMJson(
-  params: ConstructorParameters<typeof ChatOpenAI>[0],
-): ChatLLMJson {
+export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
   return async rawChat => {
     const c = getContext<Env>()
-    const rawModel = new ChatOpenAI({
-      ...params,
-      apiKey: params?.apiKey ?? c.env.OPENAI_API_KEY,
-    })
-    const model = rawModel.bind({
-      response_format: {
-        type: 'json_object',
+    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
+    const openai = createOpenAI({ apiKey })
+
+    const { text, response } = await generateText({
+      model: openai(params.model),
+      temperature: params.temperature,
+      messages: toModelMessages(rawChat),
+      providerOptions: {
+        openai: {
+          strictJsonSchema: true,
+          reasoningEffort: 'medium',
+        },
       },
     })
-    const chat = toLangChainMessage(rawChat)
-    const parser = new JsonOutputParser()
+
+    let json: Record<string, unknown>
+    try {
+      json = JSON.parse(text) as Record<string, unknown>
+    } catch {
+      throw new Error('Failed to parse chatbot response JSON')
+    }
+
     return {
-      response: await model.pipe(parser).invoke(chat),
-      modelName: rawModel.modelName,
+      response: json,
+      modelName: params.model,
+      raw: response,
     }
   }
 }

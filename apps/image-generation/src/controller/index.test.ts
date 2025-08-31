@@ -8,43 +8,48 @@ import { prepareUsecasesBuilder } from '../wire'
 
 import { createApp } from '.'
 
-const defaultDeps = {
-  imageMetadataRepo: createImageMetadataRepoMock([
-    {
-      id: '1',
-      createdAt: new Date('2000-10-17'),
-      imageUri: 'http://example.com',
-      prompt: { author: 'test', text: 'test', translated: 'test' },
-      modelName: 'test',
-    },
-  ]),
-  imageStoreRepo: createImageStoreRepoMock(),
-  imageUpdateStatusRepo: createImageUpdateStatusRepoMock(),
-  textToImage: async () => ({
-    image: new ArrayBuffer(0),
-    extension: '.png',
-    modelName: 'model',
-  }),
-  jsonChatbot: vi.fn(async () => ({
-    response: {
-      final: {
-        prompt: 'prompt',
+const createDefaultDeps = () =>
+  ({
+    imageMetadataRepo: createImageMetadataRepoMock([
+      {
+        id: '1',
+        createdAt: new Date('2000-10-17'),
+        imageUri: 'http://example.com',
+        prompt: { author: 'test', text: 'test', translated: 'test' },
+        modelName: 'test',
       },
-      translated: 'translated',
+    ]),
+    imageStoreRepo: createImageStoreRepoMock(),
+    imageUpdateStatusRepo: createImageUpdateStatusRepoMock(),
+    textToImage: async () => ({
+      image: new ArrayBuffer(0),
+      extension: '.png',
+      modelName: 'model',
+    }),
+    jsonChatbot: vi.fn(async () => ({
+      response: {
+        final: {
+          prompt: 'prompt',
+        },
+        translated: 'translated',
+      },
+      modelName: 'model',
+    })),
+    generateSeedWords: async () => ['word1', 'word2'],
+    assetsRepo: {
+      fetch: async () => new Response(new ArrayBuffer(0)),
     },
-    modelName: 'model',
-  })),
-  generateSeedWords: async () => ['word1', 'word2'],
-} satisfies Parameters<typeof prepareUsecasesBuilder>[0]
+  }) satisfies Parameters<typeof prepareUsecasesBuilder>[0]
 
 type DepBuilder = ReturnType<typeof prepareUsecasesBuilder>
 
 function createMockedClient(
-  overrides: Partial<typeof defaultDeps> = {},
+  overrides: Partial<ReturnType<typeof createDefaultDeps>> = {},
   inject: (injector: DepBuilder) => DepBuilder = x => x,
 ) {
+  // テスト間のステート汚染を防ぐため、毎回 fresh な Repo を用意する
   const ucsBuilder = prepareUsecasesBuilder({
-    ...defaultDeps,
+    ...createDefaultDeps(),
     ...overrides,
   })
   const app = createApp(inject(ucsBuilder).build())

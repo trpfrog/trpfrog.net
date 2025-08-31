@@ -53,15 +53,6 @@ export const ServerEnvSchema = v.object({
   }),
 
   /**
-   * Huggingface API Key.
-   * Used for AI icon generation.
-   */
-  HUGGINGFACE_TOKEN: v.optional(v.string(), () => {
-    console.warn('HUGGINGFACE_TOKEN is not set, this may cause some functions to fail')
-    return undefined
-  }),
-
-  /**
    * Server-side secret key for the functions API (Cloud Functions)
    * Used for generating AI icons.
    */

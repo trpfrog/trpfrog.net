@@ -25,43 +25,11 @@ describe('generateImage', () => {
         modelName: 'trpfrog-diffusion',
         image: new ArrayBuffer(0),
       }),
+      assetsRepo: {
+        fetch: async () => new Response(new ArrayBuffer(0)),
+      },
     })
-    const result = await textToImage('prompt', { numberOfRetries: 1 })
+    const result = await textToImage('prompt')
     expect(result).toMatchObject(defaultResponse)
-  })
-
-  it('should retry if image generation fails', async () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
-    const mock = vi.fn(() => {
-      throw new Error('Failed to generate image')
-    })
-    const textToImage = resolve({
-      textToImage: mock,
-    })
-
-    const promise = textToImage('prompt', { numberOfRetries: 10 })
-    await expect(promise).rejects.toThrow('Failed to generate image')
-    expect(mock).toHaveBeenCalledTimes(10)
-    errorSpy.mockRestore()
-  })
-
-  it('should retry if image generation fails and succeed', async () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
-    const mock = vi
-      .fn()
-      .mockRejectedValueOnce(new Error('Failed to generate image'))
-      .mockResolvedValueOnce({
-        extension: '.png',
-        modelName: 'trpfrog-diffusion',
-        image: new ArrayBuffer(0),
-      })
-    const textToImage = resolve({
-      textToImage: mock,
-    })
-
-    const result = await textToImage('prompt', { numberOfRetries: 2 })
-    expect(result).toMatchObject(defaultResponse)
-    expect(mock).toHaveBeenCalledTimes(2)
-    errorSpy.mockRestore()
   })
 })

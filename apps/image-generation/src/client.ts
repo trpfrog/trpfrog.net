@@ -10,3 +10,10 @@ export function createTrpFrogImageGenerationClient(env: 'development' | 'product
   }
   return hc<AppType>(origin).icongen
 }
+
+export function createTrpFrogImageGenerationClientFromOrigin(origin: string) {
+  if (!origin) {
+    throw new Error('origin must be provided')
+  }
+  return hc<AppType>(origin).icongen
+}

@@ -5,7 +5,7 @@ export type ChatUtterance = {
   text: string
 }
 
-type WithMetadata<T> = { response: T; modelName: string }
+type WithMetadata<T> = { response: T; modelName: string; raw?: unknown }
 
 export type ChatLLM = (chat: ChatUtterance[]) => Promise<WithMetadata<string>>
 

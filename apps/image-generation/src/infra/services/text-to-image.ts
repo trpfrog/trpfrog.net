@@ -1,49 +1,112 @@
-import { HfInference } from '@huggingface/inference'
+import {
+  createPartFromBase64,
+  createUserContent,
+  GenerateContentResponse,
+  GoogleGenAI,
+  PartUnion,
+  ApiError,
+} from '@google/genai'
 import { getContext } from 'hono/context-storage'
+import pRetry, { AbortError } from 'p-retry'
 
 import { GeneratedImage } from '../../domain/entities/generation-result'
 import { Env } from '../../env'
-import { base64ArrayBuffer } from '../../lib/base64'
 
-export function createHfImageGenerator(params: { modelName: string; hfToken?: string }) {
-  return async (text: string): Promise<GeneratedImage> => {
+function getImagePartFromResponse(
+  resp: GenerateContentResponse,
+): { base64: string; mimeType?: string } | undefined {
+  const parts = resp?.candidates?.[0]?.content?.parts ?? []
+  for (const part of parts) {
+    if (part.inlineData) {
+      const base64 = part.inlineData.data
+      if (base64 != null) {
+        return { base64, mimeType: part.inlineData.mimeType }
+      }
+    } else if (part.text) {
+      console.log(part.text)
+    }
+  }
+}
+
+export function createGeminiImageGenerator(params: { modelName: string; apiKey?: string }) {
+  return async (text: string, inputImageBase64?: string[]): Promise<GeneratedImage> => {
     const c = getContext<Env>()
-    const hf = new HfInference(params.hfToken ?? c.env.HUGGINGFACE_TOKEN)
+    const apiKey = params.apiKey ?? c.env.GEMINI_API_KEY
+    const ai = new GoogleGenAI({ apiKey })
 
-    const responseBlob = await hf
-      .textToImage(
-        {
-          model: params.modelName,
-          inputs: text,
-        },
-        {
-          use_cache: true,
-          wait_for_model: true,
-          retry_on_error: true,
-        },
-      )
-      .catch(e => {
-        console.error('Internal Error in HuggingFace:', e, '\nRequest:', text)
-        return Promise.reject('Failed to generate image')
+    // Embed text and images into the prompt
+    const userContents: PartUnion[] = [text]
+    if (inputImageBase64) {
+      inputImageBase64.forEach(image => {
+        userContents.push(createPartFromBase64(image, 'image/png'))
       })
+    }
 
-    const arrayBuffer = await responseBlob.arrayBuffer().catch(e => {
-      console.error('Failed to convert Blob to ArrayBuffer:', e)
-      return Promise.reject('Failed to generate image')
+    // Inference
+    const inference = async () => {
+      const response = await ai.models
+        .generateContent({
+          model: params.modelName,
+          contents: [createUserContent(userContents)],
+        })
+        .catch(e => {
+          // こちら起因のエラーならばリトライしない
+          if (e instanceof ApiError && e.status >= 400 && e.status < 500) {
+            console.error(
+              `Gemini client error (${e.status}). Abort without retry.\nRequest:`,
+              text,
+              '\nError:',
+              e,
+            )
+            throw new AbortError(e as Error)
+          }
+          console.error('Internal Error in Gemini:', e, '\nRequest:', text)
+          throw e
+        })
+
+      // Extract images
+      const imagePart = getImagePartFromResponse(response)
+      if (!imagePart?.base64) {
+        console.error('Gemini returned no image or it was filtered')
+        throw new Error('Failed to generate image')
+      }
+      return imagePart
+    }
+
+    const result = await pRetry(inference, {
+      retries: 2,
+      onFailedAttempt: ({ error, attemptNumber, retriesLeft }) => {
+        console.warn(
+          `[Gemini] Attempt ${attemptNumber} failed: ${error.message}. Retries left: ${retriesLeft}`,
+        )
+      },
     })
-    const base64 = base64ArrayBuffer(arrayBuffer)
+      .then(res => ({ success: true as const, data: res }))
+      .catch(err => ({ success: false as const, error: err }))
 
-    // if sensitive image is generated, huggingface returns a black image.
-    // Base64 of this image contains "ooooAKKKKACiiigA" pattern.
-    const invalidImagePattern = /(ooooAKKKKACiiigA){100,}/
-    if (invalidImagePattern.test(base64)) {
-      return Promise.reject('Failed to generate image due to sensitive content')
+    if (!result.success) {
+      console.error('Gemini image generation failed:', result.error)
+      throw new Error('Failed to generate image')
+    }
+    const { base64, mimeType = 'image/png' } = result.data
+
+    // Decode base64 to ArrayBuffer using atob (Workers)
+    let arrayBuffer: ArrayBuffer
+    try {
+      const binary = atob(base64)
+      const len = binary.length
+      const bytes = new Uint8Array(len)
+      for (let i = 0; i < len; i++) bytes[i] = binary.charCodeAt(i)
+      arrayBuffer = bytes.buffer
+    } catch (e) {
+      console.error('Failed to decode base64 image:', e)
+      throw new Error('Failed to generate image')
     }
 
     return {
       image: arrayBuffer,
       modelName: params.modelName,
-      extension: '.' + responseBlob.type.split('/')[1],
+      extension: '.' + (mimeType.split('/')[1] ?? 'png'),
     }
   }
 }

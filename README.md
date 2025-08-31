@@ -43,8 +43,8 @@
 
 - **Hono** for API endpoints
 - **Cloudflare Workers** for hosting the API
-- **HuggingFace** for image generation using *Prgckwb/trpfrog-sd3.5-large-lora*
 - **OpenAI API** for generating prompt
+- **Gemini API** for image generation (nano-banana)
 - **Cloudflare Workers KV** for caching generated images
 - **Cloudflare D1** for storing metadata of generated images
 - **Drizzle ORM** for interacting with Cloudflare D1
