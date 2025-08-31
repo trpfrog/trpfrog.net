@@ -15,6 +15,7 @@ import {
   TextInput,
   Title,
 } from '@mantine/core'
+import { useAtom } from 'jotai'
 
 import {
   fetchSeedWords,
@@ -22,7 +23,7 @@ import {
   generatePromptFromWords,
   type GeneratedPrompt,
 } from '../actions'
-import { useAtom } from 'jotai'
+
 import { imageGenerationOriginAtom } from '@/atom/origin'
 
 export default function PromptDemoPage() {
@@ -106,6 +107,15 @@ export default function PromptDemoPage() {
           </Group>
           <Textarea label="English Prompt" value={prompt.text} autosize readOnly />
           <Textarea label="日本語プロンプト" value={prompt.translated} autosize readOnly />
+          <Textarea
+            label="生レスポンス (JSON)"
+            value={JSON.stringify(prompt, null, 2)}
+            autosize
+            readOnly
+            className="font-mono"
+            minRows={4}
+            maxRows={20}
+          />
 
           <Group align="end">
             <SegmentedControl

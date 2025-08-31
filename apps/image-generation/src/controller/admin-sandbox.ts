@@ -28,7 +28,7 @@ export const adminSandboxApp = new Hono<Env>()
     if (words.length === 0) {
       return c.json({ error: 'words must not be empty' }, 400)
     }
-    const prompt = await c.var.UCS.generatePromptFromWords(words)
+    const prompt = await c.var.UCS.generatePromptFromWords(words, { includeRaw: true })
     return c.json(prompt)
   })
   // テキストからの画像生成（base64 で返却）
