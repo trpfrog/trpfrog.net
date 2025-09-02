@@ -24,7 +24,7 @@ const FinalPromptSchema = v.looseObject({
       ({ received }) => `"prompt" must be at most ${MAX_PROMPT_WORDS} words (current: ${received})`,
     ),
     v.includes('tsmami-san', '`prompt` must include "tsmami-san"'),
-    v.check(e => !/[.,]$/.test(e), '`translated` must not end with punctuation'),
+    v.check(e => !/[.,]$/.test(e), '`prompt` must not end with punctuation'),
   ),
   translated: v.pipe(
     v.string('`translated` must be a string'),

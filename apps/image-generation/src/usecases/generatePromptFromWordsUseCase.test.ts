@@ -104,7 +104,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
           break
         case 2:
           response = {
-            prompt: 'This is a invalid prompt, missing "ts/mami-san"',
+            prompt: 'This is an invalid prompt, missing "ts/mami-san"',
             translated: 'これは無効なプロンプトです、"つまみさん"がありません',
           }
           break
@@ -161,7 +161,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
         {
           "role": "assistant",
           "text": "{
-        "prompt": "This is a invalid prompt, missing \\"ts/mami-san\\"",
+        "prompt": "This is an invalid prompt, missing \\"ts/mami-san\\"",
         "translated": "これは無効なプロンプトです、\\"つまみさん\\"がありません"
       }",
         },
