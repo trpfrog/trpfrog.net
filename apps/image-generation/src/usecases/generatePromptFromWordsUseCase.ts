@@ -100,7 +100,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       { role: 'user', text: user },
     ]
 
-    const attempt = async (): Promise<ImagePrompt & { raw?: unknown }> => {
+    const attempt = async () => {
       const { response: rawJson, modelName, raw } = await deps.jsonChatbot(chat)
 
       const parsed = safeValidateUnknown(FinalPromptSchema, rawJson)
@@ -111,13 +111,16 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
         )
       }
 
-      return {
+      const payload: ImagePrompt & { raw?: unknown } = {
         ...parsed.output,
         text: parsed.output.prompt,
         translated: parsed.output.translated,
         author: modelName?.trim() ?? 'unknown',
-        raw,
       }
+      if (options?.includeRaw) {
+        payload.raw = raw
+      }
+      return payload
     }
 
     const payload = await pRetry(attempt, {
@@ -132,10 +135,6 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
         }
       },
     })
-
-    if (!options?.includeRaw) {
-      delete payload.raw
-    }
 
     return payload
   }
