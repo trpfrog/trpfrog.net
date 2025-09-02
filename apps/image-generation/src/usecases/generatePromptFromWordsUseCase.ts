@@ -1,14 +1,47 @@
 import { safeValidateUnknown } from '@trpfrog.net/utils'
+import pRetry from 'p-retry'
 import dedent from 'ts-dedent'
 import * as v from 'valibot'
 
 import type { ImagePrompt } from '../domain/entities/generation-result'
 import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
 
+const MAX_PROMPT_CHARS = 80
+const MAX_PROMPT_WORDS = 12
 const FinalPromptSchema = v.looseObject({
-  prompt: v.string(),
-  translated: v.string(),
+  prompt: v.pipe(
+    v.string('`prompt` must be a string'),
+    v.trim(),
+    v.minLength(1, '`prompt` must be at least 1 character'),
+    v.maxLength(
+      MAX_PROMPT_CHARS,
+      ({ received }) =>
+        `"prompt" must be at most ${MAX_PROMPT_CHARS} characters (current: ${received})`,
+    ),
+    v.maxWords(
+      'en',
+      MAX_PROMPT_WORDS,
+      ({ received }) => `"prompt" must be at most ${MAX_PROMPT_WORDS} words (current: ${received})`,
+    ),
+    v.includes('tsmami-san', '`prompt` must include "tsmami-san"'),
+    v.check(e => !/[.,]$/.test(e), '`translated` must not end with punctuation'),
+  ),
+  translated: v.pipe(
+    v.string('`translated` must be a string'),
+    v.trim(),
+    v.minLength(1, '`translated` must be at least 1 character'),
+    v.check(e => !/[。.、,]$/.test(e), '`translated` must not end with punctuation'),
+  ),
 })
+
+class InvalidModelOutputError extends Error {
+  modelResponse: string
+  constructor(modelResponse: string, message: string) {
+    super(message)
+    this.name = 'InvalidModelOutputError'
+    this.modelResponse = modelResponse
+  }
+}
 
 export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson }) {
   return async (
@@ -26,8 +59,9 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
 
       ## HARD CONSTRAINTS (English "prompt"):
       - Single, complete sentence **without terminal punctuation**
-      - Start with "tsmami-san" (lowercase)
-      - 15 words or fewer
+      - "tsmami-san" must be included
+      - ${MAX_PROMPT_WORDS} words or fewer
+      - ${MAX_PROMPT_CHARS} characters or fewer
       - SFW, inclusive, coherent; avoid camera jargon overload
 
       ## HARD CONSTRAINTS (Japanese "translated"):
@@ -66,25 +100,41 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       { role: 'user', text: user },
     ]
 
-    const { response: rawJson, modelName, raw } = await deps.jsonChatbot(chat)
+    const attempt = async (): Promise<ImagePrompt & { raw?: unknown }> => {
+      const { response: rawJson, modelName, raw } = await deps.jsonChatbot(chat)
 
-    const parsed = safeValidateUnknown(FinalPromptSchema, rawJson)
-    if (!parsed.success) {
-      throw new Error('Failed to parse chatbot response JSON')
+      const parsed = safeValidateUnknown(FinalPromptSchema, rawJson)
+      if (!parsed.success) {
+        throw new InvalidModelOutputError(
+          JSON.stringify(rawJson, null, 2),
+          'Output JSON validation failed:\n' + parsed.issues.map(i => `- ${i.message}`).join('\n'),
+        )
+      }
+
+      return {
+        ...parsed.output,
+        text: parsed.output.prompt,
+        translated: parsed.output.translated,
+        author: modelName?.trim() ?? 'unknown',
+        raw,
+      }
     }
 
-    const finalEn = parsed.output.prompt
-    const finalJa = parsed.output.translated
+    const payload = await pRetry(attempt, {
+      retries: 3,
+      minTimeout: 10,
+      maxTimeout: 20,
+      onFailedAttempt: ({ error }) => {
+        if (error instanceof InvalidModelOutputError) {
+          // Feed the content of the parse error back to the LLM and retry
+          chat.push({ role: 'assistant', text: error.modelResponse })
+          chat.push({ role: 'user', text: error.message })
+        }
+      },
+    })
 
-    const payload: ImagePrompt & { raw?: unknown } = {
-      ...parsed.output,
-      translated: finalJa,
-      text: finalEn,
-      author: modelName?.trim() ?? 'unknown',
-    }
-
-    if (options?.includeRaw) {
-      payload.raw = raw
+    if (!options?.includeRaw) {
+      delete payload.raw
     }
 
     return payload
