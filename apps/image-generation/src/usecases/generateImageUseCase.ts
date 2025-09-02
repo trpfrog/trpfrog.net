@@ -1,7 +1,8 @@
+import pRetry, { AbortError } from 'p-retry'
 import dedent from 'ts-dedent'
 
 import { AssetsRepo } from '../domain/repos/assets-repo'
-import { TextToImage } from '../domain/services/text-to-image'
+import { InvalidTextToImageInputError, TextToImage } from '../domain/services/text-to-image'
 import { base64ArrayBuffer } from '../lib/base64'
 
 export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRepo: AssetsRepo }) {
@@ -56,7 +57,28 @@ export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRep
         .then(res => res.arrayBuffer())
         .then(ab => base64ArrayBuffer(ab))
 
-      return await deps.textToImage(tsmamiImagePrompt, [tsmamiImageBase64])
+      const attempt = async () => {
+        try {
+          return await deps.textToImage(tsmamiImagePrompt, [tsmamiImageBase64])
+        } catch (e) {
+          if (e instanceof InvalidTextToImageInputError) {
+            // 入力起因のエラーはリトライしない
+            throw new AbortError(e)
+          }
+          throw e
+        }
+      }
+
+      return await pRetry(attempt, {
+        retries: 2,
+        minTimeout: 100,
+        maxTimeout: 200,
+        onFailedAttempt: ({ error, attemptNumber, retriesLeft }) => {
+          console.warn(
+            `[TextToImage] Attempt ${attemptNumber} failed: ${error.message}. Retries left: ${retriesLeft}`,
+          )
+        },
+      })
     } catch (e) {
       console.error(e)
       throw new Error('Failed to generate image')

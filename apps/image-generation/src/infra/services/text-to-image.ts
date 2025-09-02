@@ -7,9 +7,13 @@ import {
   ApiError,
 } from '@google/genai'
 import { getContext } from 'hono/context-storage'
-import pRetry, { AbortError } from 'p-retry'
 
 import { GeneratedImage } from '../../domain/entities/generation-result'
+import {
+  InvalidTextToImageInputError,
+  TextToImage,
+  UnexpectedTextToImageModelResponseError,
+} from '../../domain/services/text-to-image'
 import { Env } from '../../env'
 
 function getImagePartFromResponse(
@@ -28,7 +32,10 @@ function getImagePartFromResponse(
   }
 }
 
-export function createGeminiImageGenerator(params: { modelName: string; apiKey?: string }) {
+export function createGeminiImageGenerator(params: {
+  modelName: string
+  apiKey?: string
+}): TextToImage {
   return async (text: string, inputImageBase64?: string[]): Promise<GeneratedImage> => {
     const c = getContext<Env>()
     const apiKey = params.apiKey ?? c.env.GEMINI_API_KEY
@@ -42,53 +49,39 @@ export function createGeminiImageGenerator(params: { modelName: string; apiKey?:
       })
     }
 
-    // Inference
-    const inference = async () => {
-      const response = await ai.models
-        .generateContent({
-          model: params.modelName,
-          contents: [createUserContent(userContents)],
-        })
-        .catch(e => {
-          // こちら起因のエラーならばリトライしない
-          if (e instanceof ApiError && e.status >= 400 && e.status < 500) {
-            console.error(
-              `Gemini client error (${e.status}). Abort without retry.\nRequest:`,
-              text,
-              '\nError:',
-              e,
-            )
-            throw new AbortError(e as Error)
-          }
-          console.error('Internal Error in Gemini:', e, '\nRequest:', text)
-          throw e
-        })
-
-      // Extract images
-      const imagePart = getImagePartFromResponse(response)
-      if (!imagePart?.base64) {
-        console.error('Gemini returned no image or it was filtered')
-        throw new Error('Failed to generate image')
-      }
-      return imagePart
-    }
-
-    const result = await pRetry(inference, {
-      retries: 2,
-      onFailedAttempt: ({ error, attemptNumber, retriesLeft }) => {
-        console.warn(
-          `[Gemini] Attempt ${attemptNumber} failed: ${error.message}. Retries left: ${retriesLeft}`,
+    // Inference (no retry here)
+    const response = await ai.models
+      .generateContent({
+        model: params.modelName,
+        contents: [createUserContent(userContents)],
+      })
+      .catch(e => {
+        // 入力が不正（クライアント側の問題）
+        if (e instanceof ApiError && e.status >= 400 && e.status < 500) {
+          console.error(
+            `Gemini client error (${e.status}). Abort without retry.\nRequest:`,
+            text,
+            '\nError:',
+            e,
+          )
+          throw new InvalidTextToImageInputError('Invalid input for Gemini TextToImage', {
+            cause: e,
+          })
+        }
+        console.error('Gemini unexpected error:', e, '\nRequest:', text)
+        throw new UnexpectedTextToImageModelResponseError(
+          'Unexpected error from Gemini TextToImage',
+          { cause: e },
         )
-      },
-    })
-      .then(res => ({ success: true as const, data: res }))
-      .catch(err => ({ success: false as const, error: err }))
+      })
 
-    if (!result.success) {
-      console.error('Gemini image generation failed:', result.error)
-      throw new Error('Failed to generate image')
+    // Extract images
+    const imagePart = getImagePartFromResponse(response)
+    if (!imagePart?.base64) {
+      console.error('Gemini returned no image or it was filtered')
+      throw new UnexpectedTextToImageModelResponseError('Model returned no image')
     }
-    const { base64, mimeType = 'image/png' } = result.data
+    const { base64, mimeType = 'image/png' } = imagePart
 
     // Decode base64 to ArrayBuffer using atob (Workers)
     let arrayBuffer: ArrayBuffer
@@ -100,7 +93,9 @@ export function createGeminiImageGenerator(params: { modelName: string; apiKey?:
       arrayBuffer = bytes.buffer
     } catch (e) {
       console.error('Failed to decode base64 image:', e)
-      throw new Error('Failed to generate image')
+      throw new UnexpectedTextToImageModelResponseError('Invalid base64 image from model', {
+        cause: e,
+      })
     }
 
     return {
