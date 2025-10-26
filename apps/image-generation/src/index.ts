@@ -14,7 +14,7 @@ const app = createApp(
     imageMetadataRepo: imageMetadataRepoCloudflareD1,
     imageUpdateStatusRepo: imageUpdateStatusCloudflareKV,
     textToImage: createGeminiImageGenerator({
-      modelName: 'gemini-2.5-flash-image-preview',
+      modelName: 'gemini-2.5-flash-image',
     }),
     jsonChatbot: createOpenAIChatLLMJson({
       model: 'gpt-5-mini-2025-08-07',
