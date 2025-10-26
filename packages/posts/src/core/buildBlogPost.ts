@@ -1,6 +1,6 @@
 import { validate, InferSchemaInput } from '@trpfrog.net/utils'
-import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 import matter from 'gray-matter'
+import { OverrideProperties } from 'type-fest'
 import * as v from 'valibot'
 
 import {
@@ -18,10 +18,7 @@ import {
 import { preprocess } from './preprocess.ts'
 
 const BlogPostBuildOptionSchema = v.object({
-  pagePos1Indexed: v.optional(
-    vNarrowInputType<BlogPageNumber>(BlogPageNumberSchema),
-    BLOG_PAGE_NUMBER__1,
-  ),
+  pagePos1Indexed: v.optional(BlogPageNumberSchema, BLOG_PAGE_NUMBER__1),
   showPreviewCheckpoint: v.optional(v.boolean(), false),
   previewContentId: v.optional(v.string()),
   metadataOnly: v.optional(v.boolean(), false),
@@ -30,11 +27,18 @@ const BlogPostBuildOptionSchema = v.object({
 
 export class InvalidPagePositionError extends Error {
   constructor(pagePosition: unknown) {
-    super(`Invalid page position: ${pagePosition}`)
+    super(`Invalid page position: ${String(pagePosition)}`)
   }
 }
 
-export type BlogPostBuildOption = InferSchemaInput<typeof BlogPostBuildOptionSchema>
+export type BlogPostBuildOption = OverrideProperties<
+  InferSchemaInput<typeof BlogPostBuildOptionSchema>,
+  {
+    // We want to accept only BlogPageNumber type
+    // although the inferred input type of BlogPageNumberSchema is string | number
+    pagePos1Indexed?: BlogPageNumber
+  }
+>
 
 export function buildBlogPost(
   slug: string,
@@ -51,7 +55,7 @@ export function buildBlogPost(
     .split('\n')
     .filter(e => /^(!\[)|(<img)|(image[234]?:)/.test(e)).length
 
-  const pageContent = options?.metadataOnly
+  const pageContent = options.metadataOnly
     ? []
     : preprocess(matterResult.content, options.pagePos1Indexed)
 
@@ -70,7 +74,7 @@ export function buildBlogPost(
     currentPage: options.pagePos1Indexed,
     readTime: computeReadTimeSecondFrom(matterResult.content, options.readTimeOption),
     numberOfPhotos,
-    previewContentId: options?.previewContentId,
+    previewContentId: options.previewContentId,
     // temporary, will be overwritten below
     markdown: '',
   }

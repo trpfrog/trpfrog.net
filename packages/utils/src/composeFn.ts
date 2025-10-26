@@ -31,6 +31,7 @@ type Compose<Fns extends AnyFunc[]> = ComposeAll<Fns>
 
 // composeFunctions の実装
 export function composeFunctions<Fns extends AnyFunc[]>(...fns: Fns): Compose<Fns> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- 型パズルの都合で any を使う
   return ((x: any) => fns.reduceRight((v, f) => f(v), x)) as Compose<Fns>
 }
 
@@ -41,5 +42,6 @@ type Reverse<T extends any[]> = T extends [infer First, ...infer Rest]
 
 // pipeFunctions の実装
 export function pipeFunctions<Fns extends AnyFunc[]>(...fns: Fns): Compose<Reverse<Fns>> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- 型パズルの都合で any を使う
   return ((x: any) => fns.reduce((v, f) => f(v), x)) as Compose<Reverse<Fns>>
 }

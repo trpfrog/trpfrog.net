@@ -11,13 +11,13 @@ const parseFootnote = (content: string) => {
 
   const tmp = content.split(regex)
   content = ''
-  for (const i in footnotes) {
-    content += tmp[i] + `[^${parseInt(i, 10) + 1}]`
+  for (let i = 0; i < footnotes.length; i++) {
+    content += tmp[i] + `[^${i + 1}]`
   }
   content += tmp[tmp.length - 1]
 
-  for (const i in footnotes) {
-    content += `\n[^${parseInt(i, 10) + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
+  for (let i = 0; i < footnotes.length; i++) {
+    content += `\n[^${i + 1}]: ${footnotes[i].slice(2, footnotes[i].length - 2)}`
   }
 
   return content
@@ -89,7 +89,7 @@ export const preprocess = (
       .join('<!-- window break -->')
   }
 
-  const targetPageIdx = pageIdx1Indexed === 'all' ? 0 : (pageIdx1Indexed ?? 1) - 1
+  const targetPageIdx = pageIdx1Indexed === 'all' ? 0 : pageIdx1Indexed - 1
 
   const page = head + markdown.split(pageBreakRegex)[targetPageIdx]
 

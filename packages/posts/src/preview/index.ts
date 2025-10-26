@@ -48,7 +48,7 @@ export function createPreviewClient(args: {
     serviceDomain: args.serviceDomain,
   })
   return async (contentId: string) => {
-    const data = await client.get({
+    const data: unknown = await client.get({
       endpoint: args.endpoint,
       contentId,
     })

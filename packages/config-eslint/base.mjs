@@ -18,7 +18,23 @@ const namePrefix = '@trpfrog.net/config-eslint/base'
 export const createESLintConfig = (...userConfig) =>
   tseslint.config(
     eslint.configs.recommended,
-    ...tseslint.configs.strict,
+
+    // Linting with type information
+    // https://typescript-eslint.io/getting-started/typed-linting/
+    tseslint.configs.strictTypeChecked,
+    {
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+          tsconfigRootDir: import.meta.dirname,
+        },
+      },
+    },
+    {
+      files: ['*.js', '*.mjs', '*.cjs', '*.jsx'],
+      ...tseslint.configs.disableTypeChecked,
+    },
+
     {
       name: `${namePrefix}/ignores`,
       ignores: ['storybook-static', 'out', 'dist', 'build', 'coverage', '.wrangler'],
@@ -149,6 +165,24 @@ export const createESLintConfig = (...userConfig) =>
               ]),
             ),
           },
+        ],
+      },
+    },
+    {
+      name: `${namePrefix}/base-rules`,
+      files: ['**/*.{js,ts,mjs,cjs,jsx,tsx}'],
+      rules: {
+        // Error を throw するときに cause に元のエラーを渡すことを強制
+        'preserve-caught-error': 'error',
+      },
+    },
+    {
+      name: `${namePrefix}/base-ts-rules`,
+      files: ['**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/restrict-template-expressions': [
+          'error',
+          { allowNumber: true, allowBoolean: true },
         ],
       },
     },

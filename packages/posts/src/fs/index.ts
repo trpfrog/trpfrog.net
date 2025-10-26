@@ -27,6 +27,7 @@ export function readMarkdownFromSlug(slug: string) {
  * @param slug
  * @param option
  */
+// eslint-disable-next-line @typescript-eslint/require-await -- 将来的に非同期処理を入れる可能性があるので一旦 async にしておく
 export async function readBlogPost(slug: string, option?: BlogPostBuildOption): Promise<BlogPost> {
   const fileContents = readMarkdownFromSlug(slug)
   return buildBlogPost(slug, fileContents, option)
@@ -46,6 +47,7 @@ function readAllMarkdownFileNames() {
 /**
  * Read all slugs
  */
+// eslint-disable-next-line @typescript-eslint/require-await -- 将来的に非同期処理を入れる可能性があるので一旦 async にしておく
 export async function readAllSlugs(): Promise<string[]> {
   const fileNames = readAllMarkdownFileNames()
   return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
