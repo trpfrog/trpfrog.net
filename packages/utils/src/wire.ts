@@ -33,6 +33,7 @@ export class DependencyBuilder<
    * @param deps - An object of dependencies or a function that returns such an object.
    * @param overwrite - A boolean indicating whether to overwrite existing dependencies.
    * @returns A new instance of DependencyBuilder with the injected dependencies.
+   * @deprecated
    */
   private internalInject<NewDeps extends object>(
     deps: NewDeps | ((resolved: { [K in keyof TResolved]: TResolved[K] }) => NewDeps),
@@ -48,6 +49,7 @@ export class DependencyBuilder<
       }
       const func = this.funcs[key]
       const dep = newDeps[key]
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- これは廃止予定なので一旦無視
       newResolved[key] = func(dep)
     }
 
@@ -70,6 +72,7 @@ export class DependencyBuilder<
       [K in keyof TFuncs]: Parameters<TFuncs[K]>[0]
     }>,
   >(deps: NewDeps | ((resolved: { [K in keyof TResolved]: TResolved[K] }) => NewDeps)) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- これは廃止予定なので一旦無視
     return this.internalInject<NewDeps>(deps, true)
   }
 
@@ -86,6 +89,7 @@ export class DependencyBuilder<
           [K in keyof TFuncs as K extends keyof TResolved ? never : K]: Parameters<TFuncs[K]>[0]
         }>,
   >(deps: NewDeps | ((resolved: { [K in keyof TResolved]: TResolved[K] }) => NewDeps)) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- これは廃止予定なので一旦無視
     return this.internalInject<NewDeps>(deps, false)
   }
 
@@ -107,6 +111,7 @@ export class DependencyBuilder<
       )
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- これは廃止予定なので一旦無視
     return this.resolved as any
   }
 }

@@ -40,14 +40,6 @@ export function createDepsResolver<
   Fns extends Record<string, (deps: any) => unknown>,
   DepsDict extends { [K in keyof Fns]: Parameters<Fns[K]>[0] },
   DefaultDeps extends Partial<{ [K in keyof DepsDict]: Partial<DepsDict[K]> }>,
-  // prettier-ignore
-  Args extends Simplify<
-    PartialIfAllChildrenAreOptional<{
-      [K in keyof DepsDict]:
-        // Allows all keys from DefaultDeps[K] to be optional
-        SetOptional<DepsDict[K], keyof DefaultDeps[K]>
-    }>
-  >,
   Returns extends Simplify<{ [K in keyof Fns]: ReturnType<Fns[K]> }>,
 >(fns: Fns, defaultDeps?: DefaultDeps) {
   defaultDeps = defaultDeps ?? ({} as DefaultDeps)
@@ -55,7 +47,14 @@ export function createDepsResolver<
   return {
     defaultDeps,
     // TODO: Consider using Proxy to improve performance by lazily resolving the dependencies
-    resolve: (deps: Args): Simplify<Returns> =>
+    resolve: (
+      deps: Simplify<
+        PartialIfAllChildrenAreOptional<{
+          [K in keyof DepsDict]: SetOptional<DepsDict[K], keyof DefaultDeps[K]> // Allows all keys from DefaultDeps[K] to be optional
+        }>
+      >,
+    ): Simplify<Returns> =>
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- 型パズルの都合で any を使う
       Object.fromEntries(
         Object.entries(fns).map(([key, fn]) => [
           key,
@@ -91,6 +90,7 @@ export function createSingleDepsResolver<
   return {
     // FIXME: Fix the type error
     // @ts-expect-error - Error due to mismatch between Args index signature type and string key type,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- 型パズルの都合
     resolve: (deps: Parameters<typeof resolve>[0]['usecase']) => resolve({ usecase: deps }).usecase,
     defaultDeps: defaultDeps2.usecase,
   }

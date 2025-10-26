@@ -23,6 +23,7 @@ export type SearchOption = InferSchemaInput<typeof SearchOptionSchema>
 export const searchBlogPost = async (
   posts: BlogPost[],
   searchOptions?: SearchOption,
+  // eslint-disable-next-line @typescript-eslint/require-await -- 将来的に非同期処理を入れる可能性があるので一旦 async にしておく
 ): Promise<BlogPost[]> => {
   const options = validate(SearchOptionSchema, searchOptions)
   posts = posts.filter(blogPost => !options.tag || blogPost.tags.includes(options.tag))

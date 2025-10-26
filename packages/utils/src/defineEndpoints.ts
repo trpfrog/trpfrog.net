@@ -1,4 +1,5 @@
 import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
+import { Simplify } from 'type-fest'
 import * as v from 'valibot'
 
 const EndpointRecordSchema = v.record(
@@ -72,11 +73,8 @@ export function defineEndpoints<const T extends EndpointRecord>(endpoints: T) {
   }
 
   return parsedEndpoints as {
-    [K in keyof T]: ReturnRecord<
-      T[K]['port'],
-      T[K]['development'],
-      T[K]['production'],
-      T[K]['basePath']
+    [K in keyof T]: Simplify<
+      ReturnRecord<T[K]['port'], T[K]['development'], T[K]['production'], T[K]['basePath']>
     >
   }
 }

@@ -1,6 +1,6 @@
 name = "trpfrog-diffusion"
 compatibility_date = "2023-12-01"
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_flags = [ "nodejs_compat", "nodejs_compat_populate_process_env" ]
 routes = [
   { pattern = "api.trpfrog.net/icongen", zone_name = "trpfrog.net" },
   { pattern = "api.trpfrog.net/icongen/*", zone_name = "trpfrog.net" }

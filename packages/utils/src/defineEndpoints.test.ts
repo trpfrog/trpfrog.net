@@ -27,7 +27,7 @@ describe('defineEndpoints', () => {
     })
 
     test('endpoints.api (type)', () => {
-      expectTypeOf(endpoints.api).toMatchTypeOf<{
+      expectTypeOf(endpoints.api).toExtend<{
         port: 3000
         development: 'http://dev.api.local'
         production: 'https://api.example.com'
@@ -45,7 +45,7 @@ describe('defineEndpoints', () => {
     })
 
     test('endpoints.auth (type)', () => {
-      expectTypeOf(endpoints.auth).toMatchTypeOf<{
+      expectTypeOf(endpoints.auth).toExtend<{
         port: 4000
         development: 'http://dev.auth.local'
         production: 'https://auth.example.com'
@@ -70,7 +70,7 @@ describe('defineEndpoints', () => {
     })
 
     test('endpoints.api (type)', () => {
-      expectTypeOf(endpoints.api).toMatchTypeOf<{
+      expectTypeOf(endpoints.api).toExtend<{
         port: 3000
         development: 'http://localhost:3000'
         production: 'https://api.example.com'
@@ -95,7 +95,7 @@ describe('defineEndpoints', () => {
     })
 
     test('endpoints.metrics (type)', () => {
-      expectTypeOf(endpoints.metrics).toMatchTypeOf<{
+      expectTypeOf(endpoints.metrics).toExtend<{
         development: 'https://metrics.example.com'
         production: 'https://metrics.example.com'
         origin: (env: 'development' | 'production' | 'test') => string | null
@@ -120,7 +120,7 @@ describe('defineEndpoints', () => {
     })
 
     test('endpoints.api (type)', () => {
-      expectTypeOf(endpoints.api).toMatchTypeOf<{
+      expectTypeOf(endpoints.api).toExtend<{
         port: 3000
         development: 'http://localhost:3000'
         production: null

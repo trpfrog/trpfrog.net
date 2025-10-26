@@ -30,7 +30,7 @@ const alphaApp = new Hono()
       const slugs = await postFs.readAllSlugs()
       return slugs.filter(s => !s.startsWith('_')).map(slug => ({ slug }))
     }),
-    async c => {
+    c => {
       const slug = c.req.param('slug')
       try {
         const fileContents = postFs.readMarkdownFromSlug(slug)

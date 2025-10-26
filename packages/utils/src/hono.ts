@@ -1,4 +1,3 @@
-import { env } from 'hono/adapter'
 import { cors } from 'hono/cors'
 import { createMiddleware } from 'hono/factory'
 
@@ -8,15 +7,16 @@ type CORSOptions = NonNullable<Parameters<typeof cors>[0]>
 
 export const corsWithNodeEnv = (
   options?: Except<CORSOptions, 'origin'> & {
-    origin: (nodeEnv: 'development' | 'production' | 'test') => string | string[]
+    originFn: (nodeEnv: 'development' | 'production' | 'test') => string | string[]
   },
 ) => {
-  const { origin, ...rest } = options ?? {}
+  const { originFn, ...rest } = options ?? {}
   return createMiddleware(async (c, next) => {
-    const nodeEnv = env(c).NODE_ENV ?? 'production'
+    const nodeEnv = process.env.NODE_ENV ?? 'development'
     const handler = cors({
       ...rest,
-      origin: origin?.(nodeEnv) ?? '*',
+      // @ts-expect-error -- nodeEnv is generally 'development' | 'production' | 'test', TODO: validate
+      origin: originFn?.(nodeEnv) ?? '*',
     })
     await handler(c, next)
   })
