@@ -8,6 +8,7 @@ import webpack from 'webpack'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
+  cacheComponents: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 
   images: {
