@@ -3,13 +3,13 @@ import { inspectRoutes } from 'hono/dev'
 import { handle } from 'hono/vercel'
 import { NextResponse } from 'next/server'
 
-export function createNextMiddleware(app: Hono) {
-  const middlewareApp = new Hono()
-  middlewareApp.route('/', app)
-  middlewareApp.all('*', () => NextResponse.next())
+export function createNextProxy(app: Hono) {
+  const proxyApp = new Hono()
+  proxyApp.route('/', app)
+  proxyApp.all('*', () => NextResponse.next())
 
   return {
-    middleware: handle(middlewareApp),
+    proxy: handle(proxyApp),
     matcher: inspectRoutes(app).map(route => route.path),
   }
 }

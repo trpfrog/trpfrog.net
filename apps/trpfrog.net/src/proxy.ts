@@ -1,14 +1,10 @@
 import { Hono } from 'hono'
 
-import { createNextMiddleware } from '@/lib/hono-middleware.ts'
+import { createNextProxy } from '@/lib/next-hono-proxy'
 
 import { serveBlogMarkdownMiddleware } from './app/blog/serve-blog-markdown-middleware'
 
 const app = new Hono()
-
-export const config = {
-  runtime: 'nodejs',
-}
 
 // keep kawaii query parameter
 const KAWAII_QUERY_PARAM = 'kawaii'
@@ -39,4 +35,4 @@ app.get('/tweets/*', c => {
   return c.text('Under construction...')
 })
 
-export const { middleware } = createNextMiddleware(app)
+export const { proxy } = createNextProxy(app)
