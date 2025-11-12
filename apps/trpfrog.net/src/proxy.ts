@@ -35,4 +35,4 @@ app.get('/tweets/*', c => {
   return c.text('Under construction...')
 })
 
-export const { proxy } = createNextProxy(app)
+export default createNextProxy(app).proxy
