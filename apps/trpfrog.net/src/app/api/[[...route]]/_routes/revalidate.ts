@@ -26,7 +26,7 @@ export const app = new Hono().post(
     }
 
     if (tag) {
-      revalidateTag(tag)
+      revalidateTag(tag, 'max')
     } else if (path) {
       revalidatePath(path)
     }
