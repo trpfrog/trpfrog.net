@@ -8,8 +8,6 @@ import { fetchPost } from '@blog/rpc'
 
 import { validateBlogPath } from '../../validate-path'
 
-export const dynamicParams = true
-
 // TODO: Use more appropriate types for props
 export async function generateStaticParams(props: { params: { slug: string } }) {
   const { slug } = props.params

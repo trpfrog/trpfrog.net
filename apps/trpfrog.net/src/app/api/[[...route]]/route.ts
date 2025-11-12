@@ -6,8 +6,6 @@ import { app as budouxRouter } from './_routes/budoux'
 import { app as revalidateRouter } from './_routes/revalidate'
 import { app as tmpCacheRouter } from './_routes/tmpCache'
 
-export const runtime = 'nodejs'
-
 const app = new Hono()
   .use(trimTrailingSlash())
   .basePath('/api')

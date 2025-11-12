@@ -24,8 +24,6 @@ import {
 } from './components'
 import { ogFonts, ogpImageSize } from './variables'
 
-export const runtime = 'edge'
-
 async function createImageResponseOptions() {
   const imageResponseOptions: ImageResponseOptions = {
     ...ogpImageSize,
