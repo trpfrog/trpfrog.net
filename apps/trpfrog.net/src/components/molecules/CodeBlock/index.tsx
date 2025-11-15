@@ -98,6 +98,8 @@ export function CodeLinkButton(props: { url: string }) {
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
+  'use cache'
+
   const { children, language, showBar, fileName, url, ...rest } = props
 
   if (language) {
