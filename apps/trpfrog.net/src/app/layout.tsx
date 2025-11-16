@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import '@/styles/variables.css'
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
