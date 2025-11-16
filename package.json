@@ -38,6 +38,7 @@
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
+    "arkregex": "catalog:",
     "valibot": "catalog:"
   },
   "pnpm": {
