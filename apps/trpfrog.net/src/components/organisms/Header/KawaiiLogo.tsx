@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrayValues } from 'type-fest'
 
-import { NAVIGATION_LINKS } from '@/components/organisms/Navigation.tsx'
+import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
 import { tv } from '@/lib/tailwind/variants.ts'
 
