@@ -15,7 +15,7 @@ exports[`CodeBlock > snapshot test 1`] = `
         class="tw-flex tw-gap-2"
       >
         <span
-          data-tooltip-id="«r0»"
+          data-tooltip-id="_r_0_"
         >
           <button
             class="tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100"
