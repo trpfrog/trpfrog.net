@@ -495,9 +495,6 @@ catalogs:
     tsr:
       specifier: ^1.3.4
       version: 1.3.4
-    turbo:
-      specifier: ^2.6.3
-      version: 2.6.3
     type-fest:
       specifier: 4.41.0
       version: 4.41.0
@@ -611,7 +608,7 @@ importers:
         specifier: 'catalog:'
         version: 1.3.4(typescript@5.9.3)
       turbo:
-        specifier: 'catalog:'
+        specifier: ^2.6.3
         version: 2.6.3
       type-fest:
         specifier: 'catalog:'

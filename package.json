@@ -14,6 +14,7 @@
   "engines": {
     "node": ">=20"
   },
+  "// NOTE:": "We put the turborepo version directly in package.json because Vercel may read it from here",
   "devDependencies": {
     "@eslint/config-inspector": "catalog:",
     "@evilmartians/lefthook": "catalog:",
@@ -30,7 +31,7 @@
     "prettier-plugin-merge": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:",
     "tsr": "catalog:",
-    "turbo": "catalog:",
+    "turbo": "^2.6.3",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",
