@@ -15,4 +15,4 @@ const app = new Hono()
   // NextResponse.next() を返すことで Next.js のルーティングを継続
   .all('*', () => NextResponse.next())
 
-export const middleware = handle(app)
+export default handle(app)

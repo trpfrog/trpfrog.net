@@ -33,7 +33,6 @@ export function ParseWithBudouX(props: ParseWithBudouXProps) {
     setSupportsWordBreakAutoPhrase(CSS.supports('word-break', 'auto-phrase'))
   }, [])
   return supportsWordBreakAutoPhrase ? (
-    // @ts-expect-error - auto-phrase is not supported by most browsers
     <span style={{ wordBreak: 'auto-phrase' }}>{props.str}</span>
   ) : (
     <LoadingPropsContext value={props}>

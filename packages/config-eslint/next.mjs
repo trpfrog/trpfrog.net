@@ -25,7 +25,7 @@ export const createESLintConfigNext = (...userConfig) =>
     {
       name: `${namePrefix}/allow-default-export-for-nextjs-files`,
       files: [
-        '**/{page,layout,route,loading,not-found,opengraph-image}.{js,jsx,ts,tsx}',
+        '**/{page,layout,route,loading,not-found,opengraph-image,proxy}.{js,jsx,ts,tsx}',
         '**/*.stories.{js,jsx,ts,tsx}',
       ],
       rules: {

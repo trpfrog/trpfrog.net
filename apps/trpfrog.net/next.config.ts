@@ -7,6 +7,8 @@ import webpack from 'webpack'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
+  cacheComponents: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 
   images: {
@@ -27,7 +29,6 @@ const nextConfig: NextConfig = {
       '@fortawesome/free-solid-svg-icons',
       '@fortawesome/react-fontawesome',
     ],
-    reactCompiler: true,
   },
 
   webpack: config => {

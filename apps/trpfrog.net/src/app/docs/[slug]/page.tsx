@@ -16,8 +16,6 @@ import { docsPaths } from '../pages'
 
 import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
   return Object.keys(docsPaths).map(slug => ({
     params: { slug },

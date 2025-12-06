@@ -13,9 +13,7 @@ import { SearchForm } from './SearchForm'
 import { TweetArea } from './TweetArea'
 
 // Prisma does not support Edge without the Data Proxy currently
-export const runtime = 'nodejs' // default
 export const preferredRegion = 'home'
-export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'ツイートデータベース',

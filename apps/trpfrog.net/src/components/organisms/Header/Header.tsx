@@ -1,8 +1,10 @@
 import { Suspense, useMemo, useRef } from 'react'
 
+import { usePathname } from 'next/navigation'
+
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
-import { KawaiiLogoOrNot } from '@/components/organisms/Header/KawaiiLogo.tsx'
+import { KawaiiLogo } from '@/components/organisms/Header/KawaiiLogo'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
 import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMenu'
@@ -12,6 +14,8 @@ import { useFocusTrap } from '@/hooks/useFocusTrap'
 import { tv } from '@/lib/tailwind/variants'
 
 import { HeaderNav } from './HeaderNav'
+
+import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
 const createStyles = tv({
   slots: {
@@ -58,10 +62,24 @@ type Props = {
   title?: React.ReactNode
 }
 
-// TODO: props を握りつぶさない
-export function Header(_props: Props) {
-  const { sticky, visible, visibleShadow } = useHeaderStatus()
-
+function InternalHeader(props: {
+  kawaii?: boolean
+  sticky?: boolean
+  visible?: boolean
+  visibleShadow?: boolean
+  visibleTrpFrog?: boolean
+  visibleSubtitle?: boolean
+  pathname?: string
+}) {
+  const {
+    kawaii = false,
+    sticky = false,
+    visible = false,
+    visibleShadow = false,
+    visibleTrpFrog = false,
+    visibleSubtitle = false,
+    pathname = '/',
+  } = props
   const refCloseButton = useRef<HTMLDivElement>(null)
   const refMobileMenu = useRef<HTMLDivElement>(null)
   const [isOpened, setIsOpened] = useMobileMenuState()
@@ -85,12 +103,15 @@ export function Header(_props: Props) {
         <header className={styles.header()}>
           <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
             <div className="tw-w-fit">
-              {/* TODO: あまり賢い方法ではないのでどうにかする */}
-              <Suspense fallback={<SiteNameWithIcon />}>
-                <KawaiiLogoOrNot>
-                  <SiteNameWithIcon />
-                </KawaiiLogoOrNot>
-              </Suspense>
+              {kawaii ? (
+                <KawaiiLogo />
+              ) : (
+                <SiteNameWithIcon
+                  visibleSubtitle={visibleSubtitle}
+                  visibleTrpFrog={visibleTrpFrog}
+                  pathname={pathname}
+                />
+              )}
             </div>
             <div className={styles.nav_wrapper()}>
               <HeaderNav />
@@ -101,5 +122,33 @@ export function Header(_props: Props) {
       </div>
       <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
     </>
+  )
+}
+
+function ClientHeader() {
+  const kawaii = useIsKawaiiLogo()
+  const { sticky, visible, visibleShadow, visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
+  const pathname = usePathname() ?? '/'
+  return (
+    <InternalHeader
+      kawaii={kawaii}
+      sticky={sticky}
+      visible={visible}
+      visibleShadow={visibleShadow}
+      visibleTrpFrog={visibleTrpFrog}
+      visibleSubtitle={visibleSubtitle}
+      pathname={pathname}
+    />
+  )
+}
+
+export function Header(_props: Props) {
+  return (
+    // useHeaderStatus requires a Suspense boundary, so we provide a fallback here
+    <Suspense
+      fallback={<InternalHeader visible sticky visibleShadow visibleTrpFrog visibleSubtitle />}
+    >
+      <ClientHeader />
+    </Suspense>
   )
 }

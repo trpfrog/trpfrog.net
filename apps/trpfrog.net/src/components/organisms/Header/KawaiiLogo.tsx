@@ -1,14 +1,14 @@
-import { ReactNode, useMemo } from 'react'
+'use client'
+
+import { Suspense } from 'react'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrayValues } from 'type-fest'
 
-import { NAVIGATION_LINKS } from '@/components/organisms/Navigation.tsx'
+import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
+import { getFirstPath } from '@/components/organisms/Navigation/utils'
 
 import { tv } from '@/lib/tailwind/variants.ts'
-
-import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom.ts'
 
 const createKawaiiLogoStyles = tv({
   slots: {
@@ -21,40 +21,63 @@ const createKawaiiLogoStyles = tv({
   },
 })
 
-function usePageInfo(): ArrayValues<typeof NAVIGATION_LINKS> | undefined {
-  const pathname = usePathname()
-  const firstPath = '/' + (pathname.split('/')[1] ?? '')
-  return useMemo(() => NAVIGATION_LINKS.find(link => link.link === firstPath), [firstPath])
+export type KawaiiLogoSubtitle = {
+  label: string
+  href: string
 }
 
-// TODO:
-// useIsKawaiiLogo は Suspense で wrap する必要があるのでコンポーネントを分けたが、
-// 正直この方法で良いのかわからないので調査する
-export function KawaiiLogoOrNot(props: { children: ReactNode }) {
-  const isKawaii = useIsKawaiiLogo()
-  const pageInfo = usePageInfo()
-  const styles = createKawaiiLogoStyles()
-  if (isKawaii) {
-    return (
-      <div className={styles.logo()}>
-        <Link href="/">
-          <img src="/images/kawaii.svg" alt="つまみネット" className={styles.svgLogo()} />
-        </Link>
-        {pageInfo && pageInfo.link !== '/' && (
-          <Link
-            href={pageInfo.link}
-            className={styles.subtitle()}
-            style={{
-              WebkitTextStroke: '5px white',
-              paintOrder: 'stroke fill',
-            }}
-          >
-            {pageInfo.shortName ?? pageInfo.name}
-          </Link>
-        )}
-      </div>
-    )
-  } else {
-    return props.children
+type Props = {
+  subtitle?: KawaiiLogoSubtitle
+}
+
+function createSubtitle(pathname: string | null): KawaiiLogoSubtitle | undefined {
+  const firstPath = getFirstPath(pathname)
+  if (!firstPath) {
+    return undefined
   }
+  const pageInfo = NAVIGATION_LINKS.find(({ link }) => link === firstPath)
+  if (!pageInfo || pageInfo.link === '/') {
+    return undefined
+  }
+  return {
+    label: pageInfo.shortName ?? pageInfo.name,
+    href: pageInfo.link,
+  }
+}
+
+function InternalKawaiiLogo({ subtitle }: Props) {
+  const styles = createKawaiiLogoStyles()
+  return (
+    <div className={styles.logo()}>
+      <Link href="/">
+        <img src="/images/kawaii.svg" alt="つまみネット" className={styles.svgLogo()} />
+      </Link>
+      {subtitle && (
+        <Link
+          href={subtitle.href}
+          className={styles.subtitle()}
+          style={{
+            WebkitTextStroke: '5px white',
+            paintOrder: 'stroke fill',
+          }}
+        >
+          {subtitle.label}
+        </Link>
+      )}
+    </div>
+  )
+}
+
+function ClientKawaiiLogo() {
+  const pathname = usePathname()
+  const subtitle = createSubtitle(pathname)
+  return <InternalKawaiiLogo subtitle={subtitle} />
+}
+
+export function KawaiiLogo() {
+  return (
+    <Suspense fallback={<InternalKawaiiLogo />}>
+      <ClientKawaiiLogo />
+    </Suspense>
+  )
 }

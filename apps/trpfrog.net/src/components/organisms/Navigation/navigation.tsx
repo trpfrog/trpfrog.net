@@ -1,4 +1,7 @@
 'use client'
+
+import { Suspense } from 'react'
+
 import { usePathname } from 'next/navigation'
 
 import { WavyText } from '@/components/atoms/WavyText'
@@ -6,32 +9,9 @@ import { A } from '@/components/wrappers'
 
 import { tv } from '@/lib/tailwind/variants'
 
-type NavigationLinkRecord = {
-  link: string
-  name: string
-  shortName?: string
-  showOnNavBar?: boolean
-}
-
-export const NAVIGATION_LINKS: NavigationLinkRecord[] = [
-  { link: '/', name: 'Home' },
-  { link: '/works', name: 'Works' },
-  { link: '/blog', name: 'Blog' },
-  { link: '/balloon', name: 'Balloons' },
-  { link: '/environment', name: 'Environment', shortName: 'Env' },
-  { link: '/stickers', name: 'Stickers' },
-  { link: '/icons', name: 'Icons' },
-  { link: '/ai-icons', name: 'AI Generated Icons', shortName: 'AI Icons' },
-  { link: '/links', name: 'Links', showOnNavBar: false },
-  { link: '/download', name: 'Downloads', shortName: 'DLC' },
-  {
-    link: '/icon-maker',
-    name: 'Icon Maker',
-    shortName: 'Maker',
-    showOnNavBar: false,
-  },
-  { link: '/walking', name: 'Walking', shortName: 'Walk' },
-]
+import { NAVIGATION_LINKS } from './navigation-links'
+import { PathString } from './types'
+import { getFirstPath } from './utils'
 
 const styles = {
   wrapper: tv({
@@ -57,20 +37,35 @@ const styles = {
   }),
 }
 
-export function Navigation() {
-  const pathname = usePathname()
-  const currentLink = pathname?.split('/').slice(0, 2).join('/')
+function InternalNavigation(props: { pathname: PathString | null }) {
+  const { pathname } = props
+
   return (
     <div className={styles.wrapper()}>
-      <nav className={styles.nav()} aria-label="簡易ナビゲーション">
+      <nav className={styles.nav()} aria-label="サイト全体の簡易ナビゲーション">
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
           ({ link, name, shortName }) => (
-            <A href={link} key={link} className={styles.link({ current: currentLink === link })}>
+            <A href={link} key={link} className={styles.link({ current: pathname === link })}>
               <WavyText text={shortName ?? name} />
             </A>
           ),
         )}
       </nav>
     </div>
+  )
+}
+
+export function ClientNavigation() {
+  const rawPathname = usePathname()
+  const currentPath = getFirstPath(rawPathname)
+  return <InternalNavigation pathname={currentPath} />
+}
+
+export function Navigation() {
+  return (
+    // usePathname requires a Suspense boundary, so we provide a fallback here
+    <Suspense fallback={<InternalNavigation pathname={null} />}>
+      <InternalNavigation pathname={null} />
+    </Suspense>
   )
 }

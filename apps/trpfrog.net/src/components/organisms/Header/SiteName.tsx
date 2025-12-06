@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { usePathname } from 'next/navigation'
-
 import { SITE_NAME } from '@/lib/constants'
 import { tv } from '@/lib/tailwind/variants'
 
@@ -9,6 +7,7 @@ type TitleWithPageNameProps = {
   siteTitle?: string
   pageTitle?: string
   showPageTitle?: boolean
+  pathname: string
 }
 
 const createStyles = tv({
@@ -29,9 +28,8 @@ const createStyles = tv({
   },
 })
 
-function usePageTitle() {
+function usePageTitle(pathname: string) {
   const [pageTitle, setPageTitle] = useState('')
-  const pathname = usePathname()
   useEffect(() => {
     window.setTimeout(() => {
       setPageTitle(document?.title.split(' - ')[0] ?? '')
@@ -41,9 +39,9 @@ function usePageTitle() {
 }
 
 export function SiteName(props: TitleWithPageNameProps) {
-  const pathname = usePathname() ?? '/'
+  const pathname = props.pathname ?? '/'
   const siteTitle = props.siteTitle ?? (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
-  const pageTitleFromHook = usePageTitle()
+  const pageTitleFromHook = usePageTitle(pathname)
   const pageTitle = props.pageTitle ?? pageTitleFromHook
 
   const styles = createStyles({ showPageTitle: props.showPageTitle ?? false })

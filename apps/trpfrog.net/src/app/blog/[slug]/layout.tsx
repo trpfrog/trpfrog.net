@@ -14,8 +14,6 @@ import { fetchPost, fetchPostList, fetchSlugs } from '@blog/rpc'
 
 import styles from './layout.module.css'
 
-export const revalidate = 2592000
-
 export async function generateStaticParams() {
   const slugs = await fetchSlugs()
   return slugs.map(slug => ({ slug }))

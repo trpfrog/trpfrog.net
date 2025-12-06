@@ -7,11 +7,13 @@ import Link from 'next/link'
 import { tv } from '@/lib/tailwind/variants'
 
 import { SiteName } from './SiteName'
-import { useHeaderStatus } from './useHeaderStatus'
 
 type TitleProps = {
   siteTitle?: string
   pageTitle?: string
+  visibleTrpFrog: boolean
+  visibleSubtitle: boolean
+  pathname: string
 }
 
 const createStyles = tv({
@@ -36,7 +38,7 @@ const createStyles = tv({
 })
 
 export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps) {
-  const { visibleTrpFrog, visibleSubtitle } = useHeaderStatus()
+  const { visibleTrpFrog, visibleSubtitle } = props
   const styles = createStyles({
     showTrpFrog: visibleTrpFrog,
   })
@@ -50,6 +52,7 @@ export const SiteNameWithIcon = memo(function SiteNameWithIcon(props: TitleProps
             siteTitle={props.siteTitle}
             pageTitle={props.pageTitle}
             showPageTitle={visibleSubtitle}
+            pathname={props.pathname}
           />
         </Link>
       </div>
