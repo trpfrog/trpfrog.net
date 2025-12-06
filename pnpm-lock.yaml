@@ -549,6 +549,11 @@ overrides:
   ai@<5.0.52: '>=5.0.52'
   jws@=4.0.0: '>=4.0.1'
 
+patchedDependencies:
+  gray-matter@4.0.3:
+    hash: 870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529
+    path: patches/gray-matter@4.0.3.patch
+
 importers:
 
   .:
@@ -989,7 +994,7 @@ importers:
         version: 7.6.5
       gray-matter:
         specifier: 'catalog:'
-        version: 4.0.3
+        version: 4.0.3(patch_hash=870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529)
       hono:
         specifier: 'catalog:'
         version: 4.9.2
@@ -1335,7 +1340,7 @@ importers:
         version: 4.1.0
       gray-matter:
         specifier: 'catalog:'
-        version: 4.0.3
+        version: 4.0.3(patch_hash=870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529)
       microcms-js-sdk:
         specifier: 'catalog:'
         version: 3.2.0
@@ -20371,7 +20376,7 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  gray-matter@4.0.3:
+  gray-matter@4.0.3(patch_hash=870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529):
     dependencies:
       js-yaml: 4.1.1
       kind-of: 6.0.3
