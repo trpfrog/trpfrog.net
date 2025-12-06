@@ -180,3 +180,5 @@ catalog:
   wrangler: 3.105.0
 
 catalogMode: prefer
+
+minimumReleaseAge: 1440
