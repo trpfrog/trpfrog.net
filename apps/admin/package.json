@@ -44,6 +44,6 @@
     "postcss": "catalog:",
     "postcss-preset-mantine": "catalog:",
     "postcss-simple-vars": "catalog:",
-    "tailwindcss": "4.1.11"
+    "tailwindcss": "catalog:"
   }
 }
