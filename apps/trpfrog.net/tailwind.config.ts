@@ -1,8 +1,7 @@
 import sharedConfig from '@trpfrog.net/config-tailwind'
-import { withTV } from 'tailwind-variants/transformer'
 import * as defaultTheme from 'tailwindcss/defaultTheme'
 
-export default withTV({
+export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   presets: [sharedConfig],
   theme: {
@@ -13,4 +12,4 @@ export default withTV({
       inter: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
-})
+}
