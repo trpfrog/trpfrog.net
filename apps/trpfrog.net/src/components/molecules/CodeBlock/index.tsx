@@ -34,17 +34,17 @@ export type CodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'chil
 
 const createStyles = tv({
   slots: {
-    code: 'tw-py-4 sp:tw-py-3',
-    line: 'tw-inline-block tw-w-full tw-px-4 sp:tw-px-3',
+    code: 'tw:py-4 tw:sp:py-3',
+    line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
   variants: {
     showBar: {
-      true: { code: 'tw-py-3' },
+      true: { code: 'tw:py-3' },
       false: {},
     },
     wrap: {
-      true: { code: 'tw-whitespace-pre-wrap' },
-      false: { code: 'tw-w-full tw-min-w-max' },
+      true: { code: 'tw:whitespace-pre-wrap' },
+      false: { code: 'tw:w-full tw:min-w-max' },
     },
   },
   defaultVariants: {
@@ -89,7 +89,7 @@ export function CodeLinkButton(props: { url: string }) {
       <A
         openInNewTab
         href={props.url}
-        className="tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100"
+        className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
       >
         <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
       </A>

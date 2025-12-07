@@ -114,6 +114,7 @@
     "@storybook/react": "catalog:",
     "@storybook/testing-library": "catalog:",
     "@storybook/theming": "catalog:",
+    "@tailwindcss/postcss": "^4.1.17",
     "@testing-library/dom": "catalog:",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
@@ -130,14 +131,13 @@
     "@types/react-modal": "catalog:",
     "@types/webpack": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "autoprefixer": "catalog:",
     "clipboardy": "catalog:",
     "cssnano": "catalog:",
     "postcss": "catalog:",
     "shiki": "catalog:",
     "storybook": "catalog:",
     "storybook-dark-mode": "catalog:",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "catalog:",
     "webpack": "catalog:"
   }
 }

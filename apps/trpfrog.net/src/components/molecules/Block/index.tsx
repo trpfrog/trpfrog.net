@@ -35,7 +35,7 @@ export function Block(props: Props) {
   return (
     <PlainBlock ref={ref} className={`${styles.main_window} ${className}`} {...otherProps}>
       {title && (
-        <H2 icon={h2icon} className="tw-mt-0">
+        <H2 icon={h2icon} className="tw:mt-0">
           {title}
         </H2>
       )}

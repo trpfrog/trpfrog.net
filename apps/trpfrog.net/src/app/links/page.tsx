@@ -21,7 +21,7 @@ export default async function Index() {
           <s>片想いリンクになったやつもある</s>
         </p>
       </Title>
-      <div className="tw-grid tw-grid-cols-3 tw-gap-3 sp:tw-grid-cols-1">
+      <div className="tw:grid tw:grid-cols-3 tw:gap-3 tw:sp:grid-cols-1">
         {mutualLinks.map(record => (
           <MutualLinkBlock record={record} key={record.url} />
         ))}

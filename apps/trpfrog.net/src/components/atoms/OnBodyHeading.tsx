@@ -7,8 +7,8 @@ import { tv } from '@/lib/tailwind/variants'
 
 const style = tv({
   base: [
-    'tw-text-center tw-font-mplus-rounded tw-font-bold',
-    'tw-text-trpfrog-700 dark:tw-text-trpfrog-200',
+    'tw:text-center tw:font-mplus-rounded tw:font-bold',
+    'tw:text-trpfrog-700 tw:dark:text-trpfrog-200',
   ],
 })
 
@@ -23,9 +23,9 @@ export function OnBodyHeading(props: OnBodyHeadingProps) {
 
   return (
     <Wrapper className={style({ className })} {...rest}>
-      {icon && <FontAwesomeIcon icon={icon} className="tw-mr-1" />}
+      {icon && <FontAwesomeIcon icon={icon} className="tw:mr-1" />}
       {children}
-      {icon && <FontAwesomeIcon icon={icon} className="tw-ml-1" />}
+      {icon && <FontAwesomeIcon icon={icon} className="tw:ml-1" />}
     </Wrapper>
   )
 }

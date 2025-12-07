@@ -8,7 +8,7 @@ import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {
-    form: 'tw-flex tw-items-center tw-justify-center tw-gap-1',
+    form: 'tw:flex tw:items-center tw:justify-center tw:gap-1',
   },
 })()
 

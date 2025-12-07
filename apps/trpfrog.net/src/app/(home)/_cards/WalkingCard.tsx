@@ -10,16 +10,16 @@ const backgroundImage = replaceWithLighterImageFormat(
 
 const styles = tv({
   slots: {
-    bg: 'tw-bg-cover tw-bg-center tw-bg-no-repeat sp:tw-h-32',
+    bg: 'tw:bg-cover tw:bg-center tw:bg-no-repeat tw:sp:h-32',
     wrapper: [
-      'tw-flex tw-flex-col tw-items-center tw-justify-between',
-      'tw-bg-gradient-to-b tw-from-zinc-800 tw-via-transparent tw-to-zinc-800',
-      'tw-h-full tw-w-full tw-p-3',
-      'tw-text-center tw-text-xs tw-text-white tw-opacity-90',
+      'tw:flex tw:flex-col tw:items-center tw:justify-between',
+      'tw:bg-linear-to-b tw:from-zinc-800 tw:via-transparent tw:to-zinc-800',
+      'tw:h-full tw:w-full tw:p-3',
+      'tw:text-center tw:text-xs tw:text-white tw:opacity-90',
     ],
-    h2: 'tw-mb-1 tw-text-3xl tw-font-bold',
+    h2: 'tw:mb-1 tw:text-3xl tw:font-bold',
     button: cardButtonStyle({
-      className: 'tw-absolute tw-bottom-3 tw-right-4',
+      className: 'tw:absolute tw:bottom-3 tw:right-4',
     }),
   },
 })()

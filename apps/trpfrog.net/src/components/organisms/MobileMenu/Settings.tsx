@@ -10,8 +10,8 @@ import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom
 
 const styles = tv({
   slots: {
-    settings: 'tw-flex tw-flex-col tw-gap-1',
-    label: 'tw-flex tw-items-center tw-gap-1',
+    settings: 'tw:flex tw:flex-col tw:gap-1',
+    label: 'tw:flex tw:items-center tw:gap-1',
   },
 })()
 

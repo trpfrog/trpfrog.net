@@ -107,7 +107,7 @@ export const Balloon = (props: BalloonProps) => {
         }
       }}
     >
-      <span className="tw-inline-block" id={balloonId} />
+      <span className="tw:inline-block" id={balloonId} />
     </button>
   )
 }

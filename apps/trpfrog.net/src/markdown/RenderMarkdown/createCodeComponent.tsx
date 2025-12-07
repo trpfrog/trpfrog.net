@@ -54,7 +54,7 @@ export function createCodeComponent(context: MarkdownContext = {}) {
       <CodeBlock
         language={languageCode ?? 'text'}
         fileName={fileName ?? languageDisplayName ?? undefined}
-        className="tw-my-4"
+        className="tw:my-4"
         showBar={!hasNoHeaderPrefix}
       >
         {children as string}

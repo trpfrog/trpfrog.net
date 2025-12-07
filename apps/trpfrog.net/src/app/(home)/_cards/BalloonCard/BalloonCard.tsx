@@ -13,21 +13,21 @@ import { useResizableBalloonArray } from './useResizableBalloonArray'
 
 const createStyles = tv({
   slots: {
-    wrapper: 'tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center sp:tw-h-32',
+    wrapper: 'tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:sp:h-32',
     dialog: [
-      'tw-absolute tw-left-0 tw-top-0 tw-z-10 tw-h-full tw-w-full',
-      'tw-flex tw-flex-col tw-items-center tw-justify-center',
-      'tw-gap-1 tw-font-bold tw-backdrop-blur-sm',
+      'tw:absolute tw:left-0 tw:top-0 tw:z-10 tw:h-full tw:w-full',
+      'tw:flex tw:flex-col tw:items-center tw:justify-center',
+      'tw:gap-1 tw:font-bold tw:backdrop-blur-sm',
     ],
     button: cardButtonStyle({ invertColor: true }),
   },
   variants: {
     isBurstAll: {
       true: {
-        dialog: 'tw-opacity-100 tw-delay-500 tw-duration-700',
+        dialog: 'tw:opacity-100 tw:delay-500 tw:duration-700',
       },
       false: {
-        dialog: 'tw-pointer-events-none tw-opacity-0 tw-duration-100',
+        dialog: 'tw:pointer-events-none tw:opacity-0 tw:duration-100',
       },
     },
   },

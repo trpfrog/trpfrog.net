@@ -17,7 +17,7 @@ type ImageNavigationProps = {
 
 export function ImageNavigation(props: ImageNavigationProps) {
   return (
-    <div className="tw-flex tw-items-center tw-justify-center tw-gap-2">
+    <div className="tw:flex tw:items-center tw:justify-center tw:gap-2">
       <RichButton as={Link} href={props.prevHref}>
         &larr;
       </RichButton>

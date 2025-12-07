@@ -9,13 +9,13 @@ import { tv } from '@/lib/tailwind/variants'
 
 const styles = tv({
   slots: {
-    footer: 'tw-bg-trpfrog-700',
-    inner: 'tw-my-2.5 tw-flex tw-items-center tw-justify-between',
-    copyright: 'tw-font-mplus-rounded tw-font-bold tw-text-white/70 pc:tw-text-lg',
-    links: 'tw-space-x-2',
+    footer: 'tw:bg-trpfrog-700',
+    inner: 'tw:my-2.5 tw:flex tw:items-center tw:justify-between',
+    copyright: 'tw:font-mplus-rounded tw:font-bold tw:text-white/70 tw:pc:text-lg',
+    links: 'tw:space-x-2',
     link: [
-      'tw-rounded-full tw-px-3 tw-py-0.5 tw-text-white/70 hover:tw-text-white/100',
-      'tw-bg-trpfrog-500 tw-font-bold',
+      'tw:rounded-full tw:px-3 tw:py-0.5 tw:text-white/70 tw:hover:text-white',
+      'tw:bg-trpfrog-500 tw:font-bold',
     ],
   },
 })()

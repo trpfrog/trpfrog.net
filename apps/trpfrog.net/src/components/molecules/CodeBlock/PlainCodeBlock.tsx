@@ -25,34 +25,34 @@ export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 
 const createStyles = tv({
   slots: {
     bar: [
-      'tw-flex tw-h-fit tw-w-full tw-items-center tw-justify-between',
-      'tw-rounded-t-lg tw-bg-trpfrog-500 tw-px-4 tw-py-1 dark:tw-bg-trpfrog-600',
+      'tw:flex tw:h-fit tw:w-full tw:items-center tw:justify-between',
+      'tw:rounded-t-lg tw:bg-trpfrog-500 tw:px-4 tw:py-1 tw:dark:bg-trpfrog-600',
     ],
-    lang: 'tw-text-xs tw-font-bold tw-text-white',
+    lang: 'tw:text-xs tw:font-bold tw:text-white',
     codeWrapper: [
-      'tw-w-full tw-overflow-clip tw-overflow-x-scroll',
-      'tw-font-mono tw-text-[0.8em] sp:tw-text-xs',
-      'tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600',
+      'tw:w-full tw:overflow-clip tw:overflow-x-scroll',
+      'tw:font-mono tw:text-[0.8em] tw:sp:text-xs',
+      'tw:border tw:border-trpfrog-500 tw:dark:border-trpfrog-600',
     ],
-    code: 'tw-py-4 sp:tw-py-3',
-    line: 'tw-inline-block tw-w-full tw-px-4 sp:tw-px-3',
+    code: 'tw:py-4 tw:sp:py-3',
+    line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
   variants: {
     showBar: {
       true: {
-        codeWrapper: 'tw-rounded-b-lg',
-        code: 'tw-py-3',
+        codeWrapper: 'tw:rounded-b-lg',
+        code: 'tw:py-3',
       },
       false: {
-        codeWrapper: 'tw-rounded-lg',
+        codeWrapper: 'tw:rounded-lg',
       },
     },
     wrap: {
       true: {
-        code: 'tw-whitespace-pre-wrap',
+        code: 'tw:whitespace-pre-wrap',
       },
       false: {
-        code: 'tw-w-full tw-min-w-max',
+        code: 'tw:w-full tw:min-w-max',
       },
     },
   },
@@ -69,7 +69,7 @@ export function CodeLinkButton(props: { url: string }) {
       <A
         openInNewTab
         href={props.url}
-        className="tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100"
+        className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
       >
         <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
       </A>
@@ -97,14 +97,14 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
       {showBar && (
         <div className={styles.bar()}>
           <span className={styles.lang()}>{fileName}</span>
-          <div className="tw-flex tw-gap-2">
+          <div className="tw:flex tw:gap-2">
             {url && <CodeLinkButton url={url} />}
             {copyContent && <CopyButton copyContent={copyContent} />}
           </div>
         </div>
       )}
       <div dangerouslySetInnerHTML={dangerouslySetInnerHTML} className={styles.codeWrapper()}>
-        {children && <pre className="tw-p-1">{children}</pre>}
+        {children && <pre className="tw:p-1">{children}</pre>}
       </div>
     </div>
   )

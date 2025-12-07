@@ -37,13 +37,13 @@ export type H2Props = React.ComponentPropsWithRef<'h2'> & {
 
 const createStyles = tv({
   slots: {
-    h2: ['tw-font-mplus-rounded tw-text-2xl tw-font-extrabold', 'tw-my-3 tw-flex tw-items-center'],
-    icon: 'tw-mr-2 tw-h-8',
+    h2: ['tw:font-mplus-rounded tw:text-2xl tw:font-extrabold', 'tw:my-3 tw:flex tw:items-center'],
+    icon: 'tw:mr-2 tw:h-8',
     text: null,
     anchor: [
-      'tw-absolute -tw-left-7 tw-top-0 tw-pr-2 tw-opacity-0 sp:tw-hidden',
-      'peer-hover:tw-text-gray-300 peer-hover:tw-opacity-100',
-      'hover:tw-text-body-color hover:tw-opacity-100',
+      'tw:absolute tw:-left-7 tw:top-0 tw:pr-2 tw:opacity-0 tw:sp:hidden',
+      'tw:peer-hover:text-gray-300 tw:peer-hover:opacity-100',
+      'tw:hover:text-body-color tw:hover:opacity-100',
     ],
   },
   variants: {
@@ -51,10 +51,10 @@ const createStyles = tv({
       default: null,
       blog: {
         h2: [
-          'tw-relative tw-mt-10 tw-w-full',
-          'tw-border-b-2 tw-border-solid tw-border-b-trpfrog-300',
+          'tw:relative tw:mt-10 tw:w-full',
+          'tw:border-b-2 tw:border-solid tw:border-b-trpfrog-300',
         ],
-        text: 'tw-peer tw-w-full',
+        text: 'tw:peer tw:w-full',
       },
     },
   },

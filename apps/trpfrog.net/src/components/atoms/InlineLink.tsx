@@ -4,9 +4,9 @@ import { tv } from '@/lib/tailwind/variants'
 
 const inlineLinkStyle = tv({
   base: [
-    'tw-inline tw-underline',
-    'tw-text-[forestgreen] visited:tw-text-[olive]',
-    'dark:tw-text-trpfrog-100 dark:visited:tw-text-trpfrog-400',
+    'tw:inline tw:underline',
+    'tw:text-[forestgreen] tw:visited:text-[olive]',
+    'tw:dark:text-trpfrog-100 tw:dark:visited:text-trpfrog-400',
   ],
 })
 

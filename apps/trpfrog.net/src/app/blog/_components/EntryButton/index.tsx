@@ -11,7 +11,7 @@ export function EntryButton(props: { text: string; icon: IconProp; onClick?: () 
       <div className={styles.entry_button_icon}>
         <FontAwesomeIcon icon={props.icon} />
       </div>
-      <span className="tw-inline-block">{props.text}</span>
+      <span className="tw:inline-block">{props.text}</span>
     </RichButton>
   )
 }

@@ -10,29 +10,29 @@ const styles = {
   base: tv({
     extend: plainBlockStyle,
     base: [
-      'tw-relative tw-block tw-h-full tw-w-full',
-      'tw-rounded-xl tw-border-2 tw-border-window-color',
+      'tw:relative tw:block tw:h-full tw:w-full',
+      'tw:rounded-xl tw:border-2 tw:border-window-color',
     ],
   }),
 
   h2: tv({
     base: [
-      'tw-absolute tw-z-10 tw-px-2 tw-pb-0.5',
-      'tw-bg-window-color tw-text-sm tw-font-bold tw-italic tw-leading-tight',
+      'tw:absolute tw:z-10 tw:px-2 tw:pb-0.5',
+      'tw:bg-window-color tw:text-sm tw:font-bold tw:italic tw:leading-tight',
     ],
     variants: {
       position: {
-        'top-right': 'tw-right-0 tw-top-0 tw-rounded-es-lg',
-        'top-left': 'tw-left-0 tw-top-0 tw-rounded-ee-lg',
+        'top-right': 'tw:right-0 tw:top-0 tw:rounded-es-lg',
+        'top-left': 'tw:left-0 tw:top-0 tw:rounded-ee-lg',
       },
     },
   }),
 
   readMore: tv({
     base: [
-      'tw-absolute tw-bottom-0 tw-right-0 tw-z-10 tw-rounded-ss-lg tw-px-2',
-      'tw-translate-x-0.5 -tw-skew-x-12 tw-bg-window-color tw-text-base',
-      'tw-font-bold tw-text-text-color',
+      'tw:absolute tw:bottom-0 tw:right-0 tw:z-10 tw:rounded-ss-lg tw:px-2',
+      'tw:translate-x-0.5 tw:-skew-x-12 tw:bg-window-color tw:text-base',
+      'tw:font-bold tw:text-text-color',
     ],
   }),
 }

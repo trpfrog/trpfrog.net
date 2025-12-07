@@ -21,7 +21,7 @@ export async function Tweet(props: TweetProps) {
   const id = props.id
 
   const fallback = props.fallback ?? (
-    <p className="tw-italic tw-text-center">
+    <p className="tw:italic tw:text-center">
       <b>Tweet not found</b>
       <br />
       <small>
@@ -35,7 +35,7 @@ export async function Tweet(props: TweetProps) {
   }
 
   return (
-    <div className="tw-grid tw-place-items-center">
+    <div className="tw:grid tw:place-items-center">
       <div style={{ width: 'min(550px, 100%)' }}>
         <TweetThemeDataWrapper>
           <Suspense fallback={<TweetSkeleton />}>

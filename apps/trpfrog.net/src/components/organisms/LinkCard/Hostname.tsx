@@ -8,14 +8,14 @@ import { tv } from '@/lib/tailwind/variants'
 
 export const createHostnameStyles = tv({
   slots: {
-    wrapper: 'tw-flex tw-h-4 tw-w-fit tw-items-center tw-gap-0.5',
-    hostname: 'tw-line-clamp-1 tw-h-full tw-opacity-60',
-    favicon: 'tw-aspect-square tw-h-full tw-rounded-sm',
+    wrapper: 'tw:flex tw:h-4 tw:w-fit tw:items-center tw:gap-0.5',
+    hostname: 'tw:line-clamp-1 tw:h-full tw:opacity-60',
+    favicon: 'tw:aspect-square tw:h-full tw:rounded-sm',
   },
   variants: {
     defaultFavicon: {
       true: {
-        favicon: 'tw-opacity-60',
+        favicon: 'tw:opacity-60',
       },
     },
   },

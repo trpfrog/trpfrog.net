@@ -8,11 +8,11 @@ export function LabelledCheckbox(props: {
 }) {
   const id = useId()
   return (
-    <div className="tw-flex tw-items-baseline tw-gap-2">
+    <div className="tw:flex tw:items-baseline tw:gap-2">
       <input
         type="checkbox"
         id={id}
-        className="tw-accent-trpfrog-200"
+        className="tw:accent-trpfrog-200"
         checked={props.checked}
         disabled={props.disabled}
         onChange={e => {

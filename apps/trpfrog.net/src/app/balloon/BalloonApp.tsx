@@ -79,7 +79,7 @@ export function BalloonApp() {
       </Title>
       <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
         <BalloonArray states={balloonState} width={balloonSize} enableSound={isSoundEnabled} />
-        <div id={rewardStartPositionId} className="tw-fixed tw-top-0 tw-left-1/2" />
+        <div id={rewardStartPositionId} className="tw:fixed tw:top-0 tw:left-1/2" />
       </Block>
     </>
   )

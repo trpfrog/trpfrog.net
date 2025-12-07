@@ -10,18 +10,18 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const styles = tv({
   slots: {
-    grid: 'tw-grid tw-h-full tw-grid-cols-3 tw-gap-0.5',
+    grid: 'tw:grid tw:h-full tw:grid-cols-3 tw:gap-0.5',
     wrapper: [
-      'tw-grid-rows tw-grid tw-grid-rows-subgrid',
-      'tw-gap-1 tw-bg-zinc-200 tw-px-1 tw-py-3',
-      '*:tw-text-center',
+      'tw-grid-rows tw:grid tw:grid-rows-subgrid',
+      'tw:gap-1 tw:bg-zinc-200 tw:px-1 tw:py-3',
+      'tw:*:text-center',
     ],
     icon: [
-      'tw-grid tw-place-items-center tw-text-4xl tw-font-bold',
-      'tw-relative tw-top-1.5 tw-drop-shadow',
+      'tw:grid tw:place-items-center tw:text-4xl tw:font-bold',
+      'tw:relative tw:top-1.5 tw:drop-shadow',
     ],
-    title: 'tw-text-sm tw-font-bold tw-drop-shadow-sm',
-    description: 'tw-text-balance tw-text-center tw-text-[10px]',
+    title: 'tw:text-sm tw:font-bold tw:drop-shadow-sm',
+    description: 'tw:text-balance tw:text-center tw:text-[10px]',
   },
 })()
 
@@ -61,19 +61,19 @@ export function FavoritesCard() {
         title="Web開発"
         description="ほかにも便利なツール作りなど"
         icon={<FontAwesomeIcon icon={faCode} />}
-        className="tw-bg-gradient-to-br tw-from-sky-500 tw-to-sky-600 tw-text-white"
+        className="tw:bg-linear-to-br tw:from-sky-500 tw:to-sky-600 tw:text-white"
       />
       <Favorite
         title="散歩"
         icon={<FontAwesomeIcon icon={faWalking} />}
         description="裏道探すのとか好き／地図もよく見る"
-        className="tw-bg-gradient-to-br tw-from-pink-500 tw-to-pink-600 tw-text-white"
+        className="tw:bg-linear-to-br tw:from-pink-500 tw:to-pink-600 tw:text-white"
       />
       <Favorite
         title="漫画・アニメ"
         description="百合をよくみる"
         icon={<FontAwesomeIcon icon={faStar} />}
-        className="tw-bg-gradient-to-br tw-from-yellow-500 tw-to-yellow-600 tw-text-white"
+        className="tw:bg-linear-to-br tw:from-yellow-500 tw:to-yellow-600 tw:text-white"
       />
     </TopCard>
   )

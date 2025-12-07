@@ -19,7 +19,7 @@ export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts:
         <OnBodyHeading icon={faStar}>タグ「{tag}」の新着記事</OnBodyHeading>
         <ArticleGrid>
           {relatedPosts.slice(0, 6).map((e, idx) => (
-            <div key={e.slug} className={idx > 2 ? 'sp:tw-hidden' : ''}>
+            <div key={e.slug} className={idx > 2 ? 'tw:sp:hidden' : ''}>
               <ArticleCard entry={e} />
             </div>
           ))}
@@ -27,7 +27,7 @@ export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts:
 
         {/* PC */}
         {relatedPosts.length > 6 && (
-          <div style={{ textAlign: 'center' }} className="sp:tw-hidden">
+          <div style={{ textAlign: 'center' }} className="tw:sp:hidden">
             <RichButton as={Link} href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
             </RichButton>
@@ -36,7 +36,7 @@ export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts:
 
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
-          <div style={{ textAlign: 'center' }} className="pc:tw-hidden">
+          <div style={{ textAlign: 'center' }} className="tw:pc:hidden">
             <RichButton as={Link} href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
             </RichButton>

@@ -39,7 +39,7 @@ export default async function Index() {
           <Block key={metadata.title} title={metadata.title} h2icon={metadata.h2icon}>
             {metadata.image && (
               <Image
-                className="tw-mx-auto tw-my-4 tw-bg-transparent"
+                className="tw:mx-auto tw:my-4 tw:bg-transparent"
                 src={metadata.image?.path}
                 width={metadata.image?.width}
                 height={metadata.image?.height}

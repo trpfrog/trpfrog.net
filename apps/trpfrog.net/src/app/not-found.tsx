@@ -17,16 +17,16 @@ export default function NotFound() {
           <div style={{ fontSize: '3em', color: 'var(--header-color)' }}>404</div>
           <div style={{ fontSize: '0.9em' }}>Not Found</div>
         </h1>
-        <div className="tw-mt-4 tw-grid tw-place-items-center">
+        <div className="tw:mt-4 tw:grid tw:place-items-center">
           <Image src="/images/404.png" width={300} height={300} alt="" />
         </div>
         <div style={{ padding: '0 1em' }}>
           <p>
-            <span className="tw-inline-block">このページは</span>
-            <span className="tw-inline-block">存在しません。</span>
+            <span className="tw:inline-block">このページは</span>
+            <span className="tw:inline-block">存在しません。</span>
             <br />
-            <span className="tw-inline-block">サイトの工事中または</span>
-            <span className="tw-inline-block">リンクが誤っている可能性があります。</span>
+            <span className="tw:inline-block">サイトの工事中または</span>
+            <span className="tw:inline-block">リンクが誤っている可能性があります。</span>
           </p>
           <p>
             <RichButton as={Link} href={'/'}>

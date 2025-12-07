@@ -16,7 +16,7 @@ export type ImagePaths = {
 
 export function ImageList(props: ImageListProps) {
   return (
-    <div className="tw-my-7 tw-grid tw-grid-cols-[repeat(auto-fit,minmax(100px,1fr))] tw-gap-4">
+    <div className="tw:my-7 tw:grid tw:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] tw:gap-4">
       {props.images.map(({ src, url, alt }, idx) => (
         <Link href={url} key={src}>
           <Image

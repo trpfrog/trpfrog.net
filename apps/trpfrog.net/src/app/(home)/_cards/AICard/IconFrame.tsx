@@ -16,33 +16,33 @@ import { requestUpdateIcon } from './actions'
 const createStyles = tv({
   slots: {
     wrapper: 'tw-@container',
-    layout: 'tw-flex tw-h-full tw-flex-col @sm:tw-flex-row',
+    layout: 'tw:flex tw:h-full tw:flex-col tw:@sm:flex-row',
     picture: [
-      'tw-aspect-square tw-w-full @sm:tw-w-1/3 @sm:tw-scale-105',
-      'tw-font-mplus-rounded tw-text-2xl tw-font-bold',
-      'tw-flex tw-items-center tw-justify-center',
+      'tw:aspect-square tw:w-full tw:@sm:w-1/3 tw:@sm:scale-105',
+      'tw:font-mplus-rounded tw:text-2xl tw:font-bold',
+      'tw:flex tw:items-center tw:justify-center',
     ],
     caption: [
-      'tw-flex-1 tw-gap-1 tw-px-2 tw-text-center',
-      'tw-flex tw-flex-col tw-items-center tw-justify-center',
+      'tw:flex-1 tw:gap-1 tw:px-2 tw:text-center',
+      'tw:flex tw:flex-col tw:items-center tw:justify-center',
     ],
-    english: 'tw-text-balance tw-text-lg tw-font-black tw-italic tw-leading-tight',
-    japanese: 'tw-text-balance tw-text-[11px]',
-    aiGeneratedMsg: 'tw-text-[9px] tw-leading-none tw-text-gray-500',
-    poweredBy: 'tw-text-center tw-text-[10px] tw-leading-none tw-text-gray-500',
+    english: 'tw:text-balance tw:text-lg tw:font-black tw:italic tw:leading-tight',
+    japanese: 'tw:text-balance tw:text-[11px]',
+    aiGeneratedMsg: 'tw:text-[9px] tw:leading-none tw:text-gray-500',
+    poweredBy: 'tw:text-center tw:text-[10px] tw:leading-none tw:text-gray-500',
   },
   variants: {
     status: {
       ok: {
-        english: `tw-bg-gradient-to-br tw-from-blue-400 tw-to-pink-400 tw-bg-clip-text tw-text-transparent`,
+        english: `tw:bg-linear-to-br tw:from-blue-400 tw:to-pink-400 tw:bg-clip-text tw:text-transparent`,
       },
       loading: {
-        picture: 'tw-bg-gray-200 tw-text-black',
-        english: 'tw-h-4 tw-w-2/3 tw-animate-pulse tw-rounded tw-bg-zinc-400',
-        japanese: 'tw-h-3 tw-w-1/3 tw-animate-pulse tw-rounded tw-bg-zinc-400',
+        picture: 'tw:bg-gray-200 tw:text-black',
+        english: 'tw:h-4 tw:w-2/3 tw:animate-pulse tw:rounded tw:bg-zinc-400',
+        japanese: 'tw:h-3 tw:w-1/3 tw:animate-pulse tw:rounded tw:bg-zinc-400',
       },
       error: {
-        picture: 'tw-bg-red-800 tw-text-white',
+        picture: 'tw:bg-red-800 tw:text-white',
       },
     },
   },

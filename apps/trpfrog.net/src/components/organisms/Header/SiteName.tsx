@@ -13,16 +13,16 @@ type TitleWithPageNameProps = {
 const createStyles = tv({
   slots: {
     wrapper: [
-      'tw-items-left tw-translate-y-0.5 *:tw-leading-none',
-      'tw-flex tw-flex-col tw-gap-0.5 tw-text-white hover:tw-text-trpfrog-50',
+      'tw-items-left tw:translate-y-0.5 tw:*:leading-none',
+      'tw:flex tw:flex-col tw:gap-0.5 tw:text-white tw:hover:text-trpfrog-50',
     ],
-    title: 'tw-text-[1.7rem] tw-font-extrabold sp:tw-text-[1.4rem]',
-    subtitle: 'tw-line-clamp-1 tw-text-base tw-font-semibold sp:tw-text-[11px]',
+    title: 'tw:text-[1.7rem] tw:font-extrabold tw:sp:text-[1.4rem]',
+    subtitle: 'tw:line-clamp-1 tw:text-base tw:font-semibold tw:sp:text-[11px]',
   },
   variants: {
     showPageTitle: {
       false: {
-        subtitle: 'tw-hidden',
+        subtitle: 'tw:hidden',
       },
     },
   },

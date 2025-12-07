@@ -9,8 +9,8 @@ import css from './page.module.css'
 
 const styles = tv({
   slots: {
-    grid: 'tw-grid tw-gap-3 sp:tw-gap-2',
-    subgrid: 'tw-col-span-full tw-grid tw-grid-cols-subgrid',
+    grid: 'tw:grid tw:gap-3 tw:sp:gap-2',
+    subgrid: 'tw:col-span-full tw:grid tw:grid-cols-subgrid',
   },
 })()
 

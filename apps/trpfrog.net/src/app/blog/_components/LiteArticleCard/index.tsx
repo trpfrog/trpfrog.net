@@ -13,12 +13,12 @@ import { formatDateToDisplay } from '@/lib/date'
 import { tv } from '@/lib/tailwind/variants'
 
 const thumbnailStyle = tv({
-  base: 'tw-w-28 tw-object-cover tw-rounded-[10px]',
+  base: 'tw:w-28 tw:object-cover tw:rounded-[10px]',
   variants: {
     noThumbnail: {
       true: [
-        'tw-bg-[--header-color] tw-color-[--body-background]',
-        'tw-grid tw-place-items-center tw-text-2xl',
+        'tw:bg-(--header-color) tw-color-[--body-background]',
+        'tw:grid tw:place-items-center tw:text-2xl',
       ],
     },
   },
@@ -38,7 +38,7 @@ function Thumbnail(props: { thumbnail?: string; title: string }) {
 
 function TagList({ tags }: { tags: string[] }) {
   return (
-    <div className="tw-flex tw-flex-row tw-gap-1 tw-items-end">
+    <div className="tw:flex tw:flex-row tw:gap-1 tw:items-end">
       {tags.map(tag => (
         <span
           className="tw-text-sm tw-px-2 tw-py-1 tw-rounded-full tw-border-2
@@ -63,12 +63,12 @@ function Descriptions(props: {
 
   return (
     <>
-      <div className="tw-leading-[1.1] tw-text-sm tw-opacity-70">
+      <div className="tw:leading-[1.1] tw:text-sm tw:opacity-70">
         <strong>{formatDateToDisplay(props.date)}</strong>
         {props.description && ' ・ ' + props.description}
       </div>
 
-      <div className="tw-leading-[1.1] tw-text-sm tw-opacity-70">
+      <div className="tw:leading-[1.1] tw:text-sm tw:opacity-70">
         {[
           `${readTimeMinutes} 分`,
           props.numberOfPhotos && `${props.numberOfPhotos} 枚の写真`,
@@ -96,10 +96,10 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
         hover:tw-shadow-[0_8px_0_var(--window-bottom-color)] hover:tw-translate-y-[-2px]
         active:tw-translate-y-[6px] active:tw-shadow-none focus-visible:tw-outline-[--header-color]"
     >
-      <PlainBlock className="tw-flex tw-flex-row tw-gap-2.5 tw-p-2.5">
+      <PlainBlock className="tw:flex tw:flex-row tw:gap-2.5 tw:p-2.5">
         <Thumbnail thumbnail={entry.thumbnail} title={entry.title} />
-        <div className="tw-flex-1 tw-flex tw-flex-col tw-gap-1.75">
-          <div className="tw-text-lg tw-font-bold tw-font-mplus-rounded sp:tw-text-base">
+        <div className="tw:flex-1 tw:flex tw:flex-col tw:gap-1.75">
+          <div className="tw:text-lg tw:font-bold tw:font-mplus-rounded tw:sp:text-base">
             {entry.title}
           </div>
           {entry.thumbnail && <TagList tags={tags} />}

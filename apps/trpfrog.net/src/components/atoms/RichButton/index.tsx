@@ -10,29 +10,29 @@ type Props<T extends React.ElementType> = {
 
 const style = tv({
   base: [
-    'tw-inline-flex tw-justify-center tw-items-center',
-    'tw-leading-none tw-py-3 tw-px-4 tw-rounded-full',
-    'tw-cursor-pointer tw-transition',
-    'tw-bg-[--link-button-color] tw-text-[--link-button-font-color]',
-    'tw-shadow-[0_4px_0_var(--link-button-color-bottom)]',
-    'tw-font-mplus-rounded tw-font-bold tw-text-center',
-    'tw-no-underline tw-select-none',
-    'tw-my-1', // ボタンの可動域分のマージン
+    'tw:inline-flex tw:justify-center tw:items-center',
+    'tw:leading-none tw:py-3 tw:px-4 tw:rounded-full',
+    'tw:cursor-pointer tw:transition',
+    'tw:bg-(--link-button-color) tw:text-(--link-button-font-color)',
+    'tw:shadow-[0_4px_0_var(--link-button-color-bottom)]',
+    'tw:font-mplus-rounded tw:font-bold tw:text-center',
+    'tw:no-underline tw:select-none',
+    'tw:my-1', // ボタンの可動域分のマージン
   ],
   variants: {
     disabled: {
       true: [
-        'tw-bg-gray-400',
-        'tw-transform tw-translate-y-1 tw-shadow-none',
-        'tw-pointer-events-none',
-        'tw-cursor-default',
+        'tw:bg-gray-400',
+        'tw:transform tw:translate-y-1 tw:shadow-none',
+        'tw:pointer-events-none',
+        'tw:cursor-default',
       ],
       false: [
-        'focus-visible:tw-ring-4 focus-visible:tw-ring-inset focus-visible:tw-ring-trpfrog-600 focus-visible:tw-outline-none',
-        'pc:hover:-tw-translate-y-0.5',
-        'pc:hover:tw-shadow-[0_6px_0_var(--link-button-color-bottom)]',
-        'active:!tw-translate-y-1',
-        'active:!tw-shadow-[0_0_0_var(--link-button-color-bottom)]',
+        'tw:focus-visible:ring-4 tw:focus-visible:ring-inset tw:focus-visible:ring-trpfrog-600 tw:focus-visible:outline-hidden',
+        'tw:pc:hover:-translate-y-0.5',
+        'tw:pc:hover:shadow-[0_6px_0_var(--link-button-color-bottom)]',
+        'tw:active:translate-y-1!',
+        'tw:active:shadow-[0_0_0_var(--link-button-color-bottom)]!',
       ],
     },
   },

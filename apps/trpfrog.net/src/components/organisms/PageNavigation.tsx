@@ -69,7 +69,7 @@ export function PageNavigation(props: {
   )
 
   return (
-    <div className="tw-flex tw-gap-1 tw-flex-wrap tw-justify-center">
+    <div className="tw:flex tw:gap-1 tw:flex-wrap tw:justify-center">
       {showNextPrevButtons && (
         <Button
           pageNo={currentPage - 1}

@@ -20,22 +20,22 @@ interface ImageProps
 
 const createSpoilerStyles = tv({
   slots: {
-    blur: ['tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full', 'tw-rounded-md tw-duration-500'],
+    blur: ['tw:absolute tw:left-0 tw:top-0 tw:h-full tw:w-full', 'tw:rounded-md tw:duration-500'],
     button: [
-      'tw-absolute tw-px-4 tw-py-2 tw-text-black',
-      'tw-cursor-pointer tw-font-bold tw-backdrop-blur',
-      'tw-bg-white/50 tw-duration-200 hover:tw-bg-white/70',
+      'tw:absolute tw:px-4 tw:py-2 tw:text-black',
+      'tw:cursor-pointer tw:font-bold tw:backdrop-blur',
+      'tw:bg-white/50 tw:duration-200 tw:hover:bg-white/70',
     ],
   },
   variants: {
     blur: {
       true: {
-        blur: 'tw-backdrop-blur-2xl has-[:hover]:tw-backdrop-blur-md',
-        button: `tw-left-1/2 tw-top-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2 tw-rounded-full`,
+        blur: 'tw:backdrop-blur-2xl tw:has-[:hover]:backdrop-blur-md',
+        button: `tw:left-1/2 tw:top-1/2 tw:-translate-x-1/2 tw:-translate-y-1/2 tw:rounded-full`,
       },
       false: {
-        blur: 'tw-pointer-events-none tw-block tw-backdrop-blur-none',
-        button: `tw-pointer-events-auto tw-left-0 tw-top-0 tw-rounded-ee-md tw-rounded-ss-md tw-px-3 tw-py-1 tw-text-sm`,
+        blur: 'tw:pointer-events-none tw:block tw:backdrop-blur-none',
+        button: `tw:pointer-events-auto tw:left-0 tw:top-0 tw:rounded-ee-md tw:rounded-ss-md tw:px-3 tw:py-1 tw:text-sm`,
       },
     },
   },
@@ -55,11 +55,11 @@ function ImageSpoiler() {
 
 const imageStyles = tv({
   slots: {
-    wrapper: 'tw-relative',
+    wrapper: 'tw:relative',
     image: [
-      'tw-break-inside-avoid',
-      'tw-sh tw-max-w-full tw-rounded-md tw-shadow',
-      'tw-bg-trpfrog-100 dark:tw-bg-trpfrog-700',
+      'tw:break-inside-avoid',
+      'tw-sh tw:max-w-full tw:rounded-md tw:shadow',
+      'tw:bg-trpfrog-100 tw:dark:bg-trpfrog-700',
     ],
   },
 })()

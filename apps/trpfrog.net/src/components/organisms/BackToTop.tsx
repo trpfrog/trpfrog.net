@@ -7,7 +7,7 @@ import { CircleButton } from '@/components/atoms/CircleButton'
 import { tv } from '@/lib/tailwind/variants'
 
 const style = tv({
-  base: 'tw-fixed tw-bottom-7 tw-right-7 print:tw-hidden sp:tw-hidden',
+  base: 'tw:fixed tw:bottom-7 tw:right-7 tw:print:hidden tw:sp:hidden',
 })()
 
 const backToTop = () => {
