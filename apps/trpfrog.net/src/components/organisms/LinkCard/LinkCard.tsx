@@ -11,7 +11,7 @@ import type { Except } from 'type-fest'
 
 export const createLinkCardStyles = tv({
   slots: {
-    wrapper: 'tw:block tw-@container tw:w-full',
+    wrapper: 'tw:block tw:@container tw:w-full',
     layout: [
       'tw:flex tw:justify-between tw:leading-none',
       'tw:overflow-clip tw:rounded-xl tw:bg-window-color tw:text-sm',

@@ -75,7 +75,7 @@ function ArticleRow(props: {
         <div className={articleStyle.info()}>
           <h3
             className="tw:mb-1 tw:line-clamp-2 tw:font-bold tw:italic tw:leading-tight!
-              tw:drop-shadow tw:pc:text-lg"
+              tw:drop-shadow-sm tw:pc:text-lg"
           >
             {entry.title}
           </h3>

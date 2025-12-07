@@ -12,15 +12,15 @@ import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const workStyles = tv({
   slots: {
-    wrapper: 'tw:rounded-sm tw:bg-cover tw:bg-center',
+    wrapper: 'tw:rounded-xs tw:bg-cover tw:bg-center',
     backdrop:
       'tw:size-full tw:p-2 tw:backdrop-blur-[1.5px] ' +
       'tw:flex tw:h-full tw:w-full tw:flex-col tw:justify-end tw:text-white',
-    title: 'tw:text-lg tw:font-bold tw:leading-tight tw:text-white tw:drop-shadow',
-    subtitle: 'tw:mt-1 tw:text-[11px] tw:leading-tight tw:text-white tw:drop-shadow',
+    title: 'tw:text-lg tw:font-bold tw:leading-tight tw:text-white tw:drop-shadow-sm',
+    subtitle: 'tw:mt-1 tw:text-[11px] tw:leading-tight tw:text-white tw:drop-shadow-sm',
     keywords:
       'tw:flex tw:gap-1 tw:text-xs tw:leading-none ' + 'tw:mb-1 tw:w-fit tw:overflow-hidden',
-    keyword: 'tw:text-lg tw:drop-shadow',
+    keyword: 'tw:text-lg tw:drop-shadow-sm',
   },
 })()
 

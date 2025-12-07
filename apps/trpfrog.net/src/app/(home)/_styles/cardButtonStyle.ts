@@ -5,7 +5,7 @@ export const cardButtonStyle = tv({
     'tw:inline-flex tw:w-fit tw:flex-row tw:items-center tw:justify-center',
     'tw:rounded-full tw:px-3 tw:py-1',
     'tw:whitespace-nowrap tw:text-sm tw:font-bold',
-    'tw:backdrop-blur',
+    'tw:backdrop-blur-sm',
   ],
   variants: {
     invertColor: {

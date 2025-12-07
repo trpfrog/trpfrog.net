@@ -9,9 +9,9 @@ const createHamburgerStyles = tv({
       'tw:relative tw:w-7 tw:h-6 tw:z-199 tw:cursor-pointer',
       'tw:*:transition-all tw:*:duration-500',
     ],
-    span1: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded',
-    span2: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded',
-    span3: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded',
+    span1: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
+    span2: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
+    span3: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
   },
   variants: {
     isOpened: {

@@ -17,7 +17,7 @@ const createStyles = tv({
     dialog: [
       'tw:absolute tw:left-0 tw:top-0 tw:z-10 tw:h-full tw:w-full',
       'tw:flex tw:flex-col tw:items-center tw:justify-center',
-      'tw:gap-1 tw:font-bold tw:backdrop-blur-sm',
+      'tw:gap-1 tw:font-bold tw:backdrop-blur-xs',
     ],
     button: cardButtonStyle({ invertColor: true }),
   },

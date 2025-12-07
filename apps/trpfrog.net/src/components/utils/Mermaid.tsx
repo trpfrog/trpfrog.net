@@ -54,7 +54,7 @@ export function Mermaid(props: MermaidProps) {
         <p>Loading diagram...</p>
       )}
       {error && (
-        <div className="tw:bg-red-700 tw:rounded tw:p-2">
+        <div className="tw:bg-red-700 tw:rounded-xs tw:p-2">
           <div className="tw:text-lg tw:text-white tw:font-bold">
             Failed to render Mermaid diagram:
           </div>

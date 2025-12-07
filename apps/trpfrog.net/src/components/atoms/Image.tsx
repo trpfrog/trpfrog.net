@@ -23,7 +23,7 @@ const createSpoilerStyles = tv({
     blur: ['tw:absolute tw:left-0 tw:top-0 tw:h-full tw:w-full', 'tw:rounded-md tw:duration-500'],
     button: [
       'tw:absolute tw:px-4 tw:py-2 tw:text-black',
-      'tw:cursor-pointer tw:font-bold tw:backdrop-blur',
+      'tw:cursor-pointer tw:font-bold tw:backdrop-blur-sm',
       'tw:bg-white/50 tw:duration-200 tw:hover:bg-white/70',
     ],
   },
@@ -58,7 +58,7 @@ const imageStyles = tv({
     wrapper: 'tw:relative',
     image: [
       'tw:break-inside-avoid',
-      'tw:max-w-full tw:rounded-md tw:shadow',
+      'tw:max-w-full tw:rounded-md tw:shadow-sm',
       'tw:bg-trpfrog-100 tw:dark:bg-trpfrog-700',
     ],
   },

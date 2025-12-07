@@ -13,8 +13,8 @@ const styles = tv({
       'tw:bg-linear-to-br tw:p-2 tw:text-2xl tw:text-white',
     ],
     wrapper: 'tw:flex tw:flex-col tw:items-center tw:gap-1',
-    logo: 'tw:text-4xl tw:leading-none! tw:drop-shadow',
-    contact: 'tw:text-lg tw:font-bold tw:leading-none! tw:drop-shadow-sm tw:sp:text-base',
+    logo: 'tw:text-4xl tw:leading-none! tw:drop-shadow-sm',
+    contact: 'tw:text-lg tw:font-bold tw:leading-none! tw:drop-shadow-xs tw:sp:text-base',
   },
 })()
 

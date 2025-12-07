@@ -15,7 +15,7 @@ import { requestUpdateIcon } from './actions'
 
 const createStyles = tv({
   slots: {
-    wrapper: 'tw-@container',
+    wrapper: 'tw:@container',
     layout: 'tw:flex tw:h-full tw:flex-col tw:@sm:flex-row',
     picture: [
       'tw:aspect-square tw:w-full tw:@sm:w-1/3 tw:@sm:scale-105',
@@ -38,8 +38,8 @@ const createStyles = tv({
       },
       loading: {
         picture: 'tw:bg-gray-200 tw:text-black',
-        english: 'tw:h-4 tw:w-2/3 tw:animate-pulse tw:rounded tw:bg-zinc-400',
-        japanese: 'tw:h-3 tw:w-1/3 tw:animate-pulse tw:rounded tw:bg-zinc-400',
+        english: 'tw:h-4 tw:w-2/3 tw:animate-pulse tw:rounded-xs tw:bg-zinc-400',
+        japanese: 'tw:h-3 tw:w-1/3 tw:animate-pulse tw:rounded-xs tw:bg-zinc-400',
       },
       error: {
         picture: 'tw:bg-red-800 tw:text-white',

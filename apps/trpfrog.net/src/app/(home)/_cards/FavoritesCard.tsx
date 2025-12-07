@@ -18,9 +18,9 @@ const styles = tv({
     ],
     icon: [
       'tw:grid tw:place-items-center tw:text-4xl tw:font-bold',
-      'tw:relative tw:top-1.5 tw:drop-shadow',
+      'tw:relative tw:top-1.5 tw:drop-shadow-sm',
     ],
-    title: 'tw:text-sm tw:font-bold tw:drop-shadow-sm',
+    title: 'tw:text-sm tw:font-bold tw:drop-shadow-xs',
     description: 'tw:text-balance tw:text-center tw:text-[10px]',
   },
 })()

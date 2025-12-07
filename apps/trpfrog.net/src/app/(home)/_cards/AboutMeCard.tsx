@@ -20,9 +20,9 @@ const styles = tv({
     nameWrapper: 'tw:flex tw:items-baseline tw:gap-2',
     name: 'tw:first:text-4xl tw:first:font-bold tw:last:text-2xl',
     textWrapper: 'tw:text-justify tw:leading-7 tw:sp:text-sm tw:sp:leading-6',
-    text: 'tw:mr-1 tw:rounded-sm tw:bg-window-color/95',
+    text: 'tw:mr-1 tw:rounded-xs tw:bg-window-color/95',
     introAttribute:
-      'tw:relative tw:-left-1 tw:w-fit tw:list-none tw:rounded tw:bg-window-color/90 tw:px-2 tw:py-1.5 tw:text-xs',
+      'tw:relative tw:-left-1 tw:w-fit tw:list-none tw:rounded-xs tw:bg-window-color/90 tw:px-2 tw:py-1.5 tw:text-xs',
     attrItem: 'tw:flex tw:items-start tw:gap-2 tw:leading-relaxed',
   },
 })()
