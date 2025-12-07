@@ -7,13 +7,13 @@ import { tv } from '@/lib/tailwind/variants'
 export const gridLayoutStyle = tv({
   base: [
     'tw:sp:gap-[calc(var(--main-margin)*1.5)] tw:grid tw:grid-cols-1',
-    'tw:gap-[var(--main-margin)]',
+    'tw:gap-(--main-margin)',
   ],
 })
 
 const mainWrapperStyle = tv({
   base: [
-    'tw:mx-auto tw:my-[var(--main-margin)]',
+    'tw:mx-auto tw:my-(--main-margin)',
     'tw:w-[calc(100%-2*var(--main-margin))] tw:max-w-[1000px]',
   ],
   variants: {
