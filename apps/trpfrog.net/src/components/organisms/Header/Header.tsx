@@ -19,7 +19,7 @@ import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
 const createStyles = tv({
   slots: {
-    wrapper: 'tw:z-999 tw:h-header tw:w-full tw:ease-out',
+    wrapper: 'tw:z-999 tw:h-(--header-height) tw:w-full tw:ease-out',
     header: 'tw:h-full tw:overflow-clip tw:bg-header-color',
     inside: 'tw:flex tw:h-full tw:items-center tw:justify-between',
     nav_wrapper: 'tw:flex',

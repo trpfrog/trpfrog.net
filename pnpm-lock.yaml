@@ -1176,9 +1176,6 @@ importers:
       '@testing-library/react':
         specifier: 'catalog:'
         version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@trpfrog.net/config-tailwind':
-        specifier: workspace:*
-        version: link:../../packages/config-tailwind
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
@@ -1296,19 +1293,6 @@ importers:
       typescript-eslint:
         specifier: 'catalog:'
         version: 8.39.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
-
-  packages/config-tailwind:
-    dependencies:
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.1.17
-    devDependencies:
-      '@tailwindcss/container-queries':
-        specifier: 'catalog:'
-        version: 0.1.1(tailwindcss@4.1.17)
-      '@trpfrog.net/config-typescript':
-        specifier: workspace:*
-        version: link:../config-typescript
 
   packages/config-typescript: {}
 

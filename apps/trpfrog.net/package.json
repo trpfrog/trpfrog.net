@@ -118,7 +118,6 @@
     "@testing-library/dom": "catalog:",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
-    "@trpfrog.net/config-tailwind": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",

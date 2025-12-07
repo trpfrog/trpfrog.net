@@ -64,12 +64,12 @@ const styles = tv({
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={fontVariables}>
       <head>
         <Favicon />
         <FixTooLargeFontAwesomeIcons />
       </head>
-      <body className={styles.body({ className: fontVariables })}>
+      <body className={styles.body()}>
         <JotaiProvider>
           <Toaster />
           <div className={styles.layout()}>
