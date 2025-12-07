@@ -8,7 +8,7 @@ import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { CopyButton } from '@/components/atoms/CopyButton'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import type { Except } from 'type-fest'
 

@@ -11,7 +11,7 @@ import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMen
 
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { HeaderNav } from './HeaderNav'
 

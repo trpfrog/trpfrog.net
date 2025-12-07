@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 
-import { twJoin, twMerge } from '@/lib/tailwind/merge'
+import { twJoin, twMerge } from '@/lib/tailwind'
 
 function Prompt(props: { prompt: string; translated: string; id: string }) {
   return (

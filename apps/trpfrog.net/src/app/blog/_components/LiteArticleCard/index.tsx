@@ -10,7 +10,7 @@ import { PlainBlock } from '@/components/atoms/PlainBlock'
 
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 import { formatDateToDisplay } from '@/lib/date'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const thumbnailStyle = tv({
   base: 'tw:w-28 tw:object-cover tw:rounded-[10px]',

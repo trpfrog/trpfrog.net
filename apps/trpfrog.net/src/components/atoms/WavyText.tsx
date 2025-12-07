@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-import { twMerge } from '@/lib/tailwind/merge'
+import { twMerge } from '@/lib/tailwind'
 
 export function WavyText(props: { text: string; className?: string; style?: CSSProperties }) {
   return (

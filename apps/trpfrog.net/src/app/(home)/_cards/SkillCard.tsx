@@ -4,7 +4,7 @@ import { TopCard } from '@/app/(home)/_components/TopCard'
 
 import { Devicon } from '@/components/atoms/Devicon'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const styles = tv({

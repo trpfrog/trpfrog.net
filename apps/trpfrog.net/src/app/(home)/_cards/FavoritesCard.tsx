@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 const styles = tv({

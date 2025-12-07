@@ -15,7 +15,7 @@ import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import './shiki-style.css'
 import { LanguageCode } from './language-code'

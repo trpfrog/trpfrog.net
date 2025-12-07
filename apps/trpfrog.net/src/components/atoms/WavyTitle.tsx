@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react'
 
-import { twMerge } from '@/lib/tailwind/merge'
-import { tv } from '@/lib/tailwind/variants'
+import { tv, twMerge } from '@/lib/tailwind'
 
 import { WavyText } from './WavyText'
 

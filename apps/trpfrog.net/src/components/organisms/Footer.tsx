@@ -5,7 +5,7 @@ import { bffClient } from '@/app/api/client'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const styles = tv({
   slots: {

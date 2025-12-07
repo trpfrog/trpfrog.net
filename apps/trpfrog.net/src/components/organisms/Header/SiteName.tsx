@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { SITE_NAME } from '@/lib/constants'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 type TitleWithPageNameProps = {
   siteTitle?: string

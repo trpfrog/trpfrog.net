@@ -8,7 +8,7 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { useTooltip } from '@/hooks/useTooltip'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { IconFrame } from './IconFrame'
 

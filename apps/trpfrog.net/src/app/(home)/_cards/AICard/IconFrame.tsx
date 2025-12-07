@@ -8,7 +8,7 @@ import useSWRImmutable from 'swr/immutable'
 
 import { WaveText } from '@/components/atoms/WaveText'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import { requestUpdateIcon } from './actions'

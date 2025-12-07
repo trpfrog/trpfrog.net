@@ -5,7 +5,7 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { A } from '@/components/wrappers'
 
-import { tv, VariantProps } from '@/lib/tailwind/variants'
+import { tv, TVVariantProps } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 import { fetchPostList } from '@blog/rpc'
@@ -58,7 +58,7 @@ function getCloudinaryResizedUrl(url: string, width = 600) {
 
 function ArticleRow(props: {
   entry: BlogPost
-  variant: Required<VariantProps<typeof createArticleStyle>>
+  variant: Required<TVVariantProps<typeof createArticleStyle>>
 }) {
   const { entry, variant } = props
   const articleStyle = createArticleStyle(variant)

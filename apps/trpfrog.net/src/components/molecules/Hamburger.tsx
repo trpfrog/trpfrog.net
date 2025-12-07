@@ -1,7 +1,7 @@
 // tailwind-variants definition
 import { useMobileMenuState, useToggleMenuCallback } from '@/components/organisms/MobileMenu'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const createHamburgerStyles = tv({
   slots: {
@@ -22,8 +22,8 @@ const createHamburgerStyles = tv({
       },
       true: {
         span1: 'tw:top-0 tw:w-[43%] tw:translate-x-[1.5px] tw:translate-y-[3.6px] tw:rotate-45',
-        span2: 'tw:top-[10px] tw:w-[105%] tw:-translate-x-px tw:-rotate-45',
-        span3: 'tw:bottom-0 tw:w-[43%] tw:translate-x-[14px] tw:translate-y-[-3.5px] tw:rotate-45',
+        span2: 'tw:top-2.5 tw:w-[105%] tw:-translate-x-px tw:-rotate-45',
+        span3: 'tw:bottom-0 tw:w-[43%] tw:translate-x-3.5 tw:translate-y-[-3.5px] tw:rotate-45',
       },
     },
   },

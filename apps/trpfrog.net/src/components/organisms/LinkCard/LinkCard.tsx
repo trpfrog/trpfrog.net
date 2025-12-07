@@ -5,7 +5,7 @@ import { createURL } from '@trpfrog.net/utils'
 import { Hostname } from '@/components/organisms/LinkCard/Hostname'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import type { Except } from 'type-fest'
 

@@ -7,7 +7,7 @@ import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { StreamingLinkCard } from '@/components/organisms/LinkCard/ServerStreamLinkCard'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { MutualLinkRecord } from './loader'
 

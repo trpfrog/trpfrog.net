@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { Input } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const styles = tv({
   slots: {

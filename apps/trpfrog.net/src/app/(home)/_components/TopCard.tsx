@@ -4,7 +4,7 @@ import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
 import { AProps } from '@/components/wrappers/A'
 
-import { tv, VariantProps } from '@/lib/tailwind/variants'
+import { tv, TVVariantProps } from '@/lib/tailwind'
 
 const styles = {
   base: tv({
@@ -39,7 +39,7 @@ const styles = {
 
 interface TopCardProps extends ComponentPropsWithRef<'div'> {
   title?: string
-  titlePosition?: VariantProps<typeof styles.h2>['position']
+  titlePosition?: TVVariantProps<typeof styles.h2>['position']
 }
 
 export function TopCard(props: TopCardProps) {
@@ -63,7 +63,7 @@ export function TopCard(props: TopCardProps) {
 interface TopLinkCardProps extends AProps {
   title?: string
   readMoreText?: ReactNode | boolean
-  titlePosition?: VariantProps<typeof styles.h2>['position']
+  titlePosition?: TVVariantProps<typeof styles.h2>['position']
 }
 
 export function LinkTopCard(props: TopLinkCardProps) {

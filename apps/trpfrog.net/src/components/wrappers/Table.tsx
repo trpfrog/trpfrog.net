@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 type Props = React.ComponentPropsWithRef<'table'>
 

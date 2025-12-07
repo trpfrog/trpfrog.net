@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 import { getFirstPath } from '@/components/organisms/Navigation/utils'
 
-import { tv } from '@/lib/tailwind/variants.ts'
+import { tv } from '@/lib/tailwind'
 
 const createKawaiiLogoStyles = tv({
   slots: {

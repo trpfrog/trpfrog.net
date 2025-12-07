@@ -11,12 +11,8 @@ export default createESLintConfigNext({
         patterns: ['@/app/blog/*', '**/*.stories'],
         paths: [
           {
-            name: 'tailwind-merge',
-            message: 'Please import from @/lib/tailwind/merge instead.',
-          },
-          {
             name: 'tailwind-variants',
-            message: 'Please import from @/lib/tailwind/variants instead.',
+            message: 'Please import from @/lib/tailwind instead.',
           },
         ],
       },

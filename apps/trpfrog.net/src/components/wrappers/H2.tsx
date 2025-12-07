@@ -7,7 +7,7 @@ import * as v from 'valibot'
 
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const iconURLs = {
   trpfrog: '/images/icons/trpfrog.webp',

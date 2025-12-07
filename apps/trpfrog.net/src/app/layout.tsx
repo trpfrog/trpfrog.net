@@ -16,7 +16,7 @@ import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'

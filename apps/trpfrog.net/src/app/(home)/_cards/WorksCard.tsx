@@ -6,7 +6,7 @@ import { WorksFrontmatter, WorksFrontmatterSchema } from '@/app/works/schema'
 import { Devicon, hasDevicon } from '@/components/atoms/Devicon'
 
 import { MarkdownWithFrontmatter, readMarkdowns } from '@/lib/mdLoader'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 

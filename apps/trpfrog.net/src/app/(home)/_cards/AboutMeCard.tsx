@@ -3,7 +3,7 @@ import { cacheTags } from '@trpfrog.net/constants'
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { bffClient } from '@/app/api/client'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const image = replaceWithLighterImageFormat(

@@ -1,6 +1,6 @@
 import { Devicon, hasDevicon } from '@/components/atoms/Devicon'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const styles = tv({
   slots: {

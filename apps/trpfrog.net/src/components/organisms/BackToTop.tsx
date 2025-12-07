@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CircleButton } from '@/components/atoms/CircleButton'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const style = tv({
   base: 'tw:fixed tw:bottom-7 tw:right-7 tw:print:hidden tw:sp:hidden',

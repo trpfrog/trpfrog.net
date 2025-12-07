@@ -1,6 +1,6 @@
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const styles = tv({
   slots: {

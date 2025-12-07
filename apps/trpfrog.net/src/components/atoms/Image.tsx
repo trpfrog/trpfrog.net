@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import type { Except } from 'type-fest'
 

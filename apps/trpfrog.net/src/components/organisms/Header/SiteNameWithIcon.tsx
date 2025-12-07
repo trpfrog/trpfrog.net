@@ -4,7 +4,7 @@ import { memo } from 'react'
 
 import Link from 'next/link'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { SiteName } from './SiteName'
 

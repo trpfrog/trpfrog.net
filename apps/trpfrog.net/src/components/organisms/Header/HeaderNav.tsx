@@ -3,7 +3,7 @@ import * as React from 'react'
 import { WavyText } from '@/components/atoms/WavyText'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const topLinks = [
   { href: '/', label: 'home' },

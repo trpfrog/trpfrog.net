@@ -1,7 +1,6 @@
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 
-import { twMerge } from '@/lib/tailwind/merge'
-import { tv } from '@/lib/tailwind/variants'
+import { tv, twMerge } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const src = replaceWithLighterImageFormat('https://res.cloudinary.com/trpfrog/w_300/stickers')
