@@ -13,7 +13,7 @@ type TitleWithPageNameProps = {
 const createStyles = tv({
   slots: {
     wrapper: [
-      'tw-items-left tw:translate-y-0.5 tw:*:leading-none',
+      'tw:items-start tw:translate-y-0.5 tw:*:leading-none',
       'tw:flex tw:flex-col tw:gap-0.5 tw:text-white tw:hover:text-trpfrog-50',
     ],
     title: 'tw:text-[1.7rem] tw:font-extrabold tw:sp:text-[1.4rem]',

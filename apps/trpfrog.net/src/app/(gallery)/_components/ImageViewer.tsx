@@ -8,7 +8,7 @@ type ImageViewerProps = {
 export function ImageViewer(props: ImageViewerProps) {
   return (
     <div className="tw:text-center">
-      <div className="tw-max-m-[500px] tw:inline-block tw:w-full">
+      <div className="tw:max-w-[500px] tw:inline-block tw:w-full">
         <Image
           src={props.src}
           width={100}

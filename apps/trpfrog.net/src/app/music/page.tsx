@@ -55,7 +55,7 @@ export default function Music() {
       </Block>
 
       <Block title={'歌詞'}>
-        <div className="tw:text-center tw:text-lg &_span:tw-inline-block">
+        <div className="tw:text-center tw:text-lg tw:_span:inline-block">
           <Lyrics />
         </div>
       </Block>

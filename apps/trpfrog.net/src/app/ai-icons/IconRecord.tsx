@@ -15,8 +15,8 @@ function Prompt(props: { prompt: string; translated: string; id: string }) {
       <div
         className={twJoin(
           'tw:bg-linear-to-br tw:from-blue-400 tw:to-pink-400 tw:bg-clip-text tw:text-transparent',
-          `tw-font-black tw-italic tw-text-2xl tw-leading-[1.1] sp:tw-text-sm sp:tw-leading-[1.1]
-          tw-py-2`,
+          `tw:font-black tw:italic tw:text-2xl tw:leading-[1.1] tw:sp:text-sm tw:sp:leading-[1.1]
+          tw:py-2`,
         )}
       >
         {props.prompt}
@@ -60,8 +60,8 @@ export function IconRecord(props: {
           src={props.src}
           alt="AI生成されたつまみさんのアイコン"
           aria-describedby={promptAreaId}
-          className="tw-size-[300px] sp:tw-size-[30vw]
-            tw-rounded-[calc(var(--window-border-radius)-5px)]"
+          className="tw:size-[300px] tw:sp:size-[30vw]
+            tw:rounded-[calc(var(--window-border-radius)-5px)]"
         />
         <div className="tw:flex tw:flex-col tw:justify-between tw:pc:px-4 tw:pc:py-2">
           <MetadataWrapper>

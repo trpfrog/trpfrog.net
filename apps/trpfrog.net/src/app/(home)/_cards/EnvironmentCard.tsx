@@ -14,7 +14,7 @@ const styles = tv({
       'tw:h-full tw:w-full tw:p-8 tw:backdrop-blur-[2px]',
       'tw:bg-linear-to-br tw:from-window-color tw:via-transparent tw:to-window-color',
       'tw:flex tw:flex-col tw:items-center tw:justify-center',
-      'tw:text-center tw:text-4xl tw:font-bold tw:text-white tw-text-opacity-80',
+      'tw:text-center tw:text-4xl tw:font-bold tw:text-white/80',
     ],
     nameWrapper: 'tw:flex tw:items-baseline tw:gap-2',
     name: 'tw:first:text-4xl tw:first:font-bold tw:last:text-2xl',

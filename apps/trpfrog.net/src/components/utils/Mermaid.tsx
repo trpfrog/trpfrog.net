@@ -69,8 +69,8 @@ export function StyledMermaid(props: MermaidProps) {
   return (
     <Mermaid
       {...props}
-      className="tw-flex tw-justify-center tw-my-4 tw-p-2 tw-rounded-md tw-bg-zinc-50
-        dark:tw-bg-zinc-800"
+      className="tw:flex tw:justify-center tw:my-4 tw:p-2 tw:rounded-md tw:bg-zinc-50
+        tw:dark:bg-zinc-800"
     />
   )
 }

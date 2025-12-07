@@ -12,7 +12,7 @@ const styles = tv({
   slots: {
     grid: 'tw:grid tw:h-full tw:grid-cols-3 tw:gap-0.5',
     wrapper: [
-      'tw-grid-rows tw:grid tw:grid-rows-subgrid',
+      'tw:grid tw:grid-rows-subgrid',
       'tw:gap-1 tw:bg-zinc-200 tw:px-1 tw:py-3',
       'tw:*:text-center',
     ],

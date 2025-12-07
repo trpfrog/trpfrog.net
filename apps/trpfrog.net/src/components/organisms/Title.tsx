@@ -23,7 +23,7 @@ export const Title: React.FunctionComponent<Props> = props => {
   return (
     <>
       <Block
-        className={twMerge('&_p:tw-mb-0', props.className)}
+        className={twMerge('tw:_p:mb-0', props.className)}
         ribbonText={props.ribbonText ?? ''}
         style={props.style}
       >

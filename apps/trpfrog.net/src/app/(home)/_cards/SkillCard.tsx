@@ -11,7 +11,7 @@ const styles = tv({
   slots: {
     grid: ['tw:grid tw:h-full tw:gap-0.5 tw:pc:grid-cols-6', 'tw:sp:flex tw:sp:flex-col'],
     wrapper: [
-      'tw-grid-rows tw:grid tw:grid-rows-subgrid',
+      'tw:grid tw:grid-rows-subgrid',
       'tw:gap-1 tw:bg-zinc-200 tw:py-3',
       'tw:*:text-center',
       'tw:sp:flex tw:sp:items-center tw:sp:gap-4 tw:sp:pl-6 tw:sp:*:text-left',

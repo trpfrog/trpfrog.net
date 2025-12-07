@@ -58,7 +58,7 @@ const imageStyles = tv({
     wrapper: 'tw:relative',
     image: [
       'tw:break-inside-avoid',
-      'tw-sh tw:max-w-full tw:rounded-md tw:shadow',
+      'tw:max-w-full tw:rounded-md tw:shadow',
       'tw:bg-trpfrog-100 tw:dark:bg-trpfrog-700',
     ],
   },

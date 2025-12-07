@@ -17,7 +17,7 @@ const thumbnailStyle = tv({
   variants: {
     noThumbnail: {
       true: [
-        'tw:bg-(--header-color) tw-color-[--body-background]',
+        'tw:bg-[--header-color] tw:text-[--body-background]',
         'tw:grid tw:place-items-center tw:text-2xl',
       ],
     },
@@ -41,8 +41,8 @@ function TagList({ tags }: { tags: string[] }) {
     <div className="tw:flex tw:flex-row tw:gap-1 tw:items-end">
       {tags.map(tag => (
         <span
-          className="tw-text-sm tw-px-2 tw-py-1 tw-rounded-full tw-border-2
-            tw-border-[--body-background]"
+          className="tw:text-sm tw:px-2 tw:py-1 tw:rounded-full tw:border-2
+            tw:border-[--body-background]"
           key={tag}
         >
           {tag}
@@ -92,13 +92,13 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
     <Link
       href={'/blog/' + entry.slug}
       prefetch={false}
-      className="tw-rounded-[20px] tw-line-height[1] hover:tw-cursor-pointer
-        hover:tw-shadow-[0_8px_0_var(--window-bottom-color)] hover:tw-translate-y-[-2px]
-        active:tw-translate-y-[6px] active:tw-shadow-none focus-visible:tw-outline-[--header-color]"
+      className="tw:rounded-[20px] tw:leading-[1] tw:hover:cursor-pointer
+        tw:hover:shadow-[0_8px_0_var(--window-bottom-color)] tw:hover:translate-y-[-2px]
+        tw:active:translate-y-[6px] tw:active:shadow-none tw:focus-visible:outline-[--header-color]"
     >
       <PlainBlock className="tw:flex tw:flex-row tw:gap-2.5 tw:p-2.5">
         <Thumbnail thumbnail={entry.thumbnail} title={entry.title} />
-        <div className="tw:flex-1 tw:flex tw:flex-col tw:gap-1.75">
+        <div className="tw:flex-1 tw:flex tw:flex-col tw:gap-[0.4375rem]">
           <div className="tw:text-lg tw:font-bold tw:font-mplus-rounded tw:sp:text-base">
             {entry.title}
           </div>
