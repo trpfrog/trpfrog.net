@@ -13,8 +13,6 @@ import { useRandom } from '@/hooks/useRandom'
 
 import { tv } from '@/lib/tailwind'
 
-import styles from './index.module.css'
-
 export const balloonColors = ['blue', 'green', 'orange'] as const
 
 export type BalloonColor = ArrayValues<typeof balloonColors>
@@ -62,17 +60,35 @@ const colors: Record<BalloonColor, string[]> = {
 }
 
 const balloonStyle = tv({
-  base: 'tw:cursor-crosshair tw:inline-flex tw:text-center tw:justify-center tw:items-center tw:relative',
+  base: [
+    'tw:inline-flex tw:justify-center tw:items-center tw:relative',
+    'tw:[--bg:none] tw:[--bg-hover:var(--bg)] tw:motion-reduce:[--bg-hover:var(--bg)]',
+    'tw:bg-(image:--bg) tw:hover:bg-(image:--bg-hover)',
+  ],
   variants: {
     isPending: {
       true: 'tw:opacity-0 tw:translate-y-2',
       false: 'tw:opacity-100',
     },
-    transition: {
-      true: 'tw:transition-all tw:duration-500',
-      false: '',
+    isBurst: {
+      true: 'tw:[--bg:url("/images/balloon/broken.png")] tw:[--bg-hover:var(--bg)]',
+      false: 'tw:cursor-crosshair',
+    },
+    color: {
+      blue: 'tw:[--bg:url("/images/balloon/blue/normal.png")] tw:[--bg-hover:url("/images/balloon/blue/tremble.gif")]',
+      green:
+        'tw:[--bg:url("/images/balloon/green/normal.png")] tw:[--bg-hover:url("/images/balloon/green/tremble.gif")]',
+      orange:
+        'tw:[--bg:url("/images/balloon/orange/normal.png")] tw:[--bg-hover:url("/images/balloon/orange/tremble.gif")]',
     },
   },
+  compoundVariants: [
+    {
+      // burst 時以外は transition あり
+      isBurst: false,
+      className: 'tw:transition-all tw:duration-500',
+    },
+  ],
 })
 
 export const Balloon = (props: BalloonProps) => {
@@ -125,11 +141,10 @@ export const Balloon = (props: BalloonProps) => {
       aria-label={ariaLabel}
       className={balloonStyle({
         isPending: isRandomPending,
-        className: [styles.balloon, props.className],
-        transition: !props.isBurst, // No transition when burst
+        isBurst: props.isBurst,
+        color: props.isBurst ? undefined : color,
+        className: props.className,
       })}
-      data-broken-balloon={props.isBurst}
-      data-balloon-color={color}
       onClick={() => {
         if (!props.isBurst) {
           if (props.enableSound) {
