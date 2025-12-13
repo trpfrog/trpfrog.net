@@ -1,7 +1,8 @@
 'use client'
 
-import { useId } from 'react'
+import { useEffect, useId } from 'react'
 
+import { useRouter } from 'next/navigation'
 import { useReward } from 'react-rewards'
 import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
@@ -102,6 +103,15 @@ export const Balloon = (props: BalloonProps) => {
     .with({ color: 'green' }, () => '緑の風船')
     .with({ color: 'orange' }, () => 'オレンジの風船')
     .exhaustive()
+
+  // Preload tremble.gif for all colors and broken.gif
+  const router = useRouter()
+  useEffect(() => {
+    balloonColors.forEach(color => {
+      router.prefetch(`/images/balloon/${color}/tremble.gif`)
+    })
+    router.prefetch(`/images/balloon/broken.gif`)
+  }, [router])
 
   return (
     <button
