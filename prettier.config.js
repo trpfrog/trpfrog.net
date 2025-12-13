@@ -9,7 +9,7 @@ const config = {
   singleQuote: true,
   jsxSingleQuote: false,
   arrowParens: 'avoid',
-  tailwindFunctions: ['tv'],
+  tailwindFunctions: ['tv', 'twMerge', 'twJoin'],
   printWidth: 100,
 }
 

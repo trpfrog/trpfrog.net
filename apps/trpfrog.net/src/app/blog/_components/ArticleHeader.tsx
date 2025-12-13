@@ -48,7 +48,7 @@ export const ArticleHeader = React.memo(function ArticleHeader(props: Props) {
 function PhotoBgTitleBlock(props: { thumbnail?: string; children?: React.ReactNode }) {
   return (
     <Block
-      className="tw-border-4 tw-border-window-color tw-overflow-hidden tw-bg-cover"
+      className="tw:border-4 tw:border-window-color tw:overflow-hidden tw:bg-cover"
       style={{
         padding: '0',
         backgroundImage: props.thumbnail ? `url(${props.thumbnail})` : undefined,
@@ -58,8 +58,8 @@ function PhotoBgTitleBlock(props: { thumbnail?: string; children?: React.ReactNo
       <div
         data-parent-has-thumbnail={!!props.thumbnail}
         className={classNames(
-          'tw-box-border tw-size-full tw-p-8 sp:tw-px-2',
-          'tw-bg-[linear-gradient(166deg,var(--window-bkg-color)_50%,transparent)]',
+          'tw:box-border tw:size-full tw:p-8 tw:sp:px-2',
+          'tw:bg-[linear-gradient(166deg,var(--window-bkg-color)_50%,transparent)]',
         )}
       >
         {props.children}
@@ -72,8 +72,8 @@ function ArticleTitle(props: { title: string }) {
   return (
     <h1
       className={classNames(
-        'tw-font-mplus-rounded tw-font-black tw-text-center',
-        'tw-text-4xl sp:tw-text-3xl tw-my-4 tw-leading-tight tw-tracking-tight',
+        'tw:font-mplus-rounded tw:font-black tw:text-center',
+        'tw:text-4xl tw:sp:text-3xl tw:my-4 tw:leading-tight tw:tracking-tight',
       )}
     >
       <Balancer>
@@ -85,7 +85,7 @@ function ArticleTitle(props: { title: string }) {
 
 function ArticleDescription(props: { description: string }) {
   return (
-    <p className="tw-text-center tw-text-lg tw-my-6 tw-mx-3 tw-leading-normal">
+    <p className="tw:text-center tw:text-lg tw:my-6 tw:mx-3 tw:leading-normal">
       <Balancer>
         <ParseWithBudouX str={props.description} />
       </Balancer>
@@ -95,7 +95,7 @@ function ArticleDescription(props: { description: string }) {
 
 function ArticleTags(props: { tags: string[] }) {
   return (
-    <div className="tw-flex tw-flex-wrap tw-gap-2 tw-justify-center tw-m-4">
+    <div className="tw:flex tw:flex-wrap tw:gap-2 tw:justify-center tw:m-4">
       {props.tags.map((tag: string) => (
         <Tag tag={tag} key={tag} />
       ))}
@@ -105,7 +105,7 @@ function ArticleTags(props: { tags: string[] }) {
 
 function DevButtons(props: { slug: string }) {
   return (
-    <div className="tw-my-4 tw-flex tw-justify-center tw-gap-2">
+    <div className="tw:my-4 tw:flex tw:justify-center tw:gap-2">
       <EditButton slug={props.slug} />
       <RichButton as={Link} href={`/blog/${props.slug}/og-image`}>
         OG Image

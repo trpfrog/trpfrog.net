@@ -41,9 +41,9 @@ export const InnerAutoYouTube = function InnerAutoYouTube({ content }: { content
   const { id } = parseIdAndParams(lines[0].trim())
 
   return (
-    <div className="tw-flex tw-items-center tw-justify-center">
-      <Suspense fallback={<div className="tw-bg-gray-200 tw-aspect-video tw-w-2/3" />}>
-        <div className="tw-w-full tw-aspect-video">
+    <div className="tw:flex tw:items-center tw:justify-center">
+      <Suspense fallback={<div className="tw:bg-gray-200 tw:aspect-video tw:w-2/3" />}>
+        <div className="tw:w-full tw:aspect-video">
           <ReactPlayer
             src={`https://www.youtube.com/watch?v=${id}`}
             playing

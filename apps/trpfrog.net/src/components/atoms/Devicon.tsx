@@ -1,7 +1,7 @@
 import React from 'react'
 
 import 'devicon'
-import { twMerge } from '@/lib/tailwind/merge'
+import { twMerge } from '@/lib/tailwind'
 
 const deviconMap = {
   Python: 'devicon-python-plain',

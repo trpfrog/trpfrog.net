@@ -198,7 +198,7 @@ export function TweetCard({
               </div>
             ) : photos > 0 ? (
               <span style={{ opacity: 0.5 }}>
-                <span className="sp:tw-hidden">
+                <span className="tw:sp:hidden">
                   View pictures on <InlineLink href={statusUrl}>twitter.com</InlineLink>!
                 </span>
               </span>

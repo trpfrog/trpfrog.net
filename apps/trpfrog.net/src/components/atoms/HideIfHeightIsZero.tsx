@@ -3,7 +3,7 @@
 export function HideIfTooShort(props: { children: React.ReactNode; eps?: number }) {
   return (
     <div
-      className="tw-rounded-lg tw-border tw-border-trpfrog-500"
+      className="tw:rounded-lg tw:border tw:border-trpfrog-500"
       ref={node => {
         // 高さ 0 だったら非表示にする
         if (!node) return

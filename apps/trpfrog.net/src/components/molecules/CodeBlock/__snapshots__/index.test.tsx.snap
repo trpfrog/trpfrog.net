@@ -4,21 +4,21 @@ exports[`CodeBlock > snapshot test 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="tw-flex tw-h-fit tw-w-full tw-items-center tw-justify-between tw-rounded-t-lg tw-bg-trpfrog-500 tw-px-4 tw-py-1 dark:tw-bg-trpfrog-600"
+      class="tw:flex tw:h-fit tw:w-full tw:items-center tw:justify-between tw:rounded-t-lg tw:bg-trpfrog-500 tw:px-4 tw:py-1 tw:dark:bg-trpfrog-600"
     >
       <span
-        class="tw-text-xs tw-font-bold tw-text-white"
+        class="tw:text-xs tw:font-bold tw:text-white"
       >
         TypeScript
       </span>
       <div
-        class="tw-flex tw-gap-2"
+        class="tw:flex tw:gap-2"
       >
         <span
           data-tooltip-id="_r_0_"
         >
           <button
-            class="tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100"
+            class="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
           >
             <svg
               aria-hidden="true"
@@ -38,21 +38,21 @@ exports[`CodeBlock > snapshot test 1`] = `
       </div>
     </div>
     <div
-      class="tw-w-full tw-overflow-clip tw-overflow-x-scroll tw-font-mono tw-text-[0.8em] sp:tw-text-xs tw-border tw-border-trpfrog-500 dark:tw-border-trpfrog-600 tw-rounded-b-lg"
+      class="tw:w-full tw:overflow-clip tw:overflow-x-scroll tw:font-mono tw:text-[0.8em] tw:sp:text-xs tw:border tw:border-trpfrog-500 tw:dark:border-trpfrog-600 tw:rounded-b-lg"
     >
       <pre
-        class="shiki sp:tw-py-3 tw-py-3 tw-w-full tw-min-w-max shiki-themes github-light github-dark"
+        class="shiki tw:sp:py-3 tw:py-3 tw:w-full tw:min-w-max shiki-themes github-light github-dark"
         style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8"
         tabindex="0"
       >
         <code>
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           />
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -93,7 +93,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -134,7 +134,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -150,7 +150,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#24292E;--shiki-dark:#E1E4E8"
@@ -201,7 +201,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -217,7 +217,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#24292E;--shiki-dark:#E1E4E8"
@@ -268,7 +268,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -284,7 +284,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#24292E;--shiki-dark:#E1E4E8"
@@ -305,7 +305,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#D73A49;--shiki-dark:#F97583"
@@ -331,7 +331,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#24292E;--shiki-dark:#E1E4E8"
@@ -342,7 +342,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           
 
           <span
-            class="line tw-inline-block tw-w-full tw-px-4 sp:tw-px-3"
+            class="line tw:inline-block tw:w-full tw:px-4 tw:sp:px-3"
           >
             <span
               style="color:#24292E;--shiki-dark:#E1E4E8"

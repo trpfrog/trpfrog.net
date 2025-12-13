@@ -1,6 +1,71 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' prefix(tw);
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Tailwind CSS theme */
+@theme {
+  /* `--font-<name>` variables for font families */
+  --font-mplus-rounded: var(--font-m-plus-rounded-1c), sans-serif;
+  --font-palanquin-dark: var(--font-palanquin-dark), sans-serif;
+  --font-mono: var(--font-noto-sans-mono), monospace;
+  --font-inter: var(--font-inter), sans-serif;
+
+  /* `--color-<name>` variables for colors */
+  --color-trpfrog-25: #f5ffe6;
+  --color-trpfrog-50: #e5f8c0;
+  --color-trpfrog-100: #c7e876;
+  --color-trpfrog-200: #b2d558;
+  --color-trpfrog-300: #9acc29;
+  --color-trpfrog-400: #8dba20;
+  --color-trpfrog-500: #6ea101;
+  --color-trpfrog-600: #617f17;
+  --color-trpfrog-700: #456401;
+  --color-trpfrog-800: #2a390a;
+  --color-trpfrog-900: #32342a;
+  --color-body-color: rgb(var(--color-body));
+  --color-text-color: rgb(var(--color-text));
+  --color-window-color: rgb(var(--color-window));
+  --color-header-color: rgb(var(--color-header));
+}
+
+@custom-variant sp {
+  @media (width < 800px) {
+    @slot;
+  }
+}
+
+@custom-variant pc {
+  @media (width >= 800px) {
+    @slot;
+  }
+}
+
+@custom-variant wide {
+  @media (width >= 1000px) {
+    @slot;
+  }
+}
+
+@utility break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
 
 @layer base {
   & *:focus {
@@ -24,17 +89,10 @@
   }
 
   & p {
-    @apply tw-my-5;
+    @apply tw:my-5;
   }
 
   & article {
-    @apply tw-leading-[1.8];
-  }
-}
-
-@layer utilities {
-  .break-anywhere {
-    overflow-wrap: anywhere;
-    word-break: keep-all;
+    @apply tw:leading-[1.8];
   }
 }

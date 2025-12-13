@@ -7,7 +7,7 @@ import { RichButton } from '@/components/atoms/RichButton'
 import { RichImage } from '@/components/organisms/RichImage'
 import * as Wrapper from '@/components/wrappers'
 
-import { twJoin, twMerge } from '@/lib/tailwind/merge'
+import { twJoin, twMerge } from '@/lib/tailwind'
 
 import { createCodeComponent } from './createCodeComponent'
 import styles from './createMDXComponents.module.css'
@@ -44,7 +44,7 @@ export function createMDXComponents(options?: {
 
     h1: () => null, // disable h1 tag
     h2: ({ ref, ...props }) => <Wrapper.H2 variant="blog" {...props} />,
-    h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw-mt-8" />,
+    h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw:mt-8" />,
     h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
     h5: ({ ref, ...props }) => <Wrapper.H5 {...props} />,
 
@@ -90,7 +90,7 @@ export function createMDXComponents(options?: {
 
     table: props => {
       const { ref, className, ...rest } = props
-      return <Wrapper.Table className={twMerge('tw-mx-auto', className)} {...rest} />
+      return <Wrapper.Table className={twMerge('tw:mx-auto', className)} {...rest} />
     },
 
     button: props => {

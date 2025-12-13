@@ -27,7 +27,7 @@ export default function Music() {
         </p>
         <Image
           src={'musicbanner'}
-          className="tw-my-4"
+          className="tw:my-4"
           width={500}
           height={100}
           alt={'つまみのうたのバナー'}
@@ -55,7 +55,7 @@ export default function Music() {
       </Block>
 
       <Block title={'歌詞'}>
-        <div className="tw-text-center tw-text-lg &_span:tw-inline-block">
+        <div className="tw:text-center tw:text-lg tw:_span:inline-block">
           <Lyrics />
         </div>
       </Block>

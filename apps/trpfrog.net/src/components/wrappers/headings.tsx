@@ -1,24 +1,24 @@
 import * as React from 'react'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 type Props = React.ComponentPropsWithRef<'h3'>
 
 const style = tv({
   base: [
     // layout
-    'tw-mb-4 tw-mt-6 tw-block tw-w-fit tw-px-2',
+    'tw:mb-4 tw:mt-6 tw:block tw:w-fit tw:px-2',
     // background
-    'tw-bg-gradient-to-r tw-to-transparent',
-    'tw-from-trpfrog-25 dark:tw-from-trpfrog-800',
+    'tw:bg-linear-to-r tw:to-transparent',
+    'tw:from-trpfrog-25 tw:dark:from-trpfrog-800',
     // text
-    'tw-font-bold tw-leading-relaxed',
+    'tw:font-bold tw:leading-relaxed',
   ],
   variants: {
     type: {
-      h3: 'tw-border-l-[6px] tw-border-l-trpfrog-500 tw-text-xl dark:tw-border-l-trpfrog-400',
-      h4: 'tw-border-l-[4px] tw-border-l-trpfrog-300 tw-text-lg dark:tw-border-l-trpfrog-600',
-      h5: 'tw-border-l-[2px] tw-border-l-trpfrog-200 tw-text-base dark:tw-border-l-trpfrog-700',
+      h3: 'tw:border-l-[6px] tw:border-l-trpfrog-500 tw:text-xl tw:dark:border-l-trpfrog-400',
+      h4: 'tw:border-l-4 tw:border-l-trpfrog-300 tw:text-lg tw:dark:border-l-trpfrog-600',
+      h5: 'tw:border-l-2 tw:border-l-trpfrog-200 tw:text-base tw:dark:border-l-trpfrog-700',
     },
   },
 })

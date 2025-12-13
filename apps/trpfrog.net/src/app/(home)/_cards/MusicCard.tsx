@@ -1,7 +1,7 @@
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const src = replaceWithLighterImageFormat(
@@ -11,13 +11,13 @@ const src = replaceWithLighterImageFormat(
 const styles = tv({
   slots: {
     bg: [
-      'tw-bg-cover tw-bg-left tw-bg-no-repeat tw-py-3 tw-pl-[140px] tw-pr-5 tw-text-right',
-      'tw-flex tw-flex-col tw-items-end tw-justify-center',
+      'tw:bg-cover tw:bg-left tw:bg-no-repeat tw:py-3 tw:pl-[140px] tw:pr-5 tw:text-right',
+      'tw:flex tw:flex-col tw:items-end tw:justify-center',
     ],
-    h2: 'tw-text-2xl tw-font-bold tw-text-white',
-    text: 'tw-my-2 tw-text-[12px] tw-leading-tight tw-text-white *:tw-inline-block',
+    h2: 'tw:text-2xl tw:font-bold tw:text-white',
+    text: 'tw:my-2 tw:text-[12px] tw:leading-tight tw:text-white tw:*:inline-block',
     button: cardButtonStyle({
-      class: 'tw-relative tw-bottom-0 tw-right-[-1px]',
+      class: 'tw:relative tw:bottom-0 tw:-right-px',
     }),
   },
 })()

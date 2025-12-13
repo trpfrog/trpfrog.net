@@ -13,7 +13,6 @@
     "lint-fix": "eslint . --fix",
     "check-unused": "ts-remove-unused --skip '.*\\.(test|spec|stories)\\.tsx?' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?' --check"
   },
-
   "dependencies": {
     "@ai-sdk/openai": "catalog:",
     "@date-fns/tz": "catalog:",
@@ -115,10 +114,10 @@
     "@storybook/react": "catalog:",
     "@storybook/testing-library": "catalog:",
     "@storybook/theming": "catalog:",
+    "@tailwindcss/postcss": "catalog:",
     "@testing-library/dom": "catalog:",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
-    "@trpfrog.net/config-tailwind": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",

@@ -45,7 +45,7 @@ export function useResizableBalloonArray(
           width={balloonWidth}
           key={balloonAmount} // 風船の数が変わったら state をリセット
         />
-        <div id={rewardStartPositionId} className="tw-fixed tw-top-0 tw-left-1/2" />
+        <div id={rewardStartPositionId} className="tw:fixed tw:top-0 tw:left-1/2" />
       </>
     ),
     isBurstAll: balloonState.balloons.every(balloon => balloon.isBurst),

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 type CopyButtonProps = {
   copyContent: string
@@ -14,7 +14,7 @@ type CopyButtonProps = {
 }
 
 const style = tv({
-  base: 'tw-grid tw-place-items-center tw-text-white tw-opacity-50 hover:tw-opacity-100',
+  base: 'tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100',
 })
 
 export function CopyButton(props: CopyButtonProps) {

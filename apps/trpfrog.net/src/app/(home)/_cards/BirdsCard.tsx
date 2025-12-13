@@ -3,7 +3,7 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { useTooltip } from '@/hooks/useTooltip'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 /* eslint-disable no-irregular-whitespace */
 const leftBird = `
@@ -36,14 +36,14 @@ const rightBird = `
 const styles = tv({
   slots: {
     base: [
-      'tw-flex tw-items-center tw-justify-center tw-gap-6',
-      'tw-font-mono tw-text-[11px] tw-leading-none',
-      'tw-bg-text-color/80 tw-text-window-color',
+      'tw:flex tw:items-center tw:justify-center tw:gap-6',
+      'tw:font-mono tw:text-[11px] tw:leading-none',
+      'tw:bg-text-color/80 tw:text-window-color',
     ],
     button: cardButtonStyle({
-      class: 'tw-absolute tw-bottom-2 tw-right-2 tw-size-8 tw-rounded-full',
+      class: 'tw:absolute tw:bottom-2 tw:right-2 tw:size-8 tw:rounded-full',
     }),
-    tooltipContent: '!tw-bg-window-color !tw-text-text-color',
+    tooltipContent: 'tw:bg-window-color! tw:text-text-color!',
   },
 })()
 

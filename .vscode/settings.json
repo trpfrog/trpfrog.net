@@ -13,6 +13,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // Tailwind
+  "tailwindCSS.classFunctions": ["tv", "twMerge", "twJoin"],
+
   // ESLint
   // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
   // "eslint.workingDirectories": [
@@ -23,6 +26,8 @@
   },
 
   "files.associations": {
-    "turbo.json": "jsonc"
+    "turbo.json": "jsonc",
+    "apps/trpfrog.net/src/app/globals.css": "tailwindcss",
+    "apps/admin/src/app/globals.css": "tailwindcss",
   }
 }

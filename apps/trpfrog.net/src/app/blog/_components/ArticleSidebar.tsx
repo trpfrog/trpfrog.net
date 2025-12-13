@@ -43,7 +43,7 @@ export function ArticleSidebar({ post }: Props) {
           marginBottom: '1em',
         }}
       />
-      <Block className="tw-h-fit tw-sticky tw-top-4" style={{ padding: '1.5em 0.5em' }}>
+      <Block className="tw:h-fit tw:sticky tw:top-4" style={{ padding: '1.5em 0.5em' }}>
         <div style={{ transform: 'scale(0.9)', transformOrigin: 'top' }}>
           <RichEntryButtons post={post} extended={false} />
           <div style={{ height: '1em' }} />

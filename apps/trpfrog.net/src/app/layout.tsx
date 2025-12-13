@@ -16,7 +16,7 @@ import { JotaiProvider } from '@/components/utils/JotaiProvider'
 
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const siteName = SITE_NAME
 const description = 'さかなになりたいね'
@@ -56,20 +56,20 @@ export const viewport: Viewport = {
 
 const styles = tv({
   slots: {
-    body: 'tw-scroll-smooth tw-bg-body-color tw-text-text-color print:tw-bg-white',
-    layout: 'tw-flex tw-min-h-screen tw-flex-col',
-    main: 'tw-flex-1',
+    body: 'tw:scroll-smooth tw:bg-body-color tw:text-text-color tw:print:bg-white',
+    layout: 'tw:flex tw:min-h-screen tw:flex-col',
+    main: 'tw:flex-1',
   },
 })()
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={fontVariables}>
       <head>
         <Favicon />
         <FixTooLargeFontAwesomeIcons />
       </head>
-      <body className={styles.body({ className: fontVariables })}>
+      <body className={styles.body()}>
         <JotaiProvider>
           <Toaster />
           <div className={styles.layout()}>

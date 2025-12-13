@@ -11,7 +11,7 @@ import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMen
 
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { HeaderNav } from './HeaderNav'
 
@@ -19,15 +19,15 @@ import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
 const createStyles = tv({
   slots: {
-    wrapper: 'tw-z-[999] tw-h-header tw-w-full tw-ease-out',
-    header: 'tw-h-full tw-overflow-clip tw-bg-header-color',
-    inside: 'tw-flex tw-h-full tw-items-center tw-justify-between',
-    nav_wrapper: 'tw-flex',
+    wrapper: 'tw:z-999 tw:h-(--header-height) tw:w-full tw:ease-out',
+    header: 'tw:h-full tw:overflow-clip tw:bg-header-color',
+    inside: 'tw:flex tw:h-full tw:items-center tw:justify-between',
+    nav_wrapper: 'tw:flex',
   },
   variants: {
     sticky: {
       true: {
-        wrapper: 'tw-sticky tw-top-0 print:tw-static',
+        wrapper: 'tw:sticky tw:top-0 tw:print:static',
       },
     },
     visible: { true: '' },
@@ -38,21 +38,21 @@ const createStyles = tv({
       sticky: true,
       visible: true,
       class: {
-        wrapper: 'tw-duration-200',
+        wrapper: 'tw:duration-200',
       },
     },
     {
       sticky: true,
       visible: false,
       class: {
-        wrapper: 'tw-translate-y-[-100%] tw-duration-100',
+        wrapper: 'tw:-translate-y-full tw:duration-100',
       },
     },
     {
       sticky: true,
       scrolled: true,
       class: {
-        header: 'tw-shadow-md',
+        header: 'tw:shadow-md',
       },
     },
   ],
@@ -102,7 +102,7 @@ function InternalHeader(props: {
       <div className={styles.wrapper()}>
         <header className={styles.header()}>
           <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
-            <div className="tw-w-fit">
+            <div className="tw:w-fit">
               {kawaii ? (
                 <KawaiiLogo />
               ) : (

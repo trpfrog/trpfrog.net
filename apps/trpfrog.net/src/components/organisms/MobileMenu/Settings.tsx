@@ -2,7 +2,7 @@
 
 import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { useKawaiiLogoAtom } from '@/states/kawaiiLogoAtom.ts'
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
@@ -10,8 +10,8 @@ import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom
 
 const styles = tv({
   slots: {
-    settings: 'tw-flex tw-flex-col tw-gap-1',
-    label: 'tw-flex tw-items-center tw-gap-1',
+    settings: 'tw:flex tw:flex-col tw:gap-1',
+    label: 'tw:flex tw:items-center tw:gap-1',
   },
 })()
 

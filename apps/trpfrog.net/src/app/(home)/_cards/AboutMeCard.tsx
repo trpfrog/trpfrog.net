@@ -3,7 +3,7 @@ import { cacheTags } from '@trpfrog.net/constants'
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { bffClient } from '@/app/api/client'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const image = replaceWithLighterImageFormat(
@@ -12,18 +12,18 @@ const image = replaceWithLighterImageFormat(
 
 const styles = tv({
   slots: {
-    bgImage: ['tw-bg-cover tw-bg-center tw-bg-no-repeat sp:tw-bg-left'],
+    bgImage: ['tw:bg-cover tw:bg-center tw:bg-no-repeat tw:sp:bg-left'],
     base: [
-      'tw-h-full tw-w-full tw-bg-gradient-to-br tw-from-window-color tw-to-transparent tw-p-8 sp:tw-p-5',
-      'tw-flex tw-flex-col tw-justify-between',
+      'tw:h-full tw:w-full tw:bg-linear-to-br tw:from-window-color tw:to-transparent tw:p-8 tw:sp:p-5',
+      'tw:flex tw:flex-col tw:justify-between',
     ],
-    nameWrapper: 'tw-flex tw-items-baseline tw-gap-2',
-    name: 'first:tw-text-4xl first:tw-font-bold last:tw-text-2xl',
-    textWrapper: 'tw-text-justify tw-leading-7 sp:tw-text-sm sp:tw-leading-6',
-    text: 'tw-mr-1 tw-rounded-sm tw-bg-window-color/95',
+    nameWrapper: 'tw:flex tw:items-baseline tw:gap-2',
+    name: 'tw:first:text-4xl tw:first:font-bold tw:last:text-2xl',
+    textWrapper: 'tw:text-justify tw:leading-7 tw:sp:text-sm tw:sp:leading-6',
+    text: 'tw:mr-1 tw:rounded-xs tw:bg-window-color/95',
     introAttribute:
-      'tw-relative -tw-left-1 tw-w-fit tw-list-none tw-rounded tw-bg-window-color/90 tw-px-2 tw-py-1.5 tw-text-xs',
-    attrItem: 'tw-flex tw-items-start tw-gap-2 tw-leading-relaxed',
+      'tw:relative tw:-left-1 tw:w-fit tw:list-none tw:rounded-xs tw:bg-window-color/90 tw:px-2 tw:py-1.5 tw:text-xs',
+    attrItem: 'tw:flex tw:items-start tw:gap-2 tw:leading-relaxed',
   },
 })()
 
@@ -79,10 +79,10 @@ export async function AboutMeCard() {
         <ul className={styles.introAttribute()}>
           {attributes.map(({ icon, iconName, text }) => (
             <li key={text} className={styles.attrItem()}>
-              <span title={iconName} className="tw-w-4 tw-text-center">
+              <span title={iconName} className="tw:w-4 tw:text-center">
                 {icon}
               </span>
-              <span className={'tw-inline-block'}>{text}</span>
+              <span className={'tw:inline-block'}>{text}</span>
             </li>
           ))}
         </ul>

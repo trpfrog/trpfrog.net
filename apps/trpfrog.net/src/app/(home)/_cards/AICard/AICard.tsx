@@ -8,19 +8,19 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 
 import { useTooltip } from '@/hooks/useTooltip'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { IconFrame } from './IconFrame'
 
 const styles = tv({
   slots: {
-    card: 'tw-grid',
+    card: 'tw:grid',
     button: cardButtonStyle({
-      class: 'tw-absolute tw-bottom-2 tw-left-2 tw-size-8 tw-rounded-full',
+      class: 'tw:absolute tw:bottom-2 tw:left-2 tw:size-8 tw:rounded-full',
       invertColor: true,
     }),
-    description: '!tw-text-center !tw-text-xs dark:!tw-bg-text-color dark:!tw-text-window-color',
-    poweredBy: 'tw-text-center tw-text-xs tw-text-gray-500',
+    description: 'tw:text-center! tw:text-xs! tw:dark:bg-text-color! tw:dark:text-window-color!',
+    poweredBy: 'tw:text-center tw:text-xs tw:text-gray-500',
   },
 })()
 

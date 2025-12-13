@@ -12,7 +12,7 @@ export function StickToTop(props: StickToTopProps) {
 
   return (
     <div
-      className="tw-sticky tw-duration-100"
+      className="tw:sticky tw:duration-100"
       style={{
         top: headerVisible ? `calc(var(--header-height) + ${props.top})` : `${props.top}`,
       }}

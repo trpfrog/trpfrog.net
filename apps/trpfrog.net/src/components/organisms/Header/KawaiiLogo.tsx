@@ -8,15 +8,15 @@ import { usePathname } from 'next/navigation'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 import { getFirstPath } from '@/components/organisms/Navigation/utils'
 
-import { tv } from '@/lib/tailwind/variants.ts'
+import { tv } from '@/lib/tailwind'
 
 const createKawaiiLogoStyles = tv({
   slots: {
-    logo: 'tw-flex tw-items-center tw-gap-1.5',
-    svgLogo: 'tw-h-[55px] sp:tw-h-[43px] hover:tw-brightness-95',
+    logo: 'tw:flex tw:items-center tw:gap-1.5',
+    svgLogo: 'tw:h-[55px] tw:sp:h-[43px] tw:hover:brightness-95',
     subtitle: [
-      'tw-font-palanquin-dark tw-font-bold tw-text-2xl tw-text-yellow-500',
-      'tw-translate-y-1 sp:tw-translate-y-0.5 hover:tw-brightness-95',
+      'tw:font-palanquin-dark tw:font-bold tw:text-2xl tw:text-yellow-500',
+      'tw:translate-y-1 tw:sp:translate-y-0.5 tw:hover:brightness-95',
     ],
   },
 })

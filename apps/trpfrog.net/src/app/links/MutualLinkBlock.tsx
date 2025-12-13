@@ -7,18 +7,18 @@ import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { StreamingLinkCard } from '@/components/organisms/LinkCard/ServerStreamLinkCard'
 import { A } from '@/components/wrappers'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 import { MutualLinkRecord } from './loader'
 
 const styles = tv({
   slots: {
-    card: 'tw-rounded-lg tw-p-4',
-    h3Wrapper: 'tw-mb-2 tw-flex tw-justify-between',
-    h3: 'tw-text-lg tw-font-bold',
-    social: 'tw-flex tw-gap-2',
-    twitter: 'tw-text-xl tw-text-[#1DA1F2] hover:tw-brightness-125',
-    github: 'tw-text-xl tw-text-[#333] hover:tw-text-gray-400',
+    card: 'tw:rounded-lg tw:p-4',
+    h3Wrapper: 'tw:mb-2 tw:flex tw:justify-between',
+    h3: 'tw:text-lg tw:font-bold',
+    social: 'tw:flex tw:gap-2',
+    twitter: 'tw:text-xl tw:text-[#1DA1F2] tw:hover:brightness-125',
+    github: 'tw:text-xl tw:text-[#333] tw:hover:text-gray-400',
   },
 })()
 

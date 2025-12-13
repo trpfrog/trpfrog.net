@@ -1,6 +1,6 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
 const src = replaceWithLighterImageFormat(
@@ -9,15 +9,15 @@ const src = replaceWithLighterImageFormat(
 
 const styles = tv({
   slots: {
-    wrapper: ['tw-size-full tw-bg-gradient-to-r tw-from-yellow-800/20 tw-to-zinc-800/60'],
+    wrapper: ['tw:size-full tw:bg-linear-to-r tw:from-yellow-800/20 tw:to-zinc-800/60'],
     text: [
-      'tw-flex tw-size-full tw-flex-col tw-items-end tw-justify-center',
-      'tw-relative tw-top-1 tw-p-3 tw-text-right tw-text-white tw-drop-shadow-lg',
+      'tw:flex tw:size-full tw:flex-col tw:items-end tw:justify-center',
+      'tw:relative tw:top-1 tw:p-3 tw:text-right tw:text-white tw:drop-shadow-lg',
     ],
-    name: 'tw-text-lg tw-font-bold',
-    details: 'tw-text-sm tw-font-bold',
-    theme: 'tw-text-xs',
-    date: 'tw-text-xs',
+    name: 'tw:text-lg tw:font-bold',
+    details: 'tw:text-sm tw:font-bold',
+    theme: 'tw:text-xs',
+    date: 'tw:text-xs',
   },
 })()
 

@@ -33,9 +33,9 @@ export function Icons() {
   )
 
   return (
-    <div className="tw-flex tw-flex-col tw-gap-4">
-      <div className="tw-flex tw-flex-col tw-gap-1">{navigation}</div>
-      <div className="tw-grid tw-grid-cols-1 tw-gap-3">
+    <div className="tw:flex tw:flex-col tw:gap-4">
+      <div className="tw:flex tw:flex-col tw:gap-1">{navigation}</div>
+      <div className="tw:grid tw:grid-cols-1 tw:gap-3">
         {images.result.map(image => (
           <IconRecord
             key={image.id}
@@ -48,7 +48,7 @@ export function Icons() {
           />
         ))}
       </div>
-      <div className="tw-mb-2">{navigation}</div>
+      <div className="tw:mb-2">{navigation}</div>
     </div>
   )
 }

@@ -40,7 +40,7 @@ export function IconMakerApp() {
           <div className="content">
             <canvas
               ref={canvasRef}
-              className="tw-rounded-md tw-bg-trpfrog-50"
+              className="tw:rounded-md tw:bg-trpfrog-50"
               style={{ width: '100%', maxWidth: '500px' }}
             />
           </div>

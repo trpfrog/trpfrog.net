@@ -4,7 +4,7 @@ import * as React from 'react'
 import { WavyTitle } from '@/components/atoms/WavyTitle'
 import { Block } from '@/components/molecules/Block'
 
-import { twMerge } from '@/lib/tailwind/merge'
+import { twMerge } from '@/lib/tailwind'
 
 type Props = {
   title?: string
@@ -23,7 +23,7 @@ export const Title: React.FunctionComponent<Props> = props => {
   return (
     <>
       <Block
-        className={twMerge('&_p:tw-mb-0', props.className)}
+        className={twMerge('tw:_p:mb-0', props.className)}
         ribbonText={props.ribbonText ?? ''}
         style={props.style}
       >

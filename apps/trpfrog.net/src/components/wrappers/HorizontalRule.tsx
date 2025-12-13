@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 type Props = React.ComponentPropsWithRef<'hr'>
 
 const style = tv({
-  base: 'tw-my-8 tw-border-t-4 tw-border-dotted tw-border-t-body-color',
+  base: 'tw:my-8 tw:border-t-4 tw:border-dotted tw:border-t-body-color',
 })
 
 export function HorizontalRule(props: Props) {

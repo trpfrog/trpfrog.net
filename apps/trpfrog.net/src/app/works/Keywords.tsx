@@ -1,16 +1,16 @@
 import { Devicon, hasDevicon } from '@/components/atoms/Devicon'
 
-import { tv } from '@/lib/tailwind/variants'
+import { tv } from '@/lib/tailwind'
 
 const styles = tv({
   slots: {
     wrapper: '',
-    keywords: 'tw-flex tw-flex-wrap tw-gap-2',
+    keywords: 'tw:flex tw:flex-wrap tw:gap-2',
     keyword: [
-      'tw-inline-block tw-rounded-full tw-border-2 tw-border-trpfrog-200',
-      'tw-px-3 tw-py-1 tw-text-sm tw-font-bold',
+      'tw:inline-block tw:rounded-full tw:border-2 tw:border-trpfrog-200',
+      'tw:px-3 tw:py-1 tw:text-sm tw:font-bold',
     ],
-    title: 'tw-mb-1 tw-text-sm tw-text-gray-500',
+    title: 'tw:mb-1 tw:text-sm tw:text-gray-500',
   },
 })()
 
@@ -28,12 +28,12 @@ export function Keywords({ keywords }: Props) {
             <li key={k} className={styles.keyword()}>
               <Devicon
                 iconName={k}
-                className="tw-relative tw-top-[1px] tw-mr-1 tw-hidden dark:tw-inline"
+                className="tw:relative tw:top-px tw:mr-1 tw:hidden tw:dark:inline"
               />
               <Devicon
                 iconName={k}
                 colored
-                className="tw-relative tw-top-[1px] tw-mr-1 dark:tw-hidden"
+                className="tw:relative tw:top-px tw:mr-1 tw:dark:hidden"
               />
               {k}
             </li>
