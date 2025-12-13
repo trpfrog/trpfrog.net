@@ -1,12 +1,16 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useId } from 'react'
 
 import { useReward } from 'react-rewards'
 import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
 import { ArrayValues } from 'type-fest'
 import useSound from 'use-sound'
+
+import { useRandom } from '@/hooks/useRandom'
+
+import { tv } from '@/lib/tailwind'
 
 import styles from './index.module.css'
 
@@ -56,14 +60,29 @@ const colors: Record<BalloonColor, string[]> = {
   ],
 }
 
+const balloonStyle = tv({
+  variants: {
+    isPending: {
+      true: 'tw:opacity-0 tw:translate-y-2',
+      false: 'tw:opacity-100',
+    },
+    transition: {
+      true: 'tw:transition-all tw:duration-500',
+      false: '',
+    },
+  },
+})
+
 export const Balloon = (props: BalloonProps) => {
   const balloonId = useId()
   const { playSound } = useBalloonSound()
-  const [seed] = useState(balloonId + Date.now().toString())
+  const { isPending: isRandomPending, value: seed } = useRandom()
 
   const color =
     props.color === 'random'
-      ? balloonColors[Math.floor(seedrandom(seed)() * balloonColors.length)]
+      ? isRandomPending
+        ? balloonColors[0]
+        : balloonColors[Math.floor(seedrandom(seed.toString())() * balloonColors.length)]
       : props.color
 
   const { reward } = useReward(balloonId, 'confetti', {
@@ -86,7 +105,6 @@ export const Balloon = (props: BalloonProps) => {
 
   return (
     <button
-      suppressHydrationWarning={props.color === 'random'}
       style={{
         width: props.width,
         height: props.height,
@@ -94,7 +112,11 @@ export const Balloon = (props: BalloonProps) => {
       }}
       disabled={props.isBurst}
       aria-label={ariaLabel}
-      className={`${styles.balloon} ${props.className}`}
+      className={balloonStyle({
+        isPending: isRandomPending,
+        className: [styles.balloon, props.className],
+        transition: !props.isBurst, // No transition when burst
+      })}
       data-broken-balloon={props.isBurst}
       data-balloon-color={color}
       onClick={() => {
