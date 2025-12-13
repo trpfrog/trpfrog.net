@@ -1,12 +1,5 @@
 /* index.module.css */
 .balloon {
-  cursor: crosshair;
-  display: inline-flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
   /* デフォルト: 何も表示しない（フォールバック） */
   --bg: none;
   --bg-hover: var(--bg);

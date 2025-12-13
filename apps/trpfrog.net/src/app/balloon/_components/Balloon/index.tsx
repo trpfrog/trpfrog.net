@@ -62,6 +62,7 @@ const colors: Record<BalloonColor, string[]> = {
 }
 
 const balloonStyle = tv({
+  base: 'tw:cursor-crosshair tw:inline-flex tw:text-center tw:justify-center tw:items-center tw:relative',
   variants: {
     isPending: {
       true: 'tw:opacity-0 tw:translate-y-2',
