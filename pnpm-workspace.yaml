@@ -104,7 +104,7 @@ catalog:
   focus-trap: ^7.6.5
   globals: ^16.3.0
   gray-matter: ^4.0.3
-  happy-dom: ^18.0.1
+  happy-dom: ^20.0.11
   hono: ^4.9.2
   http-status-codes: ^2.3.0
   immer: ^10.1.1
