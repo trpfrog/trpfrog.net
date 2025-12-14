@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useState } from 'react'
 
+import { PreloadBalloonImages } from '@/app/balloon/_components/Balloon/preload-balloon-images'
 import { BalloonArray } from '@/app/balloon/_components/BalloonArray'
 import { useBalloonState } from '@/app/balloon/useBalloonState.ts'
 
@@ -40,6 +41,7 @@ export function useResizableBalloonArray(
   return {
     balloonComponent: (
       <>
+        <PreloadBalloonImages />
         <BalloonArray
           states={balloonState}
           width={balloonWidth}

@@ -13,6 +13,7 @@ import { Input } from '@/components/wrappers'
 
 import { clamp } from '@/lib/utils'
 
+import { PreloadBalloonImages } from './_components/Balloon/preload-balloon-images.tsx'
 import { BalloonArray } from './_components/BalloonArray'
 import { useBalloonState } from './useBalloonState.ts'
 
@@ -46,6 +47,7 @@ export function BalloonApp() {
 
   return (
     <>
+      <PreloadBalloonImages />
       <Title title="Balloons" description={'風船を割ることができます。(？)'}>
         <p>
           <RichButton
