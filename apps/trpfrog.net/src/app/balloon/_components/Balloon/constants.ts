@@ -38,3 +38,8 @@ export const trembleBalloonImagePaths = balloonColors.map(
   color => `/images/balloon/${color}/tremble.gif` as const,
 )
 export const brokenBalloonImagePath = '/images/balloon/broken.png' as const
+
+export type BalloonImagePath =
+  | ArrayValues<typeof normalBalloonImagePaths>
+  | ArrayValues<typeof trembleBalloonImagePaths>
+  | typeof brokenBalloonImagePath

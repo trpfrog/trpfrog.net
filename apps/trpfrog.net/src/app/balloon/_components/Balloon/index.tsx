@@ -11,7 +11,13 @@ import { useRandom } from '@/hooks/useRandom'
 
 import { tv } from '@/lib/tailwind'
 
-import { type BalloonColor, balloonColors, balloonSoundUrl, confettiColors } from './constants'
+import {
+  type BalloonColor,
+  type BalloonImagePath,
+  balloonColors,
+  balloonSoundUrl,
+  confettiColors,
+} from './constants'
 
 type BalloonProps = {
   className?: string
@@ -29,6 +35,10 @@ export function useBalloonSound() {
   return { playSound: playFunction }
 }
 
+// HACK: Tailwind の仕様上動的にクラス名を生成できないため、型チェックでパスが正しいことを保証する
+// https://tailwindcss.com/docs/detecting-classes-in-source-files#dynamic-class-names
+type BalloonImagePathTailwindCssVarToken = `tw:[--${string}:url("${BalloonImagePath}")]`
+
 const balloonStyle = tv({
   base: [
     'tw:inline-flex tw:justify-center tw:items-center tw:relative',
@@ -41,15 +51,25 @@ const balloonStyle = tv({
       false: 'tw:opacity-100',
     },
     isBurst: {
-      true: 'tw:[--bg:url("/images/balloon/broken.png")] tw:[--bg-hover:var(--bg)]',
+      true: [
+        'tw:[--bg:url("/images/balloon/broken.png")]' satisfies BalloonImagePathTailwindCssVarToken,
+        'tw:[--bg-hover:var(--bg)]',
+      ],
       false: 'tw:cursor-crosshair',
     },
     color: {
-      blue: 'tw:[--bg:url("/images/balloon/blue/normal.png")] tw:[--bg-hover:url("/images/balloon/blue/tremble.gif")]',
-      green:
-        'tw:[--bg:url("/images/balloon/green/normal.png")] tw:[--bg-hover:url("/images/balloon/green/tremble.gif")]',
-      orange:
-        'tw:[--bg:url("/images/balloon/orange/normal.png")] tw:[--bg-hover:url("/images/balloon/orange/tremble.gif")]',
+      blue: [
+        'tw:[--bg:url("/images/balloon/blue/normal.png")]' satisfies BalloonImagePathTailwindCssVarToken,
+        'tw:[--bg-hover:url("/images/balloon/blue/tremble.gif")]' satisfies BalloonImagePathTailwindCssVarToken,
+      ],
+      green: [
+        'tw:[--bg:url("/images/balloon/green/normal.png")]' satisfies BalloonImagePathTailwindCssVarToken,
+        'tw:[--bg-hover:url("/images/balloon/green/tremble.gif")]' satisfies BalloonImagePathTailwindCssVarToken,
+      ],
+      orange: [
+        'tw:[--bg:url("/images/balloon/orange/normal.png")]' satisfies BalloonImagePathTailwindCssVarToken,
+        'tw:[--bg-hover:url("/images/balloon/orange/tremble.gif")]' satisfies BalloonImagePathTailwindCssVarToken,
+      ],
     },
   },
   compoundVariants: [
