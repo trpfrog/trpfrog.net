@@ -2,7 +2,7 @@ import { useReward } from 'react-rewards'
 import { ArrayValues } from 'type-fest'
 import { useImmer } from 'use-immer'
 
-import { balloonColors } from '@/app/balloon/_components/Balloon'
+import { balloonColors } from '@/app/balloon/_components/Balloon/constants'
 
 type BalloonColor = ArrayValues<typeof balloonColors>
 
