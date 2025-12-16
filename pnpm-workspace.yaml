@@ -155,8 +155,6 @@ catalog:
   seedrandom: ^3.0.5
   server-only: ^0.0.1
   shiki: ^3.11.0
-  socket.io: ^4.8.1
-  socket.io-client: ^4.8.1
   stable-hash: ^0.0.6
   storybook: ^7.6.20
   storybook-dark-mode: ^3.0.3
