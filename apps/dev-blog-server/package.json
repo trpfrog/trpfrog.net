@@ -2,16 +2,17 @@
   "name": "@trpfrog.net/dev-blog-server",
   "private": true,
   "scripts": {
-    "dev": "bun run dev-server.ts",
+    "dev": "bun run --hot src/dev-server.ts",
     "build": "tsc",
     "lint-fix": "eslint . --fix"
   },
-  "main": "client.ts",
   "type": "module",
+  "exports": {
+    ".": "./client.ts"
+  },
   "dependencies": {
     "chokidar": "catalog:",
-    "socket.io": "catalog:",
-    "socket.io-client": "catalog:"
+    "hono": "catalog:"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",

@@ -52,8 +52,7 @@
 
 ### dev-blog-server
 
-- **Socket.io** for real-time editing of blog posts
-
+- **Hono** for API endpoints
 
 and so on...
 
@@ -92,7 +91,7 @@ We are using a monorepo. The package structure is as follows.
 .
 ├── apps                    # Applications
 │   ├── trpfrog.net           # Main project, trpfrog.net
-│   ├── dev-blog-server       # Socket.io server for editing blog posts
+│   ├── dev-blog-server       # SSE server for editing blog posts
 │   └── image-generation      # API Endpoints for trpfrog-diffusion
 ├── packages                # Libraries
 │   ├── config-tailwind       # Shared Tailwind CSS config
