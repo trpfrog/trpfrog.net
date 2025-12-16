@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`RotateButton > snapshot testing (isRotated: { isRotated: false, rotateDirection: 'left' }, rotateDirection: %s) 1`] = `
+exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'left') 1`] = `
 <DocumentFragment>
   <button
     class="angle_picker_button"
@@ -24,7 +24,7 @@ exports[`RotateButton > snapshot testing (isRotated: { isRotated: false, rotateD
 </DocumentFragment>
 `;
 
-exports[`RotateButton > snapshot testing (isRotated: { isRotated: false, rotateDirection: 'right' }, rotateDirection: %s) 1`] = `
+exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'right') 1`] = `
 <DocumentFragment>
   <button
     class="angle_picker_button"
@@ -48,7 +48,7 @@ exports[`RotateButton > snapshot testing (isRotated: { isRotated: false, rotateD
 </DocumentFragment>
 `;
 
-exports[`RotateButton > snapshot testing (isRotated: { isRotated: true, rotateDirection: 'left' }, rotateDirection: %s) 1`] = `
+exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'left') 1`] = `
 <DocumentFragment>
   <button
     class="angle_picker_button"
@@ -71,7 +71,7 @@ exports[`RotateButton > snapshot testing (isRotated: { isRotated: true, rotateDi
 </DocumentFragment>
 `;
 
-exports[`RotateButton > snapshot testing (isRotated: { isRotated: true, rotateDirection: 'right' }, rotateDirection: %s) 1`] = `
+exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'right') 1`] = `
 <DocumentFragment>
   <button
     class="angle_picker_button"
