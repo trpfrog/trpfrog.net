@@ -17,6 +17,7 @@ catalog:
   '@fortawesome/react-fontawesome': ^0.2.5
   '@google/genai': ^1.16.0
   '@headlessui/react': ^2.2.7
+  '@hono/cli': ^0.1.5
   '@hono/standard-validator': ^0.1.4
   '@hono/vite-build': ^1.7.0
   '@hono/vite-dev-server': ^0.20.1

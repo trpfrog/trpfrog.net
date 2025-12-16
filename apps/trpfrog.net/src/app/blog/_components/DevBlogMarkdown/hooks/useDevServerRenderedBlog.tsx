@@ -1,6 +1,6 @@
 import { ReactNode, useDeferredValue, useEffect, useState } from 'react'
 
-import { createClient as createMdWatchClient } from '@trpfrog.net/dev-blog-server'
+import { createPostWatcherClient } from '@trpfrog.net/dev-blog-server'
 import { BlogPageNumber } from '@trpfrog.net/posts'
 
 import { renderBlog } from '@blog/_components/DevBlogMarkdown/actions/renderBlog'
@@ -27,25 +27,18 @@ export function useDevServerRenderedBlog(
     // initial render
     renderBlog(slug, page).then(setArticleJSX)
 
-    const socket = createMdWatchClient()
+    const client = createPostWatcherClient()
+    if (!client) return
 
-    socket
-      ?.on('connect', () => {
-        console.log('Markdown server connected')
-      })
-      .on('disconnect', () => {
-        console.log('Markdown server disconnected')
-      })
-      // re-render on update
-      .on('update', (slug: string) => {
-        if (slug === slug) {
-          renderBlog(slug, page).then(setArticleJSX)
-        }
-      })
+    client.onUpdate(updatedSlug => {
+      if (updatedSlug === slug) {
+        renderBlog(updatedSlug, page).then(setArticleJSX)
+      }
+    })
 
     // cleanup
     return () => {
-      socket?.disconnect()
+      client.disconnect()
     }
   }, [page, slug])
 
