@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { describe, expect, test, vi } from 'vitest'
 
 import { RotateButton } from './RotateButton'
 
@@ -11,7 +12,7 @@ describe('RotateButton', () => {
   ] as const
 
   test.each(cases)(
-    'snapshot testing (isRotated: %s, rotateDirection: %s)',
+    'snapshot testing (isRotated: $isRotated, rotateDirection: $rotateDirection)',
     ({ isRotated, rotateDirection }) => {
       const view = render(<RotateButton isRotated={isRotated} rotateDirection={rotateDirection} />)
       expect(view.asFragment()).toMatchSnapshot()
@@ -19,7 +20,7 @@ describe('RotateButton', () => {
   )
 
   test.each(cases)(
-    'onClick should be called when clicked (isRotated: %s, rotateDirection: %s)',
+    'onClick should be called when clicked (isRotated: $isRotated, rotateDirection: $rotateDirection)',
     ({ isRotated, rotateDirection }) => {
       const onClick = vi.fn()
       render(
