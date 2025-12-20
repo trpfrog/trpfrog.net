@@ -1,6 +1,9 @@
 /// <reference lib="dom" />
 
 import { services } from '@trpfrog.net/constants'
+import { hc } from 'hono/client'
+
+import { type app } from './src/dev-server'
 
 type SlugUpdateEventHandler = (slug: string) => void
 
@@ -37,3 +40,5 @@ export const createPostWatcherClient: () => DevBlogWatchClient | null =
           },
         }
       }
+
+export const devBlogServerClient = hc<typeof app>(services.mdServer.development)
