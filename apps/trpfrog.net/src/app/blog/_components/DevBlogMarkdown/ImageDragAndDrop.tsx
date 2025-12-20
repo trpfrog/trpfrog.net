@@ -2,11 +2,13 @@
 import { useCallback, useState } from 'react'
 import * as React from 'react'
 
+import toast from 'react-hot-toast'
+
 import { PlainCodeBlock } from '@/components/molecules/CodeBlock/PlainCodeBlock'
 
-import { generateAltTextOnServer } from './actions/generateAltTextOnServer'
-import { useImageUploadUsecase } from './hooks/useImageUploadUsecase'
-import { useUploadFunction } from './hooks/useUploadFunction'
+import { twMerge } from '@/lib/tailwind'
+
+import { useImageUploader } from './hooks/useImageUploader'
 import styles from './ImageDragAndDrop.module.css'
 
 function useImageDragAndDrop(onDroppedImage: (files: File[]) => Promise<void>) {
@@ -53,20 +55,22 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
     ? '```horizontal-images\n' + recentlyUploaded + '\n```'
     : recentlyUploaded
 
-  const { upload, uploadingStatusText } = useImageUploadUsecase({
-    generateAltText: generateAltTextOnServer,
-    uploadImage: useUploadFunction(props.slug),
-  })
+  const { upload, uploadingStatusText, uploadingStatus } = useImageUploader(props.slug)
 
   const onDroppedImage = useCallback(
     async (files: File[]) => {
-      const uploaded = await upload(files)
+      const uploaded = await toast.promise(upload(files), {
+        loading: 'Uploading...',
+        success: <b>Uploaded!</b>,
+        error: <b>Something went wrong...</b>,
+      })
       setRecentlyUploaded(uploaded.map(e => e.markdown).join('\n'))
     },
     [upload],
   )
 
   const { isDragging, dropTargetProps } = useImageDragAndDrop(onDroppedImage)
+  const shouldShowCodeBlock = recentlyUploaded !== '' || !uploadingStatus.isFinished
 
   return (
     <div className={`${styles.wrapper} tw:print:invisible`}>
@@ -76,22 +80,24 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
       {isTabOpened && (
         <>
           <div
-            className={styles.drag_and_drop}
-            style={{ color: isDragging ? 'inherit' : 'lightgray' }}
+            className={twMerge(
+              styles.drag_and_drop,
+              isDragging ? 'tw:text-inherit' : 'tw:text-gray-300',
+            )}
             {...dropTargetProps}
           >
             <div
-              className={styles.drag_and_drop_text}
-              style={{
-                borderColor: isDragging ? 'var(--header-color)' : 'var(--window-bkg-color)',
-              }}
+              className={twMerge(
+                styles.drag_and_drop_text,
+                isDragging ? 'tw:border-(--header-color)' : 'tw:border-(--window-bkg-color)',
+              )}
             >
               Drag and drop
               <br />
               images here
             </div>
           </div>
-          {recentlyUploaded !== '' && (
+          {shouldShowCodeBlock && (
             <div className={styles.code_block}>
               <form>
                 <input
@@ -101,7 +107,10 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
                 />
                 <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
               </form>
-              <PlainCodeBlock fileName={'Recently Uploaded'} copyContent={markdownCode}>
+              <PlainCodeBlock
+                fileName={'Recently Uploaded'}
+                copyContent={recentlyUploaded ? markdownCode : undefined}
+              >
                 {uploadingStatusText ?? markdownCode}
               </PlainCodeBlock>
             </div>

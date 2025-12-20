@@ -11,8 +11,15 @@
     ".": "./client.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "catalog:",
+    "@hono/standard-validator": "catalog:",
+    "@trpfrog.net/utils": "workspace:*",
+    "@valibot/to-json-schema": "catalog:",
+    "ai": "catalog:",
     "chokidar": "catalog:",
-    "hono": "catalog:"
+    "cloudinary": "catalog:",
+    "hono": "catalog:",
+    "ts-dedent": "catalog:"
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",

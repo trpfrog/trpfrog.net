@@ -1,32 +1,28 @@
 'use server'
 
-import { openai } from '@ai-sdk/openai'
+import { openai, OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
 import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { toJsonSchema } from '@valibot/to-json-schema'
 import { generateObject, jsonSchema } from 'ai'
 import dedent from 'ts-dedent'
 import * as v from 'valibot'
 
-import { env } from '@/env/server'
-
 const AltTextObjectSchema = v.object({
   altText: v.pipe(v.string(), v.description('Japanese alt text for the image')),
 })
 
-export async function generateAltTextOnServer(image: ArrayBuffer): Promise<string> {
-  if (process.env.NODE_ENV !== 'development') {
-    throw new Error('Forbidden')
-  }
-
-  if (!env.OPENAI_API_KEY) {
-    throw new Error('Missing OpenAI API key in environment variables')
-  }
-
+export async function generateAltText(image: ArrayBuffer): Promise<string> {
   const { object: output } = await generateObject({
-    model: openai('gpt-4o-2024-11-20'),
+    model: openai('gpt-5.2'),
     schema: jsonSchema<InferSchemaOutput<typeof AltTextObjectSchema>>(
       toJsonSchema(AltTextObjectSchema),
     ),
+    providerOptions: {
+      openai: {
+        reasoningEffort: 'low',
+        serviceTier: 'flex',
+      } satisfies OpenAIResponsesProviderOptions,
+    },
     messages: [
       {
         role: 'user',

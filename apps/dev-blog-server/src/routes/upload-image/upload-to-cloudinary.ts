@@ -1,8 +1,6 @@
-'use server'
+import { cloudinary } from './cloudinary'
 
-import { UploadApiOptions, UploadApiResponse } from 'cloudinary'
-
-import { cloudinary } from '@/lib/cloudinary'
+import type { UploadApiOptions, UploadApiResponse } from 'cloudinary'
 
 // Promise wrapper for cloudinary.uploader.upload_stream
 function cloudinaryUploaderPromise(
@@ -41,26 +39,8 @@ function cloudinaryUploaderPromise(
  * @param formData FormData with a file named 'image'
  * @param slug
  */
-export async function uploadToCloudinaryOnServer(
-  formData: FormData,
-  slug: string,
-): Promise<UploadApiResponse> {
-  if (process.env.NODE_ENV !== 'development') {
-    throw new Error('Forbidden')
-  }
-
-  const file = formData.get('image') as File
-
-  if (!file) {
-    throw new Error('Bad Request')
-  }
-
+export async function uploadToCloudinary(file: File, slug: string): Promise<UploadApiResponse> {
   const publicId = file.name.split('.').slice(0, -1).join('-').replaceAll(' ', '_')
-
-  if (slug.startsWith('_')) {
-    slug = slug.slice(1)
-  }
-
   return await cloudinaryUploaderPromise(file, {
     public_id: publicId,
     overwrite: true,
