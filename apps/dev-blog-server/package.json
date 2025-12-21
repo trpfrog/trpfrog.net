@@ -19,6 +19,7 @@
     "ai": "catalog:",
     "chokidar": "catalog:",
     "cloudinary": "catalog:",
+    "happy-dom": "catalog:",
     "hono": "catalog:",
     "ts-dedent": "catalog:"
   },
