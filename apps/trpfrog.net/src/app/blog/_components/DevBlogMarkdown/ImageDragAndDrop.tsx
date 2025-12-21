@@ -5,6 +5,7 @@ import * as React from 'react'
 import toast from 'react-hot-toast'
 
 import { PlainCodeBlock } from '@/components/molecules/CodeBlock/PlainCodeBlock'
+import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
 
 import { twMerge } from '@/lib/tailwind'
 
@@ -50,12 +51,13 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
   const [isTabOpened, setisTabOpened] = useState(false)
   const [recentlyUploaded, setRecentlyUploaded] = useState('')
   const [horizontalImages, setHorizontalImages] = useState(false)
+  const [appendToFileEnd, setAppendToFileEnd] = useState(false)
 
   const markdownCode = horizontalImages
     ? '```horizontal-images\n' + recentlyUploaded + '\n```'
     : recentlyUploaded
 
-  const { upload, uploadingStatusText, uploadingStatus } = useImageUploader(props.slug)
+  const { upload, uploadingStatusText, appendLine } = useImageUploader(props.slug)
 
   const onDroppedImage = useCallback(
     async (files: File[]) => {
@@ -64,13 +66,24 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
         success: <b>Uploaded!</b>,
         error: <b>Something went wrong...</b>,
       })
-      setRecentlyUploaded(uploaded.map(e => e.markdown).join('\n'))
+      const markdown = uploaded.map(e => e.markdown).join('\n')
+      setRecentlyUploaded(markdown)
+
+      if (appendToFileEnd && markdown !== '') {
+        const markdownToAppend = horizontalImages
+          ? '```horizontal-images\n' + markdown + '\n```'
+          : markdown
+        await toast.promise(appendLine(markdownToAppend), {
+          loading: 'Appending...',
+          success: <b>Appended!</b>,
+          error: <b>Failed to append</b>,
+        })
+      }
     },
-    [upload],
+    [appendLine, appendToFileEnd, horizontalImages, upload],
   )
 
   const { isDragging, dropTargetProps } = useImageDragAndDrop(onDroppedImage)
-  const shouldShowCodeBlock = recentlyUploaded !== '' || !uploadingStatus.isFinished
 
   return (
     <div className={`${styles.wrapper} tw:print:invisible`}>
@@ -97,24 +110,22 @@ export function ImageDragAndDropUploader(props: { slug: string }) {
               images here
             </div>
           </div>
-          {shouldShowCodeBlock && (
-            <div className={styles.code_block}>
-              <form>
-                <input
-                  type="checkbox"
-                  checked={horizontalImages}
-                  onChange={e => setHorizontalImages(e.target.checked)}
-                />
-                <label style={{ verticalAlign: '0.2em' }}>Horizontal Images</label>
-              </form>
-              <PlainCodeBlock
-                fileName={'Recently Uploaded'}
-                copyContent={recentlyUploaded ? markdownCode : undefined}
-              >
-                {uploadingStatusText ?? markdownCode}
-              </PlainCodeBlock>
-            </div>
-          )}
+          <div className={styles.code_block}>
+            <form className="tw:mb-1">
+              <LabelledCheckbox checked={horizontalImages} onChange={setHorizontalImages}>
+                Horizontal Images
+              </LabelledCheckbox>
+              <LabelledCheckbox checked={appendToFileEnd} onChange={setAppendToFileEnd}>
+                ファイル末尾に追記
+              </LabelledCheckbox>
+            </form>
+            <PlainCodeBlock
+              fileName={'Recently Uploaded'}
+              copyContent={recentlyUploaded ? markdownCode : undefined}
+            >
+              {uploadingStatusText ?? (markdownCode || 'No images uploaded yet.')}
+            </PlainCodeBlock>
+          </div>
         </>
       )}
     </div>

@@ -83,7 +83,7 @@ catalog:
   chokidar: ^4.0.3
   classnames: ^2.5.1
   clipboardy: ^4.0.0
-  cloudinary: ^2.7.0
+  cloudinary: ^2.8.0
   consola: ^3.4.2
   cssnano: ^7.1.0
   date-fns: ^4.1.0

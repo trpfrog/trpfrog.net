@@ -13,6 +13,7 @@
   "dependencies": {
     "@ai-sdk/openai": "catalog:",
     "@hono/standard-validator": "catalog:",
+    "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "@valibot/to-json-schema": "catalog:",
     "ai": "catalog:",

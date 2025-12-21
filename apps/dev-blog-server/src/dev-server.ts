@@ -4,6 +4,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
 
+import { route as editRoute } from './routes/edit'
 import { route as generateAltTextRoute } from './routes/generate-alt-text'
 import { route as uploadImageRoute } from './routes/upload-image'
 import { route as watchPostRoute } from './routes/watch-post'
@@ -13,6 +14,7 @@ export const app = new Hono()
   .use(prettyJSON())
   .use(cors({ origin: services.website.development }))
   .get('/health', c => c.text('OK'))
+  .route('/edit', editRoute)
   .route('/upload_image', uploadImageRoute)
   .route('/generate_alt_text', generateAltTextRoute)
 

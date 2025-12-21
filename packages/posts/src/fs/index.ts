@@ -3,23 +3,23 @@ import * as path from 'path'
 
 import { BlogPost } from '../core'
 import { BlogPostBuildOption, buildBlogPost } from '../core/buildBlogPost.ts'
+import { getPostSlugFromPath, getPostsDirectory, resolvePostPath } from '../core/paths.ts'
 import { searchBlogPost as search, SearchOption } from '../core/search.ts'
 
-const postsDirectory = path.join(process.cwd(), '..', '..', 'posts')
+const postsDirectory = getPostsDirectory()
+
+export { getPostSlugFromPath, getPostsDirectory, resolvePostPath }
 
 /**
  * Read markdown from slug (without extension)
  * @param slug
  */
 export function readMarkdownFromSlug(slug: string) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`)
-  const paths = [fullPath, fullPath + 'x'] // for mdx
-  for (const p of paths) {
-    if (fs.existsSync(p)) {
-      return fs.readFileSync(p, 'utf8')
-    }
+  const resolvedPath = resolvePostPath(slug)
+  if (!resolvedPath) {
+    throw new Error(`No such file: ${path.join(postsDirectory, `${slug}.md`)}`)
   }
-  throw new Error(`No such file: ${fullPath}`)
+  return fs.readFileSync(resolvedPath, 'utf8')
 }
 
 /**
@@ -37,10 +37,7 @@ export async function readBlogPost(slug: string, option?: BlogPostBuildOption): 
  */
 function readAllMarkdownFileNames() {
   const dir = fs.readdirSync(postsDirectory)
-  return dir.filter(e => {
-    const ext = e.split('.').slice(-1)[0]
-    return ext === 'md' || ext === 'mdx'
-  })
+  return dir.filter(e => path.extname(e) === '.md')
 }
 
 /**
@@ -58,7 +55,7 @@ export async function readAllSlugs(): Promise<string[]> {
 export async function readAllBlogPosts(options?: SearchOption): Promise<BlogPost[]> {
   const fileNames = readAllMarkdownFileNames()
   const allPostsData = fileNames.map(fileName => {
-    const slug = fileName.replace(/\.mdx$/, '').replace(/\.md$/, '')
+    const slug = fileName.replace(/\.md$/, '')
     const fileContents = readMarkdownFromSlug(slug)
     return buildBlogPost(slug, fileContents, { metadataOnly: true })
   })
@@ -73,7 +70,7 @@ export async function retrieveExistingAllTags(): Promise<string[]> {
   const fileNames = readAllMarkdownFileNames()
   const nested = await Promise.all(
     fileNames
-      .map(fileName => fileName.replace(/\.mdx$/, '').replace(/\.md$/, ''))
+      .map(fileName => fileName.replace(/\.md$/, ''))
       .map(slug => readBlogPost(slug, { metadataOnly: true }).then(e => e.tags)),
   )
   const set = new Set(nested.flat())

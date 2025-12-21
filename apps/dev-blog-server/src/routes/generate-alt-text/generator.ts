@@ -32,7 +32,7 @@ export async function generateAltText(image: ArrayBuffer): Promise<string> {
             text: dedent`
               Based on the provided image, generate an alt text in Japanese.
               The alt text should accurately describe the content of the image and provide useful information to enhance accessibility.
-              The alt text should be 30 - 50 characters long in Japanese.
+              The alt text should be 50 - 100 characters long in Japanese.
             `,
           },
           {
