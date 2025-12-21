@@ -1,5 +1,4 @@
-import path from 'path'
-
+import { getPostsDirectory } from '@trpfrog.net/posts'
 import { Hono } from 'hono'
 import { streamSSE } from 'hono/streaming'
 
@@ -9,7 +8,7 @@ import { startWatchPosts } from './watch-posts'
 const hub = createPostUpdateHub()
 
 startWatchPosts({
-  postsDir: path.resolve(process.cwd(), '..', '..', 'posts'),
+  postsDir: getPostsDirectory(),
   onUpdate: slug => {
     console.log('changed', slug)
     hub.publish(slug)

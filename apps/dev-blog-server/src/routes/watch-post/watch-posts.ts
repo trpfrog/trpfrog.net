@@ -1,5 +1,4 @@
-import path from 'path'
-
+import { getPostSlugFromPath } from '@trpfrog.net/posts'
 import chokidar, { FSWatcher } from 'chokidar'
 
 export type WatchPostsOptions = {
@@ -7,16 +6,13 @@ export type WatchPostsOptions = {
   onUpdate: (slug: string) => void
 }
 
-function toSlug(markdownPath: string) {
-  return path.basename(markdownPath).replace('.md', '')
-}
-
 export function startWatchPosts({ postsDir, onUpdate }: WatchPostsOptions): FSWatcher {
   const watcher = chokidar.watch(postsDir)
 
   watcher.on('change', markdownPath => {
-    if (path.extname(markdownPath) !== '.md') return
-    onUpdate(toSlug(markdownPath))
+    const slug = getPostSlugFromPath(markdownPath)
+    if (!slug) return
+    onUpdate(slug)
   })
 
   return watcher

@@ -10,3 +10,4 @@ export {
 export { searchBlogPost } from './search.ts'
 export { buildBlogPost, InvalidPagePositionError } from './buildBlogPost.ts'
 export { preprocess } from './preprocess.ts'
+export { getPostSlugFromPath, getPostsDirectory, resolvePostPath } from './paths.ts'

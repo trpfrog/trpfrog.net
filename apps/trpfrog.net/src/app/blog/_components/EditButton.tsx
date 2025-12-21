@@ -1,6 +1,7 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
-import path from 'path'
+
+import { resolvePostPath } from '@trpfrog.net/posts'
 
 import { NODE_ENV } from '@/env/client'
 
@@ -13,8 +14,12 @@ export function EditButton({ slug }: { slug: string }) {
       throw new Error('Forbidden')
     }
 
-    const postsDirectory = path.join(process.cwd(), '..', '..', 'posts')
-    const fullPath = path.join(postsDirectory, `${slug}.md`)
+    let fullPath: string
+    try {
+      fullPath = resolvePostPath(slug)
+    } catch {
+      throw new Error('Not found')
+    }
 
     if (fs.existsSync(fullPath)) {
       console.log(`open ${slug}`)
