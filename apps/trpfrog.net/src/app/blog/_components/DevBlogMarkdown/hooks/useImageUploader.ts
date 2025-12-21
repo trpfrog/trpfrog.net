@@ -64,6 +64,22 @@ export function useImageUploader(slug: string) {
     }
   }, [])
 
+  const appendLine = useCallback(
+    async (line: string) => {
+      const res = await devBlogServerClient.edit.append_line.$post({
+        json: { slug, line },
+      })
+      if (!res.ok) {
+        const error = await res
+          .json()
+          .then(e => e.error)
+          .catch(() => res.statusText)
+        throw new Error('Failed to append line: ' + error)
+      }
+    },
+    [slug],
+  )
+
   const [uploadingStatus, updateUploadingStatus] = useImmerReducer(uploadingStateImmerReducer, {
     isFinished: true,
     total: 0,
@@ -118,5 +134,6 @@ export function useImageUploader(slug: string) {
     uploadingStatusText,
     uploadingStatus,
     upload,
+    appendLine,
   }
 }
