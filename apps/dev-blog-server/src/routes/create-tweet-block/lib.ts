@@ -1,23 +1,30 @@
-/**
- * Create a block for twitter-archived.
- *
- * Usage: First, copy the URL of the tweet you want to create a block for, then run the following command.
- * $ bun tools/createTweetBlock.ts
- */
-
-import { createURL, InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
-import clipboardy from 'clipboardy'
+import { createURL, validateUnknown } from '@trpfrog.net/utils'
 import { Window } from 'happy-dom'
 import * as v from 'valibot'
 
-import { formatDateToDisplay } from '@/lib/date'
+export type FetchedTweet = {
+  id: string
+  date: string
+  tweet: string
+  name: string
+  userid: string
+  image?: string
+  image2?: string
+  image3?: string
+  image4?: string
+}
 
-import { BlogTwitterArchiveSchema } from '@/markdown/code-block-components/definitions/twitter-archived/generateTwitterArchiveProps'
+function formatDateToDisplay(date: string): string {
+  const parsed = new Date(date)
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error('Failed to parse tweet date')
+  }
+  const year = String(parsed.getFullYear())
+  const month = String(parsed.getMonth() + 1).padStart(2, '0')
+  const day = String(parsed.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
 
-/**
- * Beautify the tweet HTML.
- * @param tweetHTML
- */
 function beautifyTweet(tweetHTML: string): string {
   const window = new Window()
   const document = window.document
@@ -37,41 +44,29 @@ function beautifyTweet(tweetHTML: string): string {
   return document.body.innerHTML?.trim() ?? ''
 }
 
-/**
- * Count the number of images.
- * @param tweetHTML
- */
 function countImages(tweetHTML: string): number {
   return (tweetHTML.match(/pic.twitter.com/g) ?? []).length
 }
 
-/**
- * Preprocess the URL.
- * @param url
- */
 function preprocessURL(url: string): string {
-  url = url.split('?')[0]
-
-  if (url.match(/^\d+$/)) {
-    url = 'https://twitter.com/trpfrog/status/' + url
+  const trimmed = url.split('?')[0].trim()
+  if (!trimmed) {
+    throw new Error('Invalid URL')
   }
 
-  if (url === '' || !(url.startsWith('https://twitter.com') || url.startsWith('https://x.com'))) {
-    console.log('Invalid URL')
-    process.exit(1)
+  if (trimmed.match(/^\d+$/)) {
+    return `https://twitter.com/trpfrog/status/${trimmed}`
   }
 
-  return url
+  if (!trimmed.startsWith('https://twitter.com') && !trimmed.startsWith('https://x.com')) {
+    throw new Error('Invalid URL')
+  }
+
+  return trimmed
 }
 
-type FetchedTweet = InferSchemaOutput<typeof BlogTwitterArchiveSchema>
-
-/**
- * Fetch the tweet.
- * @param tweetUrl
- */
-async function fetchTweet(tweetUrl: string) {
-  tweetUrl = preprocessURL(tweetUrl)
+export async function fetchTweet(tweetUrl: string): Promise<FetchedTweet> {
+  const normalizedUrl = preprocessURL(tweetUrl)
 
   const FetchedTweetSchema = v.object({
     url: v.string(),
@@ -83,14 +78,16 @@ async function fetchTweet(tweetUrl: string) {
   const endpoint = createURL('/oembed', 'https://publish.twitter.com', {
     dnt: 'true',
     omit_script: 'true',
-    url: tweetUrl,
+    url: normalizedUrl,
   })
 
   const response = await fetch(endpoint)
+  if (!response.ok) {
+    throw new Error(`Failed to fetch tweet (status: ${response.status})`)
+  }
   const rawContent = await response.json()
   const content = validateUnknown(FetchedTweetSchema, rawContent)
 
-  // oEmbed の HTML を happy-dom でパース
   const window = new Window()
   const document = window.document
   document.body.innerHTML = content.html
@@ -115,15 +112,10 @@ async function fetchTweet(tweetUrl: string) {
     image2: images >= 2 ? imagePrefix : undefined,
     image3: images >= 3 ? imagePrefix : undefined,
     image4: images >= 4 ? imagePrefix : undefined,
-  } satisfies FetchedTweet
+  }
 }
 
-/**
- * Create a block for twitter-archived.
- * @param url
- */
-async function createTweetBlock(url: string): Promise<void> {
-  const result = await fetchTweet(url)
+export function createTweetBlock(result: FetchedTweet): string {
   const isTrpFrog = result.userid === 'TrpFrog'
 
   const createLine = (key: keyof typeof result) => {
@@ -131,7 +123,7 @@ async function createTweetBlock(url: string): Promise<void> {
     return value ? `${String(key)}: ${value as string}` : undefined
   }
 
-  const resultCodeBlock = [
+  return [
     '```twitter-archived',
     createLine('id'),
     !isTrpFrog && createLine('name'),
@@ -146,15 +138,9 @@ async function createTweetBlock(url: string): Promise<void> {
   ]
     .filter(Boolean)
     .join('\n')
-
-  console.log(resultCodeBlock)
-  clipboardy.writeSync(resultCodeBlock)
 }
 
-const url = process.argv[2] // You can get the URL from command line arguments
-if (url) {
-  void createTweetBlock(url)
-} else {
-  // You can get the URL from clipboard
-  void createTweetBlock(clipboardy.readSync())
+export async function createTweetBlockFromUrl(url: string): Promise<string> {
+  const result = await fetchTweet(url)
+  return createTweetBlock(result)
 }

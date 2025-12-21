@@ -17,6 +17,7 @@
     "@trpfrog.net/utils": "workspace:*",
     "@valibot/to-json-schema": "catalog:",
     "ai": "catalog:",
+    "clipboardy": "catalog:",
     "chokidar": "catalog:",
     "cloudinary": "catalog:",
     "happy-dom": "catalog:",
