@@ -16,5 +16,9 @@ async function createTweetBlock(url: string): Promise<void> {
 }
 
 const url = process.argv[2]
-const input = url ?? clipboardy.readSync()
-void createTweetBlock(input)
+if (url) {
+  void createTweetBlock(url)
+} else {
+  const url = clipboardy.readSync()
+  void createTweetBlock(url)
+}

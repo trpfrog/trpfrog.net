@@ -8,7 +8,9 @@ export function TwitterCardSection(props: {
   tweetUrl: string
   onTweetUrlChange: (value: string) => void
   onGenerate: () => void
+  onGenerateFromServerClipboard: () => void
 }) {
+  const shouldGenerateFromClipboard = props.tweetUrl.length === 0
   return (
     <WritingToolsSection title="Twitter Card">
       <div className="tw:grid tw:gap-1.5">
@@ -25,9 +27,11 @@ export function TwitterCardSection(props: {
             tw:transition-colors tw:duration-150 tw:hover:tw:bg-(--header-color)
             tw:hover:tw:text-white tw:active:tw:opacity-90"
           type="button"
-          onClick={props.onGenerate}
+          onClick={
+            shouldGenerateFromClipboard ? props.onGenerateFromServerClipboard : props.onGenerate
+          }
         >
-          Generate
+          {shouldGenerateFromClipboard ? 'Generate from server clipboard' : 'Generate'}
         </button>
       </div>
     </WritingToolsSection>

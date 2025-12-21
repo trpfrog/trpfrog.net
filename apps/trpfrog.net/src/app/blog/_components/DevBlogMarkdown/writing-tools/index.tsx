@@ -64,7 +64,7 @@ export function WritingTools(props: { slug: string }) {
 
   const { isDragging, dropTargetProps } = useImageDragAndDrop(onDroppedImage)
 
-  const { generateFromUrl } = useTwitterBlockGenerator({
+  const { generateFromUrl, generateFromServerClipboard } = useTwitterBlockGenerator({
     onOutput: codeBlock => {
       setTweetBlockOutput(codeBlock)
       setLastOutputSource('twitter')
@@ -87,6 +87,7 @@ export function WritingTools(props: { slug: string }) {
         tweetUrl={tweetUrl}
         onTweetUrlChange={setTweetUrl}
         onGenerate={() => void generateFromUrl(tweetUrl)}
+        onGenerateFromServerClipboard={() => void generateFromServerClipboard()}
       />
       <WritingToolsOutput outputText={outputText} codeBlockContent={codeBlockContent} />
     </WritingToolsPanel>
