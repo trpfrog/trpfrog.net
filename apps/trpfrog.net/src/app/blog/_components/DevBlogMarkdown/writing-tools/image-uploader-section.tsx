@@ -30,16 +30,10 @@ export function ImageUploaderSection(props: {
         <div
           className={twMerge(
             `tw:grid tw:place-items-center tw:w-full tw:h-full tw:pointer-events-none
-            tw:border-dashed tw:border-2`,
-            props.isDragging ? 'tw:border-(--header-color)' : 'tw:border-(--window-bkg-color)',
+            tw:border-dashed tw:border-4`,
+            props.isDragging ? 'tw:border-(--header-color)' : 'tw:border-gray-300',
           )}
         >
-          <div
-            className="tw:text-[0.85rem] tw:font-semibold tw:tracking-[0.02em] tw:uppercase
-              tw:opacity-[0.85]"
-          >
-            Image Uploader
-          </div>
           Drag and drop
           <br />
           images here
