@@ -10,13 +10,13 @@ import { createAssetsClient } from './ssg'
 
 export const alphaApp = new Hono<Env>()
   .get('/slugs', async c => {
-    const { assets, fetchAsset } = createAssetsClient(c)
-    const slugs = await fetchAsset(assets.slugs)
+    const assetsClient = createAssetsClient(c)
+    const slugs = await assetsClient.fetchSlugs()
     return c.json(slugs.filter(s => !s.startsWith('_')))
   })
   .get('/tags', async c => {
-    const { assets, fetchAsset } = createAssetsClient(c)
-    const tags = await fetchAsset(assets.tags)
+    const assetsClient = createAssetsClient(c)
+    const tags = await assetsClient.fetchTags()
     return c.json(tags)
   })
   .get(
@@ -28,8 +28,8 @@ export const alphaApp = new Hono<Env>()
       }),
     ),
     async c => {
-      const { assets, fetchAsset } = createAssetsClient(c)
-      const posts = await fetchAsset(assets.posts)
+      const assetsClient = createAssetsClient(c)
+      const posts = await assetsClient.fetchPosts()
       const tag = c.req.valid('query').tag
       return tag ? c.json(posts.filter(p => p.tags.includes(tag))) : c.json(posts)
     },
@@ -43,17 +43,12 @@ export const alphaApp = new Hono<Env>()
       }),
     ),
     async c => {
-      const { assets, fetchAsset } = createAssetsClient(c)
+      const assetsClient = createAssetsClient(c)
       const slug = c.req.param('slug')
       try {
-        const post = await fetchAsset(assets.posts[':slug'], {
-          param: { slug },
-        })
-        if ('error' in post) {
-          return c.json(post, { status: 404 })
-        }
         const page = c.req.valid('query').page
-        return c.json(buildBlogPost(slug, post.content, { pagePos1Indexed: page }))
+        const content = await assetsClient.fetchContent(slug)
+        return c.json(buildBlogPost(slug, content, { pagePos1Indexed: page }))
       } catch (e) {
         if (e instanceof InvalidPagePositionError) {
           return c.json({ error: e.message }, { status: 400 })

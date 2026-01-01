@@ -1,71 +1,67 @@
-// alpha-router.ts -- 仮の機能を提供するためのルーター あとでなんとかする
-
-import * as postFs from '@trpfrog.net/posts/fs'
+import { devBlogServerClient } from '@trpfrog.net/dev-blog-server'
+import { ssgAssetsRoute } from '@trpfrog.net/dev-blog-server/ssg-assets'
+import { BlogPost } from '@trpfrog.net/posts'
 import { Context, Hono } from 'hono'
-import { hc, InferResponseType } from 'hono/client'
-import { onlySSG, ssgParams } from 'hono/ssg'
+import { hc } from 'hono/client'
 
 import { Env } from './env'
 
-const alphaApp = new Hono()
-  .get('/slugs', async c => {
-    const posts = await postFs.readAllBlogPosts({
-      order: 'desc',
-    })
-    return c.json(posts.map(p => p.slug).filter(s => !s.startsWith('_')))
-  })
-  .get('/tags', async c => {
-    const tags = await postFs.retrieveExistingAllTags()
-    return c.json(tags)
-  })
-  .get('/posts', onlySSG(), async c => {
-    const posts = await postFs.readAllBlogPosts({
-      order: 'desc',
-    })
-    return c.json(posts.filter(p => !p.slug.startsWith('_')))
-  })
-  .get(
-    '/posts/:slug',
-    ssgParams(async () => {
-      const slugs = await postFs.readAllSlugs()
-      return slugs.filter(s => !s.startsWith('_')).map(slug => ({ slug }))
-    }),
-    async c => {
-      const slug = c.req.param('slug')
-      try {
-        const fileContents = postFs.readMarkdownFromSlug(slug)
-        return c.json({
-          content: fileContents,
-        })
-      } catch {
-        return c.json({ error: 'Not found' }, { status: 404 })
-      }
-    },
-  )
+// This will be the target for SSG and can be accessed via ASSETS binding
+const ssgTargetApp = new Hono().route('/assets', ssgAssetsRoute)
 
-const app = new Hono().route('/assets', alphaApp)
+interface AssetClient {
+  fetchSlugs: () => Promise<string[]>
+  fetchTags: () => Promise<string[]>
+  fetchPosts: () => Promise<BlogPost[]>
+  fetchContent: (slug: string) => Promise<string>
+}
 
-export function createAssetsClient(c: Context<Env>) {
-  const client = hc<typeof app>(new URL(c.req.url).origin)
+function createAssetClientFromRPC(rpc: (typeof devBlogServerClient)['ssg_assets']): AssetClient {
   return {
-    assets: client.assets,
-    fetchAsset: async <
-      T extends {
-        $get: unknown
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        $url: (params: any) => URL
-      },
-    >(
-      partialClient: T,
-      params?: Parameters<T['$url']>[0],
-    ): Promise<InferResponseType<T['$get']>> => {
-      const url = partialClient.$url(params).toString() + '.json'
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore -- Avoid type error in Next.js
-      return c.env.ASSETS.fetch(url).then(async e => e.json())
+    fetchSlugs: async () => {
+      return rpc.slugs.$get().then(res => res.json())
+    },
+    fetchTags: async () => {
+      return rpc.tags.$get().then(res => res.json())
+    },
+    fetchPosts: async () => {
+      return rpc.posts.$get().then(res => res.json())
+    },
+    fetchContent: async (slug: string) => {
+      const res = await rpc.posts[':slug'].$get({ param: { slug } })
+      const data = await res.json()
+      if ('error' in data) {
+        throw new Error('Content not found')
+      }
+      return data.content
     },
   }
 }
 
+// If in development environment, get article data directly from dev-blog-server via RPC
+const devAssetClient: AssetClient = createAssetClientFromRPC(devBlogServerClient.ssg_assets)
+
+// If in production environment, get article data via ASSETS binding
+const createProductionAssetClient = (c: Context<Env>): AssetClient => {
+  const origin = new URL(c.req.url).origin
+  const ssgTargetAppClient = hc<typeof ssgTargetApp>(origin, {
+    // Append `.json` to the end of the URL to fetch via ASSETS binding
+    fetch: (...params: Parameters<typeof fetch>) => {
+      const [rawInput, ...rest] = params
+      const url =
+        rawInput instanceof Request
+          ? rawInput.url
+          : rawInput instanceof URL
+            ? rawInput.toString()
+            : rawInput
+      return c.env.ASSETS.fetch(url + '.json', ...rest)
+    },
+  })
+  return createAssetClientFromRPC(ssgTargetAppClient.assets)
+}
+
+export const createAssetsClient = (c: Context<Env>) =>
+  process.env.NODE_ENV === 'development' ? devAssetClient : createProductionAssetClient(c)
+
 // eslint-disable-next-line no-restricted-exports
-export default app
+export default ssgTargetApp
