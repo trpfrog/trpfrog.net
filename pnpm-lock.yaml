@@ -803,9 +803,15 @@ importers:
       chokidar:
         specifier: 'catalog:'
         version: 4.0.3
+      clipboardy:
+        specifier: 'catalog:'
+        version: 4.0.0
       cloudinary:
         specifier: 'catalog:'
         version: 2.8.0
+      happy-dom:
+        specifier: 'catalog:'
+        version: 20.0.11
       hono:
         specifier: 'catalog:'
         version: 4.9.2
