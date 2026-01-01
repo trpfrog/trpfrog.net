@@ -10,14 +10,9 @@ import { ArticleSidebar } from '@blog/_components/ArticleSidebar'
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
 import { EntryButtons } from '@blog/_components/EntryButtons'
 import { RelatedPosts } from '@blog/_components/RelatedPosts'
-import { fetchPost, fetchPostList, fetchSlugs } from '@blog/rpc'
+import { fetchPost, fetchPostList } from '@blog/rpc'
 
 import styles from './layout.module.css'
-
-export async function generateStaticParams() {
-  const slugs = await fetchSlugs()
-  return slugs.map(slug => ({ slug }))
-}
 
 export default async function Layout(props: LayoutProps<'/blog/[slug]'>) {
   const { slug } = await props.params
