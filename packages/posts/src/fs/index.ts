@@ -14,12 +14,12 @@ export { getPostSlugFromPath, getPostsDirectory, resolvePostPath }
  * Read markdown from slug (without extension)
  * @param slug
  */
-export function readMarkdownFromSlug(slug: string) {
+export function readMarkdownFromSlug(slug: string): Promise<string> {
   const resolvedPath = resolvePostPath(slug)
   if (!resolvedPath) {
-    throw new Error(`No such file: ${path.join(postsDirectory, `${slug}.md`)}`)
+    return Promise.reject(new Error(`No such file: ${path.join(postsDirectory, `${slug}.md`)}`))
   }
-  return fs.readFileSync(resolvedPath, 'utf8')
+  return fs.promises.readFile(resolvedPath, 'utf8')
 }
 
 /**
@@ -28,23 +28,22 @@ export function readMarkdownFromSlug(slug: string) {
  * @param option
  */
 export async function readBlogPost(slug: string, option?: BlogPostBuildOption): Promise<BlogPost> {
-  const fileContents = readMarkdownFromSlug(slug)
+  const fileContents = await readMarkdownFromSlug(slug)
   return buildBlogPost(slug, fileContents, option)
 }
 
 /**
  * Read all markdown file names
  */
-function readAllMarkdownFileNames() {
-  const dir = fs.readdirSync(postsDirectory)
-  return dir.filter(e => path.extname(e) === '.md')
+async function readAllMarkdownFileNames(): Promise<string[]> {
+  return fs.promises.readdir(postsDirectory).then(dir => dir.filter(e => path.extname(e) === '.md'))
 }
 
 /**
  * Read all slugs
  */
 export async function readAllSlugs(): Promise<string[]> {
-  const fileNames = readAllMarkdownFileNames()
+  const fileNames = await readAllMarkdownFileNames()
   return fileNames.map(e => e.slice(0, e.lastIndexOf('.')))
 }
 
@@ -53,13 +52,14 @@ export async function readAllSlugs(): Promise<string[]> {
  * @param options
  */
 export async function readAllBlogPosts(options?: SearchOption): Promise<BlogPost[]> {
-  const fileNames = readAllMarkdownFileNames()
-  const allPostsData = fileNames.map(fileName => {
-    const slug = fileName.replace(/\.md$/, '')
-    const fileContents = readMarkdownFromSlug(slug)
-    return buildBlogPost(slug, fileContents, { metadataOnly: true })
-  })
-
+  const fileNames = await readAllMarkdownFileNames()
+  const allPostsData = await Promise.all(
+    fileNames.map(async fileName => {
+      const slug = fileName.replace(/\.md$/, '')
+      const fileContents = await readMarkdownFromSlug(slug)
+      return buildBlogPost(slug, fileContents, { metadataOnly: true })
+    }),
+  )
   return search(allPostsData, options)
 }
 
@@ -67,7 +67,7 @@ export async function readAllBlogPosts(options?: SearchOption): Promise<BlogPost
  * Retrieve existing all tags
  */
 export async function retrieveExistingAllTags(): Promise<string[]> {
-  const fileNames = readAllMarkdownFileNames()
+  const fileNames = await readAllMarkdownFileNames()
   const nested = await Promise.all(
     fileNames
       .map(fileName => fileName.replace(/\.md$/, ''))
