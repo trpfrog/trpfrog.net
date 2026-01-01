@@ -32,7 +32,7 @@
     "prettier-plugin-merge": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.6.3",
+    "turbo": "^2.7.2",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",

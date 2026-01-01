@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "prisma generate && next dev --turbopack",
-    "analyze": "ANALYZE=true next build --turbopack",
-    "build": "prisma generate && next build --turbopack",
+    "dev": "prisma generate && next dev",
+    "analyze": "ANALYZE=true next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
