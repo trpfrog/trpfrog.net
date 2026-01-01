@@ -8,7 +8,8 @@
   },
   "type": "module",
   "exports": {
-    ".": "./client.ts"
+    ".": "./client.ts",
+    "./ssg-assets": "./src/routes/ssg-assets/index.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",

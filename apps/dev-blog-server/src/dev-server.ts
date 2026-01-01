@@ -7,6 +7,7 @@ import { prettyJSON } from 'hono/pretty-json'
 import { route as createTweetBlockRoute } from './routes/create-tweet-block'
 import { route as editRoute } from './routes/edit'
 import { route as generateAltTextRoute } from './routes/generate-alt-text'
+import { ssgAssetsRoute } from './routes/ssg-assets'
 import { route as uploadImageRoute } from './routes/upload-image'
 import { route as watchPostRoute } from './routes/watch-post'
 
@@ -19,6 +20,7 @@ export const app = new Hono()
   .route('/create_tweet_block', createTweetBlockRoute)
   .route('/upload_image', uploadImageRoute)
   .route('/generate_alt_text', generateAltTextRoute)
+  .route('/ssg_assets', ssgAssetsRoute)
 
 // Hono RPC に含めないように method chain から外す
 app.route('/watch-post', watchPostRoute)
