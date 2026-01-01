@@ -2,7 +2,7 @@
   "name": "@trpfrog.net/dev-blog-server",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/dev-server.ts",
+    "dev": "NODE_ENV=development bun run --hot src/dev-server.ts",
     "build": "tsc",
     "lint-fix": "eslint . --fix"
   },

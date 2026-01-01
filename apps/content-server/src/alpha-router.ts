@@ -12,7 +12,7 @@ export const alphaApp = new Hono<Env>()
   .get('/slugs', async c => {
     const assetsClient = createAssetsClient(c)
     const slugs = await assetsClient.fetchSlugs()
-    return c.json(slugs.filter(s => !s.startsWith('_')))
+    return c.json(slugs)
   })
   .get('/tags', async c => {
     const assetsClient = createAssetsClient(c)

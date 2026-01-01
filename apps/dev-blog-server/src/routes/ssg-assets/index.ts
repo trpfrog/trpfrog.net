@@ -7,12 +7,16 @@ import {
 import { Hono } from 'hono'
 import { ssgParams } from 'hono/ssg'
 
+function isVisiblePostSlug(slug: string): boolean {
+  return process.env.NODE_ENV === 'development' || !slug.startsWith('_')
+}
+
 export const ssgAssetsRoute = new Hono()
   .get('/slugs', async c => {
     const posts = await readAllBlogPosts({
       order: 'desc',
     })
-    return c.json(posts.map(p => p.slug).filter(s => !s.startsWith('_')))
+    return c.json(posts.map(p => p.slug).filter(isVisiblePostSlug))
   })
   .get('/tags', async c => {
     const tags = await retrieveExistingAllTags()
@@ -22,13 +26,13 @@ export const ssgAssetsRoute = new Hono()
     const posts = await readAllBlogPosts({
       order: 'desc',
     })
-    return c.json(posts.filter(p => !p.slug.startsWith('_')))
+    return c.json(posts.filter(p => isVisiblePostSlug(p.slug)))
   })
   .get(
     '/posts/:slug',
     ssgParams(async () => {
       const slugs = await readAllSlugs()
-      return slugs.filter(s => !s.startsWith('_')).map(slug => ({ slug }))
+      return slugs.filter(s => isVisiblePostSlug(s)).map(slug => ({ slug }))
     }),
     async c => {
       const slug = c.req.param('slug')
