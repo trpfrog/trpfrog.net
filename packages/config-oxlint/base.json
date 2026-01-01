@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "unicorn", "typescript", "node", "vitest", "import", "promise", "jsdoc", "oxc"],
+  "ignorePatterns": [
+    "storybook-static",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    ".wrangler"
+  ],
+  "rules": {
+    "eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ]
+  }
+}

@@ -27,6 +27,7 @@
 
   "files.associations": {
     "turbo.json": "jsonc",
+    ".oxlint.json": "jsonc",
     "apps/trpfrog.net/src/app/globals.css": "tailwindcss",
     "apps/admin/src/app/globals.css": "tailwindcss",
   }

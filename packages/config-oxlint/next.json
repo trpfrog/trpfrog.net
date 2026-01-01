@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["./base.json"],
+  "plugins": ["nextjs"],
+  "ignorePatterns": [
+    "storybook-static",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    ".wrangler",
+    ".next",
+    "next-env.d.ts"
+  ],
+  "rules": {
+    "nextjs/no-img-element": "off"
+  }
+}
