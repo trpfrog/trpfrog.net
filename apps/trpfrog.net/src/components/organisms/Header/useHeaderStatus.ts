@@ -78,7 +78,7 @@ export function useHeaderStatus(): HeaderStatus {
     sticky: isMobileMenuOpened || userSettingFollowSticky,
 
     // ヘッダーのサブタイトルを表示するかどうか
-    visibleSubtitle: scrollY > (isMobile ? 120 : 250),
+    visibleSubtitle: !isTopPage && scrollY > (isMobile ? 120 : 250),
 
     // ヘッダーのつまみアイコンを表示するかどうか
     visibleTrpFrog: isTopPage ? scrollY >= 250 : true,
