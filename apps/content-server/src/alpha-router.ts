@@ -5,8 +5,8 @@ import { BlogPageNumberSchema, buildBlogPost, InvalidPagePositionError } from '@
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
+import { createAssetsClient } from './asset-client'
 import { Env } from './env'
-import { createAssetsClient } from './ssg'
 
 export const alphaApp = new Hono<Env>()
   .get('/slugs', async c => {
