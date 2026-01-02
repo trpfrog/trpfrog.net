@@ -4,7 +4,7 @@ import { Context } from 'hono'
 import { hc } from 'hono/client'
 import { match } from 'ts-pattern'
 
-import { env, Env } from './env'
+import { getVars, Env } from './env'
 import ssgTargetApp from './ssg' // This will be the target for SSG and can be accessed via ASSETS binding
 
 interface AssetClient {
@@ -56,10 +56,8 @@ const createProductionAssetClient = (c: Context<Env>): AssetClient => {
   return createAssetClientFromRPC(ssgTargetAppClient.assets)
 }
 
-console.log(env.TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY)
-
 export const createAssetsClient = (c: Context<Env>) =>
-  match(env.TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY)
+  match(getVars().TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY)
     .with('dev-realtime', () => devAssetClient)
     .with('static-generated', () => createProductionAssetClient(c))
     .exhaustive()
