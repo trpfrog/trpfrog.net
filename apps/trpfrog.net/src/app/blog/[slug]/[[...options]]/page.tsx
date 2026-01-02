@@ -1,5 +1,8 @@
 import { Metadata } from 'next'
 
+import { cacheTags } from '@trpfrog.net/constants'
+import { cacheLife, cacheTag } from 'next/cache'
+
 import { env } from '@/env/server.ts'
 
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
@@ -7,20 +10,6 @@ import { DevBlogMarkdown } from '@blog/_components/DevBlogMarkdown'
 import { fetchPost } from '@blog/rpc'
 
 import { validateBlogPath } from '../../validate-path'
-
-// TODO: Use more appropriate types for props
-export async function generateStaticParams(props: { params: { slug: string } }) {
-  const { slug } = props.params
-  const entry = await fetchPost(slug)
-  const paths: { options?: string[] }[] = []
-  for (let i = 1; i <= entry.numberOfPages; i++) {
-    paths.push({ options: [i.toString()] })
-  }
-  paths.push({ options: ['all'] })
-  paths.push({ options: undefined })
-
-  return paths
-}
 
 export async function generateMetadata(props: PageProps<'/blog/[slug]/[[...options]]'>) {
   const params = await props.params
@@ -51,6 +40,10 @@ export async function generateMetadata(props: PageProps<'/blog/[slug]/[[...optio
 }
 
 export default async function Index(props: PageProps<'/blog/[slug]/[[...options]]'>) {
+  'use cache'
+  cacheTag(cacheTags.entireBlog.tag, cacheTags.blogSlug.tag((await props.params).slug))
+  cacheLife('cache-if-production')
+
   const params = await props.params
   const { slug, page } = validateBlogPath(params.slug, params.options?.[0])
   const entry = await fetchPost(slug, page)

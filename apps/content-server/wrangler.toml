@@ -8,3 +8,6 @@ routes = [
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+
+[env.development.vars]
+TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY = "dev-realtime"

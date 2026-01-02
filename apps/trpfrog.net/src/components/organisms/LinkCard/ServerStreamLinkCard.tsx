@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 
 import { cacheTags } from '@trpfrog.net/constants'
 import { parsePageInfo } from '@trpfrog.net/utils/dom'
+import { cacheLife, cacheTag } from 'next/cache'
 import dynamic from 'next/dynamic'
 
 import { SkeletonLinkCard } from './SkeletonLinkCard'
@@ -27,13 +28,12 @@ export type LinkCardResult =
     }
 
 async function fetcher(url: string): Promise<LinkCardResult> {
-  'use server'
+  'use cache'
+  cacheTag(cacheTags.allOgp.tag, cacheTags.ogp.tag(url))
+  cacheLife('weeks')
+
   try {
     const res = await fetch(url, {
-      next: {
-        revalidate: 60 * 60 * 24 * 7,
-        tags: [cacheTags.allOgp.tag, cacheTags.ogp.tag(url)],
-      },
       signal: AbortSignal.timeout(5000),
     })
     const htmlText = await res.text()
