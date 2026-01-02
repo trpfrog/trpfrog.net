@@ -1,6 +1,8 @@
 import * as React from 'react'
 
+import { cacheTags } from '@trpfrog.net/constants'
 import { BlogPost } from '@trpfrog.net/posts'
+import { cacheLife, cacheTag } from 'next/cache'
 
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -15,7 +17,11 @@ import { fetchPost, fetchPostList } from '@blog/rpc'
 import styles from './layout.module.css'
 
 export default async function Layout(props: LayoutProps<'/blog/[slug]'>) {
+  'use cache'
+
   const { slug } = await props.params
+  cacheTag(cacheTags.entireBlog.tag, cacheTags.blogSlug.tag(slug))
+  cacheLife('cache-if-production')
 
   const entry = await fetchPost(slug)
   const tags = entry.tags

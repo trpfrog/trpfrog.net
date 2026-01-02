@@ -1,5 +1,8 @@
 import { Metadata } from 'next'
 
+import { cacheTags } from '@trpfrog.net/constants'
+import { cacheLife, cacheTag } from 'next/cache'
+
 import { env } from '@/env/server.ts'
 
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
@@ -37,6 +40,10 @@ export async function generateMetadata(props: PageProps<'/blog/[slug]/[[...optio
 }
 
 export default async function Index(props: PageProps<'/blog/[slug]/[[...options]]'>) {
+  'use cache'
+  cacheTag(cacheTags.entireBlog.tag, cacheTags.blogSlug.tag((await props.params).slug))
+  cacheLife('cache-if-production')
+
   const params = await props.params
   const { slug, page } = validateBlogPath(params.slug, params.options?.[0])
   const entry = await fetchPost(slug, page)
