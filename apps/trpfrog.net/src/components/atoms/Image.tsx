@@ -10,8 +10,10 @@ import { tv } from '@/lib/tailwind'
 
 import type { Except } from 'type-fest'
 
-interface ImageProps
-  extends Except<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
+interface ImageProps extends Except<
+  React.ComponentPropsWithRef<'img'>,
+  'width' | 'height' | 'src'
+> {
   src: string
   width: number
   height: number
