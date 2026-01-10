@@ -71,7 +71,7 @@ export function AllImages() {
                     radius="md"
                     src={image.imageUri}
                     alt="Generated AI icon"
-                    className="aspect-square min-w-[50px] max-w-[300px]"
+                    className="aspect-square max-w-[300px] min-w-[50px]"
                   />
                 </Table.Td>
                 <Table.Td>{image.prompt.text}</Table.Td>

@@ -70,30 +70,28 @@ export async function GET(_req: NextRequest, context: RouteContext<'/blog/[slug]
     .then(res => res.json())
 
   return new ImageResponse(
-    (
-      <OgBody>
-        <OgWindow>
-          <OgThumbnail src={thumbnail} />
-          <Background>
-            <OgTitleWrapper>
-              <span style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {budouxTitle.map((str, i) => (
-                  <span key={i}>{str}</span>
-                ))}
-              </span>
-              {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
-            </OgTitleWrapper>
-            <OgAttributesWrapper>
-              <OgAttribute>{date}</OgAttribute>
-              {tags.map(tag => (
-                <OgAttribute key={tag}>#{tag}</OgAttribute>
+    <OgBody>
+      <OgWindow>
+        <OgThumbnail src={thumbnail} />
+        <Background>
+          <OgTitleWrapper>
+            <span style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+              {budouxTitle.map((str, i) => (
+                <span key={i}>{str}</span>
               ))}
-            </OgAttributesWrapper>
-          </Background>
-        </OgWindow>
-        <OgTrpFrogIcon size={100} pos={{ x: 38, y: 38 }} />
-      </OgBody>
-    ),
+            </span>
+            {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
+          </OgTitleWrapper>
+          <OgAttributesWrapper>
+            <OgAttribute>{date}</OgAttribute>
+            {tags.map(tag => (
+              <OgAttribute key={tag}>#{tag}</OgAttribute>
+            ))}
+          </OgAttributesWrapper>
+        </Background>
+      </OgWindow>
+      <OgTrpFrogIcon size={100} pos={{ x: 38, y: 38 }} />
+    </OgBody>,
     imageResponseOptions,
   )
 }
