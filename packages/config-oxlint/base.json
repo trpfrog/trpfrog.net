@@ -7,7 +7,9 @@
     "dist",
     "build",
     "coverage",
-    ".wrangler"
+    ".wrangler",
+    ".storybook",
+    "**/*.stories.{js,jsx,ts,tsx,mdx}"
   ],
   "rules": {
     "eslint/no-unused-vars": [
