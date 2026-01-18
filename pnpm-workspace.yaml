@@ -122,6 +122,7 @@ catalog:
   next-mdx-remote: ^5.0.0
   node-html-parser: ^7.0.1
   nookies: ^2.5.2
+  oxfmt: ^0.24.0
   oxlint: ^1.39.0
   oxlint-tsgolint: ^0.10.1
   p-retry: ^7.0.0

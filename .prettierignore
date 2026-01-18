@@ -1,8 +1,0 @@
-**/node_modules
-**/.next
-**/*.md
-**/*.mdx
-**/*.json
-**/*.yaml
-**/*.yml
-**/.wrangler
