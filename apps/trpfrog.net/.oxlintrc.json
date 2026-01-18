@@ -5,7 +5,7 @@
     "eslint/no-restricted-imports": [
       "error",
       {
-        "patterns": ["@/app/blog/*", "**/*.stories"],
+        "patterns": ["@/app/blog/*"],
         "paths": [
           {
             "name": "tailwind-variants",

@@ -1,9 +1,12 @@
 {
   "$schema": "../../node_modules/oxlint/configuration_schema.json",
-  "extends": ["./base.json"],
-  "plugins": ["nextjs"],
+  "extends": [
+    "./base.json"
+  ],
+  "plugins": [
+    "nextjs"
+  ],
   "ignorePatterns": [
-    "storybook-static",
     "out",
     "dist",
     "build",

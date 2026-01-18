@@ -1,15 +1,22 @@
 {
   "$schema": "../../node_modules/oxlint/configuration_schema.json",
-  "plugins": ["eslint", "unicorn", "typescript", "node", "vitest", "import", "promise", "jsdoc", "oxc"],
+  "plugins": [
+    "eslint",
+    "unicorn",
+    "typescript",
+    "node",
+    "vitest",
+    "import",
+    "promise",
+    "jsdoc",
+    "oxc"
+  ],
   "ignorePatterns": [
-    "storybook-static",
     "out",
     "dist",
     "build",
     "coverage",
-    ".wrangler",
-    ".storybook",
-    "**/*.stories.{js,jsx,ts,tsx,mdx}"
+    ".wrangler"
   ],
   "rules": {
     "eslint/no-unused-vars": [
