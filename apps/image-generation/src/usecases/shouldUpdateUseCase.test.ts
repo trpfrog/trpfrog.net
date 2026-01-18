@@ -70,32 +70,30 @@ describe('shouldUpdateUseCase', () => {
     },
   ]
 
-  testCases.forEach(props => {
-    it(props.description, async () => {
-      // refresh する処理別途テストがあるので今回は無視する
-      const spy = vi
-        .spyOn(getRefreshedImageUpdateStatus, 'getRefreshedImageUpdateStatus')
-        .mockImplementation(status => status)
+  it.each(testCases)('$description', async props => {
+    // refresh する処理別途テストがあるので今回は無視する
+    const spy = vi
+      .spyOn(getRefreshedImageUpdateStatus, 'getRefreshedImageUpdateStatus')
+      .mockImplementation(status => status)
 
-      const shouldUpdate = shouldUpdateUseCase({
-        imageMetadataRepo: createImageMetadataRepoMock([
-          {
-            id: '1',
-            createdAt: props.latestImageCreatedAt,
-            imageUri: 'http://example.com',
-            prompt: { author: 'test', text: 'test', translated: 'test' },
-            modelName: 'test',
-          },
-        ]),
-        imageUpdateStatusRepo: createImageUpdateStatusRepoMock(props.imageUpdateStatus),
-        ...(props.deps ?? {}),
-      })
-
-      const result = await shouldUpdate({
-        forceUpdate: props.isForceUpdate,
-      })
-      expect(result.shouldUpdate).toBe(props.expected)
-      spy.mockRestore()
+    const shouldUpdate = shouldUpdateUseCase({
+      imageMetadataRepo: createImageMetadataRepoMock([
+        {
+          id: '1',
+          createdAt: props.latestImageCreatedAt,
+          imageUri: 'http://example.com',
+          prompt: { author: 'test', text: 'test', translated: 'test' },
+          modelName: 'test',
+        },
+      ]),
+      imageUpdateStatusRepo: createImageUpdateStatusRepoMock(props.imageUpdateStatus),
+      ...props.deps,
     })
+
+    const result = await shouldUpdate({
+      forceUpdate: props.isForceUpdate,
+    })
+    expect(result.shouldUpdate).toBe(props.expected)
+    spy.mockRestore()
   })
 })

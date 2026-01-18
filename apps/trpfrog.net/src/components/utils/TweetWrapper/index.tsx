@@ -14,7 +14,6 @@ const ReactTweet = dynamic(() => import('react-tweet').then(m => m.Tweet))
  * Temporary fix for react-tweet
  * https://github.com/vercel/react-tweet/issues/135
  * @param props TweetProps
- * @constructor
  */
 export async function Tweet(props: TweetProps) {
   const isAvailable = props.id ? await isTweetAvailable(props.id) : false

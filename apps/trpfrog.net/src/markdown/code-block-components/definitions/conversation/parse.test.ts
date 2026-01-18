@@ -71,9 +71,7 @@ describe('Conversation parse', () => {
     },
   ]
 
-  cases.forEach(({ name, input, output }) => {
-    it(name, () => {
-      expect(parseConversation(input)).toEqual(output)
-    })
+  it.each(cases)('$name', ({ input, output }) => {
+    expect(parseConversation(input)).toEqual(output)
   })
 })

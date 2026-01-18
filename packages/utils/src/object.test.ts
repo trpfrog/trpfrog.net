@@ -47,11 +47,9 @@ describe('removePrefixFromKeys', () => {
     },
   ]
 
-  testCases.forEach(({ description, prefix, input, expectedOutput }) => {
-    it(description, () => {
-      const result = removePrefixFromKeys(prefix, input)
-      expect(result).toEqual(expectedOutput)
-    })
+  it.each(testCases)('$description', ({ prefix, input, expectedOutput }) => {
+    const result = removePrefixFromKeys(prefix, input)
+    expect(result).toEqual(expectedOutput)
   })
 })
 
@@ -100,10 +98,8 @@ describe('removeSuffixFromKeys', () => {
     },
   ]
 
-  testCases.forEach(({ description, suffix, input, expectedOutput }) => {
-    it(description, () => {
-      const result = removeSuffixFromKeys(suffix, input)
-      expect(result).toEqual(expectedOutput)
-    })
+  it.each(testCases)('$description', ({ suffix, input, expectedOutput }) => {
+    const result = removeSuffixFromKeys(suffix, input)
+    expect(result).toEqual(expectedOutput)
   })
 })

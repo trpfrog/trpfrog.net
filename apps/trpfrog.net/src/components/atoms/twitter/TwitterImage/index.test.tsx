@@ -1,8 +1,9 @@
+import { describe, expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { TwitterImage } from '.'
 
-export const images = [
+const images = [
   {
     src: 'https://res.cloudinary.com/trpfrog/blog/omiya-walk/9BC93754-1D27-4B38-B66F-50D4BCB698E8_1_105_c.jpg',
     alt: '1st image',

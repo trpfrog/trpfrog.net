@@ -58,7 +58,7 @@ export function createDepsResolver<
           key,
           // @ts-expect-error - Error due to mismatch between Args index signature type and string key type,
           // but ignored due to heavy use of type hacks.
-          fn({ ...(defaultDeps[key] ?? {}), ...(deps[key] ?? {}) }),
+          fn({ ...defaultDeps[key], ...deps[key] }),
         ]),
       ) as any,
   }

@@ -36,7 +36,7 @@ type FavoriteProps = {
 function Favorite(props: FavoriteProps) {
   return (
     <div
-      style={{ gridRow: '1 / -1', ...(props.style ?? {}) }}
+      style={{ gridRow: '1 / -1', ...props.style }}
       className={styles.wrapper({ className: props.className })}
     >
       <div className={styles.icon()}>{props.icon}</div>

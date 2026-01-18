@@ -53,12 +53,10 @@ describe('generateRandomTrpFrogPrompt', () => {
     },
   ]
 
-  testCases.forEach(({ description, deps, expected }) => {
-    it(description, async () => {
-      const generatePromptFromWords = resolve(deps)
-      const result = await generatePromptFromWords(['word1', 'word2'])
-      expect(result).toMatchObject(expected)
-    })
+  it.each(testCases)('$description', async ({ deps, expected }) => {
+    const generatePromptFromWords = resolve(deps)
+    const result = await generatePromptFromWords(['word1', 'word2'])
+    expect(result).toMatchObject(expected)
   })
 
   it('handles errors when chatbot return invalid json', async () => {
@@ -197,6 +195,8 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
       },
     })
     const generatePromptFromWords = resolve({})
-    await expect(generatePromptFromWords(['word1', 'word2'])).rejects.toThrowError()
+    await expect(generatePromptFromWords(['word1', 'word2'])).rejects.toThrowError(
+      /Output JSON validation failed/,
+    )
   })
 })

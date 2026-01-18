@@ -13,23 +13,41 @@ describe('getRefreshedImageUpdateStatus', () => {
   }> = [
     {
       name: '更新中のステータスが10分以上前の場合、idleを返すべき',
-      status: { status: 'updating', startedAt: new Date(currentUnixTime - 11 * 60 * 1000) },
+      status: {
+        status: 'updating',
+        startedAt: new Date(currentUnixTime - 11 * 60 * 1000),
+      },
       expected: { status: 'idle' },
     },
     {
       name: '更新中のステータスが10分以内の場合、更新中のステータスを返すべき',
-      status: { status: 'updating', startedAt: new Date(currentUnixTime - 5 * 60 * 1000) },
-      expected: { status: 'updating', startedAt: new Date(currentUnixTime - 5 * 60 * 1000) },
+      status: {
+        status: 'updating',
+        startedAt: new Date(currentUnixTime - 5 * 60 * 1000),
+      },
+      expected: {
+        status: 'updating',
+        startedAt: new Date(currentUnixTime - 5 * 60 * 1000),
+      },
     },
     {
       name: 'エラーステータスが60分以上前の場合、idleを返すべき',
-      status: { status: 'error', occurredAt: new Date(currentUnixTime - 61 * 60 * 1000) },
+      status: {
+        status: 'error',
+        occurredAt: new Date(currentUnixTime - 61 * 60 * 1000),
+      },
       expected: { status: 'idle' },
     },
     {
       name: 'エラーステータスが60分以内の場合、エラーステータスを返すべき',
-      status: { status: 'error', occurredAt: new Date(currentUnixTime - 30 * 60 * 1000) },
-      expected: { status: 'error', occurredAt: new Date(currentUnixTime - 30 * 60 * 1000) },
+      status: {
+        status: 'error',
+        occurredAt: new Date(currentUnixTime - 30 * 60 * 1000),
+      },
+      expected: {
+        status: 'error',
+        occurredAt: new Date(currentUnixTime - 30 * 60 * 1000),
+      },
     },
     {
       name: 'ステータスがidleの場合、idleを返すべき',
@@ -38,10 +56,8 @@ describe('getRefreshedImageUpdateStatus', () => {
     },
   ]
 
-  testCases.forEach(({ name, status, expected }) => {
-    it(name, () => {
-      const result = getRefreshedImageUpdateStatus(status)
-      expect(result).toEqual(expected)
-    })
+  it.each(testCases)('$name', ({ status, expected }) => {
+    const result = getRefreshedImageUpdateStatus(status)
+    expect(result).toEqual(expected)
   })
 })
