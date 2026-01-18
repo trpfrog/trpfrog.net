@@ -18,7 +18,7 @@ pre-commit:
   commands:
     prettier:
       glob: "*.{js,ts,jsx,tsx,css,scss,md,json}"
-      run: npx prettier --ignore-unknown --write {staged_files} && git update-index --again
+      run: npx oxfmt --check
     eslint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: node run-eslint-from-filename.mjs {staged_files} && git update-index --again
+      run: npx oxlint {staged_files}

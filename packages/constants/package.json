@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
-    "lint-fix": "eslint . --fix"
+    "dev": "tsc -w"
   },
   "exports": {
     ".": "./index.ts"

@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development bun run --hot src/dev-server.ts",
-    "build": "tsc",
-    "lint-fix": "eslint . --fix"
+    "build": "tsc"
   },
   "type": "module",
   "exports": {
