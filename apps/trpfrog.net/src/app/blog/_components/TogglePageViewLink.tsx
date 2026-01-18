@@ -21,7 +21,7 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
 
   let url = `/blog/${post.slug}`
   let text: string
-  let icon: IconProp | string
+  let icon: IconProp
 
   if (post.currentPage === 'all') {
     url += '/' + (previousArticlePage || '')
