@@ -29,8 +29,7 @@ export function ImageUploaderSection(props: {
       >
         <div
           className={twMerge(
-            `tw:grid tw:place-items-center tw:w-full tw:h-full tw:pointer-events-none
-            tw:border-dashed tw:border-4`,
+            'tw:grid tw:place-items-center tw:w-full tw:h-full tw:pointer-events-none tw:border-dashed tw:border-4',
             props.isDragging ? 'tw:border-(--header-color)' : 'tw:border-gray-300',
           )}
         >

@@ -40,12 +40,9 @@ export function createDepsResolver<
   Fns extends Record<string, (deps: any) => unknown>,
   DepsDict extends { [K in keyof Fns]: Parameters<Fns[K]>[0] },
   DefaultDeps extends Partial<{ [K in keyof DepsDict]: Partial<DepsDict[K]> }>,
-  // prettier-ignore
   Args extends Simplify<
     PartialIfAllChildrenAreOptional<{
-      [K in keyof DepsDict]:
-        // Allows all keys from DefaultDeps[K] to be optional
-        SetOptional<DepsDict[K], keyof DefaultDeps[K]>
+      [K in keyof DepsDict]: SetOptional<DepsDict[K], keyof DefaultDeps[K]> // Allows all keys from DefaultDeps[K] to be optional
     }>
   >,
   Returns extends Simplify<{ [K in keyof Fns]: ReturnType<Fns[K]> }>,

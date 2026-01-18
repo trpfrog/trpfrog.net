@@ -14,7 +14,7 @@ type ThisFor<T extends BrowserTarget> = T extends 'window'
   ? Window
   : T extends 'document'
     ? Document
-    : T extends React.RefObject<infer U | null>
+    : T extends React.RefObject<(infer U) | null>
       ? U
       : never
 

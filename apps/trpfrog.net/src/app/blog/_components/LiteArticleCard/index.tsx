@@ -41,8 +41,7 @@ function TagList({ tags }: { tags: string[] }) {
     <div className="tw:flex tw:flex-row tw:gap-1 tw:items-end">
       {tags.map(tag => (
         <span
-          className="tw:text-sm tw:px-2 tw:py-1 tw:rounded-full tw:border-2
-            tw:border-(--body-background)"
+          className="tw:text-sm tw:px-2 tw:py-1 tw:rounded-full tw:border-2 tw:border-(--body-background)"
           key={tag}
         >
           {tag}
@@ -92,9 +91,7 @@ export function LiteArticleCard({ entry }: LiteArticleCardProps) {
     <Link
       href={'/blog/' + entry.slug}
       prefetch={false}
-      className="tw:rounded-[20px] tw:leading-none tw:hover:cursor-pointer
-        tw:hover:shadow-[0_8px_0_var(--window-bottom-color)] tw:hover:-translate-y-0.5
-        tw:active:translate-y-1.5 tw:active:shadow-none tw:focus-visible:outline-(--header-color)"
+      className="tw:rounded-[20px] tw:leading-none tw:hover:cursor-pointer tw:hover:shadow-[0_8px_0_var(--window-bottom-color)] tw:hover:-translate-y-0.5 tw:active:translate-y-1.5 tw:active:shadow-none tw:focus-visible:outline-(--header-color)"
     >
       <PlainBlock className="tw:flex tw:flex-row tw:gap-2.5 tw:p-2.5">
         <Thumbnail thumbnail={entry.thumbnail} title={entry.title} />
