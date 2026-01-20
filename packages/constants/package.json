@@ -10,7 +10,6 @@
     ".": "./index.ts"
   },
   "devDependencies": {
-    "@trpfrog.net/config-eslint": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/utils": "workspace:*"
   }

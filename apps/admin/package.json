@@ -32,14 +32,11 @@
     "ts-pattern": "catalog:"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-next": "catalog:",
     "postcss": "catalog:",
     "postcss-preset-mantine": "catalog:",
     "postcss-simple-vars": "catalog:",
