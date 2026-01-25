@@ -8,19 +8,15 @@
   // Formatter
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "oxc.fmt.configPath": ".oxfmtrc.json",
 
   // Tailwind
   "tailwindCSS.classFunctions": ["tv", "twMerge", "twJoin"],
 
-  // ESLint
-  // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
-  // "eslint.workingDirectories": [
-  //   { "mode": "auto" }
-  // ],
+  // Linter
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
+    "source.fixAll.oxc": "always"
   },
+  "oxc.typeAware": true,
 
   "files.associations": {
     "turbo.json": "jsonc",

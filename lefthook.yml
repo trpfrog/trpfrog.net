@@ -16,9 +16,7 @@
 pre-commit:
   parallel: true
   commands:
-    prettier:
-      glob: "*.{js,ts,jsx,tsx,css,scss,md,json}"
-      run: npx oxfmt --check
-    eslint:
-      glob: "*.{js,ts,jsx,tsx}"
-      run: npx oxlint {staged_files}
+    format:
+      run: npx oxfmt --no-error-on-unmatched-pattern {staged_files}
+    lint:
+      run: npx oxlint --fix {staged_files}
