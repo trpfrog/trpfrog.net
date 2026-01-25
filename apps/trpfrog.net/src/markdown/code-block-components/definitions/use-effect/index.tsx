@@ -4,6 +4,6 @@ import { MarkdownUseEffect } from './MarkdownUseEffect'
 
 export const markdownUseEffectCCBC: CustomCodeBlockComponent = {
   Component: async ({ markdown }) => {
-    return <MarkdownUseEffect code={markdown} />
+    return <MarkdownUseEffect trustedCode={markdown} />
   },
 }
