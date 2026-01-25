@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Pagination, Table, Image, Modal, Button, Title } from '@mantine/core'
+import { notifications } from '@mantine/notifications'
 import { format } from 'date-fns'
 import useSWRImmutable from 'swr/immutable'
 
@@ -9,8 +10,8 @@ import { IconDetail } from './IconDetail'
 
 function DeleteButton(props: {
   imageId: string
-  onDeleteButtonClicked: (imageId: string) => void
-  onUndeleteButtonClicked: (imageId: string) => void
+  onDeleteButtonClicked: (imageId: string) => Promise<void>
+  onUndeleteButtonClicked: (imageId: string) => Promise<void>
   isDeleted: boolean
 }) {
   if (props.isDeleted) {
@@ -109,12 +110,40 @@ export function AllImages() {
                         imageId={image.id}
                         isDeleted={!!image.deletedAt}
                         onDeleteButtonClicked={async imageId => {
-                          await deleteImage(imageId)
-                          mutateImageMetadata()
+                          try {
+                            await deleteImage(imageId)
+                            await mutateImageMetadata()
+                            notifications.show({
+                              color: 'green',
+                              title: '削除しました',
+                              message: '画像を削除しました。',
+                            })
+                          } catch (error) {
+                            notifications.show({
+                              color: 'red',
+                              title: '削除に失敗しました',
+                              message: '時間をおいて再試行してください。',
+                            })
+                            console.error('Failed to delete image.', error)
+                          }
                         }}
                         onUndeleteButtonClicked={async imageId => {
-                          await undeleteImage(imageId)
-                          mutateImageMetadata()
+                          try {
+                            await undeleteImage(imageId)
+                            await mutateImageMetadata()
+                            notifications.show({
+                              color: 'green',
+                              title: '復元しました',
+                              message: '画像を復元しました。',
+                            })
+                          } catch (error) {
+                            notifications.show({
+                              color: 'red',
+                              title: '復元に失敗しました',
+                              message: '時間をおいて再試行してください。',
+                            })
+                            console.error('Failed to restore image.', error)
+                          }
                         }}
                       />
                     </div>

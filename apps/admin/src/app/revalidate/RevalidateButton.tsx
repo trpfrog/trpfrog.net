@@ -4,6 +4,7 @@ import { ReactNode, useCallback, useDeferredValue, useState } from 'react'
 
 import { Button, Text, TextInput } from '@mantine/core'
 import { modals } from '@mantine/modals'
+import { notifications } from '@mantine/notifications'
 import { useAtomValue } from 'jotai'
 import { match } from 'ts-pattern'
 
@@ -43,6 +44,11 @@ export function RevalidateButton(
           })
           .catch(e => {
             console.error(e)
+            notifications.show({
+              color: 'red',
+              title: 'Revalidate に失敗しました',
+              message: '時間をおいて再試行してください。',
+            })
             setStatus('error')
           })
           .finally(() => {

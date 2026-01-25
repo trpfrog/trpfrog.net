@@ -1,6 +1,8 @@
 'use client'
 import React, { useEffect, useId, useState } from 'react'
 
+import toast from 'react-hot-toast'
+
 import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
 
 import { PlainCodeBlock } from '../molecules/CodeBlock/PlainCodeBlock'
@@ -36,7 +38,10 @@ export function useMermaid(chart: string) {
       }
     }
 
-    renderDiagram().catch(console.error)
+    renderDiagram().catch(error => {
+      toast.error('Mermaid のレンダリングに失敗しました')
+      console.error('Failed to render Mermaid diagram.', error)
+    })
   }, [chart, id, colorScheme])
 
   return [svg, error]

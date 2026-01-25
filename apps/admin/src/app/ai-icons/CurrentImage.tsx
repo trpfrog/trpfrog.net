@@ -1,6 +1,7 @@
 'use client'
 
 import { Badge, Button, Title } from '@mantine/core'
+import { notifications } from '@mantine/notifications'
 import useSWR from 'swr'
 
 import { fetchCurrentStatus, getCurrent, updateCurrent } from './actions'
@@ -42,29 +43,65 @@ export function CurrentImage() {
         <div className="flex flex-wrap gap-2">
           <Button
             color="blue"
-            onClick={() => {
-              mutateImageMetadata()
-              mutateCurrentStatus()
+            onClick={async () => {
+              try {
+                await Promise.all([mutateImageMetadata(), mutateCurrentStatus()])
+              } catch (error) {
+                notifications.show({
+                  color: 'red',
+                  title: '再読み込みに失敗しました',
+                  message: '時間をおいて再試行してください。',
+                })
+                console.error('Failed to reload current image metadata.', error)
+              }
             }}
           >
             Reload
           </Button>
           <Button
             color="blue"
-            onClick={() => {
-              updateCurrent(false)
+            onClick={async () => {
+              try {
+                await updateCurrent(false)
+                notifications.show({
+                  color: 'green',
+                  title: '更新を要求しました',
+                  message: '更新要求を送信しました。',
+                })
+              } catch (error) {
+                notifications.show({
+                  color: 'red',
+                  title: '更新要求に失敗しました',
+                  message: '時間をおいて再試行してください。',
+                })
+                console.error('Failed to request update.', error)
+              }
             }}
           >
             Request Update
           </Button>
           <Button
             color="red"
-            onClick={() => {
+            onClick={async () => {
               const res = window.confirm('本当に強制的に更新しますか？')
               if (!res) {
                 return
               }
-              updateCurrent(true)
+              try {
+                await updateCurrent(true)
+                notifications.show({
+                  color: 'green',
+                  title: '強制更新を要求しました',
+                  message: '強制更新要求を送信しました。',
+                })
+              } catch (error) {
+                notifications.show({
+                  color: 'red',
+                  title: '強制更新要求に失敗しました',
+                  message: '時間をおいて再試行してください。',
+                })
+                console.error('Failed to request forced update.', error)
+              }
             }}
           >
             Update Forcefully
