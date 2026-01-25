@@ -83,6 +83,7 @@ describe('refreshImageIfStale', () => {
 
     let statusDuringUpdate: ImageUpdateStatus | undefined
     const refreshImageIfStale = resolve({
+      // @ts-expect-error -- 型パズルに失敗している、そもそもインチキDIをやめたい
       imageMetadataRepo: {
         ...defaultDeps.imageMetadataRepo,
         getLatest: async () => ({
@@ -122,6 +123,7 @@ describe('refreshImageIfStale', () => {
 
     let statusDuringUpdate: ImageUpdateStatus | undefined
     const refreshImageIfStale = resolve({
+      // @ts-expect-error -- 型パズルに失敗している、そもそもインチキDIをやめたい
       imageMetadataRepo: {
         ...defaultDeps.imageMetadataRepo,
         getLatest: async () => ({
