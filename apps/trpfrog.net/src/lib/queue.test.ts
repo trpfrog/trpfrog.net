@@ -1,4 +1,5 @@
 import { describe, expect, beforeEach, test } from 'vitest'
+
 import { Queue } from './queue'
 
 describe('Queue', () => {
