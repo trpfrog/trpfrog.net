@@ -30,7 +30,7 @@ const BlogPostBuildOptionSchema = v.object({
 
 export class InvalidPagePositionError extends Error {
   constructor(pagePosition: unknown) {
-    super(`Invalid page position: ${pagePosition}`)
+    super(`Invalid page position: ${String(pagePosition)}`)
   }
 }
 

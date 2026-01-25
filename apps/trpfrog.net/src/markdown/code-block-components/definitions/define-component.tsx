@@ -6,8 +6,11 @@ import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 
 import { CustomCodeBlockComponent } from '../types'
 
-// TODO: Valibot で args/returns を指定できるようになったら (object) => string にする
-const UserFunctionSchema = v.function()
+const UserFunctionSchema = v.pipe(
+  v.function(),
+  v.args(v.tuple([v.objectWithRest({}, v.unknown())])),
+  v.returns(v.string()),
+)
 
 const definedComponents: Record<string, InferSchemaOutput<typeof UserFunctionSchema>> = {}
 
@@ -31,6 +34,7 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
     try {
       definedComponents[`${context.blog?.slug}/${name}`] = validateUnknown(
         UserFunctionSchema,
+        // oxlint-disable-next-line typescript/no-implied-eval -- trusted code from blog author
         Function('props', templateLines.join('\n')),
       )
     } catch (e) {

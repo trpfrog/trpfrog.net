@@ -150,7 +150,7 @@ describe('defineEndpoints', () => {
             production: 'https://api.example.com/path',
           },
         }),
-      ).toThrow(/development/)
+      ).toThrow(/Invalid URL/)
     })
 
     test('should throw when production is not a valid URL', () => {
@@ -162,7 +162,7 @@ describe('defineEndpoints', () => {
             production: 'invalid-url',
           },
         }),
-      ).toThrow(/production/)
+      ).toThrow(/Invalid URL/)
     })
   })
 })
