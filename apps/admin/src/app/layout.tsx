@@ -7,6 +7,8 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css' // import this after core package styles
+import { Notifications } from '@mantine/notifications'
 import { Shell } from '@/components/Shell'
 
 const geistSans = Geist({
@@ -50,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className={`${geistSans.variable} ${geistMono.variable} tw:antialiased`}>
         <MantineProvider theme={theme}>
           <ModalsProvider modalProps={{ centered: true }}>
+            <Notifications />
             <Shell>{children}</Shell>
           </ModalsProvider>
         </MantineProvider>

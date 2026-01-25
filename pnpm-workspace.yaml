@@ -18,12 +18,13 @@ catalog:
   '@hono/vite-build': ^1.7.0
   '@hono/vite-dev-server': ^0.20.1
   '@hono/vite-ssg': ^0.2.0
-  '@mantine/charts': ^8.2.5
-  '@mantine/core': ^8.2.5
-  '@mantine/dates': ^8.2.5
-  '@mantine/form': ^8.2.5
-  '@mantine/hooks': ^8.2.5
-  '@mantine/modals': ^8.2.5
+  '@mantine/charts': ^8.3.13
+  '@mantine/core': ^8.3.13
+  '@mantine/dates': ^8.3.13
+  '@mantine/form': ^8.3.13
+  '@mantine/hooks': ^8.3.13
+  '@mantine/modals': ^8.3.13
+  '@mantine/notifications': ^8.3.13
   '@mdx-js/loader': ^3.1.0
   '@mdx-js/react': ^3.1.0
   '@next/bundle-analyzer': ^16.0.10
