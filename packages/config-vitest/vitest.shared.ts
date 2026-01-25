@@ -1,8 +1,8 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import type { ViteUserConfig } from 'vitest/config'
 
-export default defineConfig({
-  plugins: [react()],
+const config: ViteUserConfig = {
+  plugins: react() as NonNullable<ViteUserConfig['plugins']>,
   test: {
     globals: true,
     environment: 'happy-dom',
@@ -10,11 +10,7 @@ export default defineConfig({
     clearMocks: true,
     restoreMocks: true,
     pool: 'threads',
-    poolOptions: {
-      threads: {
-        singleThread: true,
-      },
-    },
+    fileParallelism: false,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'lcov', 'html'],
@@ -26,4 +22,6 @@ export default defineConfig({
       },
     },
   },
-})
+}
+
+export default config
