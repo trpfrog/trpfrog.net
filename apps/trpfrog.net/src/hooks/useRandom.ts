@@ -22,7 +22,7 @@ export function useRandom(): RandomState {
 }
 
 if (import.meta.vitest) {
-  const { describe, it, expect } = import.meta.vitest
+  const { describe, it, expect, test, vi } = import.meta.vitest
   const { renderHook, waitFor } = await import('@testing-library/react')
 
   describe('toRandomState', () => {
