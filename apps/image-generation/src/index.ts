@@ -25,5 +25,5 @@ const app = createApp(
   }).build(),
 )
 
-// eslint-disable-next-line no-restricted-exports
+// eslint-disable-next-line eslint-core/no-restricted-exports
 export default app

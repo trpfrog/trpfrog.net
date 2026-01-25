@@ -225,6 +225,9 @@ catalogs:
     drizzle-orm:
       specifier: ^0.44.4
       version: 0.44.4
+    eslint:
+      specifier: ^9.39.2
+      version: 9.39.2
     eslint-plugin-import-x:
       specifier: ^4.16.1
       version: 4.16.1
@@ -507,6 +510,9 @@ importers:
       better-typescript-lib:
         specifier: 'catalog:'
         version: 2.12.0(typescript@5.9.3)
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.2(jiti@2.6.1)
       eslint-plugin-import-x:
         specifier: 'catalog:'
         version: 4.16.1(patch_hash=6ef4998052cd8c80f16c2f56e94ce7a942aaabcc553b258803189421f07f184d)(eslint@9.39.2(jiti@2.6.1))
@@ -861,7 +867,7 @@ importers:
         version: 16.0.10(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.101.3(esbuild@0.27.1)))(@mdx-js/react@3.1.0(@types/react@19.2.7)(react@19.2.3))
       '@next/third-parties':
         specifier: 'catalog:'
-        version: 16.0.10(next@16.0.10(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0))(react@19.2.3)
+        version: 16.0.10(next@16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0))(react@19.2.3)
       '@prisma/client':
         specifier: 'catalog:'
         version: 6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3)
@@ -957,7 +963,7 @@ importers:
         version: 10.2.0
       jotai:
         specifier: 'catalog:'
-        version: 2.13.1(@babel/core@7.28.3)(@babel/template@7.28.6)(@types/react@19.2.7)(react@19.2.3)
+        version: 2.13.1(@babel/core@7.28.5)(@babel/template@7.28.6)(@types/react@19.2.7)(react@19.2.3)
       js-yaml:
         specifier: 'catalog:'
         version: 4.1.0
@@ -975,7 +981,7 @@ importers:
         version: 12.23.12(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next:
         specifier: 'catalog:'
-        version: 16.0.10(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0)
+        version: 16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0)
       next-mdx-remote:
         specifier: 'catalog:'
         version: 5.0.0(@types/react@19.2.7)(acorn@8.15.0)(react@19.2.3)
@@ -8696,9 +8702,9 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.0.10':
     optional: true
 
-  '@next/third-parties@16.0.10(next@16.0.10(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0))(react@19.2.3)':
+  '@next/third-parties@16.0.10(next@16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0))(react@19.2.3)':
     dependencies:
-      next: 16.0.10(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0)
+      next: 16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0)
       react: 19.2.3
       third-party-capital: 1.0.20
 
@@ -9625,14 +9631,6 @@ snapshots:
     optionalDependencies:
       vite: 7.2.6(@types/node@22.17.2)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2)
 
-  '@vitest/mocker@4.0.15(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2))':
-    dependencies:
-      '@vitest/spy': 4.0.15
-      estree-walker: 3.0.3
-      magic-string: 0.30.21
-    optionalDependencies:
-      vite: 7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2)
-
   '@vitest/pretty-format@4.0.15':
     dependencies:
       tinyrainbow: 3.0.3
@@ -9659,7 +9657,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vitest: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.1)(@vitest/ui@4.0.15)(happy-dom@20.0.11)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.0.9))(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2)
+      vitest: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@22.17.2)(@vitest/ui@4.0.15)(happy-dom@20.0.11)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.0.9))(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2)
 
   '@vitest/utils@4.0.15':
     dependencies:
@@ -11297,13 +11295,6 @@ snapshots:
 
   jiti@2.6.1: {}
 
-  jotai@2.13.1(@babel/core@7.28.3)(@babel/template@7.28.6)(@types/react@19.2.7)(react@19.2.3):
-    optionalDependencies:
-      '@babel/core': 7.28.3
-      '@babel/template': 7.28.6
-      '@types/react': 19.2.7
-      react: 19.2.3
-
   jotai@2.13.1(@babel/core@7.28.5)(@babel/template@7.28.6)(@types/react@19.2.7)(react@19.2.3):
     optionalDependencies:
       '@babel/core': 7.28.5
@@ -12208,32 +12199,6 @@ snapshots:
       - '@types/react'
       - acorn
       - supports-color
-
-  next@16.0.10(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0):
-    dependencies:
-      '@next/env': 16.0.10
-      '@swc/helpers': 0.5.15
-      caniuse-lite: 1.0.30001759
-      postcss: 8.4.31
-      react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
-      styled-jsx: 5.1.6(@babel/core@7.28.3)(react@19.2.3)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 16.0.10
-      '@next/swc-darwin-x64': 16.0.10
-      '@next/swc-linux-arm64-gnu': 16.0.10
-      '@next/swc-linux-arm64-musl': 16.0.10
-      '@next/swc-linux-x64-gnu': 16.0.10
-      '@next/swc-linux-x64-musl': 16.0.10
-      '@next/swc-win32-arm64-msvc': 16.0.10
-      '@next/swc-win32-x64-msvc': 16.0.10
-      '@opentelemetry/api': 1.9.0
-      babel-plugin-react-compiler: 19.1.0-rc.2
-      sass: 1.83.0
-      sharp: 0.34.5
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
 
   next@16.0.10(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.83.0):
     dependencies:
@@ -13313,13 +13278,6 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.6(@babel/core@7.28.3)(react@19.2.3):
-    dependencies:
-      client-only: 0.0.1
-      react: 19.2.3
-    optionalDependencies:
-      '@babel/core': 7.28.3
-
   styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.3):
     dependencies:
       client-only: 0.0.1
@@ -13816,7 +13774,7 @@ snapshots:
   vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.1)(@vitest/ui@4.0.15)(happy-dom@20.0.11)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.0.9))(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2):
     dependencies:
       '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2))
+      '@vitest/mocker': 4.0.15(vite@7.2.6(@types/node@22.17.2)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.43.1)(yaml@2.8.2))
       '@vitest/pretty-format': 4.0.15
       '@vitest/runner': 4.0.15
       '@vitest/snapshot': 4.0.15

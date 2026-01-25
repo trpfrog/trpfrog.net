@@ -11,6 +11,12 @@
     "jsdoc",
     "oxc"
   ],
+  "jsPlugins": [
+    {
+      "name": "eslint-core",
+      "specifier": "./js-plugins/eslint-core.cjs"
+    }
+  ],
   "ignorePatterns": [
     "out",
     "dist",
@@ -30,6 +36,29 @@
         "varsIgnorePattern": "^_",
         "ignoreRestSiblings": true
       }
+    ],
+    "eslint-core/no-restricted-exports": [
+      "error",
+      {
+        "restrictDefaultExports": {
+          "direct": true,
+          "named": true,
+          "defaultFrom": true,
+          "namedFrom": true,
+          "namespaceFrom": true
+        }
+      }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/{*.config}.{mjs,cjs,js,jsx,ts,mts,cts,tsx}",
+        "**/{vitest.*}.{mjs,cjs,js,jsx,ts,mts,cts,tsx}",
+      ],
+      "rules": {
+        "eslint-core/no-restricted-exports": "off"
+      }
+    }
+  ]
 }

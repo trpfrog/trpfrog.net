@@ -17,5 +17,15 @@
   ],
   "rules": {
     "nextjs/no-img-element": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/{page,layout,route,loading,not-found,opengraph-image,proxy}.{js,jsx,ts,tsx}",
+      ],
+      "rules": {
+        "eslint-core/no-restricted-exports": "off"
+      }
+    }
+  ]
 }

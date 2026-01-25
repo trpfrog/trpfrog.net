@@ -12,5 +12,5 @@ const app = new Hono<Env>()
   .use(contextStorage())
   .route('/alpha', alphaApp)
 
-// eslint-disable-next-line no-restricted-exports
+// eslint-disable-next-line eslint-core/no-restricted-exports
 export default app

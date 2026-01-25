@@ -24,6 +24,7 @@
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
+    "eslint": "catalog:",
     "eslint-plugin-import-x": "catalog:",
     "happy-dom": "catalog:",
     "oxfmt": "catalog:",
