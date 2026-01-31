@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+
 import type { ViteUserConfig } from 'vitest/config'
 
 const config: ViteUserConfig = {

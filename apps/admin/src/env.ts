@@ -7,6 +7,6 @@ export const env = validateUnknown(
     ADMIN_PASSWORD: v.string(),
     TRPFROG_ADMIN_KEY: v.string(),
   }),
-  // eslint-disable-next-line n/no-process-env
+  // oxlint-disable-next-line eslint-n/no-process-env
   process.env,
 )

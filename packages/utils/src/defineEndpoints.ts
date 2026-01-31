@@ -1,5 +1,6 @@
-import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validate, InferSchemaOutput } from '@trpfrog.net/utils'
 
 const EndpointRecordSchema = v.record(
   v.string(),

@@ -82,5 +82,5 @@ export const ServerEnvSchema = v.object({
   USE_DEV_REALTIME_BLOG_PREVIEW: v.optional(v.pipe(v.string(), v.toLowerCase(), v.trim()), 'true'),
 })
 
-// eslint-disable-next-line n/no-process-env -- This is a rule to use validated env instead of process.env
+// oxlint-disable-next-line eslint-n/no-process-env -- This is a rule to use validated env instead of process.env
 export const env = validateUnknown(ServerEnvSchema, process.env)
