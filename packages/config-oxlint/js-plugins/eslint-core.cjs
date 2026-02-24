@@ -9,5 +9,5 @@ const pickRules = ruleNames =>
 
 module.exports = {
   meta: { name: 'eslint-core' },
-  rules: pickRules(['no-restricted-exports']),
+  rules: pickRules(['no-restricted-exports', 'no-restricted-properties']),
 }

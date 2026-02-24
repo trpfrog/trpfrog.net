@@ -15,6 +15,22 @@
     {
       "name": "eslint-core",
       "specifier": "./js-plugins/eslint-core.cjs"
+    },
+    {
+      "name": "import-x-js",
+      "specifier": "eslint-plugin-import-x"
+    },
+    {
+      "name": "unused-imports",
+      "specifier": "eslint-plugin-unused-imports"
+    },
+    {
+      "name": "eslint-n",
+      "specifier": "eslint-plugin-n"
+    },
+    {
+      "name": "ts-eslint",
+      "specifier": "@typescript-eslint/eslint-plugin"
     }
   ],
   "ignorePatterns": [
@@ -25,7 +41,8 @@
     ".wrangler"
   ],
   "rules": {
-    "eslint/no-unused-vars": [
+    "eslint/no-unused-vars": "off",
+    "ts-eslint/no-unused-vars": [
       "error",
       {
         "args": "all",
@@ -37,15 +54,68 @@
         "ignoreRestSiblings": true
       }
     ],
-    "eslint-core/no-restricted-exports": [
+    "unused-imports/no-unused-imports": "error",
+    "import-x-js/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "object",
+          "index",
+          "type"
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "pathGroups": [
+          {
+            "pattern": "{react,react-node}",
+            "group": "external",
+            "position": "before"
+          }
+        ]
+      }
+    ],
+    "eslint-n/no-process-env": [
       "error",
       {
-        "restrictDefaultExports": {
-          "direct": true,
-          "named": true,
-          "defaultFrom": true,
-          "namedFrom": true,
-          "namespaceFrom": true
+        "allowedVariables": [
+          "NODE_ENV"
+        ]
+      }
+    ],
+    "eslint-core/no-restricted-properties": [
+      "error",
+      {
+        "object": "v",
+        "property": "parse",
+        "message": "Use @trpfrog.net/utils's `validate` or `validateUnknown` instead."
+      },
+      {
+        "object": "v",
+        "property": "safeParse",
+        "message": "Use @trpfrog.net/utils's `safeValidate` or `safeValidateUnknown` instead."
+      }
+    ],
+    "ts-eslint/no-restricted-types": [
+      "error",
+      {
+        "types": {
+          "v.InferInput": {
+            "message": "Use `@trpfrog.net/utils`'s `InferSchemaInput` instead."
+          },
+          "v.InferOutput": {
+            "message": "Use `@trpfrog.net/utils`'s `InferSchemaOutput` instead."
+          }
         }
       }
     ]
@@ -53,8 +123,47 @@
   "overrides": [
     {
       "files": [
-        "**/{*.config}.{mjs,cjs,js,jsx,ts,mts,cts,tsx}",
-        "**/{vitest.*}.{mjs,cjs,js,jsx,ts,mts,cts,tsx}",
+        "**/*.{js,ts,mjs,cjs,jsx,tsx,mts,cts}"
+      ],
+      "rules": {
+        "eslint-core/no-restricted-exports": [
+          "error",
+          {
+            "restrictDefaultExports": {
+              "direct": true,
+              "named": true,
+              "defaultFrom": true,
+              "namedFrom": true,
+              "namespaceFrom": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/*.config.{mjs,cjs,js,jsx,ts,mts,cts,tsx}"
+      ],
+      "rules": {
+        "eslint-core/no-restricted-exports": "off",
+        "eslint-n/no-process-env": "off"
+      },
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": [
+        "**/vitest.{mjs,cjs,js,jsx,ts,mts,cts,tsx}",
+        "**/vitest.*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}"
+      ],
+      "rules": {
+        "eslint-core/no-restricted-exports": "off"
+      }
+    },
+    {
+      "files": [
+        ".storybook/**/*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}"
       ],
       "rules": {
         "eslint-core/no-restricted-exports": "off"
