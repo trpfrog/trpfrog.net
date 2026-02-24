@@ -100,9 +100,9 @@ catalog:
   next-mdx-remote: ^5.0.0
   node-html-parser: ^7.0.1
   nookies: ^2.5.2
-  oxfmt: ^0.26.0
-  oxlint: ^1.41.0
-  oxlint-tsgolint: ^0.11.1
+  oxfmt: ^0.35.0
+  oxlint: ^1.50.0
+  oxlint-tsgolint: ^0.14.2
   p-retry: ^7.0.0
   postcss: ^8.5.6
   postcss-preset-mantine: ^1.18.0
