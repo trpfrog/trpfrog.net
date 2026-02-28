@@ -1,12 +1,6 @@
 {
   "$schema": "../../node_modules/oxlint/configuration_schema.json",
   "extends": ["../../packages/config-oxlint/next.json"],
-  "jsPlugins": [
-    {
-      "name": "import-x-js",
-      "specifier": "eslint-plugin-import-x"
-    }
-  ],
   "rules": {
     "eslint/no-restricted-imports": [
       "error",
@@ -17,35 +11,6 @@
             "name": "tailwind-variants",
             "message": "Please import from @/lib/tailwind instead."
           }
-        ]
-      }
-    ],
-    "import-x-js/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "object", "index", "type"],
-        "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
-        "pathGroups": [
-          {
-            "pattern": "{react,react-dom}",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "next**",
-            "group": "external",
-            "position": "before"
-          },
-          { "pattern": "@/env/**", "group": "internal", "position": "before" },
-          { "pattern": "@/app/**", "group": "internal", "position": "before" },
-          { "pattern": "@/components/**", "group": "internal", "position": "before" },
-          { "pattern": "@/data/**", "group": "internal", "position": "before" },
-          { "pattern": "@/hooks/**", "group": "internal", "position": "before" },
-          { "pattern": "@/lib/**", "group": "internal", "position": "before" },
-          { "pattern": "@/styles/**", "group": "internal", "position": "before" },
-          { "pattern": "@blog/**", "group": "internal", "position": "before" }
         ]
       }
     ]

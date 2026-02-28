@@ -17,10 +17,6 @@
       "specifier": "./js-plugins/eslint-core.cjs"
     },
     {
-      "name": "import-x-js",
-      "specifier": "eslint-plugin-import-x"
-    },
-    {
       "name": "unused-imports",
       "specifier": "eslint-plugin-unused-imports"
     },
@@ -55,36 +51,6 @@
       }
     ],
     "unused-imports/no-unused-imports": "error",
-    "import-x-js/order": [
-      "warn",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "object",
-          "index",
-          "type"
-        ],
-        "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": [
-          "builtin"
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "pathGroups": [
-          {
-            "pattern": "{react,react-node}",
-            "group": "external",
-            "position": "before"
-          }
-        ]
-      }
-    ],
     "eslint-n/no-process-env": [
       "error",
       {

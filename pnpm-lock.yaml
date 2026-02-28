@@ -231,9 +231,6 @@ catalogs:
     eslint:
       specifier: ^9.39.2
       version: 9.39.2
-    eslint-plugin-import-x:
-      specifier: 4.16.1
-      version: 4.16.1
     eslint-plugin-n:
       specifier: ^17.23.2
       version: 17.23.2
@@ -477,9 +474,6 @@ overrides:
   jws@=4.0.0: '>=4.0.1'
 
 patchedDependencies:
-  eslint-plugin-import-x@4.16.1:
-    hash: 6ef4998052cd8c80f16c2f56e94ce7a942aaabcc553b258803189421f07f184d
-    path: patches/eslint-plugin-import-x@4.16.1.patch
   gray-matter@4.0.3:
     hash: 870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529
     path: patches/gray-matter@4.0.3.patch
@@ -525,9 +519,6 @@ importers:
       eslint:
         specifier: 'catalog:'
         version: 9.39.2(jiti@2.6.1)
-      eslint-plugin-import-x:
-        specifier: 'catalog:'
-        version: 4.16.1(patch_hash=6ef4998052cd8c80f16c2f56e94ce7a942aaabcc553b258803189421f07f184d)(@typescript-eslint/utils@8.53.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-n:
         specifier: 'catalog:'
         version: 17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
@@ -4822,19 +4813,6 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=8'
-
-  eslint-plugin-import-x@4.16.1:
-    resolution: {integrity: sha512-vPZZsiOKaBAIATpFE2uMI4w5IRwdv/FpQ+qZZMR4E+PeOcM4OeoEbqxRMnywdxP19TyB/3h6QBB0EWon7letSQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      '@typescript-eslint/utils': ^8.0.0
-      eslint: ^8.57.0 || ^9.0.0
-      eslint-import-resolver-node: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/utils':
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
 
   eslint-plugin-n@17.23.2:
     resolution: {integrity: sha512-RhWBeb7YVPmNa2eggvJooiuehdL76/bbfj/OJewyoGT80qn5PXdz8zMOTO6YHOsI7byPt7+Ighh/i/4a5/v7hw==}
@@ -11083,23 +11061,6 @@ snapshots:
       '@eslint-community/regexpp': 4.12.2
       eslint: 9.39.2(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@9.39.2(jiti@2.6.1))
-
-  eslint-plugin-import-x@4.16.1(patch_hash=6ef4998052cd8c80f16c2f56e94ce7a942aaabcc553b258803189421f07f184d)(@typescript-eslint/utils@8.53.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)):
-    dependencies:
-      '@typescript-eslint/types': 8.53.1
-      comment-parser: 1.4.5
-      debug: 4.4.3
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-import-context: 0.1.9(unrs-resolver@1.11.1)
-      is-glob: 4.0.3
-      minimatch: 9.0.5
-      semver: 7.7.3
-      stable-hash-x: 0.2.0
-      unrs-resolver: 1.11.1
-    optionalDependencies:
-      '@typescript-eslint/utils': 8.53.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-    transitivePeerDependencies:
-      - supports-color
 
   eslint-plugin-n@17.23.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3):
     dependencies:

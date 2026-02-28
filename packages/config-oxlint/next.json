@@ -20,6 +20,7 @@
   },
   "overrides": [
     {
+      // Allow default exports in Next.js special files
       "files": [
         "**/{page,layout,route,loading,not-found,opengraph-image,proxy}.{js,jsx,ts,tsx}",
       ],
