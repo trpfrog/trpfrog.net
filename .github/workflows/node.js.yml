@@ -55,6 +55,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --offline
 
+      - name: Generate types
+        run: pnpm run -w typegen
+
       - name: Run lint-fix (auto-fix)
         run: pnpm -w run lint-fix
 
