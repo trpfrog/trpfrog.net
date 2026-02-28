@@ -13,20 +13,15 @@
   ],
   "jsPlugins": [
     {
+      // TODO(oxlint-native): remove this JS plugin once Oxlint natively supports
+      // `no-restricted-exports`, `no-restricted-properties`, and `no-unused-vars` rules.
+      // Migration steps are documented in packages/config-oxlint/README.md.
       "name": "eslint-core",
       "specifier": "./js-plugins/eslint-core.cjs"
     },
     {
       "name": "unused-imports",
       "specifier": "eslint-plugin-unused-imports"
-    },
-    {
-      "name": "eslint-n",
-      "specifier": "eslint-plugin-n"
-    },
-    {
-      "name": "ts-eslint",
-      "specifier": "@typescript-eslint/eslint-plugin"
     }
   ],
   "ignorePatterns": [
@@ -37,8 +32,7 @@
     ".wrangler"
   ],
   "rules": {
-    "eslint/no-unused-vars": "off",
-    "ts-eslint/no-unused-vars": [
+    "eslint/no-unused-vars": [
       "error",
       {
         "args": "all",
@@ -50,8 +44,9 @@
         "ignoreRestSiblings": true
       }
     ],
+    // TODO(oxlint-native): replace with native rule when available
     "unused-imports/no-unused-imports": "error",
-    "eslint-n/no-process-env": [
+    "node/no-process-env": [
       "error",
       {
         "allowedVariables": [
@@ -59,6 +54,8 @@
         ]
       }
     ],
+    // TODO(oxlint-native): replace with native rule when available:
+    // `no-restricted-properties` (or `eslint/no-restricted-properties`).
     "eslint-core/no-restricted-properties": [
       "error",
       {
@@ -72,7 +69,7 @@
         "message": "Use @trpfrog.net/utils's `safeValidate` or `safeValidateUnknown` instead."
       }
     ],
-    "ts-eslint/no-restricted-types": [
+    "typescript/no-restricted-types": [
       "error",
       {
         "types": {
@@ -92,6 +89,8 @@
         "**/*.{js,ts,mjs,cjs,jsx,tsx,mts,cts}"
       ],
       "rules": {
+        // TODO(oxlint-native): replace with native rule when available:
+        // `no-restricted-exports` (or `eslint/no-restricted-exports`).
         "eslint-core/no-restricted-exports": [
           "error",
           {
@@ -112,7 +111,7 @@
       ],
       "rules": {
         "eslint-core/no-restricted-exports": "off",
-        "eslint-n/no-process-env": "off"
+        "node/no-process-env": "off"
       },
       "env": {
         "node": true

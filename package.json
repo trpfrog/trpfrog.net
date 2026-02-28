@@ -26,7 +26,6 @@
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
     "eslint": "catalog:",
-    "eslint-plugin-n": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "happy-dom": "catalog:",
     "oxfmt": "catalog:",
