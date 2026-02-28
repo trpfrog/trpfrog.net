@@ -7,6 +7,7 @@
     "lint-fix": "oxlint --fix --type-aware --type-check && oxfmt",
     "test": "turbo test",
     "type-check": "turbo type-check",
+    "typegen": "turbo typegen",
     "reinstall-all-deps": "rm -rf node_modules ./*/*/node_modules && pnpm install",
     "prepare": "lefthook install",
     "format": "oxfmt"
