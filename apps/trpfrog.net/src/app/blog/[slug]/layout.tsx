@@ -1,12 +1,12 @@
 import * as React from 'react'
 
+import { cacheLife, cacheTag } from 'next/cache'
+
 import { cacheTags } from '@trpfrog.net/constants'
 import { BlogPost } from '@trpfrog.net/posts'
-import { cacheLife, cacheTag } from 'next/cache'
 
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { ArticleSidebar } from '@blog/_components/ArticleSidebar'
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'

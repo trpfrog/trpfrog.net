@@ -4,7 +4,6 @@ import * as v from 'valibot'
 
 import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
-
 import { formatDateToDisplay } from '@/lib/date'
 
 // quote- prefix のキーを残すために looseObject を使用

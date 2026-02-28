@@ -7,7 +7,6 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 
 import { Env } from '../env'
 import { UseCases } from '../wire'
-
 import { adminSandboxApp } from './admin-sandbox'
 import { queryApp } from './query'
 import { resourceApp } from './resource'

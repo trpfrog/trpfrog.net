@@ -6,7 +6,6 @@ import { createURL } from '@trpfrog.net/utils'
 import toast from 'react-hot-toast'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
-
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { A, Input } from '@/components/wrappers'

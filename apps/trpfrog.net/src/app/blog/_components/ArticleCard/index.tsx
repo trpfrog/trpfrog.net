@@ -1,16 +1,15 @@
 import * as React from 'react'
 
+import Link from 'next/link'
+
 import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
-import Link from 'next/link'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
-
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
 import { formatDateToDisplay } from '@/lib/date'
-
 import { gridArea, ArticleCardGrid } from '@blog/_components/ArticleCard/ArticleCardGrid'
 import { ArticleTitle } from '@blog/_components/ArticleCard/ArticleTitle'
 import { Card } from '@blog/_components/ArticleCard/Card'

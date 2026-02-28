@@ -2,7 +2,6 @@ import { describe, it, expect, vi } from 'vitest'
 
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
 import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'
-
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 
 const deps = {

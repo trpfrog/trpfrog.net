@@ -1,6 +1,6 @@
-import { components } from './components'
-
 import type { MarkdownContext } from '@/markdown/types'
+
+import { components } from './components'
 
 type ComponentKeys = keyof typeof components
 

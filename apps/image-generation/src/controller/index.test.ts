@@ -1,12 +1,11 @@
 import { testClient } from 'hono/testing'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
+import { createApp } from '.'
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
 import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'
 import { createImageUpdateStatusRepoMock } from '../infra/repos/mocks/imageUpdateStatusRepoMock'
 import { prepareUsecasesBuilder } from '../wire'
-
-import { createApp } from '.'
 
 const createDefaultDeps = () =>
   ({

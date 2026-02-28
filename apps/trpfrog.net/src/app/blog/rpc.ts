@@ -1,8 +1,9 @@
+import { cacheLife, cacheTag } from 'next/cache'
+import { notFound } from 'next/navigation'
+
 import { cacheTags } from '@trpfrog.net/constants'
 import { createContentServerClient } from '@trpfrog.net/content-server'
 import { type BlogPost, BLOG_PAGE_NUMBER__1, BlogPageNumber } from '@trpfrog.net/posts'
-import { cacheLife, cacheTag } from 'next/cache'
-import { notFound } from 'next/navigation'
 
 const client = createContentServerClient(process.env.NODE_ENV)
 

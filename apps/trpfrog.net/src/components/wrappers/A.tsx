@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useMemo } from 'react'
 
 import Link from 'next/link'
+
 import { match, P } from 'ts-pattern'
 
 import { isInternalLink } from '@/lib/isInternalLink'

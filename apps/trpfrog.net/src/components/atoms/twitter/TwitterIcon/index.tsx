@@ -1,7 +1,8 @@
 import * as React from 'react'
 
-import styles from './index.module.css'
 import { iconPreset } from './preset'
+
+import styles from './index.module.css'
 
 type TwitterIconProps = {
   preset?: keyof typeof iconPreset

@@ -2,11 +2,9 @@ import { sValidator } from '@hono/standard-validator'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
-import { base64ArrayBuffer } from '../lib/base64'
-
-import { requiresApiKey } from './middlewares'
-
 import type { Env } from '../env'
+import { base64ArrayBuffer } from '../lib/base64'
+import { requiresApiKey } from './middlewares'
 
 const PromptFromWordsSchema = v.object({
   words: v.array(v.string()),

@@ -8,7 +8,6 @@ import toast from 'react-hot-toast'
 import useSWRImmutable from 'swr/immutable'
 
 import { WaveText } from '@/components/atoms/WaveText'
-
 import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 

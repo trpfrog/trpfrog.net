@@ -3,7 +3,6 @@ import { describe, it, expect } from 'vitest'
 
 import { ImagePrompt } from '../domain/entities/generation-result'
 import { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
-
 import { generatePromptFromWordsUseCase } from './generatePromptFromWordsUseCase'
 
 describe('generateRandomTrpFrogPrompt', () => {

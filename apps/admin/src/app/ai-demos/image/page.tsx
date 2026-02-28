@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { Button, Image, Stack, Textarea, Title } from '@mantine/core'
 import { useAtom } from 'jotai'
 
-import { generateImageFromText } from '../actions'
-
 import { imageGenerationOriginAtom } from '@/atom/origin'
+
+import { generateImageFromText } from '../actions'
 
 export default function TextToImageDemoPage() {
   const [text, setText] = useState('')

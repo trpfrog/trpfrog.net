@@ -6,13 +6,12 @@ import { InlineLink } from '@/components/atoms/InlineLink'
 import { RichButton } from '@/components/atoms/RichButton'
 import { RichImage } from '@/components/organisms/RichImage'
 import * as Wrapper from '@/components/wrappers'
-
 import { twJoin, twMerge } from '@/lib/tailwind'
+import { MarkdownContext } from '@/markdown/types'
 
 import { createCodeComponent } from './createCodeComponent'
-import styles from './createMDXComponents.module.css'
 
-import { MarkdownContext } from '@/markdown/types'
+import styles from './createMDXComponents.module.css'
 
 export function createMDXComponents(options?: {
   inline?: boolean

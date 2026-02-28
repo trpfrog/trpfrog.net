@@ -1,13 +1,13 @@
 import * as React from 'react'
 
+import type { Except } from 'type-fest'
+
 import { TweetTextarea } from '@/components/atoms/twitter/TweetTextarea'
 import { TwitterImage, TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterHeader } from '@/components/molecules/TwitterHeader'
 import { A } from '@/components/wrappers'
 
 import styles from './index.module.css'
-
-import type { Except } from 'type-fest'
 
 type TwitterData = {
   author: string

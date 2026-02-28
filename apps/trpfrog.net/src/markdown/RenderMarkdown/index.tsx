@@ -8,9 +8,9 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkToc from 'remark-toc'
 
-import { createMDXComponents } from './createMDXComponents'
-
 import { type MarkdownContext } from '@/markdown/types'
+
+import { createMDXComponents } from './createMDXComponents'
 
 export function RenderMarkdown(props: {
   markdown: string

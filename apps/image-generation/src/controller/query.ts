@@ -6,7 +6,6 @@ import * as v from 'valibot'
 
 import { ImageMetadataRepoQuerySchema } from '../domain/repos/image-metadata-repo'
 import { Env } from '../env'
-
 import { requiresApiKey } from './middlewares'
 
 export const queryApp = new Hono<Env>().get(

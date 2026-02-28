@@ -1,15 +1,13 @@
-import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
-import { env } from '@/env/server'
+import consola from 'consola'
 
 import { bffClient } from '@/app/api/client.ts'
-
+import { env } from '@/env/server'
 import { fetchFont } from '@/lib/fetchFont'
 
 import { fetchPost } from '../../rpc'
-
 import {
   OgAttribute,
   OgAttributesWrapper,

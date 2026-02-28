@@ -3,14 +3,12 @@ import * as React from 'react'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { Except } from 'type-fest'
 
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { CopyButton } from '@/components/atoms/CopyButton'
 import { A } from '@/components/wrappers'
-
 import { tv } from '@/lib/tailwind'
-
-import type { Except } from 'type-fest'
 
 export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   showBar?: boolean

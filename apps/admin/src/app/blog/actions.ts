@@ -1,5 +1,4 @@
 import { createContentServerClient } from '@trpfrog.net/content-server'
-
 import type { BlogPost } from '@trpfrog.net/posts'
 
 const client = createContentServerClient(process.env.NODE_ENV)

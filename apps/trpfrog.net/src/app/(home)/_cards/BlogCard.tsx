@@ -2,12 +2,9 @@ import { BlogPost } from '@trpfrog.net/posts'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-
 import { A } from '@/components/wrappers'
-
 import { tv, TVVariantProps } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
-
 import { fetchPostList } from '@blog/rpc'
 
 const createArticleStyle = tv({

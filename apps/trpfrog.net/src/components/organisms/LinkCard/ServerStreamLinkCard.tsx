@@ -1,11 +1,11 @@
 import 'server-only'
-
 import { Suspense } from 'react'
+
+import { cacheLife, cacheTag } from 'next/cache'
+import dynamic from 'next/dynamic'
 
 import { cacheTags } from '@trpfrog.net/constants'
 import { parsePageInfo } from '@trpfrog.net/utils/dom'
-import { cacheLife, cacheTag } from 'next/cache'
-import dynamic from 'next/dynamic'
 
 import { SkeletonLinkCard } from './SkeletonLinkCard'
 

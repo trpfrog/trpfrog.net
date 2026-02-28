@@ -1,5 +1,4 @@
 import { LinkTopCard } from '@/app/(home)/_components/TopCard'
-
 import { tv, twMerge } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 

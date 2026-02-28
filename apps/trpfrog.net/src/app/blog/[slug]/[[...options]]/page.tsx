@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
-
-import { cacheTags } from '@trpfrog.net/constants'
 import { cacheLife, cacheTag } from 'next/cache'
 
-import { env } from '@/env/server.ts'
+import { cacheTags } from '@trpfrog.net/constants'
 
+import { env } from '@/env/server.ts'
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 import { DevBlogMarkdown } from '@blog/_components/DevBlogMarkdown'
 import { fetchPost } from '@blog/rpc'

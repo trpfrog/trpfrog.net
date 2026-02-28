@@ -2,11 +2,11 @@
 import * as React from 'react'
 import { useImperativeHandle, useRef, useState } from 'react'
 
+import type { Except } from 'type-fest'
+
 import { useDragEvent } from '@/hooks/useDragEvent'
 
 import styles from './index.module.css'
-
-import type { Except } from 'type-fest'
 
 interface Props extends Except<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onDrag'> {
   onAngleChange: (degree: number) => void

@@ -1,5 +1,4 @@
 import { CustomCodeBlockComponent } from '../../types'
-
 import { ShowAllComponent } from './ShowAllComponent'
 
 export const deprecatedShowAllCCBC: CustomCodeBlockComponent = {

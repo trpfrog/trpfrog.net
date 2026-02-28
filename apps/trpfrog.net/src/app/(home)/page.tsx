@@ -1,10 +1,9 @@
 import * as cards from '@/app/(home)/_cards'
-
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-
 import { tv } from '@/lib/tailwind'
 
 import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrogAnimation'
+
 import css from './page.module.css'
 
 const styles = tv({

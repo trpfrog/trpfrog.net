@@ -6,7 +6,6 @@ import {
   InvalidTextToImageInputError,
   UnexpectedTextToImageModelResponseError,
 } from '../domain/services/text-to-image'
-
 import { generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {

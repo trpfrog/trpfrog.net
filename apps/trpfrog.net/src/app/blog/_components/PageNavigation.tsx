@@ -4,9 +4,8 @@ import { useCallback } from 'react'
 
 import { BlogPost } from '@trpfrog.net/posts'
 
-import { NODE_ENV } from '@/env/client'
-
 import { PageNavigation as SharedPageNavigation } from '@/components/organisms/PageNavigation'
+import { NODE_ENV } from '@/env/client'
 
 type Props = {
   entry: BlogPost

@@ -1,15 +1,14 @@
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
 import { createTheme } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
-import { Geist, Geist_Mono } from 'next/font/google'
-
-import type { Metadata } from 'next'
 
 import './globals.css'
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css' // import this after core package styles
-
 import { Shell } from '@/components/Shell'
 
 const geistSans = Geist({

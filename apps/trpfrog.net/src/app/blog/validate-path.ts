@@ -1,6 +1,7 @@
+import { notFound } from 'next/navigation'
+
 import { BlogPageNumber, BlogPageNumberSchema } from '@trpfrog.net/posts'
 import { InferSchemaInput, safeValidate } from '@trpfrog.net/utils'
-import { notFound } from 'next/navigation'
 
 type ValidatedBlogPath = {
   slug: string

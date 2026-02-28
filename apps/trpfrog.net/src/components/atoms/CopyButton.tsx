@@ -4,7 +4,6 @@ import { faClone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ButtonWithTooltip } from '@/components/atoms/ButtonWithTooltip'
-
 import { tv } from '@/lib/tailwind'
 
 type CopyButtonProps = {

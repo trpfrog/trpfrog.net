@@ -1,5 +1,4 @@
 import { CustomCodeBlockComponent } from '../../types'
-
 import { MarkdownUseEffect } from './MarkdownUseEffect'
 
 export const markdownUseEffectCCBC: CustomCodeBlockComponent = {

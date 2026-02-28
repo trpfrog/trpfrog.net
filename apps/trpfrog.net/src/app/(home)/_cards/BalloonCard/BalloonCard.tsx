@@ -4,9 +4,7 @@ import React, { useRef } from 'react'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-
 import { A } from '@/components/wrappers'
-
 import { tv } from '@/lib/tailwind'
 
 import { useResizableBalloonArray } from './useResizableBalloonArray'

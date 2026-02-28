@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 
 import dynamic from 'next/dynamic'
+
 import { TweetSkeleton, type TweetProps } from 'react-tweet'
 
 import { InlineLink } from '@/components/atoms/InlineLink'

@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
 import { ImageUpdateStatus } from '../entities/image-update-status'
-
 import { getRefreshedImageUpdateStatus } from './getRefreshedImageUpdateStatus'
 
 describe('getRefreshedImageUpdateStatus', () => {

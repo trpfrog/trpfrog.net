@@ -8,8 +8,9 @@ import { InlineLink } from '@/components/atoms/InlineLink'
 import { RichButton } from '@/components/atoms/RichButton'
 import { A, Li, UnorderedList } from '@/components/wrappers'
 
-import styles from './ProfileCards.module.css'
 import { SwitchUI } from './SwitchUI'
+
+import styles from './ProfileCards.module.css'
 
 export const ProfileDataSchema = v.object({
   name: v.string(),

@@ -17,14 +17,14 @@ import {
 } from '@mantine/core'
 import { useAtom } from 'jotai'
 
+import { imageGenerationOriginAtom } from '@/atom/origin'
+
 import {
   fetchSeedWords,
   generateImageFromText,
   generatePromptFromWords,
   type GeneratedPrompt,
 } from '../actions'
-
-import { imageGenerationOriginAtom } from '@/atom/origin'
 
 export default function PromptDemoPage() {
   const [wordsInput, setWordsInput] = useState('')

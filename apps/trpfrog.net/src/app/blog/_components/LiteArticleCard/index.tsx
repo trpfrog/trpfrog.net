@@ -1,13 +1,13 @@
 import React from 'react'
 
+import Link from 'next/link'
+
 import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BlogPost } from '@trpfrog.net/posts'
 import { formatReadTime } from '@trpfrog.net/posts/time'
-import Link from 'next/link'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-
 import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 import { formatDateToDisplay } from '@/lib/date'
 import { tv } from '@/lib/tailwind'

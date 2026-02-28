@@ -3,12 +3,10 @@
 import * as React from 'react'
 
 import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
-
 import { twMerge } from '@/lib/tailwind'
 
-import { WritingToolsSection } from './writing-tools-section'
-
 import type { DropTargetProps } from '../hooks/use-image-drag-and-drop'
+import { WritingToolsSection } from './writing-tools-section'
 
 export function ImageUploaderSection(props: {
   isDragging: boolean

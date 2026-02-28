@@ -2,7 +2,6 @@ import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi } from 'vitest'
 
 import { ImageUpdateStatus } from '../domain/entities/image-update-status'
-
 import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
 
 const latestRecord = {

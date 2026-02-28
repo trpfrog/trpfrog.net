@@ -5,7 +5,6 @@ import * as v from 'valibot'
 
 import { Env } from '../env'
 import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
-
 import { requiresApiKey } from './middlewares'
 
 export const updateApp = new Hono<Env>().post(

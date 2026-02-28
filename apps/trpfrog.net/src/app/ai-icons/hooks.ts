@@ -1,8 +1,9 @@
 import { useCallback } from 'react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { safeValidateUnknown } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
-import { useSearchParams } from 'next/navigation'
 import useSWRImmutable from 'swr/immutable'
 import * as v from 'valibot'
 

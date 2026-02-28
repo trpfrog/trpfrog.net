@@ -5,7 +5,6 @@ import { IMAGE_STALE_MINUTES } from '../domain/entities/stale'
 import * as getRefreshedImageUpdateStatus from '../domain/services/getRefreshedImageUpdateStatus'
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
 import { createImageUpdateStatusRepoMock } from '../infra/repos/mocks/imageUpdateStatusRepoMock'
-
 import { shouldUpdateUseCase } from './shouldUpdateUseCase'
 
 describe('shouldUpdateUseCase', () => {

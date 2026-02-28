@@ -1,11 +1,11 @@
 'use client'
+import Link from 'next/link'
+
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
-import Link from 'next/link'
 
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 import { RichButton } from '@/components/atoms/RichButton'
-
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 
 import { ArticleCard } from './ArticleCard'

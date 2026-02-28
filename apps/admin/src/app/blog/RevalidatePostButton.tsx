@@ -9,9 +9,9 @@ import { cacheTags } from '@trpfrog.net/constants'
 import { useAtomValue } from 'jotai'
 import { match } from 'ts-pattern'
 
-import { revalidate } from '../revalidate/actions'
-
 import { websiteOriginAtom } from '@/atom/origin'
+
+import { revalidate } from '../revalidate/actions'
 
 export function RevalidatePostButton(props: { slug: string }) {
   const [status, setStatus] = useState<'idle' | 'revalidating' | 'revalidated' | 'error'>('idle')

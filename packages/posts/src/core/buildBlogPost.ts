@@ -7,7 +7,6 @@ import {
   computeReadTimeSecondFrom,
   ReadTimeOptionSchema,
 } from '../time/computeReadTimeSecondFrom.ts'
-
 import {
   BLOG_PAGE_NUMBER__1,
   BlogFrontMatterSchema,

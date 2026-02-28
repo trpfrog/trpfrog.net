@@ -2,20 +2,18 @@
 
 import * as React from 'react'
 
+import Link from 'next/link'
+
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { BlogPost } from '@trpfrog.net/posts'
-import Link from 'next/link'
+import type { Except } from 'type-fest'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { A } from '@/components/wrappers'
-
 import { useShareTweetURL } from '@/hooks/useShareTweetURL'
-
 import { EntryButton } from '@blog/_components/EntryButton'
 import { TogglePageViewLink } from '@blog/_components/TogglePageViewLink'
-
-import type { Except } from 'type-fest'
 
 type EntryButtonProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost

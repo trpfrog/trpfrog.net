@@ -1,5 +1,4 @@
 import { type BundledLanguage } from 'shiki'
-
 import type { ArrayValues } from 'type-fest'
 
 const languageCode = [

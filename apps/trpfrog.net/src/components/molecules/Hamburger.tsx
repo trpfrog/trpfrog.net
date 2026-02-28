@@ -1,6 +1,5 @@
 // tailwind-variants definition
 import { useMobileMenuState, useToggleMenuCallback } from '@/components/organisms/MobileMenu'
-
 import { tv } from '@/lib/tailwind'
 
 const createHamburgerStyles = tv({

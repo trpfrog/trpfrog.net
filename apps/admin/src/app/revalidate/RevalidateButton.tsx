@@ -8,9 +8,9 @@ import { notifications } from '@mantine/notifications'
 import { useAtomValue } from 'jotai'
 import { match } from 'ts-pattern'
 
-import { revalidate } from './actions'
-
 import { websiteOriginAtom } from '@/atom/origin'
+
+import { revalidate } from './actions'
 
 export function RevalidateButton(
   props: (
