@@ -9,8 +9,9 @@ import {
   faWalking,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { BlogPost } from '@trpfrog.net/posts'
 import { format } from 'date-fns'
+
+import { BlogPost } from '@trpfrog.net/posts'
 
 import styles from './index.module.css'
 

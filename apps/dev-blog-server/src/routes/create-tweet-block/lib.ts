@@ -1,6 +1,7 @@
-import { createURL, validateUnknown } from '@trpfrog.net/utils'
 import { Window } from 'happy-dom'
 import * as v from 'valibot'
+
+import { createURL, validateUnknown } from '@trpfrog.net/utils'
 
 export type FetchedTweet = {
   id: string

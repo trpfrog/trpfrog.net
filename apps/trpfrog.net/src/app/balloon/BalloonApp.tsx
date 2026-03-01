@@ -2,9 +2,10 @@
 
 import { useId, useState } from 'react'
 
+import * as v from 'valibot'
+
 import { validateUnknown } from '@trpfrog.net/utils'
 import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
-import * as v from 'valibot'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'

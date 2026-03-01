@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
+
 import { BlogPost } from '@trpfrog.net/posts'
 
 import { A } from '@/components/wrappers'

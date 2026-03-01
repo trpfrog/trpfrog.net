@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { BlogPost } from '@trpfrog.net/posts'
 import { formatReadTime } from '@trpfrog.net/posts/time'
 

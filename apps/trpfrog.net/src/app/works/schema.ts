@@ -1,6 +1,7 @@
+import * as v from 'valibot'
+
 import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { vCoerceDate } from '@trpfrog.net/utils/valibot'
-import * as v from 'valibot'
 
 import { H2IconSchema } from '@/components/wrappers/H2'
 

@@ -2,6 +2,7 @@
 import Link from 'next/link'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+
 import { BlogPost } from '@trpfrog.net/posts'
 
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'

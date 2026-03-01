@@ -2,10 +2,11 @@ import * as React from 'react'
 
 import Link from 'next/link'
 
-import { BlogPost } from '@trpfrog.net/posts'
 import classNames from 'classnames'
 import Balancer from 'react-wrap-balancer'
 import type { Except } from 'type-fest'
+
+import { BlogPost } from '@trpfrog.net/posts'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'

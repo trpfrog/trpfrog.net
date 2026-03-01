@@ -1,5 +1,6 @@
-import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect } from 'vitest'
+
+import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
 import { ImagePrompt } from '../domain/entities/generation-result'
 import { ChatLLMJson, ChatUtterance } from '../domain/services/llm'

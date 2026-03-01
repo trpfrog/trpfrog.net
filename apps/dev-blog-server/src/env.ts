@@ -1,5 +1,6 @@
-import { validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validateUnknown } from '@trpfrog.net/utils'
 
 export const env = validateUnknown(
   v.object({

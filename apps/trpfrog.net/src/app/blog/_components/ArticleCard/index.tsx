@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { BlogPost } from '@trpfrog.net/posts'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'

@@ -1,6 +1,7 @@
 'use client'
 
 import { Table, Title } from '@mantine/core'
+
 import { cachedPaths, cacheTags } from '@trpfrog.net/constants'
 import { typedObjectEntries } from '@trpfrog.net/utils'
 

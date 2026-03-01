@@ -1,8 +1,9 @@
-import { services } from '@trpfrog.net/constants'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
+
+import { services } from '@trpfrog.net/constants'
 
 import { route as createTweetBlockRoute } from './routes/create-tweet-block'
 import { route as editRoute } from './routes/edit'

@@ -1,6 +1,7 @@
+import * as v from 'valibot'
+
 import { safeValidateUnknown } from '@trpfrog.net/utils'
 import { vCoerceDate } from '@trpfrog.net/utils/valibot'
-import * as v from 'valibot'
 
 import { TwitterImageData } from '@/components/atoms/twitter/TwitterImage'
 import { TwitterArchivedProps } from '@/components/organisms/TwitterArchived'

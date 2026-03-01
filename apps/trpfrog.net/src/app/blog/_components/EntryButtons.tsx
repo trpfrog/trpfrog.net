@@ -6,8 +6,9 @@ import Link from 'next/link'
 
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
-import { BlogPost } from '@trpfrog.net/posts'
 import type { Except } from 'type-fest'
+
+import { BlogPost } from '@trpfrog.net/posts'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { A } from '@/components/wrappers'

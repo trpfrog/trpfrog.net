@@ -2,8 +2,9 @@ import fs from 'node:fs'
 import { homedir } from 'node:os'
 
 import { PrismaClient, Tweet, Media } from '@prisma/client'
-import { InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
 
 const OriginalTweetSchema = v.object({
   tweet: v.object({

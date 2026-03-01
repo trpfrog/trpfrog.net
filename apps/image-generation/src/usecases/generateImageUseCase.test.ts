@@ -1,5 +1,6 @@
-import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi, afterEach } from 'vitest'
+
+import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
 import { GeneratedImage } from '../domain/entities/generation-result'
 import {

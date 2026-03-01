@@ -1,7 +1,8 @@
-import { validate, InferSchemaInput } from '@trpfrog.net/utils'
-import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 import matter from 'gray-matter'
 import * as v from 'valibot'
+
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
+import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 
 import {
   computeReadTimeSecondFrom,

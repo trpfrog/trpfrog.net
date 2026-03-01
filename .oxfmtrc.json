@@ -19,6 +19,10 @@
       {
         "groupName": "next-libs",
         "elementNamePattern": ["next", "next/**", "@next/**"]
+      },
+      {
+        "groupName": "trpfrog-net-libs",
+        "elementNamePattern": ["@trpfrog.net/**"]
       }
     ],
     "groups": [
@@ -26,6 +30,7 @@
       "react-libs",
       "next-libs",
       "external",
+      "trpfrog-net-libs",
       ["internal", "subpath"],
       ["parent", "sibling", "index"],
       "style",

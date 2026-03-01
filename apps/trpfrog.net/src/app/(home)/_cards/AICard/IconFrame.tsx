@@ -3,9 +3,10 @@
 import * as React from 'react'
 import { useCallback, useEffect } from 'react'
 
-import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import toast from 'react-hot-toast'
 import useSWRImmutable from 'swr/immutable'
+
+import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 
 import { WaveText } from '@/components/atoms/WaveText'
 import { tv } from '@/lib/tailwind'

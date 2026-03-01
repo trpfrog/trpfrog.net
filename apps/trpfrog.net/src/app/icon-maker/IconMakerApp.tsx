@@ -2,8 +2,9 @@
 
 import { useRef } from 'react'
 
-import { createURL } from '@trpfrog.net/utils'
 import toast from 'react-hot-toast'
+
+import { createURL } from '@trpfrog.net/utils'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
 import { RichButton } from '@/components/atoms/RichButton'
