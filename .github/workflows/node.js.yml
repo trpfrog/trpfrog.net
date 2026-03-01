@@ -55,6 +55,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --offline
 
+      - name: Prepare image-generation dev vars
+        run: cp apps/image-generation/.dev.vars.example apps/image-generation/.dev.vars
+
       - name: Generate types
         run: pnpm run -w typegen
 
