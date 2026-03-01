@@ -1,19 +1,18 @@
 import { Fragment } from 'react'
 
 import { Metadata } from 'next'
+import { cacheLife, cacheTag } from 'next/cache'
 
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { getYear } from 'date-fns'
+
 import { cacheTags } from '@trpfrog.net/constants'
 import { BlogPost } from '@trpfrog.net/posts'
-import { getYear } from 'date-fns'
-import { cacheLife, cacheTag } from 'next/cache'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { OnBodyHeading } from '@/components/atoms/OnBodyHeading'
 import { Title } from '@/components/organisms/Title'
-
 import { getTypedEntries } from '@/lib/utils'
-
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { LiteArticleCard } from '@blog/_components/LiteArticleCard'
 import { fetchPostList } from '@blog/rpc'

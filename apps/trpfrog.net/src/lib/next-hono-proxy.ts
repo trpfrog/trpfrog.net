@@ -1,7 +1,8 @@
+import { NextResponse } from 'next/server'
+
 import { Hono } from 'hono'
 import { inspectRoutes } from 'hono/dev'
 import { handle } from 'hono/vercel'
-import { NextResponse } from 'next/server'
 
 export function createNextProxy(app: Hono) {
   const proxyApp = new Hono()

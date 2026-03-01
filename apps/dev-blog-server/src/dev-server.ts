@@ -1,8 +1,9 @@
-import { services } from '@trpfrog.net/constants'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
+
+import { services } from '@trpfrog.net/constants'
 
 import { route as createTweetBlockRoute } from './routes/create-tweet-block'
 import { route as editRoute } from './routes/edit'
@@ -25,7 +26,7 @@ export const app = new Hono()
 // Hono RPC に含めないように method chain から外す
 app.route('/watch-post', watchPostRoute)
 
-// eslint-disable-next-line no-restricted-exports
+// eslint-disable-next-line eslint-core/no-restricted-exports
 export default {
   port: services.mdServer.port,
   fetch: app.fetch,

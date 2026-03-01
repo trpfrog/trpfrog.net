@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev -p 3001 --turbopack",
     "build": "next build --turbopack",
-    "start": "next start",
-    "lint-fix": "eslint . --fix"
+    "typegen": "next typegen",
+    "start": "next start"
   },
   "dependencies": {
     "@mantine/charts": "catalog:",
@@ -15,6 +15,7 @@
     "@mantine/form": "catalog:",
     "@mantine/hooks": "catalog:",
     "@mantine/modals": "catalog:",
+    "@mantine/notifications": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/content-server": "workspace:*",
@@ -33,14 +34,11 @@
     "ts-pattern": "catalog:"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/config-vitest": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-next": "catalog:",
     "postcss": "catalog:",
     "postcss-preset-mantine": "catalog:",
     "postcss-simple-vars": "catalog:",

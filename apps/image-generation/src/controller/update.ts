@@ -1,11 +1,11 @@
 import { sValidator } from '@hono/standard-validator'
-import { StringifiedBooleanSchema } from '@trpfrog.net/utils/valibot'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
+import { StringifiedBooleanSchema } from '@trpfrog.net/utils/valibot'
+
 import { Env } from '../env'
 import { waitUntilIfSupported } from '../lib/waitUntilIfSupported'
-
 import { requiresApiKey } from './middlewares'
 
 export const updateApp = new Hono<Env>().post(

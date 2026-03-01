@@ -1,7 +1,6 @@
 import { env } from 'hono/adapter'
 import { cors } from 'hono/cors'
 import { createMiddleware } from 'hono/factory'
-
 import type { Except } from 'type-fest'
 
 type CORSOptions = NonNullable<Parameters<typeof cors>[0]>

@@ -1,7 +1,8 @@
 'use server'
 
-import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 import { forbidden } from 'next/navigation'
+
+import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 
 import { env } from '@/env/server'
 

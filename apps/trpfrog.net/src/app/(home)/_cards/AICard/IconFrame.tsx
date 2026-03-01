@@ -3,11 +3,12 @@
 import * as React from 'react'
 import { useCallback, useEffect } from 'react'
 
-import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
+import toast from 'react-hot-toast'
 import useSWRImmutable from 'swr/immutable'
 
-import { WaveText } from '@/components/atoms/WaveText'
+import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
 
+import { WaveText } from '@/components/atoms/WaveText'
 import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
@@ -68,7 +69,10 @@ export function IconFrame() {
 
   // Trigger update request on mount
   useEffect(() => {
-    requestUpdateIcon().catch(console.error)
+    requestUpdateIcon().catch(error => {
+      toast.error('アイコン更新要求に失敗しました')
+      console.error('Failed to request icon update.', error)
+    })
   }, [])
 
   if (isLoading) {

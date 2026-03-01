@@ -20,6 +20,7 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ESNext",
+    "libReplacement": true,
     "lib": [
       "ESNext"
     ],

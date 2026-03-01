@@ -1,5 +1,6 @@
-import { validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validateUnknown } from '@trpfrog.net/utils'
 
 export const env = validateUnknown(
   v.object({
@@ -8,6 +9,6 @@ export const env = validateUnknown(
     CLOUDINARY_API_SECRET: v.pipe(v.string(), v.nonEmpty()),
     OPENAI_API_KEY: v.pipe(v.string(), v.nonEmpty()),
   }),
-  // eslint-disable-next-line n/no-process-env
+  // oxlint-disable-next-line node/no-process-env
   process.env,
 )

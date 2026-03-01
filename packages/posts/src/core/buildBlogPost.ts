@@ -1,13 +1,13 @@
-import { validate, InferSchemaInput } from '@trpfrog.net/utils'
-import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 import matter from 'gray-matter'
 import * as v from 'valibot'
+
+import { validate, InferSchemaInput } from '@trpfrog.net/utils'
+import { vNarrowInputType } from '@trpfrog.net/utils/valibot'
 
 import {
   computeReadTimeSecondFrom,
   ReadTimeOptionSchema,
 } from '../time/computeReadTimeSecondFrom.ts'
-
 import {
   BLOG_PAGE_NUMBER__1,
   BlogFrontMatterSchema,
@@ -30,7 +30,7 @@ const BlogPostBuildOptionSchema = v.object({
 
 export class InvalidPagePositionError extends Error {
   constructor(pagePosition: unknown) {
-    super(`Invalid page position: ${pagePosition}`)
+    super(`Invalid page position: ${String(pagePosition)}`)
   }
 }
 

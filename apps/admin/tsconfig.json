@@ -1,10 +1,9 @@
 {
   "extends": "@trpfrog.net/config-typescript/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
     }
   },

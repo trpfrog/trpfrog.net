@@ -1,5 +1,4 @@
 import { A, AProps } from '@/components/wrappers/A'
-
 import { tv } from '@/lib/tailwind'
 
 const inlineLinkStyle = tv({

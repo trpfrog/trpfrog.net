@@ -1,9 +1,9 @@
 import * as React from 'react'
 
+import type { MDXComponents } from 'mdx/types'
+
 import { InlineLink } from '@/components/atoms/InlineLink.tsx'
 import * as Wrapper from '@/components/wrappers'
-
-import type { MDXComponents } from 'mdx/types'
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {

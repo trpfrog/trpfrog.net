@@ -1,5 +1,6 @@
-import { validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validateUnknown } from '@trpfrog.net/utils'
 
 export const env = validateUnknown(
   v.object({
@@ -7,6 +8,6 @@ export const env = validateUnknown(
     ADMIN_PASSWORD: v.string(),
     TRPFROG_ADMIN_KEY: v.string(),
   }),
-  // eslint-disable-next-line n/no-process-env
+  // oxlint-disable-next-line node/no-process-env
   process.env,
 )

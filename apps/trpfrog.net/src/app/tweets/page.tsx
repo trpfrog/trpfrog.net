@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 import { format, subYears } from 'date-fns'
-import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'

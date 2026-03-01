@@ -1,14 +1,13 @@
 import { useState } from 'react'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai/index'
-import { useScroll } from 'motion/react'
 import { usePathname } from 'next/navigation'
 
-import { useMobileMenuState } from '@/components/organisms/MobileMenu'
+import { atom, useAtomValue, useSetAtom } from 'jotai/index'
+import { useScroll } from 'motion/react'
 
+import { useMobileMenuState } from '@/components/organisms/MobileMenu'
 import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { useWindowSize } from '@/hooks/useWindowSize'
-
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
 

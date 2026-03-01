@@ -1,6 +1,7 @@
 import 'server-only'
 import * as React from 'react'
 
+import './shiki-style.css'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,18 +12,15 @@ import {
 } from '@shikijs/transformers'
 import { addClassToHast, bundledLanguages, createHighlighter } from 'shiki'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
+import type { Except } from 'type-fest'
 
 import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { A } from '@/components/wrappers'
-
 import { tv } from '@/lib/tailwind'
 
-import './shiki-style.css'
 import { LanguageCode } from './language-code'
 import { languageDisplayNames } from './language-display-names'
 import { PlainCodeBlock } from './PlainCodeBlock'
-
-import type { Except } from 'type-fest'
 
 export type CodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   children?: string

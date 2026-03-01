@@ -1,8 +1,6 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-
 import { useTooltip } from '@/hooks/useTooltip'
-
 import { tv } from '@/lib/tailwind'
 
 /* eslint-disable no-irregular-whitespace */

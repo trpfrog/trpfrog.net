@@ -1,5 +1,6 @@
-import { validateUnknown, validate, InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validateUnknown, validate, InferSchemaOutput } from '@trpfrog.net/utils'
 
 export const ImageGenerationPromptSchema = v.object({
   author: v.string(),

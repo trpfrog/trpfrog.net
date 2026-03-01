@@ -43,8 +43,6 @@ yarn-error.log*
 # eslint
 .eslintcache
 
-# storybook
-storybook-static/
 .env*.local
 
 # unused lock files

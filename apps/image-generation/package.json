@@ -6,9 +6,8 @@
   },
   "scripts": {
     "dev": "wrangler dev --port 8001 --inspector-port 8101 src/index.ts",
-    "generate-types": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
+    "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "lint-fix": "eslint . --fix",
     "test": "vitest",
     "generate": "drizzle-kit generate",
     "migrate:local": "wrangler d1 migrations apply ai-trpfrog-icon-db --local",

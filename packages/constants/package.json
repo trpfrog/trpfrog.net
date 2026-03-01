@@ -4,14 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
-    "lint-fix": "eslint . --fix"
+    "dev": "tsc -w"
   },
   "exports": {
     ".": "./index.ts"
   },
   "devDependencies": {
-    "@trpfrog.net/config-eslint": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/utils": "workspace:*"
   }

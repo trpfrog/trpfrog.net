@@ -1,12 +1,14 @@
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core'
 import { createTheme } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
-import { Geist, Geist_Mono } from 'next/font/google'
-
-import type { Metadata } from 'next'
+import { Notifications } from '@mantine/notifications'
 
 import './globals.css'
 import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css' // import this after core package styles
 import { Shell } from '@/components/Shell'
 
 const geistSans = Geist({
@@ -50,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className={`${geistSans.variable} ${geistMono.variable} tw:antialiased`}>
         <MantineProvider theme={theme}>
           <ModalsProvider modalProps={{ centered: true }}>
+            <Notifications />
             <Shell>{children}</Shell>
           </ModalsProvider>
         </MantineProvider>

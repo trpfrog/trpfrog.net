@@ -2,7 +2,6 @@ import { parseObjectList } from '@trpfrog.net/posts/parser'
 import { safeValidateUnknown } from '@trpfrog.net/utils'
 
 import { CustomCodeBlockComponent } from '../../types'
-
 import { ProfileCards, ProfileDataSchema } from './ProfileCards'
 
 export const profileCardsCCBC: CustomCodeBlockComponent = {

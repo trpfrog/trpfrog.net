@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import { WavyTitle } from '@/components/atoms/WavyTitle'
 import { Block } from '@/components/molecules/Block'
-
 import { twMerge } from '@/lib/tailwind'
 
 type Props = {

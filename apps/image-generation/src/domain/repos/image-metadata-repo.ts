@@ -1,5 +1,6 @@
-import { InferSchemaOutput } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 
 import { ImageMetadata } from '../entities/generation-result'
 

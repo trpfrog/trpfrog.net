@@ -1,5 +1,6 @@
-import { services } from '@trpfrog.net/constants'
 import { atomWithStorage } from 'jotai/utils'
+
+import { services } from '@trpfrog.net/constants'
 
 export const initialValues = {
   websiteOrigin: services.website.origin(process.env.NODE_ENV),

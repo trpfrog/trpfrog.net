@@ -6,7 +6,6 @@ import { ErrorFallback } from '@/components/atoms/ErrorFallback'
 import { TwitterArchived, TwitterArchivedProps } from '@/components/organisms/TwitterArchived'
 
 import { CustomCodeBlockComponent } from '../../types'
-
 import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 
 function Fallback(props: { content: string; error: Error }) {

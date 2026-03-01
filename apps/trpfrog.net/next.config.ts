@@ -1,9 +1,10 @@
-import type { NextConfig } from 'next'
-
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
-import { composeFunctions } from '@trpfrog.net/utils'
+import type { NextConfig } from 'next'
+
 import webpack from 'webpack'
+
+import { composeFunctions } from '@trpfrog.net/utils'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

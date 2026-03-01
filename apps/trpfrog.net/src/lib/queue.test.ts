@@ -1,6 +1,6 @@
-// write queue test in jest
+import { describe, expect, beforeEach, test } from 'vitest'
 
-import { Queue } from '@/lib/queue'
+import { Queue } from './queue'
 
 describe('Queue', () => {
   let queue: Queue<number>

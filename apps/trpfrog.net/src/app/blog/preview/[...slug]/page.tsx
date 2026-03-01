@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { BlogPageNumber, BlogPageNumberSchema } from '@trpfrog.net/posts'
 import {
@@ -8,13 +9,10 @@ import {
   createPreviewClient,
 } from '@trpfrog.net/posts/preview'
 import { safeValidate } from '@trpfrog.net/utils'
-import { notFound } from 'next/navigation'
-
-import { env } from '@/env/server'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
-
+import { env } from '@/env/server'
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 

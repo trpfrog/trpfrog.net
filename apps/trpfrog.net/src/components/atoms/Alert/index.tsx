@@ -11,7 +11,7 @@ import classNames from 'classnames'
 
 import styles from './index.module.css'
 
-type AlertTypes = 'caution' | 'frog' | 'info'
+export type AlertTypes = 'caution' | 'frog' | 'info'
 
 type AlertAppearance = {
   icon: IconDefinition

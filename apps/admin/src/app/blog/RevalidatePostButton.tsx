@@ -4,13 +4,15 @@ import { useCallback, useState } from 'react'
 
 import { Button, Flex, Text } from '@mantine/core'
 import { modals } from '@mantine/modals'
-import { cacheTags } from '@trpfrog.net/constants'
+import { notifications } from '@mantine/notifications'
 import { useAtomValue } from 'jotai'
 import { match } from 'ts-pattern'
 
-import { revalidate } from '../revalidate/actions'
+import { cacheTags } from '@trpfrog.net/constants'
 
 import { websiteOriginAtom } from '@/atom/origin'
+
+import { revalidate } from '../revalidate/actions'
 
 export function RevalidatePostButton(props: { slug: string }) {
   const [status, setStatus] = useState<'idle' | 'revalidating' | 'revalidated' | 'error'>('idle')
@@ -41,6 +43,11 @@ export function RevalidatePostButton(props: { slug: string }) {
           })
           .catch(e => {
             console.error(e)
+            notifications.show({
+              color: 'red',
+              title: 'Revalidate に失敗しました',
+              message: '時間をおいて再試行してください。',
+            })
             setStatus('error')
           })
           .finally(() => {

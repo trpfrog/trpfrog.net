@@ -6,7 +6,6 @@ import { useCallback, useRef, useState } from 'react'
 import { RotateButton } from '@/app/(home)/_components/TrpFrogAnimation/RotateButton'
 import { useRotateAnimation } from '@/app/(home)/_components/TrpFrogAnimation/useRotateAnimation'
 import { useRpmCalculation } from '@/app/(home)/_components/TrpFrogAnimation/useRpmCalculation'
-
 import { AnglePicker } from '@/components/atoms/AnglePicker'
 
 import styles from './index.module.css'

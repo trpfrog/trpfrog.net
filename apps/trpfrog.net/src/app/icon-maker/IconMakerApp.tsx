@@ -2,10 +2,11 @@
 
 import { useRef } from 'react'
 
+import toast from 'react-hot-toast'
+
 import { createURL } from '@trpfrog.net/utils'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
-
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { A, Input } from '@/components/wrappers'
@@ -27,9 +28,15 @@ export function IconMakerApp() {
       <Block title={'画像の選択'}>
         <Input
           type="file"
-          onChange={e => {
-            state.current?.upload(e.target.files)
-            window.location.hash = 'preview'
+          onChange={async e => {
+            try {
+              await state.current?.upload(e.target.files)
+            } catch (error) {
+              toast.error('画像の読み込みに失敗しました')
+              console.error('Failed to upload image for icon maker.', error)
+            } finally {
+              window.location.hash = 'preview'
+            }
           }}
         />
       </Block>

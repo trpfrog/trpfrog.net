@@ -1,11 +1,12 @@
 'use server'
 
 import { openai, OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
-import { InferSchemaOutput } from '@trpfrog.net/utils'
 import { toJsonSchema } from '@valibot/to-json-schema'
 import { generateObject, jsonSchema } from 'ai'
 import dedent from 'ts-dedent'
 import * as v from 'valibot'
+
+import { InferSchemaOutput } from '@trpfrog.net/utils'
 
 const AltTextObjectSchema = v.object({
   altText: v.pipe(v.string(), v.description('Japanese alt text for the image')),

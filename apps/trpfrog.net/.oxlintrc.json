@@ -1,0 +1,18 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["../../packages/config-oxlint/next.json"],
+  "rules": {
+    "eslint/no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@/app/blog/*"],
+        "paths": [
+          {
+            "name": "tailwind-variants",
+            "message": "Please import from @/lib/tailwind instead."
+          }
+        ]
+      }
+    ]
+  }
+}

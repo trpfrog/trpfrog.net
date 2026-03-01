@@ -1,11 +1,12 @@
+import { Hono } from 'hono'
+import { ssgParams } from 'hono/ssg'
+
 import {
   readAllBlogPosts,
   readAllSlugs,
   readMarkdownFromSlug,
   retrieveExistingAllTags,
 } from '@trpfrog.net/posts/fs'
-import { Hono } from 'hono'
-import { ssgParams } from 'hono/ssg'
 
 function isVisiblePostSlug(slug: string): boolean {
   return process.env.NODE_ENV === 'development' || !slug.startsWith('_')

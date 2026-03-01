@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
-import { useSearchParams } from 'next/navigation'
 import { match } from 'ts-pattern'
 
 const kawaiiLogoAtom = atomWithStorage('kawaii-logo', false)

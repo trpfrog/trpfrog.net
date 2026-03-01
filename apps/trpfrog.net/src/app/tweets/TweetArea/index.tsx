@@ -3,7 +3,6 @@ import * as React from 'react'
 import { PageNavigation } from '@/app/tweets/PageNavigation'
 import { DateCard, TweetCard } from '@/app/tweets/TweetCard'
 import { search } from '@/app/tweets/tweetSearcher'
-
 import { Block } from '@/components/molecules/Block'
 
 export async function TweetArea({ query, page }: { query: string; page: string }) {

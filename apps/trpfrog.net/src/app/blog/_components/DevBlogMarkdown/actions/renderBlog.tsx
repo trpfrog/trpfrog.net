@@ -1,12 +1,13 @@
 'use server'
 
+import { notFound } from 'next/navigation'
+
 import {
   BlogPost,
   InvalidPagePositionError,
   BlogPageNumber,
   BLOG_PAGE_NUMBER__1,
 } from '@trpfrog.net/posts'
-import { notFound } from 'next/navigation'
 
 import { BlogMarkdown } from '@blog/_components/BlogMarkdown'
 import { fetchPost } from '@blog/rpc'

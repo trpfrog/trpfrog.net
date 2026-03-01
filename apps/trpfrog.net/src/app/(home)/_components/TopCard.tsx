@@ -3,7 +3,6 @@ import { ComponentPropsWithRef, ReactNode } from 'react'
 import { plainBlockStyle } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
 import { AProps } from '@/components/wrappers/A'
-
 import { tv, TVVariantProps } from '@/lib/tailwind'
 
 const styles = {
@@ -62,7 +61,8 @@ export function TopCard(props: TopCardProps) {
 
 interface TopLinkCardProps extends AProps {
   title?: string
-  readMoreText?: ReactNode | boolean
+  // oxlint-disable-next-line typescript/no-redundant-type-constituents -- boolean を渡したときの挙動が変わることを明示している
+  readMoreText?: boolean | ReactNode
   titlePosition?: TVVariantProps<typeof styles.h2>['position']
 }
 

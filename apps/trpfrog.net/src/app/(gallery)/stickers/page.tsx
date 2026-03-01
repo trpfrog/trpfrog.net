@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 import { ImagePaths, ImageList } from '@/app/(gallery)/_components/ImageList'
-
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'

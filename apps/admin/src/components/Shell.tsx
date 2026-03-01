@@ -1,12 +1,11 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 import { AppShell, Burger, NavLink } from '@mantine/core'
 import { Flex, TextInput } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { PrimitiveAtom, useAtom } from 'jotai'
-import { usePathname } from 'next/navigation'
-
-import { Logout } from './Logout'
 
 import {
   contentServerOriginAtom,
@@ -15,6 +14,8 @@ import {
   initialValues,
 } from '@/atom/origin'
 import { navigations } from '@/navigations'
+
+import { Logout } from './Logout'
 
 function EndpointInput(props: {
   label: string

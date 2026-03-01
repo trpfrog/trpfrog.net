@@ -2,15 +2,17 @@
 
 import { useEffect } from 'react'
 
-export function MarkdownUseEffect({ code }: { code: string }) {
+// DO NOT PASS UNTRUSTED CODE TO THIS COMPONENT
+export function MarkdownUseEffect({ trustedCode }: { trustedCode: string }) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const userFunction = Function(code)
+      // oxlint-disable-next-line typescript/no-implied-eval -- trusted code
+      const userFunction = Function(trustedCode)
       const cleanup = userFunction()
       if (typeof cleanup === 'function') {
         return cleanup
       }
     }
-  }, [code])
+  }, [trustedCode])
   return null
 }

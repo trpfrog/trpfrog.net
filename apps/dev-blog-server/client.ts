@@ -1,7 +1,8 @@
 /// <reference lib="dom" />
 
-import { services } from '@trpfrog.net/constants'
 import { hc } from 'hono/client'
+
+import { services } from '@trpfrog.net/constants'
 
 import { type app } from './src/dev-server'
 

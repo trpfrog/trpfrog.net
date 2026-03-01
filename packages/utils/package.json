@@ -12,8 +12,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "test": "vitest",
-    "lint-fix": "eslint . --fix"
+    "test": "vitest"
   },
   "dependencies": {
     "@standard-schema/spec": "catalog:",

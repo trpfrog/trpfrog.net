@@ -8,14 +8,11 @@ import { KawaiiLogo } from '@/components/organisms/Header/KawaiiLogo'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
 import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMenu'
-
 import { useFocusTrap } from '@/hooks/useFocusTrap'
-
 import { tv } from '@/lib/tailwind'
+import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
 import { HeaderNav } from './HeaderNav'
-
-import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
 const createStyles = tv({
   slots: {

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useMemo } from 'react'
 
 import Link from 'next/link'
+
 import { match, P } from 'ts-pattern'
 
 import { isInternalLink } from '@/lib/isInternalLink'
@@ -36,6 +37,7 @@ export function A(props: AProps) {
   return isInternal ? (
     <Link href={href} ref={ref} {...rest} {...openInNewTabProps} />
   ) : (
+    // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a href={href} ref={ref} {...openInNewTabProps} {...rest} />
   )
 }

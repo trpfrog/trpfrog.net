@@ -2,7 +2,7 @@
   "name": "@trpfrog.net/config-vitest",
   "type": "module",
   "private": true,
-  "main": "./vitest.shared.mjs",
+  "main": "./vitest.shared.ts",
   "peerDependencies": {
     "vitest": "catalog:"
   }

@@ -1,12 +1,11 @@
 import * as React from 'react'
 
 import Balancer from 'react-wrap-balancer'
+import type { Except } from 'type-fest'
 
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
 import styles from './index.module.css'
-
-import type { Except } from 'type-fest'
 
 type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   title: string

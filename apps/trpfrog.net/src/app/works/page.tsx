@@ -8,14 +8,12 @@ import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { A } from '@/components/wrappers'
-
 import { formatDateToDisplay } from '@/lib/date'
 import { readMarkdowns } from '@/lib/mdLoader'
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 import { Keywords } from './Keywords'
 import { WorksFrontmatterSchema } from './schema'
-
-import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 export const metadata = {
   title: 'Works',

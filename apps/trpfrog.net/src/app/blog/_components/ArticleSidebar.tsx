@@ -1,12 +1,12 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 import { BLOG_PAGE_NUMBER__1, BlogPageNumberSchema, BlogPost } from '@trpfrog.net/posts'
 import { tryOr, validateUnknown } from '@trpfrog.net/utils'
-import { usePathname } from 'next/navigation'
 
 import { Block } from '@/components/molecules/Block'
 import { StickToTop } from '@/components/organisms/Header'
-
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { PageNavigation } from '@blog/_components/PageNavigation'
 

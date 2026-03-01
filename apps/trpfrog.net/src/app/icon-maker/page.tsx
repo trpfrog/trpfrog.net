@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-
 import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
