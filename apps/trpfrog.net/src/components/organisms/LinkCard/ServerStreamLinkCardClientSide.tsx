@@ -4,9 +4,8 @@ import useSWRImmutable from 'swr/immutable'
 
 import { LinkCard } from '@/components/organisms/LinkCard/LinkCard'
 
-import { SkeletonLinkCard } from './SkeletonLinkCard'
-
 import type { LinkCardResult } from './ServerStreamLinkCard'
+import { SkeletonLinkCard } from './SkeletonLinkCard'
 
 export function ServerStreamedLinkCard_Client(props: {
   fetcher: (url: string) => Promise<LinkCardResult>

@@ -1,12 +1,11 @@
 import * as React from 'react'
 
 import Skeleton from 'react-loading-skeleton'
+import type { Except } from 'type-fest'
 
 import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
 import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
 import { A } from '@/components/wrappers'
-
-import type { Except } from 'type-fest'
 
 type LinkCardProps = Except<React.ComponentPropsWithoutRef<'a'>, 'children'>
 

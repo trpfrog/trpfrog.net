@@ -1,14 +1,13 @@
 import { useState } from 'react'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai/index'
-import { useScroll } from 'motion/react'
 import { usePathname } from 'next/navigation'
 
-import { useMobileMenuState } from '@/components/organisms/MobileMenu'
+import { atom, useAtomValue, useSetAtom } from 'jotai/index'
+import { useScroll } from 'motion/react'
 
+import { useMobileMenuState } from '@/components/organisms/MobileMenu'
 import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { useWindowSize } from '@/hooks/useWindowSize'
-
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
 
@@ -78,7 +77,7 @@ export function useHeaderStatus(): HeaderStatus {
     sticky: isMobileMenuOpened || userSettingFollowSticky,
 
     // ヘッダーのサブタイトルを表示するかどうか
-    visibleSubtitle: scrollY > (isMobile ? 120 : 250),
+    visibleSubtitle: !isTopPage && scrollY > (isMobile ? 120 : 250),
 
     // ヘッダーのつまみアイコンを表示するかどうか
     visibleTrpFrog: isTopPage ? scrollY >= 250 : true,

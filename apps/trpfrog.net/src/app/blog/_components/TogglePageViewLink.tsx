@@ -1,9 +1,11 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
+
 import { BlogPost } from '@trpfrog.net/posts'
-import { usePathname } from 'next/navigation'
 
 import { A } from '@/components/wrappers'
 
@@ -21,7 +23,7 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
 
   let url = `/blog/${post.slug}`
   let text: string
-  let icon: IconProp | string
+  let icon: IconProp
 
   if (post.currentPage === 'all') {
     url += '/' + (previousArticlePage || '')

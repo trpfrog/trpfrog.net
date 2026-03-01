@@ -1,10 +1,10 @@
 'use client'
 import { Table, Title } from '@mantine/core'
-import { cacheTags } from '@trpfrog.net/constants'
 import useSWR from 'swr'
 
-import { RevalidateButton } from '../revalidate/RevalidateButton'
+import { cacheTags } from '@trpfrog.net/constants'
 
+import { RevalidateButton } from '../revalidate/RevalidateButton'
 import { fetchPostList } from './actions'
 import { JSONModal } from './JSONModal'
 import { RevalidatePostButton } from './RevalidatePostButton'

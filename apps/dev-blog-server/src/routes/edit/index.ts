@@ -1,9 +1,10 @@
 import { promises as fs } from 'fs'
 
 import { sValidator } from '@hono/standard-validator'
-import { resolvePostPath } from '@trpfrog.net/posts'
 import { Hono } from 'hono'
 import * as v from 'valibot'
+
+import { resolvePostPath } from '@trpfrog.net/posts'
 
 async function appendLine(filePath: string, line: string) {
   const content = await fs.readFile(filePath, 'utf8')

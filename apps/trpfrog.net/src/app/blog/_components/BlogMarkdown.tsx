@@ -3,12 +3,10 @@ import { memo, CSSProperties } from 'react'
 import { BlogPost } from '@trpfrog.net/posts'
 
 import { Block } from '@/components/molecules/Block'
-
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 import { PageNavigation } from '@blog/_components/PageNavigation'
 
 import styles from './BlogMarkdown.module.css'
-
-import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 type Props = {
   entry: BlogPost

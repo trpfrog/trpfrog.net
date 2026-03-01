@@ -1,9 +1,7 @@
 'use client'
 
 import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
-
 import { tv } from '@/lib/tailwind'
-
 import { useKawaiiLogoAtom } from '@/states/kawaiiLogoAtom.ts'
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
 import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'

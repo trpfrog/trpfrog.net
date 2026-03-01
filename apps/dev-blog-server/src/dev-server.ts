@@ -1,11 +1,14 @@
-import { services } from '@trpfrog.net/constants'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
 
+import { services } from '@trpfrog.net/constants'
+
+import { route as createTweetBlockRoute } from './routes/create-tweet-block'
 import { route as editRoute } from './routes/edit'
 import { route as generateAltTextRoute } from './routes/generate-alt-text'
+import { ssgAssetsRoute } from './routes/ssg-assets'
 import { route as uploadImageRoute } from './routes/upload-image'
 import { route as watchPostRoute } from './routes/watch-post'
 
@@ -15,13 +18,15 @@ export const app = new Hono()
   .use(cors({ origin: services.website.development }))
   .get('/health', c => c.text('OK'))
   .route('/edit', editRoute)
+  .route('/create_tweet_block', createTweetBlockRoute)
   .route('/upload_image', uploadImageRoute)
   .route('/generate_alt_text', generateAltTextRoute)
+  .route('/ssg_assets', ssgAssetsRoute)
 
 // Hono RPC に含めないように method chain から外す
 app.route('/watch-post', watchPostRoute)
 
-// eslint-disable-next-line no-restricted-exports
+// eslint-disable-next-line eslint-core/no-restricted-exports
 export default {
   port: services.mdServer.port,
   fetch: app.fetch,

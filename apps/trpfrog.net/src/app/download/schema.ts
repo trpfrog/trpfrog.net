@@ -1,5 +1,6 @@
-import { vCoerceDate } from '@trpfrog.net/utils/valibot'
 import * as v from 'valibot'
+
+import { vCoerceDate } from '@trpfrog.net/utils/valibot'
 
 export const WorksFrontmatterSchema = v.object({
   title: v.string(),

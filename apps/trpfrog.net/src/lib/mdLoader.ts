@@ -2,8 +2,9 @@ import fs from 'fs/promises'
 import * as path from 'path'
 
 import { StandardSchemaV1 } from '@standard-schema/spec'
-import { validateUnknown } from '@trpfrog.net/utils'
 import matter from 'gray-matter'
+
+import { validateUnknown } from '@trpfrog.net/utils'
 export type MarkdownWithFrontmatter<T> = {
   filename: string
   metadata: T

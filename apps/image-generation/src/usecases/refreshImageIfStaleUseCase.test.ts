@@ -1,8 +1,8 @@
-import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi } from 'vitest'
 
-import { ImageUpdateStatus } from '../domain/entities/image-update-status'
+import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
+import { ImageUpdateStatus } from '../domain/entities/image-update-status'
 import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
 
 const latestRecord = {
@@ -83,6 +83,7 @@ describe('refreshImageIfStale', () => {
 
     let statusDuringUpdate: ImageUpdateStatus | undefined
     const refreshImageIfStale = resolve({
+      // @ts-expect-error -- 型パズルに失敗している、そもそもインチキDIをやめたい
       imageMetadataRepo: {
         ...defaultDeps.imageMetadataRepo,
         getLatest: async () => ({
@@ -122,6 +123,7 @@ describe('refreshImageIfStale', () => {
 
     let statusDuringUpdate: ImageUpdateStatus | undefined
     const refreshImageIfStale = resolve({
+      // @ts-expect-error -- 型パズルに失敗している、そもそもインチキDIをやめたい
       imageMetadataRepo: {
         ...defaultDeps.imageMetadataRepo,
         getLatest: async () => ({

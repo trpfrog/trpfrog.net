@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { faDove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { createURL } from '@trpfrog.net/utils'
 
 import { TwitterIcon } from '@/components/atoms/twitter/TwitterIcon'

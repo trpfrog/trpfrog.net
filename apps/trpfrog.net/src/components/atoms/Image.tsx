@@ -3,15 +3,16 @@
 import * as React from 'react'
 import { useState } from 'react'
 
-import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
+import type { Except } from 'type-fest'
 
+import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
 import { getPureCloudinaryPath } from '@/lib/cloudinaryUtils'
 import { tv } from '@/lib/tailwind'
 
-import type { Except } from 'type-fest'
-
-interface ImageProps
-  extends Except<React.ComponentPropsWithRef<'img'>, 'width' | 'height' | 'src'> {
+interface ImageProps extends Except<
+  React.ComponentPropsWithRef<'img'>,
+  'width' | 'height' | 'src'
+> {
   src: string
   width: number
   height: number

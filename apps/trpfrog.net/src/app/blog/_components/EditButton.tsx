@@ -3,9 +3,8 @@ import fs from 'fs'
 
 import { resolvePostPath } from '@trpfrog.net/posts'
 
-import { NODE_ENV } from '@/env/client'
-
 import { RichButton } from '@/components/atoms/RichButton'
+import { NODE_ENV } from '@/env/client'
 
 export function EditButton({ slug }: { slug: string }) {
   const openInCotEditor = async () => {

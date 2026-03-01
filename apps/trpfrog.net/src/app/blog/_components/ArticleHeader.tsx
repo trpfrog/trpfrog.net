@@ -1,21 +1,20 @@
 import * as React from 'react'
 
-import { BlogPost } from '@trpfrog.net/posts'
-import classNames from 'classnames'
 import Link from 'next/link'
+
+import classNames from 'classnames'
 import Balancer from 'react-wrap-balancer'
+import type { Except } from 'type-fest'
+
+import { BlogPost } from '@trpfrog.net/posts'
 
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-
 import { ParseWithBudouX } from '@/lib/wordSplit'
-
 import { EditButton } from '@blog/_components/EditButton'
 import { EntryButtons } from '@blog/_components/EntryButtons'
 import { PostAttributes } from '@blog/_components/PostAttributes'
 import { Tag } from '@blog/_components/Tag'
-
-import type { Except } from 'type-fest'
 
 type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   post: BlogPost

@@ -1,9 +1,7 @@
 import React from 'react'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
-
 import { Devicon } from '@/components/atoms/Devicon'
-
 import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
 
@@ -39,7 +37,7 @@ function Skill(props: FavoriteProps) {
     typeof props.description === 'string' ? [props.description] : props.description
   return (
     <div
-      style={{ gridRow: '1 / -1', ...(props.style ?? {}) }}
+      style={{ gridRow: '1 / -1', ...props.style }}
       className={styles.wrapper({ className: props.className })}
     >
       <div className={styles.icon()}>{props.icon}</div>

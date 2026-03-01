@@ -1,10 +1,10 @@
 import * as React from 'react'
 
+import type { Except } from 'type-fest'
+
 import { Tag } from '@blog/_components/Tag'
 
 import styles from './index.module.css'
-
-import type { Except } from 'type-fest'
 
 type Props = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tags: string[]

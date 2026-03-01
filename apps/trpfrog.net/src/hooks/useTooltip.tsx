@@ -1,8 +1,8 @@
 import { ComponentProps, useId } from 'react'
 
-import { TooltipWrapper } from '@/components/utils/TooltipWrapper'
-
 import type { Except } from 'type-fest'
+
+import { TooltipWrapper } from '@/components/utils/TooltipWrapper'
 
 export function useTooltip() {
   const id = useId()

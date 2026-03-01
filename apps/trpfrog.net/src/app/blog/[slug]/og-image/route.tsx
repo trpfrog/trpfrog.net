@@ -1,15 +1,13 @@
-import consola from 'consola'
 import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
-import { env } from '@/env/server'
+import consola from 'consola'
 
 import { bffClient } from '@/app/api/client.ts'
-
+import { env } from '@/env/server'
 import { fetchFont } from '@/lib/fetchFont'
 
 import { fetchPost } from '../../rpc'
-
 import {
   OgAttribute,
   OgAttributesWrapper,
@@ -70,30 +68,28 @@ export async function GET(_req: NextRequest, context: RouteContext<'/blog/[slug]
     .then(res => res.json())
 
   return new ImageResponse(
-    (
-      <OgBody>
-        <OgWindow>
-          <OgThumbnail src={thumbnail} />
-          <Background>
-            <OgTitleWrapper>
-              <span style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {budouxTitle.map((str, i) => (
-                  <span key={i}>{str}</span>
-                ))}
-              </span>
-              {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
-            </OgTitleWrapper>
-            <OgAttributesWrapper>
-              <OgAttribute>{date}</OgAttribute>
-              {tags.map(tag => (
-                <OgAttribute key={tag}>#{tag}</OgAttribute>
+    <OgBody>
+      <OgWindow>
+        <OgThumbnail src={thumbnail} />
+        <Background>
+          <OgTitleWrapper>
+            <span style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+              {budouxTitle.map((str, i) => (
+                <span key={i}>{str}</span>
               ))}
-            </OgAttributesWrapper>
-          </Background>
-        </OgWindow>
-        <OgTrpFrogIcon size={100} pos={{ x: 38, y: 38 }} />
-      </OgBody>
-    ),
+            </span>
+            {subtitle && <OgSubtitle>{subtitle}</OgSubtitle>}
+          </OgTitleWrapper>
+          <OgAttributesWrapper>
+            <OgAttribute>{date}</OgAttribute>
+            {tags.map(tag => (
+              <OgAttribute key={tag}>#{tag}</OgAttribute>
+            ))}
+          </OgAttributesWrapper>
+        </Background>
+      </OgWindow>
+      <OgTrpFrogIcon size={100} pos={{ x: 38, y: 38 }} />
+    </OgBody>,
     imageResponseOptions,
   )
 }

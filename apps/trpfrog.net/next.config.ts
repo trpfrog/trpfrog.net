@@ -1,15 +1,33 @@
-import type { NextConfig } from 'next'
-
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
-import { composeFunctions } from '@trpfrog.net/utils'
+import type { NextConfig } from 'next'
+
 import webpack from 'webpack'
+
+import { composeFunctions } from '@trpfrog.net/utils'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
-  cacheComponents: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+
+  cacheComponents: true,
+  cacheLife: {
+    'cache-if-production':
+      process.env.NODE_ENV === 'production'
+        ? // same as 'max'
+          {
+            stale: 60 * 5, // 5 minutes
+            revalidate: 60 * 60 * 24 * 30, // 30 days
+            expire: 60 * 60 * 24 * 365, // 1 year
+          }
+        : // in development, no caching
+          {
+            stale: 0,
+            revalidate: 0,
+            expire: 0,
+          },
+  },
 
   images: {
     loader: 'cloudinary',

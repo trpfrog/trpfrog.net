@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import styles from './index.module.css'
-
 import type { Except } from 'type-fest'
+
+import styles from './index.module.css'
 
 type Props<T extends string> = Except<React.ComponentPropsWithoutRef<'span'>, 'children'> & {
   children: T

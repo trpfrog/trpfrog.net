@@ -5,7 +5,6 @@ import { BlogPost } from '@trpfrog.net/posts'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { fetchPostList } from '@blog/rpc'

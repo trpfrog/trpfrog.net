@@ -6,7 +6,7 @@ type EventMapFor<T extends BrowserTarget> = T extends 'window'
   ? WindowEventMap
   : T extends 'document'
     ? DocumentEventMap
-    : T extends React.RefObject<unknown | null>
+    : T extends React.RefObject<unknown>
       ? HTMLElementEventMap
       : never
 
@@ -14,7 +14,7 @@ type ThisFor<T extends BrowserTarget> = T extends 'window'
   ? Window
   : T extends 'document'
     ? Document
-    : T extends React.RefObject<infer U | null>
+    : T extends React.RefObject<(infer U) | null>
       ? U
       : never
 

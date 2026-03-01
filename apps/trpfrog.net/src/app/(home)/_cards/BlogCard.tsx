@@ -2,12 +2,9 @@ import { BlogPost } from '@trpfrog.net/posts'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-
 import { A } from '@/components/wrappers'
-
 import { tv, TVVariantProps } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
-
 import { fetchPostList } from '@blog/rpc'
 
 const createArticleStyle = tv({
@@ -73,10 +70,7 @@ function ArticleRow(props: {
     >
       <div className={articleStyle.wrapper()}>
         <div className={articleStyle.info()}>
-          <h3
-            className="tw:mb-1 tw:line-clamp-2 tw:font-bold tw:italic tw:leading-tight!
-              tw:drop-shadow-sm tw:pc:text-lg"
-          >
+          <h3 className="tw:mb-1 tw:line-clamp-2 tw:font-bold tw:italic tw:leading-tight! tw:drop-shadow-sm tw:pc:text-lg">
             {entry.title}
           </h3>
           <div className="tw:line-clamp-1 tw:text-ellipsis tw:text-[0.7rem]">

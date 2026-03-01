@@ -2,13 +2,13 @@
   "name": "@trpfrog.net/dev-blog-server",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/dev-server.ts",
-    "build": "tsc",
-    "lint-fix": "eslint . --fix"
+    "dev": "NODE_ENV=development bun run --hot src/dev-server.ts",
+    "build": "tsc"
   },
   "type": "module",
   "exports": {
-    ".": "./client.ts"
+    ".": "./client.ts",
+    "./ssg-assets": "./src/routes/ssg-assets/index.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",
@@ -17,8 +17,10 @@
     "@trpfrog.net/utils": "workspace:*",
     "@valibot/to-json-schema": "catalog:",
     "ai": "catalog:",
+    "clipboardy": "catalog:",
     "chokidar": "catalog:",
     "cloudinary": "catalog:",
+    "happy-dom": "catalog:",
     "hono": "catalog:",
     "ts-dedent": "catalog:"
   },

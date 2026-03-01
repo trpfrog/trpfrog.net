@@ -1,6 +1,7 @@
 import 'server-only'
-import { validateUnknown } from '@trpfrog.net/utils'
 import * as v from 'valibot'
+
+import { validateUnknown } from '@trpfrog.net/utils'
 
 import { CommonEnvSchema } from '@/env/common'
 
@@ -82,5 +83,5 @@ export const ServerEnvSchema = v.object({
   USE_DEV_REALTIME_BLOG_PREVIEW: v.optional(v.pipe(v.string(), v.toLowerCase(), v.trim()), 'true'),
 })
 
-// eslint-disable-next-line n/no-process-env -- This is a rule to use validated env instead of process.env
+// oxlint-disable-next-line node/no-process-env -- This is a rule to use validated env instead of process.env
 export const env = validateUnknown(ServerEnvSchema, process.env)

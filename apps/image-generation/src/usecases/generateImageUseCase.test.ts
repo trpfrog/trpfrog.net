@@ -1,12 +1,12 @@
-import { createSingleDepsResolver } from '@trpfrog.net/utils'
 import { describe, it, expect, vi, afterEach } from 'vitest'
+
+import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
 import { GeneratedImage } from '../domain/entities/generation-result'
 import {
   InvalidTextToImageInputError,
   UnexpectedTextToImageModelResponseError,
 } from '../domain/services/text-to-image'
-
 import { generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {

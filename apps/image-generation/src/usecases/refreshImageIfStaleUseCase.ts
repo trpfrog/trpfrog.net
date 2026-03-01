@@ -1,6 +1,5 @@
 import { GeneratedImage, ImagePrompt } from '../domain/entities/generation-result'
 import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
-
 import { shouldUpdateUseCase } from './shouldUpdateUseCase'
 import { uploadNewImageUseCase } from './uploadNewImageUseCase'
 

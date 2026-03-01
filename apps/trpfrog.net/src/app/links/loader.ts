@@ -1,9 +1,10 @@
 import fs from 'fs/promises'
 import * as path from 'path'
 
-import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 import yaml from 'js-yaml'
 import * as v from 'valibot'
+
+import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
 
 const MutualLinkRecordSchema = v.object({
   url: v.string(),

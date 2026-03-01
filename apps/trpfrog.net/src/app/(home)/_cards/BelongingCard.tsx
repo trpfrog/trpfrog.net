@@ -1,5 +1,4 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
-
 import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 

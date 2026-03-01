@@ -1,8 +1,9 @@
+import { createMiddleware } from 'hono/factory'
+import { HTTPException } from 'hono/http-exception'
+
 // This middleware is imported from the main middleware file `@/middleware.ts`
 import { BLOG_PAGE_NUMBER__ALL, BlogPageNumberSchema } from '@trpfrog.net/posts'
 import { safeValidate } from '@trpfrog.net/utils'
-import { createMiddleware } from 'hono/factory'
-import { HTTPException } from 'hono/http-exception'
 
 import { fetchPost } from './rpc.ts'
 

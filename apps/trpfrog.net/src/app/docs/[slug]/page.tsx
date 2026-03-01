@@ -1,20 +1,21 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
+import Link from 'next/link'
+
+import matter from 'gray-matter'
+import * as v from 'valibot'
+
 import { preprocess } from '@trpfrog.net/posts'
 import { validate } from '@trpfrog.net/utils'
-import matter from 'gray-matter'
-import Link from 'next/link'
-import * as v from 'valibot'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
+import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 import { docsPaths } from '../pages'
-
-import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
 export function generateStaticParams() {
   return Object.keys(docsPaths).map(slug => ({

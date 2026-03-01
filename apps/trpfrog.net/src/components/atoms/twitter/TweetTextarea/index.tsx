@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import styles from './index.module.css'
-
 import type { Except } from 'type-fest'
+
+import styles from './index.module.css'
 
 type TweetTextareaProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   tweet: string

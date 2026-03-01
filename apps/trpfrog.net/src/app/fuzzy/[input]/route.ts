@@ -1,10 +1,10 @@
+import { NextRequest, NextResponse } from 'next/server'
+
 import { openai } from '@ai-sdk/openai'
 import { ipAddress } from '@vercel/functions'
 import { generateText } from 'ai'
-import { NextRequest, NextResponse } from 'next/server'
 
 import { createRateLimit } from '@/lib/rateLimit'
-
 import { fetchSlugs } from '@blog/rpc'
 
 const limiter = createRateLimit({

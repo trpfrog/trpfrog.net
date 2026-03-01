@@ -3,7 +3,7 @@
 import { BlogPageNumber } from '@trpfrog.net/posts'
 
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
-import { ImageDragAndDropUploader } from '@blog/_components/DevBlogMarkdown/ImageDragAndDrop.tsx'
+import { WritingTools } from '@blog/_components/DevBlogMarkdown/writing-tools'
 
 import { useDevServerRenderedBlog } from './hooks/useDevServerRenderedBlog'
 import { useHeightAdjustedScrollOnResize } from './hooks/useHeightAdjustedScrollOnResize'
@@ -25,7 +25,7 @@ export function DevBlogMarkdown(props: DevBlogMarkdownProps) {
   return (
     <>
       {res.rendered}
-      <ImageDragAndDropUploader slug={props.slug} />
+      <WritingTools slug={props.slug} />
     </>
   )
 }

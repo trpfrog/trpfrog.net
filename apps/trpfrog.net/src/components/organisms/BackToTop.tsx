@@ -3,7 +3,6 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CircleButton } from '@/components/atoms/CircleButton'
-
 import { tv } from '@/lib/tailwind'
 
 const style = tv({

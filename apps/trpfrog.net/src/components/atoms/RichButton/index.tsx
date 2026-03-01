@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import { tv } from '@/lib/tailwind'
-
 import type { Except } from 'type-fest'
+
+import { tv } from '@/lib/tailwind'
 
 type Props<T extends React.ElementType> = {
   as: T

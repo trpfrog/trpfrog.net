@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation'
 
 import { WavyText } from '@/components/atoms/WavyText'
 import { A } from '@/components/wrappers'
-
 import { tv } from '@/lib/tailwind'
 
 import { NAVIGATION_LINKS } from './navigation-links'

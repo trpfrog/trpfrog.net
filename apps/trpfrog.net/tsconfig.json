@@ -1,16 +1,18 @@
 {
   "extends": "@trpfrog.net/config-typescript/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@blog/*": [
-        "src/app/blog/*"
-      ]
-    }
+      "@/*": ["./src/*"],
+      "@blog/*": ["./src/app/blog/*"]
+    },
+    "types": ["@testing-library/jest-dom", "vitest/importMeta"]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "src/**/*.ts", "src/**/*.tsx", "tools/**/*.ts"],
-  "exclude": ["node_modules", "./**/*.test.ts", "./**/*.test.tsx", "./**/*.stories.ts", "./**/*.stories.tsx"]
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tools/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

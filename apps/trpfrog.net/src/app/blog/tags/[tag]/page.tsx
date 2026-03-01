@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
-
 import { ArticleCard } from '@blog/_components/ArticleCard'
 import { ArticleGrid } from '@blog/_components/ArticleGrid'
 import { fetchPostList } from '@blog/rpc'

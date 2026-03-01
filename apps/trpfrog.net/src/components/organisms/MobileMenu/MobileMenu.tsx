@@ -1,5 +1,6 @@
-import classNames from 'classnames'
 import Link from 'next/link'
+
+import classNames from 'classnames'
 
 import { Details } from '@/components/atoms/Details'
 import { PlainBlock } from '@/components/atoms/PlainBlock'

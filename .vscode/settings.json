@@ -2,32 +2,27 @@
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.tsx": "${dirname} - Page",
     "**/app/**/layout.tsx": "${dirname} - Layout",
-    "**/app/**/route.{ts,tsx}": "${dirname} - Route",
+    "**/app/**/route.{ts,tsx}": "${dirname} - Route"
   },
 
-  // Prettier
+  // Formatter
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
 
   // Tailwind
   "tailwindCSS.classFunctions": ["tv", "twMerge", "twJoin"],
 
-  // ESLint
-  // パッケージごとに ESLint の設定ファイルがある場合にコメントアウトする
-  // "eslint.workingDirectories": [
-  //   { "mode": "auto" }
-  // ],
+  // Linter
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
+    "source.fixAll.oxc": "always"
   },
+  "oxc.typeAware": true,
 
   "files.associations": {
     "turbo.json": "jsonc",
+    ".oxfmtrc.json": "jsonc",
+    ".oxlintrc.json": "jsonc",
     "apps/trpfrog.net/src/app/globals.css": "tailwindcss",
-    "apps/admin/src/app/globals.css": "tailwindcss",
+    "apps/admin/src/app/globals.css": "tailwindcss"
   }
 }

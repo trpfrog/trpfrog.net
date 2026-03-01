@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-
 import { tv } from '@/lib/tailwind'
 
 const createStyles = tv({

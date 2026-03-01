@@ -1,10 +1,11 @@
 name = "content-server"
 compatibility_date = "2024-12-28"
-compatibility_flags = [ "nodejs_compat" ]
-routes = [
-  { pattern = "content.trpfrog.net", custom_domain = true }
-]
+compatibility_flags = ["nodejs_compat"]
+routes = [{ pattern = "content.trpfrog.net", custom_domain = true }]
 
 [assets]
 directory = "./dist"
 binding = "ASSETS"
+
+[env.development.vars]
+TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY = "dev-realtime"
