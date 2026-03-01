@@ -95,7 +95,7 @@ catalog:
   motion: ^12.23.12
   nanoid: ^5.1.5
   next: ^16.0.10
-  next-mdx-remote: ^5.0.0
+  next-mdx-remote: ^6.0.0
   node-html-parser: ^7.0.1
   nookies: ^2.5.2
   oxfmt: ^0.35.0
