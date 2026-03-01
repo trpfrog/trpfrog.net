@@ -18,7 +18,7 @@ export function ArticleTitle(props: Props) {
     <div className={`${styles.wrapper} ${className}`} {...rest} data-hero-article={!!isHero}>
       <h3 data-hero-article={!!isHero} className={styles.title}>
         <Balancer>
-          <ParseWithBudouX str={title} slug={`${props.key ?? title}`} />
+          <ParseWithBudouX str={title} />
         </Balancer>
       </h3>
     </div>
