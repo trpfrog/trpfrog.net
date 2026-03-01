@@ -15,8 +15,12 @@ interface AssetClient {
   fetchContent: (slug: string) => Promise<string>
 }
 
-// Create an AssetClient from a client with the same shape as devBlogServerClient.ssg_assets
-function createAssetClientFromRPC(rpc: (typeof devBlogServerClient)['ssg_assets']): AssetClient {
+type DevSsgAssetsRpc = (typeof devBlogServerClient)['ssg_assets']
+type ProdAssetsRpc = ReturnType<typeof hc<typeof ssgTargetApp>>['assets']
+type AssetsRpc = DevSsgAssetsRpc | ProdAssetsRpc
+
+// Create an AssetClient from a client with the same shape as assets routes
+function createAssetClientFromRPC(rpc: AssetsRpc): AssetClient {
   return {
     fetchSlugs: async () => {
       return rpc.slugs.$get().then(res => res.json())
