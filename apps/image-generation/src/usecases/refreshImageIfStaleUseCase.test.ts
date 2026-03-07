@@ -1,8 +1,9 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
 import { ImageUpdateStatus } from '../domain/entities/image-update-status'
+import { silenceConsole } from '../test-utils/mockConsole'
 import { refreshImageIfStaleUseCase } from './refreshImageIfStaleUseCase'
 
 const latestRecord = {
@@ -77,6 +78,7 @@ describe('refreshImageIfStale', () => {
   })
 
   it('画像生成時は updating になり、生成終了後は idle に戻る', async () => {
+    const restoreConsole = silenceConsole('log')
     const imageUpdateStatusRepo = createInMemoryImageUpdateStatusRepo({
       status: 'idle',
     })
@@ -104,19 +106,23 @@ describe('refreshImageIfStale', () => {
     expect(statusBeforeUpdate).toMatchObject({ status: 'idle' })
 
     // 画像生成を実行
-    const result = await refreshImageIfStale({ forceUpdate: true })
-    expect(result).toMatchObject({ updated: true })
+    try {
+      const result = await refreshImageIfStale({ forceUpdate: true })
+      expect(result).toMatchObject({ updated: true })
 
-    // 更新中は status が updating になる
-    expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
+      // 更新中は status が updating になる
+      expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
 
-    // 生成完了後は status が idle に戻っている
-    const status = await imageUpdateStatusRepo.get()
-    expect(status).toMatchObject({ status: 'idle' })
+      // 生成完了後は status が idle に戻っている
+      const status = await imageUpdateStatusRepo.get()
+      expect(status).toMatchObject({ status: 'idle' })
+    } finally {
+      restoreConsole()
+    }
   })
 
   it('画像生成時にエラーが発生した場合、status が error になる', async () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const restoreConsole = silenceConsole('error')
     const imageUpdateStatusRepo = createInMemoryImageUpdateStatusRepo({
       status: 'idle',
     })
@@ -144,16 +150,18 @@ describe('refreshImageIfStale', () => {
     expect(statusBeforeUpdate).toMatchObject({ status: 'idle' })
 
     // 画像生成を実行
-    const result = await refreshImageIfStale({ forceUpdate: true })
-    expect(result).toMatchObject({ updated: false })
+    try {
+      const result = await refreshImageIfStale({ forceUpdate: true })
+      expect(result).toMatchObject({ updated: false })
 
-    // 更新中は status が updating になる
-    expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
+      // 更新中は status が updating になる
+      expect(statusDuringUpdate).toMatchObject({ status: 'updating' })
 
-    // 生成エラー後は status が error になる
-    const statusAfterrUpdate = await imageUpdateStatusRepo.get()
-    expect(statusAfterrUpdate).toMatchObject({ status: 'error' })
-
-    errorSpy.mockRestore()
+      // 生成エラー後は status が error になる
+      const statusAfterrUpdate = await imageUpdateStatusRepo.get()
+      expect(statusAfterrUpdate).toMatchObject({ status: 'error' })
+    } finally {
+      restoreConsole()
+    }
   })
 })

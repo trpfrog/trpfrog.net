@@ -7,6 +7,7 @@ import {
   InvalidTextToImageInputError,
   UnexpectedTextToImageModelResponseError,
 } from '../domain/services/text-to-image'
+import { silenceConsole } from '../test-utils/mockConsole'
 import { generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {
@@ -48,6 +49,8 @@ describe('generateImage', () => {
     { ErrorClass: UnexpectedTextToImageModelResponseError, isAborted: false },
     { ErrorClass: Error, isAborted: false },
   ])('should retry or not retry when $ErrorClass is thrown', async ({ ErrorClass, isAborted }) => {
+    const restoreConsole = silenceConsole('warn', 'error')
+
     // fetch をモック（文字列レスポンス）
     vi.stubGlobal(
       'fetch',
@@ -62,7 +65,11 @@ describe('generateImage', () => {
         fetch: async () => new Response(new ArrayBuffer(0)),
       },
     })
-    await expect(run('prompt')).rejects.toThrow('Failed to generate image')
-    expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
+    try {
+      await expect(run('prompt')).rejects.toThrow('Failed to generate image')
+      expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
+    } finally {
+      restoreConsole()
+    }
   })
 })
