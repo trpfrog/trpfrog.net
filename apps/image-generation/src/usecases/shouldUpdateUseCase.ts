@@ -1,14 +1,18 @@
+import { addHours, isSameDay } from 'date-fns'
 import hash from 'stable-hash'
 
 import {
-  IMAGE_STALE_MINUTES,
   MINIMUM_UPDATE_INTERVAL_IF_ERROR_OCCURS,
   MINIMUM_UPDATE_INTERVAL_IF_UPDATING,
 } from '../domain/entities/stale'
 import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
 import { getRefreshedImageUpdateStatus } from '../domain/services/getRefreshedImageUpdateStatus'
-import { isStale } from '../lib/stale'
+
+function wasGeneratedToday(lastGenerated: number | Date, now: number | Date = new Date()): boolean {
+  // JST has a fixed UTC+9 offset, so shifting both dates allows a stable calendar-day comparison.
+  return isSameDay(addHours(lastGenerated, 9), addHours(now, 9))
+}
 
 type UpdateImageResult =
   | {
@@ -58,18 +62,15 @@ export function shouldUpdateUseCase(deps: {
     }
 
     const metadata = await deps.imageMetadataRepo.getLatest()
-    const { shouldCache, waitMinutes } = !metadata // if no metadata, force update
-      ? {
-          shouldCache: false,
-          waitMinutes: 0,
-        }
-      : isStale(IMAGE_STALE_MINUTES, metadata.createdAt)
+    const shouldSkipBecauseAlreadyGeneratedToday = metadata
+      ? wasGeneratedToday(metadata.createdAt)
+      : false
 
-    if (shouldCache) {
+    if (shouldSkipBecauseAlreadyGeneratedToday) {
       return {
         shouldUpdate: false,
-        message: `Minimum update interval is ${IMAGE_STALE_MINUTES} minutes, please wait ${waitMinutes} minutes.`,
-        waitMinutes,
+        message: 'Image was already generated today.',
+        waitMinutes: 0,
       }
     } else {
       return {

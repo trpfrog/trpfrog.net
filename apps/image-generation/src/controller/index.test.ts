@@ -103,7 +103,7 @@ describe('Image Generation App', () => {
     expect(json).toEqual({ status: 'accepted' })
   })
 
-  it('should skip updating the image when force is false and image is not stale', async () => {
+  it('should skip updating the image when force is false and image was already generated today', async () => {
     const app = createMockedClient()
     const res = await app.update.$post({
       query: {},
@@ -116,8 +116,6 @@ describe('Image Generation App', () => {
       message: expect.any(String),
     })
     // @ts-expect-error - json.message is not typed
-    expect(json.message).toMatchInlineSnapshot(
-      `"Minimum update interval is 1440 minutes, please wait 1440 minutes."`,
-    )
+    expect(json.message).toMatchInlineSnapshot(`"Image was already generated today."`)
   })
 })
