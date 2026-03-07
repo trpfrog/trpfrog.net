@@ -7,7 +7,7 @@ import { Icons } from './Icons'
 
 export const metadata = {
   title: 'AI Generated Icons',
-  description: 'AI により生成されたつまみアイコンの生成履歴です',
+  description: 'AI により毎日更新される、つまみアイコンの生成履歴です',
 } satisfies Metadata
 
 export default async function Index() {
