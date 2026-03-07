@@ -117,7 +117,7 @@ describe('Image Generation App', () => {
     })
     // @ts-expect-error - json.message is not typed
     expect(json.message).toMatchInlineSnapshot(
-      `"Minimum update interval is 180 minutes, please wait 180 minutes."`,
+      `"Minimum update interval is 1440 minutes, please wait 1440 minutes."`,
     )
   })
 })

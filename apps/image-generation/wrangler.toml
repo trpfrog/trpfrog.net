@@ -9,6 +9,9 @@ routes = [
 [observability]
 enabled = true
 
+[triggers]
+crons = ["0 */6 * * *"]
+
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "trpfrog-media"
