@@ -1,9 +1,7 @@
 'use client'
 
-import * as React from 'react'
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 
-import toast from 'react-hot-toast'
 import useSWRImmutable from 'swr/immutable'
 
 import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generation'
@@ -11,8 +9,6 @@ import { createTrpFrogImageGenerationClient } from '@trpfrog.net/image-generatio
 import { WaveText } from '@/components/atoms/WaveText'
 import { tv } from '@/lib/tailwind'
 import { ParseWithBudouX } from '@/lib/wordSplit'
-
-import { requestUpdateIcon } from './actions'
 
 const createStyles = tv({
   slots: {
@@ -66,14 +62,6 @@ export function IconFrame() {
     [],
   )
   const { isLoading, data, error } = useSWRImmutable('/', fetcher)
-
-  // Trigger update request on mount
-  useEffect(() => {
-    requestUpdateIcon().catch(error => {
-      toast.error('アイコン更新要求に失敗しました')
-      console.error('Failed to request icon update.', error)
-    })
-  }, [])
 
   if (isLoading) {
     const styles = createStyles({ status: 'loading' })

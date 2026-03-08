@@ -40,7 +40,7 @@ export function AICard() {
       <TooltipContent className={styles.description()}>
         これは AI により自動生成された画像です。
         <br />
-        最後の生成から3時間経つと再生成されます。
+        毎日自動更新されます。
       </TooltipContent>
     </LinkTopCard>
   )

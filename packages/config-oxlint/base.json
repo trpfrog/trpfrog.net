@@ -69,6 +69,17 @@
         "message": "Use @trpfrog.net/utils's `safeValidate` or `safeValidateUnknown` instead."
       }
     ],
+    "eslint-core/no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[regex]",
+        "message": "Prefer a regex helper such as arkregex instead of raw regex literals."
+      },
+      {
+        "selector": "NewExpression[callee.name='RegExp']",
+        "message": "Prefer a regex helper such as arkregex instead of constructing RegExp directly."
+      }
+    ],
     "typescript/no-restricted-types": [
       "error",
       {

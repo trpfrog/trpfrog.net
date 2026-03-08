@@ -1,5 +1,5 @@
-import { Bindings } from '../worker-configuration'
-import { UseCases } from './wire'
+import type { Bindings } from '../worker-configuration'
+import type { UseCases } from './wire'
 export type Variables = {
   UCS: UseCases
 }

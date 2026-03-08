@@ -19,7 +19,7 @@ export function refreshImageIfStaleUseCase(deps: {
       return {
         updated: false,
         message: shouldUpdateResult.message,
-        waitMinutes: shouldUpdateResult.waitMinutes,
+        waitMinutes: 'waitMinutes' in shouldUpdateResult ? shouldUpdateResult.waitMinutes : 0,
       }
     }
 
