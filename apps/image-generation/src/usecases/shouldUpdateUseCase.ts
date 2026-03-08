@@ -9,7 +9,7 @@ import { ImageMetadataRepo } from '../domain/repos/image-metadata-repo'
 import { ImageUpdateStatusRepo } from '../domain/repos/image-update-status-repo'
 import { getRefreshedImageUpdateStatus } from '../domain/services/getRefreshedImageUpdateStatus'
 
-function wasGeneratedToday(lastGenerated: number | Date, now: number | Date = new Date()): boolean {
+function wasGeneratedToday(lastGenerated: Date, now: Date = new Date()): boolean {
   // JST has a fixed UTC+9 offset, so shifting both dates allows a stable calendar-day comparison.
   return isSameDay(addHours(lastGenerated, 9), addHours(now, 9))
 }
@@ -17,6 +17,10 @@ function wasGeneratedToday(lastGenerated: number | Date, now: number | Date = ne
 type UpdateImageResult =
   | {
       shouldUpdate: true
+    }
+  | {
+      shouldUpdate: false
+      message: string
     }
   | {
       shouldUpdate: false
@@ -70,7 +74,6 @@ export function shouldUpdateUseCase(deps: {
       return {
         shouldUpdate: false,
         message: 'Image was already generated today.',
-        waitMinutes: 0,
       }
     } else {
       return {

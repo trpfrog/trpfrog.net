@@ -2,6 +2,7 @@ import { useId } from 'react'
 
 import { faClock, faImage, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { regex } from 'arkregex'
 import { format } from 'date-fns'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
@@ -41,11 +42,13 @@ function MetadataRecord(props: { icon: React.ReactNode; children: React.ReactNod
   )
 }
 
+const huggingFaceModelNameRegex = regex('^[^/\\s]+/[^/\\s]+$')
+
 function getModelReferenceUrl(modelName: string): string | undefined {
   if (modelName.startsWith('gemini-')) {
     return 'https://ai.google.dev/gemini-api/docs/models'
   }
-  if (/^[^/\s]+\/[^/\s]+$/.test(modelName)) {
+  if (huggingFaceModelNameRegex.test(modelName)) {
     return `https://huggingface.com/${modelName}`
   }
   return undefined
