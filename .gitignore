@@ -63,3 +63,8 @@ posts/_*.md
 
 # lefthook
 .husky/
+
+# skills
+.agents/skills
+.claude/skills
+.codex/skills
