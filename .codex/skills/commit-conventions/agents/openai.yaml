@@ -1,4 +1,0 @@
-interface:
-  display_name: "Commit Message Conventions for trpfrog.net"
-  short_description: "trpfrog.net のコミットメッセージ規約"
-  default_prompt: "$commit-conventions を使って、trpfrog.net の規約に沿ったコミットメッセージを作って。"

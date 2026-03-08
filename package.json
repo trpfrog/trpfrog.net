@@ -1,10 +1,12 @@
 {
   "name": "trpfrog.net",
   "private": true,
+  "// NOTE(install-skills):": "experimental_skills rewrites local relative paths to absolute paths, so we restore skills-lock.json to HEAD after install.",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint-fix": "oxlint --fix --type-aware --type-check && oxfmt",
+    "install-skills": "npx skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "typegen": "turbo typegen",
@@ -15,7 +17,7 @@
   "engines": {
     "node": ">=20"
   },
-  "// NOTE:": "We put the turborepo version directly in package.json because Vercel may read it from here",
+  "// NOTE(turborepo):": "We put the turborepo version directly in package.json because Vercel may read it from here",
   "devDependencies": {
     "@evilmartians/lefthook": "catalog:",
     "@hono/cli": "catalog:",
@@ -36,6 +38,7 @@
     "prettier-plugin-classnames": "catalog:",
     "prettier-plugin-merge": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:",
+    "skills": "catalog:",
     "tsr": "catalog:",
     "turbo": "^2.7.2",
     "type-fest": "catalog:",
