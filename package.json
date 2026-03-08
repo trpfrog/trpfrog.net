@@ -36,6 +36,7 @@
     "prettier-plugin-classnames": "catalog:",
     "prettier-plugin-merge": "catalog:",
     "prettier-plugin-tailwindcss": "catalog:",
+    "skills": "catalog:",
     "tsr": "catalog:",
     "turbo": "^2.7.2",
     "type-fest": "catalog:",
