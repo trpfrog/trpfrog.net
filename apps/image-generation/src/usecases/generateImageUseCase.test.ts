@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
 
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
@@ -43,26 +43,38 @@ describe('generateImage', () => {
     expect(result).toMatchObject(defaultResponse)
   })
 
-  it.each([
-    { ErrorClass: InvalidTextToImageInputError, isAborted: true },
-    { ErrorClass: UnexpectedTextToImageModelResponseError, isAborted: false },
-    { ErrorClass: Error, isAborted: false },
-  ])('should retry or not retry when $ErrorClass is thrown', async ({ ErrorClass, isAborted }) => {
-    // fetch をモック（文字列レスポンス）
-    vi.stubGlobal(
-      'fetch',
-      vi.fn(async () => new Response('dummy-image')),
-    )
-    const textToImageFn = vi.fn(async () => {
-      throw new ErrorClass()
+  describe('error cases', () => {
+    beforeEach(() => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+      return () => {
+        warnSpy.mockRestore()
+        errorSpy.mockRestore()
+      }
     })
-    const run = resolve({
-      textToImage: textToImageFn,
-      assetsRepo: {
-        fetch: async () => new Response(new ArrayBuffer(0)),
-      },
+
+    it.each([
+      { ErrorClass: InvalidTextToImageInputError, isAborted: true },
+      { ErrorClass: UnexpectedTextToImageModelResponseError, isAborted: false },
+      { ErrorClass: Error, isAborted: false },
+    ])('should retry or not retry when $ErrorClass is thrown', async ({ ErrorClass, isAborted }) => {
+      // fetch をモック（文字列レスポンス）
+      vi.stubGlobal(
+        'fetch',
+        vi.fn(async () => new Response('dummy-image')),
+      )
+      const textToImageFn = vi.fn(async () => {
+        throw new ErrorClass()
+      })
+      const run = resolve({
+        textToImage: textToImageFn,
+        assetsRepo: {
+          fetch: async () => new Response(new ArrayBuffer(0)),
+        },
+      })
+      await expect(run('prompt')).rejects.toThrow('Failed to generate image')
+      expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
     })
-    await expect(run('prompt')).rejects.toThrow('Failed to generate image')
-    expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
   })
 })
