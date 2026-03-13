@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "wrangler dev --env development --port 8003 --inspector-port 8103 src/index.ts",
     "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
-    "deploy": "vite build && wrangler deploy --minify src/index.ts",
-    "test": "vitest"
+    "deploy": "vp build && wrangler deploy --minify src/index.ts",
+    "test": "vp test"
   },
   "dependencies": {
     "@hono/standard-validator": "catalog:",
@@ -25,10 +25,10 @@
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:",
     "@hono/vite-ssg": "catalog:",
-    "@trpfrog.net/dev-blog-server": "workspace:*",
     "@trpfrog.net/config-typescript": "workspace:*",
-    "@trpfrog.net/config-vitest": "workspace:*",
+    "@trpfrog.net/dev-blog-server": "workspace:*",
     "@types/node": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

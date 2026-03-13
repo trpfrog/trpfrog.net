@@ -1,15 +1,9 @@
-import ssg from '@hono/vite-ssg'
 import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
-  plugins: [
-    ssg({
-      entry: './src/ssg.ts',
-    }),
-  ],
   test: {
     globals: true,
-    environment: 'node',
+    environment: 'happy-dom',
     isolate: true,
     clearMocks: true,
     restoreMocks: true,
@@ -25,6 +19,5 @@ export default defineConfig({
         classNameStrategy: 'non-scoped',
       },
     },
-    passWithNoTests: true,
   },
 })

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vp test"
   },
   "dependencies": {
     "date-fns": "catalog:",
@@ -21,7 +21,6 @@
     "@trpfrog.net/utils": "workspace:*"
   },
   "devDependencies": {
-    "@trpfrog.net/config-typescript": "workspace:*",
-    "@trpfrog.net/config-vitest": "workspace:*"
+    "@trpfrog.net/config-typescript": "workspace:*"
   }
 }
