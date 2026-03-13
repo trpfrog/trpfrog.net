@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { vi } from 'vite-plus/test'
 
 import { ImageMetadata } from '../../../domain/entities/generation-result'
 import { ImageMetadataRepo } from '../../../domain/repos/image-metadata-repo'
