@@ -5,7 +5,7 @@
       "@/*": ["./src/*"],
       "@blog/*": ["./src/app/blog/*"]
     },
-    "types": ["@testing-library/jest-dom", "vitest/importMeta"]
+    "types": ["@testing-library/jest-dom", "vite-plus/test/import-meta"]
   },
   "include": [
     "next-env.d.ts",

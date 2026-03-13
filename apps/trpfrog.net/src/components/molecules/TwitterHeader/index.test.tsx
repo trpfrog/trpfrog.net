@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect } from 'vite-plus/test'
 
 import { TwitterHeader } from '.'
 

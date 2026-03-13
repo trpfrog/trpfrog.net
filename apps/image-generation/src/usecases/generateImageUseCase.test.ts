@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vite-plus/test'
 
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 

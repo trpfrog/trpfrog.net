@@ -1,5 +1,5 @@
 import { testClient } from 'hono/testing'
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vite-plus/test'
 
 import { createApp } from '.'
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'

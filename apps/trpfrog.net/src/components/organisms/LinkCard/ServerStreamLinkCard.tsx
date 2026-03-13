@@ -41,7 +41,7 @@ async function fetcher(url: string): Promise<LinkCardResult> {
       success: true,
       ...parsePageInfo(htmlText),
     }
-  } catch (_e) {
+  } catch {
     return { success: false } as const
   }
 }

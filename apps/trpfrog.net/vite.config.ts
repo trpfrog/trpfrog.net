@@ -1,15 +1,11 @@
-import ssg from '@hono/vite-ssg'
+import path from 'node:path'
+
 import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
-  plugins: [
-    ssg({
-      entry: './src/ssg.ts',
-    }),
-  ],
   test: {
     globals: true,
-    environment: 'node',
+    environment: 'happy-dom',
     isolate: true,
     clearMocks: true,
     restoreMocks: true,
@@ -25,6 +21,16 @@ export default defineConfig({
         classNameStrategy: 'non-scoped',
       },
     },
-    passWithNoTests: true,
+    includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
+    setupFiles: './vitest.setup.ts',
+    alias: {
+      '@': path.resolve(import.meta.dirname, './src'),
+      '@blog': path.resolve(import.meta.dirname, './src/app/blog'),
+    },
+    server: {
+      deps: {
+        inline: ['react-tweet'],
+      },
+    },
   },
 })

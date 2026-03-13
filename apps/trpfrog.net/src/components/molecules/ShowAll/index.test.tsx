@@ -1,5 +1,5 @@
 import { render, screen, act } from '@testing-library/react'
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect } from 'vite-plus/test'
 
 import { LOREM_IPSUM } from '@/lib/constants'
 
