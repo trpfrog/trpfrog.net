@@ -39,7 +39,7 @@ const style = tv({
 })
 
 export function RichButton<T extends React.ElementType>(props: Props<T>) {
-  const { as, className, ...rest } = props
+  const { as: _as, className, ...rest } = props
   const Wrapper = props.as as React.ElementType
   return (
     <Wrapper

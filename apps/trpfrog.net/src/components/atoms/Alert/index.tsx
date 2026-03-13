@@ -23,7 +23,7 @@ type Props = React.ComponentPropsWithoutRef<'div'> & {
 }
 
 export function Alert(props: Props) {
-  const { title, children, type, className = '', ...rest } = props
+  const { title: _title, children, type, className = '', ...rest } = props
 
   const alertAppearance: Record<AlertTypes, AlertAppearance> = {
     caution: {

@@ -14,57 +14,57 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     h2: props => {
       // props contains legacyRef, so we need to remove it.
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.H2 {...rest} />
     },
 
     h3: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.H3 {...rest} />
     },
 
     h4: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.H4 {...rest} />
     },
 
     h5: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.H5 {...rest} />
     },
 
     hr: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.HorizontalRule {...rest} />
     },
 
     a: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <InlineLink {...rest} />
     },
 
     kbd: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.Kbd {...rest} />
     },
 
     ul: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.UnorderedList {...rest} />
     },
 
     ol: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.OrderedList {...rest} />
     },
 
     li: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.Li {...rest} />
     },
 
     table: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.Table {...rest} />
     },
   }
