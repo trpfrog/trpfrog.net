@@ -8,7 +8,7 @@
     "dev": "wrangler dev --port 8001 --inspector-port 8101 src/index.ts",
     "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "test": "vitest",
+    "test": "vp test",
     "generate": "drizzle-kit generate",
     "migrate:local": "wrangler d1 migrations apply ai-trpfrog-icon-db --local",
     "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
@@ -33,7 +33,6 @@
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
-    "@trpfrog.net/config-vitest": "workspace:*",
     "@types/node": "catalog:",
     "drizzle-kit": "catalog:"
   }
