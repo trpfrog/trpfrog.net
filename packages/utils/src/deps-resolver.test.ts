@@ -1,4 +1,4 @@
-import { describe, test, expect, expectTypeOf } from 'vitest'
+import { describe, test, expect, expectTypeOf } from 'vite-plus/test'
 
 import { createDepsResolver, createSingleDepsResolver } from './deps-resolver'
 
