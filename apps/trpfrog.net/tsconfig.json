@@ -1,6 +1,7 @@
 {
   "extends": "@trpfrog.net/config-typescript/nextjs.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
       "@blog/*": ["./src/app/blog/*"]

@@ -114,7 +114,6 @@
     "@types/react-dom": "catalog:",
     "@types/react-modal": "catalog:",
     "@types/webpack": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
     "autoprefixer": "catalog:",
     "clipboardy": "catalog:",
     "cssnano": "catalog:",
