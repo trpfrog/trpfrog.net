@@ -1,4 +1,4 @@
-import { describe, expect, beforeEach, test } from 'vitest'
+import { describe, expect, beforeEach, test } from 'vite-plus/test'
 
 import { Queue } from './queue'
 

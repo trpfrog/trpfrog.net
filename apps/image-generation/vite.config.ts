@@ -1,8 +1,6 @@
-import react from '@vitejs/plugin-react'
-import type { ViteUserConfig } from 'vitest/config'
+import { defineConfig } from 'vite-plus'
 
-const config: ViteUserConfig = {
-  plugins: react() as NonNullable<ViteUserConfig['plugins']>,
+export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
@@ -22,6 +20,4 @@ const config: ViteUserConfig = {
       },
     },
   },
-}
-
-export default config
+})

@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@trpfrog.net/config-typescript": "workspace:*",
-    "@trpfrog.net/config-vitest": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

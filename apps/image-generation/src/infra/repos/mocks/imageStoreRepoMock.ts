@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { vi } from 'vite-plus/test'
 
 import { ImageStoreRepo } from '../../../domain/repos/image-store-repo'
 

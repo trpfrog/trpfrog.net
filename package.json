@@ -5,35 +5,30 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint-fix": "oxlint --fix --type-aware --type-check && oxfmt",
+    "lint-fix": "vp lint --fix --type-aware --type-check && vp fmt",
     "install-skills": "npx skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "typegen": "turbo typegen",
-    "reinstall-all-deps": "rm -rf node_modules ./*/*/node_modules && pnpm install",
-    "prepare": "lefthook install",
-    "format": "oxfmt"
+    "reinstall-all-deps": "rm -rf node_modules ./*/*/node_modules && vp install",
+    "prepare": "vp config && printf 'vp staged --no-stash\\n' > .vite-hooks/pre-commit",
+    "format": "vp fmt"
   },
   "engines": {
     "node": ">=20"
   },
   "// NOTE(turborepo):": "We put the turborepo version directly in package.json because Vercel may read it from here",
   "devDependencies": {
-    "@evilmartians/lefthook": "catalog:",
     "@hono/cli": "catalog:",
     "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript/native-preview": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
     "happy-dom": "catalog:",
-    "oxfmt": "catalog:",
-    "oxlint": "catalog:",
-    "oxlint-tsgolint": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-classnames": "catalog:",
     "prettier-plugin-merge": "catalog:",
@@ -43,8 +38,8 @@
     "turbo": "^2.7.2",
     "type-fest": "catalog:",
     "typescript": "catalog:",
-    "vitest": "catalog:",
-    "wrangler": "3.105.0"
+    "wrangler": "3.105.0",
+    "vite-plus": "catalog:"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {

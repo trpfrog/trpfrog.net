@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi } from 'vite-plus/test'
 
 import { createImageMetadataRepoMock } from '../infra/repos/mocks/imageMetadataRepoMock'
 import { createImageStoreRepoMock } from '../infra/repos/mocks/imageStoreRepoMock'

@@ -42,14 +42,14 @@ export function createMDXComponents(options?: {
     },
 
     h1: () => null, // disable h1 tag
-    h2: ({ ref, ...props }) => <Wrapper.H2 variant="blog" {...props} />,
-    h3: ({ ref, ...props }) => <Wrapper.H3 {...props} className="tw:mt-8" />,
-    h4: ({ ref, ...props }) => <Wrapper.H4 {...props} />,
-    h5: ({ ref, ...props }) => <Wrapper.H5 {...props} />,
+    h2: ({ ref: _ref, ...props }) => <Wrapper.H2 variant="blog" {...props} />,
+    h3: ({ ref: _ref, ...props }) => <Wrapper.H3 {...props} className="tw:mt-8" />,
+    h4: ({ ref: _ref, ...props }) => <Wrapper.H4 {...props} />,
+    h5: ({ ref: _ref, ...props }) => <Wrapper.H5 {...props} />,
 
-    ul: ({ ref, ...props }) => <Wrapper.UnorderedList {...props} />,
-    ol: ({ ref, ...props }) => <Wrapper.OrderedList {...props} />,
-    li: ({ ref, ...props }) => <Wrapper.Li {...props} />,
+    ul: ({ ref: _ref, ...props }) => <Wrapper.UnorderedList {...props} />,
+    ol: ({ ref: _ref, ...props }) => <Wrapper.OrderedList {...props} />,
+    li: ({ ref: _ref, ...props }) => <Wrapper.Li {...props} />,
 
     a: props => (
       <InlineLink
@@ -61,7 +61,7 @@ export function createMDXComponents(options?: {
     ),
 
     kbd: props => {
-      const { ref, ...rest } = props
+      const { ref: _ref, ...rest } = props
       return <Wrapper.Kbd {...rest} />
     },
 
@@ -71,24 +71,24 @@ export function createMDXComponents(options?: {
     },
 
     details: props => {
-      const { ref, className = '', ...rest } = props
+      const { ref: _ref, className = '', ...rest } = props
       return <details className={twJoin(styles.details, className)} {...rest} />
     },
 
     summary: props => {
-      const { ref, className = '', ...rest } = props
+      const { ref: _ref, className = '', ...rest } = props
       return <summary className={twJoin(styles.summary, className)} {...rest} />
     },
 
     video: props => <RichImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
 
     hr: props => {
-      const { ref, className = '', ...rest } = props
+      const { ref: _ref, className = '', ...rest } = props
       return <Wrapper.HorizontalRule className={className} {...rest} />
     },
 
     table: props => {
-      const { ref, className, ...rest } = props
+      const { ref: _ref, className, ...rest } = props
       return <Wrapper.Table className={twMerge('tw:mx-auto', className)} {...rest} />
     },
 

@@ -15,12 +15,10 @@
 
 - **Node.js**
 - **TypeScript** with `better-typescript-lib`
-- **Vitest**
+- **Vite+** for linting, formatting, and testing
 - **Tailwind CSS**
 - **React** (with React Compiler)
 - **pnpm**
-- **ESLint**
-- **Prettier**
 - **Turborepo** for monorepo management
 - **Valibot** for schema validation
 - **ts-pattern** for pattern matching
@@ -54,6 +52,11 @@
 
 - **Hono** for API endpoints
 
+### content-server
+
+- **Hono** for API endpoints
+- **Cloudflare Workers** for hosting the API
+
 and so on...
 
 ## 🐤 Getting Started
@@ -67,21 +70,27 @@ pnpm install
 Next, run the development server:
 
 ```sh
-pnpm run -w dev
+pnpm -w dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-To build this project, just run below:
+Useful workspace commands:
 
 ```sh
-pnpm run -w build
+pnpm -w build
+pnpm -w test
+pnpm -w lint-fix
+pnpm -w type-check
+pnpm -w typegen
 ```
+
+This repository uses **Vite+** under the hood for linting, formatting, and tests. Running the workspace scripts above is the simplest way to use the configured toolchain.
 
 ## 🚗 Requirements
 
 - Node.js 20.x
-- pnpm 9.x
+- pnpm 10.x
 
 ## 📦 Project Structure
 
@@ -90,13 +99,13 @@ We are using a monorepo. The package structure is as follows.
 ```
 .
 ├── apps                    # Applications
-│   ├── trpfrog.net           # Main project, trpfrog.net
+│   ├── admin                 # Admin app
+│   ├── content-server        # API server for content-related features
 │   ├── dev-blog-server       # SSE server for editing blog posts
-│   └── image-generation      # API Endpoints for trpfrog-diffusion
+│   ├── image-generation      # API endpoints for trpfrog-diffusion
+│   └── trpfrog.net           # Main website
 ├── packages                # Libraries
-│   ├── config-tailwind       # Shared Tailwind CSS config
 │   ├── config-typescript     # Shared TypeScript config
-│   ├── config-vitest         # Shared Vitest config
 │   ├── constants             # Constants used by some packages
 │   ├── posts                 # Utilities for posts
 │   └── utils                 # Utilities used by some packages
@@ -106,9 +115,8 @@ We are using a monorepo. The package structure is as follows.
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── prettier.config.js
 ├── turbo.json
-└── vitest.workspace.ts
+└── vite.config.ts
 ```
 
 ## 💚 Contribution

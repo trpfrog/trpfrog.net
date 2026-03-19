@@ -54,8 +54,8 @@ export function LinkCard(props: LinkCardProps) {
     description = '',
     imageUrl: rawImageUrl,
     href,
-    themeColor,
-    skeleton,
+    themeColor: _themeColor,
+    skeleton: _skeleton,
     ...rest
   } = props
 

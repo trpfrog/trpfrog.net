@@ -26,8 +26,8 @@
     ],
     "types": [
       "node",
-      "vitest/globals",
-      "vitest/importMeta"
+      "vite-plus/test/globals",
+      "vite-plus/test/import-meta"
     ]
   },
   "exclude": [

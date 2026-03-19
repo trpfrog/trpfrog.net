@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vite-plus/test'
 
 import { ImageUpdateStatus } from '../domain/entities/image-update-status'
 import * as getRefreshedImageUpdateStatus from '../domain/services/getRefreshedImageUpdateStatus'
