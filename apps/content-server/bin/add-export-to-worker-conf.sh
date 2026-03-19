@@ -12,3 +12,4 @@ fi
 TMP_FILE="$(mktemp)"
 sed 's/^interface Bindings {$/export interface Bindings {/' "$TARGET_FILE" > "$TMP_FILE"
 mv "$TMP_FILE" "$TARGET_FILE"
+vp fmt "$TARGET_FILE"
