@@ -1,7 +1,9 @@
+import { cacheLife, cacheTag } from 'next/cache'
+
 import { cacheTags } from '@trpfrog.net/constants'
 
 import { TopCard } from '@/app/(home)/_components/TopCard'
-import { bffClient } from '@/app/api/client'
+import { getCurrentAge } from '@/lib/date'
 import { tv } from '@/lib/tailwind'
 import { replaceWithLighterImageFormat } from '@/lib/utils'
 
@@ -26,19 +28,12 @@ const styles = tv({
   },
 })()
 
-// TODO: dynamicIO が stable になったら消す
-async function fetchCurrentAge() {
-  // 実行環境によって年齢が変わるとややこしいので SSR する
-  return await fetch(bffClient.tmp_cache.age.$url().toString(), {
-    cache: 'force-cache',
-    next: {
-      tags: [cacheTags.date.tag],
-    },
-  }).then(res => res.text())
-}
-
 export async function AboutMeCard() {
-  const age = await fetchCurrentAge()
+  'use cache'
+  cacheTag(cacheTags.date.tag)
+  cacheLife('days')
+
+  const age = getCurrentAge()
   const attributes = [
     { icon: '🐸', iconName: '性別', text: '男性' },
     { icon: '🎂', iconName: '誕生日', text: `2000年10月17日 (${age}歳)` },
