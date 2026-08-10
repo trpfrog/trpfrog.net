@@ -2,6 +2,7 @@ import { ImageResponse } from 'next/og'
 import { ImageResponseOptions, NextRequest } from 'next/server'
 
 import consola from 'consola'
+import { parseResponse } from 'hono/client'
 
 import { bffClient } from '@/app/api/client.ts'
 import { env } from '@/env/server'
@@ -65,7 +66,7 @@ export async function GET(_req: NextRequest, context: RouteContext<'/blog/[slug]
         text: title,
       },
     })
-    .then(res => res.json())
+    .then(parseResponse)
 
   return new ImageResponse(
     <OgBody>

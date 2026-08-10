@@ -1,6 +1,8 @@
 import { cacheLife, cacheTag } from 'next/cache'
 import { notFound } from 'next/navigation'
 
+import { parseResponse } from 'hono/client'
+
 import { cacheTags } from '@trpfrog.net/constants'
 import { createContentServerClient } from '@trpfrog.net/content-server'
 import { type BlogPost, BLOG_PAGE_NUMBER__1, BlogPageNumber } from '@trpfrog.net/posts'
@@ -30,7 +32,7 @@ export async function fetchPostList(tag?: string): Promise<BlogPost[]> {
   cacheTag(cacheTags.entireBlog.tag, cacheTags.blogList.tag)
   cacheLife('cache-if-production')
 
-  return await client.alpha.posts.$get({ query: tag ? { tag } : {} }).then(e => e.json())
+  return client.alpha.posts.$get({ query: tag ? { tag } : {} }).then(parseResponse)
 }
 
 export async function fetchSlugs(): Promise<string[]> {
