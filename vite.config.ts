@@ -21,16 +21,6 @@ export default defineConfig({
       'react-perf',
       'jsx-a11y',
     ],
-    jsPlugins: [
-      {
-        name: 'eslint-core',
-        specifier: './tools/oxlint-js-plugins/eslint-core.cjs',
-      },
-      {
-        name: 'unused-imports',
-        specifier: 'eslint-plugin-unused-imports',
-      },
-    ],
     ignorePatterns: ['out', 'dist', 'build', 'coverage', '.wrangler', '.next', 'next-env.d.ts'],
     rules: {
       'eslint/no-unused-vars': [
@@ -45,14 +35,13 @@ export default defineConfig({
           ignoreRestSiblings: true,
         },
       ],
-      'unused-imports/no-unused-imports': 'error',
       'node/no-process-env': [
         'error',
         {
           allowedVariables: ['NODE_ENV'],
         },
       ],
-      'eslint-core/no-restricted-properties': [
+      'eslint/no-restricted-properties': [
         'error',
         {
           object: 'v',
@@ -63,18 +52,6 @@ export default defineConfig({
           object: 'v',
           property: 'safeParse',
           message: "Use @trpfrog.net/utils's `safeValidate` or `safeValidateUnknown` instead.",
-        },
-      ],
-      'eslint-core/no-restricted-syntax': [
-        'warn',
-        {
-          selector: 'Literal[regex]',
-          message: 'Prefer a regex helper such as arkregex instead of raw regex literals.',
-        },
-        {
-          selector: "NewExpression[callee.name='RegExp']",
-          message:
-            'Prefer a regex helper such as arkregex instead of constructing RegExp directly.',
         },
       ],
       'typescript/no-restricted-types': [
@@ -96,7 +73,7 @@ export default defineConfig({
       {
         files: ['**/*.{js,ts,mjs,cjs,jsx,tsx,mts,cts}'],
         rules: {
-          'eslint-core/no-restricted-exports': [
+          'eslint/no-restricted-exports': [
             'error',
             {
               restrictDefaultExports: {
@@ -113,7 +90,7 @@ export default defineConfig({
       {
         files: ['**/*.config.{mjs,cjs,js,jsx,ts,mts,cts,tsx}'],
         rules: {
-          'eslint-core/no-restricted-exports': 'off',
+          'eslint/no-restricted-exports': 'off',
           'node/no-process-env': 'off',
         },
         env: {
@@ -126,25 +103,25 @@ export default defineConfig({
           '**/vitest.*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}',
         ],
         rules: {
-          'eslint-core/no-restricted-exports': 'off',
+          'eslint/no-restricted-exports': 'off',
         },
       },
       {
         files: ['.storybook/**/*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}'],
         rules: {
-          'eslint-core/no-restricted-exports': 'off',
+          'eslint/no-restricted-exports': 'off',
         },
       },
       {
         files: ['**/{page,layout,route,loading,not-found,opengraph-image,proxy}.{js,jsx,ts,tsx}'],
         rules: {
-          'eslint-core/no-restricted-exports': 'off',
+          'eslint/no-restricted-exports': 'off',
         },
       },
       {
         files: ['apps/trpfrog.net/**/*.{js,jsx,ts,tsx}'],
         rules: {
-          'no-restricted-imports': [
+          'eslint/no-restricted-imports': [
             'error',
             {
               patterns: ['@/app/blog/*'],

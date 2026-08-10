@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // 基本的な型の定義
 type AnyFunc = (arg: any) => any
 

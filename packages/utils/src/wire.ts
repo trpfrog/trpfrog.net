@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { EmptyObject } from 'type-fest'
 
 /**
@@ -10,7 +8,6 @@ import type { EmptyObject } from 'type-fest'
  */
 export class DependencyBuilder<
   TFuncs extends Record<string, (deps: any) => any>,
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   TResolved extends Partial<{ [K in keyof TFuncs]: ReturnType<TFuncs[K]> }> = {},
 > {
   private funcs: TFuncs
@@ -80,11 +77,11 @@ export class DependencyBuilder<
    * @returns A new instance of DependencyBuilder with the injected dependencies.
    */
   inject<
-    NewDeps extends keyof TFuncs extends keyof TResolved
+    NewDeps extends (keyof TFuncs extends keyof TResolved
       ? EmptyObject
       : Partial<{
           [K in keyof TFuncs as K extends keyof TResolved ? never : K]: Parameters<TFuncs[K]>[0]
-        }>,
+        }>),
   >(deps: NewDeps | ((resolved: { [K in keyof TResolved]: TResolved[K] }) => NewDeps)) {
     return this.internalInject<NewDeps>(deps, false)
   }

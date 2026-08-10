@@ -26,7 +26,7 @@ export const app = new Hono()
 // Hono RPC に含めないように method chain から外す
 app.route('/watch-post', watchPostRoute)
 
-// eslint-disable-next-line eslint-core/no-restricted-exports
+// oxlint-disable-next-line eslint/no-restricted-exports
 export default {
   port: services.mdServer.port,
   fetch: app.fetch,

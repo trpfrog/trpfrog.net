@@ -100,7 +100,6 @@ describe('DependencyBuilder and wire function', () => {
     const resolvedDependencies = builder.build()
 
     expect(resolvedDependencies).toEqual({})
-    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     expectTypeOf(resolvedDependencies).toEqualTypeOf<{}>()
   })
 
