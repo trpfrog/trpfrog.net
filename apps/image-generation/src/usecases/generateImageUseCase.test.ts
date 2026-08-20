@@ -7,6 +7,7 @@ import {
   InvalidTextToImageInputError,
   UnexpectedTextToImageModelResponseError,
 } from '../domain/services/text-to-image'
+import type { TextToImage } from '../domain/services/text-to-image'
 import { generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {
@@ -26,7 +27,7 @@ describe('generateImage', () => {
   it('should generate a new image successfully', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(async () => new Response('dummy-image')),
+      vi.fn<typeof fetch>(async () => new Response('dummy-image')),
     )
 
     const textToImage = resolve({
@@ -64,9 +65,9 @@ describe('generateImage', () => {
         // fetch をモック（文字列レスポンス）
         vi.stubGlobal(
           'fetch',
-          vi.fn(async () => new Response('dummy-image')),
+          vi.fn<typeof fetch>(async () => new Response('dummy-image')),
         )
-        const textToImageFn = vi.fn(async () => {
+        const textToImageFn = vi.fn<TextToImage>(async () => {
           throw new ErrorClass()
         })
         const run = resolve({

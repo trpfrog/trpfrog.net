@@ -13,6 +13,8 @@ const styles = tv({
   },
 })()
 
+export const instant = false
+
 export default async function Index() {
   return (
     <>

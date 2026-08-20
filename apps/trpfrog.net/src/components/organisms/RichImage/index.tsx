@@ -67,7 +67,15 @@ export async function RichImage({
       <figure className={styles.img_wrapper} style={style}>
         {takenBy && <TakenBy photographer={takenBy} />}
         {isVideo ? (
-          <video src={src} controls className={styles.video} />
+          // Captions are not available for these externally hosted videos.
+          // The accessible label still identifies the media to screen readers.
+          // oxlint-disable-next-line jsx-a11y/media-has-caption
+          <video
+            src={src}
+            controls
+            className={styles.video}
+            aria-label={alt || caption || '動画'}
+          />
         ) : (
           <Image src={src} alt={alt} width={width} height={height} withSpoiler={spoiler} />
         )}

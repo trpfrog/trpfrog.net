@@ -23,6 +23,8 @@ export const metadata = {
   description: 'つまみさんのブログです。主にお散歩やソフトウェアの記事を書いています。',
 } satisfies Metadata
 
+export const instant = false
+
 export default async function Index() {
   'use cache'
   cacheTag(cacheTags.entireBlog.tag, cacheTags.blogList.tag)

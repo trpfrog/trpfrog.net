@@ -25,7 +25,12 @@ function SpeechBubbleContainer(props: {
     'tw:print:hidden',
   )
   return (
-    <aside className={styles} aria-modal={props.isOpened} aria-label="詳細メニュー" ref={props.ref}>
+    <aside
+      className={styles}
+      aria-hidden={!props.isOpened}
+      aria-label="詳細メニュー"
+      ref={props.ref}
+    >
       <PlainBlock className="tw:flex tw:flex-col tw:gap-3 tw:rounded-lg tw:p-4 tw:sp:w-full">
         {props.children}
       </PlainBlock>
