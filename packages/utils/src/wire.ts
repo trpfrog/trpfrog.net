@@ -1,3 +1,5 @@
+/* oxlint-disable typescript/no-explicit-any -- Generic dependency wiring requires an escape hatch. */
+
 import type { EmptyObject } from 'type-fest'
 
 /**

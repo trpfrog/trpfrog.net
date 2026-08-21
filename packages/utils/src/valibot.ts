@@ -36,9 +36,11 @@ export const vCoerceDate = v.union([
  * @param schema - The valibot schema to narrow.
  * @returns A new schema that expects input of type `T`.
  */
+// oxlint-disable-next-line typescript/no-explicit-any -- 型パズルの都合で any を使う
 export function vNarrowInputType<T>(schema: v.BaseSchema<any, any, any>) {
   return v.pipe(
     v.custom<T>(() => true),
+    // oxlint-disable-next-line typescript/no-explicit-any -- 型パズルの都合で any を使う
     v.transform<any, any>(s => s),
     schema,
   )

@@ -1,3 +1,5 @@
+/* oxlint-disable typescript/no-explicit-any -- Allow any for generic utility type plumbing. */
+
 import type { SetOptional, Simplify, IsEqual, UnknownRecord } from 'type-fest'
 
 // `T[K]` が `Partial<T[K]>` であれば `T[K]` 自体を optional にする

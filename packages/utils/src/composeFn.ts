@@ -1,3 +1,5 @@
+/* oxlint-disable typescript/no-explicit-any -- Generic composition types require an escape hatch. */
+
 // 基本的な型の定義
 type AnyFunc = (arg: any) => any
 
