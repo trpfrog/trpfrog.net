@@ -4,9 +4,9 @@ import { HTTPException } from 'hono/http-exception'
 
 export function requiresApiKey() {
   return createMiddleware<
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- 元の実装が any を使っているため
+    // oxlint-disable-next-line typescript/no-explicit-any -- Hono middleware generic uses any here.
     any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- 元の実装が any を使っているため
+    // oxlint-disable-next-line typescript/no-explicit-any -- Hono middleware generic uses any here.
     any,
     {
       in: {

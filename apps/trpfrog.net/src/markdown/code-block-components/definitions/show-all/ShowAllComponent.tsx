@@ -43,7 +43,8 @@ export const ShowAllComponent = ({ children, preview, className }: Props) => {
         </div>
       )}
       <div style={{ textAlign: 'center', position: 'sticky', bottom: 10 }}>
-        <div
+        <button
+          type="button"
           style={{
             cursor: 'pointer',
             opacity: 0.7,
@@ -53,11 +54,15 @@ export const ShowAllComponent = ({ children, preview, className }: Props) => {
             display: 'inline-block',
             padding: '.2rem 1rem',
             fontWeight: 'bold',
+            background: 'none',
+            color: 'inherit',
+            font: 'inherit',
           }}
           onClick={() => setShowAll(!isShowAll)}
+          aria-expanded={isShowAll}
         >
           {isShowAll ? '折りたたむ' : '続きを読む'}
-        </div>
+        </button>
       </div>
     </div>
   )

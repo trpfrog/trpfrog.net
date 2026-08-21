@@ -9,7 +9,6 @@ import { BlogPost } from '@trpfrog.net/posts'
 import { formatReadTime } from '@trpfrog.net/posts/time'
 
 import { PlainBlock } from '@/components/atoms/PlainBlock'
-import { DEFAULT_BLOG_THUMBNAIL } from '@/lib/constants'
 import { formatDateToDisplay } from '@/lib/date'
 import { tv } from '@/lib/tailwind'
 
@@ -27,7 +26,7 @@ const thumbnailStyle = tv({
 
 function Thumbnail(props: { thumbnail?: string; title: string }) {
   return props.thumbnail ? (
-    <img className={thumbnailStyle()} src={props.thumbnail ?? DEFAULT_BLOG_THUMBNAIL} />
+    <img className={thumbnailStyle()} src={props.thumbnail} alt={props.title} />
   ) : (
     <div className={thumbnailStyle({ noThumbnail: true })}>
       <span>

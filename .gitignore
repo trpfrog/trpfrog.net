@@ -40,9 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# eslint
-.eslintcache
-
 .env*.local
 
 # unused lock files

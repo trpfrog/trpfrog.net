@@ -24,16 +24,28 @@ const style = tv({
 })
 
 export function H3(props: Props) {
-  const { className, ref, ...rest } = props
-  return <h3 ref={ref} className={style({ className, type: 'h3' })} {...rest} />
+  const { className, ref, children, ...rest } = props
+  return (
+    <h3 ref={ref} className={style({ className, type: 'h3' })} {...rest}>
+      {children}
+    </h3>
+  )
 }
 
 export function H4(props: Props) {
-  const { className, ref, ...rest } = props
-  return <h4 ref={ref} className={style({ className, type: 'h4' })} {...rest} />
+  const { className, ref, children, ...rest } = props
+  return (
+    <h4 ref={ref} className={style({ className, type: 'h4' })} {...rest}>
+      {children}
+    </h4>
+  )
 }
 
 export function H5(props: Props) {
-  const { className, ref, ...rest } = props
-  return <h5 ref={ref} className={style({ className, type: 'h5' })} {...rest} />
+  const { className, ref, children, ...rest } = props
+  return (
+    <h5 ref={ref} className={style({ className, type: 'h5' })} {...rest}>
+      {children}
+    </h5>
+  )
 }

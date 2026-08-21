@@ -69,7 +69,7 @@ export function IconMakerApp() {
           <img
             id="result-image"
             src="https://res.cloudinary.com/trpfrog/icons_gallery/28"
-            alt="default image"
+            alt="初期画像"
             width={500}
             height={500}
           />

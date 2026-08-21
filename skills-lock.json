@@ -21,6 +21,11 @@
       "sourceType": "github",
       "computedHash": "318f9fca2441a3e06fedc336e195dd18be5dbe901064e4fa71b76b40b096ab3a"
     },
+    "site-workflow": {
+      "source": "./skills/site-workflow",
+      "sourceType": "local",
+      "computedHash": "1ad61e94f591a352aa0bbbdbed41a87efdb206d23dd4a0baeec36bd013bcf470"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",

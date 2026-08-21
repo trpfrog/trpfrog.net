@@ -3,7 +3,6 @@ import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
 import { useTooltip } from '@/hooks/useTooltip'
 import { tv } from '@/lib/tailwind'
 
-/* eslint-disable no-irregular-whitespace */
 const leftBird = `
 
 　　 ／￣￣＼　ﾑｼｬﾑｼｬ
@@ -29,8 +28,6 @@ const rightBird = `
 　　　 　 | 　　　| |
 　　　　　　　　Ｕ
 `.trimEnd()
-/* eslint-enable no-irregular-whitespace */
-
 const styles = tv({
   slots: {
     base: [

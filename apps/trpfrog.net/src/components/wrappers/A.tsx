@@ -12,7 +12,7 @@ export interface AProps extends React.ComponentPropsWithRef<'a'> {
 }
 
 export function A(props: AProps) {
-  const { openInNewTab: _openInNewTab, href = '', ref, ...rest } = props
+  const { openInNewTab: _openInNewTab, href = '', ref, children, ...rest } = props
   const isInternal = isInternalLink(href)
 
   const openInNewTab = match(_openInNewTab)
@@ -35,9 +35,12 @@ export function A(props: AProps) {
   )
 
   return isInternal ? (
-    <Link href={href} ref={ref} {...rest} {...openInNewTabProps} />
+    <Link href={href} ref={ref} {...rest} {...openInNewTabProps}>
+      {children}
+    </Link>
   ) : (
-    // eslint-disable-next-line @next/next/no-html-link-for-pages
-    <a href={href} ref={ref} {...openInNewTabProps} {...rest} />
+    <a href={href} ref={ref} {...openInNewTabProps} {...rest}>
+      {children}
+    </a>
   )
 }

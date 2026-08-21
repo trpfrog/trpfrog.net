@@ -22,7 +22,7 @@ describe('RotateButton', () => {
   test.each(cases)(
     'onClick should be called when clicked (isRotated: $isRotated, rotateDirection: $rotateDirection)',
     ({ isRotated, rotateDirection }) => {
-      const onClick = vi.fn()
+      const onClick = vi.fn<() => void>()
       render(
         <RotateButton isRotated={isRotated} rotateDirection={rotateDirection} onClick={onClick} />,
       )

@@ -16,15 +16,16 @@ export function createImageMetadataRepoMock(initialMockData?: ImageMetadata[]) {
   mockData.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
 
   return {
-    add: vi.fn(async data => {
+    add: vi.fn<ImageMetadataRepo['add']>(async data => {
       mockData.push(data)
-      return data
     }),
-    getLatest: vi.fn(async () => (mockData.length > 0 ? mockData[mockData.length - 1] : undefined)),
-    query: vi.fn(async () => mockData),
-    count: vi.fn(async () => mockData.length),
-    hardDelete: vi.fn(async () => {}),
-    softDelete: vi.fn(async () => {}),
-    undelete: vi.fn(async () => {}),
+    getLatest: vi.fn<ImageMetadataRepo['getLatest']>(async () =>
+      mockData.length > 0 ? mockData[mockData.length - 1] : undefined,
+    ),
+    query: vi.fn<ImageMetadataRepo['query']>(async () => mockData),
+    count: vi.fn<ImageMetadataRepo['count']>(async () => mockData.length),
+    hardDelete: vi.fn<ImageMetadataRepo['hardDelete']>(async () => {}),
+    softDelete: vi.fn<ImageMetadataRepo['softDelete']>(async () => {}),
+    undelete: vi.fn<ImageMetadataRepo['undelete']>(async () => {}),
   } satisfies ImageMetadataRepo
 }

@@ -11,7 +11,7 @@ type MockedAppRequest = (
 
 async function loadWorkerWithMockedController(mockedRequest: MockedAppRequest) {
   vi.resetModules()
-  const appRequest = vi.fn(
+  const appRequest = vi.fn<MockedAppRequest>(
     (
       input: Request | string | URL,
       requestInit?: RequestInit,
@@ -20,7 +20,7 @@ async function loadWorkerWithMockedController(mockedRequest: MockedAppRequest) {
     ) => mockedRequest(input, requestInit, env, executionCtx),
   )
   vi.doMock('./controller', () => ({
-    createApp: () => ({ fetch: vi.fn(), request: appRequest }),
+    createApp: () => ({ fetch: vi.fn<typeof fetch>(), request: appRequest }),
   }))
   const mod = await import('./index')
   return { worker: mod.default, appRequest }
@@ -32,8 +32,8 @@ const createTestEnv = (): Bindings =>
   }) as Bindings
 
 const createExecutionCtx = (): ExecutionContext => ({
-  waitUntil: vi.fn(),
-  passThroughOnException: vi.fn(),
+  waitUntil: vi.fn<ExecutionContext['waitUntil']>(),
+  passThroughOnException: vi.fn<ExecutionContext['passThroughOnException']>(),
   props: {},
 })
 

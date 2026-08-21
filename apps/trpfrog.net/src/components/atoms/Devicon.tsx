@@ -1,6 +1,7 @@
 import React from 'react'
 
 import 'devicon'
+
 import { twMerge } from '@/lib/tailwind'
 
 const deviconMap = {

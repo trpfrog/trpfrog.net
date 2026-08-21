@@ -25,7 +25,7 @@ const createDefaultDeps = () =>
       extension: '.png',
       modelName: 'model',
     }),
-    jsonChatbot: vi.fn(async () => ({
+    jsonChatbot: vi.fn<Parameters<typeof prepareUsecasesBuilder>[0]['jsonChatbot']>(async () => ({
       response: {
         final: {
           prompt: 'prompt',

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-/* eslint-disable @typescript-eslint/no-explicit-any -- Allow `any` for creating utility types */
+/* oxlint-disable typescript/no-explicit-any -- Allow any for generic utility type plumbing. */
 
 import type { SetOptional, Simplify, IsEqual, UnknownRecord } from 'type-fest'
 

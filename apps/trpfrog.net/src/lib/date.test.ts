@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vite-plus/test'
 
-import { formatDateTimeToDisplay, formatDateToDisplay } from './date'
+import { formatDateTimeToDisplay, formatDateToDisplay, getCurrentAge } from './date'
 
 describe('formatDateToDisplay', () => {
   test.each([
@@ -31,5 +31,14 @@ describe('formatDateTimeToDisplay', () => {
         includeSeconds: true,
       }),
     ).toBe('2023-04-22 12:34:56')
+  })
+})
+
+describe('getCurrentAge', () => {
+  test.each([
+    { now: '2024-10-16T14:59:59Z', expected: 23 },
+    { now: '2024-10-16T15:00:00Z', expected: 24 },
+  ])(`%# $now => $expected`, ({ now, expected }) => {
+    expect(getCurrentAge(new Date(now))).toBe(expected)
   })
 })

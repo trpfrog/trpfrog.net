@@ -105,7 +105,11 @@ export function IconFrame() {
   return (
     <figure className={styles.wrapper()}>
       <div className={styles.layout()}>
-        <img className={styles.picture()} src={imageSrcUrl} alt="Auto generated image by AI" />
+        <img
+          className={styles.picture()}
+          src={imageSrcUrl}
+          alt={`AI-generated icon: ${data.prompt.translated}`}
+        />
         <figcaption className={styles.caption()}>
           <div className={styles.aiGeneratedMsg()}>AI GENERATED ICON</div>
           <div className={styles.english()}>{data.prompt.text}</div>

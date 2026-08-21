@@ -42,11 +42,17 @@ export function useImageUploader(slug: string) {
         },
       })
       if (res.ok) {
-        return res.json().then(e => e.path)
+        const data = await res.json()
+        if ('path' in data) {
+          return data.path
+        }
       } else {
-        const error = await res.json().then(e => e.error)
+        const data = await res.json()
+        const error =
+          'error' in data && typeof data.error === 'string' ? data.error : res.statusText
         throw new Error('Failed to upload image: ' + error)
       }
+      throw new Error('Failed to upload image: unexpected response')
     },
     [slug],
   )
@@ -59,10 +65,14 @@ export function useImageUploader(slug: string) {
       {},
     )
     if (res.ok) {
-      return res.json().then(e => e.altText)
+      const data = await res.json()
+      if ('altText' in data) {
+        return data.altText
+      }
     } else {
       throw new Error('Failed to generate alt text')
     }
+    throw new Error('Failed to generate alt text: unexpected response')
   }, [])
 
   const appendLine = useCallback(
@@ -71,10 +81,9 @@ export function useImageUploader(slug: string) {
         json: { slug, line },
       })
       if (!res.ok) {
-        const error = await res
-          .json()
-          .then(e => e.error)
-          .catch(() => res.statusText)
+        const data = await res.json()
+        const error =
+          'error' in data && typeof data.error === 'string' ? data.error : res.statusText
         throw new Error('Failed to append line: ' + error)
       }
     },

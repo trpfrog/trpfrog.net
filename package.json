@@ -15,19 +15,15 @@
     "format": "vp fmt"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || ^22.18.0 || >=24.11.0"
   },
   "// NOTE(turborepo):": "We put the turborepo version directly in package.json because Vercel may read it from here",
   "devDependencies": {
     "@hono/cli": "catalog:",
     "@types/node": "catalog:",
-    "@typescript-eslint/eslint-plugin": "catalog:",
-    "@typescript/native-preview": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
-    "eslint": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
     "happy-dom": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-classnames": "catalog:",
@@ -35,11 +31,11 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "skills": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.7.2",
+    "turbo": "^2.8.20",
     "type-fest": "catalog:",
     "typescript": "catalog:",
-    "wrangler": "3.105.0",
-    "vite-plus": "catalog:"
+    "vite-plus": "catalog:",
+    "wrangler": "3.105.0"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
