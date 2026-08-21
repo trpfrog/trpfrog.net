@@ -20,6 +20,8 @@ export const metadata = {
   description: 'つまみさんの作った作品・ソフトウェア・Webサイトのまとめページです。',
 } satisfies Metadata
 
+export const instant = false
+
 export default async function Index() {
   // load all md files under /app/works/contents/*.md
   const contents = await readMarkdowns(
