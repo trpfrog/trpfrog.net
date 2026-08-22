@@ -91,7 +91,7 @@ catalog:
   nanoid: ^5.1.16
   next: ^16.3.2
   next-mdx-remote: ^6.0.0
-  node-html-parser: ^7.0.1
+  node-html-parser: ^9.0.1
   nookies: ^2.5.2
   p-retry: ^7.0.0
   postcss: ^8.5.26
