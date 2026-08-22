@@ -40,8 +40,8 @@ catalogs:
       specifier: ^0.4.0
       version: 0.4.0
     '@hono/vite-build':
-      specifier: ^1.7.0
-      version: 1.7.0
+      specifier: ^1.11.1
+      version: 1.11.1
     '@hono/vite-dev-server':
       specifier: ^0.20.1
       version: 0.20.1
@@ -639,7 +639,7 @@ importers:
         version: 0.4.0(@standard-schema/spec@1.1.0)(hono@4.12.3)
       '@hono/vite-build':
         specifier: 'catalog:'
-        version: 1.7.0(hono@4.12.3)
+        version: 1.11.1(hono@4.12.3)
       '@hono/vite-dev-server':
         specifier: 'catalog:'
         version: 0.20.1(hono@4.12.3)(miniflare@4.20260305.0(bufferutil@4.0.9))(wrangler@3.105.0(@cloudflare/workers-types@4.20250820.0)(bufferutil@4.0.9))
@@ -1925,8 +1925,8 @@ packages:
       '@standard-schema/spec': ^1.0.0
       hono: '>=4.11.10'
 
-  '@hono/vite-build@1.7.0':
-    resolution: {integrity: sha512-L73WBed5teC7DHTzXYkho83POYYluD2rTkbT76FJuqpfXPgTW/PsbIa8O0YcCETE3VUoh584fe6vuLAM5ctjww==}
+  '@hono/vite-build@1.11.1':
+    resolution: {integrity: sha512-EQJmFL7G+71MXZQ/mmywNl4qW6DSyjTdC30cq7mlDS451a1/jE86old0M2DCWzNGCO50sv7CzQDYkz4L5dq5VQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '>=4.11.10'
@@ -8018,7 +8018,7 @@ snapshots:
       '@standard-schema/spec': 1.1.0
       hono: 4.12.3
 
-  '@hono/vite-build@1.7.0(hono@4.12.3)':
+  '@hono/vite-build@1.11.1(hono@4.12.3)':
     dependencies:
       hono: 4.12.3
 

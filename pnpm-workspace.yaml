@@ -14,7 +14,7 @@ catalog:
   '@headlessui/react': ^2.2.7
   '@hono/cli': ^0.1.5
   '@hono/standard-validator': ^0.4.0
-  '@hono/vite-build': ^1.7.0
+  '@hono/vite-build': ^1.11.1
   '@hono/vite-dev-server': ^0.20.1
   '@hono/vite-ssg': ^0.2.0
   '@mantine/charts': ^8.3.13
