@@ -34,7 +34,7 @@ catalog:
   '@shikijs/transformers': ^3.11.0
   '@standard-schema/spec': ^1.1.0
   '@tailwindcss/container-queries': ^0.1.1
-  '@tailwindcss/postcss': ^4.1.17
+  '@tailwindcss/postcss': ^4.3.3
   '@testing-library/dom': ^10.4.1
   '@testing-library/jest-dom': ^6.7.0
   '@testing-library/react': ^16.3.0
