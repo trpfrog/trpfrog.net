@@ -2,8 +2,6 @@ import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
 import type { NextConfig } from 'next'
 
-import webpack from 'webpack'
-
 import { composeFunctions } from '@trpfrog.net/utils'
 
 const nextConfig: NextConfig = {
@@ -47,19 +45,6 @@ const nextConfig: NextConfig = {
       '@fortawesome/free-solid-svg-icons',
       '@fortawesome/react-fontawesome',
     ],
-  },
-
-  webpack: config => {
-    config.plugins = [
-      ...config.plugins,
-      new webpack.IgnorePlugin({
-        resourceRegExp: /canvas/,
-      }),
-      new webpack.IgnorePlugin({
-        resourceRegExp: /\.stor(ies|y).[tj]sx$/,
-      }),
-    ]
-    return config
   },
 
   async redirects() {
