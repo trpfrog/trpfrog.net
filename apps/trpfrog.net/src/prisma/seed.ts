@@ -1,10 +1,12 @@
 import fs from 'node:fs'
 import { homedir } from 'node:os'
 
-import { PrismaClient, Tweet, Media } from '@prisma/client'
 import * as v from 'valibot'
 
 import { InferSchemaOutput, validateUnknown } from '@trpfrog.net/utils'
+
+import type { Tweet, Media } from '../generated/prisma/client'
+import { prisma } from './client'
 
 const OriginalTweetSchema = v.object({
   tweet: v.object({
@@ -48,8 +50,6 @@ const OriginalTweetSchema = v.object({
 })
 
 type OriginalTweet = InferSchemaOutput<typeof OriginalTweetSchema>
-
-const prisma = new PrismaClient()
 
 function simplifyTweet(tweet: OriginalTweet): [Tweet, Media[]] {
   const {

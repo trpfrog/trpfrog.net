@@ -25,6 +25,7 @@
     "@next/bundle-analyzer": "catalog:",
     "@next/mdx": "catalog:",
     "@next/third-parties": "catalog:",
+    "@prisma/adapter-planetscale": "catalog:",
     "@prisma/client": "catalog:",
     "@react-hookz/web": "catalog:",
     "@standard-schema/spec": "catalog:",

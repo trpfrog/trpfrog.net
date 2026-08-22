@@ -3,3 +3,4 @@ posts/_*
 
 # prisma
 /src/prisma/migrations/
+/src/generated/prisma/
