@@ -10,7 +10,7 @@ catalog:
   '@fortawesome/free-brands-svg-icons': ^7.3.1
   '@fortawesome/free-solid-svg-icons': ^7.3.1
   '@fortawesome/react-fontawesome': ^0.2.5
-  '@google/genai': ^1.16.0
+  '@google/genai': ^2.18.0
   '@headlessui/react': ^2.2.10
   '@hono/cli': ^0.1.11
   '@hono/standard-validator': ^0.4.0
