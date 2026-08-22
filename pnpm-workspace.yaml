@@ -80,7 +80,7 @@ catalog:
   happy-dom: ^20.11.6
   hono: ^4.13.3
   http-status-codes: ^2.3.0
-  immer: ^10.1.1
+  immer: ^11.1.18
   jotai: ^2.20.2
   js-yaml: ^4.1.0
   katex: ^0.18.4
