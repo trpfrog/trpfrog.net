@@ -6,7 +6,7 @@ catalog:
   '@ai-sdk/openai': 2.0.16
   '@cloudflare/workers-types': ^4.20250820.0
   '@date-fns/tz': ^1.5.0
-  '@fortawesome/fontawesome-svg-core': ^7.0.0
+  '@fortawesome/fontawesome-svg-core': ^7.3.1
   '@fortawesome/free-brands-svg-icons': ^7.0.0
   '@fortawesome/free-solid-svg-icons': ^7.0.0
   '@fortawesome/react-fontawesome': ^0.2.5
