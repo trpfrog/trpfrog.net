@@ -115,8 +115,8 @@ catalogs:
       specifier: ^16.3.2
       version: 16.3.2
     '@twemoji/api':
-      specifier: ^16.0.1
-      version: 16.0.1
+      specifier: ^17.0.3
+      version: 17.0.3
     '@types/bun':
       specifier: ^1.4.0
       version: 1.4.0
@@ -846,7 +846,7 @@ importers:
         version: 7.9.1
       '@prisma/client':
         specifier: 'catalog:'
-        version: 7.9.1(prisma@7.9.1(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)
+        version: 7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)
       '@react-hookz/web':
         specifier: 'catalog:'
         version: 26.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -873,7 +873,7 @@ importers:
         version: link:../../packages/utils
       '@twemoji/api':
         specifier: 'catalog:'
-        version: 16.0.1
+        version: 17.0.3
       '@types/katex':
         specifier: 'catalog:'
         version: 0.16.8
@@ -3650,11 +3650,11 @@ packages:
     cpu: [arm64]
     os: [win32]
 
-  '@twemoji/api@16.0.1':
-    resolution: {integrity: sha512-qe7QHeJKVLGNciwAMbu1S872PX5bt1RY0+0xqvN7gNQ+zd3MyRJ5n7dZowEJWYRAgTN5bAUGshD1YAmkFkyAkA==}
+  '@twemoji/api@17.0.3':
+    resolution: {integrity: sha512-iwERjxY0QgPGVwT6b1OKG0Oa9nIfHhJw+Ij1TapTBMKTvVCU6qdXPXX/XKwxKx5QZIJW5GwELUCtw8wlaIQ2ug==}
 
-  '@twemoji/parser@16.0.0':
-    resolution: {integrity: sha512-jmuIjkp3OIaEemwMy3sArBwZSuZkRqmueGwRe2Zk4cFzbUJISFBJSZLDUUBNIgq3c+nY49ideYN2OiII6JUqwA==}
+  '@twemoji/parser@17.0.2':
+    resolution: {integrity: sha512-X/P7pHsGOxnrupQYUVetIeuxBGgffFu8CLwoPMMjH9CWmQvlXiCpbTW/BXxMOCWXQojgHdmgdvm6IsCqAQ5nxA==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -9694,7 +9694,7 @@ snapshots:
 
   '@prisma/client-runtime-utils@7.9.1': {}
 
-  '@prisma/client@7.9.1(prisma@7.9.1(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)':
+  '@prisma/client@7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)':
     dependencies:
       '@prisma/client-runtime-utils': 7.9.1
     optionalDependencies:
@@ -10178,14 +10178,14 @@ snapshots:
   '@turbo/windows-arm64@2.10.11':
     optional: true
 
-  '@twemoji/api@16.0.1':
+  '@twemoji/api@17.0.3':
     dependencies:
-      '@twemoji/parser': 16.0.0
+      '@twemoji/parser': 17.0.2
       fs-extra: 8.1.0
       jsonfile: 5.0.0
       universalify: 0.1.2
 
-  '@twemoji/parser@16.0.0': {}
+  '@twemoji/parser@17.0.2': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -11781,7 +11781,7 @@ snapshots:
       '@electric-sql/pglite': 0.4.3
       '@opentelemetry/api': 1.9.0
       '@planetscale/database': 1.20.1
-      '@prisma/client': 7.9.1(prisma@7.9.1(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)
+      '@prisma/client': 7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)
       '@upstash/redis': 1.35.3
       bun-types: 1.4.0
       mysql2: 3.15.3

@@ -39,7 +39,7 @@ catalog:
   '@testing-library/dom': ^10.4.1
   '@testing-library/jest-dom': ^7.0.1
   '@testing-library/react': ^16.3.2
-  '@twemoji/api': ^16.0.1
+  '@twemoji/api': ^17.0.3
   '@types/bun': ^1.4.0
   '@types/js-yaml': ^4.0.9
   '@types/katex': ^0.16.8
