@@ -259,8 +259,8 @@ catalogs:
       specifier: ^13.1.1
       version: 13.1.1
     nanoid:
-      specifier: ^5.1.16
-      version: 5.1.16
+      specifier: ^6.0.1
+      version: 6.0.1
     next:
       specifier: ^16.3.2
       version: 16.3.2
@@ -770,7 +770,7 @@ importers:
         version: 4.13.3
       nanoid:
         specifier: 'catalog:'
-        version: 5.1.16
+        version: 6.0.1
       p-retry:
         specifier: 'catalog:'
         version: 7.1.1
@@ -6564,9 +6564,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.1.16:
-    resolution: {integrity: sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==}
-    engines: {node: ^18 || >=20}
+  nanoid@6.0.1:
+    resolution: {integrity: sha512-3wVS3i51pE2pi1k5FFL/95BGfVS0kSsvDVuGXHOtxox/TywUmtgq+3qiTOTbs9J7KfHaXPiN171k/A6dBnaXFw==}
+    engines: {node: ^22 || ^24 || >=26}
     hasBin: true
 
   native-promise-only@0.8.1:
@@ -13648,7 +13648,7 @@ snapshots:
 
   nanoid@3.3.18: {}
 
-  nanoid@5.1.16: {}
+  nanoid@6.0.1: {}
 
   native-promise-only@0.8.1: {}
 
