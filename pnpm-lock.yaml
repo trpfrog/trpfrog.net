@@ -91,8 +91,8 @@ catalogs:
       specifier: ^7.9.1
       version: 7.9.1
     '@react-hookz/web':
-      specifier: ^25.1.1
-      version: 25.1.1
+      specifier: ^26.1.0
+      version: 26.1.0
     '@shikijs/transformers':
       specifier: ^3.11.0
       version: 3.11.0
@@ -849,7 +849,7 @@ importers:
         version: 7.9.1(prisma@7.9.1(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2)
       '@react-hookz/web':
         specifier: 'catalog:'
-        version: 25.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 26.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@standard-schema/spec':
         specifier: 'catalog:'
         version: 1.1.0
@@ -3302,8 +3302,8 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  '@react-hookz/web@25.1.1':
-    resolution: {integrity: sha512-o1BA+5Z8PCuAnxF7+2TZI+xGBtzyLw8z/flD8AMeJXILYTM8HkI0g41oM7IW/qjUDKx30HKceQQpCKqFGj+iIw==}
+  '@react-hookz/web@26.1.0':
+    resolution: {integrity: sha512-GKErtGGoaPNWc8rp4SE/rVgJT1kJ/3s6n3q+Vs6DM4TRVsLqbsIGU9u3jTwcV3tCYgxAwz9DqJZxCaal89Lxqg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       js-cookie: ^3.0.5
@@ -3994,9 +3994,9 @@ packages:
     peerDependencies:
       valibot: ^1.4.0
 
-  '@ver0/deep-equal@1.0.0':
-    resolution: {integrity: sha512-XKIlF1i6UJiyTL52mDrSDDgRX7Qr5yJ7ts9zn2liZEmhiAEum4XKrJRAWmHdFwCQeGBU+rb+/b0ldw/9V8lOWw==}
-    engines: {node: '>=18'}
+  '@ver0/deep-equal@2.0.1':
+    resolution: {integrity: sha512-JVSbDwzKASqorJum+ATnnZNIkni4K4G3aeJDsTgEhHcm0CiCwAVaLbhFByeNAir1HExEWjHxhIXVR+d8ZzeJGw==}
+    engines: {node: '>=20'}
 
   '@vercel/edge-config@1.5.1':
     resolution: {integrity: sha512-eawv5LKqEk+KL9lw+lzExpPELE8B1DdvWhpswtSr5nkUujH4nOLq89fY565uWp5z70XzTnfx6E08KIVmgOwSjg==}
@@ -9880,9 +9880,9 @@ snapshots:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  '@react-hookz/web@25.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+  '@react-hookz/web@26.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@ver0/deep-equal': 1.0.0
+      '@ver0/deep-equal': 2.0.1
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
@@ -10486,7 +10486,7 @@ snapshots:
     dependencies:
       valibot: 1.4.2(typescript@7.0.2)
 
-  '@ver0/deep-equal@1.0.0': {}
+  '@ver0/deep-equal@2.0.1': {}
 
   '@vercel/edge-config@1.5.1(@opentelemetry/api@1.9.0)(next@16.3.2(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(@types/node@22.19.13)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(sass@1.83.0))':
     dependencies:

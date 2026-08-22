@@ -31,7 +31,7 @@ catalog:
   '@next/third-parties': ^16.3.2
   '@prisma/adapter-planetscale': 7.9.1
   '@prisma/client': ^7.9.1
-  '@react-hookz/web': ^25.1.1
+  '@react-hookz/web': ^26.1.0
   '@shikijs/transformers': ^3.11.0
   '@standard-schema/spec': ^1.1.0
   '@tailwindcss/container-queries': ^0.1.1
