@@ -52,7 +52,7 @@ catalog:
   '@types/webpack': ^5.28.5
   '@valibot/to-json-schema': 1.7.1
   '@vercel/edge-config': ^1.5.1
-  '@vercel/functions': ^2.2.12
+  '@vercel/functions': ^3.9.5
   '@vitest/coverage-v8': 4.1.11
   '@vitest/ui': 4.1.11
   ai: 6.0.264
