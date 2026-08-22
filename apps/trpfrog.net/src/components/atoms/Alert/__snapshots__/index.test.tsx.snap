@@ -10,7 +10,7 @@ exports[`Alert > snapshot test (caution) 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="svg-inline--fa fa-triangle-exclamation "
+        class="svg-inline--fa fa-triangle-exclamation"
         data-icon="triangle-exclamation"
         data-prefix="fas"
         role="img"
@@ -41,7 +41,7 @@ exports[`Alert > snapshot test (frog) 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="svg-inline--fa fa-frog "
+        class="svg-inline--fa fa-frog"
         data-icon="frog"
         data-prefix="fas"
         role="img"
@@ -72,7 +72,7 @@ exports[`Alert > snapshot test (info) 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="svg-inline--fa fa-circle-info "
+        class="svg-inline--fa fa-circle-info"
         data-icon="circle-info"
         data-prefix="fas"
         role="img"

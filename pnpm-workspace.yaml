@@ -9,7 +9,7 @@ catalog:
   '@fortawesome/fontawesome-svg-core': ^7.3.1
   '@fortawesome/free-brands-svg-icons': ^7.3.1
   '@fortawesome/free-solid-svg-icons': ^7.3.1
-  '@fortawesome/react-fontawesome': ^0.2.5
+  '@fortawesome/react-fontawesome': ^3.5.0
   '@google/genai': ^2.18.0
   '@headlessui/react': ^2.2.10
   '@hono/cli': ^0.1.11

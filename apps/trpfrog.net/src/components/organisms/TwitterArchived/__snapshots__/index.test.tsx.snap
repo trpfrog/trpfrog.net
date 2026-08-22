@@ -50,7 +50,7 @@ exports[`TwitterArchived > snapshot test 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-dove "
+            class="svg-inline--fa fa-dove"
             data-icon="dove"
             data-prefix="fas"
             role="img"

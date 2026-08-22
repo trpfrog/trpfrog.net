@@ -22,7 +22,7 @@ exports[`CodeBlock > snapshot test 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-clone "
+              class="svg-inline--fa fa-clone"
               data-icon="clone"
               data-prefix="fas"
               role="img"
