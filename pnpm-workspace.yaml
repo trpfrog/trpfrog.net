@@ -53,8 +53,8 @@ catalog:
   '@valibot/to-json-schema': 1.7.1
   '@vercel/edge-config': ^1.5.1
   '@vercel/functions': ^3.9.5
-  '@vitest/coverage-v8': 4.1.11
-  '@vitest/ui': 4.1.11
+  '@vitest/coverage-v8': 4.1.10
+  '@vitest/ui': 4.1.10
   ai: 7.0.77
   arkregex: ^0.0.8
   autoprefixer: ^10.5.4
