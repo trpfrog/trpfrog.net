@@ -325,8 +325,8 @@ catalogs:
       specifier: ^2.1.0
       version: 2.1.0
     react-string-replace:
-      specifier: ^1.1.1
-      version: 1.1.1
+      specifier: ^2.0.1
+      version: 2.0.1
     react-tooltip:
       specifier: ^5.29.1
       version: 5.29.1
@@ -996,7 +996,7 @@ importers:
         version: 2.1.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react-string-replace:
         specifier: 'catalog:'
-        version: 1.1.1
+        version: 2.0.1
       react-tooltip:
         specifier: 'catalog:'
         version: 5.29.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -7233,9 +7233,8 @@ packages:
       react: '>=15'
       react-dom: '>=15'
 
-  react-string-replace@1.1.1:
-    resolution: {integrity: sha512-26TUbLzLfHQ5jO5N7y3Mx88eeKo0Ml0UjCQuX4BMfOd/JX+enQqlKpL1CZnmjeBRvQE8TR+ds9j1rqx9CxhKHQ==}
-    engines: {node: '>=0.12.0'}
+  react-string-replace@2.0.1:
+    resolution: {integrity: sha512-J7y/IxZkwhOgCexu6GtkNH2FIa9f/z6ykvK1YXS8VLIdvcP8Vyx3LAUFsfIFvq3aQbmin2d+clFR1J50LnR2yA==}
 
   react-style-singleton@2.2.3:
     resolution: {integrity: sha512-b6jSvxvVnyptAiLjbkWLE/lOnR4lfTtDAl+eUC7RZy+QQWc6wRzIV2CE6xBuMmDxc2qIihtDCZD5NPOFl7fRBQ==}
@@ -14349,7 +14348,7 @@ snapshots:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  react-string-replace@1.1.1: {}
+  react-string-replace@2.0.1: {}
 
   react-style-singleton@2.2.3(@types/react@19.2.18)(react@19.2.8):
     dependencies:

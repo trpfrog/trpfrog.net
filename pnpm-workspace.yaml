@@ -110,7 +110,7 @@ catalog:
   react-modal: ^3.16.3
   react-player: ^3.4.0
   react-rewards: ^2.1.0
-  react-string-replace: ^1.1.1
+  react-string-replace: ^2.0.1
   react-tooltip: ^5.29.1
   react-tweet: ^3.3.1
   react-twitter-widgets: ^1.11.0
