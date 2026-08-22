@@ -50,7 +50,7 @@ catalog:
   '@types/seedrandom': ^3.0.8
   '@types/webpack': ^5.28.5
   '@valibot/to-json-schema': 1.7.1
-  '@vercel/edge-config': ^1.4.0
+  '@vercel/edge-config': ^1.5.1
   '@vercel/functions': ^2.2.12
   '@vitest/coverage-v8': 4.1.10
   '@vitest/ui': 4.1.10
