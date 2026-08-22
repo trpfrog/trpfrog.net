@@ -10,8 +10,8 @@ catalogs:
       specifier: 3.0.99
       version: 3.0.99
     '@cloudflare/workers-types':
-      specifier: ^4.20250820.0
-      version: 4.20250820.0
+      specifier: ^5.20260822.1
+      version: 5.20260822.1
     '@date-fns/tz':
       specifier: ^1.5.0
       version: 1.5.0
@@ -645,7 +645,7 @@ importers:
         version: 1.11.1(hono@4.13.3)
       '@hono/vite-dev-server':
         specifier: 'catalog:'
-        version: 0.26.1(hono@4.13.3)(miniflare@4.20260305.0(bufferutil@4.1.0))(wrangler@3.114.17(@cloudflare/workers-types@4.20250820.0)(bufferutil@4.1.0))
+        version: 0.26.1(hono@4.13.3)(miniflare@4.20260305.0(bufferutil@4.1.0))(wrangler@3.114.17(@cloudflare/workers-types@5.20260822.1)(bufferutil@4.1.0))
       '@trpfrog.net/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -670,7 +670,7 @@ importers:
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 'catalog:'
-        version: 4.20250820.0
+        version: 5.20260822.1
       '@hono/vite-ssg':
         specifier: 'catalog:'
         version: 0.3.3(hono@4.13.3)
@@ -764,7 +764,7 @@ importers:
         version: 4.4.0
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.45.2(@cloudflare/workers-types@4.20250820.0)(@electric-sql/pglite@0.4.3)(@opentelemetry/api@1.9.0)(@planetscale/database@1.20.1)(@prisma/client@7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(mysql2@3.15.3)(postgres@3.4.7)(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))
+        version: 0.45.2(@cloudflare/workers-types@5.20260822.1)(@electric-sql/pglite@0.4.3)(@opentelemetry/api@1.9.0)(@planetscale/database@1.20.1)(@prisma/client@7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(mysql2@3.15.3)(postgres@3.4.7)(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))
       hono:
         specifier: 'catalog:'
         version: 4.13.3
@@ -789,7 +789,7 @@ importers:
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 'catalog:'
-        version: 4.20250820.0
+        version: 5.20260822.1
       '@trpfrog.net/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
@@ -1461,6 +1461,9 @@ packages:
 
   '@cloudflare/workers-types@4.20250820.0':
     resolution: {integrity: sha512-WiGPOVlejDGlKRsTbaREkRKm8Xo5nHtucq5AmR/ObvKmaFOVVv0OQCW5Xht2YQgV0BfYPb/QEkO8oFjDXjBMZg==}
+
+  '@cloudflare/workers-types@5.20260822.1':
+    resolution: {integrity: sha512-z922wN0pEWwYaAcYdncSf11fTPfj2j1Q2n2LCLbtBBhpkIu/aC8fotol5q4ek4isWgTKfWzUx389Dsa+lhF6yw==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -8472,7 +8475,10 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20260305.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20250820.0': {}
+  '@cloudflare/workers-types@4.20250820.0':
+    optional: true
+
+  '@cloudflare/workers-types@5.20260822.1': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -8904,14 +8910,14 @@ snapshots:
     dependencies:
       hono: 4.13.3
 
-  '@hono/vite-dev-server@0.26.1(hono@4.13.3)(miniflare@4.20260305.0(bufferutil@4.1.0))(wrangler@3.114.17(@cloudflare/workers-types@4.20250820.0)(bufferutil@4.1.0))':
+  '@hono/vite-dev-server@0.26.1(hono@4.13.3)(miniflare@4.20260305.0(bufferutil@4.1.0))(wrangler@3.114.17(@cloudflare/workers-types@5.20260822.1)(bufferutil@4.1.0))':
     dependencies:
       '@hono/node-server': 1.19.17(hono@4.13.3)
       hono: 4.13.3
       minimatch: 10.2.4
     optionalDependencies:
       miniflare: 4.20260305.0(bufferutil@4.1.0)
-      wrangler: 3.114.17(@cloudflare/workers-types@4.20250820.0)(bufferutil@4.1.0)
+      wrangler: 3.114.17(@cloudflare/workers-types@5.20260822.1)(bufferutil@4.1.0)
 
   '@hono/vite-ssg@0.3.3(hono@4.13.3)':
     dependencies:
@@ -11734,9 +11740,9 @@ snapshots:
       esbuild: 0.25.12
       tsx: 4.23.12
 
-  drizzle-orm@0.45.2(@cloudflare/workers-types@4.20250820.0)(@electric-sql/pglite@0.4.3)(@opentelemetry/api@1.9.0)(@planetscale/database@1.20.1)(@prisma/client@7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(mysql2@3.15.3)(postgres@3.4.7)(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)):
+  drizzle-orm@0.45.2(@cloudflare/workers-types@5.20260822.1)(@electric-sql/pglite@0.4.3)(@opentelemetry/api@1.9.0)(@planetscale/database@1.20.1)(@prisma/client@7.9.1(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(mysql2@3.15.3)(postgres@3.4.7)(prisma@7.9.1(@types/react@19.2.18)(magicast@0.5.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)):
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20250820.0
+      '@cloudflare/workers-types': 5.20260822.1
       '@electric-sql/pglite': 0.4.3
       '@opentelemetry/api': 1.9.0
       '@planetscale/database': 1.20.1
@@ -15344,6 +15350,27 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  wrangler@3.114.17(@cloudflare/workers-types@5.20260822.1)(bufferutil@4.1.0):
+    dependencies:
+      '@cloudflare/kv-asset-handler': 0.3.4
+      '@cloudflare/unenv-preset': 2.0.2(unenv@2.0.0-rc.14)(workerd@1.20250718.0)
+      '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.27.3)
+      '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.27.3)
+      blake3-wasm: 2.1.5
+      esbuild: 0.27.3
+      miniflare: 3.20250718.3(bufferutil@4.1.0)
+      path-to-regexp: 6.3.0
+      unenv: 2.0.0-rc.14
+      workerd: 1.20250718.0
+    optionalDependencies:
+      '@cloudflare/workers-types': 5.20260822.1
+      fsevents: 2.3.3
+      sharp: 0.33.5
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    optional: true
 
   wrap-ansi@7.0.0:
     dependencies:
