@@ -40,6 +40,11 @@ describe('uploadNewImageUsecase', () => {
       createdAt: metadata.createdAt,
       imageUri: expectedImageUri,
     })
+
+    const addedMetadata = deps.imageMetadataRepo.add.mock.calls.at(-1)?.[0]
+    expect(addedMetadata?.id).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,
+    )
   })
 
   it('should delete the image if metadata saving fails', async () => {
