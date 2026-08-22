@@ -3,7 +3,7 @@ packages:
   - apps/*
 
 catalog:
-  '@ai-sdk/openai': 3.0.99
+  '@ai-sdk/openai': 4.0.46
   '@cloudflare/workers-types': ^5.20260822.1
   '@date-fns/tz': ^1.5.0
   '@fortawesome/fontawesome-svg-core': ^7.3.1
@@ -55,7 +55,7 @@ catalog:
   '@vercel/functions': ^3.9.5
   '@vitest/coverage-v8': 4.1.11
   '@vitest/ui': 4.1.11
-  ai: 6.0.264
+  ai: 7.0.77
   arkregex: ^0.0.8
   autoprefixer: ^10.5.4
   babel-plugin-react-compiler: 19.1.0-rc.2

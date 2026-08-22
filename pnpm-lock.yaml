@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@ai-sdk/openai':
-      specifier: 3.0.99
-      version: 3.0.99
+      specifier: 4.0.46
+      version: 4.0.46
     '@cloudflare/workers-types':
       specifier: ^5.20260822.1
       version: 5.20260822.1
@@ -163,8 +163,8 @@ catalogs:
       specifier: 4.1.11
       version: 4.1.11
     ai:
-      specifier: 6.0.264
-      version: 6.0.264
+      specifier: 7.0.77
+      version: 7.0.77
     arkregex:
       specifier: ^0.0.8
       version: 0.0.8
@@ -694,7 +694,7 @@ importers:
     dependencies:
       '@ai-sdk/openai':
         specifier: 'catalog:'
-        version: 3.0.99(zod@4.1.11)
+        version: 4.0.46(zod@4.1.11)
       '@hono/standard-validator':
         specifier: 'catalog:'
         version: 0.4.0(@standard-schema/spec@1.1.0)(hono@4.13.3)
@@ -709,7 +709,7 @@ importers:
         version: 1.7.1(valibot@1.4.2(typescript@7.0.2))
       ai:
         specifier: 'catalog:'
-        version: 6.0.264(zod@4.1.11)
+        version: 7.0.77(zod@4.1.11)
       chokidar:
         specifier: 'catalog:'
         version: 5.0.0
@@ -743,7 +743,7 @@ importers:
     dependencies:
       '@ai-sdk/openai':
         specifier: 'catalog:'
-        version: 3.0.99(zod@4.1.11)
+        version: 4.0.46(zod@4.1.11)
       '@google/genai':
         specifier: 'catalog:'
         version: 2.18.0(bufferutil@4.1.0)
@@ -758,7 +758,7 @@ importers:
         version: link:../../packages/utils
       ai:
         specifier: 'catalog:'
-        version: 6.0.264(zod@4.1.11)
+        version: 7.0.77(zod@4.1.11)
       date-fns:
         specifier: 'catalog:'
         version: 4.4.0
@@ -804,7 +804,7 @@ importers:
     dependencies:
       '@ai-sdk/openai':
         specifier: 'catalog:'
-        version: 3.0.99(zod@4.1.11)
+        version: 4.0.46(zod@4.1.11)
       '@date-fns/tz':
         specifier: 'catalog:'
         version: 1.5.0
@@ -891,7 +891,7 @@ importers:
         version: 3.9.5(ws@8.21.3(bufferutil@4.1.0))
       ai:
         specifier: 'catalog:'
-        version: 6.0.264(zod@4.1.11)
+        version: 7.0.77(zod@4.1.11)
       babel-plugin-react-compiler:
         specifier: 'catalog:'
         version: 19.1.0-rc.2
@@ -1182,27 +1182,27 @@ packages:
   '@adobe/css-tools@4.4.3':
     resolution: {integrity: sha512-VQKMkwriZbaOgVCby1UDY/LDk5fIjhQicCvVPFqfe+69fWaPWydbWJ3wRt59/YzIwda1I81loas3oCoHxnqvdA==}
 
-  '@ai-sdk/gateway@3.0.179':
-    resolution: {integrity: sha512-UauCMcauBgcYNljb7RP4HEuUZj3dlk/yz0oOHdhGr3cXoe+uwwN9qwQlLlB2hnajXudSatI2xpPG8LiHPRgwLQ==}
-    engines: {node: '>=18'}
+  '@ai-sdk/gateway@4.0.62':
+    resolution: {integrity: sha512-zR3pustGWhw5eUZHG+fJZx/V/PBe+LxdDpc5hDFWxozG/3MB/+eY62jn+YiR+9uOH+Hx63e5zJoeKLfZfPktWQ==}
+    engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/openai@3.0.99':
-    resolution: {integrity: sha512-0Y6E5bvR+3eugt5rq2iy39EAAFi4nijXf1kdvcfoMm4erEGMe/6egIpvdvv5ePBU2YsnsxFuLRmMJ76Kv/babQ==}
-    engines: {node: '>=18'}
+  '@ai-sdk/openai@4.0.46':
+    resolution: {integrity: sha512-J53QUkZGOV9YIYf9caVjejdPZfVZ3V2xD5KyTAmMWFiMDkC/IcifEQHJferpGFaQkfmSehPGVPCLE4g8+VdkTA==}
+    engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/provider-utils@4.0.46':
-    resolution: {integrity: sha512-tEtld97plCFiYevsJuOkGkeuhQndeMWFBVrJS4AjnbD5AqrNSXRCe0p+BZ3Cju/sxDeeZ9ym3q9YUV8fASA7aQ==}
-    engines: {node: '>=18.17'}
+  '@ai-sdk/provider-utils@5.0.29':
+    resolution: {integrity: sha512-7EIbwXiXKGa7EFk6tDZpuZBs6lxhEJpOuHeqrDb3Vd85uYdjwkdRuHnZDVDIIb2+QTSRmyph2NrXcbvuO/KAjQ==}
+    engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/provider@3.0.15':
-    resolution: {integrity: sha512-XeZW1CcDF2GMbH4wejW6xBRI2QCOgnkVYUnxoeDadB1mf85riL2bMUeDoh+6gJ/r4mjNfzUPW8OjLjvwTP0u1Q==}
-    engines: {node: '>=18'}
+  '@ai-sdk/provider@4.0.7':
+    resolution: {integrity: sha512-6or44XprPzKbr8zkmzosowSE0pxkvJcoojBL+mCZvPUt3kvXp3XSNqeVun9golb1acEfSo6yaEBRT18h2VU+1Q==}
+    engines: {node: '>=22'}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -4334,6 +4334,9 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
+  '@workflow/serde@4.1.0':
+    resolution: {integrity: sha512-pav4F2BoirECWR7Nf1TKt+2eETcBj7jj4cBefQ8VXQCA6NPkaKeLfj/zMgi+3zYV5ZIBT4GuUiphsj0/b9hPQQ==}
+
   '@xmldom/xmldom@0.9.12':
     resolution: {integrity: sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==}
     engines: {node: '>=14.6'}
@@ -4489,9 +4492,9 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@6.0.264:
-    resolution: {integrity: sha512-te59gArDNXoQYWuOkZNdM7n3McETAPWFuwT/iKWRJXySV/doIuKm8Az4X6IOalaGp3K8zqGT/ICn08z5ZZNDuw==}
-    engines: {node: '>=18'}
+  ai@7.0.77:
+    resolution: {integrity: sha512-muLtBSTAUCreR77L16w4AFBiX2gK/RNt84EKp8m03SN9+MfNlC5EGqYYttRjYKV3xe0a33yj1Zawj1EnjejIWw==}
+    engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
@@ -7874,12 +7877,12 @@ packages:
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
 
-  undici@6.28.0:
-    resolution: {integrity: sha512-LIY910g9TI13YS95lrMFrs8Rm/u/irgHeTWoKCoteeJ04CUJ92eEfj0rVn+7VKMPBpUPiUoBKfhNyLI23EE/KA==}
-    engines: {node: '>=18.17'}
-
   undici@7.18.2:
     resolution: {integrity: sha512-y+8YjDFzWdQlSE9N5nzKMT3g4a5UBX1HKowfdXh0uvAnTaqqwqB92Jt4UXBAeKekDs5IaDKyJFR4X1gYVCgXcw==}
+    engines: {node: '>=20.18.1'}
+
+  undici@7.29.0:
+    resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
     engines: {node: '>=20.18.1'}
 
   unenv@2.0.0-rc.14:
@@ -8352,28 +8355,29 @@ snapshots:
 
   '@adobe/css-tools@4.4.3': {}
 
-  '@ai-sdk/gateway@3.0.179(zod@4.1.11)':
+  '@ai-sdk/gateway@4.0.62(zod@4.1.11)':
     dependencies:
-      '@ai-sdk/provider': 3.0.15
-      '@ai-sdk/provider-utils': 4.0.46(zod@4.1.11)
+      '@ai-sdk/provider': 4.0.7
+      '@ai-sdk/provider-utils': 5.0.29(zod@4.1.11)
       '@vercel/oidc': 3.2.0
       zod: 4.1.11
 
-  '@ai-sdk/openai@3.0.99(zod@4.1.11)':
+  '@ai-sdk/openai@4.0.46(zod@4.1.11)':
     dependencies:
-      '@ai-sdk/provider': 3.0.15
-      '@ai-sdk/provider-utils': 4.0.46(zod@4.1.11)
+      '@ai-sdk/provider': 4.0.7
+      '@ai-sdk/provider-utils': 5.0.29(zod@4.1.11)
       zod: 4.1.11
 
-  '@ai-sdk/provider-utils@4.0.46(zod@4.1.11)':
+  '@ai-sdk/provider-utils@5.0.29(zod@4.1.11)':
     dependencies:
-      '@ai-sdk/provider': 3.0.15
+      '@ai-sdk/provider': 4.0.7
       '@standard-schema/spec': 1.1.0
+      '@workflow/serde': 4.1.0
       eventsource-parser: 3.1.1
-      undici: 6.28.0
+      undici: 7.29.0
       zod: 4.1.11
 
-  '@ai-sdk/provider@3.0.15':
+  '@ai-sdk/provider@4.0.7':
     dependencies:
       json-schema: 0.4.0
 
@@ -9596,7 +9600,8 @@ snapshots:
       react: 19.2.8
       third-party-capital: 1.0.20
 
-  '@opentelemetry/api@1.9.0': {}
+  '@opentelemetry/api@1.9.0':
+    optional: true
 
   '@oxc-project/runtime@0.115.0': {}
 
@@ -10845,9 +10850,9 @@ snapshots:
       obug: 2.1.1
       std-env: 4.0.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/browser-preview@4.1.10)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(happy-dom@20.11.6(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))(vite@8.0.0(@types/node@26.2.0)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(yaml@2.9.0))
+      vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/browser-preview@4.1.10)(@vitest/coverage-v8@4.1.10(@vitest/browser@4.1.10)(vitest@4.1.10))(@vitest/ui@4.1.10(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.11.6(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     optionalDependencies:
-      '@vitest/browser': 4.1.10(bufferutil@4.1.0)(vite@8.0.0(@types/node@26.2.0)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.10)
+      '@vitest/browser': 4.1.10(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.0))(bufferutil@4.1.0)(vitest@4.1.10)
     optional: true
 
   '@vitest/coverage-v8@4.1.11(vitest@4.1.10)':
@@ -10920,7 +10925,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
-      vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/browser-preview@4.1.10)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(happy-dom@20.11.6(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))(vite@8.0.0(@types/node@26.2.0)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(yaml@2.9.0))
+      vitest: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/browser-preview@4.1.10)(@vitest/coverage-v8@4.1.10(@vitest/browser@4.1.10)(vitest@4.1.10))(@vitest/ui@4.1.10(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.9(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.26))(terser@5.43.1)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.11.6(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     optional: true
 
   '@vitest/ui@4.1.11(vitest@4.1.10)':
@@ -11102,6 +11107,8 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
+  '@workflow/serde@4.1.0': {}
+
   '@xmldom/xmldom@0.9.12': {}
 
   '@xmldom/xmldom@0.9.8': {}
@@ -11194,12 +11201,11 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@6.0.264(zod@4.1.11):
+  ai@7.0.77(zod@4.1.11):
     dependencies:
-      '@ai-sdk/gateway': 3.0.179(zod@4.1.11)
-      '@ai-sdk/provider': 3.0.15
-      '@ai-sdk/provider-utils': 4.0.46(zod@4.1.11)
-      '@opentelemetry/api': 1.9.0
+      '@ai-sdk/gateway': 4.0.62(zod@4.1.11)
+      '@ai-sdk/provider': 4.0.7
+      '@ai-sdk/provider-utils': 5.0.29(zod@4.1.11)
       zod: 4.1.11
 
   ajv-formats@2.1.1(ajv@8.18.0):
@@ -15122,9 +15128,9 @@ snapshots:
 
   undici-types@8.3.0: {}
 
-  undici@6.28.0: {}
-
   undici@7.18.2: {}
+
+  undici@7.29.0: {}
 
   unenv@2.0.0-rc.14:
     dependencies:
