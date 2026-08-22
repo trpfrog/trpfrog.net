@@ -32,7 +32,7 @@ catalog:
   '@prisma/adapter-planetscale': 7.9.1
   '@prisma/client': ^7.9.1
   '@react-hookz/web': ^26.1.0
-  '@shikijs/transformers': ^3.11.0
+  '@shikijs/transformers': ^4.4.3
   '@standard-schema/spec': ^1.1.0
   '@tailwindcss/container-queries': ^0.1.1
   '@tailwindcss/postcss': ^4.3.3
@@ -126,7 +126,7 @@ catalog:
   remeda: ^2.42.0
   seedrandom: ^3.0.5
   server-only: ^0.0.1
-  shiki: ^3.11.0
+  shiki: ^4.4.3
   skills: ^1.5.23
   stable-hash: ^0.0.6
   swr: ^2.5.1
