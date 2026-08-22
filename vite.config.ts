@@ -68,6 +68,7 @@ export default defineConfig({
         },
       ],
       'typescript/no-explicit-any': 'error',
+      'typescript/no-non-null-assertion': 'error',
       'nextjs/no-img-element': 'off',
     },
     overrides: [

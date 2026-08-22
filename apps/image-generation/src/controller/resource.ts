@@ -7,7 +7,10 @@ import { requiresApiKey } from './middlewares'
 export const resourceApp = new Hono<Env>()
   .use(requiresApiKey())
   .delete('/:id', requiresApiKey(), async c => {
-    const id = c.req.param('id')!
+    const id = c.req.param('id')
+    if (id === undefined) {
+      throw new HTTPException(400, { message: 'Resource ID is required' })
+    }
     try {
       await c.var.UCS.softDelete(id)
       return c.text('ok', 200)
@@ -17,7 +20,10 @@ export const resourceApp = new Hono<Env>()
     }
   })
   .post('/:id/undelete', requiresApiKey(), async c => {
-    const id = c.req.param('id')!
+    const id = c.req.param('id')
+    if (id === undefined) {
+      throw new HTTPException(400, { message: 'Resource ID is required' })
+    }
     try {
       await c.var.UCS.undelete(id)
       return c.text('ok', 200)
