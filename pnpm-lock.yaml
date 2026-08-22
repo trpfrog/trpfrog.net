@@ -115,8 +115,8 @@ catalogs:
       specifier: ^16.0.1
       version: 16.0.1
     '@types/bun':
-      specifier: ^1.2.20
-      version: 1.2.20
+      specifier: ^1.4.0
+      version: 1.4.0
     '@types/js-yaml':
       specifier: ^4.0.9
       version: 4.0.9
@@ -734,7 +734,7 @@ importers:
         version: link:../../packages/constants
       '@types/bun':
         specifier: 'catalog:'
-        version: 1.2.20(@types/react@19.2.14)
+        version: 1.4.0
 
   apps/image-generation:
     dependencies:
@@ -761,7 +761,7 @@ importers:
         version: 4.1.0
       drizzle-orm:
         specifier: 'catalog:'
-        version: 0.44.4(@cloudflare/workers-types@4.20250820.0)(@opentelemetry/api@1.9.0)(@prisma/client@6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.2.20(@types/react@19.2.14))(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))
+        version: 0.44.4(@cloudflare/workers-types@4.20250820.0)(@opentelemetry/api@1.9.0)(@prisma/client@6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))
       hono:
         specifier: 'catalog:'
         version: 4.12.3
@@ -3206,8 +3206,8 @@ packages:
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
 
-  '@types/bun@1.2.20':
-    resolution: {integrity: sha512-dX3RGzQ8+KgmMw7CsW4xT5ITBSCrSbfHc36SNT31EOUg/LA9JWq0VDdEXDRSe1InVWpd2yLUM1FUF/kEOyTzYA==}
+  '@types/bun@1.4.0':
+    resolution: {integrity: sha512-K+lZULY23vRgK/CfTjFIV+tyifaNdSMlPh9j+6mQ/cLfpOznLyAuzgV/JQysyECpkBQLVMSyvjlr2fBUSA9wFQ==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -4051,10 +4051,8 @@ packages:
     resolution: {integrity: sha512-WDtdLmJvAuNNPzByAYpRo2rF1Mmradw6gvWsQKf63476DDXmomT9zUiGypLcG4ibIM67vhAj8jJRdbmEws2Aqw==}
     engines: {node: '>=6.14.2'}
 
-  bun-types@1.2.20:
-    resolution: {integrity: sha512-pxTnQYOrKvdOwyiyd/7sMt9yFOenN004Y6O4lCcCUoKVej48FS5cvTw9geRaEcB9TsDZaJKAxPTVvi8tFsVuXA==}
-    peerDependencies:
-      '@types/react': ^19
+  bun-types@1.4.0:
+    resolution: {integrity: sha512-iIKw23BspnQQYd3prITOBxeUsxBHnwzX6YJfGMuNOZzeNcMmVqzIIVGRm1l69ogaPQmb4wB6BN8mA5bE9YuC5Q==}
 
   c12@3.1.0:
     resolution: {integrity: sha512-uWoS8OU1MEIsOv8p/5a82c3H31LsWVR5qiyXVfBNOzfffjUWtPnhAb4BYI2uG2HfGmZmFjCtui5XNWaps+iFuw==}
@@ -9075,11 +9073,9 @@ snapshots:
 
   '@types/aria-query@5.0.4': {}
 
-  '@types/bun@1.2.20(@types/react@19.2.14)':
+  '@types/bun@1.4.0':
     dependencies:
-      bun-types: 1.2.20(@types/react@19.2.14)
-    transitivePeerDependencies:
-      - '@types/react'
+      bun-types: 1.4.0
 
   '@types/chai@5.2.3':
     dependencies:
@@ -9899,10 +9895,9 @@ snapshots:
     dependencies:
       node-gyp-build: 4.8.4
 
-  bun-types@1.2.20(@types/react@19.2.14):
+  bun-types@1.4.0:
     dependencies:
       '@types/node': 24.10.1
-      '@types/react': 19.2.14
 
   c12@3.1.0(magicast@0.3.5):
     dependencies:
@@ -10437,13 +10432,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.4(@cloudflare/workers-types@4.20250820.0)(@opentelemetry/api@1.9.0)(@prisma/client@6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.2.20(@types/react@19.2.14))(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2)):
+  drizzle-orm@0.44.4(@cloudflare/workers-types@4.20250820.0)(@opentelemetry/api@1.9.0)(@prisma/client@6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))(typescript@7.0.2))(@upstash/redis@1.35.3)(bun-types@1.4.0)(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2)):
     optionalDependencies:
       '@cloudflare/workers-types': 4.20250820.0
       '@opentelemetry/api': 1.9.0
       '@prisma/client': 6.14.0(prisma@6.14.0(magicast@0.3.5)(typescript@7.0.2))(typescript@7.0.2)
       '@upstash/redis': 1.35.3
-      bun-types: 1.2.20(@types/react@19.2.14)
+      bun-types: 1.4.0
       prisma: 6.14.0(magicast@0.3.5)(typescript@7.0.2)
 
   duplexer@0.1.2: {}
