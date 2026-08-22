@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 
 import { Metadata } from 'next'
 
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -74,7 +74,7 @@ export default async function Index() {
   const yamlPath = path.join(process.cwd(), 'src', 'app', 'environment', 'items.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
 
-  const items = yaml.load(yamlText) as Items
+  const items = load(yamlText) as Items
 
   return (
     <MainWrapper gridLayout>
