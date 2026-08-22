@@ -93,7 +93,7 @@ catalog:
   next-mdx-remote: ^6.0.0
   node-html-parser: ^9.0.1
   nookies: ^2.5.2
-  p-retry: ^7.0.0
+  p-retry: ^7.1.1
   postcss: ^8.5.26
   postcss-preset-mantine: ^1.18.0
   postcss-simple-vars: ^7.0.1

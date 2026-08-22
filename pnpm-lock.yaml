@@ -274,8 +274,8 @@ catalogs:
       specifier: ^2.5.2
       version: 2.5.2
     p-retry:
-      specifier: ^7.0.0
-      version: 7.0.0
+      specifier: ^7.1.1
+      version: 7.1.1
     postcss:
       specifier: ^8.5.26
       version: 8.5.26
@@ -773,7 +773,7 @@ importers:
         version: 5.1.16
       p-retry:
         specifier: 'catalog:'
-        version: 7.0.0
+        version: 7.1.1
       stable-hash:
         specifier: 'catalog:'
         version: 0.0.6
@@ -6725,8 +6725,8 @@ packages:
     resolution: {integrity: sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==}
     engines: {node: '>=8'}
 
-  p-retry@7.0.0:
-    resolution: {integrity: sha512-3BgO9rjULJYyr0Y0pcsG7FZ+7JB/hfOODO8kx9ppumiO5jprUF92WK/Y7Q0xppZtq4VhTcPiVq7qWLQfIV5aKQ==}
+  p-retry@7.1.1:
+    resolution: {integrity: sha512-J5ApzjyRkkf601HpEeykoiCvzHQjWxPAHhyjFcEUP2SWq0+35NKh8TLhpLw+Dkq5TZBFvUM6UigdE9hIVYTl5w==}
     engines: {node: '>=20'}
 
   package-json-from-dist@1.0.1:
@@ -13901,7 +13901,7 @@ snapshots:
       '@types/retry': 0.12.0
       retry: 0.13.1
 
-  p-retry@7.0.0:
+  p-retry@7.1.1:
     dependencies:
       is-network-error: 1.1.0
 
