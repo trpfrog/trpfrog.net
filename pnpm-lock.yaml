@@ -241,8 +241,8 @@ catalogs:
       specifier: ^2.20.2
       version: 2.20.2
     js-yaml:
-      specifier: ^4.1.0
-      version: 4.1.1
+      specifier: ^5.3.0
+      version: 5.3.0
     katex:
       specifier: ^0.18.4
       version: 0.18.4
@@ -942,7 +942,7 @@ importers:
         version: 2.20.2(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.18)(react@19.2.8)
       js-yaml:
         specifier: 'catalog:'
-        version: 4.1.1
+        version: 5.3.0
       katex:
         specifier: 'catalog:'
         version: 0.18.4
@@ -5785,9 +5785,6 @@ packages:
   immer@11.1.18:
     resolution: {integrity: sha512-EQyQtLiYW029lyoczMl/Hh4Xu7cDecSc58JRYpHyL4tIAu3eqd1yJzQX04d2BZHDkzFFvm6qJEJWOtfDSWAXbQ==}
 
-  immer@11.1.4:
-    resolution: {integrity: sha512-XREFCPo6ksxVzP4E0ekD5aMdf8WMwmdNaz6vuvxgI40UaEiu6q3p8X52aU6GdyvLY3XXX/8R7JOTXStz/nBbRw==}
-
   immutable@5.1.5:
     resolution: {integrity: sha512-t7xcm2siw+hlUM68I+UEOK+z84RzmN59as9DZ7P1l0994DKUWV7UXBMQZVxaoMSRQ+PBZbHCOoBt7a2wxOMt+A==}
 
@@ -5944,8 +5941,8 @@ packages:
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  js-yaml@4.1.1:
-    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
+  js-yaml@5.3.0:
+    resolution: {integrity: sha512-muutsYr+e2+d3rTgUGslq5rxbBlUy3cJ61IsHag2QNDQV+7zXWjkUpmALIajhrlLlrgRUiymj6U3zUr/TMK84Q==}
     hasBin: true
 
   jsdom@26.1.0:
@@ -10080,7 +10077,7 @@ snapshots:
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@standard-schema/utils': 0.3.0
-      immer: 11.1.4
+      immer: 11.1.18
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
       reselect: 5.1.1
@@ -12372,7 +12369,7 @@ snapshots:
   google-artifactregistry-auth@3.5.0:
     dependencies:
       google-auth-library: 9.15.1
-      js-yaml: 4.1.1
+      js-yaml: 5.3.0
       yargs: 17.7.3
     transitivePeerDependencies:
       - encoding
@@ -12413,7 +12410,7 @@ snapshots:
 
   gray-matter@4.0.3(patch_hash=870f4a00150caf03fc7ae57a95908b89c229bc7a44281921d54642592b0a8529):
     dependencies:
-      js-yaml: 4.1.1
+      js-yaml: 5.3.0
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
@@ -12678,8 +12675,6 @@ snapshots:
 
   immer@11.1.18: {}
 
-  immer@11.1.4: {}
-
   immutable@5.1.5:
     optional: true
 
@@ -12792,7 +12787,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  js-yaml@4.1.1:
+  js-yaml@5.3.0:
     dependencies:
       argparse: 2.0.1
 

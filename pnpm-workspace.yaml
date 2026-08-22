@@ -82,7 +82,7 @@ catalog:
   http-status-codes: ^2.3.0
   immer: ^11.1.18
   jotai: ^2.20.2
-  js-yaml: ^4.1.0
+  js-yaml: ^5.3.0
   katex: ^0.18.4
   lru-cache: ^11.5.2
   mermaid: ^11.17.0
