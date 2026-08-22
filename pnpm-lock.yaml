@@ -187,8 +187,8 @@ catalogs:
       specifier: ^4.1.0
       version: 4.1.0
     chokidar:
-      specifier: ^4.0.3
-      version: 4.0.3
+      specifier: ^5.0.0
+      version: 5.0.0
     classnames:
       specifier: ^2.5.1
       version: 2.5.1
@@ -712,7 +712,7 @@ importers:
         version: 6.0.264(zod@4.1.11)
       chokidar:
         specifier: 'catalog:'
-        version: 4.0.3
+        version: 5.0.0
       clipboardy:
         specifier: 'catalog:'
         version: 4.0.0
@@ -906,7 +906,7 @@ importers:
         version: 4.1.0
       chokidar:
         specifier: 'catalog:'
-        version: 4.0.3
+        version: 5.0.0
       classnames:
         specifier: 'catalog:'
         version: 2.5.1
@@ -4334,6 +4334,7 @@ packages:
   '@xmldom/xmldom@0.9.8':
     resolution: {integrity: sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11388,6 +11389,7 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+    optional: true
 
   chokidar@5.0.0:
     dependencies:
@@ -14330,7 +14332,8 @@ snapshots:
 
   react@19.2.8: {}
 
-  readdirp@4.1.2: {}
+  readdirp@4.1.2:
+    optional: true
 
   readdirp@5.1.1: {}
 
