@@ -31,11 +31,11 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "skills": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.8.20",
+    "turbo": "^2.10.11",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "wrangler": "3.105.0"
+    "wrangler": "3.114.17"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
