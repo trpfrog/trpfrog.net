@@ -87,7 +87,7 @@ catalog:
   lru-cache: ^11.5.2
   mermaid: ^11.17.0
   microcms-js-sdk: ^3.4.0
-  motion: ^12.23.12
+  motion: ^13.1.1
   nanoid: ^5.1.5
   next: ^16.3.2
   next-mdx-remote: ^6.0.0
