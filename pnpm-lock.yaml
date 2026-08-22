@@ -13,8 +13,8 @@ catalogs:
       specifier: ^4.20250820.0
       version: 4.20250820.0
     '@date-fns/tz':
-      specifier: ^1.4.1
-      version: 1.4.1
+      specifier: ^1.5.0
+      version: 1.5.0
     '@fortawesome/fontawesome-svg-core':
       specifier: ^7.0.0
       version: 7.0.0
@@ -804,7 +804,7 @@ importers:
         version: 2.0.16(zod@3.25.76)
       '@date-fns/tz':
         specifier: 'catalog:'
-        version: 1.4.1
+        version: 1.5.0
       '@fortawesome/fontawesome-svg-core':
         specifier: 'catalog:'
         version: 7.0.0
@@ -1494,8 +1494,8 @@ packages:
     resolution: {integrity: sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==}
     engines: {node: '>=18'}
 
-  '@date-fns/tz@1.4.1':
-    resolution: {integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==}
+  '@date-fns/tz@1.5.0':
+    resolution: {integrity: sha512-lwYN/vDPeNRULcepoE/LO2Pgx+7/RV+S9ARfbc9lr2DtGkOD7pAiruHvbR1RX3Qyf6ja47EWJDMsNK5vK08DJg==}
 
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
@@ -7731,7 +7731,7 @@ snapshots:
   '@csstools/css-tokenizer@3.0.4':
     optional: true
 
-  '@date-fns/tz@1.4.1': {}
+  '@date-fns/tz@1.5.0': {}
 
   '@discoveryjs/json-ext@0.5.7': {}
 
