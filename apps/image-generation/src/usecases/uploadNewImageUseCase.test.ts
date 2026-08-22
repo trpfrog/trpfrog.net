@@ -23,6 +23,8 @@ const metadata: Parameters<ReturnType<typeof uploadNewImageUseCase>>[1] = {
 
 const expectedFilename = '2024-12-14-12-34-56.png'
 const expectedImageUri = 'https://example.com/2024-12-14-12-34-56.png'
+// UUID v7 uses 7 as its version nibble and 10xx as its RFC 9562 variant bits.
+const UUID_V7_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
 
 describe('uploadNewImageUsecase', () => {
   it('should upload an image, save metadata, and return successfully', async () => {
@@ -42,9 +44,7 @@ describe('uploadNewImageUsecase', () => {
     })
 
     const addedMetadata = deps.imageMetadataRepo.add.mock.calls.at(-1)?.[0]
-    expect(addedMetadata?.id).toMatch(
-      /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,
-    )
+    expect(addedMetadata?.id).toMatch(UUID_V7_PATTERN)
   })
 
   it('should delete the image if metadata saving fails', async () => {
