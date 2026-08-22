@@ -44,7 +44,7 @@ catalog:
   '@types/js-yaml': ^4.0.9
   '@types/katex': ^0.16.8
   '@types/mdx': ^2.0.14
-  '@types/node': ^22.19.1
+  '@types/node': ^26.2.0
   '@types/react': ^19.2.18
   '@types/react-dom': ^19.2.4
   '@types/react-modal': ^3.16.3
