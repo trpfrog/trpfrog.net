@@ -29,6 +29,18 @@ true satisfies IsEqual<
 
 type Internal_OptionalValueIsNotSet = '__internal_optionalValueIsNotSet__'
 
+type SingleDepsResolver<
+  Fn extends (deps: any) => any,
+  DefaultDeps extends Partial<Parameters<Fn>[0]> | Internal_OptionalValueIsNotSet,
+> = {
+  resolve: (
+    deps: Internal_OptionalValueIsNotSet extends DefaultDeps
+      ? Parameters<Fn>[0]
+      : Simplify<SetOptional<Parameters<Fn>[0], keyof DefaultDeps>>,
+  ) => ReturnType<Fn>
+  defaultDeps: Internal_OptionalValueIsNotSet extends DefaultDeps ? {} : DefaultDeps
+}
+
 /**
  * Creates a dependency resolver that resolves dependencies using the provided functions.
  * @param fns
@@ -72,7 +84,7 @@ export function createDepsResolver<
 export function createSingleDepsResolver<
   Fn extends (deps: any) => any,
   DefaultDeps extends Partial<Parameters<Fn>[0]> | Internal_OptionalValueIsNotSet,
->(usecase: Fn, defaultDeps?: DefaultDeps) {
+>(usecase: Fn, defaultDeps?: DefaultDeps): SingleDepsResolver<Fn, DefaultDeps> {
   const { resolve, defaultDeps: defaultDeps2 } = createDepsResolver(
     {
       usecase,
