@@ -1,3 +1,4 @@
+import 'server-only'
 import { parseISO, addDays } from 'date-fns'
 
 import type { Media, Tweet } from '../../generated/prisma/client'

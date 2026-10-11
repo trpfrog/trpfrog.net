@@ -1,12 +1,8 @@
+/// <reference types="node" />
+
+import { env } from 'node:process'
+
 import { defineConfig } from 'prisma/config'
-
-type RuntimeGlobals = typeof globalThis & {
-  process?: {
-    env?: Record<string, string | undefined>
-  }
-}
-
-const databaseUrl = (globalThis as RuntimeGlobals).process?.env?.DATABASE_URL ?? ''
 
 export default defineConfig({
   schema: 'src/prisma/schema.prisma',
@@ -15,6 +11,6 @@ export default defineConfig({
     seed: 'dotenv -e .env.local -- ts-node --compiler-options {"module":"CommonJS"} ./src/prisma/seed.ts',
   },
   datasource: {
-    url: databaseUrl,
+    url: env.DATABASE_URL ?? '',
   },
 })
