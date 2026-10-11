@@ -114,13 +114,11 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/react-modal": "catalog:",
-    "@types/webpack": "catalog:",
     "autoprefixer": "catalog:",
     "clipboardy": "catalog:",
     "cssnano": "catalog:",
     "postcss": "catalog:",
     "shiki": "catalog:",
-    "tailwindcss": "catalog:",
-    "webpack": "catalog:"
+    "tailwindcss": "catalog:"
   }
 }
