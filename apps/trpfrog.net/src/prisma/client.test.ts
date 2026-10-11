@@ -15,7 +15,7 @@ describe('Prisma client configuration', () => {
     async databaseUrl => {
       vi.stubEnv('DATABASE_URL', databaseUrl)
       const { prisma } = await import('./client')
-      expect(prisma.tweet.findMany).toBeTypeOf('function')
+      expect(prisma.tweet).toHaveProperty('findMany', expect.any(Function))
       await prisma.$disconnect()
     },
   )
