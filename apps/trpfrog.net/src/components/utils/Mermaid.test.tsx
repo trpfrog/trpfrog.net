@@ -26,9 +26,12 @@ describe('Mermaid rendering', () => {
   it('renders the chart with the light theme and without automatic DOM scanning', async () => {
     const { result } = renderHook(() => useMermaid('graph TD; A-->B'))
     await waitFor(() => expect(result.current).toEqual(['<svg>図</svg>', null]))
-    expect(mocks.initialize).toHaveBeenCalledWith(
-      expect.objectContaining({ startOnLoad: false, theme: 'forest' }),
-    )
+    expect(mocks.initialize).toHaveBeenCalledWith({
+      startOnLoad: false,
+      layout: 'dagre',
+      look: 'classic',
+      theme: 'forest',
+    })
     expect(mocks.render).toHaveBeenCalledWith(
       expect.stringMatching(/^mermaid-diagram[^:]+$/),
       'graph TD; A-->B',
@@ -47,9 +50,12 @@ describe('Mermaid rendering', () => {
     rerender({ chart: 'graph TD; B-->C' })
     await waitFor(() => expect(result.current[0]).toBe('<svg>変更</svg>'))
     expect(mocks.render).toHaveBeenLastCalledWith(id, 'graph TD; B-->C')
-    expect(mocks.initialize).toHaveBeenLastCalledWith(
-      expect.objectContaining({ startOnLoad: false, theme: 'dark' }),
-    )
+    expect(mocks.initialize).toHaveBeenLastCalledWith({
+      startOnLoad: false,
+      layout: 'dagre',
+      look: 'classic',
+      theme: 'dark',
+    })
   })
 
   it('shows development errors and clears them after a successful render', async () => {
