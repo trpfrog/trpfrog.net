@@ -29,8 +29,8 @@ catalog:
   '@next/bundle-analyzer': ^16.3.2
   '@next/mdx': ^16.3.2
   '@next/third-parties': ^16.3.2
-  '@prisma/adapter-planetscale': 7.9.1
-  '@prisma/client': ^7.9.1
+  '@prisma/adapter-planetscale': 7.10.0
+  '@prisma/client': ^7.10.0
   '@react-hookz/web': ^26.1.0
   '@shikijs/transformers': ^4.5.0
   '@standard-schema/spec': ^1.1.0
@@ -101,7 +101,7 @@ catalog:
   prettier-plugin-classnames: ^0.10.4
   prettier-plugin-merge: ^0.10.1
   prettier-plugin-tailwindcss: ^0.8.1
-  prisma: ^7.9.1
+  prisma: ^7.10.0
   react: ^19.2.8
   react-dom: ^19.2.8
   react-hook-form: ^7.89.0
