@@ -35,16 +35,13 @@ describe('uploadNewImageUsecase', () => {
 
     // Assert
     expect(deps.imageStoreRepo.upload).toHaveBeenCalledWith(expectedFilename, imageData)
-    expect(deps.imageMetadataRepo.add).toHaveBeenCalledWith({
-      id: expect.any(String), // uuidv7 generates a unique string
+    expect(deps.imageMetadataRepo.add).toHaveBeenLastCalledWith({
+      id: expect.stringMatching(UUID_V7_PATTERN),
       prompt: metadata.prompt,
       modelName: metadata.modelName,
       createdAt: metadata.createdAt,
       imageUri: expectedImageUri,
     })
-
-    const addedMetadata = deps.imageMetadataRepo.add.mock.calls.at(-1)?.[0]
-    expect(addedMetadata?.id).toMatch(UUID_V7_PATTERN)
   })
 
   it('should delete the image if metadata saving fails', async () => {
