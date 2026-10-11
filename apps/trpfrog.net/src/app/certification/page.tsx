@@ -3,7 +3,7 @@ import * as path from 'path'
 
 import { Metadata } from 'next'
 
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Block } from '@/components/molecules/Block'
@@ -27,7 +27,7 @@ export default async function Index() {
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
 
   const f = (x: Cert) => x.year * 100 + x.month
-  const certs: Cert[] = (yaml.load(yamlText) as Cert[]).sort((a: Cert, b: Cert) => f(b) - f(a))
+  const certs: Cert[] = (load(yamlText) as Cert[]).sort((a: Cert, b: Cert) => f(b) - f(a))
 
   return (
     <MainWrapper gridLayout>

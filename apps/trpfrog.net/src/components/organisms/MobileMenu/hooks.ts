@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { atom, useAtom } from 'jotai/index'
+import { atom, useAtom } from 'jotai'
 
 import { useSetAlwaysShownHeader } from '@/components/organisms/Header'
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai/index'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { useScroll } from 'motion/react'
 
 import { useMobileMenuState } from '@/components/organisms/MobileMenu'

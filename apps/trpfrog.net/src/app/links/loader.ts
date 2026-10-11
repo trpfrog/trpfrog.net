@@ -1,7 +1,7 @@
 import fs from 'fs/promises'
 import * as path from 'path'
 
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 import * as v from 'valibot'
 
 import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
@@ -19,7 +19,7 @@ export type MutualLinkRecord = InferSchemaOutput<typeof MutualLinkRecordSchema>
 export const loadMutualLinkRecords: () => Promise<MutualLinkRecord[]> = async () => {
   const yamlPath = path.join(process.cwd(), 'src', 'app', 'links', 'mutual_links.yaml')
   const yamlText = await fs.readFile(yamlPath, 'utf-8')
-  const links = validateUnknown(v.array(MutualLinkRecordSchema), yaml.load(yamlText))
+  const links = validateUnknown(v.array(MutualLinkRecordSchema), load(yamlText))
 
   return links.sort(({ ownerName: a }, { ownerName: b }) => {
     if (a < b) {

@@ -35,6 +35,9 @@ const createExecutionCtx = (): ExecutionContext => ({
   waitUntil: vi.fn<ExecutionContext['waitUntil']>(),
   passThroughOnException: vi.fn<ExecutionContext['passThroughOnException']>(),
   props: {},
+  exports: {} as ExecutionContext['exports'],
+  tracing: {} as ExecutionContext['tracing'],
+  abort: vi.fn<ExecutionContext['abort']>(),
 })
 
 describe('scheduled', () => {

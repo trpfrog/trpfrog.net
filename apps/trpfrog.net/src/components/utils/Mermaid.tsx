@@ -23,6 +23,8 @@ export function useMermaid(chart: string) {
       const { default: mermaid } = await import('mermaid')
       mermaid.initialize({
         startOnLoad: false,
+        layout: 'dagre',
+        look: 'classic',
         theme: colorScheme === 'dark' ? 'dark' : 'forest',
       })
 

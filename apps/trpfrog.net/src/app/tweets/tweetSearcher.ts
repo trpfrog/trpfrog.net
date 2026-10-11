@@ -1,7 +1,8 @@
-import { Media, PrismaClient, Tweet } from '@prisma/client'
+import 'server-only'
 import { parseISO, addDays } from 'date-fns'
 
-const prisma = new PrismaClient()
+import type { Media, Tweet } from '../../generated/prisma/client'
+import { prisma } from '../../prisma/client'
 
 export async function search(searchParams: Record<string, string | undefined> | undefined) {
   const params = {

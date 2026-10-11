@@ -15,7 +15,7 @@
     "format": "vp fmt"
   },
   "engines": {
-    "node": "^20.19.0 || ^22.18.0 || >=24.11.0"
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
   },
   "// NOTE(turborepo):": "We put the turborepo version directly in package.json because Vercel may read it from here",
   "devDependencies": {
@@ -31,11 +31,11 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "skills": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.8.20",
+    "turbo": "^2.11.7",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "wrangler": "3.105.0"
+    "wrangler": "3.114.17"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {

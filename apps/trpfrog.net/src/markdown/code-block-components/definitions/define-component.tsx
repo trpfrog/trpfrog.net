@@ -1,4 +1,4 @@
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 import * as v from 'valibot'
 
 import { validateUnknown, InferSchemaOutput } from '@trpfrog.net/utils'
@@ -67,7 +67,7 @@ export const defineComponentCCBC: CustomCodeBlockComponent = {
  */
 export const useDefinedComponentCCBC: CustomCodeBlockComponent = {
   Component: async ({ markdown, context, Render }) => {
-    const { use: name, ...props } = yaml.load(markdown) as {
+    const { use: name, ...props } = load(markdown) as {
       use?: string
     } & Record<string, string>
 

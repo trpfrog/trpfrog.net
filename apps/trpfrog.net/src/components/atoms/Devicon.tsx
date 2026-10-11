@@ -1,6 +1,6 @@
 import React from 'react'
 
-import 'devicon'
+import 'devicon/devicon-base.css'
 
 import { twMerge } from '@/lib/tailwind'
 

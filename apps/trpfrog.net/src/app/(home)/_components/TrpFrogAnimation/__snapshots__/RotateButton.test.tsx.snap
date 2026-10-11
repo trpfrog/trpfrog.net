@@ -9,7 +9,7 @@ exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'le
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-rotate fa-flip-horizontal "
+      class="svg-inline--fa fa-rotate fa-flip-horizontal"
       data-icon="rotate"
       data-prefix="fas"
       role="img"
@@ -33,7 +33,7 @@ exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'ri
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-rotate "
+      class="svg-inline--fa fa-rotate"
       data-icon="rotate"
       data-prefix="fas"
       role="img"
@@ -56,7 +56,7 @@ exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'lef
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-stop "
+      class="svg-inline--fa fa-stop"
       data-icon="stop"
       data-prefix="fas"
       role="img"
@@ -79,7 +79,7 @@ exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'rig
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-stop "
+      class="svg-inline--fa fa-stop"
       data-icon="stop"
       data-prefix="fas"
       role="img"

@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { faStar, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { Tweet, Media } from '@prisma/client'
 import { format } from 'date-fns'
 import reactStringReplace from 'react-string-replace'
 
@@ -10,6 +9,8 @@ import { InlineLink } from '@/components/atoms/InlineLink'
 import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { A } from '@/components/wrappers'
 import { formatDateToDisplay, formatDateTimeToDisplay } from '@/lib/date'
+
+import type { Tweet, Media } from '../../../generated/prisma/client'
 
 import styles from './index.module.css'
 

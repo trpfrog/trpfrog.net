@@ -186,8 +186,10 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
   })
 
   it('returns error if the model returns invalid JSON too many times', async () => {
+    let calls = 0
     const { resolve } = createSingleDepsResolver(generatePromptFromWordsUseCase, {
       jsonChatbot: async () => {
+        calls++
         return {
           response: { wrong: 'shape' },
           modelName: 'test-model',
@@ -198,5 +200,6 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
     await expect(generatePromptFromWords(['word1', 'word2'])).rejects.toThrowError(
       /Output JSON validation failed/,
     )
+    expect(calls).toBe(4)
   })
 })

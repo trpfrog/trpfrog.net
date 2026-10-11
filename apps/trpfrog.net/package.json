@@ -25,6 +25,7 @@
     "@next/bundle-analyzer": "catalog:",
     "@next/mdx": "catalog:",
     "@next/third-parties": "catalog:",
+    "@prisma/adapter-planetscale": "catalog:",
     "@prisma/client": "catalog:",
     "@react-hookz/web": "catalog:",
     "@standard-schema/spec": "catalog:",
@@ -107,19 +108,16 @@
     "@testing-library/react": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
-    "@types/js-yaml": "catalog:",
     "@types/mdx": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/react-modal": "catalog:",
-    "@types/webpack": "catalog:",
     "autoprefixer": "catalog:",
     "clipboardy": "catalog:",
     "cssnano": "catalog:",
     "postcss": "catalog:",
     "shiki": "catalog:",
-    "tailwindcss": "catalog:",
-    "webpack": "catalog:"
+    "tailwindcss": "catalog:"
   }
 }
