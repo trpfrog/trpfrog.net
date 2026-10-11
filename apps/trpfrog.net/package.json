@@ -108,7 +108,6 @@
     "@testing-library/react": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
-    "@types/js-yaml": "catalog:",
     "@types/mdx": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
