@@ -81,7 +81,7 @@ catalog:
   hono: ^4.13.13
   http-status-codes: ^2.3.0
   immer: ^11.1.21
-  jotai: ^2.20.2
+  jotai: ^3.0.1
   js-yaml: ^5.4.3
   katex: ^0.18.4
   lru-cache: ^11.5.3
