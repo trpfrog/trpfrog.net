@@ -31,7 +31,7 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "skills": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.10.11",
+    "turbo": "^2.11.7",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
