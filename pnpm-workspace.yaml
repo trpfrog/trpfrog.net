@@ -85,7 +85,7 @@ catalog:
   js-yaml: ^5.4.3
   katex: ^0.18.4
   lru-cache: ^11.5.3
-  mermaid: ^11.17.0
+  mermaid: ^12.1.0
   microcms-js-sdk: ^3.5.1
   motion: ^13.1.1
   nanoid: ^6.0.2
