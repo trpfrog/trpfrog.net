@@ -26,9 +26,9 @@ catalog:
   '@mantine/notifications': ^9.7.2
   '@mdx-js/loader': ^3.1.1
   '@mdx-js/react': ^3.1.1
-  '@next/bundle-analyzer': ^16.3.2
-  '@next/mdx': ^16.3.2
-  '@next/third-parties': ^16.3.2
+  '@next/bundle-analyzer': ^16.4.0
+  '@next/mdx': ^16.4.0
+  '@next/third-parties': ^16.4.0
   '@prisma/adapter-planetscale': 7.10.0
   '@prisma/client': ^7.10.0
   '@react-hookz/web': ^26.1.0
@@ -89,7 +89,7 @@ catalog:
   microcms-js-sdk: ^3.5.1
   motion: ^14.1.0
   nanoid: ^6.0.2
-  next: ^16.3.2
+  next: ^16.4.0
   next-mdx-remote: ^6.0.0
   node-html-parser: ^9.0.4
   nookies: ^2.5.2
