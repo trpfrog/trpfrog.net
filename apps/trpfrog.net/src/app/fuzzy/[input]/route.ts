@@ -21,7 +21,9 @@ export async function GET(req: NextRequest, props: RouteContext<'/fuzzy/[input]'
     const paths = await fetchCandidatePaths()
     const output = await suggestFuzzyPath(input, paths)
     return NextResponse.redirect(new URL(output, req.url))
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Failed to suggest a fuzzy path:', message.replace(/sk-[\w*-]+/g, '[redacted]'))
     return NextResponse.redirect(new URL('/', req.url))
   }
 }
