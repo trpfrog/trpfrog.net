@@ -1,13 +1,31 @@
+import { globSync } from 'node:fs'
+import path from 'node:path'
+
 import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
 import type { NextConfig } from 'next'
 
 import { composeFunctions } from '@trpfrog.net/utils'
 
+import { collectPagePaths } from './tools/fuzzyPagePaths'
+
+const pageExtensions = ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions,
+
+  // Discover pages before bundling; deployed functions do not need the source tree.
+  env: {
+    FUZZY_PAGE_PATHS: JSON.stringify(
+      collectPagePaths(
+        globSync(`**/page.{${pageExtensions.join(',')}}`, {
+          cwd: path.join(import.meta.dirname, 'src/app'),
+        }),
+      ),
+    ),
+  },
 
   cacheComponents: true,
   cacheLife: {
