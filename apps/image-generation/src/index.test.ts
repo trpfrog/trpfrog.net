@@ -38,6 +38,7 @@ const createExecutionCtx = (): ExecutionContext => ({
   exports: {} as ExecutionContext['exports'],
   tracing: {} as ExecutionContext['tracing'],
   abort: vi.fn<ExecutionContext['abort']>(),
+  mapVirtualHost: vi.fn<ExecutionContext['mapVirtualHost']>(),
 })
 
 describe('scheduled', () => {

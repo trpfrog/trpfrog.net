@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { PreloadBalloonImages } from '@/app/balloon/_components/Balloon/preload-balloon-images'
 import { BalloonArray } from '@/app/balloon/_components/BalloonArray'
@@ -33,9 +33,9 @@ export function useResizableBalloonArray(
     return () => observer.disconnect()
   }, [balloonHeight, balloonWidth, cardRef])
 
-  const rewardStartPositionId = useId()
+  const rewardRef = useRef<HTMLDivElement>(null)
   const balloonState = useBalloonState(5, {
-    rewardId: rewardStartPositionId,
+    rewardRef,
   })
 
   return {
@@ -47,7 +47,7 @@ export function useResizableBalloonArray(
           width={balloonWidth}
           key={balloonAmount} // 風船の数が変わったら state をリセット
         />
-        <div id={rewardStartPositionId} className="tw:fixed tw:top-0 tw:left-1/2" />
+        <div ref={rewardRef} className="tw:fixed tw:top-0 tw:left-1/2" />
       </>
     ),
     isBurstAll: balloonState.balloons.every(balloon => balloon.isBurst),

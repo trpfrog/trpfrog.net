@@ -1,8 +1,8 @@
 'use client'
 
-import { useId } from 'react'
+import { useRef } from 'react'
 
-import { useReward } from 'react-rewards'
+import { confetti, useReward } from 'react-rewards'
 import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
 import useSound from 'use-sound'
@@ -81,7 +81,7 @@ const balloonStyle = tv({
 })
 
 export const Balloon = (props: BalloonProps) => {
-  const balloonId = useId()
+  const rewardRef = useRef<HTMLSpanElement>(null)
   const { playSound } = useBalloonSound()
   const { isPending: isRandomPending, value: seed } = useRandom()
 
@@ -92,16 +92,19 @@ export const Balloon = (props: BalloonProps) => {
         : balloonColors[Math.floor(seedrandom(seed.toString())() * balloonColors.length)]
       : props.color
 
-  const { reward } = useReward(balloonId, 'confetti', {
-    zIndex: 100,
-    startVelocity: 8,
-    elementCount: 35,
-    decay: 0.95,
-    elementSize: 6,
-    spread: 50,
-    position: 'absolute',
-    colors: confettiColors[color],
-  })
+  const { reward } = useReward(
+    rewardRef,
+    confetti,
+    {
+      velocity: 480,
+      count: 35,
+      drag: 3.1,
+      size: 6,
+      spread: 50,
+      colors: confettiColors[color],
+    },
+    { zIndex: 100 },
+  )
 
   const ariaLabel = match({ isBurst: props.isBurst, color })
     .with({ isBurst: true }, () => '割れた風船')
@@ -135,7 +138,7 @@ export const Balloon = (props: BalloonProps) => {
         }
       }}
     >
-      <span className="tw:inline-block" id={balloonId} />
+      <span className="tw:inline-block" ref={rewardRef} />
     </button>
   )
 }

@@ -1,4 +1,6 @@
-import { useReward } from 'react-rewards'
+import type { RefObject } from 'react'
+
+import { confetti, useReward } from 'react-rewards'
 import { ArrayValues } from 'type-fest'
 import { useImmer } from 'use-immer'
 
@@ -13,8 +15,8 @@ interface BalloonState {
 
 export function useBalloonState(
   initialAmount: number,
-  options?: {
-    rewardId?: string
+  options: {
+    rewardRef: RefObject<HTMLDivElement | null>
     onBurst?: (isBurst: boolean[]) => void
   },
 ) {
@@ -28,15 +30,19 @@ export function useBalloonState(
     }
     return balloons
   })
-  const { reward } = useReward(options?.rewardId ?? '__reward_id', 'confetti', {
-    zIndex: 1000,
-    elementCount: 500,
-    startVelocity: 30,
-    spread: 160,
-    decay: 0.965,
-    elementSize: 12,
-    lifetime: 600,
-  })
+  const { reward } = useReward(
+    options.rewardRef,
+    confetti,
+    {
+      count: 500,
+      velocity: 1800,
+      spread: 160,
+      drag: 2.1,
+      size: 12,
+      lifetime: 10000,
+    },
+    { zIndex: 1000 },
+  )
 
   return {
     balloons,
@@ -57,7 +63,7 @@ export function useBalloonState(
     burst: (idx: number) => {
       updateBalloons(draft => {
         draft[idx].isBurst = true
-        options?.onBurst?.(draft.map(balloon => balloon.isBurst))
+        options.onBurst?.(draft.map(balloon => balloon.isBurst))
         const isAllBalloonBurst = draft.every(balloon => balloon.isBurst)
         if (isAllBalloonBurst) {
           reward()
