@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import * as v from 'valibot'
 
@@ -36,10 +36,8 @@ export function BalloonApp() {
     _setBalloonSize(n)
   }
 
-  const rewardStartPositionId = useId()
-  const balloonState = useBalloonState(96, {
-    rewardId: rewardStartPositionId,
-  })
+  const rewardRef = useRef<HTMLDivElement>(null)
+  const balloonState = useBalloonState(96, { rewardRef })
   const setBalloonAmount = (s: number | string) => {
     const value = validateUnknown(FormNumberSchema(10000, 96), s)
     balloonState.updateAmount(value)
@@ -81,7 +79,7 @@ export function BalloonApp() {
       </Title>
       <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
         <BalloonArray states={balloonState} width={balloonSize} enableSound={isSoundEnabled} />
-        <div id={rewardStartPositionId} className="tw:fixed tw:top-0 tw:left-1/2" />
+        <div ref={rewardRef} className="tw:fixed tw:top-0 tw:left-1/2" />
       </Block>
     </>
   )

@@ -31,13 +31,13 @@
     "prettier-plugin-tailwindcss": "catalog:",
     "skills": "catalog:",
     "tsr": "catalog:",
-    "turbo": "^2.11.7",
+    "turbo": "^2.11.10",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "wrangler": "3.114.17"
   },
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.34.8",
   "dependencies": {
     "arkregex": "catalog:",
     "valibot": "catalog:"
