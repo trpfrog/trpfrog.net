@@ -28,7 +28,6 @@ export default defineConfig({
       }),
       OPENAI_API_KEY: bindings.secret(),
       TRPFROG_FUNCTIONS_SECRET: bindings.secret(),
-      GEMINI_API_KEY: bindings.secret(),
       BUCKET: bindings.r2({
         name: 'trpfrog-media',
       }),

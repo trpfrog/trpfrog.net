@@ -1,5 +1,5 @@
-import { createOpenAI } from '@ai-sdk/openai'
-import { generateText, type ModelMessage } from 'ai'
+import { createOpenAI, type OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
+import { generateText, jsonSchema, Output, type JSONSchema7, type ModelMessage } from 'ai'
 import { getContext } from 'hono/context-storage'
 import { match } from 'ts-pattern'
 
@@ -18,20 +18,27 @@ function toModelMessages(rawChat: ChatUtterance[]): ModelMessage[] {
 
 type OpenAIChatParams = {
   model: string
-  temperature?: number
+  reasoningEffort?: OpenAIResponsesProviderOptions['reasoningEffort']
   apiKey?: string
+}
+
+function createClient(params: OpenAIChatParams) {
+  const c = getContext<Env>()
+  return createOpenAI({ apiKey: params.apiKey ?? c.env.OPENAI_API_KEY })
 }
 
 export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
   return async rawChat => {
-    const c = getContext<Env>()
-    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
-    const openai = createOpenAI({ apiKey })
+    const openai = createClient(params)
 
     const { text, response } = await generateText({
       model: openai(params.model),
-      temperature: params.temperature,
       messages: toModelMessages(rawChat),
+      providerOptions: {
+        openai: {
+          reasoningEffort: params.reasoningEffort,
+        } satisfies OpenAIResponsesProviderOptions,
+      },
     })
 
     return {
@@ -43,32 +50,32 @@ export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
 }
 
 export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
-  return async rawChat => {
-    const c = getContext<Env>()
-    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
-    const openai = createOpenAI({ apiKey })
+  return async (rawChat, options) => {
+    const openai = createClient(params)
 
-    const { text, response } = await generateText({
+    const { output, response } = await generateText({
       model: openai(params.model),
-      temperature: params.temperature,
       messages: toModelMessages(rawChat),
+      output: options?.schema
+        ? Output.object({
+            schema: jsonSchema<Record<string, unknown>>(options.schema as JSONSchema7),
+            name: options.schemaName,
+          })
+        : Output.json({ name: options?.schemaName }),
       providerOptions: {
         openai: {
           strictJsonSchema: true,
-          reasoningEffort: 'medium',
-        },
+          reasoningEffort: params.reasoningEffort,
+        } satisfies OpenAIResponsesProviderOptions,
       },
     })
 
-    let json: Record<string, unknown>
-    try {
-      json = JSON.parse(text) as Record<string, unknown>
-    } catch {
-      throw new Error('Failed to parse chatbot response JSON')
+    if (output == null || typeof output !== 'object' || Array.isArray(output)) {
+      throw new Error('Chatbot response is not a JSON object')
     }
 
     return {
-      response: json,
+      response: output as Record<string, unknown>,
       modelName: params.model,
       raw: response,
     }

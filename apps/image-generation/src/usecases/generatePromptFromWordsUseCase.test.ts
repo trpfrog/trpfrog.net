@@ -130,7 +130,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
     const generatePromptFromWords = resolve({})
 
     await expect(generatePromptFromWords(['docs', 'learn'])).resolves.toMatchObject({
-      prompt: 'tsmami-san reading documents',
+      text: 'tsmami-san reading documents',
       translated: 'ドキュメントを読むつまみさん',
       author: 'test-model',
     })
@@ -139,10 +139,8 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
       [
         {
           "role": "user",
-          "text": "INPUT WORDS:
-      docs, learn
-
-      Produce the JSON now.",
+          "text": "Random words:
+      docs, learn",
         },
         {
           "role": "assistant",
@@ -201,5 +199,42 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
       /Output JSON validation failed/,
     )
     expect(calls).toBe(4)
+  })
+
+  it('passes a JSON schema to the chatbot and returns an image brief', async () => {
+    let receivedOptions: Parameters<ChatLLMJson>[1]
+    const { resolve } = createSingleDepsResolver(generatePromptFromWordsUseCase, {
+      jsonChatbot: async (_chat, options) => {
+        receivedOptions = options
+        return {
+          response: {
+            prompt: 'tsmami-san baking bread',
+            translated: 'パンを焼くつまみさん',
+            scene: 'A cozy bakery kitchen at dawn.',
+            style: 'Soft watercolor with warm light.',
+            composition: 'Eye-level medium shot.',
+          },
+          modelName: 'test-model',
+        }
+      },
+    })
+
+    const result = await resolve({})(['bread'])
+
+    expect(receivedOptions?.schema).toMatchObject({
+      type: 'object',
+      additionalProperties: false,
+      required: ['prompt', 'translated', 'scene', 'style', 'composition'],
+    })
+    expect(result).toMatchObject({
+      text: 'tsmami-san baking bread',
+      translated: 'パンを焼くつまみさん',
+      brief: {
+        caption: 'tsmami-san baking bread',
+        scene: 'A cozy bakery kitchen at dawn.',
+        style: 'Soft watercolor with warm light.',
+        composition: 'Eye-level medium shot.',
+      },
+    })
   })
 })
