@@ -5,9 +5,8 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "wrangler dev --env development --port 8003 --inspector-port 8103 src/index.ts",
-    "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
-    "deploy": "vp build && wrangler deploy --minify src/index.ts",
+    "dev": "cf dev --mode development",
+    "deploy": "vp build && cf deploy",
     "test": "vp test"
   },
   "dependencies": {

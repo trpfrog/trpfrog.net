@@ -12,7 +12,7 @@
 - `pnpm -w dev`: run workspace dev tasks through Turborepo.
 - `pnpm --filter trpfrog.net dev`: run only the web app (`http://localhost:3000`).
 - `pnpm -w build`: build all apps/packages.
-- `pnpm -w typegen`: generate project types (Next.js/Workers/Prisma).
+- `pnpm -w typegen`: generate project types (Next.js/Prisma). Worker bindings are inferred from each Worker's `cloudflare.config.ts`.
 - `pnpm -w lint-fix`: run `oxlint --fix` and `oxfmt`.
 - `pnpm -w test`: run all Vitest projects.
 - `pnpm exec vitest --coverage.enabled --coverage.provider=v8 --run`: local coverage run close to CI.
