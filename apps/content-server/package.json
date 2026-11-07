@@ -28,7 +28,9 @@
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
     "@types/node": "catalog:",
+    "cf": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "vite-plus": "catalog:",
+    "wrangler": "catalog:"
   }
 }

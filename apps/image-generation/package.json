@@ -34,6 +34,8 @@
     "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@types/node": "catalog:",
-    "drizzle-kit": "catalog:"
+    "cf": "catalog:",
+    "drizzle-kit": "catalog:",
+    "wrangler": "catalog:"
   }
 }
