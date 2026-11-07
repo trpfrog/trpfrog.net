@@ -34,8 +34,7 @@
     "turbo": "^2.11.10",
     "type-fest": "catalog:",
     "typescript": "catalog:",
-    "vite-plus": "catalog:",
-    "wrangler": "3.114.17"
+    "vite-plus": "catalog:"
   },
   "packageManager": "pnpm@10.34.8",
   "dependencies": {
@@ -44,7 +43,6 @@
   },
   "pnpm": {
     "overrides": {
-      "wrangler": "catalog:",
       "esbuild@<=0.24.2": ">=0.25.0",
       "cookie@<0.7.0": ">=0.7.0",
       "hono@>=4.8.0 <4.9.6": ">=4.9.6",

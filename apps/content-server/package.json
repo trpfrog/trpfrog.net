@@ -5,15 +5,12 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "wrangler dev --env development --port 8003 --inspector-port 8103 src/index.ts",
-    "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
-    "deploy": "vp build && wrangler deploy --minify src/index.ts",
+    "dev": "cf dev",
+    "deploy": "vp build --mode ssg && cf deploy",
     "test": "vp test"
   },
   "dependencies": {
     "@hono/standard-validator": "catalog:",
-    "@hono/vite-build": "catalog:",
-    "@hono/vite-dev-server": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
@@ -23,11 +20,13 @@
     "ts-pattern": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
     "@cloudflare/workers-types": "catalog:",
     "@hono/vite-ssg": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
     "@types/node": "catalog:",
+    "cf": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
   }

@@ -5,13 +5,12 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "wrangler dev --port 8001 --inspector-port 8101 src/index.ts",
-    "typegen": "wrangler types --env-interface Bindings && sh ./bin/add-export-to-worker-conf.sh",
-    "deploy": "wrangler deploy --minify src/index.ts",
+    "dev": "cf dev",
+    "deploy": "cf deploy",
     "test": "vp test",
     "generate": "drizzle-kit generate",
-    "migrate:local": "wrangler d1 migrations apply ai-trpfrog-icon-db --local",
-    "migrate:remote": "wrangler d1 migrations apply ai-trpfrog-icon-db --remote"
+    "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .cloudflare/state",
+    "migrate:remote": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",
@@ -31,9 +30,13 @@
     "uuidv7": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
     "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@types/node": "catalog:",
-    "drizzle-kit": "catalog:"
+    "cf": "catalog:",
+    "drizzle-kit": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

@@ -1,4 +1,4 @@
-import * as path from 'path'
+import * as path from 'node:path'
 
 // TODO: make posts directory configurable
 const postsDirectory = path.join(process.cwd(), '..', '..', 'posts')
