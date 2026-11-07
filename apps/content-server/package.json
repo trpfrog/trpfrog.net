@@ -5,14 +5,12 @@
     ".": "./src/client.ts"
   },
   "scripts": {
-    "dev": "cf dev --mode development",
-    "deploy": "vp build && cf deploy",
+    "dev": "cf dev",
+    "deploy": "vp build --mode ssg && cf deploy",
     "test": "vp test"
   },
   "dependencies": {
     "@hono/standard-validator": "catalog:",
-    "@hono/vite-build": "catalog:",
-    "@hono/vite-dev-server": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
@@ -22,6 +20,7 @@
     "ts-pattern": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
     "@cloudflare/workers-types": "catalog:",
     "@hono/vite-ssg": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
@@ -29,7 +28,6 @@
     "@types/node": "catalog:",
     "cf": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "catalog:",
-    "wrangler": "catalog:"
+    "vite-plus": "catalog:"
   }
 }

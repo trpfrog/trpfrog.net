@@ -4,6 +4,7 @@ packages:
 
 catalog:
   '@ai-sdk/openai': 4.0.101
+  '@cloudflare/vite-plugin': 2.0.0-beta.v.12
   '@cloudflare/workers-types': ^5.20261024.1
   '@date-fns/tz': ^1.5.0
   '@fortawesome/fontawesome-svg-core': ^7.3.1
@@ -14,8 +15,6 @@ catalog:
   '@headlessui/react': ^2.2.10
   '@hono/cli': ^0.1.11
   '@hono/standard-validator': ^0.4.0
-  '@hono/vite-build': ^1.11.1
-  '@hono/vite-dev-server': ^0.26.1
   '@hono/vite-ssg': ^0.3.3
   '@mantine/charts': ^9.7.3
   '@mantine/core': ^9.7.3
@@ -144,7 +143,6 @@ catalog:
   valibot: ^1.5.0
   vite: npm:@voidzero-dev/vite-plus-core@1.4.0
   vite-plus: 1.4.0
-  wrangler: 4.158.0
 
 catalogMode: prefer
 

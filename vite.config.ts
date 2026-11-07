@@ -21,7 +21,7 @@ export default defineConfig({
       'react-perf',
       'jsx-a11y',
     ],
-    ignorePatterns: ['out', 'dist', 'build', 'coverage', '.wrangler', '.next', 'next-env.d.ts'],
+    ignorePatterns: ['out', 'dist', 'build', 'coverage', '.cloudflare', '.next', 'next-env.d.ts'],
     rules: {
       'eslint/no-unused-vars': [
         'error',
@@ -212,7 +212,7 @@ export default defineConfig({
       '**/*.json',
       '**/*.yaml',
       '**/*.yml',
-      '**/.wrangler',
+      '**/.cloudflare',
     ],
   },
 })

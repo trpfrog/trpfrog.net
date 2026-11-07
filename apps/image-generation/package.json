@@ -9,7 +9,7 @@
     "deploy": "cf deploy",
     "test": "vp test",
     "generate": "drizzle-kit generate",
-    "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .wrangler/state",
+    "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .cloudflare/state",
     "migrate:remote": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842"
   },
   "dependencies": {
@@ -30,11 +30,13 @@
     "uuidv7": "catalog:"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
     "@cloudflare/workers-types": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@types/node": "catalog:",
     "cf": "catalog:",
     "drizzle-kit": "catalog:",
-    "wrangler": "catalog:"
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

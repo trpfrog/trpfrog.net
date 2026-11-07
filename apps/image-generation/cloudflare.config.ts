@@ -4,7 +4,7 @@ export default defineConfig({
   worker: {
     name: 'trpfrog-diffusion',
     compatibilityDate: '2023-12-01',
-    compatibilityFlags: ['nodejs_compat'],
+    compatibilityFlags: ['nodejs_compat', 'nodejs_compat_v2', 'rpc'],
     entrypoint: './src/index.ts',
     observability: {
       enabled: true,
