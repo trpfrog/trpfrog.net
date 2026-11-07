@@ -8,7 +8,7 @@ export default defineConfig(ctx => ({
     entrypoint: './src/index.ts',
     domains: ['content.trpfrog.net'],
     env: {
-      // `cf dev --mode development` serves posts in real time instead of the
+      // `cf dev` runs in development mode and serves posts in real time instead of the
       // statically generated ones. The variable is unset in production.
       TRPFROG_NET_CONTENT_SERVER_SOURCE_STRATEGY:
         ctx.mode === 'development' && bindings.text('dev-realtime'),
