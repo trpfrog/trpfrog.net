@@ -10,37 +10,47 @@ import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
 const MAX_PROMPT_CHARS = 80
 const MAX_PROMPT_WORDS = 12
 
-const nonEmptyString = (name: string) =>
-  v.pipe(
-    v.string(`\`${name}\` must be a string`),
-    v.trim(),
-    v.minLength(1, `\`${name}\` must not be empty`),
-  )
+const NonEmptyStringSchema = v.pipe(
+  v.string('must be a string'),
+  v.trim(),
+  v.nonEmpty('must not be empty'),
+)
 
 const FinalPromptSchema = v.looseObject({
   prompt: v.pipe(
-    nonEmptyString('prompt'),
+    NonEmptyStringSchema,
     v.maxLength(
       MAX_PROMPT_CHARS,
-      ({ received }) =>
-        `"prompt" must be at most ${MAX_PROMPT_CHARS} characters (current: ${received})`,
+      ({ received }) => `must be at most ${MAX_PROMPT_CHARS} characters (current: ${received})`,
     ),
     v.maxWords(
       'en',
       MAX_PROMPT_WORDS,
-      ({ received }) => `"prompt" must be at most ${MAX_PROMPT_WORDS} words (current: ${received})`,
+      ({ received }) => `must be at most ${MAX_PROMPT_WORDS} words (current: ${received})`,
     ),
-    v.includes('tsmami-san', '`prompt` must include "tsmami-san"'),
-    v.check(e => !/[.,]$/.test(e), '`prompt` must not end with punctuation'),
+    v.includes('tsmami-san', 'must include "tsmami-san"'),
+    v.check(e => !/[.,]$/.test(e), 'must not end with punctuation'),
   ),
   translated: v.pipe(
-    nonEmptyString('translated'),
-    v.check(e => !/[。.、,]$/.test(e), '`translated` must not end with punctuation'),
+    NonEmptyStringSchema,
+    v.check(e => !/[。.、,]$/.test(e), 'must not end with punctuation'),
   ),
-  scene: v.optional(nonEmptyString('scene')),
-  style: v.optional(nonEmptyString('style')),
-  composition: v.optional(nonEmptyString('composition')),
+  scene: v.optional(NonEmptyStringSchema),
+  style: v.optional(NonEmptyStringSchema),
+  composition: v.optional(NonEmptyStringSchema),
 })
+
+/** どのキーの問題かが LLM に伝わるよう、issue の path をメッセージの前に付ける */
+function formatIssue(issue: {
+  message: string
+  path?: ReadonlyArray<PropertyKey | { key: PropertyKey }>
+}): string {
+  const path = issue.path
+    ?.map(segment => (typeof segment === 'object' ? segment.key : segment))
+    .map(String)
+    .join('.')
+  return path ? `- \`${path}\`: ${issue.message}` : `- ${issue.message}`
+}
 
 /**
  * Structured Outputs (strict) 用の JSON Schema。
@@ -140,7 +150,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       if (!parsed.success) {
         throw new InvalidModelOutputError(
           JSON.stringify(rawJson, null, 2),
-          'Output JSON validation failed:\n' + parsed.issues.map(i => `- ${i.message}`).join('\n'),
+          'Output JSON validation failed:\n' + parsed.issues.map(formatIssue).join('\n'),
         )
       }
 

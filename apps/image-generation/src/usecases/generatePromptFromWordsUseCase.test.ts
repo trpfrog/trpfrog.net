@@ -151,8 +151,8 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - Invalid key: Expected "prompt" but received undefined
-      - Invalid key: Expected "translated" but received undefined",
+      - \`prompt\`: Invalid key: Expected "prompt" but received undefined
+      - \`translated\`: Invalid key: Expected "translated" but received undefined",
         },
         {
           "role": "assistant",
@@ -164,7 +164,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - \`prompt\` must include "tsmami-san"",
+      - \`prompt\`: must include "tsmami-san"",
         },
         {
           "role": "assistant",
@@ -176,8 +176,8 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - "prompt" must be at most 80 characters (current: 100)
-      - "prompt" must be at most 12 words (current: 19)",
+      - \`prompt\`: must be at most 80 characters (current: 100)
+      - \`prompt\`: must be at most 12 words (current: 19)",
         },
       ]
     `)
