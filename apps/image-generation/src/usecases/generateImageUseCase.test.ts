@@ -8,7 +8,7 @@ import {
   UnexpectedTextToImageModelResponseError,
 } from '../domain/services/text-to-image'
 import type { TextToImage } from '../domain/services/text-to-image'
-import { generateImageUseCase } from './generateImageUseCase'
+import { buildTsmamiImagePrompt, generateImageUseCase } from './generateImageUseCase'
 
 describe('generateImage', () => {
   const defaultResponse: GeneratedImage = {
@@ -80,5 +80,30 @@ describe('generateImage', () => {
         expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
       },
     )
+  })
+})
+
+describe('buildTsmamiImagePrompt', () => {
+  it('builds labeled sections from an image brief', () => {
+    const prompt = buildTsmamiImagePrompt({
+      caption: 'tsmami-san baking bread',
+      scene: 'A cozy bakery kitchen at dawn.',
+      style: 'Soft watercolor with warm light.',
+      composition: 'Eye-level medium shot.',
+    })
+    expect(prompt).toContain('Theme:\ntsmami-san baking bread')
+    expect(prompt).toContain('Scene:\nA cozy bakery kitchen at dawn.')
+    expect(prompt).toContain('Style:\nSoft watercolor with warm light.')
+    expect(prompt).toContain('Composition:\nEye-level medium shot.')
+    expect(prompt).toContain('Subject (tsmami-san):')
+    expect(prompt).toContain('Constraints:')
+  })
+
+  it('omits optional sections for a plain text prompt', () => {
+    const prompt = buildTsmamiImagePrompt('tsmami-san baking bread')
+    expect(prompt).toContain('Theme:\ntsmami-san baking bread')
+    expect(prompt).not.toContain('Scene:')
+    expect(prompt).not.toContain('Style:')
+    expect(prompt).not.toContain('Composition:')
   })
 })
