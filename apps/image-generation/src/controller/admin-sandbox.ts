@@ -2,6 +2,7 @@ import { sValidator } from '@hono/standard-validator'
 import { Hono } from 'hono'
 import * as v from 'valibot'
 
+import { ImageBriefSchema } from '../domain/entities/generation-result'
 import type { Env } from '../env'
 import { base64ArrayBuffer } from '../lib/base64'
 import { requiresApiKey } from './middlewares'
@@ -12,6 +13,7 @@ const PromptFromWordsSchema = v.object({
 
 const ImageFromTextSchema = v.object({
   text: v.string(),
+  brief: v.optional(ImageBriefSchema),
 })
 
 export const adminSandboxApp = new Hono<Env>()
@@ -28,8 +30,8 @@ export const adminSandboxApp = new Hono<Env>()
     return c.json(prompt)
   })
   .post('/image', requiresApiKey(), sValidator('json', ImageFromTextSchema), async c => {
-    const { text } = c.req.valid('json')
-    const generated = await c.var.UCS.generateImage(text)
+    const { text, brief } = c.req.valid('json')
+    const generated = await c.var.UCS.generateImage(text, brief)
     const base64 = base64ArrayBuffer(generated.image)
     return c.json({
       modelName: generated.modelName,

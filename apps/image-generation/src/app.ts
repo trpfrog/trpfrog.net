@@ -5,7 +5,7 @@ import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudfla
 import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
 import { createOpenAIChatLLMJson } from './infra/services/llm'
 import { randomWordApi } from './infra/services/random-words'
-import { createGeminiImageGenerator } from './infra/services/text-to-image'
+import { createOpenAIImageGenerator } from './infra/services/text-to-image'
 import { prepareUsecasesBuilder } from './wire'
 
 export const app = createApp(
@@ -13,14 +13,17 @@ export const app = createApp(
     imageStoreRepo: imageStoreRepoCloudflareR2,
     imageMetadataRepo: imageMetadataRepoCloudflareD1,
     imageUpdateStatusRepo: imageUpdateStatusCloudflareKV,
-    textToImage: createGeminiImageGenerator({
-      modelName: 'gemini-3.1-flash-image-preview',
+    textToImage: createOpenAIImageGenerator({
+      modelName: 'gpt-image-2.6-sunburst',
+      size: '1024x1024',
+      quality: 'medium',
+      timeoutMs: 150_000,
     }),
     jsonChatbot: createOpenAIChatLLMJson({
-      model: 'gpt-5-mini-2025-08-07',
-      temperature: 0.9,
+      model: 'gpt-6-luna',
+      reasoningEffort: 'medium',
     }),
-    generateSeedWords: () => randomWordApi(10),
+    generateSeedWords: () => randomWordApi({ noun: 4, verb: 2, adjective: 2 }),
     assetsRepo: assetsRepoWorkersAssets,
   }).build(),
 )

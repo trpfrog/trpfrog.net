@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",
-    "@google/genai": "catalog:",
     "@hono/standard-validator": "catalog:",
     "@trpfrog.net/constants": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",

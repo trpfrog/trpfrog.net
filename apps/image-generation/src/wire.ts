@@ -73,7 +73,7 @@ export function prepareUsecasesBuilder(common: {
     })
     .inject(ucs => ({
       generateRandomImage: {
-        generateImage: prompt => ucs.generateImage(prompt),
+        generateImage: ucs.generateImage,
         generatePromptFromSeedWords: seedWords => ucs.generatePromptFromWords(seedWords),
         generateSeedWords: ucs.generateRandomWords,
       },

@@ -15,10 +15,11 @@ export const updateApp = new Hono<Env>().post(
     'query',
     v.object({
       force: StringifiedBooleanSchema,
+      wait: StringifiedBooleanSchema,
     }),
   ),
   async c => {
-    const forceUpdate = c.req.valid('query').force
+    const { force: forceUpdate, wait } = c.req.valid('query')
     const shouldUpdate = await c.var.UCS.shouldUpdate({ forceUpdate })
     if (!shouldUpdate.shouldUpdate) {
       return c.json(
@@ -30,7 +31,12 @@ export const updateApp = new Hono<Env>().post(
       )
     }
 
-    waitUntilIfSupported(c.var.UCS.refreshImageIfStale({ forceUpdate: true }))
+    const refresh = c.var.UCS.refreshImageIfStale({ forceUpdate: true })
+    if (wait) {
+      return c.json(await refresh, 200)
+    }
+
+    waitUntilIfSupported(refresh)
     return c.json(
       {
         status: 'accepted',

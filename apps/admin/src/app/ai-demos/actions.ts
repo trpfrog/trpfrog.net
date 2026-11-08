@@ -21,10 +21,17 @@ export async function fetchSeedWords(origin: string) {
   return json.words
 }
 
+export type ImageBrief = {
+  scene: string
+  style: string
+  composition: string
+}
+
 export type GeneratedPrompt = {
   author: string
   text: string
   translated: string
+  brief?: ImageBrief
 }
 
 export async function generatePromptFromWords(
@@ -52,9 +59,10 @@ export type GeneratedImageBase64 = {
 export async function generateImageFromText(
   text: string,
   origin: string,
+  brief?: ImageBrief,
 ): Promise<GeneratedImageBase64> {
   const res = await client(origin).generate.image.$post({
-    json: { text },
+    json: { text, brief },
     header: {
       'x-api-key': env.TRPFROG_FUNCTIONS_SECRET,
     },

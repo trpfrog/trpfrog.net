@@ -1,76 +1,70 @@
-import { createOpenAI } from '@ai-sdk/openai'
-import { generateText, type ModelMessage } from 'ai'
-import { getContext } from 'hono/context-storage'
+import { type OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
+import {
+  generateText,
+  jsonSchema,
+  NoObjectGeneratedError,
+  Output,
+  type JSONSchema7,
+  type ModelMessage,
+} from 'ai'
 import { match } from 'ts-pattern'
 
-import { ChatLLM, ChatLLMJson, ChatUtterance } from '../../domain/services/llm'
-import { Env } from '../../env'
+import { ChatLLMJson, ChatUtterance, InvalidChatLLMOutputError } from '../../domain/services/llm'
+import { createOpenAIClient } from './openai-client'
 
-function toModelMessages(rawChat: ChatUtterance[]): ModelMessage[] {
-  return rawChat.map(uttr =>
-    match<ChatUtterance, ModelMessage>(uttr)
-      .with({ role: 'system' }, ({ text }) => ({ role: 'system', content: text }) as const)
-      .with({ role: 'user' }, ({ text }) => ({ role: 'user', content: text }) as const)
-      .with({ role: 'assistant' }, ({ text }) => ({ role: 'assistant', content: text }) as const)
+/** AI SDK は messages 内の system を受け付けないので instructions に分離する */
+function toPrompt(rawChat: ChatUtterance[]): { instructions?: string; messages: ModelMessage[] } {
+  const instructions = rawChat
+    .filter(uttr => uttr.role === 'system')
+    .map(uttr => uttr.text)
+    .join('\n\n')
+
+  const messages = rawChat.flatMap((uttr): ModelMessage[] =>
+    match(uttr.role)
+      .with('system', () => [])
+      .with('user', 'assistant', role => [{ role, content: uttr.text }])
       .exhaustive(),
   )
+
+  return { instructions: instructions || undefined, messages }
 }
 
 type OpenAIChatParams = {
   model: string
-  temperature?: number
+  reasoningEffort?: OpenAIResponsesProviderOptions['reasoningEffort']
   apiKey?: string
 }
 
-export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
-  return async rawChat => {
-    const c = getContext<Env>()
-    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
-    const openai = createOpenAI({ apiKey })
-
-    const { text, response } = await generateText({
-      model: openai(params.model),
-      temperature: params.temperature,
-      messages: toModelMessages(rawChat),
-    })
-
-    return {
-      response: text,
-      modelName: params.model,
-      raw: response,
-    }
-  }
-}
-
 export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
-  return async rawChat => {
-    const c = getContext<Env>()
-    const apiKey = params.apiKey ?? c.env.OPENAI_API_KEY
-    const openai = createOpenAI({ apiKey })
+  return async (rawChat, { schema, schemaName }) => {
+    const openai = createOpenAIClient(params.apiKey)
 
-    const { text, response } = await generateText({
-      model: openai(params.model),
-      temperature: params.temperature,
-      messages: toModelMessages(rawChat),
-      providerOptions: {
-        openai: {
-          strictJsonSchema: true,
-          reasoningEffort: 'medium',
-        },
-      },
-    })
-
-    let json: Record<string, unknown>
     try {
-      json = JSON.parse(text) as Record<string, unknown>
-    } catch {
-      throw new Error('Failed to parse chatbot response JSON')
-    }
+      const { output, response } = await generateText({
+        model: openai(params.model),
+        ...toPrompt(rawChat),
+        output: Output.object({
+          schema: jsonSchema<Record<string, unknown>>(schema as JSONSchema7),
+          name: schemaName,
+        }),
+        providerOptions: {
+          openai: {
+            strictJsonSchema: true,
+            reasoningEffort: params.reasoningEffort,
+          } satisfies OpenAIResponsesProviderOptions,
+        },
+      })
 
-    return {
-      response: json,
-      modelName: params.model,
-      raw: response,
+      return {
+        response: output,
+        modelName: params.model,
+        raw: response,
+      }
+    } catch (e) {
+      if (NoObjectGeneratedError.isInstance(e)) {
+        throw new InvalidChatLLMOutputError(e.message, { cause: e })
+      }
+      throw e
     }
   }
 }

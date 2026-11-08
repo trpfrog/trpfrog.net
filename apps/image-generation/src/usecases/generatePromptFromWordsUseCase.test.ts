@@ -3,8 +3,14 @@ import { describe, it, expect } from 'vite-plus/test'
 import { createSingleDepsResolver } from '@trpfrog.net/utils'
 
 import { ImagePrompt } from '../domain/entities/generation-result'
-import { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
+import { ChatLLMJson, ChatUtterance, InvalidChatLLMOutputError } from '../domain/services/llm'
 import { generatePromptFromWordsUseCase } from './generatePromptFromWordsUseCase'
+
+const briefFields = {
+  scene: 'A test scene.',
+  style: 'A test style.',
+  composition: 'A test composition.',
+}
 
 describe('generateRandomTrpFrogPrompt', () => {
   const defaultResponse: ImagePrompt = {
@@ -18,6 +24,7 @@ describe('generateRandomTrpFrogPrompt', () => {
       response: {
         prompt: defaultResponse.text,
         translated: defaultResponse.translated,
+        ...briefFields,
       },
       modelName: 'test-model',
     }),
@@ -45,6 +52,7 @@ describe('generateRandomTrpFrogPrompt', () => {
           response: {
             prompt: defaultResponse.text,
             translated: defaultResponse.translated,
+            ...briefFields,
           },
           modelName: 'test-model',
         }),
@@ -74,15 +82,32 @@ describe('generateRandomTrpFrogPrompt', () => {
     )
   })
 
-  it('throws unexpected LLM errors', async () => {
+  it('throws unexpected LLM errors without retrying', async () => {
+    let calls = 0
     const generatePromptFromWords = resolve({
       jsonChatbot: async () => {
+        calls++
         throw new Error('Unexpected error')
       },
     })
     await expect(generatePromptFromWords(['word1', 'word2'])).rejects.toThrowError(
       'Unexpected error',
     )
+    expect(calls).toBe(1)
+  })
+
+  it('retries when the model output cannot be parsed', async () => {
+    let calls = 0
+    const generatePromptFromWords = resolve({
+      jsonChatbot: async () => {
+        calls++
+        throw new InvalidChatLLMOutputError('No object generated')
+      },
+    })
+    await expect(generatePromptFromWords(['word1', 'word2'])).rejects.toThrowError(
+      'No object generated',
+    )
+    expect(calls).toBe(4)
   })
 })
 
@@ -104,6 +129,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
           response = {
             prompt: 'This is an invalid prompt, missing "ts/mami-san"',
             translated: 'これは無効なプロンプトです、"つまみさん"がありません',
+            ...briefFields,
           }
           break
         case 3:
@@ -111,12 +137,14 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
             prompt:
               'A long long long long long long long long long long long long long long tsmami-san reading documents',
             translated: 'ドキュメントを読むつまみさん',
+            ...briefFields,
           }
           break
         case 4:
           response = {
             prompt: 'tsmami-san reading documents',
             translated: 'ドキュメントを読むつまみさん',
+            ...briefFields,
           }
           break
       }
@@ -130,7 +158,7 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
     const generatePromptFromWords = resolve({})
 
     await expect(generatePromptFromWords(['docs', 'learn'])).resolves.toMatchObject({
-      prompt: 'tsmami-san reading documents',
+      text: 'tsmami-san reading documents',
       translated: 'ドキュメントを読むつまみさん',
       author: 'test-model',
     })
@@ -139,10 +167,8 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
       [
         {
           "role": "user",
-          "text": "INPUT WORDS:
-      docs, learn
-
-      Produce the JSON now.",
+          "text": "Random words:
+      docs, learn",
         },
         {
           "role": "assistant",
@@ -153,33 +179,42 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - Invalid key: Expected "prompt" but received undefined
-      - Invalid key: Expected "translated" but received undefined",
+      - \`prompt\`: Invalid key: Expected "prompt" but received undefined
+      - \`translated\`: Invalid key: Expected "translated" but received undefined
+      - \`scene\`: Invalid key: Expected "scene" but received undefined
+      - \`style\`: Invalid key: Expected "style" but received undefined
+      - \`composition\`: Invalid key: Expected "composition" but received undefined",
         },
         {
           "role": "assistant",
           "text": "{
         "prompt": "This is an invalid prompt, missing \\"ts/mami-san\\"",
-        "translated": "これは無効なプロンプトです、\\"つまみさん\\"がありません"
+        "translated": "これは無効なプロンプトです、\\"つまみさん\\"がありません",
+        "scene": "A test scene.",
+        "style": "A test style.",
+        "composition": "A test composition."
       }",
         },
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - \`prompt\` must include "tsmami-san"",
+      - \`prompt\`: must include "tsmami-san"",
         },
         {
           "role": "assistant",
           "text": "{
         "prompt": "A long long long long long long long long long long long long long long tsmami-san reading documents",
-        "translated": "ドキュメントを読むつまみさん"
+        "translated": "ドキュメントを読むつまみさん",
+        "scene": "A test scene.",
+        "style": "A test style.",
+        "composition": "A test composition."
       }",
         },
         {
           "role": "user",
           "text": "Output JSON validation failed:
-      - "prompt" must be at most 80 characters (current: 100)
-      - "prompt" must be at most 12 words (current: 19)",
+      - \`prompt\`: must be at most 80 characters (current: 100)
+      - \`prompt\`: must be at most 12 words (current: 19)",
         },
       ]
     `)
@@ -201,5 +236,41 @@ describe('generatePromptFromWordsUseCase retry with feedback', () => {
       /Output JSON validation failed/,
     )
     expect(calls).toBe(4)
+  })
+
+  it('passes a JSON schema to the chatbot and returns an image brief', async () => {
+    let receivedOptions: Parameters<ChatLLMJson>[1] | undefined
+    const { resolve } = createSingleDepsResolver(generatePromptFromWordsUseCase, {
+      jsonChatbot: async (_chat, options) => {
+        receivedOptions = options
+        return {
+          response: {
+            prompt: 'tsmami-san baking bread',
+            translated: 'パンを焼くつまみさん',
+            scene: 'A cozy bakery kitchen at dawn.',
+            style: 'Soft watercolor with warm light.',
+            composition: 'Eye-level medium shot.',
+          },
+          modelName: 'test-model',
+        }
+      },
+    })
+
+    const result = await resolve({})(['bread'])
+
+    expect(receivedOptions?.schema).toMatchObject({
+      type: 'object',
+      additionalProperties: false,
+      required: ['prompt', 'translated', 'scene', 'style', 'composition'],
+    })
+    expect(result).toMatchObject({
+      text: 'tsmami-san baking bread',
+      translated: 'パンを焼くつまみさん',
+      brief: {
+        scene: 'A cozy bakery kitchen at dawn.',
+        style: 'Soft watercolor with warm light.',
+        composition: 'Eye-level medium shot.',
+      },
+    })
   })
 })
