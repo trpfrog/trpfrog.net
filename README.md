@@ -11,6 +11,38 @@
 
 ![](./apps/trpfrog.net/public/images/screenshot.png)
 
+## 🔐 Environment variables and deployment
+
+1Password is the source of truth for secrets. Each app has `.tpl` files containing `op://` references, so no value is stored in the repository.
+
+| File | Purpose |
+| --- | --- |
+| `apps/*/.env.local.tpl`, `apps/image-generation/.dev.vars.tpl` | Local development (`Development` vault) |
+| `apps/image-generation/.prod.vars.tpl` | Worker Secrets (`Production` vault) |
+| `apps/trpfrog.net/.prod.vars.tpl` | Vercel variables (`Production` vault) |
+
+```sh
+vp run -r secrets:dev               # writes .env.local and .dev.vars, overwriting existing files
+vp run --filter trpfrog.net env:push --dry-run  # prints the changes to Vercel
+vp run --filter trpfrog.net env:push            # applies them; redeploy to pick them up
+```
+
+### Deployment
+
+- Workers deploy on pushes to `main` that touch their sources (`deploy-content-server.yml`, `deploy-image-generation.yml`), or manually from the Actions tab.
+- Vercel variables are pushed manually by the `Push Vercel env` workflow, which defaults to a dry run.
+- Vercel skips builds with no change relevant to the website (`apps/trpfrog.net/tools/ignoreBuild.sh`).
+
+### First-time setup
+
+1. In 1Password, create a Login or Secure Note item named `trpfrog.net` in both the `Development` and `Production` vaults, with one field per key in the templates.
+2. In the `Production` vault, create an item named `trpfrog.net-deploy` with these fields:
+   - `CLOUDFLARE_API_TOKEN`: edit access to Workers Scripts, Workers KV Storage, Workers R2 Storage, D1, Workers Routes and the DNS of the zone, plus read access to Account Settings
+   - `CLOUDFLARE_ACCOUNT_ID`
+   - `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+3. Create a 1Password Service Account with read-only access to the `Production` vault.
+4. Create a GitHub Environment named `deploy`, limit its deployment branches to `main`, and add the Service Account token as the `OP_SERVICE_ACCOUNT_TOKEN` secret.
+
 ## 🧩 Technology Stack
 
 - **Node.js**
