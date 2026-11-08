@@ -7,28 +7,20 @@ import { InvalidTextToImageInputError, TextToImage } from '../domain/services/te
 import { base64ArrayBuffer } from '../lib/base64'
 
 /**
- * GPT Image 2.6 のプロンプトガイドに沿って、ラベル付きセクション
- * (reference / scene / subject / style / constraints) で指示を組み立てる。
+ * GPT Image 2.6 のプロンプトガイドに沿って、ラベル付きセクションで指示を組み立てる。
  */
-export function buildTsmamiImagePrompt(input: string | ImageBrief): string {
-  const brief: ImageBrief = typeof input === 'string' ? { caption: input } : input
-
-  const optionalSection = (label: string, body?: string) => (body ? `\n\n${label}:\n${body}` : '')
-
-  return (
+export function buildTsmamiImagePrompt(caption: string, brief?: ImageBrief): string {
+  return [
     dedent`
-    Create a new square illustration of the character "tsmami-san" (also called つまみさん).
+      Create a new square illustration of the character "tsmami-san" (also called つまみさん).
 
-    Reference image:
-    Image 1 is a character reference for tsmami-san only. Keep its identity, but do not copy its pose, framing, background, or art style.
-
-    Theme:
-    ${brief.caption}
-  ` +
-    optionalSection('Scene', brief.scene) +
-    optionalSection('Style', brief.style) +
-    optionalSection('Composition', brief.composition) +
-    '\n\n' +
+      Reference image:
+      Image 1 is a character reference for tsmami-san only. Keep its identity, but do not copy its pose, framing, background, or art style.
+    `,
+    `Theme:\n${caption}`,
+    ...(brief
+      ? [`Scene:\n${brief.scene}`, `Style:\n${brief.style}`, `Composition:\n${brief.composition}`]
+      : []),
     dedent`
       Subject (tsmami-san):
       - A round green sphere sitting inside a box. It is always inside a box.
@@ -43,31 +35,35 @@ export function buildTsmamiImagePrompt(input: string | ImageBrief): string {
       - A complete illustration with a fully drawn background that fits the scene; not a sticker or cutout.
       - No text, letters, captions, logos, signatures, or watermarks.
       - Keep it wholesome and family-friendly.
-    `
+    `,
+  ].join('\n\n')
+}
+
+async function fetchTsmamiImageBase64(): Promise<string> {
+  // FIXME: なぜか Workers Assets が取れないので一時的に Cloudinary から取ってくる。あとで deps.assetsRepo.fetch('/tsmami.png') にする
+  const res = await fetch(
+    'https://res.cloudinary.com/trpfrog/image/upload/f_png,c_limit,w_1024/icons_gallery/22.png',
+    {
+      // @ts-ignore -- Workers では cf を使えるが、client ビルド時に巻き込まれて TypeError が発生するので ignore する
+      cf: {
+        cacheTtl: 60 * 60 * 24 * 7,
+      },
+    },
   )
+  if (!res.ok) {
+    throw new Error(`Failed to fetch the reference image: ${res.status}`)
+  }
+  return base64ArrayBuffer(await res.arrayBuffer())
 }
 
 export function generateImageUseCase(deps: { textToImage: TextToImage; assetsRepo: AssetsRepo }) {
-  return async (input: string | ImageBrief) => {
-    const prompt = buildTsmamiImagePrompt(input)
+  return async (caption: string, brief?: ImageBrief) => {
+    const prompt = buildTsmamiImagePrompt(caption, brief)
 
     try {
-      // FIXME: なぜか Workers Assets が取れないので一時的に Cloudinary から取ってくる。あとで deps.assetsRepo.fetch('/tsmami.png') にする
-      const tsmamiImageBase64 = await fetch(
-        'https://res.cloudinary.com/trpfrog/image/upload/f_png,c_limit,w_1024/icons_gallery/22.png',
-        {
-          // @ts-ignore -- Workers では cf を使えるが、client ビルド時に巻き込まれて TypeError が発生するので ignore する
-          cf: {
-            cacheTtl: 60 * 60 * 24 * 7,
-          },
-        },
-      )
-        .then(res => res.arrayBuffer())
-        .then(ab => base64ArrayBuffer(ab))
-
       const attempt = async () => {
         try {
-          return await deps.textToImage(prompt, [tsmamiImageBase64])
+          return await deps.textToImage(prompt, [await fetchTsmamiImageBase64()])
         } catch (e) {
           if (e instanceof InvalidTextToImageInputError) {
             // 入力起因のエラーはリトライしない

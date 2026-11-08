@@ -27,17 +27,16 @@ export const ImageMetadataSchema = v.object({
  * 画像モデルに渡す詳細な指示。表示用の短いキャプション (`ImagePrompt.text`) とは別に持つ。
  * 永続化はしない。
  */
-export type ImageBrief = {
-  /** 表示用の短い英語キャプション */
-  caption: string
+export const ImageBriefSchema = v.object({
   /** 舞台・状況・小道具などの具体的な描写 */
-  scene?: string
+  scene: v.string(),
   /** 画風・画材・ライティング・配色 */
-  style?: string
+  style: v.string(),
   /** 構図・画角 */
-  composition?: string
-}
+  composition: v.string(),
+})
 
+export type ImageBrief = InferSchemaOutput<typeof ImageBriefSchema>
 export type ImagePrompt = InferSchemaOutput<typeof ImageGenerationPromptSchema>
 export type ImageMetadata = InferSchemaOutput<typeof ImageMetadataSchema>
 export type GeneratedImage = InferSchemaOutput<typeof GeneratedImageSchema>

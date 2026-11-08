@@ -42,7 +42,7 @@ const createExecutionCtx = (): ExecutionContext => ({
 })
 
 describe('scheduled', () => {
-  it('sends an authenticated POST request to /icongen/update', async () => {
+  it('sends an authenticated POST request to /icongen/update and waits for it', async () => {
     const { worker, appRequest } = await loadWorkerWithMockedController(
       async () =>
         new Response(JSON.stringify({ status: 'accepted' }), {
@@ -58,7 +58,7 @@ describe('scheduled', () => {
 
     expect(appRequest).toHaveBeenCalledTimes(1)
     const [input, requestInit, calledEnv, calledExecutionCtx] = appRequest.mock.calls[0]
-    expect(input).toBe('/icongen/update')
+    expect(input).toBe('/icongen/update?wait=true')
     expect(requestInit?.method).toBe('POST')
     expect(new Headers(requestInit?.headers).get('x-api-key')).toBe('secret-key')
     expect(calledEnv).toBe(env)

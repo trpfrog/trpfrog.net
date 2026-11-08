@@ -103,6 +103,22 @@ describe('Image Generation App', () => {
     expect(json).toEqual({ status: 'accepted' })
   })
 
+  it('should wait for the update result when wait is true', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const app = createMockedClient({
+      generateSeedWords: async () => {
+        throw new Error('word API is down')
+      },
+    })
+    const res = await app.update.$post({
+      query: { force: 'true', wait: 'true' },
+      header: { 'x-api-key': 'valid-api-key' },
+    })
+    expect(res.status).toBe(200)
+    expect(await res.json()).toMatchObject({ updated: false })
+    errorSpy.mockRestore()
+  })
+
   it('should skip updating the image when force is false and image was already generated today', async () => {
     const app = createMockedClient()
     const res = await app.update.$post({

@@ -9,7 +9,8 @@ export const scheduled = async (
   executionCtx: ExecutionContext,
 ) => {
   const res = await app.request(
-    `${services.imageGeneration.basePath}/update`,
+    // HTTP 起点の waitUntil は 30 秒で打ち切られるので、cron では完了まで待つ
+    `${services.imageGeneration.basePath}/update?wait=true`,
     {
       method: 'POST',
       headers: {

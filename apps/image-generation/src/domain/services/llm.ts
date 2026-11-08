@@ -7,18 +7,16 @@ export type ChatUtterance = {
 
 type WithMetadata<T> = { response: T; modelName: string; raw?: unknown }
 
-export type ChatLLM = (chat: ChatUtterance[]) => Promise<WithMetadata<string>>
+/** The model responded, but its output did not match the requested schema. */
+export class InvalidChatLLMOutputError extends Error {}
 
 export type ChatLLMJsonOptions = {
-  /**
-   * JSON Schema the response must conform to (enforced via Structured Outputs).
-   * If omitted, the model is only asked to return valid JSON.
-   */
-  schema?: Record<string, unknown>
-  schemaName?: string
+  /** JSON Schema the response must conform to */
+  schema: Record<string, unknown>
+  schemaName: string
 }
 
 export type ChatLLMJson = (
   chat: ChatUtterance[],
-  options?: ChatLLMJsonOptions,
+  options: ChatLLMJsonOptions,
 ) => Promise<WithMetadata<Record<string, unknown>>>

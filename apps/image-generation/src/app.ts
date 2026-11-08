@@ -17,6 +17,7 @@ export const app = createApp(
       modelName: 'gpt-image-2.6-sunburst',
       size: '1024x1024',
       quality: 'medium',
+      timeoutMs: 150_000,
     }),
     jsonChatbot: createOpenAIChatLLMJson({
       model: 'gpt-6-luna',

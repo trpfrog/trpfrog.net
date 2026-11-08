@@ -85,8 +85,7 @@ describe('generateImage', () => {
 
 describe('buildTsmamiImagePrompt', () => {
   it('builds labeled sections from an image brief', () => {
-    const prompt = buildTsmamiImagePrompt({
-      caption: 'tsmami-san baking bread',
+    const prompt = buildTsmamiImagePrompt('tsmami-san baking bread', {
       scene: 'A cozy bakery kitchen at dawn.',
       style: 'Soft watercolor with warm light.',
       composition: 'Eye-level medium shot.',
@@ -99,7 +98,7 @@ describe('buildTsmamiImagePrompt', () => {
     expect(prompt).toContain('Constraints:')
   })
 
-  it('omits optional sections for a plain text prompt', () => {
+  it('omits brief sections for a caption-only prompt', () => {
     const prompt = buildTsmamiImagePrompt('tsmami-san baking bread')
     expect(prompt).toContain('Theme:\ntsmami-san baking bread')
     expect(prompt).not.toContain('Scene:')

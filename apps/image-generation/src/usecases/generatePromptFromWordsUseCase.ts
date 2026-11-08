@@ -5,7 +5,11 @@ import * as v from 'valibot'
 import { safeValidateUnknown } from '@trpfrog.net/utils'
 
 import type { ImageBrief, ImagePrompt } from '../domain/entities/generation-result'
-import type { ChatLLMJson, ChatUtterance } from '../domain/services/llm'
+import {
+  InvalidChatLLMOutputError,
+  type ChatLLMJson,
+  type ChatUtterance,
+} from '../domain/services/llm'
 
 const MAX_PROMPT_CHARS = 80
 const MAX_PROMPT_WORDS = 12
@@ -16,7 +20,7 @@ const NonEmptyStringSchema = v.pipe(
   v.nonEmpty('must not be empty'),
 )
 
-const FinalPromptSchema = v.looseObject({
+const FinalPromptSchema = v.object({
   prompt: v.pipe(
     NonEmptyStringSchema,
     v.maxLength(
@@ -35,9 +39,9 @@ const FinalPromptSchema = v.looseObject({
     NonEmptyStringSchema,
     v.check(e => !/[。.、,]$/.test(e), 'must not end with punctuation'),
   ),
-  scene: v.optional(NonEmptyStringSchema),
-  style: v.optional(NonEmptyStringSchema),
-  composition: v.optional(NonEmptyStringSchema),
+  scene: NonEmptyStringSchema,
+  style: NonEmptyStringSchema,
+  composition: NonEmptyStringSchema,
 })
 
 /** どのキーの問題かが LLM に伝わるよう、issue の path をメッセージの前に付ける */
@@ -63,12 +67,11 @@ const OUTPUT_JSON_SCHEMA = {
   properties: {
     prompt: {
       type: 'string',
-      description: `Short English caption shown to viewers. Includes "tsmami-san". At most ${MAX_PROMPT_WORDS} words and ${MAX_PROMPT_CHARS} characters, no terminal punctuation.`,
+      description: 'Short English caption shown to viewers.',
     },
     translated: {
       type: 'string',
-      description:
-        'Natural Japanese translation of the caption, ending with 「〜するつまみさん」 or 「〜なつまみさん」, without 「。」.',
+      description: 'Natural Japanese translation of the caption.',
     },
     scene: {
       type: 'string',
@@ -160,7 +163,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
         text: prompt,
         translated,
         author: modelName?.trim() ?? 'unknown',
-        brief: { caption: prompt, scene, style, composition },
+        brief: { scene, style, composition },
       }
       if (options?.includeRaw) {
         payload.raw = raw
@@ -172,6 +175,9 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
       retries: 3,
       minTimeout: 10,
       maxTimeout: 20,
+      // HTTP エラーのリトライは LLM クライアントに任せ、ここではモデルの出力不正だけをやり直す
+      shouldRetry: ({ error }) =>
+        error instanceof InvalidModelOutputError || error instanceof InvalidChatLLMOutputError,
       onFailedAttempt: ({ error }) => {
         if (error instanceof InvalidModelOutputError) {
           // Feed the content of the parse error back to the LLM and retry

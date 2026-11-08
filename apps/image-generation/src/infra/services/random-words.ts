@@ -1,12 +1,12 @@
 import * as v from 'valibot'
 
-import { createURL, validateUnknown } from '@trpfrog.net/utils'
+import { createURL, typedObjectEntries, validateUnknown } from '@trpfrog.net/utils'
 
-import { PartOfSpeech, RandomWordGenerator, WordMix } from '../../domain/services/random-words'
+import { PartOfSpeech, RandomWordGenerator } from '../../domain/services/random-words'
 
-// 絵にしにくい専門用語 (nucleotidase など) を避ける
+// 長い語は絵にしにくい専門用語 (nucleotidase など) に偏りがちなので避ける
 const MIN_WORD_LENGTH = 3
-const MAX_WORD_LENGTH = 12
+const MAX_WORD_LENGTH = 10
 
 const WordsResponseSchema = (count: number) =>
   v.pipe(v.array(v.object({ word: v.string() })), v.length(count))
@@ -27,11 +27,9 @@ async function fetchWords(type: PartOfSpeech, count: number): Promise<string[]> 
   return validateUnknown(WordsResponseSchema(count), await res.json()).map(({ word }) => word)
 }
 
-export const randomWordApi: RandomWordGenerator = async (mix: WordMix) => {
+export const randomWordApi: RandomWordGenerator = async mix => {
   const words = await Promise.all(
-    (Object.entries(mix) as [PartOfSpeech, number][]).map(([type, count]) =>
-      fetchWords(type, count),
-    ),
+    typedObjectEntries(mix).map(([type, count]) => fetchWords(type, count)),
   )
   return words.flat()
 }

@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
 
+import { InvalidChatLLMOutputError } from '../../domain/services/llm'
 import { createOpenAIChatLLMJson } from './llm'
 
 function stubResponsesApi(text: string) {
@@ -53,5 +54,17 @@ describe('createOpenAIChatLLMJson', () => {
     const body = JSON.stringify(fetchMock.mock.calls[0]?.[1]?.body)
     expect(body).toContain('system text')
     expect(body).toContain('user text')
+  })
+
+  it('reports unparsable model output as InvalidChatLLMOutputError', async () => {
+    stubResponsesApi('not json')
+    const llm = createOpenAIChatLLMJson({ model: 'test-model', apiKey: 'dummy' })
+
+    await expect(
+      llm([{ role: 'user', text: 'user text' }], {
+        schema: { type: 'object' },
+        schemaName: 'answer',
+      }),
+    ).rejects.toBeInstanceOf(InvalidChatLLMOutputError)
   })
 })

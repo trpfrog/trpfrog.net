@@ -134,7 +134,7 @@ export default function PromptDemoPage() {
                 setLoading('image')
                 try {
                   const sel = useWhich === 'en' ? prompt.text : prompt.translated
-                  const img = await generateImageFromText(sel, origin)
+                  const img = await generateImageFromText(sel, origin, prompt.brief)
                   setImageDataUrl(img.dataUrl)
                 } finally {
                   setLoading(null)

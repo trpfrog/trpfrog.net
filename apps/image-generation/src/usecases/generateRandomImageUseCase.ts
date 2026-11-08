@@ -2,10 +2,8 @@ import { GeneratedImage, ImageBrief, ImagePrompt } from '../domain/entities/gene
 
 export function generateRandomImageUseCase(deps: {
   generateSeedWords: () => Promise<string[]>
-  generatePromptFromSeedWords: (
-    seedWords: string[],
-  ) => Promise<ImagePrompt & { brief?: ImageBrief }>
-  generateImage: (prompt: string | ImageBrief) => Promise<GeneratedImage>
+  generatePromptFromSeedWords: (seedWords: string[]) => Promise<ImagePrompt & { brief: ImageBrief }>
+  generateImage: (caption: string, brief: ImageBrief) => Promise<GeneratedImage>
 }) {
   return async (): Promise<{
     prompt: ImagePrompt
@@ -13,7 +11,7 @@ export function generateRandomImageUseCase(deps: {
   }> => {
     const seedWords = await deps.generateSeedWords()
     const { brief, ...prompt } = await deps.generatePromptFromSeedWords(seedWords)
-    const imageGenerationResult = await deps.generateImage(brief ?? prompt.text)
+    const imageGenerationResult = await deps.generateImage(prompt.text, brief)
 
     return {
       prompt,

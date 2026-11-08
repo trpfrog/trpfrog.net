@@ -1,10 +1,16 @@
-import { createOpenAI, type OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
-import { generateText, jsonSchema, Output, type JSONSchema7, type ModelMessage } from 'ai'
-import { getContext } from 'hono/context-storage'
+import { type OpenAIResponsesProviderOptions } from '@ai-sdk/openai'
+import {
+  generateText,
+  jsonSchema,
+  NoObjectGeneratedError,
+  Output,
+  type JSONSchema7,
+  type ModelMessage,
+} from 'ai'
 import { match } from 'ts-pattern'
 
-import { ChatLLM, ChatLLMJson, ChatUtterance } from '../../domain/services/llm'
-import { Env } from '../../env'
+import { ChatLLMJson, ChatUtterance, InvalidChatLLMOutputError } from '../../domain/services/llm'
+import { createOpenAIClient } from './openai-client'
 
 /** AI SDK は messages 内の system を受け付けないので instructions に分離する */
 function toPrompt(rawChat: ChatUtterance[]): { instructions?: string; messages: ModelMessage[] } {
@@ -16,8 +22,7 @@ function toPrompt(rawChat: ChatUtterance[]): { instructions?: string; messages: 
   const messages = rawChat.flatMap((uttr): ModelMessage[] =>
     match(uttr.role)
       .with('system', () => [])
-      .with('user', role => [{ role, content: uttr.text }])
-      .with('assistant', role => [{ role, content: uttr.text }])
+      .with('user', 'assistant', role => [{ role, content: uttr.text }])
       .exhaustive(),
   )
 
@@ -30,61 +35,36 @@ type OpenAIChatParams = {
   apiKey?: string
 }
 
-function createClient(params: OpenAIChatParams) {
-  return createOpenAI({ apiKey: params.apiKey ?? getContext<Env>().env.OPENAI_API_KEY })
-}
-
-export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
-  return async rawChat => {
-    const openai = createClient(params)
-
-    const { text, response } = await generateText({
-      model: openai(params.model),
-      ...toPrompt(rawChat),
-      providerOptions: {
-        openai: {
-          reasoningEffort: params.reasoningEffort,
-        } satisfies OpenAIResponsesProviderOptions,
-      },
-    })
-
-    return {
-      response: text,
-      modelName: params.model,
-      raw: response,
-    }
-  }
-}
-
 export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
-  return async (rawChat, options) => {
-    const openai = createClient(params)
+  return async (rawChat, { schema, schemaName }) => {
+    const openai = createOpenAIClient(params.apiKey)
 
-    const { output, response } = await generateText({
-      model: openai(params.model),
-      ...toPrompt(rawChat),
-      output: options?.schema
-        ? Output.object({
-            schema: jsonSchema<Record<string, unknown>>(options.schema as JSONSchema7),
-            name: options.schemaName,
-          })
-        : Output.json({ name: options?.schemaName }),
-      providerOptions: {
-        openai: {
-          strictJsonSchema: true,
-          reasoningEffort: params.reasoningEffort,
-        } satisfies OpenAIResponsesProviderOptions,
-      },
-    })
+    try {
+      const { output, response } = await generateText({
+        model: openai(params.model),
+        ...toPrompt(rawChat),
+        output: Output.object({
+          schema: jsonSchema<Record<string, unknown>>(schema as JSONSchema7),
+          name: schemaName,
+        }),
+        providerOptions: {
+          openai: {
+            strictJsonSchema: true,
+            reasoningEffort: params.reasoningEffort,
+          } satisfies OpenAIResponsesProviderOptions,
+        },
+      })
 
-    if (output == null || typeof output !== 'object' || Array.isArray(output)) {
-      throw new Error('Chatbot response is not a JSON object')
-    }
-
-    return {
-      response: output as Record<string, unknown>,
-      modelName: params.model,
-      raw: response,
+      return {
+        response: output,
+        modelName: params.model,
+        raw: response,
+      }
+    } catch (e) {
+      if (NoObjectGeneratedError.isInstance(e)) {
+        throw new InvalidChatLLMOutputError(e.message, { cause: e })
+      }
+      throw e
     }
   }
 }

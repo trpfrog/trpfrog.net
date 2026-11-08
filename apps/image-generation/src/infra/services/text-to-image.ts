@@ -1,6 +1,5 @@
-import { createOpenAI, type OpenAIImageModelEditOptions } from '@ai-sdk/openai'
+import { type OpenAIImageModelEditOptions } from '@ai-sdk/openai'
 import { APICallError, generateImage, type GenerateImageResult } from 'ai'
-import { getContext } from 'hono/context-storage'
 
 import { GeneratedImage } from '../../domain/entities/generation-result'
 import {
@@ -8,24 +7,15 @@ import {
   TextToImage,
   UnexpectedTextToImageModelResponseError,
 } from '../../domain/services/text-to-image'
-import { Env } from '../../env'
+import { createOpenAIClient } from './openai-client'
 
 type OpenAIImageGeneratorParams = {
   modelName: string
   size?: `${number}x${number}`
   quality?: OpenAIImageModelEditOptions['quality']
-  complexity?: OpenAIImageModelEditOptions['complexity']
+  /** 1 回の生成で待つ上限 */
+  timeoutMs: number
   apiKey?: string
-}
-
-/**
- * 4xx のうち、リトライしても結果が変わらないもの（入力不正・モデレーション拒否など）か判定する。
- * 408 (timeout) と 429 (rate limit) は一時的なエラーなのでリトライ対象にする。
- */
-function isNonRetryableClientError(e: unknown): e is APICallError {
-  if (!APICallError.isInstance(e) || e.statusCode == null) return false
-  const status = e.statusCode
-  return status >= 400 && status < 500 && status !== 408 && status !== 429
 }
 
 function logUsage(modelName: string, result: GenerateImageResult) {
@@ -35,8 +25,7 @@ function logUsage(modelName: string, result: GenerateImageResult) {
 
 export function createOpenAIImageGenerator(params: OpenAIImageGeneratorParams): TextToImage {
   return async (text: string, inputImagesBase64?: string[]): Promise<GeneratedImage> => {
-    const c = getContext<Env>()
-    const openai = createOpenAI({ apiKey: params.apiKey ?? c.env.OPENAI_API_KEY })
+    const openai = createOpenAIClient(params.apiKey)
 
     // 参照画像がある場合は /images/edits が使われる
     const images = inputImagesBase64 ?? []
@@ -46,15 +35,21 @@ export function createOpenAIImageGenerator(params: OpenAIImageGeneratorParams): 
       size: params.size,
       // リトライは usecase 側で制御する
       maxRetries: 0,
+      abortSignal: AbortSignal.timeout(params.timeoutMs),
       providerOptions: {
         openai: {
           quality: params.quality,
-          complexity: params.complexity,
           outputFormat: 'png',
         } satisfies OpenAIImageModelEditOptions,
       },
     }).catch(e => {
-      if (isNonRetryableClientError(e)) {
+      // リトライしても結果が変わらないエラー（入力不正・モデレーション拒否など）
+      if (
+        APICallError.isInstance(e) &&
+        e.statusCode != null &&
+        e.statusCode >= 400 &&
+        !e.isRetryable
+      ) {
         console.error(
           `OpenAI image client error (${e.statusCode}). Abort without retry.\nRequest:`,
           text,
@@ -77,16 +72,15 @@ export function createOpenAIImageGenerator(params: OpenAIImageGeneratorParams): 
     }
     logUsage(params.modelName, result)
 
-    const file = result.images[0]
-    if (!file || file.uint8Array.byteLength === 0) {
+    const file = result.image
+    if (file.uint8Array.byteLength === 0) {
       throw new UnexpectedTextToImageModelResponseError('Model returned no image')
     }
 
-    const subtype = file.mediaType.split('/')[1] ?? 'png'
     return {
       image: new Uint8Array(file.uint8Array).buffer,
       modelName: params.modelName,
-      extension: '.' + subtype,
+      extension: '.png',
     }
   }
 }
