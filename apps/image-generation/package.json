@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "cf dev",
     "deploy": "cf deploy",
+    "deploy:prod": "vp run migrate:remote && op run --env-file .prod.vars.tpl -- ./node_modules/.bin/cf deploy --secrets-file .prod.secrets.env",
+    "secrets:dev": "op inject --force --in-file .dev.vars.tpl --out-file .dev.vars",
     "test": "vp test",
     "generate": "drizzle-kit generate",
     "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .cloudflare/state",

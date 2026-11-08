@@ -41,6 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 .env*.local
+.prod.vars
 
 # unused lock files
 package-lock.json
