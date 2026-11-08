@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
+    "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local",
     "build": "next build",
     "typegen": "next typegen",
     "start": "next start"

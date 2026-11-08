@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development bun run --hot src/dev-server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local"
   },
   "type": "module",
   "exports": {

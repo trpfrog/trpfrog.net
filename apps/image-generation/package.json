@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "cf dev",
     "deploy": "cf deploy",
+    "secrets:dev": "op inject --force --in-file .dev.vars.tpl --out-file .dev.vars",
     "test": "vp test",
     "generate": "drizzle-kit generate",
     "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .cloudflare/state",
