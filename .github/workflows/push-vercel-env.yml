@@ -1,0 +1,41 @@
+name: Push Vercel env
+
+# Runs manually because GitHub cannot observe changes made in 1Password.
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Only print the planned changes
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  push:
+    name: Push to Vercel
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: deploy
+    concurrency:
+      group: push-vercel-env
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          node-version: 24.x
+
+      - uses: 1password/install-cli-action@1a3160d5e9de1ae0803eaa08a88746f5ae3daa50 # v4.1.0
+        with:
+          version: 2.41.1
+
+      - name: Push variables
+        working-directory: apps/trpfrog.net
+        run: node tools/pushVercelEnv.ts ${{ inputs.dry-run && '--dry-run' || '' }}
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}

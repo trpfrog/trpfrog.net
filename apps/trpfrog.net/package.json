@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "prisma generate && next dev",
+    "env:push": "node tools/pushVercelEnv.ts",
     "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local",
     "analyze": "ANALYZE=true next build",
     "build": "prisma generate && next build",
