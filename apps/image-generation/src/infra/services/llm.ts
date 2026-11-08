@@ -6,14 +6,22 @@ import { match } from 'ts-pattern'
 import { ChatLLM, ChatLLMJson, ChatUtterance } from '../../domain/services/llm'
 import { Env } from '../../env'
 
-function toModelMessages(rawChat: ChatUtterance[]): ModelMessage[] {
-  return rawChat.map(uttr =>
-    match<ChatUtterance, ModelMessage>(uttr)
-      .with({ role: 'system' }, ({ text }) => ({ role: 'system', content: text }) as const)
-      .with({ role: 'user' }, ({ text }) => ({ role: 'user', content: text }) as const)
-      .with({ role: 'assistant' }, ({ text }) => ({ role: 'assistant', content: text }) as const)
+/** AI SDK は messages 内の system を受け付けないので instructions に分離する */
+function toPrompt(rawChat: ChatUtterance[]): { instructions?: string; messages: ModelMessage[] } {
+  const instructions = rawChat
+    .filter(uttr => uttr.role === 'system')
+    .map(uttr => uttr.text)
+    .join('\n\n')
+
+  const messages = rawChat.flatMap((uttr): ModelMessage[] =>
+    match(uttr.role)
+      .with('system', () => [])
+      .with('user', role => [{ role, content: uttr.text }])
+      .with('assistant', role => [{ role, content: uttr.text }])
       .exhaustive(),
   )
+
+  return { instructions: instructions || undefined, messages }
 }
 
 type OpenAIChatParams = {
@@ -23,8 +31,7 @@ type OpenAIChatParams = {
 }
 
 function createClient(params: OpenAIChatParams) {
-  const c = getContext<Env>()
-  return createOpenAI({ apiKey: params.apiKey ?? c.env.OPENAI_API_KEY })
+  return createOpenAI({ apiKey: params.apiKey ?? getContext<Env>().env.OPENAI_API_KEY })
 }
 
 export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
@@ -33,7 +40,7 @@ export function createOpenAIChatLLM(params: OpenAIChatParams): ChatLLM {
 
     const { text, response } = await generateText({
       model: openai(params.model),
-      messages: toModelMessages(rawChat),
+      ...toPrompt(rawChat),
       providerOptions: {
         openai: {
           reasoningEffort: params.reasoningEffort,
@@ -55,7 +62,7 @@ export function createOpenAIChatLLMJson(params: OpenAIChatParams): ChatLLMJson {
 
     const { output, response } = await generateText({
       model: openai(params.model),
-      messages: toModelMessages(rawChat),
+      ...toPrompt(rawChat),
       output: options?.schema
         ? Output.object({
             schema: jsonSchema<Record<string, unknown>>(options.schema as JSONSchema7),
