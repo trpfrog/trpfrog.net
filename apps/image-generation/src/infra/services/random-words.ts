@@ -2,17 +2,36 @@ import * as v from 'valibot'
 
 import { createURL, validateUnknown } from '@trpfrog.net/utils'
 
-import { RandomWordGenerator } from '../../domain/services/random-words'
+import { PartOfSpeech, RandomWordGenerator, WordMix } from '../../domain/services/random-words'
 
-const AmountLimitedStringArraySchema = (amount: number) =>
-  v.pipe(v.array(v.string()), v.length(amount))
+// 絵にしにくい専門用語 (nucleotidase など) を避ける
+const MIN_WORD_LENGTH = 3
+const MAX_WORD_LENGTH = 12
 
-export const randomWordApi: RandomWordGenerator = async amount => {
-  const url = createURL('/api', 'https://random-word-api.vercel.app', {
-    words: amount.toString(),
+const WordsResponseSchema = (count: number) =>
+  v.pipe(v.array(v.object({ word: v.string() })), v.length(count))
+
+async function fetchWords(type: PartOfSpeech, count: number): Promise<string[]> {
+  const url = createURL('/api/words', 'https://randomapi.dev', {
+    type,
+    count: count.toString(),
+    minLength: MIN_WORD_LENGTH.toString(),
+    maxLength: MAX_WORD_LENGTH.toString(),
+    fields: 'word',
+    unwrap: 'true',
   })
-  const response = await fetch(url).then(res => res.json())
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error(`randomapi.dev responded with ${res.status}: ${await res.text()}`)
+  }
+  return validateUnknown(WordsResponseSchema(count), await res.json()).map(({ word }) => word)
+}
 
-  const schema = AmountLimitedStringArraySchema(amount)
-  return validateUnknown(schema, response)
+export const randomWordApi: RandomWordGenerator = async (mix: WordMix) => {
+  const words = await Promise.all(
+    (Object.entries(mix) as [PartOfSpeech, number][]).map(([type, count]) =>
+      fetchWords(type, count),
+    ),
+  )
+  return words.flat()
 }

@@ -22,7 +22,7 @@ export const app = createApp(
       model: 'gpt-6-luna',
       reasoningEffort: 'medium',
     }),
-    generateSeedWords: () => randomWordApi(10),
+    generateSeedWords: () => randomWordApi({ noun: 4, verb: 2, adjective: 2 }),
     assetsRepo: assetsRepoWorkersAssets,
   }).build(),
 )

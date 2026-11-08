@@ -110,6 +110,7 @@ export function generatePromptFromWordsUseCase(deps: { jsonChatbot: ChatLLMJson 
     const system = dedent`
       You plan a daily illustration of "tsmami-san", a mascot character: a green sphere sitting inside a box (usually a cardboard box).
       From the given random words, invent one fun, specific, SFW scene featuring tsmami-san, and describe it for an image generation model.
+      Build the scene from at least two of the words, combining them in an unexpected way. Skip words that do not fit; do not force all of them in. Inflected or related forms are fine.
 
       ## Caption ("prompt" / "translated")
       - "prompt": a single, complete English sentence without terminal punctuation
