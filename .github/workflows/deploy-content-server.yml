@@ -1,0 +1,28 @@
+name: Deploy content-server
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'apps/content-server/**'
+      # Its SSG imports the ssg-assets route from this app.
+      - 'apps/dev-blog-server/**'
+      - 'packages/**'
+      # Posts are statically generated into the Worker's assets.
+      - 'posts/**'
+      - 'patches/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-content-server.yml'
+      - '.github/workflows/deploy-worker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-worker.yml
+    with:
+      app: content-server
+    secrets: inherit

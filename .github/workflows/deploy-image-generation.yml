@@ -1,0 +1,24 @@
+name: Deploy image-generation
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'apps/image-generation/**'
+      - 'packages/**'
+      - 'patches/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-image-generation.yml'
+      - '.github/workflows/deploy-worker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-worker.yml
+    with:
+      app: image-generation
+    secrets: inherit

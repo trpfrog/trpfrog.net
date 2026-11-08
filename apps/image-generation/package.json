@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "cf dev",
     "deploy": "cf deploy",
+    "deploy:prod": "vp run migrate:remote && op run --env-file .prod.vars.tpl -- ./node_modules/.bin/cf deploy --secrets-file .prod.secrets.env",
     "secrets:dev": "op inject --force --in-file .dev.vars.tpl --out-file .dev.vars",
     "test": "vp test",
     "generate": "drizzle-kit generate",
