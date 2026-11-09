@@ -34,7 +34,6 @@ export default defineConfig({
       // D1 migrations live in ./migrations, the default directory of
       // `cf d1 migrations apply`.
       DATABASE: bindings.d1({
-        name: 'ai-trpfrog-icon-db',
         id: '66534e4a-091f-4bd3-be8e-07cbf7e70842',
       }),
       ASSETS: bindings.assets(),
