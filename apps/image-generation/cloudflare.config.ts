@@ -19,7 +19,7 @@ export default defineConfig({
         zone: 'trpfrog.net',
       }),
       triggers.scheduled({
-        schedule: '0 */6 * * *',
+        schedule: '0 */12 * * *',
       }),
     ],
     env: {
