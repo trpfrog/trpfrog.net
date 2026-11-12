@@ -65,6 +65,23 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // 同じ URL で HTML と Markdown を出し分けるので (src/lib/agent-markdown)、キャッシュが Accept を区別するようにする。
+  // Proxy で付けた Vary はプリレンダー済みページでは消えるので、Next.js が使う値ごとここで付ける。
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Vary',
+            value:
+              'Accept, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+          },
+        ],
+      },
+    ]
+  },
+
   async redirects() {
     return [
       {
