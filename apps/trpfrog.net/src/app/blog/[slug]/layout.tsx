@@ -6,7 +6,9 @@ import { cacheTags } from '@trpfrog.net/constants'
 import { BlogPost } from '@trpfrog.net/posts'
 
 import { gridLayoutStyle, MainWrapper } from '@/components/atoms/MainWrapper'
+import { JsonLd } from '@/components/head/JsonLd'
 import { Block } from '@/components/molecules/Block'
+import { buildBlogPostingJsonLd } from '@/lib/json-ld'
 import { ArticleHeader } from '@blog/_components/ArticleHeader'
 import { ArticleSidebar } from '@blog/_components/ArticleSidebar'
 import { ArticleSkeleton } from '@blog/_components/ArticleSkeleton'
@@ -31,6 +33,7 @@ export default async function Layout(props: LayoutProps<'/blog/[slug]'>) {
 
   return (
     <MainWrapper gridLayout className={styles.layout}>
+      <JsonLd data={buildBlogPostingJsonLd(entry)} />
       <ArticleHeader post={entry} />
       <div className={styles.main_content}>
         <div className={gridLayoutStyle({ class: styles.article_wrapper })}>
