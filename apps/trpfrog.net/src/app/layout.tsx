@@ -13,6 +13,7 @@ import { Header } from '@/components/organisms/Header'
 import { Navigation } from '@/components/organisms/Navigation'
 import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
+import { WebMcpTools } from '@/components/utils/WebMcpTools'
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
 import { tv } from '@/lib/tailwind'
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <Footer />
           </div>
           <BackToTop />
+          <WebMcpTools />
         </JotaiProvider>
       </body>
     </html>
