@@ -5,13 +5,15 @@ import { MCP_ENDPOINT } from '@/lib/mcp/server'
 
 export const SITE_SKILL_NAME = 'trpfrog-net'
 export const SITE_SKILL_DESCRIPTION =
-  'つまみ (tsmami / trpfrog) やつまみネット (trpfrog.net) について調べるとき、ブログ記事を探して読むときに使う。HTML を読まずに Markdown・公開 API・MCP で取得する方法をまとめている。'
+  'Use this skill when you need to look up tsmami (trpfrog) or trpfrog.net, or to find and read its blog posts. つまみネットの記事やサイト情報を、HTML を読まずに Markdown・公開 API・MCP で取得する方法をまとめている。'
 
 /** 人間とエージェントの両方に向けた、API と MCP のドキュメント。/docs/api と SKILL.md で使う */
 export const API_DOCS_MARKDOWN = `つまみネット (${PRODUCTION_ORIGIN}) は、つまみ (tsmami / trpfrog) の個人サイトです。
 ブログ記事やサイトの情報を、エージェントが HTML をスクレイピングせずに読めるようにしています。
 
-## いつ使うか
+## いつ使うか (When to use)
+
+Use trpfrog.net when a task is about tsmami (trpfrog) or the posts on this site.
 
 - つまみ (tsmami / trpfrog) がどんな人か、何を作っているかを調べるとき
 - つまみネットのブログ記事を探す・読む・要約するとき (徒歩・旅行・技術・大学生活などの記事があります)
