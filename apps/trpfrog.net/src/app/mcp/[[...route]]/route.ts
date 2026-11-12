@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { handle } from 'hono/vercel'
 
+import { problem } from '@/lib/agent-api/problem'
 import { handleMcpMessage } from '@/lib/mcp/protocol'
 import { MCP_SERVER_CARD, MCP_SERVER_INFO, MCP_TOOLS } from '@/lib/mcp/server'
 
@@ -27,6 +28,14 @@ const app = new Hono()
     const response = await handleMcpMessage(body, MCP_SERVER_INFO, MCP_TOOLS)
     return response ? c.json(response) : c.body(null, 202)
   })
+
+app.notFound(c =>
+  problem(c, 404, {
+    code: 'route_not_found',
+    title: 'Route not found',
+    detail: `${c.req.method} ${c.req.path} does not exist.`,
+  }),
+)
 
 export const GET = handle(app)
 export const POST = handle(app)

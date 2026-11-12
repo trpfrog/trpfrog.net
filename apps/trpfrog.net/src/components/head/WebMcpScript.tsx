@@ -22,7 +22,7 @@ const SCRIPT = `(() => {
         if (typeof query === 'string') params.set('q', query)
         if (typeof tag === 'string') params.set('tag', tag)
         params.set('limit', String(typeof limit === 'number' ? limit : 20))
-        return await getJson('/api/blog/posts?' + params)
+        return await getJson('/api/v1/blog/posts?' + params)
       },
     },
     {
@@ -34,7 +34,7 @@ const SCRIPT = `(() => {
         required: ['slug'],
       },
       annotations: { readOnlyHint: true },
-      execute: async ({ slug }) => await getJson('/api/blog/posts/' + encodeURIComponent(String(slug))),
+      execute: async ({ slug }) => await getJson('/api/v1/blog/posts/' + encodeURIComponent(String(slug))),
     },
     {
       name: 'open_page',

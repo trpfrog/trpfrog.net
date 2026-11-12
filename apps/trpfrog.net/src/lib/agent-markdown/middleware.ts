@@ -13,8 +13,8 @@ const SITE_LINKS = [
   '</sitemap.xml>; rel="sitemap"; type="application/xml"',
   '</llms.txt>; rel="describedby"; type="text/markdown"',
   '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
-  '</api/openapi.json>; rel="service-desc"; type="application/openapi+json"',
-  '</.well-known/agent-skills/trpfrog-net/SKILL.md>; rel="service-doc"; type="text/markdown"',
+  '</api/v1/openapi.json>; rel="service-desc"; type="application/openapi+json"',
+  '</docs/api>; rel="service-doc"; type="text/html"',
   '</.well-known/ai-catalog.json>; rel="ai-catalog"; type="application/json"',
 ]
 

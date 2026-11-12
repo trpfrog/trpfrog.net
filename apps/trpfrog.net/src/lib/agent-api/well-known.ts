@@ -5,7 +5,9 @@ import { SITE_SKILL_DESCRIPTION, SITE_SKILL_DIGEST, SITE_SKILL_NAME } from './sk
 
 const HOST = new URL(PRODUCTION_ORIGIN).host
 
-export const OPENAPI_URL = `${PRODUCTION_ORIGIN}/api/openapi.json`
+export const API_BASE_URL = `${PRODUCTION_ORIGIN}/api/v1`
+export const OPENAPI_URL = `${API_BASE_URL}/openapi.json`
+export const API_DOCS_URL = `${PRODUCTION_ORIGIN}/docs/api`
 export const SKILL_URL = `${PRODUCTION_ORIGIN}/.well-known/agent-skills/${SITE_SKILL_NAME}/SKILL.md`
 export const MCP_SERVER_CARD_URL = `${MCP_ENDPOINT}/server-card`
 
@@ -13,15 +15,21 @@ export const MCP_SERVER_CARD_URL = `${MCP_ENDPOINT}/server-card`
 export const apiCatalog = {
   linkset: [
     {
-      anchor: `${PRODUCTION_ORIGIN}/api`,
+      anchor: API_BASE_URL,
       'service-desc': [{ href: OPENAPI_URL, type: 'application/openapi+json' }],
-      'service-doc': [{ href: SKILL_URL, type: 'text/markdown' }],
-      status: [{ href: `${PRODUCTION_ORIGIN}/api/health`, type: 'application/json' }],
+      'service-doc': [
+        { href: API_DOCS_URL, type: 'text/html' },
+        { href: SKILL_URL, type: 'text/markdown' },
+      ],
+      status: [{ href: `${API_BASE_URL}/health`, type: 'application/json' }],
     },
     {
       anchor: MCP_ENDPOINT,
       'service-desc': [{ href: MCP_SERVER_CARD_URL, type: 'application/mcp-server-card+json' }],
-      'service-doc': [{ href: SKILL_URL, type: 'text/markdown' }],
+      'service-doc': [
+        { href: API_DOCS_URL, type: 'text/html' },
+        { href: SKILL_URL, type: 'text/markdown' },
+      ],
     },
   ],
 }
