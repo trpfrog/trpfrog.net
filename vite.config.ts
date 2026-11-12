@@ -117,7 +117,9 @@ export default defineConfig({
         },
       },
       {
-        files: ['**/{page,layout,route,loading,not-found,opengraph-image,proxy}.{js,jsx,ts,tsx}'],
+        files: [
+          '**/{page,layout,route,loading,not-found,opengraph-image,proxy,sitemap}.{js,jsx,ts,tsx}',
+        ],
         rules: {
           'eslint/no-restricted-exports': 'off',
         },
