@@ -72,9 +72,12 @@ export const agentSkillsIndex = {
   ],
 }
 
-/** Personal Agent Protocol (Poppy)。サインインのない、閲覧だけのサイトとして宣言する */
+/**
+ * Personal Agent Protocol (Poppy)。サインインのない、閲覧だけのサイトとして宣言する。
+ * 仕様のドラフトは 1.0 だが、isitagentready.com が対応している 0.1 に合わせている。
+ */
 export const poppy = {
-  protocol_version: '1.0',
+  protocol_version: '0.1',
   organization: { name: SITE_NAME, domain: HOST },
   web: {},
 }

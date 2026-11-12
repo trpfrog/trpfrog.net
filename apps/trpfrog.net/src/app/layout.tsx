@@ -7,13 +7,13 @@ import type { Metadata } from 'next'
 import { Toaster } from 'react-hot-toast'
 
 import { Favicon } from '@/components/head/Favicon'
+import { WebMcpScript } from '@/components/head/WebMcpScript'
 import { BackToTop } from '@/components/organisms/BackToTop'
 import { Footer } from '@/components/organisms/Footer'
 import { Header } from '@/components/organisms/Header'
 import { Navigation } from '@/components/organisms/Navigation'
 import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
-import { WebMcpTools } from '@/components/utils/WebMcpTools'
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
 import { tv } from '@/lib/tailwind'
@@ -67,6 +67,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="ja" className={fontVariables}>
       <head>
         <Favicon />
+        <WebMcpScript />
         <FixTooLargeFontAwesomeIcons />
       </head>
       <body className={styles.body()}>
@@ -79,7 +80,6 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <Footer />
           </div>
           <BackToTop />
-          <WebMcpTools />
         </JotaiProvider>
       </body>
     </html>
