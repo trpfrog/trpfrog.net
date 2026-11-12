@@ -12,6 +12,7 @@ import { AgentBridge } from '@/components/utils/AgentBridge'
 import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
 import { Toaster } from '@/components/utils/Toaster'
+import { WebMcpTools } from '@/components/utils/WebMcpTools'
 import { SITE_NAME } from '@/lib/constants'
 import { fontVariables } from '@/lib/googleFonts'
 import { tv } from '@/lib/tailwind'
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           </div>
           <BackToTop />
           <AgentBridge />
+          <WebMcpTools />
         </JotaiProvider>
       </body>
     </html>
