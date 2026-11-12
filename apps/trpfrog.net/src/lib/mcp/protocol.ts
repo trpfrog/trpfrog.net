@@ -16,6 +16,19 @@ export function defineTool<TSchema extends v.GenericSchema>(tool: McpTool<TSchem
   return tool as unknown as McpTool
 }
 
+/** tools/list で返すツールの説明。WebMCP でも同じものを登録する */
+export function describeTool(tool: McpTool) {
+  return {
+    name: tool.name,
+    title: tool.title,
+    description: tool.description,
+    inputSchema: toJsonSchema(tool.inputSchema, { errorMode: 'ignore' }),
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  }
+}
+
+export type McpToolDescription = ReturnType<typeof describeTool>
+
 export type McpServerInfo = {
   name: string
   title: string
@@ -81,15 +94,7 @@ async function dispatch(
     case 'ping':
       return {}
     case 'tools/list':
-      return {
-        tools: tools.map(tool => ({
-          name: tool.name,
-          title: tool.title,
-          description: tool.description,
-          inputSchema: toJsonSchema(tool.inputSchema, { errorMode: 'ignore' }),
-          annotations: { readOnlyHint: true, openWorldHint: false },
-        })),
-      }
+      return { tools: tools.map(describeTool) }
     case 'tools/call': {
       const tool = tools.find(t => t.name === params.name)
       if (!tool) throw new JsonRpcError(-32602, `Unknown tool: ${String(params.name)}`)
