@@ -1,8 +1,7 @@
 import { Hono } from 'hono'
 
+import { markdownNegotiation, rewriteToMarkdown } from '@/lib/agent-markdown/middleware'
 import { createNextProxy } from '@/lib/next-hono-proxy'
-
-import { serveBlogMarkdownMiddleware } from './app/blog/serve-blog-markdown-middleware'
 
 const app = new Hono()
 
@@ -27,9 +26,12 @@ app.use(async (c, next) => {
   await next()
 })
 
+// Accept: text/markdown なら同じ URL で Markdown を返す
+app.use(markdownNegotiation())
+
 // ブログの URL の末尾に `.md` がついている場合は Markdown を返す
-app.get('/blog/:slug{.+\\.md}', serveBlogMarkdownMiddleware())
-app.get('/blog/:slug/:page{.+\\.md}', serveBlogMarkdownMiddleware())
+app.get('/blog/:slug{.+\\.md}', rewriteToMarkdown)
+app.get('/blog/:slug/:page{.+\\.md}', rewriteToMarkdown)
 
 app.get('/tweets/*', c => {
   return c.text('Under construction...')
