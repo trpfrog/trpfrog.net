@@ -47,7 +47,7 @@ describe('ui-sdk adoption', () => {
 
   it('attaches interaction handlers only to components, not native elements', () => {
     const handler =
-      /\bon(Click|DoubleClick|KeyDown|KeyUp|KeyPress|Change|Input|MouseDown|MouseUp|PointerDown|PointerUp|Submit)=/g
+      /\bon(Click|DoubleClick|KeyDown|KeyUp|KeyPress|Change|Input|MouseDown|MouseUp|MouseEnter|MouseLeave|PointerDown|PointerUp|PointerEnter|PointerLeave|TouchStart|TouchEnd|TouchCancel|Scroll|Wheel|Drag|DragStart|Drop|Submit)=/g
     const offenders = files.flatMap(f =>
       [...f.source.matchAll(handler)]
         .map(m => {
