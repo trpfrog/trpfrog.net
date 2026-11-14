@@ -303,9 +303,6 @@ catalogs:
     react-hook-form:
       specifier: ^7.91.0
       version: 7.91.0
-    react-hot-toast:
-      specifier: ^2.6.1
-      version: 2.6.1
     react-loading-skeleton:
       specifier: ^3.5.0
       version: 3.5.0
@@ -981,9 +978,6 @@ importers:
       react-hook-form:
         specifier: 'catalog:'
         version: 7.91.0(@types/react@19.3.0)(react@19.3.1)
-      react-hot-toast:
-        specifier: 'catalog:'
-        version: 2.6.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-loading-skeleton:
         specifier: 'catalog:'
         version: 3.5.0(react@19.3.1)
@@ -5085,11 +5079,6 @@ packages:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
 
-  goober@2.1.16:
-    resolution: {integrity: sha512-erjk19y1U33+XAMe1VTvIONHYoSqE4iS7BYUZfHaqeohLmnC0FdxEh7rQU+6MZ4OajItzjZFSRtVANrQwNq6/g==}
-    peerDependencies:
-      csstype: ^3.0.10
-
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
@@ -6380,20 +6369,6 @@ packages:
       react: ^16.8.0 || ^17 || ^18 || ^19
     peerDependenciesMeta:
       '@types/react':
-        optional: true
-
-  react-hot-toast@2.6.1:
-    resolution: {integrity: sha512-gjFsf05dxcku0FkyMtFH+XmYFdA2odXfBVknEr/IZ+XpUjwsgvtY2616sOpUynK+l9ykQDRNpaJ1hYfuximUiA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: '>=16'
-      react-dom: '>=16'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
         optional: true
 
   react-is@16.13.1:
@@ -10946,10 +10921,6 @@ snapshots:
       minipass: 7.1.3
       path-scurry: 2.0.2
 
-  goober@2.1.16(csstype@3.2.3):
-    dependencies:
-      csstype: 3.2.3
-
   graceful-fs@4.2.11: {}
 
   grammex@3.1.13: {}
@@ -12555,16 +12526,6 @@ snapshots:
       react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
-
-  react-hot-toast@2.6.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
-    dependencies:
-      csstype: 3.2.3
-      goober: 2.1.16(csstype@3.2.3)
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
-    optionalDependencies:
-      '@types/react': 19.3.0
-      '@types/react-dom': 19.3.0(@types/react@19.3.0)
 
   react-is@16.13.1: {}
 

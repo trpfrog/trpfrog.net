@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 
-import toast from 'react-hot-toast'
+import { toast } from '@ui-sdk/react/toast'
 
 import { createURL } from '@trpfrog.net/utils'
 
