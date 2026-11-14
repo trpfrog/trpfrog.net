@@ -1,6 +1,6 @@
 import { TopCard } from '@/app/(home)/_components/TopCard'
 import { cardButtonStyle } from '@/app/(home)/_styles/cardButtonStyle'
-import { useTooltip } from '@/hooks/useTooltip'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/Tooltip'
 import { tv } from '@/lib/tailwind'
 
 const leftBird = `
@@ -43,16 +43,18 @@ const styles = tv({
 })()
 
 export function BirdsCard() {
-  const { TooltipContent, TooltipButton } = useTooltip()
-
   return (
     <TopCard className={styles.base()}>
       <pre>{leftBird}</pre>
       <pre>{rightBird}</pre>
-      <TooltipButton className={styles.button()}>?</TooltipButton>
-      <TooltipContent className={styles.tooltipContent()}>
-        なぜか2019年からトップページにいる、特に意味のない鳥です
-      </TooltipContent>
+      <Tooltip toggleable>
+        <TooltipTrigger className={styles.button()} aria-label="この鳥について">
+          ?
+        </TooltipTrigger>
+        <TooltipContent className={styles.tooltipContent()}>
+          なぜか2019年からトップページにいる、特に意味のない鳥です
+        </TooltipContent>
+      </Tooltip>
     </TopCard>
   )
 }

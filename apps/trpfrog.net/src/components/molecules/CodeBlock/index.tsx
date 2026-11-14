@@ -14,7 +14,7 @@ import { addClassToHast, bundledLanguages, createHighlighter } from 'shiki'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 import type { Except } from 'type-fest'
 
-import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/Tooltip'
 import { A } from '@/components/wrappers'
 import { tv } from '@/lib/tailwind'
 
@@ -83,15 +83,20 @@ async function loadLanguage(languageCode: LanguageCode): Promise<void> {
 export function CodeLinkButton(props: { url: string }) {
   const isGitHub = /https?:\/\/github.com/.test(props.url)
   return (
-    <WithTooltip hoveredTooltipContent={isGitHub ? 'Open on GitHub' : 'View Code'}>
-      <A
-        openInNewTab
-        href={props.url}
-        className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <A
+            openInNewTab
+            href={props.url}
+            className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
+          />
+        }
       >
         <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
-      </A>
-    </WithTooltip>
+      </TooltipTrigger>
+      <TooltipContent>{isGitHub ? 'Open on GitHub' : 'View Code'}</TooltipContent>
+    </Tooltip>
   )
 }
 

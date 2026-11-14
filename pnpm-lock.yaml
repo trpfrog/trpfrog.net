@@ -324,9 +324,6 @@ catalogs:
     react-string-replace:
       specifier: ^2.0.1
       version: 2.0.1
-    react-tooltip:
-      specifier: ^6.0.9
-      version: 6.0.9
     react-tweet:
       specifier: ^3.3.1
       version: 3.3.1
@@ -1008,9 +1005,6 @@ importers:
       react-string-replace:
         specifier: 'catalog:'
         version: 2.0.1
-      react-tooltip:
-        specifier: 'catalog:'
-        version: 6.0.9(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-tweet:
         specifier: 'catalog:'
         version: 3.3.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -1965,9 +1959,6 @@ packages:
 
   '@floating-ui/core@1.8.0':
     resolution: {integrity: sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ==}
-
-  '@floating-ui/dom@1.7.6':
-    resolution: {integrity: sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ==}
 
   '@floating-ui/dom@1.8.0':
     resolution: {integrity: sha512-yXSrzeHZBTZadLOlfyhCkJHNeLJnHRnRInwdZ40L7ZiaAtrBwoYlsDrX3v5zB1Utk7CLfzcOVnVVWoXEky7Ceg==}
@@ -6500,12 +6491,6 @@ packages:
       '@types/react':
         optional: true
 
-  react-tooltip@6.0.9:
-    resolution: {integrity: sha512-4GUhb4vqCr7fuK3D2W8TtmuCfTGLxJ3YIrgYVDGyuvk05215/B22qnc6iKQfnU3T2fqh3Op7VuKXrdV2+f+jHQ==}
-    peerDependencies:
-      react: '>=16.14.0'
-      react-dom: '>=16.14.0'
-
   react-transition-group@4.4.5:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -7991,11 +7976,6 @@ snapshots:
 
   '@floating-ui/core@1.8.0':
     dependencies:
-      '@floating-ui/utils': 0.2.12
-
-  '@floating-ui/dom@1.7.6':
-    dependencies:
-      '@floating-ui/core': 1.8.0
       '@floating-ui/utils': 0.2.12
 
   '@floating-ui/dom@1.8.0':
@@ -12684,13 +12664,6 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.3.0
-
-  react-tooltip@6.0.9(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
-    dependencies:
-      '@floating-ui/dom': 1.7.6
-      clsx: 2.1.1
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
 
   react-transition-group@4.4.5(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
