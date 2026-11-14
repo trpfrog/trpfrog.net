@@ -7,3 +7,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# ui-sdk
+
+This project uses React and ui-sdk. Read `node_modules/@ui-sdk/react/docs/llms.txt` to see what's available.
+
+For a custom component, read the relevant sections of `docs/core.md` and `docs/rendering.md` in the same package.

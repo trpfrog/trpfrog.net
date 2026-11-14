@@ -135,6 +135,12 @@ catalogs:
     '@types/seedrandom':
       specifier: ^3.0.8
       version: 3.0.8
+    '@ui-sdk/core':
+      specifier: 0.1.0-beta.2
+      version: 0.1.0-beta.2
+    '@ui-sdk/react':
+      specifier: 0.1.0-beta.2
+      version: 0.1.0-beta.2
     '@valibot/to-json-schema':
       specifier: 1.8.0
       version: 1.8.0
@@ -879,6 +885,12 @@ importers:
       '@types/seedrandom':
         specifier: 'catalog:'
         version: 3.0.8
+      '@ui-sdk/core':
+        specifier: 'catalog:'
+        version: 0.1.0-beta.2
+      '@ui-sdk/react':
+        specifier: 'catalog:'
+        version: 0.1.0-beta.2(@types/react@19.3.0)(@ui-sdk/core@0.1.0-beta.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@valibot/to-json-schema':
         specifier: 'catalog:'
         version: 1.8.0(valibot@1.5.0(typescript@7.0.2))
@@ -3686,6 +3698,20 @@ packages:
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [win32]
+
+  '@ui-sdk/core@0.1.0-beta.2':
+    resolution: {integrity: sha512-y89M4OKL2Oy1IvFS8FEozn/44BJD9FoRjfecWA4XwFhkSuQADcEcI+eoLdfRK1hkrJZhKkHvhJf4Jtfp1y7aJw==}
+
+  '@ui-sdk/react@0.1.0-beta.2':
+    resolution: {integrity: sha512-OVOECM3PYGEF69/iOSZ1U0zxv6O6aTWmZuCt88R6c2Ql2ZQxAy+DjFK8o8hyVkRNlYE5nEm357UMOI6bchn70w==}
+    peerDependencies:
+      '@types/react': '>=19.2.10'
+      '@ui-sdk/core': ^0.1.0-beta.2
+      react: '>=19'
+      react-dom: '>=19'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -9414,6 +9440,16 @@ snapshots:
 
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
+
+  '@ui-sdk/core@0.1.0-beta.2': {}
+
+  '@ui-sdk/react@0.1.0-beta.2(@types/react@19.3.0)(@ui-sdk/core@0.1.0-beta.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+    dependencies:
+      '@ui-sdk/core': 0.1.0-beta.2
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+    optionalDependencies:
+      '@types/react': 19.3.0
 
   '@ungap/structured-clone@1.3.0': {}
 

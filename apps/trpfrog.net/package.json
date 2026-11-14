@@ -38,6 +38,8 @@
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "@twemoji/api": "catalog:",
+    "@ui-sdk/core": "catalog:",
+    "@ui-sdk/react": "catalog:",
     "@types/katex": "catalog:",
     "@types/seedrandom": "catalog:",
     "@valibot/to-json-schema": "catalog:",
