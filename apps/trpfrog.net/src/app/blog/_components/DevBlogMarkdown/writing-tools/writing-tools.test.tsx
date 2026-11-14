@@ -58,6 +58,7 @@ describe('TwitterCardSection', () => {
       screen.getByRole('button', { name: 'Generate' }).click()
     })
     expect(handlers.onGenerate).toHaveBeenCalledOnce()
+    expect(handlers.onGenerateFromServerClipboard).not.toHaveBeenCalled()
   })
 
   it('reports typing in the URL field', () => {

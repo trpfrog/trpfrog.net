@@ -37,7 +37,10 @@ describe('Details', () => {
 
   test('keeps closed content in the page for find in page', () => {
     render(<Details summary="summary">{LOREM_IPSUM}</Details>)
-    expect(screen.getByText(LOREM_IPSUM)).toBeInTheDocument()
+    expect(screen.getByText(LOREM_IPSUM).closest('[hidden]')).toHaveAttribute(
+      'hidden',
+      'until-found',
+    )
   })
 
   test('renders nothing inside until opened when lazy', async () => {

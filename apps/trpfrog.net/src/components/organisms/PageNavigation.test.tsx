@@ -64,4 +64,35 @@ describe('PageNavigation', () => {
       expect(step).toHaveAttribute('aria-disabled', 'true')
     }
   })
+
+  it('disables only the step past the current end', () => {
+    const { unmount } = render(
+      <PageNavigation currentPage={1} lastPage={4} createPath={createPath} showNextPrevButtons />,
+    )
+    expect(screen.getByRole('link', { name: '前のページ' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+    expect(screen.getByRole('link', { name: '次のページ' })).toHaveAttribute('href', '/blog/x/2')
+    unmount()
+
+    render(
+      <PageNavigation currentPage={4} lastPage={4} createPath={createPath} showNextPrevButtons />,
+    )
+    expect(screen.getByRole('link', { name: '前のページ' })).toHaveAttribute('href', '/blog/x/3')
+    expect(screen.getByRole('link', { name: '次のページ' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+  })
+
+  it('lists all pages below 10 and jumps from 10', () => {
+    const { unmount } = render(
+      <PageNavigation currentPage={1} lastPage={9} createPath={createPath} />,
+    )
+    expect(pageLinks()).toHaveLength(9)
+    unmount()
+    render(<PageNavigation currentPage={1} lastPage={10} createPath={createPath} />)
+    expect(pageLinks()).toEqual(['1', '2', '3', '4', '8', '10'])
+  })
 })

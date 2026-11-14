@@ -17,9 +17,11 @@ describe('AnglePicker', () => {
     render(<AnglePicker size={70} initialDegree={355} onAngleChange={onAngleChange} />)
     const slider = screen.getByRole('slider', { name: '角度' })
 
+    let notCanceled = true
     await act(async () => {
-      fireEvent.keyDown(slider, { key: 'ArrowRight' })
+      notCanceled = fireEvent.keyDown(slider, { key: 'ArrowRight' })
     })
+    expect(notCanceled).toBe(false)
     expect(onAngleChange).toHaveBeenLastCalledWith(0)
     expect(slider).toHaveAttribute('aria-valuenow', '0')
 

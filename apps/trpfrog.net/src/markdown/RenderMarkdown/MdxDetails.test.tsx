@@ -1,3 +1,5 @@
+import type * as React from 'react'
+
 import { act, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vite-plus/test'
 
@@ -39,5 +41,22 @@ describe('MdxDetails', () => {
       </MdxDetails>,
     )
     expect(screen.getByText('本文')).toBeVisible()
+  })
+})
+
+describe('Markdown details mapping', () => {
+  it('uses the summary as the toggle through createMDXComponents', async () => {
+    const { createMDXComponents } = await import('./createMDXComponents')
+    const components = createMDXComponents()
+    const MdDetails = components.details as React.ComponentType<React.PropsWithChildren>
+    const MdSummary = components.summary as React.ComponentType<React.PropsWithChildren>
+    render(
+      <MdDetails>
+        <MdSummary>住みやすい自席を作る研究</MdSummary>
+        <p>本文</p>
+      </MdDetails>,
+    )
+    expect(screen.getByRole('button', { name: '住みやすい自席を作る研究' })).toBeInTheDocument()
+    expect(screen.getAllByText('住みやすい自席を作る研究')).toHaveLength(1)
   })
 })

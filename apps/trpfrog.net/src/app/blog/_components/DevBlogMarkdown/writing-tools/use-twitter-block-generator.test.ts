@@ -68,5 +68,6 @@ describe('useTwitterBlockGenerator', () => {
 
     expect(onOutput).toHaveBeenCalledExactlyOnceWith('block')
     expect(titles()).toContain('クリップボードにコピーできませんでした')
+    expect(titles()).not.toContain('Copied!')
   })
 })

@@ -20,12 +20,12 @@ describe('SearchBox', () => {
   it('opens the fuzzy page for the typed string', async () => {
     render(<SearchBox />)
     fireEvent.change(screen.getByRole('textbox', { name: 'fuzzy-string' }), {
-      target: { value: 'tsmami' },
+      target: { value: 'つまみ/x' },
     })
     await act(async () => {
       screen.getByRole('button', { name: 'Go' }).click()
     })
-    expect(window.location.href).toBe('https://trpfrog.net/fuzzy/tsmami')
+    expect(window.location.href).toBe(`https://trpfrog.net/fuzzy/${encodeURIComponent('つまみ/x')}`)
   })
 
   it('stays put when the field is empty', async () => {
