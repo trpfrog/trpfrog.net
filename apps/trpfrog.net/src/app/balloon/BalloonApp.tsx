@@ -2,79 +2,46 @@
 
 import { useRef, useState } from 'react'
 
-import * as v from 'valibot'
-
-import { validateUnknown } from '@trpfrog.net/utils'
-import { vCoerceNumber } from '@trpfrog.net/utils/valibot'
-
+import { NumberField } from '@/components/atoms/FormControls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { Input } from '@/components/wrappers'
-import { clamp } from '@/lib/utils'
 
 import { PreloadBalloonImages } from './_components/Balloon/preload-balloon-images.tsx'
 import { BalloonArray } from './_components/BalloonArray'
 import { useBalloonState } from './useBalloonState.ts'
 
-const FormNumberSchema = (max: number, defaultValue: number) =>
-  v.fallback(
-    v.pipe(
-      vCoerceNumber,
-      v.integer(),
-      v.transform(n => clamp(n, 1, max)),
-    ),
-    defaultValue,
-  )
-
 export function BalloonApp() {
   const [isSoundEnabled, setSoundEnabled] = useState(false)
 
-  const [balloonSize, _setBalloonSize] = useState(57)
-  const setBalloonSize = (s: number | string) => {
-    const n = validateUnknown(FormNumberSchema(1000, 57), s)
-    _setBalloonSize(n)
-  }
+  const [balloonSize, setBalloonSize] = useState(57)
 
   const rewardRef = useRef<HTMLDivElement>(null)
   const balloonState = useBalloonState(96, { rewardRef })
-  const setBalloonAmount = (s: number | string) => {
-    const value = validateUnknown(FormNumberSchema(10000, 96), s)
-    balloonState.updateAmount(value)
-  }
 
   return (
     <>
       <PreloadBalloonImages />
       <Title title="Balloons" description={'風船を割ることができます。(？)'}>
-        <p>
-          <RichButton
-            onClick={() => setSoundEnabled(!isSoundEnabled)}
-            style={{ marginRight: '10px' }}
-          >
+        <div className="tw:flex tw:flex-wrap tw:items-center tw:gap-x-2.5 tw:gap-y-1">
+          <RichButton onClick={() => setSoundEnabled(!isSoundEnabled)}>
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
           </RichButton>
-          <label style={{ marginRight: '10px' }}>
-            <Input
-              type="number"
-              value={balloonState.balloons.length}
-              onChange={e => setBalloonAmount(e.target.value)}
-              max={10000}
-              min={1}
-            />{' '}
-            balloons
-          </label>{' '}
-          <label>
-            <Input
-              type="number"
-              value={balloonSize}
-              onChange={e => setBalloonSize(e.target.value)}
-              max={1000}
-              min={1}
-            />{' '}
-            px
-          </label>
-        </p>
+          <NumberField
+            label="balloons"
+            value={balloonState.balloons.length}
+            min={1}
+            max={10000}
+            onValueChange={n => balloonState.updateAmount(Math.round(n))}
+          />
+          <NumberField
+            label="px"
+            value={balloonSize}
+            min={1}
+            max={1000}
+            onValueChange={n => setBalloonSize(Math.round(n))}
+          />
+        </div>
       </Title>
       <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
         <BalloonArray states={balloonState} width={balloonSize} enableSound={isSoundEnabled} />

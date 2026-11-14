@@ -2,14 +2,15 @@
 
 import { useRef } from 'react'
 
+import { Button } from '@ui-sdk/react/button'
 import { toast } from '@ui-sdk/react/toast'
 
 import { createURL } from '@trpfrog.net/utils'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
+import { ImagePicker } from '@/components/atoms/FormControls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-import { Input } from '@/components/wrappers'
 
 import styles from './style.module.css'
 
@@ -26,11 +27,10 @@ export function IconMakerApp() {
   return (
     <>
       <Block title={'画像の選択'}>
-        <Input
-          type="file"
-          onChange={async e => {
+        <ImagePicker
+          onPick={async file => {
             try {
-              await state.current?.upload(e.target.files)
+              await state.current?.upload(file)
             } catch (error) {
               toast.error('画像の読み込みに失敗しました')
               console.error('Failed to upload image for icon maker.', error)
@@ -38,7 +38,9 @@ export function IconMakerApp() {
               window.location.hash = 'preview'
             }
           }}
-        />
+        >
+          画像を選択
+        </ImagePicker>
       </Block>
 
       <Block title={'プレビュー'}>
@@ -54,10 +56,14 @@ export function IconMakerApp() {
         </div>
         <div>
           <div className={styles.ctrl_btn_grid}>
-            {controlButtons.map((btn, i) => (
-              <button key={i} className={btn.className} onClick={btn.onClick}>
+            {controlButtons.map(btn => (
+              <Button
+                key={btn.text}
+                className={styles.ctrl_btn + ' ' + btn.className}
+                onClick={btn.onClick}
+              >
                 {btn.text}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

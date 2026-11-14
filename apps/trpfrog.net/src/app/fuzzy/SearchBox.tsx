@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import { Input } from '@/components/wrappers'
+import { SubmitButton, TextInput } from '@/components/atoms/FormControls'
 import { tv } from '@/lib/tailwind'
 
 const styles = tv({
@@ -12,28 +10,25 @@ const styles = tv({
 })()
 
 export function SearchBox() {
-  const [query, setQuery] = useState<string | null>(null)
-  useEffect(() => {
-    if (query != null) {
-      window.location.href = `https://trpfrog.net/fuzzy/${query}`
-    }
-  }, [query])
-
   return (
     <form
       className={styles.form()}
       onSubmit={e => {
         e.preventDefault()
-        const form = new FormData(e.currentTarget)
-        const query = form.get('fuzzy-string')
+        const query = new FormData(e.currentTarget).get('fuzzy-string')
         if (typeof query === 'string' && query) {
-          setQuery(`https://trpfrog.net/fuzzy/${query}`)
+          window.location.href = `https://trpfrog.net/fuzzy/${encodeURIComponent(query)}`
         }
       }}
     >
       <div>https://trpfrog.net/fuzzy/</div>
-      <Input type="text" name="fuzzy-string" placeholder="fuzzy-string" pattern=".+" />
-      <Input type="submit" value="Go" />
+      <TextInput
+        name="fuzzy-string"
+        aria-label="fuzzy-string"
+        placeholder="fuzzy-string"
+        pattern=".+"
+      />
+      <SubmitButton>Go</SubmitButton>
     </form>
   )
 }
