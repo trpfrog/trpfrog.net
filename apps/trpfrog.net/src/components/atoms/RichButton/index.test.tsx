@@ -1,9 +1,5 @@
-import Link from 'next/link'
-
 import { act, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vite-plus/test'
-
-import { A } from '@/components/wrappers'
 
 import { RichButton } from '.'
 
@@ -34,14 +30,14 @@ describe('RichButton', () => {
   })
 
   it('renders as a Next.js link', () => {
-    render(<RichButton render={<Link href="/blog" />}>記事一覧</RichButton>)
+    render(<RichButton href="/blog">記事一覧</RichButton>)
     const link = screen.getByRole('link', { name: '記事一覧' })
     expect(link).toHaveAttribute('href', '/blog')
     expect(link).not.toHaveAttribute('type')
   })
 
   it('opens external links in a new tab through A', () => {
-    render(<RichButton render={<A href="https://example.com" />}>外部</RichButton>)
+    render(<RichButton href="https://example.com">外部</RichButton>)
     const link = screen.getByRole('link', { name: '外部' })
     expect(link).toHaveAttribute('href', 'https://example.com')
     expect(link).toHaveAttribute('target', '_blank')

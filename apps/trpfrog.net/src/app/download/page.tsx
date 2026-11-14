@@ -8,7 +8,6 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { A } from '@/components/wrappers'
 import { readMarkdowns } from '@/lib/mdLoader'
 import { RenderMarkdown } from '@/markdown/RenderMarkdown'
 
@@ -43,7 +42,7 @@ export default async function Index() {
             <RenderMarkdown markdown={content} mode="block" />
             <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {metadata.links.map(({ href, text }) => (
-                <RichButton render={<A href={href} />} key={href}>
+                <RichButton href={href} key={href}>
                   {text}
                 </RichButton>
               ))}

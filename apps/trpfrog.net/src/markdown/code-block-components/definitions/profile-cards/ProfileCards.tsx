@@ -7,7 +7,7 @@ import { createURL, InferSchemaOutput } from '@trpfrog.net/utils'
 
 import { InlineLink } from '@/components/atoms/InlineLink'
 import { RichButton } from '@/components/atoms/RichButton'
-import { A, Li, UnorderedList } from '@/components/wrappers'
+import { Li, UnorderedList } from '@/components/wrappers'
 
 import { SwitchUI } from './SwitchUI'
 
@@ -97,7 +97,7 @@ export function ProfileCards(props: { profileDataList: ProfileData[]; held?: str
         secondaryButtonText={'カード表示に切り替え'}
       />
       {twitterSearchLink !== '' && (
-        <RichButton render={<A openInNewTab href={twitterSearchLink} />}>
+        <RichButton openInNewTab href={twitterSearchLink}>
           当日の同行者のツイートを見る
         </RichButton>
       )}

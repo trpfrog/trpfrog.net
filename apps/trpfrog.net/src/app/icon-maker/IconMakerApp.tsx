@@ -9,7 +9,7 @@ import { createURL } from '@trpfrog.net/utils'
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
-import { A, Input } from '@/components/wrappers'
+import { Input } from '@/components/wrappers'
 
 import styles from './style.module.css'
 
@@ -75,7 +75,7 @@ export function IconMakerApp() {
           />
         </p>
         <p>
-          <RichButton render={<A href={tweetLink} />}>Tweet</RichButton>
+          <RichButton href={tweetLink}>Tweet</RichButton>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

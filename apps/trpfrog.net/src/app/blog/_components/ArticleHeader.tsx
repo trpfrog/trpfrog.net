@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import Link from 'next/link'
-
 import classNames from 'classnames'
 import Balancer from 'react-wrap-balancer'
 import type { Except } from 'type-fest'
@@ -106,7 +104,7 @@ function DevButtons(props: { slug: string }) {
   return (
     <div className="tw:my-4 tw:flex tw:justify-center tw:gap-2">
       <EditButton slug={props.slug} />
-      <RichButton render={<Link href={`/blog/${props.slug}/og-image`} />}>OG Image</RichButton>
+      <RichButton href={`/blog/${props.slug}/og-image`}>OG Image</RichButton>
     </div>
   )
 }

@@ -1,14 +1,11 @@
 import * as React from 'react'
 
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { Except } from 'type-fest'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/Tooltip'
-import { A } from '@/components/wrappers'
 import { tv } from '@/lib/tailwind'
+
+import { CodeLinkButton } from './CodeLinkButton'
 
 export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   showBar?: boolean
@@ -59,26 +56,6 @@ const createStyles = tv({
     wrap: false,
   },
 })
-
-export function CodeLinkButton(props: { url: string }) {
-  const isGitHub = /https?:\/\/github.com/.test(props.url)
-  return (
-    <Tooltip type="label">
-      <TooltipTrigger
-        render={
-          <A
-            openInNewTab
-            href={props.url}
-            className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
-          />
-        }
-      >
-        <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
-      </TooltipTrigger>
-      <TooltipContent>{isGitHub ? 'Open on GitHub' : 'View Code'}</TooltipContent>
-    </Tooltip>
-  )
-}
 
 export function PlainCodeBlock(props: PlainCodeBlockProps) {
   const {

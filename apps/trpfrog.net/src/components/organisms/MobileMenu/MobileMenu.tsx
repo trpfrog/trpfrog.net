@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { PopoverArrow, PopoverContent, PopoverTitle } from '@ui-sdk/react/popover'
 
 import { Details } from '@/components/atoms/Details'
@@ -49,7 +47,7 @@ export function MobileMenu() {
         <PopoverTitle className="tw:sr-only">メニュー</PopoverTitle>
         <nav className={styles.links()}>
           {NAVIGATION_LINKS.map(({ link, name }) => (
-            <RichButton render={<Link href={link} />} key={link} onClick={() => setOpened(false)}>
+            <RichButton href={link} key={link} onClick={() => setOpened(false)}>
               {name}
             </RichButton>
           ))}

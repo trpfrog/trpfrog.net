@@ -1,8 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
-import Link from 'next/link'
-
 import matter from 'gray-matter'
 import * as v from 'valibot'
 
@@ -39,7 +37,7 @@ export default async function DocsMarkdown(props: PageProps<'/docs/[slug]'>) {
   return (
     <MainWrapper gridLayout>
       <Title title={title ?? slug} description={description}>
-        <RichButton render={<Link href="/docs" />}>一覧に戻る</RichButton>
+        <RichButton href="/docs">一覧に戻る</RichButton>
       </Title>
       {markdownList.map((markdown, idx) => (
         <Block key={idx}>

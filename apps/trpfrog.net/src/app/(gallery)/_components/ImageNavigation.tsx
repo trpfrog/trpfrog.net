@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import Image from 'next/legacy/image'
-import Link from 'next/link'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
@@ -18,7 +17,7 @@ type ImageNavigationProps = {
 export function ImageNavigation(props: ImageNavigationProps) {
   return (
     <div className="tw:flex tw:items-center tw:justify-center tw:gap-2">
-      <RichButton render={<Link href={props.prevHref} />}>&larr;</RichButton>
+      <RichButton href={props.prevHref}>&larr;</RichButton>
       {props.icons.map(nav => {
         return (
           <Image
@@ -32,7 +31,7 @@ export function ImageNavigation(props: ImageNavigationProps) {
           />
         )
       })}
-      <RichButton render={<Link href={props.nextHref} />}>&rarr;</RichButton>
+      <RichButton href={props.nextHref}>&rarr;</RichButton>
     </div>
   )
 }

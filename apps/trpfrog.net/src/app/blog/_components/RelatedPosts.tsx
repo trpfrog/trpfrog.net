@@ -1,6 +1,4 @@
 'use client'
-import Link from 'next/link'
-
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import { BlogPost } from '@trpfrog.net/posts'
@@ -29,7 +27,7 @@ export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts:
         {/* PC */}
         {relatedPosts.length > 6 && (
           <div style={{ textAlign: 'center' }} className="tw:sp:hidden">
-            <RichButton render={<Link href={'/blog/tags/' + tag} />}>
+            <RichButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 6} 件の記事)
             </RichButton>
           </div>
@@ -38,7 +36,7 @@ export const RelatedPosts = ({ tag, relatedPosts }: { tag: string; relatedPosts:
         {/* SMARTPHONES */}
         {relatedPosts.length > 3 && (
           <div style={{ textAlign: 'center' }} className="tw:pc:hidden">
-            <RichButton render={<Link href={'/blog/tags/' + tag} />}>
+            <RichButton href={'/blog/tags/' + tag}>
               もっと見る (さらに {relatedPosts.length - 3} 件の記事)
             </RichButton>
           </div>

@@ -2,8 +2,6 @@
 
 import { useMemo } from 'react'
 
-import Link from 'next/link'
-
 import { RichButton } from '@/components/atoms/RichButton'
 
 function createButtonLables(currentPage: number, lastPage: number): number[] {
@@ -49,7 +47,7 @@ function Button(props: {
       {props.text ?? props.pageNo}
     </RichButton>
   ) : (
-    <RichButton render={<Link href={href} />} data-current={props.current}>
+    <RichButton href={href} data-current={props.current}>
       {props.text ?? props.pageNo}
     </RichButton>
   )

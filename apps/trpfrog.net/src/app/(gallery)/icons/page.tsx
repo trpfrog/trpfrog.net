@@ -5,7 +5,6 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { A } from '@/components/wrappers'
 
 export const metadata = {
   title: 'つまみアイコン集',
@@ -26,7 +25,7 @@ export default function Index() {
         <p>つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。</p>
         <p>Hugging Face Datasets でも利用可能です！</p>
         <p>
-          <RichButton render={<A href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} />}>
+          <RichButton href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}>
             trpfrog-icons on 🤗Datasets
           </RichButton>
         </p>
@@ -37,7 +36,7 @@ export default function Index() {
       <Block title={'データセット'}>
         <p>つまみアイコンデータセットが Hugging Face Datasets にて使えるようになりました！🎉</p>
         <p>
-          <RichButton render={<A href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} />}>
+          <RichButton href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}>
             trpfrog-icons
           </RichButton>
         </p>

@@ -2,8 +2,6 @@
 
 import * as React from 'react'
 
-import Link from 'next/link'
-
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons'
 import type { Except } from 'type-fest'
@@ -53,11 +51,11 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       }}
       {...rest}
     >
-      <RichButton render={<Link href={'/blog'} />}>記事一覧</RichButton>
-      <RichButton render={<A href={tweetURL} openInNewTab />}>ツイート</RichButton>
-      <RichButton render={<A href={'https://github.com/TrpFrog/trpfrog.net/issues'} />}>
-        訂正リクエスト
+      <RichButton href={'/blog'}>記事一覧</RichButton>
+      <RichButton href={tweetURL} openInNewTab>
+        ツイート
       </RichButton>
+      <RichButton href={'https://github.com/TrpFrog/trpfrog.net/issues'}>訂正リクエスト</RichButton>
     </div>
   )
 }

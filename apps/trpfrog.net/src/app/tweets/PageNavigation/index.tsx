@@ -2,7 +2,6 @@
 
 import { Fragment } from 'react'
 
-import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 import { RichButton } from '@/components/atoms/RichButton'
@@ -14,10 +13,7 @@ function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   const params = new URLSearchParams(Object.fromEntries(searchParams.entries()))
   params.set('p', props.pageNo + '')
   return (
-    <RichButton
-      render={<Link href={`/tweets?${params.toString()}#tweets`} />}
-      data-current={props.current}
-    >
+    <RichButton href={`/tweets?${params.toString()}#tweets`} data-current={props.current}>
       {props.text ?? props.pageNo}
     </RichButton>
   )

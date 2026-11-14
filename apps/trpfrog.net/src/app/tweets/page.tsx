@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 
 import { format, subYears } from 'date-fns'
 
@@ -44,11 +43,7 @@ export default async function Index(props: PageProps<'/tweets'>) {
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
-          <RichButton
-            render={
-              <Link href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'} />
-            }
-          >
+          <RichButton href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}>
             1年前のツイートを見る
           </RichButton>
         </p>

@@ -1,8 +1,11 @@
+'use client'
+
 import * as React from 'react'
 
 import { Button } from '@ui-sdk/react/button'
 import type { Except } from 'type-fest'
 
+import { A, type AProps } from '@/components/wrappers/A'
 import { tv } from '@/lib/tailwind'
 
 const style = tv({
@@ -25,14 +28,25 @@ const style = tv({
   ],
 })
 
-export type RichButtonProps = Except<React.ComponentProps<typeof Button>, 'className'> & {
+export type RichButtonProps = Except<
+  React.ComponentProps<typeof Button>,
+  'className' | 'render'
+> & {
   className?: string
+  /** 渡すとリンクになる。内部リンクは next/link、外部リンクは新しいタブで開く。 */
+  href?: string
+  openInNewTab?: AProps['openInNewTab']
 }
 
-/**
- * 押し込めるボタン。リンクにするときは `render={<Link href="..." />}` を渡す。
- */
+// サーバーコンポーネントで作った要素を render に渡すと 'use cache' 配下の SSR で
+// 要素の型が失われるので、リンク要素はこのクライアントコンポーネントの中で作る。
 export function RichButton(props: RichButtonProps) {
-  const { className, ...rest } = props
-  return <Button {...rest} className={style({ className })} />
+  const { className, href, openInNewTab, ...rest } = props
+  return (
+    <Button
+      {...rest}
+      render={href != null ? <A href={href} openInNewTab={openInNewTab} /> : undefined}
+      className={style({ className })}
+    />
+  )
 }

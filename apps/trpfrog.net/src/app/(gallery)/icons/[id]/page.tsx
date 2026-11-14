@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 
 import { ImageNavigation } from '@/app/(gallery)/_components/ImageNavigation'
 import { ImageViewer } from '@/app/(gallery)/_components/ImageViewer'
@@ -41,7 +40,7 @@ export default async function Index(props: PageProps<'/icons/[id]'>) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <RichButton render={<Link href={'/icons'} />}>一覧に戻る</RichButton>
+          <RichButton href={'/icons'}>一覧に戻る</RichButton>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vite-plus/test'
 
-import { CodeLinkButton } from './PlainCodeBlock'
+import { CodeLinkButton } from './CodeLinkButton'
 
 describe('CodeLinkButton', () => {
   it.each(['https://github.com/trpfrog/trpfrog.net', 'https://example.com/code.ts'])(
