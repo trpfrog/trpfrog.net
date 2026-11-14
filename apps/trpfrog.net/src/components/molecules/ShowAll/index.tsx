@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 
+import { Button } from '@ui-sdk/react/button'
+
 import { FoggedDiv, FoggedDivProps } from '@/components/atoms/FoggedDiv'
 import { usePixelValueFromCSSLength } from '@/components/molecules/ShowAll/usePixelValueFromCSSLength'
 
@@ -40,13 +42,14 @@ export function ShowAll(props: ShowAllProps) {
       )}
       {needsFog && (
         <div className={styles.button_wrapper}>
-          <button
+          <Button
             data-testid="show-all-button"
             className={styles.button}
+            aria-expanded={isShowAll}
             onClick={() => setIsShowAll(prev => !prev)}
           >
             {isShowAll ? '折りたたむ' : 'もっと見る'}
-          </button>
+          </Button>
         </div>
       )}
     </div>
