@@ -77,7 +77,7 @@ export function WritingTools(props: { slug: string }) {
   const codeBlockContent = uploadingStatusText ?? (outputText || 'No output yet.')
 
   return (
-    <WritingToolsPanel isOpened={isTabOpened} onToggle={() => setisTabOpened(prv => !prv)}>
+    <WritingToolsPanel isOpened={isTabOpened} onOpenChange={setisTabOpened}>
       <ImageUploaderSection
         isDragging={isDragging}
         dropTargetProps={dropTargetProps}
