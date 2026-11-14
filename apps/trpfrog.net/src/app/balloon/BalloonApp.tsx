@@ -49,7 +49,6 @@ export function BalloonApp() {
       <Title title="Balloons" description={'風船を割ることができます。(？)'}>
         <p>
           <RichButton
-            as="button"
             onClick={() => setSoundEnabled(!isSoundEnabled)}
             style={{ marginRight: '10px' }}
           >

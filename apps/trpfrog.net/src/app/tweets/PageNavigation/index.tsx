@@ -14,7 +14,10 @@ function Button(props: { pageNo: number; text?: string; current?: boolean }) {
   const params = new URLSearchParams(Object.fromEntries(searchParams.entries()))
   params.set('p', props.pageNo + '')
   return (
-    <RichButton as={Link} href={`/tweets?${params.toString()}#tweets`} data-current={props.current}>
+    <RichButton
+      render={<Link href={`/tweets?${params.toString()}#tweets`} />}
+      data-current={props.current}
+    >
       {props.text ?? props.pageNo}
     </RichButton>
   )

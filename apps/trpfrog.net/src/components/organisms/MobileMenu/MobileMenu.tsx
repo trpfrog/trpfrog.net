@@ -49,7 +49,7 @@ export function MobileMenu() {
         <PopoverTitle className="tw:sr-only">メニュー</PopoverTitle>
         <nav className={styles.links()}>
           {NAVIGATION_LINKS.map(({ link, name }) => (
-            <RichButton as={Link} href={link} key={link} onClick={() => setOpened(false)}>
+            <RichButton render={<Link href={link} />} key={link} onClick={() => setOpened(false)}>
               {name}
             </RichButton>
           ))}

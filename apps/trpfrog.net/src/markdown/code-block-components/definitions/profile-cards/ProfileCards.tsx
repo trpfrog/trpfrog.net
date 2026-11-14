@@ -97,7 +97,7 @@ export function ProfileCards(props: { profileDataList: ProfileData[]; held?: str
         secondaryButtonText={'カード表示に切り替え'}
       />
       {twitterSearchLink !== '' && (
-        <RichButton as={A} openInNewTab href={twitterSearchLink}>
+        <RichButton render={<A openInNewTab href={twitterSearchLink} />}>
           当日の同行者のツイートを見る
         </RichButton>
       )}

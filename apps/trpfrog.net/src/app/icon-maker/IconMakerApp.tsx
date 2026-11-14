@@ -75,9 +75,7 @@ export function IconMakerApp() {
           />
         </p>
         <p>
-          <RichButton as={A} href={tweetLink}>
-            Tweet
-          </RichButton>
+          <RichButton render={<A href={tweetLink} />}>Tweet</RichButton>
         </p>
         <p>
           (画像付きツイートで共有するのが無理だったので、一旦画像を保存してからこのボタンで共有して欲しいです〜(ごめんね))

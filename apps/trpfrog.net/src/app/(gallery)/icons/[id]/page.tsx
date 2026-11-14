@@ -41,9 +41,7 @@ export default async function Index(props: PageProps<'/icons/[id]'>) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <RichButton as={Link} href={'/icons'}>
-            一覧に戻る
-          </RichButton>
+          <RichButton render={<Link href={'/icons'} />}>一覧に戻る</RichButton>
         </div>
       </Block>
       <Block title={'既知のバグ'}>

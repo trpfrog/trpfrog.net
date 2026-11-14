@@ -44,8 +44,9 @@ export default async function Index(props: PageProps<'/tweets'>) {
         </p>
         <p>
           <RichButton
-            as={Link}
-            href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}
+            render={
+              <Link href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'} />
+            }
           >
             1年前のツイートを見る
           </RichButton>

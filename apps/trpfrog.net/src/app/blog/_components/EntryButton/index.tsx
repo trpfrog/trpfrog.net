@@ -7,7 +7,7 @@ import styles from './index.module.css'
 
 export function EntryButton(props: { text: string; icon: IconProp; onClick?: () => void }) {
   return (
-    <RichButton as="button" onClick={props.onClick} className={styles.entry_button}>
+    <RichButton onClick={props.onClick} className={styles.entry_button}>
       <div className={styles.entry_button_icon}>
         <FontAwesomeIcon icon={props.icon} />
       </div>

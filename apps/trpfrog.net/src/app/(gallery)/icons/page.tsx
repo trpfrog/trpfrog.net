@@ -26,7 +26,7 @@ export default function Index() {
         <p>つまみちゃんの作ったアイコンです。クリックで高解像度版に飛びます。</p>
         <p>Hugging Face Datasets でも利用可能です！</p>
         <p>
-          <RichButton as={A} href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}>
+          <RichButton render={<A href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} />}>
             trpfrog-icons on 🤗Datasets
           </RichButton>
         </p>
@@ -37,7 +37,7 @@ export default function Index() {
       <Block title={'データセット'}>
         <p>つまみアイコンデータセットが Hugging Face Datasets にて使えるようになりました！🎉</p>
         <p>
-          <RichButton as={A} href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'}>
+          <RichButton render={<A href={'https://huggingface.co/datasets/TrpFrog/trpfrog-icons'} />}>
             trpfrog-icons
           </RichButton>
         </p>

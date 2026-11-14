@@ -106,9 +106,7 @@ function DevButtons(props: { slug: string }) {
   return (
     <div className="tw:my-4 tw:flex tw:justify-center tw:gap-2">
       <EditButton slug={props.slug} />
-      <RichButton as={Link} href={`/blog/${props.slug}/og-image`}>
-        OG Image
-      </RichButton>
+      <RichButton render={<Link href={`/blog/${props.slug}/og-image`} />}>OG Image</RichButton>
     </div>
   )
 }

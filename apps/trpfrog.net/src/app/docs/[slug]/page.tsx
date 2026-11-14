@@ -39,9 +39,7 @@ export default async function DocsMarkdown(props: PageProps<'/docs/[slug]'>) {
   return (
     <MainWrapper gridLayout>
       <Title title={title ?? slug} description={description}>
-        <RichButton as={Link} href="/docs">
-          一覧に戻る
-        </RichButton>
+        <RichButton render={<Link href="/docs" />}>一覧に戻る</RichButton>
       </Title>
       {markdownList.map((markdown, idx) => (
         <Block key={idx}>

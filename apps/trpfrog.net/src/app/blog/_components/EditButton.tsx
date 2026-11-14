@@ -30,7 +30,7 @@ export function EditButton({ slug }: { slug: string }) {
 
   return NODE_ENV === 'development' ? (
     <form action={openInCotEditor}>
-      <RichButton as="button">編集する</RichButton>
+      <RichButton type="submit">編集する</RichButton>
     </form>
   ) : (
     <></>

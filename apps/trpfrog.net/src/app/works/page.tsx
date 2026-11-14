@@ -54,7 +54,7 @@ export default async function Index() {
             <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <RichButton as={A} openInNewTab key={linkTxt} href={url as string}>
+                  <RichButton render={<A openInNewTab href={url as string} />} key={linkTxt}>
                     {linkTxt}
                   </RichButton>
                 )

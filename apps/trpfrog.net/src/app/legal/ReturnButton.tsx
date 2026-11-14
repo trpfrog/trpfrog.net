@@ -14,10 +14,6 @@ export function ReturnButton() {
   if (basename.startsWith('legal')) {
     return <></>
   } else {
-    return (
-      <RichButton as={Link} href={'/legal'}>
-        戻る
-      </RichButton>
-    )
+    return <RichButton render={<Link href={'/legal'} />}>戻る</RichButton>
   }
 }

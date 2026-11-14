@@ -43,7 +43,7 @@ export default async function Index() {
             <RenderMarkdown markdown={content} mode="block" />
             <div style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {metadata.links.map(({ href, text }) => (
-                <RichButton as={A} key={href} href={href}>
+                <RichButton render={<A href={href} />} key={href}>
                   {text}
                 </RichButton>
               ))}

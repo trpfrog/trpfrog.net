@@ -93,7 +93,7 @@ export function createMDXComponents(options?: {
     },
 
     button: props => {
-      return <RichButton as="button" {...props} />
+      return <RichButton {...props} />
     },
   }
 }

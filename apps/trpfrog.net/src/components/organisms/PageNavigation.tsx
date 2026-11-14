@@ -45,11 +45,11 @@ function Button(props: {
   const { pageNo, createPath } = props
   const href = useMemo(() => createPath(pageNo), [pageNo, createPath])
   return props.current || props.disabled ? (
-    <RichButton as="button" disabled={props.disabled} data-current={props.current}>
+    <RichButton disabled={props.disabled} data-current={props.current}>
       {props.text ?? props.pageNo}
     </RichButton>
   ) : (
-    <RichButton as={Link} href={href} data-current={props.current}>
+    <RichButton render={<Link href={href} />} data-current={props.current}>
       {props.text ?? props.pageNo}
     </RichButton>
   )

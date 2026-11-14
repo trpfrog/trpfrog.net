@@ -11,7 +11,7 @@ export default async function Docs() {
     <MainWrapper gridLayout>
       <Title title="Docs" description="つまみネットのドキュメントまとめ" />
       {Object.keys(docsPaths).map(slug => (
-        <RichButton as={Link} key={slug} href={`/docs/${slug}`}>
+        <RichButton render={<Link href={`/docs/${slug}`} />} key={slug}>
           {slug}
         </RichButton>
       ))}

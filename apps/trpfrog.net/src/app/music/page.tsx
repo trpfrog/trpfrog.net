@@ -21,7 +21,7 @@ export default function Music() {
           ありがとうございます！！！
         </p>
         <p>
-          <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
+          <RichButton render={<A href="https://linkco.re/N4Z8hdvX" />}>
             購入・ストリーミング
           </RichButton>
         </p>
@@ -45,10 +45,12 @@ export default function Music() {
           僕は歌いません。(？)
         </p>
         <div>
-          <RichButton as={A} href="https://musicpost.joysound.com/music/musicId:107765">
+          <RichButton render={<A href="https://musicpost.joysound.com/music/musicId:107765" />}>
             楽曲詳細
           </RichButton>
-          <RichButton as={A} href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1">
+          <RichButton
+            render={<A href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1" />}
+          >
             店舗検索
           </RichButton>
         </div>
@@ -62,7 +64,7 @@ export default function Music() {
 
       <Block title={'フル音源'} h2icon={'robot'}>
         <p>各種音楽配信サイトで配信中！</p>
-        <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
+        <RichButton render={<A href="https://linkco.re/N4Z8hdvX" />}>
           購入・ストリーミング
         </RichButton>
         <p>YouTubeでも公開中！</p>
