@@ -11,7 +11,6 @@ catalog:
   '@fortawesome/free-brands-svg-icons': ^7.3.1
   '@fortawesome/free-solid-svg-icons': ^7.3.1
   '@fortawesome/react-fontawesome': ^3.5.0
-  '@headlessui/react': ^2.2.10
   '@hono/cli': ^0.1.11
   '@hono/standard-validator': ^0.4.0
   '@hono/vite-ssg': ^0.3.3
@@ -44,7 +43,6 @@ catalog:
   '@types/node': ^26.6.5
   '@types/react': ^19.3.0
   '@types/react-dom': ^19.3.0
-  '@types/react-modal': ^3.16.3
   '@types/seedrandom': ^3.0.8
   '@ui-sdk/core': 0.1.0-beta.2
   '@ui-sdk/react': 0.1.0-beta.2
@@ -104,7 +102,6 @@ catalog:
   react-dom: ^19.3.1
   react-hook-form: ^7.91.0
   react-loading-skeleton: ^3.5.0
-  react-modal: ^3.16.3
   react-player: ^3.4.0
   react-rewards: ^3.0.0
   react-string-replace: ^2.0.1
