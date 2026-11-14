@@ -99,6 +99,10 @@ export async function CodeBlock(props: CodeBlockProps) {
       transformerNotationHighlight(),
       transformerNotationErrorLevel(),
       {
+        // スクロールのためのフォーカスは ScrollArea のビューポートが受け持つ
+        pre(node) {
+          delete node.properties.tabindex
+        },
         line(hast) {
           addClassToHast(hast, styles.line())
         },

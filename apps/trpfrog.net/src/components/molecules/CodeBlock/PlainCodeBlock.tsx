@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { ScrollArea, ScrollAreaViewport } from '@ui-sdk/react/scroll-area'
 import type { Except } from 'type-fest'
 
 import { CopyButton } from '@/components/atoms/CopyButton'
@@ -25,10 +26,11 @@ const createStyles = tv({
     ],
     lang: 'tw:text-xs tw:font-bold tw:text-white',
     codeWrapper: [
-      'tw:w-full tw:overflow-clip tw:overflow-x-scroll',
+      'tw:w-full tw:overflow-clip',
       'tw:font-mono tw:text-[0.8em] tw:sp:text-xs',
       'tw:border tw:border-trpfrog-500 tw:dark:border-trpfrog-600',
     ],
+    viewport: 'tw:w-full tw:overflow-x-scroll',
     code: 'tw:py-4 tw:sp:py-3',
     line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
@@ -83,9 +85,14 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
           </div>
         </div>
       )}
-      <div dangerouslySetInnerHTML={dangerouslySetInnerHTML} className={styles.codeWrapper()}>
-        {children && <pre className="tw:p-1">{children}</pre>}
-      </div>
+      <ScrollArea className={styles.codeWrapper()}>
+        <ScrollAreaViewport
+          className={styles.viewport()}
+          dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+        >
+          {children && <pre className="tw:p-1">{children}</pre>}
+        </ScrollAreaViewport>
+      </ScrollArea>
     </div>
   )
 }
