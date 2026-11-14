@@ -8,7 +8,7 @@ import type { Except } from 'type-fest'
 import { A, type AProps } from '@/components/wrappers/A'
 import { tv } from '@/lib/tailwind'
 
-const style = tv({
+export const richButtonStyle = tv({
   base: [
     'tw:inline-flex tw:justify-center tw:items-center',
     'tw:leading-none tw:py-3 tw:px-4 tw:rounded-full',
@@ -46,7 +46,7 @@ export function RichButton(props: RichButtonProps) {
     <Button
       {...rest}
       render={href != null ? <A href={href} openInNewTab={openInNewTab} /> : undefined}
-      className={style({ className })}
+      className={richButtonStyle({ className })}
     />
   )
 }

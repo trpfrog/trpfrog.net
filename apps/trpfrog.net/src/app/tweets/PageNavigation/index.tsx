@@ -1,87 +1,48 @@
 'use client'
 
-import { Fragment } from 'react'
+import { useCallback } from 'react'
 
 import { useSearchParams } from 'next/navigation'
 
-import { RichButton } from '@/components/atoms/RichButton'
+import { PageNavigation as SharedPageNavigation } from '@/components/organisms/PageNavigation'
 
 import styles from './index.module.css'
 
-function Button(props: { pageNo: number; text?: string; current?: boolean }) {
-  const searchParams = useSearchParams()
-  const params = new URLSearchParams(Object.fromEntries(searchParams.entries()))
-  params.set('p', props.pageNo + '')
-  return (
-    <RichButton href={`/tweets?${params.toString()}#tweets`} data-current={props.current}>
-      {props.text ?? props.pageNo}
-    </RichButton>
-  )
-}
-
-/**
- *
- * @deprecated - use PageNavigation in components
- * @param props
- * @returns
- */
 export function PageNavigation(props: {
   currentPage: number
   lastPage: number
   numTweets: number
-  key: string
 }) {
+  const searchParams = useSearchParams()
+  const createPath = useCallback(
+    (pageNo: number) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set('p', String(pageNo))
+      return `/tweets?${params.toString()}#tweets`
+    },
+    [searchParams],
+  )
+
   if (props.numTweets === 0) {
-    return <></>
-  }
-
-  // create array like [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, ..., lastPage]
-  let buttons: number[] = []
-
-  if (props.lastPage < 10) {
-    buttons = [...Array(props.lastPage).keys()].map(e => e + 1)
-  } else {
-    let dx = 1
-    for (let i = props.currentPage; i <= props.lastPage; i += dx, dx *= 2) {
-      buttons.push(i)
-    }
-    dx = 1
-    for (let i = props.currentPage; 1 <= i; i -= dx, dx *= 2) {
-      buttons.push(i)
-    }
-    buttons.push(1)
-    buttons.push(props.lastPage)
-
-    buttons.push(
-      ...[
-        props.currentPage - 2,
-        props.currentPage - 1,
-        props.currentPage,
-        props.currentPage + 1,
-        props.currentPage + 2,
-      ].filter(e => 1 <= e && e <= props.lastPage),
-    )
-
-    buttons = [...new Set(buttons)].sort((a, b) => a - b)
+    return null
   }
 
   const tweetRemains = props.currentPage === props.lastPage ? props.numTweets % 50 : 50
 
   return (
     <div className={styles.navigation}>
-      <span style={{ display: 'inline-block' }}>
+      <span className="tw:inline-block">
         {props.numTweets} ツイート中 {tweetRemains} 件を表示
       </span>{' '}
-      <span style={{ display: 'inline-block' }}>
+      <span className="tw:inline-block">
         ({props.currentPage} / {props.lastPage} ページ目)
       </span>
-      <div className={styles.button_wrapper}>
-        {buttons.map(pageNo => (
-          <Fragment key={`navigation-${pageNo}-${props.key}`}>
-            <Button pageNo={pageNo} current={pageNo === props.currentPage} />
-          </Fragment>
-        ))}
-      </div>
+      <SharedPageNavigation
+        currentPage={props.currentPage}
+        lastPage={props.lastPage}
+        createPath={createPath}
+        className="tw:mt-2.5"
+      />
     </div>
   )
 }
