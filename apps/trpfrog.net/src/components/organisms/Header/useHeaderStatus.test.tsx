@@ -10,7 +10,7 @@ import { useHeaderStatus, useSetAlwaysShownHeader } from './useHeaderStatus'
 
 vi.mock('motion/react', () => ({ useScroll: vi.fn() }))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
-vi.mock('@/components/organisms/MobileMenu', () => ({ useMobileMenuState: () => [false] }))
+vi.mock('@/components/organisms/MobileMenu', () => ({ useIsMobileMenuOpened: () => false }))
 vi.mock('@/hooks/useScrollPosition', () => ({ useScrollPosition: () => ({ y: 600 }) }))
 vi.mock('@/hooks/useWindowSize', () => ({ useWindowSize: () => ({ width: 1200 }) }))
 

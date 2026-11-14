@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { useScroll } from 'motion/react'
 
-import { useMobileMenuState } from '@/components/organisms/MobileMenu'
+import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
 import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { useWindowSize } from '@/hooks/useWindowSize'
 import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
@@ -39,7 +39,7 @@ function useHeaderVisibleStatus(): boolean {
   const systemSideSettingAlwaysVisible = useAtomValue(alwaysShowHeaderAtom)
   const [userSettingAlwaysVisible] = useUserSettingAlwaysVisibleHeader()
 
-  const [isMobileMenuOpened] = useMobileMenuState()
+  const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
   if (userSettingAlwaysVisible || systemSideSettingAlwaysVisible || isMobileMenuOpened) {
@@ -64,7 +64,7 @@ export function useHeaderStatus(): HeaderStatus {
 
   const visible = useHeaderVisibleStatus()
 
-  const [isMobileMenuOpened] = useMobileMenuState()
+  const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
   const isMobile = innerWidth <= 800

@@ -1,63 +1,63 @@
 import Link from 'next/link'
 
-import classNames from 'classnames'
+import { PopoverArrow, PopoverContent, PopoverTitle } from '@ui-sdk/react/popover'
 
 import { Details } from '@/components/atoms/Details'
-import { PlainBlock } from '@/components/atoms/PlainBlock'
 import { RichButton } from '@/components/atoms/RichButton'
-import { MobileMenuBkg } from '@/components/organisms/MobileMenu/MobileMenuBkg'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
+import { tv } from '@/lib/tailwind'
 
+import { useIsMobileMenuOpened, useSetMobileMenuOpened } from './hooks'
 import { Settings } from './Settings'
 
-function SpeechBubbleContainer(props: {
-  children: React.ReactNode
-  isOpened?: boolean
-  ref?: React.RefObject<HTMLDivElement | null>
-}) {
-  const styles = classNames(
-    'tw:relative tw:mt-8 tw:w-fit',
-    'tw:before:absolute tw:before:-top-9 tw:before:right-5 tw:before:z-250 tw:before:ml-0',
-    'tw:before:border-[0.9rem] tw:before:border-b-[2rem]',
-    'tw:before:border-transparent tw:before:border-b-window-color',
-    'tw:before:content-[""]',
-    'tw:sp:mt-2 tw:sp:before:hidden tw:pc:-right-[17.5px]',
-    'tw:print:hidden',
-  )
-  return (
-    <aside
-      className={styles}
-      aria-hidden={!props.isOpened}
-      aria-label="詳細メニュー"
-      ref={props.ref}
-    >
-      <PlainBlock className="tw:flex tw:flex-col tw:gap-3 tw:rounded-lg tw:p-4 tw:sp:w-full">
-        {props.children}
-      </PlainBlock>
-    </aside>
-  )
-}
+const styles = tv({
+  slots: {
+    overlay: [
+      'tw:pointer-events-none tw:fixed tw:inset-0 tw:z-150 tw:bg-black',
+      'tw:opacity-0 tw:transition-opacity tw:duration-300',
+      'tw:data-open:opacity-70',
+    ],
+    content: [
+      'tw:flex tw:flex-col tw:gap-3 tw:p-4',
+      'tw:bg-window-color tw:rounded-lg',
+      'tw:sp:w-(--available-width)',
+      'tw:transition-[opacity,translate] tw:duration-300',
+      'tw:data-starting-style:-translate-y-4 tw:data-starting-style:opacity-0',
+      'tw:data-ending-style:-translate-y-4 tw:data-ending-style:opacity-0',
+      'tw:motion-reduce:translate-y-0!',
+      'tw:print:hidden',
+    ],
+    arrow: 'tw:-top-2 tw:size-4 tw:rotate-45 tw:bg-window-color tw:sp:hidden',
+    links: 'tw:grid tw:grid-cols-2 tw:gap-x-2 tw:gap-y-2.5',
+  },
+})()
 
-export function MobileMenu(props: {
-  ref?: React.RefObject<HTMLDivElement | null>
-  isMenuOpened: boolean
-}) {
+export function MobileMenu() {
+  const isOpened = useIsMobileMenuOpened()
+  const setOpened = useSetMobileMenuOpened()
   return (
-    <div inert={!props.isMenuOpened}>
-      <MobileMenuBkg isOpened={props.isMenuOpened}>
-        <SpeechBubbleContainer isOpened={props.isMenuOpened} ref={props.ref}>
-          <div className="tw:grid tw:grid-cols-2 tw:gap-x-2 tw:gap-y-2.5">
-            {NAVIGATION_LINKS.map(({ link, name }) => (
-              <RichButton as={Link} href={link} key={link}>
-                {name}
-              </RichButton>
-            ))}
-          </div>
-          <Details summary="高度な設定">
-            <Settings />
-          </Details>
-        </SpeechBubbleContainer>
-      </MobileMenuBkg>
-    </div>
+    <>
+      <div aria-hidden className={styles.overlay()} data-open={isOpened || undefined} />
+      <PopoverContent
+        side="bottom"
+        align="end"
+        sideOffset={14}
+        collisionPadding={8}
+        className={styles.content()}
+      >
+        <PopoverArrow className={styles.arrow()} />
+        <PopoverTitle className="tw:sr-only">メニュー</PopoverTitle>
+        <nav className={styles.links()}>
+          {NAVIGATION_LINKS.map(({ link, name }) => (
+            <RichButton as={Link} href={link} key={link} onClick={() => setOpened(false)}>
+              {name}
+            </RichButton>
+          ))}
+        </nav>
+        <Details summary="高度な設定">
+          <Settings />
+        </Details>
+      </PopoverContent>
+    </>
   )
 }

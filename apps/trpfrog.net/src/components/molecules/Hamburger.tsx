@@ -1,51 +1,41 @@
-// tailwind-variants definition
-import { useMobileMenuState, useToggleMenuCallback } from '@/components/organisms/MobileMenu'
+import { PopoverTrigger } from '@ui-sdk/react/popover'
+
 import { tv } from '@/lib/tailwind'
 
-const createHamburgerStyles = tv({
+const styles = tv({
   slots: {
+    wrapper: 'tw:inline-grid tw:place-items-center',
     button: [
-      'tw:relative tw:w-7 tw:h-6 tw:z-199 tw:cursor-pointer',
+      'tw:group tw:relative tw:w-7 tw:h-6 tw:z-199 tw:cursor-pointer',
       'tw:*:transition-all tw:*:duration-500',
+      'tw:*:absolute tw:*:left-0 tw:*:h-1 tw:*:w-full tw:*:bg-white tw:*:rounded-xs',
     ],
-    span1: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
-    span2: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
-    span3: 'tw:absolute tw:left-0 tw:w-full tw:h-1 tw:bg-white tw:rounded-xs',
+    line1: [
+      'tw:top-0',
+      'tw:group-data-open:w-[43%] tw:group-data-open:translate-x-[1.5px]',
+      'tw:group-data-open:translate-y-[3.6px] tw:group-data-open:rotate-45',
+    ],
+    line2: [
+      'tw:top-[calc(50%-2px)]',
+      'tw:group-data-open:top-2.5 tw:group-data-open:w-[105%]',
+      'tw:group-data-open:-translate-x-px tw:group-data-open:-rotate-45',
+    ],
+    line3: [
+      'tw:bottom-0',
+      'tw:group-data-open:w-[43%] tw:group-data-open:translate-x-3.5',
+      'tw:group-data-open:translate-y-[-3.5px] tw:group-data-open:rotate-45',
+    ],
   },
-  variants: {
-    isOpened: {
-      false: {
-        span1: 'tw:top-0 tw:w-full',
-        span2: 'tw:top-[calc(50%-2px)] tw:w-full',
-        span3: 'tw:bottom-0 tw:w-full',
-      },
-      true: {
-        span1: 'tw:top-0 tw:w-[43%] tw:translate-x-[1.5px] tw:translate-y-[3.6px] tw:rotate-45',
-        span2: 'tw:top-2.5 tw:w-[105%] tw:-translate-x-px tw:-rotate-45',
-        span3: 'tw:bottom-0 tw:w-[43%] tw:translate-x-3.5 tw:translate-y-[-3.5px] tw:rotate-45',
-      },
-    },
-  },
-})
+})()
 
-export function Hamburger(props: { ref: React.RefObject<HTMLDivElement | null> }) {
-  const [isOpened] = useMobileMenuState()
-  const toggleMenuCallback = useToggleMenuCallback()
-  const hamburgerStyles = createHamburgerStyles({ isOpened })
+export function Hamburger() {
   return (
-    <div
-      className="tw:inline-grid tw:place-items-center tw:transition-all tw:duration-500"
-      ref={props.ref}
-    >
-      <button
-        className={hamburgerStyles.button()}
-        onClick={toggleMenuCallback}
-        aria-label={isOpened ? 'メニューを閉じる' : 'メニューを開く'}
-      >
-        <span className={hamburgerStyles.span1()} />
-        <span className={hamburgerStyles.span2()} />
-        <span className={hamburgerStyles.span3()} />
-      </button>
+    <div className={styles.wrapper()}>
+      <PopoverTrigger className={styles.button()} aria-label="メニュー">
+        <span className={styles.line1()} />
+        <span className={styles.line2()} />
+        <span className={styles.line3()} />
+      </PopoverTrigger>
     </div>
   )
 }

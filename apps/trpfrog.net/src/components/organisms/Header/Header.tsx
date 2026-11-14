@@ -1,14 +1,19 @@
-import { Suspense, useMemo, useRef } from 'react'
+import { Suspense, useMemo } from 'react'
 
 import { usePathname } from 'next/navigation'
+
+import { Popover } from '@ui-sdk/react/popover'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { Hamburger } from '@/components/molecules/Hamburger'
 import { KawaiiLogo } from '@/components/organisms/Header/KawaiiLogo'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
-import { MobileMenu, useMobileMenuState } from '@/components/organisms/MobileMenu'
-import { useFocusTrap } from '@/hooks/useFocusTrap'
+import {
+  MobileMenu,
+  useIsMobileMenuOpened,
+  useSetMobileMenuOpened,
+} from '@/components/organisms/MobileMenu'
 import { tv } from '@/lib/tailwind'
 import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
 
@@ -77,12 +82,8 @@ function InternalHeader(props: {
     visibleSubtitle = false,
     pathname = '/',
   } = props
-  const refCloseButton = useRef<HTMLDivElement>(null)
-  const refMobileMenu = useRef<HTMLDivElement>(null)
-  const [isOpened, setIsOpened] = useMobileMenuState()
-
-  const focusableRefs = [refCloseButton, refMobileMenu]
-  useFocusTrap(focusableRefs, isOpened, () => setIsOpened(false))
+  const isMenuOpened = useIsMobileMenuOpened()
+  const setMenuOpened = useSetMobileMenuOpened()
 
   const styles = useMemo(
     () =>
@@ -95,7 +96,7 @@ function InternalHeader(props: {
   )
 
   return (
-    <>
+    <Popover open={isMenuOpened} onOpenChange={setMenuOpened} modal>
       <div className={styles.wrapper()}>
         <header className={styles.header()}>
           <MainWrapper className={styles.inside()} style={{ marginTop: 0, marginBottom: 0 }}>
@@ -112,13 +113,13 @@ function InternalHeader(props: {
             </div>
             <div className={styles.nav_wrapper()}>
               <HeaderNav />
-              <Hamburger ref={refCloseButton} />
+              <Hamburger />
             </div>
           </MainWrapper>
         </header>
       </div>
-      <MobileMenu ref={refMobileMenu} isMenuOpened={isOpened} />
-    </>
+      <MobileMenu />
+    </Popover>
   )
 }
 
