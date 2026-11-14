@@ -25,7 +25,6 @@ catalog:
   '@mdx-js/react': ^3.1.1
   '@next/bundle-analyzer': ^16.4.3
   '@next/mdx': ^16.4.3
-  '@next/third-parties': ^16.4.3
   '@prisma/adapter-planetscale': 7.10.1
   '@prisma/client': ^7.10.1
   '@react-hookz/web': ^26.1.0
@@ -108,7 +107,6 @@ catalog:
   react-tweet: ^3.3.1
   react-twitter-widgets: ^1.11.0
   react-wrap-balancer: ^1.1.1
-  react-youtube: ^10.1.0
   recharts: ^3.10.1
   rehype-katex: ^7.0.1
   rehype-raw: ^7.0.0
