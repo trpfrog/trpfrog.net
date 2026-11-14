@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 
+import { Toggle } from '@ui-sdk/react/toggle'
 import type { Except } from 'type-fest'
 
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
@@ -43,13 +44,13 @@ const createSpoilerStyles = tv({
 })
 
 function ImageSpoiler() {
-  const [spoilerState, setSpoilerState] = useState(true)
-  const styles = createSpoilerStyles({ blur: spoilerState })
+  const [revealed, setRevealed] = useState(false)
+  const styles = createSpoilerStyles({ blur: !revealed })
   return (
     <div className={styles.blur()}>
-      <button className={styles.button()} onClick={() => setSpoilerState(prv => !prv)}>
-        {spoilerState ? '画像を表示する' : '画像を隠す'}
-      </button>
+      <Toggle pressed={revealed} onPressedChange={setRevealed} className={styles.button()}>
+        {revealed ? '画像を隠す' : '画像を表示する'}
+      </Toggle>
     </div>
   )
 }

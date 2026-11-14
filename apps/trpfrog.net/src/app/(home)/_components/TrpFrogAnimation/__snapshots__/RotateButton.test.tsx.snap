@@ -3,9 +3,13 @@
 exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'left') 1`] = `
 <DocumentFragment>
   <button
+    aria-label="つまみを回す"
+    aria-pressed="false"
     class="angle_picker_button"
     data-rotate-direction="left"
+    data-slot="toggle"
     data-testid="rotate-button"
+    type="button"
   >
     <svg
       aria-hidden="true"
@@ -27,9 +31,13 @@ exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'le
 exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'right') 1`] = `
 <DocumentFragment>
   <button
+    aria-label="つまみを回す"
+    aria-pressed="false"
     class="angle_picker_button"
     data-rotate-direction="right"
+    data-slot="toggle"
     data-testid="rotate-button"
+    type="button"
   >
     <svg
       aria-hidden="true"
@@ -51,8 +59,13 @@ exports[`RotateButton > snapshot testing (isRotated: false, rotateDirection: 'ri
 exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'left') 1`] = `
 <DocumentFragment>
   <button
+    aria-label="つまみを回す"
+    aria-pressed="true"
     class="angle_picker_button"
+    data-pressed=""
+    data-slot="toggle"
     data-testid="rotate-button"
+    type="button"
   >
     <svg
       aria-hidden="true"
@@ -74,8 +87,13 @@ exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'lef
 exports[`RotateButton > snapshot testing (isRotated: true, rotateDirection: 'right') 1`] = `
 <DocumentFragment>
   <button
+    aria-label="つまみを回す"
+    aria-pressed="true"
     class="angle_picker_button"
+    data-pressed=""
+    data-slot="toggle"
     data-testid="rotate-button"
+    type="button"
   >
     <svg
       aria-hidden="true"
