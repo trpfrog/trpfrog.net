@@ -36,16 +36,33 @@ async function renderHeader() {
 }
 
 function getMenuButton() {
-  return screen.getByRole('button', { name: /メニュー/ })
+  return screen.getByRole('button', { name: 'メニュー' })
 }
 
-function queryMenuLinks() {
-  return NAVIGATION_LINKS.map(({ name }) => screen.queryByRole('link', { name }))
+function queryMenu() {
+  return screen.queryByRole('dialog', { name: 'メニュー' })
+}
+
+function getMenu() {
+  return screen.getByRole('dialog', { name: 'メニュー' })
+}
+
+function getHeaderWrapper() {
+  const wrapper = screen.getByRole('banner').parentElement
+  if (!wrapper) throw new Error('header wrapper not found')
+  return wrapper
 }
 
 async function openMenu() {
   await act(async () => {
     getMenuButton().click()
+  })
+  return getMenu()
+}
+
+async function openSettings(menu: HTMLElement) {
+  await act(async () => {
+    within(menu).getByText('高度な設定').click()
   })
 }
 
@@ -54,33 +71,30 @@ describe('Header mobile menu', () => {
     localStorage.clear()
   })
 
-  it('keeps the menu links hidden until the menu button is pressed', async () => {
+  it('stays closed until the menu button is pressed', async () => {
     await renderHeader()
-    expect(queryMenuLinks().every(link => link === null)).toBe(true)
-
-    await openMenu()
-
-    for (const link of queryMenuLinks()) {
-      expect(link).toBeInTheDocument()
-    }
-  })
-
-  it('links every navigation entry to its page', async () => {
-    await renderHeader()
-    await openMenu()
-
-    for (const { name, link } of NAVIGATION_LINKS) {
-      expect(screen.getByRole('link', { name })).toHaveAttribute('href', link)
-    }
-  })
-
-  it('reports the open state on the menu button', async () => {
-    await renderHeader()
+    expect(queryMenu()).toBeNull()
     expect(getMenuButton()).toHaveAttribute('aria-expanded', 'false')
 
     await openMenu()
 
     expect(getMenuButton()).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('links every navigation entry to its page', async () => {
+    await renderHeader()
+    const menu = await openMenu()
+
+    for (const { name, link } of NAVIGATION_LINKS) {
+      expect(within(menu).getByRole('link', { name })).toHaveAttribute('href', link)
+    }
+  })
+
+  it('moves focus into the menu when it opens', async () => {
+    await renderHeader()
+    const menu = await openMenu()
+
+    expect(menu).toContainElement(document.activeElement as HTMLElement)
   })
 
   it('closes when the menu button is pressed again', async () => {
@@ -91,7 +105,8 @@ describe('Header mobile menu', () => {
       getMenuButton().click()
     })
 
-    expect(queryMenuLinks().every(link => link === null)).toBe(true)
+    expect(queryMenu()).toBeNull()
+    expect(getMenuButton()).toHaveAttribute('aria-expanded', 'false')
   })
 
   it('closes with Escape and returns focus to the menu button', async () => {
@@ -102,35 +117,81 @@ describe('Header mobile menu', () => {
       fireEvent.keyDown(document.activeElement ?? document.body, { key: 'Escape' })
     })
 
-    expect(queryMenuLinks().every(link => link === null)).toBe(true)
+    expect(queryMenu()).toBeNull()
     expect(getMenuButton()).toHaveFocus()
   })
 
-  it('closes when a link in the menu is followed', async () => {
+  it('closes on a press outside the menu', async () => {
     await renderHeader()
     await openMenu()
 
     await act(async () => {
-      screen.getByRole('link', { name: NAVIGATION_LINKS[1].name }).click()
+      fireEvent.pointerDown(document.body)
+      fireEvent.mouseDown(document.body)
+      fireEvent.pointerUp(document.body)
+      fireEvent.click(document.body)
     })
 
-    expect(queryMenuLinks().every(link => link === null)).toBe(true)
+    expect(queryMenu()).toBeNull()
   })
 
-  it('moves focus into the menu when it opens', async () => {
+  it('closes when a link in the menu is followed', async () => {
     await renderHeader()
-    await openMenu()
+    const menu = await openMenu()
 
-    const menu = screen.getByRole('dialog', { name: 'メニュー' })
-    expect(menu).toContainElement(document.activeElement as HTMLElement)
+    await act(async () => {
+      within(menu).getByRole('link', { name: NAVIGATION_LINKS[1].name }).click()
+    })
+
+    expect(queryMenu()).toBeNull()
   })
 
-  it('shows the header settings inside the menu', async () => {
+  it('keeps the header pinned to the top while the menu is open', async () => {
+    localStorage.setItem('shouldFollowHeader', 'false')
     await renderHeader()
-    await openMenu()
+    expect(getHeaderWrapper()).not.toHaveClass('tw:sticky')
 
-    const menu = screen.getByRole('dialog', { name: 'メニュー' })
-    expect(within(menu).getByText('高度な設定')).toBeInTheDocument()
-    expect(within(menu).getByRole('checkbox', { name: 'ヘッダを追従させる' })).toBeInTheDocument()
+    await openMenu()
+    expect(getHeaderWrapper()).toHaveClass('tw:sticky')
+    expect(getHeaderWrapper()).not.toHaveClass('tw:-translate-y-full')
+
+    await act(async () => {
+      getMenuButton().click()
+    })
+    expect(getHeaderWrapper()).not.toHaveClass('tw:sticky')
+  })
+
+  it('toggles the kawaii logo setting from the menu', async () => {
+    await renderHeader()
+    const menu = await openMenu()
+    await openSettings(menu)
+
+    const kawaii = within(menu).getByRole('checkbox', { name: /かわいいロゴモード/ })
+    expect(kawaii).not.toBeChecked()
+
+    await act(async () => {
+      kawaii.click()
+    })
+
+    expect(kawaii).toBeChecked()
+    expect(localStorage.getItem('kawaii-logo')).toBe('true')
+  })
+
+  it('disables hiding the header while the header does not follow the page', async () => {
+    await renderHeader()
+    const menu = await openMenu()
+    await openSettings(menu)
+
+    const follow = within(menu).getByRole('checkbox', { name: 'ヘッダを追従させる' })
+    const hide = within(menu).getByRole('checkbox', { name: 'スクロール時ヘッダを隠す' })
+    expect(follow).toBeChecked()
+    expect(hide).toBeEnabled()
+
+    await act(async () => {
+      follow.click()
+    })
+
+    expect(follow).not.toBeChecked()
+    expect(hide).toBeDisabled()
   })
 })

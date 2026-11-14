@@ -31,7 +31,7 @@ describe.each([
     expect(screen.getByRole('button', { name: button })).toHaveAccessibleDescription(text)
   })
 
-  it('shows and hides the tooltip when pressed, for touch screens', async () => {
+  it('shows and hides the tooltip when the button is pressed', async () => {
     render(<Card />)
     const trigger = screen.getByRole('button', { name: button })
     expect(screen.queryByRole('tooltip')).toBeNull()

@@ -18,7 +18,8 @@ declare global {
 // Fail tests on ui-sdk development warnings, such as a control without a name
 globalThis.__UI_SDK_STRICT__ = true
 
-// happy-dom lacks a few APIs that ui-sdk popups call
+// happy-dom lacks a few APIs that ui-sdk popups call. With these stubs, top-layer
+// placement and exit animations are not exercised; check those in a browser.
 if (typeof HTMLElement !== 'undefined') {
   const noop = () => {}
   for (const [target, key] of [
