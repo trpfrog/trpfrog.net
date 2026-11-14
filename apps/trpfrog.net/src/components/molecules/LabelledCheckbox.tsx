@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Checkbox, CheckboxIndicator } from '@ui-sdk/react/checkbox'
+import { Field, FieldLabel } from '@ui-sdk/react/field'
 
 import { tv } from '@/lib/tailwind'
 
@@ -30,7 +31,7 @@ export function LabelledCheckbox(props: {
   onChange: (value: boolean) => void
 }) {
   return (
-    <label className={styles.label()}>
+    <Field className={styles.label()}>
       <Checkbox
         className={styles.checkbox()}
         checked={props.checked}
@@ -41,7 +42,7 @@ export function LabelledCheckbox(props: {
           <FontAwesomeIcon icon={faCheck} aria-hidden="true" />
         </CheckboxIndicator>
       </Checkbox>
-      <span>{props.children}</span>
-    </label>
+      <FieldLabel>{props.children}</FieldLabel>
+    </Field>
   )
 }

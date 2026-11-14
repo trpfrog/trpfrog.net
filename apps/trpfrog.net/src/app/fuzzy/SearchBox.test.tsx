@@ -19,7 +19,7 @@ describe('SearchBox', () => {
 
   it('opens the fuzzy page for the typed string', async () => {
     render(<SearchBox />)
-    fireEvent.change(screen.getByRole('textbox', { name: 'fuzzy-string' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'https://trpfrog.net/fuzzy/' }), {
       target: { value: 'つまみ/x' },
     })
     await act(async () => {

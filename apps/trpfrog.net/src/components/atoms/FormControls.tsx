@@ -3,6 +3,7 @@
 import * as React from 'react'
 
 import { Button } from '@ui-sdk/react/button'
+import { Field, FieldLabel } from '@ui-sdk/react/field'
 import { FileInput, FileInputTrigger } from '@ui-sdk/react/file-input'
 import { Input } from '@ui-sdk/react/input'
 import { NumberInput, NumberInputControl, NumberInputGroup } from '@ui-sdk/react/number-input'
@@ -53,7 +54,7 @@ export function NumberField(props: {
   onValueChange: (value: number) => void
 }) {
   return (
-    <label className={styles.numberField()}>
+    <Field className={styles.numberField()}>
       <NumberInput
         value={props.value}
         min={props.min}
@@ -67,8 +68,8 @@ export function NumberField(props: {
           <NumberInputControl className={styles.box({ className: styles.numberControl() })} />
         </NumberInputGroup>
       </NumberInput>
-      {props.label}
-    </label>
+      <FieldLabel>{props.label}</FieldLabel>
+    </Field>
   )
 }
 
