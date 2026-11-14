@@ -83,7 +83,7 @@ async function loadLanguage(languageCode: LanguageCode): Promise<void> {
 export function CodeLinkButton(props: { url: string }) {
   const isGitHub = /https?:\/\/github.com/.test(props.url)
   return (
-    <Tooltip>
+    <Tooltip type="label">
       <TooltipTrigger
         render={
           <A

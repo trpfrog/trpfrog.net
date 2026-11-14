@@ -15,7 +15,7 @@ exports[`CodeBlock > snapshot test 1`] = `
         class="tw:flex tw:gap-2"
       >
         <button
-          aria-describedby="ui-sdk-_r_0_-content"
+          aria-labelledby="ui-sdk-_r_0_-content"
           class="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
           data-slot="tooltip-trigger"
           type="button"
@@ -34,6 +34,22 @@ exports[`CodeBlock > snapshot test 1`] = `
             />
           </svg>
         </button>
+        <div
+          class="tw:z-50 tw:max-w-[min(20rem,90vw)] tw:rounded-sm tw:bg-[#222] tw:px-2 tw:py-1.5 tw:text-sm tw:leading-tight tw:text-white tw:origin-(--transform-origin) tw:transition-[opacity,scale] tw:duration-150 tw:data-starting-style:scale-95 tw:data-starting-style:opacity-0 tw:data-ending-style:scale-95 tw:data-ending-style:opacity-0 tw:data-instant:transition-none tw:motion-reduce:scale-100!"
+          data-closed=""
+          data-slot="tooltip-content"
+          hidden=""
+          id="ui-sdk-_r_0_-content"
+          role="tooltip"
+        >
+          Copy
+          <div
+            aria-hidden="true"
+            class="tw:size-2 tw:rotate-45 tw:bg-inherit tw:data-[side=top]:-bottom-1 tw:data-[side=bottom]:-top-1"
+            data-closed=""
+            data-slot="tooltip-arrow"
+          />
+        </div>
       </div>
     </div>
     <div

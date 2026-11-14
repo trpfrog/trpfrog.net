@@ -16,6 +16,7 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
 
   return (
     <Tooltip
+      type="label"
       closeOnPress={!hasClickedContent}
       onOpenChangeComplete={open => {
         if (!open) setIsClicked(false)
