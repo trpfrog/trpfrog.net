@@ -7,12 +7,14 @@ import styles from './index.module.css'
 
 export function SearchForm(props: { defaultValue?: string }) {
   return (
-    <form action="/tweets#tweets" method="get" className={styles.searchForm}>
-      <Field name="q">
-        <FieldLabel className="tw:sr-only">ツイート検索</FieldLabel>
-        <TextInput placeholder="ツイート検索" defaultValue={props.defaultValue} />
-      </Field>
+    <Field
+      name="q"
+      className={styles.searchForm}
+      render={<form action="/tweets#tweets" method="get" />}
+    >
+      <FieldLabel className="tw:sr-only">ツイート検索</FieldLabel>
+      <TextInput placeholder="ツイート検索" defaultValue={props.defaultValue} />
       <SubmitButton>検索</SubmitButton>
-    </form>
+    </Field>
   )
 }

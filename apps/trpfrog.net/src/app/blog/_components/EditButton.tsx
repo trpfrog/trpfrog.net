@@ -3,8 +3,9 @@ import fs from 'fs'
 
 import { resolvePostPath } from '@trpfrog.net/posts'
 
-import { RichButton } from '@/components/atoms/RichButton'
 import { NODE_ENV } from '@/env/client'
+
+import { OpenInEditorButton } from './OpenInEditorButton'
 
 export function EditButton({ slug }: { slug: string }) {
   const openInCotEditor = async () => {
@@ -28,11 +29,5 @@ export function EditButton({ slug }: { slug: string }) {
     }
   }
 
-  return NODE_ENV === 'development' ? (
-    <form action={openInCotEditor}>
-      <RichButton type="submit">編集する</RichButton>
-    </form>
-  ) : (
-    <></>
-  )
+  return NODE_ENV === 'development' ? <OpenInEditorButton openInEditor={openInCotEditor} /> : <></>
 }
