@@ -81,3 +81,21 @@
     transparent 100%
   );
 }
+
+/* キーボード操作と読み上げ用の Slider。見た目はダイヤル自体が担う */
+.slider {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.slider_track {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.frame:has(:focus-visible) {
+  outline: 3px solid var(--header-color);
+  outline-offset: 2px;
+}

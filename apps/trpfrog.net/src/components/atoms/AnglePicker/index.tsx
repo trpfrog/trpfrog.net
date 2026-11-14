@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useImperativeHandle, useRef, useState } from 'react'
 
-import { stepBy, stepFromKey, wrap } from '@ui-sdk/core/number'
+import { Slider, SliderThumb, SliderTrack } from '@ui-sdk/react/slider'
 import type { Except } from 'type-fest'
 
 import { useDragEvent } from '@/hooks/useDragEvent'
@@ -21,6 +21,10 @@ export interface AnglePickerHandle {
   setDegree: (degree: number | ((prev: number) => number)) => void
 }
 
+function toSliderValue(degree: number) {
+  return Math.round(((degree % 360) + 360) % 360)
+}
+
 export function AnglePicker(props: Props) {
   const {
     ref,
@@ -33,9 +37,13 @@ export function AnglePicker(props: Props) {
     ...rest
   } = props
   const [degree, setDegree] = useState(initialDegree)
-  const normalizedDegree = Math.round(wrap(degree, 0, 360))
 
   const innerRef = useRef<HTMLDivElement>(null)
+
+  const changeDegree = (newDegree: number) => {
+    setDegree(newDegree)
+    onAngleChange?.(newDegree)
+  }
 
   // ref.current.setDegree で手動での角度変更をできるようにする
   useImperativeHandle(ref, () => ({
@@ -58,36 +66,31 @@ export function AnglePicker(props: Props) {
     const normalizedX = x / (rect.width / 2) - 1
     const normalizedY = y / (rect.height / 2) - 1
     const radian = Math.atan2(normalizedY, normalizedX) + Math.PI / 2
-    const newDegree = radian * (180 / Math.PI)
-    setDegree(newDegree)
-    onAngleChange?.(newDegree)
+    changeDegree(radian * (180 / Math.PI))
   })
 
+  // 円形のドラッグはこのコンポーネントで扱い、キーボードと読み上げは ui-sdk の Slider に任せる
   return (
     <div
       ref={innerRef}
       className={`${styles.frame} ${className}`}
       style={{ width: size, height: size, ...style }}
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- 円形のダイヤルは input[type=range] で表せない
-      role="slider"
-      tabIndex={0}
-      aria-label="角度"
-      aria-valuemin={0}
-      aria-valuemax={360}
-      aria-valuenow={normalizedDegree}
-      aria-valuetext={`${normalizedDegree}°`}
       {...rest}
-      onKeyDown={e => {
-        rest.onKeyDown?.(e)
-        const move = stepFromKey(e.nativeEvent)
-        if (!move) return
-        e.preventDefault()
-        const range = { min: -360, max: 720, step: 5, largeStep: 45 }
-        const next = wrap(stepBy(normalizedDegree, move, range), 0, 360)
-        setDegree(next)
-        onAngleChange?.(next)
-      }}
     >
+      <Slider
+        value={toSliderValue(degree)}
+        min={0}
+        max={360}
+        step={5}
+        largeStep={45}
+        format={{ style: 'unit', unit: 'degree' }}
+        onValueChange={value => changeDegree(value === 360 ? 0 : value)}
+        className={styles.slider}
+      >
+        <SliderTrack className={styles.slider_track}>
+          <SliderThumb aria-label="角度" />
+        </SliderTrack>
+      </Slider>
       <div className={`${styles.face} ${faceClassName}`} />
       <div
         className={styles.clock_hand}
