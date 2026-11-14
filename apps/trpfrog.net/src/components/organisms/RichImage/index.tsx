@@ -5,6 +5,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Image } from '@/components/atoms/Image'
+import { VideoPlayer } from '@/components/molecules/VideoPlayer'
 
 import styles from './index.module.css'
 
@@ -67,15 +68,7 @@ export async function RichImage({
       <figure className={styles.img_wrapper} style={style}>
         {takenBy && <TakenBy photographer={takenBy} />}
         {isVideo ? (
-          // Captions are not available for these externally hosted videos.
-          // The accessible label still identifies the media to screen readers.
-          // oxlint-disable-next-line jsx-a11y/media-has-caption
-          <video
-            src={src}
-            controls
-            className={styles.video}
-            aria-label={alt || caption || '動画'}
-          />
+          <VideoPlayer src={src} label={alt || caption || '動画'} className={styles.video} />
         ) : (
           <Image src={src} alt={alt} width={width} height={height} withSpoiler={spoiler} />
         )}

@@ -29,6 +29,13 @@ describe('ui-sdk adoption', () => {
     expect(offenders).toEqual([])
   })
 
+  it('uses no native media controls', () => {
+    const offenders = files
+      .filter(f => /<(video|audio)\b[^>]*\bcontrols\b/.test(f.source))
+      .map(f => f.name)
+    expect(offenders).toEqual([])
+  })
+
   it('renders forms only through ui-sdk parts', () => {
     const offenders = files
       .filter(f =>

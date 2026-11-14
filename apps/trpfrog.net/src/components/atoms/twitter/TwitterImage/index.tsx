@@ -1,3 +1,5 @@
+import { VideoPlayer } from '@/components/molecules/VideoPlayer'
+
 import styles from './index.module.css'
 
 export type TwitterImageData = {
@@ -15,22 +17,20 @@ export function TwitterImage(props: TwitterImageProps) {
     ['.mp4', '.webm', '.mov'].some(ext => fileName?.trim().endsWith(ext))
   return (
     <blockquote className={styles.blockquote} cite={props.cite}>
-      {props.images.filter(Boolean).map((image, index) =>
-        isVideoFormat(image.src) ? (
-          // Captions are not available for these externally hosted videos.
-          // The accessible label still identifies the media to screen readers.
-          // oxlint-disable-next-line jsx-a11y/media-has-caption
-          <video
-            className={styles.image}
-            key={index}
-            src={image.src}
-            controls
-            aria-label={image.alt || '動画'}
-          />
-        ) : (
-          <img className={styles.image} key={index} src={image.src} alt={image.alt ?? ''} />
-        ),
-      )}
+      {props.images
+        .filter(Boolean)
+        .map((image, index) =>
+          isVideoFormat(image.src) ? (
+            <VideoPlayer
+              className={styles.image}
+              key={index}
+              src={image.src}
+              label={image.alt || '動画'}
+            />
+          ) : (
+            <img className={styles.image} key={index} src={image.src} alt={image.alt ?? ''} />
+          ),
+        )}
     </blockquote>
   )
 }
