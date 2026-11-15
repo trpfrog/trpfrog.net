@@ -11,7 +11,8 @@ function plugins(mode: string): PluginOption[] {
   if (mode === 'ssg') return [ssg({ entry: './src/ssg.ts' })]
   return [
     cloudflare({
-      inspectorPort: 8103,
+      // 既定の 9229 からの空き探しは、同時に起動した Worker 同士でぶつかるので OS に選ばせる
+      inspectorPort: 0,
       // Bindings are inferred from cloudflare.config.ts directly.
       types: { generate: false },
     }),
@@ -31,8 +32,15 @@ export default defineConfig(({ mode }) => ({
   // `dist` is reserved for `vp pack` outputs.
   build: mode === 'ssg' ? { outDir: '.ssg' } : undefined,
   server: {
-    port: 8003,
+    // `cf dev` 経由では portless が --port を差し込めないので、portless が渡す PORT を読む
+    port: Number(process.env.PORT) || undefined,
+    strictPort: Boolean(process.env.PORT),
   },
+  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする。
+  // vite.config は Node がそのまま読むので、workspace の TS (devOriginEnv) は import できない
+  define: process.env.PORTLESS_URL
+    ? { 'process.env.PORTLESS_URL': JSON.stringify(process.env.PORTLESS_URL) }
+    : {},
   environments: {
     ssr: {
       build: {

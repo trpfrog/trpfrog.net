@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "prisma generate && next dev",
+    "dev": "portless",
+    "dev:app": "prisma generate && next dev",
     "env:push": "node tools/pushVercelEnv.ts",
     "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local",
     "analyze": "ANALYZE=true next build",
@@ -12,6 +13,10 @@
     "start": "next start",
     "test": "vp test",
     "check-unused": "ts-remove-unused --skip '.*\\.(test|spec)\\.tsx?' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?' --check"
+  },
+  "portless": {
+    "name": "trpfrog",
+    "script": "dev:app"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",

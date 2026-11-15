@@ -5,6 +5,7 @@ import bundleAnalyer from '@next/bundle-analyzer'
 import mdx from '@next/mdx'
 import type { NextConfig } from 'next'
 
+import { devOriginEnv } from '@trpfrog.net/constants'
 import { composeFunctions } from '@trpfrog.net/utils'
 
 import { collectPagePaths } from './tools/fuzzyPagePaths'
@@ -18,6 +19,8 @@ const nextConfig: NextConfig = {
 
   // Discover pages before bundling; deployed functions do not need the source tree.
   env: {
+    // @trpfrog.net/constants がブラウザでも開発時の origin を決められるようにする
+    ...devOriginEnv(),
     FUZZY_PAGE_PATHS: JSON.stringify(
       collectPagePaths(
         globSync(`**/page.{${pageExtensions.join(',')}}`, {

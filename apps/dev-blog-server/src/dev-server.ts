@@ -15,7 +15,7 @@ import { route as watchPostRoute } from './routes/watch-post'
 export const app = new Hono()
   .use(logger())
   .use(prettyJSON())
-  .use(cors({ origin: services.website.development }))
+  .use(cors({ origin: services.website.development ?? [] }))
   .get('/health', c => c.text('OK'))
   .route('/edit', editRoute)
   .route('/create_tweet_block', createTweetBlockRoute)
@@ -26,9 +26,9 @@ export const app = new Hono()
 // Hono RPC に含めないように method chain から外す
 app.route('/watch-post', watchPostRoute)
 
+// port は指定しない。Bun が portless の渡す PORT を読む
 // oxlint-disable-next-line eslint/no-restricted-exports
 export default {
-  port: services.mdServer.port,
   fetch: app.fetch,
   idleTimeout: 60,
 }

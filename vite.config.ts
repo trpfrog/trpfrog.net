@@ -48,7 +48,8 @@ export default defineConfig({
       'node/no-process-env': [
         'error',
         {
-          allowedVariables: ['NODE_ENV'],
+          // PORT と PORTLESS_URL は portless が dev サーバに渡す
+          allowedVariables: ['NODE_ENV', 'PORT', 'PORTLESS_URL'],
         },
       ],
       'eslint/no-restricted-properties': [

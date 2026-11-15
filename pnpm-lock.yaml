@@ -255,6 +255,9 @@ catalogs:
     p-retry:
       specifier: ^8.0.1
       version: 8.0.1
+    portless:
+      specifier: ^0.17.0
+      version: 0.17.0
     postcss:
       specifier: ^8.5.31
       version: 8.5.31
@@ -458,6 +461,9 @@ importers:
       happy-dom:
         specifier: 'catalog:'
         version: 21.0.4(bufferutil@4.1.0)
+      portless:
+        specifier: 'catalog:'
+        version: 0.17.0
       prettier:
         specifier: 'catalog:'
         version: 3.9.10
@@ -487,7 +493,7 @@ importers:
         version: 7.0.2
       vite-plus:
         specifier: 'catalog:'
-        version: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
+        version: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
 
   apps/admin:
     dependencies:
@@ -5979,6 +5985,12 @@ packages:
   points-on-path@0.2.1:
     resolution: {integrity: sha512-25ClnWWuw7JbWZcgqY/gJ4FQWadKxGWk+3kR/7kD0tCaDtPPMj7oHu2ToLaVhfpnHrZzYby2w6tUA0eOIuUg8g==}
 
+  portless@0.17.0:
+    resolution: {integrity: sha512-UJdy5sGmNSwi8ETvVniUTqULJht16qvBR9rvsFqsVekEyabMH2xJ5mwIEYBmSSHVCUmQvAmaYAhBcCs8PA7IBA==}
+    engines: {node: '>=24'}
+    os: [darwin, linux, win32]
+    hasBin: true
+
   postcss-calc@11.2.3:
     resolution: {integrity: sha512-pFW3MR2a4W7uHcSGUiyQGGXZWHon83ljbNwnUJ1mRKublWQbv+3o9NiqhlV4TJfNby+U+zLY2OgiywzhA5eFqw==}
     engines: {node: ^22.22.3 || ^24.15 || >=26.0}
@@ -8107,11 +8119,13 @@ snapshots:
   '@opentelemetry/api@1.9.0':
     optional: true
 
-  '@oxc-project/runtime@0.115.0': {}
+  '@oxc-project/runtime@0.115.0':
+    optional: true
 
   '@oxc-project/runtime@0.155.0': {}
 
-  '@oxc-project/types@0.115.0': {}
+  '@oxc-project/types@0.115.0':
+    optional: true
 
   '@oxc-project/types@0.155.0': {}
 
@@ -8550,7 +8564,8 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.0.0-rc.9':
     optional: true
 
-  '@rolldown/pluginutils@1.0.0-rc.9': {}
+  '@rolldown/pluginutils@1.0.0-rc.9':
+    optional: true
 
   '@sec-ant/readable-stream@0.4.1': {}
 
@@ -9186,7 +9201,7 @@ snapshots:
       '@testing-library/dom': 10.4.2
       '@testing-library/user-event': 14.6.7(@testing-library/dom@10.4.2)
       '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))(vite@8.0.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.1))
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     transitivePeerDependencies:
       - bufferutil
       - msw
@@ -9228,7 +9243,7 @@ snapshots:
       pngjs: 7.0.0
       sirv: 3.0.2
       tinyrainbow: 3.2.0
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))(vite@8.0.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.1))
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
       ws: 8.22.0(bufferutil@4.1.0)
     transitivePeerDependencies:
       - bufferutil
@@ -9283,9 +9298,9 @@ snapshots:
       obug: 3.0.0
       std-env: 4.3.0
       tinyrainbow: 3.2.0
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     optionalDependencies:
-      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
 
   '@vitest/istanbul-lib-coverage@1.0.2': {}
 
@@ -9319,6 +9334,7 @@ snapshots:
       magic-string: 1.4.3
     optionalDependencies:
       vite: 8.0.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.1)
+    optional: true
 
   '@vitest/pretty-format@5.0.5':
     dependencies:
@@ -9341,7 +9357,7 @@ snapshots:
       pathe: 2.0.3
       sirv: 3.0.2
       tinyrainbow: 3.2.0
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
 
   '@vitest/utils@5.0.5':
     dependencies:
@@ -11826,6 +11842,31 @@ snapshots:
 
   os-paths@4.4.0: {}
 
+  oxfmt@0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
+    dependencies:
+      tinypool: 2.2.0
+    optionalDependencies:
+      '@oxfmt/binding-android-arm-eabi': 0.74.0
+      '@oxfmt/binding-android-arm64': 0.74.0
+      '@oxfmt/binding-darwin-arm64': 0.74.0
+      '@oxfmt/binding-darwin-x64': 0.74.0
+      '@oxfmt/binding-freebsd-x64': 0.74.0
+      '@oxfmt/binding-linux-arm-gnueabihf': 0.74.0
+      '@oxfmt/binding-linux-arm-musleabihf': 0.74.0
+      '@oxfmt/binding-linux-arm64-gnu': 0.74.0
+      '@oxfmt/binding-linux-arm64-musl': 0.74.0
+      '@oxfmt/binding-linux-ppc64-gnu': 0.74.0
+      '@oxfmt/binding-linux-riscv64-gnu': 0.74.0
+      '@oxfmt/binding-linux-riscv64-musl': 0.74.0
+      '@oxfmt/binding-linux-s390x-gnu': 0.74.0
+      '@oxfmt/binding-linux-x64-gnu': 0.74.0
+      '@oxfmt/binding-linux-x64-musl': 0.74.0
+      '@oxfmt/binding-openharmony-arm64': 0.74.0
+      '@oxfmt/binding-win32-arm64-msvc': 0.74.0
+      '@oxfmt/binding-win32-ia32-msvc': 0.74.0
+      '@oxfmt/binding-win32-x64-msvc': 0.74.0
+      vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
+
   oxfmt@0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
     dependencies:
       tinypool: 2.2.0
@@ -11851,31 +11892,6 @@ snapshots:
       '@oxfmt/binding-win32-x64-msvc': 0.74.0
       vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
 
-  oxfmt@0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
-    dependencies:
-      tinypool: 2.2.0
-    optionalDependencies:
-      '@oxfmt/binding-android-arm-eabi': 0.74.0
-      '@oxfmt/binding-android-arm64': 0.74.0
-      '@oxfmt/binding-darwin-arm64': 0.74.0
-      '@oxfmt/binding-darwin-x64': 0.74.0
-      '@oxfmt/binding-freebsd-x64': 0.74.0
-      '@oxfmt/binding-linux-arm-gnueabihf': 0.74.0
-      '@oxfmt/binding-linux-arm-musleabihf': 0.74.0
-      '@oxfmt/binding-linux-arm64-gnu': 0.74.0
-      '@oxfmt/binding-linux-arm64-musl': 0.74.0
-      '@oxfmt/binding-linux-ppc64-gnu': 0.74.0
-      '@oxfmt/binding-linux-riscv64-gnu': 0.74.0
-      '@oxfmt/binding-linux-riscv64-musl': 0.74.0
-      '@oxfmt/binding-linux-s390x-gnu': 0.74.0
-      '@oxfmt/binding-linux-x64-gnu': 0.74.0
-      '@oxfmt/binding-linux-x64-musl': 0.74.0
-      '@oxfmt/binding-openharmony-arm64': 0.74.0
-      '@oxfmt/binding-win32-arm64-msvc': 0.74.0
-      '@oxfmt/binding-win32-ia32-msvc': 0.74.0
-      '@oxfmt/binding-win32-x64-msvc': 0.74.0
-      vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
-
   oxlint-tsgolint@7.0.2004:
     optionalDependencies:
       '@oxlint-tsgolint/darwin-arm64': 7.0.2004
@@ -11884,6 +11900,30 @@ snapshots:
       '@oxlint-tsgolint/linux-x64': 7.0.2004
       '@oxlint-tsgolint/win32-arm64': 7.0.2004
       '@oxlint-tsgolint/win32-x64': 7.0.2004
+
+  oxlint@1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
+    optionalDependencies:
+      '@oxlint/binding-android-arm-eabi': 1.89.0
+      '@oxlint/binding-android-arm64': 1.89.0
+      '@oxlint/binding-darwin-arm64': 1.89.0
+      '@oxlint/binding-darwin-x64': 1.89.0
+      '@oxlint/binding-freebsd-x64': 1.89.0
+      '@oxlint/binding-linux-arm-gnueabihf': 1.89.0
+      '@oxlint/binding-linux-arm-musleabihf': 1.89.0
+      '@oxlint/binding-linux-arm64-gnu': 1.89.0
+      '@oxlint/binding-linux-arm64-musl': 1.89.0
+      '@oxlint/binding-linux-ppc64-gnu': 1.89.0
+      '@oxlint/binding-linux-riscv64-gnu': 1.89.0
+      '@oxlint/binding-linux-riscv64-musl': 1.89.0
+      '@oxlint/binding-linux-s390x-gnu': 1.89.0
+      '@oxlint/binding-linux-x64-gnu': 1.89.0
+      '@oxlint/binding-linux-x64-musl': 1.89.0
+      '@oxlint/binding-openharmony-arm64': 1.89.0
+      '@oxlint/binding-win32-arm64-msvc': 1.89.0
+      '@oxlint/binding-win32-ia32-msvc': 1.89.0
+      '@oxlint/binding-win32-x64-msvc': 1.89.0
+      oxlint-tsgolint: 7.0.2004
+      vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
 
   oxlint@1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
     optionalDependencies:
@@ -11908,30 +11948,6 @@ snapshots:
       '@oxlint/binding-win32-x64-msvc': 1.89.0
       oxlint-tsgolint: 7.0.2004
       vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
-
-  oxlint@1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)):
-    optionalDependencies:
-      '@oxlint/binding-android-arm-eabi': 1.89.0
-      '@oxlint/binding-android-arm64': 1.89.0
-      '@oxlint/binding-darwin-arm64': 1.89.0
-      '@oxlint/binding-darwin-x64': 1.89.0
-      '@oxlint/binding-freebsd-x64': 1.89.0
-      '@oxlint/binding-linux-arm-gnueabihf': 1.89.0
-      '@oxlint/binding-linux-arm-musleabihf': 1.89.0
-      '@oxlint/binding-linux-arm64-gnu': 1.89.0
-      '@oxlint/binding-linux-arm64-musl': 1.89.0
-      '@oxlint/binding-linux-ppc64-gnu': 1.89.0
-      '@oxlint/binding-linux-riscv64-gnu': 1.89.0
-      '@oxlint/binding-linux-riscv64-musl': 1.89.0
-      '@oxlint/binding-linux-s390x-gnu': 1.89.0
-      '@oxlint/binding-linux-x64-gnu': 1.89.0
-      '@oxlint/binding-linux-x64-musl': 1.89.0
-      '@oxlint/binding-openharmony-arm64': 1.89.0
-      '@oxlint/binding-win32-arm64-msvc': 1.89.0
-      '@oxlint/binding-win32-ia32-msvc': 1.89.0
-      '@oxlint/binding-win32-x64-msvc': 1.89.0
-      oxlint-tsgolint: 7.0.2004
-      vite-plus: 1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)
 
   p-retry@8.0.1:
     dependencies:
@@ -12000,6 +12016,8 @@ snapshots:
     dependencies:
       path-data-parser: 0.1.0
       points-on-curve: 0.2.0
+
+  portless@0.17.0: {}
 
   postcss-calc@11.2.3(postcss@8.5.31):
     dependencies:
@@ -12434,6 +12452,7 @@ snapshots:
       '@rolldown/binding-wasm32-wasi': 1.0.0-rc.9
       '@rolldown/binding-win32-arm64-msvc': 1.0.0-rc.9
       '@rolldown/binding-win32-x64-msvc': 1.0.0-rc.9
+    optional: true
 
   roughjs@4.6.6:
     dependencies:
@@ -12969,23 +12988,23 @@ snapshots:
       '@vimeo/player': 2.29.0
       media-played-ranges-mixin: 0.1.0
 
-  vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1):
+  vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1):
     dependencies:
       '@oxc-project/runtime': 0.155.0
       '@oxc-project/types': 0.155.0
       '@oxlint/plugins': 1.89.0
-      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
       '@vitest/pretty-format': 5.0.5
       '@vitest/snapshot': 5.0.5
       '@vitest/spy': 5.0.5
       '@vitest/utils': 5.0.5
-      oxfmt: 0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
-      oxlint: 1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      oxfmt: 0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      oxlint: 1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
       oxlint-tsgolint: 7.0.2004
-      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
+      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     optionalDependencies:
       '@voidzero-dev/vite-plus-darwin-arm64': 1.4.0
       '@voidzero-dev/vite-plus-darwin-x64': 1.4.0
@@ -13030,23 +13049,23 @@ snapshots:
       - vue-tsc
       - yaml
 
-  vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1):
+  vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1):
     dependencies:
       '@oxc-project/runtime': 0.155.0
       '@oxc-project/types': 0.155.0
       '@oxlint/plugins': 1.89.0
-      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      '@vitest/browser': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
       '@vitest/pretty-format': 5.0.5
       '@vitest/snapshot': 5.0.5
       '@vitest/spy': 5.0.5
       '@vitest/utils': 5.0.5
-      oxfmt: 0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
-      oxlint: 1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(bufferutil@4.1.0)(esbuild@0.27.3)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      oxfmt: 0.74.0(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      oxlint: 1.89.0(oxlint-tsgolint@7.0.2004)(vite-plus@1.4.0(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(bufferutil@4.1.0)(esbuild@0.28.2)(happy-dom@21.0.4(bufferutil@4.1.0))(jiti@2.7.0)(jsdom@26.1.0(bufferutil@4.1.0))(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
       oxlint-tsgolint: 7.0.2004
-      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
-      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
+      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
+      vitest: 5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0))
     optionalDependencies:
       '@voidzero-dev/vite-plus-darwin-arm64': 1.4.0
       '@voidzero-dev/vite-plus-darwin-x64': 1.4.0
@@ -13109,6 +13128,34 @@ snapshots:
       terser: 5.51.2
       tsx: 4.23.12
       yaml: 2.9.1
+    optional: true
+
+  vitest@5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0)):
+    dependencies:
+      '@types/chai': 5.2.3
+      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
+      chai: 6.3.0
+      es-module-lexer: 2.3.2
+      expect-type: 1.4.0
+      magic-string: 1.4.3
+      obug: 3.0.0
+      picomatch: 4.0.7
+      std-env: 4.3.0
+      tinybench: 6.2.2
+      tinyexec: 1.3.1
+      tinyglobby: 0.2.17
+      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
+      why-is-node-running: 3.2.1
+    optionalDependencies:
+      '@opentelemetry/api': 1.9.0
+      '@types/node': 26.6.5
+      '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
+      '@vitest/coverage-v8': 5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5)
+      '@vitest/ui': 5.0.5(vitest@5.0.5)
+      happy-dom: 21.0.4(bufferutil@4.1.0)
+      jsdom: 26.1.0(bufferutil@4.1.0)
+    transitivePeerDependencies:
+      - msw
 
   vitest@5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5))(@vitest/ui@5.0.5(vitest@5.0.5))(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0)):
     dependencies:
@@ -13130,33 +13177,6 @@ snapshots:
       '@opentelemetry/api': 1.9.0
       '@types/node': 26.6.5
       '@vitest/browser-preview': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(bufferutil@4.1.0)(vitest@5.0.5)
-      '@vitest/coverage-v8': 5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5)
-      '@vitest/ui': 5.0.5(vitest@5.0.5)
-      happy-dom: 21.0.4(bufferutil@4.1.0)
-      jsdom: 26.1.0(bufferutil@4.1.0)
-    transitivePeerDependencies:
-      - msw
-
-  vitest@5.0.5(@opentelemetry/api@1.9.0)(@types/node@26.6.5)(@vitest/browser-preview@5.0.5)(@vitest/coverage-v8@5.0.5)(@vitest/ui@5.0.5)(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))(happy-dom@21.0.4(bufferutil@4.1.0))(jsdom@26.1.0(bufferutil@4.1.0)):
-    dependencies:
-      '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.5(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1))
-      chai: 6.3.0
-      es-module-lexer: 2.3.2
-      expect-type: 1.4.0
-      magic-string: 1.4.3
-      obug: 3.0.0
-      picomatch: 4.0.7
-      std-env: 4.3.0
-      tinybench: 6.2.2
-      tinyexec: 1.3.1
-      tinyglobby: 0.2.17
-      vite: '@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(typescript@7.0.2)(yaml@2.9.1)'
-      why-is-node-running: 3.2.1
-    optionalDependencies:
-      '@opentelemetry/api': 1.9.0
-      '@types/node': 26.6.5
-      '@vitest/browser-preview': 5.0.5(bufferutil@4.1.0)(vite@8.0.0(@types/node@26.6.5)(esbuild@0.27.3)(jiti@2.7.0)(sass@1.83.0)(sugarss@5.0.1(postcss@8.5.31))(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.1))(vitest@5.0.5)
       '@vitest/coverage-v8': 5.0.5(@vitest/browser@5.0.5)(vitest@5.0.5)
       '@vitest/ui': 5.0.5(vitest@5.0.5)
       happy-dom: 21.0.4(bufferutil@4.1.0)
@@ -13190,6 +13210,7 @@ snapshots:
       jsdom: 26.1.0(bufferutil@4.1.0)
     transitivePeerDependencies:
       - msw
+    optional: true
 
   w3c-xmlserializer@5.0.0:
     dependencies:

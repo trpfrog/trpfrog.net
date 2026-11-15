@@ -8,7 +8,8 @@
     }
   },
   "scripts": {
-    "dev": "cf dev",
+    "dev": "portless",
+    "dev:app": "cf dev",
     "deploy": "cf deploy",
     "deploy:prod": "vp run migrate:remote && op run --env-file .prod.vars.tpl -- ./node_modules/.bin/cf deploy --secrets-file .prod.secrets.env",
     "secrets:dev": "op inject --force --in-file .dev.vars.tpl --out-file .dev.vars",
@@ -18,6 +19,10 @@
     "migrate:remote": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842",
     "pack": "vp pack",
     "pack:watch": "vp pack --watch src --no-clean"
+  },
+  "portless": {
+    "name": "api.trpfrog",
+    "script": "dev:app"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",

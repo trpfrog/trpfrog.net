@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev pack:watch",
+    "dev:proxy": "portless proxy start --unprivileged || portless proxy start -p 1355",
     "pack": "turbo pack",
     "lint-fix": "vp lint --fix --type-aware --type-check && vp fmt",
     "install-skills": "vp exec skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
@@ -26,6 +27,7 @@
     "@vitest/ui": "catalog:",
     "better-typescript-lib": "catalog:",
     "happy-dom": "catalog:",
+    "portless": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-classnames": "catalog:",
     "prettier-plugin-merge": "catalog:",
