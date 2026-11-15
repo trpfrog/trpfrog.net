@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { createTooltipController } from '@ui-sdk/react/tooltip'
 
@@ -14,47 +14,38 @@ interface ButtonWithTooltipProps extends React.ComponentPropsWithoutRef<'button'
 // 押した結果を見せておく時間。押すたびに数え直す
 const PRESSED_TOOLTIP_DURATION = 2000
 
+// 押したことをツールチップの payload として持たせる。押すたびに別のオブジェクトにして、
+// どの押下のタイマーかを見分ける。ホバーやフォーカスで開き直すと payload は消える
+interface Pressed {
+  // 押したことで開いたか。そうなら時間が来たら閉じる
+  openedByPress: boolean
+}
+
 export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
   const { children, hoveredTooltipContent, clickedTooltipContent, onClick, ...rest } = props
-  const [tooltip] = useState(() => createTooltipController())
-  const [isClicked, setIsClicked] = useState(false)
-  // 押したことで開いたなら、時間が来たら閉じる
-  const openedByPress = useRef(false)
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const [tooltip] = useState(() => createTooltipController<Pressed | null>())
   const hasClickedContent = clickedTooltipContent != null
-
-  useEffect(() => () => clearTimeout(timer.current), [])
 
   const showPressed = () => {
     // タッチ操作ではホバーで開かないので、押したら開く
-    if (!tooltip.isOpen()) openedByPress.current = tooltip.setOpen(true)
-    clearTimeout(timer.current)
-    timer.current = setTimeout(() => {
+    const pressed: Pressed = {
+      openedByPress: !tooltip.isOpen() || (tooltip.getPayload()?.openedByPress ?? false),
+    }
+    void tooltip.open({ payload: pressed })
+    setTimeout(() => {
+      // 押し直したか、閉じたあとなら何もしない
+      if (!tooltip.isOpen() || tooltip.getPayload() !== pressed) return
       // ホバーやフォーカスで開いているなら、閉じずに表示だけ戻す
-      // (閉じるときは閉じ終わってから戻す)
-      if (openedByPress.current) tooltip.close()
-      else setIsClicked(false)
+      if (pressed.openedByPress) tooltip.close()
+      else void tooltip.open({ payload: null })
     }, PRESSED_TOOLTIP_DURATION)
   }
 
   return (
-    <Tooltip
-      type="label"
-      controller={tooltip}
-      closeOnPress={!hasClickedContent}
-      onOpenChange={open => {
-        if (open) return
-        openedByPress.current = false
-        clearTimeout(timer.current)
-      }}
-      onOpenChangeComplete={open => {
-        if (!open) setIsClicked(false)
-      }}
-    >
+    <Tooltip type="label" controller={tooltip} closeOnPress={!hasClickedContent}>
       <TooltipTrigger
         {...rest}
         onClick={e => {
-          setIsClicked(true)
           if (hasClickedContent) showPressed()
           onClick?.(e)
         }}
@@ -62,7 +53,7 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
         {children}
       </TooltipTrigger>
       <TooltipContent>
-        {isClicked && hasClickedContent ? clickedTooltipContent : hoveredTooltipContent}
+        {({ payload }) => (payload ? clickedTooltipContent : hoveredTooltipContent)}
       </TooltipContent>
     </Tooltip>
   )
