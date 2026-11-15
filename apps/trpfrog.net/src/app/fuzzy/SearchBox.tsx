@@ -2,7 +2,7 @@
 
 import { Field, FieldLabel } from '@ui-sdk/react/field'
 
-import { SubmitButton, TextInput } from '@/components/atoms/FormControls'
+import { SubmitButton, TextInput } from '@/components/atoms/form-controls'
 import { tv } from '@/lib/tailwind'
 
 const styles = tv({

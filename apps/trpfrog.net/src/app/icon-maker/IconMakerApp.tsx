@@ -8,7 +8,7 @@ import { toast } from '@ui-sdk/react/toast'
 import { createURL } from '@trpfrog.net/utils'
 
 import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
-import { ImagePicker } from '@/components/atoms/FormControls'
+import { ImagePicker } from '@/components/atoms/form-controls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { twJoin } from '@/lib/tailwind'

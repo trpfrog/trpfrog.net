@@ -1,7 +1,7 @@
 'use client'
 import { Field, FieldLabel } from '@ui-sdk/react/field'
 
-import { SubmitButton, TextInput } from '@/components/atoms/FormControls'
+import { SubmitButton, TextInput } from '@/components/atoms/form-controls'
 
 import styles from './index.module.css'
 

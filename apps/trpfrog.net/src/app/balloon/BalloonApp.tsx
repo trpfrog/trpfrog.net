@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 
-import { NumberField } from '@/components/atoms/FormControls'
+import { NumberField } from '@/components/atoms/form-controls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
