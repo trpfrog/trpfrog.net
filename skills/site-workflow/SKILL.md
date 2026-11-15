@@ -22,10 +22,10 @@ sed -n '1,80p' .npmrc 2>/dev/null || true
 
 Read the root `package.json` as well. This repository uses `pnpm@10.14.0`, a shared catalog in `pnpm-workspace.yaml`, a shared `pnpm-lock.yaml`, and `vp` for lint/test tooling. Preserve unrelated worktree changes.
 
-Before starting or restarting a server, inspect the ports used by the repository:
+Before starting or restarting a server, check what is already running. Dev servers run through [portless](https://github.com/vercel-labs/portless) on random ports behind a proxy on port 80, and each git worktree gets its own URLs:
 
 ```sh
-lsof -nP -iTCP:3000 -iTCP:3001 -iTCP:8001 -iTCP:8002 -iTCP:8003 -sTCP:LISTEN || true
+pnpm exec portless list
 ```
 
 Only stop a process when it is an identified process from this repository or a server session started for this task. Prefer sending Ctrl-C to the known interactive session. Do not use broad `killall`, recursive process matching, or destructive cleanup.
@@ -91,17 +91,19 @@ If the Next.js Turbopack build stays at `Creating an optimized production build 
 
 Choose the server scope deliberately:
 
-- `pnpm -w dev` starts the interactive workspace services and is appropriate when dependent Worker/blog services are needed. It may prompt for input; keep the session attached and do not send characters to it unless intended.
-- `pnpm --filter trpfrog.net dev` starts only the Next.js site and is sufficient for static/local route verification such as `/works`. Use it when auxiliary services are unnecessary or their ports are already occupied.
+- `pnpm -w dev` starts the portless proxy and all workspace services, and is appropriate when dependent Worker/blog services are needed. Pass `--ui=stream` (`pnpm -w dev --ui=stream`) when no one can interact with the Turborepo TUI.
+- `pnpm -w dev:proxy && pnpm --filter trpfrog.net dev` starts only the Next.js site and is sufficient for static/local route verification such as `/works`. Use it when auxiliary services are unnecessary.
 
-If binding `localhost:3000` fails with `EPERM`, retry the server command with the required permission escalation. Keep the final successful server session alive when the user asked for a running server, and report its session/URL.
+Apps find each other only through portless. `pnpm --filter <app> dev:app` runs an app without portless, but it cannot reach the other apps.
 
-Verify the requested route over HTTP as a minimum:
+If binding port 80 for the proxy fails with `EPERM`, retry `pnpm -w dev:proxy` with the required permission escalation. Keep the final successful server session alive when the user asked for a running server, and report its session/URL.
+
+Verify the requested route over HTTP as a minimum. `portless get` prints the URL for the current worktree:
 
 ```sh
 curl -fsS -o /private/tmp/trpfrog-route.html \
   -w 'HTTP %{http_code}\n' \
-  http://localhost:3000/works
+  "$(pnpm exec portless get trpfrog)/works"
 rg -o '<title>[^<]*|uec-fulfilled' /private/tmp/trpfrog-route.html | head
 ```
 

@@ -10,8 +10,8 @@
 ## Build, Test, and Development Commands
 - This repo uses Vite+ (`vp`). Do not run pnpm, npm, or Yarn directly; `vp` wraps the package manager. See `CLAUDE.md` for the full command list.
 - `vp install`: install dependencies (Node.js `^22.22.3 || ^24.15.0 || >=26.0.0`).
-- `vp run -w dev`: run workspace dev tasks through Turborepo, together with `pack:watch`.
-- `vp run --filter trpfrog.net dev`: run only the web app (`http://localhost:3000`). Run `vp run -w pack` first, because this skips Turborepo.
+- `vp run -w dev`: run workspace dev tasks through Turborepo, together with `pack:watch`. It starts the portless proxy first, and each app gets a URL such as `http://trpfrog.localhost` (`http://<branch>.trpfrog.localhost` in a git worktree, with `/` in the branch name turned into `-`).
+- `vp run -w pack`, `vp run -w dev:proxy`, then `vp run --filter trpfrog.net dev`: run only the web app. This skips Turborepo, so build the packages and start the proxy first. `vp exec portless list` shows the running URLs.
 - `vp run -w pack`: compile `packages/*` and the Hono RPC clients in `apps/*` into each package's `dist/` with source maps and declaration maps. Their `exports` point to `dist/`, so run this before `vp check` and `vp test` on a fresh checkout.
 - `vp run -w build`: build all apps/packages.
 - `vp run -w typegen`: generate project types (Next.js/Prisma). Worker bindings are inferred from each Worker's `cloudflare.config.ts`.

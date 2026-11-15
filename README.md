@@ -105,7 +105,19 @@ Next, run the development server:
 pnpm -w dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each app's dev server runs through [portless](https://github.com/vercel-labs/portless), so it gets a named URL instead of a fixed port. `pnpm -w dev` also starts the portless proxy on port 80; it needs no `sudo` and installs nothing. Where port 80 is not available without root (Linux by default), the proxy uses port 1355 and the URLs end in `:1355`.
+
+| App                | Main checkout                      | Git worktree on branch `foo/bar`           |
+| ------------------ | ---------------------------------- | ------------------------------------------ |
+| `trpfrog.net`      | `http://trpfrog.localhost`         | `http://foo-bar.trpfrog.localhost`         |
+| `admin`            | `http://admin.trpfrog.localhost`   | `http://foo-bar.admin.trpfrog.localhost`   |
+| `image-generation` | `http://api.trpfrog.localhost`     | `http://foo-bar.api.trpfrog.localhost`     |
+| `dev-blog-server`  | `http://md.trpfrog.localhost`      | `http://foo-bar.md.trpfrog.localhost`      |
+| `content-server`   | `http://content.trpfrog.localhost` | `http://foo-bar.content.trpfrog.localhost` |
+
+Apps find each other's URL from `PORTLESS_URL` (see `packages/constants/services.ts`), so servers in different worktrees run side by side. `pnpm exec portless list` shows the running URLs.
+
+An app can still run alone without portless (`pnpm --filter <app> dev:app`), but it then cannot reach the other apps.
 
 Useful workspace commands:
 
