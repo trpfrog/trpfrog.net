@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import classNames from 'classnames'
-import Balancer from 'react-wrap-balancer'
 import type { Except } from 'type-fest'
 
 import { BlogPost } from '@trpfrog.net/posts'
@@ -70,22 +69,18 @@ function ArticleTitle(props: { title: string }) {
     <h1
       className={classNames(
         'tw:font-mplus-rounded tw:font-black tw:text-center',
-        'tw:text-4xl tw:sp:text-3xl tw:my-4 tw:leading-tight tw:tracking-tight',
+        'tw:text-4xl tw:sp:text-3xl tw:my-4 tw:leading-tight tw:tracking-tight tw:text-balance',
       )}
     >
-      <Balancer>
-        <ParseWithBudouX str={props.title} />
-      </Balancer>
+      <ParseWithBudouX str={props.title} />
     </h1>
   )
 }
 
 function ArticleDescription(props: { description: string }) {
   return (
-    <p className="tw:text-center tw:text-lg tw:my-6 tw:mx-3 tw:leading-normal">
-      <Balancer>
-        <ParseWithBudouX str={props.description} />
-      </Balancer>
+    <p className="tw:text-center tw:text-lg tw:my-6 tw:mx-3 tw:leading-normal tw:text-balance">
+      <ParseWithBudouX str={props.description} />
     </p>
   )
 }

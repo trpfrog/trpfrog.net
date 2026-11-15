@@ -106,7 +106,6 @@ catalog:
   react-string-replace: ^2.0.1
   react-tweet: ^3.3.1
   react-twitter-widgets: ^1.11.0
-  react-wrap-balancer: ^1.1.1
   recharts: ^3.10.1
   rehype-katex: ^7.0.1
   rehype-raw: ^7.0.0
