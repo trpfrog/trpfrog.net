@@ -1,0 +1,4 @@
+# Claude Code copies these gitignored files into a new worktree.
+# They are written by `vp run -r secrets:dev` (see README).
+apps/*/.env.local
+apps/*/.dev.vars
