@@ -14,7 +14,10 @@ vi.mock('motion/react', async importOriginal => ({
 }))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
 vi.mock('@/components/organisms/MobileMenu', () => ({ useIsMobileMenuOpened: () => false }))
-vi.mock('@/hooks/useWindowScroll', () => ({ useScrollY: () => 600, useWindowWidth: () => 1200 }))
+vi.mock('@/hooks/useWindowScroll', () => ({
+  useWindowScroll: <T,>(select: (w: { scrollY: number; innerWidth: number }) => T) =>
+    select({ scrollY: 600, innerWidth: 1200 }),
+}))
 
 function createWrapper() {
   const store = createStore()

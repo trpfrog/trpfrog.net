@@ -6,7 +6,7 @@ import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { useMotionValueEvent, useScroll } from 'motion/react'
 
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
-import { useScrollY, useWindowWidth } from '@/hooks/useWindowScroll'
+import { useWindowScroll } from '@/hooks/useWindowScroll'
 import {
   useUserSettingAlwaysVisibleHeader,
   useUserSettingStickyHeader,
@@ -60,8 +60,6 @@ interface HeaderStatus {
 }
 
 export function useHeaderStatus(): HeaderStatus {
-  const scrollY = useScrollY()
-  const innerWidth = useWindowWidth()
   const isTopPage = usePathname() === '/'
 
   const visible = useHeaderVisibleStatus()
@@ -69,7 +67,12 @@ export function useHeaderStatus(): HeaderStatus {
   const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  const isMobile = innerWidth <= 800
+  // スクロールのたびに再描画しないよう、しきい値を超えたかどうかだけを購読する
+  const visibleSubtitle = useWindowScroll(
+    ({ scrollY, innerWidth }) => !isTopPage && scrollY > (innerWidth <= 800 ? 120 : 250),
+  )
+  const visibleTrpFrog = useWindowScroll(({ scrollY }) => !isTopPage || scrollY >= 250)
+  const visibleShadow = useWindowScroll(({ scrollY }) => scrollY > 0)
 
   return {
     // ヘッダーを表示するかどうか
@@ -79,12 +82,12 @@ export function useHeaderStatus(): HeaderStatus {
     sticky: isMobileMenuOpened || userSettingFollowSticky,
 
     // ヘッダーのサブタイトルを表示するかどうか
-    visibleSubtitle: !isTopPage && scrollY > (isMobile ? 120 : 250),
+    visibleSubtitle,
 
     // ヘッダーのつまみアイコンを表示するかどうか
-    visibleTrpFrog: isTopPage ? scrollY >= 250 : true,
+    visibleTrpFrog,
 
     // ヘッダーの影を表示するかどうか
-    visibleShadow: scrollY > 0,
+    visibleShadow,
   }
 }

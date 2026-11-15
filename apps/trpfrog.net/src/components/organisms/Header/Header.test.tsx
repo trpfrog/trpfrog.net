@@ -16,7 +16,10 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/',
   useSearchParams: () => new URLSearchParams(),
 }))
-vi.mock('@/hooks/useWindowScroll', () => ({ useScrollY: () => 0, useWindowWidth: () => 1200 }))
+vi.mock('@/hooks/useWindowScroll', () => ({
+  useWindowScroll: <T,>(select: (w: { scrollY: number; innerWidth: number }) => T) =>
+    select({ scrollY: 0, innerWidth: 1200 }),
+}))
 
 async function renderHeader() {
   vi.mocked(useScroll).mockReturnValue({
