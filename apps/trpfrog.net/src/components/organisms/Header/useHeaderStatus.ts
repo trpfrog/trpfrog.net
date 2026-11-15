@@ -25,14 +25,19 @@ function useHeaderVisibleStatus(): boolean {
   // 速く上へスクロールしたら出し、速く下へスクロールしたら隠す。速さの単位は px/ms
   useEffect(() => {
     const tracker = createVelocityTracker()
+    let lastY = window.scrollY
     const onScroll = () => {
       const now = performance.now()
       const y = window.scrollY
+      const dy = y - lastY
+      lastY = y
       tracker.add(now, y)
+      // 推定した速さは、急に減速すると逆向きに振れることがある。
+      // 直前のスクロールと向きがそろうときだけ使う
       const v = tracker.velocity(now)
-      if (v < -1 || y < 500) {
+      if (y < 500 || (v < -1 && dy < 0)) {
         setShowHeader(true)
-      } else if (v > 1) {
+      } else if (v > 1 && dy > 0) {
         setShowHeader(false)
       }
     }

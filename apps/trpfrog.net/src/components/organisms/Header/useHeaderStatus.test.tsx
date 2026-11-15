@@ -8,15 +8,6 @@ import { useSetMobileMenuOpened } from '@/components/organisms/MobileMenu'
 
 import { useHeaderStatus } from './useHeaderStatus'
 
-// スクロールの速さはテストから決める (px/ms)
-const tracker = vi.hoisted(() => ({ speed: 0 }))
-vi.mock('@ui-sdk/core/gesture', () => ({
-  createVelocityTracker: () => ({
-    add: () => {},
-    velocity: () => tracker.speed,
-    reset: () => {},
-  }),
-}))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
 vi.mock(
   '@/components/organisms/MobileMenu',
@@ -34,32 +25,51 @@ function createWrapper() {
   }
 }
 
-function scroll(position: number, speed: number) {
-  tracker.speed = speed
-  vi.spyOn(window, 'scrollY', 'get').mockReturnValue(position)
-  act(() => {
-    window.dispatchEvent(new Event('scroll'))
-  })
+// 1 フレーム (16ms) ごとにスクロールした位置を、実際の速度推定に渡す
+let now = 0
+function scrollThrough(...positions: number[]) {
+  for (const position of positions) {
+    now += 16
+    vi.spyOn(performance, 'now').mockReturnValue(now)
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(position)
+    act(() => {
+      window.dispatchEvent(new Event('scroll'))
+    })
+  }
 }
 
 describe('scroll-driven header visibility', () => {
-  it('hides only on fast downward scrolling beyond the top area', () => {
+  it('hides on fast downward scrolling, and shows again on fast upward scrolling', () => {
     const { result } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
     expect(result.current.visible).toBe(true)
 
-    scroll(499, 2)
-    expect(result.current.visible).toBe(true)
-    scroll(500, 1)
-    expect(result.current.visible).toBe(true)
-    scroll(600, 1.001)
+    scrollThrough(600, 680, 760)
     expect(result.current.visible).toBe(false)
-    scroll(601, -1)
-    expect(result.current.visible).toBe(false)
-    scroll(602, -1.001)
+    scrollThrough(680, 600)
     expect(result.current.visible).toBe(true)
-    scroll(700, 2)
+  })
+
+  it('ignores slow scrolling', () => {
+    const { result } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
+    scrollThrough(600, 680, 760)
     expect(result.current.visible).toBe(false)
-    scroll(100, 2)
+    // いったん止まってから、ゆっくり上へ戻る
+    now += 500
+    scrollThrough(758, 756, 754)
+    expect(result.current.visible).toBe(false)
+  })
+
+  it('stays hidden while a downward scroll slows down', () => {
+    const { result } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
+    scrollThrough(600, 680, 760, 761, 762)
+    expect(result.current.visible).toBe(false)
+  })
+
+  it('always shows the header near the top', () => {
+    const { result } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
+    scrollThrough(600, 680, 760)
+    expect(result.current.visible).toBe(false)
+    scrollThrough(499)
     expect(result.current.visible).toBe(true)
   })
 
@@ -68,7 +78,7 @@ describe('scroll-driven header visibility', () => {
       () => ({ status: useHeaderStatus(), setMenuOpened: useSetMobileMenuOpened() }),
       { wrapper: createWrapper() },
     )
-    scroll(600, 2)
+    scrollThrough(600, 680, 760)
     expect(result.current.status.visible).toBe(false)
     act(() => result.current.setMenuOpened(true))
     expect(result.current.status.visible).toBe(true)
