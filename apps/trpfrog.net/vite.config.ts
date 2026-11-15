@@ -7,7 +7,6 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     isolate: true,
-    // mockReturnValue などで差し替えた実装と vi.stubGlobal を、テストごとに元へ戻す
     mockReset: true,
     restoreMocks: true,
     unstubGlobals: true,

@@ -8,8 +8,7 @@ import { match } from 'ts-pattern'
 
 type Flag = 'true' | 'false'
 
-// 古い形式では JSON で保存していた。true/false の JSON は文字列と同じ表記なので
-// そのまま読める。保存済みの設定を引き継ぐため、キーは変えないこと
+// キーを変えると保存済みの設定が読めなくなるので、変えないこと
 function createFlag(key: string, attribute: `data-${string}`, defaultValue: boolean) {
   return createPreference<Flag>({
     values: ['true', 'false'],
