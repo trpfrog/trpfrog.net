@@ -17,7 +17,6 @@ async function TweetContent(props: { id: string; fallback: React.ReactNode }) {
 /**
  * Temporary fix for react-tweet
  * https://github.com/vercel/react-tweet/issues/135
- * @param props TweetProps
  */
 export async function Tweet(props: { id: string; fallback?: React.ReactNode }) {
   const isAvailable = props.id ? await isTweetAvailable(props.id) : false

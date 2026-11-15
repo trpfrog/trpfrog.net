@@ -71,7 +71,6 @@ function InternalHeader(props: {
       <div
         className={styles.wrapper()}
         data-sticky={sticky || undefined}
-        // 隠すのは追従しているときだけ
         data-hidden={(sticky && !visible) || undefined}
       >
         <header className={styles.header()} data-scrolled={(sticky && visibleShadow) || undefined}>
