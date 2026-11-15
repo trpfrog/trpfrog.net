@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { createVelocityTracker } from '@ui-sdk/core/gesture'
-
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
 import { useWindowScroll } from '@/hooks/useWindowScroll'
 import {
@@ -22,15 +20,19 @@ const PAST_TRPFROG = 4
 function useHeaderVisibleStatus(): boolean {
   const [showHeader, setShowHeader] = useState(true)
 
-  // 速く上へスクロールしたら出し、速く下へスクロールしたら隠す。速さの単位は px/ms
+  // 速く上へスクロールしたら出し、速く下へスクロールしたら隠す。
+  // 速さは直前の scroll イベントからの移動量を経過時間で割って求める (px/ms)
   useEffect(() => {
-    const tracker = createVelocityTracker()
+    let lastY = window.scrollY
+    let lastTime = performance.now()
     const onScroll = () => {
       const now = performance.now()
       const y = window.scrollY
-      tracker.add(now, y)
-      const v = tracker.velocity(now)
-      if (v < -1 || y < 500) {
+      // 時刻が進んでいなければ 0 で割ることになるので、速さは 0 とみなす
+      const v = now > lastTime ? (y - lastY) / (now - lastTime) : 0
+      lastY = y
+      lastTime = now
+      if (y < 500 || v < -1) {
         setShowHeader(true)
       } else if (v > 1) {
         setShowHeader(false)
