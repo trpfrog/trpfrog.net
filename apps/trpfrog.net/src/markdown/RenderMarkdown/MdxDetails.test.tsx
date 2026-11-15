@@ -3,6 +3,7 @@ import type * as React from 'react'
 import { act, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vite-plus/test'
 
+import { createMDXComponents } from './createMDXComponents'
 import { MdxDetails, MdxSummary } from './MdxDetails'
 
 describe('MdxDetails', () => {
@@ -45,8 +46,7 @@ describe('MdxDetails', () => {
 })
 
 describe('Markdown details mapping', () => {
-  it('uses the summary as the toggle through createMDXComponents', async () => {
-    const { createMDXComponents } = await import('./createMDXComponents')
+  it('uses the summary as the toggle through createMDXComponents', () => {
     const components = createMDXComponents()
     const MdDetails = components.details as React.ComponentType<React.PropsWithChildren>
     const MdSummary = components.summary as React.ComponentType<React.PropsWithChildren>

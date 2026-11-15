@@ -7,7 +7,8 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     isolate: true,
-    clearMocks: true,
+    // vi.fn() の実装や mockReturnValue もテストごとに作り直す
+    mockReset: true,
     restoreMocks: true,
     unstubGlobals: true,
     // テストが実行順に頼らないよう、ファイル内のテストを毎回シャッフルする

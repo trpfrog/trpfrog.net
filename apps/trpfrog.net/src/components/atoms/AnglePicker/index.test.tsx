@@ -1,5 +1,5 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vite-plus/test'
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { AnglePicker } from '.'
 
@@ -10,11 +10,17 @@ function renderPicker(initialDegree: number) {
   )
   const dial = container.firstElementChild as HTMLElement
   // 中心が (50, 50) の 100px 四方のダイヤルとして扱う
-  dial.getBoundingClientRect = () => DOMRect.fromRect({ x: 0, y: 0, width: 100, height: 100 })
+  vi.spyOn(dial, 'getBoundingClientRect').mockReturnValue(
+    DOMRect.fromRect({ x: 0, y: 0, width: 100, height: 100 }),
+  )
   return { onAngleChange, dial, slider: screen.getByRole('slider', { name: '角度' }) }
 }
 
 describe('AnglePicker', () => {
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
   it('is a slider that reports its angle', () => {
     const { slider } = renderPicker(90)
     expect(slider).toHaveValue('90')
@@ -68,6 +74,8 @@ describe('AnglePicker', () => {
   })
 
   it('follows the pointer while dragging, even outside the dial', async () => {
+    // ドラッグ中の動きは次のフレームでまとめて反映される
+    vi.useFakeTimers({ toFake: ['requestAnimationFrame', 'cancelAnimationFrame'] })
     const { dial, onAngleChange } = renderPicker(0)
     await act(async () => {
       fireEvent.pointerDown(dial, { button: 0, pointerId: 1, clientX: 50, clientY: 0 })
@@ -76,14 +84,15 @@ describe('AnglePicker', () => {
 
     await act(async () => {
       fireEvent.pointerMove(document, { pointerId: 1, clientX: 50, clientY: 300 })
+      vi.advanceTimersToNextFrame()
     })
-    await waitFor(() => expect(onAngleChange).toHaveBeenLastCalledWith(180))
+    expect(onAngleChange).toHaveBeenLastCalledWith(180)
 
     await act(async () => {
       fireEvent.pointerUp(document, { pointerId: 1, clientX: 50, clientY: 300 })
       fireEvent.pointerMove(document, { pointerId: 1, clientX: 200, clientY: 50 })
+      vi.advanceTimersToNextFrame()
     })
-    await new Promise(resolve => setTimeout(resolve, 50))
     expect(onAngleChange).toHaveBeenLastCalledWith(180)
   })
 

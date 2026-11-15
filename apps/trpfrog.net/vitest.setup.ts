@@ -37,7 +37,9 @@ if (typeof HTMLElement !== 'undefined') {
   }
 }
 
-// Ensure React Testing Library cleans up between tests
+// Ensure React Testing Library cleans up between tests, and that saved settings
+// in one test never leak into the next
 afterEach(() => {
   cleanup()
+  if (typeof window !== 'undefined') localStorage.clear()
 })

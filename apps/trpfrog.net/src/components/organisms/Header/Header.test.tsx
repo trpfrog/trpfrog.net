@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { createStore, Provider } from 'jotai'
 import { motionValue } from 'motion'
 import { useScroll } from 'motion/react'
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it, vi } from 'vite-plus/test'
 
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
@@ -69,10 +69,6 @@ async function openSettings(menu: HTMLElement) {
 }
 
 describe('Header mobile menu', () => {
-  beforeEach(() => {
-    localStorage.clear()
-  })
-
   it('stays closed until the menu button is pressed', async () => {
     await renderHeader()
     expect(queryMenu()).toBeNull()

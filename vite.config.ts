@@ -23,6 +23,8 @@ export default defineConfig({
     ],
     ignorePatterns: ['out', 'dist', 'build', 'coverage', '.cloudflare', '.next', 'next-env.d.ts'],
     rules: {
+      // test.extend で作った it / test (フィクスチャ付き) もテストとして扱う
+      'vitest/no-standalone-expect': ['warn', { additionalTestBlockFunctions: ['it', 'test'] }],
       'eslint/no-unused-vars': [
         'error',
         {

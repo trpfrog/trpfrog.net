@@ -26,9 +26,9 @@ describe('RotateButton', () => {
       render(
         <RotateButton isRotated={isRotated} rotateDirection={rotateDirection} onClick={onClick} />,
       )
-      expect(onClick).toBeCalledTimes(0)
+      expect(onClick).not.toHaveBeenCalled()
       screen.getByTestId('rotate-button').click()
-      expect(onClick).toBeCalledTimes(1)
+      expect(onClick).toHaveBeenCalledOnce()
     },
   )
 

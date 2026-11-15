@@ -1,3 +1,5 @@
+import { type ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
+
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
 
@@ -8,8 +10,11 @@ import {
   useUserSettingStickyHeader,
 } from './userSettings'
 
-const searchParams = vi.hoisted(() => ({ current: new URLSearchParams() }))
-vi.mock('next/navigation', () => ({ useSearchParams: () => searchParams.current }))
+vi.mock('next/navigation', () => ({ useSearchParams: vi.fn<typeof useSearchParams>() }))
+
+function setSearchParams(query: string) {
+  vi.mocked(useSearchParams).mockReturnValue(new URLSearchParams(query) as ReadonlyURLSearchParams)
+}
 
 function useAllSettings() {
   return [
@@ -21,8 +26,7 @@ function useAllSettings() {
 
 describe('persisted user settings', () => {
   beforeEach(() => {
-    localStorage.clear()
-    searchParams.current = new URLSearchParams()
+    setSearchParams('')
   })
 
   it('defaults to a sticky header, hidden on scroll, with the normal logo', () => {
@@ -82,17 +86,17 @@ describe('persisted user settings', () => {
 
   it('lets ?kawaii= override the saved kawaii logo setting', async () => {
     localStorage.setItem('kawaii-logo', 'true')
-    searchParams.current = new URLSearchParams('kawaii=FALSE')
+    setSearchParams('kawaii=FALSE')
     const { result, rerender } = renderHook(useIsKawaiiLogo)
     await act(async () => {})
     expect(result.current).toBe(false)
 
-    searchParams.current = new URLSearchParams('kawaii=other')
+    setSearchParams('kawaii=other')
     rerender()
     expect(result.current).toBe(true)
 
     localStorage.removeItem('kawaii-logo')
-    searchParams.current = new URLSearchParams('kawaii=true')
+    setSearchParams('kawaii=true')
     rerender()
     expect(result.current).toBe(true)
   })

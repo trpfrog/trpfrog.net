@@ -45,7 +45,7 @@ describe('NumberField', () => {
   it.each([
     { typed: '5000', expected: 1000 },
     { typed: '0', expected: 1 },
-  ])('clamps  into the range', async ({ typed, expected }) => {
+  ])('clamps $typed to $expected', async ({ typed, expected }) => {
     const onValueChange = vi.fn<(value: number) => void>()
     render(<NumberField label="px" value={57} min={1} max={1000} onValueChange={onValueChange} />)
     const input = screen.getByRole('textbox', { name: 'px' })
