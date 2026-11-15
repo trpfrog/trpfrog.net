@@ -16,6 +16,9 @@ interface SkeletonProps {
 
 /**
  * 読み込み中の文字や画像の場所を示す灰色の帯。高さは指定がなければ 1 行ぶん
+ *
+ * 見た目と 1 行ずつ並べる作りは react-loading-skeleton (MIT) をもとにしている。
+ * 元のライセンス表示は index.module.css にある
  */
 export function Skeleton(props: SkeletonProps) {
   const { count = 1, inline = false, height, className = '', style, containerClassName } = props
