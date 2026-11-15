@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Field, FieldLabel } from '@ui-sdk/react/field'
 
-import { Input } from '@/components/wrappers'
+import { SubmitButton, TextInput } from '@/components/atoms/form-controls'
 import { tv } from '@/lib/tailwind'
 
 const styles = tv({
@@ -12,28 +12,25 @@ const styles = tv({
 })()
 
 export function SearchBox() {
-  const [query, setQuery] = useState<string | null>(null)
-  useEffect(() => {
-    if (query != null) {
-      window.location.href = `https://trpfrog.net/fuzzy/${query}`
-    }
-  }, [query])
-
   return (
-    <form
+    <Field
+      name="fuzzy-string"
       className={styles.form()}
-      onSubmit={e => {
-        e.preventDefault()
-        const form = new FormData(e.currentTarget)
-        const query = form.get('fuzzy-string')
-        if (typeof query === 'string' && query) {
-          setQuery(`https://trpfrog.net/fuzzy/${query}`)
-        }
-      }}
+      render={
+        <form
+          onSubmit={e => {
+            e.preventDefault()
+            const query = new FormData(e.currentTarget).get('fuzzy-string')
+            if (typeof query === 'string' && query) {
+              window.location.href = `https://trpfrog.net/fuzzy/${encodeURIComponent(query)}`
+            }
+          }}
+        />
+      }
     >
-      <div>https://trpfrog.net/fuzzy/</div>
-      <Input type="text" name="fuzzy-string" placeholder="fuzzy-string" pattern=".+" />
-      <Input type="submit" value="Go" />
-    </form>
+      <FieldLabel>https://trpfrog.net/fuzzy/</FieldLabel>
+      <TextInput placeholder="fuzzy-string" pattern=".+" />
+      <SubmitButton>Go</SubmitButton>
+    </Field>
   )
 }

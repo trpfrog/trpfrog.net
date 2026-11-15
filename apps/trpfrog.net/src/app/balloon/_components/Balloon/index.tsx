@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 
+import { Button } from '@ui-sdk/react/button'
 import { confetti, useReward } from 'react-rewards'
 import seedrandom from 'seedrandom'
 import { match } from 'ts-pattern'
@@ -114,7 +115,7 @@ export const Balloon = (props: BalloonProps) => {
     .exhaustive()
 
   return (
-    <button
+    <Button
       style={{
         width: props.width,
         height: props.height,
@@ -139,6 +140,6 @@ export const Balloon = (props: BalloonProps) => {
       }}
     >
       <span className="tw:inline-block" ref={rewardRef} />
-    </button>
+    </Button>
   )
 }

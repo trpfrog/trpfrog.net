@@ -26,9 +26,17 @@ describe('RotateButton', () => {
       render(
         <RotateButton isRotated={isRotated} rotateDirection={rotateDirection} onClick={onClick} />,
       )
-      expect(onClick).toBeCalledTimes(0)
+      expect(onClick).not.toHaveBeenCalled()
       screen.getByTestId('rotate-button').click()
-      expect(onClick).toBeCalledTimes(1)
+      expect(onClick).toHaveBeenCalledOnce()
     },
   )
+
+  test.each([true, false])('reports isRotated=%s as its pressed state', isRotated => {
+    render(<RotateButton isRotated={isRotated} rotateDirection="left" />)
+    expect(screen.getByRole('button', { name: 'つまみを回す' })).toHaveAttribute(
+      'aria-pressed',
+      String(isRotated),
+    )
+  })
 })

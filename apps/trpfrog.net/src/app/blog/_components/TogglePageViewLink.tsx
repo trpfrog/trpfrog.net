@@ -7,8 +7,6 @@ import { faFileLines, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
 
 import { BlogPost } from '@trpfrog.net/posts'
 
-import { A } from '@/components/wrappers'
-
 import { EntryButton } from './EntryButton'
 
 export function TogglePageViewLink({ post }: { post: BlogPost }) {
@@ -35,9 +33,5 @@ export function TogglePageViewLink({ post }: { post: BlogPost }) {
     text = '全文表示'
   }
 
-  return (
-    <A href={url}>
-      <EntryButton icon={icon} text={text} />
-    </A>
-  )
+  return <EntryButton href={url} icon={icon} text={text} />
 }

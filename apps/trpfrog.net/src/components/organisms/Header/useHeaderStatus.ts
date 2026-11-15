@@ -2,20 +2,19 @@ import { useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai'
-import { useScroll } from 'motion/react'
+import { useMotionValueEvent, useScroll } from 'motion/react'
 
-import { useMobileMenuState } from '@/components/organisms/MobileMenu'
-import { useScrollPosition } from '@/hooks/useScrollPosition'
-import { useWindowSize } from '@/hooks/useWindowSize'
-import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
-import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
+import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
+import { useWindowScroll } from '@/hooks/useWindowScroll'
+import {
+  useUserSettingAlwaysVisibleHeader,
+  useUserSettingStickyHeader,
+} from '@/states/userSettings'
 
-const alwaysShowHeaderAtom = atom(false)
-
-export function useSetAlwaysShownHeader() {
-  return useSetAtom(alwaysShowHeaderAtom)
-}
+// useWindowScroll で購読する、スクロール量がしきい値を超えたかどうかのビット
+const SCROLLED = 1
+const PAST_TITLE = 2
+const PAST_TRPFROG = 4
 
 /**
  * ヘッダーを表示するかどうかを返す
@@ -24,7 +23,8 @@ function useHeaderVisibleStatus(): boolean {
   const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
-  scrollY.on('change', (y: number) => {
+  // 解除までするフックで購読する。描画のたびに .on で登録すると購読が溜まる
+  useMotionValueEvent(scrollY, 'change', y => {
     const v = scrollY.getVelocity()
     const shouldShowHeader = v < -1000 || y < 500
     const shouldHideHeader = !shouldShowHeader && v > 1000
@@ -36,13 +36,12 @@ function useHeaderVisibleStatus(): boolean {
     }
   })
 
-  const systemSideSettingAlwaysVisible = useAtomValue(alwaysShowHeaderAtom)
   const [userSettingAlwaysVisible] = useUserSettingAlwaysVisibleHeader()
 
-  const [isMobileMenuOpened] = useMobileMenuState()
+  const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  if (userSettingAlwaysVisible || systemSideSettingAlwaysVisible || isMobileMenuOpened) {
+  if (userSettingAlwaysVisible || isMobileMenuOpened) {
     return true
   }
 
@@ -58,16 +57,23 @@ interface HeaderStatus {
 }
 
 export function useHeaderStatus(): HeaderStatus {
-  const { y: scrollY } = useScrollPosition()
-  const { width: innerWidth } = useWindowSize()
   const isTopPage = usePathname() === '/'
 
   const visible = useHeaderVisibleStatus()
 
-  const [isMobileMenuOpened] = useMobileMenuState()
+  const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  const isMobile = innerWidth <= 800
+  // しきい値ごとの結果だけを購読して、スクロールのたびに再描画しない
+  const passed = useWindowScroll(
+    ({ scrollY, innerWidth }) =>
+      (scrollY > 0 ? SCROLLED : 0) |
+      (scrollY > (innerWidth <= 800 ? 120 : 250) ? PAST_TITLE : 0) |
+      (scrollY >= 250 ? PAST_TRPFROG : 0),
+  )
+  const visibleSubtitle = !isTopPage && (passed & PAST_TITLE) !== 0
+  const visibleTrpFrog = !isTopPage || (passed & PAST_TRPFROG) !== 0
+  const visibleShadow = (passed & SCROLLED) !== 0
 
   return {
     // ヘッダーを表示するかどうか
@@ -77,12 +83,12 @@ export function useHeaderStatus(): HeaderStatus {
     sticky: isMobileMenuOpened || userSettingFollowSticky,
 
     // ヘッダーのサブタイトルを表示するかどうか
-    visibleSubtitle: !isTopPage && scrollY > (isMobile ? 120 : 250),
+    visibleSubtitle,
 
     // ヘッダーのつまみアイコンを表示するかどうか
-    visibleTrpFrog: isTopPage ? scrollY >= 250 : true,
+    visibleTrpFrog,
 
     // ヘッダーの影を表示するかどうか
-    visibleShadow: scrollY > 0,
+    visibleShadow,
   }
 }

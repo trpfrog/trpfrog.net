@@ -1,13 +1,20 @@
 'use client'
-import { Input } from '@/components/wrappers'
+import { Field, FieldLabel } from '@ui-sdk/react/field'
+
+import { SubmitButton, TextInput } from '@/components/atoms/form-controls'
 
 import styles from './index.module.css'
 
 export function SearchForm(props: { defaultValue?: string }) {
   return (
-    <form action="/tweets#tweets" method="get" className={styles.searchForm}>
-      <Input type="text" name="q" placeholder="ツイート検索" defaultValue={props.defaultValue} />
-      <Input type="submit" value="検索" />
-    </form>
+    <Field
+      name="q"
+      className={styles.searchForm}
+      render={<form action="/tweets#tweets" method="get" />}
+    >
+      <FieldLabel className="tw:sr-only">ツイート検索</FieldLabel>
+      <TextInput placeholder="ツイート検索" defaultValue={props.defaultValue} />
+      <SubmitButton>検索</SubmitButton>
+    </Field>
   )
 }

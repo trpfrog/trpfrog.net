@@ -7,8 +7,13 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     isolate: true,
-    clearMocks: true,
+    mockReset: true,
     restoreMocks: true,
+    unstubGlobals: true,
+    // テストが実行順に頼らないよう、ファイル内のテストを毎回シャッフルする
+    sequence: {
+      shuffle: { files: false, tests: true },
+    },
     pool: 'threads',
     fileParallelism: false,
     coverage: {

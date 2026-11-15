@@ -22,8 +22,11 @@ exports[`ShowAll > snapshot test 1`] = `
       class="button_wrapper"
     >
       <button
+        aria-expanded="false"
         class="button"
+        data-slot="button"
         data-testid="show-all-button"
+        type="button"
       >
         もっと見る
       </button>

@@ -21,7 +21,8 @@ const styles = {
   }),
   link: tv({
     base: [
-      'tw:inline-block tw:rounded-full tw:px-4 tw:duration-1200 tw:font-palanquin-dark',
+      'tw:inline-block tw:rounded-full tw:px-4 tw:font-palanquin-dark',
+      'tw:transition-colors tw:duration-1200',
       'tw:focus-visible:outline-hidden tw:focus-visible:ring-2 tw:focus-visible:ring-white',
     ],
     variants: {
@@ -43,18 +44,26 @@ function InternalNavigation(props: { pathname: PathString | null }) {
     <div className={styles.wrapper()}>
       <nav className={styles.nav()} aria-label="サイト全体の簡易ナビゲーション">
         {NAVIGATION_LINKS.filter(({ showOnNavBar = true }) => showOnNavBar).map(
-          ({ link, name, shortName }) => (
-            <A href={link} key={link} className={styles.link({ current: pathname === link })}>
-              <WavyText text={shortName ?? name} />
-            </A>
-          ),
+          ({ link, name, shortName }) => {
+            const current = pathname === link
+            return (
+              <A
+                href={link}
+                key={link}
+                aria-current={current ? 'page' : undefined}
+                className={styles.link({ current })}
+              >
+                <WavyText text={shortName ?? name} />
+              </A>
+            )
+          },
         )}
       </nav>
     </div>
   )
 }
 
-export function ClientNavigation() {
+function ClientNavigation() {
   const rawPathname = usePathname()
   const currentPath = getFirstPath(rawPathname)
   return <InternalNavigation pathname={currentPath} />
@@ -64,7 +73,7 @@ export function Navigation() {
   return (
     // usePathname requires a Suspense boundary, so we provide a fallback here
     <Suspense fallback={<InternalNavigation pathname={null} />}>
-      <InternalNavigation pathname={null} />
+      <ClientNavigation />
     </Suspense>
   )
 }

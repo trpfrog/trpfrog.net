@@ -1,6 +1,6 @@
 import { ReactNode, useDeferredValue, useEffect, useState } from 'react'
 
-import toast from 'react-hot-toast'
+import { toast } from '@ui-sdk/react/toast'
 
 import { createPostWatcherClient } from '@trpfrog.net/dev-blog-server'
 import { BlogPageNumber } from '@trpfrog.net/posts'

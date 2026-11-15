@@ -2,24 +2,25 @@
 
 import * as React from 'react'
 
+import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from '@ui-sdk/react/collapsible'
+
 export function WritingToolsPanel(props: {
   isOpened: boolean
-  onToggle: () => void
+  onOpenChange: (opened: boolean) => void
   children: React.ReactNode
   footer?: React.ReactNode
 }) {
   return (
-    <div className="tw:fixed tw:bottom-0 tw:right-[100px] tw:w-[300px] tw:shadow-[0_0_10px_0_rgba(0,0,0,0.2)] tw:rounded-t-[10px] tw:overflow-hidden tw:z-100 tw:bg-(--window-bkg-color) tw:print:invisible tw:max-[800px] tw:hidden">
-      <button
-        type="button"
-        className="tw:bg-(--header-color) tw:w-full tw:h-[30px] tw:text-white tw:font-bold tw:grid tw:place-items-center tw:cursor-pointer"
-        onClick={props.onToggle}
-        aria-expanded={props.isOpened}
-      >
+    <Collapsible
+      open={props.isOpened}
+      onOpenChange={props.onOpenChange}
+      className="tw:fixed tw:bottom-0 tw:right-[100px] tw:z-100 tw:w-[300px] tw:overflow-hidden tw:rounded-t-[10px] tw:bg-(--window-bkg-color) tw:shadow-[0_0_10px_0_rgba(0,0,0,0.2)] tw:print:invisible tw:max-[800px]:hidden"
+    >
+      <CollapsibleTrigger className="tw:grid tw:h-[30px] tw:w-full tw:cursor-pointer tw:place-items-center tw:bg-(--header-color) tw:font-bold tw:text-white">
         Writing Tools
-      </button>
-      {props.isOpened && props.children}
+      </CollapsibleTrigger>
+      <CollapsiblePanel>{props.children}</CollapsiblePanel>
       {props.footer}
-    </div>
+    </Collapsible>
   )
 }

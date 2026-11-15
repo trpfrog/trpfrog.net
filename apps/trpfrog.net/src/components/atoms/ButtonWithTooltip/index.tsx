@@ -1,67 +1,62 @@
 'use client'
 
-import { useCallback, useId, useState } from 'react'
+import { useEffect, useEffectEvent, useState } from 'react'
 
-import dynamic from 'next/dynamic'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/Tooltip'
 
-const Tooltip = dynamic(() => import('react-tooltip').then(m => m.Tooltip))
-
-interface WithTooltipProps {
-  wrapperAs?: 'div' | 'span'
+interface ButtonWithTooltipProps extends React.ComponentPropsWithoutRef<'button'> {
   hoveredTooltipContent: React.ReactNode
   clickedTooltipContent?: React.ReactNode
-  children: React.ReactNode
 }
 
-export function WithTooltip(props: WithTooltipProps) {
-  const { children, hoveredTooltipContent, clickedTooltipContent } = props
-
+export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
+  const { children, hoveredTooltipContent, clickedTooltipContent, onClick, ...rest } = props
   const [isClicked, setIsClicked] = useState(false)
-  const [tooltipTimeoutId, setTooltipTimeoutId] = useState<number>(0)
-  const tooltipId = useId()
+  const [hovered, setHovered] = useState(false)
+  // タッチ操作ではホバーで開かないので、押したら少しの間だけ開いて押した結果を見せる
+  // 押すたびに数え直すため、押した時刻を持つ
+  const [pressedAt, setPressedAt] = useState<number | null>(null)
+  const hasClickedContent = clickedTooltipContent != null
 
-  const clickHandler = useCallback(() => {
-    if (tooltipTimeoutId) {
-      clearTimeout(tooltipTimeoutId)
-    }
-    setIsClicked(true)
-    const timeoutId = window.setTimeout(() => {
-      setIsClicked(false)
-    }, 2000)
-    setTooltipTimeoutId(timeoutId)
-  }, [tooltipTimeoutId])
+  // 時間が来たら押した結果の表示をやめる。ホバーやフォーカスで開いたままなら、
+  // 閉じるのを待たずに表示を元に戻す (閉じるときは閉じ終わってから戻す)
+  const endPressed = useEffectEvent(() => {
+    setPressedAt(null)
+    if (hovered) setIsClicked(false)
+  })
 
-  const mouseLeaveHandler = useCallback(() => {
-    if (tooltipTimeoutId) {
-      clearTimeout(tooltipTimeoutId)
-    }
-    setIsClicked(false)
-  }, [tooltipTimeoutId])
-
-  const Wrapper = props.wrapperAs ?? 'span'
-  return (
-    <>
-      <Wrapper data-tooltip-id={tooltipId} onClick={clickHandler} onMouseLeave={mouseLeaveHandler}>
-        {children}
-      </Wrapper>
-      <Tooltip id={tooltipId} place={'top'} style={{ padding: '0.5em', lineHeight: 1 }}>
-        {isClicked && !!clickedTooltipContent ? clickedTooltipContent : hoveredTooltipContent}
-      </Tooltip>
-    </>
-  )
-}
-
-export function ButtonWithTooltip(
-  props: React.ComponentPropsWithoutRef<'button'> & WithTooltipProps,
-) {
-  const { children, hoveredTooltipContent, clickedTooltipContent, ...rest } = props
+  useEffect(() => {
+    if (pressedAt === null) return
+    const timer = setTimeout(endPressed, 2000)
+    return () => clearTimeout(timer)
+  }, [pressedAt])
 
   return (
-    <WithTooltip
-      hoveredTooltipContent={hoveredTooltipContent}
-      clickedTooltipContent={clickedTooltipContent}
+    <Tooltip
+      type="label"
+      open={hovered || pressedAt !== null}
+      onOpenChange={open => {
+        setHovered(open)
+        if (!open) setPressedAt(null)
+      }}
+      closeOnPress={!hasClickedContent}
+      onOpenChangeComplete={open => {
+        if (!open) setIsClicked(false)
+      }}
     >
-      <button {...rest}>{children}</button>
-    </WithTooltip>
+      <TooltipTrigger
+        {...rest}
+        onClick={e => {
+          setIsClicked(true)
+          if (hasClickedContent) setPressedAt(Date.now())
+          onClick?.(e)
+        }}
+      >
+        {children}
+      </TooltipTrigger>
+      <TooltipContent>
+        {isClicked && hasClickedContent ? clickedTooltipContent : hoveredTooltipContent}
+      </TooltipContent>
+    </Tooltip>
   )
 }

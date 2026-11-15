@@ -1,21 +1,11 @@
-import { useCallback } from 'react'
-
-import { atom, useAtom } from 'jotai'
-
-import { useSetAlwaysShownHeader } from '@/components/organisms/Header'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
 
 const mobileMenuAtom = atom(false)
 
-export function useMobileMenuState() {
-  return useAtom(mobileMenuAtom)
+export function useIsMobileMenuOpened() {
+  return useAtomValue(mobileMenuAtom)
 }
 
-export function useToggleMenuCallback() {
-  const [isOpened, setHamburgerState] = useMobileMenuState()
-  const setAlwaysShownHeader = useSetAlwaysShownHeader()
-
-  return useCallback(() => {
-    setHamburgerState(!isOpened)
-    setAlwaysShownHeader(!isOpened)
-  }, [isOpened, setAlwaysShownHeader, setHamburgerState])
+export function useSetMobileMenuOpened() {
+  return useSetAtom(mobileMenuAtom)
 }

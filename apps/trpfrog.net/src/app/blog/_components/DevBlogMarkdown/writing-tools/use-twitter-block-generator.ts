@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import toast from 'react-hot-toast'
+import { toast } from '@ui-sdk/react/toast'
 
 import { devBlogServerClient } from '@trpfrog.net/dev-blog-server'
 
@@ -26,24 +26,23 @@ export function useTwitterBlockGenerator(options: { onOutput: (codeBlock: string
 
   const createRequest = useCallback(
     async (payload: TweetBlockRequestPayload) => {
-      const res = await toast.promise(
-        (async () => {
-          const response = await devBlogServerClient.create_tweet_block.$post({ json: payload })
-          if (!response.ok) {
-            const error = await response
-              .json()
-              .then(e => e.error)
-              .catch(() => response.statusText)
-            throw new Error(error)
-          }
-          return response
-        })(),
-        {
-          loading: 'Generating...',
-          success: 'Generated!',
-          error: error => (error instanceof Error ? error.message : 'Failed to generate'),
-        },
-      )
+      const request = (async () => {
+        const response = await devBlogServerClient.create_tweet_block.$post({ json: payload })
+        if (!response.ok) {
+          const error = await response
+            .json()
+            .then(e => e.error)
+            .catch(() => response.statusText)
+          throw new Error(error)
+        }
+        return response
+      })()
+      toast.promise(request, {
+        loading: 'Generating...',
+        success: 'Generated!',
+        error: error => (error instanceof Error ? error.message : 'Failed to generate'),
+      })
+      const res = await request
       const { codeBlock } = await res.json()
       await handleOutput(codeBlock)
     },

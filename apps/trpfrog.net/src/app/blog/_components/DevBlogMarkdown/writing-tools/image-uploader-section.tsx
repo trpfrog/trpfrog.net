@@ -36,7 +36,7 @@ export function ImageUploaderSection(props: {
           images here
         </div>
       </div>
-      <form className="tw:mb-1">
+      <div className="tw:mb-1">
         <LabelledCheckbox
           checked={props.horizontalImages}
           onChange={props.onHorizontalImagesChange}
@@ -46,7 +46,7 @@ export function ImageUploaderSection(props: {
         <LabelledCheckbox checked={props.appendToFileEnd} onChange={props.onAppendToFileEndChange}>
           ファイル末尾に追記
         </LabelledCheckbox>
-      </form>
+      </div>
     </WritingToolsSection>
   )
 }

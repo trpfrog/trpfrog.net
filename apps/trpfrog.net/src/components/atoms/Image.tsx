@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 
+import { Toggle } from '@ui-sdk/react/toggle'
 import type { Except } from 'type-fest'
 
 import { CldImageWrapper } from '@/components/utils/CldImageWrapper'
@@ -19,37 +20,36 @@ interface ImageProps extends Except<
   withSpoiler?: boolean
 }
 
-const createSpoilerStyles = tv({
+// 見た目は data-revealed (ぼかし) と、Toggle が付ける data-pressed (ボタン) で切り替える
+const spoilerStyles = tv({
   slots: {
-    blur: ['tw:absolute tw:left-0 tw:top-0 tw:h-full tw:w-full', 'tw:rounded-md tw:duration-500'],
+    blur: [
+      'tw:absolute tw:left-0 tw:top-0 tw:h-full tw:w-full',
+      'tw:rounded-md tw:duration-500',
+      'tw:not-data-revealed:backdrop-blur-2xl tw:not-data-revealed:has-[:hover]:backdrop-blur-md',
+      'tw:data-revealed:pointer-events-none tw:data-revealed:block tw:data-revealed:backdrop-blur-none',
+    ],
     button: [
       'tw:absolute tw:px-4 tw:py-2 tw:text-black',
       'tw:cursor-pointer tw:font-bold tw:backdrop-blur-sm',
       'tw:bg-white/50 tw:duration-200 tw:hover:bg-white/70',
+      'tw:not-data-pressed:left-1/2 tw:not-data-pressed:top-1/2',
+      'tw:not-data-pressed:-translate-x-1/2 tw:not-data-pressed:-translate-y-1/2',
+      'tw:not-data-pressed:rounded-full',
+      'tw:data-pressed:pointer-events-auto tw:data-pressed:left-0 tw:data-pressed:top-0',
+      'tw:data-pressed:rounded-ee-md tw:data-pressed:rounded-ss-md',
+      'tw:data-pressed:px-3 tw:data-pressed:py-1 tw:data-pressed:text-sm',
     ],
   },
-  variants: {
-    blur: {
-      true: {
-        blur: 'tw:backdrop-blur-2xl tw:has-[:hover]:backdrop-blur-md',
-        button: `tw:left-1/2 tw:top-1/2 tw:-translate-x-1/2 tw:-translate-y-1/2 tw:rounded-full`,
-      },
-      false: {
-        blur: 'tw:pointer-events-none tw:block tw:backdrop-blur-none',
-        button: `tw:pointer-events-auto tw:left-0 tw:top-0 tw:rounded-ee-md tw:rounded-ss-md tw:px-3 tw:py-1 tw:text-sm`,
-      },
-    },
-  },
-})
+})()
 
 function ImageSpoiler() {
-  const [spoilerState, setSpoilerState] = useState(true)
-  const styles = createSpoilerStyles({ blur: spoilerState })
+  const [revealed, setRevealed] = useState(false)
   return (
-    <div className={styles.blur()}>
-      <button className={styles.button()} onClick={() => setSpoilerState(prv => !prv)}>
-        {spoilerState ? '画像を表示する' : '画像を隠す'}
-      </button>
+    <div className={spoilerStyles.blur()} data-revealed={revealed || undefined}>
+      <Toggle pressed={revealed} onPressedChange={setRevealed} className={spoilerStyles.button()}>
+        {revealed ? '画像を隠す' : '画像を表示する'}
+      </Toggle>
     </div>
   )
 }

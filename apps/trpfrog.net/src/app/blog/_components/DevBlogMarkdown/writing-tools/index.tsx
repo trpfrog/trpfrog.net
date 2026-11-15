@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useMemo, useState } from 'react'
 
-import toast from 'react-hot-toast'
+import { toast } from '@ui-sdk/react/toast'
 
 import { useImageDragAndDrop } from '../hooks/use-image-drag-and-drop'
 import { useImageUploader } from '../hooks/useImageUploader'
@@ -38,11 +38,13 @@ export function WritingTools(props: { slug: string }) {
 
   const onDroppedImage = useCallback(
     async (files: File[]) => {
-      const uploaded = await toast.promise(upload(files), {
+      const uploading = upload(files)
+      toast.promise(uploading, {
         loading: 'Uploading...',
-        success: <b>Uploaded!</b>,
-        error: <b>Something went wrong...</b>,
+        success: 'Uploaded!',
+        error: 'Something went wrong...',
       })
+      const uploaded = await uploading
       const markdown = uploaded.map(e => e.markdown).join('\n')
       setRecentlyUploaded(markdown)
       setLastOutputSource('image')
@@ -51,11 +53,13 @@ export function WritingTools(props: { slug: string }) {
         const markdownToAppend = horizontalImages
           ? '```horizontal-images\n' + markdown + '\n```'
           : markdown
-        await toast.promise(appendLine(markdownToAppend), {
+        const appending = appendLine(markdownToAppend)
+        toast.promise(appending, {
           loading: 'Appending...',
-          success: <b>Appended!</b>,
-          error: <b>Failed to append</b>,
+          success: 'Appended!',
+          error: 'Failed to append',
         })
+        await appending
       }
     },
     [appendLine, appendToFileEnd, horizontalImages, upload],
@@ -73,7 +77,7 @@ export function WritingTools(props: { slug: string }) {
   const codeBlockContent = uploadingStatusText ?? (outputText || 'No output yet.')
 
   return (
-    <WritingToolsPanel isOpened={isTabOpened} onToggle={() => setisTabOpened(prv => !prv)}>
+    <WritingToolsPanel isOpened={isTabOpened} onOpenChange={setisTabOpened}>
       <ImageUploaderSection
         isDragging={isDragging}
         dropTargetProps={dropTargetProps}

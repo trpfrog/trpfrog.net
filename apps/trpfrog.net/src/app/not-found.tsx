@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
@@ -29,9 +28,7 @@ export default function NotFound() {
             <span className="tw:inline-block">リンクが誤っている可能性があります。</span>
           </p>
           <p>
-            <RichButton as={Link} href={'/'}>
-              トップページに戻る
-            </RichButton>
+            <RichButton href={'/'}>トップページに戻る</RichButton>
           </p>
         </div>
       </Title>

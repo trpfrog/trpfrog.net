@@ -4,15 +4,25 @@ import { act, renderHook } from '@testing-library/react'
 import { createStore, Provider } from 'jotai'
 import { motionValue } from 'motion'
 import { useScroll } from 'motion/react'
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it as base, onTestFinished, vi } from 'vite-plus/test'
 
-import { useHeaderStatus, useSetAlwaysShownHeader } from './useHeaderStatus'
+import { useSetMobileMenuOpened } from '@/components/organisms/MobileMenu'
 
-vi.mock('motion/react', () => ({ useScroll: vi.fn() }))
+import { useHeaderStatus } from './useHeaderStatus'
+
+vi.mock('motion/react', async importOriginal => ({
+  ...(await importOriginal<typeof import('motion/react')>()),
+  useScroll: vi.fn<typeof useScroll>(),
+}))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
-vi.mock('@/components/organisms/MobileMenu', () => ({ useMobileMenuState: () => [false] }))
-vi.mock('@/hooks/useScrollPosition', () => ({ useScrollPosition: () => ({ y: 600 }) }))
-vi.mock('@/hooks/useWindowSize', () => ({ useWindowSize: () => ({ width: 1200 }) }))
+vi.mock(
+  '@/components/organisms/MobileMenu',
+  () => import('@/components/organisms/MobileMenu/hooks'),
+)
+vi.mock('@/hooks/useWindowScroll', () => ({
+  useWindowScroll: <T,>(select: (w: { scrollY: number; innerWidth: number }) => T) =>
+    select({ scrollY: 600, innerWidth: 1200 }),
+}))
 
 function createWrapper() {
   const store = createStore()
@@ -21,19 +31,21 @@ function createWrapper() {
   }
 }
 
-describe('Motion scroll-driven header visibility', () => {
-  beforeEach(() => {
-    localStorage.clear()
+// useScroll が返すスクロール位置。テストが終わったら破棄する
+const it = base.extend('scrollY', () => {
+  const scrollY = motionValue(0)
+  vi.mocked(useScroll).mockReturnValue({
+    scrollX: motionValue(0),
+    scrollY,
+    scrollXProgress: motionValue(0),
+    scrollYProgress: motionValue(0),
   })
+  onTestFinished(() => scrollY.destroy())
+  return scrollY
+})
 
-  it('hides only on fast downward scrolling beyond the top area', () => {
-    const scrollY = motionValue(0)
-    vi.mocked(useScroll).mockReturnValue({
-      scrollX: motionValue(0),
-      scrollY,
-      scrollXProgress: motionValue(0),
-      scrollYProgress: motionValue(0),
-    })
+describe('Motion scroll-driven header visibility', () => {
+  it('hides only on fast downward scrolling beyond the top area', ({ scrollY }) => {
     const velocity = vi.spyOn(scrollY, 'getVelocity')
     const { result } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
     expect(result.current.visible).toBe(true)
@@ -56,28 +68,40 @@ describe('Motion scroll-driven header visibility', () => {
     expect(result.current.visible).toBe(false)
     scroll(100, 2000)
     expect(result.current.visible).toBe(true)
-    scrollY.destroy()
   })
 
-  it('lets forced visibility override a hidden scroll state', () => {
-    const scrollY = motionValue(0)
-    vi.mocked(useScroll).mockReturnValue({
-      scrollX: motionValue(0),
-      scrollY,
-      scrollXProgress: motionValue(0),
-      scrollYProgress: motionValue(0),
-    })
+  it('keeps the header visible while the mobile menu is open', ({ scrollY }) => {
     vi.spyOn(scrollY, 'getVelocity').mockReturnValue(2000)
     const { result } = renderHook(
-      () => ({ status: useHeaderStatus(), forceVisible: useSetAlwaysShownHeader() }),
+      () => ({ status: useHeaderStatus(), setMenuOpened: useSetMobileMenuOpened() }),
       { wrapper: createWrapper() },
     )
     act(() => scrollY.set(600))
     expect(result.current.status.visible).toBe(false)
-    act(() => result.current.forceVisible(true))
+    act(() => result.current.setMenuOpened(true))
     expect(result.current.status.visible).toBe(true)
-    act(() => result.current.forceVisible(false))
+    act(() => result.current.setMenuOpened(false))
     expect(result.current.status.visible).toBe(false)
-    scrollY.destroy()
+  })
+
+  it('keeps a single scroll subscription however often it re-renders', ({ scrollY }) => {
+    let active = 0
+    const on = scrollY.on.bind(scrollY)
+    vi.spyOn(scrollY, 'on').mockImplementation((event, callback) => {
+      const stop = on(event, callback)
+      if (event !== 'change') return stop
+      active++
+      return () => {
+        active--
+        stop()
+      }
+    })
+    const { rerender, unmount } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
+    for (let i = 0; i < 5; i++) rerender()
+    act(() => scrollY.set(10))
+    expect(active).toBe(1)
+
+    unmount()
+    expect(active).toBe(0)
   })
 })

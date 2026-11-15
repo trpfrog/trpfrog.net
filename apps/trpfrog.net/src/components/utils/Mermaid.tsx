@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useId, useState } from 'react'
 
-import toast from 'react-hot-toast'
+import { toast } from '@ui-sdk/react/toast'
 
 import { usePrefersColorScheme } from '@/hooks/usePrefersColorScheme'
 

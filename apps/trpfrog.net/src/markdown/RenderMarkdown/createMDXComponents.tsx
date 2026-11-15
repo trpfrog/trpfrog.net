@@ -10,6 +10,7 @@ import { twJoin, twMerge } from '@/lib/tailwind'
 import { MarkdownContext } from '@/markdown/types'
 
 import { createCodeComponent } from './createCodeComponent'
+import { MdxDetails, MdxSummary } from './MdxDetails'
 
 import styles from './createMDXComponents.module.css'
 
@@ -70,15 +71,13 @@ export function createMDXComponents(options?: {
       return <blockquote className={twJoin(styles.blockquote, className)} {...rest} />
     },
 
-    details: props => {
-      const { ref: _ref, className = '', ...rest } = props
-      return <details className={twJoin(styles.details, className)} {...rest} />
-    },
+    details: props => (
+      <MdxDetails className={props.className} open={props.open}>
+        {props.children}
+      </MdxDetails>
+    ),
 
-    summary: props => {
-      const { ref: _ref, className = '', ...rest } = props
-      return <summary className={twJoin(styles.summary, className)} {...rest} />
-    },
+    summary: MdxSummary,
 
     video: props => <RichImage src={props.src ?? ''} alt="" caption={props.title} isVideo />,
 
@@ -93,7 +92,7 @@ export function createMDXComponents(options?: {
     },
 
     button: props => {
-      return <RichButton as="button" {...props} />
+      return <RichButton {...props} />
     },
   }
 }

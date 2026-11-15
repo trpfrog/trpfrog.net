@@ -29,7 +29,6 @@ export async function TweetArea({ query, page }: { query: string; page: string }
         currentPage={parseInt(page ?? '1', 10) ?? 1}
         lastPage={maxPage}
         numTweets={tweetCount}
-        key={'top'}
       />
 
       <div id={'tweets'}>
@@ -49,7 +48,6 @@ export async function TweetArea({ query, page }: { query: string; page: string }
         currentPage={parseInt(page ?? '1', 10) ?? 1}
         lastPage={maxPage}
         numTweets={tweetCount}
-        key={'bottom'}
       />
     </>
   )

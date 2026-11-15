@@ -26,12 +26,11 @@ export class IconCanvas {
     }
   }
 
-  async upload(files: FileList | null) {
+  async upload(file: Blob) {
     if (!this.images) {
       throw new Error('images is not initialized')
     }
 
-    if (files == null) return
     if (this.canvasRef.current == null) return
 
     const canvas = this.canvasRef.current
@@ -43,7 +42,7 @@ export class IconCanvas {
     this.y = 10
     this.w = this.h = this.angle = 0
 
-    reader.readAsDataURL(files[0])
+    reader.readAsDataURL(file)
     const event = await new Promise<ProgressEvent<FileReader>>(resolve => {
       reader.onload = e => resolve(e)
     })

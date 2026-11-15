@@ -7,7 +7,6 @@ import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
-import { A } from '@/components/wrappers'
 import { formatDateToDisplay } from '@/lib/date'
 import { readMarkdowns } from '@/lib/mdLoader'
 import { RenderMarkdown } from '@/markdown/RenderMarkdown'
@@ -54,7 +53,7 @@ export default async function Index() {
             <p style={{ display: 'flex', flexFlow: 'row wrap', gap: '8px 6px' }}>
               {Object.entries(metadata.links ?? {}).map(([linkTxt, url]) => {
                 return (
-                  <RichButton as={A} openInNewTab key={linkTxt} href={url as string}>
+                  <RichButton openInNewTab href={url as string} key={linkTxt}>
                     {linkTxt}
                   </RichButton>
                 )

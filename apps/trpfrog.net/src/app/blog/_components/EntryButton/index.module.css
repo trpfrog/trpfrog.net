@@ -18,6 +18,7 @@
 }
 
 .entry_button_icon {
+  display: block;
   font-size: 2rem;
   margin-bottom: 10px;
 

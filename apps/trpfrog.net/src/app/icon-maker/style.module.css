@@ -55,10 +55,6 @@
   outline: 0;
 }
 
-.ctrl_btn_grid button {
-  @extend .ctrl_btn;
-}
-
 .left_btn {
   grid-area: L;
 }

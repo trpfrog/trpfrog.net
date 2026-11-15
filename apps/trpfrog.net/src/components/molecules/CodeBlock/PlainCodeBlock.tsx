@@ -1,14 +1,12 @@
 import * as React from 'react'
 
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ScrollArea, ScrollAreaViewport } from '@ui-sdk/react/scroll-area'
 import type { Except } from 'type-fest'
 
-import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
 import { CopyButton } from '@/components/atoms/CopyButton'
-import { A } from '@/components/wrappers'
 import { tv } from '@/lib/tailwind'
+
+import { CodeLinkButton } from './CodeLinkButton'
 
 export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   showBar?: boolean
@@ -27,11 +25,13 @@ const createStyles = tv({
       'tw:rounded-t-lg tw:bg-trpfrog-500 tw:px-4 tw:py-1 tw:dark:bg-trpfrog-600',
     ],
     lang: 'tw:text-xs tw:font-bold tw:text-white',
+    barButton: 'tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100',
     codeWrapper: [
-      'tw:w-full tw:overflow-clip tw:overflow-x-scroll',
+      'tw:w-full tw:overflow-clip',
       'tw:font-mono tw:text-[0.8em] tw:sp:text-xs',
       'tw:border tw:border-trpfrog-500 tw:dark:border-trpfrog-600',
     ],
+    viewport: 'tw:w-full',
     code: 'tw:py-4 tw:sp:py-3',
     line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
@@ -60,21 +60,6 @@ const createStyles = tv({
   },
 })
 
-export function CodeLinkButton(props: { url: string }) {
-  const isGitHub = /https?:\/\/github.com/.test(props.url)
-  return (
-    <WithTooltip hoveredTooltipContent={isGitHub ? 'Open on GitHub' : 'View Code'}>
-      <A
-        openInNewTab
-        href={props.url}
-        className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
-      >
-        <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
-      </A>
-    </WithTooltip>
-  )
-}
-
 export function PlainCodeBlock(props: PlainCodeBlockProps) {
   const {
     children,
@@ -96,14 +81,19 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
         <div className={styles.bar()}>
           <span className={styles.lang()}>{fileName}</span>
           <div className="tw:flex tw:gap-2">
-            {url && <CodeLinkButton url={url} />}
-            {copyContent && <CopyButton copyContent={copyContent} />}
+            {url && <CodeLinkButton url={url} className={styles.barButton()} />}
+            {copyContent && <CopyButton copyContent={copyContent} className={styles.barButton()} />}
           </div>
         </div>
       )}
-      <div dangerouslySetInnerHTML={dangerouslySetInnerHTML} className={styles.codeWrapper()}>
-        {children && <pre className="tw:p-1">{children}</pre>}
-      </div>
+      <ScrollArea className={styles.codeWrapper()}>
+        <ScrollAreaViewport
+          className={styles.viewport()}
+          dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+        >
+          {children && <pre className="tw:p-1">{children}</pre>}
+        </ScrollAreaViewport>
+      </ScrollArea>
     </div>
   )
 }

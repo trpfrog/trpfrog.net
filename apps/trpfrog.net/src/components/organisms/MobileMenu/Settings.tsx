@@ -2,9 +2,11 @@
 
 import { LabelledCheckbox } from '@/components/molecules/LabelledCheckbox'
 import { tv } from '@/lib/tailwind'
-import { useKawaiiLogoAtom } from '@/states/kawaiiLogoAtom.ts'
-import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
-import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
+import {
+  useUserSettingAlwaysVisibleHeader,
+  useUserSettingKawaiiLogo,
+  useUserSettingStickyHeader,
+} from '@/states/userSettings'
 
 const styles = tv({
   slots: {
@@ -14,7 +16,7 @@ const styles = tv({
 })()
 
 function KawaiiCheckbox() {
-  const [showKawaiiLogo, setShowKawaiiLogo] = useKawaiiLogoAtom()
+  const [showKawaiiLogo, setShowKawaiiLogo] = useUserSettingKawaiiLogo()
   return (
     <LabelledCheckbox checked={showKawaiiLogo} onChange={setShowKawaiiLogo}>
       かわいいロゴモード

@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Title } from '@/components/organisms/Title'
@@ -11,7 +9,7 @@ export default async function Docs() {
     <MainWrapper gridLayout>
       <Title title="Docs" description="つまみネットのドキュメントまとめ" />
       {Object.keys(docsPaths).map(slug => (
-        <RichButton as={Link} key={slug} href={`/docs/${slug}`}>
+        <RichButton href={`/docs/${slug}`} key={slug}>
           {slug}
         </RichButton>
       ))}

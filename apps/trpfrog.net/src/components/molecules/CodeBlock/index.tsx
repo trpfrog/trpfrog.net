@@ -2,9 +2,6 @@ import 'server-only'
 import * as React from 'react'
 
 import './shiki-style.css'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   transformerNotationDiff,
   transformerNotationErrorLevel,
@@ -14,8 +11,6 @@ import { addClassToHast, bundledLanguages, createHighlighter } from 'shiki'
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 import type { Except } from 'type-fest'
 
-import { WithTooltip } from '@/components/atoms/ButtonWithTooltip'
-import { A } from '@/components/wrappers'
 import { tv } from '@/lib/tailwind'
 
 import { LanguageCode } from './language-code'
@@ -80,21 +75,6 @@ async function loadLanguage(languageCode: LanguageCode): Promise<void> {
   await highlighter.loadLanguage(langModule)
 }
 
-export function CodeLinkButton(props: { url: string }) {
-  const isGitHub = /https?:\/\/github.com/.test(props.url)
-  return (
-    <WithTooltip hoveredTooltipContent={isGitHub ? 'Open on GitHub' : 'View Code'}>
-      <A
-        openInNewTab
-        href={props.url}
-        className="tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100"
-      >
-        <FontAwesomeIcon icon={isGitHub ? faGithub : faLink} />
-      </A>
-    </WithTooltip>
-  )
-}
-
 export async function CodeBlock(props: CodeBlockProps) {
   'use cache'
 
@@ -119,6 +99,10 @@ export async function CodeBlock(props: CodeBlockProps) {
       transformerNotationHighlight(),
       transformerNotationErrorLevel(),
       {
+        // スクロールのためのフォーカスは ScrollArea のビューポートが受け持つ
+        pre(node) {
+          delete node.properties.tabindex
+        },
         line(hast) {
           addClassToHast(hast, styles.line())
         },

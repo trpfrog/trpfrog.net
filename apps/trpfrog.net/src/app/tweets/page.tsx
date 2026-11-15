@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 
 import { format, subYears } from 'date-fns'
 
+import { Details } from '@/components/atoms/Details'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
@@ -43,16 +43,12 @@ export default async function Index(props: PageProps<'/tweets'>) {
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
-          <RichButton
-            as={Link}
-            href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}
-          >
+          <RichButton href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}>
             1年前のツイートを見る
           </RichButton>
         </p>
         <br />
-        <details>
-          <summary>実装済みの機能</summary>
+        <Details summary="実装済みの機能">
           <UnorderedList style={{ marginTop: 0 }}>
             <Li>AND 検索</Li>
             <Li>since/until 検索 (日付のみ e.g. 2000-10-17)</Li>
@@ -63,7 +59,7 @@ export default async function Index(props: PageProps<'/tweets'>) {
             <Li>order:asc で古い順に並び替え</Li>
             <Li>マイナス検索 (上記のいずれにも使用可)</Li>
           </UnorderedList>
-        </details>
+        </Details>
         <SearchForm defaultValue={query} />
       </Title>
 

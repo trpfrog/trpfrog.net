@@ -4,7 +4,6 @@ import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
 import { Title } from '@/components/organisms/Title'
 import { YouTube } from '@/components/organisms/YouTube'
-import { A } from '@/components/wrappers'
 
 // FIXME: Cannot find module 'Lyrics'
 // @ts-expect-error - Error: Cannot find module 'Lyrics'
@@ -21,9 +20,7 @@ export default function Music() {
           ありがとうございます！！！
         </p>
         <p>
-          <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
-            購入・ストリーミング
-          </RichButton>
+          <RichButton href="https://linkco.re/N4Z8hdvX">購入・ストリーミング</RichButton>
         </p>
         <Image
           src={'musicbanner'}
@@ -45,10 +42,10 @@ export default function Music() {
           僕は歌いません。(？)
         </p>
         <div>
-          <RichButton as={A} href="https://musicpost.joysound.com/music/musicId:107765">
+          <RichButton href="https://musicpost.joysound.com/music/musicId:107765">
             楽曲詳細
           </RichButton>
-          <RichButton as={A} href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1">
+          <RichButton href="https://www.joysound.com/web/shop/list?m6=1&m5=1&m4=1&m3=1">
             店舗検索
           </RichButton>
         </div>
@@ -62,9 +59,7 @@ export default function Music() {
 
       <Block title={'フル音源'} h2icon={'robot'}>
         <p>各種音楽配信サイトで配信中！</p>
-        <RichButton as={A} href="https://linkco.re/N4Z8hdvX">
-          購入・ストリーミング
-        </RichButton>
+        <RichButton href="https://linkco.re/N4Z8hdvX">購入・ストリーミング</RichButton>
         <p>YouTubeでも公開中！</p>
         <YouTube videoId="VO64Ih8c1yU" />
       </Block>

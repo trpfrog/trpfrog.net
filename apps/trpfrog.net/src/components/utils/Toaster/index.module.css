@@ -1,0 +1,71 @@
+.region {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 9999;
+  width: min(356px, calc(100vw - 32px));
+  height: var(--toast-front-height);
+  translate: -50% 0;
+}
+
+.region[data-expanded] {
+  height: calc(var(--toast-stack-height) + (var(--toast-count) - 1) * 8px);
+}
+
+.toast {
+  --y: calc(var(--toast-index) * 8px);
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: calc(100 - var(--toast-index));
+  overflow: hidden;
+  height: var(--toast-height);
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fff;
+  color: #363636;
+  box-shadow:
+    0 3px 10px rgb(0 0 0 / 10%),
+    0 3px 3px rgb(0 0 0 / 5%);
+  text-align: center;
+  translate: var(--toast-swipe-x, 0px) calc(var(--y) + var(--toast-swipe-y, 0px));
+  scale: calc(1 - var(--toast-index) * 0.05);
+  transition-property: translate, scale, opacity, height;
+  transition-duration: 300ms;
+  user-select: none;
+}
+
+.toast:not([data-front], [data-expanded]) {
+  height: var(--toast-front-height);
+}
+
+.toast[data-expanded] {
+  --y: calc(var(--toast-offset) + var(--toast-index) * 8px);
+  scale: 1;
+}
+
+.toast[data-starting-style] {
+  transition: none;
+}
+
+.toast[data-starting-style][data-front] {
+  --y: -100%;
+}
+
+.toast:is([data-starting-style]:not([data-front]), [data-ending-style]) {
+  opacity: 0;
+}
+
+.toast[data-swiping] {
+  transition: none;
+}
+
+.title {
+  font-weight: bold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition-property: opacity;
+  }
+}
