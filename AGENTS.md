@@ -35,10 +35,10 @@
 - This is a personal site; avoid major content rewrites and focus on quality improvements.
 
 ## Testing
-- テストの追加・修正・レビュー、失敗調査、バグの回帰テスト作成では `testing` Skill を参照する。原本は `skills/testing/SKILL.md` で、`vp run -w install-skills` で `.agents/skills/testing/SKILL.md` にインストールされる。
-- このプロジェクトは Vite+ を使用する。テストの実行・import・設定は上記 Skill の Vite+ 規約に従い、Vitest Skill の CLI 例をそのまま実行しない。
+- When adding, fixing, or reviewing tests, investigating failures, or writing regression tests for bugs, follow the `testing` skill. Its source is `skills/testing/SKILL.md`, and `vp run -w install-skills` installs it to `.agents/skills/testing/SKILL.md`.
+- This project uses Vite+. Run, import, and configure tests by the Vite+ rules in that skill, and do not run the CLI examples from the Vitest skill as they are.
 - Testing framework: Vitest (via Vite+) across `apps/*` and `packages/*`.
 - Add tests next to implementation and name tests by behavior.
 - Review snapshot updates carefully before merge.
 - CI publishes coverage reports. There is no strict threshold, but new code should keep or improve effective coverage.
-- 変更したテストを実行し、実行したコマンド・成否・未実行の検証を報告する。
+- Run the tests you changed, and report the commands you ran, whether they passed, and any checks you did not run.
