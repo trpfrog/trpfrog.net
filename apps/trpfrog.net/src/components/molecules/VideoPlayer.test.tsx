@@ -58,8 +58,10 @@ describe('VideoPlayer', () => {
     await act(async () => fireEvent(video, new Event('loadedmetadata')))
     const seek = screen.getByRole('slider', { name: '再生位置' })
     expect(seek).toHaveAttribute('max', '60')
-    await act(async () => fireEvent.keyDown(seek, { key: 'PageUp' }))
-    expect(video.currentTime).toBeGreaterThan(0)
+    await act(async () => fireEvent.keyDown(seek, { key: 'End' }))
+    expect(video.currentTime).toBe(60)
+    await act(async () => fireEvent.keyDown(seek, { key: 'Home' }))
+    expect(video.currentTime).toBe(0)
   })
 
   it('reads the duration of a video that loaded before hydration', () => {

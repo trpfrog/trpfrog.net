@@ -44,10 +44,15 @@ describe('RichButton', () => {
   })
 
   it('keeps its own class names next to the shared look', () => {
-    render(<RichButton className="extra">x</RichButton>)
-    const button = screen.getByRole('button', { name: 'x' })
-    expect(button).toHaveClass('extra')
-    expect(button).toHaveClass('tw:rounded-full')
+    render(
+      <>
+        <RichButton>plain</RichButton>
+        <RichButton className="extra">extra</RichButton>
+      </>,
+    )
+    const shared = screen.getByRole('button', { name: 'plain' }).classList
+    const button = screen.getByRole('button', { name: 'extra' })
+    expect(button).toHaveClass('extra', ...shared)
   })
 
   it('ignores presses while disabled', async () => {

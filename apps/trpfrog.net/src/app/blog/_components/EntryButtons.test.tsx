@@ -4,9 +4,6 @@ import { describe, expect, it, vi } from 'vite-plus/test'
 import { RichEntryButtons } from './EntryButtons'
 
 vi.mock('next/navigation', () => ({ usePathname: () => '/blog/x' }))
-vi.mock('@/hooks/useShareTweetURL', () => ({
-  useShareTweetURL: () => 'https://twitter.com/intent',
-}))
 
 const post = { slug: 'x', numberOfPages: 2, currentPage: 1 } as never
 
@@ -15,7 +12,6 @@ describe('RichEntryButtons', () => {
     render(<RichEntryButtons post={post} extended />)
     const expected = [
       ['記事一覧', '/blog'],
-      ['ツイート', 'https://twitter.com/intent'],
       ['訂正依頼', 'https://github.com/TrpFrog/trpfrog.net/issues'],
       ['全文表示', '/blog/x/all'],
     ] as const
@@ -25,6 +21,12 @@ describe('RichEntryButtons', () => {
       expect(link.querySelector('button')).toBeNull()
     }
     expect(screen.queryByRole('button')).toBeNull()
-    expect(screen.getByRole('link', { name: 'ツイート' })).toHaveAttribute('target', '_blank')
+
+    const tweet = screen.getByRole('link', { name: 'ツイート' })
+    expect(tweet).toHaveAttribute('target', '_blank')
+    expect(tweet.querySelector('button')).toBeNull()
+    const intent = new URL(tweet.getAttribute('href') ?? '')
+    expect(intent.origin + intent.pathname).toBe('https://twitter.com/intent/tweet')
+    expect(intent.searchParams.get('url')).toBe('https://trpfrog.net/blog/x')
   })
 })
