@@ -77,8 +77,20 @@ describe('VideoPlayer', () => {
     }
   })
 
-  it('offers fullscreen', () => {
-    renderPlayer()
-    expect(screen.getByRole('button', { name: '全画面' })).toBeInTheDocument()
+  it('shows the whole player, controls included, in fullscreen', async () => {
+    const video = renderPlayer()
+    const requestFullscreen = vi.fn<() => Promise<void>>(() => Promise.resolve())
+    Object.assign(video.parentElement ?? {}, { requestFullscreen })
+    await act(async () => screen.getByRole('button', { name: '全画面' }).click())
+    expect(requestFullscreen).toHaveBeenCalledOnce()
+  })
+
+  it('falls back to the video fullscreen player where elements cannot go fullscreen', async () => {
+    const video = renderPlayer()
+    Object.assign(video.parentElement ?? {}, { requestFullscreen: undefined })
+    const webkitEnterFullscreen = vi.fn<() => void>()
+    Object.assign(video, { webkitEnterFullscreen })
+    await act(async () => screen.getByRole('button', { name: '全画面' }).click())
+    expect(webkitEnterFullscreen).toHaveBeenCalledOnce()
   })
 })

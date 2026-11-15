@@ -25,7 +25,10 @@ import { tv } from '@/lib/tailwind'
 const styles = tv({
   slots: {
     root: 'tw:flex tw:flex-col tw:overflow-hidden tw:rounded-md tw:bg-black',
-    video: 'tw:block tw:w-full',
+    video: [
+      'tw:block tw:w-full',
+      'tw:in-[:fullscreen]:min-h-0 tw:in-[:fullscreen]:flex-1 tw:in-[:fullscreen]:object-contain',
+    ],
     bar: 'tw:flex tw:items-center tw:gap-2 tw:px-2 tw:py-1 tw:text-white',
     control: [
       'tw:grid tw:size-7 tw:shrink-0 tw:cursor-pointer tw:place-items-center tw:rounded',
@@ -40,19 +43,30 @@ const styles = tv({
   },
 })()
 
+// iPhone の Safari は要素の全画面表示に対応せず、video 独自の全画面プレイヤーだけを持つ
+type VideoWithWebkitFullscreen = HTMLVideoElement & { webkitEnterFullscreen?: () => void }
+
 function formatTime(seconds: number) {
   const s = Math.floor(seconds)
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
 export function VideoPlayer(props: { src: string; label: string; className?: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<VideoWithWebkitFullscreen>(null)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
 
   const video = () => videoRef.current
+
+  // 操作バーも出したままにするため、動画だけでなくプレイヤー全体を全画面にする
+  const enterFullscreen = () => {
+    const root = rootRef.current
+    if (root?.requestFullscreen) void root.requestFullscreen()
+    else video()?.webkitEnterFullscreen?.()
+  }
 
   // ハイドレーション前に読み込みが終わっていると loadedmetadata を受け取れないので、最初に読み直す
   useEffect(() => {
@@ -61,7 +75,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
   }, [])
 
   return (
-    <div className={styles.root({ className: props.className })}>
+    <div ref={rootRef} className={styles.root({ className: props.className })}>
       {/* 外部の動画には字幕が無いので、ラベルで動画を識別できるようにしている */}
       {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
       <video
@@ -119,11 +133,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
         >
           <FontAwesomeIcon icon={muted ? faVolumeXmark : faVolumeHigh} />
         </Toggle>
-        <Button
-          aria-label="全画面"
-          onClick={() => void video()?.requestFullscreen?.()}
-          className={styles.control()}
-        >
+        <Button aria-label="全画面" onClick={enterFullscreen} className={styles.control()}>
           <FontAwesomeIcon icon={faExpand} />
         </Button>
       </div>
