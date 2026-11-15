@@ -76,32 +76,24 @@ describe('CopyButton', () => {
     expect(screen.getByRole('tooltip')).not.toHaveTextContent('Copied!')
   })
 
-  it('shows Copied! for a while after a tap, which never hovers', async () => {
+  it('shows a check mark for a while after a tap, which never opens the tooltip', async () => {
     mockWriteText()
     useFakeTimers()
     render(<CopyButton copyContent="hello" />)
     const button = screen.getByRole('button', { name: 'Copy' })
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    const icon = () => button.querySelector('svg')?.getAttribute('data-icon')
+    expect(icon()).toBe('clone')
 
     await act(async () => {
       fireEvent.click(button)
     })
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
-
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1500)
-      fireEvent.click(button)
-      await vi.advanceTimersByTimeAsync(1500)
-    })
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
-
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1000)
-    })
-    await act(async () => {
-      await vi.runAllTimersAsync()
-    })
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    expect(icon()).toBe('check')
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
+    expect(icon()).toBe('clone')
   })
 
   it('goes back to Copy after a while, even while hovered', async () => {

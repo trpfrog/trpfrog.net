@@ -44,10 +44,11 @@ describe('EmbeddedTweet actions', () => {
   it('copies the tweet URL and says so', async () => {
     const writeText = mockWriteText()
     render(<EmbeddedTweet tweet={{ favorite_count: 0 } as unknown as Tweet} />)
+    const button = screen.getByRole('button', { name: 'Copy' })
     await act(async () => {
-      screen.getByRole('button', { name: 'Copy' }).click()
+      button.click()
     })
     expect(writeText).toHaveBeenCalledExactlyOnceWith('https://x.com/trpfrog/status/1')
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
+    expect(button.querySelector('svg')).toHaveAttribute('data-icon', 'check')
   })
 })
