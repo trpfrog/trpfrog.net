@@ -13,7 +13,7 @@ import { richButtonStyle } from '@/components/atoms/RichButton'
 import { A } from '@/components/wrappers'
 import { twMerge } from '@/lib/tailwind'
 
-// 現在のページから 2 の冪で離れたページと、前後 2 ページ、最初と最後のページを並べる
+// 現在のページから 1, 3, 7, 15, … (2^k - 1) 離れたページと、前後 2 ページ、最初と最後のページを並べる
 // e.g. 1, 5, 13, 17, 18, 19, [20], 21, 22, 23, 27, 35, 51, 83, 100
 function createPageNumbers(currentPage: number, lastPage: number): number[] {
   if (lastPage < 10) {

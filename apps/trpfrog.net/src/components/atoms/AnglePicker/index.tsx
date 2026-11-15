@@ -24,9 +24,10 @@ function toSliderValue(degree: number) {
   return Math.round(((degree % 360) + 360) % 360)
 }
 
-// Slider は 0° より下に進めないので、0° から下げるキーは 360° 側へ回り込ませる
 const STEP = 5
 const LARGE_STEP = 45
+// Slider は 0° より下に進めないので、0° から下げるキーは 360° 側へ回り込ませる。
+// 上向きは max を 360 にして、360 を 0° に読み替えて回り込ませる
 const STEPS_BELOW_ZERO: Partial<Record<string, number>> = {
   ArrowLeft: STEP,
   ArrowDown: STEP,
@@ -64,7 +65,7 @@ export function AnglePicker(props: Props) {
     },
   }))
 
-  // ポインタの位置から、ダイヤルの中心を基準にした角度 (12 時が 0°) を求める
+  // ダイヤルの中心から見たポインタの向きに針を向ける。12 時が 0°
   const pointTo = useEffectEvent((clientX: number, clientY: number) => {
     const rect = innerRef.current?.getBoundingClientRect()
     if (!rect) return

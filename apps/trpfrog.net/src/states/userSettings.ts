@@ -8,8 +8,8 @@ import { match } from 'ts-pattern'
 
 type Flag = 'true' | 'false'
 
-// 以前は jotai の atomWithStorage で JSON として保存していた。true/false の JSON は
-// 文字列と同じ表記なので、キーを変えずに保存済みの設定を引き継げる
+// 古い形式では JSON で保存していた。true/false の JSON は文字列と同じ表記なので
+// そのまま読める。保存済みの設定を引き継ぐため、キーは変えないこと
 function createFlag(key: string, attribute: `data-${string}`, defaultValue: boolean) {
   return createPreference<Flag>({
     values: ['true', 'false'],

@@ -35,7 +35,6 @@ describe('persisted user settings', () => {
   })
 
   it('loads settings saved by the previous jotai storage format', async () => {
-    // atomWithStorage は JSON.stringify(boolean) で保存していた
     localStorage.setItem('shouldFollowHeader', JSON.stringify(false))
     localStorage.setItem('alwaysStickHeader', JSON.stringify(true))
     localStorage.setItem('kawaii-logo', JSON.stringify(true))

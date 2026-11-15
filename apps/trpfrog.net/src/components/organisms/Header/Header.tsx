@@ -30,9 +30,8 @@ const styles = tv({
     ],
     header: 'tw:h-full tw:overflow-clip tw:bg-header-color tw:data-scrolled:shadow-md',
     inside: 'tw:relative tw:flex tw:h-full tw:items-center tw:justify-between',
-    // メニューを元の位置に出すための目印。スマホではヘッダーの幅いっぱいに 8px 下、
-    // PC では 32px 下で右に 17.5px はみ出す。PC の幅は吹き出しの矢印が右端から
-    // 34px (ハンバーガーの真下) に来るように決めている
+    // MobileMenu を出す位置の目印。PC の幅とはみ出しは、目印の中央に来る
+    // 吹き出しの矢印がハンバーガーの真下に来るように決めている
     menuAnchor: [
       'tw:pointer-events-none tw:absolute tw:top-full tw:right-0 tw:h-0 tw:w-full tw:mt-2',
       'tw:pc:-right-[17.5px] tw:pc:mt-8 tw:pc:w-[68px]',
@@ -118,7 +117,7 @@ function ClientHeader() {
 
 export function Header(_props: Props) {
   return (
-    // useHeaderStatus requires a Suspense boundary, so we provide a fallback here
+    // useIsKawaiiLogo reads search params, which needs a Suspense boundary
     <Suspense
       fallback={<InternalHeader visible sticky visibleShadow visibleTrpFrog visibleSubtitle />}
     >

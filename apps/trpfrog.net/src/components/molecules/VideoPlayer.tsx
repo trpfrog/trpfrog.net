@@ -119,7 +119,8 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
     else videoRef.current?.webkitEnterFullscreen?.()
   }
 
-  // ハイドレーション前に読み込みが終わっていると loadedmetadata を受け取れないので、最初に読み直す
+  // ハイドレーション前にメタデータを読み終えていると loadedmetadata を受け取れないので、
+  // マウント時に readyState (1 = HAVE_METADATA) を見て長さを取る
   useEffect(() => {
     const v = videoRef.current
     if (v && v.readyState >= 1) setDuration(v.duration)
@@ -127,7 +128,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
 
   return (
     <div ref={rootRef} className={styles.root({ className: props.className })}>
-      {/* 外部の動画には字幕が無いので、ラベルで動画を識別できるようにしている */}
+      {/* 外部の動画で字幕ファイルが無いので規則を止める。動画はラベルで識別できる */}
       {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         ref={videoRef}

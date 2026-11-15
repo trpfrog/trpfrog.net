@@ -86,8 +86,8 @@ describe('VideoPlayer', () => {
   })
 
   it('reads the duration of a video that loaded before hydration', () => {
-    // HAVE_ENOUGH_DATA。happy-dom には定数がない
-    vi.spyOn(HTMLMediaElement.prototype, 'readyState', 'get').mockReturnValue(4)
+    const HAVE_ENOUGH_DATA = 4 // happy-dom には定数がない
+    vi.spyOn(HTMLMediaElement.prototype, 'readyState', 'get').mockReturnValue(HAVE_ENOUGH_DATA)
     vi.spyOn(HTMLMediaElement.prototype, 'duration', 'get').mockReturnValue(42)
     renderPlayer()
     expect(screen.getByRole('slider', { name: '再生位置' })).toHaveAttribute('max', '42')

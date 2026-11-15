@@ -23,7 +23,7 @@ function useHeaderVisibleStatus(): boolean {
   const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
-  // 描画のたびに登録すると購読が溜まっていくので、解除まで面倒を見てくれるフックで購読する
+  // 解除までするフックで購読する。描画のたびに .on で登録すると購読が溜まる
   useMotionValueEvent(scrollY, 'change', y => {
     const v = scrollY.getVelocity()
     const shouldShowHeader = v < -1000 || y < 500
@@ -64,7 +64,7 @@ export function useHeaderStatus(): HeaderStatus {
   const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  // スクロールのたびに再描画しないよう、しきい値を超えたかどうかだけを 1 つの数にまとめて購読する
+  // しきい値ごとの結果だけを購読して、スクロールのたびに再描画しない
   const passed = useWindowScroll(
     ({ scrollY, innerWidth }) =>
       (scrollY > 0 ? SCROLLED : 0) |

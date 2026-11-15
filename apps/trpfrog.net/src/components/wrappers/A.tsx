@@ -12,7 +12,7 @@ export interface AProps extends React.ComponentPropsWithRef<'a'> {
 
 export function A(props: AProps) {
   const { openInNewTab: _openInNewTab, href, ref, children, ...rest } = props
-  // href のないリンク (現在のページなど) は遷移先がないので、素の <a> にする
+  // href のないリンク (現在のページなど) は素の <a> にする
   if (href === undefined) {
     return (
       <a ref={ref} {...rest}>
