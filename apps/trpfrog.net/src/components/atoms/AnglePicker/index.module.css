@@ -6,6 +6,8 @@
   padding: 7%;
   background: #fcfff1;
   border-radius: 50%;
+  /* ドラッグ中にページがスクロールしないようにする */
+  touch-action: none;
   --hand-color: var(--header-color);
 }
 

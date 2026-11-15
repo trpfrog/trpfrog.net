@@ -1,11 +1,10 @@
 'use client'
 import * as React from 'react'
-import { useImperativeHandle, useRef, useState } from 'react'
+import { useEffect, useEffectEvent, useImperativeHandle, useRef, useState } from 'react'
 
+import { bindDrag } from '@ui-sdk/core'
 import { Slider, SliderThumb, SliderTrack } from '@ui-sdk/react/slider'
 import type { Except } from 'type-fest'
-
-import { useDragEvent } from '@/hooks/useDragEvent'
 
 import styles from './index.module.css'
 
@@ -56,18 +55,34 @@ export function AnglePicker(props: Props) {
     },
   }))
 
-  useDragEvent(innerRef, e => {
+  // ポインタの位置から、ダイヤルの中心を基準にした角度 (12 時が 0°) を求める
+  const pointTo = useEffectEvent((clientX: number, clientY: number) => {
     const rect = innerRef.current?.getBoundingClientRect()
-    if (!e || !rect) {
-      return
-    }
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const normalizedX = x / (rect.width / 2) - 1
-    const normalizedY = y / (rect.height / 2) - 1
-    const radian = Math.atan2(normalizedY, normalizedX) + Math.PI / 2
-    changeDegree(radian * (180 / Math.PI))
+    if (!rect) return
+    const x = clientX - (rect.left + rect.width / 2)
+    const y = clientY - (rect.top + rect.height / 2)
+    changeDegree((Math.atan2(y, x) + Math.PI / 2) * (180 / Math.PI))
   })
+
+  useEffect(() => {
+    const el = innerRef.current
+    if (!el) return
+    let stopDrag: (() => void) | undefined
+    const onPointerDown = (down: PointerEvent) => {
+      if (down.button !== 0) return
+      pointTo(down.clientX, down.clientY)
+      stopDrag?.()
+      stopDrag = bindDrag(el, down, {
+        onMove: ({ x, y }) => pointTo(x, y),
+        onEnd: () => (stopDrag = undefined),
+      })
+    }
+    el.addEventListener('pointerdown', onPointerDown)
+    return () => {
+      el.removeEventListener('pointerdown', onPointerDown)
+      stopDrag?.()
+    }
+  }, [])
 
   // 円形のドラッグはこのコンポーネントで扱い、キーボードと読み上げは ui-sdk の Slider に任せる
   return (
