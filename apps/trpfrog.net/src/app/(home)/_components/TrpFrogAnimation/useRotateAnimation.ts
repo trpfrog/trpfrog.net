@@ -1,10 +1,10 @@
-import { useRef, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
-import { AnglePickerHandle } from '@/components/atoms/AnglePicker'
+import { createAnglePickerController } from '@/components/atoms/AnglePicker'
 
 export function useRotateAnimation() {
-  // AnglePicker の操作用 ref
-  const anglePickerRef = useRef<AnglePickerHandle>(null)
+  // AnglePicker を外から回すための取っ手
+  const [anglePicker] = useState(createAnglePickerController)
 
   const [intervalId, setIntervalId] = useState<number | null>(null)
   const [rotateDirection, setRotateDirection] = useState<'left' | 'right'>('right')
@@ -14,7 +14,7 @@ export function useRotateAnimation() {
       return
     }
     const id = window.setInterval(() => {
-      anglePickerRef.current?.setDegree(prev => prev + (rotateDirection === 'left' ? -1 : 1))
+      anglePicker.turnBy(rotateDirection === 'left' ? -1 : 1)
     }, 25)
     setIntervalId(id)
   }, [intervalId, rotateDirection])
@@ -32,7 +32,7 @@ export function useRotateAnimation() {
     startAnimation,
     stopAnimation,
     isRotated: intervalId !== null,
-    anglePickerRef,
+    anglePicker,
     rotateDirection,
   }
 }

@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
 
-import { AnglePicker } from '.'
+import { AnglePicker, createAnglePickerController } from '.'
 
 function renderPicker(initialDegree: number) {
   const onAngleChange = vi.fn<(degree: number) => void>()
@@ -100,11 +100,11 @@ describe('AnglePicker', () => {
         button: 0,
         pointerId: 1,
         isPrimary: true,
-        clientX: 50,
-        clientY: 0,
+        clientX: 100,
+        clientY: 50,
       })
     })
-    expect(onAngleChange).toHaveBeenLastCalledWith(0)
+    expect(onAngleChange).toHaveBeenLastCalledWith(90)
 
     await act(async () => {
       fireEvent.pointerMove(document, { pointerId: 1, clientX: 50, clientY: 300 })
@@ -146,5 +146,28 @@ describe('AnglePicker', () => {
       })
     })
     expect(onAngleChange).not.toHaveBeenCalled()
+  })
+
+  it('turns from outside through its controller', async () => {
+    const controller = createAnglePickerController()
+    const onAngleChange = vi.fn<(degree: number) => void>()
+    render(
+      <AnglePicker
+        size={100}
+        initialDegree={10}
+        controller={controller}
+        onAngleChange={onAngleChange}
+      />,
+    )
+    await act(async () => {
+      controller.turnBy(-15)
+    })
+    expect(onAngleChange).toHaveBeenLastCalledWith(-5)
+    expect(screen.getByRole('slider', { name: '角度' })).toHaveValue('355')
+
+    await act(async () => {
+      controller.setDegree(90)
+    })
+    expect(onAngleChange).toHaveBeenLastCalledWith(90)
   })
 })
