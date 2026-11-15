@@ -49,6 +49,18 @@ describe('AnglePicker', () => {
     expect(onAngleChange).toHaveBeenLastCalledWith(0)
   })
 
+  it.each([
+    { key: 'ArrowLeft', expected: 355 },
+    { key: 'ArrowDown', expected: 355 },
+    { key: 'PageDown', expected: 315 },
+  ])('wraps below 0° with $key', async ({ key, expected }) => {
+    const { slider, onAngleChange } = renderPicker(0)
+    await act(async () => {
+      fireEvent.keyDown(slider, { key })
+    })
+    expect(onAngleChange).toHaveBeenLastCalledWith(expected)
+  })
+
   it('takes a larger step with Page Up', async () => {
     const { slider, onAngleChange } = renderPicker(0)
     await act(async () => {

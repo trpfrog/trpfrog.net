@@ -24,6 +24,15 @@ function toSliderValue(degree: number) {
   return Math.round(((degree % 360) + 360) % 360)
 }
 
+// Slider は 0° より下に進めないので、0° から下げるキーは 360° 側へ回り込ませる
+const STEP = 5
+const LARGE_STEP = 45
+const STEPS_BELOW_ZERO: Partial<Record<string, number>> = {
+  ArrowLeft: STEP,
+  ArrowDown: STEP,
+  PageDown: LARGE_STEP,
+}
+
 export function AnglePicker(props: Props) {
   const {
     ref,
@@ -96,10 +105,16 @@ export function AnglePicker(props: Props) {
         value={toSliderValue(degree)}
         min={0}
         max={360}
-        step={5}
-        largeStep={45}
+        step={STEP}
+        largeStep={LARGE_STEP}
         format={{ style: 'unit', unit: 'degree' }}
         onValueChange={value => changeDegree(value === 360 ? 0 : value)}
+        onKeyDown={e => {
+          const step = STEPS_BELOW_ZERO[e.key]
+          if (step === undefined || toSliderValue(degree) !== 0) return
+          e.preventDefault()
+          changeDegree(360 - step)
+        }}
         className={styles.slider}
       >
         <SliderTrack className={styles.slider_track}>
