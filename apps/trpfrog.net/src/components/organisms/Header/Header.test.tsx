@@ -147,16 +147,16 @@ describe('Header mobile menu', () => {
   it('keeps the header pinned to the top while the menu is open', async () => {
     localStorage.setItem('shouldFollowHeader', 'false')
     await renderHeader()
-    expect(getHeaderWrapper()).not.toHaveClass('tw:sticky')
+    expect(getHeaderWrapper()).not.toHaveAttribute('data-sticky')
 
     await openMenu()
-    expect(getHeaderWrapper()).toHaveClass('tw:sticky')
-    expect(getHeaderWrapper()).not.toHaveClass('tw:-translate-y-full')
+    expect(getHeaderWrapper()).toHaveAttribute('data-sticky')
+    expect(getHeaderWrapper()).not.toHaveAttribute('data-hidden')
 
     await act(async () => {
       getMenuButton().click()
     })
-    expect(getHeaderWrapper()).not.toHaveClass('tw:sticky')
+    expect(getHeaderWrapper()).not.toHaveAttribute('data-sticky')
   })
 
   it('toggles the kawaii logo setting from the menu', async () => {

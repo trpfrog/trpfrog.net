@@ -17,7 +17,7 @@ describe('Image spoiler', () => {
     render(<Image src="/a.png" alt="写真" width={1000} height={500} withSpoiler />)
     const button = screen.getByRole('button', { name: '画像を表示する' })
     expect(button).toHaveAttribute('aria-pressed', 'false')
-    expect(button.parentElement).toHaveClass('tw:backdrop-blur-2xl')
+    expect(button.parentElement).not.toHaveAttribute('data-revealed')
 
     await act(async () => {
       button.click()
@@ -26,7 +26,7 @@ describe('Image spoiler', () => {
       'aria-pressed',
       'true',
     )
-    expect(button.parentElement).not.toHaveClass('tw:backdrop-blur-2xl')
+    expect(button.parentElement).toHaveAttribute('data-revealed')
 
     await act(async () => {
       button.click()
