@@ -8,11 +8,13 @@ import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { useHeaderStatus, useSetAlwaysShownHeader } from './useHeaderStatus'
 
-vi.mock('motion/react', () => ({ useScroll: vi.fn() }))
+vi.mock('motion/react', async importOriginal => ({
+  ...(await importOriginal<typeof import('motion/react')>()),
+  useScroll: vi.fn<typeof useScroll>(),
+}))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
 vi.mock('@/components/organisms/MobileMenu', () => ({ useIsMobileMenuOpened: () => false }))
-vi.mock('@/hooks/useScrollPosition', () => ({ useScrollPosition: () => ({ y: 600 }) }))
-vi.mock('@/hooks/useWindowSize', () => ({ useWindowSize: () => ({ width: 1200 }) }))
+vi.mock('@/hooks/useWindowScroll', () => ({ useScrollY: () => 600, useWindowWidth: () => 1200 }))
 
 function createWrapper() {
   const store = createStore()
@@ -78,6 +80,35 @@ describe('Motion scroll-driven header visibility', () => {
     expect(result.current.status.visible).toBe(true)
     act(() => result.current.forceVisible(false))
     expect(result.current.status.visible).toBe(false)
+    scrollY.destroy()
+  })
+
+  it('keeps a single scroll subscription however often it re-renders', () => {
+    const scrollY = motionValue(0)
+    vi.mocked(useScroll).mockReturnValue({
+      scrollX: motionValue(0),
+      scrollY,
+      scrollXProgress: motionValue(0),
+      scrollYProgress: motionValue(0),
+    })
+    let active = 0
+    const on = scrollY.on.bind(scrollY)
+    vi.spyOn(scrollY, 'on').mockImplementation((event, callback) => {
+      const stop = on(event, callback)
+      if (event !== 'change') return stop
+      active++
+      return () => {
+        active--
+        stop()
+      }
+    })
+    const { rerender, unmount } = renderHook(useHeaderStatus, { wrapper: createWrapper() })
+    for (let i = 0; i < 5; i++) rerender()
+    act(() => scrollY.set(10))
+    expect(active).toBe(1)
+
+    unmount()
+    expect(active).toBe(0)
     scrollY.destroy()
   })
 })

@@ -3,11 +3,10 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { atom, useAtomValue, useSetAtom } from 'jotai'
-import { useScroll } from 'motion/react'
+import { useMotionValueEvent, useScroll } from 'motion/react'
 
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
-import { useScrollPosition } from '@/hooks/useScrollPosition'
-import { useWindowSize } from '@/hooks/useWindowSize'
+import { useScrollY, useWindowWidth } from '@/hooks/useWindowScroll'
 import {
   useUserSettingAlwaysVisibleHeader,
   useUserSettingStickyHeader,
@@ -26,7 +25,8 @@ function useHeaderVisibleStatus(): boolean {
   const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
-  scrollY.on('change', (y: number) => {
+  // 描画のたびに登録すると購読が溜まっていくので、解除まで面倒を見てくれるフックで購読する
+  useMotionValueEvent(scrollY, 'change', y => {
     const v = scrollY.getVelocity()
     const shouldShowHeader = v < -1000 || y < 500
     const shouldHideHeader = !shouldShowHeader && v > 1000
@@ -60,8 +60,8 @@ interface HeaderStatus {
 }
 
 export function useHeaderStatus(): HeaderStatus {
-  const { y: scrollY } = useScrollPosition()
-  const { width: innerWidth } = useWindowSize()
+  const scrollY = useScrollY()
+  const innerWidth = useWindowWidth()
   const isTopPage = usePathname() === '/'
 
   const visible = useHeaderVisibleStatus()
