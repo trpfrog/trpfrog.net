@@ -6,7 +6,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint-fix": "vp lint --fix --type-aware --type-check && vp fmt",
-    "install-skills": "npx skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
+    "install-skills": "vp exec skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "typegen": "turbo typegen",

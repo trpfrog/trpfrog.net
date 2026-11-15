@@ -35,6 +35,11 @@
       "skillPath": "plugins/frontend-mobile-development/skills/tailwind-design-system/SKILL.md",
       "computedHash": "c807f0c9619e8c389879f55846c2e395956f1073ab6d01a93fbb30b340015ab1"
     },
+    "testing": {
+      "source": "./skills/testing",
+      "sourceType": "local",
+      "computedHash": "9bae1843dee942c9bc89647ed0c8517473ba733d60fcf3e506b4ba2c415685a9"
+    },
     "turborepo": {
       "source": "vercel/turborepo",
       "sourceType": "github",
