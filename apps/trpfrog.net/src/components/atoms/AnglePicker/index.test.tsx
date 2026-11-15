@@ -100,11 +100,11 @@ describe('AnglePicker', () => {
         button: 0,
         pointerId: 1,
         isPrimary: true,
-        clientX: 50,
-        clientY: 0,
+        clientX: 100,
+        clientY: 50,
       })
     })
-    expect(onAngleChange).toHaveBeenLastCalledWith(0)
+    expect(onAngleChange).toHaveBeenLastCalledWith(90)
 
     await act(async () => {
       fireEvent.pointerMove(document, { pointerId: 1, clientX: 50, clientY: 300 })

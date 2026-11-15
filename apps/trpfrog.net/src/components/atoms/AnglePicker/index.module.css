@@ -84,17 +84,13 @@
   );
 }
 
-/* キーボード操作と読み上げ用の Slider。見た目はダイヤル自体が担う */
-.slider {
+/* キーボード操作と読み上げ用の range 入力。見た目はダイヤル自体が担う */
+.input {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-}
-
-.slider_track {
-  position: absolute;
-  inset: 0;
+  margin: 0;
   opacity: 0;
+  pointer-events: none;
 }
 
 .frame:has(:focus-visible) {
