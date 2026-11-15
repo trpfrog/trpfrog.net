@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { useMotionValueEvent, useScroll } from 'motion/react'
+import { createVelocityTracker } from '@ui-sdk/core/gesture'
 
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
 import { useWindowScroll } from '@/hooks/useWindowScroll'
@@ -20,21 +20,25 @@ const PAST_TRPFROG = 4
  * ヘッダーを表示するかどうかを返す
  */
 function useHeaderVisibleStatus(): boolean {
-  const { scrollY } = useScroll()
   const [showHeader, setShowHeader] = useState(true)
 
-  // 解除までするフックで購読する。描画のたびに .on で登録すると購読が溜まる
-  useMotionValueEvent(scrollY, 'change', y => {
-    const v = scrollY.getVelocity()
-    const shouldShowHeader = v < -1000 || y < 500
-    const shouldHideHeader = !shouldShowHeader && v > 1000
-
-    if (shouldShowHeader) {
-      setShowHeader(true)
-    } else if (shouldHideHeader) {
-      setShowHeader(false)
+  // 速く上へスクロールしたら出し、速く下へスクロールしたら隠す。速さの単位は px/ms
+  useEffect(() => {
+    const tracker = createVelocityTracker()
+    const onScroll = () => {
+      const now = performance.now()
+      const y = window.scrollY
+      tracker.add(now, y)
+      const v = tracker.velocity(now)
+      if (v < -1 || y < 500) {
+        setShowHeader(true)
+      } else if (v > 1) {
+        setShowHeader(false)
+      }
     }
-  })
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const [userSettingAlwaysVisible] = useUserSettingAlwaysVisibleHeader()
 

@@ -1,17 +1,11 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { createStore, Provider } from 'jotai'
-import { motionValue } from 'motion'
-import { useScroll } from 'motion/react'
 import { describe, expect, it, vi } from 'vite-plus/test'
 
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 
 import { Header } from './Header'
 
-vi.mock('motion/react', async importOriginal => ({
-  ...(await importOriginal<typeof import('motion/react')>()),
-  useScroll: vi.fn<typeof useScroll>(),
-}))
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
   useSearchParams: () => new URLSearchParams(),
@@ -22,12 +16,6 @@ vi.mock('@/hooks/useWindowScroll', () => ({
 }))
 
 async function renderHeader() {
-  vi.mocked(useScroll).mockReturnValue({
-    scrollX: motionValue(0),
-    scrollY: motionValue(0),
-    scrollXProgress: motionValue(0),
-    scrollYProgress: motionValue(0),
-  })
   const view = render(
     <Provider store={createStore()}>
       <Header />
