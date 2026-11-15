@@ -16,7 +16,7 @@ const styles = tv({
       'tw:data-open:opacity-70',
     ],
     content: [
-      'tw:flex tw:flex-col tw:gap-3 tw:p-4',
+      'tw:flex tw:max-h-(--available-height) tw:flex-col tw:p-4',
       'tw:bg-window-color tw:rounded-lg',
       'tw:sp:w-(--available-width)',
       'tw:transition-[opacity,translate] tw:duration-300',
@@ -25,6 +25,9 @@ const styles = tv({
       'tw:motion-reduce:translate-y-0!',
       'tw:print:hidden',
     ],
+    // 画面の低いスマホ (横向きなど) でも最後まで届くよう、収まらない分は中でスクロールさせる。
+    // 矢印が切れないよう、スクロールは内側の要素に持たせる
+    body: 'tw:flex tw:min-h-0 tw:flex-col tw:gap-3 tw:overflow-y-auto tw:overscroll-contain',
     arrow: 'tw:-top-2 tw:size-4 tw:rotate-45 tw:bg-window-color tw:sp:hidden',
     links: 'tw:grid tw:grid-cols-2 tw:gap-x-2 tw:gap-y-2.5',
   },
@@ -45,16 +48,18 @@ export function MobileMenu() {
       >
         <PopoverArrow className={styles.arrow()} />
         <PopoverTitle className="tw:sr-only">メニュー</PopoverTitle>
-        <nav className={styles.links()}>
-          {NAVIGATION_LINKS.map(({ link, name }) => (
-            <RichButton href={link} key={link} onClick={() => setOpened(false)}>
-              {name}
-            </RichButton>
-          ))}
-        </nav>
-        <Details summary="高度な設定">
-          <Settings />
-        </Details>
+        <div className={styles.body()}>
+          <nav className={styles.links()}>
+            {NAVIGATION_LINKS.map(({ link, name }) => (
+              <RichButton href={link} key={link} onClick={() => setOpened(false)}>
+                {name}
+              </RichButton>
+            ))}
+          </nav>
+          <Details summary="高度な設定">
+            <Settings />
+          </Details>
+        </div>
       </PopoverContent>
     </>
   )
