@@ -1,11 +1,10 @@
 'use client'
 import * as React from 'react'
-import { useImperativeHandle } from 'react'
 
 import { usePart, usePrimitive } from '@ui-sdk/react/primitive'
 import type { Except } from 'type-fest'
 
-import { anglePicker } from './angle-picker'
+import { anglePicker, type AnglePickerController } from './angle-picker'
 
 import styles from './index.module.css'
 
@@ -14,16 +13,13 @@ interface Props extends Except<React.ComponentPropsWithoutRef<'div'>, 'children'
   size: string | number
   faceClassName?: string
   initialDegree?: number
-  ref?: React.RefObject<AnglePickerHandle | null>
-}
-
-export interface AnglePickerHandle {
-  setDegree: (degree: number | ((prev: number) => number)) => void
+  /** 外から角度を動かすときに渡す。`createAnglePickerController()` で作る */
+  controller?: AnglePickerController
 }
 
 export function AnglePicker(props: Props) {
   const {
-    ref,
+    controller,
     onAngleChange,
     size,
     style = {},
@@ -35,16 +31,9 @@ export function AnglePicker(props: Props) {
 
   const picker = usePrimitive(anglePicker, {
     defaultDegree: initialDegree,
+    controller,
     onDegreeChange: degree => onAngleChange(degree),
   })
-
-  // ref.current.setDegree で手動での角度変更をできるようにする
-  useImperativeHandle(ref, () => ({
-    setDegree: next => {
-      const prev = picker.instance.get().degree
-      picker.api.setDegree(typeof next === 'function' ? next(prev) : next)
-    },
-  }))
 
   const input = usePart(
     picker,
@@ -82,3 +71,5 @@ export function AnglePicker(props: Props) {
     'div',
   )
 }
+
+export { createAnglePickerController, type AnglePickerController } from './angle-picker'

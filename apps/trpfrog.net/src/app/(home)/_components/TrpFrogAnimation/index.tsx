@@ -46,7 +46,7 @@ export function TrpFrogAnimation({ children, id }: Props) {
         <div>
           <div className={styles.angle_picker_wrapper}>
             <AnglePicker
-              ref={rotateAnimation.anglePickerRef}
+              controller={rotateAnimation.anglePicker}
               size={70}
               className={styles.angle_picker}
               onMouseDown={rotateAnimation.stopAnimation}

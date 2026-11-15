@@ -1,4 +1,10 @@
-import { bindDrag, createChange, definePrimitive, type ChangeDetails } from '@ui-sdk/core'
+import {
+  bindDrag,
+  createChange,
+  createController,
+  definePrimitive,
+  type ChangeDetails,
+} from '@ui-sdk/core'
 import { stepBy, stepFromKey, wrap } from '@ui-sdk/core/number'
 
 export type AnglePickerChangeReason =
@@ -8,8 +14,19 @@ export type AnglePickerChangeReason =
   | 'accessibility-adjust'
   | 'imperative'
 
+/** 外から角度を動かす取っ手。`createAnglePickerController()` で作り、`controller` に渡す */
+export interface AnglePickerController {
+  setDegree: (degree: number) => void
+  turnBy: (delta: number) => void
+}
+
+export function createAnglePickerController() {
+  return createController<AnglePickerController>()
+}
+
 export interface AnglePickerOptions {
   defaultDegree?: number
+  controller?: AnglePickerController
   onDegreeChange?: (degree: number, details: ChangeDetails<AnglePickerChangeReason>) => void
 }
 
@@ -27,15 +44,17 @@ function degreeAt(el: HTMLElement, x: number, y: number) {
 
 export const anglePicker = definePrimitive({
   name: 'angle-picker',
-  options: { defaultDegree: 'number', onDegreeChange: 'callback' },
+  options: { defaultDegree: 'number', controller: 'value', onDegreeChange: 'callback' },
   state: (options: AnglePickerOptions) => ({ degree: options.defaultDegree ?? 0 }),
   api: context => {
     const change = createChange(context)
+    const setDegree = (
+      degree: number,
+      details: { reason: AnglePickerChangeReason; event?: Event } = { reason: 'imperative' },
+    ) => change('degree', degree, details)
     return {
-      setDegree: (
-        degree: number,
-        details: { reason: AnglePickerChangeReason; event?: Event } = { reason: 'imperative' },
-      ) => change('degree', degree, details),
+      setDegree,
+      turnBy: (delta: number) => setDegree(context.store.get().degree + delta),
     }
   },
   slots: slot => ({
@@ -104,5 +123,5 @@ export const anglePicker = definePrimitive({
       },
     }),
   }),
-  agent: { actions: ['setDegree'] },
+  agent: { actions: ['setDegree', 'turnBy'] },
 })
