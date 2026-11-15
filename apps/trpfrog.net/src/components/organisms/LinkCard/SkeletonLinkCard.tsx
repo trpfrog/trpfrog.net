@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import Skeleton from 'react-loading-skeleton'
 import type { Except } from 'type-fest'
 
+import { Skeleton } from '@/components/atoms/Skeleton'
 import { createHostnameStyles } from '@/components/organisms/LinkCard/Hostname'
 import { createLinkCardStyles } from '@/components/organisms/LinkCard/LinkCard'
 import { A } from '@/components/wrappers'

@@ -1,5 +1,4 @@
-import Skeleton from 'react-loading-skeleton'
-
+import { Skeleton } from '@/components/atoms/Skeleton'
 import { Block } from '@/components/molecules/Block'
 
 export function ArticleSkeleton() {
