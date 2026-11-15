@@ -1,10 +1,11 @@
-import { PopoverArrow, PopoverContent, PopoverTitle } from '@ui-sdk/react/popover'
+import { Popover, PopoverArrow, PopoverContent, PopoverTitle } from '@ui-sdk/react/popover'
 
 import { Details } from '@/components/atoms/Details'
 import { RichButton } from '@/components/atoms/RichButton'
 import { NAVIGATION_LINKS } from '@/components/organisms/Navigation'
 import { tv } from '@/lib/tailwind'
 
+import { mobileMenuController } from './controller'
 import { useIsMobileMenuOpened, useSetMobileMenuOpened } from './hooks'
 import { Settings } from './Settings'
 
@@ -42,7 +43,7 @@ export function MobileMenu() {
   const isOpened = useIsMobileMenuOpened()
   const setOpened = useSetMobileMenuOpened()
   return (
-    <>
+    <Popover controller={mobileMenuController} open={isOpened} onOpenChange={setOpened} modal>
       <div aria-hidden className={styles.overlay()} data-open={isOpened || undefined} />
       <PopoverContent
         // 位置はヘッダーに置いた目印で決める
@@ -68,6 +69,6 @@ export function MobileMenu() {
           </Details>
         </div>
       </PopoverContent>
-    </>
+    </Popover>
   )
 }

@@ -2,18 +2,11 @@ import { Suspense } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { Popover } from '@ui-sdk/react/popover'
-
 import { MainWrapper } from '@/components/atoms/MainWrapper'
-import { Hamburger } from '@/components/molecules/Hamburger'
 import { KawaiiLogo } from '@/components/organisms/Header/KawaiiLogo'
 import { SiteNameWithIcon } from '@/components/organisms/Header/SiteNameWithIcon'
 import { useHeaderStatus } from '@/components/organisms/Header/useHeaderStatus'
-import {
-  MobileMenu,
-  useIsMobileMenuOpened,
-  useSetMobileMenuOpened,
-} from '@/components/organisms/MobileMenu'
+import { MobileMenu, MobileMenuTrigger } from '@/components/organisms/MobileMenu'
 import { tv } from '@/lib/tailwind'
 import { useIsKawaiiLogo } from '@/states/userSettings'
 
@@ -62,11 +55,8 @@ function InternalHeader(props: {
     visibleSubtitle = false,
     pathname = '/',
   } = props
-  const isMenuOpened = useIsMobileMenuOpened()
-  const setMenuOpened = useSetMobileMenuOpened()
-
   return (
-    <Popover open={isMenuOpened} onOpenChange={setMenuOpened} modal>
+    <>
       <div
         className={styles.wrapper()}
         data-sticky={sticky || undefined}
@@ -87,14 +77,14 @@ function InternalHeader(props: {
             </div>
             <div className={styles.nav_wrapper()}>
               <HeaderNav />
-              <Hamburger />
+              <MobileMenuTrigger />
             </div>
             <div aria-hidden data-mobile-menu-anchor className={styles.menuAnchor()} />
           </MainWrapper>
         </header>
       </div>
       <MobileMenu />
-    </Popover>
+    </>
   )
 }
 
