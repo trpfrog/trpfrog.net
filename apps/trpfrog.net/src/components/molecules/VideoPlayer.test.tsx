@@ -1,7 +1,18 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it, onTestFinished, vi } from 'vite-plus/test'
 
 import { VideoPlayer } from './VideoPlayer'
+
+// happy-dom に無い document の全画面 API を、そのテストの間だけ置く
+function defineOnDocument(
+  key: 'fullscreenElement' | 'exitFullscreen',
+  descriptor: PropertyDescriptor,
+) {
+  Object.defineProperty(document, key, { ...descriptor, configurable: true })
+  onTestFinished(() => {
+    Reflect.deleteProperty(document, key)
+  })
+}
 
 describe('VideoPlayer', () => {
   // happy-dom は再生しないので、play と pause はイベントを出すだけにする
@@ -78,6 +89,28 @@ describe('VideoPlayer', () => {
     Object.assign(video.parentElement ?? {}, { requestFullscreen })
     await act(async () => screen.getByRole('button', { name: '全画面' }).click())
     expect(requestFullscreen).toHaveBeenCalledOnce()
+  })
+
+  it('leaves fullscreen with the same button', async () => {
+    const video = renderPlayer()
+    const player = video.parentElement
+    if (!player) throw new Error('player not found')
+    Object.assign(player, {
+      requestFullscreen: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    })
+    let fullscreenElement: Element | null = null
+    const exitFullscreen = vi.fn<() => Promise<void>>(() => Promise.resolve())
+    defineOnDocument('fullscreenElement', { get: () => fullscreenElement })
+    defineOnDocument('exitFullscreen', { value: exitFullscreen })
+
+    fullscreenElement = player
+    await act(async () => fireEvent(document, new Event('fullscreenchange')))
+    await act(async () => screen.getByRole('button', { name: '全画面を解除' }).click())
+    expect(exitFullscreen).toHaveBeenCalledOnce()
+
+    fullscreenElement = null
+    await act(async () => fireEvent(document, new Event('fullscreenchange')))
+    expect(screen.getByRole('button', { name: '全画面' })).toBeInTheDocument()
   })
 
   it('falls back to the video fullscreen player where elements cannot go fullscreen', async () => {

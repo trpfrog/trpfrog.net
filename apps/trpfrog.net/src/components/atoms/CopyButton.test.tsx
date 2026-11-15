@@ -104,6 +104,30 @@ describe('CopyButton', () => {
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 
+  it('goes back to Copy after a while, even while hovered', async () => {
+    mockWriteText()
+    useFakeTimers()
+    render(<CopyButton copyContent="hello" />)
+    const button = screen.getByRole('button', { name: 'Copy' })
+    await act(async () => {
+      fireEvent.pointerEnter(button, { pointerType: 'mouse' })
+      fireEvent.pointerMove(button, { pointerType: 'mouse' })
+    })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1000)
+    })
+    await act(async () => {
+      fireEvent.click(button)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(3000)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
+    expect(screen.getByRole('tooltip')).not.toHaveTextContent('Copied!')
+  })
+
   it('reports a failed copy through onError', async () => {
     const error = new Error('denied')
     vi.spyOn(navigator.clipboard, 'writeText').mockRejectedValue(error)

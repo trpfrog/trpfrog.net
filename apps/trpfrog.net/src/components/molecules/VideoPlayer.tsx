@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 
 import {
+  faCompress,
   faExpand,
   faPause,
   faPlay,
@@ -25,11 +26,9 @@ import { tv } from '@/lib/tailwind'
 const styles = tv({
   slots: {
     root: 'tw:flex tw:flex-col tw:overflow-hidden tw:rounded-md tw:bg-black',
-    video: [
-      'tw:block tw:w-full',
-      'tw:in-[:fullscreen]:min-h-0 tw:in-[:fullscreen]:flex-1 tw:in-[:fullscreen]:object-contain',
-    ],
-    bar: 'tw:flex tw:items-center tw:gap-2 tw:px-2 tw:py-1 tw:text-white',
+    // プレイヤーに高さの上限があるときは、操作バーを残して動画の方を縮める
+    video: 'tw:block tw:min-h-0 tw:w-full tw:object-contain tw:in-[:fullscreen]:flex-1',
+    bar: 'tw:flex tw:shrink-0 tw:items-center tw:gap-2 tw:px-2 tw:py-1 tw:text-white',
     control: [
       'tw:grid tw:size-7 tw:shrink-0 tw:cursor-pointer tw:place-items-center tw:rounded',
       'tw:hover:bg-white/20 tw:focus-visible:outline-2 tw:focus-visible:outline-white',
@@ -46,6 +45,11 @@ const styles = tv({
 // iPhone の Safari は要素の全画面表示に対応せず、video 独自の全画面プレイヤーだけを持つ
 type VideoWithWebkitFullscreen = HTMLVideoElement & { webkitEnterFullscreen?: () => void }
 
+function subscribeFullscreen(onChange: () => void) {
+  document.addEventListener('fullscreenchange', onChange)
+  return () => document.removeEventListener('fullscreenchange', onChange)
+}
+
 function formatTime(seconds: number) {
   const s = Math.floor(seconds)
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
@@ -59,12 +63,19 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
 
+  const isFullscreen = useSyncExternalStore(
+    subscribeFullscreen,
+    () => rootRef.current !== null && document.fullscreenElement === rootRef.current,
+    () => false,
+  )
+
   const video = () => videoRef.current
 
   // 操作バーも出したままにするため、動画だけでなくプレイヤー全体を全画面にする
-  const enterFullscreen = () => {
+  const toggleFullscreen = () => {
     const root = rootRef.current
-    if (root?.requestFullscreen) void root.requestFullscreen()
+    if (isFullscreen) void document.exitFullscreen()
+    else if (root?.requestFullscreen) void root.requestFullscreen()
     else video()?.webkitEnterFullscreen?.()
   }
 
@@ -133,8 +144,12 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
         >
           <FontAwesomeIcon icon={muted ? faVolumeXmark : faVolumeHigh} />
         </Toggle>
-        <Button aria-label="全画面" onClick={enterFullscreen} className={styles.control()}>
-          <FontAwesomeIcon icon={faExpand} />
+        <Button
+          aria-label={isFullscreen ? '全画面を解除' : '全画面'}
+          onClick={toggleFullscreen}
+          className={styles.control()}
+        >
+          <FontAwesomeIcon icon={isFullscreen ? faCompress : faExpand} />
         </Button>
       </div>
     </div>

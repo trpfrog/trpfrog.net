@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useEffectEvent, useState } from 'react'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/Tooltip'
 
@@ -18,9 +18,16 @@ export function ButtonWithTooltip(props: ButtonWithTooltipProps) {
   const [pressedAt, setPressedAt] = useState<number | null>(null)
   const hasClickedContent = clickedTooltipContent != null
 
+  // 時間が来たら押した結果の表示をやめる。ホバーやフォーカスで開いたままなら、
+  // 閉じるのを待たずに表示を元に戻す (閉じるときは閉じ終わってから戻す)
+  const endPressed = useEffectEvent(() => {
+    setPressedAt(null)
+    if (hovered) setIsClicked(false)
+  })
+
   useEffect(() => {
     if (pressedAt === null) return
-    const timer = setTimeout(() => setPressedAt(null), 2000)
+    const timer = setTimeout(endPressed, 2000)
     return () => clearTimeout(timer)
   }, [pressedAt])
 
