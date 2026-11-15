@@ -59,7 +59,7 @@ dist/**
 # posts
 posts/_*.md
 
-# lefthook
+# old git hooks (husky)
 .husky/
 
 # skills
