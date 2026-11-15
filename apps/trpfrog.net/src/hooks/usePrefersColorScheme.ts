@@ -1,24 +1,11 @@
-import { useSyncExternalStore } from 'react'
+import { createColorScheme } from '@ui-sdk/core'
+import { usePreference } from '@ui-sdk/react/preferences'
 
-type PrefersColorScheme = 'light' | 'dark'
+// サイトにテーマの切り替えは無いので、ブラウザの設定 (prefers-color-scheme) にだけ従う
+const colorScheme = createColorScheme()
 
-const darkQuery = '(prefers-color-scheme: dark)'
-
-function subscribe(callback: () => void) {
-  window.matchMedia(darkQuery).addEventListener('change', callback)
-  return () => {
-    window.matchMedia(darkQuery).removeEventListener('change', callback)
-  }
-}
-
-function getSnapshot() {
-  return window?.matchMedia(darkQuery).matches ? 'dark' : 'light'
-}
-
-function getServerSnapshot() {
-  return 'light' as PrefersColorScheme
-}
-
-export function usePrefersColorScheme(): PrefersColorScheme {
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+export function usePrefersColorScheme(): 'light' | 'dark' {
+  const { resolved } = usePreference(colorScheme)
+  // サーバーとハイドレーション中はブラウザの設定が分からないので light として描画する
+  return resolved === 'dark' ? 'dark' : 'light'
 }
