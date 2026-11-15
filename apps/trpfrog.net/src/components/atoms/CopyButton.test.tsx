@@ -152,8 +152,9 @@ describe('CopyButton', () => {
     await act(async () => {
       fireEvent.pointerLeave(button, { pointerType: 'mouse', clientX: 500, clientY: 500 })
     })
+    // 2 秒のタイマーを待たずに閉じる
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(3000)
+      await vi.advanceTimersByTimeAsync(1000)
     })
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
