@@ -18,7 +18,7 @@ const styles = tv({
     content: [
       'tw:flex tw:max-h-(--available-height) tw:flex-col tw:p-4',
       'tw:bg-window-color tw:rounded-lg',
-      'tw:sp:w-(--available-width)',
+      'tw:sp:w-(--anchor-width)',
       'tw:transition-[opacity,translate] tw:duration-300',
       'tw:data-starting-style:-translate-y-4 tw:data-starting-style:opacity-0',
       'tw:data-ending-style:-translate-y-4 tw:data-ending-style:opacity-0',
@@ -28,7 +28,11 @@ const styles = tv({
     // 画面の低いスマホ (横向きなど) でも最後まで届くよう、収まらない分は中でスクロールさせる。
     // 矢印が切れないよう、スクロールは内側の要素に持たせる
     body: 'tw:flex tw:min-h-0 tw:flex-col tw:gap-3 tw:overflow-y-auto tw:overscroll-contain',
-    arrow: 'tw:-top-2 tw:size-4 tw:rotate-45 tw:bg-window-color tw:sp:hidden',
+    // 吹き出しのしっぽ。ハンバーガーのすぐ下まで届く縦長の三角形
+    arrow: [
+      'tw:-top-9 tw:size-0 tw:border-[0.9rem] tw:border-b-[2rem]',
+      'tw:border-transparent tw:border-b-window-color tw:sp:hidden',
+    ],
     links: 'tw:grid tw:grid-cols-2 tw:gap-x-2 tw:gap-y-2.5',
   },
 })()
@@ -40,9 +44,11 @@ export function MobileMenu() {
     <>
       <div aria-hidden className={styles.overlay()} data-open={isOpened || undefined} />
       <PopoverContent
+        // 位置はヘッダーに置いた目印で決める
+        anchor="[data-mobile-menu-anchor]"
         side="bottom"
         align="end"
-        sideOffset={14}
+        sideOffset={0}
         collisionPadding={8}
         className={styles.content()}
       >

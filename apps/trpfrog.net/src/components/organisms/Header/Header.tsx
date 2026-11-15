@@ -23,7 +23,14 @@ const createStyles = tv({
   slots: {
     wrapper: 'tw:z-999 tw:h-(--header-height) tw:w-full tw:ease-out',
     header: 'tw:h-full tw:overflow-clip tw:bg-header-color',
-    inside: 'tw:flex tw:h-full tw:items-center tw:justify-between',
+    inside: 'tw:relative tw:flex tw:h-full tw:items-center tw:justify-between',
+    // メニューを元の位置に出すための目印。スマホではヘッダーの幅いっぱいに 8px 下、
+    // PC では 32px 下で右に 17.5px はみ出す。PC の幅は吹き出しの矢印が右端から
+    // 34px (ハンバーガーの真下) に来るように決めている
+    menuAnchor: [
+      'tw:pointer-events-none tw:absolute tw:top-full tw:right-0 tw:h-0 tw:w-full tw:mt-2',
+      'tw:pc:-right-[17.5px] tw:pc:mt-8 tw:pc:w-[68px]',
+    ],
     nav_wrapper: 'tw:flex',
   },
   variants: {
@@ -115,6 +122,7 @@ function InternalHeader(props: {
               <HeaderNav />
               <Hamburger />
             </div>
+            <div aria-hidden data-mobile-menu-anchor className={styles.menuAnchor()} />
           </MainWrapper>
         </header>
       </div>
