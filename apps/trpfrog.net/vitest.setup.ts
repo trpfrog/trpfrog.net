@@ -18,22 +18,14 @@ declare global {
 // Fail tests on ui-sdk development warnings, such as a control without a name
 globalThis.__UI_SDK_STRICT__ = true
 
-// happy-dom lacks a few APIs that ui-sdk popups call. With these stubs, top-layer
-// placement and exit animations are not exercised; check those in a browser.
+// happy-dom has no Popover API, so ui-sdk would fall back to the path for older
+// browsers and leave closed popups out of the DOM. The stubs keep tests on the
+// path real browsers take. Top-layer placement still needs a browser check.
 if (typeof HTMLElement !== 'undefined') {
-  const noop = () => {}
-  for (const [target, key] of [
-    [HTMLElement.prototype, 'showPopover'],
-    [HTMLElement.prototype, 'hidePopover'],
-    [Element.prototype, 'scrollIntoView'],
-  ] as const) {
-    if (!(key in target)) Object.defineProperty(target, key, { value: noop, configurable: true })
-  }
-  Element.prototype.getAnimations = () => []
-  globalThis.ResizeObserver ??= class {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
+  for (const key of ['showPopover', 'hidePopover'] as const) {
+    if (!(key in HTMLElement.prototype)) {
+      Object.defineProperty(HTMLElement.prototype, key, { value: () => {}, configurable: true })
+    }
   }
 }
 
