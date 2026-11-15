@@ -1,6 +1,5 @@
-import Skeleton from 'react-loading-skeleton'
-
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { Skeleton } from '@/components/atoms/Skeleton'
 import { Block } from '@/components/molecules/Block'
 import { H2 } from '@/components/wrappers'
 
