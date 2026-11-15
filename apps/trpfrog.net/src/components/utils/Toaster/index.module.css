@@ -44,18 +44,6 @@
   scale: 1;
 }
 
-.toast[data-type='success'] .title::before {
-  content: '✅ ';
-}
-
-.toast[data-type='error'] .title::before {
-  content: '⚠️ ';
-}
-
-.toast[data-type='loading'] .title::before {
-  content: '⏳ ';
-}
-
 .toast[data-starting-style] {
   transition: none;
 }

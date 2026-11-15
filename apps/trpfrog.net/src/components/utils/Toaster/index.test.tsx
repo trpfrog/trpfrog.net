@@ -18,6 +18,26 @@ describe('Toaster', () => {
     expect(region).toHaveTextContent('Mermaid のレンダリングに失敗しました')
   })
 
+  it.each([
+    { type: 'success', icon: '✅' },
+    { type: 'error', icon: '⚠️' },
+    { type: 'loading', icon: '⏳' },
+  ] as const)('marks $type toasts with $icon', async ({ type, icon }) => {
+    render(<Toaster />)
+    await act(async () => {
+      toast[type]('保存しました')
+    })
+    expect(screen.getByText(icon, { exact: false })).toHaveAttribute('aria-hidden')
+  })
+
+  it('shows plain toasts without an icon', async () => {
+    render(<Toaster />)
+    await act(async () => {
+      toast('保存しました')
+    })
+    expect(screen.getByRole('region', { name: '通知' })).toHaveTextContent(/^保存しました$/)
+  })
+
   it('turns a promise toast into its success message', async () => {
     render(<Toaster />)
     const { promise, resolve } = Promise.withResolvers<void>()
