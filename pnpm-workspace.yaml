@@ -87,7 +87,6 @@ catalog:
   next: ^16.4.3
   next-mdx-remote: ^6.0.0
   node-html-parser: ^9.0.5
-  nookies: ^2.5.2
   p-retry: ^8.0.1
   postcss: ^8.5.31
   postcss-preset-mantine: ^1.18.0
@@ -99,13 +98,11 @@ catalog:
   prisma: ^7.10.1
   react: ^19.3.1
   react-dom: ^19.3.1
-  react-hook-form: ^7.91.0
   react-loading-skeleton: ^3.5.0
   react-player: ^3.4.0
   react-rewards: ^3.0.0
   react-string-replace: ^2.0.1
   react-tweet: ^3.3.1
-  react-twitter-widgets: ^1.11.0
   recharts: ^3.10.1
   rehype-katex: ^7.0.1
   rehype-raw: ^7.0.0
@@ -152,5 +149,3 @@ peerDependencyRules:
     # Vite Plus's wrapper and Vitest's optional peers resolve these versions.
     vitest: '5.0.5'
     '@vitest/ui': '5.0.5'
-    # react-twitter-widgets@1.11.0 has no React 19-compatible peer range.
-    react: '19'
