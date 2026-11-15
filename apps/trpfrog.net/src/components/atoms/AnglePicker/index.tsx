@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { useEffect, useEffectEvent, useImperativeHandle, useRef, useState } from 'react'
+import { useImperativeHandle, useRef, useState } from 'react'
 
 import { bindDrag } from '@ui-sdk/core'
 import { Slider, SliderThumb, SliderTrack } from '@ui-sdk/react/slider'
@@ -66,33 +66,23 @@ export function AnglePicker(props: Props) {
   }))
 
   // ダイヤルの中心から見たポインタの向きに針を向ける。12 時が 0°
-  const pointTo = useEffectEvent((clientX: number, clientY: number) => {
+  const pointTo = (clientX: number, clientY: number) => {
     const rect = innerRef.current?.getBoundingClientRect()
     if (!rect) return
     const x = clientX - (rect.left + rect.width / 2)
     const y = clientY - (rect.top + rect.height / 2)
     changeDegree((Math.atan2(y, x) + Math.PI / 2) * (180 / Math.PI))
-  })
+  }
 
-  useEffect(() => {
-    const el = innerRef.current
-    if (!el) return
-    let stopDrag: (() => void) | undefined
-    const onPointerDown = (down: PointerEvent) => {
-      if (down.button !== 0) return
-      pointTo(down.clientX, down.clientY)
-      stopDrag?.()
-      stopDrag = bindDrag(el, down, {
-        onMove: ({ x, y }) => pointTo(x, y),
-        onEnd: () => (stopDrag = undefined),
-      })
-    }
-    el.addEventListener('pointerdown', onPointerDown)
-    return () => {
-      el.removeEventListener('pointerdown', onPointerDown)
-      stopDrag?.()
-    }
-  }, [])
+  // 追跡は指やボタンを離すと終わる。2 本目の指は無視して、針を取り合わないようにする
+  const startDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0 || !e.isPrimary) return
+    pointTo(e.clientX, e.clientY)
+    bindDrag(e.currentTarget, e.nativeEvent, {
+      onMove: ({ x, y }) => pointTo(x, y),
+      onEnd: () => {},
+    })
+  }
 
   // 円形のドラッグはこのコンポーネントで扱い、キーボードと読み上げは ui-sdk の Slider に任せる
   return (
@@ -101,6 +91,7 @@ export function AnglePicker(props: Props) {
       className={`${styles.frame} ${className}`}
       style={{ width: size, height: size, ...style }}
       {...rest}
+      onPointerDown={startDrag}
     >
       <Slider
         value={toSliderValue(degree)}

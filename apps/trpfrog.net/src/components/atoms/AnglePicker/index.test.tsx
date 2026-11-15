@@ -80,7 +80,13 @@ describe('AnglePicker', () => {
   it('points the hand where the dial is pressed', async () => {
     const { dial, onAngleChange } = renderPicker(0)
     await act(async () => {
-      fireEvent.pointerDown(dial, { button: 0, pointerId: 1, clientX: 100, clientY: 50 })
+      fireEvent.pointerDown(dial, {
+        button: 0,
+        pointerId: 1,
+        isPrimary: true,
+        clientX: 100,
+        clientY: 50,
+      })
     })
     expect(onAngleChange).toHaveBeenLastCalledWith(90)
   })
@@ -90,7 +96,13 @@ describe('AnglePicker', () => {
     vi.useFakeTimers({ toFake: ['requestAnimationFrame', 'cancelAnimationFrame'] })
     const { dial, onAngleChange } = renderPicker(0)
     await act(async () => {
-      fireEvent.pointerDown(dial, { button: 0, pointerId: 1, clientX: 50, clientY: 0 })
+      fireEvent.pointerDown(dial, {
+        button: 0,
+        pointerId: 1,
+        isPrimary: true,
+        clientX: 50,
+        clientY: 0,
+      })
     })
     expect(onAngleChange).toHaveBeenLastCalledWith(0)
 
@@ -108,10 +120,30 @@ describe('AnglePicker', () => {
     expect(onAngleChange).toHaveBeenLastCalledWith(180)
   })
 
+  it('ignores a second finger while the first one turns the hand', async () => {
+    const { dial, onAngleChange } = renderPicker(0)
+    await act(async () => {
+      fireEvent.pointerDown(dial, {
+        button: 0,
+        pointerId: 2,
+        isPrimary: false,
+        clientX: 100,
+        clientY: 50,
+      })
+    })
+    expect(onAngleChange).not.toHaveBeenCalled()
+  })
+
   it('ignores presses with other mouse buttons', async () => {
     const { dial, onAngleChange } = renderPicker(0)
     await act(async () => {
-      fireEvent.pointerDown(dial, { button: 2, pointerId: 1, clientX: 100, clientY: 50 })
+      fireEvent.pointerDown(dial, {
+        button: 2,
+        pointerId: 1,
+        isPrimary: true,
+        clientX: 100,
+        clientY: 50,
+      })
     })
     expect(onAngleChange).not.toHaveBeenCalled()
   })
