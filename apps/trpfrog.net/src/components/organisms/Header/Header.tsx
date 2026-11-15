@@ -15,7 +15,7 @@ import {
   useSetMobileMenuOpened,
 } from '@/components/organisms/MobileMenu'
 import { tv } from '@/lib/tailwind'
-import { useIsKawaiiLogo } from '@/states/kawaiiLogoAtom'
+import { useIsKawaiiLogo } from '@/states/userSettings'
 
 import { HeaderNav } from './HeaderNav'
 

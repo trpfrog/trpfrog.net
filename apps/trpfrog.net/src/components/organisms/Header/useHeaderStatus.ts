@@ -8,8 +8,10 @@ import { useScroll } from 'motion/react'
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
 import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { useWindowSize } from '@/hooks/useWindowSize'
-import { useUserSettingStickyHeader } from '@/states/shouldFollowHeaderAtom'
-import { useUserSettingAlwaysVisibleHeader } from '@/states/shouldHideHeaderAtom'
+import {
+  useUserSettingAlwaysVisibleHeader,
+  useUserSettingStickyHeader,
+} from '@/states/userSettings'
 
 const alwaysShowHeaderAtom = atom(false)
 
