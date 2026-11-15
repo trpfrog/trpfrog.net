@@ -11,10 +11,12 @@ import { Settings } from './Settings'
 
 const styles = tv({
   slots: {
+    // iOS 26 の Safari は画面の下端に接する fixed 要素があると、ツールバーの下にページを描かず
+    // 背景色で塗ってしまう。閉じているときは visibility で描画から外す
     overlay: [
       'tw:pointer-events-none tw:fixed tw:inset-0 tw:z-150 tw:bg-black',
-      'tw:opacity-0 tw:transition-opacity tw:duration-300',
-      'tw:data-open:opacity-70',
+      'tw:invisible tw:opacity-0 tw:transition-[opacity,visibility] tw:duration-300',
+      'tw:data-open:visible tw:data-open:opacity-70',
     ],
     content: [
       'tw:flex tw:max-h-(--available-height) tw:flex-col',
