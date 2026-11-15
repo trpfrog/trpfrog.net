@@ -13,3 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 This project uses React and ui-sdk. Read `node_modules/@ui-sdk/react/docs/llms.txt` to see what's available.
 
 For a custom component, read the relevant sections of `docs/core.md` and `docs/rendering.md` in the same package.
+
+## WebMCP
+
+`src/components/utils/AgentBridge.tsx` exposes every ui-sdk component to browser agents through WebMCP, and lets them run any action without asking, because nothing on the site has serious side effects. If you add an action that does (posting, deleting, payments, etc.), mark it with `data-agent-confirm` and make the `allow` in `AgentBridge` ask the person first. See "Permissions" in `node_modules/@ui-sdk/react/docs/agents.md`.
