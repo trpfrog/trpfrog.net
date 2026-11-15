@@ -11,6 +11,11 @@ import {
   useUserSettingStickyHeader,
 } from '@/states/userSettings'
 
+// useWindowScroll で購読する、スクロール量がしきい値を超えたかどうかのビット
+const SCROLLED = 1
+const PAST_TITLE = 2
+const PAST_TRPFROG = 4
+
 /**
  * ヘッダーを表示するかどうかを返す
  */
@@ -59,12 +64,16 @@ export function useHeaderStatus(): HeaderStatus {
   const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  // スクロールのたびに再描画しないよう、しきい値を超えたかどうかだけを購読する
-  const visibleSubtitle = useWindowScroll(
-    ({ scrollY, innerWidth }) => !isTopPage && scrollY > (innerWidth <= 800 ? 120 : 250),
+  // スクロールのたびに再描画しないよう、しきい値を超えたかどうかだけを 1 つの数にまとめて購読する
+  const passed = useWindowScroll(
+    ({ scrollY, innerWidth }) =>
+      (scrollY > 0 ? SCROLLED : 0) |
+      (scrollY > (innerWidth <= 800 ? 120 : 250) ? PAST_TITLE : 0) |
+      (scrollY >= 250 ? PAST_TRPFROG : 0),
   )
-  const visibleTrpFrog = useWindowScroll(({ scrollY }) => !isTopPage || scrollY >= 250)
-  const visibleShadow = useWindowScroll(({ scrollY }) => scrollY > 0)
+  const visibleSubtitle = !isTopPage && (passed & PAST_TITLE) !== 0
+  const visibleTrpFrog = !isTopPage || (passed & PAST_TRPFROG) !== 0
+  const visibleShadow = (passed & SCROLLED) !== 0
 
   return {
     // ヘッダーを表示するかどうか

@@ -56,12 +56,53 @@ function formatTime(seconds: number) {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
+// 再生中は timeupdate が毎秒数回届くので、再生位置を持つ部分だけを描き直す
+function SeekBar(props: { videoRef: React.RefObject<HTMLVideoElement | null>; duration: number }) {
+  const { videoRef, duration } = props
+  const [currentTime, setCurrentTime] = useState(0)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const update = () => setCurrentTime(video.currentTime)
+    video.addEventListener('timeupdate', update)
+    return () => video.removeEventListener('timeupdate', update)
+  }, [videoRef])
+
+  return (
+    <>
+      <Slider
+        value={currentTime}
+        min={0}
+        max={duration || 0.1}
+        step={0.1}
+        format={{ style: 'unit', unit: 'second', maximumFractionDigits: 0 }}
+        onValueChange={value => {
+          const video = videoRef.current
+          if (video) video.currentTime = value
+          setCurrentTime(value)
+        }}
+        className={styles.seek()}
+      >
+        <SliderControl className={styles.seekControl()}>
+          <SliderTrack className={styles.track()}>
+            <SliderIndicator className={styles.indicator()} />
+            <SliderThumb aria-label="再生位置" className={styles.thumb()} />
+          </SliderTrack>
+        </SliderControl>
+      </Slider>
+      <span className={styles.time()}>
+        {formatTime(currentTime)} / {formatTime(duration)}
+      </span>
+    </>
+  )
+}
+
 export function VideoPlayer(props: { src: string; label: string; className?: string }) {
   const rootRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<VideoWithWebkitFullscreen>(null)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
 
   const isFullscreen = useSyncExternalStore(
@@ -96,7 +137,6 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
         preload="metadata"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        onTimeUpdate={e => setCurrentTime(e.currentTarget.currentTime)}
         onLoadedMetadata={e => setDuration(e.currentTarget.duration)}
         onVolumeChange={e => setMuted(e.currentTarget.muted)}
       />
@@ -111,29 +151,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
         >
           <FontAwesomeIcon icon={playing ? faPause : faPlay} />
         </Toggle>
-        <Slider
-          value={currentTime}
-          min={0}
-          max={duration || 0.1}
-          step={0.1}
-          format={{ style: 'unit', unit: 'second', maximumFractionDigits: 0 }}
-          onValueChange={value => {
-            const v = videoRef.current
-            if (v) v.currentTime = value
-            setCurrentTime(value)
-          }}
-          className={styles.seek()}
-        >
-          <SliderControl className={styles.seekControl()}>
-            <SliderTrack className={styles.track()}>
-              <SliderIndicator className={styles.indicator()} />
-              <SliderThumb aria-label="再生位置" className={styles.thumb()} />
-            </SliderTrack>
-          </SliderControl>
-        </Slider>
-        <span className={styles.time()}>
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </span>
+        <SeekBar videoRef={videoRef} duration={duration} />
         <Toggle
           aria-label="ミュート"
           pressed={muted}

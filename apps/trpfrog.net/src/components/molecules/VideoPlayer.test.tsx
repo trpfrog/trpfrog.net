@@ -75,6 +75,16 @@ describe('VideoPlayer', () => {
     expect(video.currentTime).toBe(0)
   })
 
+  it('follows the playback position', async () => {
+    const video = renderPlayer()
+    vi.spyOn(video, 'duration', 'get').mockReturnValue(120)
+    await act(async () => fireEvent(video, new Event('loadedmetadata')))
+    vi.spyOn(video, 'currentTime', 'get').mockReturnValue(65)
+    await act(async () => fireEvent(video, new Event('timeupdate')))
+    expect(screen.getByRole('slider', { name: '再生位置' })).toHaveValue('65')
+    expect(screen.getByText('1:05 / 2:00')).toBeInTheDocument()
+  })
+
   it('reads the duration of a video that loaded before hydration', () => {
     // HAVE_ENOUGH_DATA。happy-dom には定数がない
     vi.spyOn(HTMLMediaElement.prototype, 'readyState', 'get').mockReturnValue(4)
