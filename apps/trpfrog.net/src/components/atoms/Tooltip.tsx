@@ -1,5 +1,3 @@
-'use client'
-
 import * as React from 'react'
 
 import { TooltipArrow, TooltipContent as UITooltipContent } from '@ui-sdk/react/tooltip'
@@ -26,8 +24,12 @@ const styles = tv({
   },
 })()
 
-type TooltipContentProps = Except<React.ComponentProps<typeof UITooltipContent>, 'className'> & {
+type TooltipContentProps = Except<
+  React.ComponentProps<typeof UITooltipContent>,
+  'className' | 'children'
+> & {
   className?: string
+  children?: React.ReactNode
 }
 
 export function TooltipContent(props: TooltipContentProps) {
@@ -39,12 +41,8 @@ export function TooltipContent(props: TooltipContentProps) {
       className={styles.content({ className })}
       {...rest}
     >
-      {state => (
-        <>
-          {typeof children === 'function' ? children(state) : children}
-          <TooltipArrow className={styles.arrow()} />
-        </>
-      )}
+      {children}
+      <TooltipArrow className={styles.arrow()} />
     </UITooltipContent>
   )
 }
