@@ -1,11 +1,20 @@
 import * as React from 'react'
 
-import { TooltipArrow, TooltipContent as UITooltipContent } from '@ui-sdk/react/tooltip'
+import {
+  Tooltip as UITooltip,
+  TooltipArrow,
+  TooltipContent as UITooltipContent,
+} from '@ui-sdk/react/tooltip'
 import type { Except } from 'type-fest'
 
 import { tv } from '@/lib/tailwind'
 
-export { Tooltip, TooltipTrigger } from '@ui-sdk/react/tooltip'
+export { TooltipTrigger } from '@ui-sdk/react/tooltip'
+
+// ホバーしたらすぐ開く。ui-sdk の既定では 600ms 待つ
+export function Tooltip(props: React.ComponentProps<typeof UITooltip>) {
+  return <UITooltip delay={0} {...props} />
+}
 
 const styles = tv({
   slots: {

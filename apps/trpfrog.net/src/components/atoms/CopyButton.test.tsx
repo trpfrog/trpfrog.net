@@ -76,32 +76,24 @@ describe('CopyButton', () => {
     expect(screen.getByRole('tooltip')).not.toHaveTextContent('Copied!')
   })
 
-  it('shows Copied! for a while after a tap, which never hovers', async () => {
+  it('shows a check mark for a while after a tap, which never opens the tooltip', async () => {
     mockWriteText()
     useFakeTimers()
     render(<CopyButton copyContent="hello" />)
     const button = screen.getByRole('button', { name: 'Copy' })
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    const icon = () => button.querySelector('svg')?.getAttribute('data-icon')
+    expect(icon()).toBe('clone')
 
     await act(async () => {
       fireEvent.click(button)
     })
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
-
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1500)
-      fireEvent.click(button)
-      await vi.advanceTimersByTimeAsync(1500)
-    })
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
-
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(1000)
-    })
-    await act(async () => {
-      await vi.runAllTimersAsync()
-    })
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    expect(icon()).toBe('check')
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
+    expect(icon()).toBe('clone')
   })
 
   it('goes back to Copy after a while, even while hovered', async () => {
@@ -126,6 +118,37 @@ describe('CopyButton', () => {
     })
     expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
     expect(screen.getByRole('tooltip')).not.toHaveTextContent('Copied!')
+  })
+
+  it('still closes when the pointer leaves after a click on the hovered button', async () => {
+    mockWriteText()
+    useFakeTimers()
+    render(<CopyButton copyContent="hello" />)
+    const button = screen.getByRole('button', { name: 'Copy' })
+    await act(async () => {
+      fireEvent.pointerEnter(button, { pointerType: 'mouse' })
+      fireEvent.pointerMove(button, { pointerType: 'mouse' })
+    })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1000)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
+
+    await act(async () => {
+      fireEvent.click(button)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
+
+    // ボタンからもツールチップからも離れた位置へ出る。jsdom では要素の矩形が
+    // すべて (0, 0) なので、原点から離れた座標を渡す
+    await act(async () => {
+      fireEvent.pointerLeave(button, { pointerType: 'mouse', clientX: 500, clientY: 500 })
+    })
+    // 2 秒のタイマーを待たずに閉じる
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1000)
+    })
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 
   it('reports a failed copy through onError', async () => {
