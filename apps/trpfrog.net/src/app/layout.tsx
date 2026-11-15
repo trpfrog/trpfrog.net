@@ -8,6 +8,7 @@ import { BackToTop } from '@/components/organisms/BackToTop'
 import { Footer } from '@/components/organisms/Footer'
 import { Header } from '@/components/organisms/Header'
 import { Navigation } from '@/components/organisms/Navigation'
+import { AgentBridge } from '@/components/utils/AgentBridge'
 import { FixTooLargeFontAwesomeIcons } from '@/components/utils/FixTooLargeFontAwesomeIcons'
 import { JotaiProvider } from '@/components/utils/JotaiProvider'
 import { Toaster } from '@/components/utils/Toaster'
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <Footer />
           </div>
           <BackToTop />
+          <AgentBridge />
         </JotaiProvider>
       </body>
     </html>
