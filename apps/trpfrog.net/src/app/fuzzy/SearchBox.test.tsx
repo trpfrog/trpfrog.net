@@ -1,20 +1,11 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it } from 'vite-plus/test'
+import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { SearchBox } from './SearchBox'
 
 describe('SearchBox', () => {
-  const originalLocation = window.location
-
   beforeEach(() => {
-    Object.defineProperty(window, 'location', {
-      value: { href: 'http://localhost/fuzzy' },
-      configurable: true,
-    })
-  })
-
-  afterEach(() => {
-    Object.defineProperty(window, 'location', { value: originalLocation, configurable: true })
+    vi.stubGlobal('location', { href: 'http://localhost/fuzzy' })
   })
 
   it('opens the fuzzy page for the typed string', async () => {

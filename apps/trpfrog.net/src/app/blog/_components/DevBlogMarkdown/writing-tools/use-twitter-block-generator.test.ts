@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { toast } from '@ui-sdk/react/toast'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { useTwitterBlockGenerator } from './use-twitter-block-generator'
 
@@ -15,12 +15,9 @@ function titles() {
 }
 
 describe('useTwitterBlockGenerator', () => {
-  const writeText = vi.fn<(text: string) => Promise<void>>()
-
-  beforeEach(() => {
-    writeText.mockResolvedValue(undefined)
-    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
-  })
+  function mockWriteText() {
+    return vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue()
+  }
 
   afterEach(() => {
     toast.dismiss()
@@ -28,6 +25,7 @@ describe('useTwitterBlockGenerator', () => {
 
   it('outputs and copies the generated code block', async () => {
     post.mockResolvedValue(Response.json({ codeBlock: '```twitter\n1\n```' }))
+    const writeText = mockWriteText()
     const onOutput = vi.fn<(codeBlock: string) => void>()
     const { result } = renderHook(() => useTwitterBlockGenerator({ onOutput }))
 
@@ -58,7 +56,7 @@ describe('useTwitterBlockGenerator', () => {
 
   it('tells the user when copying fails', async () => {
     post.mockResolvedValue(Response.json({ codeBlock: 'block' }))
-    writeText.mockRejectedValue(new Error('denied'))
+    mockWriteText().mockRejectedValue(new Error('denied'))
     const onOutput = vi.fn<(codeBlock: string) => void>()
     const { result } = renderHook(() => useTwitterBlockGenerator({ onOutput }))
 

@@ -1,25 +1,24 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it, vi } from 'vite-plus/test'
 
 import { VideoPlayer } from './VideoPlayer'
 
 describe('VideoPlayer', () => {
-  let play: ReturnType<typeof vi.spyOn>
-  let pause: ReturnType<typeof vi.spyOn>
-
-  beforeEach(() => {
-    play = vi.spyOn(HTMLMediaElement.prototype, 'play').mockImplementation(function (
+  // happy-dom は再生しないので、play と pause はイベントを出すだけにする
+  function mockPlayback() {
+    const play = vi.spyOn(HTMLMediaElement.prototype, 'play').mockImplementation(function (
       this: HTMLMediaElement,
     ) {
       this.dispatchEvent(new Event('play'))
       return Promise.resolve()
     })
-    pause = vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(function (
+    const pause = vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(function (
       this: HTMLMediaElement,
     ) {
       this.dispatchEvent(new Event('pause'))
     })
-  })
+    return { play, pause }
+  }
 
   function renderPlayer() {
     const view = render(<VideoPlayer src="/movie.mp4" label="散歩の動画" />)
@@ -35,6 +34,7 @@ describe('VideoPlayer', () => {
   })
 
   it('plays and pauses with the play toggle', async () => {
+    const { play, pause } = mockPlayback()
     renderPlayer()
     const toggle = screen.getByRole('button', { name: '再生' })
     await act(async () => toggle.click())
@@ -54,7 +54,7 @@ describe('VideoPlayer', () => {
 
   it('seeks with the slider', async () => {
     const video = renderPlayer()
-    Object.defineProperty(video, 'duration', { value: 60, configurable: true })
+    vi.spyOn(video, 'duration', 'get').mockReturnValue(60)
     await act(async () => fireEvent(video, new Event('loadedmetadata')))
     const seek = screen.getByRole('slider', { name: '再生位置' })
     expect(seek).toHaveAttribute('max', '60')
@@ -63,18 +63,11 @@ describe('VideoPlayer', () => {
   })
 
   it('reads the duration of a video that loaded before hydration', () => {
-    Object.defineProperty(HTMLMediaElement.prototype, 'readyState', {
-      value: 4,
-      configurable: true,
-    })
-    Object.defineProperty(HTMLMediaElement.prototype, 'duration', { value: 42, configurable: true })
-    try {
-      renderPlayer()
-      expect(screen.getByRole('slider', { name: '再生位置' })).toHaveAttribute('max', '42')
-    } finally {
-      Reflect.deleteProperty(HTMLMediaElement.prototype, 'readyState')
-      Reflect.deleteProperty(HTMLMediaElement.prototype, 'duration')
-    }
+    // HAVE_ENOUGH_DATA。happy-dom には定数がない
+    vi.spyOn(HTMLMediaElement.prototype, 'readyState', 'get').mockReturnValue(4)
+    vi.spyOn(HTMLMediaElement.prototype, 'duration', 'get').mockReturnValue(42)
+    renderPlayer()
+    expect(screen.getByRole('slider', { name: '再生位置' })).toHaveAttribute('max', '42')
   })
 
   it('shows the whole player, controls included, in fullscreen', async () => {

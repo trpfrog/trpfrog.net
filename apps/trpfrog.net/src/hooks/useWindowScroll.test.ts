@@ -2,7 +2,7 @@ import { createElement } from 'react'
 
 import { act, renderHook } from '@testing-library/react'
 import { renderToString } from 'react-dom/server'
-import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it, vi } from 'vite-plus/test'
 
 import { useWindowScroll } from './useWindowScroll'
 
@@ -14,17 +14,13 @@ function scrollTo(y: number) {
 }
 
 describe('useWindowScroll', () => {
-  afterEach(() => {
-    vi.restoreAllMocks()
-  })
-
   it('follows the scroll position and the window width', () => {
     const { result } = renderHook(() => useWindowScroll(w => `${w.scrollY},${w.innerWidth}`))
     scrollTo(420)
     expect(result.current).toBe(`420,${window.innerWidth}`)
 
     act(() => {
-      window.innerWidth = 640
+      vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(640)
       window.dispatchEvent(new Event('resize'))
     })
     expect(result.current).toBe('420,640')

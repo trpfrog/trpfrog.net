@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react'
 import type { Tweet } from 'react-tweet/api'
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { describe, expect, it, vi } from 'vite-plus/test'
 
 import { EmbeddedTweet } from './EmbeddedTweet'
 
@@ -25,12 +25,9 @@ vi.mock('react-tweet', () => {
 })
 
 describe('EmbeddedTweet actions', () => {
-  const writeText = vi.fn<(text: string) => Promise<void>>()
-
-  beforeEach(() => {
-    writeText.mockResolvedValue(undefined)
-    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
-  })
+  function mockWriteText() {
+    return vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue()
+  }
 
   it('links to like and reply on X', () => {
     render(<EmbeddedTweet tweet={{ favorite_count: 3 } as unknown as Tweet} />)
@@ -45,6 +42,7 @@ describe('EmbeddedTweet actions', () => {
   })
 
   it('copies the tweet URL with a ui-sdk button', async () => {
+    const writeText = mockWriteText()
     render(<EmbeddedTweet tweet={{ favorite_count: 0 } as unknown as Tweet} />)
     const copy = screen.getByRole('button', { name: 'Copy' })
     expect(copy).toHaveAttribute('data-slot', 'tooltip-trigger')

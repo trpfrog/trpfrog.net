@@ -2,7 +2,7 @@ import { createElement } from 'react'
 
 import { act, renderHook } from '@testing-library/react'
 import { renderToString } from 'react-dom/server'
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vite-plus/test'
+import { beforeEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { usePrefersColorScheme } from './usePrefersColorScheme'
 
@@ -19,11 +19,9 @@ function setDark(dark: boolean) {
 }
 
 describe('usePrefersColorScheme', () => {
-  beforeAll(() => {
+  beforeEach(() => {
+    darkQuery.matches = false
     vi.stubGlobal('matchMedia', () => darkQuery)
-  })
-  afterAll(() => {
-    vi.unstubAllGlobals()
   })
 
   it('reads the browser preference', () => {
@@ -33,7 +31,6 @@ describe('usePrefersColorScheme', () => {
   })
 
   it('follows a change to the browser preference', () => {
-    darkQuery.matches = false
     const { result } = renderHook(usePrefersColorScheme)
     expect(result.current).toBe('light')
 

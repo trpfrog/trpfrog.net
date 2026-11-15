@@ -20,8 +20,7 @@ describe('Toaster', () => {
 
   it('turns a promise toast into its success message', async () => {
     render(<Toaster />)
-    let resolve!: () => void
-    const promise = new Promise<void>(r => (resolve = r))
+    const { promise, resolve } = Promise.withResolvers<void>()
     await act(async () => {
       toast.promise(promise, { loading: 'Uploading...', success: 'Uploaded!' })
     })

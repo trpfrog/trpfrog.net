@@ -9,6 +9,11 @@ export default defineConfig({
     isolate: true,
     clearMocks: true,
     restoreMocks: true,
+    unstubGlobals: true,
+    // テストが実行順に頼らないよう、ファイル内のテストを毎回シャッフルする
+    sequence: {
+      shuffle: { files: false, tests: true },
+    },
     pool: 'threads',
     fileParallelism: false,
     coverage: {

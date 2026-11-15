@@ -1,23 +1,21 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vite-plus/test'
+import { afterEach, describe, expect, it, vi } from 'vite-plus/test'
 
 import { CopyButton } from './CopyButton'
 
 describe('CopyButton', () => {
-  const writeText = vi.fn<(text: string) => Promise<void>>()
-  const originalClipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard')
+  function mockWriteText() {
+    return vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue()
+  }
 
-  beforeEach(() => {
-    writeText.mockResolvedValue(undefined)
-    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
-  })
+  // ui-sdk は直前に閉じたツールチップの時刻を performance.now() で覚えている。
+  // テストをまたいで時計が戻らないよう、タイマーだけを偽物にする
+  function useFakeTimers() {
+    vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout', 'setInterval', 'clearInterval'] })
+  }
 
   afterEach(() => {
-    if (originalClipboard) {
-      Object.defineProperty(navigator, 'clipboard', originalClipboard)
-    } else {
-      Reflect.deleteProperty(navigator, 'clipboard')
-    }
+    vi.useRealTimers()
   })
 
   async function focusWithKeyboard(element: HTMLElement) {
@@ -33,6 +31,7 @@ describe('CopyButton', () => {
   })
 
   it('copies its content when pressed', async () => {
+    const writeText = mockWriteText()
     render(<CopyButton copyContent="hello" />)
     await act(async () => {
       screen.getByRole('button').click()
@@ -41,23 +40,25 @@ describe('CopyButton', () => {
   })
 
   it('shows its tooltip on hover', async () => {
-    vi.useFakeTimers()
-    try {
-      render(<CopyButton copyContent="hello" />)
-      const button = screen.getByRole('button', { name: 'Copy' })
-      await act(async () => {
-        fireEvent.pointerEnter(button, { pointerType: 'mouse' })
-        fireEvent.pointerMove(button, { pointerType: 'mouse' })
-        await vi.advanceTimersByTimeAsync(1000)
-      })
-      expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
-    } finally {
-      vi.useRealTimers()
-    }
+    useFakeTimers()
+    render(<CopyButton copyContent="hello" />)
+    const button = screen.getByRole('button', { name: 'Copy' })
+    await act(async () => {
+      fireEvent.pointerEnter(button, { pointerType: 'mouse' })
+      fireEvent.pointerMove(button, { pointerType: 'mouse' })
+    })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1000)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
   })
 
   it('tells the user the content was copied, then goes back to Copy', async () => {
-    render(<CopyButton copyContent="hello" />)
+    mockWriteText()
+    // ui-sdk は描画のあとでキー入力の監視を始めるので、描画が落ち着くのを待つ
+    await act(async () => {
+      render(<CopyButton copyContent="hello" />)
+    })
     const button = screen.getByRole('button', { name: 'Copy' })
     await focusWithKeyboard(button)
     expect(screen.getByRole('tooltip')).toHaveTextContent('Copy')
@@ -76,39 +77,36 @@ describe('CopyButton', () => {
   })
 
   it('shows Copied! for a while after a tap, which never hovers', async () => {
-    vi.useFakeTimers()
-    try {
-      render(<CopyButton copyContent="hello" />)
-      const button = screen.getByRole('button', { name: 'Copy' })
-      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    mockWriteText()
+    useFakeTimers()
+    render(<CopyButton copyContent="hello" />)
+    const button = screen.getByRole('button', { name: 'Copy' })
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
 
-      await act(async () => {
-        fireEvent.click(button)
-      })
-      expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
+    await act(async () => {
+      fireEvent.click(button)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
 
-      await act(async () => {
-        await vi.advanceTimersByTimeAsync(1500)
-        fireEvent.click(button)
-        await vi.advanceTimersByTimeAsync(1500)
-      })
-      expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1500)
+      fireEvent.click(button)
+      await vi.advanceTimersByTimeAsync(1500)
+    })
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Copied!')
 
-      await act(async () => {
-        await vi.advanceTimersByTimeAsync(1000)
-      })
-      await act(async () => {
-        await vi.runAllTimersAsync()
-      })
-      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
-    } finally {
-      vi.useRealTimers()
-    }
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1000)
+    })
+    await act(async () => {
+      await vi.runAllTimersAsync()
+    })
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 
   it('reports a failed copy through onError', async () => {
     const error = new Error('denied')
-    writeText.mockRejectedValue(error)
+    vi.spyOn(navigator.clipboard, 'writeText').mockRejectedValue(error)
     const onError = vi.fn<(error: Error) => void>()
     render(<CopyButton copyContent="hello" onError={onError} />)
     await act(async () => {
