@@ -1,12 +1,17 @@
 'use client'
 import * as React from 'react'
 
-import { usePart, usePrimitive } from '@ui-sdk/react/primitive'
+import { createParts } from '@ui-sdk/react/primitive'
 import type { Except } from 'type-fest'
 
 import { anglePicker, type AnglePickerController } from './angle-picker'
 
 import styles from './index.module.css'
+
+const { Root: AnglePickerRoot, Input: AnglePickerInput } = createParts(anglePicker, {
+  root: 'div',
+  input: 'input',
+})
 
 interface Props extends Except<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onDrag'> {
   onAngleChange: (degree: number) => void
@@ -29,46 +34,28 @@ export function AnglePicker(props: Props) {
     ...rest
   } = props
 
-  const picker = usePrimitive(anglePicker, {
-    defaultDegree: initialDegree,
-    controller,
-    onDegreeChange: degree => onAngleChange(degree),
-  })
-
-  const input = usePart(
-    picker,
-    'input',
-    {},
-    { 'aria-label': '角度', className: styles.input },
-    'input',
-  )
-
-  return usePart(
-    picker,
-    'root',
-    {},
-    {
-      ...rest,
-      className: `${styles.frame} ${className}`,
-      style: ({ degree }) => ({
+  return (
+    <AnglePickerRoot
+      {...rest}
+      defaultDegree={initialDegree}
+      controller={controller}
+      onDegreeChange={degree => onAngleChange(degree)}
+      className={`${styles.frame} ${className}`}
+      style={({ degree }) => ({
         width: size,
         height: size,
         ...style,
         ...({ '--angle': `${degree}deg` } as React.CSSProperties),
-      }),
-      children: (
-        <>
-          {input}
-          <div className={`${styles.face} ${faceClassName}`} />
-          <div className={styles.clock_hand}>
-            <div className={styles.hand_dot} />
-            <div className={styles.hand} />
-            <div className={styles.clock_center} />
-          </div>
-        </>
-      ),
-    },
-    'div',
+      })}
+    >
+      <AnglePickerInput aria-label="角度" className={styles.input} />
+      <div className={`${styles.face} ${faceClassName}`} />
+      <div className={styles.clock_hand}>
+        <div className={styles.hand_dot} />
+        <div className={styles.hand} />
+        <div className={styles.clock_center} />
+      </div>
+    </AnglePickerRoot>
   )
 }
 
