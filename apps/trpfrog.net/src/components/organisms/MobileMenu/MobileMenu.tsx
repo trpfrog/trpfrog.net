@@ -16,7 +16,7 @@ const styles = tv({
       'tw:data-open:opacity-70',
     ],
     content: [
-      'tw:flex tw:max-h-(--available-height) tw:flex-col tw:p-4',
+      'tw:flex tw:max-h-(--available-height) tw:flex-col',
       'tw:bg-window-color tw:rounded-lg',
       'tw:sp:w-(--anchor-width)',
       'tw:transition-[opacity,translate] tw:duration-300',
@@ -26,8 +26,9 @@ const styles = tv({
       'tw:print:hidden',
     ],
     // 画面の低いスマホ (横向きなど) でも最後まで届くよう、収まらない分は中でスクロールさせる。
-    // 矢印が切れないよう、スクロールは内側の要素に持たせる
-    body: 'tw:flex tw:min-h-0 tw:flex-col tw:gap-3 tw:overflow-y-auto tw:overscroll-contain',
+    // 矢印が切れないよう、スクロールは内側の要素に持たせる。ボタンの影が縁で切れないよう、
+    // 余白もスクロールする側に持たせる
+    body: 'tw:flex tw:min-h-0 tw:flex-col tw:gap-3 tw:overflow-y-auto tw:overscroll-contain tw:p-4',
     // 吹き出しのしっぽ。ハンバーガーのすぐ下まで届く縦長の三角形
     arrow: [
       'tw:-top-9 tw:size-0 tw:border-[0.9rem] tw:border-b-[2rem]',
