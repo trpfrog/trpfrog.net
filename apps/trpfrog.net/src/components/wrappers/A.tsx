@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useMemo } from 'react'
 
 import Link from 'next/link'
 
@@ -12,7 +11,15 @@ export interface AProps extends React.ComponentPropsWithRef<'a'> {
 }
 
 export function A(props: AProps) {
-  const { openInNewTab: _openInNewTab, href = '', ref, children, ...rest } = props
+  const { openInNewTab: _openInNewTab, href, ref, children, ...rest } = props
+  // href のないリンク (現在のページなど) は遷移先がないので、素の <a> にする
+  if (href === undefined) {
+    return (
+      <a ref={ref} {...rest}>
+        {children}
+      </a>
+    )
+  }
   const isInternal = isInternalLink(href)
 
   const openInNewTab = match(_openInNewTab)
@@ -23,16 +30,7 @@ export function A(props: AProps) {
     .with(P.boolean, value => value)
     .exhaustive()
 
-  const openInNewTabProps = useMemo(
-    () =>
-      openInNewTab
-        ? {
-            target: '_blank',
-            rel: 'noopener noreferrer',
-          }
-        : {},
-    [openInNewTab],
-  )
+  const openInNewTabProps = openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return isInternal ? (
     <Link href={href} ref={ref} {...rest} {...openInNewTabProps}>

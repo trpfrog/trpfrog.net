@@ -11,6 +11,7 @@ import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMa
 import { ImagePicker } from '@/components/atoms/FormControls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
+import { twJoin } from '@/lib/tailwind'
 
 import styles from './style.module.css'
 
@@ -59,7 +60,7 @@ export function IconMakerApp() {
             {controlButtons.map(btn => (
               <Button
                 key={btn.text}
-                className={styles.ctrl_btn + ' ' + btn.className}
+                className={twJoin(styles.ctrl_btn, btn.className)}
                 onClick={btn.onClick}
               >
                 {btn.text}

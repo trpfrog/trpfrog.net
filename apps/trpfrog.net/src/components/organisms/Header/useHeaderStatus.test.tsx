@@ -6,14 +6,19 @@ import { motionValue } from 'motion'
 import { useScroll } from 'motion/react'
 import { describe, expect, it as base, onTestFinished, vi } from 'vite-plus/test'
 
-import { useHeaderStatus, useSetAlwaysShownHeader } from './useHeaderStatus'
+import { useSetMobileMenuOpened } from '@/components/organisms/MobileMenu'
+
+import { useHeaderStatus } from './useHeaderStatus'
 
 vi.mock('motion/react', async importOriginal => ({
   ...(await importOriginal<typeof import('motion/react')>()),
   useScroll: vi.fn<typeof useScroll>(),
 }))
 vi.mock('next/navigation', () => ({ usePathname: () => '/works' }))
-vi.mock('@/components/organisms/MobileMenu', () => ({ useIsMobileMenuOpened: () => false }))
+vi.mock(
+  '@/components/organisms/MobileMenu',
+  () => import('@/components/organisms/MobileMenu/hooks'),
+)
 vi.mock('@/hooks/useWindowScroll', () => ({
   useWindowScroll: <T,>(select: (w: { scrollY: number; innerWidth: number }) => T) =>
     select({ scrollY: 600, innerWidth: 1200 }),
@@ -65,17 +70,17 @@ describe('Motion scroll-driven header visibility', () => {
     expect(result.current.visible).toBe(true)
   })
 
-  it('lets forced visibility override a hidden scroll state', ({ scrollY }) => {
+  it('keeps the header visible while the mobile menu is open', ({ scrollY }) => {
     vi.spyOn(scrollY, 'getVelocity').mockReturnValue(2000)
     const { result } = renderHook(
-      () => ({ status: useHeaderStatus(), forceVisible: useSetAlwaysShownHeader() }),
+      () => ({ status: useHeaderStatus(), setMenuOpened: useSetMobileMenuOpened() }),
       { wrapper: createWrapper() },
     )
     act(() => scrollY.set(600))
     expect(result.current.status.visible).toBe(false)
-    act(() => result.current.forceVisible(true))
+    act(() => result.current.setMenuOpened(true))
     expect(result.current.status.visible).toBe(true)
-    act(() => result.current.forceVisible(false))
+    act(() => result.current.setMenuOpened(false))
     expect(result.current.status.visible).toBe(false)
   })
 

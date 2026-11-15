@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import { usePathname } from 'next/navigation'
 
-import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { useMotionValueEvent, useScroll } from 'motion/react'
 
 import { useIsMobileMenuOpened } from '@/components/organisms/MobileMenu'
@@ -11,12 +10,6 @@ import {
   useUserSettingAlwaysVisibleHeader,
   useUserSettingStickyHeader,
 } from '@/states/userSettings'
-
-const alwaysShowHeaderAtom = atom(false)
-
-export function useSetAlwaysShownHeader() {
-  return useSetAtom(alwaysShowHeaderAtom)
-}
 
 /**
  * ヘッダーを表示するかどうかを返す
@@ -38,13 +31,12 @@ function useHeaderVisibleStatus(): boolean {
     }
   })
 
-  const systemSideSettingAlwaysVisible = useAtomValue(alwaysShowHeaderAtom)
   const [userSettingAlwaysVisible] = useUserSettingAlwaysVisibleHeader()
 
   const isMobileMenuOpened = useIsMobileMenuOpened()
   const [userSettingFollowSticky] = useUserSettingStickyHeader()
 
-  if (userSettingAlwaysVisible || systemSideSettingAlwaysVisible || isMobileMenuOpened) {
+  if (userSettingAlwaysVisible || isMobileMenuOpened) {
     return true
   }
 

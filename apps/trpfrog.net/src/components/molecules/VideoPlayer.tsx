@@ -33,7 +33,8 @@ const styles = tv({
       'tw:grid tw:size-7 tw:shrink-0 tw:cursor-pointer tw:place-items-center tw:rounded',
       'tw:hover:bg-white/20 tw:focus-visible:outline-2 tw:focus-visible:outline-white',
     ],
-    seek: 'tw:relative tw:flex tw:h-6 tw:flex-1 tw:items-center',
+    seek: 'tw:flex-1',
+    seekControl: 'tw:relative tw:flex tw:h-6 tw:items-center',
     track: 'tw:relative tw:h-1 tw:w-full tw:rounded-full tw:bg-white/30',
     indicator: 'tw:h-full tw:rounded-full tw:bg-white',
     thumb:
@@ -69,14 +70,12 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
     () => false,
   )
 
-  const video = () => videoRef.current
-
   // 操作バーも出したままにするため、動画だけでなくプレイヤー全体を全画面にする
   const toggleFullscreen = () => {
     const root = rootRef.current
     if (isFullscreen) void document.exitFullscreen()
     else if (root?.requestFullscreen) void root.requestFullscreen()
-    else video()?.webkitEnterFullscreen?.()
+    else videoRef.current?.webkitEnterFullscreen?.()
   }
 
   // ハイドレーション前に読み込みが終わっていると loadedmetadata を受け取れないので、最初に読み直す
@@ -105,7 +104,9 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
         <Toggle
           aria-label="再生"
           pressed={playing}
-          onPressedChange={next => void (next ? video()?.play() : video()?.pause())}
+          onPressedChange={next =>
+            void (next ? videoRef.current?.play() : videoRef.current?.pause())
+          }
           className={styles.control()}
         >
           <FontAwesomeIcon icon={playing ? faPause : faPlay} />
@@ -117,13 +118,13 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
           step={0.1}
           format={{ style: 'unit', unit: 'second', maximumFractionDigits: 0 }}
           onValueChange={value => {
-            const v = video()
+            const v = videoRef.current
             if (v) v.currentTime = value
             setCurrentTime(value)
           }}
           className={styles.seek()}
         >
-          <SliderControl className={styles.seek()}>
+          <SliderControl className={styles.seekControl()}>
             <SliderTrack className={styles.track()}>
               <SliderIndicator className={styles.indicator()} />
               <SliderThumb aria-label="再生位置" className={styles.thumb()} />
@@ -137,7 +138,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
           aria-label="ミュート"
           pressed={muted}
           onPressedChange={next => {
-            const v = video()
+            const v = videoRef.current
             if (v) v.muted = next
           }}
           className={styles.control()}

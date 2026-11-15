@@ -25,12 +25,13 @@ const createStyles = tv({
       'tw:rounded-t-lg tw:bg-trpfrog-500 tw:px-4 tw:py-1 tw:dark:bg-trpfrog-600',
     ],
     lang: 'tw:text-xs tw:font-bold tw:text-white',
+    barButton: 'tw:grid tw:place-items-center tw:text-white tw:opacity-50 tw:hover:opacity-100',
     codeWrapper: [
       'tw:w-full tw:overflow-clip',
       'tw:font-mono tw:text-[0.8em] tw:sp:text-xs',
       'tw:border tw:border-trpfrog-500 tw:dark:border-trpfrog-600',
     ],
-    viewport: 'tw:w-full tw:overflow-x-scroll',
+    viewport: 'tw:w-full',
     code: 'tw:py-4 tw:sp:py-3',
     line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
@@ -80,8 +81,8 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
         <div className={styles.bar()}>
           <span className={styles.lang()}>{fileName}</span>
           <div className="tw:flex tw:gap-2">
-            {url && <CodeLinkButton url={url} />}
-            {copyContent && <CopyButton copyContent={copyContent} />}
+            {url && <CodeLinkButton url={url} className={styles.barButton()} />}
+            {copyContent && <CopyButton copyContent={copyContent} className={styles.barButton()} />}
           </div>
         </div>
       )}

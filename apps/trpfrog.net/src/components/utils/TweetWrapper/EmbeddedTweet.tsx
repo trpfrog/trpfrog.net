@@ -43,7 +43,7 @@ export function EmbeddedTweet(props: { tweet: Tweet }) {
           <FontAwesomeIcon icon={faReply} className="tw:text-[#1d9bf0]" />
           Reply
         </A>
-        <CopyButton copyContent={tweet.url} className="tw:text-inherit! tw:opacity-70" />
+        <CopyButton copyContent={tweet.url} className="tw:opacity-70 tw:hover:opacity-100" />
       </div>
       <TweetReplies tweet={tweet} />
     </TweetContainer>

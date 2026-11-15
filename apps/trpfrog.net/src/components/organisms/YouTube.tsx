@@ -17,7 +17,7 @@ const styles = tv({
   slots: {
     frame: 'tw:mx-auto tw:block tw:aspect-video tw:w-full tw:max-w-[720px] tw:rounded-[5px]',
     poster: [
-      'tw:relative tw:grid tw:cursor-pointer tw:place-items-center tw:overflow-hidden',
+      'tw:group tw:relative tw:grid tw:cursor-pointer tw:place-items-center tw:overflow-hidden',
       'tw:bg-black tw:bg-cover tw:bg-center',
     ],
     play: [
@@ -48,7 +48,7 @@ export function YouTube({ videoId, params }: YouTubeProps) {
   return (
     <Button
       aria-label="YouTube 動画を再生"
-      className={styles.frame({ className: `tw:group ${styles.poster()}` })}
+      className={styles.frame({ className: styles.poster() })}
       style={{ backgroundImage: `url(https://i.ytimg.com/vi/${videoId}/hqdefault.jpg)` }}
       onClick={() => setPlaying(true)}
     >

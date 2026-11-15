@@ -38,7 +38,7 @@ const styles = tv({
     button: cardButtonStyle({
       class: 'tw:absolute tw:bottom-2 tw:right-2 tw:size-8 tw:rounded-full',
     }),
-    tooltipContent: 'tw:bg-window-color! tw:text-text-color!',
+    tooltipContent: 'tw:bg-window-color tw:text-text-color',
   },
 })()
 

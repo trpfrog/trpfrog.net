@@ -1,7 +1,5 @@
 'use client'
 
-import { useCallback } from 'react'
-
 import { useSearchParams } from 'next/navigation'
 
 import { PageNavigation as SharedPageNavigation } from '@/components/organisms/PageNavigation'
@@ -14,14 +12,11 @@ export function PageNavigation(props: {
   numTweets: number
 }) {
   const searchParams = useSearchParams()
-  const createPath = useCallback(
-    (pageNo: number) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set('p', String(pageNo))
-      return `/tweets?${params.toString()}#tweets`
-    },
-    [searchParams],
-  )
+  const createPath = (pageNo: number) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('p', String(pageNo))
+    return `/tweets?${params.toString()}#tweets`
+  }
 
   if (props.numTweets === 0) {
     return null
