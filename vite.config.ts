@@ -1,5 +1,12 @@
 import { defineConfig } from 'vite-plus'
 
+// `dist/` holds `vp pack` outputs and can keep files whose sources were deleted.
+const noDistImports = {
+  // Only our own packages: third-party imports like `katex/dist/*.css` are fine.
+  regex: String.raw`^(\.{1,2}/|@trpfrog\.net/)(.*/)?dist(/|$)`,
+  message: 'Import the package by its name instead of reaching into dist/.',
+}
+
 export default defineConfig({
   staged: {
     '*': 'vp check --fix',
@@ -23,6 +30,7 @@ export default defineConfig({
     ],
     ignorePatterns: ['out', 'dist', 'build', 'coverage', '.cloudflare', '.next', 'next-env.d.ts'],
     rules: {
+      'eslint/no-restricted-imports': ['error', { patterns: [noDistImports] }],
       // test.extend で作った it / test (フィクスチャ付き) もテストとして扱う
       'vitest/no-standalone-expect': ['warn', { additionalTestBlockFunctions: ['it', 'test'] }],
       'eslint/no-unused-vars': [
@@ -128,7 +136,7 @@ export default defineConfig({
           'eslint/no-restricted-imports': [
             'error',
             {
-              patterns: ['@/app/blog/*'],
+              patterns: ['@/app/blog/*', noDistImports],
               paths: [
                 {
                   name: '@trpfrog.net/posts/fs',
