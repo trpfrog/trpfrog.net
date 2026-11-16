@@ -4,7 +4,8 @@
   "// NOTE(install-skills):": "experimental_skills rewrites local relative paths to absolute paths, so we restore skills-lock.json to HEAD after install.",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev pack:watch",
+    "pack": "turbo pack",
     "lint-fix": "vp lint --fix --type-aware --type-check && vp fmt",
     "install-skills": "vp exec skills experimental_install || true; git restore --source=HEAD -- skills-lock.json || true",
     "test": "turbo test",

@@ -2,6 +2,13 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import { defineConfig } from 'vite-plus'
 
 export default defineConfig(({ mode }) => ({
+  // Builds only the Hono RPC client. The Worker itself is built by the Cloudflare plugin.
+  pack: {
+    entry: 'src/client.ts',
+    sourcemap: true,
+    dts: { sourcemap: true },
+    deps: { neverBundle: true },
+  },
   // The Worker config lives in cloudflare.config.ts. Skip the plugin under
   // Vitest so tests run in Node.js as before.
   plugins:

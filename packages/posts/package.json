@@ -3,15 +3,32 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/core/index.ts",
-    "./preview": "./src/preview/index.ts",
-    "./parser": "./src/parser/rawTextParser.ts",
-    "./time": "./src/time/index.ts",
-    "./fs": "./src/fs/index.ts"
+    ".": {
+      "types": "./dist/core/index.d.mts",
+      "default": "./dist/core/index.mjs"
+    },
+    "./preview": {
+      "types": "./dist/preview/index.d.mts",
+      "default": "./dist/preview/index.mjs"
+    },
+    "./parser": {
+      "types": "./dist/parser/rawTextParser.d.mts",
+      "default": "./dist/parser/rawTextParser.mjs"
+    },
+    "./time": {
+      "types": "./dist/time/index.d.mts",
+      "default": "./dist/time/index.mjs"
+    },
+    "./fs": {
+      "types": "./dist/fs/index.d.mts",
+      "default": "./dist/fs/index.mjs"
+    }
   },
   "scripts": {
     "build": "tsc",
-    "test": "vp test"
+    "test": "vp test",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch --no-clean"
   },
   "dependencies": {
     "date-fns": "catalog:",

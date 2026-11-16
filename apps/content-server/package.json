@@ -2,13 +2,18 @@
   "name": "@trpfrog.net/content-server",
   "type": "module",
   "exports": {
-    ".": "./src/client.ts"
+    ".": {
+      "types": "./dist/client.d.mts",
+      "default": "./dist/client.mjs"
+    }
   },
   "scripts": {
     "dev": "cf dev",
     "deploy": "vp build --mode ssg && cf deploy",
     "deploy:prod": "vp run deploy",
-    "test": "vp test"
+    "test": "vp test",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch src --no-clean"
   },
   "dependencies": {
     "@hono/standard-validator": "catalog:",

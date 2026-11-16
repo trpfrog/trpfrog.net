@@ -4,5 +4,6 @@
       "@cloudflare/workers-types"
     ],
   },
-  "extends": "@trpfrog.net/config-typescript/hono.json"
+  "extends": "@trpfrog.net/config-typescript/hono.json",
+  "exclude": ["node_modules", "dist"]
 }
