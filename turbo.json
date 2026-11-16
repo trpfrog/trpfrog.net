@@ -25,7 +25,8 @@
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
     "typegen": {
-      "dependsOn": ["^typegen"]
+      // `next typegen` loads next.config.ts, which imports workspace packages.
+      "dependsOn": ["^typegen", "^pack"]
     },
     // Compiles workspace libraries and Hono RPC clients into `dist/` with
     // source maps and declaration maps. Consumers import these outputs.
