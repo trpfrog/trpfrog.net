@@ -92,7 +92,7 @@ If the Next.js Turbopack build stays at `Creating an optimized production build 
 Choose the server scope deliberately:
 
 - `pnpm -w dev` starts the portless proxy and all workspace services, and is appropriate when dependent Worker/blog services are needed. Pass `--ui=stream` (`pnpm -w dev --ui=stream`) when no one can interact with the Turborepo TUI.
-- `pnpm -w dev:proxy && pnpm --filter trpfrog.net dev` starts only the Next.js site and is sufficient for static/local route verification such as `/works`. Use it when auxiliary services are unnecessary.
+- `pnpm -w pack && pnpm -w dev:proxy && pnpm --filter trpfrog.net dev` starts only the Next.js site and is sufficient for static/local route verification such as `/works`. Use it when auxiliary services are unnecessary.
 
 Apps find each other only through portless. `pnpm --filter <app> dev:app` runs an app without portless, but it cannot reach the other apps.
 

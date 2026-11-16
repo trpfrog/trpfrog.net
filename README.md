@@ -117,7 +117,7 @@ Each app's dev server runs through [portless](https://github.com/vercel-labs/por
 
 Apps find each other's URL from `PORTLESS_URL` (see `packages/constants/services.ts`), so servers in different worktrees run side by side. `pnpm exec portless list` shows the running URLs.
 
-An app can still run alone without portless (`pnpm --filter <app> dev:app`), but it then cannot reach the other apps.
+An app can still run alone without portless (`pnpm -w pack && pnpm --filter <app> dev:app`), but it then cannot reach the other apps.
 
 Useful workspace commands:
 
