@@ -1,6 +1,13 @@
 import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
+  pack: {
+    entry: ['src/index.ts', 'src/hono.ts', 'src/wire.ts', 'src/valibot.ts', 'src/dom/index.ts'],
+    unbundle: true,
+    sourcemap: true,
+    dts: { sourcemap: true },
+    deps: { neverBundle: true },
+  },
   test: {
     globals: true,
     environment: 'happy-dom',

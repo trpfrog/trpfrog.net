@@ -11,7 +11,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "vp test"
+    "test": "vp test",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch --no-clean"
   },
   "dependencies": {
     "date-fns": "catalog:",

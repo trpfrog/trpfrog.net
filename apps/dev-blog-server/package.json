@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "NODE_ENV=development bun run --hot src/dev-server.ts",
     "build": "tsc",
-    "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local"
+    "secrets:dev": "op inject --force --in-file .env.local.tpl --out-file .env.local",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch src --no-clean"
   },
   "type": "module",
   "exports": {

@@ -12,7 +12,9 @@
     "test": "vp test",
     "generate": "drizzle-kit generate",
     "migrate:local": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842 --local --persist-to .cloudflare/state",
-    "migrate:remote": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842"
+    "migrate:remote": "cf d1 migrations apply 66534e4a-091f-4bd3-be8e-07cbf7e70842",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch src --no-clean"
   },
   "dependencies": {
     "@ai-sdk/openai": "catalog:",

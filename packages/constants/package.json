@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch --no-clean"
   },
   "exports": {
     ".": "./index.ts"

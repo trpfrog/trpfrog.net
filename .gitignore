@@ -54,7 +54,7 @@ bun.lockb
 # turborepo
 .turbo
 build/**
-dist/**
+dist/
 
 # posts
 posts/_*.md

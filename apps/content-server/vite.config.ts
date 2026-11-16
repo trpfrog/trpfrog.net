@@ -19,6 +19,13 @@ function plugins(mode: string): PluginOption[] {
 }
 
 export default defineConfig(({ mode }) => ({
+  // Builds only the Hono RPC client. The Worker itself is built by the Cloudflare plugin.
+  pack: {
+    entry: 'src/client.ts',
+    sourcemap: true,
+    dts: { sourcemap: true },
+    deps: { neverBundle: true },
+  },
   plugins: plugins(mode),
   publicDir: mode === 'ssg' ? false : '.ssg',
   // `dist` is reserved for `vp pack` outputs.
