@@ -2,8 +2,8 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import ssg from '@hono/vite-ssg'
 import { defineConfig, type PluginOption } from 'vite-plus'
 
-// - `vp build --mode ssg` pre-renders ./src/ssg.ts into ./dist.
-// - `cf dev` / `cf build` / `cf deploy` serve ./dist as the Worker's static
+// - `vp build --mode ssg` pre-renders ./src/ssg.ts into ./.ssg.
+// - `cf dev` / `cf build` / `cf deploy` serve ./.ssg as the Worker's static
 //   assets (ASSETS binding). The Worker config lives in cloudflare.config.ts.
 // - Vitest runs in Node.js without either plugin.
 function plugins(mode: string): PluginOption[] {
@@ -20,7 +20,9 @@ function plugins(mode: string): PluginOption[] {
 
 export default defineConfig(({ mode }) => ({
   plugins: plugins(mode),
-  publicDir: mode === 'ssg' ? false : 'dist',
+  publicDir: mode === 'ssg' ? false : '.ssg',
+  // `dist` is reserved for `vp pack` outputs.
+  build: mode === 'ssg' ? { outDir: '.ssg' } : undefined,
   server: {
     port: 8003,
   },
