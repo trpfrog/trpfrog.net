@@ -48,7 +48,6 @@ export default defineConfig({
       'node/no-process-env': [
         'error',
         {
-          // PORT と PORTLESS_URL は portless が dev サーバに渡す
           allowedVariables: ['NODE_ENV', 'PORT', 'PORTLESS_URL'],
         },
       ],

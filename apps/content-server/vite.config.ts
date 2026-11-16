@@ -2,7 +2,7 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import ssg from '@hono/vite-ssg'
 import { defineConfig, type PluginOption } from 'vite-plus'
 
-import { devOriginDefine } from '@trpfrog.net/constants'
+import { servicesEnvForVite } from '@trpfrog.net/constants'
 
 // - `vp build --mode ssg` pre-renders ./src/ssg.ts into ./.ssg.
 // - `cf dev` / `cf build` / `cf deploy` serve ./.ssg as the Worker's static
@@ -13,7 +13,7 @@ function plugins(mode: string): PluginOption[] {
   if (mode === 'ssg') return [ssg({ entry: './src/ssg.ts' })]
   return [
     cloudflare({
-      // 既定の 9229 からの空き探しは、同時に起動した Worker 同士でぶつかるので OS に選ばせる
+      // inspectorPort は既定で 9229 を使うので、衝突を避けるために自動選択させる (0)
       inspectorPort: 0,
       // Bindings are inferred from cloudflare.config.ts directly.
       types: { generate: false },
@@ -38,8 +38,7 @@ export default defineConfig(({ mode }) => ({
     port: Number(process.env.PORT) || undefined,
     strictPort: Boolean(process.env.PORT),
   },
-  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする
-  define: devOriginDefine(),
+  define: servicesEnvForVite(),
   environments: {
     ssr: {
       build: {

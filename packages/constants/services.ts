@@ -1,18 +1,21 @@
 import { defineServices, portlessDevOrigin } from '@trpfrog.net/utils'
 
 // portless で起動したプロセスには PORTLESS_URL が入る。
-// ブラウザと Workers には、各 app の設定が devOriginEnv / devOriginDefine で同じ値を埋め込む。
 const portlessUrl = typeof process === 'undefined' ? undefined : process.env.PORTLESS_URL
 
-/** 開発時の origin を決めるのに要る環境変数。Next.js の `env` に渡す */
-export function devOriginEnv(): Record<string, string> {
-  return portlessUrl ? { PORTLESS_URL: portlessUrl } : {}
+// services が読む環境変数。ブラウザと Workers からは dev サーバの環境変数が見えないので、
+// 各 app が下の関数でバンドルに埋め込む。
+const servicesEnv: Record<string, string> = portlessUrl ? { PORTLESS_URL: portlessUrl } : {}
+
+/** Next.js の `env` に渡す */
+export function servicesEnvForNext(): Record<string, string> {
+  return servicesEnv
 }
 
-/** devOriginEnv を Vite の `define` に渡せる形にしたもの */
-export function devOriginDefine(): Record<string, string> {
+/** Vite の `define` に渡す */
+export function servicesEnvForVite(): Record<string, string> {
   return Object.fromEntries(
-    Object.entries(devOriginEnv()).map(([key, value]) => [
+    Object.entries(servicesEnv).map(([key, value]) => [
       `process.env.${key}`,
       JSON.stringify(value),
     ]),

@@ -1,7 +1,6 @@
 export { createURL } from './url'
 export { composeFunctions, pipeFunctions } from './composeFn'
 export { withTimeout } from './timeout'
-// constants の services の型を書き出すのに要る
 export { defineServices, type Service } from './defineServices'
 export { portlessDevOrigin } from './portless'
 export { toShuffledArray } from './array'
