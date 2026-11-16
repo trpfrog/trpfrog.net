@@ -11,7 +11,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
     "test": "vp test",
     "pack": "vp pack",
     "pack:watch": "vp pack --watch --no-clean"
