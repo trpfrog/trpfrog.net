@@ -8,12 +8,17 @@
     }
   },
   "scripts": {
-    "dev": "cf dev",
+    "dev": "portless",
+    "dev:app": "cf dev",
     "deploy": "vp build --mode ssg && cf deploy",
     "deploy:prod": "vp run deploy",
     "test": "vp test",
     "pack": "vp pack",
     "pack:watch": "vp pack --watch src --no-clean"
+  },
+  "portless": {
+    "name": "content.trpfrog",
+    "script": "dev:app"
   },
   "dependencies": {
     "@hono/standard-validator": "catalog:",

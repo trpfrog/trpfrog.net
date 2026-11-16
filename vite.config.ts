@@ -48,7 +48,7 @@ export default defineConfig({
       'node/no-process-env': [
         'error',
         {
-          allowedVariables: ['NODE_ENV'],
+          allowedVariables: ['NODE_ENV', 'PORT', 'PORTLESS_URL'],
         },
       ],
       'eslint/no-restricted-properties': [

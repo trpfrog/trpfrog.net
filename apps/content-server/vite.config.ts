@@ -2,6 +2,8 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import ssg from '@hono/vite-ssg'
 import { defineConfig, type PluginOption } from 'vite-plus'
 
+import { servicesEnvForVite } from '@trpfrog.net/constants'
+
 // - `vp build --mode ssg` pre-renders ./src/ssg.ts into ./.ssg.
 // - `cf dev` / `cf build` / `cf deploy` serve ./.ssg as the Worker's static
 //   assets (ASSETS binding). The Worker config lives in cloudflare.config.ts.
@@ -11,7 +13,8 @@ function plugins(mode: string): PluginOption[] {
   if (mode === 'ssg') return [ssg({ entry: './src/ssg.ts' })]
   return [
     cloudflare({
-      inspectorPort: 8103,
+      // inspectorPort は既定で 9229 を使うので、衝突を避けるために自動選択させる (0)
+      inspectorPort: 0,
       // Bindings are inferred from cloudflare.config.ts directly.
       types: { generate: false },
     }),
@@ -31,8 +34,11 @@ export default defineConfig(({ mode }) => ({
   // `dist` is reserved for `vp pack` outputs.
   build: mode === 'ssg' ? { outDir: '.ssg' } : undefined,
   server: {
-    port: 8003,
+    // `cf dev` 経由では portless が --port を差し込めないので、portless が渡す PORT を読む
+    port: Number(process.env.PORT) || undefined,
+    strictPort: Boolean(process.env.PORT),
   },
+  define: servicesEnvForVite(),
   environments: {
     ssr: {
       build: {

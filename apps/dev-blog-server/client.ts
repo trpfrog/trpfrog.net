@@ -18,7 +18,8 @@ export const createPostWatcherClient: () => DevBlogWatchClient | null =
     ? () => null
     : () => {
         const endpoint = services.mdServer.development
-        if (!endpoint) throw new Error('No endpoint found')
+        // portless を通さずに起動したときは dev-blog-server に届かないので、ライブ更新をしない
+        if (!endpoint) return null
 
         const eventSource = new EventSource(new URL('/watch-post', endpoint))
 
@@ -42,4 +43,7 @@ export const createPostWatcherClient: () => DevBlogWatchClient | null =
         }
       }
 
-export const devBlogServerClient = hc<typeof app>(services.mdServer.development)
+// portless を通さずに起動したときは origin が決まらない。必ず失敗する .invalid に向けておく
+export const devBlogServerClient = hc<typeof app>(
+  services.mdServer.development ?? 'http://dev-blog-server.invalid',
+)

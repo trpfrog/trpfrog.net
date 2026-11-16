@@ -44,9 +44,16 @@
       "persistent": true
     },
     "dev": {
-      "dependsOn": ["^pack"],
+      // Each app's dev server runs through portless, so start its proxy first
+      "dependsOn": ["^pack", "//#dev:proxy"],
+      // Let `PORTLESS=0` and other portless settings reach the dev servers
+      "passThroughEnv": ["PORTLESS", "PORTLESS_*"],
       "cache": false,
       "persistent": true
+    },
+    "//#dev:proxy": {
+      "passThroughEnv": ["PORTLESS_*"],
+      "cache": false
     }
   }
 }

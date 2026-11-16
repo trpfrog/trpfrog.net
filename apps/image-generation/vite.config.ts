@@ -1,6 +1,8 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { defineConfig } from 'vite-plus'
 
+import { servicesEnvForVite } from '@trpfrog.net/constants'
+
 export default defineConfig(({ mode }) => ({
   // Builds only the Hono RPC client. The Worker itself is built by the Cloudflare plugin.
   pack: {
@@ -16,15 +18,19 @@ export default defineConfig(({ mode }) => ({
       ? []
       : [
           cloudflare({
-            inspectorPort: 8101,
+            // inspectorPort は既定で 9229 を使うので、衝突を避けるために自動選択させる (0)
+            inspectorPort: 0,
             // Bindings are inferred from cloudflare.config.ts directly.
             types: { generate: false },
           }),
         ],
   publicDir: 'assets',
   server: {
-    port: 8001,
+    // `cf dev` 経由では portless が --port を差し込めないので、portless が渡す PORT を読む
+    port: Number(process.env.PORT) || undefined,
+    strictPort: Boolean(process.env.PORT),
   },
+  define: servicesEnvForVite(),
   environments: {
     ssr: {
       build: {
