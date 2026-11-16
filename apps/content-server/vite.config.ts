@@ -2,6 +2,8 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import ssg from '@hono/vite-ssg'
 import { defineConfig, type PluginOption } from 'vite-plus'
 
+import { devOriginDefine } from '@trpfrog.net/constants'
+
 // - `vp build --mode ssg` pre-renders ./src/ssg.ts into ./.ssg.
 // - `cf dev` / `cf build` / `cf deploy` serve ./.ssg as the Worker's static
 //   assets (ASSETS binding). The Worker config lives in cloudflare.config.ts.
@@ -36,11 +38,8 @@ export default defineConfig(({ mode }) => ({
     port: Number(process.env.PORT) || undefined,
     strictPort: Boolean(process.env.PORT),
   },
-  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする。
-  // vite.config は Node がそのまま読むので、workspace の TS (devOriginEnv) は import できない
-  define: process.env.PORTLESS_URL
-    ? { 'process.env.PORTLESS_URL': JSON.stringify(process.env.PORTLESS_URL) }
-    : {},
+  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする
+  define: devOriginDefine(),
   environments: {
     ssr: {
       build: {

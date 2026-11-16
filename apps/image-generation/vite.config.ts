@@ -1,6 +1,8 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { defineConfig } from 'vite-plus'
 
+import { devOriginDefine } from '@trpfrog.net/constants'
+
 export default defineConfig(({ mode }) => ({
   // Builds only the Hono RPC client. The Worker itself is built by the Cloudflare plugin.
   pack: {
@@ -28,11 +30,8 @@ export default defineConfig(({ mode }) => ({
     port: Number(process.env.PORT) || undefined,
     strictPort: Boolean(process.env.PORT),
   },
-  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする。
-  // vite.config は Node がそのまま読むので、workspace の TS (devOriginEnv) は import できない
-  define: process.env.PORTLESS_URL
-    ? { 'process.env.PORTLESS_URL': JSON.stringify(process.env.PORTLESS_URL) }
-    : {},
+  // @trpfrog.net/constants が Worker の中でも開発時の origin を決められるようにする
+  define: devOriginDefine(),
   environments: {
     ssr: {
       build: {

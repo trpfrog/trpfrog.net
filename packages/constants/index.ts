@@ -1,2 +1,2 @@
-export { services, devOriginEnv } from './services'
+export { services, devOriginEnv, devOriginDefine } from './services'
 export { cachedPaths, cacheTags } from './revalidate'
