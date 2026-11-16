@@ -10,7 +10,10 @@
   },
   "type": "module",
   "exports": {
-    ".": "./client.ts",
+    ".": {
+      "types": "./dist/client.d.mts",
+      "default": "./dist/client.mjs"
+    },
     "./ssg-assets": "./src/routes/ssg-assets/index.ts"
   },
   "dependencies": {

@@ -2,7 +2,10 @@
   "name": "@trpfrog.net/content-server",
   "type": "module",
   "exports": {
-    ".": "./src/client.ts"
+    ".": {
+      "types": "./dist/client.d.mts",
+      "default": "./dist/client.mjs"
+    }
   },
   "scripts": {
     "dev": "cf dev",
