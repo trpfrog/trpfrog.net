@@ -40,6 +40,10 @@ jobs:
       - name: Generate types
         run: vp run -w typegen
 
+      # Workspace packages resolve to their compiled `dist/` outputs.
+      - name: Build workspace packages
+        run: vp run -w pack
+
       - name: Run checks
         run: vp check
 
