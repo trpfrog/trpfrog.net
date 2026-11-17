@@ -1,5 +1,7 @@
 import * as cards from '@/app/(home)/_cards'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
+import { JsonLd } from '@/components/head/JsonLd'
+import { buildSiteJsonLd } from '@/lib/json-ld'
 import { tv } from '@/lib/tailwind'
 
 import { TrpFrogAnimation as TrpFrogAnimationFrame } from './_components/TrpFrogAnimation'
@@ -18,6 +20,7 @@ export const instant = false
 export default async function Index() {
   return (
     <>
+      <JsonLd data={buildSiteJsonLd()} />
       <TrpFrogAnimationFrame />
       <MainWrapper>
         <div className={styles.grid({ className: css.layout })}>

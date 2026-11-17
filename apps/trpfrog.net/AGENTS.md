@@ -17,3 +17,5 @@ For a custom component, read the relevant sections of `docs/core.md` and `docs/r
 ## WebMCP
 
 `src/components/utils/AgentBridge.tsx` exposes every ui-sdk component to browser agents through WebMCP, and lets them run any action without asking, because nothing on the site has serious side effects. If you add an action that does (posting, deleting, payments, etc.), mark it with `data-agent-confirm` and make the `allow` in `AgentBridge` ask the person first. See "Permissions" in `node_modules/@ui-sdk/react/docs/agents.md`.
+
+`src/components/head/WebMcpScript.tsx` registers the content tools (blog search, posts, tags, site overview and `open_page`) from an inline `<head>` script, before hydration. These come from `MCP_TOOLS` in `src/lib/mcp/server.ts`, so add a content tool there rather than in the script. Keep their names apart from AgentBridge's `snapshot`, `query` and `act`.

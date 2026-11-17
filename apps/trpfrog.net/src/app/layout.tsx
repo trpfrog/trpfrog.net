@@ -4,6 +4,7 @@ import { Viewport } from 'next'
 import type { Metadata } from 'next'
 
 import { Favicon } from '@/components/head/Favicon'
+import { WebMcpScript } from '@/components/head/WebMcpScript'
 import { BackToTop } from '@/components/organisms/BackToTop'
 import { Footer } from '@/components/organisms/Footer'
 import { Header } from '@/components/organisms/Header'
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="ja" className={fontVariables}>
       <head>
         <Favicon />
+        <WebMcpScript />
         <FixTooLargeFontAwesomeIcons />
       </head>
       <body className={styles.body()}>
