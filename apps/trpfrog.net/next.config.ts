@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
+    agentUpgrade: 'security',
     mdxRs: {
       mdxType: 'gfm',
     },
