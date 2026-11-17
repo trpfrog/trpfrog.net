@@ -8,6 +8,14 @@
   translate: -50% 0;
 }
 
+/*
+ * ui-sdk は通知がなくても region を top layer に出し続ける。iOS 26 の Safari はこれがあると
+ * ツールバーの下にページを描かなくなるので、通知がないあいだは描画から外す
+ */
+.region:not(:has([data-slot='toast'])) {
+  display: none;
+}
+
 .region[data-expanded] {
   height: calc(var(--toast-stack-height) + (var(--toast-count) - 1) * 8px);
 }
