@@ -42,7 +42,7 @@ function Work(props: { content: MarkdownWithFrontmatter<WorksFrontmatter>; class
           ))}
         </div>
         <h3 className={workStyles.title()}>
-          <ParseWithBudouX str={content.metadata.title} slug={''} />
+          <ParseWithBudouX str={content.metadata.title} slug="" />
         </h3>
         {content.metadata.subtitle && (
           <div className={workStyles.subtitle()}>{content.metadata.subtitle}</div>
@@ -65,7 +65,7 @@ export async function WorksCard() {
   ).then(mds => mds.slice(0, 3))
 
   return (
-    <LinkTopCard className={styles.wrapper()} title={'Works'} href={'/works'}>
+    <LinkTopCard className={styles.wrapper()} title="Works" href="/works">
       <Work content={contents[0]}></Work>
       <Work content={contents[1]}></Work>
       <Work content={contents[2]} className="tw:sp:hidden"></Work>

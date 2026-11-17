@@ -80,6 +80,10 @@ export default defineConfig({
       'typescript/no-explicit-any': 'error',
       'typescript/no-non-null-assertion': 'error',
       'nextjs/no-img-element': 'off',
+      'react/jsx-curly-brace-presence': [
+        'error',
+        { props: 'never', children: 'ignore', propElementValues: 'ignore' },
+      ],
     },
     overrides: [
       {

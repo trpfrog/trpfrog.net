@@ -7,7 +7,7 @@ import { TweetTextarea, parseTweet } from '.'
 
 describe('TweetTextarea', () => {
   test('snapshot test', () => {
-    const view = render(<TweetTextarea tweet={''} />)
+    const view = render(<TweetTextarea tweet="" />)
     expect(view.asFragment()).toMatchSnapshot()
   })
 

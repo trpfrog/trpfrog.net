@@ -23,15 +23,15 @@ export default function Music() {
           <RichButton href="https://linkco.re/N4Z8hdvX">購入・ストリーミング</RichButton>
         </p>
         <Image
-          src={'musicbanner'}
+          src="musicbanner"
           className="tw:my-4"
           width={500}
           height={100}
-          alt={'つまみのうたのバナー'}
+          alt="つまみのうたのバナー"
         />
       </Title>
 
-      <Block title={'カラオケ'} h2icon={'think'}>
+      <Block title="カラオケ" h2icon="think">
         <p>
           「つまみのうた」がJOYSOUNDのうたスキミュージックポスト対応機種で
           <strong>歌えるようになりました！！！</strong>
@@ -51,20 +51,20 @@ export default function Music() {
         </div>
       </Block>
 
-      <Block title={'歌詞'}>
+      <Block title="歌詞">
         <div className="tw:text-center tw:text-lg tw:_span:inline-block">
           <Lyrics />
         </div>
       </Block>
 
-      <Block title={'フル音源'} h2icon={'robot'}>
+      <Block title="フル音源" h2icon="robot">
         <p>各種音楽配信サイトで配信中！</p>
         <RichButton href="https://linkco.re/N4Z8hdvX">購入・ストリーミング</RichButton>
         <p>YouTubeでも公開中！</p>
         <YouTube videoId="VO64Ih8c1yU" />
       </Block>
 
-      <Block title={'ショート版'} h2icon={'robot'}>
+      <Block title="ショート版" h2icon="robot">
         <p>作詞作曲：ねぎ一世</p>
         <YouTube videoId="h5C_yiBEAMg" />
       </Block>

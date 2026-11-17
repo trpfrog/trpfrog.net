@@ -30,7 +30,7 @@ export default async function Index(props: Props) {
         <Title>
           <h1>タグ「{tag}」の記事一覧</h1>
           <p>
-            <RichButton href={'/blog'}>記事一覧に戻る</RichButton>
+            <RichButton href="/blog">記事一覧に戻る</RichButton>
           </p>
         </Title>
 

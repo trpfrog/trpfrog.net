@@ -8,7 +8,7 @@ export const cautionCCBC: CustomCodeBlockComponent = {
   Component: async ({ markdown, Render }) => {
     const { title, body } = parseTitleAndBody(markdown)
     return (
-      <Alert type={'caution'}>
+      <Alert type="caution">
         <h4>{title}</h4>
         <Render markdown={body} />
       </Alert>
@@ -20,7 +20,7 @@ export const infoboxCCBC: CustomCodeBlockComponent = {
   Component: async ({ markdown, Render }) => {
     const { title, body } = parseTitleAndBody(markdown)
     return (
-      <Alert type={'frog'}>
+      <Alert type="frog">
         <h4>{title}</h4>
         <Render markdown={body} />
       </Alert>

@@ -42,7 +42,7 @@ function Favorite(props: FavoriteProps) {
       <div className={styles.title()}>{props.title}</div>
       {props.description && (
         <div className={styles.description()}>
-          <ParseWithBudouX str={props.description} slug={''} />
+          <ParseWithBudouX str={props.description} slug="" />
         </div>
       )}
     </div>

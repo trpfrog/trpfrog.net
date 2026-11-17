@@ -45,7 +45,7 @@ function Skill(props: FavoriteProps) {
         <div className={styles.title()}>{props.title}</div>
         <div className={styles.description()} style={{ gridRow: '2 / -1' }}>
           {description
-            .map(desc => <ParseWithBudouX str={desc} slug={''} key={desc} />)
+            .map(desc => <ParseWithBudouX str={desc} slug="" key={desc} />)
             .flatMap((x, i) => (i !== description.length - 1 ? [x, <br key={i} />] : x))}
         </div>
       </div>
@@ -59,7 +59,7 @@ export function SkillCard() {
       title="Skills"
       className={styles.grid()}
       style={{ gridTemplateRows: '1fr min-content min-content' }}
-      titlePosition={'top-right'}
+      titlePosition="top-right"
     >
       <Skill
         title="TypeScript"

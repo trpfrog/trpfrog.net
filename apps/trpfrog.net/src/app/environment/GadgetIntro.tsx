@@ -24,7 +24,7 @@ export const GadgetIntro: React.FunctionComponent<Props> = ({ children, name, im
           width={800}
           height={600}
           className={styles.image}
-          objectFit={'cover'}
+          objectFit="cover"
         />
       </div>
     )

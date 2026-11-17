@@ -35,7 +35,7 @@ export function ArticleSidebar({ post }: Props) {
   }
 
   return (
-    <StickToTop top={'1em'}>
+    <StickToTop top="1em">
       <ArticleCard
         entry={post}
         style={{

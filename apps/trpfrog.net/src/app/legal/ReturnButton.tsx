@@ -13,6 +13,6 @@ export function ReturnButton() {
   if (basename.startsWith('legal')) {
     return <></>
   } else {
-    return <RichButton href={'/legal'}>戻る</RichButton>
+    return <RichButton href="/legal">戻る</RichButton>
   }
 }

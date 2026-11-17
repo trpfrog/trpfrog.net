@@ -24,7 +24,7 @@ export async function Footer() {
           <A openInNewTab href="https://github.com/trpfrog/trpfrog.net" className={styles.link()}>
             GitHub
           </A>
-          <A href={'/legal'} className={styles.link()}>
+          <A href="/legal" className={styles.link()}>
             Legal
           </A>
         </div>

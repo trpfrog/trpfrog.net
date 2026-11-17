@@ -25,7 +25,7 @@ export function ImageNavigation(props: ImageNavigationProps) {
             src={nav.src}
             width={100}
             height={100}
-            objectFit={'contain'}
+            objectFit="contain"
             quality={50}
             alt={nav.alt}
           />

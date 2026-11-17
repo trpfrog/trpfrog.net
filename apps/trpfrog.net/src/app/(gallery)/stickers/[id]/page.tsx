@@ -41,10 +41,10 @@ export default async function Index(context: PageProps<'/stickers/[id]'>) {
       </Block>
       <Block>
         <div style={{ textAlign: 'center' }}>
-          <RichButton href={'/stickers'}>一覧に戻る</RichButton>
+          <RichButton href="/stickers">一覧に戻る</RichButton>
         </div>
       </Block>
-      <Block title={'既知のバグ'}>
+      <Block title="既知のバグ">
         <p>画像のロードが遅すぎてページ遷移をしていないように見える</p>
       </Block>
     </MainWrapper>

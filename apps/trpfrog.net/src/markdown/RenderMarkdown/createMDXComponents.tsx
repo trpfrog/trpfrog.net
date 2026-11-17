@@ -20,7 +20,7 @@ export function createMDXComponents(options?: {
   context?: MarkdownContext
 }): MDXComponents {
   return {
-    pre: ({ children }) => <div className={''}>{children}</div>, // disable pre tag
+    pre: ({ children }) => <div className="">{children}</div>, // disable pre tag
 
     code: createCodeComponent(options?.context),
 

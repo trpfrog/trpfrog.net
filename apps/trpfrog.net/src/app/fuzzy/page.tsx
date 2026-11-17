@@ -9,7 +9,7 @@ import styles from './style.module.css'
 export default function Fuzzy() {
   return (
     <>
-      <Block style={{ textAlign: 'center' }} ribbonText={'BETA'}>
+      <Block style={{ textAlign: 'center' }} ribbonText="BETA">
         <h2 className={styles.title}>
           trpfrog.net/<b style={{ fontWeight: 800 }}>fuzzy</b>
         </h2>
@@ -24,19 +24,17 @@ export default function Fuzzy() {
         <UnorderedList>
           <Li>
             enoshima {'=> '}
-            <InlineLink href={'https://trpfrog.net/blog/enoshima-walk'}>
+            <InlineLink href="https://trpfrog.net/blog/enoshima-walk">
               https://trpfrog.net/blog/enoshima-walk
             </InlineLink>
           </Li>
           <Li>
             balllloooon {'=> '}
-            <InlineLink href={'https://trpfrog.net/balloon'}>
-              https://trpfrog.net/balloon
-            </InlineLink>
+            <InlineLink href="https://trpfrog.net/balloon">https://trpfrog.net/balloon</InlineLink>
           </Li>
           <Li>
             山登り {'=> '}
-            <InlineLink href={'https://trpfrog.net/blog/takao-full-search'}>
+            <InlineLink href="https://trpfrog.net/blog/takao-full-search">
               https://trpfrog.net/blog/takao-full-search
             </InlineLink>
           </Li>

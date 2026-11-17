@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <MainWrapper gridLayout>
       <Title
-        title={'404 Not Found'}
+        title="404 Not Found"
         showDefaultText={false}
         style={{ textAlign: 'center', padding: '3rem 0' }}
       >
@@ -28,7 +28,7 @@ export default function NotFound() {
             <span className="tw:inline-block">リンクが誤っている可能性があります。</span>
           </p>
           <p>
-            <RichButton href={'/'}>トップページに戻る</RichButton>
+            <RichButton href="/">トップページに戻る</RichButton>
           </p>
         </div>
       </Title>

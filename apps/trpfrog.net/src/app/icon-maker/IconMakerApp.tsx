@@ -27,7 +27,7 @@ export function IconMakerApp() {
 
   return (
     <>
-      <Block title={'画像の選択'}>
+      <Block title="画像の選択">
         <ImagePicker
           onPick={async file => {
             try {
@@ -44,7 +44,7 @@ export function IconMakerApp() {
         </ImagePicker>
       </Block>
 
-      <Block title={'プレビュー'}>
+      <Block title="プレビュー">
         <p>位置を調整していい感じのところで描画を押してください。</p>
         <div>
           <div className="content">
@@ -70,7 +70,7 @@ export function IconMakerApp() {
         </div>
       </Block>
 
-      <Block title={'生成した画像'}>
+      <Block title="生成した画像">
         <p>PCの方は右クリック、スマートフォンの方は長押しで保存できます。</p>
         <p>
           <img

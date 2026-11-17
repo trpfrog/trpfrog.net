@@ -24,7 +24,7 @@ export function BalloonApp() {
   return (
     <>
       <PreloadBalloonImages />
-      <Title title="Balloons" description={'風船を割ることができます。(？)'}>
+      <Title title="Balloons" description="風船を割ることができます。(？)">
         <div className="tw:flex tw:flex-wrap tw:items-center tw:gap-x-2.5 tw:gap-y-1">
           <RichButton onClick={() => setSoundEnabled(!isSoundEnabled)}>
             {isSoundEnabled ? '音を消す' : '音を鳴らす'}
@@ -45,7 +45,7 @@ export function BalloonApp() {
           />
         </div>
       </Title>
-      <Block id={'balloon-window'} style={{ overflow: 'hidden' }}>
+      <Block id="balloon-window" style={{ overflow: 'hidden' }}>
         <BalloonArray states={balloonState} width={balloonSize} enableSound={isSoundEnabled} />
         <div ref={rewardRef} className="tw:fixed tw:top-0 tw:left-1/2" />
       </Block>

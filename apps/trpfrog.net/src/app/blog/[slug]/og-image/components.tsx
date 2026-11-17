@@ -98,7 +98,7 @@ export function OgThumbnail({ src }: { src?: string }) {
   return src ? (
     <img
       src={src}
-      alt={''}
+      alt=""
       style={{
         position: 'absolute',
         top: 0,
@@ -127,7 +127,7 @@ export function OgTrpFrogIcon({ size, pos }: { size: number; pos: { x: number; y
         left: pos.x,
       }}
     >
-      <img src={logoPath} alt={''} width={width} height={width} />
+      <img src={logoPath} alt="" width={width} height={width} />
     </div>
   )
 }
