@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
+    agentUpgrade: 'latest',
     mdxRs: {
       mdxType: 'gfm',
     },
