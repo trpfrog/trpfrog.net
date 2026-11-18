@@ -114,7 +114,7 @@ export function IconFrame() {
           <div className={styles.aiGeneratedMsg()}>AI GENERATED ICON</div>
           <div className={styles.english()}>{data.prompt.text}</div>
           <div className={styles.japanese()}>
-            <ParseWithBudouX str={data.prompt.translated} slug={'trpfrog-diffusion'} />
+            <ParseWithBudouX str={data.prompt.translated} slug="trpfrog-diffusion" />
           </div>
           <div className={styles.poweredBy()}>Powered by {data.modelName}</div>
         </figcaption>

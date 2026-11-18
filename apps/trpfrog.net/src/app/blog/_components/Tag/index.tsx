@@ -41,7 +41,7 @@ export const Tag = ({ tag, wrappedWithLink }: Props) => {
   const content = (
     <>
       <span className={styles.emoji}>
-        <img src={getEmojiUrlFromTagName(tag)} width={20} height={20} alt={'tag emoji'} />
+        <img src={getEmojiUrlFromTagName(tag)} width={20} height={20} alt="tag emoji" />
       </span>
       <span className={styles.name}>{tag}</span>
     </>

@@ -32,7 +32,7 @@ export default async function Index(props: PageProps<'/tweets'>) {
 
   return (
     <MainWrapper gridLayout>
-      <Title title={'Tweets'} ribbonText={'BETA'}>
+      <Title title="Tweets" ribbonText="BETA">
         <p>
           つまみさんの過去ツイデータベースです。
           <strong>2023 年 4 月 22 日版</strong>

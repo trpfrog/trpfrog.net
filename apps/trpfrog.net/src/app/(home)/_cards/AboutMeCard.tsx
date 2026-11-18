@@ -76,7 +76,7 @@ export async function AboutMeCard() {
               <span title={iconName} className="tw:w-4 tw:text-center">
                 {icon}
               </span>
-              <span className={'tw:inline-block'}>{text}</span>
+              <span className="tw:inline-block">{text}</span>
             </li>
           ))}
         </ul>

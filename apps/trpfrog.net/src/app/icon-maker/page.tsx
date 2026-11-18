@@ -17,9 +17,9 @@ export default function Index() {
     <MainWrapper gridLayout>
       <Title
         title="icon-maker.ts"
-        ribbonText={'BETA'}
-        description={'TypeScriptで書き直したアイコンメーカーです。'}
-        cardImageUrl={'/images/icon_maker/TwitterCardIconmaker.png'}
+        ribbonText="BETA"
+        description="TypeScriptで書き直したアイコンメーカーです。"
+        cardImageUrl="/images/icon_maker/TwitterCardIconmaker.png"
       >
         <p>
           画像をアップロードしてつまみアイコンを作ろう！
@@ -30,7 +30,7 @@ export default function Index() {
 
       <IconMakerApp />
 
-      <Block title={'ご利用条件・免責事項'}>
+      <Block title="ご利用条件・免責事項">
         <p>
           当サービスは第三者の権利を侵害したり、
           公序良俗や法律に反するような用途にはご利用いただけません。
@@ -38,7 +38,7 @@ export default function Index() {
           当サイトは一切の責任を負いません。
         </p>
         <p>
-          詳しくは<Link href={'/legal'}>こちら</Link>をご覧ください。
+          詳しくは<Link href="/legal">こちら</Link>をご覧ください。
         </p>
       </Block>
     </MainWrapper>

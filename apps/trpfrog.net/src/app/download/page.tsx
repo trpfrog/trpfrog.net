@@ -30,7 +30,7 @@ export default async function Index() {
           <Block key={metadata.title} title={metadata.title}>
             <p>{metadata.description}</p>
             {metadata.image && (
-              <div className={'hero_image'}>
+              <div className="hero_image">
                 <Image
                   src={metadata.image.src}
                   width={metadata.image.width}

@@ -24,7 +24,7 @@ export const BlogMarkdown = memo(function InnerBlogMarkdown(props: Props) {
         <Block key={'window-' + idx} style={style} className={className}>
           {idx === 0 && (
             <div style={{ marginBottom: '1rem' }}>
-              <span id={'article'} />
+              <span id="article" />
               <PageNavigation entry={entry} doNotShowOnFirst={true} />
             </div>
           )}

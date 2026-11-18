@@ -23,7 +23,7 @@ export function ImageList(props: ImageListProps) {
             src={src}
             width={props.imageWidth ?? 100}
             height={props.imageHeight ?? 100}
-            objectFit={'contain'}
+            objectFit="contain"
             quality={props.quality ?? 50}
             alt={alt ?? idx + '番目のスタンプ画像'}
           />

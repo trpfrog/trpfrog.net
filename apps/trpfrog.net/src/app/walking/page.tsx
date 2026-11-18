@@ -23,7 +23,7 @@ export default async function Index() {
   return (
     <MainWrapper gridLayout>
       <Title title={metadata.title} description={metadata.description} />
-      <Block title={'新着徒歩記事'}>
+      <Block title="新着徒歩記事">
         <p>
           つまみログに書いた「<b>徒歩</b>」タグの新着記事です。
         </p>
@@ -33,7 +33,7 @@ export default async function Index() {
           <ArticleCard entry={entry} key={entry.slug} />
         ))}
       </ArticleGrid>
-      <Block title={'持ち物'}>
+      <Block title="持ち物">
         <Belongings />
       </Block>
     </MainWrapper>

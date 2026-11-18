@@ -50,28 +50,28 @@ export const PostAttributes = ({ post }: Props) => {
 
   return (
     <div id={styles.post_attributes}>
-      <Content icon={faCalendarDay} title={'投稿日'}>
+      <Content icon={faCalendarDay} title="投稿日">
         <AttrDay d={post.date} />
       </Content>
 
       {post.updated && post.date < post.updated && (
-        <Content icon={faSyncAlt} title={'更新日'}>
+        <Content icon={faSyncAlt} title="更新日">
           <AttrDay d={post.updated} />
         </Content>
       )}
 
       {post.held && (
-        <Content icon={faWalking} title={'実施日'}>
+        <Content icon={faWalking} title="実施日">
           <AttrDay d={post.held} />
         </Content>
       )}
 
-      <Content icon={faClock} title={'読了予想時間'}>
+      <Content icon={faClock} title="読了予想時間">
         <span className={styles.attr_num}>{Math.ceil(post.readTime / 60)}</span> 分
       </Content>
 
       {['徒歩', '登山', '旅行', 'ドライブ', '自転車'].some(e => post.tags.includes(e)) && (
-        <Content icon={faImages} title={'写真の枚数'}>
+        <Content icon={faImages} title="写真の枚数">
           <span className={styles.attr_num}>{post.numberOfPhotos}</span> 枚
         </Content>
       )}

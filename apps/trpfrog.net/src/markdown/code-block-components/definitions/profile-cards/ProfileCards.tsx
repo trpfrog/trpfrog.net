@@ -92,9 +92,9 @@ export function ProfileCards(props: { profileDataList: ProfileData[]; held?: str
     <>
       <SwitchUI
         primaryChildren={<CardFormat personalDataList={profileDataList} />}
-        primaryButtonText={'リスト表示に切り替え'}
+        primaryButtonText="リスト表示に切り替え"
         secondaryChildren={<ListFormat personalDataList={profileDataList} />}
-        secondaryButtonText={'カード表示に切り替え'}
+        secondaryButtonText="カード表示に切り替え"
       />
       {twitterSearchLink !== '' && (
         <RichButton openInNewTab href={twitterSearchLink}>

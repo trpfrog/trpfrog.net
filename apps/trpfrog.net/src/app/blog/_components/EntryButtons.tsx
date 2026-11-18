@@ -48,11 +48,11 @@ export function EntryButtons({ post, style, ...rest }: EntryButtonProps) {
       }}
       {...rest}
     >
-      <RichButton href={'/blog'}>記事一覧</RichButton>
+      <RichButton href="/blog">記事一覧</RichButton>
       <RichButton href={tweetURL} openInNewTab>
         ツイート
       </RichButton>
-      <RichButton href={'https://github.com/TrpFrog/trpfrog.net/issues'}>訂正リクエスト</RichButton>
+      <RichButton href="https://github.com/TrpFrog/trpfrog.net/issues">訂正リクエスト</RichButton>
     </div>
   )
 }

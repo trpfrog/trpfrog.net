@@ -31,7 +31,7 @@ export async function TweetArea({ query, page }: { query: string; page: string }
         numTweets={tweetCount}
       />
 
-      <div id={'tweets'}>
+      <div id="tweets">
         {tweetCount > 0 ? (
           tweetCards
         ) : (

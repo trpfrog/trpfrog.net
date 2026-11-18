@@ -11,7 +11,7 @@ import { generateTwitterArchiveProps } from './generateTwitterArchiveProps'
 function Fallback(props: { content: string; error: Error }) {
   if (process.env.NODE_ENV === 'development') {
     return (
-      <ErrorFallback title={'TwitterArchive: Error Occurred'}>{props.error.message}</ErrorFallback>
+      <ErrorFallback title="TwitterArchive: Error Occurred">{props.error.message}</ErrorFallback>
     )
   } else {
     console.error('\n```twitter-archived')
