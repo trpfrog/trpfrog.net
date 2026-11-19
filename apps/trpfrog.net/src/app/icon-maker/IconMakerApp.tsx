@@ -7,7 +7,7 @@ import { toast } from '@ui-sdk/react/toast'
 
 import { createURL } from '@trpfrog.net/utils'
 
-import { useIconMakerController, useIconMakerRef } from '@/app/icon-maker/iconMakerHooks'
+import { useIconCanvas, useIconMakerController } from '@/app/icon-maker/iconMakerHooks'
 import { ImagePicker } from '@/components/atoms/form-controls'
 import { RichButton } from '@/components/atoms/RichButton'
 import { Block } from '@/components/molecules/Block'
@@ -17,8 +17,8 @@ import styles from './style.module.css'
 
 export function IconMakerApp() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const state = useIconMakerRef(canvasRef)
-  const controlButtons = useIconMakerController(state)
+  const iconCanvas = useIconCanvas(canvasRef)
+  const controlButtons = useIconMakerController(iconCanvas)
 
   const tweetLink = createURL('/intent/tweet', 'https://twitter.com', {
     text: '#つまみアイコンメーカー でアイコンを作成しました！',
@@ -31,7 +31,7 @@ export function IconMakerApp() {
         <ImagePicker
           onPick={async file => {
             try {
-              await state.current?.upload(file)
+              await iconCanvas.upload(file)
             } catch (error) {
               toast.error('画像の読み込みに失敗しました')
               console.error('Failed to upload image for icon maker.', error)

@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Button } from '@ui-sdk/react/button'
 
 import { FoggedDiv, FoggedDivProps } from '@/components/atoms/FoggedDiv'
-import { usePixelValueFromCSSLength } from '@/components/molecules/ShowAll/usePixelValueFromCSSLength'
+import { measureCSSLength } from '@/components/molecules/ShowAll/measureCSSLength'
 
 import styles from './index.module.css'
 
@@ -19,15 +19,17 @@ export function ShowAll(props: ShowAllProps) {
   const [needsFog, setNeedsFog] = useState(true) // コンテンツが少なすぎるときは Fog を表示しない
 
   const ref = useRef<HTMLDivElement>(null)
-  const maxHeightPx = usePixelValueFromCSSLength(ref, height)
 
   // コンテンツの高さから、Fog を表示するかどうかを決める
   useEffect(() => {
-    const innerHeight = ref.current?.clientHeight
+    const container = ref.current
+    if (!container) return
+    const innerHeight = container.clientHeight
+    const maxHeightPx = measureCSSLength(container, height)
     if (innerHeight && maxHeightPx) {
       setNeedsFog(innerHeight > maxHeightPx)
     }
-  }, [children, height, maxHeightPx])
+  }, [children, height])
 
   return (
     <div className={className} {...rest}>
