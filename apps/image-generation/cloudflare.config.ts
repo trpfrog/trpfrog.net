@@ -36,7 +36,6 @@ export default defineConfig({
       DATABASE: bindings.d1({
         id: '66534e4a-091f-4bd3-be8e-07cbf7e70842',
       }),
-      ASSETS: bindings.assets(),
     },
   },
 })

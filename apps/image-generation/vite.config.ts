@@ -24,7 +24,6 @@ export default defineConfig(({ mode }) => ({
             types: { generate: false },
           }),
         ],
-  publicDir: 'assets',
   server: {
     // `cf dev` 経由では portless が --port を差し込めないので、portless が渡す PORT を読む
     port: Number(process.env.PORT) || undefined,

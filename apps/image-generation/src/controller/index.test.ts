@@ -35,9 +35,7 @@ const createDefaultDeps = () =>
       modelName: 'model',
     })),
     generateSeedWords: async () => ['word1', 'word2'],
-    assetsRepo: {
-      fetch: async () => new Response(new ArrayBuffer(0)),
-    },
+    referenceImageBase64: '',
   }) satisfies Parameters<typeof prepareUsecasesBuilder>[0]
 
 type DepBuilder = ReturnType<typeof prepareUsecasesBuilder>

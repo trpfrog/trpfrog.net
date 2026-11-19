@@ -1,5 +1,5 @@
 import { createApp } from './controller'
-import { assetsRepoWorkersAssets } from './infra/repos/assets-repo-workers-assets'
+import { tsmamiReferenceImageBase64 } from './infra/assets/tsmami-reference-image'
 import { imageMetadataRepoCloudflareD1 } from './infra/repos/imageMetadataRepoCloudflareD1'
 import { imageStoreRepoCloudflareR2 } from './infra/repos/imageStoreRepoCloudflareR2'
 import { imageUpdateStatusCloudflareKV } from './infra/repos/imageUpdateStatusRepoCloudflareKV'
@@ -24,6 +24,6 @@ export const app = createApp(
       reasoningEffort: 'medium',
     }),
     generateSeedWords: () => randomWordApi({ noun: 4, verb: 2, adjective: 2 }),
-    assetsRepo: assetsRepoWorkersAssets,
+    referenceImageBase64: tsmamiReferenceImageBase64,
   }).build(),
 )

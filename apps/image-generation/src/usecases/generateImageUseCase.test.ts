@@ -21,27 +21,30 @@ describe('generateImage', () => {
 
   afterEach(() => {
     vi.clearAllMocks()
-    vi.unstubAllGlobals()
   })
 
   it('should generate a new image successfully', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn<typeof fetch>(async () => new Response('dummy-image')),
-    )
-
     const textToImage = resolve({
       textToImage: async () => ({
         extension: '.png',
         modelName: 'trpfrog-diffusion',
         image: new ArrayBuffer(0),
       }),
-      assetsRepo: {
-        fetch: async () => new Response(new ArrayBuffer(0)),
-      },
+      referenceImageBase64: '',
     })
     const result = await textToImage('prompt')
     expect(result).toMatchObject(defaultResponse)
+  })
+
+  it('passes the reference image to the model', async () => {
+    const textToImage = vi.fn<TextToImage>(async () => ({
+      extension: '.png',
+      modelName: 'trpfrog-diffusion',
+      image: new ArrayBuffer(0),
+    }))
+    const run = resolve({ textToImage, referenceImageBase64: 'AQID' })
+    await run('prompt')
+    expect(textToImage).toHaveBeenCalledWith(expect.any(String), ['AQID'])
   })
 
   describe('error cases', () => {
@@ -62,19 +65,12 @@ describe('generateImage', () => {
     ])(
       'should retry or not retry when $ErrorClass is thrown',
       async ({ ErrorClass, isAborted }) => {
-        // fetch をモック（文字列レスポンス）
-        vi.stubGlobal(
-          'fetch',
-          vi.fn<typeof fetch>(async () => new Response('dummy-image')),
-        )
         const textToImageFn = vi.fn<TextToImage>(async () => {
           throw new ErrorClass()
         })
         const run = resolve({
           textToImage: textToImageFn,
-          assetsRepo: {
-            fetch: async () => new Response(new ArrayBuffer(0)),
-          },
+          referenceImageBase64: '',
         })
         await expect(run('prompt')).rejects.toThrow('Failed to generate image')
         expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)

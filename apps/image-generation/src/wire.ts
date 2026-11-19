@@ -1,7 +1,6 @@
 import { removeSuffixFromKeys } from '@trpfrog.net/utils'
 import { wire } from '@trpfrog.net/utils/wire'
 
-import { AssetsRepo } from './domain/repos/assets-repo'
 import { ImageMetadataRepo } from './domain/repos/image-metadata-repo'
 import { ImageStoreRepo } from './domain/repos/image-store-repo'
 import { ImageUpdateStatusRepo } from './domain/repos/image-update-status-repo'
@@ -21,7 +20,7 @@ export function prepareUsecasesBuilder(common: {
   imageUpdateStatusRepo: ImageUpdateStatusRepo
   textToImage: TextToImage
   jsonChatbot: ChatLLMJson
-  assetsRepo: AssetsRepo
+  referenceImageBase64: string
   generateSeedWords: () => Promise<string[]>
 }) {
   const {
@@ -31,7 +30,7 @@ export function prepareUsecasesBuilder(common: {
     textToImage,
     jsonChatbot,
     generateSeedWords,
-    assetsRepo,
+    referenceImageBase64,
   } = common
 
   return wire(usecases)
@@ -45,7 +44,7 @@ export function prepareUsecasesBuilder(common: {
       },
       generateImage: {
         textToImage,
-        assetsRepo,
+        referenceImageBase64,
       },
       generatePromptFromWords: {
         jsonChatbot,
