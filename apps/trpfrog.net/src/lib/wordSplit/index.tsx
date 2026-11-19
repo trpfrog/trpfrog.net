@@ -1,9 +1,10 @@
 'use client'
 
-import { createContext, use, useLayoutEffect, useState } from 'react'
+import { createContext, use } from 'react'
 
 import dynamic from 'next/dynamic'
 
+import { useIsHydrated } from '@/hooks/useIsHydrated'
 import type { ParseWithBudouXProps } from '@/lib/wordSplit/wordSplit'
 
 // Hack to pass props to loading() of dynamic import
@@ -28,10 +29,8 @@ const SSRSafeParseWithBudouX = dynamic(
 
 // due to this is not compatible with SSR, we need to use dynamic import
 export function ParseWithBudouX(props: ParseWithBudouXProps) {
-  const [supportsWordBreakAutoPhrase, setSupportsWordBreakAutoPhrase] = useState(false)
-  useLayoutEffect(() => {
-    setSupportsWordBreakAutoPhrase(CSS.supports('word-break', 'auto-phrase'))
-  }, [])
+  const isHydrated = useIsHydrated()
+  const supportsWordBreakAutoPhrase = isHydrated && CSS.supports('word-break', 'auto-phrase')
   return supportsWordBreakAutoPhrase ? (
     <span style={{ wordBreak: 'auto-phrase' }}>{props.str}</span>
   ) : (
