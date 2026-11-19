@@ -1,7 +1,24 @@
-import { useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 import { Image, JsonInput, Table, Title } from '@mantine/core'
 import { differenceInMinutes, format } from 'date-fns'
+
+const MINUTE_MS = 60 * 1000
+
+function subscribeMinutes(onChange: () => void) {
+  const id = setInterval(onChange, MINUTE_MS)
+  return () => clearInterval(id)
+}
+
+// useSyncExternalStore は値が変わらない限り同じ値を返す必要があるので、分単位に切り捨てる
+function getCurrentMinute() {
+  return Math.floor(Date.now() / MINUTE_MS) * MINUTE_MS
+}
+
+/** 現在時刻を分単位で返し、1 分ごとに再描画させる */
+function useCurrentMinute() {
+  return useSyncExternalStore(subscribeMinutes, getCurrentMinute, getCurrentMinute)
+}
 
 interface IconDetailProps {
   imageUri: string
@@ -16,9 +33,8 @@ interface IconDetailProps {
 }
 
 export function IconDetail(props: IconDetailProps) {
-  // 再描画のたびに「何分前」が変わらないよう、表示を始めた時刻で固定する
-  const [now] = useState(() => new Date())
-  const minutesAgo = differenceInMinutes(now, props.createdAt)
+  const currentMinute = useCurrentMinute()
+  const minutesAgo = differenceInMinutes(currentMinute, props.createdAt)
   const tableContents = [
     { key: 'Prompt', value: props.prompt },
     { key: 'Translated Prompt', value: props.translatedPrompt },
