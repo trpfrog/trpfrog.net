@@ -12,7 +12,13 @@ export default defineConfig({
     '*': 'vp check --fix',
   },
   lint: {
-    options: { typeAware: true, typeCheck: true, denyWarnings: true },
+    options: {
+      typeAware: true,
+      typeCheck: true,
+      denyWarnings: true,
+      reportUnusedDisableDirectives: 'error',
+    },
+    jsPlugins: ['./packages/config-oxlint/plugin.ts'],
     plugins: [
       'eslint',
       'unicorn',
@@ -77,6 +83,7 @@ export default defineConfig({
           },
         },
       ],
+      'trpfrog/require-disable-reason': 'error',
       'typescript/no-explicit-any': 'error',
       'typescript/no-non-null-assertion': 'error',
       'nextjs/no-img-element': 'off',
@@ -118,6 +125,13 @@ export default defineConfig({
           '**/vitest.{mjs,cjs,js,jsx,ts,mts,cts,tsx}',
           '**/vitest.*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}',
         ],
+        rules: {
+          'eslint/no-restricted-exports': 'off',
+        },
+      },
+      {
+        // Oxlint は JS プラグインを default export で読み込む
+        files: ['packages/config-oxlint/plugin.ts'],
         rules: {
           'eslint/no-restricted-exports': 'off',
         },

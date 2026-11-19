@@ -8,6 +8,6 @@ export const env = validateUnknown(
     ADMIN_PASSWORD: v.string(),
     TRPFROG_ADMIN_KEY: v.string(),
   }),
-  // oxlint-disable-next-line node/no-process-env
+  // oxlint-disable-next-line node/no-process-env -- 検証済みの env を作るため、ここでだけ読む
   process.env,
 )

@@ -26,8 +26,7 @@ export const metadata = {
 
 export default async function Index(props: PageProps<'/tweets'>) {
   const searchParams = await props.searchParams
-  // Server Component はリクエストごとに一度だけ描画されるので、ここで現在時刻を読んでよい
-  // oxlint-disable-next-line react/purity
+  // oxlint-disable-next-line react/purity -- Server Component はリクエストごとに一度だけ描画される
   const oneYearsAgo = format(subYears(new Date(), 1), 'yyyy-MM-dd')
   const query = Array.isArray(searchParams.q) ? searchParams.q[0] : searchParams.q || ''
   const page = Array.isArray(searchParams.p) ? searchParams.p[0] : searchParams.p || ''
