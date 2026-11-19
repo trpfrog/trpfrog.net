@@ -11,6 +11,8 @@ import { CodeLinkButton } from './CodeLinkButton'
 export type PlainCodeBlockProps = Except<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   showBar?: boolean
   wrap?: boolean
+  /** children のテキストの余白。`normal` はハイライト付きのコードと同じ余白 */
+  padding?: 'tight' | 'normal'
   children?: string
   fileName?: string
   copyContent?: string
@@ -33,6 +35,8 @@ const createStyles = tv({
     ],
     viewport: 'tw:w-full',
     code: 'tw:py-4 tw:sp:py-3',
+    // children で渡したテキストを表示する要素
+    pre: '',
     line: 'tw:inline-block tw:w-full tw:px-4 tw:sp:px-3',
   },
   variants: {
@@ -48,15 +52,25 @@ const createStyles = tv({
     wrap: {
       true: {
         code: 'tw:whitespace-pre-wrap',
+        pre: 'tw:whitespace-pre-wrap tw:wrap-anywhere',
       },
       false: {
         code: 'tw:w-full tw:min-w-max',
+      },
+    },
+    padding: {
+      tight: {
+        pre: 'tw:p-1',
+      },
+      normal: {
+        pre: 'tw:px-4 tw:py-3 tw:sp:px-3',
       },
     },
   },
   defaultVariants: {
     showBar: true,
     wrap: false,
+    padding: 'tight',
   },
 })
 
@@ -68,12 +82,13 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
     copyContent,
     showBar: userShowBar,
     wrap = false,
+    padding,
     dangerouslySetInnerHTML,
     ...rest
   } = props
 
   const showBar = userShowBar ?? (!!url || !!copyContent || !!fileName)
-  const styles = createStyles({ showBar, wrap })
+  const styles = createStyles({ showBar, wrap, padding })
 
   return (
     <div {...rest}>
@@ -91,7 +106,7 @@ export function PlainCodeBlock(props: PlainCodeBlockProps) {
           className={styles.viewport()}
           dangerouslySetInnerHTML={dangerouslySetInnerHTML}
         >
-          {children && <pre className="tw:p-1">{children}</pre>}
+          {children && <pre className={styles.pre()}>{children}</pre>}
         </ScrollAreaViewport>
       </ScrollArea>
     </div>
