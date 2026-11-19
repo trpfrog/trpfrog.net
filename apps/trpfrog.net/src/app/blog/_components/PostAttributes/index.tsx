@@ -19,35 +19,35 @@ type Props = {
   post: BlogPost
 }
 
-export const PostAttributes = ({ post }: Props) => {
-  type ContentProps = {
-    icon: IconProp
-    title: string
-    children: React.ReactNode
-  }
+type ContentProps = {
+  icon: IconProp
+  title: string
+  children: React.ReactNode
+}
 
-  const Content = ({ icon, title, children }: ContentProps) => {
-    return (
-      <div className={styles.post_attr}>
-        <FontAwesomeIcon icon={icon} /> {title}
-        <div className={styles.attr_val}>
-          <div>{children}</div>
-        </div>
+function Content({ icon, title, children }: ContentProps) {
+  return (
+    <div className={styles.post_attr}>
+      <FontAwesomeIcon icon={icon} /> {title}
+      <div className={styles.attr_val}>
+        <div>{children}</div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
-  const AttrDay = ({ d }: { d: string }) => {
-    const [Y, M, D] = format(new Date(d), 'yyyy-M-d').split('-')
-    return (
-      <time dateTime={d}>
-        {Y}年<br />
-        <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{M}</span>月
-        <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{D}</span>日
-      </time>
-    )
-  }
+function AttrDay({ d }: { d: string }) {
+  const [Y, M, D] = format(new Date(d), 'yyyy-M-d').split('-')
+  return (
+    <time dateTime={d}>
+      {Y}年<br />
+      <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{M}</span>月
+      <span style={{ fontSize: '1.7em', padding: '0 4px', letterSpacing: -1 }}>{D}</span>日
+    </time>
+  )
+}
 
+export const PostAttributes = ({ post }: Props) => {
   return (
     <div id={styles.post_attributes}>
       <Content icon={faCalendarDay} title="投稿日">
