@@ -32,7 +32,6 @@
     "@next/mdx": "catalog:",
     "@prisma/adapter-planetscale": "catalog:",
     "@prisma/client": "catalog:",
-    "@react-hookz/web": "catalog:",
     "@standard-schema/spec": "catalog:",
     "@tailwindcss/container-queries": "catalog:",
     "@trpfrog.net/constants": "workspace:*",

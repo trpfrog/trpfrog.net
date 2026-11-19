@@ -27,7 +27,6 @@ catalog:
   '@next/mdx': ^16.4.6
   '@prisma/adapter-planetscale': 7.10.1
   '@prisma/client': ^7.10.1
-  '@react-hookz/web': ^26.1.0
   '@shikijs/transformers': ^4.5.0
   '@standard-schema/spec': ^1.1.0
   '@tailwindcss/container-queries': ^0.1.1
