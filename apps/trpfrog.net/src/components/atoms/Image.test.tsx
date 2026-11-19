@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vite-plus/test'
 import { Image } from './Image'
 
 vi.mock('@/components/utils/CldImageWrapper', () => ({
-  CldImageWrapper: (props: { alt: string }) => <span role="img" aria-label={props.alt} />,
+  CldImageWrapper: (props: { alt: string }) => <img alt={props.alt} />,
 }))
 
 describe('Image spoiler', () => {
