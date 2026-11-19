@@ -12,7 +12,7 @@ export default defineConfig({
     '*': 'vp check --fix',
   },
   lint: {
-    options: { typeAware: true, typeCheck: true },
+    options: { typeAware: true, typeCheck: true, denyWarnings: true },
     plugins: [
       'eslint',
       'unicorn',
