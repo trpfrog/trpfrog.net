@@ -1,0 +1,11 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // build スクリプトは prisma generate も実行し、.next はその生成物を参照する。
+      // キャッシュから復元したときにも揃うよう、生成物も outputs に含める
+      "outputs": [".next/**", "!.next/cache/**", "src/generated/**"]
+    }
+  }
+}
