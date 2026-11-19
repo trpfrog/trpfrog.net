@@ -38,7 +38,7 @@ export default defineConfig({
     rules: {
       'eslint/no-restricted-imports': ['error', { patterns: [noDistImports] }],
       // test.extend で作った it / test (フィクスチャ付き) もテストとして扱う
-      'vitest/no-standalone-expect': ['warn', { additionalTestBlockFunctions: ['it', 'test'] }],
+      'vitest/no-standalone-expect': ['error', { additionalTestBlockFunctions: ['it', 'test'] }],
       'eslint/no-unused-vars': [
         'error',
         {
