@@ -1,0 +1,22 @@
+{
+  "name": "@trpfrog.net/storybook-theme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pack": "vp pack",
+    "pack:watch": "vp pack --watch --no-clean"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "peerDependencies": {
+    "storybook": "catalog:"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*",
+    "storybook": "catalog:"
+  }
+}

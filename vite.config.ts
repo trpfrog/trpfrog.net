@@ -148,7 +148,8 @@ export default defineConfig({
         },
       },
       {
-        files: ['.storybook/**/*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}'],
+        // Storybook の設定ファイルと CSF は default export を使う
+        files: ['**/.storybook/**/*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}', '**/*.stories.{ts,tsx}'],
         rules: {
           'eslint/no-restricted-exports': 'off',
         },

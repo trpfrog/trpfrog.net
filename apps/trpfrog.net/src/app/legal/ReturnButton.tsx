@@ -1,14 +1,12 @@
 'use client'
 
-import * as path from 'path'
-
 import { usePathname } from 'next/navigation'
 
 import { RichButton } from '@/components/atoms/RichButton'
 
 export function ReturnButton() {
   const pathname = usePathname()
-  const basename = path.basename(pathname ?? '')
+  const basename = (pathname ?? '').split('/').filter(Boolean).at(-1) ?? ''
 
   if (basename.startsWith('legal')) {
     return <></>

@@ -1,7 +1,8 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
 
-import { resolvePostPath } from '@trpfrog.net/posts'
+// oxlint-disable-next-line eslint/no-restricted-imports -- dev サーバーで手元の記事ファイルを開くためのもので、ファイルシステムを直接使う
+import { resolvePostPath } from '@trpfrog.net/posts/fs'
 
 import { NODE_ENV } from '@/env/client'
 

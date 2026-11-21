@@ -7,19 +7,19 @@
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
   }
+}
 
-  @keyframes dots {
-    0% {
-      transform: translateY(0);
-    }
-    10% {
-      transform: translateY(var(--amplitude));
-    }
-    15% {
-      transform: translateY(var(--amplitude));
-    }
-    30% {
-      transform: translateY(0);
-    }
+@keyframes dots {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(var(--amplitude));
+  }
+  15% {
+    transform: translateY(var(--amplitude));
+  }
+  30% {
+    transform: translateY(0);
   }
 }

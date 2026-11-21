@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "storybook",
+      "runtimeExecutable": "vp",
+      "runtimeArgs": ["run", "--filter", "trpfrog.net", "storybook", "--ci"],
+      "port": 6006,
+      "autoPort": true
+    }
+  ]
+}

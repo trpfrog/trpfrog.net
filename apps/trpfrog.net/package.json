@@ -11,8 +11,11 @@
     "build": "prisma generate && next build",
     "typegen": "prisma generate && next typegen",
     "start": "next start",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "vp test run --config vitest.storybook.config.ts",
     "test": "vp test",
-    "check-unused": "ts-remove-unused --skip '.*\\.(test|spec)\\.tsx?' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?' --check"
+    "check-unused": "ts-remove-unused --skip '.*\\.(test|spec|stories)\\.tsx?' --skip '\\.storybook/' --skip '/__fixtures__/' --skip '(\\.next|\\.config\\.[jt]sx?|\\/article\\-parts\\/)' --skip '(layout|page|loading|not-found|error|global-error|route|template|default|mdx-components|middleware).[jt]sx?' --check"
   },
   "portless": {
     "name": "trpfrog",
@@ -40,10 +43,10 @@
     "@trpfrog.net/posts": "workspace:*",
     "@trpfrog.net/utils": "workspace:*",
     "@twemoji/api": "catalog:",
-    "@ui-sdk/core": "catalog:",
-    "@ui-sdk/react": "catalog:",
     "@types/katex": "catalog:",
     "@types/seedrandom": "catalog:",
+    "@ui-sdk/core": "catalog:",
+    "@ui-sdk/react": "catalog:",
     "@valibot/to-json-schema": "catalog:",
     "@vercel/edge-config": "catalog:",
     "@vercel/functions": "catalog:",
@@ -97,21 +100,38 @@
   },
   "devDependencies": {
     "@shikijs/transformers": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/addon-mcp": "catalog:",
+    "@storybook/addon-vitest": "catalog:",
+    "@storybook/nextjs-vite": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "@testing-library/dom": "catalog:",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@trpfrog.net/config-typescript": "workspace:*",
     "@trpfrog.net/dev-blog-server": "workspace:*",
+    "@trpfrog.net/storybook-theme": "workspace:*",
     "@types/mdx": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitest/browser-playwright": "catalog:",
     "autoprefixer": "catalog:",
     "clipboardy": "catalog:",
     "cssnano": "catalog:",
+    "msw": "catalog:",
+    "msw-storybook-addon": "catalog:",
+    "playwright": "catalog:",
     "postcss": "catalog:",
     "shiki": "catalog:",
-    "tailwindcss": "catalog:"
+    "storybook": "catalog:",
+    "tailwindcss": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "msw": {
+    "workerDirectory": [
+      ".storybook/public"
+    ]
   }
 }
