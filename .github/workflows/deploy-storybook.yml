@@ -1,0 +1,111 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'apps/trpfrog.net/**'
+      - 'packages/**'
+      - 'patches/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-storybook.yml'
+  # Tests and builds only, so that PRs that break Storybook fail before they are merged.
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'apps/trpfrog.net/**'
+      - 'packages/**'
+      - 'patches/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.github/workflows/deploy-storybook.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Superseded PR runs are cancelled; deploys from main run one after another.
+concurrency:
+  group: deploy-storybook-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    name: Build Storybook
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Tokyo
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          node-version: 24.x
+          cache: true
+          run-install: |
+            - cwd: .
+              args: ['--frozen-lockfile']
+
+      # Workspace packages resolve to their compiled `dist/` outputs.
+      - name: Build workspace packages
+        run: vp run -w pack
+
+      # Renders every story in a real browser and runs its play function.
+      - name: Get Playwright version
+        id: playwright
+        working-directory: apps/trpfrog.net
+        run: echo "version=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - name: Install Playwright browser
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        working-directory: apps/trpfrog.net
+        run: vp exec playwright install --with-deps chromium
+
+      - name: Install Playwright system dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        working-directory: apps/trpfrog.net
+        run: vp exec playwright install-deps chromium
+
+      - name: Test stories
+        working-directory: apps/trpfrog.net
+        run: vp run test-storybook
+
+      - name: Build Storybook
+        working-directory: apps/trpfrog.net
+        run: vp run build-storybook
+
+      # Served at https://trpfrog.github.io/trpfrog.net/storybook/
+      - name: Arrange the Pages site
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p _site
+          cp -R apps/trpfrog.net/storybook-static _site/storybook
+
+      - if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
