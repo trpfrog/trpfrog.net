@@ -29,6 +29,11 @@
       "skillPath": "skills/skill-creator/SKILL.md",
       "computedHash": "2d7f889e6ae93c6c27d699856942c336b5b8644537496987d5571043d059b1dc"
     },
+    "storybook": {
+      "source": "./skills/storybook",
+      "sourceType": "local",
+      "computedHash": "db762223304329dcc4de12b51c73de6438f2d88394bd3db9b86e6f2c03792f01"
+    },
     "tailwind-design-system": {
       "source": "wshobson/agents",
       "sourceType": "github",
