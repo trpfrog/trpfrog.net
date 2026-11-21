@@ -40,12 +40,11 @@ export default defineConfig(({ mode }) => ({
   },
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'node',
     isolate: true,
     clearMocks: true,
     restoreMocks: true,
     pool: 'threads',
-    fileParallelism: false,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'lcov', 'html'],

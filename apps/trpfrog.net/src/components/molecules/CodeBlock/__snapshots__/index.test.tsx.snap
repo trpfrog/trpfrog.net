@@ -61,7 +61,7 @@ exports[`CodeBlock > snapshot test 1`] = `
       data-at-y-end=""
       data-at-y-start=""
       data-slot="scroll-area"
-      style="position: relative;"
+      style="position: relative; --scroll-area-overflow-x-start: 0px; --scroll-area-overflow-x-end: 0px; --scroll-area-progress-x: 0; --scroll-area-overflow-y-start: 0px; --scroll-area-overflow-y-end: 0px; --scroll-area-progress-y: 0; --scroll-area-corner-width: 0px; --scroll-area-corner-height: 0px;"
     >
       <div
         class="tw:w-full"
@@ -72,7 +72,7 @@ exports[`CodeBlock > snapshot test 1`] = `
         data-at-y-end=""
         data-at-y-start=""
         data-slot="scroll-area-viewport"
-        style="overflow: auto; scrollbar-width: none;"
+        style="overflow: auto;"
       >
         <pre
           class="shiki tw:sp:py-3 tw:py-3 tw:w-full tw:min-w-max shiki-themes github-light github-dark"

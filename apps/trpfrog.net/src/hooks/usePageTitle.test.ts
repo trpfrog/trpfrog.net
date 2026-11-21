@@ -1,6 +1,6 @@
 import { createElement } from 'react'
 
-import { renderHook, waitFor } from '@testing-library/react'
+import { cleanup, renderHook, waitFor } from '@testing-library/react'
 import { renderToString } from 'react-dom/server'
 import { afterEach, describe, expect, it } from 'vite-plus/test'
 
@@ -15,6 +15,8 @@ function setTitleElement(text: string) {
 
 describe('usePageTitle', () => {
   afterEach(() => {
+    // setup の cleanup より先に動くため、フックをアンマウントしてから <title> を消す
+    cleanup()
     document.head.querySelector('title')?.remove()
   })
 

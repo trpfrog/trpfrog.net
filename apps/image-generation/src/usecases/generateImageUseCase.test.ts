@@ -22,6 +22,7 @@ describe('generateImage', () => {
   afterEach(() => {
     vi.clearAllMocks()
     vi.unstubAllGlobals()
+    vi.useRealTimers()
   })
 
   it('should generate a new image successfully', async () => {
@@ -76,7 +77,12 @@ describe('generateImage', () => {
             fetch: async () => new Response(new ArrayBuffer(0)),
           },
         })
-        await expect(run('prompt')).rejects.toThrow('Failed to generate image')
+        // リトライ間のバックオフを実時間で待たない
+        vi.useFakeTimers()
+        await Promise.all([
+          expect(run('prompt')).rejects.toThrow('Failed to generate image'),
+          vi.runAllTimersAsync(),
+        ])
         expect(textToImageFn).toHaveBeenCalledTimes(isAborted ? 1 : 3)
       },
     )
