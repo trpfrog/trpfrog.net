@@ -1,6 +1,6 @@
 import chokidar, { FSWatcher } from 'chokidar'
 
-import { getPostSlugFromPath } from '@trpfrog.net/posts'
+import { getPostSlugFromPath } from '@trpfrog.net/posts/fs'
 
 export type WatchPostsOptions = {
   postsDir: string

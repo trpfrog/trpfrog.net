@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { streamSSE } from 'hono/streaming'
 
-import { getPostsDirectory } from '@trpfrog.net/posts'
+import { getPostsDirectory } from '@trpfrog.net/posts/fs'
 
 import { createPostUpdateHub } from './post-updates'
 import { startWatchPosts } from './watch-posts'
