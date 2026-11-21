@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 import { SITE_NAME } from '@/lib/constants'
 import { tv } from '@/lib/tailwind'
@@ -28,20 +28,25 @@ const createStyles = tv({
   },
 })
 
-function usePageTitle(pathname: string) {
-  const [pageTitle, setPageTitle] = useState('')
-  useEffect(() => {
-    window.setTimeout(() => {
-      setPageTitle(document?.title.split(' - ')[0] ?? '')
-    }, 500)
-  }, [pathname])
-  return pageTitle
+// ページ遷移で <title> が書き換わったら追従する
+function subscribeTitle(onChange: () => void) {
+  const observer = new MutationObserver(onChange)
+  observer.observe(document.head, { subtree: true, childList: true, characterData: true })
+  return () => observer.disconnect()
+}
+
+function usePageTitle() {
+  return useSyncExternalStore(
+    subscribeTitle,
+    () => document.title.split(' - ')[0] ?? '',
+    () => '',
+  )
 }
 
 export function SiteName(props: TitleWithPageNameProps) {
   const pathname = props.pathname ?? '/'
   const siteTitle = props.siteTitle ?? (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
-  const pageTitleFromHook = usePageTitle(pathname)
+  const pageTitleFromHook = usePageTitle()
   const pageTitle = props.pageTitle ?? pageTitleFromHook
 
   const styles = createStyles({ showPageTitle: props.showPageTitle ?? false })
