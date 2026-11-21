@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => ({
   },
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'node',
     isolate: true,
     clearMocks: true,
     restoreMocks: true,
