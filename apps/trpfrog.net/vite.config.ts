@@ -15,7 +15,6 @@ export default defineConfig({
       shuffle: { files: false, tests: true },
     },
     pool: 'threads',
-    fileParallelism: false,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'lcov', 'html'],
