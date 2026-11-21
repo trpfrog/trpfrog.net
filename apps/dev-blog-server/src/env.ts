@@ -9,6 +9,6 @@ export const env = validateUnknown(
     CLOUDINARY_API_SECRET: v.pipe(v.string(), v.nonEmpty()),
     OPENAI_API_KEY: v.pipe(v.string(), v.nonEmpty()),
   }),
-  // oxlint-disable-next-line node/no-process-env
+  // oxlint-disable-next-line node/no-process-env -- 検証済みの env を作るため、ここでだけ読む
   process.env,
 )

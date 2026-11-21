@@ -27,7 +27,7 @@ export const app = new Hono()
 app.route('/watch-post', watchPostRoute)
 
 // port は指定しない。Bun が portless の渡す PORT を読む
-// oxlint-disable-next-line eslint/no-restricted-exports
+// oxlint-disable-next-line eslint/no-restricted-exports -- Bun はサーバーの設定を default export から読む
 export default {
   fetch: app.fetch,
   idleTimeout: 60,

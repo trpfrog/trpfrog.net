@@ -17,7 +17,7 @@ export function useRotateAnimation() {
       anglePicker.turnBy(rotateDirection === 'left' ? -1 : 1)
     }, 25)
     setIntervalId(id)
-  }, [intervalId, rotateDirection])
+  }, [anglePicker, intervalId, rotateDirection])
 
   const stopAnimation = useCallback(() => {
     if (intervalId === null) {

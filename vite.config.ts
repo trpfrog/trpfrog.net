@@ -12,7 +12,13 @@ export default defineConfig({
     '*': 'vp check --fix',
   },
   lint: {
-    options: { typeAware: true, typeCheck: true },
+    options: {
+      typeAware: true,
+      typeCheck: true,
+      denyWarnings: true,
+      reportUnusedDisableDirectives: 'error',
+    },
+    jsPlugins: ['./packages/config-oxlint/plugin.ts'],
     plugins: [
       'eslint',
       'unicorn',
@@ -31,8 +37,19 @@ export default defineConfig({
     ignorePatterns: ['out', 'dist', 'build', 'coverage', '.cloudflare', '.next', 'next-env.d.ts'],
     rules: {
       'eslint/no-restricted-imports': ['error', { patterns: [noDistImports] }],
+      // React Compiler 系のうち、デフォルト (correctness) に含まれないもの。
+      // react/todo は Compiler が未対応の構文を知らせるだけなので入れない
+      'react/rules-of-hooks': 'error',
+      'react/hooks': 'error',
+      'react/capitalized-calls': 'error',
+      'react/unsupported-syntax': 'error',
+      'react/no-deriving-state-in-effects': 'error',
+      'react/invariant': 'error',
+      'react/syntax': 'error',
+      'react/memo-dependencies': 'error',
+      'react/exhaustive-effect-dependencies': 'error',
       // test.extend で作った it / test (フィクスチャ付き) もテストとして扱う
-      'vitest/no-standalone-expect': ['warn', { additionalTestBlockFunctions: ['it', 'test'] }],
+      'vitest/no-standalone-expect': ['error', { additionalTestBlockFunctions: ['it', 'test'] }],
       'eslint/no-unused-vars': [
         'error',
         {
@@ -77,6 +94,7 @@ export default defineConfig({
           },
         },
       ],
+      'trpfrog/require-disable-reason': 'error',
       'typescript/no-explicit-any': 'error',
       'typescript/no-non-null-assertion': 'error',
       'nextjs/no-img-element': 'off',
@@ -118,6 +136,13 @@ export default defineConfig({
           '**/vitest.{mjs,cjs,js,jsx,ts,mts,cts,tsx}',
           '**/vitest.*.{mjs,cjs,js,jsx,ts,mts,cts,tsx}',
         ],
+        rules: {
+          'eslint/no-restricted-exports': 'off',
+        },
+      },
+      {
+        // Oxlint は JS プラグインを default export で読み込む
+        files: ['packages/config-oxlint/plugin.ts'],
         rules: {
           'eslint/no-restricted-exports': 'off',
         },

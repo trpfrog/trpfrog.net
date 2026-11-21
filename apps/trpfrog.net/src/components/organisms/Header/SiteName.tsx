@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-
+import { usePageTitle } from '@/hooks/usePageTitle'
 import { SITE_NAME } from '@/lib/constants'
 import { tv } from '@/lib/tailwind'
 
@@ -28,20 +27,10 @@ const createStyles = tv({
   },
 })
 
-function usePageTitle(pathname: string) {
-  const [pageTitle, setPageTitle] = useState('')
-  useEffect(() => {
-    window.setTimeout(() => {
-      setPageTitle(document?.title.split(' - ')[0] ?? '')
-    }, 500)
-  }, [pathname])
-  return pageTitle
-}
-
 export function SiteName(props: TitleWithPageNameProps) {
   const pathname = props.pathname ?? '/'
   const siteTitle = props.siteTitle ?? (pathname.startsWith('/blog/') ? 'つまみログ' : SITE_NAME)
-  const pageTitleFromHook = usePageTitle(pathname)
+  const pageTitleFromHook = usePageTitle()
   const pageTitle = props.pageTitle ?? pageTitleFromHook
 
   const styles = createStyles({ showPageTitle: props.showPageTitle ?? false })

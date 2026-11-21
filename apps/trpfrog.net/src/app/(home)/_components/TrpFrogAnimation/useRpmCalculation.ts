@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 import { Queue } from '@/lib/queue'
 
@@ -28,26 +28,23 @@ type RpmCalculationOptions = Partial<{
 export function useRpmCalculation(queueTTLMillis: number, options?: RpmCalculationOptions) {
   if (queueTTLMillis < 1) throw new Error('heapSize must be greater than 0')
 
-  const q = useRef<Queue<RpmRecord> | null>(null)
-  if (!q.current) {
-    q.current = new Queue()
-  }
+  const [q] = useState(() => new Queue<RpmRecord>())
 
   const [diffSum, setDiffSum] = useState(0)
   const pushDegree = useCallback(
     (degree: number) => {
-      const curLast = q.current?.last
+      const curLast = q.last
       if (curLast) {
         setDiffSum(prev => prev + degreeDifference(curLast.degree, degree))
       }
-      q.current?.push({
+      q.push({
         degree,
         unixTime: Date.now(),
       })
 
       setTimeout(() => {
-        const removed = q.current?.pop()
-        const newFirst = q.current?.first
+        const removed = q.pop()
+        const newFirst = q.first
         if (newFirst && removed) {
           setDiffSum(prev => prev - degreeDifference(removed.degree, newFirst.degree))
         } else {
@@ -58,14 +55,11 @@ export function useRpmCalculation(queueTTLMillis: number, options?: RpmCalculati
     [q, queueTTLMillis],
   )
 
-  const firstUnixTime = q.current?.first?.unixTime
-  const lastUnixTime = q.current?.last?.unixTime
+  const firstUnixTime = q.first?.unixTime
+  const lastUnixTime = q.last?.unixTime
   const minQueueSize = Math.max(options?.minQueueSize ?? 2, 2)
   const rpm =
-    (q.current?.items.length ?? 0) >= minQueueSize &&
-    firstUnixTime &&
-    lastUnixTime &&
-    firstUnixTime !== lastUnixTime
+    q.size >= minQueueSize && firstUnixTime && lastUnixTime && firstUnixTime !== lastUnixTime
       ? ((diffSum / (lastUnixTime - firstUnixTime)) * 1000 * 60) / 360
       : 0
 

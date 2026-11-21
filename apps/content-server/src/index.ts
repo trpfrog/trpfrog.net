@@ -12,5 +12,5 @@ const app = new Hono<Env>()
   .use(contextStorage())
   .route('/alpha', alphaApp)
 
-// oxlint-disable-next-line eslint/no-restricted-exports
+// oxlint-disable-next-line eslint/no-restricted-exports -- Cloudflare Workers は default export のハンドラを呼ぶ
 export default app

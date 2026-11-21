@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
 
-import { format, subYears } from 'date-fns'
-
 import { Details } from '@/components/atoms/Details'
 import { MainWrapper } from '@/components/atoms/MainWrapper'
 import { RichButton } from '@/components/atoms/RichButton'
@@ -26,7 +24,6 @@ export const metadata = {
 
 export default async function Index(props: PageProps<'/tweets'>) {
   const searchParams = await props.searchParams
-  const oneYearsAgo = format(subYears(new Date(), 1), 'yyyy-MM-dd')
   const query = Array.isArray(searchParams.q) ? searchParams.q[0] : searchParams.q || ''
   const page = Array.isArray(searchParams.p) ? searchParams.p[0] : searchParams.p || ''
 
@@ -43,9 +40,7 @@ export default async function Index(props: PageProps<'/tweets'>) {
           だいたい数年前のツイートは自分でも「何言ってんだこいつ……」となることが多いです。
         </p>
         <p>
-          <RichButton href={'/tweets?q=' + encodeURIComponent('date:' + oneYearsAgo) + '#tweets'}>
-            1年前のツイートを見る
-          </RichButton>
+          <RichButton href="/tweets/one-year-ago">1年前のツイートを見る</RichButton>
         </p>
         <br />
         <Details summary="実装済みの機能">

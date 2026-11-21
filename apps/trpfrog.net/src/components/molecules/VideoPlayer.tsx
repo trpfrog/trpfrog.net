@@ -128,8 +128,7 @@ export function VideoPlayer(props: { src: string; label: string; className?: str
 
   return (
     <div ref={rootRef} className={styles.root({ className: props.className })}>
-      {/* 外部の動画で字幕ファイルが無いので規則を止める。動画はラベルで識別できる */}
-      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
+      {/* oxlint-disable-next-line jsx-a11y/media-has-caption -- 外部の動画で字幕ファイルが無い。動画はラベルで識別できる */}
       <video
         ref={videoRef}
         src={props.src}

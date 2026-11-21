@@ -78,9 +78,6 @@ catalogs:
     '@prisma/client':
       specifier: ^7.10.1
       version: 7.10.1
-    '@react-hookz/web':
-      specifier: ^26.1.0
-      version: 26.1.0
     '@shikijs/transformers':
       specifier: ^4.5.0
       version: 4.5.0
@@ -810,9 +807,6 @@ importers:
       '@prisma/client':
         specifier: 'catalog:'
         version: 7.10.1(prisma@7.10.1(@types/node@26.6.5)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(magicast@0.5.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(typescript@7.0.2))(typescript@7.0.2)
-      '@react-hookz/web':
-        specifier: 'catalog:'
-        version: 26.1.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@standard-schema/spec':
         specifier: 'catalog:'
         version: 1.1.0
@@ -1051,6 +1045,12 @@ importers:
       tailwindcss:
         specifier: 'catalog:'
         version: 4.3.3
+
+  packages/config-oxlint:
+    devDependencies:
+      '@trpfrog.net/config-typescript':
+        specifier: workspace:*
+        version: link:../config-typescript
 
   packages/config-typescript: {}
 
@@ -2863,17 +2863,6 @@ packages:
       '@types/react':
         optional: true
 
-  '@react-hookz/web@26.1.0':
-    resolution: {integrity: sha512-GKErtGGoaPNWc8rp4SE/rVgJT1kJ/3s6n3q+Vs6DM4TRVsLqbsIGU9u3jTwcV3tCYgxAwz9DqJZxCaal89Lxqg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      js-cookie: ^3.0.5
-      react: ^16.8 || ^17 || ^18 || ^19
-      react-dom: ^16.8 || ^17 || ^18 || ^19
-    peerDependenciesMeta:
-      js-cookie:
-        optional: true
-
   '@reduxjs/toolkit@2.11.2':
     resolution: {integrity: sha512-Kd6kAHTA6/nUpp8mySPqj3en3dm0tdMIgbttnQ1xFMVpufoj+ADi8pXLBsd4xzTRHQa7t/Jv8W5UnCuW4kuWMQ==}
     peerDependencies:
@@ -3568,10 +3557,6 @@ packages:
     resolution: {integrity: sha512-a0M+uwCuQZEPAo65NYkFSJ14O5c213KoSZmPdoCfuFvUhfULi4T2Z6Tpjv6lTVMW9RoLm74RpRAjNEa43KcN+g==}
     peerDependencies:
       valibot: ^1.5.0
-
-  '@ver0/deep-equal@2.0.1':
-    resolution: {integrity: sha512-JVSbDwzKASqorJum+ATnnZNIkni4K4G3aeJDsTgEhHcm0CiCwAVaLbhFByeNAir1HExEWjHxhIXVR+d8ZzeJGw==}
-    engines: {node: '>=20'}
 
   '@vercel/cli-config@0.3.3':
     resolution: {integrity: sha512-5T0ZtIFgcFHuPFuuoJKno5ZeKvLQGiS/JAFMI1zG1HBw2dklScoHdA0LDb/SoeRYD53N33iXFAqyRA0tHLhdnQ==}
@@ -8497,12 +8482,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.3.0
 
-  '@react-hookz/web@26.1.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
-    dependencies:
-      '@ver0/deep-equal': 2.0.1
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
-
   '@reduxjs/toolkit@2.11.2(react-redux@9.2.0(@types/react@19.3.0)(react@19.3.1)(redux@5.0.1))(react@19.3.1)':
     dependencies:
       '@standard-schema/spec': 1.1.0
@@ -9076,8 +9055,6 @@ snapshots:
   '@valibot/to-json-schema@1.8.0(valibot@1.5.0(typescript@7.0.2))':
     dependencies:
       valibot: 1.5.0(typescript@7.0.2)
-
-  '@ver0/deep-equal@2.0.1': {}
 
   '@vercel/cli-config@0.3.3':
     dependencies:

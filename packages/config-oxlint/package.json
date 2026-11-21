@@ -1,0 +1,11 @@
+{
+  "name": "@trpfrog.net/config-oxlint",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vp test"
+  },
+  "devDependencies": {
+    "@trpfrog.net/config-typescript": "workspace:*"
+  }
+}

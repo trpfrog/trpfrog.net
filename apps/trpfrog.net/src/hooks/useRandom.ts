@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+
+import { useIsHydrated } from '@/hooks/useIsHydrated'
 
 type RandomState = { isPending: true; value: null } | { isPending: false; value: number }
 
@@ -11,14 +13,11 @@ function toRandomState(value: number | null): RandomState {
 }
 
 export function useRandom(): RandomState {
-  const [value, setValue] = useState<number | null>(null)
-  useEffect(() => {
-    if (value === null) {
-      setValue(Math.random())
-    }
-  }, [value])
-
-  return toRandomState(value)
+  // サーバーと値が食い違わないよう、hydration が終わるまでは値を出さない
+  const isHydrated = useIsHydrated()
+  // サーバーで Math.random() を呼ぶと、cacheComponents のプリレンダリングで弾かれる
+  const [value] = useState(() => (typeof window === 'undefined' ? null : Math.random()))
+  return toRandomState(isHydrated ? value : null)
 }
 
 if (import.meta.vitest) {
