@@ -152,6 +152,7 @@ We are using a monorepo. The package structure is as follows.
 │   ├── config-typescript     # Shared TypeScript config
 │   ├── constants             # Constants used by some packages
 │   ├── posts                 # Utilities for posts
+│   ├── storybook-theme       # TrpFrog's Storybook theme
 │   └── utils                 # Utilities used by some packages
 ├── posts/                  # Blog posts
 │   └── *.md

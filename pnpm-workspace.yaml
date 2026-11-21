@@ -29,6 +29,10 @@ catalog:
   '@prisma/client': ^7.10.1
   '@shikijs/transformers': ^4.5.0
   '@standard-schema/spec': ^1.1.0
+  '@storybook/addon-docs': 11.0.0-beta.3
+  '@storybook/addon-mcp': 11.0.0-beta.3
+  '@storybook/addon-vitest': 11.0.0-beta.3
+  '@storybook/nextjs-vite': 11.0.0-beta.3
   '@tailwindcss/container-queries': ^0.1.1
   '@tailwindcss/postcss': ^4.3.3
   '@testing-library/dom': ^10.4.2
@@ -47,6 +51,7 @@ catalog:
   '@valibot/to-json-schema': 1.8.0
   '@vercel/edge-config': ^1.5.1
   '@vercel/functions': ^3.10.3
+  '@vitest/browser-playwright': 5.1.0
   '@vitest/coverage-v8': 5.1.0
   '@vitest/ui': 5.1.0
   ai: 7.0.163
@@ -81,11 +86,14 @@ catalog:
   lru-cache: ^11.5.3
   mermaid: ^12.2.0
   microcms-js-sdk: ^3.6.0
+  msw: ^3.0.7
+  msw-storybook-addon: ^3.0.3
   nanoid: ^6.0.2
   next: ^16.4.6
   next-mdx-remote: ^6.0.0
   node-html-parser: ^9.0.5
   p-retry: ^8.0.1
+  playwright: ^1.65.1
   portless: ^0.17.0
   postcss: ^8.5.31
   postcss-preset-mantine: ^1.18.0
@@ -115,6 +123,7 @@ catalog:
   shiki: ^4.5.0
   skills: ^1.8.1
   stable-hash: ^0.0.6
+  storybook: 11.0.0-beta.3
   swr: ^2.5.1
   tailwind-merge: ^3.7.0
   tailwind-variants: ^3.3.1

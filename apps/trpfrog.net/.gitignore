@@ -4,3 +4,7 @@ posts/_*
 # prisma
 /src/prisma/migrations/
 /src/generated/prisma/
+
+# storybook
+storybook-static/
+debug-storybook.log
