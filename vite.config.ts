@@ -37,6 +37,17 @@ export default defineConfig({
     ignorePatterns: ['out', 'dist', 'build', 'coverage', '.cloudflare', '.next', 'next-env.d.ts'],
     rules: {
       'eslint/no-restricted-imports': ['error', { patterns: [noDistImports] }],
+      // React Compiler 系のうち、デフォルト (correctness) に含まれないもの。
+      // react/todo は Compiler が未対応の構文を知らせるだけなので入れない
+      'react/rules-of-hooks': 'error',
+      'react/hooks': 'error',
+      'react/capitalized-calls': 'error',
+      'react/unsupported-syntax': 'error',
+      'react/no-deriving-state-in-effects': 'error',
+      'react/invariant': 'error',
+      'react/syntax': 'error',
+      'react/memo-dependencies': 'error',
+      'react/exhaustive-effect-dependencies': 'error',
       // test.extend で作った it / test (フィクスチャ付き) もテストとして扱う
       'vitest/no-standalone-expect': ['error', { additionalTestBlockFunctions: ['it', 'test'] }],
       'eslint/no-unused-vars': [
