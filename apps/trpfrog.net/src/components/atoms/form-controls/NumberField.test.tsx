@@ -4,8 +4,9 @@ import { describe, expect, it, vi } from 'vite-plus/test'
 import { NumberField } from './NumberField'
 
 describe('NumberField', () => {
-  it('is named by its label and shows the value', () => {
+  it('is named by its label and shows the value', async () => {
     render(<NumberField label="balloons" value={96} onValueChange={() => {}} />)
+    await act(async () => {})
     expect(screen.getByRole('textbox', { name: 'balloons' })).toHaveValue('96')
   })
 

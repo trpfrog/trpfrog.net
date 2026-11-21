@@ -15,7 +15,6 @@ export default defineConfig({
     clearMocks: true,
     restoreMocks: true,
     pool: 'threads',
-    fileParallelism: false,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'lcov', 'html'],
