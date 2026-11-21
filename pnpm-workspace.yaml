@@ -47,8 +47,8 @@ catalog:
   '@valibot/to-json-schema': 1.8.0
   '@vercel/edge-config': ^1.5.1
   '@vercel/functions': ^3.10.3
-  '@vitest/coverage-v8': 5.0.5
-  '@vitest/ui': 5.0.5
+  '@vitest/coverage-v8': 5.1.0
+  '@vitest/ui': 5.1.0
   ai: 7.0.163
   arkregex: ^0.0.14
   autoprefixer: ^10.6.1
@@ -128,8 +128,8 @@ catalog:
   use-sound: ^5.0.0
   uuidv7: ^1.2.1
   valibot: ^1.5.0
-  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
-  vite-plus: 1.4.0
+  vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
+  vite-plus: 1.7.0
 
 catalogMode: prefer
 
@@ -145,5 +145,5 @@ peerDependencyRules:
   allowedVersions:
     vite: '*'
     # Vite Plus's wrapper and Vitest's optional peers resolve these versions.
-    vitest: '5.0.5'
-    '@vitest/ui': '5.0.5'
+    vitest: '5.1.0'
+    '@vitest/ui': '5.1.0'
