@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { act, render } from '@testing-library/react'
 import { describe, expect, test } from 'vite-plus/test'
 
 import { CodeBlock, CodeBlockProps } from '.'
@@ -25,6 +25,7 @@ describe('CodeBlock', () => {
     }
     const Result = await CodeBlock(props)
     const view = render(Result)
+    await act(async () => {})
     expect(view.asFragment()).toMatchSnapshot()
   })
 })
