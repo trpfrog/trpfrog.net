@@ -3,60 +3,60 @@ packages:
   - apps/*
 
 catalog:
-  '@ai-sdk/openai': 4.0.109
+  '@ai-sdk/openai': 4.0.123
   '@cloudflare/vite-plugin': 2.0.0-beta.v.12
-  '@cloudflare/workers-types': ^5.20261024.1
+  '@cloudflare/workers-types': ^5.20261125.1
   '@date-fns/tz': ^1.5.0
   '@fortawesome/fontawesome-svg-core': ^7.3.1
   '@fortawesome/free-brands-svg-icons': ^7.3.1
   '@fortawesome/free-solid-svg-icons': ^7.3.1
   '@fortawesome/react-fontawesome': ^3.5.0
   '@hono/cli': ^0.1.11
-  '@hono/standard-validator': ^0.4.0
+  '@hono/standard-validator': ^0.4.1
   '@hono/vite-ssg': ^0.3.3
-  '@mantine/charts': ^9.7.3
-  '@mantine/core': ^9.7.3
-  '@mantine/dates': ^9.7.3
-  '@mantine/form': ^9.7.3
-  '@mantine/hooks': ^9.7.3
-  '@mantine/modals': ^9.7.3
-  '@mantine/notifications': ^9.7.3
+  '@mantine/charts': ^9.8.2
+  '@mantine/core': ^9.8.2
+  '@mantine/dates': ^9.8.2
+  '@mantine/form': ^9.8.2
+  '@mantine/hooks': ^9.8.2
+  '@mantine/modals': ^9.8.2
+  '@mantine/notifications': ^9.8.2
   '@mdx-js/loader': ^3.1.1
   '@mdx-js/react': ^3.1.1
   '@next/bundle-analyzer': ^16.4.6
   '@next/mdx': ^16.4.6
   '@prisma/adapter-planetscale': 7.10.1
   '@prisma/client': ^7.10.1
-  '@shikijs/transformers': ^4.5.0
+  '@shikijs/transformers': ^4.6.0
   '@standard-schema/spec': ^1.1.0
   '@tailwindcss/container-queries': ^0.1.1
-  '@tailwindcss/postcss': ^4.3.3
+  '@tailwindcss/postcss': ^4.3.5
   '@testing-library/dom': ^10.4.2
   '@testing-library/jest-dom': ^7.0.1
   '@testing-library/react': ^16.3.3
   '@twemoji/api': ^17.0.3
-  '@types/bun': ^1.4.4
+  '@types/bun': ^1.4.5
   '@types/katex': ^0.16.8
   '@types/mdx': ^2.0.14
-  '@types/node': ^26.6.5
-  '@types/react': ^19.3.0
+  '@types/node': ^26.6.7
+  '@types/react': ^19.3.1
   '@types/react-dom': ^19.3.0
   '@types/seedrandom': ^3.0.8
   '@ui-sdk/core': 0.1.0-beta.2
   '@ui-sdk/react': 0.1.0-beta.2
   '@valibot/to-json-schema': 1.8.0
   '@vercel/edge-config': ^1.5.1
-  '@vercel/functions': ^3.10.3
-  '@vitest/coverage-v8': 5.1.0
-  '@vitest/ui': 5.1.0
-  ai: 7.0.163
-  arkregex: ^0.0.14
-  autoprefixer: ^10.6.1
+  '@vercel/functions': ^3.11.3
+  '@vitest/coverage-v8': 5.1.1
+  '@vitest/ui': 5.1.1
+  ai: 7.0.181
+  arkregex: ^0.0.15
+  autoprefixer: ^10.7.0
   babel-plugin-react-compiler: 1.0.0
   better-react-mathjax: ^3.0.3
   better-typescript-lib: ^2.12.0
-  budoux: ^0.10.0
-  bufferutil: ^4.1.0
+  budoux: ^0.10.4
+  bufferutil: ^4.2.0
   cf: 1.0.0-beta.28
   chokidar: ^6.0.0
   classnames: ^2.5.1
@@ -66,42 +66,42 @@ catalog:
   cssnano: ^9.9.0
   date-fns: ^4.4.0
   dayjs: ^1.11.23
-  devicon: ^2.17.0
+  devicon: ^2.18.0
   drizzle-kit: ^0.31.11
   drizzle-orm: ^0.45.4
   globals: ^16.5.0
   gray-matter: ^4.0.3
   happy-dom: ^21.0.4
-  hono: ^4.13.13
+  hono: ^4.13.22
   http-status-codes: ^2.3.0
-  immer: ^11.2.9
-  jotai: ^3.0.1
+  immer: ^11.2.10
+  jotai: ^3.0.2
   js-yaml: ^5.5.0
   katex: ^0.19.1
   lru-cache: ^11.5.3
-  mermaid: ^12.2.0
+  mermaid: ^12.3.0
   microcms-js-sdk: ^3.6.0
   nanoid: ^6.0.2
   next: ^16.4.6
   next-mdx-remote: ^6.0.0
-  node-html-parser: ^9.0.5
+  node-html-parser: ^9.0.7
   p-retry: ^8.0.1
-  portless: ^0.17.0
-  postcss: ^8.5.31
+  portless: ^0.18.1
+  postcss: ^8.5.33
   postcss-preset-mantine: ^1.18.0
   postcss-simple-vars: ^7.0.1
-  prettier: ^3.9.10
-  prettier-plugin-classnames: ^0.10.4
-  prettier-plugin-merge: ^0.10.1
+  prettier: ^3.10.1
+  prettier-plugin-classnames: ^0.10.5
+  prettier-plugin-merge: ^0.10.2
   prettier-plugin-tailwindcss: ^0.8.1
   prisma: ^7.10.1
   react: ^19.3.1
   react-dom: ^19.3.1
   react-player: ^3.4.0
-  react-rewards: ^3.0.0
+  react-rewards: ^3.2.0
   react-string-replace: ^2.0.1
   react-tweet: ^3.3.1
-  recharts: ^3.10.1
+  recharts: ^3.11.1
   rehype-katex: ^7.0.1
   rehype-raw: ^7.0.0
   rehype-slug: ^6.0.0
@@ -109,16 +109,16 @@ catalog:
   remark-gfm: ^4.0.1
   remark-math: ^6.0.0
   remark-toc: ^9.0.0
-  remeda: ^2.53.0
+  remeda: ^2.62.4
   seedrandom: ^3.0.5
   server-only: ^0.0.1
-  shiki: ^4.5.0
-  skills: ^1.8.1
+  shiki: ^4.6.0
+  skills: ^1.9.0
   stable-hash: ^0.0.6
   swr: ^2.5.1
-  tailwind-merge: ^3.7.0
+  tailwind-merge: ^3.7.1
   tailwind-variants: ^3.3.1
-  tailwindcss: ^4.3.3
+  tailwindcss: ^4.3.5
   ts-dedent: ^2.3.0
   ts-pattern: ^5.9.2
   tsr: ^1.3.4
@@ -129,7 +129,7 @@ catalog:
   uuidv7: ^1.2.1
   valibot: ^1.5.0
   vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
-  vite-plus: 1.7.0
+  vite-plus: 1.8.0
 
 catalogMode: prefer
 
@@ -146,4 +146,4 @@ peerDependencyRules:
     vite: '*'
     # Vite Plus's wrapper and Vitest's optional peers resolve these versions.
     vitest: '5.1.0'
-    '@vitest/ui': '5.1.0'
+    '@vitest/ui': '5.1.1'
