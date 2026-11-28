@@ -69,7 +69,7 @@ catalog:
   devicon: ^2.17.0
   drizzle-kit: ^0.31.11
   drizzle-orm: ^0.45.4
-  globals: ^16.5.0
+  globals: ^17.14.0
   gray-matter: ^4.0.3
   happy-dom: ^21.0.4
   hono: ^4.13.13
